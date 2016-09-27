@@ -5,8 +5,8 @@
 
   <base href="/">
 
-  <!-- inject:js -->
-  <!-- endinject -->
+  <!-- build:vendor -->
+  <!-- endbuild -->
 
   <!-- 1. Load libraries -->
   <!-- Polyfill(s) for older browsers -->
@@ -18,10 +18,6 @@
 
   <!-- 2. Configure SystemJS -->
   <script src="systemjs.config.js"></script>
-  <script>
-    System.import('app')
-      .then(null, console.error.bind(console));
-  </script>
 
 </head>
 
