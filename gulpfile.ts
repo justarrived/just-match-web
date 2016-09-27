@@ -56,7 +56,7 @@ gulp.task('bundle-app', (callback) => {
   const builder = new Builder('dist');
 
   builder.loadConfig('./src/systemjs.config.js').then(() => {
-    builder.buildStatic('app/**/*.js', 'dist/app.bundle.js', { minify: true, sourceMaps: true })
+    builder.buildStatic('app/**/*.js', 'dist/app.bundle.js', { minify: true })
       .then(function() {
         callback();
       })
