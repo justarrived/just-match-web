@@ -29,15 +29,22 @@ gulp.task('tslint', () => {
     .pipe(tslint.report());
 });
 
-gulp.task('bundle-vendor', () => {
+gulp.task('bundle-polyfills', () => {
   return gulp.src([
     'core-js/client/shim.min.js',
-    'systemjs/dist/system-polyfills.js',
-    'systemjs/dist/system.src.js',
+    'zone.js/dist/zone.js',
     'reflect-metadata/Reflect.js',
+    'systemjs/dist/system.src.js'
+  ], {cwd: 'node_modules/**'})
+    .pipe(concat('polyfills.min.js'))
+    .pipe(uglify())
+    .pipe(gulp.dest('dist'));
+});
+
+gulp.task('bundle-vendor', () => {
+  return gulp.src([
     'rxjs/**/*.js',
-    'zone.js/dist/**',
-    '@angular/**/bundles/**'
+    '@angular/**/bundles/**/*.umd.js'
   ], {cwd: 'node_modules/**'}) /* Glob required here. */
     // .pipe(concat('vendor.min.js'))
     // .pipe(uglify())
@@ -73,7 +80,8 @@ gulp.task('resources', () => {
 gulp.task('html-replace', () => {
   return gulp.src('src/index.html')
     .pipe(htmlreplace({
-      // vendor: 'vendor.min.js',
+      polyfills: 'polyfills.min.js',
+      vendor: 'vendor.min.js',
       app: 'app.min.js'
     }, {
       keepBlockTags: true,
@@ -103,10 +111,11 @@ gulp.task('build', (callback) => {
   console.log('Building the project ...');
   runSequence(
     'clean',
+    'bundle-polyfills',
     'bundle-vendor',
     'bundle-app',
     'compile-sass',
-    // 'html-replace',
+    'html-replace',
     'resources',
     callback);
 });
