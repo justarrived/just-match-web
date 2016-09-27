@@ -1,5 +1,5 @@
 (function (global) {
-  System.config({
+  SystemJS.config({
     paths: {
       // paths serve as alias
       'npm:': 'lib/'
@@ -31,6 +31,4 @@
       }
     }
   });
-  System.import('app')
-    .then(null, console.error.bind(console));
 })(this);
