@@ -5,6 +5,7 @@ const watch = require('gulp-watch');
 const runSequence = require('run-sequence');
 const del = require('del');
 const tsc = require('gulp-typescript');
+const embedTemplates = require('gulp-angular-embed-templates');
 const sourcemaps = require('gulp-sourcemaps');
 const tsProject = tsc.createProject('tsconfig.json');
 const tslint = require('gulp-tslint');
@@ -22,7 +23,6 @@ gulp.task('clean', (callback) => {
 gulp.task('clean:js', (callback) => {
   return del([
     'dist/app/**/*.js',
-    'dist/app/**/*.js.map',
     'dist/lib',
     '!dist/*.js'
   ], callback);
@@ -50,6 +50,14 @@ gulp.task('compile-ts', ['tslint'], () => {
     .pipe(gulp.dest('dist'));
 });
 
+gulp.task('compile-ts:prod', () => {
+  let tsResult = gulp.src('src/**/*.ts')
+    .pipe(embedTemplates({sourceType: 'ts', basePath: 'src/'}))
+    .pipe(tsc(tsProject));
+  return tsResult.js
+    .pipe(gulp.dest('dist'));
+});
+
 gulp.task('compile-sass', () => {
   return gulp.src('src/**/*.scss')
     .pipe(sass().on('error', sass.logError))
@@ -71,7 +79,7 @@ gulp.task('resources', () => {
 });
 
 gulp.task('resources:prod', () => {
-  return gulp.src(['src/**/*', '!src/systemjs.config.js', '!**/*.ts', '!**/*.scss'])
+  return gulp.src(['src/index.html'])
     .pipe(gulp.dest('dist'));
 });
 
@@ -140,7 +148,7 @@ gulp.task('build:prod', (callback) => {
     'clean',
     'bundle-polyfills',
     'copy-libs',
-    'compile-ts',
+    'compile-ts:prod',
     'compile-sass',
     'bundle-app',
     'clean:js',

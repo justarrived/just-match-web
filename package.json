@@ -31,6 +31,7 @@
     "concurrently": "^2.2.0",
     "del": "^2.2.0",
     "gulp": "^3.9.1",
+    "gulp-angular-embed-templates": "^2.3.0",
     "gulp-clean-css": "^2.0.12",
     "gulp-concat": "^2.6.0",
     "gulp-html-replace": "^1.6.1",
