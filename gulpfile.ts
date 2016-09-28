@@ -1,6 +1,7 @@
 'use strict';
 
 const gulp = require('gulp');
+const watch = require('gulp-watch');
 const runSequence = require('run-sequence');
 const del = require('del');
 const tsc = require('gulp-typescript');
@@ -56,7 +57,7 @@ gulp.task('bundle-app', (callback) => {
   const builder = new Builder('dist');
 
   builder.loadConfig('./src/systemjs.config.js').then(() => {
-    builder.buildStatic('app/**/*.js', 'dist/app.bundle.js', { minify: true })
+    builder.buildStatic('app/**/*.js', 'dist/app.bundle.js', { minify: true, sourceMaps: true })
       .then(function() {
         callback();
       })
@@ -99,14 +100,20 @@ gulp.task('resources', () => {
 });
 
 gulp.task('watch', () => {
-  gulp.watch(['src/**/*.ts'], ['compile-ts']).on('change', function (e) {
-    console.log('TypeScript file ' + e.path + ' has been changed. Compiling.');
+  watch('src/**/*.ts', () => {
+    runSequence(
+      'copy-libs',
+      'compile-ts',
+      'bundle-app',
+      'clean:js',
+      'html-replace'
+    )
   });
-  gulp.watch(['src/**/*.scss'], ['compile-sass']).on('change', function (e) {
-    console.log('Sass file ' + e.path + ' has been changed. Compiling.');
+  watch('src/**/*.scss', () => {
+    gulp.start('compile-sass');
   });
-  gulp.watch(['src/**/*.html'], ['resources']).on('change', function (e) {
-    console.log('Resource file ' + e.path + ' has been changed. Updating.');
+  watch(['src/**/*.html'], () => {
+    gulp.start('resources');
   });
 });
 
