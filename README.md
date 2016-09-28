@@ -12,5 +12,5 @@
 #### 2. Getting started
 
 - npm install
-- npm run clean & npm run build
+- gulp build
 - npm start

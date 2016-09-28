@@ -8,10 +8,6 @@
     "url": "https://github.com/justarrived/just-match-web"
   },
   "scripts": {
-    "clean": "gulp clean",
-    "compile": "gulp compile",
-    "build": "gulp build",
-    "rebuild": "gulp clean & gulp build",
     "start": "concurrently --kill-others \"gulp watch\" \"lite-server\"",
     "postinstall": "typings install"
   },
@@ -37,7 +33,7 @@
     "gulp": "^3.9.1",
     "gulp-clean-css": "^2.0.12",
     "gulp-concat": "^2.6.0",
-    "gulp-inject": "^4.1.0",
+    "gulp-html-replace": "^1.6.1",
     "gulp-sass": "^2.3.2",
     "gulp-sourcemaps": "^1.6.0",
     "gulp-tslint": "^6.1.1 ",
@@ -45,6 +41,7 @@
     "gulp-uglify": "^2.0.0",
     "lite-server": "^2.2.2",
     "run-sequence": "^1.2.2",
+    "systemjs-builder": "^0.15.32",
     "ts-node": "^1.3.0",
     "tslint": "^3.5.0",
     "typescript": "^2.0.2",

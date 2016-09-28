@@ -5,27 +5,23 @@
 
   <base href="/">
 
-  <!-- inject:js -->
-  <!-- endinject -->
-
-  <!-- 1. Load libraries -->
-  <!-- Polyfill(s) for older browsers -->
+  <!-- build:polyfills -->
   <script src="lib/core-js/client/shim.min.js"></script>
 
   <script src="lib/zone.js/dist/zone.js"></script>
   <script src="lib/reflect-metadata/Reflect.js"></script>
   <script src="lib/systemjs/dist/system.src.js"></script>
+  <!-- endbuild -->
 
-  <!-- 2. Configure SystemJS -->
+  <!-- build:app -->
   <script src="systemjs.config.js"></script>
   <script>
-    System.import('app')
+    SystemJS.import('app')
       .then(null, console.error.bind(console));
   </script>
-
+  <!-- endbuild -->
 </head>
 
-<!-- 3. Display the application -->
 <body>
 <app>Loading...</app>
 </body>

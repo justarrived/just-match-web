@@ -1,5 +1,5 @@
 (function (global) {
-  System.config({
+  SystemJS.config({
     paths: {
       // paths serve as alias
       'npm:': 'lib/'
