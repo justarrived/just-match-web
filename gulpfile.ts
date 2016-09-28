@@ -5,6 +5,7 @@ const watch = require('gulp-watch');
 const runSequence = require('run-sequence');
 const del = require('del');
 const tsc = require('gulp-typescript');
+const sourcemaps = require('gulp-sourcemaps');
 const tsProject = tsc.createProject('tsconfig.json');
 const tslint = require('gulp-tslint');
 const uglify = require('gulp-uglify');
@@ -16,6 +17,62 @@ const htmlreplace = require('gulp-html-replace');
 
 gulp.task('clean', (callback) => {
   return del(['dist'], callback);
+});
+
+gulp.task('clean:js', (callback) => {
+  return del([
+    'dist/app/**/*.js',
+    'dist/app/**/*.js.map',
+    'dist/lib',
+    '!dist/*.js'
+  ], callback);
+});
+
+gulp.task('copy-libs', () => {
+  return gulp.src([
+    'core-js/client/shim.min.js',
+    'systemjs/dist/system-polyfills.js',
+    'systemjs/dist/system.src.js',
+    'reflect-metadata/Reflect.js',
+    'rxjs/**/*.js',
+    'zone.js/dist/**',
+    '@angular/**/bundles/**'
+  ], {cwd: 'node_modules/**'}) /* Glob required here. */
+    .pipe(gulp.dest('dist/lib'));
+});
+
+gulp.task('compile-ts', ['tslint'], () => {
+  let tsResult = gulp.src('src/**/*.ts')
+    .pipe(sourcemaps.init())
+    .pipe(tsc(tsProject));
+  return tsResult.js
+    .pipe(sourcemaps.write('.', {sourceRoot: '/src'}))
+    .pipe(gulp.dest('dist'));
+});
+
+gulp.task('compile-sass', () => {
+  return gulp.src('src/**/*.scss')
+    .pipe(sass().on('error', sass.logError))
+    .pipe(cleanCss())
+    .pipe(gulp.dest('dist'));
+});
+
+gulp.task('tslint', () => {
+  return gulp.src('src/**/*.ts')
+    .pipe(tslint({
+      formatter: 'prose'
+    }))
+    .pipe(tslint.report());
+});
+
+gulp.task('resources', () => {
+  return gulp.src(['src/**/*', '!**/*.ts', '!**/*.scss'])
+    .pipe(gulp.dest('dist'));
+});
+
+gulp.task('resources:prod', () => {
+  return gulp.src(['src/**/*', '!src/systemjs.config.js', '!**/*.ts', '!**/*.scss'])
+    .pipe(gulp.dest('dist'));
 });
 
 gulp.task('bundle-polyfills', () => {
@@ -30,34 +87,12 @@ gulp.task('bundle-polyfills', () => {
     .pipe(gulp.dest('dist'));
 });
 
-gulp.task('copy-libs', () => {
-  return gulp.src([
-    'rxjs/**/*.js',
-    '@angular/**/bundles/**/*.umd.js'
-  ], {cwd: 'node_modules/**'}) /* Glob required here. */
-    .pipe(gulp.dest('dist/lib'));
-});
-
-gulp.task('compile-ts', ['tslint'], () => {
-  let tsResult = gulp.src('src/**/*.ts')
-    .pipe(tsc(tsProject));
-  return tsResult.js
-    .pipe(gulp.dest('dist'));
-});
-
-gulp.task('compile-sass', () => {
-  return gulp.src('src/**/*.scss')
-    .pipe(sass().on('error', sass.logError))
-    .pipe(cleanCss())
-    .pipe(gulp.dest('dist'));
-});
-
 gulp.task('bundle-app', (callback) => {
   const Builder = require('systemjs-builder');
   const builder = new Builder('dist');
 
   builder.loadConfig('./src/systemjs.config.js').then(() => {
-    builder.buildStatic('app/**/*.js', 'dist/app.bundle.js', { minify: true, sourceMaps: true })
+    builder.buildStatic('app/**/*.js', 'dist/app.bundle.js', { minify: true, sourceMaps: false })
       .then(function() {
         callback();
       })
@@ -65,22 +100,6 @@ gulp.task('bundle-app', (callback) => {
         console.log('error ' + err);
       });
   });
-});
-
-gulp.task('clean:js', (callback) => {
-  return del([
-    'dist/app/**/*.js',
-    'dist/lib',
-    '!dist/*.js'
-  ], callback);
-});
-
-gulp.task('tslint', () => {
-  return gulp.src('src/**/*.ts')
-    .pipe(tslint({
-      formatter: 'prose'
-    }))
-    .pipe(tslint.report());
 });
 
 gulp.task('html-replace', () => {
@@ -91,23 +110,12 @@ gulp.task('html-replace', () => {
     }, {
       keepBlockTags: true,
     }))
-    .pipe(gulp.dest('src'));
-});
-
-gulp.task('resources', () => {
-  return gulp.src(['src/**/*', '!src/systemjs.config.js', '!**/*.ts', '!**/*.scss'])
     .pipe(gulp.dest('dist'));
 });
 
 gulp.task('watch', () => {
   watch('src/**/*.ts', () => {
-    runSequence(
-      'copy-libs',
-      'compile-ts',
-      'bundle-app',
-      'clean:js',
-      'html-replace'
-    )
+    gulp.start('compile-ts');
   });
   watch('src/**/*.scss', () => {
     gulp.start('compile-sass');
@@ -120,13 +128,23 @@ gulp.task('watch', () => {
 gulp.task('build', (callback) => {
   runSequence(
     'clean',
+    'copy-libs',
+    'compile-ts',
+    'compile-sass',
+    'resources',
+    callback);
+});
+
+gulp.task('build:prod', (callback) => {
+  runSequence(
+    'clean',
     'bundle-polyfills',
     'copy-libs',
     'compile-ts',
     'compile-sass',
     'bundle-app',
     'clean:js',
+    'resources:prod',
     'html-replace',
-    'resources',
     callback);
 });

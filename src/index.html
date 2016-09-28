@@ -6,11 +6,19 @@
   <base href="/">
 
   <!-- build:polyfills -->
-  <script src="polyfills.min.js"></script>
+  <script src="lib/core-js/client/shim.min.js"></script>
+
+  <script src="lib/zone.js/dist/zone.js"></script>
+  <script src="lib/reflect-metadata/Reflect.js"></script>
+  <script src="lib/systemjs/dist/system.src.js"></script>
   <!-- endbuild -->
 
   <!-- build:app -->
-  <script src="app.bundle.js"></script>
+  <script src="systemjs.config.js"></script>
+  <script>
+    SystemJS.import('app')
+      .then(null, console.error.bind(console));
+  </script>
   <!-- endbuild -->
 </head>
 
