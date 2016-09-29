@@ -18,17 +18,14 @@
       '@angular/router': 'npm:@angular/router/bundles/router.umd.js',
       '@angular/forms': 'npm:@angular/forms/bundles/forms.umd.js',
       // other libraries
-      'rxjs': 'npm:rxjs'
+      'rxjs': 'npm:rxjs',
+      'ng2-translate': 'npm:ng2-translate'
     },
     // packages tells the System loader how to load when no filename and/or no extension
     packages: {
-      app: {
-        main: './main.js',
-        defaultExtension: 'js'
-      },
-      rxjs: {
-        defaultExtension: 'js'
-      }
+      app: { main: './main.js', defaultExtension: 'js' },
+      rxjs: { defaultExtension: 'js' },
+      'ng2-translate': { defaultExtension: 'js' }
     }
   });
 })(this);
