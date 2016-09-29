@@ -129,7 +129,7 @@ gulp.task('watch', () => {
   watch('src/**/*.scss', () => {
     gulp.start('compile-sass');
   });
-  watch(['src/**/*.html', 'src/i18n'], () => {
+  watch(['src/**/*.html', 'src/i18n/*.json'], () => {
     gulp.start('resources');
   });
 });
