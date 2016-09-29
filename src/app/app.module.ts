@@ -10,7 +10,7 @@ import {TaskListComponent} from "./todo/components/task-list.component";
 import {AboutComponent} from "./about/components/about.component";
 import {TaskComponent} from "./todo/components/task.component";
 import {routing, appRoutingProviders} from "./app.routing";
-import {TranslationService} from "./services/translation-service";
+import {TranslationService} from "./services/translation.service";
 
 @NgModule({
   imports: [

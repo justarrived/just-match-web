@@ -1,7 +1,7 @@
 import {Component} from "@angular/core";
 import {OnInit} from "@angular/core";
 
-import {TranslationService} from "../../services/translation-service";
+import {TranslationService} from "../../services/translation.service";
 
 @Component({
   templateUrl: './app/about/components/about.html'
