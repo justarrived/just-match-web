@@ -35,9 +35,10 @@ gulp.task('copy-libs', () => {
     'systemjs/dist/system.src.js',
     'reflect-metadata/Reflect.js',
     'rxjs/**/*.js',
+    'ng2-translate/**/*.js',
     'zone.js/dist/**',
     '@angular/**/bundles/**'
-  ], {cwd: 'node_modules/**'}) /* Glob required here. */
+  ], {cwd: 'node_modules/**'})
     .pipe(gulp.dest('dist/lib'));
 });
 
@@ -79,7 +80,7 @@ gulp.task('resources', () => {
 });
 
 gulp.task('resources:prod', () => {
-  return gulp.src(['src/index.html'])
+  return gulp.src(['src/index.html', 'src/favicon.ico', 'src/apple-touch-icon.ico'])
     .pipe(gulp.dest('dist'));
 });
 
@@ -128,7 +129,7 @@ gulp.task('watch', () => {
   watch('src/**/*.scss', () => {
     gulp.start('compile-sass');
   });
-  watch(['src/**/*.html'], () => {
+  watch(['src/**/*.html', 'src/i18n/*.json'], () => {
     gulp.start('resources');
   });
 });
