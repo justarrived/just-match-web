@@ -68,9 +68,7 @@ gulp.task('compile-sass', () => {
 
 gulp.task('tslint', () => {
   return gulp.src('src/**/*.ts')
-    .pipe(tslint({
-      formatter: 'prose'
-    }))
+    .pipe(tslint())
     .pipe(tslint.report());
 });
 
