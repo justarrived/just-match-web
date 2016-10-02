@@ -13,6 +13,7 @@ const uglify = require('gulp-uglify');
 const sass = require('gulp-sass');
 const cleanCss = require('gulp-clean-css');
 const concat = require('gulp-concat');
+const flatten = require('gulp-flatten');
 
 const htmlreplace = require('gulp-html-replace');
 
@@ -20,66 +21,49 @@ gulp.task('clean', (callback) => {
   return del(['dist'], callback);
 });
 
-gulp.task('clean:js', (callback) => {
-  return del([
-    'dist/app/**/*.js',
-    'dist/lib',
-    '!dist/*.js'
-  ], callback);
-});
-
-gulp.task('copy-libs', () => {
-  return gulp.src([
-    'core-js/client/shim.min.js',
-    'systemjs/dist/system-polyfills.js',
-    'systemjs/dist/system.src.js',
-    'reflect-metadata/Reflect.js',
-    'rxjs/**/*.js',
-    'ng2-translate/**/*.js',
-    'zone.js/dist/**',
-    '@angular/**/bundles/**'
-  ], {cwd: 'node_modules/**'})
-    .pipe(gulp.dest('dist/lib'));
-});
-
 gulp.task('compile-ts', ['tslint'], () => {
-  let tsResult = gulp.src('src/**/*.ts')
+  let tsResult = gulp.src('app/**/*.ts')
     .pipe(sourcemaps.init())
     .pipe(tsc(tsProject));
   return tsResult.js
-    .pipe(sourcemaps.write('.', {sourceRoot: '/src'}))
-    .pipe(gulp.dest('dist'));
+    .pipe(sourcemaps.write('.', {sourceRoot: '/app'}))
+    .pipe(gulp.dest('app'));
 });
 
 gulp.task('compile-ts:prod', () => {
-  let tsResult = gulp.src('src/**/*.ts')
-    .pipe(embedTemplates({sourceType: 'ts', basePath: 'src/'}))
+  let tsResult = gulp.src('app/**/*.ts')
+    .pipe(embedTemplates({sourceType: 'ts'}))
     .pipe(tsc(tsProject));
   return tsResult.js
-    .pipe(gulp.dest('dist'));
+    .pipe(gulp.dest('app'));
 });
 
 gulp.task('compile-sass', () => {
-  return gulp.src('src/**/*.scss')
+  return gulp.src('app/**/*.scss')
     .pipe(sass().on('error', sass.logError))
     .pipe(cleanCss())
-    .pipe(gulp.dest('dist'));
+    .pipe(gulp.dest('app'));
 });
 
 gulp.task('tslint', () => {
-  return gulp.src('src/**/*.ts')
+  return gulp.src('app/**/*.ts')
     .pipe(tslint())
     .pipe(tslint.report());
 });
 
 gulp.task('resources', () => {
-  return gulp.src(['src/**/*', '!**/*.ts', '!**/*.scss'])
+  return gulp.src([
+    'index.html',
+    'favicon.ico',
+    'apple-touch-icon.ico',
+    'app/**/*.css',
+  ]).pipe(flatten())
     .pipe(gulp.dest('dist'));
 });
 
-gulp.task('resources:prod', () => {
-  return gulp.src(['src/index.html', 'src/favicon.ico', 'src/apple-touch-icon.ico'])
-    .pipe(gulp.dest('dist'));
+gulp.task('copy-translations', () => {
+  return gulp.src(['i18n/*.json'])
+    .pipe(gulp.dest('dist/i18n'));
 });
 
 gulp.task('bundle-polyfills', () => {
@@ -96,10 +80,10 @@ gulp.task('bundle-polyfills', () => {
 
 gulp.task('bundle-app', (callback) => {
   const Builder = require('systemjs-builder');
-  const builder = new Builder('dist');
+  const builder = new Builder();
 
-  builder.loadConfig('./src/systemjs.config.js').then(() => {
-    builder.buildStatic('app/**/*.js', 'dist/app.bundle.js', { minify: true, sourceMaps: false })
+  builder.loadConfig('./systemjs.config.js').then(() => {
+    builder.buildStatic('./app/**/*.js', 'dist/app.bundle.js', { minify: true, sourceMaps: false })
       .then(function() {
         callback();
       })
@@ -110,7 +94,7 @@ gulp.task('bundle-app', (callback) => {
 });
 
 gulp.task('html-replace', () => {
-  return gulp.src('src/index.html')
+  return gulp.src('index.html')
     .pipe(htmlreplace({
       polyfills: 'polyfills.min.js',
       app: 'app.bundle.js'
@@ -121,24 +105,18 @@ gulp.task('html-replace', () => {
 });
 
 gulp.task('watch', () => {
-  watch('src/**/*.ts', () => {
+  watch('app/**/*.ts', () => {
     gulp.start('compile-ts');
   });
-  watch('src/**/*.scss', () => {
+  watch('app/**/*.scss', () => {
     gulp.start('compile-sass');
-  });
-  watch(['src/**/*.html', 'src/i18n/*.json'], () => {
-    gulp.start('resources');
   });
 });
 
 gulp.task('build', (callback) => {
   runSequence(
-    'clean',
-    'copy-libs',
     'compile-ts',
     'compile-sass',
-    'resources',
     callback);
 });
 
@@ -146,12 +124,11 @@ gulp.task('build:prod', (callback) => {
   runSequence(
     'clean',
     'bundle-polyfills',
-    'copy-libs',
     'compile-ts:prod',
     'compile-sass',
     'bundle-app',
-    'clean:js',
-    'resources:prod',
+    'resources',
+    'copy-translations',
     'html-replace',
     callback);
 });

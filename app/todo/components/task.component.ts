@@ -6,8 +6,9 @@ import {Output} from "@angular/core";
 import {EventEmitter} from "@angular/core";
 
 @Component({
+  moduleId: module.id,
   selector: 'task',
-  templateUrl: './app/todo/components/task.html'
+  templateUrl: 'task.html'
 })
 export class TaskComponent {
   @Input() task:Task;

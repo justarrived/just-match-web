@@ -4,7 +4,8 @@ import {OnInit} from "@angular/core";
 import {TranslationService} from "../../services/translation.service";
 
 @Component({
-  templateUrl: './app/about/components/about.html'
+  moduleId: module.id,
+  templateUrl: 'about.html'
 })
 export class AboutComponent implements OnInit {
   public translationService: TranslationService;

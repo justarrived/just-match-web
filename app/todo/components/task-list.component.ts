@@ -3,9 +3,10 @@ import {Task} from "../models/task";
 import {TaskService} from "../services/task-service";
 
 @Component({
+  moduleId: module.id,
   selector: 'task-list',
-  templateUrl: './app/todo/components/task-list.html',
-  styleUrls: ['./app/todo/components/task-list.css'],
+  templateUrl: 'task-list.html',
+  styleUrls: ['task-list.css'],
   providers: [TaskService]
 })
 export class TaskListComponent implements OnInit {
