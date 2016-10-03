@@ -1,144 +1,142 @@
-import {Injectable} from "@angular/core";
+import {Response} from "@angular/http";
 
-@Injectable()
-export class RequestResponseParser {
-  user = {
-    "data":{
-      "id":"57",
-      "type":"users",
-      "attributes":{
-        "first-name":"Mckayla",
-        "description":"Semiotics keffiyeh bicycle rights. Try-hard tattooed waistcoat salvia pug deep v.",
-        "job-experience":null,
-        "education":null,
-        "language-id":37,
-        "zip":"11850",
-        "zip-latitude":59.3164285,
-        "zip-longitude":18.0590482,
-        "competence-text":null,
-        "primary-role":"company",
-        "phone":"665-224-0775",
-        "street":"Wollmar Yxkullsgatan 20",
-        "latitude":null,
-        "longitude":null,
-        "email":"company@example.com",
-        "last-name":"Rice",
-        "created-at":"2016-04-07T18:45:49.429+02:00",
-        "updated-at":"2016-05-08T13:06:31.548+02:00",
-        "admin":false,
-        "anonymized":false,
-        "ignored-notifications":[
+let user = {
+  "data":{
+    "id":"57",
+    "type":"users",
+    "attributes":{
+      "first-name":"Mckayla",
+      "description":"Semiotics keffiyeh bicycle rights. Try-hard tattooed waistcoat salvia pug deep v.",
+      "job-experience":null,
+      "education":null,
+      "language-id":37,
+      "zip":"11850",
+      "zip-latitude":59.3164285,
+      "zip-longitude":18.0590482,
+      "competence-text":null,
+      "primary-role":"company",
+      "phone":"665-224-0775",
+      "street":"Wollmar Yxkullsgatan 20",
+      "latitude":null,
+      "longitude":null,
+      "email":"company@example.com",
+      "last-name":"Rice",
+      "created-at":"2016-04-07T18:45:49.429+02:00",
+      "updated-at":"2016-05-08T13:06:31.548+02:00",
+      "admin":false,
+      "anonymized":false,
+      "ignored-notifications":[
 
-        ],
-        "frilans-finans-payment-details":false,
-        "ssn":"8791488414",
-        "current-status":null,
-        "at-und":null,
-        "arrived-at":null,
-        "country-of-origin":null,
-        "auth-token":"eaa8602b1db03801e902e8dd48f2a240e8c43853bb46e932c900bb78a9d15da61ed5dfbb09b9fa276a54684a99d6e355da1dff13a33f7942c302c3a44539357c"
-      },
-      "relationships":{
-        "company":{
-          "data":{
-            "id":"7",
-            "type":"companies"
-          },
-          "links":{
-            "self":"https://just-match-api-staging.herokuapp.com/api/v1/companies/7"
-          }
-        },
-        "language":{
-          "data":{
-            "id":"37",
-            "type":"languages"
-          },
-          "links":{
-            "self":"https://just-match-api-staging.herokuapp.com/api/v1/languages/37"
-          }
-        },
-        "user-images":{
-          "data":[
-
-          ]
-        },
-        "languages":{
-          "data":[
-
-          ],
-          "links":{
-            "related":"https://just-match-api-staging.herokuapp.com/api/v1/users/57/languages"
-          }
-        },
-        "chats":{
-          "data":[
-            {
-              "id":"325",
-              "type":"chats"
-            },
-            {
-              "id":"329",
-              "type":"chats"
-            }
-          ],
-          "links":{
-            "related":"https://just-match-api-staging.herokuapp.com/api/v1/users/57/chats"
-          }
-        }
-      },
-      "links":{
-        "self":"https://just-match-api-staging.herokuapp.com/api/v1/users/57"
-      }
+      ],
+      "frilans-finans-payment-details":false,
+      "ssn":"8791488414",
+      "current-status":null,
+      "at-und":null,
+      "arrived-at":null,
+      "country-of-origin":null,
+      "auth-token":"eaa8602b1db03801e902e8dd48f2a240e8c43853bb46e932c900bb78a9d15da61ed5dfbb09b9fa276a54684a99d6e355da1dff13a33f7942c302c3a44539357c"
     },
-    "included":[
-      {
-        "id":"7",
-        "type":"companies",
-        "attributes":{
-          "name":"Bahringer LLC",
-          "website":null,
-          "cin":"5527820012",
-          "street":"Sveavägen 1",
-          "zip":"11850",
-          "city":"stockholm",
-          "phone":null,
-          "email":"d3b285ae-17ee-4797-b9eb-61d1596f375a@example.com"
-        },
-        "relationships":{
-          "company-images":{
-            "data":[
-
-            ]
-          }
+    "relationships":{
+      "company":{
+        "data":{
+          "id":"7",
+          "type":"companies"
         },
         "links":{
           "self":"https://just-match-api-staging.herokuapp.com/api/v1/companies/7"
         }
       },
-      {
-        "id":"37",
-        "type":"languages",
-        "attributes":{
-          "lang-code":"en",
-          "direction":"ltr",
-          "system-language":true,
-          "local-name":"English",
-          "en-name":"English",
-          "sv-name":"Engelska",
-          "ar-name":"الإنجليزية",
-          "fa-name":"انگلیسی",
-          "fa-af-name":"انگلیسی",
-          "ku-name":"English",
-          "ti-name":"እንግሊዝኛ",
-          "ps-name":"انګلیسي"
+      "language":{
+        "data":{
+          "id":"37",
+          "type":"languages"
         },
         "links":{
           "self":"https://just-match-api-staging.herokuapp.com/api/v1/languages/37"
         }
+      },
+      "user-images":{
+        "data":[
+
+        ]
+      },
+      "languages":{
+        "data":[
+
+        ],
+        "links":{
+          "related":"https://just-match-api-staging.herokuapp.com/api/v1/users/57/languages"
+        }
+      },
+      "chats":{
+        "data":[
+          {
+            "id":"325",
+            "type":"chats"
+          },
+          {
+            "id":"329",
+            "type":"chats"
+          }
+        ],
+        "links":{
+          "related":"https://just-match-api-staging.herokuapp.com/api/v1/users/57/chats"
+        }
       }
-    ]
-  };
-  jobs = {
+    },
+    "links":{
+      "self":"https://just-match-api-staging.herokuapp.com/api/v1/users/57"
+    }
+  },
+  "included":[
+    {
+      "id":"7",
+      "type":"companies",
+      "attributes":{
+        "name":"Bahringer LLC",
+        "website":null,
+        "cin":"5527820012",
+        "street":"Sveavägen 1",
+        "zip":"11850",
+        "city":"stockholm",
+        "phone":null,
+        "email":"d3b285ae-17ee-4797-b9eb-61d1596f375a@example.com"
+      },
+      "relationships":{
+        "company-images":{
+          "data":[
+
+          ]
+        }
+      },
+      "links":{
+        "self":"https://just-match-api-staging.herokuapp.com/api/v1/companies/7"
+      }
+    },
+    {
+      "id":"37",
+      "type":"languages",
+      "attributes":{
+        "lang-code":"en",
+        "direction":"ltr",
+        "system-language":true,
+        "local-name":"English",
+        "en-name":"English",
+        "sv-name":"Engelska",
+        "ar-name":"الإنجليزية",
+        "fa-name":"انگلیسی",
+        "fa-af-name":"انگلیسی",
+        "ku-name":"English",
+        "ti-name":"እንግሊዝኛ",
+        "ps-name":"انګلیسي"
+      },
+      "links":{
+        "self":"https://just-match-api-staging.herokuapp.com/api/v1/languages/37"
+      }
+    }
+  ]
+};
+let jobs = {
     "data":[
       {
         "id":"256",
@@ -1413,20 +1411,10 @@ export class RequestResponseParser {
     }
   };
 
-  parse(data: any) {
-    let dataActual = data.data;
-    // data -> object or array
-    let included = data.included;
-    let result = {};
 
-    this.setAttributes(dataActual.attributes, result);
+export function parseResponse(response: Response): any {
+  let data = response.json().data;
+  console.log('response', data);
 
-    console.log(result);
-  }
-
-  private setAttributes(attributes, result) {
-    Object.keys(attributes).forEach((key) => {
-      result[key] = attributes[key];
-    });
-  }
+  return data;
 }

@@ -24,18 +24,18 @@ export class AuthManager {
           "password": password
         }
       }
-    }).then(response => {
-        var result = response.json().data.attributes;
+    }).then(data => {
+        var result = data.attributes;
         this.localStorageWrapper.setObject(this.storageAuthorizationData, result);
         return this.userProxy.getUser(result['user-id']);
       })
-      .then(response => {
-        return this.handleUserResult(response);
+      .then(data => {
+        return this.handleUserResult(data);
       });
   }
 
-  handleUserResult(response) {
-    let userData = response.json().data.attributes;
+  handleUserResult(data) {
+    let userData = data.attributes;
     this.user = new User(userData);
     return Promise.resolve(this.user);
   }
@@ -43,8 +43,8 @@ export class AuthManager {
   authenticateIfNeeded(): Promise<User> {
     let authorizationData = this.localStorageWrapper.getObject(this.storageAuthorizationData);
     if (authorizationData) {
-      return this.userProxy.getUser(authorizationData['user-id']).then(response => {
-        return this.handleUserResult(response);
+      return this.userProxy.getUser(authorizationData['user-id']).then(data => {
+        return this.handleUserResult(data);
       });
     }
 
