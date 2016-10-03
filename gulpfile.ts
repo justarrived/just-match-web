@@ -36,6 +36,7 @@ gulp.task('copy-libs', () => {
     'reflect-metadata/Reflect.js',
     'rxjs/**/*.js',
     'zone.js/dist/**',
+    'lodash/**/*.js',
     '@angular/**/bundles/**'
   ], {cwd: 'node_modules/**'}) /* Glob required here. */
     .pipe(gulp.dest('dist/lib'));
