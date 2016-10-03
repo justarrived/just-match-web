@@ -37,6 +37,7 @@ gulp.task('copy-libs', () => {
     'rxjs/**/*.js',
     'ng2-translate/**/*.js',
     'zone.js/dist/**',
+    'lodash/**/*.js',
     '@angular/**/bundles/**'
   ], {cwd: 'node_modules/**'})
     .pipe(gulp.dest('dist/lib'));
