@@ -57,11 +57,7 @@ export class ApiCall {
     return this.serverRestPoint + url;
   }
 
-  private contentTypeHeaderBuilder(contentType: string): Headers {
-    if (contentType == null) {
-      contentType = 'application/json';
-    }
-
+  private contentTypeHeaderBuilder(contentType: string = "application/json"): Headers {
     var headers = new Headers();
     headers.append('Content-Type', contentType);
     return headers;

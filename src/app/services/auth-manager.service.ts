@@ -1,7 +1,5 @@
 import {Injectable} from "@angular/core";
 import {ApiCall} from "./api-call";
-import "rxjs/add/operator/map";
-import 'rxjs/add/operator/catch';
 import {LocalStorageWrapper} from "./local-storage-wrapper";
 import {User} from "../models/user";
 import {UserProxy} from "./user-proxy.service";
@@ -22,7 +20,7 @@ export class AuthManager {
     return this.apiCall.post('users/sessions', {
       "data": {
         "attributes": {
-          "email": email,
+          "email-or-phone": email,
           "password": password
         }
       }
@@ -37,7 +35,6 @@ export class AuthManager {
   }
 
   handleUserResult(response) {
-    console.log('response');
     let userData = response.json().data.attributes;
     this.user = new User(userData);
     return Promise.resolve(this.user);
