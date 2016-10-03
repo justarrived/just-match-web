@@ -1,7 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Http, Headers, Request, RequestOptions, RequestOptionsArgs, RequestMethod, Response, URLSearchParams} from '@angular/http';
 import { LocalStorageWrapper } from './local-storage-wrapper.service';
-import 'rxjs/add/operator/toPromise';
 import * as  _ from 'lodash';
 
 @Injectable()
