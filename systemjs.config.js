@@ -19,6 +19,7 @@
       '@angular/forms': 'npm:@angular/forms/bundles/forms.umd.js',
       // other libraries
       'rxjs': 'npm:rxjs',
+      'lodash': 'npm:lodash/lodash.js',
       'ng2-translate': 'npm:ng2-translate'
     },
     // packages tells the System loader how to load when no filename and/or no extension

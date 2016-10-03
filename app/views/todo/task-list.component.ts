@@ -1,19 +1,18 @@
 import {Component, OnInit} from "@angular/core";
-import {Task} from "../models/task";
-import {TaskService} from "../services/task-service";
+import {TaskService} from "../../services/task-service";
+import {Task} from "../../models/task";
 
 @Component({
   moduleId: module.id,
   selector: 'task-list',
-  templateUrl: 'task-list.html',
-  styleUrls: ['task-list.css'],
+  templateUrl: 'task-list.component.html',
+  styleUrls: ['task-list.component.css'],
   providers: [TaskService]
 })
 export class TaskListComponent implements OnInit {
-
   todoCount:number;
-  selectedTask:Task;
-  tasks:Array<Task>;
+  selectedTask: Task;
+  tasks: Array<Task>;
 
   constructor(private _taskService:TaskService) {
     this.tasks = _taskService.getTasks();

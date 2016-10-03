@@ -1,10 +1,10 @@
 module.exports = {
   port: 8000,
   files: [
-    './**/*.{html,htm,css,js}'
+    'dist/**/*.{html,htm,css,js}'
   ],
   server: {
-    baseDir: './',
+    baseDir: 'dist/',
     middleware: {
       0: null // removes default 'connect-logger' middleware
     }
