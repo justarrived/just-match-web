@@ -1,11 +1,10 @@
-import {Component, OnInit} from '@angular/core';
-
-import { ApiCall } from '../../services/api-call';
+import {Component, OnInit} from "@angular/core";
+import {ApiCall} from "../../services/api-call.service";
 import {AuthManager} from "../../services/auth-manager.service";
 
 @Component({
-  providers: [],
-  templateUrl: './app/home/components/home.html'
+  moduleId: module.id,
+  templateUrl: 'home.component.html'
 })
 export class HomeComponent implements OnInit {
   email: string;

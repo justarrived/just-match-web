@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {ApiCall} from "./api-call";
+import {ApiCall} from "./api-call.service";
 
 @Injectable()
 export class UserProxy {

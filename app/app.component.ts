@@ -3,8 +3,9 @@ import {AuthManager} from "./services/auth-manager.service";
 import {Router, NavigationStart, RoutesRecognized, NavigationCancel, NavigationEnd, NavigationError} from "@angular/router";
 
 @Component({
+  moduleId: module.id,
   selector: "app",
-  templateUrl: "./app/app.html"
+  templateUrl: "app.component.html"
 })
 export class AppComponent implements OnInit {
   constructor(private authManager: AuthManager, private router: Router) {

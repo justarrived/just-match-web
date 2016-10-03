@@ -1,11 +1,10 @@
-import {Component} from "@angular/core";
-import {OnInit} from "@angular/core";
-import {ApiCall} from "../../services/api-call";
-
+import {Component, OnInit} from "@angular/core";
 import {TranslationService} from "../../services/translation.service";
+import {ApiCall} from "../../services/api-call.service";
 
 @Component({
-  templateUrl: './app/about/components/about.html'
+  moduleId: module.id,
+  templateUrl: 'about.component.html'
 })
 export class AboutComponent implements OnInit {
 

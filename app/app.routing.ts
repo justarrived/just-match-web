@@ -1,7 +1,7 @@
 import {Routes, RouterModule} from '@angular/router';
-import {TaskListComponent} from "./todo/components/task-list.component";
-import {AboutComponent} from "./about/components/about.component";
-import {HomeComponent} from "./home/components/home.component";
+import {TaskListComponent} from "./views/todo/task-list.component";
+import {AboutComponent} from "./views/about/about.component";
+import {HomeComponent} from "./views/home/home.component";
 import {ModuleWithProviders} from "@angular/core";
 
 import { AuthGuard } from "./services/auth-guard.service";

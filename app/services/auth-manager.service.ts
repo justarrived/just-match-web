@@ -1,6 +1,6 @@
 import {Injectable} from "@angular/core";
-import {ApiCall} from "./api-call";
-import {LocalStorageWrapper} from "./local-storage-wrapper";
+import {ApiCall} from "./api-call.service";
+import {LocalStorageWrapper} from "./local-storage-wrapper.service";
 import {User} from "../models/user";
 import {UserProxy} from "./user-proxy.service";
 
