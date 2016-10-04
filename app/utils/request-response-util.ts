@@ -3,9 +3,6 @@ import {Response} from "@angular/http";
 
 export function parseResponse(response: Response): any {
   let body = response.json();
-
-  console.log('result', deserializeBody(body));
-
   return deserializeBody(body);
 }
 
