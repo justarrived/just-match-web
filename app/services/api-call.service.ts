@@ -1,7 +1,15 @@
-import {Injectable} from '@angular/core';
-import {Http, Headers, Request, RequestOptions, RequestOptionsArgs, RequestMethod, Response, URLSearchParams} from '@angular/http';
-import { LocalStorageWrapper } from './local-storage-wrapper.service';
-import * as  _ from 'lodash';
+import {Injectable} from "@angular/core";
+import {
+  Http,
+  Headers,
+  Request,
+  RequestOptions,
+  RequestOptionsArgs,
+  RequestMethod,
+  URLSearchParams
+} from "@angular/http";
+import {LocalStorageWrapper} from "./local-storage-wrapper.service";
+import * as  _ from "lodash";
 import {parseResponse} from "../utils/request-response-util";
 
 @Injectable()
@@ -59,9 +67,7 @@ export class ApiCall {
   }
 
   private contentTypeHeaderBuilder(contentType: string = "application/json"): Headers {
-    var headers = new Headers();
-    headers.append('Content-Type', contentType);
-    return headers;
+    return new Headers({'Content-Type': contentType});
   }
 
   private searchParamsBuilder(urlParams: Object): URLSearchParams {
