@@ -21,6 +21,10 @@ function deserializeBody(body: any): any {
     data: data
   };
 
+  if (body.links) {
+    result.links = body.links;
+  }
+
   if (body.meta) {
     _.assignIn(result, body.meta);
   }
