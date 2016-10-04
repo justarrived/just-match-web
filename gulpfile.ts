@@ -1,7 +1,6 @@
 'use strict';
 
 const gulp = require('gulp');
-const watch = require('gulp-watch');
 const runSequence = require('run-sequence');
 const del = require('del');
 const tsc = require('gulp-typescript');
@@ -105,11 +104,11 @@ gulp.task('html-replace', () => {
 });
 
 gulp.task('watch', () => {
-  watch('app/**/*.ts', () => {
-    gulp.start('compile-ts');
+  gulp.watch('app/**/*.ts', ['compile-ts']).on('change', e => {
+    console.log('TypeScript file ' + e.path + ' has been changed. Compiling.');
   });
-  watch('app/**/*.scss', () => {
-    gulp.start('compile-sass');
+  gulp.watch('app/**/*.scss', ['compile-sass']).on('change', e => {
+    console.log('Resource file ' + e.path + ' has been changed. Updating.');
   });
 });
 
