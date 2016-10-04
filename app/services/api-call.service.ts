@@ -3,6 +3,8 @@ import {Http, Headers, Request, RequestOptions, RequestOptionsArgs, RequestMetho
 import { LocalStorageWrapper } from './local-storage-wrapper.service';
 import 'rxjs/add/operator/toPromise';
 import * as  _ from 'lodash';
+import {Router} from "@angular/router";
+import {Observable} from "rxjs";
 
 @Injectable()
 export class ApiCall {
@@ -11,7 +13,7 @@ export class ApiCall {
   private storageAuthorizationData: string = 'authorizationData';
   private serverRestPoint: string = 'https://just-match-api-sandbox.herokuapp.com/api/v1/'; //TODO: Take from config file;
 
-  constructor(private http: Http, private localStorageWrapper: LocalStorageWrapper) {
+  constructor(private http: Http, private localStorageWrapper: LocalStorageWrapper, private router: Router) {
   }
 
   public get(url: string, urlParams?: Object, contentType?: string): Promise<Response> {
@@ -50,7 +52,10 @@ export class ApiCall {
     if (authorizationData) {
       req.headers.set(this.authorizationHeaderName, this.authorizationHeaderPrefix + authorizationData['auth-token']);
     }
-    return this.http.request(req).toPromise();
+    return this.http.request(req).catch(res => {
+      this.handleResponseErrors(res);
+      return Observable.throw(res);
+    }).toPromise();
   }
 
   private urlBuilder(url: string): string {
@@ -69,6 +74,13 @@ export class ApiCall {
       params.set(key, value);
     });
     return params;
+  }
+
+  private handleResponseErrors(response) {
+    //TODO: Implement logic when: https://github.com/justarrived/just_match_api/issues/586 is ready
+    if (response.status === 422) {
+      this.router.navigate(['/tasks']);
+    }
   }
 
 }

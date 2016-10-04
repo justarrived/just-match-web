@@ -1,5 +1,4 @@
-import {NgModule} from "@angular/core";
-import {HttpModule} from "@angular/http";
+import {NgModule, ErrorHandler} from "@angular/core";
 import {BrowserModule} from "@angular/platform-browser";
 import {FormsModule} from "@angular/forms";
 import {TranslateModule} from "ng2-translate/ng2-translate";
@@ -14,6 +13,8 @@ import {ApiCall} from "./services/api-call.service";
 import {AuthManager} from "./services/auth-manager.service";
 import {UserProxy} from "./services/user-proxy.service";
 import {TranslationService} from "./services/translation.service";
+import {HttpModule} from "@angular/http";
+import {GlobalExceptionHandler} from "./config/global-exception-handler";
 
 @NgModule({
   imports: [
@@ -36,7 +37,8 @@ import {TranslationService} from "./services/translation.service";
     ApiCall,
     AuthManager,
     UserProxy,
-    TranslationService
+    TranslationService,
+    {provide: ErrorHandler, useClass: GlobalExceptionHandler}
   ],
   bootstrap: [AppComponent]
 })
