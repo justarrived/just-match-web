@@ -24,27 +24,26 @@ export class AuthManager {
           "password": password
         }
       }
-    }).then(data => {
-        var result = data.attributes;
-        this.localStorageWrapper.setObject(this.storageAuthorizationData, result);
-        return this.userProxy.getUser(result['user-id']);
+    }).then(response => {
+        let data = response.data;
+        this.localStorageWrapper.setObject(this.storageAuthorizationData, data);
+        return this.userProxy.getUser(data['user-id']);
       })
-      .then(data => {
-        return this.handleUserResult(data);
+      .then(response => {
+        return this.handleUserResult(response.data);
       });
   }
 
   handleUserResult(data) {
-    let userData = data.attributes;
-    this.user = new User(userData);
+    this.user = new User(data);
     return Promise.resolve(this.user);
   }
 
   authenticateIfNeeded(): Promise<User> {
     let authorizationData = this.localStorageWrapper.getObject(this.storageAuthorizationData);
     if (authorizationData) {
-      return this.userProxy.getUser(authorizationData['user-id']).then(data => {
-        return this.handleUserResult(data);
+      return this.userProxy.getUser(authorizationData['user-id']).then(response => {
+        return this.handleUserResult(response.data);
       });
     }
 
