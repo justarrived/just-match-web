@@ -1,27 +1,34 @@
 'use strict';
 
+const args = require('yargs').argv;
 const gulp = require('gulp');
-const runSequence = require('run-sequence');
 const del = require('del');
+const concat = require('gulp-concat');
+const flatten = require('gulp-flatten');
+const rename = require('gulp-rename');
+
+const runSequence = require('run-sequence');
+
 const tsc = require('gulp-typescript');
 const embedTemplates = require('gulp-angular-embed-templates');
 const sourcemaps = require('gulp-sourcemaps');
 const tsProject = tsc.createProject('tsconfig.json');
 const tslint = require('gulp-tslint');
 const uglify = require('gulp-uglify');
+
 const sass = require('gulp-sass');
 const cleanCss = require('gulp-clean-css');
-const concat = require('gulp-concat');
-const flatten = require('gulp-flatten');
 
 const htmlreplace = require('gulp-html-replace');
+
+let env = args.env || 'dev';
 
 gulp.task('clean', (callback) => {
   return del(['dist'], callback);
 });
 
 gulp.task('compile-ts', ['tslint'], () => {
-  let tsResult = gulp.src('app/**/*.ts')
+  let tsResult = gulp.src(['app/**/*.ts', '!app/config/environments/*.ts'])
     .pipe(sourcemaps.init())
     .pipe(tsc(tsProject));
   return tsResult.js
@@ -30,7 +37,7 @@ gulp.task('compile-ts', ['tslint'], () => {
 });
 
 gulp.task('compile-ts:prod', () => {
-  let tsResult = gulp.src('app/**/*.ts')
+  let tsResult = gulp.src('app/**/*.ts', '!app/config/environments/*.ts')
     .pipe(embedTemplates({sourceType: 'ts'}))
     .pipe(tsc(tsProject));
   return tsResult.js
@@ -63,6 +70,12 @@ gulp.task('resources', () => {
 gulp.task('copy-translations', () => {
   return gulp.src(['i18n/*.json'])
     .pipe(gulp.dest('dist/i18n'));
+});
+
+gulp.task('copy-config', () => {
+  return gulp.src(`app/config/environments/${env}.ts`)
+    .pipe(rename('config.ts'))
+    .pipe(gulp.dest('app/config'));
 });
 
 gulp.task('bundle-polyfills', () => {
@@ -103,7 +116,7 @@ gulp.task('html-replace', () => {
     .pipe(gulp.dest('dist'));
 });
 
-gulp.task('watch', () => {
+gulp.task('watch', ['copy-config', 'compile-ts', 'compile-sass'], () => {
   gulp.watch('app/**/*.ts', ['compile-ts']).on('change', e => {
     console.log('TypeScript file ' + e.path + ' has been changed. Compiling.');
   });
@@ -114,17 +127,11 @@ gulp.task('watch', () => {
 
 gulp.task('build', (callback) => {
   runSequence(
-    'compile-ts',
-    'compile-sass',
-    callback);
-});
-
-gulp.task('build:prod', (callback) => {
-  runSequence(
     'clean',
-    'bundle-polyfills',
+    'copy-config',
     'compile-ts:prod',
     'compile-sass',
+    'bundle-polyfills',
     'bundle-app',
     'resources',
     'copy-translations',

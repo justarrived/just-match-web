@@ -12,5 +12,4 @@
 #### 2. Getting started
 
 - npm install
-- gulp build
 - npm start

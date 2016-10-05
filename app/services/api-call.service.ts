@@ -13,13 +13,13 @@ import * as  _ from "lodash";
 import {parseJsonapiResponse} from "../utils/jsonapi-parser.util";
 import {Observable} from "rxjs";
 import {Router} from "@angular/router";
+import {APP_CONFIG} from "../config/config";
 
 @Injectable()
 export class ApiCall {
   private authorizationHeaderName: string = 'Authorization';
   private authorizationHeaderPrefix: string = 'Token token=';
   private storageAuthorizationData: string = 'authorizationData';
-  private serverRestPoint: string = 'https://just-match-api-sandbox.herokuapp.com/api/v1/'; //TODO: Take from config file;
 
   constructor(private http: Http, private localStorageWrapper: LocalStorageWrapper, private router: Router) {
   }
@@ -70,7 +70,7 @@ export class ApiCall {
   }
 
   private urlBuilder(url: string): string {
-    return this.serverRestPoint + url;
+    return APP_CONFIG.API_BASE_URL + url;
   }
 
   private contentTypeHeaderBuilder(contentType: string = "application/json"): Headers {
