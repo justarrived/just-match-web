@@ -5,3 +5,4 @@ typings
 npm-debug.log
 app/**/*.js*
 app/**/*.css
+app/config/config.ts
