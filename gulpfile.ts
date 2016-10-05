@@ -19,6 +19,8 @@ const uglify = require('gulp-uglify');
 const sass = require('gulp-sass');
 const cleanCss = require('gulp-clean-css');
 
+const jsonminify = require('gulp-jsonminify');
+
 const htmlreplace = require('gulp-html-replace');
 
 let env = args.env || 'dev';
@@ -69,6 +71,7 @@ gulp.task('resources', () => {
 
 gulp.task('copy-translations', () => {
   return gulp.src(['i18n/*.json'])
+    .pipe(jsonminify())
     .pipe(gulp.dest('dist/i18n'));
 });
 
