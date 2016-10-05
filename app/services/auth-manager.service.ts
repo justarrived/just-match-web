@@ -52,5 +52,6 @@ export class AuthManager {
 
   logoutUser() {
     this.user = null;
+    this.localStorageWrapper.remove(this.storageAuthorizationData);
   }
 }
