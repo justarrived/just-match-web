@@ -4,13 +4,13 @@ const args = require('yargs').argv;
 const gulp = require('gulp');
 const del = require('del');
 const concat = require('gulp-concat');
-const flatten = require('gulp-flatten');
 const rename = require('gulp-rename');
 
 const runSequence = require('run-sequence');
 
 const tsc = require('gulp-typescript');
-const embedTemplates = require('gulp-angular-embed-templates');
+const inlineNg2Template = require('gulp-inline-ng2-template');
+const htmlMinifier = require('html-minifier');
 const sourcemaps = require('gulp-sourcemaps');
 const tsProject = tsc.createProject('tsconfig.json');
 const tslint = require('gulp-tslint');
@@ -39,8 +39,8 @@ gulp.task('compile-ts', ['tslint'], () => {
 });
 
 gulp.task('compile-ts:prod', () => {
-  let tsResult = gulp.src('app/**/*.ts', '!app/config/environments/*.ts')
-    .pipe(embedTemplates({sourceType: 'ts'}))
+  let tsResult = gulp.src(['app/**/*.ts', '!app/config/environments/*.ts'])
+    .pipe(inlineNg2Template({useRelativePaths: true, removeLineBreaks: true, templateProcessor: minifyTemplate}))
     .pipe(tsc(tsProject));
   return tsResult.js
     .pipe(gulp.dest('app'));
@@ -64,9 +64,7 @@ gulp.task('resources', () => {
     'index.html',
     'favicon.ico',
     'apple-touch-icon.ico',
-    'app/**/*.css',
-  ]).pipe(flatten())
-    .pipe(gulp.dest('dist'));
+  ]).pipe(gulp.dest('dist'));
 });
 
 gulp.task('copy-translations', () => {
@@ -141,3 +139,18 @@ gulp.task('build', (callback) => {
     'html-replace',
     callback);
 });
+
+function minifyTemplate(path, ext, file, done) {
+  try {
+    let minifiedFile = htmlMinifier.minify(file, {
+      collapseWhitespace: true,
+      caseSensitive: true,
+      removeComments: true,
+      removeRedundantAttributes: true
+    });
+    done(null, minifiedFile);
+  }
+  catch (err) {
+    done(err);
+  }
+}
