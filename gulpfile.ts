@@ -40,7 +40,7 @@ gulp.task('compile-ts', ['tslint'], () => {
 
 gulp.task('compile-ts:prod', () => {
   let tsResult = gulp.src(['app/**/*.ts', '!app/config/environments/*.ts'])
-    .pipe(inlineNg2Template({useRelativePaths: true, removeLineBreaks: true}))
+    .pipe(inlineNg2Template({useRelativePaths: true, removeLineBreaks: true, templateProcessor: minifyTemplate}))
     .pipe(tsc(tsProject));
   return tsResult.js
     .pipe(gulp.dest('app'));
