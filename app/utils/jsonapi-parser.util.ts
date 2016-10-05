@@ -1,7 +1,7 @@
 import * as _ from "lodash";
 import {Response} from "@angular/http";
 
-export function parseResponse(response: Response): any {
+export function parseJsonapiResponse(response: Response): any {
   let body = response.json();
   return deserializeBody(body);
 }

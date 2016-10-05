@@ -10,7 +10,7 @@ import {
 } from "@angular/http";
 import {LocalStorageWrapper} from "./local-storage-wrapper.service";
 import * as  _ from "lodash";
-import {parseResponse} from "../utils/request-response-util";
+import {parseJsonapiResponse} from "../utils/jsonapi-parser.util";
 import {Observable} from "rxjs";
 import {Router} from "@angular/router";
 
@@ -66,7 +66,7 @@ export class ApiCall {
         return Observable.throw(res);
       })
       .toPromise()
-      .then(response => Promise.resolve(parseResponse(response)));
+      .then(response => Promise.resolve(parseJsonapiResponse(response)));
   }
 
   private urlBuilder(url: string): string {
