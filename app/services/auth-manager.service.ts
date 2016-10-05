@@ -25,18 +25,17 @@ export class AuthManager {
         }
       }
     }).then(response => {
-        var result = response.json().data.attributes;
-        this.localStorageWrapper.setObject(this.storageAuthorizationData, result);
-        return this.userProxy.getUser(result['user-id']);
+        let data = response.data;
+        this.localStorageWrapper.setObject(this.storageAuthorizationData, data);
+        return this.userProxy.getUser(data['user-id']);
       })
       .then(response => {
-        return this.handleUserResult(response);
+        return this.handleUserResult(response.data);
       });
   }
 
-  handleUserResult(response) {
-    let userData = response.json().data.attributes;
-    this.user = new User(userData);
+  handleUserResult(data) {
+    this.user = new User(data);
     return Promise.resolve(this.user);
   }
 
@@ -44,7 +43,7 @@ export class AuthManager {
     let authorizationData = this.localStorageWrapper.getObject(this.storageAuthorizationData);
     if (authorizationData) {
       return this.userProxy.getUser(authorizationData['user-id']).then(response => {
-        return this.handleUserResult(response);
+        return this.handleUserResult(response.data);
       });
     }
 
