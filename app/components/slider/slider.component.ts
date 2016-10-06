@@ -18,22 +18,16 @@ export class SliderComponent implements OnInit {
     this.sliderContainer = this.slider.nativeElement.getElementsByClassName('slider')[0];
   }
 
+  swipeLeft(event) {
+    console.log('swipeLeft');
+  }
+
+  swipeRight() {
+
+  }
+
 
   resize(event) {
     console.log('resize', event);
-  }
-
-  mouseDown(event) {
-    this.isSliderContainerClicked = true;
-  }
-
-  mouseUp(event) {
-    this.isSliderContainerClicked = false;
-  }
-
-  mouseMove(event) {
-    if (this.isSliderContainerClicked) {
-      console.log(event);
-    }
   }
 }
