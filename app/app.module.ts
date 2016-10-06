@@ -16,6 +16,7 @@ import {AuthManager} from "./services/auth-manager.service";
 import {UserProxy} from "./services/user-proxy.service";
 import {TranslationService} from "./services/translation.service";
 import {GlobalExceptionHandler} from "./config/global-exception-handler";
+import {SliderComponent} from "./components/slider/slider.component";
 
 @NgModule({
   imports: [
@@ -30,7 +31,8 @@ import {GlobalExceptionHandler} from "./config/global-exception-handler";
     TaskComponent,
     TaskListComponent,
     AboutComponent,
-    HomeComponent
+    HomeComponent,
+    SliderComponent
   ],
   providers: [
     appRoutingProviders,

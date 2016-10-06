@@ -82,7 +82,7 @@ gulp.task('bundle-app', (callback) => {
   const builder = new Builder();
 
   builder.loadConfig('./systemjs.config.js').then(() => {
-    builder.buildStatic('./app/**/*.js', 'dist/app.bundle.js', { minify: true, sourceMaps: false })
+    builder.buildStatic(['./node_modules/hammerjs/hammer.min.js','./app/**/*.js'], 'dist/app.bundle.js', { minify: true, sourceMaps: false })
       .then(function() {
         callback();
       })
