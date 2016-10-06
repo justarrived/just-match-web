@@ -24,6 +24,9 @@ const jsonminify = require('gulp-jsonminify');
 const htmlreplace = require('gulp-html-replace');
 
 let env = args.env || 'dev';
+let buildTime = Date.now();
+let polyfillsBundleFilename = `polyfills.bundle${buildTime}.js`;
+let appBundleFilename = `app.bundle${buildTime}.js`;
 
 gulp.task('clean', (callback) => {
   return del(['dist'], callback);
@@ -86,7 +89,7 @@ gulp.task('bundle-polyfills', () => {
     'reflect-metadata/Reflect.js',
     'systemjs/dist/system.src.js'
   ], {cwd: 'node_modules/**'})
-    .pipe(concat('polyfills.min.js'))
+    .pipe(concat(polyfillsBundleFilename))
     .pipe(uglify())
     .pipe(gulp.dest('dist'));
 });
@@ -96,7 +99,7 @@ gulp.task('bundle-app', (callback) => {
   const builder = new Builder();
 
   builder.loadConfig('./systemjs.config.js').then(() => {
-    builder.buildStatic('./app/**/*.js', 'dist/app.bundle.js', { minify: true, sourceMaps: false })
+    builder.buildStatic('./app/**/*.js', `dist/${appBundleFilename}`, { minify: true, sourceMaps: false })
       .then(function() {
         callback();
       })
@@ -109,8 +112,8 @@ gulp.task('bundle-app', (callback) => {
 gulp.task('html-replace', () => {
   return gulp.src('index.html')
     .pipe(htmlreplace({
-      polyfills: 'polyfills.min.js',
-      app: 'app.bundle.js'
+      polyfills: polyfillsBundleFilename,
+      app: appBundleFilename
     }, {
       keepBlockTags: true,
     }))
