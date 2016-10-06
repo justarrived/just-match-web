@@ -5,7 +5,8 @@ import {Router, NavigationStart, RoutesRecognized, NavigationCancel, NavigationE
 @Component({
   moduleId: module.id,
   selector: "app",
-  templateUrl: "app.component.html"
+  templateUrl: "app.component.html",
+  styleUrls: ["app.component.css"]
 })
 export class AppComponent implements OnInit {
   constructor(private authManager: AuthManager, private router: Router) {
