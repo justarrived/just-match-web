@@ -1,0 +1,18 @@
+@import '../../../styles/variables.scss';
+
+.user-register {
+  .header {
+    padding: 30px;
+    background: $color-blue-1;
+    color: white;
+
+    .header-title {
+      font-size: 18px;
+    }
+
+    .header-text {
+      margin: 15px 0 0;
+      letter-spacing: 0.02em;
+    }
+  }
+}
