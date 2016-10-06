@@ -1,7 +1,7 @@
 module.exports = {
   port: 8000,
   files: [
-    './**/*.{html,htm,css,js}'
+    './**/*.{html,htm,css,js,pdf}'
   ],
   server: {
     baseDir: './',
