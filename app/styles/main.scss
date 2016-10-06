@@ -1,0 +1,50 @@
+@import 'variables.scss';
+
+body {
+  font-family: 'Open Sans', sans-serif;
+
+  max-width: 1024px;
+  margin: 0 auto;
+  background-color: #E8EBEE;
+  font-size: 14px;
+
+  .color-dark {
+    color: $color-dark
+  }
+  .color-blue-0 {
+    color: $color-blue-0;
+  }
+  .color-blue-1 {
+    color: $color-blue-1;
+  }
+  .color-blue-2 {
+    color: $color-blue-2;
+  }
+  .color-blue-3 {
+    color: $color-blue-3;
+  }
+  .color-blue-4 {
+    color: $color-blue-4;
+  }
+  .color-gray-0 {
+    color: $color-gray-0;
+  }
+  .color-gray-1 {
+    color: $color-gray-1;
+  }
+  .color-gray-2 {
+    color: $color-gray-2;
+  }
+  .color-gray-3 {
+    color: $color-gray-3;
+  }
+  .color-pink-0 {
+    color: $color-pink-0;
+  }
+  .color-pink-1 {
+    color: $color-pink-1;
+  }
+  .color-pink-2 {
+    color: $color-pink-2;
+  }
+}
