@@ -29,11 +29,11 @@ export class ApiCall {
   }
 
   public post(url: string, body: any, contentType?: string): Promise<any> {
-      return this.requestHelper({ body: body, method: RequestMethod.Post, url: this.urlBuilder(url), headers: this.contentTypeHeaderBuilder(contentType) });
+      return this.requestHelper({ body: {data: {attributes: body}}, method: RequestMethod.Post, url: this.urlBuilder(url), headers: this.contentTypeHeaderBuilder(contentType) });
   }
 
   public put(url: string, body: any, contentType?: string): Promise<any> {
-    return this.requestHelper({ body: body, method: RequestMethod.Put, url: this.urlBuilder(url), headers: this.contentTypeHeaderBuilder(contentType) });
+    return this.requestHelper({ body: {data: {attributes: body}}, method: RequestMethod.Put, url: this.urlBuilder(url), headers: this.contentTypeHeaderBuilder(contentType) });
   }
 
   public delete(url: string, contentType?: string): Promise<any> {
@@ -41,7 +41,7 @@ export class ApiCall {
   }
 
   public patch(url: string, body: any, contentType?: string): Promise<any> {
-    return this.requestHelper({ body: body, method: RequestMethod.Patch, url: this.urlBuilder(url), headers: this.contentTypeHeaderBuilder(contentType) });
+    return this.requestHelper({ body: {data: {attributes: body}}, method: RequestMethod.Patch, url: this.urlBuilder(url), headers: this.contentTypeHeaderBuilder(contentType) });
   }
 
   public head(url: string, contentType?: string): Promise<any> {
