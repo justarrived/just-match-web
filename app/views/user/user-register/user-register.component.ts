@@ -1,5 +1,7 @@
 import {Component, OnInit} from "@angular/core";
 import {UserProxy} from "../../../services/user-proxy.service";
+import {UserStatus} from "../../../models/user/user-status";
+import {UserRegister} from "../../../models/user/user-register";
 
 @Component({
   moduleId: module.id,
@@ -7,14 +9,18 @@ import {UserProxy} from "../../../services/user-proxy.service";
   styleUrls: ['user-register.component.css']
 })
 export class UserRegisterComponent implements OnInit {
-  statuses: any;
+  user: UserRegister = new UserRegister();
+  statuses: Array<UserStatus>;
 
   constructor(private userProxy: UserProxy) {
-
   }
 
   ngOnInit(): void {
-    this.userProxy.getStatuses().then(response => this.statuses = response.data);
+    this.userProxy.getStatuses().then(statuses => this.statuses = statuses);
+  }
+
+  onSubmit() {
+    this.userProxy.saveUser(this.user.toJsonObject());
   }
 
 }

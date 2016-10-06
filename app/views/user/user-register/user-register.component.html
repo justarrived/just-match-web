@@ -3,4 +3,61 @@
     <div class="header-title">{{'user.create.title' | translate | uppercase}}</div>
     <div class="header-text">{{'user.create.description' | translate}}</div>
   </div>
+
+  <form (ngSubmit)="onSubmit()">
+    <div>
+      <label for="ssn">{{'user.form.ssn' | translate}}</label>
+      <input type="text" id="ssn" [(ngModel)]="user.ssn" name="ssn">
+    </div>
+
+    <div>
+      <label for="first-name">{{'user.form.first_name' | translate}}</label>
+      <input type="text" id="first-name" [(ngModel)]="user.firstName" name="firstName">
+    </div>
+
+    <div>
+      <label for="last-name">{{'user.form.last_name' | translate}}</label>
+      <input type="text" id="last-name" [(ngModel)]="user.lastName" name="lastName">
+    </div>
+
+    <div>
+      <label for="phone">{{'user.form.phone' | translate}}</label>
+      <input type="text" id="phone" [(ngModel)]="user.phone" name="phone">
+    </div>
+
+    <div>
+      <label for="email">{{'user.form.email' | translate}}</label>
+      <input type="text" id="email" [(ngModel)]="user.email" name="email">
+    </div>
+
+    <div>{{'user.form.current_status' | translate}}</div>
+    <div>{{'user.form.at_und' | translate}}</div>
+    <div>{{'user.form.arrived_at' | translate}}</div>
+    <div>{{'user.form.country_of_origin' | translate}}</div>
+
+    <div>
+      <label for="password">{{'user.form.password' | translate}}</label>
+      <input type="password" id="password" [(ngModel)]="user.password" name="password">
+    </div>
+
+    <div>
+      <label for="repeat-password">{{'user.form.password' | translate}}</label>
+      <input type="password" id="repeat-password" [(ngModel)]="user.repeatPassword"  name="repeatPassword">
+    </div>
+
+    <div>{{'user.form.picture' | translate}}</div>
+
+    <div>
+      <div>
+        <input type="checkbox" id="terms">
+        <label for="terms">
+          {{'terms.accept' | translate}} {{'terms' | translate}}
+          <a href="app/assets/terms/160523_2051-2_Terms_and_Conditions_(en).pdf" target="_blank"> PDF EN</a>,
+          <a href="app/assets/terms/160520_2051-2_Anvandarvillkor_(sv).pdf" target="_blank"> PDF SV</a>
+        </label>
+      </div>
+    </div>
+
+    <button type="submit">{{'common.continue' | translate}}</button>
+  </form>
 </div>

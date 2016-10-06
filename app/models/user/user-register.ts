@@ -10,11 +10,7 @@ export class UserRegister {
   countryOfOrigin: string;
   password: string;
   repeatPassword: string;
-  imageToken: string; // user-image-one-time-tokens
-
-  constructor(jsonObject: Object) {
-    this.email = jsonObject['email'];
-  }
+  imageToken: string;
 
   toJsonObject(): Object {
     return {

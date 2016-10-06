@@ -18,12 +18,8 @@ export class AuthManager {
 
   logUser(email: string, password: string) {
     return this.apiCall.post('users/sessions', {
-      "data": {
-        "attributes": {
-          "email-or-phone": email,
-          "password": password
-        }
-      }
+      "email-or-phone": email,
+      "password": password
     }).then(response => {
         let data = response.data;
         this.localStorageWrapper.setObject(this.storageAuthorizationData, data);
