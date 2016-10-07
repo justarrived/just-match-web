@@ -78,4 +78,53 @@ body {
   .fs-xxxl {
     font-size: $fs-xxxl;
   }
+
+  .material-group {
+    position: relative;
+    margin-bottom: 25px;
+
+    input, textarea {
+      width: 100%;
+      padding: 10px 12px;
+      display: block;
+      border: 1px solid $color-blue-1;
+
+      &:focus, &.not-empty {
+        outline: none;
+
+        ~ label:not(.label-up) {
+          @include label-up;
+        }
+      }
+
+      &.ng-touched.ng-invalid {
+        border: 1px solid $color-pink-2 !important;
+        color: $color-pink-2 !important;
+        ~ label {
+          color: $color-pink-2 !important;
+        }
+      }
+    }
+
+    label {
+      position: absolute;
+      pointer-events: none;
+      left: 12px;
+      top: 11px;
+      transition: 0.2s ease all;
+      -moz-transition: 0.2s ease all;
+      -webkit-transition: 0.2s ease all;
+
+      &.label-up {
+        @include label-up;
+      }
+    }
+
+    @mixin label-up {
+      top: -10px;
+      font-size: 14px;
+      padding: 0 5px;
+      background-color: white;
+    }
+  }
 }

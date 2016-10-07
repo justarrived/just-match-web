@@ -4,30 +4,30 @@
     <div class="header-text">{{'user.create.description' | translate}}</div>
   </div>
 
-  <form (ngSubmit)="onSubmit()">
-    <div>
+  <form #form="ngForm" (ngSubmit)="onSubmit()">
+    <div class="material-group">
+      <input type="text" id="ssn" [(ngModel)]="user.ssn" name="ssn" [ngClass]="{'not-empty': user.ssn}" required pattern="^[\d\-]+$" minlength="10">
       <label for="ssn">{{'user.form.ssn' | translate}}</label>
-      <input type="text" id="ssn" [(ngModel)]="user.ssn" name="ssn">
     </div>
 
-    <div>
+    <div class="material-group">
+      <input type="text" id="first-name" [(ngModel)]="user.firstName" name="firstName" [ngClass]="{'not-empty': user.firstName}" required>
       <label for="first-name">{{'user.form.first_name' | translate}}</label>
-      <input type="text" id="first-name" [(ngModel)]="user.firstName" name="firstName">
     </div>
 
-    <div>
+    <div class="material-group">
+      <input type="text" id="last-name" [(ngModel)]="user.lastName" name="lastName" [ngClass]="{'not-empty': user.lastName}" required>
       <label for="last-name">{{'user.form.last_name' | translate}}</label>
-      <input type="text" id="last-name" [(ngModel)]="user.lastName" name="lastName">
     </div>
 
-    <div>
+    <div class="material-group">
+      <input type="text" id="phone" [(ngModel)]="user.phone" name="phone" [ngClass]="{'not-empty': user.phone}" required minlength="9">
       <label for="phone">{{'user.form.phone' | translate}}</label>
-      <input type="text" id="phone" [(ngModel)]="user.phone" name="phone">
     </div>
 
-    <div>
+    <div class="material-group">
+      <input type="text" id="email" [(ngModel)]="user.email" name="email" [ngClass]="{'not-empty': user.email}" required pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$">
       <label for="email">{{'user.form.email' | translate}}</label>
-      <input type="text" id="email" [(ngModel)]="user.email" name="email">
     </div>
 
     <div>{{'user.form.current_status' | translate}}</div>
@@ -35,17 +35,20 @@
     <div>{{'user.form.arrived_at' | translate}}</div>
     <div>{{'user.form.country_of_origin' | translate}}</div>
 
-    <div>
+    <div class="material-group">
+      <input type="password" id="password" [(ngModel)]="user.password" name="password" [ngClass]="{'not-empty': user.password}" required>
       <label for="password">{{'user.form.password' | translate}}</label>
-      <input type="password" id="password" [(ngModel)]="user.password" name="password">
     </div>
 
-    <div>
+    <div class="material-group">
+      <input type="password" id="repeat-password" [(ngModel)]="user.repeatPassword" name="repeatPassword" [ngClass]="{'not-empty': user.repeatPassword}" required>
       <label for="repeat-password">{{'user.form.password' | translate}}</label>
-      <input type="password" id="repeat-password" [(ngModel)]="user.repeatPassword"  name="repeatPassword">
     </div>
 
-    <div>{{'user.form.picture' | translate}}</div>
+    <div class="material-group">
+      <input type="file" id="imageFilename" name="imageFilename" (change)="onImageFilenameChange($event)" accept="image/*">
+      <label class="label-up">{{'user.form.picture' | translate}}</label>
+    </div>
 
     <div>
       <div>
