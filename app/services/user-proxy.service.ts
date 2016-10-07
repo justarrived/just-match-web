@@ -13,7 +13,7 @@ export class UserProxy {
       return this.apiCall.get('users/' + userId, includes);
     }
 
-    saveUser(user: Object) {
+    saveUser(user: Object): Promise<any> {
       return this.apiCall.post('users', user);
     }
 

@@ -1,6 +1,6 @@
 <div class="user-register">
-  <div class="header">
-    <div class="fs-l">{{'user.create.title' | translate | uppercase}}</div>
+  <div class="header form-group">
+    <div class="fs-l form-group">{{'user.create.title' | translate | uppercase}}</div>
     <div class="header-text">{{'user.create.description' | translate}}</div>
   </div>
 
@@ -50,24 +50,20 @@
       <label class="label-up">{{'user.form.picture' | translate}}</label>
     </div>
 
-    <div>
-      <div>
-        <input type="checkbox" id="terms">
-        <label for="terms">
-          {{'terms.accept' | translate}} {{'terms' | translate}}
-          <a href="app/assets/terms/160523_2051-2_Terms_and_Conditions_(en).pdf" target="_blank"> PDF EN</a>,
-          <a href="app/assets/terms/160520_2051-2_Anvandarvillkor_(sv).pdf" target="_blank"> PDF SV</a>
-        </label>
-      </div>
+    <div class="form-group">
+      <input type="checkbox" id="terms">
+      <label for="terms">
+        {{'terms.accept' | translate}} {{'terms' | translate}}
+        <a href="app/assets/terms/160523_2051-2_Terms_and_Conditions_(en).pdf" target="_blank"> PDF EN</a>,
+        <a href="app/assets/terms/160520_2051-2_Anvandarvillkor_(sv).pdf" target="_blank"> PDF SV</a>
+      </label>
     </div>
 
-    <button type="submit">{{'common.continue' | translate}}</button>
+    <button type="submit" class="button primary form-group">{{'common.continue' | translate}}</button>
   </form>
 
+  <div class="form-group">{{'common.have_account' | translate}}</div>
   <div>
-    <div class="have-account-text">{{'common.have_account' | translate}}</div>
-    <div>
-      <a routerLink="/home" class="fs-m">{{'common.login' | translate}}</a>
-    </div>
+    <a routerLink="/home" class="fs-m">{{'common.login' | translate}}</a>
   </div>
 </div>

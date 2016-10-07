@@ -1,4 +1,5 @@
 @import 'variables.scss';
+@import 'mixins.scss';
 
 body {
   font-family: 'Open Sans', sans-serif;
@@ -18,6 +19,10 @@ body {
 
   .inline-block {
     display: inline-block;
+  }
+
+  .form-group {
+    margin-bottom: 15px;
   }
 
   .color-dark {
@@ -79,6 +84,54 @@ body {
     font-size: $fs-xxxl;
   }
 
+  .button {
+    font-size: $fs-m;
+    color: white;
+    border: 1px solid white;
+    border-radius: 23px;
+    padding: 10px 40px;
+    display: inline-block;
+
+    &:hover, &:focus {
+      background-color: rgba(0, 0, 0, 0.2);
+      opacity: .95;
+      color: white;
+    }
+
+    &.small {
+      padding: 5px 40px;
+      border-radius: 20px;
+      white-space: nowrap;
+      line-height: 24px;
+    }
+
+    &.primary {
+      font-size: $fs-l;
+      background-color: $color-pink-1;
+
+      &:hover, &:focus {
+        background-color: darken($color-pink-1, 5%);
+      }
+    }
+
+    &.secondary {
+      font-size: $fs-l;
+      background-color: $color-blue-1;
+
+      &:hover, &:focus {
+        background-color: darken($color-blue-1, 10%);
+      }
+    }
+
+    &.disabled {
+      &:hover {
+        background-color: $color-blue-1;
+        color: #eeeeee;
+        opacity: 0.5;
+      }
+    }
+  }
+
   .material-group {
     position: relative;
     margin-bottom: 25px;
@@ -93,7 +146,7 @@ body {
         outline: none;
 
         ~ label:not(.label-up) {
-          @include label-up;
+          @include label-up();
         }
       }
 
@@ -116,15 +169,8 @@ body {
       -webkit-transition: 0.2s ease all;
 
       &.label-up {
-        @include label-up;
+        @include label-up();
       }
-    }
-
-    @mixin label-up {
-      top: -10px;
-      font-size: 14px;
-      padding: 0 5px;
-      background-color: white;
     }
   }
 }

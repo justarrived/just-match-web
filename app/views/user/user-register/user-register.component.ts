@@ -27,7 +27,10 @@ export class UserRegisterComponent implements OnInit {
   }
 
   onSubmit() {
-    this.userProxy.saveUser(this.user.toJsonObject());
+    this.userProxy.saveUser(this.user.toJsonObject())
+      .then(response => {
+        console.log(response);
+      });
   }
 
 }
