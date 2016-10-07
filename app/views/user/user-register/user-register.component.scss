@@ -1,19 +1,23 @@
 @import '../../../styles/variables.scss';
 
 .user-register {
+  a {
+    color: $color-blue-3;
+  }
+
   .header {
     padding: 30px;
     background: $color-blue-1;
     color: white;
 
-    .header-title {
-      font-size: 18px;
-    }
-
     .header-text {
-      margin: 15px 0 0;
+      margin: 15px 0 0 0;
       letter-spacing: 0.02em;
       line-height: 20px;
     }
+  }
+
+  .have-account-text {
+    margin: 25px 0 10px 0;
   }
 }
