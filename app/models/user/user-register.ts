@@ -23,7 +23,7 @@ export class UserRegister {
       'at-und': this.atUnd,
       'arrived-at': this.arrivedAt,
       'country-of-origin': this.countryOfOrigin,
-      'user-image-one-time-tokens': this.imageToken
+      'user-image-one-time-tokens': [this.imageToken]
     };
   }
 }

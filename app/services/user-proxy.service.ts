@@ -1,8 +1,8 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from "@angular/core";
 import {ApiCall} from "./api-call.service";
 import {UserStatus} from "../models/user/user-status";
 import {map} from "lodash";
-import {UserRegister} from "../models/user/user-register";
+import {UserImage} from "../models/user/user-image";
 
 @Injectable()
 export class UserProxy {
@@ -20,5 +20,10 @@ export class UserProxy {
     getStatuses(): Promise<Array<UserStatus>> {
       return this.apiCall.get('users/statuses')
         .then(response => map(response.data, data => new UserStatus(data)));
+    }
+
+    saveImage(image: FormData): Promise<UserImage> {
+      return this.apiCall.postFile('users/images', image)
+        .then(response => new UserImage(response.data));
     }
 }

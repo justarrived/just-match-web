@@ -19,6 +19,13 @@ export class UserRegisterComponent implements OnInit {
     this.userProxy.getStatuses().then(statuses => this.statuses = statuses);
   }
 
+  onImageFilenameChange(event) {
+    let file = event.srcElement.files[0];
+    let data = new FormData();
+    data.append('image', file);
+    this.userProxy.saveImage(data).then(userImage => this.user.imageToken = userImage.oneTimeToken);
+  }
+
   onSubmit() {
     this.userProxy.saveUser(this.user.toJsonObject());
   }
