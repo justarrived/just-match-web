@@ -6,7 +6,19 @@ body {
   max-width: 1024px;
   margin: 0 auto;
   background-color: #E8EBEE;
-  font-size: 14px;
+  font-size: $fs-m0;
+
+  a {
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .inline-block {
+    display: inline-block;
+  }
 
   .color-dark {
     color: $color-dark
@@ -46,5 +58,24 @@ body {
   }
   .color-pink-2 {
     color: $color-pink-2;
+  }
+
+  .fs-m0 {
+    font-size: $fs-m0;
+  }
+  .fs-m {
+    font-size: $fs-m;
+  }
+  .fs-l {
+    font-size: $fs-l;
+  }
+  .fs-xl {
+    font-size: $fs-xl;
+  }
+  .fs-xxl {
+    font-size: $fs-xxl;
+  }
+  .fs-xxxl {
+    font-size: $fs-xxxl;
   }
 }
