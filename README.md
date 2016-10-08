@@ -29,7 +29,32 @@ There are a few convenience commands
 - `script/setup` - sets up a project to be used for the first time
 - `script/update` - updates a project to run at its current version
 - `script/server` - starts app
+- `script/pull-translations` - pull translation from Transifex
+- `script/push-translations` - push translation to Transifex
 
+## Translations
+
+Translations are managed at [Transifex](https://www.transifex.com/justarrived/just-match-frontend).
+
+To push or pull new translations, you need to install the [Transifex client](http://docs.transifex.com/client/setup/).
+
+__Fetch translations from transifex__
+
+```
+$ script/pull-translations
+```
+
+__Push source language file to transifex__
+
+```
+$ script/push-translations
+```
+
+The configuration is in [.tx/config](.tx/config).
+
+## Contributors
+
+[Our awesome contributors](https://github.com/justarrived/just-match-frontend/graphs/contributors).
 
 ## Contributing
 
