@@ -2,7 +2,7 @@
 host = https://www.transifex.com
 
 [justmatch-frontend.enjson]
-file_filter = config/translations/<lang>.json
-source_file = config/translations/en.json
+file_filter = i18n/<lang>.json
+source_file = i18n/en.json
 source_lang = en
 type = KEYVALUEJSON
