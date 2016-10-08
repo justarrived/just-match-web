@@ -1,4 +1,6 @@
-#### 1. Prerequisites
+# Just Match Web
+
+## 1. Prerequisites
 
 - node
 - gulp
@@ -7,9 +9,16 @@
 - typescript
 - ts-node
 
-> For example: npm install -g gulp
+## 2. Getting started
 
-#### 2. Getting started
+- `script/setup`
+- `script/server`
 
-- npm install
-- npm start
+## Commands
+
+There are a few convenience commands
+
+- `script/bootstrap` - installs/updates all dependencies
+- `script/setup` - sets up a project to be used for the first time
+- `script/update` - updates a project to run at its current version
+- `script/server` - starts app
