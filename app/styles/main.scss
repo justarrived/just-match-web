@@ -17,6 +17,14 @@ body {
     }
   }
 
+  input {
+    font-family: 'Open Sans', sans-serif;
+  }
+
+  input[type="date"] {
+    text-transform: uppercase;
+  }
+
   .inline-block {
     display: inline-block;
   }

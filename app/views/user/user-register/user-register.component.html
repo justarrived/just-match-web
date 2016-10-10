@@ -26,13 +26,20 @@
     </div>
 
     <div class="material-group">
-      <input type="text" id="email" [(ngModel)]="user.email" name="email" [ngClass]="{'not-empty': user.email}" required pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$">
+      <input type="text" id="email" [(ngModel)]="user.email" name="email" [ngClass]="{'not-empty': user.email}"
+             required pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$">
       <label for="email">{{'user.form.email' | translate}}</label>
     </div>
 
     <div>{{'user.form.current_status' | translate}}</div>
     <div>{{'user.form.at_und' | translate}}</div>
-    <div>{{'user.form.arrived_at' | translate}}</div>
+
+    <div class="material-group">
+      <input type="date" id="arrived-at" [(ngModel)]="user.arrivedAt" name="arrivedAt" [ngClass]="{'not-empty': user.arrivedAt}" class="arrivedAtInput"
+             required pattern='^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$'>
+      <label for="arrived-at" class="label-up">{{'user.form.arrived_at' | translate}}</label>
+    </div>
+
     <div>{{'user.form.country_of_origin' | translate}}</div>
 
     <div class="material-group">
@@ -46,8 +53,8 @@
     </div>
 
     <div class="material-group">
-      <input type="file" id="imageFilename" name="imageFilename" (change)="onImageFilenameChange($event)" accept="image/*">
-      <label class="label-up">{{'user.form.picture' | translate}}</label>
+      <input type="file" id="image-filename" name="imageFilename" (change)="onImageFilenameChange($event)" accept="image/*">
+      <label class="label-up" for="image-filename">{{'user.form.picture' | translate}}</label>
     </div>
 
     <div class="form-group">
