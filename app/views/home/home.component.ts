@@ -1,5 +1,4 @@
 import {Component, OnInit} from "@angular/core";
-import {ApiCall} from "../../services/api-call.service";
 import {AuthManager} from "../../services/auth-manager.service";
 
 @Component({
@@ -9,7 +8,7 @@ import {AuthManager} from "../../services/auth-manager.service";
 export class HomeComponent implements OnInit {
   email: string;
   password: string;
-  constructor(private apiCall: ApiCall, private authManager: AuthManager) {
+  constructor(private authManager: AuthManager) {
   }
 
   ngOnInit() {

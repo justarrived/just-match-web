@@ -2,6 +2,7 @@ import {Component, OnInit} from "@angular/core";
 import {UserProxy} from "../../../services/user-proxy.service";
 import {UserStatus} from "../../../models/user/user-status";
 import {UserRegister} from "../../../models/user/user-register";
+import {CountryProxy} from "../../../services/proxy/country-proxy.service";
 
 @Component({
   moduleId: module.id,
@@ -11,8 +12,9 @@ import {UserRegister} from "../../../models/user/user-register";
 export class UserRegisterComponent implements OnInit {
   user: UserRegister = new UserRegister();
   statuses: Array<UserStatus>;
+  search: any;
 
-  constructor(private userProxy: UserProxy) {
+  constructor(private userProxy: UserProxy, private countryProxy: CountryProxy) {
   }
 
   ngOnInit(): void {
@@ -31,6 +33,10 @@ export class UserRegisterComponent implements OnInit {
       .then(response => {
         console.log(response);
       });
+  }
+
+  json(obj) {
+    return JSON.stringify(obj);
   }
 
 }

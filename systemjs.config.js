@@ -20,13 +20,15 @@
       // other libraries
       'rxjs': 'npm:rxjs',
       'lodash': 'npm:lodash/lodash.js',
-      'ng2-translate': 'npm:ng2-translate'
+      'ng2-translate': 'npm:ng2-translate',
+      'ng2-auto-complete': 'npm:ng2-auto-complete/dist'
     },
     // packages tells the System loader how to load when no filename and/or no extension
     packages: {
       app: { main: './main.js', defaultExtension: 'js' },
       rxjs: { main: './Rx.js', defaultExtension: 'js' },
-      'ng2-translate': { defaultExtension: 'js' }
+      'ng2-translate': { defaultExtension: 'js' },
+      'ng2-auto-complete': { main: 'ng2-auto-complete.umd.js', defaultExtension: 'js' }
     }
   });
 })(this);

@@ -40,7 +40,21 @@
       <label for="arrived-at" class="label-up">{{'user.form.arrived_at' | translate}}</label>
     </div>
 
-    <div>{{'user.form.country_of_origin' | translate}}</div>
+    <div class="material-group">
+      <!--<input ng2-auto-complete [(ngModel)]="search" [source]="countryProxy.getCountries" placeholder="enter text" name="countryOfOrigin">-->
+      <!--<input  ng2-auto-complete-->
+              <!--placeholder="Start typing a hero name (min. 2 chars) ... for example: Hulk"-->
+              <!--[(ngModel)]="search"-->
+              <!--[source]="appSvc.findHeroes"-->
+              <!--[list-formatter]="renderHero"-->
+              <!--path-to-data="data.results"-->
+              <!--min-chars="2"-->
+              <!--name="countryOfOrigin"-->
+      <!--/>-->
+      <br/>selected: {{search | json}}<br/><br/>
+
+      <label class="label-up">{{'user.form.country_of_origin' | translate}}</label>
+    </div>
 
     <div class="material-group">
       <input type="password" id="password" [(ngModel)]="user.password" name="password" [ngClass]="{'not-empty': user.password}" required>
