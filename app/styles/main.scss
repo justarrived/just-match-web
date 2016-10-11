@@ -147,7 +147,15 @@ body {
     position: relative;
     margin-bottom: 25px;
 
-    input, textarea {
+    .ng2-auto-complete {
+      width: 100%;
+
+      .auto-complete input {
+        padding: 10px 12px;
+      }
+    }
+
+    .material-input {
       width: 100%;
       padding: 10px 12px;
       display: block;
@@ -157,7 +165,7 @@ body {
       &:focus, &.not-empty {
         outline: none;
 
-        ~ label:not(.label-up) {
+        ~ .material-label:not(.label-up) {
           @include label-up();
         }
       }
@@ -165,13 +173,13 @@ body {
       &.ng-touched.ng-invalid, &.has-error {
         border: 1px solid $color-pink-2 !important;
         color: $color-pink-2 !important;
-        ~ label {
+        ~ .material-label {
           color: $color-pink-2 !important;
         }
       }
     }
 
-    label {
+    .material-label {
       position: absolute;
       pointer-events: none;
       left: 12px;

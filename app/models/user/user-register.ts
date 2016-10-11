@@ -6,7 +6,7 @@ export class UserRegister {
   email: string;
   languageId: number;
   currentStatus: string;
-  atUnd: string;
+  atUndStatus: any;
   arrivedAt: string;
   countryOfOrigin: string;
   password: string;
@@ -23,7 +23,7 @@ export class UserRegister {
       'email': this.email,
       'language_id': this.languageId,
       'current_status': this.currentStatus,
-      'at_und': this.atUnd,
+      'at_und': this.atUndStatus.value,
       'arrived_at': this.arrivedAt,
       'country_of_origin': this.countryOfOrigin,
       'password': this.password,

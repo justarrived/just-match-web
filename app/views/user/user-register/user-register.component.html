@@ -6,8 +6,8 @@
 
   <form #form="ngForm" (ngSubmit)="onSubmit()">
     <div class="material-group">
-      <input type="text" id="ssn" [(ngModel)]="user.ssn" name="ssn" [ngClass]="{'not-empty': user.ssn, 'has-error': errors.ssn}" required pattern="^[\d\-]+$" minlength="10">
-      <label for="ssn">{{'user.form.ssn' | translate}}</label>
+      <input type="text" id="ssn" [(ngModel)]="user.ssn" name="ssn" class="material-input" [ngClass]="{'not-empty': user.ssn, 'has-error': errors.ssn}" required pattern="^[\d\-]+$" minlength="10">
+      <label for="ssn" class="material-label">{{'user.form.ssn' | translate}}</label>
 
       <div class="fs-m0 material-group-error" *ngIf="form.controls.ssn && form.controls.ssn.invalid && form.controls.ssn.touched">
         {{'user.form.ssn.validation' | translate}}
@@ -18,8 +18,8 @@
     </div>
 
     <div class="material-group">
-      <input type="text" id="first-name" [(ngModel)]="user.firstName" name="firstName" [ngClass]="{'not-empty': user.firstName, 'has-error': errors.first_name}" required>
-      <label for="first-name">{{'user.form.first_name' | translate}}</label>
+      <input type="text" id="first-name" [(ngModel)]="user.firstName" name="firstName" class="material-input" [ngClass]="{'not-empty': user.firstName, 'has-error': errors.first_name}" required>
+      <label for="first-name" class="material-label">{{'user.form.first_name' | translate}}</label>
 
       <div class="fs-m0 material-group-error" *ngIf="form.controls.firstName && form.controls.firstName.invalid && form.controls.firstName.touched">
         {{'user.form.first_name.validation' | translate}}
@@ -30,10 +30,10 @@
     </div>
 
     <div class="material-group">
-      <input type="text" id="last-name" [(ngModel)]="user.lastName" name="lastName" [ngClass]="{'not-empty': user.lastName, 'has-error': errors.last_name}" required>
-      <label for="last-name">{{'user.form.last_name' | translate}}</label>
+      <input type="text" id="last-name" [(ngModel)]="user.lastName" name="lastName" class="material-input" [ngClass]="{'not-empty': user.lastName, 'has-error': errors.last_name}" required>
+      <label for="last-name" class="material-label">{{'user.form.last_name' | translate}}</label>
 
-      <div class="fs-m0 material-group-error" *ngIf="form.controls['lastName'] && form.controls['lastName'].invalid && form.controls['lastName'].touched">
+      <div class="fs-m0 material-group-error" *ngIf="form.controls.lastName && form.controls.lastName.invalid && form.controls.lastName.touched">
         {{'user.form.last_name.validation' | translate}}
       </div>
       <div class="fs-m0 material-group-error" *ngIf="errors.last_name">
@@ -42,10 +42,10 @@
     </div>
 
     <div class="material-group">
-      <input type="text" id="phone" [(ngModel)]="user.phone" name="phone" [ngClass]="{'not-empty': user.phone, 'has-error': errors.phone}" required minlength="9">
-      <label for="phone">{{'user.form.phone' | translate}}</label>
+      <input type="text" id="phone" [(ngModel)]="user.phone" name="phone" class="material-input" [ngClass]="{'not-empty': user.phone, 'has-error': errors.phone}" required minlength="9">
+      <label for="phone" class="material-label">{{'user.form.phone' | translate}}</label>
 
-      <div class="fs-m0 material-group-error" *ngIf="form.controls['phone'] && form.controls['phone'].invalid && form.controls['phone'].touched">
+      <div class="fs-m0 material-group-error" *ngIf="form.controls.phone && form.controls.phone.invalid && form.controls.phone.touched">
         {{'user.form.phone.validation' | translate}}
       </div>
       <div class="fs-m0 material-group-error" *ngIf="errors.phone">
@@ -54,11 +54,11 @@
     </div>
 
     <div class="material-group">
-      <input type="text" id="email" [(ngModel)]="user.email" name="email" [ngClass]="{'not-empty': user.email, 'has-error': errors.email}"
+      <input type="text" id="email" [(ngModel)]="user.email" name="email" class="material-input" [ngClass]="{'not-empty': user.email, 'has-error': errors.email}"
              required pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$">
-      <label for="email">{{'user.form.email' | translate}}</label>
+      <label for="email" class="material-label">{{'user.form.email' | translate}}</label>
 
-      <div class="fs-m0 material-group-error" *ngIf="form.controls['email'] && form.controls['email'].invalid && form.controls['email'].touched">
+      <div class="fs-m0 material-group-error" *ngIf="form.controls.email && form.controls.email.invalid && form.controls.email.touched">
         {{'user.form.email.validation' | translate}}
       </div>
       <div class="fs-m0 material-group-error" *ngIf="errors.email">
@@ -67,29 +67,30 @@
     </div>
 
     <div class="material-group">
-      <input type="text" id="current-status" [(ngModel)]="user.currentStatus" name="currentStatus" [ngClass]="{'not-empty': user.currentStatus}">
-      <label for="current-status">{{'user.form.current_status' | translate}}</label>
+      <input type="text" id="current-status" [(ngModel)]="user.currentStatus" name="currentStatus" class="material-input" [ngClass]="{'not-empty': user.currentStatus}">
+      <label for="current-status" class="material-label">{{'user.form.current_status' | translate}}</label>
 
-      <div class="fs-m0 material-group-error" *ngIf="form.controls['currentStatus'] && form.controls['currentStatus'].invalid && form.controls['currentStatus'].touched">
+      <div class="fs-m0 material-group-error" *ngIf="form.controls.currentStatus && form.controls.currentStatus.invalid && form.controls.currentStatus.touched">
         {{'user.form.current_status.validation' | translate}}
       </div>
     </div>
 
     <div class="material-group">
-      <input type="text" id="at-und" [(ngModel)]="user.atUnd" name="atUnd" [ngClass]="{'not-empty': user.atUnd}">
-      <label for="at-und">{{'user.form.at_und' | translate}}</label>
+      <input id="at-und" [(ngModel)]="user.atUndStatus" name="atUndStatus" class="material-input" [ngClass]="{'not-empty': user.atUndStatus}"
+             ng2-auto-complete [source]="atUndStatuses" display-property-name="name" required/>
+      <label for="at-und" class="label-up material-label">{{'user.form.at_und' | translate}}</label>
 
-      <div class="fs-m0 material-group-error" *ngIf="form.controls['atUnd'] && form.controls['atUnd'].invalid && form.controls['atUnd'].touched">
+      <div class="fs-m0 material-group-error" *ngIf="form.controls.atUndStatus && form.controls.atUndStatus.invalid && form.controls.atUndStatus.touched">
         {{'user.form.at_und.validation' | translate}}
       </div>
     </div>
 
     <div class="material-group">
-      <input type="date" id="arrived-at" [(ngModel)]="user.arrivedAt" name="arrivedAt" [ngClass]="{'not-empty': user.arrivedAt, 'has-error': errors.arrived_at}" class="arrivedAtInput"
+      <input type="date" id="arrived-at" [(ngModel)]="user.arrivedAt" name="arrivedAt" class="material-input" [ngClass]="{'not-empty': user.arrivedAt, 'has-error': errors.arrived_at}"
              required pattern='^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$'>
-      <label for="arrived-at" class="label-up">{{'user.form.arrived_at' | translate}}</label>
+      <label for="arrived-at" class="label-up material-label">{{'user.form.arrived_at' | translate}}</label>
 
-      <div class="fs-m0 material-group-error" *ngIf="form.controls['arrivedAt'] && form.controls['arrivedAt'].invalid && form.controls['arrivedAt'].touched">
+      <div class="fs-m0 material-group-error" *ngIf="form.controls.arrivedAt && form.controls.arrivedAt.invalid && form.controls.arrivedAt.touched">
         {{'user.form.arrived_at.validation' | translate}}
       </div>
       <div class="fs-m0 material-group-error" *ngIf="errors.arrived_at">
@@ -110,14 +111,14 @@
       <!--/>-->
       <br/>selected: {{search | json}}<br/><br/>
 
-      <label class="label-up">{{'user.form.country_of_origin' | translate}}</label>
+      <label class="label-up material-label">{{'user.form.country_of_origin' | translate}}</label>
     </div>
 
     <div class="material-group">
-      <input type="password" id="password" [(ngModel)]="user.password" name="password" [ngClass]="{'not-empty': user.password, 'has-error': errors.password}" required>
-      <label for="password">{{'user.form.password' | translate}}</label>
+      <input type="password" id="password" [(ngModel)]="user.password" name="password" class="material-input" [ngClass]="{'not-empty': user.password, 'has-error': errors.password}" required>
+      <label for="password" class="material-label">{{'user.form.password' | translate}}</label>
 
-      <div class="fs-m0 material-group-error" *ngIf="form.controls['password'] && form.controls['password'].invalid && form.controls['password'].touched">
+      <div class="fs-m0 material-group-error" *ngIf="form.controls.password && form.controls.password.invalid && form.controls.password.touched">
         {{'user.form.password.validation' | translate}}
       </div>
       <div class="fs-m0 material-group-error" *ngIf="errors.password">
@@ -126,21 +127,21 @@
     </div>
 
     <div class="material-group">
-      <input type="password" id="repeat-password" [(ngModel)]="user.repeatPassword" name="repeatPassword" [ngClass]="{'not-empty': user.repeatPassword}" required>
-      <label for="repeat-password">{{'user.form.password' | translate}}</label>
+      <input type="password" id="repeat-password" [(ngModel)]="user.repeatPassword" name="repeatPassword" class="material-input" [ngClass]="{'not-empty': user.repeatPassword}" required>
+      <label for="repeat-password" class="material-label">{{'user.form.password' | translate}}</label>
 
-      <div class="fs-m0 material-group-error" *ngIf="form.controls['repeatPassword'] && form.controls['repeatPassword'].touched && user.repeatPassword !== user.password">
+      <div class="fs-m0 material-group-error" *ngIf="form.controls.repeatPassword && form.controls.repeatPassword.touched && user.repeatPassword !== user.password">
         {{'user.form.passwordCompare.validation' | translate}}
       </div>
     </div>
 
     <div class="material-group">
-      <input type="file" id="image-filename" name="imageFilename" (change)="onImageFilenameChange($event)" accept="image/*">
-      <label class="label-up" for="image-filename">{{'user.form.picture' | translate}}</label>
+      <input type="file" id="image-filename" name="imageFilename" class="material-input" (change)="onImageFilenameChange($event)" accept="image/*">
+      <label class="label-up material-label" for="image-filename">{{'user.form.picture' | translate}}</label>
     </div>
 
     <div class="form-group text-center">
-      <input type="checkbox" id="tac" name="tac" [(ngModel)]="user.acceptedTermsAndConditions" required>
+      <input type="checkbox" id="tac" name="tac" class="material-input" [(ngModel)]="user.acceptedTermsAndConditions" required>
       <label for="tac">
         {{'terms.accept' | translate}} {{'terms' | translate}}
         <a href="app/assets/terms/160523_2051-2_Terms_and_Conditions_(en).pdf" target="_blank"> PDF EN</a>,

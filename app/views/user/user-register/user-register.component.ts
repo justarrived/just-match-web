@@ -3,6 +3,7 @@ import {UserProxy} from "../../../services/user-proxy.service";
 import {UserStatus} from "../../../models/user/user-status";
 import {UserRegister} from "../../../models/user/user-register";
 import {CountryProxy} from "../../../services/proxy/country-proxy.service";
+import {AT_UND_STATUSES} from "../../../enums/enums";
 
 @Component({
   moduleId: module.id,
@@ -12,6 +13,7 @@ import {CountryProxy} from "../../../services/proxy/country-proxy.service";
 export class UserRegisterComponent implements OnInit {
   user: UserRegister = new UserRegister();
   statuses: Array<UserStatus>;
+  atUndStatuses = AT_UND_STATUSES;
   search: any;
   errors: any = {};
 
