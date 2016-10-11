@@ -1,9 +1,11 @@
 @import 'variables.scss';
 @import 'mixins.scss';
 
-body {
+body * {
   font-family: 'Open Sans', sans-serif;
+}
 
+body {
   max-width: 1024px;
   margin: 0 auto;
   background-color: #E8EBEE;
@@ -15,10 +17,6 @@ body {
     &:hover {
       text-decoration: underline;
     }
-  }
-
-  input {
-    font-family: 'Open Sans', sans-serif;
   }
 
   input[type="date"] {
@@ -136,10 +134,11 @@ body {
     }
 
     &.disabled {
-      &:hover {
+      &, &:hover {
         background-color: $color-blue-1;
         color: #eeeeee;
         opacity: 0.5;
+        cursor: not-allowed;
       }
     }
   }

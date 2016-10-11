@@ -12,6 +12,7 @@ export class UserRegister {
   password: string;
   repeatPassword: string;
   imageToken: string;
+  acceptedTermsAndConditions: boolean;
 
   toJsonObject(): Object {
     return {
