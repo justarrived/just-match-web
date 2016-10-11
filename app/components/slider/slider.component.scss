@@ -15,6 +15,13 @@
     }
   }
 
+  .item-container {
+    display:inline-block;
+    width: 10%;
+    .company-logo {
+      height: 90px;
+    }
+  }
 
 
 }

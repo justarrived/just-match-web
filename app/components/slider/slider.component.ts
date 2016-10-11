@@ -1,4 +1,5 @@
-import {Component, OnInit, ElementRef} from '@angular/core';
+import {Component, OnInit, ElementRef, Input} from '@angular/core';
+import {Job} from "../../models/job/job";
 
 @Component({
     moduleId: module.id,
@@ -7,8 +8,10 @@ import {Component, OnInit, ElementRef} from '@angular/core';
     styleUrls: ['slider.component.css']
 })
 export class SliderComponent implements OnInit {
+  @Input() jobs: Array<Job>;
   private sliderContainer: any;
   private isSliderContainerClicked: boolean = false;
+  isCompanyUser: boolean = false;
 
   constructor(private slider: ElementRef) {
     console.log(this.slider.nativeElement.getElementsByClassName('slider'));

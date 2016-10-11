@@ -16,6 +16,10 @@ export class AuthManager {
     return !!this.user;
   }
 
+  isCompanyUser(): boolean {
+    return !!this.user && this.user.role === 'company';
+}
+
   logUser(email: string, password: string) {
     return this.apiCall.post('users/sessions', {
       "data": {

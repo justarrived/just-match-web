@@ -20,6 +20,8 @@ export class ApiCall {
   private authorizationHeaderName: string = 'Authorization';
   private authorizationHeaderPrefix: string = 'Token token=';
   private storageAuthorizationData: string = 'authorizationData';
+  private transformHeaderName: string = 'X-API-KEY-TRANSFORM';
+  private transformHeaderValue: string = 'underscore';
 
   constructor(private http: Http, private localStorageWrapper: LocalStorageWrapper, private router: Router) {
   }
@@ -60,6 +62,7 @@ export class ApiCall {
     if (authorizationData) {
       req.headers.set(this.authorizationHeaderName, this.authorizationHeaderPrefix + authorizationData['auth-token']);
     }
+    req.headers.set(this.transformHeaderName, this.transformHeaderValue);
     return this.http.request(req)
       .catch(res => {
         this.handleResponseErrors(res);
