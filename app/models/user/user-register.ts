@@ -1,3 +1,4 @@
+import {UserStatus} from "./user-status";
 export class UserRegister {
   ssn: string;
   firstName: string;
@@ -5,7 +6,7 @@ export class UserRegister {
   phone: string;
   email: string;
   languageId: number;
-  currentStatus: string;
+  currentStatus: UserStatus;
   atUndStatus: any;
   arrivedAt: string;
   countryOfOrigin: string;
@@ -22,7 +23,7 @@ export class UserRegister {
       'phone': this.phone,
       'email': this.email,
       'language_id': this.languageId,
-      'current_status': this.currentStatus,
+      'current_status': this.currentStatus.id,
       'at_und': this.atUndStatus.value,
       'arrived_at': this.arrivedAt,
       'country_of_origin': this.countryOfOrigin,

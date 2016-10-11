@@ -67,8 +67,10 @@
     </div>
 
     <div class="material-group">
-      <input type="text" id="current-status" [(ngModel)]="user.currentStatus" name="currentStatus" class="material-input" [ngClass]="{'not-empty': user.currentStatus}">
-      <label for="current-status" class="material-label">{{'user.form.current_status' | translate}}</label>
+      <!--<input type="text" id="current-status" [(ngModel)]="user.currentStatus" name="currentStatus" class="material-input" [ngClass]="{'not-empty': user.currentStatus}">-->
+      <input id="current-status" [(ngModel)]="user.currentStatus" name="currentStatus" class="material-input" [ngClass]="{'not-empty': user.currentStatus}"
+             ng2-auto-complete [source]="statuses" value-property-name="''" display-property-name="name" required/>
+      <label for="current-status" class="label-up material-label">{{'user.form.current_status' | translate}}</label>
 
       <div class="fs-m0 material-group-error" *ngIf="form.controls.currentStatus && form.controls.currentStatus.invalid && form.controls.currentStatus.touched">
         {{'user.form.current_status.validation' | translate}}

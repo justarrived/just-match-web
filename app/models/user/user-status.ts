@@ -1,9 +1,9 @@
 export class UserStatus {
+  id: string;
   name: string;
-  description: string;
 
   constructor(jsonObject: Object) {
+    this.id = jsonObject['id'];
     this.name = jsonObject['en-name'];
-    this.description = jsonObject['en-description'];
   }
 }
