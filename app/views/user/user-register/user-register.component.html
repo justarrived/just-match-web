@@ -1,5 +1,5 @@
 <div class="user-register">
-  <div class="header form-group">
+  <div class="header form-group text-center">
     <div class="fs-l form-group">{{'user.create.title' | translate | uppercase}}</div>
     <div class="header-text">{{'user.create.description' | translate}}</div>
   </div>
@@ -8,36 +8,75 @@
     <div class="material-group">
       <input type="text" id="ssn" [(ngModel)]="user.ssn" name="ssn" [ngClass]="{'not-empty': user.ssn}" required pattern="^[\d\-]+$" minlength="10">
       <label for="ssn">{{'user.form.ssn' | translate}}</label>
+
+      <div class="fs-m0 material-group-error" *ngIf="form.controls['ssn'] && form.controls['ssn'].invalid && form.controls['ssn'].touched">
+        {{'user.form.ssn.validation' | translate}}
+      </div>
     </div>
 
     <div class="material-group">
       <input type="text" id="first-name" [(ngModel)]="user.firstName" name="firstName" [ngClass]="{'not-empty': user.firstName}" required>
       <label for="first-name">{{'user.form.first_name' | translate}}</label>
+
+      <div class="fs-m0 material-group-error" *ngIf="form.controls['firstName'] && form.controls['firstName'].invalid && form.controls['firstName'].touched">
+        {{'user.form.first_name.validation' | translate}}
+      </div>
     </div>
 
     <div class="material-group">
       <input type="text" id="last-name" [(ngModel)]="user.lastName" name="lastName" [ngClass]="{'not-empty': user.lastName}" required>
       <label for="last-name">{{'user.form.last_name' | translate}}</label>
+
+      <div class="fs-m0 material-group-error" *ngIf="form.controls['lastName'] && form.controls['lastName'].invalid && form.controls['lastName'].touched">
+        {{'user.form.last_name.validation' | translate}}
+      </div>
     </div>
 
     <div class="material-group">
       <input type="text" id="phone" [(ngModel)]="user.phone" name="phone" [ngClass]="{'not-empty': user.phone}" required minlength="9">
       <label for="phone">{{'user.form.phone' | translate}}</label>
+
+      <div class="fs-m0 material-group-error" *ngIf="form.controls['phone'] && form.controls['phone'].invalid && form.controls['phone'].touched">
+        {{'user.form.phone.validation' | translate}}
+      </div>
     </div>
 
     <div class="material-group">
       <input type="text" id="email" [(ngModel)]="user.email" name="email" [ngClass]="{'not-empty': user.email}"
              required pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$">
       <label for="email">{{'user.form.email' | translate}}</label>
+
+      <div class="fs-m0 material-group-error" *ngIf="form.controls['email'] && form.controls['email'].invalid && form.controls['email'].touched">
+        {{'user.form.email.validation' | translate}}
+      </div>
     </div>
 
-    <div>{{'user.form.current_status' | translate}}</div>
-    <div>{{'user.form.at_und' | translate}}</div>
+    <div class="material-group">
+      <input type="text" id="current-status" [(ngModel)]="user.currentStatus" name="currentStatus" [ngClass]="{'not-empty': user.currentStatus}">
+      <label for="current-status">{{'user.form.current_status' | translate}}</label>
+
+      <div class="fs-m0 material-group-error" *ngIf="form.controls['currentStatus'] && form.controls['currentStatus'].invalid && form.controls['currentStatus'].touched">
+        {{'user.form.current_status.validation' | translate}}
+      </div>
+    </div>
+
+    <div class="material-group">
+      <input type="text" id="at-und" [(ngModel)]="user.atUnd" name="atUnd" [ngClass]="{'not-empty': user.atUnd}">
+      <label for="at-und">{{'user.form.at_und' | translate}}</label>
+
+      <div class="fs-m0 material-group-error" *ngIf="form.controls['atUnd'] && form.controls['atUnd'].invalid && form.controls['atUnd'].touched">
+        {{'user.form.at_und.validation' | translate}}
+      </div>
+    </div>
 
     <div class="material-group">
       <input type="date" id="arrived-at" [(ngModel)]="user.arrivedAt" name="arrivedAt" [ngClass]="{'not-empty': user.arrivedAt}" class="arrivedAtInput"
              required pattern='^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$'>
       <label for="arrived-at" class="label-up">{{'user.form.arrived_at' | translate}}</label>
+
+      <div class="fs-m0 material-group-error" *ngIf="form.controls['arrivedAt'] && form.controls['arrivedAt'].invalid && form.controls['arrivedAt'].touched">
+        {{'user.form.arrived_at.validation' | translate}}
+      </div>
     </div>
 
     <div class="material-group">
@@ -59,11 +98,19 @@
     <div class="material-group">
       <input type="password" id="password" [(ngModel)]="user.password" name="password" [ngClass]="{'not-empty': user.password}" required>
       <label for="password">{{'user.form.password' | translate}}</label>
+
+      <div class="fs-m0 material-group-error" *ngIf="form.controls['password'] && form.controls['password'].invalid && form.controls['password'].touched">
+        {{'user.form.password.validation' | translate}}
+      </div>
     </div>
 
     <div class="material-group">
       <input type="password" id="repeat-password" [(ngModel)]="user.repeatPassword" name="repeatPassword" [ngClass]="{'not-empty': user.repeatPassword}" required>
       <label for="repeat-password">{{'user.form.password' | translate}}</label>
+
+      <div class="fs-m0 material-group-error" *ngIf="form.controls['repeatPassword'] && form.controls['repeatPassword'].touched && user.repeatPassword !== user.password">
+        {{'user.form.passwordCompare.validation' | translate}}
+      </div>
     </div>
 
     <div class="material-group">
@@ -71,7 +118,7 @@
       <label class="label-up" for="image-filename">{{'user.form.picture' | translate}}</label>
     </div>
 
-    <div class="form-group">
+    <div class="form-group text-center">
       <input type="checkbox" id="terms">
       <label for="terms">
         {{'terms.accept' | translate}} {{'terms' | translate}}
@@ -80,11 +127,15 @@
       </label>
     </div>
 
-    <button type="submit" class="button primary form-group">{{'common.continue' | translate}}</button>
+    <div class="text-center">
+      <button type="submit" class="button primary form-group">{{'common.continue' | translate}}</button>
+    </div>
   </form>
 
-  <div class="form-group">{{'common.have_account' | translate}}</div>
-  <div>
-    <a routerLink="/home" class="fs-m">{{'common.login' | translate}}</a>
+  <div class="text-center">
+    <div class="form-group">{{'common.have_account' | translate}}</div>
+    <div>
+      <a routerLink="/home" class="fs-m">{{'common.login' | translate}}</a>
+    </div>
   </div>
 </div>

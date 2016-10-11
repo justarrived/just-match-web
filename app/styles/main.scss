@@ -33,6 +33,10 @@ body {
     margin-bottom: 15px;
   }
 
+  .text-center {
+    text-align: center;
+  }
+
   .color-dark {
     color: $color-dark
   }
@@ -149,6 +153,7 @@ body {
       padding: 10px 12px;
       display: block;
       border: 1px solid $color-blue-1;
+      margin-bottom: 5px;
 
       &:focus, &.not-empty {
         outline: none;
@@ -179,6 +184,11 @@ body {
       &.label-up {
         @include label-up();
       }
+    }
+
+    .material-group-error {
+      color: $color-pink-2;
+      font-size: 12px;
     }
   }
 }
