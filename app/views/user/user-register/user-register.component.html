@@ -6,48 +6,63 @@
 
   <form #form="ngForm" (ngSubmit)="onSubmit()">
     <div class="material-group">
-      <input type="text" id="ssn" [(ngModel)]="user.ssn" name="ssn" [ngClass]="{'not-empty': user.ssn}" required pattern="^[\d\-]+$" minlength="10">
+      <input type="text" id="ssn" [(ngModel)]="user.ssn" name="ssn" [ngClass]="{'not-empty': user.ssn, 'has-error': errors.ssn}" required pattern="^[\d\-]+$" minlength="10">
       <label for="ssn">{{'user.form.ssn' | translate}}</label>
 
-      <div class="fs-m0 material-group-error" *ngIf="form.controls['ssn'] && form.controls['ssn'].invalid && form.controls['ssn'].touched">
+      <div class="fs-m0 material-group-error" *ngIf="form.controls.ssn && form.controls.ssn.invalid && form.controls.ssn.touched">
         {{'user.form.ssn.validation' | translate}}
       </div>
-    </div>
-
-    <div class="material-group">
-      <input type="text" id="first-name" [(ngModel)]="user.firstName" name="firstName" [ngClass]="{'not-empty': user.firstName}" required>
-      <label for="first-name">{{'user.form.first_name' | translate}}</label>
-
-      <div class="fs-m0 material-group-error" *ngIf="form.controls['firstName'] && form.controls['firstName'].invalid && form.controls['firstName'].touched">
-        {{'user.form.first_name.validation' | translate}}
+      <div class="fs-m0 material-group-error" *ngIf="errors.ssn">
+        {{errors.ssn}}
       </div>
     </div>
 
     <div class="material-group">
-      <input type="text" id="last-name" [(ngModel)]="user.lastName" name="lastName" [ngClass]="{'not-empty': user.lastName}" required>
+      <input type="text" id="first-name" [(ngModel)]="user.firstName" name="firstName" [ngClass]="{'not-empty': user.firstName, 'has-error': errors.first_name}" required>
+      <label for="first-name">{{'user.form.first_name' | translate}}</label>
+
+      <div class="fs-m0 material-group-error" *ngIf="form.controls.firstName && form.controls.firstName.invalid && form.controls.firstName.touched">
+        {{'user.form.first_name.validation' | translate}}
+      </div>
+      <div class="fs-m0 material-group-error" *ngIf="errors.first_name">
+        {{errors.first_name}}
+      </div>
+    </div>
+
+    <div class="material-group">
+      <input type="text" id="last-name" [(ngModel)]="user.lastName" name="lastName" [ngClass]="{'not-empty': user.lastName, 'has-error': errors.last_name}" required>
       <label for="last-name">{{'user.form.last_name' | translate}}</label>
 
       <div class="fs-m0 material-group-error" *ngIf="form.controls['lastName'] && form.controls['lastName'].invalid && form.controls['lastName'].touched">
         {{'user.form.last_name.validation' | translate}}
       </div>
+      <div class="fs-m0 material-group-error" *ngIf="errors.last_name">
+        {{errors.last_name}}
+      </div>
     </div>
 
     <div class="material-group">
-      <input type="text" id="phone" [(ngModel)]="user.phone" name="phone" [ngClass]="{'not-empty': user.phone}" required minlength="9">
+      <input type="text" id="phone" [(ngModel)]="user.phone" name="phone" [ngClass]="{'not-empty': user.phone, 'has-error': errors.phone}" required minlength="9">
       <label for="phone">{{'user.form.phone' | translate}}</label>
 
       <div class="fs-m0 material-group-error" *ngIf="form.controls['phone'] && form.controls['phone'].invalid && form.controls['phone'].touched">
         {{'user.form.phone.validation' | translate}}
       </div>
+      <div class="fs-m0 material-group-error" *ngIf="errors.phone">
+        {{errors.phone}}
+      </div>
     </div>
 
     <div class="material-group">
-      <input type="text" id="email" [(ngModel)]="user.email" name="email" [ngClass]="{'not-empty': user.email}"
+      <input type="text" id="email" [(ngModel)]="user.email" name="email" [ngClass]="{'not-empty': user.email, 'has-error': errors.email}"
              required pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$">
       <label for="email">{{'user.form.email' | translate}}</label>
 
       <div class="fs-m0 material-group-error" *ngIf="form.controls['email'] && form.controls['email'].invalid && form.controls['email'].touched">
         {{'user.form.email.validation' | translate}}
+      </div>
+      <div class="fs-m0 material-group-error" *ngIf="errors.email">
+        {{errors.email}}
       </div>
     </div>
 
@@ -70,12 +85,15 @@
     </div>
 
     <div class="material-group">
-      <input type="date" id="arrived-at" [(ngModel)]="user.arrivedAt" name="arrivedAt" [ngClass]="{'not-empty': user.arrivedAt}" class="arrivedAtInput"
+      <input type="date" id="arrived-at" [(ngModel)]="user.arrivedAt" name="arrivedAt" [ngClass]="{'not-empty': user.arrivedAt, 'has-error': errors.arrived_at}" class="arrivedAtInput"
              required pattern='^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$'>
       <label for="arrived-at" class="label-up">{{'user.form.arrived_at' | translate}}</label>
 
       <div class="fs-m0 material-group-error" *ngIf="form.controls['arrivedAt'] && form.controls['arrivedAt'].invalid && form.controls['arrivedAt'].touched">
         {{'user.form.arrived_at.validation' | translate}}
+      </div>
+      <div class="fs-m0 material-group-error" *ngIf="errors.arrived_at">
+        {{errors.arrived_at}}
       </div>
     </div>
 
@@ -96,11 +114,14 @@
     </div>
 
     <div class="material-group">
-      <input type="password" id="password" [(ngModel)]="user.password" name="password" [ngClass]="{'not-empty': user.password}" required>
+      <input type="password" id="password" [(ngModel)]="user.password" name="password" [ngClass]="{'not-empty': user.password, 'has-error': errors.password}" required>
       <label for="password">{{'user.form.password' | translate}}</label>
 
       <div class="fs-m0 material-group-error" *ngIf="form.controls['password'] && form.controls['password'].invalid && form.controls['password'].touched">
         {{'user.form.password.validation' | translate}}
+      </div>
+      <div class="fs-m0 material-group-error" *ngIf="errors.password">
+        {{errors.password}}
       </div>
     </div>
 

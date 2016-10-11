@@ -13,6 +13,7 @@ export class UserRegisterComponent implements OnInit {
   user: UserRegister = new UserRegister();
   statuses: Array<UserStatus>;
   search: any;
+  errors: any = {};
 
   constructor(private userProxy: UserProxy, private countryProxy: CountryProxy) {
   }
@@ -29,9 +30,12 @@ export class UserRegisterComponent implements OnInit {
   }
 
   onSubmit() {
+    this.user.languageId = 38; // TODO: use the interface choosen language from the user
     this.userProxy.saveUser(this.user.toJsonObject())
       .then(response => {
         console.log(response);
+      }, errors => {
+        this.errors = errors;
       });
   }
 

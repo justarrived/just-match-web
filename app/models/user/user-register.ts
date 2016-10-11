@@ -4,6 +4,7 @@ export class UserRegister {
   lastName: string;
   phone: string;
   email: string;
+  languageId: number;
   currentStatus: string;
   atUnd: string;
   arrivedAt: string;
@@ -15,15 +16,17 @@ export class UserRegister {
   toJsonObject(): Object {
     return {
       'ssn': this.ssn,
-      'first-name': this.firstName,
-      'last-name': this.lastName,
+      'first_name': this.firstName,
+      'last_name': this.lastName,
       'phone': this.phone,
       'email': this.email,
-      'current-status': this.currentStatus,
-      'at-und': this.atUnd,
-      'arrived-at': this.arrivedAt,
-      'country-of-origin': this.countryOfOrigin,
-      'user-image-one-time-tokens': [this.imageToken]
+      'language_id': this.languageId,
+      'current_status': this.currentStatus,
+      'at_und': this.atUnd,
+      'arrived_at': this.arrivedAt,
+      'country_of_origin': this.countryOfOrigin,
+      'password': this.password,
+      'user_image_one_time_tokens': [this.imageToken]
     };
   }
 }

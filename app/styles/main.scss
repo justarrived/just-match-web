@@ -163,7 +163,7 @@ body {
         }
       }
 
-      &.ng-touched.ng-invalid {
+      &.ng-touched.ng-invalid, &.has-error {
         border: 1px solid $color-pink-2 !important;
         color: $color-pink-2 !important;
         ~ label {

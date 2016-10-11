@@ -10,7 +10,7 @@ import {
 } from "@angular/http";
 import {LocalStorageWrapper} from "./local-storage-wrapper.service";
 import * as  _ from "lodash";
-import {parseJsonapiResponse} from "../utils/jsonapi-parser.util";
+import {parseJsonapiResponse, parseJsonapiErrorResponse} from "../utils/jsonapi-parser.util";
 import {Observable} from "rxjs";
 import {Router} from "@angular/router";
 import {APP_CONFIG} from "../config/config";
@@ -65,9 +65,9 @@ export class ApiCall {
       req.headers.set(this.authorizationHeaderName, this.authorizationHeaderPrefix + authorizationData['auth-token']);
     }
     return this.http.request(req)
-      .catch(res => {
-        this.handleResponseErrors(res);
-        return Observable.throw(res);
+      .catch(response => {
+        this.handleResponseErrors(response);
+        return Observable.throw(parseJsonapiErrorResponse(response));
       })
       .toPromise()
       .then(response => Promise.resolve(parseJsonapiResponse(response)));
