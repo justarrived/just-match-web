@@ -24,7 +24,7 @@ export class AppComponent implements OnInit {
       }
 
       if (event instanceof NavigationError) {
-        console.log('NavigationError');
+        console.log('NavigationError', event);
       }
 
       if (event instanceof RoutesRecognized) {

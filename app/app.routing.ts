@@ -5,12 +5,14 @@ import {HomeComponent} from "./views/home/home.component";
 import {ModuleWithProviders} from "@angular/core";
 
 import { AuthGuard } from "./services/auth-guard.service";
+import {UserRegisterComponent} from "./views/user/user-register/user-register.component";
 
 const appRoutes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },
   { path: 'home', component: HomeComponent, data: { roles: ['company']} },
   { path: 'tasks', component: TaskListComponent, data: {title: 'TaskList' }},
   { path: 'about', component: AboutComponent, data: {title: 'About', roles: ['company'] }, canActivate: [AuthGuard]},
+  { path: 'user/register', component: UserRegisterComponent },
   { path: '**', redirectTo: 'tasks' }
 ];
 

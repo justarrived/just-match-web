@@ -17,12 +17,16 @@ import {UserProxy} from "./services/user-proxy.service";
 import {TranslationService} from "./services/translation.service";
 import {GlobalExceptionHandler} from "./config/global-exception-handler";
 import {SliderComponent} from "./components/slider/slider.component";
+import {UserRegisterComponent} from "./views/user/user-register/user-register.component";
+import {Ng2AutoCompleteModule} from "ng2-auto-complete";
+import {CountryProxy} from "./services/proxy/country-proxy.service";
 
 @NgModule({
   imports: [
     BrowserModule,
     HttpModule,
     FormsModule,
+    Ng2AutoCompleteModule,
     TranslateModule.forRoot(),
     routing
   ],
@@ -32,7 +36,8 @@ import {SliderComponent} from "./components/slider/slider.component";
     TaskListComponent,
     AboutComponent,
     HomeComponent,
-    SliderComponent
+    SliderComponent,
+    UserRegisterComponent
   ],
   providers: [
     appRoutingProviders,
@@ -40,6 +45,7 @@ import {SliderComponent} from "./components/slider/slider.component";
     ApiCall,
     AuthManager,
     UserProxy,
+    CountryProxy,
     TranslationService,
     {provide: ErrorHandler, useClass: GlobalExceptionHandler}
   ],

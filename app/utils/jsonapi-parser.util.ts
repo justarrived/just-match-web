@@ -1,9 +1,20 @@
 import * as _ from "lodash";
 import {Response} from "@angular/http";
+import {forEach} from "lodash";
 
 export function parseJsonapiResponse(response: Response): any {
   let body = response.json();
   return deserializeBody(body);
+}
+
+export function parseJsonapiErrorResponse(response: Response): any {
+  let result: any = {};
+  forEach(response.json().errors, error => {
+    let pointer = error.source.pointer;
+    let property = pointer.substr(pointer.lastIndexOf('/') + 1);
+    result[property] = error.detail;
+  });
+  return result;
 }
 
 function deserializeBody(body: any): any {
