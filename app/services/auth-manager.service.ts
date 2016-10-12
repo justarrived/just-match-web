@@ -16,6 +16,10 @@ export class AuthManager {
     return !!this.user;
   }
 
+  isCompanyUser(): boolean {
+    return !!this.user && this.user.role === 'company';
+}
+
   logUser(email: string, password: string) {
     return this.apiCall.post('users/sessions', {
       "email-or-phone": email,
@@ -44,6 +48,10 @@ export class AuthManager {
   logoutUser() {
     this.user = null;
     this.localStorageWrapper.remove(this.storageAuthorizationData);
+  }
+
+  getUserRole() {
+    return this.user && this.user.role;
   }
 
   private handleUserResult(data) {

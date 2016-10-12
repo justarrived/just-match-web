@@ -15,7 +15,7 @@ export class AuthGuard implements CanActivate {
     }
 
     if (canNavigateStatus && route.data && route.data['roles']) {
-      canNavigateStatus = route.data['roles'].indexOf(this.authManager.user.role) >= 0;
+      canNavigateStatus = route.data['roles'].indexOf(this.authManager.getUserRole()) >= 0;
     }
 
     if (!canNavigateStatus) {

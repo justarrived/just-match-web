@@ -16,6 +16,7 @@ import {AuthManager} from "./services/auth-manager.service";
 import {UserProxy} from "./services/user-proxy.service";
 import {TranslationService} from "./services/translation.service";
 import {GlobalExceptionHandler} from "./config/global-exception-handler";
+import {SliderComponent} from "./components/slider/slider.component";
 import {UserRegisterComponent} from "./views/user/user-register/user-register.component";
 import {Ng2AutoCompleteModule} from "ng2-auto-complete";
 import {CountryProxy} from "./services/proxy/country-proxy.service";
@@ -35,6 +36,7 @@ import {CountryProxy} from "./services/proxy/country-proxy.service";
     TaskListComponent,
     AboutComponent,
     HomeComponent,
+    SliderComponent,
     UserRegisterComponent
   ],
   providers: [

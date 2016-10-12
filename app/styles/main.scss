@@ -1,5 +1,6 @@
 @import 'variables.scss';
 @import 'mixins.scss';
+@import url("../assets/fonts/fontello.css");
 
 body * {
   font-family: 'Open Sans', sans-serif;
@@ -204,5 +205,14 @@ body {
       color: $color-pink-2;
       font-size: 12px;
     }
+  }
+
+  .no-select {
+    user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
   }
 }
