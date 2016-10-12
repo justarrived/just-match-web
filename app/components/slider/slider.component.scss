@@ -1,3 +1,5 @@
+@import '../../styles/variables.scss';
+
 .slider {
   position: relative;
   overflow: hidden;
@@ -7,21 +9,102 @@
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    .slider-item {
-      display: inline-block;
-      border: 1px solid black;
-      width: 40%;
-      height: 40px;
-    }
+    position: relative;
+    left: 0;
   }
 
   .item-container {
+    vertical-align: top;
     display:inline-block;
-    width: 10%;
+    width: calc(10% - 10px);
+    padding: 0 5px;
+
     .company-logo {
       height: 90px;
+      width: 100%;
+      object-fit: cover;
+      border-radius: 5px 5px 0 0;
+    }
+
+    .salary-container {
+      color: white;
+      font-size: 20px;
+      background: $color-pink-1;
+      border-radius: 0 0 5px 5px;
+      height: 30px;
+      line-height: 30px;
+      white-space: pre-wrap;
+      padding: 0 2px;
+    }
+
+    .job-name {
+      -ms-word-wrap: break-word;
+      word-wrap :break-word;
+      white-space: normal;
+      padding: 3px 0;
+
+      &:hover {
+        text-decoration: underline;
+        cursor: pointer;
+      }
     }
   }
 
+
+  @media (max-width: 1600px) {
+    //9
+    .item-container {
+      width: calc(11% - 10px);
+    }
+  }
+
+  @media (max-width: 1440px) {
+    //8
+    .item-container {
+      width: calc(12% - 10px);
+    }
+  }
+
+  @media (max-width: 1280px) {
+    //7
+    .item-container {
+      width: calc(14% - 10px);
+    }
+  }
+
+  @media (max-width: 1024px) {
+    //6
+    .item-container {
+      width: calc(16% - 10px);
+    }
+  }
+
+  @media (max-width: 980px) {
+    //5
+    .item-container {
+      width: calc(19% - 10px);
+    }
+  }
+
+  @media (max-width: 766px) {
+    //4
+    .item-container {
+      width: calc(24% - 10px);
+    }
+  }
+
+  @media (max-width: 500px) {
+    //3
+    .item-container {
+      width: calc(32% - 10px);
+    }
+  }
+
+  @media (max-width: 375px) {
+    //2
+    .item-container {
+      width: calc(46% - 10px);
+    }
+  }
 
 }

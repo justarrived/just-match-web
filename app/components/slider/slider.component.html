@@ -1,12 +1,12 @@
 <div class="slider" (window:resize)="resize()">
-  <div class="slider-container" (swipeleft)="swipeLeft($event)" (swiperight)="swipeRight()">
+  <div class="slider-container" (swipeleft)="moveItemContainer(true)" (swiperight)="moveItemContainer(false)">
       <div *ngFor="let job of jobs" class="item-container">
-        <img  class="company-logo" [src]="(job.company.companyLogo && job.company.companyLogo.imageUrlSmall) || 'app/assets/images/placeholder-logo.png'">
-        <div *ngIf="isCompanyUser">
+        <img  class="company-logo no-select" [src]="(job.company.companyLogo && job.company.companyLogo.imageUrlSmall) || 'app/assets/images/placeholder-logo.png'">
+        <div class="salary-container" *ngIf="isCompanyUser">
           {{job.hourlyPay.rateExcludingVAT * job.hours}}
         </div>
-        <div *ngIf="!isCompanyUser">{{job.hourlyPay.grossSalary * job.hours}}</div>
-        <div>{{(job.translated && job.translated.name) || job.name | slice:0:5}}</div>
+        <div class="salary-container" *ngIf="!isCompanyUser">{{job.hourlyPay.grossSalary * job.hours}} {{job.hourlyPay.currency}}</div>
+        <div class="job-name">{{(job.translated && job.translated.name) || job.name | slice:0:35}}{{(job.translated && job.translated.name.length > 35) || job.name.length > 35 ? '...' : ''}}</div>
       </div>
   </div>
 </div>

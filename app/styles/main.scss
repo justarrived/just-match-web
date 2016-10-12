@@ -64,4 +64,13 @@ body {
     font-size: 1.2em;
     display: inline-block;
   }
+
+  .no-select {
+    user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+  }
 }

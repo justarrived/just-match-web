@@ -38,7 +38,7 @@
       "check-else",
       "check-whitespace"
     ],
-    "radix": true,
+    "radix": false,
     "semicolon": true,
     "triple-equals": [
       true,

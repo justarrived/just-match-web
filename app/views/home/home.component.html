@@ -21,19 +21,18 @@
       </div>
     </div>
   </section>
-  <section class="section-jobs">
-
-    <div class="section-jobs__content">
-      <h3>
+  <section class="job-section">
+    <div class="job-section-header">
+      <div class="calendar-container">
         <div class="calendar">
           {{today}}
         </div>
         {{'start.job_section.title' | translate}}
-        <div class="section-jobs__content-right"><a href="#"><span>{{'common.show_all' |translate}}</span></a></div>
-      </h3>
-      <slider [jobs]="newJobs"></slider>
-
+      </div>
+      <div class="all-jobs-button-container"><a href="#"><span>{{'common.show_all' |translate}}</span></a></div>
     </div>
+    <slider [jobs]="newJobs"></slider>
+
   </section>
   <div class="instructions-container">
     <section class="instruction-pane">
