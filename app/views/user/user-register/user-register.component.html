@@ -67,8 +67,7 @@
     </div>
 
     <div class="material-group">
-      <!--<input type="text" id="current-status" [(ngModel)]="user.currentStatus" name="currentStatus" class="material-input" [ngClass]="{'not-empty': user.currentStatus}">-->
-      <input id="current-status" [(ngModel)]="user.currentStatus" name="currentStatus" class="material-input" [ngClass]="{'not-empty': user.currentStatus}"
+      <input id="current-status" [(ngModel)]="user.currentStatus" name="currentStatus" class="material-input"
              ng2-auto-complete [source]="statuses" value-property-name="''" display-property-name="name" required/>
       <label for="current-status" class="label-up material-label">{{'user.form.current_status' | translate}}</label>
 
@@ -78,7 +77,7 @@
     </div>
 
     <div class="material-group">
-      <input id="at-und" [(ngModel)]="user.atUndStatus" name="atUndStatus" class="material-input" [ngClass]="{'not-empty': user.atUndStatus}"
+      <input id="at-und" [(ngModel)]="user.atUndStatus" name="atUndStatus" class="material-input"
              ng2-auto-complete [source]="atUndStatuses" display-property-name="name" required/>
       <label for="at-und" class="label-up material-label">{{'user.form.at_und' | translate}}</label>
 
@@ -101,19 +100,9 @@
     </div>
 
     <div class="material-group">
-      <!--<input ng2-auto-complete [(ngModel)]="search" [source]="countryProxy.getCountries" placeholder="enter text" name="countryOfOrigin">-->
-      <!--<input  ng2-auto-complete-->
-              <!--placeholder="Start typing a hero name (min. 2 chars) ... for example: Hulk"-->
-              <!--[(ngModel)]="search"-->
-              <!--[source]="appSvc.findHeroes"-->
-              <!--[list-formatter]="renderHero"-->
-              <!--path-to-data="data.results"-->
-              <!--min-chars="2"-->
-              <!--name="countryOfOrigin"-->
-      <!--/>-->
-      <br/>selected: {{search | json}}<br/><br/>
-
-      <label class="label-up material-label">{{'user.form.country_of_origin' | translate}}</label>
+      <input id="country-of-origin" [(ngModel)]="user.countryOfOrigin" name="countryOfOrigin" class="material-input"
+             ng2-auto-complete [source]="countries" value-property-name="''" display-property-name="name" min-chars="2" required/>
+      <label for="country-of-origin" class="label-up material-label">{{'user.form.country_of_origin' | translate}}</label>
     </div>
 
     <div class="material-group">

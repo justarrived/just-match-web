@@ -150,8 +150,15 @@ body {
     .ng2-auto-complete {
       width: 100%;
 
-      .auto-complete input {
-        padding: 10px 12px;
+      .auto-complete {
+        max-height: 150px;
+        input {
+          padding: 10px 12px;
+        }
+
+        ul {
+          max-height: 150px;
+        }
       }
     }
 

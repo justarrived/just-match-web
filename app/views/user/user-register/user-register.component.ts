@@ -4,6 +4,7 @@ import {UserStatus} from "../../../models/user/user-status";
 import {UserRegister} from "../../../models/user/user-register";
 import {CountryProxy} from "../../../services/proxy/country-proxy.service";
 import {AT_UND_STATUSES} from "../../../enums/enums";
+import {Country} from "../../../models/country";
 
 @Component({
   moduleId: module.id,
@@ -14,6 +15,7 @@ export class UserRegisterComponent implements OnInit {
   user: UserRegister = new UserRegister();
   statuses: Array<UserStatus>;
   atUndStatuses = AT_UND_STATUSES;
+  countries: Array<Country>;
   search: any;
   errors: any = {};
 
@@ -22,6 +24,7 @@ export class UserRegisterComponent implements OnInit {
 
   ngOnInit(): void {
     this.userProxy.getStatuses().then(statuses => this.statuses = statuses);
+    this.countryProxy.getCountries().then(countries => this.countries = countries);
   }
 
   onImageFilenameChange(event) {
@@ -40,9 +43,4 @@ export class UserRegisterComponent implements OnInit {
         this.errors = errors;
       });
   }
-
-  json(obj) {
-    return JSON.stringify(obj);
-  }
-
 }

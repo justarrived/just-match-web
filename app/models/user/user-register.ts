@@ -1,4 +1,5 @@
 import {UserStatus} from "./user-status";
+import {Country} from "../country";
 export class UserRegister {
   ssn: string;
   firstName: string;
@@ -9,7 +10,7 @@ export class UserRegister {
   currentStatus: UserStatus;
   atUndStatus: any;
   arrivedAt: string;
-  countryOfOrigin: string;
+  countryOfOrigin: Country;
   password: string;
   repeatPassword: string;
   imageToken: string;
@@ -26,7 +27,7 @@ export class UserRegister {
       'current_status': this.currentStatus.id,
       'at_und': this.atUndStatus.value,
       'arrived_at': this.arrivedAt,
-      'country_of_origin': this.countryOfOrigin,
+      'country_of_origin': this.countryOfOrigin.countryCode,
       'password': this.password,
       'user_image_one_time_tokens': [this.imageToken]
     };
