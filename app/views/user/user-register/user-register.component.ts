@@ -5,6 +5,8 @@ import {UserRegister} from "../../../models/user/user-register";
 import {CountryProxy} from "../../../services/proxy/country-proxy.service";
 import {AT_UND_STATUSES} from "../../../enums/enums";
 import {Country} from "../../../models/country";
+import {AuthManager} from "../../../services/auth-manager.service";
+import {Router} from "@angular/router";
 
 @Component({
   moduleId: module.id,
@@ -19,7 +21,10 @@ export class UserRegisterComponent implements OnInit {
   search: any;
   errors: any = {};
 
-  constructor(private userProxy: UserProxy, private countryProxy: CountryProxy) {
+  constructor(private router: Router,
+              private userProxy: UserProxy,
+              private countryProxy: CountryProxy,
+              private authManager: AuthManager) {
   }
 
   ngOnInit(): void {
@@ -39,9 +44,11 @@ export class UserRegisterComponent implements OnInit {
 
     this.user.languageId = 38; // TODO: use the interface choosen language from the user
     this.userProxy.saveUser(this.user.toJsonObject())
-      .then(response => {
-        console.log(response);
-      }, errors => {
+      .then(() => {
+        return this.authManager.logUser(this.user.email, this.user.password);
+      }).then(() => {
+        this.router.navigate(['/home']); // TODO: redirect to edit candidate profile view
+      }).catch(errors => {
         this.errors = errors;
       });
   }
