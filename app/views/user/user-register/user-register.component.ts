@@ -35,6 +35,8 @@ export class UserRegisterComponent implements OnInit {
   }
 
   onSubmit() {
+    this.errors = {};
+
     this.user.languageId = 38; // TODO: use the interface choosen language from the user
     this.userProxy.saveUser(this.user.toJsonObject())
       .then(response => {

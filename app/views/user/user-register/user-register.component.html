@@ -141,7 +141,7 @@
     </div>
 
     <div class="text-center">
-      <button type="submit" class="button primary form-group">{{'common.continue' | translate}}</button>
+      <button type="submit" class="button primary form-group" [disabled]="form.invalid">{{'common.continue' | translate}}</button>
     </div>
   </form>
 

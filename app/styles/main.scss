@@ -133,7 +133,7 @@ body {
       }
     }
 
-    &.disabled {
+    &.disabled, &[disabled] {
       &, &:hover {
         background-color: $color-blue-1;
         color: #eeeeee;
