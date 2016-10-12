@@ -11,7 +11,7 @@ import {SliderComponent} from "../../components/slider/slider.component";
   providers: [JobProxy]
 })
 export class HomeComponent implements OnInit {
-  today: number;
+  today: number = new Date().getDate();
   email: string;
   password: string;
   newJobs: Array<Job>;
@@ -23,14 +23,6 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.jobProxy.getJobs({include: 'company,hourly-pay,company.company-images', 'filter[filled]':false}).then(result => {
       this.newJobs = result;
-      console.log(result);
-    });
-    this.today = new Date().getDate();
-  }
-
-  login() {
-    this.authManager.logUser(this.email, this.password).then(user => {
-      console.log(user);
     });
   }
 }

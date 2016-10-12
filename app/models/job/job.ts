@@ -53,6 +53,7 @@ class HourlyPay {
   netSalary: number;
   rateExcludingVAT: number;
   rateIncludingVAT: number;
+
   constructor(jsonObject: any) {
     if (!jsonObject) {
       return;

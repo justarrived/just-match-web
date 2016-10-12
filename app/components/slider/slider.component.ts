@@ -1,5 +1,6 @@
-import {Component, OnInit, ElementRef, Input} from '@angular/core';
+import {Component, OnInit, ElementRef, Input} from "@angular/core";
 import {Job} from "../../models/job/job";
+import {AuthManager} from "../../services/auth-manager.service";
 
 @Component({
     moduleId: module.id,
@@ -11,11 +12,11 @@ export class SliderComponent implements OnInit {
   @Input() jobs: Array<Job>;
   private slider: any;
   private sliderContainer: any;
-  private firstItemContainer: any;
   private lastFullyVisualizatedItemIndex: number;
   isCompanyUser: boolean = false;
 
-  constructor(private sliderElement: ElementRef) {
+  constructor(private sliderElement: ElementRef, private authManager: AuthManager) {
+    this.isCompanyUser = authManager.isCompanyUser();
   }
 
   ngOnInit() {
@@ -23,7 +24,7 @@ export class SliderComponent implements OnInit {
     this.sliderContainer = this.sliderElement.nativeElement.getElementsByClassName('slider-container')[0];
   }
 
-  moveItemContainer(isMoveToLeft: boolean) {
+  onSwipe(isLeftSwipe: boolean) {
     let firstItemContainerOffsetWidth = this.getFirstItemContainer().offsetWidth;
     let maxVisualizatedItems = this.getMaxVisualisationItemContainers(firstItemContainerOffsetWidth);
     if (!this.lastFullyVisualizatedItemIndex) {
@@ -31,17 +32,17 @@ export class SliderComponent implements OnInit {
     }
 
     let sliderContainerLeftPosition = parseInt(this.sliderContainer.style.left || 0);
-    let pixelsValueForMovingSliderContainer = parseInt(firstItemContainerOffsetWidth * maxVisualizatedItems, 10);
+    let pixelsValueForMovingSliderContainer = parseInt(firstItemContainerOffsetWidth * maxVisualizatedItems);
 
-    if (this.lastFullyVisualizatedItemIndex + maxVisualizatedItems >= this.jobs.length && isMoveToLeft) {
+    if ((this.lastFullyVisualizatedItemIndex + maxVisualizatedItems >= this.jobs.length) && isLeftSwipe) {
       this.sliderContainer.style.left = (((this.jobs.length * firstItemContainerOffsetWidth) - this.slider.offsetWidth) * -1) + 'px';
       this.lastFullyVisualizatedItemIndex = this.jobs.length;
-    } else if (this.lastFullyVisualizatedItemIndex - maxVisualizatedItems <= maxVisualizatedItems && !isMoveToLeft) {
+    } else if (this.lastFullyVisualizatedItemIndex - maxVisualizatedItems <= maxVisualizatedItems && !isLeftSwipe) {
       this.sliderContainer.style.left = 0;
       this.lastFullyVisualizatedItemIndex = maxVisualizatedItems;
     } else {
-      let directionMultiplier = isMoveToLeft ? -1 : 1;
-      let indexMultiplier = isMoveToLeft ? 1 : -1;
+      let directionMultiplier = isLeftSwipe ? -1 : 1;
+      let indexMultiplier = isLeftSwipe ? 1 : -1;
       this.sliderContainer.style.left = (sliderContainerLeftPosition + ((pixelsValueForMovingSliderContainer - 10) * directionMultiplier)) + 'px';
       this.lastFullyVisualizatedItemIndex  = this.lastFullyVisualizatedItemIndex + (maxVisualizatedItems * indexMultiplier);
     }
@@ -49,15 +50,15 @@ export class SliderComponent implements OnInit {
   }
 
 
-  resize(event) {
-    //TODO: make responsivnes on resizing
+  onResize(event) {
+    //TODO: make responsiveness on resizing
   }
 
   private getFirstItemContainer(): any {
-    return this.firstItemContainer = this.sliderElement.nativeElement.getElementsByClassName('item-container')[0];
+    return this.sliderElement.nativeElement.getElementsByClassName('item-container')[0];
   }
 
   private getMaxVisualisationItemContainers(itemContainerWidth): number {
-    return parseInt(this.slider.offsetWidth / itemContainerWidth, 10);
+    return parseInt(this.slider.offsetWidth / itemContainerWidth);
   }
 }

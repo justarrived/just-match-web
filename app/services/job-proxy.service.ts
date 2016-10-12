@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from "@angular/core";
 import {ApiCall} from "./api-call.service";
 import {map} from "lodash";
 import {Job} from "../models/job/job";
