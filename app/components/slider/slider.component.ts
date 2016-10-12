@@ -37,7 +37,7 @@ export class SliderComponent implements OnInit {
     if ((this.lastFullyVisualizatedItemIndex + maxVisualizatedItems >= this.jobs.length) && isLeftSwipe) {
       this.sliderContainer.style.left = (((this.jobs.length * firstItemContainerOffsetWidth) - this.slider.offsetWidth) * -1) + 'px';
       this.lastFullyVisualizatedItemIndex = this.jobs.length;
-    } else if (this.lastFullyVisualizatedItemIndex - maxVisualizatedItems <= maxVisualizatedItems && !isLeftSwipe) {
+    } else if ((this.lastFullyVisualizatedItemIndex - maxVisualizatedItems <= maxVisualizatedItems) && !isLeftSwipe) {
       this.sliderContainer.style.left = 0;
       this.lastFullyVisualizatedItemIndex = maxVisualizatedItems;
     } else {
@@ -46,9 +46,7 @@ export class SliderComponent implements OnInit {
       this.sliderContainer.style.left = (sliderContainerLeftPosition + ((pixelsValueForMovingSliderContainer - 10) * directionMultiplier)) + 'px';
       this.lastFullyVisualizatedItemIndex  = this.lastFullyVisualizatedItemIndex + (maxVisualizatedItems * indexMultiplier);
     }
-
   }
-
 
   onResize(event) {
     //TODO: make responsiveness on resizing
