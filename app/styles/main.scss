@@ -1,12 +1,39 @@
 @import 'variables.scss';
+@import 'mixins.scss';
+
+body * {
+  font-family: 'Open Sans', sans-serif;
+}
 
 body {
-  font-family: 'Open Sans', sans-serif;
-
   max-width: 1024px;
   margin: 0 auto;
   background-color: #E8EBEE;
-  font-size: 14px;
+  font-size: $fs-m0;
+
+  a {
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  input[type="date"] {
+    text-transform: uppercase;
+  }
+
+  .inline-block {
+    display: inline-block;
+  }
+
+  .form-group {
+    margin-bottom: 15px;
+  }
+
+  .text-center {
+    text-align: center;
+  }
 
   .color-dark {
     color: $color-dark
@@ -46,5 +73,136 @@ body {
   }
   .color-pink-2 {
     color: $color-pink-2;
+  }
+
+  .fs-m0 {
+    font-size: $fs-m0;
+  }
+  .fs-m {
+    font-size: $fs-m;
+  }
+  .fs-l {
+    font-size: $fs-l;
+  }
+  .fs-xl {
+    font-size: $fs-xl;
+  }
+  .fs-xxl {
+    font-size: $fs-xxl;
+  }
+  .fs-xxxl {
+    font-size: $fs-xxxl;
+  }
+
+  .button {
+    font-size: $fs-m;
+    color: white;
+    border: 1px solid white;
+    border-radius: 23px;
+    padding: 10px 40px;
+    display: inline-block;
+
+    &:hover, &:focus {
+      background-color: rgba(0, 0, 0, 0.2);
+      opacity: .95;
+      color: white;
+    }
+
+    &.small {
+      padding: 5px 40px;
+      border-radius: 20px;
+      white-space: nowrap;
+      line-height: 24px;
+    }
+
+    &.primary {
+      font-size: $fs-l;
+      background-color: $color-pink-1;
+
+      &:hover, &:focus {
+        background-color: darken($color-pink-1, 5%);
+      }
+    }
+
+    &.secondary {
+      font-size: $fs-l;
+      background-color: $color-blue-1;
+
+      &:hover, &:focus {
+        background-color: darken($color-blue-1, 10%);
+      }
+    }
+
+    &.disabled, &[disabled] {
+      &, &:hover {
+        background-color: $color-blue-1;
+        color: #eeeeee;
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+    }
+  }
+
+  .material-group {
+    position: relative;
+    margin-bottom: 25px;
+
+    .ng2-auto-complete {
+      width: 100%;
+
+      .auto-complete {
+        max-height: 150px;
+        input {
+          padding: 10px 12px;
+        }
+
+        ul {
+          max-height: 150px;
+        }
+      }
+    }
+
+    .material-input {
+      width: 100%;
+      padding: 10px 12px;
+      display: block;
+      border: 1px solid $color-blue-1;
+      margin-bottom: 5px;
+
+      &:focus, &.not-empty {
+        outline: none;
+
+        ~ .material-label:not(.label-up) {
+          @include label-up();
+        }
+      }
+
+      &.ng-touched.ng-invalid, &.has-error {
+        border: 1px solid $color-pink-2 !important;
+        color: $color-pink-2 !important;
+        ~ .material-label {
+          color: $color-pink-2 !important;
+        }
+      }
+    }
+
+    .material-label {
+      position: absolute;
+      pointer-events: none;
+      left: 12px;
+      top: 11px;
+      transition: 0.2s ease all;
+      -moz-transition: 0.2s ease all;
+      -webkit-transition: 0.2s ease all;
+
+      &.label-up {
+        @include label-up();
+      }
+    }
+
+    .material-group-error {
+      color: $color-pink-2;
+      font-size: 12px;
+    }
   }
 }

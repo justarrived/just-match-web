@@ -1,6 +1,7 @@
 import {Component, OnInit} from "@angular/core";
 import {AuthManager} from "./services/auth-manager.service";
 import {Router, NavigationStart, RoutesRecognized, NavigationCancel, NavigationEnd, NavigationError} from "@angular/router";
+import {TranslationService} from "./services/translation.service";
 
 @Component({
   moduleId: module.id,
@@ -9,7 +10,7 @@ import {Router, NavigationStart, RoutesRecognized, NavigationCancel, NavigationE
   styleUrls: ["app.component.css"]
 })
 export class AppComponent implements OnInit {
-  constructor(private authManager: AuthManager, private router: Router) {
+  constructor(private authManager: AuthManager, private router: Router, private translationService: TranslationService) {
     router.events.subscribe(event => {
       if (event instanceof NavigationStart) {
       }
@@ -23,7 +24,7 @@ export class AppComponent implements OnInit {
       }
 
       if (event instanceof NavigationError) {
-        console.log('NavigationError');
+        console.log('NavigationError', event);
       }
 
       if (event instanceof RoutesRecognized) {

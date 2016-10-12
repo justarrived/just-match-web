@@ -7,7 +7,7 @@ import {UserProxy} from "./user-proxy.service";
 @Injectable()
 export class AuthManager {
   private storageAuthorizationData: string = 'authorizationData';
-  user: User;
+  private user: User;
 
   constructor(private apiCall: ApiCall, private localStorageWrapper: LocalStorageWrapper, private userProxy: UserProxy) {
   }
@@ -18,12 +18,8 @@ export class AuthManager {
 
   logUser(email: string, password: string) {
     return this.apiCall.post('users/sessions', {
-      "data": {
-        "attributes": {
-          "email-or-phone": email,
-          "password": password
-        }
-      }
+      "email-or-phone": email,
+      "password": password
     }).then(response => {
         let data = response.data;
         this.localStorageWrapper.setObject(this.storageAuthorizationData, data);
@@ -32,11 +28,6 @@ export class AuthManager {
       .then(response => {
         return this.handleUserResult(response.data);
       });
-  }
-
-  handleUserResult(data) {
-    this.user = new User(data);
-    return Promise.resolve(this.user);
   }
 
   authenticateIfNeeded(): Promise<User> {
@@ -53,5 +44,10 @@ export class AuthManager {
   logoutUser() {
     this.user = null;
     this.localStorageWrapper.remove(this.storageAuthorizationData);
+  }
+
+  private handleUserResult(data) {
+    this.user = new User(data);
+    return Promise.resolve(this.user);
   }
 }

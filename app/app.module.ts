@@ -16,12 +16,16 @@ import {AuthManager} from "./services/auth-manager.service";
 import {UserProxy} from "./services/user-proxy.service";
 import {TranslationService} from "./services/translation.service";
 import {GlobalExceptionHandler} from "./config/global-exception-handler";
+import {UserRegisterComponent} from "./views/user/user-register/user-register.component";
+import {Ng2AutoCompleteModule} from "ng2-auto-complete";
+import {CountryProxy} from "./services/proxy/country-proxy.service";
 
 @NgModule({
   imports: [
     BrowserModule,
     HttpModule,
     FormsModule,
+    Ng2AutoCompleteModule,
     TranslateModule.forRoot(),
     routing
   ],
@@ -30,7 +34,8 @@ import {GlobalExceptionHandler} from "./config/global-exception-handler";
     TaskComponent,
     TaskListComponent,
     AboutComponent,
-    HomeComponent
+    HomeComponent,
+    UserRegisterComponent
   ],
   providers: [
     appRoutingProviders,
@@ -38,6 +43,7 @@ import {GlobalExceptionHandler} from "./config/global-exception-handler";
     ApiCall,
     AuthManager,
     UserProxy,
+    CountryProxy,
     TranslationService,
     {provide: ErrorHandler, useClass: GlobalExceptionHandler}
   ],

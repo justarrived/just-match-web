@@ -10,7 +10,7 @@ import {
 } from "@angular/http";
 import {LocalStorageWrapper} from "./local-storage-wrapper.service";
 import * as  _ from "lodash";
-import {parseJsonapiResponse} from "../utils/jsonapi-parser.util";
+import {parseJsonapiResponse, parseJsonapiErrorResponse} from "../utils/jsonapi-parser.util";
 import {Observable} from "rxjs";
 import {Router} from "@angular/router";
 import {APP_CONFIG} from "../config/config";
@@ -29,11 +29,15 @@ export class ApiCall {
   }
 
   public post(url: string, body: any, contentType?: string): Promise<any> {
-      return this.requestHelper({ body: body, method: RequestMethod.Post, url: this.urlBuilder(url), headers: this.contentTypeHeaderBuilder(contentType) });
+      return this.requestHelper({ body: {data: {attributes: body}}, method: RequestMethod.Post, url: this.urlBuilder(url), headers: this.contentTypeHeaderBuilder(contentType) });
+  }
+
+  public postFile(url: string, file: FormData): Promise<any> {
+    return this.requestHelper({ body: file , method: RequestMethod.Post, url: this.urlBuilder(url) });
   }
 
   public put(url: string, body: any, contentType?: string): Promise<any> {
-    return this.requestHelper({ body: body, method: RequestMethod.Put, url: this.urlBuilder(url), headers: this.contentTypeHeaderBuilder(contentType) });
+    return this.requestHelper({ body: {data: {attributes: body}}, method: RequestMethod.Put, url: this.urlBuilder(url), headers: this.contentTypeHeaderBuilder(contentType) });
   }
 
   public delete(url: string, contentType?: string): Promise<any> {
@@ -41,7 +45,7 @@ export class ApiCall {
   }
 
   public patch(url: string, body: any, contentType?: string): Promise<any> {
-    return this.requestHelper({ body: body, method: RequestMethod.Patch, url: this.urlBuilder(url), headers: this.contentTypeHeaderBuilder(contentType) });
+    return this.requestHelper({ body: {data: {attributes: body}}, method: RequestMethod.Patch, url: this.urlBuilder(url), headers: this.contentTypeHeaderBuilder(contentType) });
   }
 
   public head(url: string, contentType?: string): Promise<any> {
@@ -61,9 +65,9 @@ export class ApiCall {
       req.headers.set(this.authorizationHeaderName, this.authorizationHeaderPrefix + authorizationData['auth-token']);
     }
     return this.http.request(req)
-      .catch(res => {
-        this.handleResponseErrors(res);
-        return Observable.throw(res);
+      .catch(response => {
+        this.handleResponseErrors(response);
+        return Observable.throw(parseJsonapiErrorResponse(response));
       })
       .toPromise()
       .then(response => Promise.resolve(parseJsonapiResponse(response)));
@@ -87,7 +91,7 @@ export class ApiCall {
 
   private handleResponseErrors(response) {
     //TODO: Implement logic when: https://github.com/justarrived/just_match_api/issues/586 is ready
-    if (response.status === 422) {
+    if (response.status === 401) {
       this.router.navigate(['/tasks']);
     }
   }
