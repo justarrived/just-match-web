@@ -7,7 +7,7 @@ import {UserProxy} from "./user-proxy.service";
 @Injectable()
 export class AuthManager {
   private storageAuthorizationData: string = 'authorizationData';
-  user: User;
+  private user: User;
 
   constructor(private apiCall: ApiCall, private localStorageWrapper: LocalStorageWrapper, private userProxy: UserProxy) {
   }
@@ -30,11 +30,6 @@ export class AuthManager {
       });
   }
 
-  handleUserResult(data) {
-    this.user = new User(data);
-    return Promise.resolve(this.user);
-  }
-
   authenticateIfNeeded(): Promise<User> {
     let authorizationData = this.localStorageWrapper.getObject(this.storageAuthorizationData);
     if (authorizationData) {
@@ -49,5 +44,10 @@ export class AuthManager {
   logoutUser() {
     this.user = null;
     this.localStorageWrapper.remove(this.storageAuthorizationData);
+  }
+
+  private handleUserResult(data) {
+    this.user = new User(data);
+    return Promise.resolve(this.user);
   }
 }
