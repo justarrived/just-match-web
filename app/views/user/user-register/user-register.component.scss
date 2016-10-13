@@ -5,25 +5,4 @@
   a {
     color: $color-blue-3;
   }
-
-  form {
-    width: 85%;
-    max-width: 500px;
-    margin: 0 auto;
-  }
-
-  .header {
-    padding: 30px;
-    background: $color-blue-1;
-    color: white;
-
-    .header-text {
-      letter-spacing: 0.02em;
-      line-height: 20px;
-    }
-  }
-
-  .user-register-form {
-    padding: 35px 0;
-  }
 }

@@ -11,6 +11,7 @@ body {
   margin: 0 auto;
   background-color: #E8EBEE;
   font-size: $fs-m0;
+  color: #333333;
 
   a {
     text-decoration: none;
@@ -93,6 +94,27 @@ body {
   }
   .fs-xxxl {
     font-size: $fs-xxxl;
+  }
+
+  .subheader {
+    padding: 30px;
+    background: $color-blue-1;
+    color: white;
+
+    .subheader-text {
+      letter-spacing: 0.02em;
+      line-height: 20px;
+    }
+  }
+
+  .centered-form-container {
+    padding: 35px 0;
+
+    .centered-form {
+      width: 85%;
+      max-width: 500px;
+      margin: 0 auto;
+    }
   }
 
   .button {

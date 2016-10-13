@@ -1,11 +1,11 @@
 <div class="user-register">
-  <div class="header text-center">
+  <div class="subheader text-center">
     <div class="fs-l form-group">{{'user.create.title' | translate | uppercase}}</div>
-    <div class="header-text">{{'user.create.description' | translate}}</div>
+    <div class="subheader-text">{{'user.create.description' | translate}}</div>
   </div>
 
-  <div class="user-register-form">
-    <form #form="ngForm" (ngSubmit)="onSubmit()">
+  <div class="centered-form-container">
+    <form class="centered-form" #form="ngForm" (ngSubmit)="onSubmit()">
       <div class="material-group">
         <input type="text" id="ssn" [(ngModel)]="userRegister.ssn" name="ssn" class="material-input" [ngClass]="{'not-empty': userRegister.ssn, 'has-error': errors.ssn}" required pattern="^[\d\-]+$" minlength="10">
         <label for="ssn" class="material-label">{{'user.form.ssn' | translate}}</label>
