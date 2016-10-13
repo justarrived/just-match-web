@@ -7,7 +7,7 @@
   <div class="user-register-form">
     <form #form="ngForm" (ngSubmit)="onSubmit()">
       <div class="material-group">
-        <input type="text" id="ssn" [(ngModel)]="user.ssn" name="ssn" class="material-input" [ngClass]="{'not-empty': user.ssn, 'has-error': errors.ssn}" required pattern="^[\d\-]+$" minlength="10">
+        <input type="text" id="ssn" [(ngModel)]="userRegister.ssn" name="ssn" class="material-input" [ngClass]="{'not-empty': userRegister.ssn, 'has-error': errors.ssn}" required pattern="^[\d\-]+$" minlength="10">
         <label for="ssn" class="material-label">{{'user.form.ssn' | translate}}</label>
 
         <div class="fs-m0 material-group-error" *ngIf="form.controls.ssn && form.controls.ssn.invalid && form.controls.ssn.touched">
@@ -19,7 +19,7 @@
       </div>
 
       <div class="material-group">
-        <input type="text" id="first-name" [(ngModel)]="user.firstName" name="firstName" class="material-input" [ngClass]="{'not-empty': user.firstName, 'has-error': errors.first_name}" required>
+        <input type="text" id="first-name" [(ngModel)]="userRegister.firstName" name="firstName" class="material-input" [ngClass]="{'not-empty': userRegister.firstName, 'has-error': errors.first_name}" required>
         <label for="first-name" class="material-label">{{'user.form.first_name' | translate}}</label>
 
         <div class="fs-m0 material-group-error" *ngIf="form.controls.firstName && form.controls.firstName.invalid && form.controls.firstName.touched">
@@ -31,7 +31,7 @@
       </div>
 
       <div class="material-group">
-        <input type="text" id="last-name" [(ngModel)]="user.lastName" name="lastName" class="material-input" [ngClass]="{'not-empty': user.lastName, 'has-error': errors.last_name}" required>
+        <input type="text" id="last-name" [(ngModel)]="userRegister.lastName" name="lastName" class="material-input" [ngClass]="{'not-empty': userRegister.lastName, 'has-error': errors.last_name}" required>
         <label for="last-name" class="material-label">{{'user.form.last_name' | translate}}</label>
 
         <div class="fs-m0 material-group-error" *ngIf="form.controls.lastName && form.controls.lastName.invalid && form.controls.lastName.touched">
@@ -43,7 +43,7 @@
       </div>
 
       <div class="material-group">
-        <input type="text" id="phone" [(ngModel)]="user.phone" name="phone" class="material-input" [ngClass]="{'not-empty': user.phone, 'has-error': errors.phone}" required minlength="9">
+        <input type="text" id="phone" [(ngModel)]="userRegister.phone" name="phone" class="material-input" [ngClass]="{'not-empty': userRegister.phone, 'has-error': errors.phone}" required minlength="9">
         <label for="phone" class="material-label">{{'user.form.phone' | translate}}</label>
 
         <div class="fs-m0 material-group-error" *ngIf="form.controls.phone && form.controls.phone.invalid && form.controls.phone.touched">
@@ -55,7 +55,7 @@
       </div>
 
       <div class="material-group">
-        <input type="text" id="email" [(ngModel)]="user.email" name="email" class="material-input" [ngClass]="{'not-empty': user.email, 'has-error': errors.email}"
+        <input type="text" id="email" [(ngModel)]="userRegister.email" name="email" class="material-input" [ngClass]="{'not-empty': userRegister.email, 'has-error': errors.email}"
                required pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$">
         <label for="email" class="material-label">{{'user.form.email' | translate}}</label>
 
@@ -68,7 +68,7 @@
       </div>
 
       <div class="material-group">
-        <input id="current-status" [(ngModel)]="user.currentStatus" name="currentStatus" class="material-input"
+        <input id="current-status" [(ngModel)]="userRegister.currentStatus" name="currentStatus" class="material-input"
                ng2-auto-complete [source]="statuses" value-property-name="''" display-property-name="name" required/>
         <label for="current-status" class="label-up material-label">{{'user.form.current_status' | translate}}</label>
 
@@ -78,7 +78,7 @@
       </div>
 
       <div class="material-group">
-        <input id="at-und" [(ngModel)]="user.atUndStatus" name="atUndStatus" class="material-input"
+        <input id="at-und" [(ngModel)]="userRegister.atUndStatus" name="atUndStatus" class="material-input"
                ng2-auto-complete [source]="atUndStatuses" display-property-name="name" required/>
         <label for="at-und" class="label-up material-label">{{'user.form.at_und' | translate}}</label>
 
@@ -88,7 +88,7 @@
       </div>
 
       <div class="material-group">
-        <input type="date" id="arrived-at" [(ngModel)]="user.arrivedAt" name="arrivedAt" class="material-input" [ngClass]="{'not-empty': user.arrivedAt, 'has-error': errors.arrived_at}"
+        <input type="date" id="arrived-at" [(ngModel)]="userRegister.arrivedAt" name="arrivedAt" class="material-input" [ngClass]="{'not-empty': userRegister.arrivedAt, 'has-error': errors.arrived_at}"
                required pattern='^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$'>
         <label for="arrived-at" class="label-up material-label">{{'user.form.arrived_at' | translate}}</label>
 
@@ -101,13 +101,13 @@
       </div>
 
       <div class="material-group">
-        <input id="country-of-origin" [(ngModel)]="user.countryOfOrigin" name="countryOfOrigin" class="material-input"
+        <input id="country-of-origin" [(ngModel)]="userRegister.countryOfOrigin" name="countryOfOrigin" class="material-input"
                ng2-auto-complete [source]="countries" value-property-name="''" display-property-name="name" min-chars="2" required/>
         <label for="country-of-origin" class="label-up material-label">{{'user.form.country_of_origin' | translate}}</label>
       </div>
 
       <div class="material-group">
-        <input type="password" id="password" [(ngModel)]="user.password" name="password" class="material-input" [ngClass]="{'not-empty': user.password, 'has-error': errors.password}" required>
+        <input type="password" id="password" [(ngModel)]="userRegister.password" name="password" class="material-input" [ngClass]="{'not-empty': userRegister.password, 'has-error': errors.password}" required>
         <label for="password" class="material-label">{{'user.form.password' | translate}}</label>
 
         <div class="fs-m0 material-group-error" *ngIf="form.controls.password && form.controls.password.invalid && form.controls.password.touched">
@@ -119,10 +119,10 @@
       </div>
 
       <div class="material-group">
-        <input type="password" id="repeat-password" [(ngModel)]="user.repeatPassword" name="repeatPassword" class="material-input" [ngClass]="{'not-empty': user.repeatPassword}" required>
+        <input type="password" id="repeat-password" [(ngModel)]="userRegister.repeatPassword" name="repeatPassword" class="material-input" [ngClass]="{'not-empty': userRegister.repeatPassword}" required>
         <label for="repeat-password" class="material-label">{{'user.form.password' | translate}}</label>
 
-        <div class="fs-m0 material-group-error" *ngIf="form.controls.repeatPassword && form.controls.repeatPassword.touched && user.repeatPassword !== user.password">
+        <div class="fs-m0 material-group-error" *ngIf="form.controls.repeatPassword && form.controls.repeatPassword.touched && userRegister.repeatPassword !== userRegister.password">
           {{'user.form.passwordCompare.validation' | translate}}
         </div>
       </div>
@@ -133,7 +133,7 @@
       </div>
 
       <div class="form-group text-center">
-        <input type="checkbox" id="tac" name="tac" class="material-input" [(ngModel)]="user.acceptedTermsAndConditions" required>
+        <input type="checkbox" id="tac" name="tac" class="material-input" [(ngModel)]="userRegister.acceptedTermsAndConditions" required>
         <label for="tac">
           {{'terms.accept' | translate}} {{'terms' | translate}}
           <a href="app/assets/terms/160523_2051-2_Terms_and_Conditions_(en).pdf" target="_blank"> PDF EN</a>,
