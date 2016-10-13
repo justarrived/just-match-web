@@ -1,0 +1,41 @@
+<div class="user-profile">
+  <div class="subheader text-center">
+    <div class="fs-l form-group">{{'profile' | translate | uppercase}}</div>
+    <div class="subheader-text">{{'profile.create.description' | translate}}</div>
+  </div>
+
+  <div class="centered-form-container">
+    <form class="centered-form" #form="ngForm">
+
+      <div class="form-group">
+        <label for="presentation">{{'profile.form.presentation' | translate | uppercase}}*</label>
+        <textarea name="presentation" id="presentation" [(ngModel)]="userProfile.presentation" required minlength="10"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="languages">{{'profile.form.languages' | translate | uppercase}}*</label>
+        <textarea name="languages" id="languages" required minlength="10"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="work-experience">{{'profile.form.experience' | translate | uppercase}}*</label>
+        <textarea name="workExperience" id="work-experience" [(ngModel)]="userProfile.workExperience" required minlength="10"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="education">{{'profile.form.education' | translate | uppercase}}*</label>
+        <textarea name="education" id="education" [(ngModel)]="userProfile.education" required minlength="10"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="skills">{{'profile.form.skills' | translate | uppercase}}*</label>
+        <textarea name="skills" id="skills" [(ngModel)]="userProfile.skills" required minlength="10"></textarea>
+      </div>
+
+      <hr>
+      <div class="text-center fs-m">
+        {{'profile.create.notification' | translate}}
+      </div>
+    </form>
+  </div>
+</div>

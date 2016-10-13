@@ -17,6 +17,10 @@ export class UserProxy {
       return this.apiCall.post('users', user);
     }
 
+    updateUser(user: Object): Promise<any> {
+      return this.apiCall.patch('users', user);
+    }
+
     getStatuses(): Promise<Array<UserStatus>> {
       return this.apiCall.get('users/statuses')
         .then(response => map(response.data, data => new UserStatus(data)));

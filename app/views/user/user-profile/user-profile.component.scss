@@ -1,0 +1,29 @@
+@import '../../../styles/variables.scss';
+
+.user-profile {
+  .form-group {
+    position: relative;
+  }
+  .form-group:before {
+    position: absolute;
+    font-family: fontello;
+    left: -35px;
+    font-size: 20px;
+    color: $color-gray-2;
+  }
+  .presentation:before {
+    content: '\e823';
+  }
+  .language:before {
+    content: '\e824';
+  }
+  .experience:before {
+    content: '\e820';
+  }
+  .education:before {
+    content: '\e825'
+  }
+  .competences:before {
+    content: '\e821';
+  }
+}

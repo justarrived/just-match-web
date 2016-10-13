@@ -18,6 +18,7 @@ import {SliderComponent} from "./components/slider/slider.component";
 import {UserRegisterComponent} from "./views/user/user-register/user-register.component";
 import {Ng2AutoCompleteModule} from "ng2-auto-complete";
 import {CountryProxy} from "./services/proxy/country-proxy.service";
+import {UserProfileComponent} from "./views/user/user-profile/user-profile.component";
 
 @NgModule({
   imports: [
@@ -33,7 +34,8 @@ import {CountryProxy} from "./services/proxy/country-proxy.service";
     AboutComponent,
     HomeComponent,
     SliderComponent,
-    UserRegisterComponent
+    UserRegisterComponent,
+    UserProfileComponent
   ],
   providers: [
     appRoutingProviders,
