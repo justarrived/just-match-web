@@ -2,9 +2,9 @@ export class User {
   public email: string;
   public role: string;
 
-  constructor(jsonObject: Object) {
-    this.email = jsonObject['email'];
-    this.role = jsonObject['primary-role'];
+  constructor(jsonObject: any) {
+    this.email = jsonObject.email;
+    this.role = jsonObject.primary_role;
   }
 
   toJsonObject(): Object {

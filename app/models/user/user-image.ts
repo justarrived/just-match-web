@@ -2,8 +2,8 @@ export class UserImage {
   oneTimeToken: string;
   imageUrl: string;
 
-  constructor(jsonObject: Object) {
-    this.oneTimeToken = jsonObject['one-time-token'];
-    this.imageUrl = jsonObject['image-url'];
+  constructor(jsonObject: any) {
+    this.oneTimeToken = jsonObject.one_time_token;
+    this.imageUrl = jsonObject.image_url;
   }
 }
