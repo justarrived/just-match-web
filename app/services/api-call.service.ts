@@ -95,7 +95,7 @@ export class ApiCall {
   private handleResponseErrors(response) {
     //TODO: Implement logic when: https://github.com/justarrived/just_match_api/issues/586 is ready
     if (response.status === 401) {
-      this.router.navigate(['/tasks']);
+      this.router.navigate(['/home']);
     }
   }
 
