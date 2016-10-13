@@ -80,7 +80,7 @@ export class ApiCall {
     return APP_CONFIG.API_BASE_URL + url;
   }
 
-  private contentTypeHeaderBuilder(contentType: string = "application/json"): Headers {
+  private contentTypeHeaderBuilder(contentType: string = "application/vnd.api+json"): Headers {
     return new Headers({'Content-Type': contentType});
   }
 
