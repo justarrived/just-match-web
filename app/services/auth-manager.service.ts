@@ -54,6 +54,10 @@ export class AuthManager {
     return this.user && this.user.role;
   }
 
+  getUser() {
+    return this.user;
+  }
+
   private handleUserResult(data) {
     this.user = new User(data);
     return Promise.resolve(this.user);

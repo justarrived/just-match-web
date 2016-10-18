@@ -1,16 +1,68 @@
-<header></header>
+<div class="overbody-container" (click)="test()"></div>
+<div class="menu-side-bar" (click)="test()">
+  <div class="nav-menu-container table">
+    <div class="nav-menu table-cell">
+      <div class="nav-menu-icon-container"><i class="icon-ic-just-arrived-logo"></i></div>
+      <div class="nav-menu-item-container">
+        <div class="nav-menu-item"><a class="nav-menu-link nav-my-job" href="">{{'menu.main.my_assignment' | translate}}</a></div>
+        <div class="nav-menu-item"><a class="nav-menu-link nav-job-list" href="">{{'menu.main.find_assignment' | translate}}</a></div>
+        <div class="nav-menu-item"><a class="nav-menu-link nav-job-create" href="">{{'menu.main.create_assignment' | translate}}</a></div>
+        <div class="nav-menu-item"><a class="nav-menu-link nav-faq" href="">{{'menu.main.faq' | translate}}</a></div>
+        <div class="nav-menu-item"><a class="nav-menu-link nav-contact" href="">{{'menu.main.contact' | translate}}</a></div>
+        <div class="nav-menu-item"><a class="nav-menu-link nav-profile" href="">{{'profile' | translate}}</a></div>
+        <div class="nav-menu-item"><a class="nav-menu-link nav-signin" href="">{{'menu.main.login' | translate}}</a></div>
+        <div class="nav-menu-item"><a class="nav-menu-link nav-signout" href="">{{'menu.main.logout' | translate}}</a></div>
+      </div>
+    </div>
 
+  </div>
+  <div class="table" *ngIf="!!user">
+    <div class="table-row">
+      <div class="table-cell">
+        <!--&lt;!&ndash;<span><span class="user-info-image" back-img="{{ctrl.user.data.user_image}}"></span></span>&ndash;&gt; TODO: add profile image-->
+        <span>{{user.firstName}} {{user.lastName}}</span>
+      </div>
+      <div class="table-cell"><i class="demo-icon icon-ic-settings"></i></div>
+    </div>
+  </div>
+</div>
+
+<header class="table header">
+  <div class="table-row">
+    <div class="table-cell header-logo-container">
+      <div class="table">
+        <div class="table-row">
+          <div class="table-cell back-button-container">
+            <a href="" class="back-button"><i class="demo-icon icon-ic-arrow-left"></i></a>
+          </div>
+          <div class="table-cell app-logo-img-container">
+            <a routerLink="/home">
+              <img class="app-logo-img" src="app/assets/images/logo.svg" alt="Just Arrived"/>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="table-cell">
+      <div>
+        <button ng-click="ctrl.selectLanguage()" type="button"><span class="lang-icon">langCode</span><span
+          class="lang-text">localName</span></button>
+      </div>
+    </div>
+    <div class="table-cell">
+      <div>
+        <button ng-click="ctrl.menu()" type="button"><span class="menu-icon"><i></i><i></i><i></i></span><span class="menu-text">{{"common.menu" | translate}}</span></button>
+      </div>
+    </div>
+  </div>
+</header>
 <section class="app">
-  <nav>
-    <a routerLink="/home">Home</a>
-    <a routerLink="/tasks">Task List</a>
-    <a routerLink="/about">About</a>
-    <a routerLink="/user/register">Register</a>
-  </nav>
   <router-outlet></router-outlet>
 </section>
-<footer>
-  <p>test1</p>
-  <p>test2</p>
-  <p>test3</p>
+<footer class="table footer">
+  <div class="table-row">
+    <div class="table-cell">{{'applications.title' | translate}}</div>
+    <div class="table-cell text-center">Jakobsbergsgatan 22, 111 44 Stockholm</div>
+    <div class="table-cell text-right"><a href="mailto:hej@justarrived.se">hej@justarrived.se</a></div>
+  </div>
 </footer>

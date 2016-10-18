@@ -36,6 +36,14 @@ body {
     text-align: center;
   }
 
+  .text-left {
+    text-align: left;
+  }
+
+  .text-right {
+    text-align: right;
+  }
+
   .color-dark {
     color: $color-dark
   }
@@ -93,6 +101,18 @@ body {
   }
   .fs-xxxl {
     font-size: $fs-xxxl;
+  }
+
+  .table {
+    display: table;
+  }
+
+  .table-row {
+    display: table-row;
+  }
+
+  .table-cell {
+    display: table-cell;
   }
 
   .button {
