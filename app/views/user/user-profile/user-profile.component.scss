@@ -11,19 +11,26 @@
     font-size: 20px;
     color: $color-gray-2;
   }
+
   .presentation:before {
     content: '\e823';
   }
-  .language:before {
+  .languages:before {
     content: '\e824';
   }
-  .experience:before {
+  .work-experience:before {
     content: '\e820';
   }
   .education:before {
     content: '\e825'
   }
-  .competences:before {
+  .skills:before {
     content: '\e821';
+  }
+
+  hr {
+    margin: 35px 0 25px;
+    border: 0;
+    border-top: 1px solid #eeeeee;
   }
 }

@@ -25,6 +25,13 @@ body {
     text-transform: uppercase;
   }
 
+  .clickable {
+    cursor: pointer;
+  }
+
+  .block {
+    display: block;
+  }
   .inline-block {
     display: inline-block;
   }
@@ -156,6 +163,18 @@ body {
       }
     }
 
+    &.form-control {
+      font-size: 1.4em;
+      width: auto;
+      min-width: 180px;
+      margin: 30px auto 0;
+      display: inherit;
+
+      &.cancel{
+        margin: 15px auto;
+      }
+    }
+
     &.disabled, &[disabled] {
       &, &:hover {
         background-color: $color-blue-1;
@@ -189,7 +208,6 @@ body {
       width: 100%;
       padding: 10px 12px;
       display: block;
-      border: 1px solid $color-blue-1;
       margin-bottom: 5px;
 
       &:focus, &.not-empty {
@@ -207,6 +225,10 @@ body {
           color: $color-pink-2 !important;
         }
       }
+    }
+
+    input.material-input {
+      border: 1px solid $color-blue-1;
     }
 
     .material-label {

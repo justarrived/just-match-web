@@ -50,11 +50,15 @@ export class AuthManager {
     this.localStorageWrapper.remove(this.storageAuthorizationData);
   }
 
+  getUser() {
+    return this.user;
+  }
+
   getUserRole() {
     return this.user && this.user.role;
   }
 
-  private handleUserResult(data) {
+  handleUserResult(data) {
     this.user = new User(data);
     return Promise.resolve(this.user);
   }

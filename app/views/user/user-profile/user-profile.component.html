@@ -5,36 +5,48 @@
   </div>
 
   <div class="centered-form-container">
-    <form class="centered-form" #form="ngForm">
-
-      <div class="form-group">
+    <form class="centered-form" #form="ngForm" (ngSubmit)="onSubmit()">
+      <div class="material-group form-group presentation">
         <label for="presentation">{{'profile.form.presentation' | translate | uppercase}}*</label>
-        <textarea name="presentation" id="presentation" [(ngModel)]="userProfile.presentation" required minlength="10"></textarea>
+        <textarea name="presentation" id="presentation" class="material-input" [disabled]="!editMode" [(ngModel)]="userProfile.presentation" required minlength="10"></textarea>
+
+        <div class="fs-m0 material-group-error" *ngIf="form.controls.presentation && form.controls.presentation.invalid && form.controls.presentation.touched">
+          {{'profile.form.presentation.validation' | translate}}
+        </div>
       </div>
 
-      <div class="form-group">
-        <label for="languages">{{'profile.form.languages' | translate | uppercase}}*</label>
-        <textarea name="languages" id="languages" required minlength="10"></textarea>
+      <div class="material-group form-group languages">
+        <label for="languages">{{'profile.form.languages' | translate | uppercase}}</label>
+        <textarea name="languages" id="languages" class="material-input" [disabled]="!editMode"></textarea>
       </div>
 
-      <div class="form-group">
-        <label for="work-experience">{{'profile.form.experience' | translate | uppercase}}*</label>
-        <textarea name="workExperience" id="work-experience" [(ngModel)]="userProfile.workExperience" required minlength="10"></textarea>
+      <div class="material-group form-group work-experience">
+        <label for="work-experience">{{'profile.form.experience' | translate | uppercase}}</label>
+        <textarea name="workExperience" id="work-experience" class="material-input" [disabled]="!editMode" [(ngModel)]="userProfile.workExperience"></textarea>
       </div>
 
-      <div class="form-group">
-        <label for="education">{{'profile.form.education' | translate | uppercase}}*</label>
-        <textarea name="education" id="education" [(ngModel)]="userProfile.education" required minlength="10"></textarea>
+      <div class="material-group form-group education">
+        <label for="education">{{'profile.form.education' | translate | uppercase}}</label>
+        <textarea name="education" id="education" class="material-input" [disabled]="!editMode" [(ngModel)]="userProfile.education"></textarea>
       </div>
 
-      <div class="form-group">
-        <label for="skills">{{'profile.form.skills' | translate | uppercase}}*</label>
-        <textarea name="skills" id="skills" [(ngModel)]="userProfile.skills" required minlength="10"></textarea>
+      <div class="material-group form-group skills">
+        <label for="skills">{{'profile.form.skills' | translate | uppercase}}</label>
+        <textarea name="skills" id="skills" class="material-input" [disabled]="!editMode" [(ngModel)]="userProfile.skills"></textarea>
       </div>
 
       <hr>
       <div class="text-center fs-m">
         {{'profile.create.notification' | translate}}
+      </div>
+
+      <div class="text-center">
+        <button type="button" class="button secondary form-control clickable" (click)="onEditClick()" *ngIf="!editMode">
+          {{'common.edit' | translate}}
+        </button>
+        <button type="submit" class="button primary form-control clickable" [disabled]="form.invalid" *ngIf="editMode">
+          {{'common.save' | translate}}
+        </button>
       </div>
     </form>
   </div>

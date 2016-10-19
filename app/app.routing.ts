@@ -12,7 +12,7 @@ const appRoutes: Routes = [
   { path: 'home', component: HomeComponent, data: { roles: ['company']} },
   { path: 'about', component: AboutComponent, data: {title: 'About', roles: ['company'] }, canActivate: [AuthGuard]},
   { path: 'user/register', component: UserRegisterComponent },
-  { path: 'user', component: UserProfileComponent },
+  { path: 'user', component: UserProfileComponent }, // TODO: restrict for logged in users
   { path: '**', redirectTo: 'home' }
 ];
 
