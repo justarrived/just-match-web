@@ -3,9 +3,9 @@ export class Country {
   name: string;
   countryCode: string;
 
-  constructor(jsonObject: Object) {
-    this.id = jsonObject['id'];
-    this.name = jsonObject['en-name'];
-    this.countryCode = jsonObject['country-code'];
+  constructor(jsonObject: any) {
+    this.id = jsonObject.id;
+    this.name = jsonObject.en_name;
+    this.countryCode = jsonObject.country_code;
   }
 }

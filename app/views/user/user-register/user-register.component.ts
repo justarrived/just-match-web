@@ -14,7 +14,7 @@ import {Router} from "@angular/router";
   styleUrls: ['user-register.component.css']
 })
 export class UserRegisterComponent implements OnInit {
-  user: UserRegister = new UserRegister();
+  userRegister: UserRegister = new UserRegister();
   statuses: Array<UserStatus>;
   atUndStatuses = AT_UND_STATUSES;
   countries: Array<Country>;
@@ -36,18 +36,18 @@ export class UserRegisterComponent implements OnInit {
     let file = event.srcElement.files[0];
     let data = new FormData();
     data.append('image', file);
-    this.userProxy.saveImage(data).then(userImage => this.user.imageToken = userImage.oneTimeToken);
+    this.userProxy.saveImage(data).then(userImage => this.userRegister.imageToken = userImage.oneTimeToken);
   }
 
   onSubmit() {
     this.errors = {};
 
-    this.user.languageId = 38; // TODO: use the interface choosen language from the user
-    this.userProxy.saveUser(this.user.toJsonObject())
+    this.userRegister.languageId = 38; // TODO: use the interface choosen language from the user
+    this.userProxy.saveUser(this.userRegister.toJsonObject())
       .then(() => {
-        return this.authManager.logUser(this.user.email, this.user.password);
+        return this.authManager.logUser(this.userRegister.email, this.userRegister.password);
       }).then(() => {
-        this.router.navigate(['/home']); // TODO: redirect to edit candidate profile view
+        this.router.navigate(['/user']);
       }).catch(errors => {
         this.errors = errors;
       });

@@ -1,0 +1,68 @@
+<div class="user-profile">
+  <div class="subheader text-center">
+    <div class="fs-l form-group">{{'profile' | translate | uppercase}}</div>
+    <div class="subheader-text form-group">{{'profile.create.description' | translate}}</div>
+
+    <div class="table upload-group-container">
+      <div class="table-row">
+        <div class="table-cell upload-group">
+          <input type="file" id="image-filename" name="imageFilename" class="file" [disabled]="!editMode" (change)="onImageFilenameChange($event)" accept="image/*">
+          <div class="icon-camera opacity-over" [ngClass]="{enabled: editMode}">
+            <i class="demo-icon icon-ic-camera"></i>
+            <div class="fs-s text-center">{{'profile.form.photo.choose' | translate}}</div>
+          </div>
+
+          <div class="user-info-image" [ngStyle]="{'background-image': 'url(' + userProfile.imageUrl + ')'}"></div>
+        </div>
+        <div class="table-cell fs-m">{{user.firstName}} {{user.lastName}}</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="centered-form-container">
+    <form class="centered-form" #form="ngForm" (ngSubmit)="onSubmit()">
+      <div class="material-group form-group presentation">
+        <label for="presentation">{{'profile.form.presentation' | translate | uppercase}}*</label>
+        <textarea name="presentation" id="presentation" class="material-input" [disabled]="!editMode" [(ngModel)]="userProfile.presentation" required minlength="10"></textarea>
+
+        <div class="fs-m0 material-group-error" *ngIf="form.controls.presentation && form.controls.presentation.invalid && form.controls.presentation.touched">
+          {{'profile.form.presentation.validation' | translate}}
+        </div>
+      </div>
+
+      <div class="material-group form-group languages">
+        <label for="languages">{{'profile.form.languages' | translate | uppercase}}</label>
+        <textarea name="languages" id="languages" class="material-input" [disabled]="!editMode"></textarea>
+      </div>
+
+      <div class="material-group form-group work-experience">
+        <label for="work-experience">{{'profile.form.experience' | translate | uppercase}}</label>
+        <textarea name="workExperience" id="work-experience" class="material-input" [disabled]="!editMode" [(ngModel)]="userProfile.workExperience"></textarea>
+      </div>
+
+      <div class="material-group form-group education">
+        <label for="education">{{'profile.form.education' | translate | uppercase}}</label>
+        <textarea name="education" id="education" class="material-input" [disabled]="!editMode" [(ngModel)]="userProfile.education"></textarea>
+      </div>
+
+      <div class="material-group form-group skills">
+        <label for="skills">{{'profile.form.skills' | translate | uppercase}}</label>
+        <textarea name="skills" id="skills" class="material-input" [disabled]="!editMode" [(ngModel)]="userProfile.skills"></textarea>
+      </div>
+
+      <hr>
+      <div class="text-center fs-m">
+        {{'profile.create.notification' | translate}}
+      </div>
+
+      <div class="text-center">
+        <button type="button" class="button secondary form-control clickable" (click)="onEditClick()" *ngIf="!editMode">
+          {{'common.edit' | translate}}
+        </button>
+        <button type="submit" class="button primary form-control clickable" [disabled]="form.invalid" *ngIf="editMode">
+          {{'common.save' | translate}}
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

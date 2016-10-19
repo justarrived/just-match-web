@@ -37,7 +37,7 @@ export class AuthManager {
   authenticateIfNeeded(): Promise<User> {
     let authorizationData = this.localStorageWrapper.getObject(this.storageAuthorizationData);
     if (authorizationData) {
-      return this.userProxy.getUser(authorizationData['user-id']).then(response => {
+      return this.userProxy.getUser(authorizationData['user-id'], {include: 'user_images'}).then(response => {
         return this.handleUserResult(response.data);
       });
     }
@@ -50,11 +50,15 @@ export class AuthManager {
     this.localStorageWrapper.remove(this.storageAuthorizationData);
   }
 
+  getUser() {
+    return this.user;
+  }
+
   getUserRole() {
     return this.user && this.user.role;
   }
 
-  private handleUserResult(data) {
+  handleUserResult(data) {
     this.user = new User(data);
     return Promise.resolve(this.user);
   }
