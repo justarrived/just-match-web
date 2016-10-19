@@ -44,6 +44,17 @@ body {
     text-align: center;
   }
 
+  .table {
+    display: table;
+  }
+  .table-row {
+    display: table-row;
+  }
+  .table-cell {
+    display: table-cell;
+    vertical-align: middle;
+  }
+
   .color-dark {
     color: $color-dark
   }
@@ -84,6 +95,9 @@ body {
     color: $color-pink-2;
   }
 
+  .fs-s {
+    font-size: $fs-s;
+  }
   .fs-m0 {
     font-size: $fs-m0;
   }

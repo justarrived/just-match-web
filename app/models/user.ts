@@ -1,7 +1,13 @@
+import {UserImage} from "./user/user-image";
+import {map} from "lodash";
+
 export class User {
   id: number;
+  firstName: string;
+  lastName: string;
   email: string;
   role: string;
+  images: UserImage[];
   presentation: string;
   workExperience: string;
   education: string;
@@ -9,8 +15,11 @@ export class User {
 
   constructor(jsonObject: any) {
     this.id = jsonObject.id;
+    this.firstName = jsonObject.first_name;
+    this.lastName = jsonObject.last_name;
     this.email = jsonObject.email;
     this.role = jsonObject.primary_role;
+    this.images = map(jsonObject.user_images, userImage => new UserImage(userImage));
     this.presentation = jsonObject.description;
     this.workExperience = jsonObject.job_experience;
     this.education = jsonObject.education;

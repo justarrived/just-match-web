@@ -2,6 +2,7 @@ import {User} from "../user";
 export class UserProfile {
   id: number;
   imageToken: string;
+  imageUrl: string;
   presentation: string;
   workExperience: string;
   education: string;
@@ -9,6 +10,7 @@ export class UserProfile {
 
   constructor(user: User) {
     this.id = user.id;
+    this.imageUrl = (user.images && user.images[0] && user.images[0].imageUrl) || 'app/assets/images/placeholder-profile-image.png';
     this.presentation = user.presentation;
     this.workExperience = user.workExperience;
     this.education = user.education;
