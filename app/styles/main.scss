@@ -231,6 +231,10 @@ body {
       border: 1px solid $color-blue-1;
     }
 
+    textarea.material-input {
+      resize: none;
+    }
+
     .material-label {
       position: absolute;
       pointer-events: none;

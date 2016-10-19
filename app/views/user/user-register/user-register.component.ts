@@ -47,7 +47,7 @@ export class UserRegisterComponent implements OnInit {
       .then(() => {
         return this.authManager.logUser(this.userRegister.email, this.userRegister.password);
       }).then(() => {
-        this.router.navigate(['/home']); // TODO: redirect to edit candidate profile view
+        this.router.navigate(['/user']);
       }).catch(errors => {
         this.errors = errors;
       });
