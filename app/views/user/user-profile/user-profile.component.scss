@@ -6,7 +6,6 @@
     margin: 0 auto;
 
     .upload-group {
-      cursor: pointer;
       position: relative;
       display: block;
       margin-right: 50px;
@@ -17,7 +16,9 @@
 
       &:hover {
         .opacity-over {
-          opacity: 1;
+          &.enabled {
+            opacity: 1;
+          }
         }
       }
 

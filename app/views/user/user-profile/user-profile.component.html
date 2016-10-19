@@ -7,7 +7,7 @@
       <div class="table-row">
         <div class="table-cell upload-group">
           <input type="file" id="image-filename" name="imageFilename" class="file" [disabled]="!editMode" (change)="onImageFilenameChange($event)" accept="image/*">
-          <div class="icon-camera opacity-over">
+          <div class="icon-camera opacity-over" [ngClass]="{enabled: editMode}">
             <i class="demo-icon icon-ic-camera"></i>
             <div class="fs-s text-center">{{'profile.form.photo.choose' | translate}}</div>
           </div>
