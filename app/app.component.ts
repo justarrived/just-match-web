@@ -12,9 +12,12 @@ import {User} from "./models/user";
 })
 export class AppComponent implements OnInit {
   user: User;
+  isNavigationMenuVisible: boolean = false;
+
   constructor(private authManager: AuthManager, private router: Router, public translationService: TranslationService) {
     router.events.subscribe(event => {
       if (event instanceof NavigationStart) {
+        this.isNavigationMenuVisible = false;
       }
 
       if (event instanceof NavigationEnd) {
@@ -47,8 +50,15 @@ export class AppComponent implements OnInit {
     this.user = this.authManager.getUser();
   }
 
-  test() {
-    console.log('click');
+  onBodyClick(event) {
+    let targetClasses = event.target.classList;
+    if ((targetClasses.contains('overbody-container') || targetClasses.contains('menu-side-bar')) && this.isNavigationMenuVisible) {
+      this.isNavigationMenuVisible = false;
+    }
+  }
+
+  onMenuButtonClick() {
+    this.isNavigationMenuVisible = true;
   }
 }
 

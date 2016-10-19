@@ -48,7 +48,28 @@
         font-size: 24px;
       }
     }
+  }
 
+  .menu-icon {
+    height: 27px;
+    overflow: hidden;
+    padding-top: 3px;
+    margin: 0 auto 4px;
+
+    i {
+      display: block;
+      background: #fff;
+      height: 5px;
+      width: 30px;
+      margin: 3px auto;
+      -webkit-border-radius: 2px;
+      border-radius: 2px;
+    }
+  }
+
+  .menu-text {
+    color: #fff;
+    font-size: 12px;
   }
 }
 
@@ -74,13 +95,31 @@
   height: 100%;
   overflow-y: auto;
 
-  .nav-menu-container {
+  .menu-container {
     width: 375px;
     background: rgba(34, 37, 49, 0.95);
     float: right;
     position: relative;
     z-index: 22;
     height: 100%;
+
+
+    &.language-menu-container {
+
+      .just-arrived-logo-container {
+        height: 50px;
+        padding: 20px;
+
+        .language-logo-img {
+          height: 100%;
+        }
+      }
+
+      .select-language-header-text {
+        color: white;
+      }
+    }
+
 
     .nav-menu-icon-container {
       color: $color-dark;

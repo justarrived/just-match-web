@@ -9,7 +9,7 @@ export class AuthManager {
   private storageAuthorizationData: string = 'authorizationData';
   private user: User;
 
-  constructor(private apiCall: ApiCall, private localStorageWrapper: LocalStorageWrapper, private userProxy: UserProxy) {
+  constructor(private localStorageWrapper: LocalStorageWrapper, private userProxy: UserProxy) {
   }
 
   isUserLoggedin(): boolean {
@@ -21,10 +21,7 @@ export class AuthManager {
 }
 
   logUser(email: string, password: string) {
-    return this.apiCall.post('users/sessions', {
-      "email-or-phone": email,
-      "password": password
-    }).then(response => {
+    this.userProxy.getUserSession(email, password).then(response => {
         let data = response.data;
         this.localStorageWrapper.setObject(this.storageAuthorizationData, data);
         return this.userProxy.getUser(data['user-id']);

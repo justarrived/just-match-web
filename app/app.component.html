@@ -1,6 +1,6 @@
-<div class="overbody-container" (click)="test()"></div>
-<div class="menu-side-bar" (click)="test()">
-  <div class="nav-menu-container table">
+<div class="menu-side-bar" (click)="onBodyClick($event)" [hidden]="!isNavigationMenuVisible">
+  <div class="overbody-container"></div>
+  <div class="menu-container table">
     <div class="nav-menu table-cell">
       <div class="nav-menu-icon-container"><i class="icon-ic-just-arrived-logo"></i></div>
       <div class="nav-menu-item-container">
@@ -14,7 +14,6 @@
         <div class="nav-menu-item"><a class="nav-menu-link nav-signout" href="">{{'menu.main.logout' | translate}}</a></div>
       </div>
     </div>
-
   </div>
   <div class="table" *ngIf="!!user">
     <div class="table-row">
@@ -26,7 +25,15 @@
     </div>
   </div>
 </div>
-
+<div class="menu-side-bar" [hidden]="true">
+  <div class="overbody-container"></div>
+  <div class="menu-container language-menu-container">
+    <div class="just-arrived-logo-container text-center">
+      <img class="language-logo-img" src="app/assets/images/logo.svg" alt="Just Arrived"/>
+    </div>
+    <div class="select-language-header-text text-center fs-xl">{{ 'menu.language.title' | translate }}</div>
+  </div>
+</div>
 <header class="table header">
   <div class="table-row">
     <div class="table-cell header-logo-container">
@@ -50,9 +57,7 @@
       </div>
     </div>
     <div class="table-cell">
-      <div>
-        <button ng-click="ctrl.menu()" type="button"><span class="menu-icon"><i></i><i></i><i></i></span><span class="menu-text">{{"common.menu" | translate}}</span></button>
-      </div>
+      <div (click)="onMenuButtonClick()"><span class="menu-icon"><i></i><i></i><i></i></span><span class="menu-text">{{"common.menu" | translate}}</span></div>
     </div>
   </div>
 </header>
