@@ -1,0 +1,188 @@
+@import "../../styles/variables.scss";
+
+$font-hover-color: #ffffff;
+$background-color: #ffffff;
+$disabled-background-color: #eeeeee;
+$ms-item-text-color: #ffffff;
+
+.autocomplete-dropdown {
+  position: relative;
+
+  .dropdown-text-input-container {
+    position: relative;
+    min-width: 170px;
+
+    .drop-down-arrow {
+      position: absolute;
+      text-align: center;
+      right: 10px;
+      top: calc(50% - 8px);
+      background-color: $background-color;
+
+      &.disabled {
+        background-color: unset;
+      }
+
+      .fa {
+        transition: 0.3s;
+        filter: blur(0px);
+      }
+
+      &.opened {
+        .fa {
+          &.fa-chevron-down {
+            transform: rotate(180deg);
+          }
+          &.fa-plus {
+            transform: rotate(90deg);
+          }
+        }
+      }
+    }
+  }
+
+  .autocomplete-dropdown-container {
+    border: 1px solid $color-gray-2;
+    border-radius: 20px;
+    background-color: $background-color;
+    padding-left: 10px;
+
+    &.table {
+      background-color: $background-color;
+    }
+
+    .form-control {
+      border: none;
+      box-shadow: none;
+    }
+  }
+
+  .dropdown-items-list {
+    min-width: 100%;
+    height: auto;
+    max-height: 426px;
+    overflow-x: hidden;
+
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    float: left;
+    padding: 5px 0;
+    margin: 2px 0 0;
+    list-style: none;
+    background-color: $background-color;
+    background-clip: padding-box;
+    border: 1px solid $color-gray-2;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+
+    .autocomplete-dropdown-list-item {
+      display: block;
+      padding: 3px 20px;
+      clear: both;
+      white-space: nowrap;
+      list-style: none;
+      text-align: left;
+
+      &.group {
+        padding: 5px;
+        background-color: $color-gray-2;
+      }
+
+      &:not(.group) {
+        &:hover {
+          color: $font-hover-color;
+          background-color: $color-gray-3;
+        }
+      }
+    }
+  }
+
+  &.disabled {
+    .drop-down-arrow {
+      background-color: unset;
+      cursor: not-allowed;
+    }
+
+    .autocomplete-dropdown-container {
+      background-color: $disabled-background-color;
+      cursor: not-allowed;
+    }
+
+    .deletable-item {
+      background-color: $disabled-background-color;
+    }
+
+    .multipleselect-item-delete-icon {
+      background-color: unset;
+      cursor: not-allowed;
+    }
+  }
+
+  &.wrap-mode {
+    .autocomplete-dropdown-container {
+      &.multiple-select {
+        .items-column {
+          white-space: normal;
+          width: auto;
+        }
+
+        .deletable-item {
+          white-space: normal;
+        }
+
+        .dropdown-text-input-container {
+          width: 170px;
+        }
+      }
+    }
+  }
+
+  &.no-border {
+    .dropdown-text-input-container {
+      .form-control {
+        border: none;
+        box-shadow: none;
+      }
+    }
+  }
+
+  .selected-autocomplete-item {
+    color: $ms-item-text-color;
+    background-color: $color-gray-2;
+  }
+}
+
+.deletable-item {
+  position: relative;
+  display: inline-block;
+  color: $ms-item-text-color;
+  background-color: $color-gray-3;
+  border-radius: 4px;
+  padding: 4px 10px;
+  white-space: nowrap;
+  margin: 2px 3px 0;
+}
+
+.nowrap-autocomplete-container {
+  .wrap-mode, &.wrap-mode {
+    .autocomplete-dropdown-container {
+      &.multiple-select {
+        .items-column {
+          white-space: nowrap;
+          width: 1px;
+        }
+
+        .deletable-item {
+          white-space: nowrap;
+        }
+
+        .dropdown-text-input-container {
+          width: auto;
+        }
+      }
+    }
+  }
+}
