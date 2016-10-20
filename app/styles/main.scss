@@ -40,6 +40,9 @@ body {
     margin-bottom: 15px;
   }
 
+  .text-left {
+    text-align: left;
+  }
   .text-center {
     text-align: center;
   }
@@ -53,6 +56,11 @@ body {
   .table-cell {
     display: table-cell;
     vertical-align: middle;
+
+    &.min-width-column {
+      white-space: nowrap;
+      width: 1px;
+    }
   }
 
   .color-dark {
