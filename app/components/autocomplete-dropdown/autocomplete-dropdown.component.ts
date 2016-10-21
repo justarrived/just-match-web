@@ -3,8 +3,7 @@ import {Component, Input, ElementRef, ViewChild} from "@angular/core";
 @Component({
   moduleId: module.id,
   selector: 'autocomplete-dropdown',
-  templateUrl: 'autocomplete-dropdown.component.html',
-  styleUrls: ['autocomplete-dropdown.component.css']
+  templateUrl: 'autocomplete-dropdown.component.html'
 })
 export class AutocompleteDropdownComponent {
   @Input() destination: '=';
@@ -33,8 +32,6 @@ export class AutocompleteDropdownComponent {
   @Input() iconClass: string;
   @Input() getData: Function;
 
-  @ViewChild('autocomplete-dropdown') element: ElementRef;
-
   isMultipleSelect: boolean;
   isDropdownOpened: boolean = false;
   autocompleteResults: any[] = [];
@@ -44,7 +41,6 @@ export class AutocompleteDropdownComponent {
   constructor(private elementRef: ElementRef) {
     this.isMultipleSelect = this.isArray && this.maxItems !== 1;
 
-    console.log('element', this.element);
     console.log('elementRef', this.elementRef);
   }
 }
