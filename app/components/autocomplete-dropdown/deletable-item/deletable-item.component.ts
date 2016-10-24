@@ -14,7 +14,6 @@ export class DeletableItemComponent implements OnChanges {
   label: string;
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log('Change in deletable-item', changes);
     this.updateLabel();
   }
 

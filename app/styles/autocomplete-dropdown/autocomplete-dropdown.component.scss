@@ -141,12 +141,16 @@ $ms-item-text-color: #ffffff;
 .deletable-item {
   position: relative;
   display: inline-block;
-  color: $ms-item-text-color;
   background-color: $color-gray-3;
   border-radius: 4px;
   padding: 4px 10px;
   white-space: nowrap;
   margin: 2px 3px 0;
+
+  .icon-ic-close {
+    font-size: 10px;
+    margin-left: 5px;
+  }
 }
 
 .nowrap-autocomplete-container {
