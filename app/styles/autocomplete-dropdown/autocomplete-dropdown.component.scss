@@ -1,6 +1,5 @@
 @import "../variables.scss";
 
-$font-hover-color: #ffffff;
 $background-color: #ffffff;
 $disabled-background-color: #eeeeee;
 $ms-item-text-color: #ffffff;
@@ -16,34 +15,18 @@ $ms-item-text-color: #ffffff;
       position: absolute;
       text-align: center;
       right: 10px;
-      top: calc(50% - 8px);
+      top: calc(50% - 4px);
+      font-size: 8px;
       background-color: $background-color;
 
       &.disabled {
         background-color: unset;
       }
-
-      .fa {
-        transition: 0.3s;
-        filter: blur(0px);
-      }
-
-      &.opened {
-        .fa {
-          &.fa-chevron-down {
-            transform: rotate(180deg);
-          }
-          &.fa-plus {
-            transform: rotate(90deg);
-          }
-        }
-      }
     }
   }
 
   .autocomplete-dropdown-container {
-    border: 1px solid $color-gray-2;
-    border-radius: 20px;
+    border: 1px solid $color-blue-1;
     background-color: $background-color;
     padding-left: 10px;
 
@@ -54,6 +37,8 @@ $ms-item-text-color: #ffffff;
     .form-control {
       border: none;
       box-shadow: none;
+      padding: 10px 12px;
+      font-size: $fs-m0;
     }
   }
 
@@ -73,8 +58,7 @@ $ms-item-text-color: #ffffff;
     list-style: none;
     background-color: $background-color;
     background-clip: padding-box;
-    border: 1px solid $color-gray-2;
-    border-radius: 4px;
+    border: 1px solid $color-blue-1;
     -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
     box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
 
@@ -93,7 +77,6 @@ $ms-item-text-color: #ffffff;
 
       &:not(.group) {
         &:hover {
-          color: $font-hover-color;
           background-color: $color-gray-3;
         }
       }

@@ -21,6 +21,10 @@ body {
     }
   }
 
+  input {
+    outline: none;
+  }
+
   input[type="date"] {
     text-transform: uppercase;
   }
@@ -233,8 +237,6 @@ body {
       margin-bottom: 5px;
 
       &:focus, &.not-empty {
-        outline: none;
-
         ~ .material-label:not(.label-up) {
           @include label-up();
         }
