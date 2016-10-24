@@ -1,4 +1,4 @@
-import {Component, Input, ElementRef, OnInit} from "@angular/core";
+import {Component, Input, ElementRef, OnInit, EventEmitter, Output} from "@angular/core";
 import {cloneDeep, some, isEqual, isObject, assignIn, filter} from "lodash";
 import {CountryProxy} from "../../services/proxy/country-proxy.service";
 import {deleteElementFromArray} from "../../utils/array-util";
@@ -10,6 +10,7 @@ import {deleteElementFromArray} from "../../utils/array-util";
 })
 export class AutocompleteDropdownComponent implements OnInit {
   @Input() destination: any;
+  @Output() destinationChange = new EventEmitter();
   @Input() lookupType: string;
   @Input() lookupPrefix: string = 'client/lookup';
   @Input() queryScope: string;
@@ -58,6 +59,7 @@ export class AutocompleteDropdownComponent implements OnInit {
 
     if (this.isArray) {
       this.destination = this.destination || [];
+      this.destinationChange.emit(this.destination);
       this._setWrapMode();
     }
 
@@ -82,16 +84,17 @@ export class AutocompleteDropdownComponent implements OnInit {
     }
   }
 
-  onDeleteSelectedItem(item) {
+  onDeleteSelectedItem(item: any) {
     if (this.minItems && this.destination && this.minItems === this.destination.length) {
       return;
     }
 
     deleteElementFromArray(this.destination, item);
+    this.destinationChange.emit(this.destination);
     this._setWrapMode();
   }
 
-  onDropdownListItemSelect(item) {
+  onDropdownListItemSelect(item: any) {
     this.isDropdownOpened = false;
     this._setSelectedItem(item);
     this.selectedItemIndex = null;
@@ -122,7 +125,6 @@ export class AutocompleteDropdownComponent implements OnInit {
   }
 
   private _getLookupData() {
-    console.log('get lookup data');
     switch (this.lookupType) {
       case 'enum':
         var filteredKeys = filter(Object.keys(this.enumList), key => {
@@ -198,6 +200,7 @@ export class AutocompleteDropdownComponent implements OnInit {
   private _setDestination(item: any) {
     if (item && this.allOptionValue === item) {
       this.destination = cloneDeep(item);
+      this.destinationChange.emit(this.destination);
       return;
     }
 
@@ -223,6 +226,8 @@ export class AutocompleteDropdownComponent implements OnInit {
     } else {
       this.destination = cloneDeep(itemActual);
     }
+
+    this.destinationChange.emit(this.destination);
   }
 
   private _setWrapMode() {

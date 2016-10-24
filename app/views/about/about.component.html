@@ -10,6 +10,9 @@
 <div class="material-group">
   <autocomplete-dropdown [autocompleteResultLabelFunction]="namePropertyLabel"
                          [autocompleteToSelectedItemFunction]="namePropertyLabel"
-                         [placeholder]="'Search country'"></autocomplete-dropdown>
+                         [placeholder]="'Search country'" [(destination)]="myModel.value"></autocomplete-dropdown>
   <label class="material-label label-up">Country</label>
 </div>
+
+<br><br>
+<div>{{myModel.value}}</div>

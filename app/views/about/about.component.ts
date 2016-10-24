@@ -9,6 +9,8 @@ import {namePropertyLabel} from "../../utils/label-util";
 })
 export class AboutComponent implements OnInit {
 
+  myModel: any = {value: 'baba'};
+
   namePropertyLabel: Function = namePropertyLabel;
 
   constructor(private translationService: TranslationService, private apiCall: ApiCall) {
