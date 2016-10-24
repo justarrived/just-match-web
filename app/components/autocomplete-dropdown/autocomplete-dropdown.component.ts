@@ -6,7 +6,10 @@ import {deleteElementFromArray} from "../../utils/array-util";
 @Component({
   moduleId: module.id,
   selector: 'autocomplete-dropdown',
-  templateUrl: 'autocomplete-dropdown.component.html'
+  templateUrl: 'autocomplete-dropdown.component.html',
+  host: {
+    '(document:click)': 'onDocumentClick($event)'
+  }
 })
 export class AutocompleteDropdownComponent implements OnInit {
   @Input() destination: any;
@@ -35,6 +38,10 @@ export class AutocompleteDropdownComponent implements OnInit {
   @Input() iconClass: string;
   @Input() getData: Function;
 
+  private UP_ARROW_KEY = 40;
+  private DOWN_ARROW_KEY = 38;
+  private ENTER_KEY = 13;
+
   private _searchQueryTimeoutId;
   private _isDefaultOptionSet: boolean = false;
   private _lastTextInput: string = '';
@@ -52,9 +59,14 @@ export class AutocompleteDropdownComponent implements OnInit {
 
   textInput: string = '';
 
-  constructor(private elementRef: ElementRef, private _countryProxy: CountryProxy) { }
+  constructor(private _elementRef: ElementRef, private _countryProxy: CountryProxy) { }
 
   ngOnInit() {
+    this.destinationChange.subscribe(() => {
+      this._setTextInputFromDestination();
+      this._setWrapMode();
+    });
+
     this.isMultipleSelect = this.isArray && this.maxItems !== 1;
 
     if (this.isArray) {
@@ -122,6 +134,13 @@ export class AutocompleteDropdownComponent implements OnInit {
 
   allOptionLabelFunction() {
     return this.allOptionLabel || 'All';
+  }
+
+  private onDocumentClick(event) {
+    if (!this._elementRef.nativeElement.contains(event.target) && this.isDropdownOpened) {
+      this._setTextInputFromLast();
+      this.isDropdownOpened = false;
+    }
   }
 
   private _getLookupData() {
