@@ -6,3 +6,6 @@
   <button type="button" (click)="translationService.setLanguage('ku')">Kurdish</button>
 </div>
 <div>{{'user.assignment.confirmation.description' | translate:{candidate_name: 'Some user'} }}</div>
+
+<autocomplete-dropdown [autocompleteResultLabelFunction]="namePropertyLabel"
+                       [autocompleteToSelectedItemFunction]="namePropertyLabel"></autocomplete-dropdown>

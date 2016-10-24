@@ -8,15 +8,15 @@
       <div *ngIf="isMultipleSelect" class="table-cell min-width-column items-column">
         <deletable-item *ngFor="let item of destination" [isDisabled]="isDisabled" [labelFunction]="selectedItemLabelFunction" [item]="item" (deleteSelectedItem)="onDeleteSelectedItem($event)"></deletable-item>
       </div>
-      <div class="table-cell dropdown-text-input-container clickable" [ngClass]="{disabled: maxItems > 1 && destination && destination.length >= maxItems}" (click)="handleDownArrowClick()">
+      <div class="table-cell dropdown-text-input-container clickable" [ngClass]="{disabled: maxItems > 1 && destination && destination.length >= maxItems}" (click)="onDownArrowClick()">
         <input class="form-control" [disabled]="isDisabled || (maxItems > 1 && destination && destination.length >= maxItems)" type="text" placeholder="{{placeholder}}" [(ngModel)]="textInput" (ngModelChange)="onTextInputChange()"/>
         <!--<div class="drop-down-arrow" [ngClass]="{disabled: maxItems > 1 && destination.length >= maxItems, opened: isDropdownOpened}"><i class="fa" [ngClass]="{'fa-chevron-down': !isMultipleSelect, 'fa-plus': isMultipleSelect}"></i></div>-->
       </div>
     </div>
   </div>
   <div class="dropdown-items-list" [hidden]="!isDropdownOpened">
-    <autocomplete-dropdown-list-item *ngIf="hasAllOption" [item]="allOptionValue" [labelFunction]="allOptionLabelFunction" [ngClass]="{'selected-autocomplete-item': -1 === selectedItemIndex }"></autocomplete-dropdown-list-item>
-    <autocomplete-dropdown-list-item *ngFor="let item of autocompleteResults; let index = index" [item]="item" [labelFunction]="autocompleteResultLabelFunction" [isGroupFunction]="isGroupFunction" [ngClass]="{'selected-autocomplete-item': index === selectedItemIndex }"></autocomplete-dropdown-list-item>
+    <autocomplete-dropdown-list-item *ngIf="hasAllOption" [item]="allOptionValue" [labelFunction]="allOptionLabelFunction" [ngClass]="{'selected-autocomplete-item': -1 === selectedItemIndex}" (dropdownListItemSelect)="onDropdownListItemSelect()"></autocomplete-dropdown-list-item>
+    <autocomplete-dropdown-list-item *ngFor="let item of autocompleteResults; let index = index" [item]="item" [labelFunction]="autocompleteResultLabelFunction" [isGroupFunction]="isGroupFunction" [ngClass]="{'selected-autocomplete-item': index === selectedItemIndex}" (dropdownListItemSelect)="onDropdownListItemSelect()"></autocomplete-dropdown-list-item>
 
     <div *ngIf="!autocompleteResults.length" class="autocomplete-dropdown-list-item">
       No items to display

@@ -1,15 +1,14 @@
-import {Component, Input, ElementRef} from "@angular/core";
+import {Component, Input, ElementRef, OnInit} from "@angular/core";
 import {cloneDeep, some, isEqual, isObject, assignIn, filter} from "lodash";
 import {CountryProxy} from "../../services/proxy/country-proxy.service";
 import {deleteElementFromArray} from "../../utils/array-util";
-import {Subject} from "rxjs";
 
 @Component({
   moduleId: module.id,
   selector: 'autocomplete-dropdown',
   templateUrl: 'autocomplete-dropdown.component.html'
 })
-export class AutocompleteDropdownComponent {
+export class AutocompleteDropdownComponent implements OnInit {
   @Input() destination: any;
   @Input() lookupType: string;
   @Input() lookupPrefix: string = 'client/lookup';
@@ -40,7 +39,7 @@ export class AutocompleteDropdownComponent {
   private _lastTextInput: string = '';
   private _firstItemIndex: number = this.hasAllOption ? -1 : 0;
 
-  private _textInputs = new Subject<string>();
+  private _isGroupFunction: Function;
 
   wrapMode: boolean = false;
 
@@ -52,10 +51,35 @@ export class AutocompleteDropdownComponent {
 
   textInput: string = '';
 
-  constructor(private elementRef: ElementRef, private countryProxy: CountryProxy) {
+  constructor(private elementRef: ElementRef, private _countryProxy: CountryProxy) { }
+
+  ngOnInit() {
     this.isMultipleSelect = this.isArray && this.maxItems !== 1;
 
-    console.log('elementRef', this.elementRef);
+    if (this.isArray) {
+      this.destination = this.destination || [];
+      this._setWrapMode();
+    }
+
+    if (this.autoSelectFirstOption) {
+      this._getLookupData();
+    }
+
+    if (this.lookupType === 'enum' && !this.autocompleteResultLabelFunction) {
+      this.autocompleteResultLabelFunction = (item) => {
+        return item && this.enumList[item] && this.enumList[item].name;
+      };
+    }
+    if (this.lookupType === 'enum' && !this.selectedItemLabelFunction) {
+      this.selectedItemLabelFunction = (item) => {
+        return item && this.enumList[item] && this.enumList[item].name;
+      };
+    }
+    if (this.lookupType === 'enum') {
+      this._isGroupFunction = (item) => {
+        return item && this.enumList[item] && this.enumList[item].isGroup;
+      };
+    }
   }
 
   onDeleteSelectedItem(item) {
@@ -79,7 +103,9 @@ export class AutocompleteDropdownComponent {
 
   // TODO: $scope.$watch('allOptionValue'
 
-  // TODO: handleDownArrowClick
+  onDownArrowClick() {
+    // TODO: implement
+  }
 
   onTextInputChange() {
     if (this.allowFreeText) {
@@ -88,7 +114,7 @@ export class AutocompleteDropdownComponent {
 
     // TODO: refactor to use RxJS extension methods
     clearTimeout(this._searchQueryTimeoutId);
-    this._searchQueryTimeoutId = setTimeout(this._getLookupData, 250);
+    this._searchQueryTimeoutId = setTimeout(() => this._getLookupData(), 250);
   }
 
   allOptionLabelFunction() {
@@ -115,6 +141,9 @@ export class AutocompleteDropdownComponent {
           this.getData(this.textInput, this._setLookupData);
         } else {
           // TODO: call function to get data
+          this._countryProxy.getCountries(this.textInput).then(response => {
+            this._setLookupData(response);
+          });
           // clientLookupProxy.getLookupData(this.lookupPrefix + this.lookupType,
           //   {
           //     query: this.textInput,
