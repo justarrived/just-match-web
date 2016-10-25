@@ -8,7 +8,7 @@ import {deleteElementFromArray} from "../../utils/array-util";
   selector: 'autocomplete-dropdown',
   templateUrl: 'autocomplete-dropdown.component.html',
   host: {
-    '(document:click)': 'onDocumentClick($event)'
+    '(document:click)': '_onDocumentClick($event)'
   }
 })
 export class AutocompleteDropdownComponent implements OnInit {
@@ -37,10 +37,6 @@ export class AutocompleteDropdownComponent implements OnInit {
   @Input() copyToDestination: boolean;
   @Input() iconClass: string;
   @Input() getData: Function;
-
-  private UP_ARROW_KEY = 40;
-  private DOWN_ARROW_KEY = 38;
-  private ENTER_KEY = 13;
 
   private _searchQueryTimeoutId;
   private _isDefaultOptionSet: boolean = false;
@@ -96,6 +92,31 @@ export class AutocompleteDropdownComponent implements OnInit {
     }
   }
 
+  onEnterClick() {
+    if (this.allowFreeText && !this.selectedItemIndex) {
+      this.isDropdownOpened = false;
+      return;
+    }
+    let selectedItem = this.hasAllOption && this.selectedItemIndex === -1 ? this.allOptionValue : this.autocompleteResults[this.selectedItemIndex];
+    this.onDropdownListItemSelect(selectedItem);
+  }
+
+  onArrowUpClick() {
+    if (!this.isDropdownOpened) {
+      this.onInputClick();
+    }
+
+    this._updateSelectedItemIndex(true);
+  }
+
+  onArrowDownClick() {
+    if (!this.isDropdownOpened) {
+      this.onInputClick();
+    }
+
+    this._updateSelectedItemIndex(false);
+  }
+
   onDeleteSelectedItem(item: any) {
     if (this.minItems && this.destination && this.minItems === this.destination.length) {
       return;
@@ -112,14 +133,17 @@ export class AutocompleteDropdownComponent implements OnInit {
     this.selectedItemIndex = null;
   }
 
-  // TODO: handle arrow buttons clicks
+  onInputClick() {
+    if (this.isDisabled) {
+      return;
+    }
 
-  // TODO: $scope.$watch('destination'
-
-  // TODO: $scope.$watch('allOptionValue'
-
-  onDownArrowClick() {
-    // TODO: implement
+    if (this.isDropdownOpened) {
+      this.isDropdownOpened = false;
+    } else {
+      this._clearTextInput();
+      this._getLookupData();
+    }
   }
 
   onTextInputChange() {
@@ -136,11 +160,18 @@ export class AutocompleteDropdownComponent implements OnInit {
     return this.allOptionLabel || 'All';
   }
 
-  private onDocumentClick(event) {
+  private _onDocumentClick(event) {
     if (!this._elementRef.nativeElement.contains(event.target) && this.isDropdownOpened) {
       this._setTextInputFromLast();
       this.isDropdownOpened = false;
     }
+  }
+
+  private _updateSelectedItemIndex(isUp) {
+    this.selectedItemIndex = this.selectedItemIndex || 0;
+    this.selectedItemIndex += isUp ? -1 : 1;
+
+    this.selectedItemIndex = Math.max(Math.min(this.selectedItemIndex, this.autocompleteResults.length - 1), this._firstItemIndex);
   }
 
   private _getLookupData() {
@@ -158,24 +189,20 @@ export class AutocompleteDropdownComponent implements OnInit {
         break;
 
       default:
+        console.log(this.getData);
         if (this.getData) {
-          this.getData(this.textInput, this._setLookupData);
-        } else {
-          // TODO: call function to get data
-          this._countryProxy.getCountries(this.textInput).then(response => {
+          console.log('getting data');
+          // this.getData(this.textInput).then(response => {
+          //   console.log(response);
+          //   this._setLookupData(response);
+          // });
+          this.getData(this.textInput, (response) => {
+            console.log(response);
             this._setLookupData(response);
           });
-          // clientLookupProxy.getLookupData(this.lookupPrefix + this.lookupType,
-          //   {
-          //     query: this.textInput,
-          //     scope: this.queryScope,
-          //     type: this.queryType,
-          //     relation: this.queryRelation,
-          //     companyId: this.queryCompanyId
-          //   }
-          // ).then(function(response) {
-          //   this._setLookupData(response.value);
-          // });
+        } else {
+          // TODO: call function to get data
+          this._countryProxy.getCountries(this.textInput).then(response => this._setLookupData(response));
         }
         break;
     }

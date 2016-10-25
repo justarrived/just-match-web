@@ -81,6 +81,12 @@ $ms-item-text-color: #ffffff;
         }
       }
     }
+
+    .selected-autocomplete-item {
+      .autocomplete-dropdown-list-item {
+        background-color: $color-gray-3;
+      }
+    }
   }
 
   &.disabled {
@@ -130,11 +136,6 @@ $ms-item-text-color: #ffffff;
         box-shadow: none;
       }
     }
-  }
-
-  .selected-autocomplete-item {
-    color: $ms-item-text-color;
-    background-color: $color-gray-2;
   }
 }
 
