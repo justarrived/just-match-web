@@ -39,7 +39,7 @@ export class AutocompleteDropdownComponent implements OnInit {
   @Input() iconClass: string;
   @Input() getData: Function;
 
-  private _searchQueryTimeoutId;
+  private _searchQueryTimeoutId: number;
   private _isDefaultOptionSet: boolean = false;
   private _lastTextInput: string = '';
   private _firstItemIndex: number = this.hasAllOption ? -1 : 0;
@@ -102,7 +102,7 @@ export class AutocompleteDropdownComponent implements OnInit {
     this.onDropdownListItemSelect(selectedItem);
   }
 
-  onArrowClick(isUp) {
+  onArrowClick(isUp: boolean) {
     if (!this.isDropdownOpened) {
       this.onInputClick();
     }
@@ -153,14 +153,14 @@ export class AutocompleteDropdownComponent implements OnInit {
     return this.allOptionLabel || 'All';
   }
 
-  private _onDocumentClick(event) {
+  private _onDocumentClick(event: Event) {
     if (!this._elementRef.nativeElement.contains(event.target) && this.isDropdownOpened) {
       this._setTextInputFromLast();
       this.isDropdownOpened = false;
     }
   }
 
-  private _updateSelectedItemIndex(isUp) {
+  private _updateSelectedItemIndex(isUp: boolean) {
     this.selectedItemIndex = this.selectedItemIndex || 0;
     this.selectedItemIndex += isUp ? -1 : 1;
 
@@ -192,7 +192,7 @@ export class AutocompleteDropdownComponent implements OnInit {
     }
   }
 
-  private _shouldMatchGroup(item) {
+  private _shouldMatchGroup(item: string) {
     if (!this.enumList[item].groupItems) {
       return false;
     }
@@ -207,7 +207,7 @@ export class AutocompleteDropdownComponent implements OnInit {
     return !label || !this.textInput || label.toLowerCase().indexOf(this.textInput.toLowerCase()) > -1;
   }
 
-  private _selectedItemLabelFunctionActual(item) {
+  private _selectedItemLabelFunctionActual(item: any) {
     return (this.selectedItemLabelFunction && this.selectedItemLabelFunction(item)) || item;
   }
 
