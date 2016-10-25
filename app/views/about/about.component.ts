@@ -21,8 +21,8 @@ export class AboutComponent implements OnInit {
 
   }
 
-  getData(searchText) {
-    return () => {
+  getData() {
+    return (searchText) => {
       return this.countryProxy.getCountries(searchText);
     };
   }
