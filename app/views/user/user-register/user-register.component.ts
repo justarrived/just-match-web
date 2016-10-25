@@ -7,6 +7,7 @@ import {AT_UND_STATUSES} from "../../../enums/enums";
 import {Country} from "../../../models/country";
 import {AuthManager} from "../../../services/auth-manager.service";
 import {Router} from "@angular/router";
+import {namePropertyLabel} from "../../../utils/label-util";
 
 @Component({
   moduleId: module.id,
@@ -14,18 +15,20 @@ import {Router} from "@angular/router";
   styleUrls: ['user-register.component.css']
 })
 export class UserRegisterComponent implements OnInit {
-  userRegister: UserRegister = new UserRegister();
-  statuses: Array<UserStatus>;
+  namePropertyLabel: Function = namePropertyLabel;
+
   atUndStatuses = AT_UND_STATUSES;
-  countries: Array<Country>;
+
+  userRegister: UserRegister = new UserRegister();
+  statuses: UserStatus[];
+  countries: Country[];
   search: any;
   errors: any = {};
 
   constructor(private router: Router,
               private userProxy: UserProxy,
               private countryProxy: CountryProxy,
-              private authManager: AuthManager) {
-  }
+              private authManager: AuthManager) { }
 
   ngOnInit(): void {
     this.userProxy.getStatuses().then(statuses => this.statuses = statuses);
