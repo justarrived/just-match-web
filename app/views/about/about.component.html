@@ -6,3 +6,18 @@
   <button type="button" (click)="translationService.setLanguage('ku')">Kurdish</button>
 </div>
 <div>{{'user.assignment.confirmation.description' | translate:{candidate_name: 'Some user'} }}</div>
+<br>
+<div class="material-group">
+  <autocomplete-dropdown [(destination)]="myModel.value"
+                         [autocompleteResultLabelFunction]="namePropertyLabel"
+                         [autocompleteToSelectedItemFunction]="namePropertyLabel"
+                         [hasAllOption]="true"
+                         [allOptionValue]="null"
+                         [placeholder]="'Search country'"
+                         [isArray]="true"
+                         [getData]="getData()"></autocomplete-dropdown>
+  <label class="material-label label-up">Country</label>
+</div>
+
+<br><br>
+<div>{{myModel.value}}</div>

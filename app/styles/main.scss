@@ -21,12 +21,23 @@ body {
     }
   }
 
+  input {
+    outline: none;
+  }
+
   input[type="date"] {
     text-transform: uppercase;
   }
 
   .clickable {
     cursor: pointer;
+
+    &.disabled {
+      box-shadow: none;
+      cursor: not-allowed;
+      opacity: 0.95;
+      pointer-events: none;
+    }
   }
 
   .block {
@@ -40,6 +51,9 @@ body {
     margin-bottom: 15px;
   }
 
+  .text-left {
+    text-align: left;
+  }
   .text-center {
     text-align: center;
   }
@@ -53,6 +67,11 @@ body {
   .table-cell {
     display: table-cell;
     vertical-align: middle;
+
+    &.min-width-column {
+      white-space: nowrap;
+      width: 1px;
+    }
   }
 
   .color-dark {
@@ -225,8 +244,6 @@ body {
       margin-bottom: 5px;
 
       &:focus, &.not-empty {
-        outline: none;
-
         ~ .material-label:not(.label-up) {
           @include label-up();
         }

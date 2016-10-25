@@ -19,6 +19,9 @@ import {UserRegisterComponent} from "./views/user/user-register/user-register.co
 import {Ng2AutoCompleteModule} from "ng2-auto-complete";
 import {CountryProxy} from "./services/proxy/country-proxy.service";
 import {UserProfileComponent} from "./views/user/user-profile/user-profile.component";
+import {DeletableItemComponent} from "./components/autocomplete-dropdown/deletable-item/deletable-item.component";
+import {AutocompleteDropdownListItemComponent} from "./components/autocomplete-dropdown/autocomplete-dropdown-list-item/autocomplete-dropdown-list-item.component";
+import {AutocompleteDropdownComponent} from "./components/autocomplete-dropdown/autocomplete-dropdown.component";
 
 @NgModule({
   imports: [
@@ -35,7 +38,10 @@ import {UserProfileComponent} from "./views/user/user-profile/user-profile.compo
     HomeComponent,
     SliderComponent,
     UserRegisterComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    DeletableItemComponent,
+    AutocompleteDropdownListItemComponent,
+    AutocompleteDropdownComponent
   ],
   providers: [
     appRoutingProviders,
