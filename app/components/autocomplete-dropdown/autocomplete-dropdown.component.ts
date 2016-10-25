@@ -7,6 +7,7 @@ import {deleteElementFromArray} from "../../utils/array-util";
   moduleId: module.id,
   selector: 'autocomplete-dropdown',
   templateUrl: 'autocomplete-dropdown.component.html',
+  styleUrls: ['autocomplete-dropdown.component.css'],
   host: {
     '(document:click)': '_onDocumentClick($event)'
   }
