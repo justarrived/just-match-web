@@ -107,9 +107,12 @@
       </div>
 
       <div class="material-group">
-        <input id="country-of-origin" [(ngModel)]="userRegister.countryOfOrigin" name="countryOfOrigin" class="material-input"
-               ng2-auto-complete [source]="countries" value-property-name="''" display-property-name="name" min-chars="2" required/>
-        <label for="country-of-origin" class="label-up material-label">{{'user.form.country_of_origin' | translate}}</label>
+        <autocomplete-dropdown [lookupType]="'list'" [enumList]="countries"
+                               [(destination)]="userRegister.countryOfOrigin"
+                               [autocompleteResultLabelFunction]="namePropertyLabel"
+                               [autocompleteToSelectedItemFunction]="namePropertyLabel">
+        </autocomplete-dropdown>
+        <label class="label-up material-label">{{'user.form.country_of_origin' | translate}}</label>
       </div>
 
       <div class="material-group">
