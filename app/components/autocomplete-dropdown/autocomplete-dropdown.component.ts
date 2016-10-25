@@ -102,20 +102,12 @@ export class AutocompleteDropdownComponent implements OnInit {
     this.onDropdownListItemSelect(selectedItem);
   }
 
-  onArrowUpClick() {
+  onArrowClick(isUp) {
     if (!this.isDropdownOpened) {
       this.onInputClick();
     }
 
-    this._updateSelectedItemIndex(true);
-  }
-
-  onArrowDownClick() {
-    if (!this.isDropdownOpened) {
-      this.onInputClick();
-    }
-
-    this._updateSelectedItemIndex(false);
+    this._updateSelectedItemIndex(isUp);
   }
 
   onDeleteSelectedItem(item: any) {
