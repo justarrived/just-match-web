@@ -1,6 +1,6 @@
 <div class="autocomplete-dropdown text-left" [ngClass]="{disabled: isDisabled, 'wrap-mode': wrapMode}" (keyup.enter)="onEnterClick()" (keyup.arrowup)="onArrowClick(true)" (keyup.arrowdown)="onArrowClick(false)">
   <div class="table autocomplete-dropdown-container"
-       [ngClass]="{'multiple-select' : isMultipleSelect, selected: textInput && !isMultipleSelect}">
+       [ngClass]="{'multiple-select': isMultipleSelect, selected: textInput && !isMultipleSelect}">
     <div class="table-row">
       <div class="table-cell min-width-column" *ngIf="iconClass">
         <i [ngClass]="[iconClass]"></i>
