@@ -2,6 +2,7 @@ import {Component, Input, ElementRef, OnInit, EventEmitter, Output} from "@angul
 import {cloneDeep, some, isEqual, isObject, assignIn, filter} from "lodash";
 import {CountryProxy} from "../../services/proxy/country-proxy.service";
 import {deleteElementFromArray} from "../../utils/array-util";
+import Timer = NodeJS.Timer;
 
 @Component({
   moduleId: module.id,
@@ -39,7 +40,7 @@ export class AutocompleteDropdownComponent implements OnInit {
   @Input() iconClass: string;
   @Input() getData: Function;
 
-  private _searchQueryTimeoutId: number;
+  private _searchQueryTimeoutId: Timer;
   private _isDefaultOptionSet: boolean = false;
   private _lastTextInput: string = '';
   private _firstItemIndex: number = this.hasAllOption ? -1 : 0;
