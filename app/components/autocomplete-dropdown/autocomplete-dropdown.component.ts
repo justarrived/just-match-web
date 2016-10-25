@@ -189,17 +189,8 @@ export class AutocompleteDropdownComponent implements OnInit {
         break;
 
       default:
-        console.log(this.getData);
         if (this.getData) {
-          console.log('getting data');
-          // this.getData(this.textInput).then(response => {
-          //   console.log(response);
-          //   this._setLookupData(response);
-          // });
-          this.getData(this.textInput, (response) => {
-            console.log(response);
-            this._setLookupData(response);
-          });
+          this.getData(this.textInput).then(response => this._setLookupData(response));
         } else {
           // TODO: call function to get data
           this._countryProxy.getCountries(this.textInput).then(response => this._setLookupData(response));
@@ -213,7 +204,7 @@ export class AutocompleteDropdownComponent implements OnInit {
       return false;
     }
 
-    return some(this.enumList[item].groupItems, function(groupItem) {
+    return some(this.enumList[item].groupItems, (groupItem: string) => {
       return this.enumList[groupItem] && this._shouldMatch(groupItem, this.enumList[groupItem].name);
     });
   }

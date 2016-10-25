@@ -8,9 +8,14 @@
 <div>{{'user.assignment.confirmation.description' | translate:{candidate_name: 'Some user'} }}</div>
 <br>
 <div class="material-group">
-  <autocomplete-dropdown [autocompleteResultLabelFunction]="namePropertyLabel"
+  <autocomplete-dropdown [(destination)]="myModel.value"
+                         [autocompleteResultLabelFunction]="namePropertyLabel"
                          [autocompleteToSelectedItemFunction]="namePropertyLabel"
-                         [placeholder]="'Search country'" [(destination)]="myModel.value"></autocomplete-dropdown>
+                         [hasAllOption]="true"
+                         [allOptionValue]="null"
+                         [placeholder]="'Search country'"
+                         [isArray]="true"
+                         [getData]="getData()"></autocomplete-dropdown>
   <label class="material-label label-up">Country</label>
 </div>
 
