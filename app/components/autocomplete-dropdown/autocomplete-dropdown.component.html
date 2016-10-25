@@ -2,9 +2,9 @@
   <div class="table autocomplete-dropdown-container"
        [ngClass]="{'multiple-select' : isMultipleSelect, selected: textInput && !isMultipleSelect}">
     <div class="table-row">
-      <!--<div class="table-cell min-width-column" *ngIf="iconClass">-->
-        <!--<i class="fa" [ngClass]="[iconClass]"></i>-->
-      <!--</div>-->
+      <div class="table-cell min-width-column" *ngIf="iconClass">
+        <i [ngClass]="[iconClass]"></i>
+      </div>
       <div *ngIf="isMultipleSelect" class="table-cell min-width-column items-column">
         <deletable-item *ngFor="let item of destination" [isDisabled]="isDisabled" [labelFunction]="selectedItemLabelFunction" [item]="item" (deleteSelectedItem)="onDeleteSelectedItem($event)"></deletable-item>
       </div>
