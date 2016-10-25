@@ -16,7 +16,6 @@ import {TranslationService} from "./services/translation.service";
 import {GlobalExceptionHandler} from "./config/global-exception-handler";
 import {SliderComponent} from "./components/slider/slider.component";
 import {UserRegisterComponent} from "./views/user/user-register/user-register.component";
-import {Ng2AutoCompleteModule} from "ng2-auto-complete";
 import {CountryProxy} from "./services/proxy/country-proxy.service";
 import {UserProfileComponent} from "./views/user/user-profile/user-profile.component";
 import {DeletableItemComponent} from "./components/autocomplete-dropdown/deletable-item/deletable-item.component";
@@ -28,7 +27,6 @@ import {AutocompleteDropdownComponent} from "./components/autocomplete-dropdown/
     BrowserModule,
     HttpModule,
     FormsModule,
-    Ng2AutoCompleteModule,
     TranslateModule.forRoot(),
     routing
   ],
