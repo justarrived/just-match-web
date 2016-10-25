@@ -31,6 +31,13 @@ body {
 
   .clickable {
     cursor: pointer;
+
+    &.disabled {
+      box-shadow: none;
+      cursor: not-allowed;
+      opacity: 0.95;
+      pointer-events: none;
+    }
   }
 
   .block {
