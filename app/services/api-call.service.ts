@@ -64,7 +64,7 @@ export class ApiCall {
     let req: Request = new Request(options);
     let authorizationData = this.localStorageWrapper.getObject(this.storageAuthorizationData);
     if (authorizationData) {
-      req.headers.set(this.authorizationHeaderName, this.authorizationHeaderPrefix + authorizationData['auth-token']);
+      req.headers.set(this.authorizationHeaderName, this.authorizationHeaderPrefix + authorizationData['auth_token']);
     }
     req.headers.set(this.transformHeaderName, this.transformHeaderValue);
     return this.http.request(req)

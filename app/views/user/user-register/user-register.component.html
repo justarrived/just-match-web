@@ -110,7 +110,7 @@
         <autocomplete-dropdown [lookupType]="'list'" [enumList]="countries"
                                [(destination)]="userRegister.countryOfOrigin"
                                [autocompleteResultLabelFunction]="namePropertyLabel"
-                               [autocompleteToSelectedItemFunction]="namePropertyLabel">
+                               [selectedItemLabelFunction]="namePropertyLabel">
         </autocomplete-dropdown>
         <label class="label-up material-label">{{'user.form.country_of_origin' | translate}}</label>
       </div>
