@@ -6,6 +6,8 @@ import {User} from "../../../models/user";
 import {namePropertyLabel} from "../../../utils/label-util";
 import {LanguageProxy} from "../../../services/proxy/language-proxy.service";
 import {LANGUAGE_PROFICIENCY_LEVELS} from "../../../enums/enums";
+import {isEmpty, some} from "lodash";
+import {Language} from "../../../models/language";
 
 @Component({
   moduleId: module.id,
@@ -18,9 +20,11 @@ export class UserProfileComponent implements OnInit {
 
   languageProficiencyLevels = LANGUAGE_PROFICIENCY_LEVELS;
 
+  editMode: boolean = false;
+  selectedLanguage: Language = null;
+
   user: User;
   userProfile: UserProfile;
-  editMode: boolean = false;
 
   constructor(private userProxy: UserProxy,
               private languageProxy: LanguageProxy,
@@ -35,6 +39,14 @@ export class UserProfileComponent implements OnInit {
     return (searchText) => {
       return this.languageProxy.getLanguages(searchText);
     };
+  }
+
+  onLanguageSelect(language) {
+    this.selectedLanguage = language;
+    if (!isEmpty(this.selectedLanguage) && !some(this.userProfile.languages, this.selectedLanguage)) {
+      this.userProfile.languages.push(this.selectedLanguage);
+      this.selectedLanguage = new Language({en_name: ' '});
+    }
   }
 
   onImageFilenameChange(event) {

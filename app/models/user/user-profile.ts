@@ -16,6 +16,7 @@ export class UserProfile {
     this.id = user.id;
     this.imageUrl = (user.images && user.images[0] && user.images[0].imageUrl) || 'app/assets/images/placeholder-profile-image.png';
     this.presentation = user.presentation;
+    this.languages = user.languages || [];
     this.workExperience = user.workExperience;
     this.education = user.education;
     this.skills = user.skills;

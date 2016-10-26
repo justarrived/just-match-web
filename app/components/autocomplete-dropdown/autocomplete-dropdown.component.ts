@@ -1,4 +1,4 @@
-import {Component, Input, ElementRef, OnInit, EventEmitter, Output} from "@angular/core";
+import {Component, Input, ElementRef, OnInit, EventEmitter, Output, SimpleChange, OnChanges} from "@angular/core";
 import {cloneDeep, some, isEqual, isObject, assignIn, filter} from "lodash";
 import {CountryProxy} from "../../services/proxy/country-proxy.service";
 import {deleteElementFromArray} from "../../utils/array-util";
@@ -13,9 +13,10 @@ import Timer = NodeJS.Timer;
     '(document:click)': '_onDocumentClick($event)'
   }
 })
-export class AutocompleteDropdownComponent implements OnInit {
+export class AutocompleteDropdownComponent implements OnInit, OnChanges {
   @Input() destination: any;
   @Output() destinationChange = new EventEmitter();
+  @Output() dropdownListItemSelect = new EventEmitter();
   @Input() lookupType: string;
   @Input() lookupPrefix: string = 'client/lookup';
   @Input() queryScope: string;
@@ -61,8 +62,11 @@ export class AutocompleteDropdownComponent implements OnInit {
 
   ngOnInit() {
     this.destinationChange.subscribe(() => {
+      console.log('destination change 1', this.destination);
+
       this._setTextInputFromDestination();
       this._setWrapMode();
+      console.log('destination change 2', this.destination);
     });
 
     this.isMultipleSelect = this.isArray && this.maxItems !== 1;
@@ -94,6 +98,15 @@ export class AutocompleteDropdownComponent implements OnInit {
     }
   }
 
+  ngOnChanges(changes: any) {
+    if (changes.destination) {
+      console.log('changes', changes.destination);
+      this.destination = changes.destination.currentValue;
+      this._setTextInputFromDestination();
+      this._setWrapMode();
+    }
+  }
+
   onEnterClick() {
     if (this.allowFreeText && !this.selectedItemIndex) {
       this.isDropdownOpened = false;
@@ -122,9 +135,14 @@ export class AutocompleteDropdownComponent implements OnInit {
   }
 
   onDropdownListItemSelect(item: any) {
+    console.log('onDropdownListItemSelect', item);
+
     this.isDropdownOpened = false;
     this._setSelectedItem(item);
     this.selectedItemIndex = null;
+
+    console.log('emit DropdownListItemSelect');
+    this.dropdownListItemSelect.emit(item);
   }
 
   onInputClick() {

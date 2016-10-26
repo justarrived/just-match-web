@@ -32,13 +32,14 @@
 
       <div class="material-group form-group languages">
         <label>{{'profile.form.languages' | translate | uppercase}}</label>
-        <autocomplete-dropdown [(destination)]="userProfile.languages"
+        <autocomplete-dropdown [(destination)]="selectedLanguage" (dropdownListItemSelect)="onLanguageSelect($event)"
                                [autocompleteResultLabelFunction]="namePropertyLabel"
                                [selectedItemLabelFunction]="namePropertyLabel"
-                               [isArray]="true"
                                [getData]="getLanguages()"
-                               [isDisabled]="!editMode">
+                               >
         </autocomplete-dropdown>
+
+        <div *ngFor="let lang of userProfile.languages">{{lang.name}}</div>
       </div>
 
       <div class="material-group form-group work-experience">
