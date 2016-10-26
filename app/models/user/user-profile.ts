@@ -1,9 +1,13 @@
 import {User} from "../user";
+import {Language} from "../language";
+import {getIds} from "../../utils/identifiable-util";
+
 export class UserProfile {
   id: number;
   imageToken: string;
   imageUrl: string;
   presentation: string;
+  languages: Language[];
   workExperience: string;
   education: string;
   skills: string;
@@ -22,6 +26,7 @@ export class UserProfile {
       'id': this.id,
       'user_image_one_time_token': this.imageToken,
       'description': this.presentation,
+      'language_ids': getIds(this.languages),
       'job_experience': this.workExperience,
       'education': this.education,
       'competence_text': this.skills

@@ -92,6 +92,10 @@ $ms-item-text-color: #ffffff;
     .drop-down-arrow {
       background-color: unset;
       cursor: not-allowed;
+
+      .icon-ic-arrow-bottom {
+        background-color: $disabled-background-color;
+      }
     }
 
     .autocomplete-dropdown-container {

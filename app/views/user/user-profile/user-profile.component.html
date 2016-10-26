@@ -31,8 +31,14 @@
       </div>
 
       <div class="material-group form-group languages">
-        <label for="languages">{{'profile.form.languages' | translate | uppercase}}</label>
-        <textarea name="languages" id="languages" class="material-input" [disabled]="!editMode"></textarea>
+        <label>{{'profile.form.languages' | translate | uppercase}}</label>
+        <autocomplete-dropdown [(destination)]="userProfile.languages"
+                               [autocompleteResultLabelFunction]="namePropertyLabel"
+                               [selectedItemLabelFunction]="namePropertyLabel"
+                               [isArray]="true"
+                               [getData]="getLanguages()"
+                               [isDisabled]="!editMode">
+        </autocomplete-dropdown>
       </div>
 
       <div class="material-group form-group work-experience">

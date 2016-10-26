@@ -1,8 +1,11 @@
-import {Component} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 import {UserProfile} from "../../../models/user/user-profile";
 import {UserProxy} from "../../../services/user-proxy.service";
 import {AuthManager} from "../../../services/auth-manager.service";
 import {User} from "../../../models/user";
+import {namePropertyLabel} from "../../../utils/label-util";
+import {LanguageProxy} from "../../../services/proxy/language-proxy.service";
+import {LANGUAGE_PROFICIENCY_LEVELS} from "../../../enums/enums";
 
 @Component({
   moduleId: module.id,
@@ -10,14 +13,28 @@ import {User} from "../../../models/user";
   templateUrl: 'user-profile.component.html',
   styleUrls: ['user-profile.component.css']
 })
-export class UserProfileComponent {
+export class UserProfileComponent implements OnInit {
+  namePropertyLabel: Function = namePropertyLabel;
+
+  languageProficiencyLevels = LANGUAGE_PROFICIENCY_LEVELS;
+
   user: User;
   userProfile: UserProfile;
   editMode: boolean = false;
 
-  constructor(private userProxy: UserProxy, private authManager: AuthManager) {
+  constructor(private userProxy: UserProxy,
+              private languageProxy: LanguageProxy,
+              private authManager: AuthManager) { }
+
+  ngOnInit() {
     this.user = this.authManager.getUser();
     this.userProfile = new UserProfile(this.user);
+  }
+
+  getLanguages() {
+    return (searchText) => {
+      return this.languageProxy.getLanguages(searchText);
+    };
   }
 
   onImageFilenameChange(event) {

@@ -37,7 +37,7 @@ export class AuthManager {
   authenticateIfNeeded(): Promise<User> {
     let authorizationData = this.localStorageWrapper.getObject(this.storageAuthorizationData);
     if (authorizationData) {
-      return this.userProxy.getUser(authorizationData['user_id'], {include: 'user_images'}).then(response => {
+      return this.userProxy.getUser(authorizationData['user_id'], {include: 'user_images,languages'}).then(response => {
         return this.handleUserResult(response.data);
       });
     }
