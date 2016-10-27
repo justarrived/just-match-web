@@ -1,5 +1,5 @@
 import {User} from "../user";
-import {Language} from "../language";
+import {Language} from "../language/language";
 import {getIds} from "../../utils/identifiable-util";
 
 export class UserProfile {

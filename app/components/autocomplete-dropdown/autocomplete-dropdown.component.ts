@@ -1,4 +1,4 @@
-import {Component, Input, ElementRef, OnInit, EventEmitter, Output, SimpleChange, OnChanges} from "@angular/core";
+import {Component, Input, ElementRef, OnInit, EventEmitter, Output, OnChanges} from "@angular/core";
 import {cloneDeep, some, isEqual, isObject, assignIn, filter} from "lodash";
 import {CountryProxy} from "../../services/proxy/country-proxy.service";
 import {deleteElementFromArray} from "../../utils/array-util";
@@ -10,7 +10,7 @@ import Timer = NodeJS.Timer;
   templateUrl: 'autocomplete-dropdown.component.html',
   styleUrls: ['autocomplete-dropdown.component.css'],
   host: {
-    '(document:click)': '_onDocumentClick($event)'
+    '(document:click)': 'onDocumentClick($event)'
   }
 })
 export class AutocompleteDropdownComponent implements OnInit, OnChanges {
@@ -41,12 +41,12 @@ export class AutocompleteDropdownComponent implements OnInit, OnChanges {
   @Input() iconClass: string;
   @Input() getData: Function;
 
-  private _searchQueryTimeoutId: Timer;
-  private _isDefaultOptionSet: boolean = false;
-  private _lastTextInput: string = '';
-  private _firstItemIndex: number = this.hasAllOption ? -1 : 0;
+  private searchQueryTimeoutId: Timer;
+  private isDefaultOptionSet: boolean = false;
+  private lastTextInput: string = '';
+  private firstItemIndex: number = this.hasAllOption ? -1 : 0;
 
-  private _isGroupFunction: Function;
+  private isGroupFunction: Function;
 
   wrapMode: boolean = false;
 
@@ -58,15 +58,11 @@ export class AutocompleteDropdownComponent implements OnInit, OnChanges {
 
   textInput: string = '';
 
-  constructor(private _elementRef: ElementRef, private _countryProxy: CountryProxy) { }
+  constructor(private elementRef: ElementRef, private countryProxy: CountryProxy) { }
 
   ngOnInit() {
     this.destinationChange.subscribe(() => {
-      console.log('destination change 1', this.destination);
-
-      this._setTextInputFromDestination();
-      this._setWrapMode();
-      console.log('destination change 2', this.destination);
+      this.onDestinationChange();
     });
 
     this.isMultipleSelect = this.isArray && this.maxItems !== 1;
@@ -74,11 +70,11 @@ export class AutocompleteDropdownComponent implements OnInit, OnChanges {
     if (this.isArray) {
       this.destination = this.destination || [];
       this.destinationChange.emit(this.destination);
-      this._setWrapMode();
+      this.setWrapMode();
     }
 
     if (this.autoSelectFirstOption) {
-      this._getLookupData();
+      this.getLookupData();
     }
 
     if (this.lookupType === 'enum' && !this.autocompleteResultLabelFunction) {
@@ -92,7 +88,7 @@ export class AutocompleteDropdownComponent implements OnInit, OnChanges {
       };
     }
     if (this.lookupType === 'enum') {
-      this._isGroupFunction = (item) => {
+      this.isGroupFunction = (item) => {
         return item && this.enumList[item] && this.enumList[item].isGroup;
       };
     }
@@ -102,8 +98,7 @@ export class AutocompleteDropdownComponent implements OnInit, OnChanges {
     if (changes.destination) {
       console.log('changes', changes.destination);
       this.destination = changes.destination.currentValue;
-      this._setTextInputFromDestination();
-      this._setWrapMode();
+      this.onDestinationChange();
     }
   }
 
@@ -121,7 +116,7 @@ export class AutocompleteDropdownComponent implements OnInit, OnChanges {
       this.onInputClick();
     }
 
-    this._updateSelectedItemIndex(isUp);
+    this.updateSelectedItemIndex(isUp);
   }
 
   onDeleteSelectedItem(item: any) {
@@ -131,14 +126,14 @@ export class AutocompleteDropdownComponent implements OnInit, OnChanges {
 
     deleteElementFromArray(this.destination, item);
     this.destinationChange.emit(this.destination);
-    this._setWrapMode();
+    this.setWrapMode();
   }
 
   onDropdownListItemSelect(item: any) {
     console.log('onDropdownListItemSelect', item);
 
     this.isDropdownOpened = false;
-    this._setSelectedItem(item);
+    this.setSelectedItem(item);
     this.selectedItemIndex = null;
 
     console.log('emit DropdownListItemSelect');
@@ -153,100 +148,105 @@ export class AutocompleteDropdownComponent implements OnInit, OnChanges {
     if (this.isDropdownOpened) {
       this.isDropdownOpened = false;
     } else {
-      this._clearTextInput();
-      this._getLookupData();
+      this.clearTextInput();
+      this.getLookupData();
     }
   }
 
   onTextInputChange() {
     if (this.allowFreeText) {
-      this._setSelectedItem(this.textInput);
+      this.setSelectedItem(this.textInput);
     }
 
     // TODO: refactor to use RxJS extension methods
-    clearTimeout(this._searchQueryTimeoutId);
-    this._searchQueryTimeoutId = setTimeout(() => this._getLookupData(), 250);
+    clearTimeout(this.searchQueryTimeoutId);
+    this.searchQueryTimeoutId = setTimeout(() => this.getLookupData(), 250);
   }
 
   allOptionLabelFunction() {
     return this.allOptionLabel || 'All';
   }
 
-  private _onDocumentClick(event: Event) {
-    if (!this._elementRef.nativeElement.contains(event.target) && this.isDropdownOpened) {
-      this._setTextInputFromLast();
+  private onDocumentClick(event: Event) {
+    if (!this.elementRef.nativeElement.contains(event.target) && this.isDropdownOpened) {
+      this.setTextInputFromLast();
       this.isDropdownOpened = false;
     }
   }
 
-  private _updateSelectedItemIndex(isUp: boolean) {
+  private onDestinationChange() {
+    this.setTextInputFromDestination();
+    this.setWrapMode();
+  }
+
+  private updateSelectedItemIndex(isUp: boolean) {
     this.selectedItemIndex = this.selectedItemIndex || 0;
     this.selectedItemIndex += isUp ? -1 : 1;
 
-    this.selectedItemIndex = Math.max(Math.min(this.selectedItemIndex, this.autocompleteResults.length - 1), this._firstItemIndex);
+    this.selectedItemIndex = Math.max(Math.min(this.selectedItemIndex, this.autocompleteResults.length - 1), this.firstItemIndex);
   }
 
-  private _getLookupData() {
+  private getLookupData() {
     switch (this.lookupType) {
       case 'enum':
         var filteredKeys = filter(Object.keys(this.enumList), key => {
-          return this.enumList[key].isGroup ? this._shouldMatchGroup(key) : this._shouldMatch(key, this.enumList[key].name);
+          return this.enumList[key].isGroup ? this.shouldMatchGroup(key) : this.shouldMatch(key, this.enumList[key].name);
         });
-        this._setLookupData(filteredKeys);
+        this.setLookupData(filteredKeys);
         break;
 
       case 'list':
-        var filtered = filter(this.enumList, item => this._shouldMatch(item, item && item.toString()));
-        this._setLookupData(filtered);
+        var filtered = filter(this.enumList, item => this.shouldMatch(item, item && item.toString()));
+        this.setLookupData(filtered);
         break;
 
       default:
         if (this.getData) {
-          this.getData(this.textInput).then(response => this._setLookupData(response));
+          this.getData(this.textInput).then(response => this.setLookupData(response));
         } else {
           // TODO: call function to get data
-          this._countryProxy.getCountries(this.textInput).then(response => this._setLookupData(response));
+          this.countryProxy.getCountries(this.textInput).then(response => this.setLookupData(response));
         }
         break;
     }
   }
 
-  private _shouldMatchGroup(item: string) {
+  private shouldMatchGroup(item: string) {
     if (!this.enumList[item].groupItems) {
       return false;
     }
 
     return some(this.enumList[item].groupItems, (groupItem: string) => {
-      return this.enumList[groupItem] && this._shouldMatch(groupItem, this.enumList[groupItem].name);
+      return this.enumList[groupItem] && this.shouldMatch(groupItem, this.enumList[groupItem].name);
     });
   }
 
-  private _shouldMatch(item, simpleLabel) {
+  private shouldMatch(item, simpleLabel) {
     let label: string = (this.autocompleteResultLabelFunction && this.autocompleteResultLabelFunction(item)) || simpleLabel;
     return !label || !this.textInput || label.toLowerCase().indexOf(this.textInput.toLowerCase()) > -1;
   }
 
-  private _selectedItemLabelFunctionActual(item: any) {
+  private selectedItemLabelFunctionActual(item: any) {
     return (this.selectedItemLabelFunction && this.selectedItemLabelFunction(item)) || item;
   }
 
-  private _setSelectedItem(item: any) {
-    this._setDestination(item);
-    this._setTextInputFromDestination();
+  private setSelectedItem(item: any) {
+    this.setDestination(item);
+    this.setTextInputFromDestination();
   }
 
-  private _setLookupData(data: any) {
+  private setLookupData(data: any) {
     this.autocompleteResults = data;
 
-    if (this._isDefaultOptionSet && this.autoSelectFirstOption) {
-      this._isDefaultOptionSet = true;
-      this._setSelectedItem(this.autocompleteResults[0]);
+    if (!this.isDefaultOptionSet && this.autoSelectFirstOption) {
+      this.isDefaultOptionSet = true;
+      this.setSelectedItem(this.autocompleteResults[0]);
     } else {
       this.isDropdownOpened = true;
     }
   }
 
-  private _setDestination(item: any) {
+  private setDestination(item: any) {
     if (item && this.allOptionValue === item) {
       this.destination = cloneDeep(item);
       this.destinationChange.emit(this.destination);
@@ -269,7 +269,7 @@ export class AutocompleteDropdownComponent implements OnInit, OnChanges {
         }
       }
 
-      this._setWrapMode();
+      this.setWrapMode();
     } else if (this.copyToDestination && isObject(itemActual)) {
       assignIn(this.destination, itemActual);
     } else {
@@ -279,49 +279,49 @@ export class AutocompleteDropdownComponent implements OnInit, OnChanges {
     this.destinationChange.emit(this.destination);
   }
 
-  private _setWrapMode() {
+  private setWrapMode() {
     this.wrapMode = this.destination && this.destination.length >= 1;
   }
 
-  private _setTextInputFromDestination() {
+  private setTextInputFromDestination() {
     if (!this.destination) {
       this.textInput = '';
-      this._saveLastTextInput();
+      this.saveLastTextInput();
       return;
     }
 
     if (this.hasAllOption && isEqual(this.destination, this.allOptionValue)) {
       this.textInput = this.allOptionLabelFunction();
-      this._saveLastTextInput();
+      this.saveLastTextInput();
       return;
     }
 
     if (this.isArray) {
       if (this.maxItems === 1 && this.destination.length === 1) {
-        this.textInput = this._selectedItemLabelFunctionActual(this.destination[0]);
+        this.textInput = this.selectedItemLabelFunctionActual(this.destination[0]);
       } else {
         this.textInput = '';
       }
     } else {
-      this.textInput = this._selectedItemLabelFunctionActual(this.destination);
+      this.textInput = this.selectedItemLabelFunctionActual(this.destination);
     }
-    this._saveLastTextInput();
+    this.saveLastTextInput();
   }
 
-  private _setTextInputFromLast() {
+  private setTextInputFromLast() {
     if (!this.textInput) {
-      this.textInput = cloneDeep(this._lastTextInput);
+      this.textInput = cloneDeep(this.lastTextInput);
     }
   }
 
-  private _clearTextInput() {
-    this._saveLastTextInput();
+  private clearTextInput() {
+    this.saveLastTextInput();
     if (!this.allowFreeText) {
       this.textInput = '';
     }
   }
 
-  private _saveLastTextInput() {
-    this._lastTextInput = cloneDeep(this.textInput);
+  private saveLastTextInput() {
+    this.lastTextInput = cloneDeep(this.textInput);
   }
 }

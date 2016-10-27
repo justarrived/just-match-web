@@ -1,9 +1,11 @@
-export const AT_UND_STATUSES: any[] = [
+import {LanguageProficiency} from "../models/language/language-proficiency";
+
+export const atUndStatuses: any[] = [
   {name: 'Yes', value: 'yes'},
   {name: 'No', value: 'no'}
 ];
 
-export const LANGUAGE_PROFICIENCY_LEVELS: any[] = [
+export const languageProficiencyLevels: LanguageProficiency[] = [
   {name: 'Beginner', proficiency: 1},
   {name: 'Basic knowledge', proficiency: 2},
   {name: 'Working proficiency', proficiency: 3},

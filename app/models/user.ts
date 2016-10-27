@@ -1,6 +1,6 @@
 import {UserImage} from "./user/user-image";
 import {map} from "lodash";
-import {Language} from "./language";
+import {Language} from "./language/language";
 
 export class User {
   id: number;

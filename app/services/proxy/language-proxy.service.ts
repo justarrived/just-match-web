@@ -1,7 +1,7 @@
 import {Injectable} from "@angular/core";
 import {ApiCall} from "../api-call.service";
 import {map} from "lodash";
-import {Language} from "../../models/language";
+import {Language} from "../../models/language/language";
 
 @Injectable()
 export class LanguageProxy {
