@@ -39,7 +39,20 @@
                                >
         </autocomplete-dropdown>
 
-        <div *ngFor="let lang of userProfile.languages">{{lang.name}}</div>
+        <div class="table">
+          <div class="table-row" *ngFor="let language of userProfile.languages">
+            <div class="table-cell">{{language.name}}</div>
+            <div class="table-cell">{{language.proficiency && language.proficiency.proficiency}}</div>
+            <div class="table-cell">
+              <autocomplete-dropdown [lookupType]="'list'" [enumList]="languageProficiencyLevels"
+                                     [(destination)]="language.proficiency"
+                                     [autoSelectFirstOption]="true"
+                                     [autocompleteResultLabelFunction]="namePropertyLabel"
+                                     [selectedItemLabelFunction]="namePropertyLabel">
+              </autocomplete-dropdown>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div class="material-group form-group work-experience">

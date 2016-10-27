@@ -65,16 +65,16 @@ export class AutocompleteDropdownComponent implements OnInit, OnChanges {
       this.onDestinationChange();
     });
 
+    if (this.autoSelectFirstOption) {
+      setTimeout(() => this.getLookupData(), 0);
+    }
+
     this.isMultipleSelect = this.isArray && this.maxItems !== 1;
 
     if (this.isArray) {
       this.destination = this.destination || [];
       this.destinationChange.emit(this.destination);
       this.setWrapMode();
-    }
-
-    if (this.autoSelectFirstOption) {
-      this.getLookupData();
     }
 
     if (this.lookupType === 'enum' && !this.autocompleteResultLabelFunction) {
@@ -96,9 +96,8 @@ export class AutocompleteDropdownComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: any) {
     if (changes.destination) {
-      console.log('changes', changes.destination);
-      this.destination = changes.destination.currentValue;
-      this.onDestinationChange();
+      // console.log('changes', changes.destination);
+      // this.setDestination(changes.destination.currentValue);
     }
   }
 
@@ -130,13 +129,10 @@ export class AutocompleteDropdownComponent implements OnInit, OnChanges {
   }
 
   onDropdownListItemSelect(item: any) {
-    console.log('onDropdownListItemSelect', item);
-
     this.isDropdownOpened = false;
-    this.setSelectedItem(item);
+    this.setDestination(item);
     this.selectedItemIndex = null;
 
-    console.log('emit DropdownListItemSelect');
     this.dropdownListItemSelect.emit(item);
   }
 
@@ -155,7 +151,7 @@ export class AutocompleteDropdownComponent implements OnInit, OnChanges {
 
   onTextInputChange() {
     if (this.allowFreeText) {
-      this.setSelectedItem(this.textInput);
+      this.setDestination(this.textInput);
     }
 
     // TODO: refactor to use RxJS extension methods
@@ -230,17 +226,12 @@ export class AutocompleteDropdownComponent implements OnInit, OnChanges {
     return (this.selectedItemLabelFunction && this.selectedItemLabelFunction(item)) || item;
   }
 
-  private setSelectedItem(item: any) {
-    this.setDestination(item);
-    this.setTextInputFromDestination();
-  }
-
   private setLookupData(data: any) {
     this.autocompleteResults = data;
 
     if (!this.isDefaultOptionSet && this.autoSelectFirstOption) {
       this.isDefaultOptionSet = true;
-      this.setSelectedItem(this.autocompleteResults[0]);
+      this.setDestination(this.autocompleteResults[0]);
     } else {
       this.isDropdownOpened = true;
     }
@@ -276,6 +267,7 @@ export class AutocompleteDropdownComponent implements OnInit, OnChanges {
       this.destination = cloneDeep(itemActual);
     }
 
+    // TODO: handle change properly
     this.destinationChange.emit(this.destination);
   }
 

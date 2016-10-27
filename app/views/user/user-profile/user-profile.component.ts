@@ -5,9 +5,9 @@ import {AuthManager} from "../../../services/auth-manager.service";
 import {User} from "../../../models/user";
 import {namePropertyLabel} from "../../../utils/label-util";
 import {LanguageProxy} from "../../../services/proxy/language-proxy.service";
-import {LANGUAGE_PROFICIENCY_LEVELS} from "../../../enums/enums";
-import {isEmpty, some} from "lodash";
-import {Language} from "../../../models/language";
+import {languageProficiencyLevels} from "../../../enums/enums";
+import {isEmpty, some, cloneDeep} from "lodash";
+import {Language} from "../../../models/language/language";
 
 @Component({
   moduleId: module.id,
@@ -15,10 +15,10 @@ import {Language} from "../../../models/language";
   templateUrl: 'user-profile.component.html',
   styleUrls: ['user-profile.component.css']
 })
-export class UserProfileComponent implements OnInit {
+export class UserProfileComponent {
   namePropertyLabel: Function = namePropertyLabel;
 
-  languageProficiencyLevels = LANGUAGE_PROFICIENCY_LEVELS;
+  languageProficiencyLevels = languageProficiencyLevels;
 
   editMode: boolean = false;
   selectedLanguage: Language = null;
@@ -28,9 +28,7 @@ export class UserProfileComponent implements OnInit {
 
   constructor(private userProxy: UserProxy,
               private languageProxy: LanguageProxy,
-              private authManager: AuthManager) { }
-
-  ngOnInit() {
+              private authManager: AuthManager) {
     this.user = this.authManager.getUser();
     this.userProfile = new UserProfile(this.user);
   }
@@ -42,10 +40,9 @@ export class UserProfileComponent implements OnInit {
   }
 
   onLanguageSelect(language) {
-    this.selectedLanguage = language;
-    if (!isEmpty(this.selectedLanguage) && !some(this.userProfile.languages, this.selectedLanguage)) {
-      this.userProfile.languages.push(this.selectedLanguage);
-      this.selectedLanguage = new Language({en_name: ' '});
+    if (!isEmpty(language) && !some(this.userProfile.languages, language)) {
+      this.userProfile.languages.push(language);
+      // TODO: delete selectedLanguage
     }
   }
 
