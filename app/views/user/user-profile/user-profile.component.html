@@ -44,8 +44,6 @@
                                [getData]="getLanguages()">
         </autocomplete-dropdown>
 
-        {{selectedLanguage && selectedLanguage.name}}
-
         <div class="table max-width">
           <div class="table-row" *ngFor="let language of userProfile.languages">
             <div class="table-cell min-width-column">{{language.name}}</div>
