@@ -3,6 +3,7 @@ import {ApiCall} from "./api-call.service";
 import {LocalStorageWrapper} from "./local-storage-wrapper.service";
 import {User} from "../models/user";
 import {UserProxy} from "./user-proxy.service";
+import {Router} from "@angular/router";
 
 @Injectable()
 export class AuthManager {

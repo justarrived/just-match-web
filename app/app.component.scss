@@ -71,6 +71,22 @@
     color: #fff;
     font-size: 12px;
   }
+
+  .nav-language-icon {
+    font-size: 9px;
+    border-radius: 50%;
+    background: $color-pink-2;
+    width: 27px;
+    text-align: center;
+    vertical-align: center;
+    line-height: 27px;
+    margin: auto;
+    text-transform: uppercase;
+  }
+
+  .nav-language-text {
+    font-size: 12px;
+  }
 }
 
 .overbody-container {
@@ -101,10 +117,34 @@
     float: right;
     position: relative;
     z-index: 22;
-    height: 100%;
+    min-height: 100%;
 
 
     &.language-menu-container {
+      color: white;
+
+      .language-information {
+        padding: 20px;
+      }
+
+      .credentials {
+        display: block;
+        text-align: center;
+        position: relative;
+        transform: scale(0.75);
+
+        img {
+          max-height: 50px;
+          max-width: 130px;
+          width: auto;
+          margin: 0 auto;
+          padding: 5px 10px 10px 10px;
+        }
+
+        .start_name {
+          padding-top: 5px;
+        }
+      }
 
       .just-arrived-logo-container {
         height: 50px;
@@ -118,8 +158,34 @@
       .select-language-header-text {
         color: white;
       }
-    }
 
+      .select-language-container {
+        padding: 20px;
+
+        .language-button-container {
+          display: inline-block;
+          text-align: center;
+          font-size: 14px;
+          margin: 12px;
+
+          .language-code {
+            width: 60px;
+            height: 60px;
+            display: inline-block;
+            line-height: 60px;
+            box-sizing: border-box;
+            border: 1px solid #FFFFFF;
+            border-radius: 50%;
+            margin-bottom: 7px;
+            text-transform: uppercase;
+
+            &:hover {
+              background: rgba(0, 0, 0, 0.2);
+            }
+          }
+        }
+      }
+    }
 
     .nav-menu-icon-container {
       color: $color-dark;

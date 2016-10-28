@@ -20,6 +20,7 @@ import {SliderComponent} from "./components/slider/slider.component";
 import {UserRegisterComponent} from "./views/user/user-register/user-register.component";
 import {Ng2AutoCompleteModule} from "ng2-auto-complete";
 import {CountryProxy} from "./services/proxy/country-proxy.service";
+import {LanguageProxy} from "./services/proxy/language-proxy.service";
 
 @NgModule({
   imports: [
@@ -46,6 +47,7 @@ import {CountryProxy} from "./services/proxy/country-proxy.service";
     AuthManager,
     UserProxy,
     CountryProxy,
+    LanguageProxy,
     TranslationService,
     {provide: ErrorHandler, useClass: GlobalExceptionHandler}
   ],

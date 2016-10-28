@@ -12,6 +12,8 @@ export class ApiCall {
   private authorizationHeaderName: string = 'Authorization';
   private authorizationHeaderPrefix: string = 'Token token=';
   private storageAuthorizationData: string = 'authorizationData';
+  private languageHeaderName: string = 'X-API-LOCALE';
+  private storageSelectedLanguageKey: string = 'selectedLanguage';
   private transformHeaderName: string = 'X-API-KEY-TRANSFORM';
   private transformHeaderValue: string = 'underscore';
 
@@ -58,6 +60,8 @@ export class ApiCall {
     if (authorizationData) {
       req.headers.set(this.authorizationHeaderName, this.authorizationHeaderPrefix + authorizationData['auth-token']);
     }
+    let selectedLanguage = this.localStorageWrapper.getObject(this.storageSelectedLanguageKey);
+    req.headers.set(this.languageHeaderName, (selectedLanguage && selectedLanguage.languageCode || 'en'));
     req.headers.set(this.transformHeaderName, this.transformHeaderValue);
     return this.http.request(req)
       .catch(response => {

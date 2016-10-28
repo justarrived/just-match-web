@@ -1,8 +1,9 @@
 import {Component, OnInit} from "@angular/core";
 import {AuthManager} from "./services/auth-manager.service";
 import {Router, NavigationStart, RoutesRecognized, NavigationCancel, NavigationEnd, NavigationError} from "@angular/router";
-import {TranslationService} from "./services/translation.service";
 import {User} from "./models/user";
+import {TranslationService} from "./services/translation.service";
+import {Language} from "./models/language";
 
 @Component({
   moduleId: module.id,
@@ -12,9 +13,12 @@ import {User} from "./models/user";
 })
 export class AppComponent implements OnInit {
   user: User;
+  systemLanguages: Array<Language>;
+  selectedLanguage: Language;
   isNavigationMenuVisible: boolean = false;
+  isLanguageMenuVisible: boolean = false;
 
-  constructor(private authManager: AuthManager, private router: Router, public translationService: TranslationService) {
+  constructor(private router: Router, private authManager: AuthManager, public translationService: TranslationService) {
     router.events.subscribe(event => {
       if (event instanceof NavigationStart) {
         this.isNavigationMenuVisible = false;
@@ -36,6 +40,9 @@ export class AppComponent implements OnInit {
         console.log('RoutesRecognized');
       }
     });
+
+    this.translationService.getSystemLanguages().then(result => this.systemLanguages = result);
+    this.selectedLanguage = this.translationService.getSelectedLanguage();
   }
 
   ngOnInit() {
@@ -52,13 +59,24 @@ export class AppComponent implements OnInit {
 
   onBodyClick(event) {
     let targetClasses = event.target.classList;
-    if ((targetClasses.contains('overbody-container') || targetClasses.contains('menu-side-bar')) && this.isNavigationMenuVisible) {
+    if ((targetClasses.contains('overbody-container') || targetClasses.contains('menu-side-bar')) && (this.isNavigationMenuVisible || this.isLanguageMenuVisible)) {
       this.isNavigationMenuVisible = false;
+      this.isLanguageMenuVisible = false;
     }
   }
 
-  onMenuButtonClick() {
+  onNavigationMenuButtonClick() {
     this.isNavigationMenuVisible = true;
+  }
+
+  onLanguageMenuButtonClick() {
+    this.isLanguageMenuVisible = true;
+  }
+
+  onSelectLanguage(language: Language) {
+    this.isLanguageMenuVisible = false;
+    this.selectedLanguage = language;
+    this.translationService.setLanguage(language);
   }
 }
 
