@@ -1,4 +1,4 @@
-import {Component, OnInit} from "@angular/core";
+import {Component} from "@angular/core";
 import {UserProfile} from "../../../models/user/user-profile";
 import {UserProxy} from "../../../services/user-proxy.service";
 import {AuthManager} from "../../../services/auth-manager.service";
@@ -6,8 +6,8 @@ import {User} from "../../../models/user";
 import {namePropertyLabel} from "../../../utils/label-util";
 import {LanguageProxy} from "../../../services/proxy/language-proxy.service";
 import {languageProficiencyLevels} from "../../../enums/enums";
-import {isEmpty, some, cloneDeep} from "lodash";
-import {Language} from "../../../models/language/language";
+import {isEmpty, some} from "lodash";
+import {deleteElementFromArray} from "../../../utils/array-util";
 
 @Component({
   moduleId: module.id,
@@ -21,7 +21,6 @@ export class UserProfileComponent {
   languageProficiencyLevels = languageProficiencyLevels;
 
   editMode: boolean = false;
-  selectedLanguage: Language = null;
 
   user: User;
   userProfile: UserProfile;
@@ -42,8 +41,11 @@ export class UserProfileComponent {
   onLanguageSelect(language) {
     if (!isEmpty(language) && !some(this.userProfile.languages, language)) {
       this.userProfile.languages.push(language);
-      // TODO: delete selectedLanguage
     }
+  }
+
+  onRemoveLanguage(language) {
+    deleteElementFromArray(this.userProfile.languages, language);
   }
 
   onImageFilenameChange(event) {

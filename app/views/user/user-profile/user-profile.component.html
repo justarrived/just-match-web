@@ -21,7 +21,9 @@
 
   <div class="centered-form-container">
     <form class="centered-form" #form="ngForm" (ngSubmit)="onSubmit()">
-      <div class="material-group form-group presentation">
+      <div class="material-group">
+        <i class="icon-ic-paper"></i>
+
         <label for="presentation">{{'profile.form.presentation' | translate | uppercase}}*</label>
         <textarea name="presentation" id="presentation" class="material-input" [disabled]="!editMode" [(ngModel)]="userProfile.presentation" required minlength="10"></textarea>
 
@@ -30,42 +32,59 @@
         </div>
       </div>
 
-      <div class="material-group form-group languages">
+      <div class="material-group">
+        <i class="icon-ic-user3"></i>
+
         <label>{{'profile.form.languages' | translate | uppercase}}</label>
-        <autocomplete-dropdown [(destination)]="selectedLanguage" (dropdownListItemSelect)="onLanguageSelect($event)"
+        <autocomplete-dropdown (dropdownListItemSelect)="onLanguageSelect($event)"
+                               [clearDestinationAfterSelection]="true"
                                [autocompleteResultLabelFunction]="namePropertyLabel"
                                [selectedItemLabelFunction]="namePropertyLabel"
-                               [getData]="getLanguages()"
-                               >
+                               [isDisabled]="!editMode"
+                               [getData]="getLanguages()">
         </autocomplete-dropdown>
 
-        <div class="table">
+        {{selectedLanguage && selectedLanguage.name}}
+
+        <div class="table max-width">
           <div class="table-row" *ngFor="let language of userProfile.languages">
-            <div class="table-cell">{{language.name}}</div>
-            <div class="table-cell">{{language.proficiency && language.proficiency.proficiency}}</div>
-            <div class="table-cell">
+            <div class="table-cell min-width-column">{{language.name}}</div>
+            <div class="table-cell"></div>
+            <div class="table-cell min-width-column">
               <autocomplete-dropdown [lookupType]="'list'" [enumList]="languageProficiencyLevels"
                                      [(destination)]="language.proficiency"
+                                     [placeholder]="'language.proficiency.placeholder' | translate"
                                      [autoSelectFirstOption]="true"
+                                     [isDisabled]="!editMode"
                                      [autocompleteResultLabelFunction]="namePropertyLabel"
                                      [selectedItemLabelFunction]="namePropertyLabel">
               </autocomplete-dropdown>
+            </div>
+            <div class="table-cell"></div>
+            <div class="table-cell min-width-column clickable" *ngIf="editMode" (click)="onRemoveLanguage(language)">
+              <i class="icon-ic-close"></i>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="material-group form-group work-experience">
+      <div class="material-group">
+        <i class="icon-ic-star"></i>
+
         <label for="work-experience">{{'profile.form.experience' | translate | uppercase}}</label>
         <textarea name="workExperience" id="work-experience" class="material-input" [disabled]="!editMode" [(ngModel)]="userProfile.workExperience"></textarea>
       </div>
 
-      <div class="material-group form-group education">
+      <div class="material-group">
+        <i class="icon-ic-education"></i>
+
         <label for="education">{{'profile.form.education' | translate | uppercase}}</label>
         <textarea name="education" id="education" class="material-input" [disabled]="!editMode" [(ngModel)]="userProfile.education"></textarea>
       </div>
 
-      <div class="material-group form-group skills">
+      <div class="material-group">
+        <i class="icon-ic-tool"></i>
+
         <label for="skills">{{'profile.form.skills' | translate | uppercase}}</label>
         <textarea name="skills" id="skills" class="material-input" [disabled]="!editMode" [(ngModel)]="userProfile.skills"></textarea>
       </div>

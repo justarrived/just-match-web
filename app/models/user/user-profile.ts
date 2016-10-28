@@ -1,6 +1,6 @@
 import {User} from "../user";
 import {Language} from "../language/language";
-import {getIds} from "../../utils/identifiable-util";
+import {map} from "lodash";
 
 export class UserProfile {
   id: number;
@@ -27,7 +27,12 @@ export class UserProfile {
       'id': this.id,
       'user_image_one_time_token': this.imageToken,
       'description': this.presentation,
-      'language_ids': getIds(this.languages),
+      'language_ids': map(this.languages, language => {
+        return {
+          id: language.id,
+          proficiency: language.proficiency.proficiency
+        };
+      }),
       'job_experience': this.workExperience,
       'education': this.education,
       'competence_text': this.skills
