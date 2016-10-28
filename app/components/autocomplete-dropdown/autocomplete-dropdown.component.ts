@@ -1,4 +1,4 @@
-import {Component, Input, ElementRef, OnInit, EventEmitter, Output, OnChanges} from "@angular/core";
+import {Component, Input, ElementRef, OnInit, EventEmitter, Output, HostListener} from "@angular/core";
 import {cloneDeep, some, isEqual, isObject, assignIn, filter} from "lodash";
 import {CountryProxy} from "../../services/proxy/country-proxy.service";
 import {deleteElementFromArray} from "../../utils/array-util";
@@ -8,15 +8,13 @@ import Timer = NodeJS.Timer;
   moduleId: module.id,
   selector: 'autocomplete-dropdown',
   templateUrl: 'autocomplete-dropdown.component.html',
-  styleUrls: ['autocomplete-dropdown.component.css'],
-  host: {
-    '(document:click)': 'onDocumentClick($event)'
-  }
+  styleUrls: ['autocomplete-dropdown.component.css']
 })
-export class AutocompleteDropdownComponent implements OnInit, OnChanges {
+export class AutocompleteDropdownComponent implements OnInit {
   @Input() destination: any;
   @Output() destinationChange = new EventEmitter();
   @Output() dropdownListItemSelect = new EventEmitter();
+  @Input() clearDestinationAfterSelection: boolean;
   @Input() lookupType: string;
   @Input() lookupPrefix: string = 'client/lookup';
   @Input() queryScope: string;
@@ -94,10 +92,10 @@ export class AutocompleteDropdownComponent implements OnInit, OnChanges {
     }
   }
 
-  ngOnChanges(changes: any) {
-    if (changes.destination) {
-      // console.log('changes', changes.destination);
-      // this.setDestination(changes.destination.currentValue);
+  @HostListener('document:click', ['$event']) onDocumentClick(event: Event) {
+    if (!this.elementRef.nativeElement.contains(event.target) && this.isDropdownOpened) {
+      this.setTextInputFromLast();
+      this.isDropdownOpened = false;
     }
   }
 
@@ -161,13 +159,6 @@ export class AutocompleteDropdownComponent implements OnInit, OnChanges {
 
   allOptionLabelFunction() {
     return this.allOptionLabel || 'All';
-  }
-
-  private onDocumentClick(event: Event) {
-    if (!this.elementRef.nativeElement.contains(event.target) && this.isDropdownOpened) {
-      this.setTextInputFromLast();
-      this.isDropdownOpened = false;
-    }
   }
 
   private onDestinationChange() {
@@ -238,6 +229,12 @@ export class AutocompleteDropdownComponent implements OnInit, OnChanges {
   }
 
   private setDestination(item: any) {
+    if (this.clearDestinationAfterSelection) {
+      this.destination = null;
+      this.destinationChange.emit(this.destination);
+      return;
+    }
+
     if (item && this.allOptionValue === item) {
       this.destination = cloneDeep(item);
       this.destinationChange.emit(this.destination);
