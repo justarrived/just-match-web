@@ -1,6 +1,7 @@
 import {UserImage} from "./user/user-image";
 import {map} from "lodash";
 import {Language} from "./language/language";
+import {UserLanguage} from "./user/user-language";
 
 export class User {
   id: number;
@@ -9,7 +10,7 @@ export class User {
   email: string;
   role: string;
   images: UserImage[];
-  languages: Language[];
+  userLanguages: UserLanguage[];
   presentation: string;
   workExperience: string;
   education: string;
@@ -22,7 +23,7 @@ export class User {
     this.email = jsonObject.email;
     this.role = jsonObject.primary_role;
     this.images = map(jsonObject.user_images, userImage => new UserImage(userImage));
-    this.languages = map(jsonObject.languages, language => new Language(language));
+    this.userLanguages = map(jsonObject.user_languages, userLanguage => new UserLanguage(userLanguage));
     this.presentation = jsonObject.description;
     this.workExperience = jsonObject.job_experience;
     this.education = jsonObject.education;

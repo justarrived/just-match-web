@@ -1,10 +1,7 @@
-import {LanguageProficiency} from "./language-proficiency";
-
 export class Language {
   id: number;
   name: string;
   code: string;
-  proficiency: LanguageProficiency;
 
   constructor(jsonObject: any) {
     this.id = jsonObject.id;

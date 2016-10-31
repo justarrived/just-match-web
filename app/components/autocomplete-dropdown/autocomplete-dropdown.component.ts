@@ -90,6 +90,8 @@ export class AutocompleteDropdownComponent implements OnInit {
         return item && this.enumList[item] && this.enumList[item].isGroup;
       };
     }
+
+    this.onDestinationChange();
   }
 
   @HostListener('document:click', ['$event']) onDocumentClick(event: Event) {

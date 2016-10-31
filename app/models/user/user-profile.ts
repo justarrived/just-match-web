@@ -1,13 +1,13 @@
 import {User} from "../user";
-import {Language} from "../language/language";
 import {map} from "lodash";
+import {UserLanguage} from "./user-language";
 
 export class UserProfile {
   id: number;
   imageToken: string;
   imageUrl: string;
   presentation: string;
-  languages: Language[];
+  userLanguages: UserLanguage[];
   workExperience: string;
   education: string;
   skills: string;
@@ -16,7 +16,7 @@ export class UserProfile {
     this.id = user.id;
     this.imageUrl = (user.images && user.images[0] && user.images[0].imageUrl) || 'app/assets/images/placeholder-profile-image.png';
     this.presentation = user.presentation;
-    this.languages = user.languages || [];
+    this.userLanguages = user.userLanguages || [];
     this.workExperience = user.workExperience;
     this.education = user.education;
     this.skills = user.skills;
@@ -27,10 +27,10 @@ export class UserProfile {
       'id': this.id,
       'user_image_one_time_token': this.imageToken,
       'description': this.presentation,
-      'language_ids': map(this.languages, language => {
+      'language_ids': map(this.userLanguages, userLanguage => {
         return {
-          id: language.id,
-          proficiency: language.proficiency.proficiency
+          id: userLanguage.language.id,
+          proficiency: userLanguage.proficiency.proficiency
         };
       }),
       'job_experience': this.workExperience,

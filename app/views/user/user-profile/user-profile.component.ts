@@ -8,6 +8,7 @@ import {LanguageProxy} from "../../../services/proxy/language-proxy.service";
 import {languageProficiencyLevels} from "../../../enums/enums";
 import {isEmpty, some} from "lodash";
 import {deleteElementFromArray} from "../../../utils/array-util";
+import {UserLanguage} from "../../../models/user/user-language";
 
 @Component({
   moduleId: module.id,
@@ -39,13 +40,16 @@ export class UserProfileComponent {
   }
 
   onLanguageSelect(language) {
-    if (!isEmpty(language) && !some(this.userProfile.languages, language)) {
-      this.userProfile.languages.push(language);
+    if (!isEmpty(language) && !some(this.userProfile.userLanguages, language)) {
+      let userLanguage = new UserLanguage({proficiency: 1});
+      userLanguage.language = language;
+
+      this.userProfile.userLanguages.push(userLanguage);
     }
   }
 
-  onRemoveLanguage(language) {
-    deleteElementFromArray(this.userProfile.languages, language);
+  onRemoveUserLanguage(userLanguage) {
+    deleteElementFromArray(this.userProfile.userLanguages, userLanguage);
   }
 
   onImageFilenameChange(event) {
