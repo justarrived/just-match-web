@@ -50,9 +50,7 @@
         padding: 10px 0 10px 45px;
         position: relative;
 
-        &:before {
-          content: '\e80c';
-          font-family: 'fontello';
+        .icon-ic-task {
           position: absolute;
           left: 0;
           top: 5px;
@@ -154,17 +152,15 @@
           margin: auto 5px auto 20px;
           font-size: 14px;
           line-height: 1em;
-        }
-        .calendar:before {
-          display: block;
-          content: '\e807';
-          position: absolute;
-          font-family: fontello;
-          font-size: 29px;
-          line-height: 1em;
-          left: 1px;
-          top: -12px;
-          font-weight: 300;
+
+          .icon-ic-calendar {
+            position: absolute;
+            font-size: 29px;
+            line-height: 1em;
+            left: -5px;
+            top: -12px;
+            font-weight: 300;
+          }
         }
       }
 
@@ -172,9 +168,7 @@
         width: 50%;
         text-align: right;
 
-        &:after {
-          font-family: fontello;
-          content: '\e80a';
+        .icon-ic-arrow-right {
           vertical-align: middle;
           margin-left: 6px;
         }
