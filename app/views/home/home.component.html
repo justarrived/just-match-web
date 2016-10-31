@@ -1,7 +1,7 @@
 <div class="home-component">
   <section class="home-header">
     <div class="home-header-image-container">
-      <img src="app/assets/images/hero2.jpg" class="home-header-image" alt>
+      <img src="assets/images/hero2.jpg" class="home-header-image" alt>
       <div class="home-header-title">
         {{'start.hero_section.slide_3' | translate}}
       </div>
@@ -25,11 +25,15 @@
     <div class="job-section-header">
       <div class="calendar-container">
         <div class="calendar">
+          <i class="icon-ic-calendar"></i>
           {{today}}
         </div>
         {{'start.job_section.title' | translate}}
       </div>
-      <div class="all-jobs-button-container"><a href="#"><span>{{'common.show_all' | translate}}</span></a></div>
+      <div class="all-jobs-button-container">
+        <a href="#" class="fs-m0"><span>{{'common.show_all' | translate | uppercase}}</span></a>
+        <i class="icon-ic-arrow-right"></i>
+      </div>
     </div>
     <slider [jobs]="newJobs"></slider>
 
@@ -38,19 +42,40 @@
     <section class="instruction-pane">
       <h3 class="heading">{{'start.steps_section.title' | translate}}</h3>
       <ul class="list">
-        <li class="item">{{'start.steps_section.step_1' | translate}}</li>
-        <li class="item">{{'start.steps_section.step_2' | translate}}</li>
-        <li class="item">{{'start.steps_section.step_3' | translate}}</li>
-        <li class="item">{{'start.steps_section.step_4' | translate}}</li>
+        <li class="item">
+          <i class="icon-ic-task"></i>
+          {{'start.steps_section.step_1' | translate}}
+        </li>
+        <li class="item">
+          <i class="icon-ic-task"></i>
+          {{'start.steps_section.step_2' | translate}}
+        </li>
+        <li class="item">
+          <i class="icon-ic-task"></i>
+          {{'start.steps_section.step_3' | translate}}
+        </li>
+        <li class="item">
+          <i class="icon-ic-task"></i>
+          {{'start.steps_section.step_4' | translate}}
+        </li>
       </ul>
       <a href="#" class="button">{{'common.start_here' | translate}}</a>
     </section>
     <section class="instruction-pane primary">
       <h3 class="heading">{{'start.instruction_section.slide_1.title' | translate}}</h3>
       <ul class="list">
-        <li class="item">{{'start.instruction_section.slide_1.text_1' | translate}}</li>
-        <li class="item">{{'start.instruction_section.slide_1.text_2' | translate}}</li>
-        <li class="item">{{'start.instruction_section.slide_1.text_3' | translate}}</li>
+        <li class="item">
+          <i class="icon-ic-task"></i>
+          {{'start.instruction_section.slide_1.text_1' | translate}}
+        </li>
+        <li class="item">
+          <i class="icon-ic-task"></i>
+          {{'start.instruction_section.slide_1.text_2' | translate}}
+        </li>
+        <li class="item">
+          <i class="icon-ic-task"></i>
+          {{'start.instruction_section.slide_1.text_3' | translate}}
+        </li>
       </ul>
       <a href="#" class="button">{{'common.start_here' | translate}}</a>
     </section>
@@ -58,9 +83,18 @@
       <h3 class="heading">{{'start.instruction_section.slide_2.title' | translate}}</h3>
       <p>{{'start.instruction_section.slide_2.text_1' | translate}}</p>
       <ul class="list">
-        <li class="item">{{'start.instruction_section.slide_2.text_2' | translate}}</li>
-        <li class="item">{{'start.instruction_section.slide_2.text_3' | translate}}</li>
-        <li class="item">{{'start.instruction_section.slide_2.text_4' | translate}}</li>
+        <li class="item">
+          <i class="icon-ic-task"></i>
+          {{'start.instruction_section.slide_2.text_2' | translate}}
+        </li>
+        <li class="item">
+          <i class="icon-ic-task"></i>
+          {{'start.instruction_section.slide_2.text_3' | translate}}
+        </li>
+        <li class="item">
+          <i class="icon-ic-task"></i>
+          {{'start.instruction_section.slide_2.text_4' | translate}}
+        </li>
       </ul>
       <a href="#" class="button">{{'common.start_here' | translate}}</a>
     </section>
@@ -69,21 +103,21 @@
     <div class="partners-title"> {{'start.partner_section.title' | translate}}</div>
     <p class="partners-text"> {{'start.partner_section.text' | translate}}</p>
     <div class="partners-logos-container">
-      <div class="logo-container"><a href="http://antrop.se/"><img class="partner-logo" src="app/assets/images/antrop-logo2.png" alt="Antrop"></a></div>
-      <div class="logo-container"><a href="http://universumglobal.com/"><img class="partner-logo" src="app/assets/images/logo-universum.png" alt="Universum"></a></div>
-      <div class="logo-container"><a href="http://www.wintrgarden.com/"><img class="partner-logo" src="app/assets/images/logo-wntrgarden.png" alt="Wintrgarden"></a></div>
-      <div class="logo-container"><a href="http://jacobburenstam.com/"><img class="partner-logo extra-padding" src="app/assets/images/jacob_burenstam-logo.png" alt="Jacob Burenstam"></a></div>
-      <div class="logo-container"><a href="https://cygni.se/"><img class="partner-logo" src="app/assets/images/wgni-logo.png" alt="Cyngi"></a></div>
-      <div class="logo-container"><a href="https://www.frilansfinans.se/"><img class="partner-logo" src="app/assets/images/frilans_finans-logo.png" alt="Frilans Finans"></a></div>
-      <div class="logo-container"><a href="http://neverendingmonday.com/"><img class="partner-logo" src="app/assets/images/nem-logo.png" alt="Never Ending Monday"></a></div>
-      <div class="logo-container"><a href="https://janssonnorin.se/"><img class="partner-logo" src="app/assets/images/jansson_norin-logo.png" alt="Jansson Norin"></a></div>
-      <div class="logo-container"><a href="http://novasverige.se/"><img class="partner-logo left-padding" src="app/assets/images/nova-logo.png" alt="Nova"></a></div>
-      <div class="logo-container"><a href="http://bondstreet.se/"><img class="partner-logo" src="app/assets/images/bond_street_film_sthlm.png" alt="Bond Street Film"></a></div>
-      <div class="logo-container"><a href="http://herosverige.se/"><img class="partner-logo" src="app/assets/images/hero_framtid_logo.jpg" alt="Hero Sverige"></a></div>
-      <div class="logo-container"><a href="http://www.migrationsverket.se/"><img class="partner-logo" src="app/assets/images/migrationsverket.png" alt="Migrationsverket"></a></div>
-      <div class="logo-container"><a href="http://www.redcross.se/"><img class="partner-logo" src="app/assets/images/roda_korset.png" alt="Röda Korset"></a></div>
-      <div class="logo-container"><a href="http://skeppsbronskatt.se/en/"><img class="partner-logo" src="app/assets/images/skeppsbron_skatt.png" alt="Skeppsbron Skatt"></a></div>
-      <div class="logo-container"><a href="http://welcomeapp.se/"><img class="partner-logo" src="app/assets/images/welcome.png" alt="Welcome!"></a></div>
+      <div class="logo-container"><a href="http://antrop.se/"><img class="partner-logo" src="assets/images/antrop-logo2.png" alt="Antrop"></a></div>
+      <div class="logo-container"><a href="http://universumglobal.com/"><img class="partner-logo" src="assets/images/logo-universum.png" alt="Universum"></a></div>
+      <div class="logo-container"><a href="http://www.wintrgarden.com/"><img class="partner-logo" src="assets/images/logo-wntrgarden.png" alt="Wintrgarden"></a></div>
+      <div class="logo-container"><a href="http://jacobburenstam.com/"><img class="partner-logo extra-padding" src="assets/images/jacob_burenstam-logo.png" alt="Jacob Burenstam"></a></div>
+      <div class="logo-container"><a href="https://cygni.se/"><img class="partner-logo" src="assets/images/wgni-logo.png" alt="Cyngi"></a></div>
+      <div class="logo-container"><a href="https://www.frilansfinans.se/"><img class="partner-logo" src="assets/images/frilans_finans-logo.png" alt="Frilans Finans"></a></div>
+      <div class="logo-container"><a href="http://neverendingmonday.com/"><img class="partner-logo" src="assets/images/nem-logo.png" alt="Never Ending Monday"></a></div>
+      <div class="logo-container"><a href="https://janssonnorin.se/"><img class="partner-logo" src="assets/images/jansson_norin-logo.png" alt="Jansson Norin"></a></div>
+      <div class="logo-container"><a href="http://novasverige.se/"><img class="partner-logo left-padding" src="assets/images/nova-logo.png" alt="Nova"></a></div>
+      <div class="logo-container"><a href="http://bondstreet.se/"><img class="partner-logo" src="assets/images/bond_street_film_sthlm.png" alt="Bond Street Film"></a></div>
+      <div class="logo-container"><a href="http://herosverige.se/"><img class="partner-logo" src="assets/images/hero_framtid_logo.jpg" alt="Hero Sverige"></a></div>
+      <div class="logo-container"><a href="http://www.migrationsverket.se/"><img class="partner-logo" src="assets/images/migrationsverket.png" alt="Migrationsverket"></a></div>
+      <div class="logo-container"><a href="http://www.redcross.se/"><img class="partner-logo" src="assets/images/roda_korset.png" alt="Röda Korset"></a></div>
+      <div class="logo-container"><a href="http://skeppsbronskatt.se/en/"><img class="partner-logo" src="assets/images/skeppsbron_skatt.png" alt="Skeppsbron Skatt"></a></div>
+      <div class="logo-container"><a href="http://welcomeapp.se/"><img class="partner-logo" src="assets/images/welcome.png" alt="Welcome!"></a></div>
     </div>
   </section>
 </div>

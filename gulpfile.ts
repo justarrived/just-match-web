@@ -18,6 +18,7 @@ const uglify = require('gulp-uglify');
 
 const sass = require('gulp-sass');
 const cleanCss = require('gulp-clean-css');
+const concatCss = require('gulp-concat-css');
 
 const jsonminify = require('gulp-jsonminify');
 
@@ -25,6 +26,7 @@ const htmlreplace = require('gulp-html-replace');
 
 let env = args.env || 'dev';
 let buildTime = Date.now();
+let stylesBundleFilename = `app.bundle${buildTime}.css`;
 let polyfillsBundleFilename = `polyfills.bundle${buildTime}.js`;
 let appBundleFilename = `app.bundle${buildTime}.js`;
 
@@ -76,10 +78,22 @@ gulp.task('copy-translations', () => {
     .pipe(gulp.dest('dist/i18n'));
 });
 
+gulp.task('copy-assets', () => {
+  return gulp.src('assets/**', {base: '.'})
+    .pipe(gulp.dest('dist'));
+});
+
 gulp.task('copy-config', () => {
   return gulp.src(`app/config/environments/${env}.ts`)
     .pipe(rename('config.ts'))
     .pipe(gulp.dest('app/config'));
+});
+
+gulp.task('bundle-styles', () => {
+  return gulp.src('app/styles/**/*.css')
+    .pipe(concatCss(stylesBundleFilename))
+    .pipe(cleanCss())
+    .pipe(gulp.dest('dist/styles'));
 });
 
 gulp.task('bundle-polyfills', () => {
@@ -87,7 +101,7 @@ gulp.task('bundle-polyfills', () => {
     'core-js/client/shim.min.js',
     'zone.js/dist/zone.js',
     'reflect-metadata/Reflect.js',
-    'systemjs/dist/system.src.js'
+    'hammerjs/hammer.min.js',
   ], {cwd: 'node_modules/**'})
     .pipe(concat(polyfillsBundleFilename))
     .pipe(uglify())
@@ -112,6 +126,7 @@ gulp.task('bundle-app', (callback) => {
 gulp.task('html-replace', () => {
   return gulp.src('index.html')
     .pipe(htmlreplace({
+      css: `styles/${stylesBundleFilename}`,
       polyfills: polyfillsBundleFilename,
       app: appBundleFilename
     }, {
@@ -137,8 +152,10 @@ gulp.task('build', (callback) => {
     'compile-sass',
     'bundle-polyfills',
     'bundle-app',
+    'bundle-styles',
     'resources',
     'copy-translations',
+    'copy-assets',
     'html-replace',
     callback);
 });
