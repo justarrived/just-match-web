@@ -60,6 +60,10 @@ body {
 
   .table {
     display: table;
+
+    &.max-width {
+      width: 100%;
+    }
   }
   .table-row {
     display: table-row;
@@ -221,21 +225,6 @@ body {
   .material-group {
     position: relative;
     margin-bottom: 25px;
-
-    .ng2-auto-complete {
-      width: 100%;
-
-      .auto-complete {
-        max-height: 150px;
-        input {
-          padding: 10px 12px;
-        }
-
-        ul {
-          max-height: 150px;
-        }
-      }
-    }
 
     .material-input {
       width: 100%;

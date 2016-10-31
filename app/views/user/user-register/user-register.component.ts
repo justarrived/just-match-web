@@ -3,10 +3,11 @@ import {UserProxy} from "../../../services/user-proxy.service";
 import {UserStatus} from "../../../models/user/user-status";
 import {UserRegister} from "../../../models/user/user-register";
 import {CountryProxy} from "../../../services/proxy/country-proxy.service";
-import {AT_UND_STATUSES} from "../../../enums/enums";
+import {atUndStatuses} from "../../../enums/enums";
 import {Country} from "../../../models/country";
 import {AuthManager} from "../../../services/auth-manager.service";
 import {Router} from "@angular/router";
+import {namePropertyLabel} from "../../../utils/label-util";
 
 @Component({
   moduleId: module.id,
@@ -14,18 +15,20 @@ import {Router} from "@angular/router";
   styleUrls: ['user-register.component.css']
 })
 export class UserRegisterComponent implements OnInit {
+  namePropertyLabel: Function = namePropertyLabel;
+
+  atUndStatuses = atUndStatuses;
+
   userRegister: UserRegister = new UserRegister();
-  statuses: Array<UserStatus>;
-  atUndStatuses = AT_UND_STATUSES;
-  countries: Array<Country>;
+  statuses: UserStatus[];
+  countries: Country[];
   search: any;
   errors: any = {};
 
   constructor(private router: Router,
               private userProxy: UserProxy,
               private countryProxy: CountryProxy,
-              private authManager: AuthManager) {
-  }
+              private authManager: AuthManager) { }
 
   ngOnInit(): void {
     this.userProxy.getStatuses().then(statuses => this.statuses = statuses);

@@ -375,5 +375,6 @@
   "translation.dynamic.off.title": "Automatic translation is turned of. The original text and the language you have selected is the same for this section of the site.",
   "promo.title": "Welcome to Just Arrived!",
   "promo.description": "At the moment, Just Arrived is only availible for invited users. If you are interested in using the platform, please sign up on www.justarrived.se for the official launch in the autumn of 2016. ",
-  "job.more_detail.text": "For more details on the job"
+  "job.more_detail.text": "For more details on the job",
+  "language.proficiency.placeholder": "Select language proficiency"
 }

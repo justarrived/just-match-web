@@ -28,7 +28,6 @@ $ms-item-text-color: #ffffff;
   .autocomplete-dropdown-container {
     border: 1px solid $color-blue-1;
     background-color: $background-color;
-    padding-left: 10px;
 
     &.table {
       background-color: $background-color;
@@ -93,6 +92,10 @@ $ms-item-text-color: #ffffff;
     .drop-down-arrow {
       background-color: unset;
       cursor: not-allowed;
+
+      .icon-ic-arrow-bottom {
+        background-color: $disabled-background-color;
+      }
     }
 
     .autocomplete-dropdown-container {
