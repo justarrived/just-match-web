@@ -1,6 +1,7 @@
 import {Component, OnInit} from "@angular/core";
 import {AuthManager} from "./services/auth-manager.service";
 import {Router, NavigationStart, RoutesRecognized, NavigationCancel, NavigationEnd, NavigationError} from "@angular/router";
+import {Location} from '@angular/common';
 import {User} from "./models/user";
 import {TranslationService} from "./services/translation.service";
 import {Language} from "./models/language";
@@ -12,20 +13,23 @@ import {Language} from "./models/language";
   styleUrls: ["app.component.css"]
 })
 export class AppComponent implements OnInit {
+  states: Array<String> = new Array<String>();
+  currentState: string;
   user: User;
   systemLanguages: Array<Language>;
   selectedLanguage: Language;
   isNavigationMenuVisible: boolean = false;
   isLanguageMenuVisible: boolean = false;
 
-  constructor(private router: Router, private authManager: AuthManager, public translationService: TranslationService) {
+  constructor(private router: Router, private authManager: AuthManager, private location: Location, public translationService: TranslationService) {
     router.events.subscribe(event => {
       if (event instanceof NavigationStart) {
         this.isNavigationMenuVisible = false;
       }
 
       if (event instanceof NavigationEnd) {
-        console.log('NavigationEnd');
+        this.currentState = router.url;
+        this.states.push(router.url);
       }
 
       if (event instanceof NavigationCancel) {
@@ -77,6 +81,11 @@ export class AppComponent implements OnInit {
     this.isLanguageMenuVisible = false;
     this.selectedLanguage = language;
     this.translationService.setLanguage(language);
+  }
+
+  onBackButtonClick() {
+    this.states.pop();
+    this.router.navigate([this.states.pop()]);
   }
 }
 

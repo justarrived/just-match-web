@@ -1,4 +1,4 @@
-import {Injectable} from "@angular/core";
+import {Injectable, EventEmitter} from "@angular/core";
 import {TranslateService} from "ng2-translate/ng2-translate";
 import {Language} from "../models/language";
 import {LanguageProxy} from "./proxy/language-proxy.service";
@@ -11,6 +11,7 @@ export class TranslationService {
   private languages: Array<Language>;
   private selectedLanguage: Language;
   private languagesPromise: Promise;
+  private languageChange: EventEmitter<any> = new EventEmitter();
 
   constructor(private translateService: TranslateService, private languageProxy: LanguageProxy, private localStorageWrapper: LocalStorageWrapper) {
     this.translateService.addLangs(['ar', 'en', 'fa', 'fa_AF', 'ku', 'ps', 'sv', 'ti']);
@@ -25,6 +26,7 @@ export class TranslationService {
     this.selectedLanguage = language;
     this.localStorageWrapper.setObject(this.storageSelectedLanguageKey, language);
     this.translateService.use(language.languageCode);
+    this.languageChange.emit();
   }
 
   public getSystemLanguages(): Promise<any> {
@@ -36,7 +38,11 @@ export class TranslationService {
   }
 
   public getSelectedLanguage(): Language {
-    console.log(this.selectedLanguage);
     return this.selectedLanguage;
   }
+
+  public getLanguageChangeEmiiter() {
+    return this.languageChange;
+  }
+
 }
