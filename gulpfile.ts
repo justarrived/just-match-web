@@ -28,6 +28,7 @@ let env = args.env || 'dev';
 let buildTime = Date.now();
 let stylesBundleFilename = `app.bundle${buildTime}.css`;
 let polyfillsBundleFilename = `polyfills.bundle${buildTime}.js`;
+let libsBundleFilename = `libs.bundle${buildTime}.js`;
 let appBundleFilename = `app.bundle${buildTime}.js`;
 
 gulp.task('clean', (callback) => {
@@ -101,9 +102,17 @@ gulp.task('bundle-polyfills', () => {
     'core-js/client/shim.min.js',
     'zone.js/dist/zone.js',
     'reflect-metadata/Reflect.js',
-    'hammerjs/hammer.min.js',
   ], {cwd: 'node_modules/**'})
     .pipe(concat(polyfillsBundleFilename))
+    .pipe(uglify())
+    .pipe(gulp.dest('dist'));
+});
+
+gulp.task('bundle-libs', () => {
+  return gulp.src([
+    'hammerjs/hammer.min.js'
+  ], {cwd: 'node_modules/**'})
+    .pipe(concat(libsBundleFilename))
     .pipe(uglify())
     .pipe(gulp.dest('dist'));
 });
@@ -128,6 +137,7 @@ gulp.task('html-replace', () => {
     .pipe(htmlreplace({
       css: `styles/${stylesBundleFilename}`,
       polyfills: polyfillsBundleFilename,
+      libs: libsBundleFilename,
       app: appBundleFilename
     }, {
       keepBlockTags: true,
@@ -151,6 +161,7 @@ gulp.task('build', (callback) => {
     'compile-ts:prod',
     'compile-sass',
     'bundle-polyfills',
+    'bundle-libs',
     'bundle-app',
     'bundle-styles',
     'resources',
