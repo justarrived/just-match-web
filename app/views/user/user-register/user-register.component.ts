@@ -3,10 +3,11 @@ import {UserProxy} from "../../../services/user-proxy.service";
 import {UserStatus} from "../../../models/user/user-status";
 import {UserRegister} from "../../../models/user/user-register";
 import {CountryProxy} from "../../../services/proxy/country-proxy.service";
-import {AT_UND_STATUSES} from "../../../enums/enums";
+import {atUndStatuses} from "../../../enums/enums";
 import {Country} from "../../../models/country";
 import {AuthManager} from "../../../services/auth-manager.service";
 import {Router} from "@angular/router";
+import {namePropertyLabel} from "../../../utils/label-util";
 
 @Component({
   moduleId: module.id,
@@ -14,18 +15,20 @@ import {Router} from "@angular/router";
   styleUrls: ['user-register.component.css']
 })
 export class UserRegisterComponent implements OnInit {
-  user: UserRegister = new UserRegister();
-  statuses: Array<UserStatus>;
-  atUndStatuses = AT_UND_STATUSES;
-  countries: Array<Country>;
+  namePropertyLabel: Function = namePropertyLabel;
+
+  atUndStatuses = atUndStatuses;
+
+  userRegister: UserRegister = new UserRegister();
+  statuses: UserStatus[];
+  countries: Country[];
   search: any;
   errors: any = {};
 
   constructor(private router: Router,
               private userProxy: UserProxy,
               private countryProxy: CountryProxy,
-              private authManager: AuthManager) {
-  }
+              private authManager: AuthManager) { }
 
   ngOnInit(): void {
     this.userProxy.getStatuses().then(statuses => this.statuses = statuses);
@@ -36,18 +39,18 @@ export class UserRegisterComponent implements OnInit {
     let file = event.srcElement.files[0];
     let data = new FormData();
     data.append('image', file);
-    this.userProxy.saveImage(data).then(userImage => this.user.imageToken = userImage.oneTimeToken);
+    this.userProxy.saveImage(data).then(userImage => this.userRegister.imageToken = userImage.oneTimeToken);
   }
 
   onSubmit() {
     this.errors = {};
 
-    this.user.languageId = 38; // TODO: use the interface choosen language from the user
-    this.userProxy.saveUser(this.user.toJsonObject())
+    this.userRegister.languageId = 38; // TODO: use the interface choosen language from the user
+    this.userProxy.saveUser(this.userRegister.toJsonObject())
       .then(() => {
-        return this.authManager.logUser(this.user.email, this.user.password);
+        return this.authManager.logUser(this.userRegister.email, this.userRegister.password);
       }).then(() => {
-        this.router.navigate(['/home']); // TODO: redirect to edit candidate profile view
+        this.router.navigate(['/user']);
       }).catch(errors => {
         this.errors = errors;
       });

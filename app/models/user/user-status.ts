@@ -2,8 +2,8 @@ export class UserStatus {
   id: string;
   name: string;
 
-  constructor(jsonObject: Object) {
-    this.id = jsonObject['id'];
-    this.name = jsonObject['en-name'];
+  constructor(jsonObject: any) {
+    this.id = jsonObject.id;
+    this.name = jsonObject.en_name;
   }
 }

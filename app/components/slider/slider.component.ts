@@ -26,25 +26,25 @@ export class SliderComponent implements OnInit {
 
   onSwipe(isLeftSwipe: boolean) {
     let firstItemContainerOffsetWidth = this.getFirstItemContainer().offsetWidth;
-    let maxVisualizatedItems = this.getMaxVisualisationItemContainers(firstItemContainerOffsetWidth);
+    let maxVisualizedItems = this.getMaxVisualisationItemContainers(firstItemContainerOffsetWidth);
     if (!this.lastFullyVisualizatedItemIndex) {
-      this.lastFullyVisualizatedItemIndex = maxVisualizatedItems;
+      this.lastFullyVisualizatedItemIndex = maxVisualizedItems;
     }
 
     let sliderContainerLeftPosition = parseInt(this.sliderContainer.style.left || 0);
-    let pixelsValueForMovingSliderContainer = parseInt(firstItemContainerOffsetWidth * maxVisualizatedItems);
+    let pixelsValueForMovingSliderContainer = firstItemContainerOffsetWidth * maxVisualizedItems;
 
-    if ((this.lastFullyVisualizatedItemIndex + maxVisualizatedItems >= this.jobs.length) && isLeftSwipe) {
+    if ((this.lastFullyVisualizatedItemIndex + maxVisualizedItems >= this.jobs.length) && isLeftSwipe) {
       this.sliderContainer.style.left = (((this.jobs.length * firstItemContainerOffsetWidth) - this.slider.offsetWidth) * -1) + 'px';
       this.lastFullyVisualizatedItemIndex = this.jobs.length;
-    } else if ((this.lastFullyVisualizatedItemIndex - maxVisualizatedItems <= maxVisualizatedItems) && !isLeftSwipe) {
+    } else if ((this.lastFullyVisualizatedItemIndex - maxVisualizedItems <= maxVisualizedItems) && !isLeftSwipe) {
       this.sliderContainer.style.left = 0;
-      this.lastFullyVisualizatedItemIndex = maxVisualizatedItems;
+      this.lastFullyVisualizatedItemIndex = maxVisualizedItems;
     } else {
       let directionMultiplier = isLeftSwipe ? -1 : 1;
       let indexMultiplier = isLeftSwipe ? 1 : -1;
       this.sliderContainer.style.left = (sliderContainerLeftPosition + ((pixelsValueForMovingSliderContainer - 10) * directionMultiplier)) + 'px';
-      this.lastFullyVisualizatedItemIndex  = this.lastFullyVisualizatedItemIndex + (maxVisualizatedItems * indexMultiplier);
+      this.lastFullyVisualizatedItemIndex  = this.lastFullyVisualizatedItemIndex + (maxVisualizedItems * indexMultiplier);
     }
   }
 
@@ -57,6 +57,6 @@ export class SliderComponent implements OnInit {
   }
 
   private getMaxVisualisationItemContainers(itemContainerWidth): number {
-    return parseInt(this.slider.offsetWidth / itemContainerWidth);
+    return (this.slider.offsetWidth / itemContainerWidth);
   }
 }

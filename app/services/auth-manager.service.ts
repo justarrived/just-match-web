@@ -1,9 +1,7 @@
 import {Injectable} from "@angular/core";
-import {ApiCall} from "./api-call.service";
 import {LocalStorageWrapper} from "./local-storage-wrapper.service";
 import {User} from "../models/user";
 import {UserProxy} from "./user-proxy.service";
-import {Router} from "@angular/router";
 
 @Injectable()
 export class AuthManager {
@@ -25,7 +23,7 @@ export class AuthManager {
     this.userProxy.getUserSession(email, password).then(response => {
         let data = response.data;
         this.localStorageWrapper.setObject(this.storageAuthorizationData, data);
-        return this.userProxy.getUser(data['user-id']);
+        return this.userProxy.getUser(data['user_id']);
       })
       .then(response => {
         return this.handleUserResult(response.data);
@@ -35,7 +33,7 @@ export class AuthManager {
   authenticateIfNeeded(): Promise<User> {
     let authorizationData = this.localStorageWrapper.getObject(this.storageAuthorizationData);
     if (authorizationData) {
-      return this.userProxy.getUser(authorizationData['user-id']).then(response => {
+      return this.userProxy.getUser(authorizationData['user_id'], {include: 'user_images,user_languages'}).then(response => { // TODO: add user_languages.language in the include
         return this.handleUserResult(response.data);
       });
     }
@@ -48,6 +46,10 @@ export class AuthManager {
     this.localStorageWrapper.remove(this.storageAuthorizationData);
   }
 
+  getUser() {
+    return this.user;
+  }
+
   getUserRole() {
     return this.user && this.user.role;
   }
@@ -56,7 +58,7 @@ export class AuthManager {
     return this.user;
   }
 
-  private handleUserResult(data) {
+  handleUserResult(data) {
     this.user = new User(data);
     return Promise.resolve(this.user);
   }

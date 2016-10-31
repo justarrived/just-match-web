@@ -1,9 +1,9 @@
 import {Injectable, EventEmitter} from "@angular/core";
 import {TranslateService} from "ng2-translate/ng2-translate";
-import {Language} from "../models/language";
 import {LanguageProxy} from "./proxy/language-proxy.service";
 import {LocalStorageWrapper} from "./local-storage-wrapper.service";
 import {orderBy} from "lodash";
+import {Language} from "../models/language/language";
 
 @Injectable()
 export class TranslationService {

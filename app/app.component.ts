@@ -1,10 +1,10 @@
 import {Component, OnInit} from "@angular/core";
 import {AuthManager} from "./services/auth-manager.service";
 import {Router, NavigationStart, RoutesRecognized, NavigationCancel, NavigationEnd, NavigationError} from "@angular/router";
-import {Location} from '@angular/common';
+import {Location} from "@angular/common";
 import {User} from "./models/user";
 import {TranslationService} from "./services/translation.service";
-import {Language} from "./models/language";
+import {Language} from "./models/language/language";
 
 @Component({
   moduleId: module.id,

@@ -17,6 +17,7 @@ export class HomeComponent implements OnInit {
   password: string;
   newJobs: Array<Job>;
   isCompanyUser: boolean;
+
   constructor(private jobProxy: JobProxy, private authManager: AuthManager, private translationService: TranslationService) {
     this.isCompanyUser = authManager.isCompanyUser();
     this.translationService.getLanguageChangeEmiiter().subscribe(() => {
@@ -25,8 +26,7 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.jobProxy.getJobs({include: 'company,hourly-pay,company.company-images', 'filter[filled]':false}).then(result => {
-      this.newJobs = result;
-    });
+    this.jobProxy.getJobs({include: 'company,hourly_pay,company.company_images', 'filter[filled]': false})
+      .then(result => this.newJobs = result);
   }
 }

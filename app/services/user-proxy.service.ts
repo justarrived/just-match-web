@@ -9,7 +9,7 @@ export class UserProxy {
 
     constructor(private apiCall: ApiCall) { }
 
-    getUser(userId: String, includes?: Object): Promise<any> {
+    getUser(userId: string, includes?: Object): Promise<any> {
       return this.apiCall.get('users/' + userId, includes);
     }
 
@@ -20,8 +20,12 @@ export class UserProxy {
       });
     }
 
-    saveUser(user: Object): Promise<any> {
+    saveUser(user: any): Promise<any> {
       return this.apiCall.post('users', user);
+    }
+
+    updateUser(user: any): Promise<any> {
+      return this.apiCall.patch('users/' + user.id, user);
     }
 
     getStatuses(): Promise<Array<UserStatus>> {

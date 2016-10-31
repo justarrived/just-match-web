@@ -107,7 +107,7 @@
   "start.instruction_section.slide_2.text_3": "Access to a bank account",
   "start.instruction_section.slide_2.text_4": "Work permit",
   "start.partner_section.title": "Our partners",
-  "start.partner_section.text": "JustArrived is a joint pro-bono initiative designed to help newly arrived immigrants to the Swedish labour market. We are owned by a foundation and is run by an association of companies.",
+  "start.partner_section.text": "Just Arrived is a joint pro-bono initiative designed to help newly arrived immigrants to the Swedish labour market. We are owned by a foundation and is run by an association of companies.",
   "find_assignment.title": "Find jobs",
   "find_assignment.filter.city": "Search for jobs in {{city}}",
   "find_assignment.filter.radius": "Within a radius of {{radius}} (km)",
@@ -236,7 +236,7 @@
   "assignment.recommendation.description": "Write a recommendation",
   "user": "User",
   "user.create.title": "Create account",
-  "user.create.description": "Welcome! To use JustArrived it is important that you have; 1) A personal ID number or a co-ordination number, 2) Work permit or AT-UND, 3) Access to a bank account. A co-ordination number is a temporary personal ID number which you can use to identify yourself towards the authorities and companies. It is a ten digit number and it is not the same as the number displayed at the LMA card. To apply for AT-UND please contact Migrationsverket. To obatin a co-ordination number please contact Skatteverket for more information.",
+  "user.create.description": "Welcome! To use Just Arrived it is important that you have; 1) A personal ID number or a co-ordination number, 2) Work permit or AT-UND, 3) Access to a bank account. A co-ordination number is a temporary personal ID number which you can use to identify yourself towards the authorities and companies. It is a ten digit number and it is not the same as the number displayed at the LMA card. To apply for AT-UND please contact Migrationsverket. To obatin a co-ordination number please contact Skatteverket for more information.",
   "user.form.ssn": "Personal ID number",
   "user.form.orgnr": "Corporate number",
   "user.form.first_name": "First name",
@@ -314,7 +314,7 @@
   "user.assignment.rejected.detail": "Why have you not approved the job?",
   "user.assignment.rejected.reason": "Reason",
   "user.assignment.rejected.confirmation": "Thank you for your message!",
-  "user.assignment.rejected.confirmation.description": "We will process your enquiry and get back to you as soon as we can. with the help of your feedback, we can improve the JustArrived service.",
+  "user.assignment.rejected.confirmation.description": "We will process your enquiry and get back to you as soon as we can. with the help of your feedback, we can improve the Just Arrived service.",
   "user.assignment.rating.submit.description": "Provide a star rating (1-5), and write a review that will be added to profile.",
   "assignment.status.application_count": "This job has {{application_count}} applications",
   "assignment.status.select_applicant": "Select candidate",
@@ -375,5 +375,6 @@
   "translation.dynamic.off.title": "Automatic translation is turned of. The original text and the language you have selected is the same for this section of the site.",
   "promo.title": "Welcome to Just Arrived!",
   "promo.description": "At the moment, Just Arrived is only availible for invited users. If you are interested in using the platform, please sign up on www.justarrived.se for the official launch in the autumn of 2016. ",
-  "job.more_detail.text": "For more details on the job"
+  "job.more_detail.text": "For more details on the job",
+  "language.proficiency.placeholder": "Select language proficiency"
 }

@@ -11,6 +11,7 @@ body {
   margin: 0 auto;
   background-color: #E8EBEE;
   font-size: $fs-m0;
+  color: #333333;
 
   a {
     text-decoration: none;
@@ -20,10 +21,28 @@ body {
     }
   }
 
+  input {
+    outline: none;
+  }
+
   input[type="date"] {
     text-transform: uppercase;
   }
 
+  .clickable {
+    cursor: pointer;
+
+    &.disabled {
+      box-shadow: none;
+      cursor: not-allowed;
+      opacity: 0.95;
+      pointer-events: none;
+    }
+  }
+
+  .block {
+    display: block;
+  }
   .inline-block {
     display: inline-block;
   }
@@ -32,16 +51,31 @@ body {
     margin-bottom: 15px;
   }
 
+  .text-left {
+    text-align: left;
+  }
   .text-center {
     text-align: center;
   }
 
-  .text-left {
-    text-align: left;
-  }
+  .table {
+    display: table;
 
-  .text-right {
-    text-align: right;
+    &.max-width {
+      width: 100%;
+    }
+  }
+  .table-row {
+    display: table-row;
+  }
+  .table-cell {
+    display: table-cell;
+    vertical-align: middle;
+
+    &.min-width-column {
+      white-space: nowrap;
+      width: 1px;
+    }
   }
 
   .color-dark {
@@ -84,6 +118,9 @@ body {
     color: $color-pink-2;
   }
 
+  .fs-s {
+    font-size: $fs-s;
+  }
   .fs-m0 {
     font-size: $fs-m0;
   }
@@ -103,16 +140,25 @@ body {
     font-size: $fs-xxxl;
   }
 
-  .table {
-    display: table;
+  .subheader {
+    padding: 30px;
+    background: $color-blue-1;
+    color: white;
+
+    .subheader-text {
+      letter-spacing: 0.02em;
+      line-height: 20px;
+    }
   }
 
-  .table-row {
-    display: table-row;
-  }
+  .centered-form-container {
+    padding: 35px 0;
 
-  .table-cell {
-    display: table-cell;
+    .centered-form {
+      width: 85%;
+      max-width: 500px;
+      margin: 0 auto;
+    }
   }
 
   .button {
@@ -154,6 +200,18 @@ body {
       }
     }
 
+    &.form-control {
+      font-size: 1.4em;
+      width: auto;
+      min-width: 180px;
+      margin: 30px auto 0;
+      display: inherit;
+
+      &.cancel{
+        margin: 15px auto;
+      }
+    }
+
     &.disabled, &[disabled] {
       &, &:hover {
         background-color: $color-blue-1;
@@ -168,31 +226,13 @@ body {
     position: relative;
     margin-bottom: 25px;
 
-    .ng2-auto-complete {
-      width: 100%;
-
-      .auto-complete {
-        max-height: 150px;
-        input {
-          padding: 10px 12px;
-        }
-
-        ul {
-          max-height: 150px;
-        }
-      }
-    }
-
     .material-input {
       width: 100%;
       padding: 10px 12px;
       display: block;
-      border: 1px solid $color-blue-1;
       margin-bottom: 5px;
 
       &:focus, &.not-empty {
-        outline: none;
-
         ~ .material-label:not(.label-up) {
           @include label-up();
         }
@@ -205,6 +245,14 @@ body {
           color: $color-pink-2 !important;
         }
       }
+    }
+
+    input.material-input {
+      border: 1px solid $color-blue-1;
+    }
+
+    textarea.material-input {
+      resize: none;
     }
 
     .material-label {
