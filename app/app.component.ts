@@ -1,10 +1,10 @@
 import {Component, OnInit} from "@angular/core";
 import {AuthManager} from "./services/auth-manager.service";
 import {Router, NavigationStart, RoutesRecognized, NavigationCancel, NavigationEnd, NavigationError} from "@angular/router";
-import {Location} from "@angular/common";
 import {User} from "./models/user";
 import {TranslationService} from "./services/translation.service";
 import {Language} from "./models/language/language";
+import {UserManagerService} from "./user-manager.service";
 
 @Component({
   moduleId: module.id,
@@ -16,12 +16,13 @@ export class AppComponent implements OnInit {
   states: Array<String> = new Array<String>();
   currentState: string;
   user: User;
+  isCompanyUser: boolean;
   systemLanguages: Array<Language>;
   selectedLanguage: Language;
   isNavigationMenuVisible: boolean = false;
   isLanguageMenuVisible: boolean = false;
 
-  constructor(private router: Router, private authManager: AuthManager, private location: Location, public translationService: TranslationService) {
+  constructor(private router: Router, private authManager: AuthManager, private userManagerService: UserManagerService, public translationService: TranslationService) {
     router.events.subscribe(event => {
       if (event instanceof NavigationStart) {
         this.isNavigationMenuVisible = false;
@@ -52,13 +53,14 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     console.log("Application component initialized ...");
     this.authManager.authenticateIfNeeded().then(result => {
-      if (result == null) {
-        this.router.navigate(['/home']);
-        return;
-      }
       this.router.initialNavigation();
+      this.user = result;
     });
-    this.user = this.authManager.getUser();
+
+    this.authManager.getUserChangeEmmiter().subscribe(user => {
+      this.isCompanyUser = this.userManagerService.isCompanyUser();
+      this.user = user;
+    });
   }
 
   onBodyClick(event) {
@@ -86,6 +88,11 @@ export class AppComponent implements OnInit {
   onBackButtonClick() {
     this.states.pop();
     this.router.navigate([this.states.pop()]);
+  }
+
+  onLogoutButtonClick() {
+    this.authManager.logoutUser();
+    this.router.navigate(['/home']);
   }
 }
 

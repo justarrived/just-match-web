@@ -1,6 +1,7 @@
 import {Component, OnInit, ElementRef, Input} from "@angular/core";
 import {Job} from "../../models/job/job";
 import {AuthManager} from "../../services/auth-manager.service";
+import {UserManagerService} from "../../user-manager.service";
 
 @Component({
     moduleId: module.id,
@@ -15,8 +16,8 @@ export class SliderComponent implements OnInit {
   private lastFullyVisualizatedItemIndex: number;
   isCompanyUser: boolean = false;
 
-  constructor(private sliderElement: ElementRef, private authManager: AuthManager) {
-    this.isCompanyUser = authManager.isCompanyUser();
+  constructor(private sliderElement: ElementRef, private userManagerService: UserManagerService) {
+    this.isCompanyUser = userManagerService.isCompanyUser();
   }
 
   ngOnInit() {

@@ -5,19 +5,19 @@
       <div class="nav-menu table-cell">
         <div class="nav-menu-icon-container"><i class="icon-ic-just-arrived-logo"></i></div>
         <div class="nav-menu-item-container">
-          <div class="nav-menu-item"><a class="nav-menu-link nav-my-job" routerLink="/about">{{'menu.main.my_assignment' | translate}}</a></div>
-          <div class="nav-menu-item"><a class="nav-menu-link nav-job-list" href="">{{'menu.main.find_assignment' | translate}}</a></div>
-          <div class="nav-menu-item"><a class="nav-menu-link nav-job-create" href="">{{'menu.main.create_assignment' | translate}}</a></div>
-          <div class="nav-menu-item"><a class="nav-menu-link nav-faq" href="">{{'menu.main.faq' | translate}}</a></div>
-          <div class="nav-menu-item"><a class="nav-menu-link nav-contact" href="">{{'menu.main.contact' | translate}}</a></div>
-          <div class="nav-menu-item"><a class="nav-menu-link nav-profile" href="">{{'profile' | translate}}</a></div>
-          <div class="nav-menu-item"><a class="nav-menu-link nav-signin" href="">{{'menu.main.login' | translate}}</a></div>
-          <div class="nav-menu-item"><a class="nav-menu-link nav-signout" href="">{{'menu.main.logout' | translate}}</a></div>
+          <div class="nav-menu-item clickable" *ngIf="user"><a class="nav-menu-link nav-my-job">{{'menu.main.my_assignment' | translate}}</a></div>
+          <div class="nav-menu-item clickable"><a class="nav-menu-link nav-job-list" href="">{{'menu.main.find_assignment' | translate}}</a></div>
+          <div class="nav-menu-item clickable" *ngIf="isCompanyUser"><a class="nav-menu-link nav-job-create">{{'menu.main.create_assignment' | translate}}</a></div>
+          <div class="nav-menu-item clickable"><a class="nav-menu-link nav-faq" href="">{{'menu.main.faq' | translate}}</a></div>
+          <div class="nav-menu-item clickable"><a class="nav-menu-link nav-contact" href="">{{'menu.main.contact' | translate}}</a></div>
+          <div class="nav-menu-item clickable" *ngIf="user"><a class="nav-menu-link nav-profile" href="">{{'profile' | translate}}</a></div>
+          <div class="nav-menu-item clickable" *ngIf="!user"><a class="nav-menu-link nav-signin" routerLink="/login">{{'menu.main.login' | translate}}</a></div>
+          <div class="nav-menu-item clickable" *ngIf="user"><a class="nav-menu-link nav-signout" (click)="onLogoutButtonClick()">{{'menu.main.logout' | translate}}</a></div>
         </div>
       </div>
     </div>
-    <div class="table-row">
-      <div class="table-cell">test</div>
+    <div class="table-row nav-menu-footer">
+      <div class="table-cell" *ngIf="user">{{user.firstName}} {{user.lastName}}</div>
     </div>
   </div>
 </div>
