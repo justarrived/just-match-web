@@ -1,7 +1,7 @@
 <div class="slider" (window:resize)="onResize()">
   <div class="slider-container" (swipeleft)="onSwipe(true)" (swiperight)="onSwipe(false)">
       <div *ngFor="let job of jobs" class="item-container">
-        <img  class="company-logo no-select" [src]="(job.company.companyLogo && job.company.companyLogo.imageUrlSmall) || 'app/assets/images/placeholder-logo.png'">
+        <img  class="company-logo no-select" [src]="(job.company.companyLogo && job.company.companyLogo.imageUrlSmall) || 'assets/images/placeholder-logo.png'">
         <div class="salary-container" *ngIf="isCompanyUser">
           {{job.hourlyPay.rateExcludingVAT * job.hours}} {{job.hourlyPay.currency}}
         </div>

@@ -41,7 +41,7 @@ export class UserProfileComponent {
   }
 
   onLanguageSelect(language) {
-    if (!isEmpty(language) && !some(this.userProfile.userLanguages, language)) {
+    if (!isEmpty(language) && !some(this.userProfile.userLanguages, {language: language})) {
       let userLanguage = new UserLanguage({proficiency: 1});
       userLanguage.language = language;
 

@@ -14,7 +14,7 @@ export class UserProfile {
 
   constructor(user: User) {
     this.id = user.id;
-    this.imageUrl = (user.images && user.images[0] && user.images[0].imageUrl) || 'app/assets/images/placeholder-profile-image.png';
+    this.imageUrl = (user.images && user.images[0] && user.images[0].imageUrl) || 'assets/images/placeholder-profile-image.png';
     this.presentation = user.presentation;
     this.userLanguages = user.userLanguages || [];
     this.workExperience = user.workExperience;
