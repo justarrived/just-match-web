@@ -17,7 +17,8 @@
       </div>
     </div>
     <div class="table-row nav-menu-footer">
-      <div class="table-cell" *ngIf="user">{{user.firstName}} {{user.lastName}}</div>
+      <div class="table-cell user-panel" *ngIf="user">{{user.firstName}} {{user.lastName}}</div>
+      <div class="table-cell text-center" *ngIf="!user"><a routerLink="/user/register" class="button" >Create User</a></div>
     </div>
   </div>
 </div>
