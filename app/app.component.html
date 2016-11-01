@@ -1,5 +1,6 @@
 <div class="menu-side-bar" (click)="onBodyClick($event)" [hidden]="!isNavigationMenuVisible">
   <div class="overbody-container"></div>
+  <div class="close-button icon-ic-close" (click)="isNavigationMenuVisible = false"></div>
   <div class="menu-container table">
     <div class="table-row">
       <div class="nav-menu table-cell">
@@ -10,20 +11,21 @@
           <div class="nav-menu-item clickable" *ngIf="isCompanyUser"><a class="nav-menu-link nav-job-create">{{'menu.main.create_assignment' | translate}}</a></div>
           <div class="nav-menu-item clickable"><a class="nav-menu-link nav-faq" href="">{{'menu.main.faq' | translate}}</a></div>
           <div class="nav-menu-item clickable"><a class="nav-menu-link nav-contact" href="">{{'menu.main.contact' | translate}}</a></div>
-          <div class="nav-menu-item clickable" *ngIf="user"><a class="nav-menu-link nav-profile" href="">{{'profile' | translate}}</a></div>
+          <div class="nav-menu-item clickable" *ngIf="user && !isCompanyUser"><a class="nav-menu-link nav-profile" routerLink="/user">{{'profile' | translate}}</a></div>
           <div class="nav-menu-item clickable" *ngIf="!user"><a class="nav-menu-link nav-signin" routerLink="/login">{{'menu.main.login' | translate}}</a></div>
           <div class="nav-menu-item clickable" *ngIf="user"><a class="nav-menu-link nav-signout" (click)="onLogoutButtonClick()">{{'menu.main.logout' | translate}}</a></div>
         </div>
       </div>
     </div>
     <div class="table-row nav-menu-footer">
-      <div class="table-cell user-panel" *ngIf="user">{{user.firstName}} {{user.lastName}}</div>
+      <div class="table-cell user-panel" *ngIf="user"><div class="user-info-image" [ngStyle]="{'background-image': 'url(' + ((user.images && user.images[0] && user.images[0].imageUrl) || 'assets/images/placeholder-profile-image.png') + ')'}"></div>{{user.firstName}} {{user.lastName}}</div>
       <div class="table-cell text-center" *ngIf="!user"><a routerLink="/user/register" class="button" >Create User</a></div>
     </div>
   </div>
 </div>
 <div class="menu-side-bar" [hidden]="!isLanguageMenuVisible" (click)="onBodyClick($event)">
   <div class="overbody-container"></div>
+  <div class="close-button icon-ic-close" (click)="isLanguageMenuVisible = false"></div>
   <div class="menu-container language-menu-container">
     <div class="just-arrived-logo-container text-center">
       <img class="language-logo-img" src="app/assets/images/logo.svg" alt="Just Arrived"/>

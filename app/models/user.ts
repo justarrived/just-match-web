@@ -28,6 +28,7 @@ export class User {
     this.workExperience = jsonObject.job_experience;
     this.education = jsonObject.education;
     this.skills = jsonObject.competence_text;
+    console.log(this);
   }
 
   toJsonObject(): Object {

@@ -111,6 +111,15 @@
   height: 100%;
   overflow-y: auto;
 
+  .close-button {
+    font-size: 20px;
+    color: white;
+    position: absolute;
+    right: 10px;
+    z-index: 30;
+    top: 15px;
+  }
+
   .menu-container {
     width: 375px;
     background: rgba(34, 37, 49, 0.95);
@@ -258,6 +267,26 @@
 
     .nav-menu-footer {
       color: white;
+
+      .user-info-image {
+        margin-right: 15px;
+        border-radius: 50%;
+        height: 35px;
+        width: 35px;
+        overflow: hidden;
+        display: inline-block;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+        vertical-align: middle;
+        box-shadow: inset 0px 0px 1px 0px rgba(0,0,0,0.2);
+
+        img {
+          width: 100%;
+          height: auto;
+          min-height: 35px;
+        }
+      }
 
       .table-cell {
         vertical-align: bottom;
