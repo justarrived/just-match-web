@@ -3,6 +3,8 @@ import {AuthManager} from "../../services/auth-manager.service";
 import {JobProxy} from "../../services/job-proxy.service";
 import {Job} from "../../models/job/job";
 import {SliderComponent} from "../../components/slider/slider.component";
+import {TranslationService} from "../../services/translation.service";
+import {UserManager} from "../../user-manager.service";
 
 @Component({
   moduleId: module.id,
@@ -17,8 +19,11 @@ export class HomeComponent implements OnInit {
   newJobs: Array<Job>;
   isCompanyUser: boolean;
 
-  constructor(private jobProxy: JobProxy, private authManager: AuthManager) {
-    this.isCompanyUser = authManager.isCompanyUser();
+  constructor(private jobProxy: JobProxy, private userManager: UserManager, private translationService: TranslationService) {
+    this.isCompanyUser = userManager.isCompanyUser();
+    this.translationService.getLanguageChangeEmitter().subscribe(() => {
+      this.ngOnInit();
+    });
   }
 
   ngOnInit() {

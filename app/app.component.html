@@ -1,9 +1,136 @@
+<div class="menu-side-bar" (click)="onBodyClick($event)" [hidden]="!isNavigationMenuVisible">
+  <div class="overbody-container"></div>
+  <div class="close-button icon-ic-close" (click)="isNavigationMenuVisible = false"></div>
+  <div class="menu-container table">
+    <div class="table-row">
+      <div class="nav-menu table-cell">
+        <div class="nav-menu-icon-container"><i class="icon-ic-just-arrived-logo"></i></div>
+        <div class="nav-menu-item-container">
+          <div class="nav-menu-item clickable" *ngIf="user">
+            <a class="nav-menu-link">
+              <i class="icon-ic-my-jobs"></i>
+              {{'menu.main.my_assignment' | translate}}
+            </a>
+          </div>
+          <div class="nav-menu-item clickable">
+            <a class="nav-menu-link" href="">
+              <i class="icon-ic-find-jobs"></i>
+              {{'menu.main.find_assignment' | translate}}
+            </a>
+          </div>
+          <div class="nav-menu-item clickable" *ngIf="isCompanyUser">
+            <a class="nav-menu-link">
+              <i class="icon-ic-create"></i>
+              {{'menu.main.create_assignment' | translate}}
+            </a>
+          </div>
+          <div class="nav-menu-item clickable">
+            <a class="nav-menu-link" href="">
+              <i class="icon-ic-faq"></i>
+              {{'menu.main.faq' | translate}}
+            </a>
+          </div>
+          <div class="nav-menu-item clickable">
+            <a class="nav-menu-link" href="">
+              <i class="icon-ic-contact"></i>
+              {{'menu.main.contact' | translate}}
+            </a>
+          </div>
+          <div class="nav-menu-item clickable" *ngIf="user && !isCompanyUser">
+            <a class="nav-menu-link" routerLink="/user">
+              <i class="icon-ic-user"></i>
+              {{'profile' | translate}}
+            </a>
+          </div>
+          <div class="nav-menu-item clickable" *ngIf="!user">
+            <a class="nav-menu-link" routerLink="/login">
+              <i class="icon-ic-log-in"></i>
+              {{'menu.main.login' | translate}}
+            </a>
+          </div>
+          <div class="nav-menu-item clickable" *ngIf="user">
+            <a class="nav-menu-link" (click)="onLogoutButtonClick()">
+              <i class="icon-ic-log-in"></i>
+              {{'menu.main.logout' | translate}}
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="table-row nav-menu-footer">
+      <div class="table-cell user-panel" *ngIf="user">
+        <div class="user-info-image" [ngStyle]="{'background-image': 'url(' + ((user.images && user.images[0] && user.images[0].imageUrl) || 'assets/images/placeholder-profile-image.png') + ')'}"></div>
+        {{user.firstName}} {{user.lastName}}
+      </div>
+      <div class="table-cell text-center" *ngIf="!user">
+        <a routerLink="/user/register" class="button">Create User</a>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="menu-side-bar" [hidden]="!isLanguageMenuVisible" (click)="onBodyClick($event)">
+  <div class="overbody-container"></div>
+  <div class="close-button icon-ic-close" (click)="isLanguageMenuVisible = false"></div>
+  <div class="menu-container language-menu-container">
+    <div class="just-arrived-logo-container text-center">
+      <img class="language-logo-img" src="assets/images/logo.svg" alt="Just Arrived"/>
+    </div>
+    <div class="select-language-header-text text-center fs-xl">{{'menu.language.title' | translate}}</div>
+    <div class="select-language-container text-center">
+      <div *ngFor="let language of systemLanguages" class="language-button-container no-select clickable" (click)="onSelectLanguage(language)">
+        <div class="language-code">{{language.languageCode}}</div>
+        <div class="language-text">{{language.localName}}</div>
+      </div>
+
+    </div>
+    <div class="language-information text-center">
+      <p>{{'menu.language.text_1' | translate}}</p>
+      <p>{{'menu.language.text_2' | translate}}</p>
+    </div>
+    <div class="credentials">
+      <p class="prominent">{{'menu.language.translation_by_probono' | translate}}:</p>
+      <img src="assets/images/menu_semantix_logo.png" alt="Semantix"/>
+      <img src="assets/images/menu_skrivasbyra_logo.png" alt="Stockholms.Skrivbyrå"/>
+      <p class="start_name">Farshid Fadaee</p>
+      <p>Nick Chipperfield</p>
+      <p>Hans-Erik Täpp</p>
+    </div>
+  </div>
+</div>
+<header class="table header">
+  <div class="table-row">
+    <div class="table-cell header-logo-container">
+      <div class="table">
+        <div class="table-row">
+          <div class="table-cell clickable back-button-container" *ngIf="states.length > 1 && currentState !== '/home'" (click)="onBackButtonClick()">
+            <i class="demo-icon icon-ic-arrow-left"></i>
+          </div>
+          <div class="table-cell app-logo-img-container">
+            <a routerLink="/home">
+              <img class="app-logo-img" src="assets/images/logo.svg" alt="Just Arrived"/>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="table-cell">
+        <div (click)="onLanguageMenuButtonClick()">
+          <div class="nav-language-icon">{{selectedLanguage.languageCode}}</div>
+          <div class="nav-language-text">{{selectedLanguage.localName}}</div>
+        </div>
+    </div>
+    <div class="table-cell">
+      <div (click)="onNavigationMenuButtonClick()"><span class="menu-icon"><i></i><i></i><i></i></span><span class="menu-text">{{"common.menu" | translate}}</span></div>
+    </div>
+  </div>
+</header>
 <section class="app">
-  <nav>
-    <a routerLink="/home">Home</a>
-    <a routerLink="/about">About</a>
-    <a routerLink="/user/register">Register</a>
-    <a routerLink="/user">Profile</a>
-  </nav>
   <router-outlet></router-outlet>
 </section>
+<footer class="table footer">
+  <div class="table-row">
+    <div class="table-cell">{{'applications.title' | translate}}</div>
+    <div class="table-cell text-center">Jakobsbergsgatan 22, 111 44 Stockholm</div>
+    <div class="table-cell text-right"><a href="mailto:hej@justarrived.se">hej@justarrived.se</a></div>
+  </div>
+</footer>

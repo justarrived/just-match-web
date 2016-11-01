@@ -1,11 +1,15 @@
 export class Language {
-  id: number;
+  id: string;
+  direction: string;
+  languageCode: string;
   name: string;
-  code: string;
+  localName: string;
 
   constructor(jsonObject: any) {
     this.id = jsonObject.id;
+    this.direction = jsonObject.direction;
+    this.languageCode = jsonObject.lang_code;
     this.name = jsonObject.en_name;
-    this.code = jsonObject.lang_code;
+    this.localName = jsonObject.local_name;
   }
 }

@@ -9,6 +9,7 @@ import {languageProficiencyLevels} from "../../../enums/enums";
 import {isEmpty, some} from "lodash";
 import {deleteElementFromArray} from "../../../utils/array-util";
 import {UserLanguage} from "../../../models/user/user-language";
+import {UserManager} from "../../../user-manager.service";
 
 @Component({
   moduleId: module.id,
@@ -28,8 +29,8 @@ export class UserProfileComponent {
 
   constructor(private userProxy: UserProxy,
               private languageProxy: LanguageProxy,
-              private authManager: AuthManager) {
-    this.user = this.authManager.getUser();
+              private authManager: AuthManager, private userManager: UserManager) {
+    this.user = this.userManager.getUser();
     this.userProfile = new UserProfile(this.user);
   }
 

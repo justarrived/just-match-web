@@ -1,29 +1,24 @@
 import {Injectable} from "@angular/core";
-import {
-  Http,
-  Headers,
-  Request,
-  RequestOptions,
-  RequestOptionsArgs,
-  RequestMethod,
-  URLSearchParams
-} from "@angular/http";
+import {Http, Headers, Request, RequestOptions, RequestOptionsArgs, RequestMethod, URLSearchParams} from "@angular/http";
 import {LocalStorageWrapper} from "./local-storage-wrapper.service";
 import * as  _ from "lodash";
 import {parseJsonapiResponse, parseJsonapiErrorResponse} from "../utils/jsonapi-parser.util";
 import {Observable} from "rxjs";
 import {Router} from "@angular/router";
 import {APP_CONFIG} from "../config/config";
+import {UserManager} from "../user-manager.service";
 
 @Injectable()
 export class ApiCall {
   private authorizationHeaderName: string = 'Authorization';
   private authorizationHeaderPrefix: string = 'Token token=';
   private storageAuthorizationData: string = 'authorizationData';
+  private languageHeaderName: string = 'X-API-LOCALE';
+  private storageSelectedLanguageKey: string = 'selectedLanguage';
   private transformHeaderName: string = 'X-API-KEY-TRANSFORM';
   private transformHeaderValue: string = 'underscore';
 
-  constructor(private http: Http, private localStorageWrapper: LocalStorageWrapper, private router: Router) {
+  constructor(private http: Http, private localStorageWrapper: LocalStorageWrapper, private router: Router, private userManager: UserManager) {
   }
 
   public get(url: string, urlParams?: Object, contentType?: string): Promise<any> {
@@ -66,6 +61,8 @@ export class ApiCall {
     if (authorizationData) {
       req.headers.set(this.authorizationHeaderName, this.authorizationHeaderPrefix + authorizationData['auth_token']);
     }
+    let selectedLanguage = this.localStorageWrapper.getObject(this.storageSelectedLanguageKey);
+    req.headers.set(this.languageHeaderName, ((selectedLanguage && selectedLanguage.languageCode) || 'en'));
     req.headers.set(this.transformHeaderName, this.transformHeaderValue);
     return this.http.request(req)
       .catch(response => {
@@ -93,8 +90,12 @@ export class ApiCall {
   }
 
   private handleResponseErrors(response) {
-    //TODO: Implement logic when: https://github.com/justarrived/just_match_api/issues/586 is ready
     if (response.status === 401) {
+      var tokenExpiredObject = _.find(response.json().errors, {code: 'token_expired'});
+      if (!!tokenExpiredObject) {
+        this.userManager.deleteUser();
+        this.router.navigate(['/login']);
+      }
       this.router.navigate(['/home']);
     }
   }

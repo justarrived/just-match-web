@@ -22,6 +22,8 @@ import {DeletableItemComponent} from "./components/autocomplete-dropdown/deletab
 import {AutocompleteDropdownListItemComponent} from "./components/autocomplete-dropdown/autocomplete-dropdown-list-item/autocomplete-dropdown-list-item.component";
 import {AutocompleteDropdownComponent} from "./components/autocomplete-dropdown/autocomplete-dropdown.component";
 import {LanguageProxy} from "./services/proxy/language-proxy.service";
+import {LoginComponent} from "./views/login/login.component";
+import {UserManager} from "./user-manager.service";
 
 @NgModule({
   imports: [
@@ -40,7 +42,8 @@ import {LanguageProxy} from "./services/proxy/language-proxy.service";
     UserProfileComponent,
     DeletableItemComponent,
     AutocompleteDropdownListItemComponent,
-    AutocompleteDropdownComponent
+    AutocompleteDropdownComponent,
+    LoginComponent
   ],
   providers: [
     appRoutingProviders,
@@ -51,6 +54,7 @@ import {LanguageProxy} from "./services/proxy/language-proxy.service";
     CountryProxy,
     LanguageProxy,
     TranslationService,
+    UserManager,
     {provide: ErrorHandler, useClass: GlobalExceptionHandler}
   ],
   bootstrap: [AppComponent]

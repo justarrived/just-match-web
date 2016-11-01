@@ -13,6 +13,13 @@ export class UserProxy {
       return this.apiCall.get('users/' + userId, includes);
     }
 
+    getUserSession(email, password) {
+      return this.apiCall.post('users/sessions', {
+        "email_or_phone": email,
+        "password": password
+      });
+    }
+
     saveUser(user: any): Promise<any> {
       return this.apiCall.post('users', user);
     }
