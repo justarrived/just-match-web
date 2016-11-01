@@ -13,9 +13,7 @@ export class LoginComponent {
   constructor(private authManager: AuthManager, private router: Router) { }
 
   onLoginButtonClick() {
-    this.authManager.logUser(this.email, this.password).then(result => {
-      this.router.navigate(['/home']);
-    });
+    this.authManager.logUser(this.email, this.password).then(result => this.router.navigate(['/home']));
   }
 
 }

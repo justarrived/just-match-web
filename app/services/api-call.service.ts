@@ -6,7 +6,7 @@ import {parseJsonapiResponse, parseJsonapiErrorResponse} from "../utils/jsonapi-
 import {Observable} from "rxjs";
 import {Router} from "@angular/router";
 import {APP_CONFIG} from "../config/config";
-import {UserManagerService} from "../user-manager.service";
+import {UserManager} from "../user-manager.service";
 
 @Injectable()
 export class ApiCall {
@@ -18,7 +18,7 @@ export class ApiCall {
   private transformHeaderName: string = 'X-API-KEY-TRANSFORM';
   private transformHeaderValue: string = 'underscore';
 
-  constructor(private http: Http, private localStorageWrapper: LocalStorageWrapper, private router: Router, private userManagerService: UserManagerService) {
+  constructor(private http: Http, private localStorageWrapper: LocalStorageWrapper, private router: Router, private userManager: UserManager) {
   }
 
   public get(url: string, urlParams?: Object, contentType?: string): Promise<any> {
@@ -93,7 +93,7 @@ export class ApiCall {
     if (response.status === 401) {
       var tokenExpiredObject = _.find(response.json().errors, {code: 'token_expired'});
       if (!!tokenExpiredObject) {
-        this.userManagerService.deleteUser();
+        this.userManager.deleteUser();
         this.router.navigate(['/login']);
       }
       this.router.navigate(['/home']);

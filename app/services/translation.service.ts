@@ -8,7 +8,7 @@ import {Language} from "../models/language/language";
 @Injectable()
 export class TranslationService {
   private storageSelectedLanguageKey: string = 'selectedLanguage';
-  private languages: Array<Language>;
+  private languages: Language[];
   private selectedLanguage: Language;
   private languagesPromise: Promise;
   private languageChange: EventEmitter<any> = new EventEmitter();
@@ -41,7 +41,7 @@ export class TranslationService {
     return this.selectedLanguage;
   }
 
-  public getLanguageChangeEmiiter() {
+  public getLanguageChangeEmitter() {
     return this.languageChange;
   }
 

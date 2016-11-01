@@ -15,7 +15,7 @@ export class UserProxy {
 
     getUserSession(email, password) {
       return this.apiCall.post('users/sessions', {
-        "email-or-phone": email,
+        "email_or_phone": email,
         "password": password
       });
     }

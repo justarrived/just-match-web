@@ -3,7 +3,7 @@ import {User} from "./models/user";
 import {LocalStorageWrapper} from "./services/local-storage-wrapper.service";
 
 @Injectable()
-export class UserManagerService {
+export class UserManager {
   private storageAuthorizationData: string = 'authorizationData';
   private user: User;
 

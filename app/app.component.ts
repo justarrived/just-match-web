@@ -4,7 +4,7 @@ import {Router, NavigationStart, RoutesRecognized, NavigationCancel, NavigationE
 import {User} from "./models/user";
 import {TranslationService} from "./services/translation.service";
 import {Language} from "./models/language/language";
-import {UserManagerService} from "./user-manager.service";
+import {UserManager} from "./user-manager.service";
 
 @Component({
   moduleId: module.id,
@@ -13,16 +13,20 @@ import {UserManagerService} from "./user-manager.service";
   styleUrls: ["app.component.css"]
 })
 export class AppComponent implements OnInit {
-  states: Array<String> = new Array<String>();
+  states: Array<String> = [];
   currentState: string;
   user: User;
   isCompanyUser: boolean;
-  systemLanguages: Array<Language>;
+  systemLanguages: Language[];
   selectedLanguage: Language;
   isNavigationMenuVisible: boolean = false;
   isLanguageMenuVisible: boolean = false;
 
-  constructor(private router: Router, private authManager: AuthManager, private userManagerService: UserManagerService, public translationService: TranslationService) {
+  constructor(private router: Router,
+              private authManager: AuthManager,
+              private userManager: UserManager,
+              public translationService: TranslationService
+  ) {
     router.events.subscribe(event => {
       if (event instanceof NavigationStart) {
         this.isNavigationMenuVisible = false;
@@ -58,7 +62,7 @@ export class AppComponent implements OnInit {
     });
 
     this.authManager.getUserChangeEmmiter().subscribe(user => {
-      this.isCompanyUser = this.userManagerService.isCompanyUser();
+      this.isCompanyUser = this.userManager.isCompanyUser();
       this.user = user;
     });
   }
@@ -95,5 +99,3 @@ export class AppComponent implements OnInit {
     this.router.navigate(['/home']);
   }
 }
-
-

@@ -6,20 +6,65 @@
       <div class="nav-menu table-cell">
         <div class="nav-menu-icon-container"><i class="icon-ic-just-arrived-logo"></i></div>
         <div class="nav-menu-item-container">
-          <div class="nav-menu-item clickable" *ngIf="user"><a class="nav-menu-link nav-my-job">{{'menu.main.my_assignment' | translate}}</a></div>
-          <div class="nav-menu-item clickable"><a class="nav-menu-link nav-job-list" href="">{{'menu.main.find_assignment' | translate}}</a></div>
-          <div class="nav-menu-item clickable" *ngIf="isCompanyUser"><a class="nav-menu-link nav-job-create">{{'menu.main.create_assignment' | translate}}</a></div>
-          <div class="nav-menu-item clickable"><a class="nav-menu-link nav-faq" href="">{{'menu.main.faq' | translate}}</a></div>
-          <div class="nav-menu-item clickable"><a class="nav-menu-link nav-contact" href="">{{'menu.main.contact' | translate}}</a></div>
-          <div class="nav-menu-item clickable" *ngIf="user && !isCompanyUser"><a class="nav-menu-link nav-profile" routerLink="/user">{{'profile' | translate}}</a></div>
-          <div class="nav-menu-item clickable" *ngIf="!user"><a class="nav-menu-link nav-signin" routerLink="/login">{{'menu.main.login' | translate}}</a></div>
-          <div class="nav-menu-item clickable" *ngIf="user"><a class="nav-menu-link nav-signout" (click)="onLogoutButtonClick()">{{'menu.main.logout' | translate}}</a></div>
+          <div class="nav-menu-item clickable" *ngIf="user">
+            <a class="nav-menu-link">
+              <i class="icon-ic-my-jobs"></i>
+              {{'menu.main.my_assignment' | translate}}
+            </a>
+          </div>
+          <div class="nav-menu-item clickable">
+            <a class="nav-menu-link" href="">
+              <i class="icon-ic-find-jobs"></i>
+              {{'menu.main.find_assignment' | translate}}
+            </a>
+          </div>
+          <div class="nav-menu-item clickable" *ngIf="isCompanyUser">
+            <a class="nav-menu-link">
+              <i class="icon-ic-create"></i>
+              {{'menu.main.create_assignment' | translate}}
+            </a>
+          </div>
+          <div class="nav-menu-item clickable">
+            <a class="nav-menu-link" href="">
+              <i class="icon-ic-faq"></i>
+              {{'menu.main.faq' | translate}}
+            </a>
+          </div>
+          <div class="nav-menu-item clickable">
+            <a class="nav-menu-link" href="">
+              <i class="icon-ic-contact"></i>
+              {{'menu.main.contact' | translate}}
+            </a>
+          </div>
+          <div class="nav-menu-item clickable" *ngIf="user && !isCompanyUser">
+            <a class="nav-menu-link" routerLink="/user">
+              <i class="icon-ic-user"></i>
+              {{'profile' | translate}}
+            </a>
+          </div>
+          <div class="nav-menu-item clickable" *ngIf="!user">
+            <a class="nav-menu-link" routerLink="/login">
+              <i class="icon-ic-log-in"></i>
+              {{'menu.main.login' | translate}}
+            </a>
+          </div>
+          <div class="nav-menu-item clickable" *ngIf="user">
+            <a class="nav-menu-link" (click)="onLogoutButtonClick()">
+              <i class="icon-ic-log-in"></i>
+              {{'menu.main.logout' | translate}}
+            </a>
+          </div>
         </div>
       </div>
     </div>
     <div class="table-row nav-menu-footer">
-      <div class="table-cell user-panel" *ngIf="user"><div class="user-info-image" [ngStyle]="{'background-image': 'url(' + ((user.images && user.images[0] && user.images[0].imageUrl) || 'assets/images/placeholder-profile-image.png') + ')'}"></div>{{user.firstName}} {{user.lastName}}</div>
-      <div class="table-cell text-center" *ngIf="!user"><a routerLink="/user/register" class="button" >Create User</a></div>
+      <div class="table-cell user-panel" *ngIf="user">
+        <div class="user-info-image" [ngStyle]="{'background-image': 'url(' + ((user.images && user.images[0] && user.images[0].imageUrl) || 'assets/images/placeholder-profile-image.png') + ')'}"></div>
+        {{user.firstName}} {{user.lastName}}
+      </div>
+      <div class="table-cell text-center" *ngIf="!user">
+        <a routerLink="/user/register" class="button">Create User</a>
+      </div>
     </div>
   </div>
 </div>
@@ -28,26 +73,24 @@
   <div class="close-button icon-ic-close" (click)="isLanguageMenuVisible = false"></div>
   <div class="menu-container language-menu-container">
     <div class="just-arrived-logo-container text-center">
-      <img class="language-logo-img" src="app/assets/images/logo.svg" alt="Just Arrived"/>
+      <img class="language-logo-img" src="assets/images/logo.svg" alt="Just Arrived"/>
     </div>
-    <div class="select-language-header-text text-center fs-xl">{{ 'menu.language.title' | translate }}</div>
+    <div class="select-language-header-text text-center fs-xl">{{'menu.language.title' | translate}}</div>
     <div class="select-language-container text-center">
       <div *ngFor="let language of systemLanguages" class="language-button-container no-select clickable" (click)="onSelectLanguage(language)">
-        <div class="language-code">
-          {{language.languageCode}}
-        </div>
+        <div class="language-code">{{language.languageCode}}</div>
         <div class="language-text">{{language.localName}}</div>
       </div>
 
     </div>
     <div class="language-information text-center">
-      <p>{{ 'menu.language.text_1' | translate }}</p>
-      <p>{{ 'menu.language.text_2' | translate }}</p>
+      <p>{{'menu.language.text_1' | translate}}</p>
+      <p>{{'menu.language.text_2' | translate}}</p>
     </div>
     <div class="credentials">
-      <p class="prominent">{{ 'menu.language.translation_by_probono' | translate }}:</p>
-      <img src="app/assets/images/menu_semantix_logo.png" alt="Semantix"/>
-      <img src="app/assets/images/menu_skrivasbyra_logo.png" alt="Stockholms.Skrivbyrå"/>
+      <p class="prominent">{{'menu.language.translation_by_probono' | translate}}:</p>
+      <img src="assets/images/menu_semantix_logo.png" alt="Semantix"/>
+      <img src="assets/images/menu_skrivasbyra_logo.png" alt="Stockholms.Skrivbyrå"/>
       <p class="start_name">Farshid Fadaee</p>
       <p>Nick Chipperfield</p>
       <p>Hans-Erik Täpp</p>
@@ -64,7 +107,7 @@
           </div>
           <div class="table-cell app-logo-img-container">
             <a routerLink="/home">
-              <img class="app-logo-img" src="app/assets/images/logo.svg" alt="Just Arrived"/>
+              <img class="app-logo-img" src="assets/images/logo.svg" alt="Just Arrived"/>
             </a>
           </div>
         </div>

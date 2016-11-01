@@ -23,7 +23,7 @@ import {AutocompleteDropdownListItemComponent} from "./components/autocomplete-d
 import {AutocompleteDropdownComponent} from "./components/autocomplete-dropdown/autocomplete-dropdown.component";
 import {LanguageProxy} from "./services/proxy/language-proxy.service";
 import {LoginComponent} from "./views/login/login.component";
-import {UserManagerService} from "./user-manager.service";
+import {UserManager} from "./user-manager.service";
 
 @NgModule({
   imports: [
@@ -54,7 +54,7 @@ import {UserManagerService} from "./user-manager.service";
     CountryProxy,
     LanguageProxy,
     TranslationService,
-    UserManagerService,
+    UserManager,
     {provide: ErrorHandler, useClass: GlobalExceptionHandler}
   ],
   bootstrap: [AppComponent]

@@ -227,37 +227,18 @@
               opacity: 0.7;
             }
 
-           &:before {
+           .icon-ic-find-jobs,
+           .icon-ic-my-jobs,
+           .icon-ic-create,
+           .icon-ic-faq,
+           .icon-ic-contact,
+           .icon-ic-user,
+           .icon-ic-log-in {
               position: absolute;
               color: #fff;
-              font-family: "fontello";
               font-size: 1.1em;
               left: 0;
               top: 6px;
-            }
-            &.nav-job-list:before {
-              content: '\e815';
-            }
-            &.nav-my-job:before {
-              content: '\e811';
-            }
-            &.nav-job-create:before {
-              content: '\e819';
-            }
-            &.nav-faq:before {
-              content: '\e816';
-            }
-            &.nav-contact:before {
-              content: '\e81e';
-            }
-            &.nav-signin:before {
-              content: '\e810';
-            }
-            &.nav-signout:before {
-              content: '\e810';
-            }
-            &.nav-profile:before {
-              content: '\e805';
             }
           }
         }
