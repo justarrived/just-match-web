@@ -24,6 +24,7 @@ import {AutocompleteDropdownComponent} from "./components/autocomplete-dropdown/
 import {LanguageProxy} from "./services/proxy/language-proxy.service";
 import {LoginComponent} from "./views/login/login.component";
 import {UserManager} from "./user-manager.service";
+import {JobsComponent} from "./views/jobs/jobs.component";
 
 @NgModule({
   imports: [
@@ -43,7 +44,8 @@ import {UserManager} from "./user-manager.service";
     DeletableItemComponent,
     AutocompleteDropdownListItemComponent,
     AutocompleteDropdownComponent,
-    LoginComponent
+    LoginComponent,
+    JobsComponent
   ],
   providers: [
     appRoutingProviders,
