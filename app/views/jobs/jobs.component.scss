@@ -17,7 +17,7 @@
   }
 
   .jobs-list-container {
-    min-height: 100vh;
+    min-height: calc(100vh - 86px);
     width: 70%;
     box-shadow: 2px 0px 3px 0px rgba(0, 0, 0, 0.4);
   }
