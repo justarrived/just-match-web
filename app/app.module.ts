@@ -61,7 +61,7 @@ import {PagerComponent} from "./components/pager/pager.component";
     LanguageProxy,
     TranslationService,
     UserManager,
-    // {provide: ErrorHandler, useClass: GlobalExceptionHandler}
+    {provide: ErrorHandler, useClass: GlobalExceptionHandler}
   ],
   bootstrap: [AppComponent]
 })

@@ -7,17 +7,13 @@ import {Job} from "../../models/job/job";
   templateUrl: 'job-list-item.component.html',
   styleUrls: ['job-list-item.component.css']
 })
-export class JobListItemComponent implements OnInit {
+export class JobListItemComponent {
   @Input() job: Job;
 
   constructor() {
   }
 
-  ngOnInit() {
-  }
-
   public onListItemClick() {
-    console.log('click');
+    console.log('click'); //TODO: Redirect when "JS-9: Implement jobs details page" is ready
   }
-
 }

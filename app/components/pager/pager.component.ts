@@ -15,24 +15,18 @@ export class PagerComponent implements OnInit, OnChanges {
   private lastPage: number = 1;
 
   constructor() {
-
   }
 
   ngOnInit() {
+    this.calculateLastPage();
   }
 
   ngOnChanges(changes: any): void {
-    console.log(changes);
     if (!changes.maxResults && !changes.pageSize) {
       return;
     }
 
-    this.lastPage = Math.floor(this.maxResults / this.pageSize);
-
-    if (this.maxResults % this.pageSize !== 0) {
-      this.lastPage = this.lastPage + 1;
-    }
-    console.log(this.lastPage);
+    this.calculateLastPage();
   }
 
   onFirstPageButtonClick() {
@@ -42,7 +36,6 @@ export class PagerComponent implements OnInit, OnChanges {
 
     this.currentPage = 1;
     this.pageChange.emit(this.currentPage);
-    console.log(this.currentPage);
   }
 
   onPreviousPageButtonClick() {
@@ -52,7 +45,6 @@ export class PagerComponent implements OnInit, OnChanges {
 
     this.currentPage = this.currentPage - 1;
     this.pageChange.emit(this.currentPage);
-    console.log(this.currentPage);
   }
 
   onNextPageButtonClick() {
@@ -62,7 +54,6 @@ export class PagerComponent implements OnInit, OnChanges {
 
     this.currentPage = this.currentPage + 1;
     this.pageChange.emit(this.currentPage);
-    console.log(this.currentPage);
   }
 
   onLastPageButtonClick() {
@@ -72,8 +63,14 @@ export class PagerComponent implements OnInit, OnChanges {
 
     this.currentPage = this.lastPage;
     this.pageChange.emit(this.currentPage);
-    console.log(this.currentPage);
+  }
 
+  private calculateLastPage() {
+    this.lastPage = Math.floor(this.maxResults / this.pageSize);
+
+    if (this.maxResults % this.pageSize !== 0) {
+      this.lastPage = this.lastPage + 1;
+    }
   }
 
 }
