@@ -72,5 +72,4 @@ export class PagerComponent implements OnInit, OnChanges {
       this.lastPage = this.lastPage + 1;
     }
   }
-
 }
