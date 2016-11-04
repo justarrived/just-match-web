@@ -12,6 +12,7 @@ body {
   background-color: #E8EBEE;
   font-size: $fs-m0;
   color: #333333;
+  height: 100%;
 
   a {
     text-decoration: none;
@@ -38,6 +39,10 @@ body {
       opacity: 0.95;
       pointer-events: none;
     }
+  }
+
+  .clearfix {
+    clear: both;
   }
 
   .block {
