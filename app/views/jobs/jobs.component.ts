@@ -1,6 +1,8 @@
 import {Component, OnInit} from "@angular/core";
 import {Job} from "../../models/job/job";
 import {JobProxy} from "../../services/job-proxy.service";
+import {Location} from '@angular/common';
+import {ActivatedRouteSnapshot, ActivatedRoute} from "@angular/router";
 
 @Component({
   moduleId: module.id,
@@ -14,7 +16,10 @@ export class JobsComponent implements OnInit {
   page: number = 1;
   pageSize: number = 10;
 
-  constructor(private jobProxy: JobProxy) {
+  constructor(private jobProxy: JobProxy, private location: Location, private route: ActivatedRoute) {
+    this.route.params.subscribe(params => {
+      this.page = (params['page'] && parseInt(params['page'])) || 1;
+    });
   }
 
   ngOnInit() {
@@ -26,6 +31,7 @@ export class JobsComponent implements OnInit {
   }
 
   onPageChange(page) {
+    this.location.replaceState("/jobs/" + page);
     this.page = page;
     this.ngOnInit();
   }
