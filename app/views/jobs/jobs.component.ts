@@ -10,18 +10,24 @@ import {JobProxy} from "../../services/job-proxy.service";
 })
 export class JobsComponent implements OnInit {
   jobs: Job[];
-  totalJobs: number;
-  page: number = 0;
+  totalJobs: number = 1;
+  page: number = 1;
   pageSize: number = 10;
 
   constructor(private jobProxy: JobProxy) {
   }
 
   ngOnInit() {
-    this.jobProxy.getJobs({include: 'owner,company,hourly_pay,company.company_images', 'filter[filled]': false})
+    this.jobProxy.getJobs({include: 'owner,company,hourly_pay,company.company_images', 'filter[filled]': false, 'page[number]': this.page.toString()})
       .then(result => {
         this.jobs = result.data;
         this.totalJobs = result.total;
+        console.log(result);
       });
+  }
+
+  onPageChange(page) {
+    this.page = page;
+    this.ngOnInit();
   }
 }

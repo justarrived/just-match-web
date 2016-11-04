@@ -7,7 +7,7 @@
   </div>
   <div class="jobs-list-container">
     <job-list-item *ngFor="let job of jobs" [job]="job"></job-list-item>
-    <pager></pager>
+    <pager [maxResults]="totalJobs" [currentPage]="page" (pageChange)="onPageChange($event)"></pager>
   </div>
   <div class="clearfix"></div>
 </div>

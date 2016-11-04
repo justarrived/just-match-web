@@ -7,22 +7,25 @@
       <div class="table job-description-container">
         <div class="table-row">
           <div class="table-cell">
-            <div>{{job.name}}</div>
-            <div>{{job.shortDescription}}</div>
-            <div>{{job.street}} {{job.zip}}</div>
+            <div class="job-name">{{job.name}}</div>
+            <div class="job-description">{{job.shortDescription}}</div>
+            <div class="job-address">
+              <i class="icon-ic-location"></i>
+              {{job.street}} {{job.zip}}
+            </div>
           </div>
           <div class="table-cell job-rate text-center">
             <div>
-              <div class="salary-container" *ngIf="isCompanyUser">
+              <div class="total-salary" *ngIf="isCompanyUser">
                 {{job.hourlyPay.rateExcludingVAT * job.hours}} {{job.hourlyPay.currency}}
               </div>
-              <div class="salary-container" *ngIf="!isCompanyUser">{{job.hourlyPay.grossSalary * job.hours}} {{job.hourlyPay.currency}}</div>
+              <div class="total-salary" *ngIf="!isCompanyUser">{{job.hourlyPay.grossSalary * job.hours}} {{job.hourlyPay.currency}}</div>
             </div>
             <div>
-              <div class="salary-container" *ngIf="isCompanyUser">
+              <div class="salary-per-hour" *ngIf="isCompanyUser">
                 {{job.hours}} h ({{job.hourlyPay.rateExcludingVAT}} {{job.hourlyPay.currency}}/h)
               </div>
-              <div class="salary-container" *ngIf="!isCompanyUser">
+              <div class="salary-per-hour" *ngIf="!isCompanyUser">
                 {{job.hours}} h ({{job.hourlyPay.grossSalary}} {{job.hourlyPay.currency}}/h)
               </div>
             </div>
