@@ -9,12 +9,14 @@ import {UserProfileComponent} from "./views/user/user-profile/user-profile.compo
 import {LoginComponent} from "./views/login/login.component";
 import {JobCreateComponent} from "./views/jobs/job-create/job-create.component";
 import {JobApproveComponent} from "./views/jobs/job-approve/job-approve.component";
+import {JobsComponent} from "./views/jobs/jobs.component";
 
 const appRoutes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },
-  { path: 'home', component: HomeComponent, data: { roles: ['company']} },
+  { path: 'home', component: HomeComponent},
   { path: 'about', component: AboutComponent, data: {title: 'About'}, canActivate: [AuthGuard]},
   { path: 'login', component: LoginComponent, data: {title: 'Login'} },
+  { path: 'jobs', component: JobsComponent },
   { path: 'user/register', component: UserRegisterComponent },
   { path: 'user', component: UserProfileComponent, canActivate: [AuthGuard] },
   { path: 'job/create', component: JobCreateComponent, data: { roles: ['company']} , canActivate: [AuthGuard] },

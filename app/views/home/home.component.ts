@@ -1,8 +1,6 @@
 import {Component, OnInit} from "@angular/core";
-import {AuthManager} from "../../services/auth-manager.service";
 import {JobProxy} from "../../services/job-proxy.service";
 import {Job} from "../../models/job/job";
-import {SliderComponent} from "../../components/slider/slider.component";
 import {TranslationService} from "../../services/translation.service";
 import {UserManager} from "../../user-manager.service";
 
@@ -28,6 +26,6 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.jobProxy.getJobs({include: 'company,hourly_pay,company.company_images', 'filter[filled]': false})
-      .then(result => this.newJobs = result);
+      .then(result => this.newJobs = result.data);
   }
 }

@@ -27,6 +27,9 @@ import {UserManager} from "./user-manager.service";
 import {JobCreateComponent} from "./views/jobs/job-create/job-create.component";
 import {JobProxy} from "./services/job-proxy.service";
 import {JobApproveComponent} from "./views/jobs/job-approve/job-approve.component";
+import {JobsComponent} from "./views/jobs/jobs.component";
+import {JobListItemComponent} from "./components/job-list-item/job-list-item.component";
+import {PagerComponent} from "./components/pager/pager.component";
 
 @NgModule({
   imports: [
@@ -49,6 +52,9 @@ import {JobApproveComponent} from "./views/jobs/job-approve/job-approve.componen
     LoginComponent,
     JobCreateComponent,
     JobApproveComponent,
+    JobsComponent,
+    JobListItemComponent,
+    PagerComponent
   ],
   providers: [
     appRoutingProviders,

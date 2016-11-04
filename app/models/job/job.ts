@@ -14,6 +14,7 @@ export class Job {
   name: string;
   owner: any; //TODO;
   shortDescription: string;
+  street: string;
   updatedAt: string;
   verified: boolean;
   zip: string;
@@ -38,6 +39,7 @@ export class Job {
     this.name = jsonObject.name;
     this.owner = jsonObject.owner;
     this.shortDescription = jsonObject.short_description;
+    this.street = jsonObject.street;
     this.updatedAt = jsonObject.updated_at;
     this.verified = jsonObject.verified;
     this.zip = jsonObject.zip;
