@@ -22,7 +22,6 @@ export class JobsComponent implements OnInit {
       .then(result => {
         this.jobs = result.data;
         this.totalJobs = result.total;
-        console.log(result);
       });
   }
 
