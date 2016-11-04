@@ -1,11 +1,14 @@
 <div class="find-job-header">
-  find jobs
+  Find jobs ({{totalJobs}})
 </div>
 <div class="find-job-container">
   <div class="map-container">
     map container
   </div>
   <div class="jobs-list-container">
-    job-list-container
+    <job-list-item *ngFor="let job of jobs" [job]="job"></job-list-item>
+    <pager></pager>
   </div>
+  <div class="clearfix"></div>
 </div>
+

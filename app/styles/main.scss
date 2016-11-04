@@ -40,6 +40,10 @@ body {
     }
   }
 
+  .clearfix {
+    clear: both;
+  }
+
   .block {
     display: block;
   }

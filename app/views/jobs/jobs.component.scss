@@ -1,15 +1,30 @@
-.find-job-header {
+@import '../../styles/variables.scss';
 
+.find-job-header {
+  padding: 30px;
+  background: $color-blue-1;
+  color: white;
+  font-size: 22px;
 }
 
 .find-job-container {
+  position: relative;
   .map-container {
     width: 30%;
-    float: right;
+    position: absolute;
+    right: 0;
+
   }
 
   .jobs-list-container {
     width: 70%;
-    float: right;
+    box-shadow: 2px 0px 3px 0px rgba(0, 0, 0, 0.4);
+  }
+
+  @media (max-width: 1024px) {
+    .map-container, .jobs-list-container {
+      float: none;
+      width: 100%;
+    }
   }
 }

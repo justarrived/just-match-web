@@ -1,0 +1,32 @@
+.job-list-container {
+  width: 100%;
+  border-bottom: 1px solid #E8EBEE;
+
+  .company-logo-container {
+    padding: 18px 0 18px 20px;
+
+    .company-logo {
+      border-radius: 50%;
+      height: 80px;
+      width: 80px;
+      vertical-align: middle;
+      box-shadow: inset 0px 0px 1px 0px rgba(0, 0, 0, 0.2);
+      margin-right: 8px;
+    }
+  }
+
+  .arrow-container {
+    color: #979797;
+    font-size: 20px;
+    padding: 0 10px;
+  }
+
+  .job-description-container {
+    width: 100%;
+
+    .job-rate {
+      width: 35%;
+    }
+  }
+
+}

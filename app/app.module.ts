@@ -25,6 +25,8 @@ import {LanguageProxy} from "./services/proxy/language-proxy.service";
 import {LoginComponent} from "./views/login/login.component";
 import {UserManager} from "./user-manager.service";
 import {JobsComponent} from "./views/jobs/jobs.component";
+import {JobListItemComponent} from "./components/job-list-item/job-list-item.component";
+import {PagerComponent} from "./components/pager/pager.component";
 
 @NgModule({
   imports: [
@@ -45,7 +47,9 @@ import {JobsComponent} from "./views/jobs/jobs.component";
     AutocompleteDropdownListItemComponent,
     AutocompleteDropdownComponent,
     LoginComponent,
-    JobsComponent
+    JobsComponent,
+    JobListItemComponent,
+    PagerComponent
   ],
   providers: [
     appRoutingProviders,
@@ -57,7 +61,7 @@ import {JobsComponent} from "./views/jobs/jobs.component";
     LanguageProxy,
     TranslationService,
     UserManager,
-    {provide: ErrorHandler, useClass: GlobalExceptionHandler}
+    // {provide: ErrorHandler, useClass: GlobalExceptionHandler}
   ],
   bootstrap: [AppComponent]
 })
