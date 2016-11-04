@@ -9,7 +9,7 @@ export class Job {
   hourlyPay: HourlyPay;
   hours: number;
   id: string;
-  jobData: string;
+  jobDate: string;
   jobEndDate: string;
   name: string;
   owner: any; //TODO;
@@ -19,6 +19,7 @@ export class Job {
   zip: string;
   zipLatitude: number;
   zipLongitude: number;
+  category: Category;
 
   constructor(jsonObject: any) {
     if (!jsonObject) {
@@ -32,7 +33,7 @@ export class Job {
     this.hourlyPay = new HourlyPay(jsonObject.hourly_pay);
     this.hours = jsonObject.hours;
     this.id = jsonObject.id;
-    this.jobData = jsonObject.job_data;
+    this.jobDate = jsonObject.job_date;
     this.jobEndDate = jsonObject.job_end_date;
     this.name = jsonObject.name;
     this.owner = jsonObject.owner;
@@ -42,10 +43,17 @@ export class Job {
     this.zip = jsonObject.zip;
     this.zipLatitude = jsonObject.zip_latitude;
     this.zipLongitude = jsonObject.zip_longitude;
+    this.category = new Category(jsonObject.category);
+  }
+
+  toJsonObject(): Object {
+    return {
+
+    };
   }
 }
 
-class HourlyPay {
+export class HourlyPay {
   active: boolean;
   currency: string;
   grossSalary: number;
@@ -125,5 +133,18 @@ class CompanyImage {
     this.imageUrlMedium = jsonObject.image_url_medium;
     this.imageUrlSmall = jsonObject.image_url_small;
     this.oneTimeToken = jsonObject.one_time_token;
+  }
+}
+
+export class Category {
+  id: string;
+  name: string;
+
+  constructor(jsonObject: any) {
+    if (!jsonObject) {
+      return;
+    }
+    this.id = jsonObject.id;
+    this.name = jsonObject.name;
   }
 }

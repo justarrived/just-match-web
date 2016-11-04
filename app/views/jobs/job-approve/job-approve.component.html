@@ -1,0 +1,51 @@
+<div class="job-approve">
+    <div class="subheader text-center">
+        <div class="fs-l form-group">{{'assignment.preview.title' | translate | uppercase}}</div>
+    </div>
+
+    <div class="centered-form-container">
+        <div class="job-body-heading">
+            <div>
+                <div class="job-title">
+                    {{job.name}}
+                </div>
+                <span>{{job.hourlyPay.grossSalary * job.hours}} {{job.hourlyPay.currency}}</span><br>
+                <em>{{job.hours}} Hours ({{job.hourlyPay.grossSalary}} {{job.hourlyPay.currency}}/hours)</em>
+                <em ng-show="$parent.ctrl.isCompany != 1" class="ng-hide"> gross salary</em>
+                <span class="net-salary ng-hide" ng-show="$parent.ctrl.isCompany != 1">700 SEK after tax</span>
+            </div>
+            <div>
+                <button class="button primary ng-hide" ng-click="ctrl.accept_job()" ng-show="ctrl.canApplyJob &amp;&amp; ctrl.isCompany!==1">
+                    Apply for job
+                </button>
+                <button ng-click="" disabled="" class="button primary ng-hide" ng-show="!ctrl.canApplyJob &amp;&amp; ctrl.isCompany===0">
+                    You have applied for this job
+                </button>
+            </div>
+        </div>
+
+        <div class="job-body-description">
+            <h3>Job
+                <!---->
+                <!----><i ng-if="job.attributes.description_translation.from == job.attributes.description_translation.to" class="demo-icon icon-switch-language off" title="Automatic translation is turned of. The original text and the language you have selected is the same for this section of the site."></i><!---->
+            </h3>
+            <div>
+                <!----><ul ng-if="job.attributes.description_translation.from == job.attributes.description_translation.to">
+                <li class="job-description">efwef rwewwerw</li>
+            </ul><!---->
+                <!---->
+                <ul>
+                    <li class="job-location">wefwefwed fdss d 222798</li>
+                    <li class="job-date"><span>20</span>2017-02-20 - 2017-03-02
+                    </li>
+                    <li class="job-report ng-hide" ng-hide="job.newjobmode"><a href="#/contact/new">Report to admin</a></li>
+                </ul>
+            </div>
+        </div>
+
+
+        <div class="text-center">
+            <button type="submit" class="button primary form-group" [disabled]="form.invalid">{{'common.next_step' | translate}}</button>
+        </div>
+    </div>
+</div>

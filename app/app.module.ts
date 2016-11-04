@@ -24,6 +24,9 @@ import {AutocompleteDropdownComponent} from "./components/autocomplete-dropdown/
 import {LanguageProxy} from "./services/proxy/language-proxy.service";
 import {LoginComponent} from "./views/login/login.component";
 import {UserManager} from "./user-manager.service";
+import {JobCreateComponent} from "./views/jobs/job-create/job-create.component";
+import {JobProxy} from "./services/job-proxy.service";
+import {JobApproveComponent} from "./views/jobs/job-approve/job-approve.component";
 
 @NgModule({
   imports: [
@@ -43,7 +46,9 @@ import {UserManager} from "./user-manager.service";
     DeletableItemComponent,
     AutocompleteDropdownListItemComponent,
     AutocompleteDropdownComponent,
-    LoginComponent
+    LoginComponent,
+    JobCreateComponent,
+    JobApproveComponent,
   ],
   providers: [
     appRoutingProviders,
@@ -55,6 +60,7 @@ import {UserManager} from "./user-manager.service";
     LanguageProxy,
     TranslationService,
     UserManager,
+    JobProxy,
     {provide: ErrorHandler, useClass: GlobalExceptionHandler}
   ],
   bootstrap: [AppComponent]
