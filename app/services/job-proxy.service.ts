@@ -17,4 +17,10 @@ export class JobProxy {
     });
   }
 
+  getJob(jobId: number, additionOptions?: Object): Promise<Job> {
+    return this.apiCall.get('jobs/' + jobId, additionOptions).then(response => {
+      return new Job(response.data);
+    });
+  }
+
 }

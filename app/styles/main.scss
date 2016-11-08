@@ -292,4 +292,19 @@ body {
   .clickable {
     cursor: pointer;
   }
+
+  .rounded-company-logo {
+    border-radius: 50%;
+    height: 80px;
+    width: 80px;
+    vertical-align: middle;
+    box-shadow: inset 0 0 1px 0 rgba(0,0,0,.2);
+  }
+
+  .main-title {
+    background: #383F4E;
+    padding: 20px;
+    text-align: center;
+    color: #FFFFFF;
+  }
 }
