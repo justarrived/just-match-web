@@ -27,6 +27,7 @@ import {UserManager} from "./user-manager.service";
 import {JobsComponent} from "./views/jobs/jobs.component";
 import {JobListItemComponent} from "./components/job-list-item/job-list-item.component";
 import {PagerComponent} from "./components/pager/pager.component";
+import {JobDetailsComponent} from "./views/job-details/job-details.component";
 
 @NgModule({
   imports: [
@@ -49,7 +50,8 @@ import {PagerComponent} from "./components/pager/pager.component";
     LoginComponent,
     JobsComponent,
     JobListItemComponent,
-    PagerComponent
+    PagerComponent,
+    JobDetailsComponent
   ],
   providers: [
     appRoutingProviders,

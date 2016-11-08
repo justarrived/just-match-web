@@ -1,6 +1,7 @@
 import {find} from "lodash";
 
 export class Job {
+  amount: number;
   company: Company;
   createdAt: string;
   description: string;
@@ -9,7 +10,8 @@ export class Job {
   hourlyPay: HourlyPay;
   hours: number;
   id: string;
-  jobData: string;
+  invoiceAmount: number;
+  jobDate: string;
   jobEndDate: string;
   name: string;
   owner: any; //TODO;
@@ -25,6 +27,7 @@ export class Job {
     if (!jsonObject) {
       return;
     }
+    this.amount = jsonObject.amount;
     this.company = new Company(jsonObject.company);
     this.createdAt = jsonObject.created_at;
     this.description = jsonObject.description;
@@ -33,7 +36,8 @@ export class Job {
     this.hourlyPay = new HourlyPay(jsonObject.hourly_pay);
     this.hours = jsonObject.hours;
     this.id = jsonObject.id;
-    this.jobData = jsonObject.job_data;
+    this.invoiceAmount = jsonObject.invoice_amount;
+    this.jobDate = jsonObject.job_date;
     this.jobEndDate = jsonObject.job_end_date;
     this.name = jsonObject.name;
     this.owner = jsonObject.owner;

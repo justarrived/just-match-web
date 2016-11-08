@@ -1,8 +1,8 @@
 import {Component, OnInit} from "@angular/core";
 import {Job} from "../../models/job/job";
 import {JobProxy} from "../../services/job-proxy.service";
-import {Location} from '@angular/common';
-import {ActivatedRouteSnapshot, ActivatedRoute} from "@angular/router";
+import {Location} from "@angular/common";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   moduleId: module.id,
