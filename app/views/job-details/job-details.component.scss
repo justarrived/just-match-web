@@ -1,3 +1,5 @@
+@import '../../styles/variables.scss';
+
 .job-main-info-cell {
   display: inline-block;
   vertical-align: middle;
@@ -24,7 +26,7 @@
   padding: 25px 0;
 
   .job-details-header {
-    border-bottom: 1px #E8EBEE solid;
+    border-bottom: 1px $color-gray-3 solid;
     padding: 5px 0;
     font-size: 18px;
     margin-top: 15px;
@@ -45,7 +47,7 @@
         position: relative;
 
         i {
-          color: #979797;
+          color: $color-gray-1;
           position: absolute;
           left: -45px;
           font-size: 25px;
@@ -63,7 +65,7 @@
         }
 
         &.with-border {
-          border-bottom: 1px #E8EBEE solid;
+          border-bottom: 1px $color-gray-3 solid;
         }
       }
     }
