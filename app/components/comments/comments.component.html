@@ -1,0 +1,16 @@
+<div class="comments-container">
+  <div *ngFor="let comment of comments" class="comment-container">
+    <div class="comment-picture-container" [ngClass]="{'float-left': comment.owner.id != userId, 'float-right': comment.owner.id == userId}">
+      <img class="rounded-image" *ngIf="comment.owner.company" [src]="(comment.owner.company.companyLogo && comment.owner.company.imageUrlSmall) || 'assets/images/placeholder-logo.png'">
+      <img class="rounded-image" *ngIf="!comment.owner.company" [src]="(user.images && user.images[0] && user.images[0].imageUrl) || 'assets/images/placeholder-profile-image.png'">
+    </div>
+    <div class="comment-content" [ngClass]="{'left-moved': comment.owner.id != userId}">
+      <div class="comment-meta-data">
+        <span *ngIf="!comment.owner.company">{{comment.owner.firstName}}</span>
+        <span *ngIf="comment.owner.company">{{comment.owner.company.name}}</span>
+        &nbsp;&nbsp;{{comment.createdAt | date:'yyyy-MM-dd HH:mm'}}
+      </div>
+      <div class="comment-body">{{comment.body}}</div>
+    </div>
+  </div>
+</div>
