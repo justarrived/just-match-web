@@ -3,6 +3,9 @@
 .comments-container {
   width: 70%;
   margin: 0 auto;
+  &.addition-padding {
+    padding-bottom: 78px;
+  }
 
   .comment-container {
     padding: 8px;
@@ -37,8 +40,60 @@
         font-size: 15px;
       }
     }
+  }
+}
 
+.new-comment-container {
+  width: 100%;
+  max-width: 1024px;
+  padding: 15px 0;
+  background-color: white;
 
+  &.moving {
+    position: fixed;
+    bottom: 0;
+    box-shadow: 0 -1px 10px -3px #333;
   }
 
+  > .table {
+    width: 70%;
+    margin: 0 auto;
+  }
+
+  .resizable-div-cell {
+    width: 100%;
+    padding: 5px;
+
+    [contenteditable=true]:empty:before{
+      content: attr(placeholder);
+      display: block; /* For Firefox */
+      color: $color-gray-1;
+    }
+
+    .resizable-div {
+      border-radius: 5px;
+      border: 1px solid $color-gray-2;
+      padding: 10px;
+      word-break: break-all;
+    }
+  }
+
+  .comment-send-button-container {
+    padding-left: 9px;
+
+    .comment-send-button {
+      color: $color-blue-2;
+      font-weight: 700;
+      border: 0;
+      background: none;
+      font-size: 1.2em;
+      white-space: nowrap;
+      outline: none;
+
+      &:disabled {
+        color: $color-gray-2;
+        cursor: default;
+      }
+    }
+  }
 }

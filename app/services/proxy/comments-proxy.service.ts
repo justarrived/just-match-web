@@ -19,4 +19,8 @@ export class CommentsProxy {
       };
     });
   }
+
+  sendComment(resourceName, resourceId, commentData) {
+    return this.apiCall.post(resourceName + '/' + resourceId + '/comments', commentData);
+  }
 }
