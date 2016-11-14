@@ -13,7 +13,6 @@ export class Comment {
     if (!jsonObject) {
       return;
     }
-    console.log(jsonObject);
     this.id = jsonObject.id;
     this.body = jsonObject.body;
     this.commentableId = jsonObject.commentable_id;
