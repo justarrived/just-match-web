@@ -2,6 +2,7 @@ import {UserImage} from "./user/user-image";
 import {map} from "lodash";
 import {Language} from "./language/language";
 import {UserLanguage} from "./user/user-language";
+import {Company} from "./company";
 
 export class User {
   id: number;
@@ -15,6 +16,7 @@ export class User {
   workExperience: string;
   education: string;
   skills: string;
+  company: Company;
 
   constructor(jsonObject: any) {
     this.id = jsonObject.id;
@@ -28,6 +30,7 @@ export class User {
     this.workExperience = jsonObject.job_experience;
     this.education = jsonObject.education;
     this.skills = jsonObject.competence_text;
+    this.company = new Company(jsonObject.company);
   }
 
   toJsonObject(): Object {

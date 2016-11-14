@@ -3,7 +3,7 @@
     <div class="table job-header">
       <div class="table-row">
         <div class="table-cell">
-          <img class="rounded-company-logo" [src]="(job.company.companyLogo && job.company.companyLogo.imageUrlSmall) || 'assets/images/placeholder-logo.png'">
+          <img class="rounded-company-logo rounded-image" [src]="(job.company.companyLogo && job.company.companyLogo.imageUrlSmall) || 'assets/images/placeholder-logo.png'">
         </div>
         <div class="table-cell">
           <div class="job-main-info-cell">
@@ -29,7 +29,7 @@
         <div class="job-details-item with-border"><i class="icon-ic-description"></i>{{job.description}}</div>
         <div class="job-details-item">
           <div class="salary-per-hour" *ngIf="isCompanyUser">
-            {{job.hours}} {{'common.hour' | translate}} ({{job.hourlyPay.rateExcludingVAT}} {{job.hourlyPay.currency}}/{{'common.hour' | translate}}хайде )
+            {{job.hours}} {{'common.hour' | translate}} ({{job.hourlyPay.rateExcludingVAT}} {{job.hourlyPay.currency}}/{{'common.hour' | translate}})
           </div>
           <div class="salary-per-hour" *ngIf="!isCompanyUser">
             <div>{{job.hours}} {{'common.hour' | translate}} ({{job.hourlyPay.grossSalary}} {{job.hourlyPay.currency}}/{{'common.hour' | translate}})</div>
@@ -43,4 +43,5 @@
       </div>
     </div>
   </div>
+  <comments [resourceName]="'jobs'" [resourceId]="job.id"></comments>
 </div>
