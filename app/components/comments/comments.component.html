@@ -1,4 +1,4 @@
-<div class="comments-container" [ngClass]="{'addition-padding': !isFooterVisible}">
+<div class="comments-container" [ngClass]="{'addition-padding': !isFooterVisible && userId, 'small-addition-padding': !userId}">
   <div *ngFor="let comment of comments" class="comment-container">
     <div class="comment-picture-container" [ngClass]="{'float-left': comment.owner.id != userId, 'float-right': comment.owner.id == userId}">
       <img class="rounded-image" *ngIf="comment.owner.company && comment.owner.company.id" [src]="(comment.owner.company.companyLogo && comment.owner.company.imageUrlSmall) || 'assets/images/placeholder-logo.png'">
@@ -14,7 +14,7 @@
     </div>
   </div>
 </div>
-<div class="new-comment-container" [ngClass]="{moving: !isFooterVisible}">
+<div class="new-comment-container" [ngClass]="{moving: !isFooterVisible}" *ngIf="userId">
   <div class="table">
     <div class="table-row">
       <div class="table-cell resizable-div-cell">

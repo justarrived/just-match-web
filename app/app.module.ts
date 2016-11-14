@@ -65,7 +65,7 @@ import {CommentsComponent} from "./components/comments/comments.component";
     LanguageProxy,
     TranslationService,
     UserManager,
-    // {provide: ErrorHandler, useClass: GlobalExceptionHandler}
+    {provide: ErrorHandler, useClass: GlobalExceptionHandler}
   ],
   bootstrap: [AppComponent]
 })

@@ -24,7 +24,6 @@ export class Comment {
   }
 
   public toJsonObject() {
-    console.log('tojson');
     return {
       commentable_id: this.commentableId,
       commentable_type: this.commentableType,

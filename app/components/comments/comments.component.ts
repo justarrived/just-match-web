@@ -20,15 +20,8 @@ export class CommentsComponent implements OnInit {
   newCommentBody: string;
   isFooterVisible: boolean;
 
-  @HostListener('window:scroll', ['$event']) onDocumentScroll(event: Event) {
-    let scrollHeight = event.srcElement.getElementsByTagName('body')[0]['scrollTop'];
-    let windowHeight = window.innerHeight;
-    let footerHeight = event.srcElement.getElementsByTagName('footer')[0]['offsetHeight'];
-    let documentHeight = this.getDocumentHeight();
-    let isFooterVisibleActual = windowHeight + scrollHeight >= documentHeight - footerHeight;
-    if (isFooterVisibleActual !== this.isFooterVisible) {
-      this.isFooterVisible = isFooterVisibleActual;
-    }
+  @HostListener('window:scroll', ['$event']) onDocumentScroll(event: any) {
+    this.calculateFooterVisibilite();
   }
 
   constructor(private commentsProxy: CommentsProxy, private userManager: UserManager, private translationService: TranslationService, private elementRef: ElementRef) {
@@ -36,12 +29,8 @@ export class CommentsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.commentsProxy.getComments(this.resourceName, this.resourceId, {
-      include: 'owner,owner.user-images,owner.company,owner.company.company-images',
-      sort: 'created_at'
-    }).then(result => {
-      this.comments = result.data;
-    });
+    this.populateAllComments();
+    this.calculateFooterVisibilite();
   }
 
   sendComment() {
@@ -53,7 +42,7 @@ export class CommentsComponent implements OnInit {
     this.commentsProxy.sendComment(this.resourceName, this.resourceId, comment.toJsonObject()).then(result => {
       this.newCommentContainer.textContent = '';
       this.newCommentBody = null;
-      this.ngOnInit();
+      this.populateAllComments();
     });
   }
 
@@ -64,11 +53,31 @@ export class CommentsComponent implements OnInit {
     this.newCommentBody = event.target.textContent;
   }
 
+  private populateAllComments() {
+    this.commentsProxy.getComments(this.resourceName, this.resourceId, {
+      include: 'owner,owner.user-images,owner.company,owner.company.company-images',
+      sort: 'created_at'
+    }).then(result => {
+      this.comments = result.data;
+    });
+  }
+
   private getDocumentHeight() {
     return Math.max(
       document.body.scrollHeight, document.documentElement.scrollHeight,
       document.body.offsetHeight, document.documentElement.offsetHeight,
       document.body.clientHeight, document.documentElement.clientHeight
     );
+  }
+
+  private calculateFooterVisibilite() {
+    let scrollHeight = document.body.scrollTop;
+    let windowHeight = window.innerHeight;
+    let footerHeight = document.getElementsByTagName('footer')[0]['offsetHeight'];
+    let documentHeight = this.getDocumentHeight();
+    let isFooterVisibleActual = windowHeight + scrollHeight >= documentHeight - footerHeight;
+    if (isFooterVisibleActual !== this.isFooterVisible) {
+      this.isFooterVisible = isFooterVisibleActual;
+    }
   }
 }

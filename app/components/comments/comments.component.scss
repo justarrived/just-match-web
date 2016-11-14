@@ -3,6 +3,11 @@
 .comments-container {
   width: 70%;
   margin: 0 auto;
+
+  &.small-addition-padding {
+    padding-bottom: 15px;
+  }
+
   &.addition-padding {
     padding-bottom: 78px;
   }
