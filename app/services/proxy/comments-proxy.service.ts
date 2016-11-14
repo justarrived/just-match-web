@@ -11,8 +11,6 @@ export class CommentsProxy {
 
   getComments(resourceName, resourceId, additionOptions?: Object) {
     return this.apiCall.get(resourceName + '/' + resourceId + '/comments',  additionOptions).then(response => {
-      console.log(response.data);
-
       return {
         data: map(response.data, data => new Comment(data)),
         total: response.total
