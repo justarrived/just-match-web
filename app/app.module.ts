@@ -31,6 +31,7 @@ import {JobsComponent} from "./views/jobs/jobs.component";
 import {JobListItemComponent} from "./components/job-list-item/job-list-item.component";
 import {PagerComponent} from "./components/pager/pager.component";
 import {JobDetailsComponent} from "./views/job-details/job-details.component";
+import {CommentsComponent} from "./components/comments/comments.component";
 
 @NgModule({
   imports: [
@@ -56,7 +57,8 @@ import {JobDetailsComponent} from "./views/job-details/job-details.component";
     JobsComponent,
     JobListItemComponent,
     PagerComponent,
-    JobDetailsComponent
+    JobDetailsComponent,
+    CommentsComponent
   ],
   providers: [
     appRoutingProviders,

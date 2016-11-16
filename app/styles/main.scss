@@ -41,6 +41,14 @@ body {
     }
   }
 
+  .float-left {
+    float: left;
+  }
+
+  .float-right {
+    float: right;
+  }
+
   .clearfix {
     clear: both;
   }
@@ -294,9 +302,12 @@ body {
   }
 
   .rounded-company-logo {
-    border-radius: 50%;
     height: 80px;
     width: 80px;
+  }
+
+  .rounded-image {
+    border-radius: 50%;
     vertical-align: middle;
     box-shadow: inset 0 0 1px 0 rgba(0,0,0,.2);
   }
