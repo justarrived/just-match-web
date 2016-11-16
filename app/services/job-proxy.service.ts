@@ -28,6 +28,12 @@ export class JobProxy {
   }
 
   saveJob(job: any): Promise<any> {
-    return this.apiCall.post('jobs',  job);
+    return this.apiCall.post('jobs', job);
+  }
+
+  getJob(jobId: number, additionOptions?: Object): Promise<Job> {
+    return this.apiCall.get('jobs/' + jobId, additionOptions).then(response => {
+      return new Job(response.data);
+    });
   }
 }

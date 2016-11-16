@@ -1,5 +1,7 @@
-import {Component, OnInit, Input} from '@angular/core';
+import {Component, Input} from "@angular/core";
 import {Job} from "../../models/job/job";
+import {Router} from "@angular/router";
+import {UserManager} from "../../user-manager.service";
 
 @Component({
   moduleId: module.id,
@@ -9,11 +11,13 @@ import {Job} from "../../models/job/job";
 })
 export class JobListItemComponent {
   @Input() job: Job;
+  isCompanyUser: boolean;
 
-  constructor() {
+  constructor(private router: Router, private userManager: UserManager) {
+    this.isCompanyUser = this.userManager.isCompanyUser();
   }
 
   public onListItemClick() {
-    console.log('click'); //TODO: Redirect when "JS-9: Implement jobs details page" is ready
+    this.router.navigate(['/job', this.job.id]);
   }
 }

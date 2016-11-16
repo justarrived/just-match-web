@@ -1,7 +1,7 @@
 <div class="job-list-container table clickable" (click)="onListItemClick()">
   <div class="table-row">
     <div class="table-cell min-width-column company-logo-container">
-      <img  class="company-logo no-select" [src]="(job.company.companyLogo && job.company.companyLogo.imageUrlSmall) || 'assets/images/placeholder-logo.png'">
+      <img  class="company-logo rounded-company-logo no-select" [src]="(job.company.companyLogo && job.company.companyLogo.imageUrlSmall) || 'assets/images/placeholder-logo.png'">
     </div>
     <div class="table-cell">
       <div class="table job-description-container">

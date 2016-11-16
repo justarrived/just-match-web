@@ -30,6 +30,7 @@ import {JobApproveComponent} from "./views/jobs/job-approve/job-approve.componen
 import {JobsComponent} from "./views/jobs/jobs.component";
 import {JobListItemComponent} from "./components/job-list-item/job-list-item.component";
 import {PagerComponent} from "./components/pager/pager.component";
+import {JobDetailsComponent} from "./views/job-details/job-details.component";
 
 @NgModule({
   imports: [
@@ -54,7 +55,8 @@ import {PagerComponent} from "./components/pager/pager.component";
     JobApproveComponent,
     JobsComponent,
     JobListItemComponent,
-    PagerComponent
+    PagerComponent,
+    JobDetailsComponent
   ],
   providers: [
     appRoutingProviders,
