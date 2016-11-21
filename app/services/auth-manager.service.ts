@@ -17,7 +17,7 @@ export class AuthManager {
     return this.userProxy.getUserSession(email, password).then(response => {
       this.userManager.saveAuthorizationData(response.data);
 
-      return this.userProxy.getUser(this.userManager.getUserId(), {include: 'user_images,user_languages'});
+      return this.userProxy.getUser(this.userManager.getUserId(), {include: 'company,user_images,user_languages'});
     })
     .then(response => this.handleUserResult(response.data));
   }
@@ -26,7 +26,7 @@ export class AuthManager {
     let userId = this.userManager.getUserId();
 
     if (userId) {
-      return this.userProxy.getUser(userId, {include: 'user_images,user_languages'}).then(response => { // TODO: add user_languages.language in the include
+      return this.userProxy.getUser(userId, {include: 'company,user_images,user_languages'}).then(response => { // TODO: add user_languages.language in the include
         return this.handleUserResult(response.data);
       });
     }
@@ -43,6 +43,7 @@ export class AuthManager {
     this.userManager.saveUser(new User(data));
     let user = this.userManager.getUser();
     this.userChange.emit(user);
+    console.log(user);
     return Promise.resolve(user);
   }
 

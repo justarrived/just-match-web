@@ -3,6 +3,7 @@ import {ApiCall} from "./api-call.service";
 import {UserStatus} from "../models/user/user-status";
 import {map} from "lodash";
 import {UserImage} from "../models/user/user-image";
+import {UserJob} from "../models/user/user-job";
 
 @Injectable()
 export class UserProxy {
@@ -36,5 +37,10 @@ export class UserProxy {
     saveImage(image: FormData): Promise<UserImage> {
       return this.apiCall.postFile('users/images', image)
         .then(response => new UserImage(response.data));
+    }
+
+    getUserJobs(userId, additionOptions?: Object) {
+      return this.apiCall.get('users/' + userId + '/jobs', additionOptions)
+        .then(response => map(response.data, data => new UserJob(data)));
     }
 }

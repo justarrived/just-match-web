@@ -295,7 +295,7 @@
   "profile.form.presentation.validation": "You need to provide a presentation",
   "profile.form.languages.validation": "You need to provide language abilities",
   "user.apply.confirmation": "You have applied for the job",
-  "user.apply.confirmation.text.": "We're crossing our fingers for you right now. If the employer makes an offer, you have 18 hours to accept the offer. You'll find the job under My Jobs. This is where you'll also find all communication that happens between you and the employer.",
+  "user.apply.confirmation.text": "We're crossing our fingers for you right now. If the employer makes an offer, you have 18 hours to accept the offer. You'll find the job under My Jobs. This is where you'll also find all communication that happens between you and the employer.",
   "user.apply.find_more": "Search for more jobs",
   "user.account": "Bank account details",
   "user.account.description": "Where would you like your salary to be paid out once you have completed the job?",

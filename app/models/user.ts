@@ -16,6 +16,7 @@ export class User {
   workExperience: string;
   education: string;
   skills: string;
+  frilansFinansPaymentDetails: boolean;
   company: Company;
 
   constructor(jsonObject: any) {
@@ -31,6 +32,7 @@ export class User {
     this.education = jsonObject.education;
     this.skills = jsonObject.competence_text;
     this.company = new Company(jsonObject.company);
+    this.frilansFinansPaymentDetails = jsonObject.frilans_finans_payment_details;
   }
 
   toJsonObject(): Object {

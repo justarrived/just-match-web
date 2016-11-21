@@ -19,7 +19,7 @@ export class Company {
     this.cin = jsonObject.cin;
     this.city = jsonObject.city;
     this.email = jsonObject.email;
-    this.id = jsonObject.email;
+    this.id = jsonObject.id;
     this.name = jsonObject.name;
     this.phone = jsonObject.phone;
     this.street = jsonObject.street;
@@ -34,8 +34,6 @@ export class Company {
     return new CompanyImage(find(companyImages, {category_name: 'logo'}));
   }
 }
-
-
 
 class CompanyImage {
   categoryName: string;

@@ -282,7 +282,7 @@
   "profile.form.presentation.validation": "Du måste ange presentation",
   "profile.form.languages.validation": "Du måste ange språkkunskaper",
   "user.apply.confirmation": "You have applied for the job",
-  "user.apply.confirmation.text.": "موږ به په Just Arrived کې تل د ښو هیلو سره اوسو. که یو قراردادي یو وړاندیز سپاري، تاسې د ګومارنې منلو لپاره 12 ساعتونه وخت لرئ.  تاسې د به زما ګومارنې (Mina Uppdrag) لاندې ګومارنه ومومئ. د پیرودونکي سره ټولې خبرې هم دلته خوندي کیږي.",
+  "user.apply.confirmation.text": "موږ به په Just Arrived کې تل د ښو هیلو سره اوسو. که یو قراردادي یو وړاندیز سپاري، تاسې د ګومارنې منلو لپاره 12 ساعتونه وخت لرئ.  تاسې د به زما ګومارنې (Mina Uppdrag) لاندې ګومارنه ومومئ. د پیرودونکي سره ټولې خبرې هم دلته خوندي کیږي.",
   "user.apply.find_more": "نورې دندې ومومئ",
   "user.account": "Bank account details",
   "user.account.description": "Where would you like your salary to be paid out once you have completed the job?",

@@ -29,6 +29,8 @@ import {JobListItemComponent} from "./components/job-list-item/job-list-item.com
 import {PagerComponent} from "./components/pager/pager.component";
 import {JobDetailsComponent} from "./views/job-details/job-details.component";
 import {CommentsComponent} from "./components/comments/comments.component";
+import {JobStateStatusBarComponent} from "./components/job-state-status-bar/job-state-status-bar.component";
+import {ConfirmationComponent} from "./views/confirmation/confirmation.component";
 
 @NgModule({
   imports: [
@@ -53,7 +55,9 @@ import {CommentsComponent} from "./components/comments/comments.component";
     JobListItemComponent,
     PagerComponent,
     JobDetailsComponent,
-    CommentsComponent
+    CommentsComponent,
+    JobStateStatusBarComponent,
+    ConfirmationComponent
   ],
   providers: [
     appRoutingProviders,

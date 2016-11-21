@@ -1,0 +1,16 @@
+@import '../../styles/variables.scss';
+
+.job-status {
+  background: $color-pink-1;
+  padding: 30px;
+  color: white;
+}
+
+.button {
+  cursor: pointer;
+  background: none;
+
+  &:hover {
+    background: $color-pink-3;
+  }
+}

@@ -3,6 +3,7 @@ import {CommentsProxy} from "../../services/proxy/comments-proxy.service";
 import {Comment} from "../../models/comment";
 import {UserManager} from "../../user-manager.service";
 import {TranslationService} from "../../services/translation.service";
+import {orderBy} from "lodash";
 
 @Component({
   moduleId: module.id,
@@ -55,10 +56,9 @@ export class CommentsComponent implements OnInit {
 
   private populateAllComments() {
     this.commentsProxy.getComments(this.resourceName, this.resourceId, {
-      include: 'owner,owner.user-images,owner.company,owner.company.company-images',
-      sort: 'created_at'
+      include: 'owner,owner.user-images,owner.company,owner.company.company-images'
     }).then(result => {
-      this.comments = result.data;
+      this.comments = orderBy(result.data, ['createdAt']);
     });
   }
 

@@ -38,4 +38,12 @@ export class UserManager {
   isCompanyUser(): boolean {
     return !!this.user && this.user.role === 'company';
   }
+
+  getCompanyId() {
+    if (!this.user || !this.user.company) {
+      return null;
+    }
+
+    return this.user.company.id;
+  }
 }
