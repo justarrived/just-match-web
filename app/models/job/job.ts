@@ -23,6 +23,7 @@ export class Job {
   zipLatitude: number;
   zipLongitude: number;
   category: Category;
+  languageId: string;
 
   constructor(jsonObject: any) {
     if (!jsonObject) {
@@ -50,11 +51,22 @@ export class Job {
     this.zipLatitude = jsonObject.zip_latitude;
     this.zipLongitude = jsonObject.zip_longitude;
     this.category = new Category(jsonObject.category);
+    this.languageId = jsonObject.language_id;
   }
 
   toJsonObject(): Object {
     return {
-
+      'name': this.name,
+      'category_id': this.category.id,
+      'description': this.description,
+      'short_description': this.shortDescription,
+      'street': this.street,
+      'zip': this.zip,
+      'job_date': this.jobDate,
+      'job_end_date': this.jobEndDate,
+      'hours': this.hours,
+      'hourly_pay_id': this.hourlyPay.id,
+      'language_id': this.languageId
     };
   }
 }

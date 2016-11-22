@@ -7,6 +7,7 @@ import {Category} from "../models/job/job";
 
 @Injectable()
 export class JobProxy {
+  job: Job = null;
 
   constructor(private apiCall: ApiCall) { }
 
@@ -36,4 +37,5 @@ export class JobProxy {
       return new Job(response.data);
     });
   }
+
 }
