@@ -9,7 +9,7 @@
     margin: 0 auto;
 
     span {
-      color: #E5007D;
+      color: $color-pink-1;
       font-size: 3em;
       font-weight: 700;
       letter-spacing: 0.02em;
@@ -43,11 +43,11 @@
       border: 0;
 
       &.secondary {
-        background: #383F4E;
+        background: $color-blue-1;
       }
 
       &.primary {
-        background: #c3106c;
+        background: $color-pink-1;
       }
     }
   }
