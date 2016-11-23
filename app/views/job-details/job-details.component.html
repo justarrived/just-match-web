@@ -22,7 +22,6 @@
       </div>
     </div>
   </div>
-  <job-state-status-bar [job]="job" [isInUserView]="true"></job-state-status-bar>
   <div class="job-details">
     <div class="job-details-header">{{"assignment.assignments.title" | translate}}</div>
     <div class="job-details-container table">
@@ -44,5 +43,6 @@
       </div>
     </div>
   </div>
+  <job-state-status-bar [job]="job" [jobId]="job.id"></job-state-status-bar>
   <comments [resourceName]="'jobs'" [resourceId]="job.id"></comments>
 </div>

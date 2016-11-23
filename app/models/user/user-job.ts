@@ -1,5 +1,6 @@
 import * as moment from 'moment';
 import {User} from "../user";
+import {Job} from "../job/job";
 
 export class UserJob {
   private MINUTES_PER_HOUR: number = 60;
@@ -11,6 +12,7 @@ export class UserJob {
   willPerform: boolean;
   willPerformConfirmationBy: string;
   user: User;
+  job: Job;
   remainsConfirmationHours: number;
   remainsConfirmationMinutes: number;
 
@@ -23,6 +25,7 @@ export class UserJob {
     this.willPerform = jsonObject.will_perform;
     this.willPerformConfirmationBy = jsonObject.will_perform_confirmation_by;
     this.user = new User(jsonObject.user);
+    this.job = new Job(jsonObject.job);
     if (this.willPerformConfirmationBy) {
       let differenceInMinutes = moment(new Date(this.willPerformConfirmationBy)).diff(new Date(), 'minutes');
       this.remainsConfirmationHours = Math.floor(differenceInMinutes / this.MINUTES_PER_HOUR);

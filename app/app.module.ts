@@ -31,6 +31,9 @@ import {JobDetailsComponent} from "./views/job-details/job-details.component";
 import {CommentsComponent} from "./components/comments/comments.component";
 import {JobStateStatusBarComponent} from "./components/job-state-status-bar/job-state-status-bar.component";
 import {ConfirmationComponent} from "./views/confirmation/confirmation.component";
+import {CandidateComponent} from "./views/candidate/candidate.component";
+import {CandidateStateStatusBarComponent} from "./components/candidate-state-status-bar/candidate-state-status-bar.component";
+import {CandidatesComponent} from "./views/candidates/candidates.component";
 
 @NgModule({
   imports: [
@@ -57,7 +60,10 @@ import {ConfirmationComponent} from "./views/confirmation/confirmation.component
     JobDetailsComponent,
     CommentsComponent,
     JobStateStatusBarComponent,
-    ConfirmationComponent
+    ConfirmationComponent,
+    CandidatesComponent,
+    CandidateComponent,
+    CandidateStateStatusBarComponent
   ],
   providers: [
     appRoutingProviders,

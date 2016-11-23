@@ -28,13 +28,27 @@ export class JobProxy {
     return this.apiCall.post('jobs/' + jobId + '/users', {});
   }
 
+  acceptForJob(jobId, userJobId) {
+    return this.apiCall.post('jobs/' + jobId + '/users/' + userJobId + '/acceptances ', {}).then(response => {
+      return new UserJob(response.data);
+    });
+  }
+
   confirmForJob(jobId, userJobId) {
-    return this.apiCall.post('jobs/' + jobId + '/users/' + userJobId + '/confirmations ', {});
+    return this.apiCall.post('jobs/' + jobId + '/users/' + userJobId + '/confirmations ', {}).then(response => {
+      return new UserJob(response.data);
+    });
   }
 
   getUserJobs(jobId, additionOptions?: Object): Promise<UserJob[]> {
     return this.apiCall.get('jobs/' + jobId + '/users', additionOptions).then(response => {
       return map(response.data, data => new UserJob(data));
+    });
+  }
+
+  getUserJob(jobId, userJobId, additionOptions?: Object) {
+    return this.apiCall.get('jobs/' + jobId + '/users/' + userJobId, additionOptions).then(response => {
+      return new UserJob(response.data);
     });
   }
 

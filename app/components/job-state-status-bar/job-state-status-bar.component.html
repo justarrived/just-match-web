@@ -1,10 +1,10 @@
-<div *ngIf="user && !isCompanyUser" class="job-status text-center">
+<div *ngIf="user && !isCompanyUser && !isInUserView" class="job-status text-center">
   <button class="button" *ngIf="!userJob" (click)="onApplyForJobButtonClick()">{{'assignment.status.apply' | translate}}</button>
   <span *ngIf="userJob && !userJob.accepted">{{'assignment.status.applied' | translate}}</span>
   <div class="table" *ngIf="userJob && userJob.accepted && !userJob.willPerform">
     <div class="table-row">
       <div class="table-cell">{{'assignment.status.offer' | translate}} {{userJob.remainsConfirmationHours}} {{'common.hour' | translate}} {{userJob.remainsConfirmationMinutes}} {{'common.min' | translate}}</div>
-      <div class="table-cell"><button (click)="onConfirmJobButtonClick()">{{'assignment.status.reply' | translate}}</button></div>
+      <div class="table-cell"><button class="button" (click)="onConfirmJobButtonClick()">{{'assignment.status.reply' | translate}}</button></div>
     </div>
   </div>
   <span *ngIf="userJob && userJob.accepted && userJob.willPerform">{{'assignment.status.hired' | translate}}</span>
@@ -12,21 +12,12 @@
 <div class="job-status text-center" *ngIf="isCompanyUser && user.company.id == job.company.id">
   <div *ngIf="!userJob && !isInUserView">
     <div>{{'common.you_have' | translate}} {{countOfApplicants}} {{'company.assignments.applications' | translate}}</div>
-    <div *ngIf="countOfApplicants > 0"><a class="button">{{'company.assignments.candidates.select.title' | translate}}</a></div>
+    <div *ngIf="countOfApplicants > 0"><a class="button" [routerLink]="['candidates']">{{'assignment.status.select_applicant' | translate}}</a></div>
   </div>
   <div *ngIf="!userJob && isInUserView"></div>
   <span *ngIf="userJob && userJob.accepted && !userJob.willPerform">
     {{userJob.user.firstName}} {{'common.have' | translate}} {{userJob.remainsConfirmationHours}} {{'common.hour' | translate}} {{userJob.remainsConfirmationMinutes}} {{'common.min' | translate}} {{'assignment.status.user_application.time_remaining' | translate}}
   </span>
-  <span *ngIf="userJob && userJob.accepted && userJob.willPerform && !isInUserView">{{'assignment.status.applicant_approved' | translate: {candidate_name: userJob.user.firstName} }}</span>
-  <div class="table">
-    <div class="table-row">
-      <div class="table-cell">{{'assignment.status.is_successful' | translate: {candidate_name: userJob.user.firstName} }}</div>
-      <div class="table-cell">
-        <button class="button">{{'common.no' | translate}}</button>
-        <button class="button">{{'common.yes' | translate}}</button>
-      </div>
-    </div>
-  </div>
+  <span *ngIf="userJob && userJob.accepted && userJob.willPerform">{{'assignment.status.applicant_approved' | translate: {candidate_name: userJob.user.firstName} }}</span>
 </div>
 

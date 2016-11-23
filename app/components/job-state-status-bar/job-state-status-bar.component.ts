@@ -17,15 +17,17 @@ import {Router} from "@angular/router";
 export class JobStateStatusBarComponent implements OnInit {
   @Input() job: Job;
   @Input() isInUserView: boolean;
+  @Input() userJobId: number;
+  @Input() jobId: number;
   isCompanyUser: boolean;
   user: User;
   userJob: UserJob;
   countOfApplicants: number = 0;
+  showSendRequestPage: boolean = false;
 
   constructor(private userManager: UserManager, private userProxy: UserProxy, private jobProxy: JobProxy, private router: Router) {
     this.user = userManager.getUser();
     this.isCompanyUser = userManager.isCompanyUser();
-    console.log('here');
   }
 
   ngOnInit() {
@@ -51,9 +53,16 @@ export class JobStateStatusBarComponent implements OnInit {
     });
   }
 
+  onAcceptJobButtonClick() {
+    this.jobProxy.acceptForJob(this.jobId, this.userJobId).then(response => {
+      this.userJob = response;
+      this.showSendRequestPage = false;
+    });
+  }
+
   onConfirmJobButtonClick() {
     this.jobProxy.confirmForJob(this.job.id, this.userJob.id).then(response => {
-      this.userJob = new UserJob(response.data);
+      this.userJob = response;
     });
   }
 }

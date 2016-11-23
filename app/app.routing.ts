@@ -10,6 +10,8 @@ import {LoginComponent} from "./views/login/login.component";
 import {JobsComponent} from "./views/jobs/jobs.component";
 import {JobDetailsComponent} from "./views/job-details/job-details.component";
 import {ConfirmationComponent} from "./views/confirmation/confirmation.component";
+import {CandidateComponent} from "./views/candidate/candidate.component";
+import {CandidatesComponent} from "./views/candidates/candidates.component";
 
 const appRoutes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },
@@ -18,6 +20,8 @@ const appRoutes: Routes = [
   { path: 'login', component: LoginComponent, data: {title: 'Login'} },
   { path: 'confirmation/:type', component: ConfirmationComponent },
   { path: 'jobs/:page', component: JobsComponent },
+  { path: 'job/:id/candidate/:userJobId', component: CandidateComponent },
+  { path: 'job/:id/candidates', component: CandidatesComponent },
   { path: 'job/:id', component: JobDetailsComponent },
   { path: 'user/register', component: UserRegisterComponent },
   { path: 'user', component: UserProfileComponent, canActivate: [AuthGuard] },
