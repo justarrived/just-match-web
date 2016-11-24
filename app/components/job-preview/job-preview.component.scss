@@ -1,0 +1,54 @@
+@import '../../styles/variables.scss';
+
+.job-details {
+  width: 70%;
+  margin: 0 auto;
+  font-size: 16px;
+  padding: 25px 0;
+
+  .job-details-header {
+    border-bottom: 1px $color-gray-3 solid;
+    padding: 5px 0;
+    font-size: 18px;
+    margin-top: 15px;
+    text-transform: uppercase;
+  }
+
+  .job-details-container {
+    width: 100%;
+
+    .job-details-cell {
+      width: 50%;
+      vertical-align: top;
+
+      .job-details-item {
+        display: block;
+        margin-left: 45px;
+        padding: 18px 0;
+        position: relative;
+
+        i {
+          color: $color-gray-1;
+          position: absolute;
+          left: -45px;
+          font-size: 25px;
+          top: 15px;
+          opacity: 0.85;
+
+          &.icon-ic-calendar {
+            .date-value {
+              position: absolute;
+              font-size: 14px;
+              left: 9px;
+              top: 8px;
+            }
+          }
+        }
+
+        &.with-border {
+          border-bottom: 1px $color-gray-3 solid;
+        }
+      }
+    }
+  }
+}

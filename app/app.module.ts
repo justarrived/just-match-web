@@ -24,6 +24,8 @@ import {AutocompleteDropdownComponent} from "./components/autocomplete-dropdown/
 import {LanguageProxy} from "./services/proxy/language-proxy.service";
 import {LoginComponent} from "./views/login/login.component";
 import {UserManager} from "./user-manager.service";
+import {JobCreateComponent} from "./views/jobs/job-create/job-create.component";
+import {JobPreviewComponent} from "./components/job-preview/job-preview.component";
 import {JobsComponent} from "./views/jobs/jobs.component";
 import {JobListItemComponent} from "./components/job-list-item/job-list-item.component";
 import {PagerComponent} from "./components/pager/pager.component";
@@ -54,6 +56,8 @@ import {CandidatesComponent} from "./views/candidates/candidates.component";
     AutocompleteDropdownListItemComponent,
     AutocompleteDropdownComponent,
     LoginComponent,
+    JobCreateComponent,
+    JobPreviewComponent,
     JobsComponent,
     JobListItemComponent,
     PagerComponent,

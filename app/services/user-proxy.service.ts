@@ -8,39 +8,40 @@ import {UserJob} from "../models/user/user-job";
 @Injectable()
 export class UserProxy {
 
-    constructor(private apiCall: ApiCall) { }
+  constructor(private apiCall: ApiCall) {
+  }
 
-    getUser(userId: string, includes?: Object): Promise<any> {
-      return this.apiCall.get('users/' + userId, includes);
-    }
+  getUser(userId: string, includes?: Object): Promise<any> {
+    return this.apiCall.get('users/' + userId, includes);
+  }
 
-    getUserSession(email, password) {
-      return this.apiCall.post('users/sessions', {
-        "email_or_phone": email,
-        "password": password
-      });
-    }
+  getUserSession(email, password) {
+    return this.apiCall.post('users/sessions', {
+      "email_or_phone": email,
+      "password": password
+    });
+  }
 
-    saveUser(user: any): Promise<any> {
-      return this.apiCall.post('users', user);
-    }
+  saveUser(user: any): Promise<any> {
+    return this.apiCall.post('users', user);
+  }
 
-    updateUser(user: any): Promise<any> {
-      return this.apiCall.patch('users/' + user.id, user);
-    }
+  updateUser(user: any): Promise<any> {
+    return this.apiCall.patch('users/' + user.id, user);
+  }
 
-    getStatuses(): Promise<Array<UserStatus>> {
-      return this.apiCall.get('users/statuses')
-        .then(response => map(response.data, data => new UserStatus(data)));
-    }
+  getStatuses(): Promise<Array<UserStatus>> {
+    return this.apiCall.get('users/statuses')
+      .then(response => map(response.data, data => new UserStatus(data)));
+  }
 
-    saveImage(image: FormData): Promise<UserImage> {
-      return this.apiCall.postFile('users/images', image)
-        .then(response => new UserImage(response.data));
-    }
+  saveImage(image: FormData): Promise<UserImage> {
+    return this.apiCall.postFile('users/images', image)
+      .then(response => new UserImage(response.data));
+  }
 
-    getUserJobs(userId, additionOptions?: Object) {
-      return this.apiCall.get('users/' + userId + '/jobs', additionOptions)
-        .then(response => map(response.data, data => new UserJob(data)));
-    }
+  getUserJobs(userId, additionOptions?: Object) {
+    return this.apiCall.get('users/' + userId + '/jobs', additionOptions)
+      .then(response => map(response.data, data => new UserJob(data)));
+  }
 }
