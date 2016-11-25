@@ -22,14 +22,14 @@
       text-align: center;
       padding: 85px 20px 145px;
       color: #fff;
-      background: $color-blue-2;
+      background: $color-secondary-blue;
 
       &:nth-of-type(2) {
-        background: $color-pink-1;
+        background: $color-primary-cerise;
       }
 
       &:nth-of-type(3) {
-        background: $color-blue-1;
+        background: $color-secondary-gray;
       }
     }
 
@@ -101,7 +101,7 @@
       .header-box-container {
         width: 100%;
         display: flex;
-        background: $color-pink-1;
+        background: $color-primary-cerise;
 
         .header-box {
           padding: 20px;

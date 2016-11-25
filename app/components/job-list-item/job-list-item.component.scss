@@ -2,7 +2,7 @@
 
 .job-list-container {
   width: 100%;
-  border-bottom: 1px solid $color-gray-3;
+  border-bottom: 1px solid $color-gray-50;
 
   .company-logo-container {
     padding: 18px 0 18px 20px;
@@ -13,12 +13,12 @@
   }
 
   .arrow-container {
-    color: $color-gray-1;
+    color: $color-gray-200;
     font-size: 20px;
     padding: 0 10px;
 
     .icon-ic-arrow-right:hover {
-      color: $color-dark;
+      color: $color-secondary-gray;
     }
   }
 
@@ -44,7 +44,7 @@
       width: 35%;
 
       .total-salary {
-        color: $color-pink-2;
+        color: $color-primary-cerise;
         font-size: 21px;
         font-weight: 600;
         white-space: nowrap;
