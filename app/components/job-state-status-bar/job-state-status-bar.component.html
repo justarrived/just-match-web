@@ -1,4 +1,4 @@
-<div *ngIf="user && !isCompanyUser && !isInUserView" class="job-status text-center">
+<div *ngIf="(user && !isCompanyUser && !isInUserView) && (!userJob || !userJob.invoice || !userJob.invoice.id)" class="job-status text-center">
   <button class="button" *ngIf="!userJob" (click)="onApplyForJobButtonClick()">{{'assignment.status.apply' | translate}}</button>
   <span *ngIf="userJob && !userJob.accepted">{{'assignment.status.applied' | translate}}</span>
   <div class="table" *ngIf="userJob && userJob.accepted && !userJob.willPerform">
@@ -9,7 +9,7 @@
   </div>
   <span *ngIf="userJob && userJob.accepted && userJob.willPerform">{{'assignment.status.hired' | translate}}</span>
 </div>
-<div class="job-status text-center" *ngIf="isCompanyUser && user.company.id == job.company.id">
+<div class="job-status text-center" *ngIf="(isCompanyUser && user.company.id == job.company.id) && (!userJob || !userJob.invoice || !userJob.invoice.id)">
   <div *ngIf="!userJob && !isInUserView">
     <div>{{'common.you_have' | translate}} {{countOfApplicants}} {{'company.assignments.applications' | translate}}</div>
     <div *ngIf="countOfApplicants > 0"><a class="button" [routerLink]="['candidates']">{{'assignment.status.select_applicant' | translate}}</a></div>
@@ -18,7 +18,7 @@
   <span *ngIf="userJob && userJob.accepted && !userJob.willPerform">
     {{userJob.user.firstName}} {{'common.have' | translate}} {{userJob.remainsConfirmationHours}} {{'common.hour' | translate}} {{userJob.remainsConfirmationMinutes}} {{'common.min' | translate}} {{'assignment.status.user_application.time_remaining' | translate}}
   </span>
-  <span *ngIf="userJob && userJob.accepted && userJob.willPerform">{{'assignment.status.applicant_approved' | translate: {candidate_name: userJob.user.firstName} }}</span>
+  <span *ngIf="userJob && userJob.accepted && userJob.willPerform"><a [routerLink]="['/job', jobId, 'candidate', userJob.id]">{{'assignment.status.applicant_approved' | translate: {candidate_name: userJob.user.firstName} }}</a></span>
 </div>
 <div *ngIf="showCandidateBankAccountDetails" class="candidate-bank-account-details-container">
   <div>{{'common.congratulation' | translate}}</div>
