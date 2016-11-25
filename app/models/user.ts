@@ -1,6 +1,5 @@
 import {UserImage} from "./user/user-image";
 import {map} from "lodash";
-import {Language} from "./language/language";
 import {UserLanguage} from "./user/user-language";
 import {Company} from "./company";
 
@@ -19,6 +18,10 @@ export class User {
   company: Company;
 
   constructor(jsonObject: any) {
+    if (!jsonObject) {
+      return;
+    }
+
     this.id = jsonObject.id;
     this.firstName = jsonObject.first_name;
     this.lastName = jsonObject.last_name;
