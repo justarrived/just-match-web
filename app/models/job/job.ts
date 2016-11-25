@@ -1,4 +1,6 @@
 import {Company} from "../company";
+import {UserJob} from "../user/user-job";
+import {map} from "lodash";
 
 export class Job {
   amount: number;
@@ -24,6 +26,7 @@ export class Job {
   zipLongitude: number;
   category: Category;
   languageId: string;
+  jobUsers: UserJob[];
 
   constructor(jsonObject: any) {
     if (!jsonObject) {
@@ -51,6 +54,7 @@ export class Job {
     this.zipLatitude = jsonObject.zip_latitude;
     this.zipLongitude = jsonObject.zip_longitude;
     this.category = new Category(jsonObject.category);
+    this.jobUsers = map(jsonObject.job_users, user => new UserJob(user));
     this.languageId = jsonObject.language_id;
   }
 

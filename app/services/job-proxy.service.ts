@@ -4,6 +4,7 @@ import {map} from "lodash";
 import {Job} from "../models/job/job";
 import {HourlyPay} from "../models/job/job";
 import {Category} from "../models/job/job";
+import {UserJob} from "../models/user/user-job";
 
 @Injectable()
 export class JobProxy {
@@ -36,6 +37,18 @@ export class JobProxy {
     return this.apiCall.get('jobs/' + jobId, additionOptions).then(response => {
       return new Job(response.data);
     });
+  }
+
+  getOwnedJobs(userId: string, additionOptions?: Object) {
+    return this.apiCall.get('users/' + userId + '/owned-jobs',  additionOptions).then(response => map(response.data, data => new Job(data)));
+  }
+
+  getJobUsers(jobId: string, additionOptions?: Object) {
+    return this.apiCall.get('jobs/' + jobId + '/users',  additionOptions).then(response => map(response.data, data => new UserJob(data)));
+  }
+
+  getUserJobs(userId: string, additionOptions?: Object) {
+    return this.apiCall.get('users/' + userId + '/jobs',  additionOptions).then(response => map(response.data, data => new UserJob(data)));
   }
 
 }

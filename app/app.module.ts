@@ -31,6 +31,10 @@ import {JobListItemComponent} from "./components/job-list-item/job-list-item.com
 import {PagerComponent} from "./components/pager/pager.component";
 import {JobDetailsComponent} from "./views/job-details/job-details.component";
 import {CommentsComponent} from "./components/comments/comments.component";
+import {MyJobsComponent} from "./views/my-jobs/my-jobs.component";
+import {CompanyJobsComponent} from "./views/my-jobs/company-jobs/company-jobs.component";
+import {UserJobsComponent} from "./views/my-jobs/user-jobs/user-jobs.component";
+import {MyJobsItemComponent} from "./components/my-jobs-item/my-jobs-item.component";
 
 @NgModule({
   imports: [
@@ -57,7 +61,11 @@ import {CommentsComponent} from "./components/comments/comments.component";
     JobListItemComponent,
     PagerComponent,
     JobDetailsComponent,
-    CommentsComponent
+    CommentsComponent,
+    MyJobsItemComponent,
+    CompanyJobsComponent,
+    UserJobsComponent,
+    MyJobsComponent
   ],
   providers: [
     appRoutingProviders,
@@ -69,7 +77,7 @@ import {CommentsComponent} from "./components/comments/comments.component";
     LanguageProxy,
     TranslationService,
     UserManager,
-    {provide: ErrorHandler, useClass: GlobalExceptionHandler}
+    //{provide: ErrorHandler, useClass: GlobalExceptionHandler}
   ],
   bootstrap: [AppComponent]
 })
