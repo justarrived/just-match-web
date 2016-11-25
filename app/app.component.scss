@@ -10,7 +10,7 @@
 
 .footer, .header {
   width: 100%;
-  background: $color-blue-0;
+  background: $color-secondary-gray;
   color: white;
 }
 
@@ -90,7 +90,7 @@
     .nav-language-icon {
       font-size: 9px;
       border-radius: 50%;
-      background: $color-pink-2;
+      background: $color-primary-cerise;
       width: 27px;
       text-align: center;
       vertical-align: center;
@@ -227,7 +227,7 @@
         }
 
         .nav-menu-icon-container {
-          color: $color-dark;
+          color: $color-secondary-gray;
           font-size: 105px;
           padding: 20px 0;
           line-height: 1em;
@@ -250,7 +250,7 @@
 
               .nav-menu-link {
                 text-decoration: none;
-                color: $color-blue-3;
+                color: $color-blue-200;
                 padding-left: 40px;
 
                 &:hover {
@@ -273,7 +273,6 @@
               }
             }
           }
-
         }
 
         .nav-menu-footer {
@@ -298,7 +297,7 @@
               min-height: 35px;
             }
           }
-
+          
           .table-cell {
             vertical-align: bottom;
             padding: 20px;

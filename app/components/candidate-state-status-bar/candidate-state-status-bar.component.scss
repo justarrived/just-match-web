@@ -1,7 +1,7 @@
 @import '../../styles/variables.scss';
 
 .job-status {
-  background: $color-pink-1;
+  background: $color-primary-cerise;
   padding: 30px;
   color: white;
 }
@@ -10,7 +10,7 @@
   cursor: pointer;
 
   &:hover {
-    background: $color-pink-3;
+    background: $color-cerise-700;
   }
 }
 
@@ -20,7 +20,7 @@
   position: fixed;
   top: 0;
   left: 0;
-  background: $color-blue-1;
+  background: $color-secondary-gray;
   z-index: 10000;
   color: white;
 }
@@ -36,5 +36,5 @@
 }
 
 .red-star {
-  color: $color-pink-2;
+  color: $color-primary-cerise;
 }

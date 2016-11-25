@@ -1,20 +1,44 @@
-$color-dark: #121315; // dark
+// Colors from JustArrived style guide
+$color-blue-50: #E0EDFA;
+$color-blue-100: #B3D2F2;
+$color-blue-200: #80B4E9;
+$color-blue-300: #4D96E0;
+$color-blue-400: #2C84DC;
+$color-blue-500: #0069D2;
+$color-blue-600: #005EBD;
+$color-blue-700: #0057AF;
 
-$color-blue-0: #222531; // darkBlue
-$color-blue-1: #383F4E; // lightBlue
-$color-blue-2: #0069d2; // blue
-$color-blue-3: #00D7FF; // brightBlue
-$color-blue-4: #9b9fa6; // lightHalfBlue
+$color-cerise-50: #FCE0EF;
+$color-cerise-100: #F7B3D8;
+$color-cerise-200: #F280BE;
+$color-cerise-300: #ED4DA4;
+$color-cerise-400: #E92C93;
+$color-cerise-500: #E5007D;
+$color-cerise-600: #CE0070;
+$color-cerise-700: #BE0068;
 
-$color-gray-0: #2A303D; // darkGrey
-$color-gray-1: #979797; // grey
-$color-gray-2: #c8cdd2; // midgrey
-$color-gray-3: #E8EBEE; // lightGrey
+$color-gray-25: #F6F6F6;
+$color-gray-50: #E7E8E9;
+$color-gray-100: #C4C6CA;
+$color-gray-200: #9C9FA7;
+$color-gray-300: #747983;
+$color-gray-400: #565C68;
+$color-gray-500: #383F4E;
+$color-gray-700: #2F3441;
+$color-gray-800: #222531;
 
-$color-pink-0: #971057; // berry
-$color-pink-1: #E5007D; // cerice
-$color-pink-2: #E5007D; // pink
-$color-pink-3: #ab0e5f;
+$color-black: #000000;
+$color-white: #FFFFFF;
+
+$color-primary-cerise: $color-cerise-500;
+$color-secondary-gray: $color-gray-500;
+$color-secondary-blue: $color-blue-500;
+
+$color-accent-main: #45E2FF;
+$color-accent-darker: #00A9E5;
+$color-accent-lighter: #7FEBFF;
+
+
 
 $fs-s: 12px;
 $fs-m0: 14px;

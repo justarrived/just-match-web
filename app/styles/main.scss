@@ -92,44 +92,23 @@ body {
     }
   }
 
-  .color-dark {
-    color: $color-dark
-  }
-  .color-blue-0 {
-    color: $color-blue-0;
+  .color-secondary-gray {
+    color: $color-secondary-gray
   }
   .color-blue-1 {
-    color: $color-blue-1;
+    color: $color-secondary-gray;
   }
   .color-blue-2 {
-    color: $color-blue-2;
+    color: $color-secondary-blue;
   }
   .color-blue-3 {
-    color: $color-blue-3;
-  }
-  .color-blue-4 {
-    color: $color-blue-4;
-  }
-  .color-gray-0 {
-    color: $color-gray-0;
-  }
-  .color-gray-1 {
-    color: $color-gray-1;
-  }
-  .color-gray-2 {
-    color: $color-gray-2;
-  }
-  .color-gray-3 {
-    color: $color-gray-3;
-  }
-  .color-pink-0 {
-    color: $color-pink-0;
+    color: $color-blue-200;
   }
   .color-pink-1 {
-    color: $color-pink-1;
+    color: $color-primary-cerise;
   }
   .color-pink-2 {
-    color: $color-pink-2;
+    color: $color-primary-cerise;
   }
 
   .fs-s {
@@ -156,7 +135,7 @@ body {
 
   .subheader {
     padding: 30px;
-    background: $color-blue-1;
+    background: $color-secondary-gray;
     color: white;
 
     .subheader-text {
@@ -212,19 +191,19 @@ body {
 
     &.primary {
       font-size: $fs-l;
-      background-color: $color-pink-1;
+      background-color: $color-primary-cerise;
 
       &:hover, &:focus {
-        background-color: darken($color-pink-1, 5%);
+        background-color: darken($color-primary-cerise, 5%);
       }
     }
 
     &.secondary {
       font-size: $fs-l;
-      background-color: $color-blue-1;
+      background-color: $color-secondary-gray;
 
       &:hover, &:focus {
-        background-color: darken($color-blue-1, 10%);
+        background-color: darken($color-secondary-gray, 10%);
       }
     }
 
@@ -242,7 +221,7 @@ body {
 
     &.disabled, &[disabled] {
       &, &:hover {
-        background-color: $color-blue-1;
+        background-color: $color-secondary-gray;
         color: #eeeeee;
         opacity: 0.5;
         cursor: not-allowed;
@@ -267,16 +246,16 @@ body {
       }
 
       &.ng-touched.ng-invalid, &.has-error {
-        border: 1px solid $color-pink-2 !important;
-        color: $color-pink-2 !important;
+        border: 1px solid $color-primary-cerise !important;
+        color: $color-primary-cerise !important;
         ~ .material-label {
-          color: $color-pink-2 !important;
+          color: $color-primary-cerise !important;
         }
       }
     }
 
     input.material-input {
-      border: 1px solid $color-blue-1;
+      border: 1px solid $color-secondary-gray;
     }
 
     textarea.material-input {
@@ -298,7 +277,7 @@ body {
     }
 
     .material-group-error {
-      color: $color-pink-2;
+      color: $color-primary-cerise;
       font-size: 12px;
     }
   }
