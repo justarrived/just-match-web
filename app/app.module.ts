@@ -71,7 +71,7 @@ import {MyJobsItemComponent} from "./components/my-jobs-item/my-jobs-item.compon
     ConfirmationComponent,
     CandidatesComponent,
     CandidateComponent,
-    CandidateStateStatusBarComponent
+    CandidateStateStatusBarComponent,
     MyJobsItemComponent,
     CompanyJobsComponent,
     UserJobsComponent,
