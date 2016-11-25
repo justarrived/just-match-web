@@ -53,6 +53,10 @@ export class JobProxy {
     });
   }
 
+  createInvoice(jobId, userJobId) {
+    return this.apiCall.post('jobs/' + jobId + '/users/' + userJobId + '/invoices ', {});
+  }
+
   getUserJobs(jobId, additionOptions?: Object): Promise<UserJob[]> {
     return this.apiCall.get('jobs/' + jobId + '/users', additionOptions).then(response => {
       return map(response.data, data => new UserJob(data));
@@ -63,6 +67,13 @@ export class JobProxy {
     return this.apiCall.get('jobs/' + jobId + '/users/' + userJobId, additionOptions).then(response => {
       return new UserJob(response.data);
     });
+  }
+
+  addRating(jobId, ratingData) {
+    return this.apiCall.post('jobs/' + jobId + '/ratings', ratingData);
+    //   .then(response => {
+    //   return; //TODO: rating Entity
+    // });
   }
 
 }

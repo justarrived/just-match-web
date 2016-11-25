@@ -13,6 +13,7 @@ export class UserJob {
   willPerformConfirmationBy: string;
   user: User;
   job: Job;
+  invoice: Invoice;
   remainsConfirmationHours: number;
   remainsConfirmationMinutes: number;
 
@@ -26,11 +27,23 @@ export class UserJob {
     this.willPerformConfirmationBy = jsonObject.will_perform_confirmation_by;
     this.user = new User(jsonObject.user);
     this.job = new Job(jsonObject.job);
+    this.invoice = new Invoice(jsonObject.invoice);
     if (this.willPerformConfirmationBy) {
       let differenceInMinutes = moment(new Date(this.willPerformConfirmationBy)).diff(new Date(), 'minutes');
       this.remainsConfirmationHours = Math.floor(differenceInMinutes / this.MINUTES_PER_HOUR);
       this.remainsConfirmationMinutes = differenceInMinutes % this.MINUTES_PER_HOUR;
     }
   }
+}
 
+export class Invoice {
+  id: number;
+
+  constructor(jsonObject: any) {
+    if (!jsonObject) {
+      return;
+    }
+
+    this.id = jsonObject.id;
+  }
 }

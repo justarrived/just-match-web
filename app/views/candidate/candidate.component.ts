@@ -22,7 +22,7 @@ export class CandidateComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.jobProxy.getUserJob(this.jobId, this.userJobId, {include: 'job,job,hourly_pay,user,user.user_images'}).then(response => {
+    this.jobProxy.getUserJob(this.jobId, this.userJobId, {include: 'job,job,hourly_pay,user,user.user_images,invoice'}).then(response => {
       this.userJob = response;
     });
   }

@@ -26,6 +26,16 @@
   color: white;
 }
 
+.finalize-job-container {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: white;
+  z-index: 10000;
+}
+
 .red-star {
   color: $color-pink-2;
 }

@@ -24,6 +24,7 @@ export class JobStateStatusBarComponent implements OnInit {
   userJob: UserJob;
   countOfApplicants: number = 0;
   showSendRequestPage: boolean = false;
+  showCandidateBankAccountDetails: boolean = false;
 
   constructor(private userManager: UserManager, private userProxy: UserProxy, private jobProxy: JobProxy, private router: Router) {
     this.user = userManager.getUser();
@@ -53,14 +54,11 @@ export class JobStateStatusBarComponent implements OnInit {
     });
   }
 
-  onAcceptJobButtonClick() {
-    this.jobProxy.acceptForJob(this.jobId, this.userJobId).then(response => {
-      this.userJob = response;
-      this.showSendRequestPage = false;
-    });
-  }
-
   onConfirmJobButtonClick() {
+    // if (!this.userJob.user.frilansFinansPaymentDetails) {
+    //   this.showCandidateBankAccountDetails = true;
+    //   return;
+    // }
     this.jobProxy.confirmForJob(this.job.id, this.userJob.id).then(response => {
       this.userJob = response;
     });
