@@ -1,6 +1,7 @@
 @import "styles/variables.scss";
 
 .app {
+  margin-top: 65px;
   min-height: 100%;
   background-color: white;
 }
@@ -24,7 +25,10 @@
 
 .header {
   padding: 5px 0;
-  position: relative;
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
 
   .table-cell {
     vertical-align: middle;
@@ -286,6 +290,3 @@
     }
   }
 }
-
-
-
