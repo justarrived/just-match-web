@@ -23,5 +23,6 @@
     </div>
   </div>
   <job-preview [job]="job"></job-preview>
+  <job-state-status-bar [job]="job" [jobId]="job.id"></job-state-status-bar>
   <comments [resourceName]="'jobs'" [resourceId]="job.id"></comments>
 </div>

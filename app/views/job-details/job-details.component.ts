@@ -3,6 +3,7 @@ import {ActivatedRoute} from "@angular/router";
 import {Job} from "../../models/job/job";
 import {JobProxy} from "../../services/job-proxy.service";
 import {UserManager} from "../../user-manager.service";
+import {User} from "../../models/user";
 
 @Component({
   moduleId: module.id,
@@ -12,6 +13,7 @@ import {UserManager} from "../../user-manager.service";
 })
 export class JobDetailsComponent implements OnInit {
   private job: Job;
+  user: User;
   isCompanyUser: boolean;
 
   constructor(private route: ActivatedRoute, private jobProxy: JobProxy, private userManager: UserManager) {

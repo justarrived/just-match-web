@@ -4,12 +4,13 @@ import {JobProxy} from "../../../services/job-proxy.service";
 import {UserManager} from "../../../user-manager.service";
 import {UserJob} from "../../../models/user/user-job";
 import {map} from "lodash";
+import {UserProxy} from "../../../services/user-proxy.service";
 
 @Component({
   moduleId: module.id,
   selector: 'user-jobs',
   templateUrl: 'user-jobs.component.html',
-  providers: [JobProxy]
+  providers: [UserProxy]
 })
 export class UserJobsComponent {
   @Input() selectedState: string;
@@ -17,11 +18,11 @@ export class UserJobsComponent {
   currentJobs: Job[] = []; // not invoiced
   historyJobs: Job[] = []; // invoiced
 
-  constructor(private jobProxy: JobProxy, private userManager: UserManager) {
+  constructor(private userProxy: UserProxy, private userManager: UserManager) {
   }
 
   ngOnInit() {
-    this.jobProxy.getUserJobs(this.userManager.getUserId(), {include: 'job, job.company'}).then((jobs) => {
+    this.userProxy.getUserJobs(this.userManager.getUserId(), {include: 'job, job.company'}).then((jobs) => {
       this.userJobs = jobs;
       this.generateJobSections();
     });

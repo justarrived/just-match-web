@@ -21,9 +21,11 @@ function deserializeBody(body: any): any {
 
   if (_.isArray(data)) {
     data = map(data, record => {
+      record.attributes = record.attributes || {};
       return getDeserializedRecordWithPopulatedFields(record, body.included);
     });
   } else if (_.isObject(data)) {
+    data.attributes = data.attributes || {};
     data = getDeserializedRecordWithPopulatedFields(data, body.included);
   }
 

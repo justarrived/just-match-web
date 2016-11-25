@@ -282,7 +282,7 @@
   "profile.form.presentation.validation": "Du måste ange presentation",
   "profile.form.languages.validation": "Du måste ange språkkunskaper",
   "user.apply.confirmation": "Du har ansökt om uppdraget",
-  "user.apply.confirmation.text.": "Vi på Just Arrived håller tummarna. Om uppdragsgivaren skickar ett erbjudande har du 18 timmar på dig att tacka ja till uppdraget. Du hittar uppdraget under Mina Uppdrag. Där samlas även all kommunikation som sker med uppdragsgivaren.",
+  "user.apply.confirmation.text": "Vi på Just Arrived håller tummarna. Om uppdragsgivaren skickar ett erbjudande har du 18 timmar på dig att tacka ja till uppdraget. Du hittar uppdraget under Mina Uppdrag. Där samlas även all kommunikation som sker med uppdragsgivaren.",
   "user.apply.find_more": "Hitta fler uppdrag",
   "user.account": "Bank konto",
   "user.account.description": "Var vill du att lönen ska utbetalas till när du har utfört uppdraget?",
