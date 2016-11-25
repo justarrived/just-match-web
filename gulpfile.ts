@@ -17,6 +17,7 @@ const tslint = require('gulp-tslint');
 const uglify = require('gulp-uglify');
 
 const sass = require('gulp-sass');
+const autoprefixer = require('gulp-autoprefixer');
 const cleanCss = require('gulp-clean-css');
 const concatCss = require('gulp-concat-css');
 
@@ -55,6 +56,7 @@ gulp.task('compile-ts:prod', () => {
 gulp.task('compile-sass', () => {
   return gulp.src('app/**/*.scss')
     .pipe(sass().on('error', sass.logError))
+    .pipe(autoprefixer())
     .pipe(cleanCss())
     .pipe(gulp.dest('app'));
 });
