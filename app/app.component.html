@@ -1,4 +1,4 @@
-<div class="menu-side-bar-container">
+<div class="menu-side-bar-container" *ngIf="isLanguageMenuVisible || isNavigationMenuVisible">
   <div class="menu-side-bar-container-inner">
     <div class="menu-side-bar" (click)="onBodyClick($event)" [hidden]="!isNavigationMenuVisible">
       <div class="overbody-container"></div>
@@ -131,10 +131,12 @@
 <section class="app">
   <router-outlet></router-outlet>
 </section>
-<footer class="table footer">
-  <div class="table-row">
-    <div class="table-cell">{{'applications.title' | translate}}</div>
-    <div class="table-cell text-center">Jakobsbergsgatan 22, 111 44 Stockholm</div>
-    <div class="table-cell text-right"><a href="mailto:hej@justarrived.se">hej@justarrived.se</a></div>
-  </div>
+<footer class="footer">
+  <table>
+    <tr>
+      <td>{{'applications.title' | translate}}</td>
+      <td>Jakobsbergsgatan 22, 111 44 Stockholm</td>
+      <td><a href="mailto:hej@justarrived.se">hej@justarrived.se</a></td>
+    </tr>
+  </table>
 </footer>

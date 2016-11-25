@@ -238,7 +238,7 @@
       display: block;
 
       .instruction-pane {
-        width: 100%;
+        width: calc(100% - 40px);
         padding-bottom: 40px;
       }
 

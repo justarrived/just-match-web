@@ -12,8 +12,12 @@ body {
   font-size: $fs-m0;
   color: #333333;
   height: 100%;
-  display: flex;
-  justify-content: center;
+
+  app {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
   a {
     text-decoration: none;
