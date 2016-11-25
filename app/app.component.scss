@@ -10,11 +10,11 @@
 
 .footer, .header {
   width: 100%;
-  background: $color-secondary-gray;
   color: white;
 }
 
 .footer {
+  background: $color-secondary-gray;
   flex: 1;
   max-width: $max-page-width;
   font-size: 18px;
@@ -27,6 +27,7 @@
 }
 
 .header {
+  background: $color-white;
   padding: 5px 0;
   height: 55px;
   position: fixed;
@@ -39,6 +40,7 @@
   > .table-row {
     flex: 1;
     max-width: $max-page-width;
+    padding: 0 $header-horizontal-padding:;
 
     .table-cell {
       vertical-align: middle;
@@ -73,7 +75,7 @@
 
       i {
         display: block;
-        background: #fff;
+        background: $color-gray-200;
         height: 5px;
         width: 30px;
         margin: 3px auto;
@@ -83,7 +85,7 @@
     }
 
     .menu-text {
-      color: #fff;
+      color: $color-gray-200;
       font-size: 12px;
     }
 
@@ -102,6 +104,7 @@
 
     .nav-language-text {
       font-size: 12px;
+      color: $color-gray-200;
     }
   }
 }
@@ -297,7 +300,7 @@
               min-height: 35px;
             }
           }
-          
+
           .table-cell {
             vertical-align: bottom;
             padding: 20px;
