@@ -36,6 +36,10 @@ import {ConfirmationComponent} from "./views/confirmation/confirmation.component
 import {CandidateComponent} from "./views/candidate/candidate.component";
 import {CandidateStateStatusBarComponent} from "./components/candidate-state-status-bar/candidate-state-status-bar.component";
 import {CandidatesComponent} from "./views/candidates/candidates.component";
+import {MyJobsComponent} from "./views/my-jobs/my-jobs.component";
+import {CompanyJobsComponent} from "./views/my-jobs/company-jobs/company-jobs.component";
+import {UserJobsComponent} from "./views/my-jobs/user-jobs/user-jobs.component";
+import {MyJobsItemComponent} from "./components/my-jobs-item/my-jobs-item.component";
 
 @NgModule({
   imports: [
@@ -68,6 +72,10 @@ import {CandidatesComponent} from "./views/candidates/candidates.component";
     CandidatesComponent,
     CandidateComponent,
     CandidateStateStatusBarComponent
+    MyJobsItemComponent,
+    CompanyJobsComponent,
+    UserJobsComponent,
+    MyJobsComponent
   ],
   providers: [
     appRoutingProviders,
@@ -79,7 +87,7 @@ import {CandidatesComponent} from "./views/candidates/candidates.component";
     LanguageProxy,
     TranslationService,
     UserManager,
-    {provide: ErrorHandler, useClass: GlobalExceptionHandler}
+    //{provide: ErrorHandler, useClass: GlobalExceptionHandler}
   ],
   bootstrap: [AppComponent]
 })

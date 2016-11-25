@@ -57,12 +57,6 @@ export class JobProxy {
     return this.apiCall.post('jobs/' + jobId + '/users/' + userJobId + '/invoices ', {});
   }
 
-  getUserJobs(jobId, additionOptions?: Object): Promise<UserJob[]> {
-    return this.apiCall.get('jobs/' + jobId + '/users', additionOptions).then(response => {
-      return map(response.data, data => new UserJob(data));
-    });
-  }
-
   getUserJob(jobId, userJobId, additionOptions?: Object) {
     return this.apiCall.get('jobs/' + jobId + '/users/' + userJobId, additionOptions).then(response => {
       return new UserJob(response.data);
@@ -74,6 +68,14 @@ export class JobProxy {
     //   .then(response => {
     //   return; //TODO: rating Entity
     // });
+  }
+
+  getOwnedJobs(userId: string, additionOptions?: Object) {
+    return this.apiCall.get('users/' + userId + '/owned-jobs',  additionOptions).then(response => map(response.data, data => new Job(data)));
+  }
+
+  getJobUsers(jobId, additionOptions?: Object): Promise<UserJob[]> {
+    return this.apiCall.get('jobs/' + jobId + '/users',  additionOptions).then(response => map(response.data, data => new UserJob(data)));
   }
 
 }

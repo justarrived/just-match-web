@@ -18,6 +18,10 @@ export class UserJob {
   remainsConfirmationMinutes: number;
 
   constructor(jsonObject: any) {
+    if (!jsonObject) {
+      return;
+    }
+
     this.id = jsonObject.id;
     this.accepted = jsonObject.accepted;
     this.acceptedAt = jsonObject.accepted_at;

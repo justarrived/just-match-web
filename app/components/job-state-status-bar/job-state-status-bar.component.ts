@@ -33,11 +33,11 @@ export class JobStateStatusBarComponent implements OnInit {
 
   ngOnInit() {
     if (this.isCompanyUser && this.job.company.id === this.user.company.id) {
-      this.jobProxy.getUserJobs(this.job.id, {include: 'user', 'filter[accepted]': true}).then(response => {
+      this.jobProxy.getJobUsers(this.job.id, {include: 'user', 'filter[accepted]': true}).then(response => {
         this.userJob = response[0];
         console.log(response);
       });
-      this.jobProxy.getUserJobs(this.job.id, {}).then(response => {
+      this.jobProxy.getJobUsers(this.job.id, {}).then(response => {
         this.countOfApplicants = response.length;
       });
     } else if (this.userManager.getUser() && !this.isCompanyUser) {

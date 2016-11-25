@@ -1,0 +1,19 @@
+<div class="company-jobs">
+  <div class="my-job-content" *ngIf="selectedState == 'active'">
+    <div *ngIf="currentJobs.length > 0">
+      <h2>{{'assignment.status.ongoing' | translate}}</h2>
+      <my-jobs-item *ngFor="let job of currentJobs" [job]="job" [section]="'current'"></my-jobs-item>
+    </div>
+    <div *ngIf="recentJobs.length > 0">
+      <h2>{{'company.assignments.latest_activity.' | translate}}</h2>
+      <my-jobs-item *ngFor="let job of recentJobs" [job]="job" [section]="'recent'"></my-jobs-item>
+    </div>
+    <div *ngIf="missingReviewJobs.length > 0">
+      <h2>{{'assignment.status.missing_review' | translate}}</h2>
+      <my-jobs-item *ngFor="let job of missingReviewJobs" [job]="job" [section]="'missing'"></my-jobs-item>
+    </div>
+  </div>
+  <div class="my-job-content" *ngIf="selectedState == 'history'">
+    <my-jobs-item *ngFor="let job of historyJobs" [job]="job" [section]="'history'"></my-jobs-item>
+  </div>
+</div>

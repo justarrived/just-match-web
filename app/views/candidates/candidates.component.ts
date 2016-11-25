@@ -25,7 +25,7 @@ export class CandidatesComponent implements OnInit {
     this.jobProxy.getJob(this.jobId, {include: 'job_users,company,hourly_pay,company.company_images'}).then(response => {
       this.job = response;
     });
-    this.jobProxy.getUserJobs(this.jobId, {include: 'user,user.user_images'}).then(response => {
+    this.jobProxy.getJobUsers(this.jobId, {include: 'user,user.user_images'}).then(response => {
       console.log(response);
       this.userJobs = response;
     });
