@@ -99,16 +99,9 @@
       height: 190px;
 
       .header-box-container {
-        width: 50%;
+        width: 100%;
         display: flex;
-
-        &:nth-of-type(1) {
-          background: $color-pink-1;
-        }
-
-        &:nth-of-type(2) {
-          background: $color-pink-0;
-        }
+        background: $color-pink-1;
 
         .header-box {
           padding: 20px;
