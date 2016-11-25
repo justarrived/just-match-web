@@ -30,29 +30,29 @@ export class CompanyJobsComponent implements OnInit {
   }
 
   generateJobSections() {
-    this.recentJobs = this.jobs.filter((job) => job.users.length === 0);
+    this.recentJobs = this.jobs.filter((job) => job.jobUsers.length === 0);
 
-    this.jobs.filter((job) => job.users.length > 0).forEach((job) => {
+    this.jobs.filter((job) => job.jobUsers.length > 0).forEach((job) => {
       // get history tab jobs
-      let usersInvoiced = job.users.filter((jobUser) => !!jobUser.invoice.id);
+      let usersInvoiced = job.jobUsers.filter((jobUser) => !!jobUser.invoice.id);
       if (usersInvoiced.length > 0) {
-        job.users = usersInvoiced;
+        job.jobUsers = usersInvoiced;
         this.historyJobs.push(job);
         return;
       }
 
       // get missing review jobs
-      let usersPerformedAndNotInvoiced = job.users.filter((jobUser) => !jobUser.invoice.id && jobUser.performed);
+      let usersPerformedAndNotInvoiced = job.jobUsers.filter((jobUser) => !jobUser.invoice.id && jobUser.performed);
       if (usersPerformedAndNotInvoiced.length > 0) {
-        job.users = usersPerformedAndNotInvoiced;
+        job.jobUsers = usersPerformedAndNotInvoiced;
         this.missingReviewJobs.push(job);
         return;
       }
 
       // get current jobs
-      let usersWillPerformNotPerformed = job.users.filter((jobUser) => jobUser.willPerform && !jobUser.performed);
+      let usersWillPerformNotPerformed = job.jobUsers.filter((jobUser) => jobUser.willPerform && !jobUser.performed);
       if (usersWillPerformNotPerformed.length > 0) {
-        job.users = usersWillPerformNotPerformed;
+        job.jobUsers = usersWillPerformNotPerformed;
         this.currentJobs.push(job);
         return;
       }

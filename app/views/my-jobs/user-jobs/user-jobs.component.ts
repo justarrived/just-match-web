@@ -31,7 +31,7 @@ export class UserJobsComponent {
   generateJobSections() {
     this.currentJobs = map(this.userJobs.filter((userJob) => !userJob.invoice.id), userJob => {
       let job = userJob.job;
-      job.users = [userJob];
+      job.jobUsers = [userJob];
       return job;
     });
 

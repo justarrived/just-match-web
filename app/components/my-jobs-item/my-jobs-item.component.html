@@ -7,18 +7,18 @@
     <h3>{{job.name}}</h3>
 
     <section *ngIf="isCompanyUser">
-      <p *ngIf="section == 'current'">{{'assignment.status.user_application.will_perform' | translate:{'candidate_name': job.users[0].user.firstName} }}</p>
+      <p *ngIf="section == 'current'">{{'assignment.status.user_application.will_perform' | translate:{'candidate_name': job.jobUsers[0].user.firstName} }}</p>
 
-      <p *ngIf="section == 'recent'"><em>{{job.users.length}} {{'company.assignments.applications' | translate}}</em></p>
+      <p *ngIf="section == 'recent'"><em>{{job.jobUsers.length}} {{'company.assignments.applications' | translate}}</em></p>
 
       <p *ngIf="section == 'waiting'">
-        <em>{{'assignment.status.you_hired' | translate}} {{job.users[0].user.firstName}} {{job.users[0].user.lastName}}</em>
+        <em>{{'assignment.status.you_hired' | translate}} {{job.jobUsers[0].user.firstName}} {{job.users[0].user.lastName}}</em>
       </p>
 
       <!--<p *ngIf="section == 'waiting'"><span class="stars">&#9734;&#9734;&#9734;&#9734;&#9734;</span></p>-->
 
       <p *ngIf="section == 'history'">
-        <em>{{'assignment.status.you_hired' | translate}} {{job.users[0].user.firstName}} {{job.users[0].user.lastName}}</em>
+        <em>{{'assignment.status.you_hired' | translate}} {{job.jobUsers[0].user.firstName}} {{job.jobUsers[0].user.lastName}}</em>
       </p>
       <p *ngIf="section == 'history'">
         <!--<span class="stars_i"><span style="width : calc( 0{{job.rating}} * 16px );" title="{{job.rating}}"></span></span>-->
@@ -28,10 +28,10 @@
     <section *ngIf="!isCompanyUser">
       <p *ngIf="section == 'current'">{{job.street}}</p>
       <p *ngIf="section == 'current'">
-        <span *ngIf="!job.users[0].accepted && !job.users[0].willPerform">{{'user.apply.confirmation' | translate}}</span>
-        <span *ngIf="job.users[0].accepted && !job.users[0].willPerform">{{'assignment.status.user_company_hire' | translate}}</span>
-        <span *ngIf="job.users[0].willPerform && !job.users[0].performed">{{'assignment.status.you_hired' | translate}}</span>
-        <span *ngIf="job.users[0].performed">{{'assignment.status.performed' | translate}}</span>
+        <span *ngIf="!job.jobUsers[0].accepted && !job.jobUsers[0].willPerform">{{'user.apply.confirmation' | translate}}</span>
+        <span *ngIf="job.jobUsers[0].accepted && !job.jobUsers[0].willPerform">{{'assignment.status.user_company_hire' | translate}}</span>
+        <span *ngIf="job.jobUsers[0].willPerform && !job.jobUsers[0].performed">{{'assignment.status.you_hired' | translate}}</span>
+        <span *ngIf="job.jobUsers[0].performed">{{'assignment.status.performed' | translate}}</span>
       </p>
 
       <p *ngIf="section == 'history'">{{job.company.name}}</p>
@@ -39,7 +39,7 @@
   </div>
 
   <div class="user-image" *ngIf="isCompanyUser && (section == 'history' || section == 'waiting')">
-    <img class="user-info-image" *ngIf="job.users[0].user.images.length > 0" src="{{ job.users[0].user.images[0].imageUrl}}"/>
-    <img class="user-info-image" *ngIf="job.users[0].user.images.length == 0" src="assets/images/placeholder-profile-image.png"/>
+    <img class="user-info-image" *ngIf="job.jobUsers[0].user.images.length > 0" src="{{ job.jobUsers[0].user.images[0].imageUrl}}"/>
+    <img class="user-info-image" *ngIf="job.jobUsers[0].user.images.length == 0" src="assets/images/placeholder-profile-image.png"/>
   </div>
 </div>

@@ -26,7 +26,7 @@ export class Job {
   zipLongitude: number;
   category: Category;
   languageId: string;
-  users: UserJob[];
+  jobUsers: UserJob[];
 
   constructor(jsonObject: any) {
     if (!jsonObject) {
@@ -54,7 +54,7 @@ export class Job {
     this.zipLatitude = jsonObject.zip_latitude;
     this.zipLongitude = jsonObject.zip_longitude;
     this.category = new Category(jsonObject.category);
-    this.users = map(jsonObject.job_users, user => new UserJob(user));
+    this.jobUsers = map(jsonObject.job_users, user => new UserJob(user));
     this.languageId = jsonObject.language_id;
   }
 
