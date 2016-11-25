@@ -67,21 +67,8 @@
     }
 
     .menu-icon {
-      height: 27px;
-      overflow: hidden;
-      padding-top: 3px;
-      margin: 0 auto 4px;
       cursor: pointer;
-
-      i {
-        display: block;
-        background: $color-gray-200;
-        height: 5px;
-        width: 30px;
-        margin: 3px auto;
-        -webkit-border-radius: 2px;
-        border-radius: 2px;
-      }
+      color: $color-gray-200;
     }
 
     .menu-text {
@@ -91,12 +78,16 @@
 
     .nav-language-icon {
       font-size: 9px;
-      border-radius: 50%;
-      background: $color-primary-cerise;
-      width: 27px;
+      border-radius: 23px;
+      border-width: 2px;
+      border-style: solid;
+      border-color: $color-gray-200;
+      background: $color-white;
+      color: $color-gray-200;
+      width: 46px;
       text-align: center;
       vertical-align: center;
-      line-height: 27px;
+      line-height: 22px;
       margin: auto;
       text-transform: uppercase;
       cursor: pointer;

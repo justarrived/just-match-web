@@ -120,11 +120,12 @@
     <div class="table-cell">
       <div (click)="onLanguageMenuButtonClick()">
         <div class="nav-language-icon">{{selectedLanguage.languageCode}}</div>
-        <div class="nav-language-text">{{selectedLanguage.localName}}</div>
       </div>
     </div>
     <div class="table-cell">
-      <div (click)="onNavigationMenuButtonClick()"><span class="menu-icon"><i></i><i></i><i></i></span><span class="menu-text">{{"common.menu" | translate}}</span></div>
+      <div (click)="onNavigationMenuButtonClick()">
+        <span class="fa fa-bars fa-2x menu-icon"></span>
+      </div>
     </div>
   </div>
 </header>
