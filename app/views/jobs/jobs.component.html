@@ -1,12 +1,5 @@
-<div class="find-job-header">
-  Find jobs ({{totalJobs}})
-</div>
-<div class="find-job-container">
-  <div class="map-container">
-    map container
-  </div>
-  <div class="jobs-list-container">
-    <job-list-item *ngFor="let job of jobs" [job]="job"></job-list-item>
-    <pager [maxResults]="totalJobs" [currentPage]="page" (pageChange)="onPageChange($event)"></pager>
-  </div>
-</div>
+<div style="background: pink; height: 100px;">ALL JOBS</div>
+<div style="background: green; height: 100px;">MAP</div>
+<div style="background: yellow; height: 100px;">NAV</div>
+<div style="background: grey; height: 100px;">JOBS</div>
+<div style="background: blue; height: 100px;">NAV</div>
