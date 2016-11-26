@@ -11,3 +11,7 @@ body {
 .app-content-container {
   margin-top: $header-height;
 }
+
+body > .container, .navbar-fixed-top .container {
+  padding: 0;
+}
