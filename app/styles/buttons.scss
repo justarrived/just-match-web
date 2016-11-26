@@ -1,5 +1,7 @@
+@import 'variables.scss';
+
 @mixin medium-button {
-  border: 1px solid white;
+  border: 1px solid $color-white;
   border-radius: 17px;
   padding: 0 10px;
   line-height: 34px;
@@ -10,11 +12,11 @@
 
 .medium-button-primary-light {
   @include medium-button;
-  color: white !important;
+  color: $color-white !important;
 }
 
 .medium-button-secondary-light {
   @include medium-button;
-  color: #e5007d !important;
-  background-color: white;
+  color: $color-primary-cerise !important;
+  background-color: $color-white;
 }
