@@ -1,8 +1,10 @@
 <div class="row home-header">
   <div class="col-xs" *ngIf="user">
     <h1>{{'common.welcome_user'| translate: {username: user.firstName} }}</h1>
-    <a href="#" class="medium-button-primary-light">{{'common.edit_profile'| translate}}</a><br>
-    <a href="#" class="medium-button-secondary-light">{{'menu.main.find_assignment'| translate}}</a>
+    <div class="home-header-button-container">
+      <a href="#" class="medium-button-primary-light">{{'common.edit_profile'| translate}}</a><br>
+      <a href="#" class="medium-button-secondary-light">{{'menu.main.find_assignment'| translate}}</a>
+    </div>
   </div>
   <div class="col-xs" *ngIf="!user">
     <div class="header-box-title">{{'start.hero_section.left.title' | translate}}</div>
