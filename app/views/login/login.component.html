@@ -1,1 +1,14 @@
-<div style="background: red;">LOGIN FORM</div>
+<div class="row">
+  <div class="col-xs-12">
+
+    <div class="material-group">
+      <input [(ngModel)]="email" type="text" class="material-input">
+    </div>
+
+    <div class="material-group">
+      <input [(ngModel)]="password" type="password" class="material-input">
+    </div>
+
+    <button (click)="onLoginButtonClick()">Login</button>
+  </div>
+</div>
