@@ -1,0 +1,90 @@
+@import "styles/variables.scss";
+
+.navbar-container {
+  height: 100%;
+}
+
+.header {
+  width: 100%;
+  height: $header-height;
+  border-radius: 0px;
+  padding-left: 5%;
+  padding-right: 5%;
+  color: $color-gray-200;
+
+  .navbar-container {
+    height: 100%;
+
+    .back-button-container {
+      display: inline-block;
+
+      .back-button {
+        margin-right: $header-button-margin;
+      }
+    }
+
+    .logo-img {
+      max-width: 165px;
+    }
+
+    .menu-icon, .nav-language-icon{
+      cursor: pointer;
+    }
+
+    .button-container {
+      display: inline-block;
+    }
+
+    .nav-language-icon {
+      font-size: 11px;
+      border-radius: 23px;
+      border-width: 2px;
+      border-style: solid;
+      border-color: $color-gray-200;
+      width: 54px;
+      text-align: center;
+      vertical-align: center;
+      line-height: 22px;
+      margin: auto;
+      margin-right: $header-button-margin;
+      text-transform: uppercase;
+      user-select: none;
+
+      .lang-arrow {
+        margin-left: 5px;
+      }
+    }
+
+    .right {
+      justify-content: flex-end;
+    }
+  }
+}
+
+.footer {
+  width: 100%;
+  height: $header-height;
+  color: $color-white;
+
+  .text-container {
+    background: $color-secondary-gray;
+    line-height: $header-height;
+    font-family: "museo-reg","Helvetica Neue",Helvetica,Arial,sans-serif;
+
+    a {
+      color: inherit;
+    }
+  }
+
+  .left {
+    text-align: left;
+  }
+
+  .middle {
+    text-align: center;;
+  }
+
+  .right {
+    text-align: right;
+  }
+}
