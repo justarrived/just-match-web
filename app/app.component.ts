@@ -1,5 +1,6 @@
 import {Component, OnInit} from "@angular/core";
 import {AuthManager} from "./services/auth-manager.service";
+import {ActsAsUser} from "./services/acts-as-user.service";
 import {Router, NavigationStart, RoutesRecognized, NavigationCancel, NavigationEnd, NavigationError} from "@angular/router";
 import {User} from "./models/user";
 import {TranslationService} from "./services/translation.service";
@@ -25,6 +26,7 @@ export class AppComponent implements OnInit {
   constructor(private router: Router,
               private authManager: AuthManager,
               private userManager: UserManager,
+              private actsAsUser: ActsAsUser,
               public translationService: TranslationService
   ) {
     router.events.subscribe(event => {
