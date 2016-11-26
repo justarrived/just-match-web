@@ -1,10 +1,10 @@
 <div class="navbar-fixed-top">
   <div class="container">
     <nav class="header navbar navbar-light bg-faded">
-      <div class="row flex-items-xs-middle navbar-container">
-        <div class="col-xs-6 col-md-6">
+      <div class="row navbar-container">
+        <div class="col-xs-6 col-md-6 row flex-items-xs-middle">
           <div class="clickable back-button-container" *ngIf="states.length > 1 && currentState !== '/home'" (click)="onBackButtonClick()">
-            <i class="fa fa-angle-left"></i>
+            <i class="fa fa-angle-left fa-2x back-button"></i>
           </div>
           <a routerLink="/home">
             <img class="logo-img" src="assets/images/logo.png" alt="Just Arrived"/>
@@ -22,7 +22,7 @@
     </nav>
   </div>
 </div>
-<section class="container-fluid" style="margin-top: 54px;">
+<section class="container-fluid app-content-container">
   <router-outlet></router-outlet>
 </section>
 <footer class="container-fluid footer">
