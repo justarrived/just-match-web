@@ -2,8 +2,8 @@
   <div class="col-xs" *ngIf="user">
     <h1>{{'common.welcome_user'| translate: {username: user.firstName} }}</h1>
     <div class="home-header-button-container">
-      <a href="#" class="medium-button-primary-light">{{'common.edit_profile'| translate}}</a><br>
-      <a href="#" class="medium-button-secondary-light">{{'menu.main.find_assignment'| translate}}</a>
+      <a routerLink="/user" class="medium-button-primary-light">{{'common.edit_profile'| translate}}</a><br>
+      <a routerLink="/jobs/1" class="medium-button-secondary-light">{{'menu.main.find_assignment'| translate}}</a>
     </div>
   </div>
   <div class="col-xs" *ngIf="!user">
