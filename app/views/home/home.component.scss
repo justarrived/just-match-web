@@ -1,7 +1,7 @@
 @import "../../styles/variables.scss";
 
 .home-component {
-  background: #fff;
+  background: $color-background;
   text-align: center;
 
   .instructions-container {
@@ -21,7 +21,7 @@
       position: relative;
       text-align: center;
       padding: 85px 20px 145px;
-      color: #fff;
+      color: $color-white;
       background: $color-secondary-blue;
 
       &:nth-of-type(2) {
@@ -82,7 +82,7 @@
         width: 100%;
         position: absolute;
         top: calc(50% - 13px);
-        color: #FFFFFF;
+        color: $color-white;
         text-shadow: 2px 2px #000;
         font-size: 22px;
       }
@@ -106,13 +106,13 @@
           text-decoration: none;
 
           .header-box-title {
-            color: #fff;
+            color: $color-white;
             font-size: 22px;
             padding: 20px;
           }
 
           .header-box-text {
-            color: #fff;
+            color: $color-white;
             font-size: 15px;
           }
 
@@ -123,44 +123,35 @@
   }
 
   .job-section {
+    padding: 40px 40px 0px 40px;
+
     .job-section-header {
       display: flex;
-      padding: 20px;
       font-size: 20px;
+      padding-bottom: 40px;
 
-      .calendar-container {
-        width: 50%;
+      .job-section-header-title {
         text-align: left;
+        width: 50%;
 
-        .calendar {
-          position: relative;
-          width: 29px;
-          text-align: center;
-          font-weight: 700;
-          vertical-align: middle;
-          display: inline-block;
-          margin: auto 5px auto 20px;
-          font-size: 14px;
-          line-height: 1em;
-
-          .icon-ic-calendar {
-            position: absolute;
-            font-size: 29px;
-            line-height: 1em;
-            left: -5px;
-            top: -12px;
-            font-weight: 300;
-          }
+        h2 {
+          margin: 0;
         }
       }
 
       .all-jobs-button-container {
         width: 50%;
         text-align: right;
+        display: flex;
+        flex-direction: column-reverse;
+
+        * {
+          color: $color-cerise-500 !important;
+        }
 
         .icon-ic-arrow-right {
           vertical-align: middle;
-          margin-left: 6px;
+          font-size: 8px;
         }
 
         a {
@@ -171,6 +162,7 @@
   }
 
   .section-partners {
+    background: white;
     text-align: center;
     position: relative;
     padding: 10px 0 40px;

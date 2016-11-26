@@ -11,16 +11,12 @@
   </section>
   <section class="job-section">
     <div class="job-section-header">
-      <div class="calendar-container">
-        <div class="calendar">
-          <i class="icon-ic-calendar"></i>
-          {{today}}
-        </div>
-        {{'start.job_section.title' | translate}}
+      <div class="job-section-header-title">
+        <h2>{{'start.job_section.title' | translate}}</h2>
       </div>
+
       <div class="all-jobs-button-container">
-        <a routerLink="/jobs/1" class="fs-m0"><span>{{'common.show_all' | translate | uppercase}}</span></a>
-        <i class="icon-ic-arrow-right"></i>
+        <a routerLink="/jobs/1" class="fs-m0"><span>{{'common.show_all' | translate | lowercase}}</span> <i class="icon-ic-arrow-right"></i></a>
       </div>
     </div>
     <slider [jobs]="newJobs"></slider>

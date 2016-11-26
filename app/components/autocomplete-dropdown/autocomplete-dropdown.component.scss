@@ -1,8 +1,8 @@
 @import "../../styles/variables.scss";
 
-$background-color: #ffffff;
+$background-color: $color-white;
+$ms-item-text-color: $color-white;
 $disabled-background-color: #eeeeee;
-$ms-item-text-color: #ffffff;
 
 .autocomplete-dropdown {
   position: relative;

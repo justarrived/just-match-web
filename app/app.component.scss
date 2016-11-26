@@ -192,7 +192,7 @@
             display: inline-block;
             line-height: 60px;
             box-sizing: border-box;
-            border: 1px solid #FFFFFF;
+            border: 1px solid $color-white;
             border-radius: 50%;
             margin-bottom: 7px;
             text-transform: uppercase;
@@ -244,7 +244,7 @@
             .icon-ic-user,
             .icon-ic-log-in {
               position: absolute;
-              color: #fff;
+              color: $color-white;
               font-size: 1.1em;
               left: 0;
               top: 6px;
