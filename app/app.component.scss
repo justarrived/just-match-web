@@ -66,6 +66,158 @@
   }
 }
 
+.menu-container {
+  height: 100%;
+  background: rgba(255, 255, 255, 0.5);
+  text-align: right;
+
+  .menu {
+    background: rgba(34, 37, 49, 0.88);
+    height: 100%;
+    width: 100%;
+    max-width: 375px;
+    display: inline-block;
+    text-align: left;
+    color: white;
+
+    .create-user {
+      width: 100%;
+      text-align: center;
+    }
+
+    > div {
+      display: flex;
+      flex-direction: column;
+      height: calc(100% - 54px);
+      padding: 1em;
+
+      > div {
+        &:nth-of-type(1) {
+          text-align: right;
+
+          i {
+            cursor: pointer;
+
+            &:hover {
+              opacity: 0.7;
+            }
+          }
+        }
+
+        &:nth-of-type(2) {
+          flex: 1;
+          padding: 40px;
+
+          a {
+            display: block;
+            cursor: pointer;
+            font-size: 20px;
+
+            color: $color-blue-200;
+            padding: 5px 0;
+
+            &:hover {
+              opacity: 0.7;
+            }
+
+            i {
+              color: $color-white;
+            }
+          }
+        }
+
+        &:nth-of-type(3) {
+          .user-info-image {
+            margin-right: 15px;
+            border-radius: 50%;
+            height: 35px;
+            width: 35px;
+            overflow: hidden;
+            display: inline-block;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            vertical-align: middle;
+            box-shadow: inset 0px 0px 1px 0px rgba(0,0,0,0.2);
+
+            img {
+              width: 100%;
+              height: auto;
+              min-height: 35px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .language-menu-container {
+    .language-information {
+      padding: 20px;
+    }
+
+    .credentials {
+      display: block;
+      text-align: center;
+      position: relative;
+      transform: scale(0.75);
+
+      img {
+        max-height: 50px;
+        max-width: 130px;
+        width: auto;
+        margin: 0 auto;
+        padding: 5px 10px 10px 10px;
+      }
+
+      .start_name {
+        padding-top: 5px;
+      }
+    }
+
+    .just-arrived-logo-container {
+      height: 50px;
+      padding: 20px;
+
+      .language-logo-img {
+        height: 100%;
+      }
+    }
+
+    .select-language-header-text {
+      color: white;
+    }
+
+    .select-language-container {
+      padding: 20px;
+
+      .language-button-container {
+        display: inline-block;
+        text-align: center;
+        font-size: 14px;
+        margin: 12px;
+        cursor: pointer;
+
+        .language-code {
+          width: 60px;
+          height: 60px;
+          display: inline-block;
+          line-height: 60px;
+          box-sizing: border-box;
+          border: 1px solid $color-white;
+          border-radius: 50%;
+          margin-bottom: 7px;
+          text-transform: uppercase;
+
+          &:hover {
+            background: rgba(0, 0, 0, 0.2);
+          }
+        }
+      }
+    }
+  }
+}
+
 .footer {
   width: 100%;
   height: $header-height;
