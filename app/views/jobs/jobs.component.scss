@@ -5,9 +5,16 @@
   padding: 1em 0;
 
   h2 {
-    color: white;
+    color: $color-white;
   }
 
+}
+
+.job-list-container {
+  background-color: $color-white;
+  > div {
+    width: 100%;
+  }
 }
 
 .pagination-wrapper {

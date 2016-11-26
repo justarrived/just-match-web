@@ -1,6 +1,6 @@
 <div class="job-list-container" (click)="onListItemClick()">
   <p style="font-weight: bold;">{{job.name}}</p>
-  <p class="adress-field" style="font-size: 12;"><i class="fa fa-map-marker" aria-hidden="true"></i>   {{job.street}} {{job.zip}}</p>
+  <p class="adress-field" ><i class="fa fa-map-marker" aria-hidden="true"></i>   {{job.street}} {{job.zip}}</p>
 
   <div class="row">
     <div class="col-xs-9">
@@ -16,7 +16,7 @@
       </span>
     </div>
 
-    <div class="salary-per-hour col-xs-3" style="text-align: right; white-space: nowrap; font-size: 12;">
+    <div class="salary-per-hour col-xs-3">
       {{job.jobDate | date: 'yyyy-MM-dd'}}
     </div>
 
