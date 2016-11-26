@@ -76,10 +76,10 @@
           </div>
         </div>
 
-        <div *ngIf="isLanguageMenuVisible" class="language-menu-container" style="overflow-y: scroll; text-align: center;">
-          <div style="text-align: right;"><i class="fa fa-times fa-2x" (click)="isLanguageMenuVisible = false"></i></div>
-          <div class="just-arrived-logo-container" style="margin-bottom: 2em;">
-            <img class="language-logo-img" src="assets/images/logo.png" alt="Just Arrived" style="height: 50px;" />
+        <div *ngIf="isLanguageMenuVisible" class="language-menu-container">
+          <div class="close-button"><i class="fa fa-times fa-2x" (click)="isLanguageMenuVisible = false"></i></div>
+          <div class="just-arrived-logo-container">
+            <img class="language-logo-img" src="assets/images/logo.png" alt="Just Arrived" />
           </div>
           <div class="select-language-header-text">{{'menu.language.title' | translate}}</div>
           <div class="select-language-container">
@@ -96,10 +96,6 @@
           <div class="credentials">
             <p class="prominent">{{'menu.language.translation_by_probono' | translate}}:</p>
             <img src="assets/images/menu_semantix_logo.png" alt="Semantix"/>
-            <img src="assets/images/menu_skrivasbyra_logo.png" alt="Stockholms.Skrivbyrå"/>
-            <p class="start_name">Farshid Fadaee</p>
-            <p>Nick Chipperfield</p>
-            <p>Hans-Erik Täpp</p>
           </div>
         </div>
       </div>

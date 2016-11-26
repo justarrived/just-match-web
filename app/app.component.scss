@@ -152,6 +152,13 @@
   }
 
   .language-menu-container {
+    overflow-y: scroll;
+    text-align: center;
+
+    .close-button {
+      text-align: right;
+    }
+
     .language-information {
       padding: 20px;
     }
@@ -178,6 +185,7 @@
     .just-arrived-logo-container {
       height: 50px;
       padding: 20px;
+      margin-bottom: 2em;
 
       .language-logo-img {
         height: 100%;
