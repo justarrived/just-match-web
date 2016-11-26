@@ -1,6 +1,6 @@
 <div class="job-list-container" (click)="onListItemClick()">
   <p class="job-list-container-header">{{job.name}}</p>
-  <p class="adress-field" ><i class="fa fa-map-marker" aria-hidden="true"></i>   {{job.street}} {{job.zip}}</p>
+  <p class="adress-field" ><i class="fa fa-map-marker" aria-hidden="true"></i>   {{job.street}}, {{job.zip}}</p>
 
   <div class="row">
     <div class="col-xs-9">
@@ -9,10 +9,10 @@
       </span>
       <span class="total-salary" *ngIf="!isCompanyUser">{{job.hourlyPay.grossSalary * job.hours}} {{job.hourlyPay.currency}}</span>
       <span class="salary-per-hour" *ngIf="isCompanyUser">
-        {{job.hours}} h ({{job.hourlyPay.rateExcludingVAT}} {{job.hourlyPay.currency}}/h)
+        {{job.hours}}h ({{job.hourlyPay.rateExcludingVAT}} {{job.hourlyPay.currency}}/h)
       </span>
       <span class="salary-per-hour" *ngIf="!isCompanyUser">
-        {{job.hours}} h ({{job.hourlyPay.grossSalary}} {{job.hourlyPay.currency}}/h)
+        {{job.hours}}h ({{job.hourlyPay.grossSalary}} {{job.hourlyPay.currency}}/h)
       </span>
     </div>
 
