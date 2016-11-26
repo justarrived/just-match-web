@@ -76,15 +76,21 @@
     }
   }
 
-  .left {
-    text-align: left;
-  }
+  > div {
+    > div {
+      @media screen and (min-width: 576px) {
+        &:nth-of-type(2) {
+          text-align: center;
+        }
 
-  .middle {
-    text-align: center;;
-  }
+        &:nth-of-type(3) {
+          text-align: right;
+        }
+      }
 
-  .right {
-    text-align: right;
+      @media screen and (max-width: 576px) {
+         text-align: center;
+      }
+    }
   }
 }
