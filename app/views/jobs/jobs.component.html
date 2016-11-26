@@ -1,5 +1,36 @@
-<div style="background: pink; height: 100px;">ALL JOBS</div>
-<div style="background: green; height: 100px;">MAP</div>
-<div style="background: yellow; height: 100px;">NAV</div>
-<div style="background: grey; height: 100px;">JOBS</div>
-<div style="background: blue; height: 100px;">NAV</div>
+<div class="jobs-header row"> <!-- All Jobs -->
+  <div class="col-md-6">
+    <h2>
+        Alla uppdrag ({{totalJobs}}) <!-- TODO: Replace with i18n value -->
+    </h2>
+  </div>
+
+  <div class="col-md-6">
+    <!-- TODO: Implemente this -->
+  </div>
+</div>
+
+
+<div [hidden]="true" class="row" style="background: green; height: 100px;">
+  <!-- TODO: Implemente this -->
+</div>
+
+
+<div class="row pagination-wrapper flex-items-xs-middle">
+  <div class="back-button col-xs-4">
+    <i class="fa fa-angle-double-left" aria-hidden="true"></i>
+  </div>
+  <div class="pagination-text col-xs-4">
+    <p>{{page}} / {{nbrOfPages}} </p>
+  </div>
+  <div class="forward-button col-xs-4">
+    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+  </div>
+</div>
+
+
+<div class="row" style="background: white;">
+  <div class="jobs-list-container" style="width:100%;">
+    <job-list-item style="display: block;" *ngFor="let job of jobs" [job]="job"></job-list-item>
+  </div>
+</div>
