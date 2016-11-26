@@ -14,6 +14,15 @@
   a:first-of-type {
     margin-bottom: 1em;
   }
+
+  .home-header-button-container {
+    display: inline-block;
+    margin-top: 1.5em;
+
+    .medium-button-primary-light, .medium-button-secondary-light {
+      width: 100%;
+    }
+  }
 }
 
 .home-new-jobs {
@@ -76,18 +85,22 @@
 }
 
 .instructions-container {
-  padding: 4em;
+  padding: 4em 4em 8em 4em;
   text-align: center;
   color: $color-white;
   background: $color-secondary-blue;
+  position: relative;
 
   &:nth-of-type(2) {
     background: $color-secondary-gray;
   }
 
   .medium-button-primary-light {
-    width: 100%;
-    margin-top: 2em;
+    width: calc(100% - 8em);
+    margin: 4em;
+    position: absolute;
+    left: 0;
+    bottom: 0;;
   }
 
   .list {
