@@ -9,7 +9,7 @@ body * {
 body {
   max-width: 1024px;
   margin: 0 auto;
-  background-color: #E8EBEE;
+  background-color: $color-background;
   font-size: $fs-m0;
   color: #333333;
   height: 100%;
@@ -309,6 +309,6 @@ body {
     background: #383F4E;
     padding: 20px;
     text-align: center;
-    color: #FFFFFF;
+    color: $color-white;
   }
 }
