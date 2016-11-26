@@ -2,7 +2,7 @@
   <div class="container">
     <nav class="header navbar navbar-light bg-faded">
       <div class="row navbar-container">
-        <div class="col-xs-6 col-md-6 row flex-items-xs-middle">
+        <div class="col-xs row flex-items-xs-middle">
           <div class="clickable back-button-container" *ngIf="states.length > 1 && currentState !== '/home'" (click)="onBackButtonClick()">
             <i class="fa fa-angle-left fa-2x back-button"></i>
           </div>
@@ -10,7 +10,7 @@
             <img class="logo-img" src="assets/images/logo.png" alt="Just Arrived"/>
           </a>
         </div>
-        <div class="col-xs-6 col-md-6 right row flex-items-xs-middle">
+        <div class="col-xs right row flex-items-xs-middle">
           <div (click)="onLanguageMenuButtonClick()" class="button-container">
             <div class="nav-language-icon">{{selectedLanguage.languageCode}}<div class="fa lang-arrow" [class.fa-caret-down]="!isLanguageMenuVisible" [class.fa-caret-up]="isLanguageMenuVisible"></div></div>
           </div>
