@@ -81,6 +81,10 @@
   color: $color-white;
   background: $color-secondary-blue;
 
+  &:nth-of-type(2) {
+    background: $color-secondary-gray;
+  }
+
   .medium-button-primary-light {
     width: 100%;
     margin-top: 2em;
