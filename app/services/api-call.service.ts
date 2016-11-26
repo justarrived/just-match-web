@@ -8,6 +8,8 @@ import {Router} from "@angular/router";
 import {APP_CONFIG} from "../config/config";
 import {UserManager} from "../user-manager.service";
 
+const DEFAULT_LOCALE = 'en';
+
 @Injectable()
 export class ApiCall {
   private authorizationHeaderName: string = 'Authorization';
@@ -62,7 +64,7 @@ export class ApiCall {
       req.headers.set(this.authorizationHeaderName, this.authorizationHeaderPrefix + authorizationData['auth_token']);
     }
     let selectedLanguage = this.localStorageWrapper.getObject(this.storageSelectedLanguageKey);
-    req.headers.set(this.languageHeaderName, ((selectedLanguage && selectedLanguage.languageCode) || 'en'));
+    req.headers.set(this.languageHeaderName, ((selectedLanguage && selectedLanguage.languageCode) || DEFAULT_LOCALE));
     req.headers.set(this.transformHeaderName, this.transformHeaderValue);
     return this.http.request(req)
       .catch(response => {
