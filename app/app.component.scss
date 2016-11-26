@@ -26,6 +26,10 @@
 
     .logo-img {
       max-width: 165px;
+
+      @media screen and (max-width: 576px) {
+        zoom: 0.7;
+      }
     }
 
     .menu-icon, .nav-language-icon{
