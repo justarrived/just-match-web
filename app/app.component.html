@@ -3,7 +3,7 @@
     <nav class="header navbar navbar-light bg-faded">
       <div class="row navbar-container">
         <div class="col-xs row flex-items-xs-middle">
-          <div class="clickable back-button-container" (click)="onBackButtonClick()">
+          <div class="clickable back-button-container" *ngIf="states.length > 1 && currentState !== '/home'" (click)="onBackButtonClick()">
             <i class="fa fa-angle-left fa-2x back-button"></i>
           </div>
           <a routerLink="/home">
