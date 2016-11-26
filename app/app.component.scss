@@ -17,6 +17,7 @@
 
     .back-button-container {
       display: inline-block;
+      cursor: pointer;
 
       .back-button {
         margin-right: $header-button-margin;
