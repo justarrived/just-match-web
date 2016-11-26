@@ -7,13 +7,12 @@ body * {
 }
 
 body {
+  max-width: 1024px;
   margin: 0 auto;
   background-color: #E8EBEE;
   font-size: $fs-m0;
   color: #333333;
   height: 100%;
-  display: flex;
-  justify-content: center;
 
   a {
     text-decoration: none;

@@ -1,8 +1,6 @@
 @import "styles/variables.scss";
 
 .app {
-  flex: 1;
-  max-width: $max-page-width;
   margin-top: 65px;
   min-height: 100%;
   background-color: white;
@@ -15,11 +13,10 @@
 
 .footer {
   background: $color-secondary-gray;
-  flex: 1;
-  max-width: $max-page-width;
   font-size: 18px;
+  max-width: calc(1024px - 60px);
   padding: 30px;
-  width: calc(100% - 60px);
+  width: 100%;
 
   a {
     color: inherit;
@@ -34,61 +31,53 @@
   z-index: 100;
   top: 0;
   left: 0;
-  display: flex;
-  justify-content: center;
 
-  > .table-row {
-    flex: 1;
-    max-width: $max-page-width;
-    padding: 0 $header-horizontal-padding;
+  .table-cell {
+    vertical-align: middle;
+    padding: 5px;
+  }
 
-    .table-cell {
-      vertical-align: middle;
-      padding: 5px;
-    }
+  .header-logo-container {
+    width: 100%;
 
-    .header-logo-container {
-      width: 100%;
-
-      .app-logo-img-container {
-        .app-logo-img {
-          width: 100%;
-          max-width: 165px;
-          height: auto;
-        }
-      }
-
-      .back-button-container {
-        .back-button {
-          color: white;
-          font-size: 24px;
-        }
+    .app-logo-img-container {
+      .app-logo-img {
+        width: 100%;
+        max-width: 165px;
+        height: auto;
       }
     }
+  }
 
-    .menu-icon, .nav-language-icon{
-      cursor: pointer;
-      color: $color-gray-200;
-    }
+  .menu-icon, .nav-language-icon{
+    cursor: pointer;
+    color: $color-gray-200;
 
-    .nav-language-icon {
-      font-size: 11px;
-      border-radius: 23px;
-      border-width: 2px;
-      border-style: solid;
-      border-color: $color-gray-200;
-      width: 54px;
-      text-align: center;
-      vertical-align: center;
-      line-height: 22px;
-      margin: auto;
-      margin-right: 12px;
-      text-transform: uppercase;
-      user-select: none;
-
-      .lang-arrow {
-        margin-left: 5px;
+    .back-button-container {
+      .back-button {
+        color: white;
+        font-size: 24px;
       }
+    }
+  }
+
+  .nav-language-icon {
+    font-size: 11px;
+    border-radius: 23px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: $color-gray-200;
+    width: 54px;
+    text-align: center;
+    vertical-align: center;
+    line-height: 22px;
+    margin: auto;
+    margin-right: 12px;
+    text-transform: uppercase;
+    user-select: none;
+
+    .lang-arrow {
+      margin-left: 5px;
     }
   }
 }
@@ -106,202 +95,187 @@
   overflow-y: auto;
 }
 
-.menu-side-bar-container {
+
+.menu-side-bar {
+  max-width: 1024px;
+  margin: 0 auto;
   position: fixed;
+  z-index: 21;
   width: 100%;
-  top: 0;
-  left: 0;
-  display: flex;
-  justify-content: center;
   height: 100%;
-  z-index: 100;
+  overflow-y: auto;
 
-  .menu-side-bar-container-inner {
-    flex: 1;
-    max-width: 1560px;
-    width: 100%; height: 100%;
+  .close-button {
+    font-size: 20px;
+    color: white;
+    position: absolute;
+    right: 10px;
+    z-index: 150;
+    top: 15px;
+    cursor: pointer;
+  }
 
-    .menu-side-bar {
-      position: relative;
-      height: 100%;
+  .menu-container {
+    width: 375px;
+    background: rgba(34, 37, 49, 0.88);
+    float: right;
+    position: relative;
+    z-index: 22;
+    height: 100%;
 
-      .close-button {
-        margin-top: 65px;
-        font-size: 20px;
+    &.language-menu-container {
+      color: white;
+
+      .language-information {
+        padding: 20px;
+      }
+
+      .credentials {
+        display: block;
+        text-align: center;
+        position: relative;
+        transform: scale(0.75);
+
+        img {
+          max-height: 50px;
+          max-width: 130px;
+          width: auto;
+          margin: 0 auto;
+          padding: 5px 10px 10px 10px;
+        }
+
+        .start_name {
+          padding-top: 5px;
+        }
+      }
+
+      .just-arrived-logo-container {
+        height: 50px;
+        padding: 20px;
+
+        .language-logo-img {
+          height: 100%;
+        }
+      }
+
+      .select-language-header-text {
         color: white;
-        position: absolute;
-        right: 10px;
-        z-index: 150;
-        top: 15px;
-        cursor: pointer;
       }
 
-      .menu-container {
-        width: 375px;
-        background: rgba(34, 37, 49, 0.88);
-        height: calc(100% - 65px);
-        overflow-y: auto;
-        position: absolute;
-        right: 0;
-        z-index: 100;
-        margin-top: 65px;
+      .select-language-container {
+        padding: 20px;
 
-        &.language-menu-container {
-          color: white;
-
-          .language-information {
-            padding: 20px;
-          }
-
-          .credentials {
-            display: block;
-            text-align: center;
-            position: relative;
-            transform: scale(0.75);
-
-            img {
-              max-height: 50px;
-              max-width: 130px;
-              width: auto;
-              margin: 0 auto;
-              padding: 5px 10px 10px 10px;
-            }
-
-            .start_name {
-              padding-top: 5px;
-            }
-          }
-
-          .just-arrived-logo-container {
-            height: 50px;
-            padding: 20px;
-
-            .language-logo-img {
-              height: 100%;
-            }
-          }
-
-          .select-language-header-text {
-            color: white;
-          }
-
-          .select-language-container {
-            padding: 20px;
-
-            .language-button-container {
-              display: inline-block;
-              text-align: center;
-              font-size: 14px;
-              margin: 12px;
-
-              .language-code {
-                width: 60px;
-                height: 60px;
-                display: inline-block;
-                line-height: 60px;
-                box-sizing: border-box;
-                border: 1px solid #FFFFFF;
-                border-radius: 50%;
-                margin-bottom: 7px;
-                text-transform: uppercase;
-
-                &:hover {
-                  background: rgba(0, 0, 0, 0.2);
-                }
-              }
-            }
-          }
-        }
-
-        .nav-menu-icon-container {
-          color: $color-secondary-gray;
-          font-size: 105px;
-          padding: 20px 0;
-          line-height: 1em;
-          margin: auto;
+        .language-button-container {
+          display: inline-block;
           text-align: center;
-        }
+          font-size: 14px;
+          margin: 12px;
 
-        .nav-menu {
-          vertical-align: middle;
-          text-align: center;
-
-          .nav-menu-item-container {
+          .language-code {
+            width: 60px;
+            height: 60px;
             display: inline-block;
-
-            .nav-menu-item {
-              padding: 7px 0;
-              font-size: 20px;
-              text-align: left;
-              position: relative;
-
-              .nav-menu-link {
-                text-decoration: none;
-                color: $color-blue-200;
-                padding-left: 40px;
-
-                &:hover {
-                  opacity: 0.7;
-                }
-
-                .icon-ic-find-jobs,
-                .icon-ic-my-jobs,
-                .icon-ic-create,
-                .icon-ic-faq,
-                .icon-ic-contact,
-                .icon-ic-user,
-                .icon-ic-log-in {
-                  position: absolute;
-                  color: #fff;
-                  font-size: 1.1em;
-                  left: 0;
-                  top: 6px;
-                }
-              }
-            }
-          }
-        }
-
-        .nav-menu-footer {
-          color: white;
-
-          .user-info-image {
-            margin-right: 15px;
+            line-height: 60px;
+            box-sizing: border-box;
+            border: 1px solid #FFFFFF;
             border-radius: 50%;
-            height: 35px;
-            width: 35px;
-            overflow: hidden;
-            display: inline-block;
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-position: center center;
-            vertical-align: middle;
-            box-shadow: inset 0px 0px 1px 0px rgba(0,0,0,0.2);
+            margin-bottom: 7px;
+            text-transform: uppercase;
 
-            img {
-              width: 100%;
-              height: auto;
-              min-height: 35px;
+            &:hover {
+              background: rgba(0, 0, 0, 0.2);
             }
           }
-
-          .table-cell {
-            vertical-align: bottom;
-            padding: 20px;
-          }
-
-          .user-panel {
-
-          }
-        }
-      }
-
-      @media (max-width: 1024px) {
-        .menu-container {
-          width: 100%;
         }
       }
     }
 
+    .nav-menu-icon-container {
+      color: $color-secondary-gray;
+      font-size: 105px;
+      padding: 20px 0;
+      line-height: 1em;
+      margin: auto;
+      text-align: center;
+    }
+
+    .nav-menu {
+      vertical-align: middle;
+      text-align: center;
+
+      .nav-menu-item-container {
+        display: inline-block;
+
+        .nav-menu-item {
+          padding: 7px 0;
+          font-size: 20px;
+          text-align: left;
+          position: relative;
+
+          .nav-menu-link {
+            text-decoration: none;
+            color: $color-blue-200;
+            padding-left: 40px;
+
+            &:hover {
+              opacity: 0.7;
+            }
+
+            .icon-ic-find-jobs,
+            .icon-ic-my-jobs,
+            .icon-ic-create,
+            .icon-ic-faq,
+            .icon-ic-contact,
+            .icon-ic-user,
+            .icon-ic-log-in {
+              position: absolute;
+              color: #fff;
+              font-size: 1.1em;
+              left: 0;
+              top: 6px;
+            }
+          }
+        }
+      }
+    }
+
+    .nav-menu-footer {
+      color: white;
+
+      .user-info-image {
+        margin-right: 15px;
+        border-radius: 50%;
+        height: 35px;
+        width: 35px;
+        overflow: hidden;
+        display: inline-block;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+        vertical-align: middle;
+        box-shadow: inset 0px 0px 1px 0px rgba(0,0,0,0.2);
+
+        img {
+          width: 100%;
+          height: auto;
+          min-height: 35px;
+        }
+      }
+
+      .table-cell {
+        vertical-align: bottom;
+        padding: 20px;
+      }
+
+      .user-panel {
+
+      }
+    }
+  }
+
+  @media (max-width: 1024px) {
+    .menu-container {
+      width: 100%;
+    }
   }
 }
