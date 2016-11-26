@@ -3,6 +3,7 @@
   "common.language": "Language",
   "common.menu": "Menu",
   "common.show_all": "Show all",
+  "common.all_jobs": "All jobs ({{nbrOfJobs}})",
   "common.submit": "Send",
   "common.back": "Back",
   "common.save": "Save",
