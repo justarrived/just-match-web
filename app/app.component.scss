@@ -71,31 +71,27 @@
       color: $color-gray-200;
     }
 
-    .menu-text {
-      color: $color-gray-200;
-      font-size: 12px;
-    }
-
     .nav-language-icon {
-      font-size: 9px;
+      font-size: 11px;
       border-radius: 23px;
       border-width: 2px;
       border-style: solid;
       border-color: $color-gray-200;
       background: $color-white;
       color: $color-gray-200;
-      width: 46px;
+      width: 54px;
       text-align: center;
       vertical-align: center;
       line-height: 22px;
       margin: auto;
+      margin-right: 12px;
       text-transform: uppercase;
       cursor: pointer;
-    }
+      user-select: none;
 
-    .nav-language-text {
-      font-size: 12px;
-      color: $color-gray-200;
+      .lang-arrow {
+        margin-left: 5px;
+      }
     }
   }
 }
