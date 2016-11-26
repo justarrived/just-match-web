@@ -15,7 +15,6 @@ export class JobsComponent implements OnInit {
   totalJobs: number = 1;
   page: number = 1;
   pageSize: number = 10;
-  nbrOfPages: number = 1;
 
   constructor(private jobProxy: JobProxy, private location: Location, private route: ActivatedRoute) {
     this.route.params.subscribe(params => {
@@ -28,7 +27,6 @@ export class JobsComponent implements OnInit {
       .then(result => {
         this.jobs = result.data;
         this.totalJobs = result.total;
-        this.nbrOfPages = Math.ceil(this.totalJobs / this.pageSize);
       });
   }
 

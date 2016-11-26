@@ -1,4 +1,5 @@
 @import '../../styles/variables.scss';
+@import '../../styles/buttons.scss';
 
 .jobs-header {
   background-color: $color-primary-cerise;
@@ -15,27 +16,4 @@
   > div {
     width: 100%;
   }
-}
-
-.pagination-wrapper {
-  background-color: $color-gray-25;
-  padding: 8px;
-
-  p {
-    margin: 0;
-  }
-}
-
-.back-button {
-  text-align: left;
-  color: $color-primary-cerise;
-}
-
-.forward-button {
-  text-align: right;
-  color: $color-primary-cerise;
-}
-
-.pagination-text {
-  text-align: center;
 }
