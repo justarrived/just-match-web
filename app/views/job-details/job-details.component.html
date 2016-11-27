@@ -1,10 +1,32 @@
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-xs-4" style="background: red;">LEFT</div>
-    <div class="col-xs-4" style="background: pink;">MIDDLE</div>
-    <div class="col-xs-4" style="background: blue;">RIGHT</div>
+<div *ngIf="job">
+  <div class="container-fluid">
+
+    <div class="row flex-items-xs-middle">
+      <div class="col-sm-3">
+        <img class="rounded-company-logo rounded-image" [src]="job.companyLogoURL">
+      </div>
+      <div class="col-sm-6">
+        {{job.company.name}}
+      </div>
+      <div class="col-sm-3">
+        {{job.company.website}}
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="">
+          <p>{{job.name}}</p>
+          <h4 class="title-primary">{{job.amount}} {{job.currency}}</h4>
+          <p>{{job.hours}} {{'common.hour' | translate}}</p>
+          <h5 class="title-primary">{{job.net_amount}} {{job.currency}}</h5>
+        </div>
+      </div>
+    </div>
+
+    <job-preview [job]="job"></job-preview>
   </div>
+
+  <job-state-status-bar [job]="job" [jobId]="job.id"></job-state-status-bar>
+  <comments [resourceName]="'jobs'" [resourceId]="job.id"></comments>
 </div>
-<div style="background: yellow;">JOB</div>
-<div style="background: green;">APPLY</div>
-<div style="background: orange;">COMMENT</div>
