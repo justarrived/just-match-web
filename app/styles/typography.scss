@@ -1,60 +1,63 @@
+$header-font-family: 'museo-sans', sans-serif;
+$default-font-family: 'Open Sans', sans-serif;
+
 h1 {
-  font-family: 'museo-sans', sans-serif;
+  font-family: $header-font-family;
   font-size: 42px;
   font-weight: 700;
 }
 
 h2 {
-  font-family: 'museo-sans', sans-serif;
+  font-family: $header-font-family;
   font-size: 36px;
   font-weight: 700;
 }
 
 h3 {
-  font-family: 'museo-sans', sans-serif;
+  font-family: $header-font-family;
   font-size: 24px;
   font-weight: 700;
 }
 
 h4 {
-  font-family: 'museo-sans', sans-serif;
+  font-family: $header-font-family;
   font-size: 18px;
   font-weight: 700;
 }
 
 h5 {
-  font-family: 'museo-sans', sans-serif;
+  font-family: $header-font-family;
   font-size: 16px;
   font-weight: 700;
 }
 
 h6 {
-  font-family: 'museo-sans', sans-serif;
+  font-family: $header-font-family;
   font-size: 14px;
   font-weight: 700;
 }
 
-p {
-  font-family: 'Open Sans', sans-serif;
+*, p {
+  font-family: $default-font-family;
   font-size: 16px;
   line-height: 22px;
 }
 
 .hero-p {
-  font-family: 'museo-sans', sans-serif;
+  font-family: $header-font-family;
   font-size: 18px;
   line-height: 24px;
 }
 
 em {
-  font-family: 'Open Sans', sans-serif;
+  font-family: $default-font-family;
   font-size: 24px;
   line-height: 36px;
   font-weight: 300;
 }
 
 .quote {
-  font-family: 'Open Sans', sans-serif;
+  font-family: $default-font-family;
   font-size: 24px;
   line-height: 36px;
   font-weight: 300;
