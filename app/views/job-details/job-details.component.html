@@ -28,6 +28,8 @@
     <job-preview [job]="job"></job-preview>
   </div>
 
-  <job-state-status-bar [job]="job" [jobId]="job.id"></job-state-status-bar>
-  <comments [resourceName]="'jobs'" [resourceId]="job.id"></comments>
+  <div class="container-fluid">
+    <job-state-status-bar [job]="job" [jobId]="job.id"></job-state-status-bar>
+    <comments [resourceName]="'jobs'" [resourceId]="job.id"></comments>
+  </div>
 </div>
