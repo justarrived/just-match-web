@@ -1,6 +1,27 @@
-<div class="pager-container text-center">
-  <div class="pager-button clickable" (click)="onFirstPageButtonClick()"><i class="icon-ic-arrow-left"></i><i class="icon-ic-arrow-left additional-arrow"></i></div>
-  <div class="pager-button clickable" (click)="onPreviousPageButtonClick()"><i class="icon-ic-arrow-left"></i></div>
-  <div class="pager-button clickable" (click)="onNextPageButtonClick()"><i class="icon-ic-arrow-right"></i></div>
-  <div class="pager-button clickable" (click)="onLastPageButtonClick()"><i class="icon-ic-arrow-right"></i><i class="icon-ic-arrow-right additional-arrow"></i></div>
+<div class="row pagination-wrapper flex-items-xs-middle">
+  <div (click)="onFirstPageButtonClick()" class="back-button col-xs">
+    <i class="fa fa-chevron-left navigation-left-arrow" aria-hidden="true"></i>
+    <i class="fa fa-chevron-left" aria-hidden="true"></i>
+  </div>
+
+  <div class="col-xs">
+    <a (click)="onPreviousPageButtonClick()" class="pagination-button">
+      <i class="fa fa-chevron-left button-arrow-position" aria-hidden="true"></i>
+    </a>
+  </div>
+
+  <div class="pagination-text col-xs">
+    <p> {{currentPage}} / {{lastPage}} </p>
+  </div>
+
+  <div class="col-xs" style="text-align: right;">
+    <a (click)="onNextPageButtonClick()" class="pagination-button">
+      <i class="fa fa-chevron-right button-arrow-position" aria-hidden="true"></i>
+    </a>
+  </div>
+
+  <div (click)="onLastPageButtonClick()" class="forward-button col-xs">
+    <i class="fa fa-chevron-right" aria-hidden="true"></i>
+    <i class="fa fa-chevron-right navigation-right-arrow" aria-hidden="true"></i>
+  </div>
 </div>

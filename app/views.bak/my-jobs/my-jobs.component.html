@@ -1,0 +1,16 @@
+<div class="my-jobs">
+  <div class="subheader text-center">
+    <div class="fs-l form-group">{{'company.assignments.title' | translate | uppercase}}</div>
+    <ul>
+      <li [ngClass]="{'selected': selectedState == 'active'}" (click)="setState('active')">
+        {{"company.assignments.filter_1" | translate}}
+      </li>
+      <li [ngClass]="{'selected': selectedState == 'history'}" (click)="setState('history')">
+        {{"company.assignments.filter_2" | translate}}
+      </li>
+    </ul>
+  </div>
+
+  <company-jobs *ngIf="isCompanyUser" [selectedState]="selectedState"></company-jobs>
+  <user-jobs *ngIf="!isCompanyUser" [selectedState]="selectedState"></user-jobs>
+</div>

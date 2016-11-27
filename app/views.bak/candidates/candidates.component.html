@@ -1,0 +1,6 @@
+<div>{{'company.assignments.candidates.select.title' | translate}}</div>
+<div>
+  <div *ngFor="let userJob of userJobs">
+    <a [routerLink]="['/job', jobId, 'candidate', userJob.id]">{{userJob.user.firstName}}</a>
+  </div>
+</div>

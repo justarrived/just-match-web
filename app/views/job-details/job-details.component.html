@@ -1,28 +1,32 @@
 <div *ngIf="job">
-  <div class="main-title">
-    <div class="table job-header">
-      <div class="table-row">
-        <div class="table-cell">
-          <img class="rounded-company-logo rounded-image" [src]="(job.company.companyLogo && job.company.companyLogo.imageUrlSmall) || 'assets/images/placeholder-logo.png'">
-        </div>
-        <div class="table-cell">
-          <div class="job-main-info-cell">
-            <div class="fs-xl">{{job.name}}</div>
-            <div class="fs-m">{{job.company.name}}</div>
-            <div>{{job.jobDate | date:'dd MMM'}} - {{job.jobEndDate | date:'dd MMM'}}</div>
-            <div>{{job.street}}</div>
-          </div>
-          <div class="job-main-info-cell">
-            <div class="total-salary" *ngIf="isCompanyUser">
-              {{job.hourlyPay.rateExcludingVAT * job.hours}} {{job.hourlyPay.currency}}
-            </div>
-            <div class="total-salary" *ngIf="!isCompanyUser">{{job.hourlyPay.grossSalary * job.hours}} {{job.hourlyPay.currency}}</div>
-          </div>
+  <div class="container-fluid">
+
+    <div class="row flex-items-xs-middle">
+      <div class="col-sm-3">
+        <img class="rounded-company-logo rounded-image" [src]="job.companyLogoURL">
+      </div>
+      <div class="col-sm-6">
+        {{job.company.name}}
+      </div>
+      <div class="col-sm-3">
+        {{job.company.website}}
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="">
+          <p>{{job.name}}</p>
+          <h4 class="title-primary">{{job.amount}} {{job.currency}}</h4>
+          <p>{{job.hours}} {{'common.hour' | translate}}</p>
+          <h5 class="title-primary">{{job.net_amount}} {{job.currency}}</h5>
         </div>
       </div>
     </div>
+
+    <job-preview [job]="job"></job-preview>
   </div>
-  <job-preview [job]="job"></job-preview>
+
   <job-state-status-bar [job]="job" [jobId]="job.id"></job-state-status-bar>
   <comments [resourceName]="'jobs'" [resourceId]="job.id"></comments>
 </div>
