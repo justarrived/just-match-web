@@ -17,6 +17,7 @@ const tslint = require('gulp-tslint');
 const uglify = require('gulp-uglify');
 
 const sass = require('gulp-sass');
+const autoprefixer = require('gulp-autoprefixer');
 const cleanCss = require('gulp-clean-css');
 const concatCss = require('gulp-concat-css');
 
@@ -36,7 +37,7 @@ gulp.task('clean', (callback) => {
 });
 
 gulp.task('compile-ts', ['tslint'], () => {
-  let tsResult = gulp.src(['app/**/*.ts', '!app/config/environments/*.ts'])
+  let tsResult = gulp.src(['app/**/*.ts', '!app/view.bak/**/*', '!app/config/environments/*.ts'])
     .pipe(sourcemaps.init())
     .pipe(tsc(tsProject));
   return tsResult.js
@@ -45,7 +46,7 @@ gulp.task('compile-ts', ['tslint'], () => {
 });
 
 gulp.task('compile-ts:prod', () => {
-  let tsResult = gulp.src(['app/**/*.ts', '!app/config/environments/*.ts'])
+  let tsResult = gulp.src(['app/**/*.ts', '!app/view.bak/**/*', '!app/config/environments/*.ts'])
     .pipe(inlineNg2Template({useRelativePaths: true, removeLineBreaks: true, templateProcessor: minifyTemplate}))
     .pipe(tsc(tsProject));
   return tsResult.js
@@ -53,14 +54,15 @@ gulp.task('compile-ts:prod', () => {
 });
 
 gulp.task('compile-sass', () => {
-  return gulp.src('app/**/*.scss')
+  return gulp.src(['app/**/*.scss', '!app/view.bak/**/*'])
     .pipe(sass().on('error', sass.logError))
+    .pipe(autoprefixer())
     .pipe(cleanCss())
     .pipe(gulp.dest('app'));
 });
 
 gulp.task('tslint', () => {
-  return gulp.src('app/**/*.ts')
+  return gulp.src(['app/**/*.ts', '!app/view.bak/**/*'])
     .pipe(tslint())
     .pipe(tslint.report());
 });

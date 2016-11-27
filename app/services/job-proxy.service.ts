@@ -1,9 +1,7 @@
 import {Injectable} from "@angular/core";
 import {ApiCall} from "./api-call.service";
 import {map} from "lodash";
-import {Job} from "../models/job/job";
-import {HourlyPay} from "../models/job/job";
-import {Category} from "../models/job/job";
+import {Job, HourlyPay, Category} from "../models/job/job";
 import {UserJob} from "../models/user/user-job";
 
 @Injectable()
@@ -39,16 +37,45 @@ export class JobProxy {
     });
   }
 
+  applyForJob(jobId) {
+    return this.apiCall.post('jobs/' + jobId + '/users', {});
+  }
+
+  acceptForJob(jobId, userJobId) {
+    return this.apiCall.post('jobs/' + jobId + '/users/' + userJobId + '/acceptances ', {}).then(response => {
+      return new UserJob(response.data);
+    });
+  }
+
+  confirmForJob(jobId, userJobId) {
+    return this.apiCall.post('jobs/' + jobId + '/users/' + userJobId + '/confirmations ', {}).then(response => {
+      return new UserJob(response.data);
+    });
+  }
+
+  createInvoice(jobId, userJobId) {
+    return this.apiCall.post('jobs/' + jobId + '/users/' + userJobId + '/invoices ', {});
+  }
+
+  getUserJob(jobId, userJobId, additionOptions?: Object) {
+    return this.apiCall.get('jobs/' + jobId + '/users/' + userJobId, additionOptions).then(response => {
+      return new UserJob(response.data);
+    });
+  }
+
+  addRating(jobId, ratingData) {
+    return this.apiCall.post('jobs/' + jobId + '/ratings', ratingData);
+    //   .then(response => {
+    //   return; //TODO: rating Entity
+    // });
+  }
+
   getOwnedJobs(userId: string, additionOptions?: Object) {
     return this.apiCall.get('users/' + userId + '/owned-jobs',  additionOptions).then(response => map(response.data, data => new Job(data)));
   }
 
-  getJobUsers(jobId: string, additionOptions?: Object) {
+  getJobUsers(jobId, additionOptions?: Object): Promise<UserJob[]> {
     return this.apiCall.get('jobs/' + jobId + '/users',  additionOptions).then(response => map(response.data, data => new UserJob(data)));
-  }
-
-  getUserJobs(userId: string, additionOptions?: Object) {
-    return this.apiCall.get('users/' + userId + '/jobs',  additionOptions).then(response => map(response.data, data => new UserJob(data)));
   }
 
 }

@@ -1,27 +1,10 @@
-<div *ngIf="job">
-  <div class="main-title">
-    <div class="table job-header">
-      <div class="table-row">
-        <div class="table-cell">
-          <img class="rounded-company-logo rounded-image" [src]="(job.company.companyLogo && job.company.companyLogo.imageUrlSmall) || 'assets/images/placeholder-logo.png'">
-        </div>
-        <div class="table-cell">
-          <div class="job-main-info-cell">
-            <div class="fs-xl">{{job.name}}</div>
-            <div class="fs-m">{{job.company.name}}</div>
-            <div>{{job.jobDate | date:'dd MMM'}} - {{job.jobEndDate | date:'dd MMM'}}</div>
-            <div>{{job.street}}</div>
-          </div>
-          <div class="job-main-info-cell">
-            <div class="total-salary" *ngIf="isCompanyUser">
-              {{job.hourlyPay.rateExcludingVAT * job.hours}} {{job.hourlyPay.currency}}
-            </div>
-            <div class="total-salary" *ngIf="!isCompanyUser">{{job.hourlyPay.grossSalary * job.hours}} {{job.hourlyPay.currency}}</div>
-          </div>
-        </div>
-      </div>
-    </div>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-4" style="background: red;">LEFT</div>
+    <div class="col-xs-4" style="background: pink;">MIDDLE</div>
+    <div class="col-xs-4" style="background: blue;">RIGHT</div>
   </div>
-  <job-preview [job]="job"></job-preview>
-  <comments [resourceName]="'jobs'" [resourceId]="job.id"></comments>
 </div>
+<div style="background: yellow;">JOB</div>
+<div style="background: green;">APPLY</div>
+<div style="background: orange;">COMMENT</div>

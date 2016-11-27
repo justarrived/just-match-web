@@ -1,0 +1,59 @@
+@import '../../styles/variables.scss';
+
+.job-list-container {
+  width: 100%;
+  border-bottom: 1px solid $color-gray-50;
+
+  .company-logo-container {
+    padding: 18px 0 18px 20px;
+
+    .company-logo {
+      margin-right: 8px;
+    }
+  }
+
+  .arrow-container {
+    color: $color-gray-200;
+    font-size: 20px;
+    padding: 0 10px;
+
+    .icon-ic-arrow-right:hover {
+      color: $color-secondary-gray;
+    }
+  }
+
+  .job-description-container {
+    width: 100%;
+    padding: 15px 0;
+
+    .job-name {
+      font-size: 17px;
+      font-weight: bold;
+      margin-bottom: 5px;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    .job-description {
+      margin-bottom: 5px;
+    }
+
+    .job-rate {
+      width: 35%;
+
+      .total-salary {
+        color: $color-primary-cerise;
+        font-size: 21px;
+        font-weight: 600;
+        white-space: nowrap;
+      }
+
+      .salary-per-hour {
+        font-size: 16px;
+        white-space: nowrap;
+      }
+    }
+  }
+}

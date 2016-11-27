@@ -33,14 +33,14 @@ export class UserJob {
     this.job = new Job(jsonObject.job);
     this.invoice = new Invoice(jsonObject.invoice);
     if (this.willPerformConfirmationBy) {
-      //let differenceInMinutes = moment(new Date(this.willPerformConfirmationBy)).diff(new Date(), 'minutes');
-      //this.remainsConfirmationHours = Math.floor(differenceInMinutes / this.MINUTES_PER_HOUR);
-      //this.remainsConfirmationMinutes = differenceInMinutes % this.MINUTES_PER_HOUR;
+      let differenceInMinutes = moment(new Date(this.willPerformConfirmationBy)).diff(new Date(), 'minutes');
+      this.remainsConfirmationHours = Math.floor(differenceInMinutes / this.MINUTES_PER_HOUR);
+      this.remainsConfirmationMinutes = differenceInMinutes % this.MINUTES_PER_HOUR;
     }
   }
 }
 
-class Invoice {
+export class Invoice {
   id: number;
 
   constructor(jsonObject: any) {
