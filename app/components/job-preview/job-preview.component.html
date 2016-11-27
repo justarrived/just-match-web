@@ -5,15 +5,15 @@
 
   <div class="col-sm-8">
     <p>
-      <i class="fa fa-file-text-o"></i> {{job.description}}
+      <i class="fa fa-file-text-o fa-lg"></i> {{job.description}}
     </p>
   </div>
   <div class="col-sm-4">
     <p>
-      <i class="fa fa-calendar"></i> {{job.jobDate | date: 'yyyy-MM-dd'}} - {{job.jobEndDate | date: 'yyyy-MM-dd'}}
+      <i class="fa fa-calendar fa-lg"></i> {{job.jobDate | date: 'yyyy-MM-dd'}} - {{job.jobEndDate | date: 'yyyy-MM-dd'}}
     </p>
     <p>
-      <i class="fa fa-map-marker"></i> {{job.street}}, {{job.zip}}
+      <i class="fa fa-map-marker fa-lg"></i> {{job.street}}, {{job.zip}}
     </p>
     <div *ngIf="!isPreview">
       <i class="fa fa-money" aria-hidden="true"></i>

@@ -10,7 +10,7 @@
       </div>
       <div class="table-cell dropdown-text-input-container clickable" [ngClass]="{disabled: isDisabled || (maxItems > 1 && destination && destination.length >= maxItems)}" (click)="onInputClick()">
         <input class="form-control" [disabled]="isDisabled || (maxItems > 1 && destination && destination.length >= maxItems)" type="text" placeholder="{{placeholder}}" [(ngModel)]="textInput" (ngModelChange)="onTextInputChange()"/>
-        <div class="drop-down-arrow" [ngClass]="{disabled: maxItems > 1 && destination && destination.length >= maxItems}"><i class="icon-ic-arrow-bottom"></i></div>
+        <div class="drop-down-arrow" [ngClass]="{disabled: maxItems > 1 && destination && destination.length >= maxItems}"><i class="fa fa-angle-down fa-2x"></i></div>
       </div>
     </div>
   </div>

@@ -8,8 +8,8 @@
   width: 100%;
   height: $header-height;
   border-radius: 0px;
-  padding-left: 10%;
-  padding-right: 10%;
+  padding-left: $header-horizontal-padding;
+  padding-right: $header-horizontal-padding;
   color: $color-gray-200;
 
   .navbar-container {
@@ -121,6 +121,7 @@
             }
 
             i {
+              width: 30px;
               color: $color-white;
             }
           }
@@ -243,7 +244,7 @@
 
   > div {
     > div {
-      @media screen and (min-width: 576px) {
+      @media screen and (min-width: $sm-device-width) {
         &:nth-of-type(2) {
           text-align: center;
         }
@@ -253,7 +254,7 @@
         }
       }
 
-      @media screen and (max-width: 576px) {
+      @media screen and (max-width: $sm-device-width) {
          text-align: center;
       }
     }

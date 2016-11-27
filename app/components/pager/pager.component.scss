@@ -39,4 +39,19 @@
   color: $color-white;
   border: 1px solid $color-primary-cerise;
   cursor: pointer; cursor: hand;
+
+  .button-arrow-position {
+    position: relative;
+    top: 8px;
+  }
+}
+
+.navigation-left-arrow {
+  position: relative;
+  left: 7px;
+}
+
+.navigation-right-arrow {
+  position: relative;
+  right: 7px;
 }
