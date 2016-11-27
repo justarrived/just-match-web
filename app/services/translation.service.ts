@@ -10,7 +10,7 @@ export class TranslationService {
   private storageSelectedLanguageKey: string = 'selectedLanguage';
   private languages: Language[];
   private selectedLanguage: Language;
-  private languagesPromise: Promise;
+  private languagesPromise: Promise<any>;
   private languageChange: EventEmitter<any> = new EventEmitter();
 
   constructor(private translateService: TranslateService, private languageProxy: LanguageProxy, private localStorageWrapper: LocalStorageWrapper) {

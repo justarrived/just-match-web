@@ -1,16 +1,9 @@
-<div class="my-jobs">
-  <div class="subheader text-center">
-    <div class="fs-l form-group">{{'company.assignments.title' | translate | uppercase}}</div>
-    <ul>
-      <li [ngClass]="{'selected': selectedState == 'active'}" (click)="setState('active')">
-        {{"company.assignments.filter_1" | translate}}
-      </li>
-      <li [ngClass]="{'selected': selectedState == 'history'}" (click)="setState('history')">
-        {{"company.assignments.filter_2" | translate}}
-      </li>
-    </ul>
+<div style="background: blue; height: 100px;">MY JOBS</div>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-6" style="background: red;">JOBS</div>
+    <div class="col-xs-6" style="background: pink;">HISTORY</div>
   </div>
-
-  <company-jobs *ngIf="isCompanyUser" [selectedState]="selectedState"></company-jobs>
-  <user-jobs *ngIf="!isCompanyUser" [selectedState]="selectedState"></user-jobs>
 </div>
+<div style="background: green; height: 100px;">ACTIVE WHEN JOBS</div>
+<div style="background: pink; height: 100px; display: none;">ACTIVE WHEN HISTORY</div> <!-- hidden now -->

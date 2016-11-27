@@ -1,12 +1,26 @@
-<div class="find-job-header">
-  Find jobs ({{totalJobs}})
-</div>
-<div class="find-job-container">
-  <div class="map-container">
-    map container
+<div class="jobs-header row"> <!-- All Jobs -->
+  <div class="col-md-6">
+    <h2>
+      {{'common.all_jobs' | translate: {nbrOfJobs: totalJobs} }}
+    </h2>
   </div>
-  <div class="jobs-list-container">
-    <job-list-item *ngFor="let job of jobs" [job]="job"></job-list-item>
-    <pager [maxResults]="totalJobs" [currentPage]="page" (pageChange)="onPageChange($event)"></pager>
+
+  <div class="col-md-6">
+    <!-- TODO: Implemente this -->
   </div>
 </div>
+
+
+<div [hidden]="true" class="row" style="background: green; height: 100px;">
+  <!-- TODO: Implemente this -->
+</div>
+
+<pager [maxResults]="totalJobs" [currentPage]="page" (pageChange)="onPageChange($event)"></pager>
+
+<div class="job-list-container row">
+  <div>
+    <job-list-item style="display: block;" *ngFor="let job of jobs" [job]="job"></job-list-item>
+  </div>
+</div>
+
+<pager [maxResults]="totalJobs" [currentPage]="page" (pageChange)="onPageChange($event)"></pager>

@@ -1,21 +1,28 @@
-<div class="job-details">
-    <div class="job-details-header">{{"assignment.assignments.title" | translate}}</div>
-    <div class="job-details-container table">
-        <div class="job-details-cell table-cell">
-            <div class="job-details-item with-border"><i class="icon-ic-description"></i>{{job.description}}</div>
-            <div class="job-details-item" *ngIf="!isPreview">
-                <div class="salary-per-hour" *ngIf="isCompanyUser">
-                    {{job.hours}} {{'common.hour' | translate}} ({{job.hourlyPay.rateExcludingVAT}} {{job.hourlyPay.currency}}/{{'common.hour' | translate}})
-                </div>
-                <div class="salary-per-hour" *ngIf="!isCompanyUser">
-                    <div>{{job.hours}} {{'common.hour' | translate}} ({{job.hourlyPay.grossSalary}} {{job.hourlyPay.currency}}/{{'common.hour' | translate}})</div>
-                    <div>{{job.hourlyPay.netSalary * job.hours}} {{job.currency}} {{ 'common.net_salary' | translate }}</div>
-                </div>
-            </div>
-        </div>
-        <div class="job-details-cell table-cell">
-            <div class="job-details-item with-border"><i class="icon-ic-location"></i>{{job.street}} {{job.zip}}</div>
-            <div class="job-details-item"><i class="icon-ic-calendar"><span class="date-value">{{job.jobDate | date: 'dd'}}</span></i>{{job.jobDate | date: 'yyyy-MM-dd'}} - {{job.jobEndDate | date: 'yyyy-MM-dd'}}</div>
-        </div>
+<div class="row">
+  <div class="col-xs-12">
+    <h4>{{"assignment.assignments.title" | translate}}</h4>
+  </div>
+
+  <div class="col-sm-8">
+    <p>
+      <i class="fa fa-file-text-o"></i> {{job.description}}
+    </p>
+  </div>
+  <div class="col-sm-4">
+    <p>
+      <i class="fa fa-calendar"></i> {{job.jobDate | date: 'yyyy-MM-dd'}} - {{job.jobEndDate | date: 'yyyy-MM-dd'}}
+    </p>
+    <p>
+      <i class="fa fa-map-marker"></i> {{job.street}}, {{job.zip}}
+    </p>
+    <div *ngIf="!isPreview">
+      <i class="fa fa-money" aria-hidden="true"></i>
+      <p>
+        {{job.hours}} {{'common.hour' | translate}} ({{job.grossSalary}} {{job.currency}}/{{'common.hour' | translate}})
+      </p>
+      <p>
+        {{job.netAmount}} {{job.currency}} {{ 'common.net_salary' | translate }}
+      </p>
     </div>
+  </div>
 </div>

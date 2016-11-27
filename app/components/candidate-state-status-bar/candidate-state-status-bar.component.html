@@ -1,0 +1,52 @@
+<div class="job-status text-center" *ngIf="userJob && (!userJob.invoice || !userJob.invoice.id)">
+  <div class="table" *ngIf="userJob && userJob.accepted && userJob.willPerform">
+    <div class="table-row">
+      <div class="table-cell">{{'assignment.status.is_successful' | translate: {candidate_name: userJob.user.firstName} }}</div>
+      <div class="table-cell">
+        <button class="button">{{'common.no' | translate}}</button>
+        <button class="button" (click)="showCompleteUserJob = true">{{'common.yes' | translate}}</button>
+      </div>
+    </div>
+  </div>
+  <div class="table" *ngIf="userJob && !userJob.accepted">
+    <div class="table-row">
+      <div class="table-cell">
+        {{'assignment.status.user_application'| translate: {candidate_name: userJob.user.firstName} }}
+      </div>
+      <div class="table-cell">
+        <button class="button" (click)="showSendRequestPage = true">{{'profile.overview.hire' | translate}}</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="showSendRequestPage" class="send-candidate-request-container">
+  <div>{{'company.assignments.candidates.send_request' | translate: {candidate_name: userJob.user.firstName} }}</div>
+  <div>{{'user.assignment.confirmation.description' | translate: {candidate_name: userJob.user.firstName} }}</div>
+  <div>
+    <button class="button" (click)="showSendRequestPage = false">{{'common.cancel' | translate}}</button>
+    <button class="button" (click)="onAcceptJobButtonClick()">{{'common.submit' | translate}}</button>
+  </div>
+</div>
+<div *ngIf="showCompleteUserJob" class="finalize-job-container">
+  <div class="job-complete-question-container" *ngIf="!showUserRating">
+    <div>{{'assignment.approve.description' | translate}}</div>
+    <div>
+      <button class="button" (click)="showUserRating = true">{{'common.yes' | translate}}</button>
+      <button class="button" (click)="showCompleteUserJob = false">{{'common.no' | translate}}</button>
+    </div>
+  </div>
+  <div class="user-rating-container" *ngIf="showUserRating">
+    <div>{{'assignment.recommendation.title' | translate: {candidate_name: userJob.user.firstName} }}</div>
+    <div>
+      <i class="icon-ic-star" [ngClass]="{'red-star': starRating >= number}" *ngFor="let number of [1,2,3,4,5]" (click)="onStarRatingClick(number)"></i>
+    </div>
+    <div>&nbsp;</div>
+    <div class="material-group">
+      <input type="text" id="user-job-comment" [(ngModel)]="userJobComment" name="user-job-comment" class="material-input" [ngClass]="{'not-empty': userJobComment}">
+      <label for="user-job-comment" class="material-label">{{'assignment.recommendation.description' | translate}}</label>
+    </div>
+    <div>
+      <button class="button" (click)="onJobDoneButtonClick()">{{'common.submit' | translate}}</button>
+    </div>
+  </div>
+</div>

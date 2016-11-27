@@ -2,6 +2,8 @@ import {Company} from "../company";
 import {UserJob} from "../user/user-job";
 import {map} from "lodash";
 
+const companyPlaceholderLogoURL = 'assets/images/placeholder-logo.png';
+
 export class Job {
   amount: number;
   company: Company;
@@ -13,6 +15,8 @@ export class Job {
   hours: number;
   id: string;
   invoiceAmount: number;
+  grossAmount: number;
+  netAmount: number;
   jobDate: string;
   jobEndDate: string;
   name: string;
@@ -32,7 +36,9 @@ export class Job {
     if (!jsonObject) {
       return;
     }
-    this.amount = jsonObject.amount;
+    this.amount = jsonObject.amount; // DEPRECATED: grossAmount has replaced this value
+    this.grossAmount = jsonObject.gross_amount;
+    this.netAmount = jsonObject.net_amount;
     this.company = new Company(jsonObject.company);
     this.createdAt = jsonObject.created_at;
     this.description = jsonObject.description;
@@ -58,6 +64,27 @@ export class Job {
     this.languageId = jsonObject.language_id;
   }
 
+  get netSalary(): number {
+    return this.hourlyPay.netSalary;
+  }
+
+  get grossSalary(): number {
+    return this.hourlyPay.grossSalary;
+  }
+
+  get currency(): string {
+    return this.hourlyPay.currency;
+  }
+
+  get companyLogoURL(): string {
+    var companyLogo = this.company.companyLogo;
+    if (companyLogo && companyLogo.imageUrlSmall) {
+      return companyLogo.imageUrlSmall;
+    }
+
+    return companyPlaceholderLogoURL;
+  }
+
   toJsonObject(): Object {
     return {
       'name': this.name,
@@ -81,7 +108,6 @@ export class HourlyPay {
   grossSalary: number;
   id: string;
   netSalary: number;
-  rateExcludingVAT: number;
   rateIncludingVAT: number;
 
   constructor(jsonObject: any) {
@@ -93,7 +119,6 @@ export class HourlyPay {
     this.grossSalary = jsonObject.gross_salary;
     this.id = jsonObject.id;
     this.netSalary = jsonObject.net_salary;
-    this.rateExcludingVAT = jsonObject.rate_excluding_vat;
     this.rateIncludingVAT = jsonObject.rate_including_vat;
   }
 }

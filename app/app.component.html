@@ -1,136 +1,114 @@
-<div class="menu-side-bar" (click)="onBodyClick($event)" [hidden]="!isNavigationMenuVisible">
-  <div class="overbody-container"></div>
-  <div class="close-button icon-ic-close" (click)="isNavigationMenuVisible = false"></div>
-  <div class="menu-container table">
-    <div class="table-row">
-      <div class="nav-menu table-cell">
-        <div class="nav-menu-icon-container"><i class="icon-ic-just-arrived-logo"></i></div>
-        <div class="nav-menu-item-container">
-          <div class="nav-menu-item clickable" *ngIf="user">
-            <a class="nav-menu-link" routerLink="/my-jobs">
-              <i class="icon-ic-my-jobs"></i>
-              {{'menu.main.my_assignment' | translate}}
-            </a>
+<div class="navbar-fixed-top" [ngStyle]="(isNavigationMenuVisible || isLanguageMenuVisible) && {'height': '100%'}">
+  <div class="container">
+    <nav class="header navbar navbar-light bg-faded">
+      <div class="row navbar-container">
+        <div class="col-xs row flex-items-xs-middle">
+          <div class="clickable back-button-container" *ngIf="states.length > 1 && currentState !== '/home'" (click)="onBackButtonClick()">
+            <i class="fa fa-angle-left fa-2x back-button"></i>
           </div>
-          <div class="nav-menu-item clickable">
-            <a class="nav-menu-link" routerLink="/jobs/1">
-              <i class="icon-ic-find-jobs"></i>
-              {{'menu.main.find_assignment' | translate}}
-            </a>
+          <a routerLink="/home">
+            <img class="logo-img" src="assets/images/logo.png" alt="Just Arrived"/>
+          </a>
+        </div>
+        <div class="col-xs right row flex-items-xs-middle">
+          <div (click)="onLanguageMenuButtonClick()" class="button-container">
+            <div class="nav-language-icon">{{selectedLanguage.languageCode}}<div class="fa lang-arrow" [class.fa-caret-down]="!isLanguageMenuVisible" [class.fa-caret-up]="isLanguageMenuVisible"></div></div>
           </div>
-          <div class="nav-menu-item clickable" *ngIf="isCompanyUser">
-            <a class="nav-menu-link" routerLink="/job/create">
-              <i class="icon-ic-create"></i>
-              {{'menu.main.create_assignment' | translate}}
-            </a>
-          </div>
-          <div class="nav-menu-item clickable">
-            <a class="nav-menu-link" href="">
-              <i class="icon-ic-faq"></i>
-              {{'menu.main.faq' | translate}}
-            </a>
-          </div>
-          <div class="nav-menu-item clickable">
-            <a class="nav-menu-link" href="">
-              <i class="icon-ic-contact"></i>
-              {{'menu.main.contact' | translate}}
-            </a>
-          </div>
-          <div class="nav-menu-item clickable" *ngIf="user && !isCompanyUser">
-            <a class="nav-menu-link" routerLink="/user">
-              <i class="icon-ic-user"></i>
-              {{'profile' | translate}}
-            </a>
-          </div>
-          <div class="nav-menu-item clickable" *ngIf="!user">
-            <a class="nav-menu-link" routerLink="/login">
-              <i class="icon-ic-log-in"></i>
-              {{'menu.main.login' | translate}}
-            </a>
-          </div>
-          <div class="nav-menu-item clickable" *ngIf="user">
-            <a class="nav-menu-link" (click)="onLogoutButtonClick()">
-              <i class="icon-ic-log-in"></i>
-              {{'menu.main.logout' | translate}}
-            </a>
+          <div (click)="onNavigationMenuButtonClick()" class="button-container">
+            <span class="fa fa-bars fa-2x menu-icon"></span>
           </div>
         </div>
       </div>
-    </div>
-    <div class="table-row nav-menu-footer">
-      <div class="table-cell user-panel" *ngIf="user">
-        <div class="user-info-image" [ngStyle]="{'background-image': 'url(' + ((user.images && user.images[0] && user.images[0].imageUrl) || 'assets/images/placeholder-profile-image.png') + ')'}"></div>
-        {{user.firstName}} {{user.lastName}}
-      </div>
-      <div class="table-cell text-center" *ngIf="!user">
-        <a routerLink="/user/register" class="button">Create User</a>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="menu-side-bar" [hidden]="!isLanguageMenuVisible" (click)="onBodyClick($event)">
-  <div class="overbody-container"></div>
-  <div class="close-button icon-ic-close" (click)="isLanguageMenuVisible = false"></div>
-  <div class="menu-container language-menu-container">
-    <div class="just-arrived-logo-container text-center">
-      <img class="language-logo-img" src="assets/images/logo.png" alt="Just Arrived"/>
-    </div>
-    <div class="select-language-header-text text-center fs-xl">{{'menu.language.title' | translate}}</div>
-    <div class="select-language-container text-center">
-      <div *ngFor="let language of systemLanguages" class="language-button-container no-select clickable" (click)="onSelectLanguage(language)">
-        <div class="language-code">{{language.languageCode}}</div>
-        <div class="language-text">{{language.localName}}</div>
-      </div>
+    </nav>
+    <div class="menu-container" *ngIf="isNavigationMenuVisible || isLanguageMenuVisible" (click)="isNavigationMenuVisible = false; isLanguageMenuVisible = false;">
+      <div class="menu">
+        <div *ngIf="isNavigationMenuVisible">
+          <div><i class="fa fa-times fa-2x" (click)="isLanguageMenuVisible = false"></i></div>
+          <div>
+              <a routerLink="/my-jobs" *ngIf="user">
+                <i class="icon-ic-my-jobs"></i>
+                {{'menu.main.my_assignment' | translate}}
+              </a>
 
-    </div>
-    <div class="language-information text-center">
-      <p>{{'menu.language.text_1' | translate}}</p>
-      <p>{{'menu.language.text_2' | translate}}</p>
-    </div>
-    <div class="credentials">
-      <p class="prominent">{{'menu.language.translation_by_probono' | translate}}:</p>
-      <img src="assets/images/menu_semantix_logo.png" alt="Semantix"/>
-      <img src="assets/images/menu_skrivasbyra_logo.png" alt="Stockholms.Skrivbyrå"/>
-      <p class="start_name">Farshid Fadaee</p>
-      <p>Nick Chipperfield</p>
-      <p>Hans-Erik Täpp</p>
-    </div>
-  </div>
-</div>
-<header class="table header">
-  <div class="table-row">
-    <div class="table-cell header-logo-container">
-      <div class="table">
-        <div class="table-row">
-          <div class="table-cell clickable back-button-container" *ngIf="states.length > 1 && currentState !== '/home'" (click)="onBackButtonClick()">
-            <i class="demo-icon icon-ic-arrow-left"></i>
+              <a routerLink="/jobs/1">
+                <i class="icon-ic-find-jobs"></i>
+                {{'menu.main.find_assignment' | translate}}
+              </a>
+
+              <a routerLink="/job/create" *ngIf="isCompanyUser">
+                <i class="icon-ic-create"></i>
+                {{'menu.main.create_assignment' | translate}}
+              </a>
+
+              <a href="">
+                <i class="icon-ic-faq"></i>
+                {{'menu.main.faq' | translate}}
+              </a>
+
+              <a href="">
+                <i class="icon-ic-contact"></i>
+                {{'menu.main.contact' | translate}}
+              </a>
+
+              <a routerLink="/user" *ngIf="user && !isCompanyUser">
+                <i class="icon-ic-user"></i>
+                {{'profile' | translate}}
+              </a>
+
+              <a routerLink="/login" *ngIf="!user">
+                <i class="icon-ic-log-in"></i>
+                {{'menu.main.login' | translate}}
+              </a>
+
+              <a (click)="onLogoutButtonClick()" *ngIf="user">
+                <i class="icon-ic-log-in"></i>
+                {{'menu.main.logout' | translate}}
+              </a>
           </div>
-          <div class="table-cell app-logo-img-container">
-            <a routerLink="/home">
-              <img class="app-logo-img" src="assets/images/logo.png" alt="Just Arrived"/>
-            </a>
+          <div>
+            <div *ngIf="user">
+              <div class="user-info-image" [ngStyle]="{'background-image': 'url(' + ((user.images && user.images[0] && user.images[0].imageUrl) || 'assets/images/placeholder-profile-image.png') + ')'}"></div>
+              {{user.firstName}} {{user.lastName}}
+            </div>
+            <div *ngIf="!user">
+              <a routerLink="/user/register" class="create-user medium-button-primary-light">Create User</a>
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="isLanguageMenuVisible" class="language-menu-container">
+          <div class="close-button"><i class="fa fa-times fa-2x" (click)="isLanguageMenuVisible = false"></i></div>
+          <div class="just-arrived-logo-container">
+            <img class="language-logo-img" src="assets/images/logo.png" alt="Just Arrived" />
+          </div>
+          <div class="select-language-header-text">{{'menu.language.title' | translate}}</div>
+          <div class="select-language-container">
+            <div *ngFor="let language of systemLanguages" class="language-button-container" (click)="onSelectLanguage(language)">
+              <div class="language-code">{{language.languageCode}}</div>
+              <div class="language-text">{{language.localName}}</div>
+            </div>
+
+          </div>
+          <div class="language-information">
+            <p>{{'menu.language.text_1' | translate}}</p>
+            <p>{{'menu.language.text_2' | translate}}</p>
+          </div>
+          <div class="credentials">
+            <p class="prominent">{{'menu.language.translation_by_probono' | translate}}:</p>
+            <img src="assets/images/menu_semantix_logo.png" alt="Semantix"/>
           </div>
         </div>
       </div>
     </div>
-    <div class="table-cell">
-        <div (click)="onLanguageMenuButtonClick()">
-          <div class="nav-language-icon">{{selectedLanguage.languageCode}}</div>
-          <div class="nav-language-text">{{selectedLanguage.localName}}</div>
-        </div>
-    </div>
-    <div class="table-cell">
-      <div (click)="onNavigationMenuButtonClick()"><span class="menu-icon"><i></i><i></i><i></i></span><span class="menu-text">{{"common.menu" | translate}}</span></div>
-    </div>
   </div>
-</header>
-<section class="app">
+</div>
+<section class="container-fluid app-content-container">
   <router-outlet></router-outlet>
 </section>
-<footer class="table footer">
-  <div class="table-row">
-    <div class="table-cell">{{'applications.title' | translate}}</div>
-    <div class="table-cell text-center">Jakobsbergsgatan 22, 111 44 Stockholm</div>
-    <div class="table-cell text-right"><a href="mailto:hej@justarrived.se">hej@justarrived.se</a></div>
+<footer class="container-fluid footer">
+  <div class="row">
+    <div class="col-xs-12 col-md-3 text-container">{{'applications.title' | translate}}</div>
+    <div class="col-xs-12 col-md-6 text-container">Jakobsbergsgatan 22, 111 44 Stockholm</div>
+    <div class="col-xs-12 col-md-3 text-container"><a href="mailto:hej@justarrived.se">hej@justarrived.se</a></div>
   </div>
 </footer>

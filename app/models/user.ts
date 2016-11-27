@@ -1,5 +1,5 @@
 import {UserImage} from "./user/user-image";
-import {map} from "lodash";
+import {map, find} from "lodash";
 import {UserLanguage} from "./user/user-language";
 import {Company} from "./company";
 
@@ -15,7 +15,9 @@ export class User {
   workExperience: string;
   education: string;
   skills: string;
+  frilansFinansPaymentDetails: boolean;
   company: Company;
+  profileImage: UserImage;
 
   constructor(jsonObject: any) {
     if (!jsonObject) {
@@ -34,6 +36,12 @@ export class User {
     this.education = jsonObject.education;
     this.skills = jsonObject.competence_text;
     this.company = new Company(jsonObject.company);
+    this.frilansFinansPaymentDetails = jsonObject.frilans_finans_payment_details;
+    this.profileImage = this.getProfileImage(jsonObject.user_images);
+  }
+
+  private getProfileImage(userImages: any): UserImage {
+    return new UserImage(find(userImages, {category_name: 'profile'}));
   }
 
   toJsonObject(): Object {

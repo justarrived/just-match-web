@@ -32,17 +32,14 @@
       }
 
       .comment-meta-data {
-        font-size: 15px;
-        line-height: 20px;
       }
 
       .comment-body {
         border-radius: 5px;
-        background: $color-gray-2;
+        background: $color-gray-100;
         padding: 10px 15px;
         margin-top: 5px;
         word-wrap: break-word;
-        font-size: 15px;
       }
     }
   }
@@ -72,12 +69,12 @@
     [contenteditable=true]:empty:before{
       content: attr(placeholder);
       display: block; /* For Firefox */
-      color: $color-gray-1;
+      color: $color-gray-200;
     }
 
     .resizable-div {
       border-radius: 5px;
-      border: 1px solid $color-gray-2;
+      border: 1px solid $color-gray-100;
       padding: 10px;
       word-break: break-all;
     }
@@ -87,7 +84,7 @@
     padding-left: 9px;
 
     .comment-send-button {
-      color: $color-blue-2;
+      color: $color-secondary-blue;
       font-weight: 700;
       border: 0;
       background: none;
@@ -96,7 +93,7 @@
       outline: none;
 
       &:disabled {
-        color: $color-gray-2;
+        color: $color-gray-100;
         cursor: default;
       }
     }

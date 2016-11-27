@@ -31,6 +31,11 @@ import {JobListItemComponent} from "./components/job-list-item/job-list-item.com
 import {PagerComponent} from "./components/pager/pager.component";
 import {JobDetailsComponent} from "./views/job-details/job-details.component";
 import {CommentsComponent} from "./components/comments/comments.component";
+import {JobStateStatusBarComponent} from "./components/job-state-status-bar/job-state-status-bar.component";
+import {ConfirmationComponent} from "./views/confirmation/confirmation.component";
+import {CandidateComponent} from "./views/candidate/candidate.component";
+import {CandidateStateStatusBarComponent} from "./components/candidate-state-status-bar/candidate-state-status-bar.component";
+import {CandidatesComponent} from "./views/candidates/candidates.component";
 import {MyJobsComponent} from "./views/my-jobs/my-jobs.component";
 import {CompanyJobsComponent} from "./views/my-jobs/company-jobs/company-jobs.component";
 import {UserJobsComponent} from "./views/my-jobs/user-jobs/user-jobs.component";
@@ -62,6 +67,11 @@ import {MyJobsItemComponent} from "./components/my-jobs-item/my-jobs-item.compon
     PagerComponent,
     JobDetailsComponent,
     CommentsComponent,
+    JobStateStatusBarComponent,
+    ConfirmationComponent,
+    CandidatesComponent,
+    CandidateComponent,
+    CandidateStateStatusBarComponent,
     MyJobsItemComponent,
     CompanyJobsComponent,
     UserJobsComponent,

@@ -1,59 +1,27 @@
 @import '../../styles/variables.scss';
 
+.adress-field {
+  color: $color-gray-400;
+}
+
 .job-list-container {
-  width: 100%;
-  border-bottom: 1px solid $color-gray-3;
-
-  .company-logo-container {
-    padding: 18px 0 18px 20px;
-
-    .company-logo {
-      margin-right: 8px;
-    }
+  padding: 1em;
+  border-bottom: 1px solid $color-gray-100;
+  p {
+    margin-bottom: 2px;
   }
+}
 
-  .arrow-container {
-    color: $color-gray-1;
-    font-size: 20px;
-    padding: 0 10px;
+.job-list-container-header {
+  font-weight: bold;
+}
 
-    .icon-ic-arrow-right:hover {
-      color: $color-dark;
-    }
-  }
+.total-salary {
+  color: $color-primary-cerise;
+}
 
-  .job-description-container {
-    width: 100%;
-    padding: 15px 0;
-
-    .job-name {
-      font-size: 17px;
-      font-weight: bold;
-      margin-bottom: 5px;
-
-      &:hover {
-        text-decoration: underline;
-      }
-    }
-
-    .job-description {
-      margin-bottom: 5px;
-    }
-
-    .job-rate {
-      width: 35%;
-
-      .total-salary {
-        color: $color-pink-2;
-        font-size: 21px;
-        font-weight: 600;
-        white-space: nowrap;
-      }
-
-      .salary-per-hour {
-        font-size: 16px;
-        white-space: nowrap;
-      }
-    }
-  }
+.salary-per-hour {
+  color: $color-gray-200;
+  text-align: right;
+  white-space: nowrap;
 }
