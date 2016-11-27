@@ -2,13 +2,16 @@
   <div class="col-xs-12">
     <h4>{{"assignment.assignments.title" | translate}}</h4>
   </div>
+</div>
 
+<div class="row">
   <div class="col-sm-8">
     <p>
       <i class="fa fa-file-text-o fa-lg"></i> {{job.description}}
     </p>
   </div>
-  <div class="col-sm-4">
+
+  <div class="col-sm-4 flex-xs-first">
     <p>
       <i class="fa fa-calendar fa-lg"></i> {{job.jobDate | date: 'yyyy-MM-dd'}} - {{job.jobEndDate | date: 'yyyy-MM-dd'}}
     </p>
@@ -16,11 +19,9 @@
       <i class="fa fa-map-marker fa-lg"></i> {{job.street}}, {{job.zip}}
     </p>
     <div *ngIf="!isPreview">
-      <i class="fa fa-money" aria-hidden="true"></i>
       <p>
-        {{job.hours}} {{'common.hour' | translate}} ({{job.grossSalary}} {{job.currency}}/{{'common.hour' | translate}})
-      </p>
-      <p>
+        <i class="fa fa-money" aria-hidden="true"></i> <br>
+        {{job.hours}} {{'common.hour' | translate}} ({{job.grossSalary}} {{job.currency}}/{{'common.hour' | translate}}) <br>
         {{job.netAmount}} {{job.currency}} {{ 'common.net_salary' | translate }}
       </p>
     </div>
