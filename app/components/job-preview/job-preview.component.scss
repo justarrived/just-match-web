@@ -3,13 +3,11 @@
 .job-details {
   width: 70%;
   margin: 0 auto;
-  //font-size: 16px;
   padding: 25px 0;
 
   .job-details-header {
     border-bottom: 1px $color-gray-50 solid;
     padding: 5px 0;
-    //font-size: 18px;
     margin-top: 15px;
     text-transform: uppercase;
   }
@@ -38,7 +36,6 @@
           &.icon-ic-calendar {
             .date-value {
               position: absolute;
-              //font-size: 14px;
               left: 9px;
               top: 8px;
             }
