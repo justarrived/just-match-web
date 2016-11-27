@@ -1,17 +1,18 @@
 @import "styles/variables.scss";
 
 .app {
+  margin-top: 65px;
   min-height: 100%;
   background-color: white;
 }
 
 .footer, .header {
   width: 100%;
-  background: $color-blue-0;
   color: white;
 }
 
 .footer {
+  background: $color-secondary-gray;
   font-size: 18px;
   max-width: calc(1024px - 60px);
   padding: 30px;
@@ -23,8 +24,13 @@
 }
 
 .header {
+  background: $color-white;
   padding: 5px 0;
-  position: relative;
+  height: 55px;
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
 
   .table-cell {
     vertical-align: middle;
@@ -41,6 +47,11 @@
         height: auto;
       }
     }
+  }
+
+  .menu-icon, .nav-language-icon{
+    cursor: pointer;
+    color: $color-gray-200;
 
     .back-button-container {
       .back-button {
@@ -50,42 +61,24 @@
     }
   }
 
-  .menu-icon {
-    height: 27px;
-    overflow: hidden;
-    padding-top: 3px;
-    margin: 0 auto 4px;
-
-    i {
-      display: block;
-      background: #fff;
-      height: 5px;
-      width: 30px;
-      margin: 3px auto;
-      -webkit-border-radius: 2px;
-      border-radius: 2px;
-    }
-  }
-
-  .menu-text {
-    color: #fff;
-    font-size: 12px;
-  }
-
   .nav-language-icon {
-    font-size: 9px;
-    border-radius: 50%;
-    background: $color-pink-2;
-    width: 27px;
+    font-size: 11px;
+    border-radius: 23px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: $color-gray-200;
+    width: 54px;
     text-align: center;
     vertical-align: center;
-    line-height: 27px;
+    line-height: 22px;
     margin: auto;
+    margin-right: 12px;
     text-transform: uppercase;
-  }
+    user-select: none;
 
-  .nav-language-text {
-    font-size: 12px;
+    .lang-arrow {
+      margin-left: 5px;
+    }
   }
 }
 
@@ -102,6 +95,7 @@
   overflow-y: auto;
 }
 
+
 .menu-side-bar {
   max-width: 1024px;
   margin: 0 auto;
@@ -116,18 +110,18 @@
     color: white;
     position: absolute;
     right: 10px;
-    z-index: 30;
+    z-index: 150;
     top: 15px;
+    cursor: pointer;
   }
 
   .menu-container {
     width: 375px;
-    background: rgba(34, 37, 49, 0.95);
+    background: rgba(34, 37, 49, 0.88);
     float: right;
     position: relative;
     z-index: 22;
     height: 100%;
-
 
     &.language-menu-container {
       color: white;
@@ -183,7 +177,7 @@
             display: inline-block;
             line-height: 60px;
             box-sizing: border-box;
-            border: 1px solid #FFFFFF;
+            border: 1px solid $color-white;
             border-radius: 50%;
             margin-bottom: 7px;
             text-transform: uppercase;
@@ -197,7 +191,7 @@
     }
 
     .nav-menu-icon-container {
-      color: $color-dark;
+      color: $color-secondary-gray;
       font-size: 105px;
       padding: 20px 0;
       line-height: 1em;
@@ -220,22 +214,22 @@
 
           .nav-menu-link {
             text-decoration: none;
-            color: $color-blue-3;
+            color: $color-blue-200;
             padding-left: 40px;
 
             &:hover {
               opacity: 0.7;
             }
 
-           .icon-ic-find-jobs,
-           .icon-ic-my-jobs,
-           .icon-ic-create,
-           .icon-ic-faq,
-           .icon-ic-contact,
-           .icon-ic-user,
-           .icon-ic-log-in {
+            .icon-ic-find-jobs,
+            .icon-ic-my-jobs,
+            .icon-ic-create,
+            .icon-ic-faq,
+            .icon-ic-contact,
+            .icon-ic-user,
+            .icon-ic-log-in {
               position: absolute;
-              color: #fff;
+              color: $color-white;
               font-size: 1.1em;
               left: 0;
               top: 6px;
@@ -243,7 +237,6 @@
           }
         }
       }
-
     }
 
     .nav-menu-footer {
@@ -286,6 +279,3 @@
     }
   }
 }
-
-
-

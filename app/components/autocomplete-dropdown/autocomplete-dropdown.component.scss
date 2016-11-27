@@ -1,8 +1,8 @@
 @import "../../styles/variables.scss";
 
-$background-color: #ffffff;
+$background-color: $color-white;
+$ms-item-text-color: $color-white;
 $disabled-background-color: #eeeeee;
-$ms-item-text-color: #ffffff;
 
 .autocomplete-dropdown {
   position: relative;
@@ -26,7 +26,7 @@ $ms-item-text-color: #ffffff;
   }
 
   .autocomplete-dropdown-container {
-    border: 1px solid $color-blue-1;
+    border: 1px solid $color-secondary-gray;
     background-color: $background-color;
 
     &.table {
@@ -57,7 +57,7 @@ $ms-item-text-color: #ffffff;
     list-style: none;
     background-color: $background-color;
     background-clip: padding-box;
-    border: 1px solid $color-blue-1;
+    border: 1px solid $color-secondary-gray;
     -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
     box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
 
@@ -71,19 +71,19 @@ $ms-item-text-color: #ffffff;
 
       &.group {
         padding: 5px;
-        background-color: $color-gray-2;
+        background-color: $color-gray-100;
       }
 
       &:not(.group) {
         &:hover {
-          background-color: $color-gray-3;
+          background-color: $color-gray-50;
         }
       }
     }
 
     .selected-autocomplete-item {
       >>> .autocomplete-dropdown-list-item {
-        background-color: $color-gray-3;
+        background-color: $color-gray-50;
       }
     }
   }
@@ -145,7 +145,7 @@ $ms-item-text-color: #ffffff;
 >>> .deletable-item {
   position: relative;
   display: inline-block;
-  background-color: $color-gray-3;
+  background-color: $color-gray-50;
   border-radius: 4px;
   padding: 4px 10px;
   white-space: nowrap;

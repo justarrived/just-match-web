@@ -1,16 +1,19 @@
 import {Component, OnInit} from "@angular/core";
 import {AuthManager} from "./services/auth-manager.service";
+import {ActsAsUser} from "./services/acts-as-user.service";
 import {Router, NavigationStart, RoutesRecognized, NavigationCancel, NavigationEnd, NavigationError} from "@angular/router";
 import {User} from "./models/user";
 import {TranslationService} from "./services/translation.service";
 import {Language} from "./models/language/language";
 import {UserManager} from "./user-manager.service";
+import {SystemLanguagesService} from "./services/system-languages.service";
 
 @Component({
   moduleId: module.id,
-  selector: "app",
-  templateUrl: "app.component.html",
-  styleUrls: ["app.component.css"]
+  selector: 'app',
+  templateUrl: 'app.component.html',
+  styleUrls: ['app.component.css'],
+  providers: [SystemLanguagesService]
 })
 export class AppComponent implements OnInit {
   states: Array<String> = [];
@@ -25,6 +28,8 @@ export class AppComponent implements OnInit {
   constructor(private router: Router,
               private authManager: AuthManager,
               private userManager: UserManager,
+              private actsAsUser: ActsAsUser,
+              private systemLanguagesService: SystemLanguagesService,
               public translationService: TranslationService
   ) {
     router.events.subscribe(event => {
@@ -50,7 +55,7 @@ export class AppComponent implements OnInit {
       }
     });
 
-    this.translationService.getSystemLanguages().then(result => this.systemLanguages = result);
+    this.systemLanguagesService.getSystemLanguages().then(result => this.systemLanguages = result);
     this.selectedLanguage = this.translationService.getSelectedLanguage();
   }
 
@@ -76,11 +81,11 @@ export class AppComponent implements OnInit {
   }
 
   onNavigationMenuButtonClick() {
-    this.isNavigationMenuVisible = true;
+    this.isNavigationMenuVisible = !this.isNavigationMenuVisible;
   }
 
   onLanguageMenuButtonClick() {
-    this.isLanguageMenuVisible = true;
+    this.isLanguageMenuVisible = !this.isLanguageMenuVisible;
   }
 
   onSelectLanguage(language: Language) {
