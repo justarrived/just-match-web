@@ -48,6 +48,7 @@
   "common.gross_salary": "gross salary",
   "common.net_salary": "after tax",
   "common.welcome_user": "Welcome {{username}}!",
+  "menu.language.translation_by_probono": "Translation made probono by",
   "menu.language.title": "Select language",
   "menu.language.text_1": "You can go back and change your selected language later if you like.",
   "menu.language.text_2": "Jobs, comments and messages are translated automatically.",

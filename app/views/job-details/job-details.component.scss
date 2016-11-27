@@ -2,9 +2,10 @@
 
 .job-details-header {
   background-color: $color-white;
-  height: 100px;
   .company-logo {
-    max-width: 50px;
-    border-radius: 300px;
+    width: 80px;
+    height: 80px;
+    border-radius: 90000px;
+    padding: 15px 0;
   }
 }
