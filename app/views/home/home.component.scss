@@ -34,15 +34,21 @@
 
   .show-all {
     display: flex;
-    flex-direction: column-reverse;
 
     span {
-      align-self: flex-end;
       cursor: pointer;
       color: $color-primary-cerise;
 
       i {
         font-size: 60%;
+      }
+    }
+
+    @media screen and (min-width: 576px) {
+      flex-direction: column-reverse;
+
+      span {
+        align-self: flex-end;
       }
     }
   }
@@ -118,6 +124,7 @@
         left: 0;
         top: 5px;
         font-size: 1.5em;
+        margin-top: 5px;
       }
     }
   }

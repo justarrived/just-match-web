@@ -15,22 +15,12 @@
   <!-- TODO: Implemente this -->
 </div>
 
-
-<div class="row pagination-wrapper flex-items-xs-middle">
-  <div class="back-button col-xs-4">
-    <i class="fa fa-angle-double-left" aria-hidden="true"></i>
-  </div>
-  <div class="pagination-text col-xs-4">
-    <p>{{page}} / {{nbrOfPages}} </p>
-  </div>
-  <div class="forward-button col-xs-4">
-    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-  </div>
-</div>
-
+<pager [maxResults]="totalJobs" [currentPage]="page" (pageChange)="onPageChange($event)"></pager>
 
 <div class="job-list-container row">
   <div>
     <job-list-item style="display: block;" *ngFor="let job of jobs" [job]="job"></job-list-item>
   </div>
 </div>
+
+<pager [maxResults]="totalJobs" [currentPage]="page" (pageChange)="onPageChange($event)"></pager>
