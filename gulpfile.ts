@@ -54,7 +54,7 @@ gulp.task('compile-ts:prod', () => {
 });
 
 gulp.task('compile-sass', () => {
-  return gulp.src(['app/styles/main.scss', 'app/**/*.scss', '!app/view.bak/**/*'])
+  return gulp.src(['app/**/*.scss', '!app/view.bak/**/*'])
     .pipe(sass().on('error', sass.logError))
     .pipe(autoprefixer())
     .pipe(cleanCss())
@@ -93,7 +93,7 @@ gulp.task('copy-config', () => {
 });
 
 gulp.task('bundle-styles', () => {
-  return gulp.src(['app/styles/main.css', 'app/styles/**/*.css'])
+  return gulp.src('app/styles/**/*.css')
     .pipe(concatCss(stylesBundleFilename))
     .pipe(cleanCss())
     .pipe(gulp.dest('dist/styles'));
