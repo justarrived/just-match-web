@@ -15,9 +15,10 @@ $disabled-background-color: #eeeeee;
       position: absolute;
       text-align: center;
       right: 10px;
-      top: calc(50% - 4px);
+      top: calc(50% - 8px);
       font-size: 8px;
       background-color: $background-color;
+      cursor: pointer;
 
       &.disabled {
         background-color: unset;
@@ -92,10 +93,6 @@ $disabled-background-color: #eeeeee;
     .drop-down-arrow {
       background-color: unset;
       cursor: not-allowed;
-
-      .icon-ic-arrow-bottom {
-        background-color: $disabled-background-color;
-      }
     }
 
     .autocomplete-dropdown-container {

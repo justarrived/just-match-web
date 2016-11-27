@@ -16,7 +16,9 @@
     <h2>{{'start.job_section.title' | translate}}</h2>
   </div>
   <div class="col-xs-12 col-sm-3 show-all">
-      <span routerLink="/jobs/1">{{'common.show_all' | translate | lowercase}} <i class="icon-ic-arrow-right"></i></span>
+    <a routerLink="/jobs/1">
+      <span>{{'common.show_all' | translate | lowercase}} <i class="fa fa-angle-right fa-lg"></i></span>
+    </a>
   </div>
   <div class="col-xs-12 jobs-slider">
     <div *ngFor="let job of newJobs" class="item-container clickable" [routerLink]="['/job', job.id]">
@@ -32,15 +34,15 @@
     <h3>{{'start.instruction_section.slide_1.title' | translate}}</h3>
     <ul class="list">
       <li class="item">
-        <i class="icon-ic-task"></i>
+        <i class="fa fa-check-circle-o fa-2x"></i>
         {{'start.instruction_section.slide_1.text_1' | translate}}
       </li>
       <li class="item">
-        <i class="icon-ic-task"></i>
+        <i class="fa fa-check-circle-o fa-2x"></i>
         {{'start.instruction_section.slide_1.text_2' | translate}}
       </li>
       <li class="item">
-        <i class="icon-ic-task"></i>
+        <i class="fa fa-check-circle-o fa-2x"></i>
         {{'start.instruction_section.slide_1.text_3' | translate}}
       </li>
     </ul>
@@ -51,15 +53,15 @@
     <p>{{'start.instruction_section.slide_2.text_1' | translate}}</p>
     <ul class="list">
       <li class="item">
-        <i class="icon-ic-task"></i>
+        <i class="fa fa-check-circle-o fa-2x"></i>
         {{'start.instruction_section.slide_2.text_2' | translate}}
       </li>
       <li class="item">
-        <i class="icon-ic-task"></i>
+        <i class="fa fa-check-circle-o fa-2x"></i>
         {{'start.instruction_section.slide_2.text_3' | translate}}
       </li>
       <li class="item">
-        <i class="icon-ic-task"></i>
+        <i class="fa fa-check-circle-o fa-2x"></i>
         {{'start.instruction_section.slide_2.text_4' | translate}}
       </li>
     </ul>

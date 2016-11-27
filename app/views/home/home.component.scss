@@ -38,10 +38,6 @@
     span {
       cursor: pointer;
       color: $color-primary-cerise;
-
-      i {
-        font-size: 60%;
-      }
     }
 
     @media screen and (min-width: 576px) {
@@ -118,12 +114,10 @@
       padding: 10px 0 10px 45px;
       position: relative;
 
-      .icon-ic-task {
+      .fa {
         position: absolute;
         left: 0;
         top: 5px;
-        font-size: 1.5em;
-        margin-top: 5px;
       }
     }
   }

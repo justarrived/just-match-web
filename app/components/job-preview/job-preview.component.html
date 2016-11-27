@@ -2,7 +2,7 @@
     <h4 class="job-details-header">{{"assignment.assignments.title" | translate}}</h4>
     <div class="job-details-container table">
         <div class="job-details-cell table-cell">
-            <div class="job-details-item with-border"><i class="icon-ic-description"></i>{{job.description}}</div>
+            <div class="job-details-item with-border"><i class="fa fa-file-text-o fa-lg"></i>{{job.description}}</div>
             <div class="job-details-item" *ngIf="!isPreview">
                 <div class="salary-per-hour">
                     <div>{{job.hours}} {{'common.hour' | translate}} ({{job.hourlyPay.grossSalary}} {{job.hourlyPay.currency}}/{{'common.hour' | translate}})</div>
@@ -11,8 +11,8 @@
             </div>
         </div>
         <div class="job-details-cell table-cell">
-            <div class="job-details-item with-border"><i class="icon-ic-location"></i>{{job.street}} {{job.zip}}</div>
-            <div class="job-details-item"><i class="icon-ic-calendar"><span class="date-value">{{job.jobDate | date: 'dd'}}</span></i>{{job.jobDate | date: 'yyyy-MM-dd'}} - {{job.jobEndDate | date: 'yyyy-MM-dd'}}</div>
+            <div class="job-details-item with-border"><i class="fa fa-map-marker fa-lg"></i>{{job.street}} {{job.zip}}</div>
+            <div class="job-details-item"><i class="fa fa-calendar fa-lg"><span class="date-value">{{job.jobDate | date: 'dd'}}</span></i>{{job.jobDate | date: 'yyyy-MM-dd'}} - {{job.jobEndDate | date: 'yyyy-MM-dd'}}</div>
         </div>
     </div>
 </div>
