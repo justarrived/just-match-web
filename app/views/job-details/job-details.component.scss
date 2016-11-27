@@ -1,1 +1,10 @@
 @import '../../styles/variables.scss';
+
+.job-details-header {
+  background-color: $color-white;
+  height: 100px;
+  .company-logo {
+    max-width: 50px;
+    border-radius: 300px;
+  }
+}
