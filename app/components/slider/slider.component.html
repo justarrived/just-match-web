@@ -1,0 +1,8 @@
+<div class="slider" (window:resize)="onResize()">
+  <div class="slider-container" (swipeleft)="onSwipe(true)" (swiperight)="onSwipe(false)">
+      <div *ngFor="let job of jobs" class="item-container clickable" [routerLink]="['/job', job.id]">
+        <div class="job-name"><div>{{(job.translated && job.translated.name) || job.name | slice:0:35}}{{(job.translated && job.translated.name.length > 35) || job.name.length > 35 ? '...' : ''}}</div></div>
+        <div class="salary-container">{{job.hourlyPay.grossSalary * job.hours}} {{job.hourlyPay.currency}}</div>
+      </div>
+  </div>
+</div>
