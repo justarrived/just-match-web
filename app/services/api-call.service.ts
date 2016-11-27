@@ -7,6 +7,9 @@ import {Observable} from "rxjs";
 import {Router} from "@angular/router";
 import {APP_CONFIG} from "../config/config";
 import {UserManager} from "../user-manager.service";
+import {ActsAsUser} from "./acts-as-user.service";
+
+const DEFAULT_LOCALE = 'en';
 
 @Injectable()
 export class ApiCall {
@@ -17,8 +20,14 @@ export class ApiCall {
   private storageSelectedLanguageKey: string = 'selectedLanguage';
   private transformHeaderName: string = 'X-API-KEY-TRANSFORM';
   private transformHeaderValue: string = 'underscore';
+  private actAsUserHeaderName: string = 'X-API-ACT-AS-USER';
+  private storageActAsUserIdKey: string = 'actAsUserId';
 
-  constructor(private http: Http, private localStorageWrapper: LocalStorageWrapper, private router: Router, private userManager: UserManager) {
+  constructor(private http: Http,
+              private localStorageWrapper: LocalStorageWrapper,
+              private router: Router,
+              private userManager: UserManager,
+              private actsAsUser: ActsAsUser) {
   }
 
   public get(url: string, urlParams?: Object, contentType?: string): Promise<any> {
@@ -58,12 +67,18 @@ export class ApiCall {
 
     let req: Request = new Request(options);
     let authorizationData = this.localStorageWrapper.getObject(this.storageAuthorizationData);
-    if (authorizationData) {
+    if (authorizationData != null) {
       req.headers.set(this.authorizationHeaderName, this.authorizationHeaderPrefix + authorizationData['auth_token']);
     }
     let selectedLanguage = this.localStorageWrapper.getObject(this.storageSelectedLanguageKey);
-    req.headers.set(this.languageHeaderName, ((selectedLanguage && selectedLanguage.languageCode) || 'en'));
+    req.headers.set(this.languageHeaderName, ((selectedLanguage && selectedLanguage.languageCode) || DEFAULT_LOCALE));
     req.headers.set(this.transformHeaderName, this.transformHeaderValue);
+
+    const actAsUserId = this.actsAsUser.getUserId();
+    if (actAsUserId != null) {
+      req.headers.set(this.actAsUserHeaderName, actAsUserId);
+    }
+
     return this.http.request(req)
       .catch(response => {
         this.handleResponseErrors(response);

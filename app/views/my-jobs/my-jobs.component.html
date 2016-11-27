@@ -11,15 +11,7 @@
       {{"company.assignments.filter_1" | translate}}
     </h4>
   </div>
-  <div class="my-jobs-header-tab col-xs-6" [ngClass]="{'my-jobs-header-tab-selected': selectedState == 'history'}" (click)="setState('history')">
-    <h4>
-      {{"company.assignments.filter_2" | translate}}
-    </h4>
-  </div>
-</div>
 
-
-<div class="row" style="background-color: white;">
   <company-jobs *ngIf="isCompanyUser" [selectedState]="selectedState"></company-jobs>
   <user-jobs *ngIf="!isCompanyUser" [selectedState]="selectedState"></user-jobs>
 </div>

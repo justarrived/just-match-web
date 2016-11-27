@@ -3,5 +3,5 @@ export function namePropertyLabel(item) {
 }
 
 export function grossSalaryLabel(item) {
-  return item.grossSalary + ' ' + item.currency;
+  return item.rateExcludingVAT + ' ' + item.currency + ' (' + item.grossSalary + ' ' + item.currency + ')';
 }
