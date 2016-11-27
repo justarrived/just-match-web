@@ -78,12 +78,10 @@ export class AppComponent implements OnInit {
   }
 
   onNavigationMenuButtonClick() {
-    this.isLanguageMenuVisible = false;
     this.isNavigationMenuVisible = !this.isNavigationMenuVisible;
   }
 
   onLanguageMenuButtonClick() {
-    this.isNavigationMenuVisible = false;
     this.isLanguageMenuVisible = !this.isLanguageMenuVisible;
   }
 

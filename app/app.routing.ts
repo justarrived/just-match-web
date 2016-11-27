@@ -24,6 +24,7 @@ const appRoutes: Routes = [
   { path: 'jobs/:page', component: JobsComponent },
   { path: 'job/:id/candidate/:userJobId', component: CandidateComponent },
   { path: 'job/:id/candidates', component: CandidatesComponent },
+  { path: 'jobs/:page', component: JobsComponent },
   { path: 'job/:id', component: JobDetailsComponent },
   { path: 'user/register', component: UserRegisterComponent },
   { path: 'user', component: UserProfileComponent, canActivate: [AuthGuard] },

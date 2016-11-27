@@ -1,20 +1,40 @@
-<div class="job-list-container" (click)="onListItemClick()">
-  <p class="job-list-container-header">{{job.name}}</p>
-  <p class="adress-field" >
-    <i class="fa fa-map-marker" aria-hidden="true"></i> {{job.street}}, {{job.zip}}
-  </p>
-
-  <div class="row">
-    <div class="col-xs-9">
-      <span class="total-salary">{{job.amount}} {{job.hourlyPay.currency}}</span>
-      <span class="salary-per-hour">
-        {{job.hours}}h ({{job.amount}} {{job.hourlyPay.currency}}/h)
-      </span>
+<div class="job-list-container table clickable" (click)="onListItemClick()">
+  <div class="table-row">
+    <div class="table-cell min-width-column company-logo-container">
+      <img  class="company-logo rounded-company-logo rounded-image no-select" [src]="(job.company.companyLogo && job.company.companyLogo.imageUrlSmall) || 'assets/images/placeholder-logo.png'">
     </div>
-
-    <div class="salary-per-hour col-xs-3">
-      {{job.jobDate | date: 'yyyy-MM-dd'}}
+    <div class="table-cell">
+      <div class="table job-description-container">
+        <div class="table-row">
+          <div class="table-cell">
+            <div class="job-name">{{job.name}}</div>
+            <div class="job-description">{{job.shortDescription}}</div>
+            <div class="job-address">
+              <i class="icon-ic-location"></i>
+              {{job.street}} {{job.zip}}
+            </div>
+          </div>
+          <div class="table-cell job-rate text-center">
+            <div>
+              <div class="total-salary" *ngIf="isCompanyUser">
+                {{job.hourlyPay.rateExcludingVAT * job.hours}} {{job.hourlyPay.currency}}
+              </div>
+              <div class="total-salary" *ngIf="!isCompanyUser">{{job.hourlyPay.grossSalary * job.hours}} {{job.hourlyPay.currency}}</div>
+            </div>
+            <div>
+              <div class="salary-per-hour" *ngIf="isCompanyUser">
+                {{job.hours}} h ({{job.hourlyPay.rateExcludingVAT}} {{job.hourlyPay.currency}}/h)
+              </div>
+              <div class="salary-per-hour" *ngIf="!isCompanyUser">
+                {{job.hours}} h ({{job.hourlyPay.grossSalary}} {{job.hourlyPay.currency}}/h)
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-
+    <div class="table-cell min-width-column arrow-container">
+      <i class="icon-ic-arrow-right"></i>
+    </div>
   </div>
 </div>
