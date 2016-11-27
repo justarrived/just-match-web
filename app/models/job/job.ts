@@ -81,7 +81,6 @@ export class HourlyPay {
   grossSalary: number;
   id: string;
   netSalary: number;
-  rateExcludingVAT: number;
   rateIncludingVAT: number;
 
   constructor(jsonObject: any) {
@@ -93,7 +92,6 @@ export class HourlyPay {
     this.grossSalary = jsonObject.gross_salary;
     this.id = jsonObject.id;
     this.netSalary = jsonObject.net_salary;
-    this.rateExcludingVAT = jsonObject.rate_excluding_vat;
     this.rateIncludingVAT = jsonObject.rate_including_vat;
   }
 }
