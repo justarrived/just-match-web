@@ -1,13 +1,10 @@
 <div class="job-details">
-    <div class="job-details-header">{{"assignment.assignments.title" | translate}}</div>
+    <h4 class="job-details-header">{{"assignment.assignments.title" | translate}}</h4>
     <div class="job-details-container table">
         <div class="job-details-cell table-cell">
             <div class="job-details-item with-border"><i class="fa fa-file-text-o fa-lg"></i>{{job.description}}</div>
             <div class="job-details-item" *ngIf="!isPreview">
-                <div class="salary-per-hour" *ngIf="isCompanyUser">
-                    {{job.hours}} {{'common.hour' | translate}} ({{job.hourlyPay.rateExcludingVAT}} {{job.hourlyPay.currency}}/{{'common.hour' | translate}})
-                </div>
-                <div class="salary-per-hour" *ngIf="!isCompanyUser">
+                <div class="salary-per-hour">
                     <div>{{job.hours}} {{'common.hour' | translate}} ({{job.hourlyPay.grossSalary}} {{job.hourlyPay.currency}}/{{'common.hour' | translate}})</div>
                     <div>{{job.hourlyPay.netSalary * job.hours}} {{job.currency}} {{ 'common.net_salary' | translate }}</div>
                 </div>

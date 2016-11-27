@@ -46,7 +46,7 @@
       border-width: 2px;
       border-style: solid;
       border-color: $color-gray-200;
-      width: 54px;
+      padding: 0 0.5em;
       text-align: center;
       vertical-align: center;
       line-height: 22px;
@@ -235,10 +235,10 @@
   .text-container {
     background: $color-secondary-gray;
     line-height: $header-height;
-    font-family: "museo-reg","Helvetica Neue",Helvetica,Arial,sans-serif;
 
     a {
       color: inherit;
+      line-height: $header-height;
     }
   }
 

@@ -4,14 +4,8 @@
 
   <div class="row">
     <div class="col-xs-9">
-      <span class="total-salary" *ngIf="isCompanyUser">
-        {{job.hourlyPay.rateExcludingVAT * job.hours}} {{job.hourlyPay.currency}}
-      </span>
-      <span class="total-salary" *ngIf="!isCompanyUser">{{job.hourlyPay.grossSalary * job.hours}} {{job.hourlyPay.currency}}</span>
-      <span class="salary-per-hour" *ngIf="isCompanyUser">
-        {{job.hours}}h ({{job.hourlyPay.rateExcludingVAT}} {{job.hourlyPay.currency}}/h)
-      </span>
-      <span class="salary-per-hour" *ngIf="!isCompanyUser">
+      <span class="total-salary">{{job.hourlyPay.grossSalary * job.hours}} {{job.hourlyPay.currency}}</span>
+      <span class="salary-per-hour">
         {{job.hours}}h ({{job.hourlyPay.grossSalary}} {{job.hourlyPay.currency}}/h)
       </span>
     </div>
