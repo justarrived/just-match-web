@@ -1,57 +1,24 @@
 @import '../../styles/variables.scss';
-@import '../../styles/buttons.scss';
 
-.pagination-wrapper {
-  background-color: $color-gray-25;
-  padding: 8px;
+.pager-container {
+  padding-top: 20px;
 
-  p {
-    margin: 0;
-  }
-}
-
-.back-button {
-  text-align: left;
-  color: $color-primary-cerise;
-  > i {
-    cursor: pointer; cursor: hand;
-  }
-}
-
-.forward-button {
-  text-align: right;
-  color: $color-primary-cerise;
-  > i {
-    cursor: pointer; cursor: hand;
-  }
-}
-
-.pagination-text {
-  text-align: center;
-  white-space: nowrap;
-}
-
-.pagination-button {
-  @extend .medium-button-primary-light;
-  padding: 0 2em;
-  text-align: center;
-  background-color: $color-primary-cerise;
-  color: $color-white;
-  border: 1px solid $color-primary-cerise;
-  cursor: pointer; cursor: hand;
-
-  .button-arrow-position {
+  .pager-button {
+    background: none;
+    border: 0;
+    display: inline-block;
+    color: $color-secondary-gray;
+    opacity: 0.3;
     position: relative;
-    top: 8px;
+    width: 35px;
+    height: 35px;
+    margin: 0 3px 3px;
+    cursor: pointer;
+    font-size: 14px;
+
+    .additional-arrow {
+      position: absolute;
+      left: 0;
+    }
   }
-}
-
-.navigation-left-arrow {
-  position: relative;
-  left: 7px;
-}
-
-.navigation-right-arrow {
-  position: relative;
-  right: 7px;
 }

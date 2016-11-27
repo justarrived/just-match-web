@@ -1,22 +1,31 @@
 @import '../../styles/variables.scss';
-@import '../../styles/buttons.scss';
 
-.jobs-header {
-  background-color: $color-primary-cerise;
-  padding: 1em 0;
-
-  h3 {
-    position: relative;
-    top: 5px;
-    color: $color-white;
-  }
-
+.find-job-header {
+  padding: 30px;
+  background: $color-secondary-gray;
+  color: white;
+  font-size: 22px;
 }
 
-.job-list-container {
-  background-color: $color-white;
-  > div {
-    width: 100%;
-    cursor: pointer; cursor: hand;
+.find-job-container {
+  position: relative;
+  .map-container {
+    width: 30%;
+    position: absolute;
+    right: 0;
+
+  }
+
+  .jobs-list-container {
+    min-height: calc(100vh - 86px);
+    width: 70%;
+    box-shadow: 2px 0px 3px 0px rgba(0, 0, 0, 0.4);
+  }
+
+  @media (max-width: 1024px) {
+    .map-container, .jobs-list-container {
+      position: relative;
+      width: 100%;
+    }
   }
 }

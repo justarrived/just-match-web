@@ -38,7 +38,7 @@
   <div class="user-rating-container" *ngIf="showUserRating">
     <div>{{'assignment.recommendation.title' | translate: {candidate_name: userJob.user.firstName} }}</div>
     <div>
-      <i class="fa fa-star fa-2x" [ngClass]="{'red-star': starRating >= number}" *ngFor="let number of [1,2,3,4,5]" (click)="onStarRatingClick(number)"></i>
+      <i class="icon-ic-star" [ngClass]="{'red-star': starRating >= number}" *ngFor="let number of [1,2,3,4,5]" (click)="onStarRatingClick(number)"></i>
     </div>
     <div>&nbsp;</div>
     <div class="material-group">
