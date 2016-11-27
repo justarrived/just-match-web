@@ -234,10 +234,10 @@
   .text-container {
     background: $color-secondary-gray;
     line-height: $header-height;
-    font-family: "museo-reg","Helvetica Neue",Helvetica,Arial,sans-serif;
 
     a {
       color: inherit;
+      line-height: $header-height;
     }
   }
 

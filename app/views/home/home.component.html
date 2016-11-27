@@ -16,9 +16,7 @@
     <h2>{{'start.job_section.title' | translate}}</h2>
   </div>
   <div class="col-xs-12 col-sm-3 show-all">
-    <a routerLink="/jobs/1">
-      <span>{{'common.show_all' | translate | lowercase}} <i class="icon-ic-arrow-right"></i></span>
-    </a>
+      <span routerLink="/jobs/1">{{'common.show_all' | translate | lowercase}} <i class="icon-ic-arrow-right"></i></span>
   </div>
   <div class="col-xs-12 jobs-slider">
     <div *ngFor="let job of newJobs" class="item-container clickable" [routerLink]="['/job', job.id]">
