@@ -8,8 +8,8 @@
   width: 100%;
   height: $header-height;
   border-radius: 0px;
-  padding-left: 10%;
-  padding-right: 10%;
+  padding-left: $header-horizontal-padding;
+  padding-right: $header-horizontal-padding;
   color: $color-gray-200;
 
   .navbar-container {
