@@ -1,6 +1,6 @@
 <div class="row my-jobs-header">
   <h2>
-    Mina uppdrag
+    {{"menu.main.my_assignment" | translate}}
   </h2>
 </div>
 
@@ -8,12 +8,12 @@
 <div class="row">
   <div class="my-jobs-header-tab col-xs-6" [ngClass]="{'my-jobs-header-tab-selected': selectedState == 'active'}" (click)="setState('active')" >
     <h4>
-      Pågående
+      {{"company.assignments.filter_1" | translate}}
     </h4>
   </div>
   <div class="my-jobs-header-tab col-xs-6" [ngClass]="{'my-jobs-header-tab-selected': selectedState == 'history'}" (click)="setState('history')">
     <h4>
-      Slutförda
+      {{"company.assignments.filter_2" | translate}}
     </h4>
   </div>
 </div>
