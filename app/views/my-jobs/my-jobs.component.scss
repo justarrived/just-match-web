@@ -1,0 +1,31 @@
+@import '../../styles/variables.scss';
+@import '../../styles/buttons.scss';
+
+.my-jobs-header {
+
+  background-color: $color-primary-cerise;
+  padding: 1em;
+
+  h2 {
+    color: white;
+  }
+}
+
+.my-jobs-header-tab {
+  padding: 8px;
+  text-align: center;
+  background-color: $color-white;
+  cursor: pointer; cursor: hand;
+  h4 {
+    color: $color-gray-200;
+  }
+  border-bottom: 4px solid $color-gray-50;
+}
+
+.my-jobs-header-tab-selected {
+  @extend .my-jobs-header-tab;
+  h4 {
+    color: $color-gray-500;
+  }
+  border-bottom: 4px solid $color-primary-cerise;
+}
