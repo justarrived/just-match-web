@@ -23,10 +23,9 @@
   <div class="col-xs-12 jobs-slider">
     <div *ngFor="let job of newJobs" class="item-container clickable" [routerLink]="['/job', job.id]">
       <div class="job-name"><div>{{(job.translated && job.translated.name) || job.name | slice:0:35}}{{(job.translated && job.translated.name.length > 35) || job.name.length > 35 ? '...' : ''}}</div></div>
-      <div class="salary-container" *ngIf="isCompanyUser">
-        {{job.hourlyPay.rateExcludingVAT * job.hours}} {{job.hourlyPay.currency}}
+      <div class="salary-container">
+        {{job.hourlyPay.grossSalary * job.hours}} {{job.hourlyPay.currency}}
       </div>
-      <div class="salary-container" *ngIf="!isCompanyUser">{{job.hourlyPay.grossSalary * job.hours}} {{job.hourlyPay.currency}}</div>
     </div>
   </div>
 </div>
