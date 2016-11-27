@@ -26,42 +26,42 @@
           <div><i class="fa fa-times fa-2x" (click)="isLanguageMenuVisible = false"></i></div>
           <div>
               <a routerLink="/my-jobs" *ngIf="user">
-                <i class="icon-ic-my-jobs"></i>
+                <i class="fa fa-paperclip fa-lg"></i>
                 {{'menu.main.my_assignment' | translate}}
               </a>
 
               <a routerLink="/jobs/1">
-                <i class="icon-ic-find-jobs"></i>
+                <i class="fa fa-wrench fa-lg"></i>
                 {{'menu.main.find_assignment' | translate}}
               </a>
 
               <a routerLink="/job/create" *ngIf="isCompanyUser">
-                <i class="icon-ic-create"></i>
+                <i class="fa fa-plus fa-lg"></i>
                 {{'menu.main.create_assignment' | translate}}
               </a>
 
               <a href="">
-                <i class="icon-ic-faq"></i>
+                <i class="fa fa-clipboard fa-lg"></i>
                 {{'menu.main.faq' | translate}}
               </a>
 
               <a href="">
-                <i class="icon-ic-contact"></i>
+                <i class="fa fa-comments fa-lg"></i>
                 {{'menu.main.contact' | translate}}
               </a>
 
               <a routerLink="/user" *ngIf="user && !isCompanyUser">
-                <i class="icon-ic-user"></i>
+                <i class="fa fa-user fa-lg"></i>
                 {{'profile' | translate}}
               </a>
 
               <a routerLink="/login" *ngIf="!user">
-                <i class="icon-ic-log-in"></i>
+                <i class="fa fa-power-off fa-lg"></i>
                 {{'menu.main.login' | translate}}
               </a>
 
               <a (click)="onLogoutButtonClick()" *ngIf="user">
-                <i class="icon-ic-log-in"></i>
+                <i class="fa fa-power-off fa-lg"></i>
                 {{'menu.main.logout' | translate}}
               </a>
           </div>
