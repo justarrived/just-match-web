@@ -151,8 +151,8 @@
       </div>
 
       <div class="text-center">
-        <button type="button" class="button primary form-group" (click)="setPreviewMode()" [disabled]="form.invalid">{{'common.next_step' |
-          translate}}
+        <button type="button" class="button primary form-group" (click)="setPreviewMode()" [disabled]="form.invalid">
+          {{'common.next_step' | translate}}
         </button>
       </div>
     </form>
@@ -168,7 +168,9 @@
       </div>
     </div>
 
-    <job-preview [job]="job" [isPreview]="true"></job-preview>
+    <div class="container-fluid">
+      <job-preview [job]="job" [isPreview]="true"></job-preview>
+    </div>
 
     <div class="approve-buttons">
       <button class="button secondary" (click)="exitPreviewMode()" type="button">{{'common.edit' | translate}}</button>
