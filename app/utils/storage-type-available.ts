@@ -7,7 +7,7 @@ export function storageTypeAvailable(type): boolean {
 		storage.removeItem(value);
 
 		return true;
-	} catch(e) {
+	} catch (e) {
 		return false;
 	}
 }
