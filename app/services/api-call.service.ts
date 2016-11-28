@@ -7,7 +7,6 @@ import {Observable} from "rxjs";
 import {Router} from "@angular/router";
 import {APP_CONFIG} from "../config/config";
 import {UserManager} from "../user-manager.service";
-import {ActsAsUser} from "./acts-as-user.service";
 import {TranslationService} from "./translation.service";
 
 @Injectable()
