@@ -23,7 +23,7 @@ export class UserRegisterComponent implements OnInit {
   statuses: UserStatus[];
   countries: Country[];
   search: any;
-  errors: Object = {};
+  errors: any = {};
 
   constructor(private router: Router,
               private userProxy: UserProxy,
@@ -52,7 +52,7 @@ export class UserRegisterComponent implements OnInit {
       }).then(() => {
         this.router.navigate(['/user']);
       }).catch(errors => {
-        this.errors = errors.details;
+        this.errors = errors;
       });
   }
 }
