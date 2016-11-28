@@ -45,20 +45,17 @@
 }
 
 .new-comment-container {
-  width: 100%;
-  max-width: 1024px;
   padding: 15px 0;
-  background-color: white;
+  background-color: $default-bg-color;
+
+  @media (max-width: $xs-device-width) {
+    width: 100%;
+  }
 
   &.moving {
     position: fixed;
     bottom: 0;
     box-shadow: 0 -1px 10px -3px #333;
-  }
-
-  > .table {
-    width: 70%;
-    margin: 0 auto;
   }
 
   .resizable-div-cell {
