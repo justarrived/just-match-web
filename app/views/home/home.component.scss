@@ -4,10 +4,10 @@
   background-color: $color-primary-cerise;
   text-align: center;
   padding: 3em;
-  color: $color-white;
+  color: $white;
 
   h1 {
-    color: $color-white;
+    color: $white;
     text-shadow: 0px 0px 3px rgba(0, 0, 0, 0.75);
   }
 
@@ -59,7 +59,7 @@
     display: inline-block;
     width: 120px;
     margin: 5px;
-    background-color: $color-white;
+    background-color: $white;
     border-radius: 3px 3px 3px 3px;
     box-shadow: 0 0 3px 0px rgba(0,0,0,.2);
     cursor: pointer;
@@ -76,7 +76,7 @@
     }
 
     .salary-container {
-      color: $color-white;
+      color: $white;
       background: $color-primary-cerise;
       padding: 5px;
       border-radius: 0px 0px 3px 3px;
@@ -88,7 +88,7 @@
 .instructions-container {
   padding: 4em 4em 8em 4em;
   text-align: center;
-  color: $color-white;
+  color: $white;
   background: $color-secondary-blue;
   position: relative;
 
@@ -125,7 +125,7 @@
 
 .home-partners {
   text-align: center;
-  background: $color-white;
+  background: $white;
   padding: 2em;
 
   .partners-logos-container {
