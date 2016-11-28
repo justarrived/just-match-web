@@ -1,51 +1,9 @@
 @import '../../styles/variables.scss';
 
-.job-details {
-  width: 70%;
-  margin: 0 auto;
-  padding: 25px 0;
+.job-info-row {
+  padding: 18px 0;
 
-  .job-details-header {
-    border-bottom: 1px $color-gray-50 solid;
-    padding: 5px 0;
-    margin-top: 15px;
-    text-transform: uppercase;
-  }
-
-  .job-details-container {
-    width: 100%;
-
-    .job-details-cell {
-      width: 50%;
-      vertical-align: top;
-
-      .job-details-item {
-        display: block;
-        margin-left: 45px;
-        padding: 18px 0;
-        position: relative;
-
-        i {
-          color: $color-gray-200;
-          position: absolute;
-          left: -45px;
-          font-size: 25px;
-          top: 15px;
-          opacity: 0.85;
-
-          &.icon-ic-calendar {
-            .date-value {
-              position: absolute;
-              left: 9px;
-              top: 8px;
-            }
-          }
-        }
-
-        &.with-border {
-          border-bottom: 1px $color-gray-50 solid;
-        }
-      }
-    }
+  &.with-border {
+    border-bottom: 1px solid $white-bg-border;
   }
 }

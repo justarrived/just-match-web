@@ -6,24 +6,26 @@
 
 <div class="row">
   <div class="col-sm-8">
-    <p>
+    <div class="job-info-row border">
       <i class="fa fa-file-text-o fa-lg"></i> {{job.description}}
-    </p>
+    </div>
   </div>
 
-  <div class="col-sm-4 flex-xs-first">
-    <p>
+  <div class="col-sm-4 flex-xs-first flex-sm-last">
+    <div class="job-info-row with-border">
       <i class="fa fa-calendar fa-lg"></i> {{job.jobDate | date: 'yyyy-MM-dd'}} - {{job.jobEndDate | date: 'yyyy-MM-dd'}}
-    </p>
-    <p>
+    </div>
+    <div class="job-info-row with-border">
       <i class="fa fa-map-marker fa-lg"></i> {{job.address}}
-    </p>
+    </div>
     <div *ngIf="!isPreview">
-      <p>
-        <i class="fa fa-money" aria-hidden="true"></i> <br>
-        {{job.hours}} {{'common.hour' | translate}} ({{job.grossSalary}} {{job.currency}}/{{'common.hour' | translate}}) <br>
+      <div class="job-info-row with-border">
+        <i class="fa fa-clock" aria-hidden="true"></i> {{job.hours}} {{'common.hour' | translate}}
+      </div>
+      <div class="job-info-row">
+        <i class="fa fa-money" aria-hidden="true"></i> ({{job.grossSalary}} {{job.currency}}/{{'common.hour' | translate}}) <br>
         {{job.netAmount}} {{job.currency}} {{ 'common.net_salary' | translate }}
-      </p>
+      </div>
     </div>
   </div>
 </div>
