@@ -194,7 +194,7 @@
     }
 
     .select-language-header-text {
-      color: white;
+      color: $white;
     }
 
     .select-language-container {
@@ -204,7 +204,7 @@
         display: inline-block;
         text-align: center;
         font-size: 14px;
-        margin: 12px;
+        margin: 12px 7px;
         cursor: pointer;
 
         .language-code {
