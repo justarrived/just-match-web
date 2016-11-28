@@ -102,4 +102,12 @@ export class AppComponent implements OnInit {
     this.authManager.logoutUser();
     this.router.navigate(['/home']);
   }
+
+  get isSideMenuVisible(): boolean {
+    return this.isNavigationMenuVisible || this.isLanguageMenuVisible;
+  }
+
+  get languageBtnIconClassName(): string {
+    return this.isLanguageMenuVisible ? 'fa-caret-up' : 'fa-caret-down';
+  }
 }

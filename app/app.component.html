@@ -12,7 +12,10 @@
         </div>
         <div class="col-xs right row flex-items-xs-middle">
           <div (click)="onLanguageMenuButtonClick()" class="button-container">
-            <div class="nav-language-icon">{{selectedLanguage.languageCode}}<div class="fa lang-arrow" [class.fa-caret-down]="!isLanguageMenuVisible" [class.fa-caret-up]="isLanguageMenuVisible"></div></div>
+            <div class="nav-language-icon">
+              {{selectedLanguage.languageCode}}
+              <div class="fa lang-arrow" [ngClass]="[languageBtnIconClassName]"></div>
+            </div>
           </div>
           <div (click)="onNavigationMenuButtonClick()" class="button-container">
             <span class="fa fa-bars fa-2x menu-icon"></span>
@@ -20,7 +23,7 @@
         </div>
       </div>
     </nav>
-    <div class="menu-container" *ngIf="isNavigationMenuVisible || isLanguageMenuVisible" (click)="isNavigationMenuVisible = false; isLanguageMenuVisible = false;">
+    <div class="menu-container" *ngIf="isSideMenuVisible" (click)="isNavigationMenuVisible = false; isLanguageMenuVisible = false;">
       <div class="menu">
         <div *ngIf="isNavigationMenuVisible">
           <div><i class="fa fa-times fa-2x" (click)="isLanguageMenuVisible = false"></i></div>

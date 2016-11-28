@@ -1,18 +1,11 @@
 <div class="container-fluid">
   <div class="jobs-header row"> <!-- All Jobs -->
-    <div class="col-md-6">
+    <div class="col-xs-12">
       <h3>
         {{'common.all_jobs' | translate: {nbrOfJobs: totalJobs} }}
       </h3>
     </div>
-
-    <div class="col-md-6">
-      <p>
-        <strong>TODO: Implement Google Maps</strong>
-      </p>
-    </div>
   </div>
-
 
   <pager [maxResults]="totalJobs" [currentPage]="page" (pageChange)="onPageChange($event)"></pager>
 
