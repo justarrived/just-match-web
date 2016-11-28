@@ -12,7 +12,7 @@ export function parseJsonapiErrorResponse(response: Response): Object {
   const errors: Array<Object> = [];
 
   _.forEach(response.json().errors, error => {
-    const aboutLink  = error.links ? error.links.about : undefined;
+    const aboutLink  = error.links && error.links.about;
     const detail = error.detail;
     const source = error.source;
     const formattedError = {
@@ -33,11 +33,9 @@ export function parseJsonapiErrorResponse(response: Response): Object {
       formattedError['sourceParameter'] = source.parameter;
       formattedError['attribute'] = attributeName;
 
-      if (errorDetails[attributeName]) {
-        errorDetails[attributeName] = errorDetails[attributeName] + ', ' + detail;
-      } else {
-        errorDetails[attributeName] = detail;
-      }
+      const currentDetail = errorDetails[attributeName];
+      errorDetails[attributeName] = currentDetail ? (currentDetail + ', ' + detail) : detail;
+
     }
 
     errors.push(formattedError);
