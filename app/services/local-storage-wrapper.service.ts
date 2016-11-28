@@ -69,7 +69,7 @@ export class LocalStorageWrapper {
     this.set(key, JSON.stringify(value));
   }
 
-  public getObject(key: string): Object {
+  public getObject(key: string): any {
     const value = this.get(key);
     return value ? JSON.parse(value) : null;
   }
