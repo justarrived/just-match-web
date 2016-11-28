@@ -1,8 +1,7 @@
 @import '../../styles/variables.scss';
 
 .comments-container {
-  width: 70%;
-  margin: 0 auto;
+  background-color: $default-bg-color;
 
   &.small-addition-padding {
     padding-bottom: 15px;

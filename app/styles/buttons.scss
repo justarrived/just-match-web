@@ -18,5 +18,5 @@
 .medium-button-secondary-light {
   @include medium-button;
   color: $color-primary-cerise !important;
-  background-color: $white;
+  background-color: $default-bg-color;
 }
