@@ -1,9 +1,9 @@
 import {Component, OnInit} from "@angular/core";
+import {Router} from "@angular/router";
 import {JobProxy} from "../../../services/job-proxy.service";
 import {Job} from "../../../models/job/job";
 import {HourlyPay} from "../../../models/job/job";
 import {Category} from "../../../models/job/job";
-import {Router} from "@angular/router";
 import {grossSalaryLabel} from "../../../utils/label-util";
 import {namePropertyLabel} from "../../../utils/label-util";
 import {TranslationService} from "../../../services/translation.service";
@@ -24,7 +24,7 @@ export class JobCreateComponent implements OnInit {
 
   isPreview: boolean = false;
   search: any;
-  errors: any = {};
+  errors: Object = {};
 
   constructor(private router: Router,
               private jobProxy: JobProxy,
@@ -53,7 +53,7 @@ export class JobCreateComponent implements OnInit {
         .then(() => {
           this.router.navigate(['/jobs']);
         }).catch(errors => {
-      this.errors = errors;
+      this.errors = errors.details;
       this.isPreview = false;
     });
   }
