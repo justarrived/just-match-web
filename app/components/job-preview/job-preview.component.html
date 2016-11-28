@@ -16,7 +16,7 @@
       <i class="fa fa-calendar fa-lg"></i> {{job.jobDate | date: 'yyyy-MM-dd'}} - {{job.jobEndDate | date: 'yyyy-MM-dd'}}
     </p>
     <p>
-      <i class="fa fa-map-marker fa-lg"></i> {{job.street}}, {{job.zip}}
+      <i class="fa fa-map-marker fa-lg"></i> {{job.address}}
     </p>
     <div *ngIf="!isPreview">
       <p>

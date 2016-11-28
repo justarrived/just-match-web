@@ -76,6 +76,10 @@ export class Job {
     return this.hourlyPay.currency;
   }
 
+  get address(): string {
+    return this.street + ', ' + this.zip;
+  }
+
   get companyLogoURL(): string {
     var companyLogo = this.company.companyLogo;
     if (companyLogo && companyLogo.imageUrlSmall) {
