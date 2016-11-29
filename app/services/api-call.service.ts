@@ -8,8 +8,7 @@ import {Router} from "@angular/router";
 import {APP_CONFIG} from "../config/config";
 import {UserManager} from "../user-manager.service";
 import {ActsAsUser} from "./acts-as-user.service";
-
-const DEFAULT_LOCALE = 'en';
+import {TranslationService} from "./translation.service";
 
 @Injectable()
 export class ApiCall {
@@ -17,17 +16,16 @@ export class ApiCall {
   private authorizationHeaderPrefix: string = 'Token token=';
   private storageAuthorizationData: string = 'authorizationData';
   private languageHeaderName: string = 'X-API-LOCALE';
-  private storageSelectedLanguageKey: string = 'selectedLanguage';
   private transformHeaderName: string = 'X-API-KEY-TRANSFORM';
   private transformHeaderValue: string = 'underscore';
   private actAsUserHeaderName: string = 'X-API-ACT-AS-USER';
-  private storageActAsUserIdKey: string = 'actAsUserId';
 
   constructor(private http: Http,
               private localStorageWrapper: LocalStorageWrapper,
               private router: Router,
               private userManager: UserManager,
-              private actsAsUser: ActsAsUser) {
+              private actsAsUser: ActsAsUser,
+              private translationService: TranslationService) {
   }
 
   public get(url: string, urlParams?: Object, contentType?: string): Promise<any> {
@@ -70,8 +68,8 @@ export class ApiCall {
     if (!!authorizationData) {
       req.headers.set(this.authorizationHeaderName, this.authorizationHeaderPrefix + authorizationData['auth_token']);
     }
-    let selectedLanguage = this.localStorageWrapper.getObject(this.storageSelectedLanguageKey);
-    req.headers.set(this.languageHeaderName, ((selectedLanguage && selectedLanguage.languageCode) || DEFAULT_LOCALE));
+
+    req.headers.set(this.languageHeaderName, this.translationService.getSelectedLanguageCode());
     req.headers.set(this.transformHeaderName, this.transformHeaderValue);
 
     const actAsUserId = this.actsAsUser.getUserId();

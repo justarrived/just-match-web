@@ -6,12 +6,14 @@ import {User} from "./models/user";
 import {TranslationService} from "./services/translation.service";
 import {Language} from "./models/language/language";
 import {UserManager} from "./user-manager.service";
+import {SystemLanguagesService} from "./services/system-languages.service";
 
 @Component({
   moduleId: module.id,
-  selector: "app",
-  templateUrl: "app.component.html",
-  styleUrls: ["app.component.css"]
+  selector: 'app',
+  templateUrl: 'app.component.html',
+  styleUrls: ['app.component.css'],
+  providers: [SystemLanguagesService]
 })
 export class AppComponent implements OnInit {
   states: Array<String> = [];
@@ -27,6 +29,7 @@ export class AppComponent implements OnInit {
               private authManager: AuthManager,
               private userManager: UserManager,
               private actsAsUser: ActsAsUser,
+              private systemLanguagesService: SystemLanguagesService,
               public translationService: TranslationService
   ) {
     router.events.subscribe(event => {
@@ -52,7 +55,7 @@ export class AppComponent implements OnInit {
       }
     });
 
-    this.translationService.getSystemLanguages().then(result => this.systemLanguages = result);
+    this.systemLanguagesService.getSystemLanguages().then(result => this.systemLanguages = result);
     this.selectedLanguage = this.translationService.getSelectedLanguage();
   }
 
