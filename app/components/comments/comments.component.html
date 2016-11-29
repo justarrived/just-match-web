@@ -14,15 +14,17 @@
     </div>
   </div>
 </div>
-<div class="new-comment-container" [ngClass]="{moving: !isFooterVisible}" *ngIf="userId">
-  <div class="table">
-    <div class="table-row">
-      <div class="table-cell resizable-div-cell">
+
+<div class="new-comment-container container" [ngClass]="{moving: !isFooterVisible}" *ngIf="userId">
+  <div class="row flex-items-xs-middle">
+    <div class="offset-md-2"></div>
+    <div class="col-xs-8">
+      <div class="resizable-div-cell">
         <div contenteditable="true" class="resizable-div" placeholder="Write a comment" (input)="onNewCommentInput($event)"></div>
       </div>
-      <div class="table-cell min-width-column comment-send-button-container">
-        <button class="comment-send-button clickable" (click)="sendComment()" [disabled]="!(newCommentBody && newCommentBody.trim())">Send</button>
-      </div>
+    </div>
+    <div class="col-xs-4 col-sm-4 col-md-2 comment-send-button-container text-center">
+      <button class="comment-send-button clickable" (click)="sendComment()" [disabled]="!(newCommentBody && newCommentBody.trim())">Send</button>
     </div>
   </div>
 </div>

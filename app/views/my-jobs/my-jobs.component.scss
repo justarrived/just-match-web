@@ -1,27 +1,31 @@
 @import '../../styles/variables.scss';
+@import '../../styles/buttons.scss';
 
-.my-jobs {
-  .subheader {
-    padding: 30px 0 0 0;
+.my-jobs-header {
 
-    ul {
-      display: table;
-      table-layout: fixed;
-      margin: 10px 0 0;
-      padding: 0;
-      list-style: none;
-      width: 100%;
-      text-transform: uppercase;
+  background-color: $color-primary-cerise;
+  padding: 1em;
 
-      li {
-        display: table-cell;
-        padding: 10px;
-        cursor: pointer;
-
-        &.selected {
-          border-bottom: 5px solid $color-pink-2;
-        }
-      }
-    }
+  h3 {
+    color: $white;
   }
+}
+
+.my-jobs-header-tab {
+  padding: 8px;
+  text-align: center;
+  background-color: $default-bg-color;
+  cursor: pointer;
+  h4 {
+    color: $color-gray-200;
+  }
+  border-bottom: 4px solid $color-gray-50;
+}
+
+.my-jobs-header-tab-selected {
+  @extend .my-jobs-header-tab;
+  h4 {
+    color: $color-gray-500;
+  }
+  border-bottom: 4px solid $color-primary-cerise;
 }

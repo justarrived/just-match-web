@@ -7,6 +7,7 @@ import {Observable} from "rxjs";
 import {Router} from "@angular/router";
 import {APP_CONFIG} from "../config/config";
 import {UserManager} from "../user-manager.service";
+import {ActsAsUser} from "./acts-as-user.service";
 import {TranslationService} from "./translation.service";
 
 @Injectable()
@@ -17,12 +18,14 @@ export class ApiCall {
   private languageHeaderName: string = 'X-API-LOCALE';
   private transformHeaderName: string = 'X-API-KEY-TRANSFORM';
   private transformHeaderValue: string = 'underscore';
+  private actAsUserHeaderName: string = 'X-API-ACT-AS-USER';
 
   constructor(private http: Http,
               private localStorageWrapper: LocalStorageWrapper,
               private router: Router,
-              private translationService: TranslationService,
-              private userManager: UserManager) {
+              private userManager: UserManager,
+              private actsAsUser: ActsAsUser,
+              private translationService: TranslationService) {
   }
 
   public get(url: string, urlParams?: Object, contentType?: string): Promise<any> {
@@ -62,11 +65,18 @@ export class ApiCall {
 
     let req: Request = new Request(options);
     let authorizationData = this.localStorageWrapper.getObject(this.storageAuthorizationData);
-    if (authorizationData) {
+    if (!!authorizationData) {
       req.headers.set(this.authorizationHeaderName, this.authorizationHeaderPrefix + authorizationData['auth_token']);
     }
+
     req.headers.set(this.languageHeaderName, this.translationService.getSelectedLanguageCode());
     req.headers.set(this.transformHeaderName, this.transformHeaderValue);
+
+    const actAsUserId = this.actsAsUser.getUserId();
+    if (actAsUserId != null) {
+      req.headers.set(this.actAsUserHeaderName, actAsUserId);
+    }
+
     return this.http.request(req)
       .catch(response => {
         this.handleResponseErrors(response);

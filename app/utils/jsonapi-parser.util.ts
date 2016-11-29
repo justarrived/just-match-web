@@ -6,14 +6,42 @@ export function parseJsonapiResponse(response: Response): any {
   return deserializeBody(body);
 }
 
-export function parseJsonapiErrorResponse(response: Response): any {
-  let result: any = {};
+export function parseJsonapiErrorResponse(response: Response): Object {
+  const result: Object = {};
+  const errorDetails: Object = {};
+  const errors: Array<Object> = [];
+
   _.forEach(response.json().errors, error => {
-    let pointer = error.source.pointer;
-    let property = pointer.substr(pointer.lastIndexOf('/') + 1);
-    result[property] = error.detail;
+    const aboutLink  = error.links && error.links.about;
+    const detail = error.detail;
+    const source = error.source;
+    const formattedError = {
+      id: error.id,
+      httpStatus: error.status,
+      appStatus: error.code,
+      aboutLink: aboutLink,
+      title: error.title,
+      detail: detail,
+      meta: error.meta
+    };
+
+    if (source) {
+      const pointer = source.pointer;
+      const attributeName = pointer.substr(pointer.lastIndexOf('/') + 1);
+
+      formattedError['sourcePointer'] = pointer;
+      formattedError['sourceParameter'] = source.parameter;
+      formattedError['attribute'] = attributeName;
+
+      const currentDetail = errorDetails[attributeName];
+      errorDetails[attributeName] = currentDetail ? (currentDetail + ', ' + detail) : detail;
+
+    }
+
+    errors.push(formattedError);
   });
-  return result;
+
+  return { attributes: errors, details: errorDetails };
 }
 
 function deserializeBody(body: any): any {

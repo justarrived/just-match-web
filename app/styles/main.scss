@@ -1,26 +1,10 @@
 @import 'variables.scss';
 @import 'mixins.scss';
-@import url("../../assets/fonts/fontello.css");
-
-body * {
-  font-family: 'Open Sans', sans-serif;
-}
+@import 'buttons.scss';
+@import 'typography.scss';
 
 body {
-  max-width: 1024px;
-  margin: 0 auto;
-  background-color: #E8EBEE;
-  font-size: $fs-m0;
-  color: #333333;
-  height: 100%;
-
-  a {
-    text-decoration: none;
-
-    &:hover {
-      text-decoration: underline;
-    }
-  }
+  background-color: $color-background;
 
   input {
     outline: none;
@@ -67,8 +51,13 @@ body {
   .text-left {
     text-align: left;
   }
+
   .text-center {
     text-align: center;
+  }
+
+  .text-right {
+    text-align: right;
   }
 
   .table {
@@ -81,6 +70,7 @@ body {
   .table-row {
     display: table-row;
   }
+
   .table-cell {
     display: table-cell;
     vertical-align: middle;
@@ -89,46 +79,6 @@ body {
       white-space: nowrap;
       width: 1px;
     }
-  }
-
-  .color-dark {
-    color: $color-dark
-  }
-  .color-blue-0 {
-    color: $color-blue-0;
-  }
-  .color-blue-1 {
-    color: $color-blue-1;
-  }
-  .color-blue-2 {
-    color: $color-blue-2;
-  }
-  .color-blue-3 {
-    color: $color-blue-3;
-  }
-  .color-blue-4 {
-    color: $color-blue-4;
-  }
-  .color-gray-0 {
-    color: $color-gray-0;
-  }
-  .color-gray-1 {
-    color: $color-gray-1;
-  }
-  .color-gray-2 {
-    color: $color-gray-2;
-  }
-  .color-gray-3 {
-    color: $color-gray-3;
-  }
-  .color-pink-0 {
-    color: $color-pink-0;
-  }
-  .color-pink-1 {
-    color: $color-pink-1;
-  }
-  .color-pink-2 {
-    color: $color-pink-2;
   }
 
   .fs-s {
@@ -155,7 +105,7 @@ body {
 
   .subheader {
     padding: 30px;
-    background: $color-blue-1;
+    background: $color-secondary-gray;
     color: white;
 
     .subheader-text {
@@ -211,19 +161,19 @@ body {
 
     &.primary {
       font-size: $fs-l;
-      background-color: $color-pink-1;
+      background-color: $color-primary-cerise;
 
       &:hover, &:focus {
-        background-color: darken($color-pink-1, 5%);
+        background-color: darken($color-primary-cerise, 5%);
       }
     }
 
     &.secondary {
       font-size: $fs-l;
-      background-color: $color-blue-1;
+      background-color: $color-secondary-gray;
 
       &:hover, &:focus {
-        background-color: darken($color-blue-1, 10%);
+        background-color: darken($color-secondary-gray, 10%);
       }
     }
 
@@ -241,7 +191,7 @@ body {
 
     &.disabled, &[disabled] {
       &, &:hover {
-        background-color: $color-blue-1;
+        background-color: $color-secondary-gray;
         color: #eeeeee;
         opacity: 0.5;
         cursor: not-allowed;
@@ -266,16 +216,16 @@ body {
       }
 
       &.ng-touched.ng-invalid, &.has-error {
-        border: 1px solid $color-pink-2 !important;
-        color: $color-pink-2 !important;
+        border: 1px solid $color-primary-cerise !important;
+        color: $color-primary-cerise !important;
         ~ .material-label {
-          color: $color-pink-2 !important;
+          color: $color-primary-cerise !important;
         }
       }
     }
 
     input.material-input {
-      border: 1px solid $color-blue-1;
+      border: 1px solid $color-secondary-gray;
     }
 
     textarea.material-input {
@@ -297,7 +247,7 @@ body {
     }
 
     .material-group-error {
-      color: $color-pink-2;
+      color: $color-primary-cerise;
       font-size: 12px;
     }
   }
@@ -311,25 +261,17 @@ body {
     -ms-user-select: none;
   }
 
-  .clickable {
-    cursor: pointer;
-  }
-
-  .rounded-company-logo {
-    height: 80px;
-    width: 80px;
-  }
-
   .rounded-image {
     border-radius: 50%;
     vertical-align: middle;
     box-shadow: inset 0 0 1px 0 rgba(0,0,0,.2);
   }
+}
 
-  .main-title {
-    background: #383F4E;
-    padding: 20px;
-    text-align: center;
-    color: #FFFFFF;
-  }
+.app-content-container {
+  margin-top: $header-height;
+}
+
+body > .container, .navbar-fixed-top .container {
+  padding: 0;
 }
