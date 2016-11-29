@@ -3,6 +3,7 @@
 .slider {
   position: relative;
   overflow: hidden;
+
   .slider-container {
     white-space: nowrap;
     -webkit-user-select: none;
@@ -14,39 +15,29 @@
   }
 
   .item-container {
-    vertical-align: top;
-    display:inline-block;
+    display: inline-block;
     width: calc(10% - 10px);
-    padding: 0 5px;
+    margin: 5px;
+    background-color: white;
+    border-radius: 3px;
+    box-shadow: 0 0 3px 0px rgba(0,0,0,.2);
 
-    .company-logo {
-      height: 90px;
-      width: 100%;
-      object-fit: cover;
-      border-radius: 5px 5px 0 0;
+    .job-name {
+      height: 50px;
+      padding: 10px;
+
+      div {
+        max-height: 100%;
+        overflow: hidden;
+        white-space: normal;
+      }
     }
 
     .salary-container {
       color: white;
-      font-size: 20px;
-      background: $color-pink-1;
-      border-radius: 0 0 5px 5px;
-      height: 30px;
-      line-height: 30px;
-      white-space: normal;
-      padding: 0 2px;
-    }
-
-    .job-name {
-      -ms-word-wrap: break-word;
-      word-wrap :break-word;
-      white-space: normal;
-      padding: 3px 0;
-
-      &:hover {
-        text-decoration: underline;
-        cursor: pointer;
-      }
+      background: $color-primary-cerise;
+      padding: 5px;
+      border-radius: 0px 0px 3px 3px;
     }
   }
 

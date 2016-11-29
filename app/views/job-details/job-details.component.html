@@ -1,28 +1,38 @@
 <div *ngIf="job">
-  <div class="main-title">
-    <div class="table job-header">
-      <div class="table-row">
-        <div class="table-cell">
-          <img class="rounded-company-logo rounded-image" [src]="(job.company.companyLogo && job.company.companyLogo.imageUrlSmall) || 'assets/images/placeholder-logo.png'">
+  <div class="job-details-header">
+    <div class="container-fluid">
+      <div class="row flex-items-xs-middle">
+        <div class="col-xs-8 col-md-6">
+          <span>
+            {{job.company.name}} <br>
+            <a href="{{job.company.website}}">{{job.company.website}}</a>
+          </span>
         </div>
-        <div class="table-cell">
-          <div class="job-main-info-cell">
-            <div class="fs-xl">{{job.name}}</div>
-            <div class="fs-m">{{job.company.name}}</div>
-            <div>{{job.jobDate | date:'dd MMM'}} - {{job.jobEndDate | date:'dd MMM'}}</div>
-            <div>{{job.street}}</div>
-          </div>
-          <div class="job-main-info-cell">
-            <div class="total-salary" *ngIf="isCompanyUser">
-              {{job.hourlyPay.rateExcludingVAT * job.hours}} {{job.hourlyPay.currency}}
-            </div>
-            <div class="total-salary" *ngIf="!isCompanyUser">{{job.hourlyPay.grossSalary * job.hours}} {{job.hourlyPay.currency}}</div>
-          </div>
+        <div class="col-xs-4 col-md-6">
+          <img class="company-logo" [src]="job.companyLogoURL">
         </div>
       </div>
     </div>
   </div>
-  <job-preview [job]="job"></job-preview>
-  <job-state-status-bar [job]="job" [jobId]="job.id"></job-state-status-bar>
+
+  <div class="job-details-body">
+    <job-state-status-bar [job]="job" [jobId]="job.id"></job-state-status-bar>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="content">
+            <p>{{job.name}}</p>
+            <h4 class="title-primary">{{job.amount}} {{job.currency}} {{'common.gross_salary' | translate}}</h4>
+            <p>{{job.hours}} {{'common.hour' | translate}}</p>
+            <h5 class="title-primary">{{job.netAmount}} {{job.currency}} {{'common.net_salary' | translate}}</h5>
+          </div>
+        </div>
+      </div>
+
+      <job-preview [job]="job"></job-preview>
+    </div>
+  </div>
+
   <comments [resourceName]="'jobs'" [resourceId]="job.id"></comments>
 </div>

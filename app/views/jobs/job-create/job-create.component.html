@@ -151,8 +151,8 @@
       </div>
 
       <div class="text-center">
-        <button type="button" class="button primary form-group" (click)="setPreviewMode()" [disabled]="form.invalid">{{'common.next_step' |
-          translate}}
+        <button type="button" class="button primary form-group" (click)="setPreviewMode()" [disabled]="form.invalid">
+          {{'common.next_step' | translate}}
         </button>
       </div>
     </form>
@@ -162,13 +162,15 @@
     <div class="job-preview-title">
       <div>
         <h3>{{job.name}}</h3>
-        <span>{{job.hourlyPay.rateExcludingVAT * job.hours}} {{job.hourlyPay.currency}}</span>
+        <span>{{job.hourlyPay.grossSalary * job.hours}} {{job.hourlyPay.currency}}</span>
         <br/>
-        <em>{{job.hours}} {{'common.hour' | translate}} ({{job.hourlyPay.rateExcludingVAT}} {{job.hourlyPay.currency}}/{{'common.hour' | translate}})</em>
+        <em>{{job.hours}} {{'common.hour' | translate}} ({{job.hourlyPay.grossSalary}} {{job.hourlyPay.currency}}/{{'common.hour' | translate}})</em>
       </div>
     </div>
 
-    <job-preview [job]="job" [isPreview]="true"></job-preview>
+    <div class="container-fluid">
+      <job-preview [job]="job" [isPreview]="true"></job-preview>
+    </div>
 
     <div class="approve-buttons">
       <button class="button secondary" (click)="exitPreviewMode()" type="button">{{'common.edit' | translate}}</button>

@@ -12,6 +12,7 @@ import {LocalStorageWrapper} from "./services/local-storage-wrapper.service";
 import {ApiCall} from "./services/api-call.service";
 import {AuthManager} from "./services/auth-manager.service";
 import {UserProxy} from "./services/user-proxy.service";
+import {ActsAsUser} from "./services/acts-as-user.service";
 import {TranslationService} from "./services/translation.service";
 import {GlobalExceptionHandler} from "./config/global-exception-handler";
 import {SliderComponent} from "./components/slider/slider.component";
@@ -82,6 +83,7 @@ import {MyJobsItemComponent} from "./components/my-jobs-item/my-jobs-item.compon
     LocalStorageWrapper,
     ApiCall,
     AuthManager,
+    ActsAsUser,
     UserProxy,
     CountryProxy,
     LanguageProxy,
