@@ -11,6 +11,7 @@ export class UserJob {
   performed: boolean;
   willPerform: boolean;
   willPerformConfirmationBy: string;
+  ratingScore: number;
   user: User;
   job: Job;
   invoice: Invoice;
@@ -29,6 +30,7 @@ export class UserJob {
     this.performed = jsonObject.performed;
     this.willPerform = jsonObject.will_perform;
     this.willPerformConfirmationBy = jsonObject.will_perform_confirmation_by;
+    this.ratingScore = jsonObject.rating_score;
     this.user = new User(jsonObject.user);
     this.job = new Job(jsonObject.job);
     this.invoice = new Invoice(jsonObject.invoice);

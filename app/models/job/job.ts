@@ -1,6 +1,7 @@
 import {Company} from "../company";
 import {UserJob} from "../user/user-job";
 import {map} from "lodash";
+import {User} from "../user";
 
 const companyPlaceholderLogoURL = 'assets/images/placeholder-logo.png';
 
@@ -20,7 +21,7 @@ export class Job {
   jobDate: string;
   jobEndDate: string;
   name: string;
-  owner: any; //TODO;
+  owner: User;
   shortDescription: string;
   street: string;
   updatedAt: string;
@@ -51,7 +52,7 @@ export class Job {
     this.jobDate = jsonObject.job_date;
     this.jobEndDate = jsonObject.job_end_date;
     this.name = jsonObject.name;
-    this.owner = jsonObject.owner;
+    this.owner = new User(jsonObject.owner);
     this.shortDescription = jsonObject.short_description;
     this.street = jsonObject.street;
     this.updatedAt = jsonObject.updated_at;

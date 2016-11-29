@@ -41,6 +41,7 @@ import {MyJobsComponent} from "./views/my-jobs/my-jobs.component";
 import {CompanyJobsComponent} from "./views/my-jobs/company-jobs/company-jobs.component";
 import {UserJobsComponent} from "./views/my-jobs/user-jobs/user-jobs.component";
 import {MyJobsItemComponent} from "./components/my-jobs-item/my-jobs-item.component";
+import {RatingComponent} from "./components/rating/rating.component";
 
 @NgModule({
   imports: [
@@ -73,6 +74,7 @@ import {MyJobsItemComponent} from "./components/my-jobs-item/my-jobs-item.compon
     CandidatesComponent,
     CandidateComponent,
     CandidateStateStatusBarComponent,
+    RatingComponent,
     MyJobsItemComponent,
     CompanyJobsComponent,
     UserJobsComponent,

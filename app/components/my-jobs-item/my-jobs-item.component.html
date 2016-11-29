@@ -21,7 +21,7 @@
         <em>{{'assignment.status.you_hired' | translate}} {{job.jobUsers[0].user.firstName}} {{job.jobUsers[0].user.lastName}}</em>
       </p>
       <p *ngIf="section == 'history'">
-        <!--<span class="stars_i"><span style="width : calc( 0{{job.rating}} * 16px );" title="{{job.rating}}"></span></span>-->
+        <test-rating [rating]="job.jobUsers[0].ratingScore"></test-rating>
       </p>
     </section>
 
