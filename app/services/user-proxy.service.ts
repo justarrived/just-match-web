@@ -44,4 +44,8 @@ export class UserProxy {
     return this.apiCall.get('users/' + userId + '/jobs', additionOptions)
       .then(response => map(response.data, data => new UserJob(data)));
   }
+
+  createFrilansFinans(userId, bankAccount) {
+    return this.apiCall.post('users/' + userId + '/frilans-finans', bankAccount);
+  }
 }

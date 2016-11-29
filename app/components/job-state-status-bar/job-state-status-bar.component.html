@@ -20,18 +20,56 @@
   </span>
   <span *ngIf="userJob && userJob.accepted && userJob.willPerform"><a [routerLink]="['/job', jobId, 'candidate', userJob.id]">{{'assignment.status.applicant_approved' | translate: {candidate_name: userJob.user.firstName} }}</a></span>
 </div>
-<div *ngIf="showCandidateBankAccountDetails" class="candidate-bank-account-details-container">
+<div *ngIf="showTermsAccept" class="candidate-bank-account-details-container">
   <div>{{'common.congratulation' | translate}}</div>
   <div>{{job.company.name}} {{'assignment.status.company.approve_user' | translate}}</div>
   <div>{{'assignment.status.offer.approve' | translate}}</div>
   <div>
-    <input id="accept-terms" type="checkbox">
+    <input id="accept-terms" type="checkbox" [(ngModel)]="acceptTerms">
     <label for="accept-terms">{{'terms.frilans_finans.accept' | translate}}</label>
     <span><a href="">{{'terms' | translate}}</a></span>
   </div>
   <div>
-    <button class="button">{{'common.yes' | translate}}</button>
-    <button class="button" (click)="showCandidateBankAccountDetails = false">{{'common.no' | translate}}</button>
+    <button class="button" [disabled]="!acceptTerms" (click)="showTermsAccept = false;showCandidateBankAccountDetails = true">{{'common.yes' | translate}}</button>
+    <button class="button" (click)="showTermsAccept = false">{{'common.no' | translate}}</button>
   </div>
 </div>
-
+<div *ngIf="showCandidateBankAccountDetails">
+  <div>{{'user.account' | translate}}</div>
+  <div>{{'user.account.description' | translate}}</div>
+  <div *ngIf="!collectIBAN" (click)="collectIBAN = true">{{'assignment.enable_bic_iban.description' | translate}}</div>
+  <div *ngIf="collectIBAN" (click)="collectIBAN = false">{{'common.cancel' | translate}}</div>
+  <form #form="ngForm" (ngSubmit)="onSubmit()">
+    <div class="material-group" *ngIf="!collectIBAN">
+      <input type="text" id="clearingNumber" [(ngModel)]="bankAccount.clearingNumber" name="clearingNumber" class="material-input" [ngClass]="{'not-empty': bankAccount.clearingNumber}" required>
+      <label for="clearingNumber" class="material-label">{{'user.account.bank' | translate}}</label>
+      <div class="fs-m0 material-group-error" *ngIf="form.controls.clearingNumber && form.controls.clearingNumber.invalid && form.controls.clearingNumber.touched">
+        {{'finance.form.account_clearing_number.validation' | translate}}
+      </div>
+    </div>
+    <div class="material-group" *ngIf="!collectIBAN">
+      <input type="text" id="accountNumber" [(ngModel)]="bankAccount.accountNumber" name="accountNumber" class="material-input" [ngClass]="{'not-empty': bankAccount.accountNumber}" required>
+      <label for="accountNumber" class="material-label">{{'user.account.cardnr' | translate}}</label>
+      <div class="fs-m0 material-group-error" *ngIf="form.controls.accountNumber && form.controls.accountNumber.invalid && form.controls.accountNumber.touched">
+        {{'finance.form.account_number.validation' | translate}}
+      </div>
+    </div>
+    <div class="material-group" *ngIf="collectIBAN">
+      <input type="text" id="iban" [(ngModel)]="bankAccount.iban" name="iban" class="material-input" [ngClass]="{'not-empty': bankAccount.iban}" required>
+      <label for="iban" class="material-label">{{'user.account.iban' | translate}}</label>
+      <div class="fs-m0 material-group-error" *ngIf="form.controls.iban && form.controls.iban.invalid && form.controls.iban.touched">
+        {{'finance.form.iban.validation' | translate}}
+      </div>
+    </div>
+    <div class="material-group" *ngIf="collectIBAN">
+      <input type="text" id="bic" [(ngModel)]="bankAccount.bic" name="bic" class="material-input" [ngClass]="{'not-empty': bankAccount.bic}" required>
+      <label for="iban" class="material-label">{{'user.account.bic' | translate}}</label>
+      <div class="fs-m0 material-group-error" *ngIf="form.controls.bic && form.controls.bic.invalid && form.controls.bic.touched">
+        {{'finance.form.bic.validation' | translate}}
+      </div>
+    </div>
+  </form>
+  <div class="text-center">
+    <button class="button primary form-group" (click)="submitBankAccount()" [disabled]="form.invalid">{{'common.save' | translate}}</button>
+  </div>
+</div>
