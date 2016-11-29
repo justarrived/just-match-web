@@ -27,8 +27,8 @@ export class JobStateStatusBarComponent implements OnInit {
   showCandidateBankAccountDetails: boolean = false;
   showTermsAccept: boolean = false;
   acceptTerms: boolean = false;
-  collectIBAN: boolean = false;
   bankAccount: UserBankAccount = new UserBankAccount();
+  errors: any = {};
 
   constructor(private userManager: UserManager, private userProxy: UserProxy, private jobProxy: JobProxy, private router: Router) {
     this.user = userManager.getUser();
@@ -69,12 +69,13 @@ export class JobStateStatusBarComponent implements OnInit {
   }
 
   submitBankAccount() {
-    this.userProxy.createFrilansFinans(this.userJob.user.id, this.bankAccount.toJsonObject(this.collectIBAN)).then(reponse => {
+    this.userProxy.createFrilansFinans(this.userJob.user.id, this.bankAccount.toJsonObject()).then(reponse => {
       return this.confirmJob();
     }).then(response => {
-
-    }, error => {
-      //TODO: When documentation is ready https://just-match-api-sandbox.herokuapp.com/api_docs/1.0/frilans_finans/create.html
+      this.showTermsAccept = false;
+      this.userJob.willPerform = true;
+    }, errors => {
+      this.errors = errors.details;
     });
   }
 

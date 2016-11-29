@@ -37,35 +37,25 @@
 <div *ngIf="showCandidateBankAccountDetails">
   <div>{{'user.account' | translate}}</div>
   <div>{{'user.account.description' | translate}}</div>
-  <div *ngIf="!collectIBAN" (click)="collectIBAN = true">{{'assignment.enable_bic_iban.description' | translate}}</div>
-  <div *ngIf="collectIBAN" (click)="collectIBAN = false">{{'common.cancel' | translate}}</div>
   <form #form="ngForm" (ngSubmit)="onSubmit()">
-    <div class="material-group" *ngIf="!collectIBAN">
-      <input type="text" id="clearingNumber" [(ngModel)]="bankAccount.clearingNumber" name="clearingNumber" class="material-input" [ngClass]="{'not-empty': bankAccount.clearingNumber}" required>
+    <div class="material-group">
+      <input type="text" id="clearingNumber" [(ngModel)]="bankAccount.clearingNumber" name="clearingNumber" class="material-input" [ngClass]="{'not-empty': bankAccount.clearingNumber, 'has-error': errors.account_clearing_number}" required>
       <label for="clearingNumber" class="material-label">{{'user.account.bank' | translate}}</label>
       <div class="fs-m0 material-group-error" *ngIf="form.controls.clearingNumber && form.controls.clearingNumber.invalid && form.controls.clearingNumber.touched">
         {{'finance.form.account_clearing_number.validation' | translate}}
       </div>
+      <div class="fs-m0 material-group-error" *ngIf="errors.account_clearing_number">
+        {{errors.account_clearing_number}}
+      </div>
     </div>
-    <div class="material-group" *ngIf="!collectIBAN">
-      <input type="text" id="accountNumber" [(ngModel)]="bankAccount.accountNumber" name="accountNumber" class="material-input" [ngClass]="{'not-empty': bankAccount.accountNumber}" required>
+    <div class="material-group">
+      <input type="text" id="accountNumber" [(ngModel)]="bankAccount.accountNumber" name="accountNumber" class="material-input" [ngClass]="{'not-empty': bankAccount.accountNumber, 'has-error': errors.account}" required>
       <label for="accountNumber" class="material-label">{{'user.account.cardnr' | translate}}</label>
       <div class="fs-m0 material-group-error" *ngIf="form.controls.accountNumber && form.controls.accountNumber.invalid && form.controls.accountNumber.touched">
         {{'finance.form.account_number.validation' | translate}}
       </div>
-    </div>
-    <div class="material-group" *ngIf="collectIBAN">
-      <input type="text" id="iban" [(ngModel)]="bankAccount.iban" name="iban" class="material-input" [ngClass]="{'not-empty': bankAccount.iban}" required>
-      <label for="iban" class="material-label">{{'user.account.iban' | translate}}</label>
-      <div class="fs-m0 material-group-error" *ngIf="form.controls.iban && form.controls.iban.invalid && form.controls.iban.touched">
-        {{'finance.form.iban.validation' | translate}}
-      </div>
-    </div>
-    <div class="material-group" *ngIf="collectIBAN">
-      <input type="text" id="bic" [(ngModel)]="bankAccount.bic" name="bic" class="material-input" [ngClass]="{'not-empty': bankAccount.bic}" required>
-      <label for="iban" class="material-label">{{'user.account.bic' | translate}}</label>
-      <div class="fs-m0 material-group-error" *ngIf="form.controls.bic && form.controls.bic.invalid && form.controls.bic.touched">
-        {{'finance.form.bic.validation' | translate}}
+      <div class="fs-m0 material-group-error" *ngIf="errors.account">
+        {{errors.account}}
       </div>
     </div>
   </form>
