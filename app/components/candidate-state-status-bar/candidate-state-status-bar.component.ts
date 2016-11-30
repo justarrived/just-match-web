@@ -33,10 +33,6 @@ export class CandidateStateStatusBarComponent implements OnInit {
     });
   }
 
-  onStarRatingClick(rateNumber) {
-    this.starRating = rateNumber;
-  }
-
   onJobDoneButtonClick() {
     let userRating = { //TODO: create userRating model
       score: this.starRating,
