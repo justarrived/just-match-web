@@ -1,5 +1,5 @@
 import {Component, OnInit} from "@angular/core";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {JobProxy} from "../../services/job-proxy.service";
 import {UserJob} from "../../models/user/user-job";
 import {Job} from "../../models/job/job";
@@ -15,7 +15,7 @@ export class CandidatesComponent implements OnInit {
   job: Job;
   userJobs: UserJob[];
 
-  constructor(private route: ActivatedRoute, private jobProxy: JobProxy) {
+  constructor(private route: ActivatedRoute, private jobProxy: JobProxy, private router: Router) {
     this.route.params.subscribe(params => {
       this.jobId = parseInt(params['id']);
     });
@@ -29,6 +29,10 @@ export class CandidatesComponent implements OnInit {
       console.log(response);
       this.userJobs = response;
     });
+  }
+
+  onCandidateClick(userJobId) {
+    this.router.navigate(['/job/' + this.jobId + '/candidate/' + userJobId]);
   }
 
 }

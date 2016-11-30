@@ -1,6 +1,13 @@
 <div>{{'company.assignments.candidates.select.title' | translate}}</div>
-<div>
-  <div *ngFor="let userJob of userJobs">
-    <a [routerLink]="['/job', jobId, 'candidate', userJob.id]">{{userJob.user.firstName}}</a>
+<div class="table">
+  <div *ngFor="let userJob of userJobs" class="table-row clickable user-job-container" (click)="onCandidateClick(userJob.id)">
+    <div class="table-cell min-width-column user-image-container">
+      <img class="rounded-image user-image" [src]="(userJob.user.profileImage && userJob.user.profileImage.imageUrl) || 'assets/images/placeholder-profile-image.png'">
+    </div>
+    <div class="table-cell">
+      <div>{{userJob.user.firstName}}</div>
+      <div>rating / jobs</div><!--TODO: when rest call is ready-->
+    </div>
+
   </div>
 </div>
