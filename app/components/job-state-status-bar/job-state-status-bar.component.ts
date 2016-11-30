@@ -6,6 +6,7 @@ import {UserProxy} from "../../services/user-proxy.service";
 import {UserJob} from "../../models/user/user-job";
 import {JobProxy} from "../../services/job-proxy.service";
 import {Router} from "@angular/router";
+import {UserBankAccount} from "../../models/user/user-bank-account";
 
 
 @Component({
@@ -23,8 +24,11 @@ export class JobStateStatusBarComponent implements OnInit {
   user: User;
   userJob: UserJob;
   countOfApplicants: number = 0;
-  showSendRequestPage: boolean = false;
   showCandidateBankAccountDetails: boolean = false;
+  showTermsAccept: boolean = false;
+  acceptTerms: boolean = false;
+  bankAccount: UserBankAccount = new UserBankAccount();
+  errors: any = {};
 
   constructor(private userManager: UserManager, private userProxy: UserProxy, private jobProxy: JobProxy, private router: Router) {
     this.user = userManager.getUser();
@@ -55,11 +59,28 @@ export class JobStateStatusBarComponent implements OnInit {
   }
 
   onConfirmJobButtonClick() {
-    // if (!this.userJob.user.frilansFinansPaymentDetails) {
-    //   this.showCandidateBankAccountDetails = true;
-    //   return;
-    // }
-    this.jobProxy.confirmForJob(this.job.id, this.userJob.id).then(response => {
+    if (!this.userJob.user.frilansFinansPaymentDetails) {
+      this.showTermsAccept = true;
+      this.acceptTerms = false;
+      this.showCandidateBankAccountDetails = false;
+      return;
+    }
+    this.confirmJob();
+  }
+
+  submitBankAccount() {
+    this.userProxy.createFrilansFinans(this.userJob.user.id, this.bankAccount.toJsonObject()).then(reponse => {
+      return this.confirmJob();
+    }).then(response => {
+      this.showTermsAccept = false;
+      this.userJob.willPerform = true;
+    }, errors => {
+      this.errors = errors.details;
+    });
+  }
+
+  private confirmJob(): Promise<any> {
+    return this.jobProxy.confirmForJob(this.job.id, this.userJob.id).then(response => {
       this.userJob = response;
     });
   }

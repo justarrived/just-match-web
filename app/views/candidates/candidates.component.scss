@@ -1,0 +1,15 @@
+@import "../../styles/variables.scss";
+
+.user-job-container {
+  background: $white;
+  border-top: 1px solid $white-bg-border;
+
+  .user-image-container {
+    padding: 20px;
+
+    .user-image {
+      width: 40px;
+      height: 40px;
+    }
+  }
+}

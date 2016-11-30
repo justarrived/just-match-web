@@ -3,7 +3,7 @@ import * as  _ from "lodash";
 
 @Component({
   moduleId: module.id,
-  selector: 'test-rating',
+  selector: 'rating',
   templateUrl: 'rating.component.html',
   styleUrls: ['rating.component.css']
 })

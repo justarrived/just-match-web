@@ -29,12 +29,8 @@ export class CandidateStateStatusBarComponent implements OnInit {
     this.jobProxy.acceptForJob(this.userJob.job.id, this.userJob.id).then(response => {
       this.userJob = response;
       this.showSendRequestPage = false;
-      this.router.navigate(['/jobs', this.userJob.job.id]);
+      this.router.navigate(['/job', this.userJob.job.id]);
     });
-  }
-
-  onStarRatingClick(rateNumber) {
-    this.starRating = rateNumber;
   }
 
   onJobDoneButtonClick() {

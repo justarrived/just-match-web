@@ -3,7 +3,7 @@ import {JobProxy} from "../../services/job-proxy.service";
 import {Job} from "../../models/job/job";
 import {TranslationService} from "../../services/translation.service";
 import {UserManager} from "../../user-manager.service";
-import {User} from "./models/user";
+import {User} from "../../models/user";
 
 @Component({
   moduleId: module.id,
