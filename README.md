@@ -36,6 +36,7 @@ NPM scripts
 - `npm start` - starts app
 - `npm run start-prod` - starts app in production mode
 - `npm run build` - builds app in `dist` folder
+- `npm run build-aot` - builds app with AoT in `dist` folder
 - `npm run lint` - runs app linting
 
 ## Translations
