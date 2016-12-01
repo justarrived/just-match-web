@@ -1,0 +1,159 @@
+@import '../../styles/variables';
+
+.home-header {
+  background-color: $color-primary-cerise;
+  text-align: center;
+  padding: 3em;
+  color: $white;
+
+  h1 {
+    color: $white;
+    text-shadow: 0 0 3px rgba(0, 0, 0, 0.75);
+  }
+
+  a:first-of-type {
+    margin-bottom: 1em;
+  }
+
+  .home-header-button-container {
+    display: inline-block;
+    margin-top: 1.5em;
+
+    .medium-button-primary-light, .medium-button-secondary-light {
+      width: 100%;
+    }
+  }
+}
+
+.home-new-jobs {
+  padding: 3em;
+
+  > div {
+    padding: 0;
+  }
+
+  .show-all {
+    display: flex;
+
+    span {
+      cursor: pointer;
+      color: $color-primary-cerise;
+    }
+
+    @media screen and (min-width: 576px) {
+      flex-direction: column-reverse;
+
+      span {
+        align-self: flex-end;
+      }
+    }
+  }
+}
+
+.jobs-slider {
+  margin-top: 1em;
+  overflow-y: scroll;
+  white-space: nowrap;
+
+  .item-container {
+    display: inline-block;
+    width: 120px;
+    margin: 5px;
+    background-color: $default-bg-color;
+    border-radius: 3px 3px 3px 3px;
+    box-shadow: 0 0 3px 0 rgba(0,0,0,.2);
+    cursor: pointer;
+
+    .job-name {
+      height: 60px;
+      padding: 10px;
+
+      div {
+        max-height: 100%;
+        overflow: hidden;
+        white-space: normal;
+      }
+    }
+
+    .salary-container {
+      color: $white;
+      background: $color-primary-cerise;
+      padding: 5px;
+      border-radius: 0 0 3px 3px;
+      text-align: center;
+    }
+  }
+}
+
+.instructions-container {
+  padding: 4em 4em 8em 4em;
+  text-align: center;
+  color: $white;
+  background: $color-secondary-blue;
+  position: relative;
+
+  &:nth-of-type(2) {
+    background: $color-secondary-gray;
+  }
+
+  .medium-button-primary-light {
+    width: calc(100% - 8em);
+    margin: 4em;
+    position: absolute;
+    left: 0;
+    bottom: 0;;
+  }
+
+  .list {
+    list-style: none;
+    margin: 0 auto;
+    padding: 0;
+    text-align: left;
+
+    .item {
+      padding: 10px 0 10px 45px;
+      position: relative;
+
+      .fa {
+        position: absolute;
+        left: 0;
+        top: 5px;
+      }
+    }
+  }
+}
+
+.home-partners {
+  text-align: center;
+  background: $white;
+  padding: 2em;
+
+  .partners-logos-container {
+    width: 100%;
+  }
+
+  h2 {
+    width: 100%;
+  }
+
+  .logo-container {
+    padding: 15px 5px;
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+
+    .partner-logo {
+      width: auto;
+      max-height: 80px;
+      max-width: 130px;
+      filter: grayscale(100%);
+
+      &.extra-padding {
+        padding-top: 5%;
+      }
+      &.left-padding {
+        padding-left: 10%;
+      }
+    }
+  }
+}

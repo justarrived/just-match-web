@@ -1,0 +1,52 @@
+@import '../../styles/variables';
+@import '../../styles/buttons';
+
+.pagination-wrapper {
+  background-color: $color-gray-25;
+  padding: 8px;
+
+  p {
+    margin: 0;
+  }
+}
+
+.back-button {
+  text-align: left;
+  color: $color-primary-cerise;
+  > i {
+    cursor: pointer; cursor: hand;
+  }
+}
+
+.forward-button {
+  text-align: right;
+  color: $color-primary-cerise;
+  > i {
+    cursor: pointer; cursor: hand;
+  }
+}
+
+.pagination-text {
+  text-align: center;
+  white-space: nowrap;
+}
+
+.pagination-button {
+  @extend .medium-button-primary-light;
+  padding: 0 2em;
+  text-align: center;
+  background-color: $color-primary-cerise;
+  color: $white;
+  border: 1px solid $color-primary-cerise;
+  cursor: pointer; cursor: hand;
+}
+
+.navigation-left-arrow {
+  position: relative;
+  left: 7px;
+}
+
+.navigation-right-arrow {
+  position: relative;
+  right: 7px;
+}

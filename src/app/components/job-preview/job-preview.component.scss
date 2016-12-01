@@ -1,0 +1,9 @@
+@import '../../styles/variables';
+
+.job-info-row {
+  padding: 18px 0;
+
+  &.with-border {
+    border-bottom: 1px solid $white-bg-border;
+  }
+}
