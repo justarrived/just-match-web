@@ -10,6 +10,8 @@ import {isEmpty, some} from "lodash";
 import {deleteElementFromArray} from "../../../utils/array-util";
 import {UserLanguage} from "../../../models/user/user-language";
 import {UserManager} from "../../../user-manager.service";
+import {LanguageProficiency} from "../../../models/language/language-proficiency";
+import {Language} from "../../../models/language/language";
 
 @Component({
   selector: 'user-profile',
@@ -19,7 +21,7 @@ import {UserManager} from "../../../user-manager.service";
 export class UserProfileComponent {
   namePropertyLabel: Function = namePropertyLabel;
 
-  languageProficiencyLevels = languageProficiencyLevels;
+  languageProficiencyLevels: LanguageProficiency[] = languageProficiencyLevels;
 
   editMode: boolean = false;
 
@@ -34,7 +36,7 @@ export class UserProfileComponent {
   }
 
   getLanguages() {
-    return (searchText) => {
+    return (searchText): Promise<Array<Language>> => {
       return this.languageProxy.getLanguages(searchText);
     };
   }

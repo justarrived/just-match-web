@@ -35,7 +35,7 @@ export class Company {
   }
 }
 
-class CompanyImage {
+export class CompanyImage {
   categoryName: string;
   id: string;
   imageUrl: string;
