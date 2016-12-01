@@ -6,7 +6,8 @@
   "scripts": {
     "start": "ng serve",
     "start-prod": "ng serve --prod",
-    "build": "ng build --prod",
+    "build": "ng build --prod --env=prod",
+    "build-aot": "ng build --prod --aot --env=prod",
     "lint": "tslint \"src/**/*.ts\"",
     "test": "ng test",
     "pree2e": "webdriver-manager update",
