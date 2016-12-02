@@ -1,5 +1,5 @@
 import {Component, OnInit} from "@angular/core";
-import {UserProxy} from "../../../services/user-proxy.service";
+import {UserProxy} from "../../../services/proxy/user-proxy.service";
 import {UserStatus} from "../../../models/user/user-status";
 import {UserRegister} from "../../../models/user/user-register";
 import {CountryProxy} from "../../../services/proxy/country-proxy.service";

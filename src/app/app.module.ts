@@ -8,7 +8,7 @@ import {HomeComponent} from "./views/home/home.component";
 import {LocalStorageWrapper} from "./services/local-storage-wrapper.service";
 import {ApiCall} from "./services/api-call.service";
 import {AuthManager} from "./services/auth-manager.service";
-import {UserProxy} from "./services/user-proxy.service";
+import {UserProxy} from "./services/proxy/user-proxy.service";
 import {ActsAsUser} from "./services/acts-as-user.service";
 import {TranslationService} from "./services/translation.service";
 import {SliderComponent} from "./components/slider/slider.component";

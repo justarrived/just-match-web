@@ -4,7 +4,7 @@ import {JobProxy} from "../../../services/job-proxy.service";
 import {UserManager} from "../../../services/user-manager.service";
 import {UserJob} from "../../../models/user/user-job";
 import {map} from "lodash";
-import {UserProxy} from "../../../services/user-proxy.service";
+import {UserProxy} from "../../../services/proxy/user-proxy.service";
 
 @Component({
   selector: 'user-jobs',

@@ -1,6 +1,6 @@
 import {Component} from "@angular/core";
 import {UserProfile} from "../../../models/user/user-profile";
-import {UserProxy} from "../../../services/user-proxy.service";
+import {UserProxy} from "../../../services/proxy/user-proxy.service";
 import {AuthManager} from "../../../services/auth-manager.service";
 import {User} from "../../../models/user";
 import {namePropertyLabel} from "../../../utils/label-util";
