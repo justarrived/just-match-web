@@ -1,9 +1,9 @@
-import {Component, OnInit} from "@angular/core";
-import {ActivatedRoute} from "@angular/router";
-import {Job} from "../../models/job/job";
-import {JobProxy} from "../../services/proxy/job-proxy.service";
-import {UserManager} from "../../services/user-manager.service";
-import {User} from "../../models/user";
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
+import {Job} from '../../models/job/job';
+import {JobProxy} from '../../services/proxy/job-proxy.service';
+import {UserManager} from '../../services/user-manager.service';
+import {User} from '../../models/user';
 
 @Component({
   templateUrl: './job-details.component.html',

@@ -1,9 +1,9 @@
-import {Component, OnInit, Input, HostListener, ElementRef} from "@angular/core";
-import {CommentsProxy} from "../../services/proxy/comments-proxy.service";
-import {Comment} from "../../models/comment";
-import {UserManager} from "../../services/user-manager.service";
-import {TranslationService} from "../../services/translation.service";
-import {orderBy} from "lodash";
+import {Component, OnInit, Input, HostListener, ElementRef} from '@angular/core';
+import {CommentsProxy} from '../../services/proxy/comments-proxy.service';
+import {Comment} from '../../models/comment';
+import {UserManager} from '../../services/user-manager.service';
+import {TranslationService} from '../../services/translation.service';
+import {orderBy} from 'lodash';
 
 @Component({
   selector: 'comments',
@@ -34,7 +34,7 @@ export class CommentsComponent implements OnInit {
   }
 
   sendComment() {
-    var comment = new Comment();
+    let comment = new Comment();
     comment.commentableId = this.resourceId;
     comment.commentableType = this.resourceName;
     comment.languageId = this.translationService.getSelectedLanguage().id;

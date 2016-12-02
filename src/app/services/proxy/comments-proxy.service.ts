@@ -1,7 +1,7 @@
-import {Injectable} from "@angular/core";
-import {ApiCall} from "../api-call.service";
-import {Comment} from "../../models/comment";
-import {map} from "lodash";
+import {Injectable} from '@angular/core';
+import {ApiCall} from '../api-call.service';
+import {Comment} from '../../models/comment';
+import {map} from 'lodash';
 
 @Injectable()
 export class CommentsProxy {

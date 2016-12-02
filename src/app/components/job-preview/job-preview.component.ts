@@ -1,5 +1,5 @@
-import {Component, Input, OnInit} from "@angular/core";
-import {Job} from "../../models/job/job";
+import {Component, Input, OnInit} from '@angular/core';
+import {Job} from '../../models/job/job';
 
 @Component({
   selector: 'job-preview',

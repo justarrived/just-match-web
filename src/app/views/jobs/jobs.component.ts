@@ -1,8 +1,8 @@
-import {Component, OnInit} from "@angular/core";
-import {Job} from "../../models/job/job";
-import {JobProxy} from "../../services/proxy/job-proxy.service";
-import {Location} from "@angular/common";
-import {ActivatedRoute} from "@angular/router";
+import {Component, OnInit} from '@angular/core';
+import {Job} from '../../models/job/job';
+import {JobProxy} from '../../services/proxy/job-proxy.service';
+import {Location} from '@angular/common';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   templateUrl: './jobs.component.html',
@@ -30,7 +30,7 @@ export class JobsComponent implements OnInit {
   }
 
   onPageChange(page) {
-    this.location.replaceState("/jobs/" + page);
+    this.location.replaceState('/jobs/' + page);
     this.page = page;
     this.ngOnInit();
   }

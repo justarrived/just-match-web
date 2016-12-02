@@ -1,5 +1,5 @@
-import {UserStatus} from "./user-status";
-import {Country} from "../country";
+import {UserStatus} from './user-status';
+import {Country} from '../country';
 export class UserRegister {
   ssn: string;
   firstName: string;

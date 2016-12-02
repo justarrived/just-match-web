@@ -1,7 +1,7 @@
-import {Injectable, EventEmitter} from "@angular/core";
-import {TranslateService} from "ng2-translate/ng2-translate";
-import {LocalStorageWrapper} from "./local-storage-wrapper.service";
-import {Language} from "../models/language/language";
+import {Injectable, EventEmitter} from '@angular/core';
+import {TranslateService} from 'ng2-translate/ng2-translate';
+import {LocalStorageWrapper} from './local-storage-wrapper.service';
+import {Language} from '../models/language/language';
 
 @Injectable()
 export class TranslationService {

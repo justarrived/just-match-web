@@ -1,9 +1,9 @@
-import {Component, OnInit} from "@angular/core";
-import {JobProxy} from "../../services/proxy/job-proxy.service";
-import {Job} from "../../models/job/job";
-import {TranslationService} from "../../services/translation.service";
-import {UserManager} from "../../services/user-manager.service";
-import {User} from "../../models/user";
+import {Component, OnInit} from '@angular/core';
+import {JobProxy} from '../../services/proxy/job-proxy.service';
+import {Job} from '../../models/job/job';
+import {TranslationService} from '../../services/translation.service';
+import {UserManager} from '../../services/user-manager.service';
+import {User} from '../../models/user';
 
 @Component({
   templateUrl: './home.component.html',

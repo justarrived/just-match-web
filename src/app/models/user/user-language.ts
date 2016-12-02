@@ -1,7 +1,7 @@
-import {Language} from "../language/language";
-import {LanguageProficiency} from "../language/language-proficiency";
-import {languageProficiencyLevels} from "../../enums/enums";
-import {find} from "lodash";
+import {Language} from '../language/language';
+import {LanguageProficiency} from '../language/language-proficiency';
+import {languageProficiencyLevels} from '../../enums/enums';
+import {find} from 'lodash';
 
 export class UserLanguage {
   id: number;

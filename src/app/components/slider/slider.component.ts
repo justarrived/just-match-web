@@ -1,7 +1,6 @@
-import {Component, OnInit, ElementRef, Input} from "@angular/core";
-import {Job} from "../../models/job/job";
-import {AuthManager} from "../../services/auth-manager.service";
-import {UserManager} from "../../services/user-manager.service";
+import {Component, OnInit, ElementRef, Input} from '@angular/core';
+import {Job} from '../../models/job/job';
+import {UserManager} from '../../services/user-manager.service';
 
 @Component({
     selector: 'slider',
@@ -49,7 +48,7 @@ export class SliderComponent implements OnInit {
   }
 
   onResize(event) {
-    //TODO: make responsiveness on resizing
+    // TODO: make responsiveness on resizing
   }
 
   private getFirstItemContainer(): any {

@@ -1,9 +1,9 @@
-import {Company} from "../company";
-import {UserJob} from "../user/user-job";
-import {map} from "lodash";
-import {User} from "../user";
+import {Company} from '../company';
+import {UserJob} from '../user/user-job';
+import {map} from 'lodash';
+import {User} from '../user';
 
-const companyPlaceholderLogoURL = '/assets/images/placeholder-logo.png';
+const companyPlaceholderLogoURL: string = '/assets/images/placeholder-logo.png';
 
 export class Job {
   amount: number;
@@ -82,7 +82,7 @@ export class Job {
   }
 
   get companyLogoURL(): string {
-    var companyLogo = this.company.companyLogo;
+    let companyLogo = this.company.companyLogo;
     if (companyLogo && companyLogo.imageUrlSmall) {
       return companyLogo.imageUrlSmall;
     }

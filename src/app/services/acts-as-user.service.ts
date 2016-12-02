@@ -1,5 +1,5 @@
-import {Injectable} from "@angular/core";
-import {LocalStorageWrapper} from "./local-storage-wrapper.service";
+import {Injectable} from '@angular/core';
+import {LocalStorageWrapper} from './local-storage-wrapper.service';
 
 const storageActAsUserIdKey: string = 'actAsUserId';
 

@@ -1,6 +1,6 @@
-import {User} from "../user";
-import {map} from "lodash";
-import {UserLanguage} from "./user-language";
+import {User} from '../user';
+import {map} from 'lodash';
+import {UserLanguage} from './user-language';
 
 export class UserProfile {
   id: number;

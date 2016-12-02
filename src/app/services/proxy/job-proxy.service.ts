@@ -1,8 +1,8 @@
-import {Injectable} from "@angular/core";
-import {ApiCall} from "../api-call.service";
-import {map} from "lodash";
-import {Job, HourlyPay, Category} from "../../models/job/job";
-import {UserJob} from "../../models/user/user-job";
+import {Injectable} from '@angular/core';
+import {ApiCall} from '../api-call.service';
+import {map} from 'lodash';
+import {Job, HourlyPay, Category} from '../../models/job/job';
+import {UserJob} from '../../models/user/user-job';
 
 @Injectable()
 export class JobProxy {

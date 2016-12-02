@@ -1,7 +1,7 @@
-import {Injectable} from "@angular/core";
-import {LanguageProxy} from "./proxy/language-proxy.service";
-import {orderBy} from "lodash";
-import {Language} from "../models/language/language";
+import {Injectable} from '@angular/core';
+import {LanguageProxy} from './proxy/language-proxy.service';
+import {orderBy} from 'lodash';
+import {Language} from '../models/language/language';
 
 @Injectable()
 export class SystemLanguagesService {

@@ -1,7 +1,7 @@
-import {Component, Input, ElementRef, OnInit, EventEmitter, Output, HostListener} from "@angular/core";
-import {cloneDeep, some, isEqual, isObject, assignIn, filter} from "lodash";
-import {CountryProxy} from "../../services/proxy/country-proxy.service";
-import {deleteElementFromArray} from "../../utils/array-util";
+import {Component, Input, ElementRef, OnInit, EventEmitter, Output, HostListener} from '@angular/core';
+import {cloneDeep, some, isEqual, isObject, assignIn, filter} from 'lodash';
+import {CountryProxy} from '../../services/proxy/country-proxy.service';
+import {deleteElementFromArray} from '../../utils/array-util';
 import Timer = NodeJS.Timer;
 
 @Component({
@@ -177,14 +177,14 @@ export class AutocompleteDropdownComponent implements OnInit {
   private getLookupData() {
     switch (this.lookupType) {
       case 'enum':
-        var filteredKeys = filter(Object.keys(this.enumList), key => {
+        let filteredKeys = filter(Object.keys(this.enumList), key => {
           return this.enumList[key].isGroup ? this.shouldMatchGroup(key) : this.shouldMatch(key, this.enumList[key].name);
         });
         this.setLookupData(filteredKeys);
         break;
 
       case 'list':
-        var filtered = filter(this.enumList, item => this.shouldMatch(item, item && item.toString()));
+        let filtered = filter(this.enumList, item => this.shouldMatch(item, item && item.toString()));
         this.setLookupData(filtered);
         break;
 

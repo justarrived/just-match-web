@@ -1,17 +1,16 @@
-import {Component, Input} from "@angular/core";
-import {Job} from "../../../models/job/job";
-import {JobProxy} from "../../../services/proxy/job-proxy.service";
-import {UserManager} from "../../../services/user-manager.service";
-import {UserJob} from "../../../models/user/user-job";
-import {map} from "lodash";
-import {UserProxy} from "../../../services/proxy/user-proxy.service";
+import {Component, Input, OnInit} from '@angular/core';
+import {Job} from '../../../models/job/job';
+import {UserManager} from '../../../services/user-manager.service';
+import {UserJob} from '../../../models/user/user-job';
+import {map} from 'lodash';
+import {UserProxy} from '../../../services/proxy/user-proxy.service';
 
 @Component({
   selector: 'user-jobs',
   templateUrl: './user-jobs.component.html',
   providers: [UserProxy]
 })
-export class UserJobsComponent {
+export class UserJobsComponent implements OnInit {
   @Input() selectedState: string;
   userJobs: UserJob[];
   currentJobs: Job[] = []; // not invoiced

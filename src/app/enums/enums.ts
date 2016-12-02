@@ -1,4 +1,4 @@
-import {LanguageProficiency} from "../models/language/language-proficiency";
+import {LanguageProficiency} from '../models/language/language-proficiency';
 
 export const atUndStatuses: any[] = [
   {name: 'Yes', value: 'yes'},

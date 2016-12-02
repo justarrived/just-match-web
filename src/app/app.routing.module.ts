@@ -1,18 +1,18 @@
-import {Routes, RouterModule} from "@angular/router";
-import {AboutComponent} from "./views/about/about.component";
-import {HomeComponent} from "./views/home/home.component";
-import {NgModule} from "@angular/core";
-import {AuthGuard} from "./services/auth-guard.service";
-import {UserRegisterComponent} from "./views/user/user-register/user-register.component";
-import {UserProfileComponent} from "./views/user/user-profile/user-profile.component";
-import {LoginComponent} from "./views/login/login.component";
-import {JobCreateComponent} from "./views/jobs/job-create/job-create.component";
-import {JobsComponent} from "./views/jobs/jobs.component";
-import {JobDetailsComponent} from "./views/job-details/job-details.component";
-import {ConfirmationComponent} from "./views/confirmation/confirmation.component";
-import {CandidateComponent} from "./views/candidate/candidate.component";
-import {CandidatesComponent} from "./views/candidates/candidates.component";
-import {MyJobsComponent} from "./views/my-jobs/my-jobs.component";
+import {Routes, RouterModule} from '@angular/router';
+import {AboutComponent} from './views/about/about.component';
+import {HomeComponent} from './views/home/home.component';
+import {NgModule} from '@angular/core';
+import {AuthGuard} from './services/auth-guard.service';
+import {UserRegisterComponent} from './views/user/user-register/user-register.component';
+import {UserProfileComponent} from './views/user/user-profile/user-profile.component';
+import {LoginComponent} from './views/login/login.component';
+import {JobCreateComponent} from './views/jobs/job-create/job-create.component';
+import {JobsComponent} from './views/jobs/jobs.component';
+import {JobDetailsComponent} from './views/job-details/job-details.component';
+import {ConfirmationComponent} from './views/confirmation/confirmation.component';
+import {CandidateComponent} from './views/candidate/candidate.component';
+import {CandidatesComponent} from './views/candidates/candidates.component';
+import {MyJobsComponent} from './views/my-jobs/my-jobs.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },

@@ -1,12 +1,12 @@
-import {Component, OnInit} from "@angular/core";
-import {Router} from "@angular/router";
-import {JobProxy} from "../../../services/proxy/job-proxy.service";
-import {Job} from "../../../models/job/job";
-import {HourlyPay} from "../../../models/job/job";
-import {Category} from "../../../models/job/job";
-import {grossSalaryLabel} from "../../../utils/label-util";
-import {namePropertyLabel} from "../../../utils/label-util";
-import {TranslationService} from "../../../services/translation.service";
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
+import {JobProxy} from '../../../services/proxy/job-proxy.service';
+import {Job} from '../../../models/job/job';
+import {HourlyPay} from '../../../models/job/job';
+import {Category} from '../../../models/job/job';
+import {grossSalaryLabel} from '../../../utils/label-util';
+import {namePropertyLabel} from '../../../utils/label-util';
+import {TranslationService} from '../../../services/translation.service';
 
 @Component({
   templateUrl: './job-create.component.html',

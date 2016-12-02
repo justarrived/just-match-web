@@ -1,14 +1,14 @@
-import {Injectable} from "@angular/core";
-import {Http, Headers, Request, RequestOptions, RequestOptionsArgs, RequestMethod, URLSearchParams} from "@angular/http";
-import {LocalStorageWrapper} from "./local-storage-wrapper.service";
-import * as  _ from "lodash";
-import {parseJsonapiResponse, parseJsonapiErrorResponse} from "../utils/jsonapi-parser.util";
-import {Observable} from "rxjs";
-import {Router} from "@angular/router";
-import {environment} from "../../environments/environment";
-import {UserManager} from "./user-manager.service";
-import {ActsAsUser} from "./acts-as-user.service";
-import {TranslationService} from "./translation.service";
+import {Injectable} from '@angular/core';
+import {Http, Headers, Request, RequestOptions, RequestOptionsArgs, RequestMethod, URLSearchParams} from '@angular/http';
+import {LocalStorageWrapper} from './local-storage-wrapper.service';
+import * as  _ from 'lodash';
+import {parseJsonapiResponse, parseJsonapiErrorResponse} from '../utils/jsonapi-parser.util';
+import {Observable} from 'rxjs';
+import {Router} from '@angular/router';
+import {environment} from '../../environments/environment';
+import {UserManager} from './user-manager.service';
+import {ActsAsUser} from './acts-as-user.service';
+import {TranslationService} from './translation.service';
 
 @Injectable()
 export class ApiCall {
@@ -90,7 +90,7 @@ export class ApiCall {
     return environment.apiBaseUrl + url;
   }
 
-  private contentTypeHeaderBuilder(contentType: string = "application/vnd.api+json"): Headers {
+  private contentTypeHeaderBuilder(contentType: string = 'application/vnd.api+json'): Headers {
     return new Headers({'Content-Type': contentType});
   }
 
@@ -104,7 +104,7 @@ export class ApiCall {
 
   private handleResponseErrors(response) {
     if (response.status === 401) {
-      var tokenExpiredObject = _.find(response.json().errors, {code: 'token_expired'});
+      let tokenExpiredObject = _.find(response.json().errors, {code: 'token_expired'});
       if (!!tokenExpiredObject) {
         this.userManager.deleteUser();
         this.router.navigate(['/login']);

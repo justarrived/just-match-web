@@ -1,7 +1,7 @@
-import {UserImage} from "./user/user-image";
-import {map, find} from "lodash";
-import {UserLanguage} from "./user/user-language";
-import {Company} from "./company";
+import {UserImage} from './user/user-image';
+import {map, find} from 'lodash';
+import {UserLanguage} from './user/user-language';
+import {Company} from './company';
 
 export class User {
   id: number;

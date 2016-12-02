@@ -1,17 +1,17 @@
-import {Component} from "@angular/core";
-import {UserProfile} from "../../../models/user/user-profile";
-import {UserProxy} from "../../../services/proxy/user-proxy.service";
-import {AuthManager} from "../../../services/auth-manager.service";
-import {User} from "../../../models/user";
-import {namePropertyLabel} from "../../../utils/label-util";
-import {LanguageProxy} from "../../../services/proxy/language-proxy.service";
-import {languageProficiencyLevels} from "../../../enums/enums";
-import {isEmpty, some} from "lodash";
-import {deleteElementFromArray} from "../../../utils/array-util";
-import {UserLanguage} from "../../../models/user/user-language";
-import {UserManager} from "../../../services/user-manager.service";
-import {LanguageProficiency} from "../../../models/language/language-proficiency";
-import {Language} from "../../../models/language/language";
+import {Component} from '@angular/core';
+import {UserProfile} from '../../../models/user/user-profile';
+import {UserProxy} from '../../../services/proxy/user-proxy.service';
+import {AuthManager} from '../../../services/auth-manager.service';
+import {User} from '../../../models/user';
+import {namePropertyLabel} from '../../../utils/label-util';
+import {LanguageProxy} from '../../../services/proxy/language-proxy.service';
+import {languageProficiencyLevels} from '../../../enums/enums';
+import {isEmpty, some} from 'lodash';
+import {deleteElementFromArray} from '../../../utils/array-util';
+import {UserLanguage} from '../../../models/user/user-language';
+import {UserManager} from '../../../services/user-manager.service';
+import {LanguageProficiency} from '../../../models/language/language-proficiency';
+import {Language} from '../../../models/language/language';
 
 @Component({
   selector: 'user-profile',

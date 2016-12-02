@@ -1,6 +1,6 @@
-import {Component} from "@angular/core";
-import {AuthManager} from "../../services/auth-manager.service";
-import {Router} from "@angular/router";
+import {Component} from '@angular/core';
+import {AuthManager} from '../../services/auth-manager.service';
+import {Router} from '@angular/router';
 
 @Component({
     templateUrl: './login.component.html'

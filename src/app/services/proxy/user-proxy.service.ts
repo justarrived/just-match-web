@@ -1,9 +1,9 @@
-import {Injectable} from "@angular/core";
-import {ApiCall} from "../api-call.service";
-import {UserStatus} from "../../models/user/user-status";
-import {map} from "lodash";
-import {UserImage} from "../../models/user/user-image";
-import {UserJob} from "../../models/user/user-job";
+import {Injectable} from '@angular/core';
+import {ApiCall} from '../api-call.service';
+import {UserStatus} from '../../models/user/user-status';
+import {map} from 'lodash';
+import {UserImage} from '../../models/user/user-image';
+import {UserJob} from '../../models/user/user-job';
 
 @Injectable()
 export class UserProxy {
@@ -17,8 +17,8 @@ export class UserProxy {
 
   getUserSession(email, password) {
     return this.apiCall.post('users/sessions', {
-      "email_or_phone": email,
-      "password": password
+      'email_or_phone': email,
+      'password': password
     });
   }
 

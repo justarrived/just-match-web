@@ -1,13 +1,14 @@
-import {Injectable, EventEmitter} from "@angular/core";
-import {User} from "../models/user";
-import {UserProxy} from "./proxy/user-proxy.service";
-import {UserManager} from "./user-manager.service";
+import {Injectable, EventEmitter} from '@angular/core';
+import {User} from '../models/user';
+import {UserProxy} from './proxy/user-proxy.service';
+import {UserManager} from './user-manager.service';
 
 @Injectable()
 export class AuthManager {
+  private userChange: EventEmitter<User> = new EventEmitter<User>();
+
   constructor(private userProxy: UserProxy, private userManager: UserManager) {
   }
-  private userChange: EventEmitter<User> = new EventEmitter<User>();
 
   public isUserLoggedin(): boolean {
     return !!this.userManager.getUser();

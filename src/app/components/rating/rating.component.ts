@@ -1,5 +1,5 @@
-import {Component, Input, Output, EventEmitter} from "@angular/core";
-import * as  _ from "lodash";
+import {Component, Input, Output, EventEmitter} from '@angular/core';
+import * as  _ from 'lodash';
 
 @Component({
   selector: 'rating',

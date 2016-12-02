@@ -1,6 +1,6 @@
-import * as moment from "moment";
-import {User} from "../user";
-import {Job} from "../job/job";
+import * as moment from 'moment';
+import {User} from '../user';
+import {Job} from '../job/job';
 
 export class UserJob {
   private MINUTES_PER_HOUR: number = 60;

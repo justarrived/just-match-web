@@ -1,6 +1,6 @@
-import {Component, OnInit} from "@angular/core";
-import {AuthManager} from "./services/auth-manager.service";
-import {ActsAsUser} from "./services/acts-as-user.service";
+import {Component, OnInit} from '@angular/core';
+import {AuthManager} from './services/auth-manager.service';
+import {ActsAsUser} from './services/acts-as-user.service';
 import {
   Router,
   NavigationStart,
@@ -8,12 +8,12 @@ import {
   NavigationCancel,
   NavigationEnd,
   NavigationError
-} from "@angular/router";
-import {User} from "./models/user";
-import {TranslationService} from "./services/translation.service";
-import {Language} from "./models/language/language";
-import {UserManager} from "./services/user-manager.service";
-import {SystemLanguagesService} from "./services/system-languages.service";
+} from '@angular/router';
+import {User} from './models/user';
+import {TranslationService} from './services/translation.service';
+import {Language} from './models/language/language';
+import {UserManager} from './services/user-manager.service';
+import {SystemLanguagesService} from './services/system-languages.service';
 
 @Component({
   selector: 'app',
@@ -66,7 +66,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log("Application component initialized ...");
+    console.log('Application component initialized ...');
     this.authManager.authenticateIfNeeded().then(result => {
       this.router.initialNavigation();
       this.user = result;

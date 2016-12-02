@@ -1,5 +1,5 @@
-import {Injectable} from "@angular/core";
-import {storageTypeAvailable} from "../utils/storage-type-available";
+import {Injectable} from '@angular/core';
+import {storageTypeAvailable} from '../utils/storage-type-available';
 
 interface StorageInterface {
   getItem(key: string): string;

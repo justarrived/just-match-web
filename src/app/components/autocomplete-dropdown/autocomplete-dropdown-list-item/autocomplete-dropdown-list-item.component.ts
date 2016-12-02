@@ -1,7 +1,7 @@
-import {Component, Input, Output, EventEmitter, OnInit} from "@angular/core";
+import {Component, Input, Output, EventEmitter, OnInit} from '@angular/core';
 
 @Component({
-  selector: './autocomplete-dropdown-list-item',
+  selector: 'autocomplete-dropdown-list-item',
   templateUrl: './autocomplete-dropdown-list-item.component.html'
 })
 export class AutocompleteDropdownListItemComponent implements OnInit {

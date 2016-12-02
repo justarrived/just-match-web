@@ -1,5 +1,5 @@
-import * as _ from "lodash";
-import {Response} from "@angular/http";
+import * as _ from 'lodash';
+import {Response} from '@angular/http';
 
 export function parseJsonapiResponse(response: Response): any {
   let body = response.json();
@@ -7,7 +7,6 @@ export function parseJsonapiResponse(response: Response): any {
 }
 
 export function parseJsonapiErrorResponse(response: Response): Object {
-  const result: Object = {};
   const errorDetails: Object = {};
   const errors: Array<Object> = [];
 

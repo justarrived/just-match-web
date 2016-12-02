@@ -1,6 +1,6 @@
-import { Injectable } from "@angular/core";
-import {User} from "../models/user";
-import {LocalStorageWrapper} from "./local-storage-wrapper.service";
+import { Injectable } from '@angular/core';
+import {User} from '../models/user';
+import {LocalStorageWrapper} from './local-storage-wrapper.service';
 
 @Injectable()
 export class UserManager {
