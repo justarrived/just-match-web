@@ -1,0 +1,30 @@
+<div class="comments-container" [ngClass]="{'addition-padding': !isFooterVisible && userId, 'small-addition-padding': !userId}">
+  <div *ngFor="let comment of comments" class="comment-container">
+    <div class="comment-picture-container" [ngClass]="{'float-left': comment.owner.id != userId, 'float-right': comment.owner.id == userId}">
+      <img class="rounded-image" *ngIf="comment.owner.company && comment.owner.company.id" [src]="(comment.owner.company.companyLogo && comment.owner.company.imageUrlSmall) || '/assets/images/placeholder-logo.png'">
+      <img class="rounded-image" *ngIf="!(comment.owner.company && comment.owner.company.id)" [src]="(comment.owner.images && comment.owner.images[0] && comment.owner.images[0].imageUrl) || '/assets/images/placeholder-profile-image.png'">
+    </div>
+    <div class="comment-content" [ngClass]="{'left-moved': comment.owner.id != userId}">
+      <div class="comment-meta-data">
+        <span *ngIf="!(comment.owner.company && comment.owner.company.id)">{{comment.owner.firstName}}</span>
+        <span *ngIf="comment.owner.company && comment.owner.company.id">{{comment.owner.company.name}}</span>
+        &nbsp;&nbsp;{{comment.createdAt | date:'yyyy-MM-dd HH:mm'}}
+      </div>
+      <div class="comment-body">{{comment.body}}</div>
+    </div>
+  </div>
+</div>
+
+<div class="new-comment-container container" [ngClass]="{moving: !isFooterVisible}" *ngIf="userId">
+  <div class="row flex-items-xs-middle">
+    <div class="offset-md-2"></div>
+    <div class="col-xs-8">
+      <div class="resizable-div-cell">
+        <div contenteditable="true" class="resizable-div" placeholder="Write a comment" (input)="onNewCommentInput($event)"></div>
+      </div>
+    </div>
+    <div class="col-xs-4 col-sm-4 col-md-2 comment-send-button-container text-center">
+      <button class="comment-send-button clickable" (click)="sendComment()" [disabled]="!(newCommentBody && newCommentBody.trim())">Send</button>
+    </div>
+  </div>
+</div>

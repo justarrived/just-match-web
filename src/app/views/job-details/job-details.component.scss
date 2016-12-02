@@ -1,0 +1,19 @@
+@import '../../styles/variables';
+
+.job-details-header {
+  background-color: $default-bg-color;
+  border-bottom: 1px solid $white-bg-border;
+  .company-logo {
+    float: right;
+    max-height: 80px;
+    border-radius: 2px;
+    padding: 15px 0;
+  }
+}
+
+.job-details-body {
+  background-color: $default-bg-color;
+  .content {
+    margin: 15px 0;
+  }
+}
