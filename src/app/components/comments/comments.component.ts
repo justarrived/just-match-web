@@ -1,7 +1,7 @@
 import {Component, OnInit, Input, HostListener, ElementRef} from "@angular/core";
 import {CommentsProxy} from "../../services/proxy/comments-proxy.service";
 import {Comment} from "../../models/comment";
-import {UserManager} from "../../user-manager.service";
+import {UserManager} from "../../services/user-manager.service";
 import {TranslationService} from "../../services/translation.service";
 import {orderBy} from "lodash";
 

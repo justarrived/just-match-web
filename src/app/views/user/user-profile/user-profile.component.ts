@@ -9,7 +9,7 @@ import {languageProficiencyLevels} from "../../../enums/enums";
 import {isEmpty, some} from "lodash";
 import {deleteElementFromArray} from "../../../utils/array-util";
 import {UserLanguage} from "../../../models/user/user-language";
-import {UserManager} from "../../../user-manager.service";
+import {UserManager} from "../../../services/user-manager.service";
 import {LanguageProficiency} from "../../../models/language/language-proficiency";
 import {Language} from "../../../models/language/language";
 

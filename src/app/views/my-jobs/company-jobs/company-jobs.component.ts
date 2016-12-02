@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from "@angular/core";
 import {Job} from "../../../models/job/job";
 import {JobProxy} from "../../../services/job-proxy.service";
-import {UserManager} from "../../../user-manager.service";
+import {UserManager} from "../../../services/user-manager.service";
 
 @Component({
   selector: 'company-jobs',

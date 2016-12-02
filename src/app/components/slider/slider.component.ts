@@ -1,7 +1,7 @@
 import {Component, OnInit, ElementRef, Input} from "@angular/core";
 import {Job} from "../../models/job/job";
 import {AuthManager} from "../../services/auth-manager.service";
-import {UserManager} from "../../user-manager.service";
+import {UserManager} from "../../services/user-manager.service";
 
 @Component({
     selector: 'slider',

@@ -1,7 +1,7 @@
 import {Injectable, EventEmitter} from "@angular/core";
 import {User} from "../models/user";
 import {UserProxy} from "./user-proxy.service";
-import {UserManager} from "../user-manager.service";
+import {UserManager} from "./user-manager.service";
 
 @Injectable()
 export class AuthManager {

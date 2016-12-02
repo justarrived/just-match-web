@@ -1,7 +1,7 @@
 import {Component, OnInit, Input} from "@angular/core";
 import {User} from "../../models/user";
 import {Job} from "../../models/job/job";
-import {UserManager} from "../../user-manager.service";
+import {UserManager} from "../../services/user-manager.service";
 import {UserProxy} from "../../services/user-proxy.service";
 import {UserJob} from "../../models/user/user-job";
 import {JobProxy} from "../../services/job-proxy.service";

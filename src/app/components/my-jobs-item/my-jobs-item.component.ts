@@ -1,7 +1,7 @@
 import {Component, Input} from "@angular/core";
 import {Job} from "../../models/job/job";
 import {Router} from "@angular/router";
-import {UserManager} from "../../user-manager.service";
+import {UserManager} from "../../services/user-manager.service";
 
 @Component({
   selector: 'my-jobs-item',

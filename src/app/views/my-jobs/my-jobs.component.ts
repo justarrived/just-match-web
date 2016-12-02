@@ -1,5 +1,5 @@
 import {Component, OnInit} from "@angular/core";
-import {UserManager} from "../../user-manager.service";
+import {UserManager} from "../../services/user-manager.service";
 
 @Component({
   templateUrl: './my-jobs.component.html',

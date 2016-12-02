@@ -12,7 +12,7 @@ import {
 import {User} from "./models/user";
 import {TranslationService} from "./services/translation.service";
 import {Language} from "./models/language/language";
-import {UserManager} from "./user-manager.service";
+import {UserManager} from "./services/user-manager.service";
 import {SystemLanguagesService} from "./services/system-languages.service";
 
 @Component({

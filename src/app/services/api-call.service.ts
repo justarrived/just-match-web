@@ -6,7 +6,7 @@ import {parseJsonapiResponse, parseJsonapiErrorResponse} from "../utils/jsonapi-
 import {Observable} from "rxjs";
 import {Router} from "@angular/router";
 import {environment} from "../../environments/environment";
-import {UserManager} from "../user-manager.service";
+import {UserManager} from "./user-manager.service";
 import {ActsAsUser} from "./acts-as-user.service";
 import {TranslationService} from "./translation.service";
 
