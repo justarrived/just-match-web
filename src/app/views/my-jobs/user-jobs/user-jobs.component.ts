@@ -1,6 +1,6 @@
 import {Component, Input} from "@angular/core";
 import {Job} from "../../../models/job/job";
-import {JobProxy} from "../../../services/job-proxy.service";
+import {JobProxy} from "../../../services/proxy/job-proxy.service";
 import {UserManager} from "../../../services/user-manager.service";
 import {UserJob} from "../../../models/user/user-job";
 import {map} from "lodash";

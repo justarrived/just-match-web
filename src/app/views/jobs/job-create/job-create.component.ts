@@ -1,6 +1,6 @@
 import {Component, OnInit} from "@angular/core";
 import {Router} from "@angular/router";
-import {JobProxy} from "../../../services/job-proxy.service";
+import {JobProxy} from "../../../services/proxy/job-proxy.service";
 import {Job} from "../../../models/job/job";
 import {HourlyPay} from "../../../models/job/job";
 import {Category} from "../../../models/job/job";

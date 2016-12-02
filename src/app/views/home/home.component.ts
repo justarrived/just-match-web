@@ -1,5 +1,5 @@
 import {Component, OnInit} from "@angular/core";
-import {JobProxy} from "../../services/job-proxy.service";
+import {JobProxy} from "../../services/proxy/job-proxy.service";
 import {Job} from "../../models/job/job";
 import {TranslationService} from "../../services/translation.service";
 import {UserManager} from "../../services/user-manager.service";
