@@ -20,7 +20,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'about', component: AboutComponent, data: {title: 'About'}, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent, data: {title: 'Login'} },
-  { path: 'faq/:page', component: FaqComponent, data: {title: 'Questions and Answers'} },
+  { path: 'faq', component: FaqComponent, data: {title: 'Questions and Answers'} },
   { path: 'confirmation/:type', component: ConfirmationComponent },
   { path: 'job/create', component: JobCreateComponent, data: { roles: ['company']} , canActivate: [AuthGuard] },
   { path: 'jobs/:page', component: JobsComponent },

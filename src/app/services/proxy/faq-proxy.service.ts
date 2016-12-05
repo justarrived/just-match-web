@@ -9,7 +9,7 @@ export class FaqProxy {
   constructor(private apiCall: ApiCall) { }
 
   getFaqs(additionOptions?: Object) {
-    return this.apiCall.get('faqs',  additionOptions)
-     .then(response => map(response.data, data => new Faq(data)));
+    return this.apiCall.get('faqs', additionOptions)
+      .then(response => map(response.data, data => new Faq(data)));
   }
 }
