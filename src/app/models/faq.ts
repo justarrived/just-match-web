@@ -13,6 +13,6 @@ export class Faq {
     this.id = jsonObject.id;
     this.question = jsonObject.question;
     this.answer = jsonObject.answer;
-    this.language = new Language(jsonObject.language);
+    //this.language = new Language(jsonObject.language);
   }
 }

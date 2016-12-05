@@ -9,6 +9,7 @@ import {FaqProxy} from '../../services/proxy/faq-proxy.service';
 })
 export class FaqComponent implements OnInit {
   faqs: Faq[];
+  oneAtATime: boolean = true;
 
   constructor(private faqProxy: FaqProxy) {
   }
@@ -19,6 +20,21 @@ export class FaqComponent implements OnInit {
         this.faqs = result.data;
         this.totalQuestions = result.total;
       });*/
-    this.faqs = [null, null, null, null];
+    this.faqs = [new Faq({
+      question: 'Question',
+      answer: 'Answer',
+    }), new Faq({
+      question: 'Question',
+      answer: 'Answer',
+    }), new Faq({
+      question: 'Question',
+      answer: 'Answer',
+    }), new Faq({
+      question: 'Question',
+      answer: 'Answer',
+    }), new Faq({
+      question: 'Question',
+      answer: 'Answer',
+    })];
   }
 }

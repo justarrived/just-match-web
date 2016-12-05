@@ -9,12 +9,17 @@
     </div>
   </div>
 
-  <div id="accordion" role="tablist" aria-multiselectable="true">
-
+  <div class="faq-list-container row">
     <div>
-      <faq-list-item style="display: block;" *ngFor="let faq of faqs" [faq]="faq"></faq-list-item>
+      <ul>
+        <li *ngFor="let faq of faqs">
+          <input type="checkbox" checked>
+          <i></i>
+          <strong>{{faq.question}}</strong>
+          <p>{{faq.answer}}</p>
+        </li>
+      </ul>
     </div>
-
   </div>
 
 </div>
