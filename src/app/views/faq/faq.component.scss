@@ -47,9 +47,9 @@
       padding-top: 18px;
       padding-left: 1em;
       border-top: 1px dotted #dce7eb;
-      @for $i from 1 through 20 {
+      @for $i from 1 through 40 {
         &:nth-of-type(#{$i}) {
-           animation-delay: #{$i * 0.25 + 0.25}s;
+           animation-delay: #{$i * 0.1 + 0.25}s;
          }
       }
       &:last-of-type {
