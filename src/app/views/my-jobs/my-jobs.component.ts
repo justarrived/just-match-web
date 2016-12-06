@@ -6,7 +6,7 @@ import {UserManager} from '../../services/user-manager.service';
   styleUrls: ['./my-jobs.component.scss']
 })
 export class MyJobsComponent implements OnInit {
-  selectedState: string = 'active';
+  selectedState: string = 'profile';
   isCompanyUser: boolean;
 
   constructor(private userManager: UserManager) {

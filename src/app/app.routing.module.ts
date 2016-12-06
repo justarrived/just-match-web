@@ -4,7 +4,7 @@ import {HomeComponent} from './views/home/home.component';
 import {NgModule} from '@angular/core';
 import {AuthGuard} from './services/auth-guard.service';
 import {UserRegisterComponent} from './views/user/user-register/user-register.component';
-import {UserProfileComponent} from './views/user/user-profile/user-profile.component';
+import {UserSettingsComponent} from './views/user/user-settings/user-settings.component';
 import {LoginComponent} from './views/login/login.component';
 import {JobCreateComponent} from './views/jobs/job-create/job-create.component';
 import {JobsComponent} from './views/jobs/jobs.component';
@@ -26,7 +26,7 @@ const routes: Routes = [
   { path: 'job/:id/candidates', component: CandidatesComponent },
   { path: 'job/:id', component: JobDetailsComponent },
   { path: 'user/register', component: UserRegisterComponent },
-  { path: 'user', component: UserProfileComponent, canActivate: [AuthGuard] },
+  { path: 'user', component: UserSettingsComponent, canActivate: [AuthGuard] },
   { path: 'my-jobs', component: MyJobsComponent, canActivate: [AuthGuard] },
   { path: '**', redirectTo: 'home' }
 ];

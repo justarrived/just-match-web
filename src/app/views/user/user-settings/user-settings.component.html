@@ -1,0 +1,41 @@
+<div class="user-profile">
+  <div class="subheader text-center">
+    <div class="fs-l form-group">{{'profile' | translate | uppercase}}</div>
+    <div class="subheader-text form-group">{{'profile.create.description' | translate}}</div>
+
+    <div class="table upload-group-container">
+      <div class="table-row">
+        <div class="table-cell upload-group">
+          <input type="file" id="image-filename" name="imageFilename" class="file" (change)="onImageFilenameChange($event)" accept="image/*">
+          <div class="icon-camera opacity-over" class="enabled">
+            <i class="demo-icon icon-ic-camera"></i>
+            <div class="fs-s text-center">{{'profile.form.photo.choose' | translate}}</div>
+          </div>
+
+          <div class="user-info-image" [ngStyle]="{'background-image': 'url(' + userProfile.imageUrl + ')'}"></div>
+        </div>
+        <div class="table-cell fs-m">{{user.firstName}} {{user.lastName}}</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="header-tab col-xs-4" [ngClass]="{'selected': selectedState == 'profile'}" (click)="setState('profile')" >
+      <h4>
+        {{'profile' | translate}}
+      </h4>
+    </div>
+    <div class="header-tab col-xs-4" [ngClass]="'selected': selectedState == 'details'}" (click)="setState('details')">
+      <h4>
+        {{"menu.settings.personal_data" | translate}}
+      </h4>
+    </div>
+    <div class="header-tab col-xs-4" [ngClass]="{'selected': selectedState == 'bank'}" (click)="setState('bank')">
+      <h4>
+        {{"menu.settings.bank_details" | translate}}
+      </h4>
+    </div>
+  </div>
+
+  <user-profile *ngIf="selectedState == 'profile'" [user]="user"></user-profile>
+</div>
