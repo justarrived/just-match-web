@@ -41,10 +41,11 @@
     margin: 0;
     li {
       position: relative;
-      padding: 1em;
+      padding: 0;
       margin: 0;
       padding-bottom: 4px;
       padding-top: 18px;
+      padding-left: 1em;
       border-top: 1px dotted #dce7eb;
       @for $i from 1 through 20 {
         &:nth-of-type(#{$i}) {
@@ -80,6 +81,8 @@
         height: 100%;
         z-index: 1;
         opacity: 0;
+        top: 0;
+        left: 0;
         &:checked ~ {
           p {
             margin-top: 0;

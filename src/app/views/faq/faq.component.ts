@@ -9,32 +9,12 @@ import {FaqProxy} from '../../services/proxy/faq-proxy.service';
 })
 export class FaqComponent implements OnInit {
   faqs: Faq[];
-  oneAtATime: boolean = true;
 
   constructor(private faqProxy: FaqProxy) {
   }
 
   ngOnInit() {
-    /*this.faqProxy.getFaqs({ include: 'question,answer,language', 'filter[filled]': false })
-      .then(result => {
-        this.faqs = result.data;
-        this.totalQuestions = result.total;
-      });*/
-    this.faqs = [new Faq({
-      question: 'Question',
-      answer: 'Answer',
-    }), new Faq({
-      question: 'Question',
-      answer: 'Answer',
-    }), new Faq({
-      question: 'Question',
-      answer: 'Answer',
-    }), new Faq({
-      question: 'Question',
-      answer: 'Answer',
-    }), new Faq({
-      question: 'Question',
-      answer: 'Answer',
-    })];
+    this.faqProxy.getFaqs({ 'filter[filled]': false })
+      .then(result => this.faqs = result);
   }
 }
