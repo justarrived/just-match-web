@@ -89,7 +89,6 @@ import {AppRoutingModule} from './app.routing.module';
     UserProxy,
     CountryProxy,
     LanguageProxy,
-    FaqProxy,
     TranslationService,
     UserManager,
     // {provide: ErrorHandler, useClass: GlobalExceptionHandler}
