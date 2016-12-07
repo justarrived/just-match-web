@@ -15,6 +15,7 @@ export class UserDetailsComponent {
   editMode: boolean = false;
 
   @Input() user: User;
+  errors: any = {};
 
   constructor(private authManager: AuthManager,
               private userProxy: UserProxy) {
@@ -30,6 +31,7 @@ export class UserDetailsComponent {
         return this.authManager.authenticateIfNeeded();
       }).then(user => {
       this.editMode = false;
-    });
-  }
+      }).catch(errors => {
+        this.errors = errors;
+      });  }
 }

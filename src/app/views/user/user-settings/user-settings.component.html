@@ -12,7 +12,7 @@
             <div class="fs-s text-center">{{'profile.form.photo.choose' | translate}}</div>
           </div>
 
-          <div class="user-info-image" [ngStyle]="{'background-image': 'url(' + userProfile.imageUrl + ')'}"></div>
+          <div class="user-info-image" [ngStyle]="{'background-image': 'url(' + user.profileImage.imageUrl + ')'}"></div>
         </div>
         <div class="table-cell fs-m">{{user.firstName}} {{user.lastName}}</div>
       </div>
@@ -25,7 +25,7 @@
         {{'profile' | translate}}
       </h4>
     </div>
-    <div class="header-tab col-xs-4" [ngClass]="'selected': selectedState == 'details'}" (click)="setState('details')">
+    <div class="header-tab col-xs-4" [ngClass]="{'selected': selectedState == 'details'}" (click)="setState('details')">
       <h4>
         {{"menu.settings.personal_data" | translate}}
       </h4>
@@ -38,4 +38,5 @@
   </div>
 
   <user-profile *ngIf="selectedState == 'profile'" [user]="user"></user-profile>
+  <user-details *ngIf="selectedState == 'details'" [user]="user"></user-details>
 </div>

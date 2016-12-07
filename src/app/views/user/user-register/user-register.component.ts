@@ -21,7 +21,6 @@ export class UserRegisterComponent implements OnInit {
   userRegister: UserRegister = new UserRegister();
   statuses: UserStatus[];
   countries: Country[];
-  search: any;
   errors: any = {};
 
   constructor(private router: Router,

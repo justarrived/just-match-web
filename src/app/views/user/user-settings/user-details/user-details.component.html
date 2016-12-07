@@ -1,9 +1,10 @@
 <div class="centered-form-container">
   <form class="centered-form" #form="ngForm" (ngSubmit)="onSubmit()">
-
     <div class="material-group">
-      <input type="text" id="ssn" [(ngModel)]="userRegister.ssn" name="ssn" class="material-input" [ngClass]="{'not-empty': userRegister.ssn, 'has-error': errors.ssn}" required pattern="^[\d\-]+$" minlength="10">
-      <label for="ssn" class="material-label">{{'user.form.ssn' | translate}}</label>
+      <i class="icon-ic-paper"></i>
+
+      <label for="ssn">{{'user.form.ssn' | translate}}</label>
+      <input type="text" id="ssn" [(ngModel)]="user.ssn" name="ssn" class="material-input" [disabled]="!editMode" [ngClass]="{'not-empty': user.ssn, 'has-error': errors.ssn}" required pattern="^[\d\-]+$" minlength="10">
 
       <div class="fs-m0 material-group-error" *ngIf="form.controls.ssn && form.controls.ssn.invalid && form.controls.ssn.touched">
         {{'user.form.ssn.validation' | translate}}
@@ -14,8 +15,10 @@
     </div>
 
     <div class="material-group">
-      <input type="text" id="first-name" [(ngModel)]="userRegister.firstName" name="firstName" class="material-input" [ngClass]="{'not-empty': userRegister.firstName, 'has-error': errors.first_name}" required>
-      <label for="first-name" class="material-label">{{'user.form.first_name' | translate}}</label>
+      <i class="icon-ic-paper"></i>
+
+      <label for="first-name">{{'user.form.first_name' | translate}}</label>
+      <input type="text" id="first-name" [(ngModel)]="user.firstName" name="firstName" class="material-input" [disabled]="!editMode" [ngClass]="{'not-empty': user.firstName, 'has-error': errors.first_name}" required>
 
       <div class="fs-m0 material-group-error" *ngIf="form.controls.firstName && form.controls.firstName.invalid && form.controls.firstName.touched">
         {{'user.form.first_name.validation' | translate}}
@@ -26,8 +29,10 @@
     </div>
 
     <div class="material-group">
-      <input type="text" id="last-name" [(ngModel)]="userRegister.lastName" name="lastName" class="material-input" [ngClass]="{'not-empty': userRegister.lastName, 'has-error': errors.last_name}" required>
-      <label for="last-name" class="material-label">{{'user.form.last_name' | translate}}</label>
+      <i class="icon-ic-paper"></i>
+
+      <label for="last-name">{{'user.form.last_name' | translate}}</label>
+      <input type="text" id="last-name" [(ngModel)]="user.lastName" name="lastName" class="material-input" [disabled]="!editMode" [ngClass]="{'not-empty': user.lastName, 'has-error': errors.last_name}" required>
 
       <div class="fs-m0 material-group-error" *ngIf="form.controls.lastName && form.controls.lastName.invalid && form.controls.lastName.touched">
         {{'user.form.last_name.validation' | translate}}
@@ -38,21 +43,11 @@
     </div>
 
     <div class="material-group">
-      <input type="text" id="phone" [(ngModel)]="userRegister.phone" name="phone" class="material-input" [ngClass]="{'not-empty': userRegister.phone, 'has-error': errors.phone}" required minlength="9">
-      <label for="phone" class="material-label">{{'user.form.phone' | translate}}</label>
+      <i class="icon-ic-paper"></i>
 
-      <div class="fs-m0 material-group-error" *ngIf="form.controls.phone && form.controls.phone.invalid && form.controls.phone.touched">
-        {{'user.form.phone.validation' | translate}}
-      </div>
-      <div class="fs-m0 material-group-error" *ngIf="errors.phone">
-        {{errors.phone}}
-      </div>
-    </div>
-
-    <div class="material-group">
-      <input type="text" id="email" [(ngModel)]="userRegister.email" name="email" class="material-input" [ngClass]="{'not-empty': userRegister.email, 'has-error': errors.email}"
+      <label for="email">{{'user.form.email' | translate}}</label>
+      <input type="text" id="email" [(ngModel)]="user.email" name="email" class="material-input" [disabled]="!editMode" [ngClass]="{'not-empty': user.email, 'has-error': errors.email}"
              required pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$">
-      <label for="email" class="material-label">{{'user.form.email' | translate}}</label>
 
       <div class="fs-m0 material-group-error" *ngIf="form.controls.email && form.controls.email.invalid && form.controls.email.touched">
         {{'user.form.email.validation' | translate}}
@@ -63,29 +58,17 @@
     </div>
 
     <div class="material-group">
-      <i class="icon-ic-star"></i>
+      <i class="icon-ic-paper"></i>
 
-      <label for="work-experience">{{'profile.form.experience' | translate | uppercase}}</label>
-      <textarea name="workExperience" id="work-experience" class="material-input" [disabled]="!editMode" [(ngModel)]="userProfile.workExperience"></textarea>
-    </div>
+      <label for="phone">{{'user.form.phone' | translate}}</label>
+      <input type="text" id="phone" [(ngModel)]="user.phone" name="phone" class="material-input" [disabled]="!editMode" [ngClass]="{'not-empty': user.phone, 'has-error': errors.phone}" required minlength="9">
 
-    <div class="material-group">
-      <i class="icon-ic-education"></i>
-
-      <label for="education">{{'profile.form.education' | translate | uppercase}}</label>
-      <textarea name="education" id="education" class="material-input" [disabled]="!editMode" [(ngModel)]="userProfile.education"></textarea>
-    </div>
-
-    <div class="material-group">
-      <i class="icon-ic-tool"></i>
-
-      <label for="skills">{{'profile.form.skills' | translate | uppercase}}</label>
-      <textarea name="skills" id="skills" class="material-input" [disabled]="!editMode" [(ngModel)]="userProfile.skills"></textarea>
-    </div>
-
-    <hr>
-    <div class="text-center fs-m">
-      {{'profile.create.notification' | translate}}
+      <div class="fs-m0 material-group-error" *ngIf="form.controls.phone && form.controls.phone.invalid && form.controls.phone.touched">
+        {{'user.form.phone.validation' | translate}}
+      </div>
+      <div class="fs-m0 material-group-error" *ngIf="errors.phone">
+        {{errors.phone}}
+      </div>
     </div>
 
     <div class="text-center">
@@ -98,99 +81,3 @@
     </div>
   </form>
 </div>
-
-
-<div class="centered-form-container">
-  <form class="centered-form" #form="ngForm" (ngSubmit)="onSubmit()">
-      <input name="username" style="display:none" value="" type="text">
-      <input name="spassword" style="display:none" value="" type="password">
-      <div ng-show="ctrl.isCompany===1" class="ng-hide">
-      <div>
-        <div class="upload-photo">
-          <!--<input type="file" id="file_upload" name="file" onchange="angular.element(this).scope().fileNameChanged()" accept="image/*"/>-->
-          <input id="file_upload" ng-disabled="sCtrl.disableSettingForm" name="file" custom-on-change="fileNameChanged" accept="image/*" disabled="disabled" type="file">
-          <input name="user_image_one_time_token" ng-model="sCtrl.model.data.attributes['user-image-one-time-token']" class="ng-pristine ng-untouched ng-valid ng-empty" type="text">
-          <div class="user-info-image" back-img="assets/images/content/placeholder-profile-image.png" style="background-image: url(&quot;assets/images/content/placeholder-profile-image.png&quot;);"></div>
-          <div><i class="demo-icon icon-ic-camera"></i></div>
-        </div>
-        <div>Upload logo</div>
-      </div>
-      <div><h2></h2></div>
-    </div>
-    <div ng-show="ctrl.isCompany===1" class="ng-hide">
-      <div><label>Corporate number:</label></div>
-      <div><input value="" readonly="" ng-disabled="sCtrl.disableSettingForm" disabled="disabled" type="text"></div>
-    </div>
-    <div ng-show="ctrl.isCompany===0" class="">
-      <div><label>Personal ID number:</label></div>
-      <div>
-        <input name="ssn" ng-model="sCtrl.model.data.attributes.ssn" ng-pattern="/^[\d\-]+$/" ng-minlength="10" ng-blur="sCtrl.checkSSN();" readonly="" ng-keyup="form_profile.ssn.error_detail = undefined" ng-class="{'has-error': form_profile.ssn.error_detail!==undefined}" ng-disabled="sCtrl.disableSettingForm" class="ng-pristine ng-untouched ng-valid ng-valid-pattern ng-valid-minlength ng-not-empty" disabled="disabled" type="text">
-        <label class="error"></label>
-      </div>
-
-    </div>
-    <div class="group">
-      <div>
-        <div><label><i class="demo-icon icon-ic-user"></i></label></div>
-        <div class="name-group">
-          <input name="first_name" placeholder="First name" required="" ng-minlength="2" ng-model="sCtrl.model.data.attributes['first-name']" ng-class="{'has-error': form_profile.first_name.error_detail!==undefined}" ng-keyup="form_profile.first_name.error_detail = undefined" ng-disabled="sCtrl.disableSettingForm" class="ng-pristine ng-untouched ng-valid-minlength ng-not-empty ng-valid ng-valid-required" disabled="disabled" type="text">
-          <label class="error"></label>
-          <input name="last_name" placeholder="Surname" required="" ng-minlength="2" ng-model="sCtrl.model.data.attributes['last-name']" ng-class="{'has-error': form_profile.last_name.error_detail!==undefined}" ng-keyup="form_profile.last_name.error_detail = undefined" ng-disabled="sCtrl.disableSettingForm" class="ng-pristine ng-untouched ng-valid-minlength ng-not-empty ng-valid ng-valid-required" disabled="disabled" type="text">
-          <label class="error"></label>
-        </div>
-      </div>
-      <div>
-        <div><label><i class="demo-icon icon-ic-email"></i></label></div>
-        <div><input name="email" placeholder="Email" required="" ng-model="sCtrl.model.data.attributes.email" ng-class="{'has-error': form_profile.email.error_detail!==undefined}" ng-keyup="form_profile.email.error_detail = undefined" ng-disabled="sCtrl.disableSettingForm" class="ng-pristine ng-untouched ng-valid-email ng-not-empty ng-valid ng-valid-required" disabled="disabled" type="email">
-          <label class="error"></label>
-        </div>
-      </div>
-      <div>
-        <div><label><i class="demo-icon icon-ic-phone"></i></label></div>
-        <div><input name="phone" placeholder="Phone" required="" ng-minlength="9" ng-model="sCtrl.model.data.attributes.phone" ng-class="{'has-error': form_profile.phone.error_detail!==undefined}" ng-keyup="form_profile.phone.error_detail = undefined" ng-disabled="sCtrl.disableSettingForm" class="ng-pristine ng-untouched ng-valid-minlength ng-not-empty ng-valid ng-valid-required" disabled="disabled" type="text"><label class="error"></label>
-        </div>
-      </div>
-      <div>
-        <div><label><i class="demo-icon icon-ic-password"></i></label></div>
-        <div><input name="old_password" placeholder="Old password" ng-minlength="6" ng-required="sCtrl.model.data.attributes.password" ng-model="sCtrl.model.data.attributes.old_password" ng-class="{'has-error': form_profile.old_password.error_detail!==undefined}" ng-keyup="form_profile.old_password.error_detail = undefined" autocomplete="off" ng-disabled="sCtrl.disableSettingForm" class="ng-pristine ng-untouched ng-valid ng-empty ng-valid-minlength ng-valid-required" disabled="disabled" type="password">
-          <label class="error"></label></div>
-      </div>
-      <div>
-        <div><label><i class="demo-icon icon-ic-password"></i></label></div>
-        <div><input name="password" placeholder="Password" ng-minlength="6" ng-model="sCtrl.model.data.attributes.password" ng-keyup="form_profile.password.error_detail = undefined" autocomplete="off" ng-disabled="sCtrl.disableSettingForm" class="ng-pristine ng-untouched ng-valid ng-empty ng-valid-minlength" disabled="disabled" type="password">
-          <label class="error"></label></div>
-      </div>
-      <div>
-        <div><label><i class="demo-icon icon-ic-user3"></i></label></div>
-        <div>
-          <select name="language_id" ng-model="sCtrl.model.data.attributes['language-id']" ng-disabled="sCtrl.disableSettingForm" class="ng-pristine ng-untouched ng-valid ng-not-empty" disabled="disabled">
-            <option value="" hidden=""></option>
-            <!----><option ng-repeat="lang in sCtrl.languages" value="7">
-            Arabic
-          </option><!----><option ng-repeat="lang in sCtrl.languages" value="35">
-            Farsi
-          </option><!----><option ng-repeat="lang in sCtrl.languages" value="37">
-            English
-          </option><!----><option ng-repeat="lang in sCtrl.languages" value="87">
-            Kurdish
-          </option><!----><option ng-repeat="lang in sCtrl.languages" value="130">
-            Pashto
-          </option><!----><option ng-repeat="lang in sCtrl.languages" value="155">
-            Swedish
-          </option><!----><option ng-repeat="lang in sCtrl.languages" value="162">
-            Tigrinya
-          </option><!----><option ng-repeat="lang in sCtrl.languages" value="190">
-            Dari
-          </option><!---->
-          </select>
-        </div>
-      </div>
-    </div>
-    <div>
-      <input class="form-control button" href="" ng-show="sCtrl.disableSettingForm" ng-click="sCtrl.enableSettingForm()" value="Edit" type="button">
-      <input class="button ng-hide" ng-disabled="form_profile.$invalid" ng-show="!sCtrl.disableSettingForm" ng-value="'common.save' | translate" value="Save" type="submit">
-    </div>
-  </form>
-</div>
-
-

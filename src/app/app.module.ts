@@ -41,6 +41,7 @@ import {AppTranslateModule} from './app.translate.module';
 import {AppRoutingModule} from './app.routing.module';
 import {UserSettingsComponent} from './views/user/user-settings/user-settings.component';
 import {UserProfileComponent} from './views/user/user-settings/user-profile/user-profile.component';
+import {UserDetailsComponent} from './views/user/user-settings/user-details/user-details.component';
 
 @NgModule({
   imports: [
@@ -57,6 +58,7 @@ import {UserProfileComponent} from './views/user/user-settings/user-profile/user
     SliderComponent,
     UserRegisterComponent,
     UserProfileComponent,
+    UserDetailsComponent,
     DeletableItemComponent,
     AutocompleteDropdownListItemComponent,
     AutocompleteDropdownComponent,
