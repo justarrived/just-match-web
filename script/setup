@@ -12,11 +12,6 @@ which npm 2>&1 >/dev/null || {
   exit 1
 }
 
-which gulp 2>&1 >/dev/null || {
-  echo -e '\n gulp not found installing with $ npm install -g gulp-cli'
-  npm install --global gulp-cli
-}
-
 npm install typescript --global
 npm install typings --global
 npm install ts-node --global
