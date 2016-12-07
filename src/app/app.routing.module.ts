@@ -6,6 +6,7 @@ import {AuthGuard} from './services/auth-guard.service';
 import {UserRegisterComponent} from './views/user/user-register/user-register.component';
 import {UserProfileComponent} from './views/user/user-profile/user-profile.component';
 import {LoginComponent} from './views/login/login.component';
+import {FaqComponent} from './views/faq/faq.component';
 import {JobCreateComponent} from './views/jobs/job-create/job-create.component';
 import {JobsComponent} from './views/jobs/jobs.component';
 import {JobDetailsComponent} from './views/job-details/job-details.component';
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'about', component: AboutComponent, data: {title: 'About'}, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent, data: {title: 'Login'} },
+  { path: 'faq', component: FaqComponent, data: {title: 'Questions and Answers'} },
   { path: 'confirmation/:type', component: ConfirmationComponent },
   { path: 'job/create', component: JobCreateComponent, data: { roles: ['company']} , canActivate: [AuthGuard] },
   { path: 'jobs/:page', component: JobsComponent },

@@ -1,0 +1,25 @@
+<div class="container-fluid">
+
+  <div class="faq-header row">
+    <!-- All Questions -->
+    <div class="col-xs-12">
+      <h3>
+        {{'faq' | translate}}
+      </h3>
+    </div>
+  </div>
+
+  <div class="faq-list-container row">
+    <div>
+      <ul>
+        <li *ngFor="let faq of faqs">
+          <input type="checkbox" checked>
+          <i></i>
+          <strong>{{faq.translatedQuestion || faq.question}}</strong>
+          <p>{{faq.translatedAnswer || faq.answer}}</p>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+</div>
