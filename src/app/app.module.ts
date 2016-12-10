@@ -30,7 +30,6 @@ import {JobDetailsComponent} from './views/job-details/job-details.component';
 import {CommentsComponent} from './components/comments/comments.component';
 import {JobStateStatusBarComponent} from './components/job-state-status-bar/job-state-status-bar.component';
 import {FaqComponent} from './views/faq/faq.component';
-import {FaqProxy} from './services/proxy/faq-proxy.service';
 import {ContactComponent} from './views/contact/contact.component';
 import {ConfirmationComponent} from './views/confirmation/confirmation.component';
 import {CandidateComponent} from './views/candidate/candidate.component';

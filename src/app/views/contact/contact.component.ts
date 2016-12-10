@@ -1,19 +1,35 @@
 import {Component, OnInit} from '@angular/core';
-//import {FaqProxy} from '../../services/proxy/faq-proxy.service';
+import {ContactNotification} from '../../models/contact-notification';
+import {ContactProxy} from '../../services/proxy/contact-proxy.service';
+import {Router} from '@angular/router';
 
 @Component({
   templateUrl: './contact.component.html',
   styleUrls: ['./contact.component.scss'],
-  //  providers: [FaqProxy]
+  providers: [ContactProxy]
 })
-export class ContactComponent implements OnInit {
+export class ContactComponent {
   name: string;
   email: string;
   message: string;
+  errors: Object = {};
 
-  constructor(/*private faqProxy: FaqProxy*/) {
+  constructor(private contactProxy: ContactProxy, private router: Router) {
   }
 
-  ngOnInit() {
+  onContactButtonClick() {
+
+    this.errors = {};
+
+    this.contactProxy.saveContactNotification(
+      new ContactNotification({
+        name: this.name,
+        email: this.email,
+        body: this.message
+      }))
+      .then(result => this.router.navigate(['/home']))
+      .catch(errors => {
+        this.errors = errors;
+      });
   }
 }
