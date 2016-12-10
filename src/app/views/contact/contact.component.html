@@ -1,0 +1,36 @@
+<div class="container-fluid">
+
+  <div class="contact-header row">
+    <!-- All Questions -->
+    <div class="col-xs-12">
+      <h3>
+        {{"contact" | translate}}
+      </h3>
+    </div>
+  </div>
+
+  <div class="contact-form-container">
+    <div class="textarea">
+      <p>
+        {{"contact.description" | translate}} {{"contact.instruction" | translate}}
+      </p>
+    </div>
+
+    <div class="material-group contact-input-container">
+      <input [(ngModel)]="name" placeholder="{{'contact.form.name' | translate}}" type="text" class="material-input">
+    </div>
+
+    <div class="material-group contact-input-container">
+      <input [(ngModel)]="email" placeholder="{{'contact.form.email' | translate}}" accept="" type="text" class="material-input">
+    </div>
+
+    <div class="material-group contact-input-container">
+      <input [(ngModel)]="message" placeholder="{{'contact.form.message' | translate}}" type="text" class="material-input">
+    </div>
+
+    <div class="contact-button-container">
+      <button class="btn-primary btn-medium btn" (click)="onContactButtonClick()">{{'common.submit' | translate}}</button>
+    </div>
+  </div>
+
+</div>
