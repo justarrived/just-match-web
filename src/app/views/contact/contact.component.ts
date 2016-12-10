@@ -12,6 +12,7 @@ export class ContactComponent {
   name: string;
   email: string;
   message: string;
+
   errors: Object = {};
 
   constructor(private contactProxy: ContactProxy, private router: Router) {

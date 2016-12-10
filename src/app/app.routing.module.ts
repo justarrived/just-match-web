@@ -8,6 +8,7 @@ import {UserProfileComponent} from './views/user/user-profile/user-profile.compo
 import {LoginComponent} from './views/login/login.component';
 import {FaqComponent} from './views/faq/faq.component';
 import {ContactComponent} from './views/contact/contact.component';
+import {ContactConfirmationComponent} from './views/contact/confirmation/contact-confirmation.component';
 import {JobCreateComponent} from './views/jobs/job-create/job-create.component';
 import {JobsComponent} from './views/jobs/jobs.component';
 import {JobDetailsComponent} from './views/job-details/job-details.component';
@@ -23,6 +24,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent, data: { title: 'Login' } },
   { path: 'faq', component: FaqComponent, data: { title: 'Questions and Answers' } },
   { path: 'contact', component: ContactComponent, data: { title: 'Contact' } },
+  { path: 'contact/confirmation', component: ContactConfirmationComponent, data: { title: 'Contact Confirmation' } },
   { path: 'confirmation/:type', component: ConfirmationComponent },
   { path: 'job/create', component: JobCreateComponent, data: { roles: ['company'] }, canActivate: [AuthGuard] },
   { path: 'jobs/:page', component: JobsComponent },

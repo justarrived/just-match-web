@@ -31,6 +31,7 @@ import {CommentsComponent} from './components/comments/comments.component';
 import {JobStateStatusBarComponent} from './components/job-state-status-bar/job-state-status-bar.component';
 import {FaqComponent} from './views/faq/faq.component';
 import {ContactComponent} from './views/contact/contact.component';
+import {ContactConfirmationComponent} from './views/contact/confirmation/contact-confirmation.component';
 import {ConfirmationComponent} from './views/confirmation/confirmation.component';
 import {CandidateComponent} from './views/candidate/candidate.component';
 import {CandidateStateStatusBarComponent} from './components/candidate-state-status-bar/candidate-state-status-bar.component';
@@ -72,6 +73,7 @@ import {AppRoutingModule} from './app.routing.module';
     JobStateStatusBarComponent,
     FaqComponent,
     ContactComponent,
+    ContactConfirmationComponent,
     ConfirmationComponent,
     CandidatesComponent,
     CandidateComponent,
