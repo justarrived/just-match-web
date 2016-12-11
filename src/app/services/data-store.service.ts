@@ -9,7 +9,7 @@ import {SessionStorage} from '../utils/storage/session-storage';
 
 @Injectable()
 export class DataStore {
-  private store: any;
+  private store: StorageInterface;
 
   constructor() {
     this.store = this.storeFactory();
@@ -56,10 +56,7 @@ export class DataStore {
   }
 
   private remove(key: string): string {
-    const oldValue = this.store.get(key);
-    this.store.removeItem(key);
-
-    return oldValue;
+    return this.store.removeItem(key);
   }
 
   private storeFactory(): StorageInterface {
