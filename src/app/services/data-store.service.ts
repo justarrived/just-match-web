@@ -206,14 +206,7 @@ export class DataStore {
   private store: any;
 
   constructor() {
-    if (storageTypeAvailable('localStorage')) {
-      this.store = new LocalStorage(localStorage);
-    } else if (storageTypeAvailable('sessionStorage')) {
-      this.store = new SessionStorage(sessionStorage);
-    } else {
-      this.store = new CookieStorage(document);
-      // this.store = new MemoryStorage();
-    }
+    this.store = this.storeFactory();
   }
 
   public clear(): void {
@@ -257,5 +250,17 @@ export class DataStore {
     this.store.removeItem(key);
 
     return oldValue;
+  }
+
+  private storeFactory(): StorageInterface {
+    if (storageTypeAvailable('localStorage')) {
+      return new LocalStorage(localStorage);
+    } else if (storageTypeAvailable('sessionStorage')) {
+      return new SessionStorage(sessionStorage);
+    } else if (document) {
+      return new CookieStorage(document);
+    } else {
+      return new MemoryStorage();
+    }
   }
 }
