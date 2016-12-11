@@ -3,10 +3,14 @@
 
 
 .contact-confirmation-container {
-  color: $color-gray-50;
-  background-color: $color-secondary-gray;
-  margin-right: -15px;
-  margin-left: -15px;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: $color-secondary-gray;
+  z-index: 10000;
+  color: white;
 
   .textarea {
     padding-top: 150px;
@@ -27,7 +31,7 @@
   }
 
   .contact-button-container {
-    width: 80%;
+    max-width: 300px;
     margin: 0 auto;
     padding-bottom: 100px;
     button {
