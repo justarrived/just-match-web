@@ -20,7 +20,7 @@ export class UserManager {
 
   deleteUser() {
     this.user = null;
-    this.DataStore.remove(this.storageAuthorizationData);
+    this.DataStore.removeObject(this.storageAuthorizationData);
   }
 
   saveUser(user: User) {
