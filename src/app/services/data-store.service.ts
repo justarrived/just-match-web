@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {storageTypeAvailable} from '../utils/storage-type-available';
 
 interface StorageInterface {
+  clear(): void;
   getItem(key: string): string;
   setItem(key: string, value: string): void;
   removeItem(key: string): string;
@@ -11,7 +12,6 @@ interface StorageInterface {
 
 class CookieStorage implements StorageInterface {
   private data: Object = {};
-  private length: number = 0;
   private DOM: any;
 
   constructor(document: any) {
@@ -23,7 +23,6 @@ class CookieStorage implements StorageInterface {
 
   public clear(): void {
     this.data = {};
-    this.length = 0;
     this.clearData();
   }
 
@@ -35,7 +34,6 @@ class CookieStorage implements StorageInterface {
     const oldValue = this.data[key];
     delete this.data[key];
 
-    this.length--;
     this.setData(this.data);
 
     return oldValue;
@@ -43,7 +41,6 @@ class CookieStorage implements StorageInterface {
 
   public setItem(key: string, value: string): void {
     this.data[key] = value;
-    this.length++;
     this.setData(this.data);
   }
 
@@ -106,6 +103,10 @@ class CookieStorage implements StorageInterface {
 class MemoryStorage implements StorageInterface {
   private items: Object = {};
 
+  public clear(): void {
+    this.items = {};
+  }
+
   public setItem(key: string, value: string): void {
     this.items[key] = value;
   }
@@ -131,10 +132,14 @@ class MemoryStorage implements StorageInterface {
 }
 
 class SessionStorage implements StorageInterface {
-  private store: any = {};
+  private store: any;
 
   constructor(sessionStore: any) {
     this.store = sessionStore;
+  }
+
+  public clear(): void {
+    this.store.clear();
   }
 
   public getItem(key: string) {
@@ -162,10 +167,14 @@ class SessionStorage implements StorageInterface {
 }
 
 class LocalStorage implements StorageInterface {
-  private store: any = {};
+  private store: any;
 
   constructor(store: any) {
     this.store = store;
+  }
+
+  public clear(): void {
+    this.store.clear();
   }
 
   public setItem(key: string, value: string): void {
@@ -205,6 +214,10 @@ export class DataStore {
       this.store = new CookieStorage(document);
       // this.store = new MemoryStorage();
     }
+  }
+
+  public clear(): void {
+    this.store.clear();
   }
 
   public setObject(key: string, value: any): void {
