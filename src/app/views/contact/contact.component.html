@@ -40,7 +40,7 @@
         <div *ngIf="contactForm.controls['message'].hasError('minlength') && contactForm.controls['message'].touched" class="alert alert-danger">Your message must be at least 2 characters long.</div>
       </div>
       <div class="form-group contact-button-container">
-        <button type="submit" [disabled]="!contactForm.valid" class="btn-primary btn-medium btn" (click)="onContactButtonClick()">{{"common.submit" | translate}}</button>
+        <button type="submit" [disabled]="!contactForm.valid" class="btn-primary btn-medium btn">{{"common.submit" | translate}}</button>
       </div>
     </form>
   </div>
