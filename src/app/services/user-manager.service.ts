@@ -7,20 +7,20 @@ export class UserManager {
   private storageAuthorizationData: string = 'authorizationData';
   private user: User;
 
-  constructor(private DataStore: DataStore) { }
+  constructor(private dataStore: DataStore) { }
 
   getUserId() {
-    let authorizationData = this.DataStore.getObject(this.storageAuthorizationData);
+    let authorizationData = this.dataStore.getObject(this.storageAuthorizationData);
     return authorizationData && authorizationData.user_id;
   }
 
   saveAuthorizationData(data) {
-    this.DataStore.setObject(this.storageAuthorizationData, data);
+    this.dataStore.setObject(this.storageAuthorizationData, data);
   }
 
   deleteUser() {
     this.user = null;
-    this.DataStore.removeObject(this.storageAuthorizationData);
+    this.dataStore.removeObject(this.storageAuthorizationData);
   }
 
   saveUser(user: User) {

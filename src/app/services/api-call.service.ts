@@ -21,7 +21,7 @@ export class ApiCall {
   private actAsUserHeaderName: string = 'X-API-ACT-AS-USER';
 
   constructor(private http: Http,
-              private DataStore: DataStore,
+              private dataStore: DataStore,
               private router: Router,
               private userManager: UserManager,
               private actsAsUser: ActsAsUser,
@@ -64,7 +64,7 @@ export class ApiCall {
     let options = new RequestOptions(requestArgs);
 
     let req: Request = new Request(options);
-    let authorizationData = this.DataStore.getObject(this.storageAuthorizationData);
+    let authorizationData = this.dataStore.getObject(this.storageAuthorizationData);
     if (!!authorizationData) {
       req.headers.set(this.authorizationHeaderName, this.authorizationHeaderPrefix + authorizationData['auth_token']);
     }

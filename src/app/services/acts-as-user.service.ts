@@ -7,7 +7,7 @@ const storageActAsUserIdKey: string = 'actAsUserId';
 export class ActsAsUser {
   private userId: string = null;
 
-  constructor(private DataStore: DataStore) {
+  constructor(private dataStore: DataStore) {
     this.userId = this.getStorage(storageActAsUserIdKey);
   }
 
@@ -21,10 +21,10 @@ export class ActsAsUser {
   }
 
   private setStorage(key, value) {
-    this.DataStore.setObject(key, value);
+    this.dataStore.setObject(key, value);
   }
 
   private getStorage(key) {
-    return this.DataStore.getObject(key);
+    return this.dataStore.getObject(key);
   }
 }
