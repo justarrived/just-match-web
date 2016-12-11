@@ -21,16 +21,16 @@ class CookieStorage implements StorageInterface {
     this.data = this.getData();
   }
 
-  public clear(): void {
+  clear(): void {
     this.data = {};
     this.clearData();
   }
 
-  public getItem(key: string): string {
+  getItem(key: string): string {
     return this.data[key] === undefined ? null : this.data[key];
   }
 
-  public removeItem(key: string): string {
+  removeItem(key: string): string {
     const oldValue = this.data[key];
     delete this.data[key];
 
@@ -39,16 +39,16 @@ class CookieStorage implements StorageInterface {
     return oldValue;
   }
 
-  public setItem(key: string, value: string): void {
+  setItem(key: string, value: string): void {
     this.data[key] = value;
     this.setData(this.data);
   }
 
-  public persistsRefresh(): boolean {
+  persistsRefresh(): boolean {
     return true;
   }
 
-  public persistsSession(): boolean {
+  persistsSession(): boolean {
     return true;
   }
 
@@ -103,30 +103,30 @@ class CookieStorage implements StorageInterface {
 class MemoryStorage implements StorageInterface {
   private items: Object = {};
 
-  public clear(): void {
+  clear(): void {
     this.items = {};
   }
 
-  public setItem(key: string, value: string): void {
+  setItem(key: string, value: string): void {
     this.items[key] = value;
   }
 
-  public getItem(key: string): string {
+  getItem(key: string): string {
     return this.items[key];
   }
 
-  public removeItem(key: string): string {
+  removeItem(key: string): string {
     const oldValue = this.getItem(key);
     this.setItem(key, null);
 
     return oldValue;
   }
 
-  public persistsRefresh(): boolean {
+  persistsRefresh(): boolean {
     return false;
   }
 
-  public persistsSession(): boolean {
+  persistsSession(): boolean {
     return false;
   }
 }
@@ -138,30 +138,30 @@ class SessionStorage implements StorageInterface {
     this.store = sessionStore;
   }
 
-  public clear(): void {
+  clear(): void {
     this.store.clear();
   }
 
-  public getItem(key: string) {
+  getItem(key: string) {
     return this.store.getItem(key);
   }
 
-  public setItem(key: string, value: string) {
+  setItem(key: string, value: string) {
     this.store.setItem(key, value);
   }
 
-  public removeItem(key: string): string {
+  removeItem(key: string): string {
     const oldValue = this.getItem(key);
     sessionStorage.removeItem(key);
 
     return oldValue;
   }
 
-  public persistsRefresh(): boolean {
+  persistsRefresh(): boolean {
     return true;
   }
 
-  public persistsSession(): boolean {
+  persistsSession(): boolean {
     return false;
   }
 }
@@ -173,30 +173,30 @@ class LocalStorage implements StorageInterface {
     this.store = store;
   }
 
-  public clear(): void {
+  clear(): void {
     this.store.clear();
   }
 
-  public setItem(key: string, value: string): void {
+  setItem(key: string, value: string): void {
     this.store.setItem(key, value);
   }
 
-  public getItem(key: string): string {
+  getItem(key: string): string {
     return this.store.getItem(key);
   }
 
-  public removeItem(key: string): string {
+  removeItem(key: string): string {
     const oldValue = this.getItem(key);
     this.store.removeItem(key);
 
     return oldValue;
   }
 
-  public persistsRefresh(): boolean {
+  persistsRefresh(): boolean {
     return true;
   }
 
-  public persistsSession(): boolean {
+  persistsSession(): boolean {
     return true;
   }
 }
@@ -209,31 +209,31 @@ export class DataStore {
     this.store = this.storeFactory();
   }
 
-  public clear(): void {
+  clear(): void {
     this.store.clear();
   }
 
-  public setObject(key: string, value: any): void {
+  setObject(key: string, value: any): void {
     this.set(key, JSON.stringify(value));
   }
 
-  public getObject(key: string): any {
+  getObject(key: string): any {
     const value = this.get(key);
     return value ? JSON.parse(value) : null;
   }
 
-  public removeObject(key: string): any {
+  removeObject(key: string): any {
     const oldValue = this.getObject(key);
     this.remove(key);
 
     return oldValue;
   }
 
-  public persistsRefresh(): boolean {
+  persistsRefresh(): boolean {
     return this.store.persistsRefresh();
   }
 
-  public persistsSession(): boolean {
+  persistsSession(): boolean {
     return this.store.persistsSession();
   }
 
