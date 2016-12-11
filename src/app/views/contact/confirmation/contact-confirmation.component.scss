@@ -1,28 +1,18 @@
 @import '../../../styles/variables';
 @import '../../../styles/buttons';
 
-.contact-header {
-  background-color: $color-primary-cerise;
-  padding: 1em 0;
 
-  h3 {
-    position: relative;
-    top: 5px;
-    color: $white;
-  }
-
-}
-
-.contact-form-container {
-  background-color: $default-bg-color;
+.contact-confirmation-container {
+  color: $color-gray-50;
+  background-color: $color-secondary-gray;
   margin-right: -15px;
   margin-left: -15px;
 
   .textarea {
+    padding-top: 150px;
     width: 50%;
     margin: 0 auto;
-    padding-top: 30px;
-    p {
+    h3 {
       text-align: center;
       vertical-align: middle;
     }
@@ -32,17 +22,14 @@
     margin: 0 auto;
     width: 50%;
     text-align: center;
-    padding-top: 10px;
-    padding-bottom: 50px;
-    i {
-      color: $color-primary-cerise;
-    }
+    padding-top: 50px;
+    padding-bottom: 100px;
   }
 
   .contact-button-container {
     width: 80%;
     margin: 0 auto;
-    padding-bottom: 1.5em;
+    padding-bottom: 100px;
     button {
       margin: 0;
       width: 100%;
