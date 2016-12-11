@@ -21,10 +21,10 @@ export class ActsAsUser {
   }
 
   private setStorage(key, value) {
-    this.dataStore.setObject(key, value);
+    this.dataStore.set(key, value);
   }
 
   private getStorage(key) {
-    return this.dataStore.getObject(key);
+    return this.dataStore.get(key);
   }
 }

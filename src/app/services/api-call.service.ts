@@ -64,7 +64,7 @@ export class ApiCall {
     let options = new RequestOptions(requestArgs);
 
     let req: Request = new Request(options);
-    let authorizationData = this.dataStore.getObject(this.storageAuthorizationData);
+    let authorizationData = this.dataStore.get(this.storageAuthorizationData);
     if (!!authorizationData) {
       req.headers.set(this.authorizationHeaderName, this.authorizationHeaderPrefix + authorizationData['auth_token']);
     }

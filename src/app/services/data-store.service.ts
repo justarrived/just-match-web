@@ -19,18 +19,18 @@ export class DataStore {
     this.store.clear();
   }
 
-  setObject(key: string, value: any): void {
-    this.set(key, JSON.stringify(value));
+  set(key: string, value: any): void {
+    this.setItem(key, JSON.stringify(value));
   }
 
-  getObject(key: string): any {
-    const value = this.get(key);
+  get(key: string): any {
+    const value = this.getItem(key);
     return value ? JSON.parse(value) : null;
   }
 
-  removeObject(key: string): any {
-    const oldValue = this.getObject(key);
-    this.remove(key);
+  remove(key: string): any {
+    const oldValue = this.get(key);
+    this.removeItem(key);
 
     return oldValue;
   }
@@ -47,15 +47,15 @@ export class DataStore {
     return this.store.supportsCaching();
   }
 
-  private set(key: string, value: string): void {
+  private setItem(key: string, value: string): void {
     this.store.setItem(key, value);
   }
 
-  private get(key: string): string {
+  private getItem(key: string): string {
     return this.store.getItem(key);
   }
 
-  private remove(key: string): string {
+  private removeItem(key: string): string {
     return this.store.removeItem(key);
   }
 

@@ -10,7 +10,7 @@ export class TranslationService {
   private languageChange: EventEmitter<any> = new EventEmitter();
 
   constructor(private translateService: TranslateService, private dataStore: DataStore) {
-    this.selectedLanguage = this.dataStore.getObject(this.storageSelectedLanguageKey) || new Language({id: '156', lang_code: 'sv', local_name: 'Swedish'});
+    this.selectedLanguage = this.dataStore.get(this.storageSelectedLanguageKey) || new Language({id: '156', lang_code: 'sv', local_name: 'Swedish'});
 
     this.translateService.addLangs(['ar', 'en', 'fa', 'fa_AF', 'ku', 'ps', 'sv', 'ti']);
     this.translateService.setDefaultLang('en');
@@ -21,7 +21,7 @@ export class TranslationService {
 
   public setLanguage(language: Language) {
     this.selectedLanguage = language;
-    this.dataStore.setObject(this.storageSelectedLanguageKey, language);
+    this.dataStore.set(this.storageSelectedLanguageKey, language);
     this.translateService.use(language.languageCode);
     this.languageChange.emit();
   }
