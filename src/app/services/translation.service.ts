@@ -1,6 +1,6 @@
 import {Injectable, EventEmitter} from '@angular/core';
 import {TranslateService} from 'ng2-translate/ng2-translate';
-import {LocalStorageWrapper} from './local-storage-wrapper.service';
+import {DataStore} from './data-store.service';
 import {Language} from '../models/language/language';
 
 @Injectable()
@@ -9,8 +9,8 @@ export class TranslationService {
   private selectedLanguage: Language;
   private languageChange: EventEmitter<any> = new EventEmitter();
 
-  constructor(private translateService: TranslateService, private localStorageWrapper: LocalStorageWrapper) {
-    this.selectedLanguage = this.localStorageWrapper.getObject(this.storageSelectedLanguageKey) || new Language({id: '156', lang_code: 'sv', local_name: 'Swedish'});
+  constructor(private translateService: TranslateService, private DataStore: DataStore) {
+    this.selectedLanguage = this.DataStore.getObject(this.storageSelectedLanguageKey) || new Language({id: '156', lang_code: 'sv', local_name: 'Swedish'});
 
     this.translateService.addLangs(['ar', 'en', 'fa', 'fa_AF', 'ku', 'ps', 'sv', 'ti']);
     this.translateService.setDefaultLang('en');
@@ -21,7 +21,7 @@ export class TranslationService {
 
   public setLanguage(language: Language) {
     this.selectedLanguage = language;
-    this.localStorageWrapper.setObject(this.storageSelectedLanguageKey, language);
+    this.DataStore.setObject(this.storageSelectedLanguageKey, language);
     this.translateService.use(language.languageCode);
     this.languageChange.emit();
   }

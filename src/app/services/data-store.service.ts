@@ -44,7 +44,7 @@ class LocalStorage implements StorageInterface {
 }
 
 @Injectable()
-export class LocalStorageWrapper {
+export class DataStore {
 
   public store: any;
 

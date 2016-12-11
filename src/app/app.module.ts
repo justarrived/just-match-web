@@ -5,7 +5,7 @@ import {FormsModule} from '@angular/forms';
 import {AppComponent} from './app.component';
 import {AboutComponent} from './views/about/about.component';
 import {HomeComponent} from './views/home/home.component';
-import {LocalStorageWrapper} from './services/local-storage-wrapper.service';
+import {DataStore} from './services/data-store.service';
 import {ApiCall} from './services/api-call.service';
 import {AuthManager} from './services/auth-manager.service';
 import {UserProxy} from './services/proxy/user-proxy.service';
@@ -82,7 +82,7 @@ import {AppRoutingModule} from './app.routing.module';
     MyJobsComponent
   ],
   providers: [
-    LocalStorageWrapper,
+    DataStore,
     ApiCall,
     AuthManager,
     ActsAsUser,
