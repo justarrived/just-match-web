@@ -53,7 +53,7 @@ export class LocalStorageWrapper {
       this.store = new LocalStorage(localStorage);
     } else {
       this.store = new MemoryStorage();
-      console.error('Current browser does not support Local Storage');
+      console.log('Current browser does not support Local Storage');
     }
   }
 
