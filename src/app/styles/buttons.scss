@@ -1,4 +1,5 @@
 @import './variables';
+@import './typography';
 
 @mixin medium-button {
   border: 1px solid $white;
@@ -30,7 +31,7 @@
 }
 /*GENERAL*/
 .btn {
-  font-family: Open Sans;
+  font-family: $default-font-family;
   border-radius: 30px;
   text-decoration: none;
   text-transform: uppercase;
@@ -153,4 +154,45 @@
   color: rgba(34, 37, 49, 0.4);
   background-color: rgba(34, 37, 49, 0.1);
   border-color: rgba(34, 37, 49, 0.05);
+}
+
+.close-button {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  overflow: hidden;
+  &:hover {
+    &::before, &::after {
+      background: $color-primary-cerise;
+    }
+  }
+  &::before, &::after {
+    content: '';
+    position: absolute;
+    height: 2px;
+    width: 100%;
+    top: 50%;
+    left: 0;
+    margin-top: -1px;
+    background: $white;
+  }
+  &::before {
+    height: 8px;
+    margin-top: -4px;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+  &::after {
+    height: 8px;
+    margin-top: -4px;
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+  }
 }
