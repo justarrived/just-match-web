@@ -1,4 +1,5 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
+import {FormGroup, FormBuilder, Validators} from '@angular/forms';
 import {ContactNotification} from '../../models/contact-notification';
 import {ContactProxy} from '../../services/proxy/contact-proxy.service';
 import {Router} from '@angular/router';
@@ -9,28 +10,26 @@ import {Router} from '@angular/router';
   providers: [ContactProxy]
 })
 export class ContactComponent {
-  name: string;
-  email: string;
-  message: string;
+  contactForm: FormGroup;
 
-  errors: Object = {};
-
-  constructor(private contactProxy: ContactProxy, private router: Router) {
+  constructor(private contactProxy: ContactProxy, private router: Router, private formBuilder: FormBuilder) {
+    this.contactForm = formBuilder.group({
+      'name': [null, Validators.compose([Validators.required, Validators.minLength(2)])],
+      'email': [null, Validators.compose([Validators.required, Validators.minLength(6)])],
+      'message': [null, Validators.compose([Validators.required, Validators.minLength(2)])]
+    })
   }
 
-  onContactButtonClick() {
-
-    this.errors = {};
-
+  submitForm(value: any) {
     this.contactProxy.saveContactNotification(
       new ContactNotification({
-        name: this.name,
-        email: this.email,
-        body: this.message
+        name: value.name,
+        email: value.email,
+        body: value.message
       }))
-      .then(result => this.router.navigate(['/home']))
+      .then(result => this.router.navigate(['/contact/confirmation']))
       .catch(errors => {
-        this.errors = errors;
+        console.log(errors);
       });
   }
 }

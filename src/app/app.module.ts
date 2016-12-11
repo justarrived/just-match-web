@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {HttpModule} from '@angular/http';
 import {BrowserModule} from '@angular/platform-browser';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AppComponent} from './app.component';
 import {AboutComponent} from './views/about/about.component';
 import {HomeComponent} from './views/home/home.component';
@@ -49,6 +49,7 @@ import {AppRoutingModule} from './app.routing.module';
     BrowserModule,
     HttpModule,
     FormsModule,
+    ReactiveFormsModule,
     AppTranslateModule,
     AppRoutingModule
   ],
