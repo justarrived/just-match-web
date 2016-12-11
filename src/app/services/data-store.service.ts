@@ -43,8 +43,8 @@ export class DataStore {
     return this.store.persistsSession();
   }
 
-  isCachable(): boolean {
-    return this.store.isCachable();
+  supportsCaching(): boolean {
+    return this.store.supportsCaching();
   }
 
   private set(key: string, value: string): void {

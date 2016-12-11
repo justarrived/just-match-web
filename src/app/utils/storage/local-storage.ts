@@ -34,7 +34,7 @@ export class LocalStorage implements StorageInterface {
     return true;
   }
 
-  isCachable(): boolean {
+  supportsCaching(): boolean {
     return true;
   }
 }

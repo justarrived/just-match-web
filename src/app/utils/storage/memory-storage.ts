@@ -30,7 +30,7 @@ export class MemoryStorage implements StorageInterface {
     return false;
   }
 
-  isCachable(): boolean {
+  supportsCaching(): boolean {
     return true;
   }
 }

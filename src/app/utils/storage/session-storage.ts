@@ -34,7 +34,7 @@ export class SessionStorage implements StorageInterface {
     return false;
   }
 
-  isCachable(): boolean {
+  supportsCaching(): boolean {
     return true;
   }
 }

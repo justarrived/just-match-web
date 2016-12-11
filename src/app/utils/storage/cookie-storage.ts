@@ -42,7 +42,7 @@ export class CookieStorage implements StorageInterface {
     return true;
   }
 
-  isCachable(): boolean {
+  supportsCaching(): boolean {
     return false;
   }
 
