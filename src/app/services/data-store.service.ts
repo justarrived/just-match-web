@@ -57,7 +57,7 @@ class CookieStorage implements StorageInterface {
 
     if (days) {
       const date = new Date();
-      date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+      date.setTime(date.getTime() + this.daysToMillis(days));
       expires = '; expires=' + date.toUTCString();
     } else {
       expires = '';
@@ -97,6 +97,10 @@ class CookieStorage implements StorageInterface {
   private getData(): Object {
     const data = this.readCookie('localStorage');
     return data ? JSON.parse(data) : {};
+  }
+
+  private daysToMillis(days: number): number {
+    return days * 24 * 60 * 60 * 1000;
   }
 }
 
