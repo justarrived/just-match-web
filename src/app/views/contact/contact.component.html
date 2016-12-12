@@ -25,19 +25,19 @@
         <input class="form-control material-input" type="text" placeholder="{{'contact.form.name' | translate}}" [formControl]="contactForm.controls['name']">
 
         <div *ngIf="contactForm.controls['name'].hasError('required') && contactForm.controls['name'].touched" class="alert alert-danger">{{'contact.form.name.validation' | translate}}.</div>
-        <div *ngIf="contactForm.controls['name'].hasError('minlength') && contactForm.controls['name'].touched" class="alert alert-danger">Your name must be at least 2 characters long.</div>
+        <div *ngIf="contactForm.controls['name'].hasError('minlength') && contactForm.controls['name'].touched" class="alert alert-danger">{{'contact.form.name.validation.length' | translate}}.</div>
       </div>
       <div class="form-group  material-group contact-input-container" [ngClass]="{'has-error':!contactForm.controls['email'].valid && contactForm.controls['email'].touched}">
         <input class="form-control material-input" type="email" placeholder="{{'contact.form.email' | translate}}" [formControl]="contactForm.controls['email']">
 
         <div *ngIf="contactForm.controls['email'].hasError('required') && contactForm.controls['email'].touched" class="alert alert-danger">{{'contact.form.email.validation' | translate}}.</div>
-        <div *ngIf="contactForm.controls['email'].hasError('minlength') && contactForm.controls['email'].touched" class="alert alert-danger">Your email must be at least 6 characters long.</div>
+        <div *ngIf="contactForm.controls['email'].hasError('minlength') && contactForm.controls['email'].touched" class="alert alert-danger">{{'contact.form.email.validation.length' | translate}}.</div>
       </div>
       <div class="form-group  material-group contact-input-container" [ngClass]="{'has-error':!contactForm.controls['message'].valid && contactForm.controls['message'].touched}">
         <input class="form-control material-input" type="text" placeholder="{{'contact.form.message' | translate}}" [formControl]="contactForm.controls['message']">
 
         <div *ngIf="contactForm.controls['message'].hasError('required') && contactForm.controls['message'].touched" class="alert alert-danger">{{'contact.form.message.validation' | translate}}.</div>
-        <div *ngIf="contactForm.controls['message'].hasError('minlength') && contactForm.controls['message'].touched" class="alert alert-danger">Your message must be at least 2 characters long.</div>
+        <div *ngIf="contactForm.controls['message'].hasError('minlength') && contactForm.controls['message'].touched" class="alert alert-danger">{{'contact.form.message.validation.length' | translate}}.</div>
       </div>
       <div class="form-group contact-button-container">
         <button type="submit" [disabled]="!contactForm.valid" class="btn-primary btn-medium btn">{{"common.submit" | translate}}</button>
