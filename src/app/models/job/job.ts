@@ -38,7 +38,7 @@ export class Job {
     if (!jsonObject) {
       return;
     }
-    console.log(jsonObject);
+
     this.amount = jsonObject.amount; // DEPRECATED: grossAmount has replaced this value
     this.grossAmount = jsonObject.gross_amount;
     this.netAmount = jsonObject.net_amount;
