@@ -1,4 +1,5 @@
 @import './variables';
+@import './typography';
 
 @mixin medium-button {
   border: 1px solid $white;
@@ -19,4 +20,179 @@
   @include medium-button;
   color: $color-primary-cerise !important;
   background-color: $default-bg-color;
+}
+
+/* Style guide button styles */
+
+.dark {
+  background-color: #383f4e;
+  padding: 15px 0;
+  margin-top:10px;
+}
+/*GENERAL*/
+.btn {
+  font-family: $default-font-family;
+  border-radius: 30px;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: 700;
+  text-align: center;
+  margin: 15px;
+  line-height: 2.3;
+  border: 2px solid;
+}
+
+/*SIZE*/
+.btn-xsmall {
+  font-size: 12px;
+  padding: 0px 10px;
+  min-width: 100px;
+}
+
+.btn-small {
+  font-size: 14px;
+  padding: 6px 25px;
+  min-width: 100px;
+}
+
+.btn-medium {
+  font-size: 16px;
+  padding: 8px 30px;
+  min-width: 150px;
+}
+
+.btn-large {
+  font-size: 20px;
+  padding: 8px 35px;
+  min-width: 180px;
+}
+
+/*PRIMARY*/
+
+.btn-primary {
+  color: #ffffff;
+  background-color: #e5007d;
+  border-color: #E92C93;
+}
+
+.btn-primary:hover {
+  background-color: #E92C93;
+  border-color: #ED4DA4;
+}
+
+.btn-primary:active {
+  background-color: #ce0070;
+  border-color: #e5007d;
+}
+
+/*PRIMARY LIGHT*/
+.btn-primary-light {
+  color: #e5007d;
+  background-color: #ffffff;
+  border-color: #f6f6f6;
+}
+
+.btn-primary-light:hover {
+  color: #ffffff;
+  background-color: #E92C93;
+  border-color: #ED4DA4;
+}
+
+.btn-primary-light:active {
+  color: #ffffff;
+  background-color: #ce0070;
+  border-color: #e5007d;
+}
+
+/*SECONDARY*/
+.btn-secondary {
+  color: #e5007d;
+  background-color: none;
+  border-color: #e5007d;
+}
+
+.btn-secondary:hover {
+  color: #ffffff;
+  background-color: #E92C93;
+  border-color: #E92C93;
+}
+
+.btn-secondary:active {
+  color: #ffffff;
+  background-color: #ce0070;
+  border-color: #ce0070;
+}
+
+/*SECONDARY LIGHT*/
+
+.btn-secondary-light {
+  color: #ffffff;
+  background-color: none;
+  border-color: #ffffff;
+}
+
+.btn-secondary-light:hover {
+  color: #e5007d;
+  background-color: #ffffff;
+  border-color: #f6f6f6;
+}
+
+.btn-secondary-light:active {
+  color: #ffffff;
+  background-color: #ce0070;
+  border-color: #ce0070;
+}
+
+/*INACTIVE BUTTONS*/
+.btn-inactive-light {
+  color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.btn-inactive-dark {
+  color: rgba(34, 37, 49, 0.4);
+  background-color: rgba(34, 37, 49, 0.1);
+  border-color: rgba(34, 37, 49, 0.05);
+}
+
+.close-button {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  overflow: hidden;
+  &:hover {
+    &::before, &::after {
+      background: $color-primary-cerise;
+    }
+  }
+  &::before, &::after {
+    content: '';
+    position: absolute;
+    height: 2px;
+    width: 100%;
+    top: 50%;
+    left: 0;
+    margin-top: -1px;
+    background: $white;
+  }
+  &::before {
+    height: 8px;
+    margin-top: -4px;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+  &::after {
+    height: 8px;
+    margin-top: -4px;
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+  }
 }

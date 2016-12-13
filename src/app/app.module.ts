@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {HttpModule} from '@angular/http';
 import {BrowserModule} from '@angular/platform-browser';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AppComponent} from './app.component';
 import {AboutComponent} from './views/about/about.component';
 import {HomeComponent} from './views/home/home.component';
@@ -30,7 +30,8 @@ import {JobDetailsComponent} from './views/job-details/job-details.component';
 import {CommentsComponent} from './components/comments/comments.component';
 import {JobStateStatusBarComponent} from './components/job-state-status-bar/job-state-status-bar.component';
 import {FaqComponent} from './views/faq/faq.component';
-import {FaqProxy} from './services/proxy/faq-proxy.service';
+import {ContactComponent} from './views/contact/contact.component';
+import {ContactConfirmationComponent} from './views/contact/confirmation/contact-confirmation.component';
 import {ConfirmationComponent} from './views/confirmation/confirmation.component';
 import {CandidateComponent} from './views/candidate/candidate.component';
 import {CandidateStateStatusBarComponent} from './components/candidate-state-status-bar/candidate-state-status-bar.component';
@@ -48,6 +49,7 @@ import {AppRoutingModule} from './app.routing.module';
     BrowserModule,
     HttpModule,
     FormsModule,
+    ReactiveFormsModule,
     AppTranslateModule,
     AppRoutingModule
   ],
@@ -71,6 +73,8 @@ import {AppRoutingModule} from './app.routing.module';
     CommentsComponent,
     JobStateStatusBarComponent,
     FaqComponent,
+    ContactComponent,
+    ContactConfirmationComponent,
     ConfirmationComponent,
     CandidatesComponent,
     CandidateComponent,

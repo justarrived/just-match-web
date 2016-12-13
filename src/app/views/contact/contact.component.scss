@@ -1,0 +1,59 @@
+@import '../../styles/variables';
+@import '../../styles/buttons';
+
+.contact-header {
+  background-color: $color-primary-cerise;
+  padding: 1em 0;
+
+  h3 {
+    position: relative;
+    top: 5px;
+    color: $white;
+  }
+
+}
+
+.contact-form-container {
+  background-color: $default-bg-color;
+  margin-right: -15px;
+  margin-left: -15px;
+
+  .textarea {
+    width: 50%;
+    margin: 0 auto;
+    padding-top: 30px;
+    p {
+      text-align: center;
+      vertical-align: middle;
+    }
+  }
+
+  .envelope-icon-container {
+    margin: 0 auto;
+    width: 50%;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 50px;
+    i {
+      color: $color-primary-cerise;
+    }
+  }
+
+  .contact-input-container {
+    width: 75%;
+    margin: 0 auto;
+    padding-bottom: 1.5em;
+  }
+
+  .contact-button-container {
+    width: 80%;
+    margin: 0 auto;
+    padding-bottom: 1.5em;
+    button {
+      margin: 0;
+      width: 100%;
+    }
+  }
+
+
+}
