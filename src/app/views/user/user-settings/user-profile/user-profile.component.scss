@@ -1,20 +1,5 @@
 @import '../../../../styles/variables';
 
-.icon-ic-paper,
-.icon-ic-user3,
-.icon-ic-star,
-.icon-ic-education,
-.icon-ic-tool {
-  position: relative;
-
-  &:before {
-    position: absolute;
-    left: -35px;
-    font-size: 20px;
-    color: $color-gray-100;
-  }
-}
-
 hr {
   margin: 35px 0 25px;
   border: 0;

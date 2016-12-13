@@ -2,8 +2,6 @@ import {UserImage} from './user/user-image';
 import {map, find} from 'lodash';
 import {UserLanguage} from './user/user-language';
 import {Company} from './company';
-import {Country} from "./country";
-import {UserBankAccount} from "./user/user-bank-account";
 
 export class User {
   id: number;
@@ -23,7 +21,6 @@ export class User {
   frilansFinansPaymentDetails: boolean;
   company: Company;
   profileImage: UserImage;
-  bankAccount: UserBankAccount;
   password: string;
   oldPassword: string;
 

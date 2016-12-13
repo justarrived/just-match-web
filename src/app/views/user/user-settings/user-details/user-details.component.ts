@@ -1,17 +1,13 @@
 import {Component, Input} from '@angular/core';
-import {AuthManager} from "../../../../services/auth-manager.service";
-import {User} from "../../../../models/user";
-import {namePropertyLabel} from '../../../../utils/label-util';
-import {UserProxy} from "../../../../services/proxy/user-proxy.service";
+import {AuthManager} from '../../../../services/auth-manager.service';
+import {User} from '../../../../models/user';
+import {UserProxy} from '../../../../services/proxy/user-proxy.service';
 
 @Component({
   selector: 'user-details',
-  templateUrl: './user-details.component.html',
-  styleUrls: ['./user-details.component.scss']
+  templateUrl: './user-details.component.html'
 })
 export class UserDetailsComponent {
-  namePropertyLabel: Function = namePropertyLabel;
-
   editMode: boolean = false;
 
   @Input() user: User;
@@ -30,8 +26,9 @@ export class UserDetailsComponent {
       .then((response) => {
         return this.authManager.authenticateIfNeeded();
       }).then(user => {
-      this.editMode = false;
+        this.editMode = false;
       }).catch(errors => {
         this.errors = errors;
-      });  }
+      });
+  }
 }

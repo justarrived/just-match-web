@@ -1,15 +1,15 @@
 import {Component, Input} from '@angular/core';
-import {UserLanguage} from "../../../../models/user/user-language";
-import {LanguageProxy} from "../../../../services/proxy/language-proxy.service";
-import {AuthManager} from "../../../../services/auth-manager.service";
-import {Language} from "../../../../models/language/language";
-import {User} from "../../../../models/user";
+import {UserLanguage} from '../../../../models/user/user-language';
+import {LanguageProxy} from '../../../../services/proxy/language-proxy.service';
+import {AuthManager} from '../../../../services/auth-manager.service';
+import {Language} from '../../../../models/language/language';
+import {User} from '../../../../models/user';
 import {isEmpty, some} from 'lodash';
 import {deleteElementFromArray} from '../../../../utils/array-util';
 import {namePropertyLabel} from '../../../../utils/label-util';
-import {LanguageProficiency} from "../../../../models/language/language-proficiency";
-import {languageProficiencyLevels} from "../../../../enums/enums";
-import {UserProxy} from "../../../../services/proxy/user-proxy.service";
+import {LanguageProficiency} from '../../../../models/language/language-proficiency';
+import {languageProficiencyLevels} from '../../../../enums/enums';
+import {UserProxy} from '../../../../services/proxy/user-proxy.service';
 
 @Component({
   selector: 'user-profile',
@@ -58,7 +58,7 @@ export class UserProfileComponent {
       .then((response) => {
         return this.authManager.authenticateIfNeeded();
       }).then(user => {
-      this.editMode = false;
+        this.editMode = false;
     });
   }
 }

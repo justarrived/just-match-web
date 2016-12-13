@@ -44,7 +44,6 @@ export class AuthManager {
     this.userManager.saveUser(new User(data));
     let user = this.userManager.getUser();
     this.userChange.emit(user);
-    //console.log(user);
     return Promise.resolve(user);
   }
 
