@@ -5,9 +5,7 @@ export class Faq {
   question: string;
   answer: string;
   language: Language;
-  translatedQuestion: string;
-  translatedAnswer: string;
-  translatedLanguageId: number;
+  translated: Faq;
 
   constructor(jsonObject?: any) {
     if (!jsonObject) {
@@ -17,8 +15,9 @@ export class Faq {
     this.question = jsonObject.question;
     this.answer = jsonObject.answer;
     this.language = new Language(jsonObject.language);
-    this.translatedQuestion = jsonObject.translated_text.question;
-    this.translatedAnswer = jsonObject.translated_text.answer;
-    this.translatedLanguageId = jsonObject.translated_text.language_id;
+
+    if (!!jsonObject.translated_text) {
+      this.translated = new Faq(jsonObject.translated_text);
+    }
   }
 }
