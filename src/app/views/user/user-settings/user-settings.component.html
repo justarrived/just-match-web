@@ -20,19 +20,14 @@
   </div>
 
   <div class="row">
-    <div class="header-tab col-xs-4" [ngClass]="{'selected': selectedState == 'profile'}" (click)="setState('profile')" >
+    <div class="header-tab col-xs-6" [ngClass]="{'selected': selectedState == 'profile'}" (click)="setState('profile')" >
       <h4>
         {{'profile' | translate}}
       </h4>
     </div>
-    <div class="header-tab col-xs-4" [ngClass]="{'selected': selectedState == 'details'}" (click)="setState('details')">
+    <div class="header-tab col-xs-6" [ngClass]="{'selected': selectedState == 'details'}" (click)="setState('details')">
       <h4>
         {{"menu.settings.personal_data" | translate}}
-      </h4>
-    </div>
-    <div class="header-tab col-xs-4" [ngClass]="{'selected': selectedState == 'bank'}" (click)="setState('bank')">
-      <h4>
-        {{"menu.settings.bank_details" | translate}}
       </h4>
     </div>
   </div>
