@@ -1,4 +1,4 @@
-import {Component, OnInit, Input} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {UserJob, Invoice} from '../../models/user/user-job';
 import {JobProxy} from '../../services/proxy/job-proxy.service';
 import {TranslationService} from '../../services/translation.service';
@@ -10,7 +10,7 @@ import {Router} from '@angular/router';
   styleUrls: ['./candidate-state-status-bar.component.scss'],
 
 })
-export class CandidateStateStatusBarComponent implements OnInit {
+export class CandidateStateStatusBarComponent {
   @Input() userJob: UserJob;
   showSendRequestPage: boolean = false;
   showCompleteUserJob: boolean = false;
@@ -19,9 +19,6 @@ export class CandidateStateStatusBarComponent implements OnInit {
   userJobComment: string;
 
   constructor(private jobProxy: JobProxy, private translationService: TranslationService, private router: Router) {
-  }
-
-  ngOnInit() {
   }
 
   onAcceptJobButtonClick() {

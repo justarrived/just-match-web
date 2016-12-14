@@ -7,6 +7,8 @@ import {UserJob} from '../../models/user/user-job';
 import {JobProxy} from '../../services/proxy/job-proxy.service';
 import {Router} from '@angular/router';
 import {UserBankAccount} from '../../models/user/user-bank-account';
+import {TranslationListener} from '../translation.component';
+import {TranslationService} from '../../services/translation.service';
 
 
 @Component({
@@ -14,7 +16,7 @@ import {UserBankAccount} from '../../models/user/user-bank-account';
   templateUrl: './job-state-status-bar.component.html',
   styleUrls: ['./job-state-status-bar.component.scss']
 })
-export class JobStateStatusBarComponent implements OnInit {
+export class JobStateStatusBarComponent extends TranslationListener implements OnInit {
   @Input() job: Job;
   @Input() isInUserView: boolean;
   @Input() userJobId: number;
@@ -29,12 +31,18 @@ export class JobStateStatusBarComponent implements OnInit {
   bankAccount: UserBankAccount = new UserBankAccount();
   errors: any = {};
 
-  constructor(private userManager: UserManager, private userProxy: UserProxy, private jobProxy: JobProxy, private router: Router) {
+  constructor(private userManager: UserManager, private userProxy: UserProxy, private jobProxy: JobProxy, private router: Router, protected translationService: TranslationService) {
+    super(translationService);
+
     this.user = userManager.getUser();
     this.isCompanyUser = userManager.isCompanyUser();
   }
 
   ngOnInit() {
+    this.loadData();
+  }
+
+  loadData() {
     if (this.isCompanyUser && this.job.company.id === this.user.company.id) {
       this.jobProxy.getJobUsers(this.job.id, { include: 'user', 'filter[accepted]': true }).then(response => {
         this.userJob = response[0];

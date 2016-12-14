@@ -43,6 +43,7 @@ import {MyJobsItemComponent} from './components/my-jobs-item/my-jobs-item.compon
 import {RatingComponent} from './components/rating/rating.component';
 import {AppTranslateModule} from './app.translate.module';
 import {AppRoutingModule} from './app.routing.module';
+import {TranslationItemComponent} from './components/translation-item/translation-item.component';
 
 @NgModule({
   imports: [
@@ -83,7 +84,8 @@ import {AppRoutingModule} from './app.routing.module';
     MyJobsItemComponent,
     CompanyJobsComponent,
     UserJobsComponent,
-    MyJobsComponent
+    MyJobsComponent,
+    TranslationItemComponent
   ],
   providers: [
     DataStore,

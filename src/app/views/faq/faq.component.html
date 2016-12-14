@@ -15,8 +15,8 @@
         <li *ngFor="let faq of faqs">
           <input type="checkbox" checked>
           <i></i>
-          <strong>{{faq.translatedQuestion || faq.question}}</strong>
-          <p><b>{{"faq.answer" | translate}}:</b><br>{{faq.translatedAnswer || faq.answer}}</p>
+          <strong><translation-item [text]="faq.question" [translation]="faq.translated.question"></translation-item></strong>
+          <p><b>{{"faq.answer" | translate}}:</b><br><translation-item [text]="faq.answer" [translation]="faq.translated.answer"></translation-item></p>
         </li>
       </ul>
     </div>

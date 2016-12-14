@@ -22,7 +22,7 @@
       <div class="row">
         <div class="col-xs-12">
           <div class="content">
-            <p>{{job.name}}</p>
+            <p><translation-item [text]="job.name" [translation]="job.translated.name"></translation-item></p>
             <h4 class="title-primary">{{job.amount}} {{job.currency}} {{'common.gross_salary' | translate}}</h4>
             <p>{{job.hours}} {{'common.hour' | translate}}</p>
             <h5 class="title-primary">{{job.netAmount}} {{job.currency}} {{'common.net_salary' | translate}}</h5>

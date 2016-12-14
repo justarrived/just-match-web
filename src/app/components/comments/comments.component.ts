@@ -4,6 +4,7 @@ import {Comment} from '../../models/comment';
 import {UserManager} from '../../services/user-manager.service';
 import {TranslationService} from '../../services/translation.service';
 import {orderBy} from 'lodash';
+import {TranslationListener} from '../translation.component';
 
 @Component({
   selector: 'comments',
@@ -11,7 +12,7 @@ import {orderBy} from 'lodash';
   styleUrls: ['./comments.component.scss'],
   providers: [CommentsProxy]
 })
-export class CommentsComponent implements OnInit {
+export class CommentsComponent extends TranslationListener implements OnInit {
   @Input() resourceId: number;
   @Input() resourceName: string;
   private newCommentContainer: any;
@@ -21,16 +22,17 @@ export class CommentsComponent implements OnInit {
   isFooterVisible: boolean;
 
   @HostListener('window:scroll', ['$event']) onDocumentScroll(event: any) {
-    this.calculateFooterVisibilite();
+    this.calculateFooterVisibility();
   }
 
-  constructor(private commentsProxy: CommentsProxy, private userManager: UserManager, private translationService: TranslationService, private elementRef: ElementRef) {
+  constructor(private commentsProxy: CommentsProxy, private userManager: UserManager, protected translationService: TranslationService, private elementRef: ElementRef) {
+    super(translationService);
     this.userId = this.userManager.getUserId();
   }
 
   ngOnInit() {
-    this.populateAllComments();
-    this.calculateFooterVisibilite();
+    this.loadData();
+    this.calculateFooterVisibility();
   }
 
   sendComment() {
@@ -42,7 +44,7 @@ export class CommentsComponent implements OnInit {
     this.commentsProxy.sendComment(this.resourceName, this.resourceId, comment.toJsonObject()).then(result => {
       this.newCommentContainer.textContent = '';
       this.newCommentBody = null;
-      this.populateAllComments();
+      this.loadData();
     });
   }
 
@@ -53,11 +55,12 @@ export class CommentsComponent implements OnInit {
     this.newCommentBody = event.target.textContent;
   }
 
-  private populateAllComments() {
+  loadData() {
     this.commentsProxy.getComments(this.resourceName, this.resourceId, {
       include: 'owner,owner.user-images,owner.company,owner.company.company-images'
     }).then(result => {
       this.comments = orderBy(result.data, ['createdAt']);
+      this.calculateFooterVisibility();
     });
   }
 
@@ -69,7 +72,7 @@ export class CommentsComponent implements OnInit {
     );
   }
 
-  private calculateFooterVisibilite() {
+  private calculateFooterVisibility() {
     let scrollHeight = document.body.scrollTop;
     let windowHeight = window.innerHeight;
     let footerHeight = document.getElementsByTagName('footer')[0]['offsetHeight'];

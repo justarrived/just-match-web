@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {Job} from '../../models/job/job';
 
 @Component({
@@ -6,14 +6,11 @@ import {Job} from '../../models/job/job';
   templateUrl: './job-preview.component.html',
   styleUrls: ['./job-preview.component.scss']
 })
-export class JobPreviewComponent implements OnInit {
+export class JobPreviewComponent {
   @Input() job: Job;
   @Input() isPreview: boolean = false;
 
   constructor() {
   }
 
-  ngOnInit(): void {
-
-  }
 }

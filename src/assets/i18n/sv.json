@@ -44,6 +44,7 @@
   "common.view_profile": "Visa profil",
   "common.gross_salary": "bruttolön",
   "common.net_salary": "efter skatt",
+  "common.translate": "Translate",
   "menu.language.title": "Välj språk",
   "menu.language.text_1": "Du kan gå tillbaka och ändra språk senare om du vill.",
   "menu.language.text_2": "Uppdrag, kommentarer och meddelanden översätts automatiskt.",
