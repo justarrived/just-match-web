@@ -1,26 +1,26 @@
 import { Injectable } from '@angular/core';
 import {User} from '../models/user';
-import {LocalStorageWrapper} from './local-storage-wrapper.service';
+import {DataStore} from './data-store.service';
 
 @Injectable()
 export class UserManager {
   private storageAuthorizationData: string = 'authorizationData';
   private user: User;
 
-  constructor(private localStorageWrapper: LocalStorageWrapper) { }
+  constructor(private dataStore: DataStore) { }
 
   getUserId() {
-    let authorizationData = this.localStorageWrapper.getObject(this.storageAuthorizationData);
+    let authorizationData = this.dataStore.get(this.storageAuthorizationData);
     return authorizationData && authorizationData.user_id;
   }
 
   saveAuthorizationData(data) {
-    this.localStorageWrapper.setObject(this.storageAuthorizationData, data);
+    this.dataStore.set(this.storageAuthorizationData, data);
   }
 
   deleteUser() {
     this.user = null;
-    this.localStorageWrapper.remove(this.storageAuthorizationData);
+    this.dataStore.remove(this.storageAuthorizationData);
   }
 
   saveUser(user: User) {
