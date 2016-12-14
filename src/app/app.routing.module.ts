@@ -6,6 +6,9 @@ import {AuthGuard} from './services/auth-guard.service';
 import {UserRegisterComponent} from './views/user/user-register/user-register.component';
 import {UserSettingsComponent} from './views/user/user-settings/user-settings.component';
 import {LoginComponent} from './views/login/login.component';
+import {FaqComponent} from './views/faq/faq.component';
+import {ContactComponent} from './views/contact/contact.component';
+import {ContactConfirmationComponent} from './views/contact/confirmation/contact-confirmation.component';
 import {JobCreateComponent} from './views/jobs/job-create/job-create.component';
 import {JobsComponent} from './views/jobs/jobs.component';
 import {JobDetailsComponent} from './views/job-details/job-details.component';
@@ -17,10 +20,13 @@ import {MyJobsComponent} from './views/my-jobs/my-jobs.component';
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },
   { path: 'home', component: HomeComponent },
-  { path: 'about', component: AboutComponent, data: {title: 'About'}, canActivate: [AuthGuard] },
-  { path: 'login', component: LoginComponent, data: {title: 'Login'} },
+  { path: 'about', component: AboutComponent, data: { title: 'About' }, canActivate: [AuthGuard] },
+  { path: 'login', component: LoginComponent, data: { title: 'Login' } },
+  { path: 'faq', component: FaqComponent, data: { title: 'Questions and Answers' } },
+  { path: 'contact', component: ContactComponent, data: { title: 'Contact' } },
+  { path: 'contact/confirmation', component: ContactConfirmationComponent, data: { title: 'Contact Confirmation' } },
   { path: 'confirmation/:type', component: ConfirmationComponent },
-  { path: 'job/create', component: JobCreateComponent, data: { roles: ['company']} , canActivate: [AuthGuard] },
+  { path: 'job/create', component: JobCreateComponent, data: { roles: ['company'] }, canActivate: [AuthGuard] },
   { path: 'jobs/:page', component: JobsComponent },
   { path: 'job/:id/candidate/:userJobId', component: CandidateComponent },
   { path: 'job/:id/candidates', component: CandidatesComponent },
@@ -32,7 +38,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {initialNavigation: false})],
+  imports: [RouterModule.forRoot(routes, { initialNavigation: false })],
   exports: [RouterModule],
   providers: [AuthGuard]
 })

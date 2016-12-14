@@ -7,13 +7,14 @@ import {Category} from '../../../models/job/job';
 import {grossSalaryLabel} from '../../../utils/label-util';
 import {namePropertyLabel} from '../../../utils/label-util';
 import {TranslationService} from '../../../services/translation.service';
+import {TranslationListener} from '../../../components/translation.component';
 
 @Component({
   templateUrl: './job-create.component.html',
   styleUrls: ['./job-create.component.scss'],
   providers: [JobProxy]
 })
-export class JobCreateComponent implements OnInit {
+export class JobCreateComponent extends TranslationListener implements OnInit {
   grossSalaryLabel: Function = grossSalaryLabel;
   namePropertyLabel: Function = namePropertyLabel;
 
@@ -22,15 +23,19 @@ export class JobCreateComponent implements OnInit {
   categories: Category[];
 
   isPreview: boolean = false;
-  search: any;
   errors: Object = {};
 
   constructor(private router: Router,
               private jobProxy: JobProxy,
-              private translationService: TranslationService) {
+              protected translationService: TranslationService) {
+    super(translationService)
   }
 
   ngOnInit(): void {
+    this.loadData();
+  }
+
+  loadData() {
     this.jobProxy.getHourlyPays().then(hourlyPays => this.hourlyPays = hourlyPays);
     this.jobProxy.getCategories().then(categories => this.categories = categories);
   }

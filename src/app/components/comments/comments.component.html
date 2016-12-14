@@ -24,7 +24,7 @@
       </div>
     </div>
     <div class="col-xs-4 col-sm-4 col-md-2 comment-send-button-container text-center">
-      <button class="comment-send-button clickable" (click)="sendComment()" [disabled]="!(newCommentBody && newCommentBody.trim())">Send</button>
+      <button class="comment-send-button clickable" (click)="sendComment()" [disabled]="!(newCommentBody && newCommentBody.trim())">{{'common.submit' | translate}}</button>
     </div>
   </div>
 </div>

@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {LocalStorageWrapper} from './local-storage-wrapper.service';
+import {DataStore} from './data-store.service';
 
 const storageActAsUserIdKey: string = 'actAsUserId';
 
@@ -7,7 +7,7 @@ const storageActAsUserIdKey: string = 'actAsUserId';
 export class ActsAsUser {
   private userId: string = null;
 
-  constructor(private localStorageWrapper: LocalStorageWrapper) {
+  constructor(private dataStore: DataStore) {
     this.userId = this.getStorage(storageActAsUserIdKey);
   }
 
@@ -21,10 +21,10 @@ export class ActsAsUser {
   }
 
   private setStorage(key, value) {
-    this.localStorageWrapper.setObject(key, value);
+    this.dataStore.set(key, value);
   }
 
   private getStorage(key) {
-    return this.localStorageWrapper.getObject(key);
+    return this.dataStore.get(key);
   }
 }

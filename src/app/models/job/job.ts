@@ -32,11 +32,13 @@ export class Job {
   category: Category;
   languageId: string;
   jobUsers: UserJob[];
+  translated: Job;
 
   constructor(jsonObject: any) {
     if (!jsonObject) {
       return;
     }
+
     this.amount = jsonObject.amount; // DEPRECATED: grossAmount has replaced this value
     this.grossAmount = jsonObject.gross_amount;
     this.netAmount = jsonObject.net_amount;
@@ -63,6 +65,10 @@ export class Job {
     this.category = new Category(jsonObject.category);
     this.jobUsers = map(jsonObject.job_users, user => new UserJob(user));
     this.languageId = jsonObject.language_id;
+
+    if (!!jsonObject.translated_text) {
+      this.translated = new Job(jsonObject.translated_text);
+    }
   }
 
   get netSalary(): number {

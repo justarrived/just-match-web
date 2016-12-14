@@ -8,12 +8,14 @@ import {Country} from '../../../models/country';
 import {AuthManager} from '../../../services/auth-manager.service';
 import {Router} from '@angular/router';
 import {namePropertyLabel} from '../../../utils/label-util';
+import {TranslationService} from '../../../services/translation.service';
+import {TranslationListener} from '../../../components/translation.component';
 
 @Component({
   templateUrl: './user-register.component.html',
   styleUrls: ['./user-register.component.scss']
 })
-export class UserRegisterComponent implements OnInit {
+export class UserRegisterComponent extends TranslationListener implements OnInit {
   namePropertyLabel: Function = namePropertyLabel;
 
   atUndStatuses = atUndStatuses;
@@ -26,9 +28,15 @@ export class UserRegisterComponent implements OnInit {
   constructor(private router: Router,
               private userProxy: UserProxy,
               private countryProxy: CountryProxy,
-              private authManager: AuthManager) { }
+              private authManager: AuthManager, protected translationService: TranslationService) {
+    super(translationService);
+  }
 
   ngOnInit(): void {
+    this.loadData();
+  }
+
+  loadData() {
     this.userProxy.getStatuses().then(statuses => this.statuses = statuses);
     this.countryProxy.getCountries().then(countries => this.countries = countries);
   }

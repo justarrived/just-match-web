@@ -1,0 +1,5 @@
+<span class="translation-item">
+  <span class="text" *ngIf="isTranslationHidden">{{text}} </span>
+  <span class="translation" *ngIf="!isTranslationHidden">{{translation}}</span>
+  <i class="fa fa-language" *ngIf="isTranslationAvailable" data-toggle="tooltip" title="{{ 'common.translate' | translate}}" (click)="toggleTranslation($event)" aria-hidden="true"></i>
+</span>

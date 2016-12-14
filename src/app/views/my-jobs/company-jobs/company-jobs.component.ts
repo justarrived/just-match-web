@@ -2,6 +2,8 @@ import {Component, Input, OnInit} from '@angular/core';
 import {Job} from '../../../models/job/job';
 import {JobProxy} from '../../../services/proxy/job-proxy.service';
 import {UserManager} from '../../../services/user-manager.service';
+import {TranslationService} from '../../../services/translation.service';
+import {TranslationListener} from '../../../components/translation.component';
 
 @Component({
   selector: 'company-jobs',
@@ -9,7 +11,7 @@ import {UserManager} from '../../../services/user-manager.service';
   styleUrls: ['./company-jobs.component.scss'],
   providers: [JobProxy]
 })
-export class CompanyJobsComponent implements OnInit {
+export class CompanyJobsComponent extends TranslationListener implements OnInit {
   @Input() selectedState: string;
   jobs: Job[];
   currentJobs: Job[] = []; // will perfome, but not performed
@@ -17,15 +19,19 @@ export class CompanyJobsComponent implements OnInit {
   missingReviewJobs: Job[] = []; // performed, no invoice
   historyJobs: Job[] = []; // invoiced
 
-  constructor(private jobProxy: JobProxy, private userManager: UserManager) {
+  constructor(private jobProxy: JobProxy, private userManager: UserManager, protected translationService: TranslationService) {
+    super(translationService);
   }
 
   ngOnInit() {
+    this.loadData();
+  }
+
+  loadData() {
     this.jobProxy.getOwnedJobs(this.userManager.getUserId(), {include: 'job-users,job-users.user,job-users.user.user-images'}).then((jobs) => {
       this.jobs = jobs;
       this.generateJobSections();
     });
-
   }
 
   generateJobSections() {
