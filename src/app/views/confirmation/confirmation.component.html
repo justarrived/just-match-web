@@ -1,11 +1,67 @@
 <div class="confirmation-container">
-  <div *ngIf="type === 'job'" class="confirmation-item table text-center">
+  <div *ngIf="type === 'user-applied'" class="confirmation-item table text-center">
+    <a class="close-button" routerLink="/jobs/1"></a>
     <div class="table-row">
       <div class="table-cell">
-        <div><i class="fa fa-check fa-lg"></i></div>
+        <div class="item-icon"><i class="fa fa-check fa-5x" aria-hidden="true"></i></div>
         <div class="item-title">{{'user.apply.confirmation' | translate}}</div>
         <div class="item-content">{{'user.apply.confirmation.text' | translate}}</div>
-        <div class="button-container"><a class="button clickable" routerLink="/jobs/1">{{'user.apply.find_more' | translate}}</a></div>
+        <div class="button-container"><a class="btn-primary btn-large btn" routerLink="/jobs/1">{{'user.apply.find_more' | translate}}</a></div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="type === 'profile-created'" class="confirmation-item table text-center">
+    <a class="close-button" routerLink="/user"></a>
+    <div class="table-row">
+      <div class="table-cell">
+        <div class="item-icon"><i class="fa fa-check fa-5x" aria-hidden="true"></i></div>
+        <div class="item-title">{{'profile.create.confirmation.title' | translate}}</div>
+        <div class="item-content">{{'profile.create.confirmation.description' | translate}}</div>
+        <div class="button-container"><a class="btn-primary btn-large btn" routerLink="/jobs/1">{{'common.find_assignment' | translate}}</a></div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="type === 'assignment-created'" class="confirmation-item table text-center">
+    <a class="close-button" routerLink="/user"></a>
+    <div class="table-row">
+      <div class="table-cell">
+        <div class="item-icon"><i class="fa fa-check fa-5x" aria-hidden="true"></i></div>
+        <div class="item-title">{{'assignment.created.title' | translate}}</div>
+        <div class="item-content">{{'assignment.created.description' | translate}}</div>
+        <div class="button-container"><a class="btn-primary btn-large btn" routerLink="/user">{{'assignment.created.continue' | translate}}</a></div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="type === 'profile-created-applied'" class="confirmation-item table text-center">
+    <a class="close-button" routerLink="/user"></a>
+    <div class="table-row">
+      <div class="table-cell">
+        <div class="item-icon"><i class="fa fa-check fa-5x" aria-hidden="true"></i></div>
+        <div class="item-title">{{'profile.created.assignment.pending.email.titel' | translate}}</div>
+        <div class="item-content">{{'profile.create.confirmation.description' | translate}}</div>
+        <div class="button-container"><a class="btn-primary btn-large btn" routerLink="/jobs/1">{{'auser.apply.find_more' | translate}}</a></div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="type === 'user-assignment-approved'" class="confirmation-item table text-center">
+    <a class="close-button" routerLink="/user"></a>
+    <div class="table-row">
+      <div class="table-cell">
+        <div class="item-icon"><i class="fa fa-check fa-5x" aria-hidden="true"></i></div>
+        <div class="item-title">{{'user.assignment.approved' | translate}}</div>
+        <div class="item-content">{{'user.assignment.add_reference' | translate}}</div>
+        <div class="button-container"><a class="btn-primary btn-large btn" routerLink="/user">{{'assignment.created.continue' | translate}}</a></div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="type === 'user-assignment-rejected-confirmation'" class="confirmation-item table text-center">
+    <a class="close-button" routerLink="/user"></a>
+    <div class="table-row">
+      <div class="table-cell">
+        <div class="item-icon"><i class="fa fa-check fa-5x" aria-hidden="true"></i></div>
+        <div class="item-title">{{'user.assignment.rejected.confirmation' | translate}}</div>
+        <div class="item-content">{{'user.assignment.rejected.confirmation.description' | translate}}</div>
+        <div class="button-container"><a class="btn-primary btn-large btn" routerLink="/user">{{'assignment.created.continue' | translate}}</a></div>
       </div>
     </div>
   </div>

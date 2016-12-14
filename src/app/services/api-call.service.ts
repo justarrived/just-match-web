@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Http, Headers, Request, RequestOptions, RequestOptionsArgs, RequestMethod, URLSearchParams} from '@angular/http';
-import {LocalStorageWrapper} from './local-storage-wrapper.service';
+import {DataStore} from './data-store.service';
 import * as  _ from 'lodash';
 import {parseJsonapiResponse, parseJsonapiErrorResponse} from '../utils/jsonapi-parser.util';
 import {Observable} from 'rxjs';
@@ -21,7 +21,7 @@ export class ApiCall {
   private actAsUserHeaderName: string = 'X-API-ACT-AS-USER';
 
   constructor(private http: Http,
-              private localStorageWrapper: LocalStorageWrapper,
+              private dataStore: DataStore,
               private router: Router,
               private userManager: UserManager,
               private actsAsUser: ActsAsUser,
@@ -64,7 +64,7 @@ export class ApiCall {
     let options = new RequestOptions(requestArgs);
 
     let req: Request = new Request(options);
-    let authorizationData = this.localStorageWrapper.getObject(this.storageAuthorizationData);
+    let authorizationData = this.dataStore.get(this.storageAuthorizationData);
     if (!!authorizationData) {
       req.headers.set(this.authorizationHeaderName, this.authorizationHeaderPrefix + authorizationData['auth_token']);
     }

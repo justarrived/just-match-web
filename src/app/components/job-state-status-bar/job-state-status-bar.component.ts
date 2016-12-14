@@ -44,7 +44,7 @@ export class JobStateStatusBarComponent extends TranslationListener implements O
 
   loadData() {
     if (this.isCompanyUser && this.job.company.id === this.user.company.id) {
-      this.jobProxy.getJobUsers(this.job.id, {include: 'user', 'filter[accepted]': true}).then(response => {
+      this.jobProxy.getJobUsers(this.job.id, { include: 'user', 'filter[accepted]': true }).then(response => {
         this.userJob = response[0];
         console.log(response);
       });
@@ -52,7 +52,7 @@ export class JobStateStatusBarComponent extends TranslationListener implements O
         this.countOfApplicants = response.length;
       });
     } else if (this.userManager.getUser() && !this.isCompanyUser) {
-      this.userProxy.getUserJobs(this.user.id, {'filter[job_id]': this.job.id.toString()}).then(response => {
+      this.userProxy.getUserJobs(this.user.id, { 'filter[job_id]': this.job.id.toString() }).then(response => {
         console.log(response);
         this.userJob = response[0];
       });
@@ -61,7 +61,7 @@ export class JobStateStatusBarComponent extends TranslationListener implements O
 
   onApplyForJobButtonClick() {
     this.jobProxy.applyForJob(this.job.id).then(response => {
-      this.router.navigate(['/confirmation/job']);
+      this.router.navigate(['/confirmation/user-applied']);
     });
   }
 
@@ -92,4 +92,3 @@ export class JobStateStatusBarComponent extends TranslationListener implements O
     });
   }
 }
-
