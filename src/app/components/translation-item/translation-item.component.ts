@@ -48,7 +48,7 @@ export class TranslationItemComponent {
     this.isTranslationHidden = !this.isTranslationHidden;
   }
 
-  shortenText(text: string) {
+  private shortenText(text: string) {
     if (this.short && text.length > this.length) {
       text = text.slice(0, this.length);
       text += '...';

@@ -4,7 +4,7 @@ import {Comment} from '../../models/comment';
 import {UserManager} from '../../services/user-manager.service';
 import {TranslationService} from '../../services/translation.service';
 import {orderBy} from 'lodash';
-import {TranslationListener} from "../translation.component";
+import {TranslationListener} from '../translation.component';
 
 @Component({
   selector: 'comments',
@@ -22,7 +22,7 @@ export class CommentsComponent extends TranslationListener implements OnInit {
   isFooterVisible: boolean;
 
   @HostListener('window:scroll', ['$event']) onDocumentScroll(event: any) {
-    this.calculateFooterVisibilite();
+    this.calculateFooterVisibility();
   }
 
   constructor(private commentsProxy: CommentsProxy, private userManager: UserManager, protected translationService: TranslationService, private elementRef: ElementRef) {
@@ -32,7 +32,7 @@ export class CommentsComponent extends TranslationListener implements OnInit {
 
   ngOnInit() {
     this.loadData();
-    this.calculateFooterVisibilite();
+    this.calculateFooterVisibility();
   }
 
   sendComment() {
@@ -60,7 +60,7 @@ export class CommentsComponent extends TranslationListener implements OnInit {
       include: 'owner,owner.user-images,owner.company,owner.company.company-images'
     }).then(result => {
       this.comments = orderBy(result.data, ['createdAt']);
-      this.calculateFooterVisibilite();
+      this.calculateFooterVisibility();
     });
   }
 
@@ -72,7 +72,7 @@ export class CommentsComponent extends TranslationListener implements OnInit {
     );
   }
 
-  private calculateFooterVisibilite() {
+  private calculateFooterVisibility() {
     let scrollHeight = document.body.scrollTop;
     let windowHeight = window.innerHeight;
     let footerHeight = document.getElementsByTagName('footer')[0]['offsetHeight'];

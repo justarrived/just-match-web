@@ -2,8 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {JobProxy} from '../../services/proxy/job-proxy.service';
 import {UserJob} from '../../models/user/user-job';
-import {TranslationService} from "../../services/translation.service";
-import {TranslationListener} from "../../components/translation.component";
+import {TranslationService} from '../../services/translation.service';
+import {TranslationListener} from '../../components/translation.component';
 
 @Component({
   templateUrl: './candidate.component.html',

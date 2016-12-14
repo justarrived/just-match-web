@@ -4,7 +4,7 @@ import {Job} from '../../models/job/job';
 import {TranslationService} from '../../services/translation.service';
 import {UserManager} from '../../services/user-manager.service';
 import {User} from '../../models/user';
-import {TranslationListener} from "../../components/translation.component";
+import {TranslationListener} from '../../components/translation.component';
 
 @Component({
   templateUrl: './home.component.html',

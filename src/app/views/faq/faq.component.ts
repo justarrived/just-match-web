@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {Faq} from '../../models/faq';
 import {FaqProxy} from '../../services/proxy/faq-proxy.service';
-import {TranslationService} from "../../services/translation.service";
-import {TranslationListener} from "../../components/translation.component";
+import {TranslationService} from '../../services/translation.service';
+import {TranslationListener} from '../../components/translation.component';
 
 @Component({
   templateUrl: './faq.component.html',

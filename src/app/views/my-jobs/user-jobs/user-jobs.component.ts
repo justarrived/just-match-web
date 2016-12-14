@@ -4,8 +4,8 @@ import {UserManager} from '../../../services/user-manager.service';
 import {UserJob} from '../../../models/user/user-job';
 import {map} from 'lodash';
 import {UserProxy} from '../../../services/proxy/user-proxy.service';
-import {TranslationService} from "../../../services/translation.service";
-import {TranslationListener} from "../../../components/translation.component";
+import {TranslationService} from '../../../services/translation.service';
+import {TranslationListener} from '../../../components/translation.component';
 
 @Component({
   selector: 'user-jobs',

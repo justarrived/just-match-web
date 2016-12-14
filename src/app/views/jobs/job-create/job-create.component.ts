@@ -7,7 +7,7 @@ import {Category} from '../../../models/job/job';
 import {grossSalaryLabel} from '../../../utils/label-util';
 import {namePropertyLabel} from '../../../utils/label-util';
 import {TranslationService} from '../../../services/translation.service';
-import {TranslationListener} from "../../../components/translation.component";
+import {TranslationListener} from '../../../components/translation.component';
 
 @Component({
   templateUrl: './job-create.component.html',

@@ -7,8 +7,8 @@ import {UserJob} from '../../models/user/user-job';
 import {JobProxy} from '../../services/proxy/job-proxy.service';
 import {Router} from '@angular/router';
 import {UserBankAccount} from '../../models/user/user-bank-account';
-import {TranslationListener} from "../translation.component";
-import {TranslationService} from "../../services/translation.service";
+import {TranslationListener} from '../translation.component';
+import {TranslationService} from '../../services/translation.service';
 
 
 @Component({

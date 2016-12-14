@@ -8,8 +8,8 @@ import {Country} from '../../../models/country';
 import {AuthManager} from '../../../services/auth-manager.service';
 import {Router} from '@angular/router';
 import {namePropertyLabel} from '../../../utils/label-util';
-import {TranslationService} from "../../../services/translation.service";
-import {TranslationListener} from "../../../components/translation.component";
+import {TranslationService} from '../../../services/translation.service';
+import {TranslationListener} from '../../../components/translation.component';
 
 @Component({
   templateUrl: './user-register.component.html',

@@ -1,4 +1,4 @@
-import {TranslationService} from "../services/translation.service";
+import {TranslationService} from '../services/translation.service';
 
 export abstract class TranslationListener {
 

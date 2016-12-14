@@ -3,8 +3,8 @@ import {Job} from '../../models/job/job';
 import {JobProxy} from '../../services/proxy/job-proxy.service';
 import {Location} from '@angular/common';
 import {ActivatedRoute} from '@angular/router';
-import {TranslationService} from "../../services/translation.service";
-import {TranslationListener} from "../../components/translation.component";
+import {TranslationService} from '../../services/translation.service';
+import {TranslationListener} from '../../components/translation.component';
 
 @Component({
   templateUrl: './jobs.component.html',
