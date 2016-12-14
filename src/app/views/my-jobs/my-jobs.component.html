@@ -1,25 +1,26 @@
-<div class="row my-jobs-header">
-  <h3>
-    {{"menu.main.my_assignment" | translate}}
-  </h3>
-</div>
-
-
-<div class="row">
-  <div class="my-jobs-header-tab col-xs-6" [ngClass]="{'my-jobs-header-tab-selected': selectedState == 'active'}" (click)="setState('active')" >
-    <h4>
-      {{"company.assignments.filter_1" | translate}}
-    </h4>
+<div class="container-fluid">
+  <div class="row my-jobs-header">
+    <h3>
+      {{"menu.main.my_assignment" | translate}}
+    </h3>
   </div>
-  <div class="my-jobs-header-tab col-xs-6" [ngClass]="{'my-jobs-header-tab-selected': selectedState == 'history'}" (click)="setState('history')">
-    <h4>
-      {{"company.assignments.filter_2" | translate}}
-    </h4>
+
+
+  <div class="row">
+    <div class="my-jobs-header-tab col-xs-6" [ngClass]="{'my-jobs-header-tab-selected': selectedState == 'active'}" (click)="setState('active')" >
+      <h4>
+        {{"company.assignments.filter_1" | translate}}
+      </h4>
+    </div>
+    <div class="my-jobs-header-tab col-xs-6" [ngClass]="{'my-jobs-header-tab-selected': selectedState == 'history'}" (click)="setState('history')">
+      <h4>
+        {{"company.assignments.filter_2" | translate}}
+      </h4>
+    </div>
   </div>
-</div>
 
-
-<div class="row" style="background-color: white;">
-  <company-jobs *ngIf="isCompanyUser" [selectedState]="selectedState"></company-jobs>
-  <user-jobs *ngIf="!isCompanyUser" [selectedState]="selectedState"></user-jobs>
+  <div class="row" style="background-color: white;">
+    <company-jobs *ngIf="isCompanyUser" [selectedState]="selectedState"></company-jobs>
+    <user-jobs *ngIf="!isCompanyUser" [selectedState]="selectedState"></user-jobs>
+  </div>
 </div>

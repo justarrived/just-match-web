@@ -5,8 +5,10 @@ import {UserManager} from '../../services/user-manager.service';
   templateUrl: './my-jobs.component.html',
   styleUrls: ['./my-jobs.component.scss']
 })
+
 export class MyJobsComponent {
   selectedState: string = 'active';
+
   isCompanyUser: boolean;
 
   constructor(private userManager: UserManager) {

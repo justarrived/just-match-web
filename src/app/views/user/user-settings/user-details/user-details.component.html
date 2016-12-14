@@ -1,0 +1,83 @@
+<div class="centered-form-container">
+  <form class="centered-form" #form="ngForm" (ngSubmit)="onSubmit()">
+    <div class="material-group">
+      <i class="icon-ic-paper"></i>
+
+      <label for="ssn">{{'user.form.ssn' | translate}}</label>
+      <input type="text" id="ssn" [(ngModel)]="user.ssn" name="ssn" class="material-input" [disabled]="!editMode" [ngClass]="{'not-empty': user.ssn, 'has-error': errors.ssn}" required pattern="^[\d\-]+$" minlength="10">
+
+      <div class="fs-m0 material-group-error" *ngIf="form.controls.ssn && form.controls.ssn.invalid && form.controls.ssn.touched">
+        {{'user.form.ssn.validation' | translate}}
+      </div>
+      <div class="fs-m0 material-group-error" *ngIf="errors.ssn">
+        {{errors.ssn}}
+      </div>
+    </div>
+
+    <div class="material-group">
+      <i class="icon-ic-paper"></i>
+
+      <label for="first-name">{{'user.form.first_name' | translate}}</label>
+      <input type="text" id="first-name" [(ngModel)]="user.firstName" name="firstName" class="material-input" [disabled]="!editMode" [ngClass]="{'not-empty': user.firstName, 'has-error': errors.first_name}" required>
+
+      <div class="fs-m0 material-group-error" *ngIf="form.controls.firstName && form.controls.firstName.invalid && form.controls.firstName.touched">
+        {{'user.form.first_name.validation' | translate}}
+      </div>
+      <div class="fs-m0 material-group-error" *ngIf="errors.first_name">
+        {{errors.first_name}}
+      </div>
+    </div>
+
+    <div class="material-group">
+      <i class="icon-ic-paper"></i>
+
+      <label for="last-name">{{'user.form.last_name' | translate}}</label>
+      <input type="text" id="last-name" [(ngModel)]="user.lastName" name="lastName" class="material-input" [disabled]="!editMode" [ngClass]="{'not-empty': user.lastName, 'has-error': errors.last_name}" required>
+
+      <div class="fs-m0 material-group-error" *ngIf="form.controls.lastName && form.controls.lastName.invalid && form.controls.lastName.touched">
+        {{'user.form.last_name.validation' | translate}}
+      </div>
+      <div class="fs-m0 material-group-error" *ngIf="errors.last_name">
+        {{errors.last_name}}
+      </div>
+    </div>
+
+    <div class="material-group">
+      <i class="icon-ic-paper"></i>
+
+      <label for="email">{{'user.form.email' | translate}}</label>
+      <input type="text" id="email" [(ngModel)]="user.email" name="email" class="material-input" [disabled]="!editMode" [ngClass]="{'not-empty': user.email, 'has-error': errors.email}"
+             required pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$">
+
+      <div class="fs-m0 material-group-error" *ngIf="form.controls.email && form.controls.email.invalid && form.controls.email.touched">
+        {{'user.form.email.validation' | translate}}
+      </div>
+      <div class="fs-m0 material-group-error" *ngIf="errors.email">
+        {{errors.email}}
+      </div>
+    </div>
+
+    <div class="material-group">
+      <i class="icon-ic-paper"></i>
+
+      <label for="phone">{{'user.form.phone' | translate}}</label>
+      <input type="text" id="phone" [(ngModel)]="user.phone" name="phone" class="material-input" [disabled]="!editMode" [ngClass]="{'not-empty': user.phone, 'has-error': errors.phone}" required minlength="9">
+
+      <div class="fs-m0 material-group-error" *ngIf="form.controls.phone && form.controls.phone.invalid && form.controls.phone.touched">
+        {{'user.form.phone.validation' | translate}}
+      </div>
+      <div class="fs-m0 material-group-error" *ngIf="errors.phone">
+        {{errors.phone}}
+      </div>
+    </div>
+
+    <div class="text-center">
+      <button type="button" class="button secondary form-control clickable" (click)="onEditClick()" *ngIf="!editMode">
+        {{'common.edit' | translate}}
+      </button>
+      <button type="submit" class="button primary form-control clickable" [disabled]="form.invalid" *ngIf="editMode">
+        {{'common.save' | translate}}
+      </button>
+    </div>
+  </form>
+</div>

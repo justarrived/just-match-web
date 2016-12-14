@@ -1,0 +1,82 @@
+<div class="centered-form-container">
+  <form class="centered-form" #form="ngForm" (ngSubmit)="onSubmit()">
+    <div class="material-group">
+      <i class="icon-ic-paper"></i>
+
+      <label for="presentation">{{'profile.form.presentation' | translate | uppercase}}*</label>
+      <textarea name="presentation" id="presentation" class="material-input" [disabled]="!editMode" [(ngModel)]="user.presentation" required minlength="10"></textarea>
+
+      <div class="fs-m0 material-group-error" *ngIf="form.controls.presentation && form.controls.presentation.invalid && form.controls.presentation.touched">
+        {{'profile.form.presentation.validation' | translate}}
+      </div>
+    </div>
+
+    <div class="material-group">
+      <i class="icon-ic-user3"></i>
+
+      <label>{{'profile.form.languages' | translate | uppercase}}</label>
+      <autocomplete-dropdown (dropdownListItemSelect)="onLanguageSelect($event)"
+                             [clearDestinationAfterSelection]="true"
+                             [autocompleteResultLabelFunction]="namePropertyLabel"
+                             [selectedItemLabelFunction]="namePropertyLabel"
+                             [isDisabled]="!editMode"
+                             [getData]="getLanguages()">
+      </autocomplete-dropdown>
+
+      <div class="table max-width">
+        <div class="table-row" *ngFor="let userLanguage of user.userLanguages">
+          <div class="table-cell min-width-column">{{userLanguage.language.name}}</div>
+          <div class="table-cell"></div>
+          <div class="table-cell min-width-column">
+            <autocomplete-dropdown [lookupType]="'list'" [enumList]="languageProficiencyLevels"
+                                   [(destination)]="userLanguage.proficiency"
+                                   [placeholder]="'language.proficiency.placeholder' | translate"
+                                   [isDisabled]="!editMode"
+                                   [autocompleteResultLabelFunction]="namePropertyLabel"
+                                   [selectedItemLabelFunction]="namePropertyLabel">
+            </autocomplete-dropdown>
+          </div>
+          <div class="table-cell"></div>
+          <div class="table-cell min-width-column clickable" *ngIf="editMode" (click)="onRemoveUserLanguage(userLanguage)">
+            <i class="icon-ic-close"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="material-group">
+      <i class="icon-ic-star"></i>
+
+      <label for="work-experience">{{'profile.form.experience' | translate | uppercase}}</label>
+      <textarea name="workExperience" id="work-experience" class="material-input" [disabled]="!editMode" [(ngModel)]="user.workExperience"></textarea>
+    </div>
+
+    <div class="material-group">
+      <i class="icon-ic-education"></i>
+
+      <label for="education">{{'profile.form.education' | translate | uppercase}}</label>
+      <textarea name="education" id="education" class="material-input" [disabled]="!editMode" [(ngModel)]="user.education"></textarea>
+    </div>
+
+    <div class="material-group">
+      <i class="icon-ic-tool"></i>
+
+      <label for="skills">{{'profile.form.skills' | translate | uppercase}}</label>
+      <textarea name="skills" id="skills" class="material-input" [disabled]="!editMode" [(ngModel)]="user.skills"></textarea>
+    </div>
+
+    <hr>
+    <div class="text-center fs-m">
+      {{'profile.create.notification' | translate}}
+    </div>
+
+    <div class="text-center">
+      <button type="button" class="button secondary form-control clickable" (click)="onEditClick()" *ngIf="!editMode">
+        {{'common.edit' | translate}}
+      </button>
+      <button type="submit" class="button primary form-control clickable" [disabled]="form.invalid" *ngIf="editMode">
+        {{'common.save' | translate}}
+      </button>
+    </div>
+  </form>
+</div>

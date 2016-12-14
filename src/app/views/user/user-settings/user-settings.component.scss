@@ -2,6 +2,24 @@
 
 .user-profile {
 
+  .header-tab {
+    padding: 8px;
+    text-align: center;
+    background-color: $default-bg-color;
+    cursor: pointer;
+    h4 {
+      color: $color-gray-200;
+    }
+    border-bottom: 4px solid $color-gray-50;
+
+    &.selected {
+      h4 {
+        color: $color-gray-500;
+      }
+      border-bottom: 4px solid $color-primary-cerise;
+    }
+  }
+
   .upload-group-container {
     margin: 0 auto;
 
@@ -69,26 +87,5 @@
         transition: all 0.3s ease;
       }
     }
-  }
-
-  .icon-ic-paper,
-  .icon-ic-user3,
-  .icon-ic-star,
-  .icon-ic-education,
-  .icon-ic-tool {
-    position: relative;
-
-    &:before {
-      position: absolute;
-      left: -35px;
-      font-size: 20px;
-      color: $color-gray-100;
-    }
-  }
-
-  hr {
-    margin: 35px 0 25px;
-    border: 0;
-    border-top: 1px solid #eeeeee;
   }
 }

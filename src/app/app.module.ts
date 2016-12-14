@@ -14,7 +14,6 @@ import {TranslationService} from './services/translation.service';
 import {SliderComponent} from './components/slider/slider.component';
 import {UserRegisterComponent} from './views/user/user-register/user-register.component';
 import {CountryProxy} from './services/proxy/country-proxy.service';
-import {UserProfileComponent} from './views/user/user-profile/user-profile.component';
 import {DeletableItemComponent} from './components/autocomplete-dropdown/deletable-item/deletable-item.component';
 import {AutocompleteDropdownListItemComponent} from './components/autocomplete-dropdown/autocomplete-dropdown-list-item/autocomplete-dropdown-list-item.component';
 import {AutocompleteDropdownComponent} from './components/autocomplete-dropdown/autocomplete-dropdown.component';
@@ -43,6 +42,9 @@ import {MyJobsItemComponent} from './components/my-jobs-item/my-jobs-item.compon
 import {RatingComponent} from './components/rating/rating.component';
 import {AppTranslateModule} from './app.translate.module';
 import {AppRoutingModule} from './app.routing.module';
+import {UserSettingsComponent} from './views/user/user-settings/user-settings.component';
+import {UserProfileComponent} from './views/user/user-settings/user-profile/user-profile.component';
+import {UserDetailsComponent} from './views/user/user-settings/user-details/user-details.component';
 import {TranslationItemComponent} from './components/translation-item/translation-item.component';
 
 @NgModule({
@@ -61,6 +63,7 @@ import {TranslationItemComponent} from './components/translation-item/translatio
     SliderComponent,
     UserRegisterComponent,
     UserProfileComponent,
+    UserDetailsComponent,
     DeletableItemComponent,
     AutocompleteDropdownListItemComponent,
     AutocompleteDropdownComponent,
@@ -85,6 +88,7 @@ import {TranslationItemComponent} from './components/translation-item/translatio
     CompanyJobsComponent,
     UserJobsComponent,
     MyJobsComponent,
+    UserSettingsComponent,
     TranslationItemComponent
   ],
   providers: [

@@ -27,7 +27,7 @@ export class AuthManager {
     let userId = this.userManager.getUserId();
 
     if (userId) {
-      return this.userProxy.getUser(userId, {include: 'company,user_images,user_languages'}).then(response => { // TODO: add user_languages.language in the include
+      return this.userProxy.getUser(userId, {include: 'company,user_images,user_languages,user_languages.language'}).then(response => {
         return this.handleUserResult(response.data);
       });
     }
@@ -44,7 +44,6 @@ export class AuthManager {
     this.userManager.saveUser(new User(data));
     let user = this.userManager.getUser();
     this.userChange.emit(user);
-    console.log(user);
     return Promise.resolve(user);
   }
 
