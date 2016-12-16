@@ -1,0 +1,48 @@
+@import '../../styles/variables';
+@import '../../styles/buttons';
+
+.contact-header {
+  background-color: $color-primary-cerise;
+  padding: 1em 0;
+
+  h3 {
+    position: relative;
+    top: 5px;
+    color: $white;
+  }
+
+}
+
+.login-form-container {
+  background-color: $default-bg-color;
+  margin-right: -15px;
+  margin-left: -15px;
+  padding-top: 50px;
+
+  .login-input-container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding-bottom: 1.5em;
+  }
+
+  .login-button-container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding-bottom: 1.5em;
+    text-align: center;
+    .error-message {
+      color: $color-cerise-500;
+    }
+
+    button {
+      display: block;
+      margin: 15px auto 30px;
+      min-width: 200px;
+    }
+
+    a {
+      color: $color-accent-main;
+      font-weight: 600;
+    }
+  }
+}

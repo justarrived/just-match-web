@@ -1,16 +1,33 @@
 <div class="container-fluid">
-  <div class="row">
+
+  <div class="contact-header row">
+    <!-- All Questions -->
     <div class="col-xs-12">
-
-      <div class="material-group">
-        <input [(ngModel)]="email" type="text" class="material-input">
-      </div>
-
-      <div class="material-group">
-        <input [(ngModel)]="password" type="password" class="material-input">
-      </div>
-
-      <button (click)="onLoginButtonClick()">Login</button>
+      <h3>
+        {{'login.title' | translate}}
+      </h3>
     </div>
+  </div>
+
+  <div class="login-form-container">
+
+    <form [formGroup]="loginForm" (ngSubmit)="submitForm(loginForm.value)">
+      <div class="form-group material-group login-input-container" [ngClass]="{'has-error':!loginForm.controls['email'].valid && loginForm.controls['email'].touched}">
+        <input class="form-control material-input fs-m0" type="text" placeholder="{{'login.form.email_or_phone' | translate}}" [formControl]="loginForm.controls['email']">
+
+        <div *ngIf="loginForm.controls['email'].hasError('required') && loginForm.controls['email'].touched" class="alert alert-danger">{{'login.form.email_or_phone.validation' | translate}}.</div>
+      </div>
+      <div class="form-group  material-group login-input-container" [ngClass]="{'has-error':!loginForm.controls['password'].valid && loginForm.controls['password'].touched}">
+        <input class="form-control material-input fs-m0" type="password" placeholder="{{'login.form.password' | translate}}" [formControl]="loginForm.controls['password']">
+
+        <div *ngIf="loginForm.controls['password'].hasError('required') && loginForm.controls['password'].touched" class="alert alert-danger">{{'login.form.password.validation' | translate}}.</div>
+      </div>
+      <div class="form-group login-button-container">
+        <div *ngIf="error_message" class="error-message fs-m0">{{error_message}}</div>
+        <button type="submit" [disabled]="!loginForm.valid" class="btn-primary btn-small btn">{{'common.login' | translate}}</button>
+        <a class="forgot-password fs-m0" routerLink="/forgot_password">{{'login.forgot_password' | translate}}</a>
+      </div>
+    </form>
+
   </div>
 </div>
