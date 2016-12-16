@@ -27,7 +27,7 @@ const routes: Routes = [
   { path: 'contact', component: ContactComponent, data: { title: 'Contact' } },
   { path: 'contact/confirmation', component: ContactConfirmationComponent, data: { title: 'Contact Confirmation' } },
   { path: 'confirmation/:type', component: ConfirmationComponent },
-  { path: 'cookies_about', component: CookiesAboutComponent },
+  { path: 'cookies-about', component: CookiesAboutComponent },
   { path: 'job/create', component: JobCreateComponent, data: { roles: ['company'] }, canActivate: [AuthGuard] },
   { path: 'jobs/:page', component: JobsComponent },
   { path: 'job/:id/candidate/:userJobId', component: CandidateComponent },

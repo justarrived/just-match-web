@@ -1,0 +1,54 @@
+@import '../../styles/variables';
+@import '../../styles/buttons';
+
+.cookie-message {
+  text-align: center;
+  background: $color-blue-500;
+  color: $white;
+  padding: 20px 32px;
+  @media screen and (min-width: $sm-device-width) {
+    text-align: left;
+  }
+
+  .cookie-message-inner {
+    max-width: 784px;
+    margin: 0 auto;
+    @media screen and (min-width: $sm-device-width) {
+      display: flex;
+    }
+
+    p {
+      margin: auto;
+
+      .read-more {
+        display: block;
+        margin: 15px 0;
+        color: inherit;
+        text-decoration: underline;
+
+        &:hover {
+          text-decoration: none;
+        }
+        @media screen and (min-width: $sm-device-width) {
+          display: inline;
+          margin: 0;
+        }
+      }
+    }
+
+    .cookies-button {
+      @media screen and (min-width: $sm-device-width) {
+        margin: auto;
+      }
+
+      button {
+        background-color: $color-blue-500;
+
+        &:hover {
+          background-color: $color-blue-700;
+          color: inherit;
+        }
+      }
+    }
+  }
+}
