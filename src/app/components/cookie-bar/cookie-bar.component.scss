@@ -48,6 +48,12 @@
           background-color: $color-blue-700;
           color: inherit;
         }
+
+        &:active {
+          background-color: $color-blue-700;
+          color: inherit;
+          border-color: inherit;
+        }
       }
     }
   }
