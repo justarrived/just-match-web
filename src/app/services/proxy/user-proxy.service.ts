@@ -48,4 +48,10 @@ export class UserProxy {
   createFrilansFinans(userId, bankAccount) {
     return this.apiCall.post('users/' + userId + '/frilans-finans', bankAccount);
   }
+
+  resetPassword(email_or_phone: string) {
+    return this.apiCall.post('users/reset-password', {
+      'email_or_phone': email_or_phone
+    });
+  }
 }

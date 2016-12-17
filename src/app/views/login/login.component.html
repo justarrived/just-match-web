@@ -1,6 +1,6 @@
 <div class="container-fluid">
 
-  <div class="contact-header row">
+  <div class="login-header row">
     <!-- All Questions -->
     <div class="col-xs-12">
       <h3>
@@ -12,10 +12,10 @@
   <div class="login-form-container">
 
     <form [formGroup]="loginForm" (ngSubmit)="submitForm(loginForm.value)">
-      <div class="form-group material-group login-input-container" [ngClass]="{'has-error':!loginForm.controls['email'].valid && loginForm.controls['email'].touched}">
-        <input class="form-control material-input fs-m0" type="text" placeholder="{{'login.form.email_or_phone' | translate}}" [formControl]="loginForm.controls['email']">
+      <div class="form-group material-group login-input-container" [ngClass]="{'has-error':!loginForm.controls['email_or_phone'].valid && loginForm.controls['email_or_phone'].touched}">
+        <input class="form-control material-input fs-m0" type="text" placeholder="{{'login.form.email_or_phone' | translate}}" [formControl]="loginForm.controls['email_or_phone']">
 
-        <div *ngIf="loginForm.controls['email'].hasError('required') && loginForm.controls['email'].touched" class="alert alert-danger">{{'login.form.email_or_phone.validation' | translate}}.</div>
+        <div *ngIf="loginForm.controls['email_or_phone'].hasError('required') && loginForm.controls['email_or_phone'].touched" class="alert alert-danger">{{'login.form.email_or_phone.validation' | translate}}.</div>
       </div>
       <div class="form-group  material-group login-input-container" [ngClass]="{'has-error':!loginForm.controls['password'].valid && loginForm.controls['password'].touched}">
         <input class="form-control material-input fs-m0" type="password" placeholder="{{'login.form.password' | translate}}" [formControl]="loginForm.controls['password']">
@@ -23,9 +23,9 @@
         <div *ngIf="loginForm.controls['password'].hasError('required') && loginForm.controls['password'].touched" class="alert alert-danger">{{'login.form.password.validation' | translate}}.</div>
       </div>
       <div class="form-group login-button-container">
-        <div *ngIf="error_message" class="error-message fs-m0">{{error_message}}</div>
+        <div *ngIf="errorMessage" class="error-message fs-m0">{{errorMessage}}</div>
         <button type="submit" [disabled]="!loginForm.valid" class="btn-primary btn-small btn">{{'common.login' | translate}}</button>
-        <a class="forgot-password fs-m0" routerLink="/forgot_password">{{'login.forgot_password' | translate}}</a>
+        <a class="forgot-password fs-m0" routerLink="/forgot-password">{{'login.forgot_password' | translate}}</a>
       </div>
     </form>
 

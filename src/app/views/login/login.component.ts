@@ -9,21 +9,21 @@ import {Router} from '@angular/router';
 })
 export class LoginComponent {
   loginForm: FormGroup;
-  error_message: string;
+  errorMessage: string;
 
   constructor(private authManager: AuthManager, private router: Router, private formBuilder: FormBuilder) {
     this.loginForm = formBuilder.group({
-      'email': [null, Validators.compose([Validators.required])],
+      'email_or_phone': [null, Validators.compose([Validators.required])],
       'password': [null, Validators.compose([Validators.required])]
     })
   }
 
   submitForm(value: any) {
-    this.authManager.logUser(value.email, value.password)
+    this.authManager.logUser(value.email_or_phone, value.password)
       .then(result => this.router.navigate(['/home']))
       .catch(errors => {
         if (errors.details) {
-          this.error_message = errors.details.password;
+          this.errorMessage = errors.details.password;
         } else {
           console.log(errors);
         }
