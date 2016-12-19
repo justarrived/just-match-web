@@ -1,73 +1,89 @@
 @import './variables';
 
-$header-font-family: 'museo-sans', sans-serif;
-$default-font-family: 'Open Sans', sans-serif;
+@font-face {
+  font-family: 'museo';
+  src: url('./assets/fonts/museo/museo-300.otf') format("opentype");
+  font-weight: 300;
+}
 
-body {
-  h1 {
-    font-family: $header-font-family;
-    font-size: 42px;
+@font-face {
+    font-family: 'museo';
+    src: url('./assets/fonts/museo/museo-500.otf') format("opentype");
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: 'museo';
+    src: url('./assets/fonts/museo/museo-700.otf') format("opentype");
     font-weight: 700;
-  }
+}
 
-  h2 {
-    font-family: $header-font-family;
-    font-size: 36px;
-    font-weight: 700;
-  }
+// font stacks
+$museo:                "museo", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$default-font-family:  "Open Sans", sans-serif;
 
-  h3 {
-    font-family: $header-font-family;
-    font-size: 24px;
-    font-weight: 700;
-  }
 
-  h4 {
-    font-family: $header-font-family;
-    font-size: 18px;
-    font-weight: 700;
-  }
+h1, h2, h3, h4, h5, h6 {
+  font-family: $museo !important;
+}
 
-  h5 {
-    font-family: $header-font-family;
-    font-size: 16px;
-    font-weight: 700;
-  }
+h1 {
+  font-size: 42px;
+  font-weight: 700;
+}
 
-  h6 {
-    font-family: $header-font-family;
-    font-size: 14px;
-    font-weight: 700;
-  }
+h2 {
+  font-size: 36px;
+  font-weight: 700;
+}
 
-  *, p {
-    font-family: $default-font-family;
-    font-size: 16px;
-    line-height: 22px;
-  }
+h3 {
+  font-size: 24px;
+  font-weight: 700;
+}
 
-  .hero-p {
-    font-family: $header-font-family;
-    font-size: 18px;
-    line-height: 24px;
-  }
+h4 {
+  font-size: 18px;
+  font-weight: 700;
+}
 
-  em {
-    font-family: $default-font-family;
-    font-size: 24px;
-    line-height: 36px;
-    font-weight: 300;
-  }
+h5 {
+  font-size: 16px;
+  font-weight: 700;
+}
 
-  .quote {
-    font-family: $default-font-family;
-    font-size: 24px;
-    line-height: 36px;
-    font-weight: 300;
-    font-style: italic;
-  }
+h6 {
+  font-size: 14px;
+  font-weight: 700;
+}
 
-  .title-primary {
-    color: $color-primary-cerise;
-  }
+*, p {
+  font-family: $default-font-family;
+  font-size: 16px;
+  line-height: 22px;
+}
+
+.hero-p {
+  font-family: $museo;
+  font-size: 18px;
+  line-height: 24px;
+}
+
+em {
+  font-family: $default-font-family;
+  font-size: 24px;
+  line-height: 36px;
+  font-weight: 300;
+}
+
+.quote {
+  font-family: $default-font-family;
+  font-size: 24px;
+  line-height: 36px;
+  font-weight: 300;
+  font-style: italic;
+}
+
+.title-primary {
+  color: $color-primary-cerise;
 }
