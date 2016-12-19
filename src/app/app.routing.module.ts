@@ -14,6 +14,7 @@ import {JobCreateComponent} from './views/jobs/job-create/job-create.component';
 import {JobsComponent} from './views/jobs/jobs.component';
 import {JobDetailsComponent} from './views/job-details/job-details.component';
 import {ConfirmationComponent} from './views/confirmation/confirmation.component';
+import {CookiesAboutComponent} from './views/cookies-about/cookies-about.component';
 import {CandidateComponent} from './views/candidate/candidate.component';
 import {CandidatesComponent} from './views/candidates/candidates.component';
 import {MyJobsComponent} from './views/my-jobs/my-jobs.component';
@@ -28,6 +29,7 @@ const routes: Routes = [
   { path: 'contact', component: ContactComponent, data: { title: 'Contact' } },
   { path: 'contact/confirmation', component: ContactConfirmationComponent, data: { title: 'Contact Confirmation' } },
   { path: 'confirmation/:type', component: ConfirmationComponent },
+  { path: 'cookies-about', component: CookiesAboutComponent },
   { path: 'job/create', component: JobCreateComponent, data: { roles: ['company'] }, canActivate: [AuthGuard] },
   { path: 'jobs/:page', component: JobsComponent },
   { path: 'job/:id/candidate/:userJobId', component: CandidateComponent },

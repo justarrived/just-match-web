@@ -33,6 +33,8 @@ import {FaqComponent} from './views/faq/faq.component';
 import {ContactComponent} from './views/contact/contact.component';
 import {ContactConfirmationComponent} from './views/contact/confirmation/contact-confirmation.component';
 import {ConfirmationComponent} from './views/confirmation/confirmation.component';
+import {CookiesAboutComponent} from './views/cookies-about/cookies-about.component';
+import {CookieBarComponent} from './components/cookie-bar/cookie-bar.component';
 import {CandidateComponent} from './views/candidate/candidate.component';
 import {CandidateStateStatusBarComponent} from './components/candidate-state-status-bar/candidate-state-status-bar.component';
 import {CandidatesComponent} from './views/candidates/candidates.component';
@@ -82,6 +84,8 @@ import {TranslationItemComponent} from './components/translation-item/translatio
     ContactComponent,
     ContactConfirmationComponent,
     ConfirmationComponent,
+    CookiesAboutComponent,
+    CookieBarComponent,
     CandidatesComponent,
     CandidateComponent,
     CandidateStateStatusBarComponent,

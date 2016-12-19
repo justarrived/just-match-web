@@ -1,0 +1,21 @@
+@import '../../styles/variables';
+
+.cookies-about-header {
+  background-color: $color-primary-cerise;
+  padding: 1em 0;
+
+  h3 {
+    position: relative;
+    top: 5px;
+    color: $white;
+  }
+
+}
+
+.cookies-about-container {
+  background-color: $default-bg-color;
+  padding: 20px;
+  p {
+    margin: 0 0 10px;
+  }
+}

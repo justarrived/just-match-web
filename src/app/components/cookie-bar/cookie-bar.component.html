@@ -1,0 +1,11 @@
+<div class="cookie-message" *ngIf="checkCookiesConsent()">
+  <div class="cookie-message-inner">
+    <p class="fs-m0">
+      {{'cookies.description' | translate}}
+      <a class="read-more fs-m0" routerLink="/cookies-about">{{'cookies.read_more' | translate}}</a>
+    </p>
+    <div class="cookies-button">
+      <button type="button" class="btn-secondary-light btn-small btn fs-m0" (click)="acceptCookiesConsent()">Accept</button>
+    </div>
+  </div>
+</div>
