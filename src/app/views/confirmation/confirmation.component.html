@@ -65,4 +65,15 @@
       </div>
     </div>
   </div>
+  <div *ngIf="type === 'password-reset-link-sent'" class="confirmation-item table text-center">
+    <a class="close-button" routerLink="/forgot-password"></a>
+    <div class="table-row">
+      <div class="table-cell">
+        <div class="item-icon"><i class="fa fa-envelope fa-5x" aria-hidden="true"></i></div>
+        <div class="item-title">{{'login.forgot_password.confirmation' | translate}}</div>
+        <div class="item-content">{{'login.forgot_password.confirmation.description' | translate}}</div>
+        <div class="button-container"><a class="btn-primary btn-large btn" routerLink="/forgot-password">{{'common.back' | translate}}</a></div>
+      </div>
+    </div>
+  </div>
 </div>

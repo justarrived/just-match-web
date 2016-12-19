@@ -77,6 +77,8 @@
   "login.form.password.validation": "Password missing",
   "login.forgot_password": "Forgotten your password?",
   "login.forgot_password.error": "Unfortunately, your password could not be updated. Click here to try again",
+  "login.forgot_password.confirmation": "A password reset message has been sent to you!",
+  "login.forgot_password.confirmation.description": "If you follow the link provided in the message you can thereafter set a new password.",
   "login.create.assignment.title": "Create new job",
   "login.create.assignment.description": "You need to create a profile before you can create a job",
   "login.apply.assignment.title": "Search jobs",

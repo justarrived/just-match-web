@@ -19,6 +19,7 @@ import {AutocompleteDropdownListItemComponent} from './components/autocomplete-d
 import {AutocompleteDropdownComponent} from './components/autocomplete-dropdown/autocomplete-dropdown.component';
 import {LanguageProxy} from './services/proxy/language-proxy.service';
 import {LoginComponent} from './views/login/login.component';
+import {ForgotPasswordComponent} from './views/forgot-password/forgot-password.component';
 import {UserManager} from './services/user-manager.service';
 import {JobCreateComponent} from './views/jobs/job-create/job-create.component';
 import {JobPreviewComponent} from './components/job-preview/job-preview.component';
@@ -68,6 +69,7 @@ import {TranslationItemComponent} from './components/translation-item/translatio
     AutocompleteDropdownListItemComponent,
     AutocompleteDropdownComponent,
     LoginComponent,
+    ForgotPasswordComponent,
     JobCreateComponent,
     JobPreviewComponent,
     JobsComponent,

@@ -6,6 +6,7 @@ import {AuthGuard} from './services/auth-guard.service';
 import {UserRegisterComponent} from './views/user/user-register/user-register.component';
 import {UserSettingsComponent} from './views/user/user-settings/user-settings.component';
 import {LoginComponent} from './views/login/login.component';
+import {ForgotPasswordComponent} from './views/forgot-password/forgot-password.component';
 import {FaqComponent} from './views/faq/faq.component';
 import {ContactComponent} from './views/contact/contact.component';
 import {ContactConfirmationComponent} from './views/contact/confirmation/contact-confirmation.component';
@@ -22,6 +23,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'about', component: AboutComponent, data: { title: 'About' }, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent, data: { title: 'Login' } },
+  { path: 'forgot-password', component: ForgotPasswordComponent },
   { path: 'faq', component: FaqComponent, data: { title: 'Questions and Answers' } },
   { path: 'contact', component: ContactComponent, data: { title: 'Contact' } },
   { path: 'contact/confirmation', component: ContactConfirmationComponent, data: { title: 'Contact Confirmation' } },
