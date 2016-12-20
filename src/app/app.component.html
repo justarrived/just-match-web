@@ -7,7 +7,7 @@
             <i class="fa fa-angle-left fa-2x back-button"></i>
           </div>
           <a routerLink="/home">
-            <img class="logo-img" src="/assets/images/logo.png" alt="Just Arrived"/>
+            <img class="logo-img" src="/assets/images/logo.png" alt="Just Arrived" />
           </a>
         </div>
         <div class="col-xs right row flex-items-xs-middle">
@@ -29,43 +29,35 @@
           <div><i class="fa fa-times fa-2x" (click)="isLanguageMenuVisible = false"></i></div>
           <div>
             <a routerLink="/my-jobs" *ngIf="user">
-              <i class="fa fa-paperclip fa-lg"></i>
-              {{'menu.main.my_assignment' | translate}}
+              <i class="fa fa-paperclip fa-lg"></i> {{'menu.main.my_assignment' | translate}}
             </a>
 
             <a routerLink="/jobs/1">
-              <i class="fa fa-wrench fa-lg"></i>
-              {{'menu.main.find_assignment' | translate}}
+              <i class="fa fa-wrench fa-lg"></i> {{'menu.main.find_assignment' | translate}}
             </a>
 
             <a routerLink="/job/create" *ngIf="isCompanyUser">
-              <i class="fa fa-plus fa-lg"></i>
-              {{'menu.main.create_assignment' | translate}}
+              <i class="fa fa-plus fa-lg"></i> {{'menu.main.create_assignment' | translate}}
             </a>
 
             <a routerLink="/faq">
-              <i class="fa fa-clipboard fa-lg"></i>
-              {{'menu.main.faq' | translate}}
+              <i class="fa fa-clipboard fa-lg"></i> {{'menu.main.faq' | translate}}
             </a>
 
             <a routerLink="/contact">
-              <i class="fa fa-comments fa-lg"></i>
-              {{'menu.main.contact' | translate}}
+              <i class="fa fa-comments fa-lg"></i> {{'menu.main.contact' | translate}}
             </a>
 
             <a routerLink="/user" *ngIf="user && !isCompanyUser">
-              <i class="fa fa-user fa-lg"></i>
-              {{'profile' | translate}}
+              <i class="fa fa-user fa-lg"></i> {{'profile' | translate}}
             </a>
 
             <a routerLink="/login" *ngIf="!user">
-              <i class="fa fa-power-off fa-lg"></i>
-              {{'menu.main.login' | translate}}
+              <i class="fa fa-power-off fa-lg"></i> {{'menu.main.login' | translate}}
             </a>
 
             <a (click)="onLogoutButtonClick()" *ngIf="user">
-              <i class="fa fa-power-off fa-lg"></i>
-              {{'menu.main.logout' | translate}}
+              <i class="fa fa-power-off fa-lg"></i> {{'menu.main.logout' | translate}}
             </a>
           </div>
           <div>
@@ -98,21 +90,31 @@
           </div>
           <div class="credentials">
             <p class="prominent">{{'menu.language.translation_by_probono' | translate}}:</p>
-            <img src="/assets/images/menu_semantix_logo.png" alt="Semantix"/>
+            <img src="/assets/images/menu_semantix_logo.png" alt="Semantix" />
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
-<section class="app-content-container">
-  <cookie-bar></cookie-bar>
-  <router-outlet></router-outlet>
-</section>
-<footer class="container-fluid footer">
-  <div class="row">
-    <div class="col-sm-12 col-md-3 text-container">{{'applications.title' | translate}}</div>
-    <div class="col-sm-12 col-md-6 text-container">Jakobsbergsgatan 22, 111 44 Stockholm</div>
-    <div class="col-sm-12 col-md-3 text-container"><a href="mailto:hej@justarrived.se">hej@justarrived.se</a></div>
-  </div>
-</footer>
+<div class="wrapper">
+  <div class="header-padder-table-row"></div>
+  <section class="app-content-container">
+    <cookie-bar></cookie-bar>
+    <router-outlet></router-outlet>
+  </section>
+  <footer class="footer">
+    <div>
+      <div>
+        <p>
+          <span>{{'applications.title' | translate}}</span>
+        </p>
+        <p>
+          <span>Jakobsbergsgatan 22,</span>
+          <span>111 44 Stockholm</span>
+        </p>
+        <p><a href="mailto:hej@justarrived.se"><span>hej@justarrived.se</span></a></p>
+      </div>
+    </div>
+  </footer>
+</div>

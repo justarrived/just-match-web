@@ -3,6 +3,10 @@
 @import './app/styles/buttons';
 @import './app/styles/typography';
 
+html, body {
+    height: 100%;
+}
+
 body {
   background-color: $color-background !important;
 
@@ -266,10 +270,6 @@ body {
     vertical-align: middle;
     box-shadow: inset 0 0 1px 0 rgba(0,0,0,.2);
   }
-}
-
-.app-content-container {
-  margin-top: $header-height;
 }
 
 body > .container, .navbar-fixed-top > .container {
