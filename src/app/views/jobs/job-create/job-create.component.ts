@@ -28,7 +28,7 @@ export class JobCreateComponent extends TranslationListener implements OnInit {
   constructor(private router: Router,
               private jobProxy: JobProxy,
               protected translationService: TranslationService) {
-    super(translationService)
+    super(translationService);
   }
 
   ngOnInit(): void {

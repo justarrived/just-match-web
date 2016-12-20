@@ -17,7 +17,7 @@ export class ContactComponent {
       'name': [null, Validators.compose([Validators.required, Validators.minLength(2)])],
       'email': [null, Validators.compose([Validators.required, Validators.minLength(6)])],
       'message': [null, Validators.compose([Validators.required, Validators.minLength(2)])]
-    })
+    });
   }
 
   submitForm(value: any) {

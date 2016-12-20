@@ -15,7 +15,7 @@ export class LoginComponent {
     this.loginForm = formBuilder.group({
       'email_or_phone': [null, Validators.compose([Validators.required])],
       'password': [null, Validators.compose([Validators.required])]
-    })
+    });
   }
 
   submitForm(value: any) {

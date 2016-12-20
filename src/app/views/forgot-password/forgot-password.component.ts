@@ -14,7 +14,7 @@ export class ForgotPasswordComponent {
   constructor(private userProxy: UserProxy, private router: Router, private formBuilder: FormBuilder) {
     this.forgotPasswordForm = formBuilder.group({
       'email_or_phone': [null, Validators.compose([Validators.required])]
-    })
+    });
   }
 
   submitForm(value: any) {
