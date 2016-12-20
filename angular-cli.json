@@ -19,9 +19,9 @@
       "prefix": "app",
       "mobile": false,
       "styles": [
-        "styles.scss",
         "../node_modules/font-awesome/scss/font-awesome.scss",
-        "../node_modules/bootstrap/scss/bootstrap-flex.scss"
+        "../node_modules/bootstrap/scss/bootstrap-flex.scss",
+        "styles.scss"
       ],
       "scripts": [
         "../node_modules/hammerjs/hammer.js"
