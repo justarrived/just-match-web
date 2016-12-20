@@ -66,11 +66,11 @@ export class CookieStorage implements StorageInterface {
     let data: string = null;
 
     cookieParts.forEach((c: string) => {
-      while (c.charAt(0) == ' ') {
+      while (c.charAt(0) === ' ') {
         c = c.substring(1, c.length);
       }
 
-      if (c.indexOf(nameEQ) == 0) {
+      if (c.indexOf(nameEQ) === 0) {
         data = c.substring(nameEQ.length, c.length);
         return;
       }

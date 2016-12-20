@@ -1,5 +1,4 @@
 import {Component, Input} from '@angular/core';
-import * as  _ from 'lodash';
 
 @Component({
   selector: 'translation-item',
@@ -17,7 +16,7 @@ export class TranslationItemComponent {
   };
 
   get text() {
-    return this.originalText
+    return this.originalText;
   }
 
   @Input()

@@ -1,5 +1,3 @@
-import {Language} from './language/language';
-
 export class Faq {
   id: number;
   question: string;
