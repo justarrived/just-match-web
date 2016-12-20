@@ -49,6 +49,7 @@ import {UserSettingsComponent} from './views/user/user-settings/user-settings.co
 import {UserProfileComponent} from './views/user/user-settings/user-profile/user-profile.component';
 import {UserDetailsComponent} from './views/user/user-settings/user-details/user-details.component';
 import {TranslationItemComponent} from './components/translation-item/translation-item.component';
+import {Autosize} from './components/textarea-autosize/textarea-autosize.directive';
 
 @NgModule({
   imports: [
@@ -95,7 +96,8 @@ import {TranslationItemComponent} from './components/translation-item/translatio
     UserJobsComponent,
     MyJobsComponent,
     UserSettingsComponent,
-    TranslationItemComponent
+    TranslationItemComponent,
+    Autosize
   ],
   providers: [
     DataStore,

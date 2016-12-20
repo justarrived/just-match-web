@@ -34,7 +34,7 @@
         <div *ngIf="contactForm.controls['email'].hasError('minlength') && contactForm.controls['email'].touched" class="alert alert-danger">{{'contact.form.email.validation.length' | translate}}.</div>
       </div>
       <div class="form-group  material-group contact-input-container" [ngClass]="{'has-error':!contactForm.controls['message'].valid && contactForm.controls['message'].touched}">
-        <input class="form-control material-input" type="text" placeholder="{{'contact.form.message' | translate}}" [formControl]="contactForm.controls['message']">
+        <textarea class="form-control material-input" autosize type="text" placeholder="{{'contact.form.message' | translate}}" [formControl]="contactForm.controls['message']"></textarea>
 
         <div *ngIf="contactForm.controls['message'].hasError('required') && contactForm.controls['message'].touched" class="alert alert-danger">{{'contact.form.message.validation' | translate}}.</div>
         <div *ngIf="contactForm.controls['message'].hasError('minlength') && contactForm.controls['message'].touched" class="alert alert-danger">{{'contact.form.message.validation.length' | translate}}.</div>
