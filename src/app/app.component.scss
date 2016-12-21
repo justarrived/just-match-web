@@ -12,6 +12,11 @@
   padding-right: $header-horizontal-padding;
   color: $color-gray-200;
 
+  @media screen and (max-width: $md-device-width) {
+    padding-left: $header-horizontal-padding*2;
+    padding-right: $header-horizontal-padding*2;
+  }
+
   .navbar-container {
     height: 100%;
 
