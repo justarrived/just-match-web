@@ -2,6 +2,7 @@ import {NgModule} from '@angular/core';
 import {HttpModule} from '@angular/http';
 import {BrowserModule} from '@angular/platform-browser';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {AgmCoreModule} from 'angular2-google-maps/core';
 import {AppComponent} from './app.component';
 import {AboutComponent} from './views/about/about.component';
 import {HomeComponent} from './views/home/home.component';
@@ -50,6 +51,7 @@ import {UserProfileComponent} from './views/user/user-settings/user-profile/user
 import {UserDetailsComponent} from './views/user/user-settings/user-details/user-details.component';
 import {TranslationItemComponent} from './components/translation-item/translation-item.component';
 import {AutosizeDirective} from './components/textarea-autosize/textarea-autosize.directive';
+import {Geolocation} from './services/geolocation.service';
 
 @NgModule({
   imports: [
@@ -58,7 +60,10 @@ import {AutosizeDirective} from './components/textarea-autosize/textarea-autosiz
     FormsModule,
     ReactiveFormsModule,
     AppTranslateModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyABLDG-8LXDMSp6vsTNNI2uSPCWA4eNs-Y'
+    })
   ],
   declarations: [
     AppComponent,
@@ -109,6 +114,7 @@ import {AutosizeDirective} from './components/textarea-autosize/textarea-autosiz
     LanguageProxy,
     TranslationService,
     UserManager,
+    Geolocation
     // {provide: ErrorHandler, useClass: GlobalExceptionHandler}
   ],
   bootstrap: [AppComponent]

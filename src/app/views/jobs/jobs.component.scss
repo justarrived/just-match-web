@@ -13,6 +13,13 @@
 
 }
 
+.map-container {
+  .map {
+    height: 300px;
+    width: 100%;
+  }
+}
+
 .job-list-container {
   background-color: $default-bg-color;
   > div {

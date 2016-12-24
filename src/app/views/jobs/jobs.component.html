@@ -7,6 +7,12 @@
     </div>
   </div>
 
+  <div class="map-container row">
+    <sebm-google-map class="map" [latitude]="mapLocation.latitude" [longitude]="mapLocation.longitude">
+      <sebm-google-map-marker [latitude]="mapLocation.latitude" [longitude]="mapLocation.longitude"></sebm-google-map-marker>
+    </sebm-google-map>
+  </div>
+
   <pager [maxResults]="totalJobs" [currentPage]="page" (pageChange)="onPageChange($event)"></pager>
 
   <div class="job-list-container row">
