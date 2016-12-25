@@ -1,15 +1,16 @@
 <div class="container-fluid">
-  <div class="jobs-header row"> <!-- All Jobs -->
+  <div class="jobs-header row">
+    <!-- All Jobs -->
     <div class="col-xs-12">
       <h3>
         {{'common.all_jobs' | translate: {nbrOfJobs: totalJobs} }}
       </h3>
     </div>
   </div>
-
   <div class="map-container row">
-    <sebm-google-map class="map" [latitude]="mapLocation.latitude" [longitude]="mapLocation.longitude">
-      <sebm-google-map-marker [latitude]="mapLocation.latitude" [longitude]="mapLocation.longitude"></sebm-google-map-marker>
+    <sebm-google-map class="map" [latitude]="mapLocation.latitude" [longitude]="mapLocation.longitude" [zoom]="mapZoom" [styles]="mapStyles" [disableDefaultUI]="true" [streetViewControl]="false">
+      <sebm-google-map-marker *ngIf="mapUserLocation" class="map-user-marker" [latitude]="mapUserLocation.latitude" [longitude]="mapUserLocation.longitude"></sebm-google-map-marker>
+      <sebm-google-map-marker class="map-job-marker" *ngFor="let job of jobs" [latitude]="job.zipLatitude" [longitude]="job.zipLongitude" [iconUrl]="'assets/images/map_job_icon.png'" (markerClick)="mapJobMarkerClicked(job)"></sebm-google-map-marker>
     </sebm-google-map>
   </div>
 
