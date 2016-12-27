@@ -10,7 +10,14 @@
   <div class="map-container row">
     <sebm-google-map class="map" [latitude]="mapLocation.latitude" [longitude]="mapLocation.longitude" [zoom]="mapZoom" [styles]="mapStyles" [disableDefaultUI]="true" [streetViewControl]="false">
       <sebm-google-map-marker *ngIf="mapUserLocation" class="map-user-marker" [latitude]="mapUserLocation.latitude" [longitude]="mapUserLocation.longitude"></sebm-google-map-marker>
-      <sebm-google-map-marker class="map-job-marker" *ngFor="let job of jobs" [latitude]="job.zipLatitude" [longitude]="job.zipLongitude" [iconUrl]="'assets/images/map_job_icon.png'" (markerClick)="mapJobMarkerClicked(job)"></sebm-google-map-marker>
+      <sebm-google-map-marker class="map-job-marker" *ngFor="let job of jobs" [latitude]="job.zipLatitude" [longitude]="job.zipLongitude" [iconUrl]="'assets/images/map_job_icon.png'" (markerClick)="mapJobMarkerClicked(job)" (mouseOver)="job.isHovered = true" (mouseOut)="job.isHovered = false">
+        <sebm-google-map-info-window [disableAutoPan]="true" [isOpen]="job.isHovered">
+          <p class="map-job-marker-info-header"><translation-item [text]="job.name" [translation]="job.translated.name"></translation-item></p>
+          <p class="map-job-marker-info-adress-field"><i class="fa fa-map-marker" aria-hidden="true"></i> {{job.address}}</p>
+          <span class="map-job-marker-info-salary">{{job.amount}} {{job.hourlyPay.currency}}</span>
+          <span class="map-job-marker-info-salary-per-hour">{{job.hours}}h ({{job.hourlyPay.grossSalary}} {{job.hourlyPay.currency}}/h)</span>
+       </sebm-google-map-info-window>
+      </sebm-google-map-marker>
     </sebm-google-map>
   </div>
 
