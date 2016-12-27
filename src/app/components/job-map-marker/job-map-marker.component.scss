@@ -1,0 +1,19 @@
+@import '../../styles/variables';
+
+.job-map-marker-info-header {
+  font-weight: bold;
+}
+
+.job-map-marker-info-adress-field {
+  color: $color-gray-400;
+}
+
+.job-map-marker-info-salary {
+  color: $color-primary-cerise;
+}
+
+.job-map-marker-info-salary-per-hour {
+  color: $color-gray-200;
+  text-align: right;
+  white-space: nowrap;
+}

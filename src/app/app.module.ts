@@ -26,6 +26,7 @@ import {JobCreateComponent} from './views/jobs/job-create/job-create.component';
 import {JobPreviewComponent} from './components/job-preview/job-preview.component';
 import {JobsComponent} from './views/jobs/jobs.component';
 import {JobListItemComponent} from './components/job-list-item/job-list-item.component';
+import {JobMapMarkerComponent} from './components/job-map-marker/job-map-marker.component';
 import {PagerComponent} from './components/pager/pager.component';
 import {JobDetailsComponent} from './views/job-details/job-details.component';
 import {CommentsComponent} from './components/comments/comments.component';
@@ -82,6 +83,7 @@ import {Geolocation} from './services/geolocation.service';
     JobPreviewComponent,
     JobsComponent,
     JobListItemComponent,
+    JobMapMarkerComponent,
     PagerComponent,
     JobDetailsComponent,
     CommentsComponent,

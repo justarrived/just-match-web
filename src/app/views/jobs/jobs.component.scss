@@ -1,5 +1,4 @@
 @import '../../styles/variables';
-@import '../../styles/buttons';
 
 .jobs-header {
   background-color: $color-primary-cerise;
@@ -17,24 +16,6 @@
   .map {
     height: 300px;
     width: 100%;
-
-    .map-job-marker-info-header {
-      font-weight: bold;
-    }
-
-    .map-job-marker-info-adress-field {
-      color: $color-gray-400;
-    }
-
-    .map-job-marker-info-salary {
-      color: $color-primary-cerise;
-    }
-
-    .map-job-marker-info-salary-per-hour {
-      color: $color-gray-200;
-      text-align: right;
-      white-space: nowrap;
-    }
   }
 }
 
