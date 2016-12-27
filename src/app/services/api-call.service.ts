@@ -103,7 +103,6 @@ export class ApiCall {
   }
 
   private handleResponseErrors(response) {
-    console.log(response);
     if (response.status === 401) {
       let tokenExpiredObject = _.find(response.json().errors, {code: 'token_expired'});
       if (!!tokenExpiredObject) {
