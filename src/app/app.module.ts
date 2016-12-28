@@ -53,6 +53,7 @@ import {UserDetailsComponent} from './views/user/user-settings/user-details/user
 import {TranslationItemComponent} from './components/translation-item/translation-item.component';
 import {AutosizeDirective} from './components/textarea-autosize/textarea-autosize.directive';
 import {Geolocation} from './services/geolocation.service';
+import {ErrorComponent} from './views/error/error.component';
 
 @NgModule({
   imports: [
@@ -104,7 +105,8 @@ import {Geolocation} from './services/geolocation.service';
     MyJobsComponent,
     UserSettingsComponent,
     TranslationItemComponent,
-    AutosizeDirective
+    AutosizeDirective,
+    ErrorComponent
   ],
   providers: [
     DataStore,

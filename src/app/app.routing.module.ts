@@ -18,6 +18,7 @@ import {CookiesAboutComponent} from './views/cookies-about/cookies-about.compone
 import {CandidateComponent} from './views/candidate/candidate.component';
 import {CandidatesComponent} from './views/candidates/candidates.component';
 import {MyJobsComponent} from './views/my-jobs/my-jobs.component';
+import {ErrorComponent} from './views/error/error.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },
@@ -38,6 +39,7 @@ const routes: Routes = [
   { path: 'user/register', component: UserRegisterComponent },
   { path: 'user', component: UserSettingsComponent, canActivate: [AuthGuard] },
   { path: 'my-jobs', component: MyJobsComponent, canActivate: [AuthGuard] },
+  { path: 'error/:statusCode', component: ErrorComponent },
   { path: '**', redirectTo: 'home' }
 ];
 

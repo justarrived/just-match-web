@@ -1,5 +1,8 @@
 import {Injectable} from '@angular/core';
-import {Http, Headers, Request, RequestOptions, RequestOptionsArgs, RequestMethod, URLSearchParams} from '@angular/http';
+import {
+  Http, Headers, Request, RequestOptions, RequestOptionsArgs, RequestMethod, URLSearchParams,
+  Response
+} from '@angular/http';
 import {DataStore} from './data-store.service';
 import * as  _ from 'lodash';
 import {parseJsonapiResponse, parseJsonapiErrorResponse} from '../utils/jsonapi-parser.util';
@@ -78,10 +81,7 @@ export class ApiCall {
     }
 
     return this.http.request(req)
-      .catch(response => {
-        this.handleResponseErrors(response);
-        return Observable.throw(parseJsonapiErrorResponse(response));
-      })
+      .catch((response: Response) => this.handleResponseErrors(response))
       .toPromise()
       .then(response => Promise.resolve(parseJsonapiResponse(response)));
   }
@@ -111,6 +111,12 @@ export class ApiCall {
       }
       this.router.navigate(['/home']);
     }
+
+    if (response.status === 0 || response.status === 400 || response.status >= 500) {
+      this.router.navigateByUrl('/error/' + response.status, { skipLocationChange: true });
+    }
+
+    return Observable.throw(parseJsonapiErrorResponse(response));
   }
 
 }
