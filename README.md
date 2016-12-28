@@ -33,7 +33,7 @@ There are a few convenience commands
 - `script/push-translations` - push translation to Transifex
 
 NPM scripts
-- `npm start` - starts app
+- `npm run start-dev` - starts app
 - `npm run start-prod` - starts app in production mode
 - `npm run build` - builds app in `dist` folder
 - `npm run build-aot` - builds app with AoT in `dist` folder
