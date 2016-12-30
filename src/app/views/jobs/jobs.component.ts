@@ -73,10 +73,6 @@ export class JobsComponent extends TranslationListener implements OnInit {
     this.loadData();
   }
 
-  mapJobMarkerClicked(job) {
-    this.router.navigate(['/job', job.id]);
-  }
-
   mapTooltipClicked() {
     this.mapErrorShow = false;
   }

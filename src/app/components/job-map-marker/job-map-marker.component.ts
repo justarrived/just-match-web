@@ -1,4 +1,5 @@
 import {Component, Input} from '@angular/core';
+import {Router} from '@angular/router';
 import {Job} from '../../models/job/job';
 
 @Component({
@@ -9,5 +10,9 @@ import {Job} from '../../models/job/job';
 export class JobMapMarkerComponent {
   @Input() job: Job;
 
-  constructor() { }
+  constructor(private router: Router) { }
+
+  mapJobMarkerClicked(job) {
+    this.router.navigate(['/job', job.id]);
+  }
 }
