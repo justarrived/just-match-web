@@ -25,6 +25,8 @@ export class JobsComponent extends TranslationListener implements OnInit {
   mapLocation: MapLocation = new MapLocation({ longitude: 18.0675109, latitude: 59.3349086 });
   mapUserLocation: MapLocation;
   mapStyles = customMapStyle;
+  mapError: string;
+  mapErrorShow: boolean = false;
 
   constructor(private router: Router, private jobProxy: JobProxy, private location: Location, private route: ActivatedRoute, protected translationService: TranslationService, private geolocationService: Geolocation) {
     super(translationService);
@@ -59,7 +61,8 @@ export class JobsComponent extends TranslationListener implements OnInit {
         this.mapZoom = 12;
       },
       error => {
-        console.log(error);
+        this.mapError = error;
+        this.mapErrorShow = true;
       }
     );
   }
@@ -72,5 +75,9 @@ export class JobsComponent extends TranslationListener implements OnInit {
 
   mapJobMarkerClicked(job) {
     this.router.navigate(['/job', job.id]);
+  }
+
+  mapTooltipClicked() {
+    this.mapErrorShow = false;
   }
 }

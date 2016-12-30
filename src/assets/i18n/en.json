@@ -387,5 +387,11 @@
   "promo.title": "Welcome to Just Arrived!",
   "promo.description": "At the moment, Just Arrived is only availible for invited users. If you are interested in using the platform, please sign up on www.justarrived.se for the official launch in the autumn of 2016. ",
   "job.more_detail.text": "For more details on the job",
-  "language.proficiency.placeholder": "Select language proficiency"
+  "language.proficiency.placeholder": "Select language proficiency",
+  "map.geolocation.error.prefix": "Your location could not be established because",
+  "map.geolocation.error.unsupportedBrowser": "your browser does not support location services.",
+  "map.geolocation.error.permissionDenied": "you have rejected access to your location for this domain.",
+  "map.geolocation.error.positionUnavailable": "we are unable to determine your location.",
+  "map.geolocation.error.timeout": "service timeout has been reached.",
+  "map.geolocation.error.close": "Click to hide."
 }

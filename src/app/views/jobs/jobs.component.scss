@@ -1,4 +1,5 @@
 @import '../../styles/variables';
+@import '../../styles/tooltips';
 
 .jobs-header {
   background-color: $color-primary-cerise;
@@ -9,10 +10,35 @@
     top: 5px;
     color: $white;
   }
-
 }
 
 .map-container {
+  .tooltip-top {
+    width: 50%;
+    height: 0;
+    margin: 0 auto;
+
+    span {
+      min-width: 100%;
+
+      &:before {
+        border: none !important;
+      }
+
+      > div {
+        width: 100%;
+        text-align: center !important;
+        color: $color-blue-200;
+      }
+
+      &:hover {
+        > div {
+          color: white;
+        }
+      }
+    }
+  }
+
   .map {
     height: 300px;
     width: 100%;
@@ -21,8 +47,10 @@
 
 .job-list-container {
   background-color: $default-bg-color;
+
   > div {
     width: 100%;
-    cursor: pointer; cursor: hand;
+    cursor: pointer;
+    cursor: hand;
   }
 }

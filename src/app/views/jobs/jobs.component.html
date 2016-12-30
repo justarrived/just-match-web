@@ -12,6 +12,7 @@
       <sebm-google-map-marker *ngIf="mapUserLocation" class="map-user-marker" [latitude]="mapUserLocation.latitude" [longitude]="mapUserLocation.longitude"></sebm-google-map-marker>
       <job-map-marker *ngFor="let job of jobs" [job]="job"></job-map-marker>
     </sebm-google-map>
+    <div class="tooltip-top tooltip-color-blue"><span [class.tooltip-visible]="mapErrorShow" (click)="mapTooltipClicked()">{{'map.geolocation.error.prefix' | translate}} {{mapError | translate}} <div>{{'map.geolocation.error.close' | translate}}</div></span></div>
   </div>
 
   <pager [maxResults]="totalJobs" [currentPage]="page" (pageChange)="onPageChange($event)"></pager>

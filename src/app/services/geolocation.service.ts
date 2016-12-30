@@ -1,13 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 
-const GEOLOCATION_ERRORS = {
-  'errors.location.unsupportedBrowser': 'Browser does not support location services',
-  'errors.location.permissionDenied': 'You have rejected access to your location',
-  'errors.location.positionUnavailable': 'Unable to determine your location',
-  'errors.location.timeout': 'Service timeout has been reached'
-};
-
 @Injectable()
 export class Geolocation {
 
@@ -37,20 +30,20 @@ export class Geolocation {
           (error) => {
             switch (error.code) {
               case 1:
-                observer.error(GEOLOCATION_ERRORS['errors.location.permissionDenied']);
+                observer.error('map.geolocation.error.permissionDenied');
                 break;
               case 2:
-                observer.error(GEOLOCATION_ERRORS['errors.location.positionUnavailable']);
+                observer.error('map.geolocation.error.positionUnavailable');
                 break;
               case 3:
-                observer.error(GEOLOCATION_ERRORS['errors.location.timeout']);
+                observer.error('map.geolocation.error.timeout');
                 break;
             }
           },
           opts);
       }
       else {
-        observer.error(GEOLOCATION_ERRORS['errors.location.unsupportedBrowser']);
+        observer.error('map.geolocation.error.unsupportedBrowser');
       }
 
     });
