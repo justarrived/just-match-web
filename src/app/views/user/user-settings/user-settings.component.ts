@@ -24,10 +24,12 @@ export class UserSettingsComponent {
 
   onImageFilenameChange(event) {
     let file = event.srcElement.files[0];
-    let data = new FormData();
-    data.append('image', file);
-    this.userProxy.saveImage(data).then(userImage => {
-      this.user.profileImage = userImage;
-    });
+    if (file) {
+      let data = new FormData();
+      data.append('image', file);
+      this.userProxy.saveImage(data).then(userImage => {
+        this.user.profileImage = userImage;
+      });
+    }
   }
 }

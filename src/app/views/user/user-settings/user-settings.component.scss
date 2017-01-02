@@ -1,12 +1,85 @@
 @import '../../../styles/variables';
 
-.user-profile {
+.user-profile-container {
+  .user-profile-subheader-container {
+    padding: 40px;
+    background: $color-gray-500;
+    color: white;
+    text-align: center;
+
+    .user-profile-subheader-info-container {
+      margin: 0 auto;
+      display: flex;
+      width: 300px;
+
+      .user-profile-subheader-info-image-container {
+        width: 85px;
+        height: 85px;
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, 0.1);
+
+        &:hover {
+          background-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .file {
+          width: 85px;
+          height: 85px;
+          opacity: 0;
+          cursor: pointer;
+
+          &[disabled] {
+            pointer-events: none;
+          }
+        }
+
+        .icon-camera {
+          width: 85px;
+          height: 85px;
+          margin-top: -85px;
+          pointer-events: none;
+          display: table;
+
+          .fa-camera {
+            display: table-cell;
+            vertical-align: middle;
+            font-size: 35px;
+            color: rgba(255, 255, 255, 0.7);
+          }
+        }
+
+        .user-info-image {
+          background-size: 85px 85px;
+          background-repeat: no-repeat;
+          width: 85px;
+          height: 85px;
+          margin-top: -85px;
+          pointer-events: none;
+          transition: background 0.3s;
+          border-radius: 50%;
+          overflow: hidden;
+        }
+      }
+
+      .user-profile-subheader-info-name-container {
+        display: table;
+        height: 85px;
+        margin-left: auto;
+
+        span {
+          display: table-cell;
+          vertical-align: middle;
+        }
+      }
+    }
+  }
 
   .header-tab {
     padding: 8px;
     text-align: center;
     background-color: $default-bg-color;
     cursor: pointer;
+
     h4 {
       color: $color-gray-200;
     }
@@ -17,75 +90,6 @@
         color: $color-gray-500;
       }
       border-bottom: 4px solid $color-primary-cerise;
-    }
-  }
-
-  .upload-group-container {
-    margin: 0 auto;
-
-    .upload-group {
-      position: relative;
-      display: block;
-      margin-right: 50px;
-      width: 85px;
-      height: 85px;
-      border-radius: 50%;
-      background-color: rgba(255, 255, 255, 0.1);
-
-      &:hover {
-        .opacity-over {
-          &.enabled {
-            opacity: 1;
-          }
-        }
-      }
-
-      .file {
-        width: 85px;
-        height: 85px;
-        opacity: 0;
-        cursor: pointer;
-
-        &[disabled] {
-          pointer-events: none;
-        }
-      }
-
-      .icon-camera {
-        width: 85px;
-        height: 85px;
-        position: absolute;
-        top: 0;
-        z-index: 1;
-        opacity: 0;
-        pointer-events: none;
-
-        .icon-ic-camera {
-          font-size: 26px;
-          margin: 20px 5px 5px 0;
-          display: inline-block;
-        }
-      }
-
-      .user-info-image {
-        background-size: cover;
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        pointer-events: none;
-        transition: background .3s;
-        border-radius: 50%;
-        overflow: hidden;
-      }
-
-      .opacity-over {
-        background-color: rgba(0, 0, 0, 0.8);
-        border-radius: 50%;
-        opacity: 0;
-        transition: all 0.3s ease;
-      }
     }
   }
 }
