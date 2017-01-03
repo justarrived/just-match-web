@@ -79,18 +79,12 @@ export class UserRegisterComponent extends TranslationListener implements OnInit
       }).then(() => {
         this.router.navigate(['/user']);
       }).catch(errors => {
-        this.errors = errors;
+        this.errors = errors.details;
       });
   }
 
   subcribeToFormChanges() {
     const myFormValueChanges$ = this.registrationForm.valueChanges;
     myFormValueChanges$.subscribe(values => Object.assign(this.userRegister, values));
-    console.log(this.userRegister);
-  }
-
-  test() {
-    console.log(this.registrationForm.value);
-    console.log(this.userRegister);
   }
 }

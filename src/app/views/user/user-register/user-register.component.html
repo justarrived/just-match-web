@@ -6,11 +6,13 @@
     </div>
   </div>
 
+  <br/>
+
   <div class="page-form-container">
     <form [formGroup]="registrationForm" novalidate (ngSubmit)="onSubmit()">
       <div class="form-group material-group input-container" [ngClass]="{'has-error':!registrationForm.controls['ssn'].valid && registrationForm.controls['ssn'].touched}">
         <input class="form-control material-input" type="text" placeholder="{{'user.form.ssn' | translate}}"
-               [formControl]="registrationForm.controls['ssn']">
+               formControlName="ssn">
 
         <div *ngIf="!registrationForm.controls['ssn'].valid && registrationForm.controls['ssn'].touched"
              class="alert alert-danger">{{'user.form.ssn.validation' | translate}}.</div>
@@ -55,7 +57,7 @@
 
       <div class="form-group material-group input-container">
         <autocomplete-dropdown [lookupType]="'list'" [enumList]="statuses"
-                               [placeholder]="'user.form.current_status' | translate"
+                               [placeholder]="'user.form.current_status' | translate" [isDisabled]="false"
                                [(destination)]="userRegister.currentStatus"
                                [autocompleteResultLabelFunction]="namePropertyLabel"
                                [selectedItemLabelFunction]="namePropertyLabel">
@@ -69,7 +71,7 @@
 
       <div class="form-group material-group input-container">
         <autocomplete-dropdown [lookupType]="'list'" [enumList]="atUndStatuses"
-                               [placeholder]="'user.form.at_und' | translate"
+                               [placeholder]="'user.form.at_und' | translate" [isDisabled]="false"
                                [(destination)]="userRegister.atUndStatus"
                                [autocompleteResultLabelFunction]="namePropertyLabel"
                                [selectedItemLabelFunction]="namePropertyLabel">
@@ -92,7 +94,7 @@
 
       <div class="form-group material-group input-container">
         <autocomplete-dropdown [lookupType]="'list'" [enumList]="countries"
-                               [placeholder]="'user.form.country_of_origin' | translate"
+                               [placeholder]="'user.form.country_of_origin' | translate" [isDisabled]="false"
                                [(destination)]="userRegister.countryOfOrigin"
                                [autocompleteResultLabelFunction]="namePropertyLabel"
                                [selectedItemLabelFunction]="namePropertyLabel">
@@ -135,8 +137,6 @@
           <a href="/assets/terms/160520_2051-2_Anvandarvillkor_(sv).pdf" target="_blank"> PDF SV</a>
         </label>
       </div>
-
-      <span (click)="test()">test</span>
 
       <div class="text-center button-container">
         <button type="submit" class="button primary form-group" [disabled]="!registrationForm.valid">{{'common.continue' | translate}}</button>
