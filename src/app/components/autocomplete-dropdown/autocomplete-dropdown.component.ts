@@ -11,9 +11,6 @@ import {FormGroup} from '@angular/forms';
   styleUrls: ['./autocomplete-dropdown.component.scss']
 })
 export class AutocompleteDropdownComponent implements OnInit {
-  @Input('group')
-  public inputGroup: FormGroup;
-
   @Input() destination: any;
   @Output() destinationChange = new EventEmitter();
   @Output() dropdownListItemSelect = new EventEmitter();

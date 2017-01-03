@@ -17,20 +17,20 @@
         <div *ngIf="errors.ssn" class="alert alert-danger">{{errors.ssn}}</div>
       </div>
 
-      <div class="form-group material-group input-container" [ngClass]="{'has-error':!registrationForm.controls['first-name'].valid && registrationForm.controls['first-name'].touched}">
+      <div class="form-group material-group input-container" [ngClass]="{'has-error':!registrationForm.controls['firstName'].valid && registrationForm.controls['firstName'].touched}">
         <input class="form-control material-input" type="text" placeholder="{{'user.form.first_name' | translate}}"
-               [formControl]="registrationForm.controls['first-name']">
+               [formControl]="registrationForm.controls['firstName']">
 
-        <div *ngIf="!registrationForm.controls['first-name'].valid && registrationForm.controls['first-name'].touched"
+        <div *ngIf="!registrationForm.controls['firstName'].valid && registrationForm.controls['firstName'].touched"
              class="alert alert-danger">{{'user.form.first_name.validation' | translate}}.</div>
         <div *ngIf="errors.first_name" class="alert alert-danger">{{errors.first_name}}</div>
       </div>
 
-      <div class="form-group material-group input-container" [ngClass]="{'has-error':!registrationForm.controls['last-name'].valid && registrationForm.controls['last-name'].touched}">
+      <div class="form-group material-group input-container" [ngClass]="{'has-error':!registrationForm.controls['lastName'].valid && registrationForm.controls['lastName'].touched}">
         <input class="form-control material-input" type="text" placeholder="{{'user.form.last_name' | translate}}"
-               [formControl]="registrationForm.controls['last-name']">
+               [formControl]="registrationForm.controls['lastName']">
 
-        <div *ngIf="!registrationForm.controls['last-name'].valid && registrationForm.controls['last-name'].touched"
+        <div *ngIf="!registrationForm.controls['lastName'].valid && registrationForm.controls['lastName'].touched"
              class="alert alert-danger">{{'user.form.last_name.validation' | translate}}.</div>
         <div *ngIf="errors.last_name" class="alert alert-danger">{{errors.last_name}}</div>
       </div>
@@ -56,44 +56,53 @@
       <div class="form-group material-group input-container">
         <autocomplete-dropdown [lookupType]="'list'" [enumList]="statuses"
                                [placeholder]="'user.form.current_status' | translate"
-                               [group]="registrationForm.controls['current-status']"
                                [(destination)]="userRegister.currentStatus"
                                [autocompleteResultLabelFunction]="namePropertyLabel"
                                [selectedItemLabelFunction]="namePropertyLabel">
         </autocomplete-dropdown>
+        <input class="form-control material-input" type="hidden" [(ngModel)]="userRegister.currentStatus" [formControl]="registrationForm.controls['currentStatus']">
 
+        <div *ngIf="!registrationForm.controls['currentStatus'].valid && registrationForm.controls['currentStatus'].touched"
+             class="alert alert-danger">{{'user.form.current_status.validation' | translate}}.</div>
         <div *ngIf="errors.current_status" class="alert alert-danger">{{errors.current_status}}</div>
       </div>
 
       <div class="form-group material-group input-container">
         <autocomplete-dropdown [lookupType]="'list'" [enumList]="atUndStatuses"
                                [placeholder]="'user.form.at_und' | translate"
-                               [group]="registrationForm.controls['at-und']"
                                [(destination)]="userRegister.atUndStatus"
                                [autocompleteResultLabelFunction]="namePropertyLabel"
                                [selectedItemLabelFunction]="namePropertyLabel">
         </autocomplete-dropdown>
+        <input class="form-control material-input" type="hidden" [(ngModel)]="userRegister.atUndStatus" [formControl]="registrationForm.controls['atUndStatus']">
 
+        <div *ngIf="!registrationForm.controls['atUndStatus'].valid && registrationForm.controls['atUndStatus'].touched"
+             class="alert alert-danger">{{'user.form.current_status.validation' | translate}}.</div>
         <div *ngIf="errors.atUndStatus" class="alert alert-danger">{{errors.atUndStatus}}</div>
       </div>
 
-      <div class="form-group material-group input-container" [ngClass]="{'has-error':!registrationForm.controls['arrived-at'].valid && registrationForm.controls['email'].touched}">
+      <div class="form-group material-group input-container" [ngClass]="{'has-error':!registrationForm.controls['arrivedAt'].valid && registrationForm.controls['arrivedAt'].touched}">
         <input class="form-control material-input" type="date" placeholder="{{'user.form.arrived_at' | translate}}"
-               [formControl]="registrationForm.controls['arrived-at']">
+               [formControl]="registrationForm.controls['arrivedAt']">
 
-        <div *ngIf="!registrationForm.controls['arrived-at'].valid && registrationForm.controls['arrived-at'].touched"
+        <div *ngIf="!registrationForm.controls['arrivedAt'].valid && registrationForm.controls['arrivedAt'].touched"
              class="alert alert-danger">{{'user.form.arrived_at.validation' | translate}}.</div>
         <div *ngIf="errors.arrived_at" class="alert alert-danger">{{errors.arrived_at}}</div>
       </div>
 
-      <!--<div class="material-group">
+      <div class="form-group material-group input-container">
         <autocomplete-dropdown [lookupType]="'list'" [enumList]="countries"
+                               [placeholder]="'user.form.country_of_origin' | translate"
                                [(destination)]="userRegister.countryOfOrigin"
                                [autocompleteResultLabelFunction]="namePropertyLabel"
                                [selectedItemLabelFunction]="namePropertyLabel">
         </autocomplete-dropdown>
-        <label class="label-up material-label">{{'user.form.country_of_origin' | translate}}</label>
-      </div>-->
+        <input class="form-control material-input" type="hidden" [(ngModel)]="userRegister.countryOfOrigin" [formControl]="registrationForm.controls['countryOfOrigin']">
+
+        <div *ngIf="!registrationForm.controls['countryOfOrigin'].valid && registrationForm.controls['countryOfOrigin'].touched"
+             class="alert alert-danger">{{'user.form.country_of_origin.validation' | translate}}.</div>
+        <div *ngIf="errors.country_of_origin" class="alert alert-danger">{{errors.country_of_origin}}</div>
+      </div>
 
       <div class="form-group material-group input-container" [ngClass]="{'has-error':!registrationForm.controls['password'].valid && registrationForm.controls['password'].touched}">
         <input class="form-control material-input" type="password" placeholder="{{'user.form.password' | translate}}"
@@ -104,11 +113,11 @@
         <div *ngIf="errors.password" class="alert alert-danger">{{errors.password}}</div>
       </div>
 
-      <div class="form-group material-group input-container" [ngClass]="{'has-error':!registrationForm.controls['repeat-password'].valid && registrationForm.controls['repeat-password'].touched}">
+      <div class="form-group material-group input-container" [ngClass]="{'has-error':!registrationForm.controls['repeatPassword'].valid && registrationForm.controls['repeatPassword'].touched}">
         <input class="form-control material-input" type="password" placeholder="{{'user.form.password' | translate}}"
-               [formControl]="registrationForm.controls['password']">
+               [formControl]="registrationForm.controls['repeatPassword']">
 
-        <div *ngIf="!registrationForm.controls['password'].valid && registrationForm.controls['password'].touched"
+        <div *ngIf="!registrationForm.controls['repeatPassword'].valid && registrationForm.controls['repeatPassword'].touched"
              class="alert alert-danger">{{'user.form.passwordCompare.validation' | translate}}.</div>
         <div *ngIf="errors.repeatPassword" class="alert alert-danger">{{errors.repeatPassword}}</div>
       </div>
@@ -118,14 +127,16 @@
         <label class="label-up material-label" for="image-filename">{{'user.form.picture' | translate}}</label>
       </div>
 
-      <div class="form-group text-center input-container"  [ngClass]="{'has-error':!registrationForm.controls['terms'].valid && registrationForm.controls['terms'].touched}">
-        <input type="checkbox" id="tac" name="tac" class="material-input" [formControl]="registrationForm.controls['terms']">
+      <div class="form-group text-center input-container"  [ngClass]="{'has-error':!registrationForm.controls['acceptedTermsAndConditions'].valid && registrationForm.controls['acceptedTermsAndConditions'].touched}">
+        <input type="checkbox" id="tac" name="tac" class="material-input" [formControl]="registrationForm.controls['acceptedTermsAndConditions']">
         <label for="tac">
           {{'terms.accept' | translate}} {{'terms' | translate}}
           <a href="/assets/terms/160523_2051-2_Terms_and_Conditions_(en).pdf" target="_blank"> PDF EN</a>,
           <a href="/assets/terms/160520_2051-2_Anvandarvillkor_(sv).pdf" target="_blank"> PDF SV</a>
         </label>
       </div>
+
+      <span (click)="test()">test</span>
 
       <div class="text-center button-container">
         <button type="submit" class="button primary form-group" [disabled]="!registrationForm.valid">{{'common.continue' | translate}}</button>

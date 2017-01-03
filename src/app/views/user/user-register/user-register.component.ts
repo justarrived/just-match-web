@@ -37,26 +37,24 @@ export class UserRegisterComponent extends TranslationListener implements OnInit
     super(translationService);
 
     this.registrationForm = formBuilder.group({
-      'ssn': [this.userRegister.ssn, Validators.compose([Validators.required, Validators.minLength(10)/*, Validators.pattern("^[\d\-]+$")*/])],
-      'first-name': [this.userRegister.firstName, Validators.compose([Validators.required])],
-      'last-name': [this.userRegister.lastName, Validators.compose([Validators.required])],
-      'email': [this.userRegister.email, Validators.compose([Validators.required, Validators.pattern("^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$")])],
-      'current-status': formBuilder.group({
-        'inputControl': [this.userRegister.currentStatus, Validators.compose([Validators.required])]
-      }),
-      'at-und': formBuilder.group({
-        'inputControl': [this.userRegister.atUndStatus, Validators.compose([Validators.required])]
-      }),
-      'arrived-at': [this.userRegister.arrivedAt, Validators.compose([Validators.required, Validators.pattern("^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$")])],
-      'phone': [this.userRegister.password, Validators.compose([Validators.required])],
-      'password': [this.userRegister.password, Validators.compose([Validators.required])],
-      'repeat-password': [this.userRegister.repeatPassword, Validators.compose([Validators.required])],
-      'terms': [this.userRegister.acceptedTermsAndConditions, Validators.compose([Validators.required])]
+      'ssn': ['', Validators.compose([Validators.required, Validators.minLength(10)/*, Validators.pattern("^[\d\-]+$")*/])],
+      'firstName': ['', Validators.compose([Validators.required])],
+      'lastName': ['', Validators.compose([Validators.required])],
+      'email': ['', Validators.compose([Validators.required, Validators.pattern("^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$")])],
+      'currentStatus': ['', Validators.compose([Validators.required])],
+      'atUndStatus': ['', Validators.compose([Validators.required])],
+      'arrivedAt': ['', Validators.compose([Validators.required, Validators.pattern("^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$")])],
+      'countryOfOrigin': ['', Validators.compose([Validators.required])],
+      'phone': ['', Validators.compose([Validators.required])],
+      'password': ['', Validators.compose([Validators.required])],
+      'repeatPassword': [, Validators.compose([Validators.required])],
+      'acceptedTermsAndConditions': ['', Validators.compose([Validators.required])]
     });
   }
 
   ngOnInit(): void {
     this.loadData();
+    this.subcribeToFormChanges();
   }
 
   loadData() {
@@ -83,5 +81,16 @@ export class UserRegisterComponent extends TranslationListener implements OnInit
       }).catch(errors => {
         this.errors = errors;
       });
+  }
+
+  subcribeToFormChanges() {
+    const myFormValueChanges$ = this.registrationForm.valueChanges;
+    myFormValueChanges$.subscribe(values => Object.assign(this.userRegister, values));
+    console.log(this.userRegister);
+  }
+
+  test() {
+    console.log(this.registrationForm.value);
+    console.log(this.userRegister);
   }
 }
