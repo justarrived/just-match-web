@@ -3,6 +3,7 @@ import {cloneDeep, some, isEqual, isObject, assignIn, filter} from 'lodash';
 import {CountryProxy} from '../../services/proxy/country-proxy.service';
 import {deleteElementFromArray} from '../../utils/array-util';
 import Timer = NodeJS.Timer;
+import {FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'autocomplete-dropdown',
@@ -10,6 +11,9 @@ import Timer = NodeJS.Timer;
   styleUrls: ['./autocomplete-dropdown.component.scss']
 })
 export class AutocompleteDropdownComponent implements OnInit {
+  @Input('group')
+  public inputGroup: FormGroup;
+
   @Input() destination: any;
   @Output() destinationChange = new EventEmitter();
   @Output() dropdownListItemSelect = new EventEmitter();
