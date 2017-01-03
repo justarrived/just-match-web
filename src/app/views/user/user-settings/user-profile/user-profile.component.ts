@@ -13,6 +13,7 @@ import {LanguageProficiency} from '../../../../models/language/language-proficie
 import {languageProficiencyLevels} from '../../../../enums/enums';
 import {UserProxy} from '../../../../services/proxy/user-proxy.service';
 import {AutocompleteDropdownComponent} from '../../../../components/autocomplete-dropdown/autocomplete-dropdown.component';
+import {FormGroup, FormBuilder, Validators} from '@angular/forms';
 
 @Component({
   selector: 'user-profile',
@@ -21,10 +22,10 @@ import {AutocompleteDropdownComponent} from '../../../../components/autocomplete
 })
 export class UserProfileComponent implements OnInit {
   @ViewChild('nativeLanguageDropdown')
-  nativeLanguageDropdown:AutocompleteDropdownComponent;
+  nativeLanguageDropdown: AutocompleteDropdownComponent;
 
   @ViewChild('countryDropdown')
-  countryDropdown:AutocompleteDropdownComponent;
+  countryDropdown: AutocompleteDropdownComponent;
 
   namePropertyLabel: Function = namePropertyLabel;
 
@@ -34,26 +35,44 @@ export class UserProfileComponent implements OnInit {
 
   gotPermit: string;
 
-  constructor(private languageProxy: LanguageProxy, private countryProxy: CountryProxy, private authManager: AuthManager, private userProxy: UserProxy) {
+  profileForm: FormGroup;
+
+  saveSuccess: boolean;
+
+  errorMessage: string;
+
+  constructor(private languageProxy: LanguageProxy, private countryProxy: CountryProxy, private authManager: AuthManager, private userProxy: UserProxy, private formBuilder: FormBuilder) {
     this.languageProficiencyLevelsAvailable = this.languageProficiencyLevelsAvailable.slice();
     this.languageProficiencyLevelsAvailable.pop();
+
+    this.profileForm = formBuilder.group({
+      'residence-permit': [null, Validators.compose([Validators.required])],
+      'country': [null, Validators.compose([Validators.required])]
+    });
   }
 
   ngOnInit() {
-    let nativeLanguage = this.user.getNativeLanguage() || {language: {name: ''}};
+    let nativeLanguage = this.user.getNativeLanguage() || { language: { name: '' } };
     let nativeLanguageDropdown = this.nativeLanguageDropdown;
     setTimeout(function() {
       nativeLanguageDropdown.textInput = nativeLanguage.language.name;
     }, 100);
 
-    this.countryProxy.getCountries()
-      .then((countries) => {
-        let countryOfOrigin = countries.find(country => country.countryCode === this.user.countryOfOriginCode) || {name: ''};
-        this.countryDropdown.textInput = countryOfOrigin.name;
+    this.countryProxy.getCountryByCountryCode(this.user.countryOfOriginCode)
+      .then((countryOfOrigin) => {
+        this.countryDropdown.textInput = countryOfOrigin.name || '';
       });
 
     this.gotPermit = this.user.residencePermit ? 'true' : 'false';
   }
+
+  validCountry() {
+    return this.countryProxy.getCountries()
+      .then((countries) => {
+        return some(countries, country => country.countryCode === this.user.countryOfOriginCode);
+      });
+  }
+
 
   getLanguages() {
     return (searchText): Promise<Array<Language>> => {
@@ -77,33 +96,46 @@ export class UserProfileComponent implements OnInit {
   }
 
   onNativeLanguageSelect(language) {
-    let nativeLanguage = new UserLanguage({ proficiency: 5 });
-    nativeLanguage.language = language;
+    if (language) {
+      let nativeLanguage = new UserLanguage({ proficiency: 5 });
+      nativeLanguage.language = language;
 
-    let oldNativeLanguage = this.user.getNativeLanguage();
+      let oldNativeLanguage = this.user.getNativeLanguage();
 
-    if (oldNativeLanguage) {
-      deleteElementFromArray(this.user.userLanguages, oldNativeLanguage);
+      if (oldNativeLanguage) {
+        deleteElementFromArray(this.user.userLanguages, oldNativeLanguage);
+      }
+
+      deleteElementFromArray(this.user.userLanguages, this.user.userLanguages.find(lang => lang.language && lang.language.languageCode === language.languageCode));
+
+      this.user.userLanguages.push(nativeLanguage);
     }
-
-    deleteElementFromArray(this.user.userLanguages, this.user.userLanguages.find(lang => lang.language.languageCode === language.languageCode));
-
-    this.user.userLanguages.push(nativeLanguage);
   }
 
   onNCountryOfOriginSelect(country) {
-    this.user.countryOfOriginCode = country.countryCode;
-
+    if (country) {
+      this.user.countryOfOriginCode = country.countryCode;
+    }
   }
 
   onRemoveUserLanguage(userLanguage) {
     deleteElementFromArray(this.user.userLanguages, userLanguage);
   }
 
+  validForm(): boolean {
+    return this.user.getNativeLanguage() && this.user.countryOfOriginCode && (this.gotPermit == 'false' || this.user.residencePermit) && true;
+  }
 
   onSubmit() {
+    this.saveSuccess = false;
+    this.errorMessage = '';
+    if (!this.validForm()) {
+      this.errorMessage = 'user.profile.form.submit.incomplete';
+      return;
+    }
     this.userProxy.updateUser(this.user.toJsonObject())
       .then((response) => {
+        this.saveSuccess = true;
         return this.authManager.authenticateIfNeeded();
       });
   }

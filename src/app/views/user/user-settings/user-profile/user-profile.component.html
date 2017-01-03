@@ -8,14 +8,15 @@
         <autocomplete-dropdown #nativeLanguageDropdown (dropdownListItemSelect)="onNativeLanguageSelect($event)" [placeholder]="'user.profile.form.native.language.placeholder' | translate" [autocompleteResultLabelFunction]="namePropertyLabel" [selectedItemLabelFunction]="namePropertyLabel"
             [getData]="getLanguages()">
         </autocomplete-dropdown>
+        <div *ngIf="!user.getNativeLanguage()" class="alert alert-danger">{{'user.profile.form.permit.type.validation' | translate}}.</div>
       </div>
 
       <div class="profile-input-container">
         <label>{{'user.profile.form.country.label' | translate}} *:</label>
-        <autocomplete-dropdown #countryDropdown (dropdownListItemSelect)="onNCountryOfOriginSelect($event)" [placeholder]="'user.profile.form.country.placeholder' | translate" [autocompleteResultLabelFunction]="namePropertyLabel" [selectedItemLabelFunction]="namePropertyLabel"
+        <autocomplete-dropdown [foControl]="profileForm.controls['country']" #countryDropdown (dropdownListItemSelect)="onNCountryOfOriginSelect($event)" [placeholder]="'user.profile.form.country.placeholder' | translate" [autocompleteResultLabelFunction]="namePropertyLabel" [selectedItemLabelFunction]="namePropertyLabel"
             [getData]="getCountries()">
         </autocomplete-dropdown>
-        <div *ngIf="form.controls.countryForm" class="alert alert-danger">{{'contact.form.email.validation' | translate}}.</div>
+        <div *ngIf="!user.countryOfOriginCode" class="alert alert-danger">{{'user.profile.form.permit.type.validation' | translate}}.</div>
       </div>
 
       <div class="profile-input-container">
@@ -25,20 +26,33 @@
             <label for="permitYes">
             <input class="radioButton" type="radio" name="permit" id="permitYes" [(ngModel)]="gotPermit" value="true" />
             <span></span>
-            Yes</label>
+            {{'common.yes' | translate}}</label>
           </div>
           <div>
             <label for="permitNo">
             <input class="radioButton" type="radio" name="permit" id="permitNo" [(ngModel)]="gotPermit" value="false" />
             <span></span>
-            No</label>
+            {{'common.no' | translate}}</label>
           </div>
         </div>
       </div>
 
       <div *ngIf="gotPermit === 'true'" class="profile-input-container">
         <label>{{'user.profile.form.permit.type.label' | translate}} *:</label>
-        <textarea class="form-control material-input" name="residence-permit" id="residence-permit" class="form-control material-input" autosize type="text" placeholder="{{'user.profile.form.permit.type.placeholder' | translate}}" [(ngModel)]="user.residencePermit"></textarea>
+        <div class="profile-input-permit-radio-container">
+          <div>
+            <label for="permitTypeAsylum">
+            <input class="radioButton" type="radio" name="permitType" id="permitTypeAsylum" [(ngModel)]="user.residencePermit" value="asylum_seeker" />
+            <span></span>
+            {{'user.profile.form.permit.type.asylum' | translate}}</label>
+          </div>
+          <div>
+            <label for="permitTypePermanent">
+            <input class="radioButton" type="radio" name="permitType" id="permitTypePermanent" [(ngModel)]="user.residencePermit" value="permanent_residence" />
+            <span></span>
+            {{'user.profile.form.permit.type.permanent' | translate}}</label>
+          </div>
+        </div>
       </div>
 
       <div class="profile-upload-button-container">
@@ -89,7 +103,8 @@ Documents not supported yet. TODO implement when documents supported in backend.
 -->
 
       <div class="profile-button-container">
-        <div *ngIf="errorMessage" class="error-message">{{errorMessage}}</div>
+        <div *ngIf="errorMessage" class="error-message">{{errorMessage | translate}}</div>
+        <div *ngIf="saveSuccess" class="save-message">{{'user.profile.form.submit.success' | translate}}</div>
         <button type="submit" [disabled]="false" class="btn-primary btn-small btn">{{'user.profile.form.submit.button' | translate}}</button>
       </div>
     </form>
