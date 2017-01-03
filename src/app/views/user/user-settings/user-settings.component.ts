@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {UserProxy} from '../../../services/proxy/user-proxy.service';
 import {User} from '../../../models/user';
 import {UserManager} from '../../../services/user-manager.service';
@@ -27,7 +27,9 @@ export class UserSettingsComponent {
     if (file) {
       let data = new FormData();
       data.append('image', file);
+      data.append('category', 'profile');
       this.userProxy.saveImage(data).then(userImage => {
+        this.user.images.push(userImage);
         this.user.profileImage = userImage;
       });
     }

@@ -1,7 +1,147 @@
 @import '../../../../styles/variables';
+@import '../../../../styles/buttons';
 
-hr {
-  margin: 35px 0 25px;
-  border: 0;
-  border-top: 1px solid #eeeeee;
+.profile-form-container {
+  padding-top: 50px;
+  max-width: 500px;
+  margin: 0 auto;
+
+
+  label {
+    color: black;
+    font-size: 20px;
+  }
+
+  .profile-input-container {
+    padding-bottom: 1.5em;
+    margin-bottom: 15px;
+
+    > textarea {
+      overflow: hidden;
+      word-wrap: break-word;
+      resize: none;
+    }
+
+    .profile-input-permit-radio-container {
+      display: flex;
+
+      > div {
+        text-align: center;
+        padding: 0 10px;
+        margin-right: 50px;
+
+        > label {
+          font-size: 16px;
+          opacity: 0.7;
+          > span {
+            display: block;
+          }
+
+          [type="radio"] {
+            border: 0;
+            height: 1px;
+            margin: -1px;
+            padding: 0;
+            position: absolute;
+            width: 1px;
+
+            + span:before {
+              content: '';
+              display: inline-block;
+              width: 2em;
+              height: 2em;
+              border-radius: 2em;
+              /*hard border*/
+              border: 0.125em solid $color-primary-cerise;
+              box-shadow: 0 0 0 0.1em $color-primary-cerise;
+              /*light shadow*/
+              margin: 0 auto;
+              transition: 0.5s ease all;
+              /*animation here*/
+            }
+
+            &:checked + span:before {
+              background: $color-primary-cerise;
+              box-shadow: 0 0 0 0.1em $color-primary-cerise;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .profile-input-languages-table-container {
+    width: 100%;
+    .profile-input-languages-table-row-container {
+      width: 100%;
+      margin: 5px 0;
+      .profile-input-languages-table-row-inner-container {
+        display: flex;
+        height: 37px;
+
+        .profile-input-languages-table-row-inner-language-container {
+          display: table;
+          height: 100%;
+          > p {
+            display: table-cell;
+            vertical-align: middle;
+          }
+        }
+
+        .profile-input-languages-table-row-inner-dropdown-container {
+          width: 300px;
+          margin-left: auto;
+        }
+
+        .profile-input-languages-table-row-inner-icon-container {
+          margin-left: 10px;
+          margin-right: 20px;
+          i {
+            &:hover {
+              color: rgba(0, 0, 0, 0.3);
+            }
+          }
+        }
+      }
+    }
+
+  }
+
+  hr {
+    width: 75%;
+  }
+
+  .profile-upload-button-container {
+    text-align: center;
+    margin-bottom: 40px;
+
+    button {
+      margin: 0 auto;
+      min-width: 200px;
+    }
+
+    p {
+      margin-top: 10px;
+    }
+  }
+
+  .profile-button-container {
+    padding-bottom: 1.5em;
+    text-align: center;
+
+    .error-message {
+      color: $color-cerise-500;
+    }
+
+    button {
+      display: block;
+      margin: 15px auto 30px;
+      min-width: 250px;
+    }
+
+    a {
+      color: $color-accent-main;
+      font-weight: 600;
+    }
+  }
 }

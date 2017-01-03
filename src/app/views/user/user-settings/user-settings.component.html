@@ -6,20 +6,20 @@
     <div class="user-profile-subheader-info-container">
       <div class="user-profile-subheader-info-image-container">
         <input type="file" id="image-filename" name="imageFilename" class="file" (change)="onImageFilenameChange($event)" accept="image/*">
-        <div *ngIf="!user.profileImage.imageUrl" class="icon-camera"><i class="fa fa-camera" aria-hidden="true"></i></div>
-        <div *ngIf="user.profileImage.imageUrl" class="user-info-image" [ngStyle]="{'background-image': 'url(' + user.profileImage.imageUrl + ')'}"></div>
+        <div *ngIf="!user.profileImage" class="icon-camera"><i class="fa fa-camera" aria-hidden="true"></i></div>
+        <div *ngIf="user.profileImage" class="user-info-image" [ngStyle]="{'background-image': 'url(' + user.profileImage.imageUrl + ')'}"></div>
       </div>
       <div class="user-profile-subheader-info-name-container"><span>{{user.firstName}} {{user.lastName}}</span></div>
     </div>
   </div>
 
-  <div class="row">
-    <div class="header-tab col-xs-6" [ngClass]="{'selected': selectedState == 'profile'}" (click)="setState('profile')">
+  <div class="user-profile-tab-container">
+    <div class="user-profile-header-tab col-xs-6" [ngClass]="{'selected': selectedState == 'profile'}" (click)="setState('profile')">
       <h4>
         {{'profile' | translate}}
       </h4>
     </div>
-    <div class="header-tab col-xs-6" [ngClass]="{'selected': selectedState == 'details'}" (click)="setState('details')">
+    <div class="user-profile-header-tab col-xs-6" [ngClass]="{'selected': selectedState == 'details'}" (click)="setState('details')">
       <h4>
         {{"menu.settings.personal_data" | translate}}
       </h4>

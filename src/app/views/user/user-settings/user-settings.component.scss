@@ -1,11 +1,20 @@
 @import '../../../styles/variables';
 
 .user-profile-container {
+
   .user-profile-subheader-container {
-    padding: 40px;
+    padding: 20px;
     background: $color-gray-500;
     color: white;
     text-align: center;
+
+    > h2 {
+      margin-bottom: 20px;
+    }
+
+    > p {
+      opacity: 0.8;
+    }
 
     .user-profile-subheader-info-container {
       margin: 0 auto;
@@ -69,27 +78,32 @@
         span {
           display: table-cell;
           vertical-align: middle;
+          font-size: 18px;
         }
       }
     }
   }
 
-  .header-tab {
-    padding: 8px;
-    text-align: center;
-    background-color: $default-bg-color;
-    cursor: pointer;
+  .user-profile-tab-container {
+    display: flex;
 
-    h4 {
-      color: $color-gray-200;
-    }
-    border-bottom: 4px solid $color-gray-50;
+    .user-profile-header-tab {
+      padding: 8px;
+      text-align: center;
+      background-color: $default-bg-color;
+      cursor: pointer;
 
-    &.selected {
       h4 {
-        color: $color-gray-500;
+        color: $color-gray-200;
       }
-      border-bottom: 4px solid $color-primary-cerise;
+      border-bottom: 4px solid $color-gray-50;
+
+      &.selected {
+        h4 {
+          color: $color-gray-500;
+        }
+        border-bottom: 4px solid $color-primary-cerise;
+      }
     }
   }
 }
