@@ -2,7 +2,6 @@ import {Component, Input, ElementRef, OnInit, EventEmitter, Output, HostListener
 import {cloneDeep, some, isEqual, isObject, assignIn, filter} from 'lodash';
 import {CountryProxy} from '../../services/proxy/country-proxy.service';
 import {deleteElementFromArray} from '../../utils/array-util';
-import {FormControl} from '@angular/forms';
 import Timer = NodeJS.Timer;
 
 @Component({
@@ -14,7 +13,6 @@ export class AutocompleteDropdownComponent implements OnInit {
   @Input() destination: any;
   @Output() destinationChange = new EventEmitter();
   @Output() dropdownListItemSelect = new EventEmitter();
-  @Input() foControl: FormControl;
   @Input() clearDestinationAfterSelection: boolean;
   @Input() lookupType: string;
   @Input() lookupPrefix: string = 'client/lookup';

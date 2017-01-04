@@ -22,13 +22,13 @@ export class UserSettingsComponent {
     this.selectedState = newState;
   }
 
-  onImageFilenameChange(event) {
+  onProfileImageFilenameChange(event) {
     let file = event.srcElement.files[0];
     if (file) {
       let data = new FormData();
       data.append('image', file);
       data.append('category', 'profile');
-      this.userProxy.saveImage(data).then(userImage => {
+      this.userProxy.saveImage(this.user.id, data).then(userImage => {
         this.user.images.push(userImage);
         this.user.profileImage = userImage;
       });

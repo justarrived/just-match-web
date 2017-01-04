@@ -35,8 +35,8 @@ export class UserProxy {
       .then(response => map(response.data, data => new UserStatus(data)));
   }
 
-  saveImage(image: FormData): Promise<UserImage> {
-    return this.apiCall.postFile('users/images', image)
+  saveImage(userId, image: FormData): Promise<UserImage> {
+    return this.apiCall.postFile('users/' + userId + '/images', image)
       .then(response => new UserImage(response.data));
   }
 

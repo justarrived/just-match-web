@@ -6,15 +6,14 @@
   max-width: 500px;
   margin: 0 auto;
 
-
-  label {
-    color: black;
-    font-size: 20px;
-  }
-
   .profile-input-container {
     padding-bottom: 1.5em;
     margin-bottom: 15px;
+
+    label {
+      color: black;
+      font-size: 20px;
+    }
 
     > textarea {
       overflow: hidden;
@@ -33,6 +32,7 @@
         > label {
           font-size: 16px;
           opacity: 0.7;
+
           > span {
             display: block;
           }
@@ -72,9 +72,11 @@
 
   .profile-input-languages-table-container {
     width: 100%;
+
     .profile-input-languages-table-row-container {
       width: 100%;
       margin: 5px 0;
+
       .profile-input-languages-table-row-inner-container {
         display: flex;
         height: 37px;
@@ -82,6 +84,7 @@
         .profile-input-languages-table-row-inner-language-container {
           display: table;
           height: 100%;
+
           > p {
             display: table-cell;
             vertical-align: middle;
@@ -96,6 +99,7 @@
         .profile-input-languages-table-row-inner-icon-container {
           margin-left: 10px;
           margin-right: 20px;
+
           i {
             &:hover {
               color: rgba(0, 0, 0, 0.3);
@@ -104,7 +108,6 @@
         }
       }
     }
-
   }
 
   hr {
@@ -115,9 +118,16 @@
     text-align: center;
     margin-bottom: 40px;
 
-    button {
+    input {
+      opacity: 0;
+      position: absolute;
+      z-index: -1;
+    }
+
+    label {
       margin: 0 auto;
       min-width: 200px;
+      pointer: cursor;
     }
 
     p {

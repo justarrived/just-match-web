@@ -5,7 +5,7 @@
 
     <div class="user-profile-subheader-info-container">
       <div class="user-profile-subheader-info-image-container">
-        <input type="file" id="image-filename" name="imageFilename" class="file" (change)="onImageFilenameChange($event)" accept="image/*">
+        <input type="file" id="image-filename" name="imageFilename" class="file" (change)="onProfileImageFilenameChange($event)" accept="image/*">
         <div *ngIf="!user.profileImage" class="icon-camera"><i class="fa fa-camera" aria-hidden="true"></i></div>
         <div *ngIf="user.profileImage" class="user-info-image" [ngStyle]="{'background-image': 'url(' + user.profileImage.imageUrl + ')'}"></div>
       </div>

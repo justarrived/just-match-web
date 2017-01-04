@@ -122,6 +122,18 @@ export class UserProfileComponent implements OnInit {
     deleteElementFromArray(this.user.userLanguages, userLanguage);
   }
 
+  onPermitImageFilenameChange(event) {
+    let file = event.srcElement.files[0];
+    if (file) {
+      let data = new FormData();
+      data.append('image', file);
+      data.append('category', 'permit');
+      this.userProxy.saveImage(this.user.id, data).then(userImage => {
+        this.user.images.push(userImage);
+      });
+    }
+  }
+
   validForm(): boolean {
     return this.user.getNativeLanguage() && this.user.countryOfOriginCode && (this.gotPermit == 'false' || this.user.residencePermit) && true;
   }
