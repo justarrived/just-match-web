@@ -52,6 +52,12 @@
             <span></span>
             {{'user.profile.form.permit.type.permanent' | translate}}</label>
           </div>
+          <div>
+            <label for="permitTypeTemporary">
+            <input class="radioButton" type="radio" name="permitType" id="permitTypeTemporary" [(ngModel)]="user.residencePermit" value="temporary_residence_work" />
+            <span></span>
+            {{'user.profile.form.permit.type.temporary' | translate}}</label>
+          </div>
         </div>
       </div>
 
