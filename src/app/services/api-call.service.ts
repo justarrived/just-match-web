@@ -44,9 +44,9 @@ export class ApiCall {
   }
 
   public postImage(url: string, image: FormData, body: any): Promise<any> {
-    //return this.requestHelper({ body: {data: {attributes: body}}, method: RequestMethod.Post, url: this.urlBuilder(url) });
+    return this.requestHelper({ body: {data: {attributes: body}}, method: RequestMethod.Post, url: this.urlBuilder(url) });
     return this.requestHelper({ body: image, method: RequestMethod.Post, url: this.urlBuilder(url) });
-    //return this.requestHelper({ body: {data: {attributes: body}, imageData: image}, method: RequestMethod.Post, url: this.urlBuilder(url) });
+    return this.requestHelper({ body: {data: {attributes: body}, imageData: image}, method: RequestMethod.Post, url: this.urlBuilder(url) });
   }
 
   public put(url: string, body: any, contentType?: string): Promise<any> {

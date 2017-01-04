@@ -54,4 +54,11 @@ export class UserProxy {
       'email_or_phone': email_or_phone
     });
   }
+
+  changePassword(password: string, oldPassword: string) {
+    return this.apiCall.post('users/change-password', {
+      'password': password,
+      'old_password': oldPassword
+    });
+  }
 }

@@ -11,17 +11,21 @@
   }
 
   .settings-input-container {
-    padding-bottom: 1.5em;
     margin-bottom: 15px;
 
     label {
       color: black;
       font-size: 20px;
     }
+
+    input {
+      border: 1px solid rgba(0, 0, 0, 0.15)
+    }
   }
 
   hr {
     width: 75%;
+    margin: 40px 0;
   }
 
   .settings-button-container {

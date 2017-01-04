@@ -118,33 +118,37 @@ export class UserProfileComponent implements OnInit {
     }
   }
 
-  validForm(): boolean {
+  extendedFrontendValidation(): boolean {
     return this.user.getNativeLanguage() && this.user.countryOfOriginCode && (this.gotPermit == 'false' || this.user.currentStatus) && true;
+  }
+
+  handleServerErrors(errors) {
+    this.errorMessage = 'user.profile.form.submit.error';
+    if (errors.details) {
+      if (Object.keys(errors.details)[0]) {
+        this.errorCause = Object.keys(errors.details)[0].split('_').join(' ') + ' ' + errors.details[Object.keys(errors.details)[0]];
+        this.errorCause = this.errorCause.charAt(0).toUpperCase() + this.errorCause.slice(1);
+      } else {
+        this.errorCause = 'user.profile.form.submit.error.nothing';
+        throw errors;
+      }
+    }
   }
 
   onSubmit() {
     this.saveSuccess = false;
     this.errorMessage = '';
     this.errorCause = '';
-    if (!this.validForm()) {
+    if (!this.extendedFrontendValidation()) {
       this.errorMessage = 'user.profile.form.submit.incomplete';
       return;
     }
     this.userProxy.updateUser(this.user.toJsonObject())
       .then((response) => {
         this.saveSuccess = true;
-        return this.authManager.authenticateIfNeeded();
       })
       .catch(errors => {
-        this.errorMessage = 'user.profile.form.submit.server.error';
-        if (errors.details) {
-          if (Object.keys(errors.details)[0]) {
-            this.errorCause = Object.keys(errors.details)[0].split('_').join(' ') + ' ' + errors.details[Object.keys(errors.details)[0]];
-            this.errorCause = this.errorCause.charAt(0).toUpperCase() + this.errorCause.slice(1);
-          } else {
-            this.errorCause = 'user.profile.form.submit.server.error.nothing';
-          }
-        }
+        this.handleServerErrors(errors);
       });
   }
 }

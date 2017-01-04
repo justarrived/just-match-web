@@ -3,41 +3,53 @@
 
     <form #form="ngForm" (ngSubmit)="onSubmit()">
 
-      <div class="settings-input-container">
+      <div class="form-group material-group settings-input-container" [ngClass]="{'has-error':!settingsForm.controls['first-name-input'].valid}">
         <label for="first-name-input">{{'user.settings.form.first.name.label' | translate}} *:</label>
-        <input required class="form-control material-input" id="first-name-input" name="frst-name-input" type="text" placeholder="{{'user.settings.form.first.name.placeholder' | translate}}" [(ngModel)]="user.firstName">
+        <input class="form-control material-input" id="first-name-input" name="frst-name-input" type="text" placeholder="{{'user.settings.form.first.name.placeholder' | translate}}" [(ngModel)]="user.firstName" [formControl]="settingsForm.controls['first-name-input']">
+        <div *ngIf="settingsForm.controls['first-name-input'].hasError('required')" class="alert alert-danger">{{'user.settings.form.first.name.validation.required' | translate}}.</div>
+        <div *ngIf="settingsForm.controls['first-name-input'].hasError('minlength')" class="alert alert-danger">{{'user.settings.form.first.name.validation.min.length' | translate}}.</div>
       </div>
 
-      <div class="settings-input-container">
+      <div class="form-group material-group settings-input-container" [ngClass]="{'has-error':!settingsForm.controls['last-name-input'].valid}">
         <label for="last-name-input">{{'user.settings.form.last.name.label' | translate}} *:</label>
-        <input required class="form-control material-input" id="last-name-input" name="last-name-input" type="text" placeholder="{{'user.settings.form.last.name.placeholder' | translate}}" [(ngModel)]="user.lastName">
+        <input class="form-control material-input" id="last-name-input" name="last-name-input" type="text" placeholder="{{'user.settings.form.last.name.placeholder' | translate}}" [(ngModel)]="user.lastName" [formControl]="settingsForm.controls['last-name-input']">
+        <div *ngIf="settingsForm.controls['last-name-input'].hasError('required')" class="alert alert-danger">{{'user.settings.form.last.name.validation.required' | translate}}.</div>
+        <div *ngIf="settingsForm.controls['last-name-input'].hasError('minlength')" class="alert alert-danger">{{'user.settings.form.last.name.validation.min.length' | translate}}.</div>
       </div>
 
-      <div class="settings-input-container">
+      <div class="form-group material-group settings-input-container" [ngClass]="{'has-error':!settingsForm.controls['email-input'].valid}">
         <label for="email-input">{{'user.settings.form.email.label' | translate}} *:</label>
-        <input required class="form-control material-input" id="email-input" name="email-input" type="email" placeholder="{{'user.settings.form.email.placeholder' | translate}}" [(ngModel)]="user.email">
+        <input class="form-control material-input" id="email-input" name="email-input" type="email" placeholder="{{'user.settings.form.email.placeholder' | translate}}" [(ngModel)]="user.email" [formControl]="settingsForm.controls['email-input']">
+        <div *ngIf="settingsForm.controls['email-input'].hasError('required')" class="alert alert-danger">{{'user.settings.form.email.validation.required' | translate}}.</div>
       </div>
 
-      <div class="settings-input-container">
+      <div class="form-group material-group settings-input-container" [ngClass]="{'has-error':!settingsForm.controls['phone-input'].valid}">
         <label for="phone-input">{{'user.settings.form.phone.label' | translate}} *:</label>
-        <input required class="form-control material-input" id="phone-input" name="phone-input" type="text" placeholder="{{'user.settings.form.phone.placeholder' | translate}}" [(ngModel)]="user.phone">
+        <input class="form-control material-input" id="phone-input" name="phone-input" type="text" placeholder="{{'user.settings.form.phone.placeholder' | translate}}" [(ngModel)]="user.phone" [formControl]="settingsForm.controls['phone-input']">
+        <div *ngIf="settingsForm.controls['phone-input'].hasError('required')" class="alert alert-danger">{{'user.settings.form.phone.validation.required' | translate}}.</div>
+        <div *ngIf="settingsForm.controls['phone-input'].hasError('minlength')" class="alert alert-danger">{{'user.settings.form.phone.validation.min.length' | translate}}.</div>
+        <div *ngIf="settingsForm.controls['phone-input'].hasError('pattern')" class="alert alert-danger">{{'user.settings.form.phone.validation.pattern' | translate}}.</div>
       </div>
 
-      <div class="settings-input-container">
-        <label for="password-input">{{'user.settings.form.password.label' | translate}}:</label>
-        <input class="form-control material-input" id="password-input" name="password-input" type="password" placeholder="{{'user.settings.form.password.placeholder' | translate}}" [(ngModel)]="user.password">
+      <div class="form-group material-group settings-input-container" [ngClass]="{'has-error':!settingsForm.controls['new-password-input'].valid || !settingsForm.controls['repeat-password-input'].valid}">
+        <label for="password-input">{{'user.settings.form.new.password.label' | translate}}:</label>
+        <input class="form-control material-input" id="old-password-input" name="old-password-input" type="password" placeholder="{{'user.settings.form.old.password.placeholder' | translate}}" [(ngModel)]="user.oldPassword" [formControl]="settingsForm.controls['old-password-input']">
+        <input class="form-control material-input" id="new-password-input" name="new-password-input" type="password" placeholder="{{'user.settings.form.new.password.placeholder' | translate}}" [(ngModel)]="user.newPassword" [formControl]="settingsForm.controls['new-password-input']">
+        <input class="form-control material-input" id="repeat-password-input" name="repeat-password-input" type="password" placeholder="{{'user.settings.form.repeat.password.placeholder' | translate}}" [(ngModel)]="user.repeatedPassword" [formControl]="settingsForm.controls['repeat-password-input']">
+        <div *ngIf="settingsForm.controls['new-password-input'].hasError('minlength')" class="alert alert-danger">{{'user.settings.form.new.password.validation.min.length' | translate}}.</div>
+        <div *ngIf="user.repeatedPassword !== user.newPassword" class="alert alert-danger">{{'user.settings.form.repeat.password.validation.mismatch' | translate}}.</div>
       </div>
 
       <hr>
 
       <h4>{{'user.settings.form.bank.details.header' | translate}}</h4>
 
-      <div class="settings-input-container">
+      <div class="form-group material-group settings-input-container">
         <label for="clearing-number-input">{{'user.settings.form.clearing.number.label' | translate}}:</label>
         <input class="form-control material-input" id="clearing-number-input" name="clearing-number-input" type="text" placeholder="{{'user.settings.form.clearing.number.placeholder' | translate}}" [(ngModel)]="user.accountClearingNumber">
       </div>
 
-      <div class="settings-input-container">
+      <div class="form-group material-group settings-input-container">
         <label for="account-number-input">{{'user.settings.form.account.number.label' | translate}}:</label>
         <input class="form-control material-input" id="account-number-input" name="account-number-input" type="text" placeholder="{{'user.settings.form.account.number.placeholder' | translate}}" [(ngModel)]="user.accountNumber">
       </div>
@@ -45,97 +57,10 @@
 
       <div class="settings-button-container">
         <div *ngIf="errorMessage" class="error-message">{{errorMessage | translate}}</div>
-        <div *ngIf="serverError" class="error-message">{{serverError}}</div>
+        <div *ngIf="errorCause" class="error-message">{{errorCause | translate}}</div>
         <div *ngIf="saveSuccess" class="save-message">{{'user.settings.form.submit.success' | translate}}</div>
         <button type="submit" class="btn-primary btn-small btn">{{'user.settings.form.submit.button' | translate}}</button>
       </div>
     </form>
   </div>
 </div>
-
-
-
-<!--<div class="centered-form-container">
-  <form class="centered-form" #form="ngForm" (ngSubmit)="onSubmit()">
-    <div class="material-group">
-      <i class="icon-ic-paper"></i>
-
-      <label for="ssn">{{'user.form.ssn' | translate}}</label>
-      <input type="text" id="ssn" [(ngModel)]="user.ssn" name="ssn" class="material-input" [disabled]="!editMode" [ngClass]="{'not-empty': user.ssn, 'has-error': errors.ssn}" required pattern="^[\d\-]+$" minlength="10">
-
-      <div class="fs-m0 material-group-error" *ngIf="form.controls.ssn && form.controls.ssn.invalid && form.controls.ssn.touched">
-        {{'user.form.ssn.validation' | translate}}
-      </div>
-      <div class="fs-m0 material-group-error" *ngIf="errors.ssn">
-        {{errors.ssn}}
-      </div>
-    </div>
-
-    <div class="material-group">
-      <i class="icon-ic-paper"></i>
-
-      <label for="first-name">{{'user.form.first_name' | translate}}</label>
-      <input type="text" id="first-name" [(ngModel)]="user.firstName" name="firstName" class="material-input" [disabled]="!editMode" [ngClass]="{'not-empty': user.firstName, 'has-error': errors.first_name}" required>
-
-      <div class="fs-m0 material-group-error" *ngIf="form.controls.firstName && form.controls.firstName.invalid && form.controls.firstName.touched">
-        {{'user.form.first_name.validation' | translate}}
-      </div>
-      <div class="fs-m0 material-group-error" *ngIf="errors.first_name">
-        {{errors.first_name}}
-      </div>
-    </div>
-
-    <div class="material-group">
-      <i class="icon-ic-paper"></i>
-
-      <label for="last-name">{{'user.form.last_name' | translate}}</label>
-      <input type="text" id="last-name" [(ngModel)]="user.lastName" name="lastName" class="material-input" [disabled]="!editMode" [ngClass]="{'not-empty': user.lastName, 'has-error': errors.last_name}" required>
-
-      <div class="fs-m0 material-group-error" *ngIf="form.controls.lastName && form.controls.lastName.invalid && form.controls.lastName.touched">
-        {{'user.form.last_name.validation' | translate}}
-      </div>
-      <div class="fs-m0 material-group-error" *ngIf="errors.last_name">
-        {{errors.last_name}}
-      </div>
-    </div>
-
-    <div class="material-group">
-      <i class="icon-ic-paper"></i>
-
-      <label for="email">{{'user.form.email' | translate}}</label>
-      <input type="text" id="email" [(ngModel)]="user.email" name="email" class="material-input" [disabled]="!editMode" [ngClass]="{'not-empty': user.email, 'has-error': errors.email}"
-             required pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$">
-
-      <div class="fs-m0 material-group-error" *ngIf="form.controls.email && form.controls.email.invalid && form.controls.email.touched">
-        {{'user.form.email.validation' | translate}}
-      </div>
-      <div class="fs-m0 material-group-error" *ngIf="errors.email">
-        {{errors.email}}
-      </div>
-    </div>
-
-    <div class="material-group">
-      <i class="icon-ic-paper"></i>
-
-      <label for="phone">{{'user.form.phone' | translate}}</label>
-      <input type="text" id="phone" [(ngModel)]="user.phone" name="phone" class="material-input" [disabled]="!editMode" [ngClass]="{'not-empty': user.phone, 'has-error': errors.phone}" required minlength="9">
-
-      <div class="fs-m0 material-group-error" *ngIf="form.controls.phone && form.controls.phone.invalid && form.controls.phone.touched">
-        {{'user.form.phone.validation' | translate}}
-      </div>
-      <div class="fs-m0 material-group-error" *ngIf="errors.phone">
-        {{errors.phone}}
-      </div>
-    </div>
-
-    <div class="text-center">
-      <button type="button" class="button secondary form-control clickable" (click)="onEditClick()" *ngIf="!editMode">
-        {{'common.edit' | translate}}
-      </button>
-      <button type="submit" class="button primary form-control clickable" [disabled]="form.invalid" *ngIf="editMode">
-        {{'common.save' | translate}}
-      </button>
-    </div>
-  </form>
-</div>
--->

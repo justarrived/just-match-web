@@ -23,7 +23,7 @@ export class LoginComponent {
       .then(result => this.router.navigate(['/home']))
       .catch(errors => {
         if (errors.details) {
-          this.errorMessage = errors.details.password;
+          this.errorMessage = errors.details.password.charAt(0).toUpperCase() + errors.details.password.slice(1);
         } else {
           console.log(errors);
         }

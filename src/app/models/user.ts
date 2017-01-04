@@ -22,13 +22,13 @@ export class User {
   frilansFinansPaymentDetails: boolean;
   company: Company;
   profileImage: UserImage;
-  password: string;
-  oldPassword: string;
   countryOfOriginCode: string;
   currentStatus: string;
   accountClearingNumber: string;
   accountNumber: string;
-
+  newPassword: string;
+  repeatedPassword: string;
+  oldPassword: string;
 
   constructor(jsonObject: any) {
     if (!jsonObject) {
@@ -85,8 +85,6 @@ export class User {
       'last_name': this.lastName,
       'phone': this.phone,
       'language_id': this.languageId,
-      'password': this.password,
-      'old_password': this.oldPassword,
       'country_of_origin': this.countryOfOriginCode,
       'current_status': this.currentStatus,
       'account_clearing_number': this.accountClearingNumber,
