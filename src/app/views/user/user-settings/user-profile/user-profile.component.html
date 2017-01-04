@@ -23,14 +23,14 @@
         <label>{{'user.profile.form.permit.label' | translate}} *:</label>
         <div class="profile-input-permit-radio-container">
           <div>
-            <label for="permitYes">
-            <input class="radioButton" type="radio" name="permit" id="permitYes" [(ngModel)]="gotPermit" value="true" />
+            <label for="permit-yes">
+            <input class="radioButton" type="radio" name="permit" id="permit-yes" [(ngModel)]="gotPermit" value="true" />
             <span></span>
             {{'common.yes' | translate}}</label>
           </div>
           <div>
-            <label for="permitNo">
-            <input class="radioButton" type="radio" name="permit" id="permitNo" [(ngModel)]="gotPermit" value="false" />
+            <label for="permit-no">
+            <input class="radioButton" type="radio" name="permit" id="permit-no" [(ngModel)]="gotPermit" value="false" />
             <span></span>
             {{'common.no' | translate}}</label>
           </div>
@@ -41,20 +41,20 @@
         <label>{{'user.profile.form.permit.type.label' | translate}} *:</label>
         <div class="profile-input-permit-radio-container">
           <div>
-            <label for="permitTypeAsylum">
-            <input class="radioButton" type="radio" name="permitType" id="permitTypeAsylum" [(ngModel)]="user.residencePermit" value="asylum_seeker" />
+            <label for="permit-type-asylum">
+            <input class="radioButton" type="radio" name="permit-type" id="permit-type-asylum" [(ngModel)]="user.currentStatus" value="asylum_seeker" />
             <span></span>
             {{'user.profile.form.permit.type.asylum' | translate}}</label>
           </div>
           <div>
-            <label for="permitTypePermanent">
-            <input class="radioButton" type="radio" name="permitType" id="permitTypePermanent" [(ngModel)]="user.residencePermit" value="permanent_residence" />
+            <label for="permit-type-permanent">
+            <input class="radioButton" type="radio" name="permit-type" id="permit-type-permanent" [(ngModel)]="user.currentStatus" value="permanent_residence" />
             <span></span>
             {{'user.profile.form.permit.type.permanent' | translate}}</label>
           </div>
           <div>
-            <label for="permitTypeTemporary">
-            <input class="radioButton" type="radio" name="permitType" id="permitTypeTemporary" [(ngModel)]="user.residencePermit" value="temporary_residence_work" />
+            <label for="permit-type-temporary">
+            <input class="radioButton" type="radio" name="permit-type" id="permit-type-temporary" [(ngModel)]="user.currentStatus" value="temporary_residence_work" />
             <span></span>
             {{'user.profile.form.permit.type.temporary' | translate}}</label>
           </div>
@@ -111,6 +111,7 @@ Documents not supported yet. TODO implement when documents supported in backend.
 
       <div class="profile-button-container">
         <div *ngIf="errorMessage" class="error-message">{{errorMessage | translate}}</div>
+        <div *ngIf="errorCause" class="error-message">{{errorCause}}</div>
         <div *ngIf="saveSuccess" class="save-message">{{'user.profile.form.submit.success' | translate}}</div>
         <button type="submit" class="btn-primary btn-small btn">{{'user.profile.form.submit.button' | translate}}</button>
       </div>

@@ -25,7 +25,10 @@ export class User {
   password: string;
   oldPassword: string;
   countryOfOriginCode: string;
-  residencePermit: string;
+  currentStatus: string;
+  accountClearingNumber: string;
+  accountNumber: string;
+
 
   constructor(jsonObject: any) {
     if (!jsonObject) {
@@ -50,7 +53,9 @@ export class User {
     this.profileImage = this.getProfileImage();
     this.languageId = jsonObject.language_id;
     this.countryOfOriginCode = jsonObject.country_of_origin;
-    this.residencePermit = jsonObject.residence_permit;
+    this.currentStatus = jsonObject.current_status;
+    this.accountClearingNumber = jsonObject.account_clearing_number;
+    this.accountNumber = jsonObject.account_number;
   }
 
   getNativeLanguage(): UserLanguage {
@@ -83,7 +88,9 @@ export class User {
       'password': this.password,
       'old_password': this.oldPassword,
       'country_of_origin': this.countryOfOriginCode,
-      'residence_permit': this.residencePermit
+      'current_status': this.currentStatus,
+      'account_clearing_number': this.accountClearingNumber,
+      'account_number': this.accountNumber
     };
   }
 }

@@ -1,4 +1,61 @@
-<div class="centered-form-container">
+<div class="settings-container">
+  <div class="settings-form-container">
+
+    <form #form="ngForm" (ngSubmit)="onSubmit()">
+
+      <div class="settings-input-container">
+        <label for="first-name-input">{{'user.settings.form.first.name.label' | translate}} *:</label>
+        <input required class="form-control material-input" id="first-name-input" name="frst-name-input" type="text" placeholder="{{'user.settings.form.first.name.placeholder' | translate}}" [(ngModel)]="user.firstName">
+      </div>
+
+      <div class="settings-input-container">
+        <label for="last-name-input">{{'user.settings.form.last.name.label' | translate}} *:</label>
+        <input required class="form-control material-input" id="last-name-input" name="last-name-input" type="text" placeholder="{{'user.settings.form.last.name.placeholder' | translate}}" [(ngModel)]="user.lastName">
+      </div>
+
+      <div class="settings-input-container">
+        <label for="email-input">{{'user.settings.form.email.label' | translate}} *:</label>
+        <input required class="form-control material-input" id="email-input" name="email-input" type="email" placeholder="{{'user.settings.form.email.placeholder' | translate}}" [(ngModel)]="user.email">
+      </div>
+
+      <div class="settings-input-container">
+        <label for="phone-input">{{'user.settings.form.phone.label' | translate}} *:</label>
+        <input required class="form-control material-input" id="phone-input" name="phone-input" type="text" placeholder="{{'user.settings.form.phone.placeholder' | translate}}" [(ngModel)]="user.phone">
+      </div>
+
+      <div class="settings-input-container">
+        <label for="password-input">{{'user.settings.form.password.label' | translate}}:</label>
+        <input class="form-control material-input" id="password-input" name="password-input" type="password" placeholder="{{'user.settings.form.password.placeholder' | translate}}" [(ngModel)]="user.password">
+      </div>
+
+      <hr>
+
+      <h4>{{'user.settings.form.bank.details.header' | translate}}</h4>
+
+      <div class="settings-input-container">
+        <label for="clearing-number-input">{{'user.settings.form.clearing.number.label' | translate}}:</label>
+        <input class="form-control material-input" id="clearing-number-input" name="clearing-number-input" type="text" placeholder="{{'user.settings.form.clearing.number.placeholder' | translate}}" [(ngModel)]="user.accountClearingNumber">
+      </div>
+
+      <div class="settings-input-container">
+        <label for="account-number-input">{{'user.settings.form.account.number.label' | translate}}:</label>
+        <input class="form-control material-input" id="account-number-input" name="account-number-input" type="text" placeholder="{{'user.settings.form.account.number.placeholder' | translate}}" [(ngModel)]="user.accountNumber">
+      </div>
+
+
+      <div class="settings-button-container">
+        <div *ngIf="errorMessage" class="error-message">{{errorMessage | translate}}</div>
+        <div *ngIf="serverError" class="error-message">{{serverError}}</div>
+        <div *ngIf="saveSuccess" class="save-message">{{'user.settings.form.submit.success' | translate}}</div>
+        <button type="submit" class="btn-primary btn-small btn">{{'user.settings.form.submit.button' | translate}}</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+
+<!--<div class="centered-form-container">
   <form class="centered-form" #form="ngForm" (ngSubmit)="onSubmit()">
     <div class="material-group">
       <i class="icon-ic-paper"></i>
@@ -81,3 +138,4 @@
     </div>
   </form>
 </div>
+-->

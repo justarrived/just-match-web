@@ -1,0 +1,54 @@
+@import '../../../../styles/variables';
+@import '../../../../styles/buttons';
+
+.settings-form-container {
+  padding-top: 50px;
+  max-width: 500px;
+  margin: 0 auto;
+
+  h4 {
+    color: black;
+  }
+
+  .settings-input-container {
+    padding-bottom: 1.5em;
+    margin-bottom: 15px;
+
+    label {
+      color: black;
+      font-size: 20px;
+    }
+  }
+
+  hr {
+    width: 75%;
+  }
+
+  .settings-button-container {
+    padding-bottom: 1.5em;
+    text-align: center;
+
+    .save-message {
+      color: green;
+    }
+
+    .error-message {
+      color: red;
+    }
+
+    .error-message {
+      color: $color-cerise-500;
+    }
+
+    button {
+      display: block;
+      margin: 15px auto 30px;
+      min-width: 250px;
+    }
+
+    a {
+      color: $color-accent-main;
+      font-weight: 600;
+    }
+  }
+}

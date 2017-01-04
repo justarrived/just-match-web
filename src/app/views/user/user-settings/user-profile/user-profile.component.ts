@@ -13,7 +13,6 @@ import {LanguageProficiency} from '../../../../models/language/language-proficie
 import {languageProficiencyLevels} from '../../../../enums/enums';
 import {UserProxy} from '../../../../services/proxy/user-proxy.service';
 import {AutocompleteDropdownComponent} from '../../../../components/autocomplete-dropdown/autocomplete-dropdown.component';
-import {FormGroup, FormBuilder, Validators} from '@angular/forms';
 
 @Component({
   selector: 'user-profile',
@@ -34,21 +33,14 @@ export class UserProfileComponent implements OnInit {
   @Input() user: User;
 
   gotPermit: string;
-
-  profileForm: FormGroup;
-
   saveSuccess: boolean;
-
   errorMessage: string;
+  errorCause: string;
 
-  constructor(private languageProxy: LanguageProxy, private countryProxy: CountryProxy, private authManager: AuthManager, private userProxy: UserProxy, private formBuilder: FormBuilder) {
+  constructor(private languageProxy: LanguageProxy, private countryProxy: CountryProxy, private authManager: AuthManager, private userProxy: UserProxy) {
+    // remove native speaker as option
     this.languageProficiencyLevelsAvailable = this.languageProficiencyLevelsAvailable.slice();
     this.languageProficiencyLevelsAvailable.pop();
-
-    this.profileForm = formBuilder.group({
-      'residence-permit': [null, Validators.compose([Validators.required])],
-      'country': [null, Validators.compose([Validators.required])]
-    });
   }
 
   ngOnInit() {
@@ -63,16 +55,8 @@ export class UserProfileComponent implements OnInit {
         this.countryDropdown.textInput = countryOfOrigin.name || '';
       });
 
-    this.gotPermit = this.user.residencePermit ? 'true' : 'false';
+    this.gotPermit = this.user.currentStatus ? 'true' : 'false';
   }
-
-  validCountry() {
-    return this.countryProxy.getCountries()
-      .then((countries) => {
-        return some(countries, country => country.countryCode === this.user.countryOfOriginCode);
-      });
-  }
-
 
   getLanguages() {
     return (searchText): Promise<Array<Language>> => {
@@ -135,12 +119,13 @@ export class UserProfileComponent implements OnInit {
   }
 
   validForm(): boolean {
-    return this.user.getNativeLanguage() && this.user.countryOfOriginCode && (this.gotPermit == 'false' || this.user.residencePermit) && true;
+    return this.user.getNativeLanguage() && this.user.countryOfOriginCode && (this.gotPermit == 'false' || this.user.currentStatus) && true;
   }
 
   onSubmit() {
     this.saveSuccess = false;
     this.errorMessage = '';
+    this.errorCause = '';
     if (!this.validForm()) {
       this.errorMessage = 'user.profile.form.submit.incomplete';
       return;
@@ -149,6 +134,17 @@ export class UserProfileComponent implements OnInit {
       .then((response) => {
         this.saveSuccess = true;
         return this.authManager.authenticateIfNeeded();
+      })
+      .catch(errors => {
+        this.errorMessage = 'user.profile.form.submit.server.error';
+        if (errors.details) {
+          if (Object.keys(errors.details)[0]) {
+            this.errorCause = Object.keys(errors.details)[0].split('_').join(' ') + ' ' + errors.details[Object.keys(errors.details)[0]];
+            this.errorCause = this.errorCause.charAt(0).toUpperCase() + this.errorCause.slice(1);
+          } else {
+            this.errorCause = 'user.profile.form.submit.server.error.nothing';
+          }
+        }
       });
   }
 }

@@ -25,10 +25,9 @@ export class UserSettingsComponent {
   onProfileImageFilenameChange(event) {
     let file = event.srcElement.files[0];
     if (file) {
-      let data = new FormData();
-      data.append('image', file);
-      data.append('category', 'profile');
-      this.userProxy.saveImage(this.user.id, data).then(userImage => {
+      let imageData = new FormData();
+      imageData.append('image', file);
+      this.userProxy.saveImage(this.user.id, imageData, {category: 'profile'}).then(userImage => {
         this.user.images.push(userImage);
         this.user.profileImage = userImage;
       });
