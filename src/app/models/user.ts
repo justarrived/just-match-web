@@ -22,6 +22,7 @@ export class User {
   frilansFinansPaymentDetails: boolean;
   company: Company;
   profileImage: UserImage;
+  permitImage: UserImage;
   countryOfOriginCode: string;
   currentStatus: string;
   accountClearingNumber: string;
@@ -50,7 +51,8 @@ export class User {
     this.skills = jsonObject.competence_text;
     this.company = new Company(jsonObject.company);
     this.frilansFinansPaymentDetails = jsonObject.frilans_finans_payment_details;
-    this.profileImage = this.getProfileImage();
+    this.profileImage = this.getImageByCategory('profile');
+    this.permitImage = this.getImageByCategory('work_permit');
     this.languageId = jsonObject.language_id;
     this.countryOfOriginCode = jsonObject.country_of_origin;
     this.currentStatus = jsonObject.current_status;
@@ -62,8 +64,8 @@ export class User {
     return this.userLanguages.find(language => language.proficiency.proficiency === 5);
   }
 
-  getProfileImage(): UserImage {
-    return this.images.find(image => image.category === 'profile');
+  getImageByCategory(category): UserImage {
+    return this.images.find(image => image.category === category);
   }
 
   toJsonObject(): Object {

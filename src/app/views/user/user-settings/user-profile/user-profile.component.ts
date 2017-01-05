@@ -107,11 +107,11 @@ export class UserProfileComponent implements OnInit {
   }
 
   onPermitImageFilenameChange(event) {
-    let file = event.srcElement.files[0].name;
+    let file = event.srcElement.files[0];
     if (file) {
-      this.userProxy.saveImage(this.user.id, file, 'permit').then(userImage => {
+      this.userProxy.saveImage(this.user.id, file, 'work_permit').then(userImage => {
         this.user.images.push(userImage);
-        this.user.profileImage = userImage;
+        this.user.permitImage = userImage;
       });
     }
   }

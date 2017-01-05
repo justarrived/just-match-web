@@ -65,6 +65,7 @@
         <input type="file" id="permit-image-filename" name="permit-image-filename" class="input-image-upload" (change)="onPermitImageFilenameChange($event)" accept="image/*">
         <label for="permit-image-filename" class="btn-secondary btn-small btn btn-image-upload" >{{'user.profile.form.permit.upload.button' | translate}}</label>
         <p>{{'user.profile.form.permit.upload.description' | translate}}</p>
+        <div *ngIf="user.permitImage" class="permit-saved-message">{{'user.profile.form.permit.upload.uploaded' | translate}}</div>
       </div>
 
       <hr>

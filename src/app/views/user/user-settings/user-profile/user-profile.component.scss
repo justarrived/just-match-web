@@ -134,6 +134,10 @@
     p {
       margin-top: 10px;
     }
+
+    .permit-saved-message {
+      color: green;
+    }
   }
 
   .profile-button-container {
@@ -142,10 +146,6 @@
 
     .save-message {
       color: green;
-    }
-
-    .error-message {
-      color: red;
     }
 
     .error-message {
