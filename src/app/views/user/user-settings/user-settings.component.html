@@ -1,7 +1,7 @@
 <div class="user-profile-container">
   <div class="user-profile-subheader-container">
-    <h2>{{'profile' | translate}}</h2>
-    <p>{{'profile.create.description' | translate}}</p>
+    <h2>{{'user.profile.header.title' | translate}}</h2>
+    <p>{{'user.profile.header.information' | translate}}</p>
 
     <div class="user-profile-subheader-info-container">
       <div class="user-profile-subheader-info-image-container">
@@ -15,14 +15,14 @@
 
   <div class="user-profile-tab-container">
     <div class="user-profile-header-tab col-xs-6" [ngClass]="{'selected': selectedState == 'profile'}" (click)="setState('profile')">
-      <h4>
-        {{'profile' | translate}}
-      </h4>
+      <div class="user-profile-tab-header">
+        {{'user.profile.tab.profile.details.title' | translate}}
+      </div>
     </div>
     <div class="user-profile-header-tab col-xs-6" [ngClass]="{'selected': selectedState == 'details'}" (click)="setState('details')">
-      <h4>
-        {{"menu.settings.personal_data" | translate}}
-      </h4>
+      <div class="user-profile-tab-header">
+        {{'user.profile.tab.personal.details.title' | translate}}
+      </div>
     </div>
   </div>
 

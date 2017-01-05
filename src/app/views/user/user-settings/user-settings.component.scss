@@ -92,11 +92,13 @@
       text-align: center;
       background-color: $default-bg-color;
       cursor: pointer;
-
-      h4 {
-        color: $color-gray-200;
-      }
       border-bottom: 4px solid $color-gray-50;
+
+      .user-profile-tab-header {
+        color: $color-gray-200;
+        font-size: 18px;
+        font-weight: 700;
+      }
 
       &.selected {
         h4 {
