@@ -6,8 +6,10 @@
   max-width: 500px;
   margin: 0 auto;
 
-  h4 {
+  .input-group-header {
     color: black;
+    font-size: 24px;
+    margin-bottom: 20px;
   }
 
   .settings-input-container {
@@ -25,11 +27,11 @@
 
   hr {
     width: 75%;
-    margin: 40px 0;
+    margin: 40px auto;
   }
 
   .settings-button-container {
-    padding-bottom: 1.5em;
+    margin: 40px 0;
     text-align: center;
 
     .save-message {

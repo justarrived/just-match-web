@@ -330,6 +330,8 @@
   "user.profile.form.submit.error": "Could not save:",
   "user.profile.form.submit.error.nothing": "No details provided",
   "user.settings.form.bank.details.header": "Bank details",
+  "user.settings.form.personal.info.header": "Personal information",
+  "user.settings.form.change.password.header": "Password",
   "user.settings.form.first.name.label": "First name",
   "user.settings.form.first.name.placeholder": "First name",
   "user.settings.form.first.name.validation.required": "First name is required",

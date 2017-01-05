@@ -3,6 +3,8 @@
 
     <form #form="ngForm" (ngSubmit)="onSubmit()">
 
+      <div class="input-group-header">{{'user.settings.form.personal.info.header' | translate}}</div>
+
       <div class="form-group material-group settings-input-container" [ngClass]="{'has-error':!settingsForm.controls['first-name-input'].valid}">
         <label for="first-name-input">{{'user.settings.form.first.name.label' | translate}} *:</label>
         <input class="form-control material-input" id="first-name-input" name="frst-name-input" type="text" placeholder="{{'user.settings.form.first.name.placeholder' | translate}}" [(ngModel)]="user.firstName" [formControl]="settingsForm.controls['first-name-input']">
@@ -31,6 +33,10 @@
         <div *ngIf="settingsForm.controls['phone-input'].hasError('pattern')" class="alert alert-danger">{{'user.settings.form.phone.validation.pattern' | translate}}.</div>
       </div>
 
+      <hr>
+
+      <div class="input-group-header">{{'user.settings.form.change.password.header' | translate}}</div>
+
       <div class="form-group material-group settings-input-container" [ngClass]="{'has-error':!settingsForm.controls['new-password-input'].valid || !settingsForm.controls['repeat-password-input'].valid}">
         <label for="password-input">{{'user.settings.form.new.password.label' | translate}}:</label>
         <input class="form-control material-input" id="old-password-input" name="old-password-input" type="password" placeholder="{{'user.settings.form.old.password.placeholder' | translate}}" [(ngModel)]="user.oldPassword" [formControl]="settingsForm.controls['old-password-input']">
@@ -42,7 +48,7 @@
 
       <hr>
 
-      <h4>{{'user.settings.form.bank.details.header' | translate}}</h4>
+      <div class="input-group-header">{{'user.settings.form.bank.details.header' | translate}}</div>
 
       <div class="form-group material-group settings-input-container">
         <label for="clearing-number-input">{{'user.settings.form.clearing.number.label' | translate}}:</label>

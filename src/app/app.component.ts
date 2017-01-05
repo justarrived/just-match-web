@@ -46,6 +46,9 @@ export class AppComponent implements OnInit {
       if (event instanceof NavigationEnd) {
         this.currentState = router.url;
         this.states.push(router.url);
+        this.authManager.authenticateIfNeeded().then(result => {
+          this.user = result;
+        });
       }
 
       if (event instanceof NavigationCancel) {
