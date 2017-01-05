@@ -4,8 +4,9 @@
 @import './app/styles/typography';
 @import './app/styles/tooltips';
 
-html, body {
-    height: 100%;
+body,
+html {
+  height: 100%;
 }
 
 body {
@@ -45,6 +46,7 @@ body {
   .block {
     display: block;
   }
+
   .inline-block {
     display: inline-block;
   }
@@ -72,6 +74,7 @@ body {
       width: 100%;
     }
   }
+
   .table-row {
     display: table-row;
   }
@@ -89,21 +92,27 @@ body {
   .fs-s {
     font-size: $fs-s;
   }
+
   .fs-m0 {
     font-size: $fs-m0;
   }
+
   .fs-m {
     font-size: $fs-m;
   }
+
   .fs-l {
     font-size: $fs-l;
   }
+
   .fs-xl {
     font-size: $fs-xl;
   }
+
   .fs-xxl {
     font-size: $fs-xxl;
   }
+
   .fs-xxxl {
     font-size: $fs-xxxl;
   }
@@ -144,9 +153,10 @@ body {
     -ms-user-select: none;
     outline: none;
 
-    &:hover, &:focus {
+    &:focus,
+    &:hover {
       background-color: rgba(0, 0, 0, 0.2);
-      opacity: .95;
+      opacity: 0.95;
       color: white;
       user-drag: none;
       user-select: none;
@@ -168,7 +178,8 @@ body {
       font-size: $fs-l;
       background-color: $color-primary-cerise;
 
-      &:hover, &:focus {
+      &:focus,
+      &:hover {
         background-color: darken($color-primary-cerise, 5%);
       }
     }
@@ -177,7 +188,8 @@ body {
       font-size: $fs-l;
       background-color: $color-secondary-gray;
 
-      &:hover, &:focus {
+      &:focus,
+      &:hover {
         background-color: darken($color-secondary-gray, 10%);
       }
     }
@@ -189,13 +201,15 @@ body {
       margin: 30px auto 0;
       display: inherit;
 
-      &.cancel{
+      &.cancel {
         margin: 15px auto;
       }
     }
 
-    &.disabled, &[disabled] {
-      &, &:hover {
+    &.disabled,
+    &[disabled] {
+      &,
+      &:hover {
         background-color: $color-secondary-gray;
         color: #eeeeee;
         opacity: 0.5;
@@ -214,15 +228,18 @@ body {
       display: block;
       margin-bottom: 5px;
 
-      &:focus, &.not-empty {
+      &.not-empty,
+      &:focus {
         ~ .material-label:not(.label-up) {
           @include label-up();
         }
       }
 
-      &.ng-touched.ng-invalid, &.has-error {
+      &.has-error,
+      &.ng-touched.ng-invalid {
         border: 1px solid $color-primary-cerise !important;
         color: $color-primary-cerise !important;
+
         ~ .material-label {
           color: $color-primary-cerise !important;
         }
@@ -273,7 +290,16 @@ body {
   }
 }
 
-body > .container, .navbar-fixed-top > .container {
+.navbar-fixed-top > .navbar-container,
+body > .app-container {
   height: 100%;
-  padding: 0;
+  margin: 0 auto;
+
+  @media screen and (min-width: $lg-device-width) {
+    width: $lg-device-width;
+  }
+
+  @media screen and (max-width: $lg-device-width) {
+    width: 100%;
+  }
 }
