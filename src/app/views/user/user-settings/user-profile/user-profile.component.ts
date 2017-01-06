@@ -110,6 +110,7 @@ export class UserProfileComponent implements OnInit {
       deleteElementFromArray(this.user.userLanguages, this.user.userLanguages.find(lang => lang.language && lang.language.languageCode === language.languageCode));
 
       this.user.userLanguages.push(nativeLanguage);
+      this.user.languageId = language.id;
     }
   }
 
