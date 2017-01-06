@@ -28,6 +28,14 @@
 .home-new-jobs {
   padding: 3em;
 
+  @media screen and (max-width: 991px) {
+    padding: 3em 0;
+
+    .title {
+      padding-left: 3em;
+    }
+  }
+
   > div {
     padding: 0;
   }
@@ -40,47 +48,74 @@
       color: $color-primary-cerise;
     }
 
-    @media screen and (min-width: 576px) {
+    @media (min-width: 576px) {
       flex-direction: column-reverse;
+
+      @media (max-width: 991px) {
+        padding-right: 3em;
+      }
 
       span {
         align-self: flex-end;
       }
     }
+
+    @media (max-width: 575px) {
+      padding-left: 3em;
+    }
   }
-}
 
-.jobs-slider {
-  margin-top: 1em;
-  overflow-y: scroll;
-  white-space: nowrap;
+  .jobs-slider {
+    margin-top: 1em;
+    overflow-y: scroll;
+    white-space: nowrap;
 
-  .item-container {
-    display: inline-block;
-    width: 120px;
-    margin: 5px;
-    background-color: $default-bg-color;
-    border-radius: 3px 3px 3px 3px;
-    box-shadow: 0 0 3px 0 rgba(0,0,0,.2);
-    cursor: pointer;
+    .item-container {
+      display: inline-block;
+      width: 139px;
+      margin: 5px;
+      background-color: $default-bg-color;
+      border-radius: 3px 3px 3px 3px;
+      box-shadow: 0 0 3px 0 rgba(0,0,0,.2);
+      cursor: pointer;
 
-    .job-name {
-      height: 60px;
-      padding: 10px;
+      @media (min-width: 992px) and (max-width: 1199px) {
+        width: 134px;
+      }
 
-      div {
-        max-height: 100%;
-        overflow: hidden;
-        white-space: normal;
+      .job-name {
+        height: 92px;
+        padding: 10px;
+
+        div {
+          max-height: 100%;
+          overflow: hidden;
+          white-space: normal;
+        }
+      }
+
+      .salary-container {
+        color: $white;
+        background: $color-primary-cerise;
+        padding: 5px;
+        border-radius: 0 0 3px 3px;
+        text-align: center;
       }
     }
 
-    .salary-container {
-      color: $white;
-      background: $color-primary-cerise;
-      padding: 5px;
-      border-radius: 0 0 3px 3px;
-      text-align: center;
+    @media (min-width: 992px) {
+      overflow-y: hidden;
+      overflow-x: hidden;
+    }
+
+    @media (max-width: 991px) {
+
+      .item-container:first-of-type {
+        margin-left: 3em;
+      }
+      .item-container:last-of-type {
+        margin-right: 3em;
+      }
     }
   }
 }
