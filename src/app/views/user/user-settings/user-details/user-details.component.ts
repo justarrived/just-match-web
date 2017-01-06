@@ -1,7 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {AuthManager} from '../../../../services/auth-manager.service';
 import {User} from '../../../../models/user';
-import {ServerValidationErrors} from '../../../../models/server-validation-errors';
 import {UserProxy} from '../../../../services/proxy/user-proxy.service';
 import {FormGroup, FormBuilder, Validators} from '@angular/forms';
 
@@ -16,7 +15,7 @@ export class UserDetailsComponent {
 
   settingsForm: FormGroup;
 
-  serverValidationErrors: ServerValidationErrors = new ServerValidationErrors();
+  serverValidationErrors: any = {};
   saveSuccess: boolean;
   saveFail: boolean;
 
@@ -45,13 +44,8 @@ export class UserDetailsComponent {
   }
 
   handleServerErrors(errors) {
-    if (errors.attributes) {
-      this.saveFail = true;
-      this.serverValidationErrors = new ServerValidationErrors(errors);
-    } else {
-      // Not attribute related -> throw;
-      throw errors;
-    }
+    this.saveFail = true;
+    this.serverValidationErrors = errors.details || errors;
   }
 
   onSubmit() {

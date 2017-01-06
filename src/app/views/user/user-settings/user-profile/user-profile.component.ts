@@ -14,7 +14,6 @@ import {LanguageProficiency} from '../../../../models/language/language-proficie
 import {languageProficiencyLevels} from '../../../../enums/enums';
 import {UserProxy} from '../../../../services/proxy/user-proxy.service';
 import {AutocompleteDropdownComponent} from '../../../../components/autocomplete-dropdown/autocomplete-dropdown.component';
-import {ServerValidationErrors} from '../../../../models/server-validation-errors';
 
 @Component({
   selector: 'user-profile',
@@ -35,7 +34,7 @@ export class UserProfileComponent implements OnInit {
   @Input() user: User;
 
   gotPermit: string;
-  serverValidationErrors: ServerValidationErrors = new ServerValidationErrors();
+  serverValidationErrors: any = {};
   saveSuccess: boolean;
   saveFail: boolean;
 
@@ -139,13 +138,8 @@ export class UserProfileComponent implements OnInit {
   }
 
   handleServerErrors(errors) {
-    if (errors.attributes) {
-      this.saveFail = true;
-      this.serverValidationErrors = new ServerValidationErrors(errors);
-    } else {
-      // Not attribute related -> throw;
-      throw errors;
-    }
+    this.saveFail = true;
+    this.serverValidationErrors = errors.details || errors;
   }
 
   onSubmit() {
