@@ -1,6 +1,7 @@
 import {Component, Input} from '@angular/core';
 import {AuthManager} from '../../../../services/auth-manager.service';
 import {User} from '../../../../models/user';
+import {ServerValidationErrors} from '../../../../models/server-validation-errors';
 import {UserProxy} from '../../../../services/proxy/user-proxy.service';
 import {FormGroup, FormBuilder, Validators} from '@angular/forms';
 
@@ -15,9 +16,9 @@ export class UserDetailsComponent {
 
   settingsForm: FormGroup;
 
+  serverValidationErrors: ServerValidationErrors = new ServerValidationErrors();
   saveSuccess: boolean;
-  errorMessage: string;
-  errorCause: string;
+  saveFail: boolean;
 
   constructor(private authManager: AuthManager, private userProxy: UserProxy, private formBuilder: FormBuilder) {
     this.settingsForm = formBuilder.group({
@@ -43,26 +44,19 @@ export class UserDetailsComponent {
     return this.settingsForm.valid && !this.passwordsSuppliedAndMisMatch() && true;
   }
 
-  handleServerErrors(errors, addPrefix: boolean = true) {
-    this.errorMessage = 'user.settings.form.submit.error';
-    if (errors.details) {
-      if (Object.keys(errors.details)[0]) {
-        if (addPrefix) {
-          this.errorCause = Object.keys(errors.details)[0].split('_').join(' ') + ' ' + errors.details[Object.keys(errors.details)[0]];
-        } else {
-          this.errorCause = errors.details[Object.keys(errors.details)[0]];
-        }
-      } else {
-        this.errorCause = 'user.settings.form.submit.error.nothing';
-        throw errors;
-      }
+  handleServerErrors(errors) {
+    if (errors.attributes) {
+      this.saveFail = true;
+      this.serverValidationErrors = new ServerValidationErrors(errors);
+    } else {
+      // Not attribute related -> throw;
+      throw errors;
     }
   }
 
   onSubmit() {
     this.saveSuccess = false;
-    this.errorMessage = '';
-    this.errorCause = '';
+    this.saveFail = false;
     this.userProxy.updateUser(this.user.toJsonObject())
       .then((response) => {
         if (this.passwordsSupplied()) {
@@ -78,14 +72,14 @@ export class UserDetailsComponent {
                 });
             })
             .catch(errors => {
-              this.handleServerErrors(errors, false);
+              this.handleServerErrors(errors);
             });
         } else {
           this.saveSuccess = true;
         }
       })
       .catch(errors => {
-        this.handleServerErrors(errors, true);
+        this.handleServerErrors(errors);
       });
   }
 }

@@ -14,6 +14,7 @@ import {LanguageProficiency} from '../../../../models/language/language-proficie
 import {languageProficiencyLevels} from '../../../../enums/enums';
 import {UserProxy} from '../../../../services/proxy/user-proxy.service';
 import {AutocompleteDropdownComponent} from '../../../../components/autocomplete-dropdown/autocomplete-dropdown.component';
+import {ServerValidationErrors} from '../../../../models/server-validation-errors';
 
 @Component({
   selector: 'user-profile',
@@ -34,9 +35,9 @@ export class UserProfileComponent implements OnInit {
   @Input() user: User;
 
   gotPermit: string;
+  serverValidationErrors: ServerValidationErrors = new ServerValidationErrors();
   saveSuccess: boolean;
-  errorMessage: string;
-  errorCause: string;
+  saveFail: boolean;
 
   constructor(private languageProxy: LanguageProxy, private countryProxy: CountryProxy, private authManager: AuthManager, private userProxy: UserProxy) {
     // remove native speaker as option
@@ -138,21 +139,18 @@ export class UserProfileComponent implements OnInit {
   }
 
   handleServerErrors(errors) {
-    this.errorMessage = 'user.profile.form.submit.error';
-    if (errors.details) {
-      if (Object.keys(errors.details)[0]) {
-        this.errorCause = Object.keys(errors.details)[0].split('_').join(' ') + ' ' + errors.details[Object.keys(errors.details)[0]];
-      } else {
-        this.errorCause = 'user.profile.form.submit.error.nothing';
-        throw errors;
-      }
+    if (errors.attributes) {
+      this.saveFail = true;
+      this.serverValidationErrors = new ServerValidationErrors(errors);
+    } else {
+      // Not attribute related -> throw;
+      throw errors;
     }
   }
 
   onSubmit() {
     this.saveSuccess = false;
-    this.errorMessage = '';
-    this.errorCause = '';
+    this.saveFail = false;
     this.userProxy.updateUser(this.user.toJsonObject())
       .then((response) => {
         this.saveSuccess = true;
