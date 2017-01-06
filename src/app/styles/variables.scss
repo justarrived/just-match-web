@@ -54,9 +54,13 @@ $header-height: 54px;
 $header-button-margin: 12px;
 
 $xs-device-width: 543px;
+$xs-device-width-upper: #{$xs-device-width + 1px};
 $sm-device-width: 767px;
+$sm-device-width-upper: #{$sm-device-width + 1px};
 $md-device-width: 991px;
+$md-device-width-upper: #{$md-device-width + 1px};
 $lg-device-width: 1199px;
+$lg-device-width-upper: #{$lg-device-width + 1px};
 
 // Background colors
 $default-bg-color: $white;
