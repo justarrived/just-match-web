@@ -21,17 +21,17 @@
 
       <div class="profile-input-container">
         <label>{{'user.profile.form.permit.label' | translate}} *:</label>
-        <div class="profile-input-permit-radio-container">
-          <div>
-            <label for="permit-yes">
-            <input class="radioButton" type="radio" name="permit" id="permit-yes" [(ngModel)]="gotPermit" value="true" />
-            <span></span>
+        <div class="input-radio-container">
+          <div class="input-radio-button-container">
+            <label class="input-radio-button-label" for="permit-yes">
+            <input class="input-radio-button-input" type="radio" name="permit" id="permit-yes" [(ngModel)]="gotPermit" value="true" />
+            <span class="input-radio-button-span"></span>
             {{'common.yes' | translate}}</label>
           </div>
-          <div>
-            <label for="permit-no">
-            <input class="radioButton" type="radio" name="permit" id="permit-no" [(ngModel)]="gotPermit" value="false" />
-            <span></span>
+          <div class="input-radio-button-container">
+            <label class="input-radio-button-label" for="permit-no">
+            <input class="input-radio-button-input" type="radio" name="permit" id="permit-no" [(ngModel)]="gotPermit" value="false" />
+            <span class="input-radio-button-span"></span>
             {{'common.no' | translate}}</label>
           </div>
         </div>
@@ -39,23 +39,23 @@
 
       <div *ngIf="gotPermit === 'true'" class="profile-input-container">
         <label>{{'user.profile.form.permit.type.label' | translate}} *:</label>
-        <div class="profile-input-permit-radio-container">
-          <div>
-            <label for="permit-type-asylum">
-            <input class="radioButton" type="radio" name="permit-type" id="permit-type-asylum" [(ngModel)]="user.currentStatus" value="asylum_seeker" />
-            <span></span>
+        <div class="input-radio-container">
+          <div class="input-radio-button-container">
+            <label class="input-radio-button-label"  for="permit-type-asylum">
+            <input class="input-radio-button-input" type="radio" name="permit-type" id="permit-type-asylum" [(ngModel)]="user.currentStatus" value="asylum_seeker" />
+            <span class="input-radio-button-span"></span>
             {{'user.profile.form.permit.type.asylum' | translate}}</label>
           </div>
-          <div>
-            <label for="permit-type-permanent">
-            <input class="radioButton" type="radio" name="permit-type" id="permit-type-permanent" [(ngModel)]="user.currentStatus" value="permanent_residence" />
-            <span></span>
+          <div class="input-radio-button-container">
+            <label class="input-radio-button-label"  for="permit-type-permanent">
+            <input class="input-radio-button-input" type="radio" name="permit-type" id="permit-type-permanent" [(ngModel)]="user.currentStatus" value="permanent_residence" />
+            <span class="input-radio-button-span"></span>
             {{'user.profile.form.permit.type.permanent' | translate}}</label>
           </div>
-          <div>
-            <label for="permit-type-temporary">
-            <input class="radioButton" type="radio" name="permit-type" id="permit-type-temporary" [(ngModel)]="user.currentStatus" value="temporary_residence_work" />
-            <span></span>
+          <div class="input-radio-button-container">
+            <label class="input-radio-button-label" for="permit-type-temporary">
+            <input class="input-radio-button-input" type="radio" name="permit-type" id="permit-type-temporary" [(ngModel)]="user.currentStatus" value="temporary_residence_work" />
+            <span  class="input-radio-button-span"></span>
             {{'user.profile.form.permit.type.temporary' | translate}}</label>
           </div>
         </div>
@@ -73,7 +73,7 @@
       <div class="profile-input-container">
         <label>{{'user.profile.form.languages.label' | translate}}:</label>
         <autocomplete-dropdown (dropdownListItemSelect)="onLanguageSelect($event)" [clearDestinationAfterSelection]="true" [placeholder]="'user.profile.form.languages.placeholder' | translate" [autocompleteResultLabelFunction]="namePropertyLabel" [selectedItemLabelFunction]="namePropertyLabel"
-           [getData]="getLanguages()">
+           [getData]="getLanguagesExcludingNative()">
         </autocomplete-dropdown>
 
         <div class="profile-input-languages-table-container">

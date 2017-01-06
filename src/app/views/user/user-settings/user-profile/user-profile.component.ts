@@ -8,6 +8,7 @@ import {Language} from '../../../../models/language/language';
 import {User} from '../../../../models/user';
 import {isEmpty, some} from 'lodash';
 import {deleteElementFromArray} from '../../../../utils/array-util';
+import {deleteElementFromArrayLambda} from '../../../../utils/array-util';
 import {namePropertyLabel} from '../../../../utils/label-util';
 import {LanguageProficiency} from '../../../../models/language/language-proficiency';
 import {languageProficiencyLevels} from '../../../../enums/enums';
@@ -44,8 +45,8 @@ export class UserProfileComponent implements OnInit {
   }
 
   ngOnInit() {
-    let nativeLanguage = this.user.getNativeLanguage() || { language: { name: '' } };
-    let nativeLanguageDropdown = this.nativeLanguageDropdown;
+    const nativeLanguage = this.user.getNativeLanguage() || { language: { name: '' } };
+    const nativeLanguageDropdown = this.nativeLanguageDropdown;
     setTimeout(function() {
       nativeLanguageDropdown.textInput = nativeLanguage.language.name;
     }, 100);
@@ -64,6 +65,22 @@ export class UserProfileComponent implements OnInit {
     };
   }
 
+  getLanguagesExcludingNative() {
+    const nativeLanguage = this.user.getNativeLanguage();
+    if (!nativeLanguage) {
+      return this.getLanguages();
+    } else {
+      return (searchText): Promise<Array<Language>> => {
+        return this.languageProxy.getLanguages(searchText)
+          .then((languages) => {
+            deleteElementFromArrayLambda(languages, lang => lang.languageCode === nativeLanguage.language.languageCode)
+            return languages;
+          });
+      };
+    }
+
+  }
+
   getCountries() {
     return (searchText): Promise<Array<Country>> => {
       return this.countryProxy.getCountries(searchText);
@@ -72,7 +89,7 @@ export class UserProfileComponent implements OnInit {
 
   onLanguageSelect(language) {
     if (!isEmpty(language) && !some(this.user.userLanguages, { language: language })) {
-      let userLanguage = new UserLanguage({ proficiency: 1 });
+      const userLanguage = new UserLanguage({ proficiency: 1 });
       userLanguage.language = language;
 
       this.user.userLanguages.push(userLanguage);
@@ -81,10 +98,10 @@ export class UserProfileComponent implements OnInit {
 
   onNativeLanguageSelect(language) {
     if (language) {
-      let nativeLanguage = new UserLanguage({ proficiency: 5 });
+      const nativeLanguage = new UserLanguage({ proficiency: 5 });
       nativeLanguage.language = language;
 
-      let oldNativeLanguage = this.user.getNativeLanguage();
+      const oldNativeLanguage = this.user.getNativeLanguage();
 
       if (oldNativeLanguage) {
         deleteElementFromArray(this.user.userLanguages, oldNativeLanguage);
@@ -107,7 +124,7 @@ export class UserProfileComponent implements OnInit {
   }
 
   onPermitImageFilenameChange(event) {
-    let file = event.srcElement.files[0];
+    const file = event.srcElement.files[0];
     if (file) {
       this.userProxy.saveImage(this.user.id, file, 'work_permit').then(userImage => {
         this.user.images.push(userImage);
@@ -125,7 +142,6 @@ export class UserProfileComponent implements OnInit {
     if (errors.details) {
       if (Object.keys(errors.details)[0]) {
         this.errorCause = Object.keys(errors.details)[0].split('_').join(' ') + ' ' + errors.details[Object.keys(errors.details)[0]];
-        this.errorCause = this.errorCause.charAt(0).toUpperCase() + this.errorCause.slice(1);
       } else {
         this.errorCause = 'user.profile.form.submit.error.nothing';
         throw errors;

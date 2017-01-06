@@ -48,7 +48,6 @@ export class UserDetailsComponent {
         } else {
           this.errorCause = errors.details[Object.keys(errors.details)[0]];
         }
-        this.errorCause = this.errorCause.charAt(0).toUpperCase() + this.errorCause.slice(1);
       } else {
         this.errorCause = 'user.settings.form.submit.error.nothing';
         throw errors;
