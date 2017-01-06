@@ -27,6 +27,9 @@ export class UserRegisterComponent extends TranslationListener implements OnInit
   errors: any = {};
 
   registrationForm: FormGroup;
+  currentStatusInputTouched: boolean = false;
+  undStatusInputTouched: boolean = false;
+  countryInputTouched: boolean = false;
 
   constructor(private router: Router,
               private userProxy: UserProxy,

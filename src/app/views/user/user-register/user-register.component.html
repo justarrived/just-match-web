@@ -57,28 +57,30 @@
 
       <div class="form-group material-group input-container">
         <autocomplete-dropdown [lookupType]="'list'" [enumList]="statuses"
-                               [placeholder]="'user.form.current_status' | translate" [isDisabled]="false"
+                               [(touched)]="currentStatusInputTouched"
+                               [placeholder]="'user.form.current_status' | translate"
                                [(destination)]="userRegister.currentStatus"
                                [autocompleteResultLabelFunction]="namePropertyLabel"
                                [selectedItemLabelFunction]="namePropertyLabel">
         </autocomplete-dropdown>
         <input class="form-control material-input" type="hidden" [(ngModel)]="userRegister.currentStatus" [formControl]="registrationForm.controls['currentStatus']">
 
-        <div *ngIf="!registrationForm.controls['currentStatus'].valid && registrationForm.controls['currentStatus'].touched"
+        <div *ngIf="!registrationForm.controls['currentStatus'].valid && currentStatusInputTouched"
              class="alert alert-danger">{{'user.form.current_status.validation' | translate}}.</div>
         <div *ngIf="errors.current_status" class="alert alert-danger">{{errors.current_status}}</div>
       </div>
 
       <div class="form-group material-group input-container">
         <autocomplete-dropdown [lookupType]="'list'" [enumList]="atUndStatuses"
-                               [placeholder]="'user.form.at_und' | translate" [isDisabled]="false"
+                               [(touched)]="undStatusInputTouched"
+                               [placeholder]="'user.form.at_und' | translate"
                                [(destination)]="userRegister.atUndStatus"
                                [autocompleteResultLabelFunction]="namePropertyLabel"
                                [selectedItemLabelFunction]="namePropertyLabel">
         </autocomplete-dropdown>
         <input class="form-control material-input" type="hidden" [(ngModel)]="userRegister.atUndStatus" [formControl]="registrationForm.controls['atUndStatus']">
 
-        <div *ngIf="!registrationForm.controls['atUndStatus'].valid && registrationForm.controls['atUndStatus'].touched"
+        <div *ngIf="!registrationForm.controls['atUndStatus'].valid && undStatusInputTouched"
              class="alert alert-danger">{{'user.form.current_status.validation' | translate}}.</div>
         <div *ngIf="errors.atUndStatus" class="alert alert-danger">{{errors.atUndStatus}}</div>
       </div>
@@ -94,14 +96,15 @@
 
       <div class="form-group material-group input-container">
         <autocomplete-dropdown [lookupType]="'list'" [enumList]="countries"
-                               [placeholder]="'user.form.country_of_origin' | translate" [isDisabled]="false"
+                               [(touched)]="countryInputTouched"
+                               [placeholder]="'user.form.country_of_origin' | translate"
                                [(destination)]="userRegister.countryOfOrigin"
                                [autocompleteResultLabelFunction]="namePropertyLabel"
                                [selectedItemLabelFunction]="namePropertyLabel">
         </autocomplete-dropdown>
         <input class="form-control material-input" type="hidden" [(ngModel)]="userRegister.countryOfOrigin" [formControl]="registrationForm.controls['countryOfOrigin']">
 
-        <div *ngIf="!registrationForm.controls['countryOfOrigin'].valid && registrationForm.controls['countryOfOrigin'].touched"
+        <div *ngIf="!registrationForm.controls['countryOfOrigin'].valid && countryInputTouched"
              class="alert alert-danger">{{'user.form.country_of_origin.validation' | translate}}.</div>
         <div *ngIf="errors.country_of_origin" class="alert alert-danger">{{errors.country_of_origin}}</div>
       </div>
