@@ -28,7 +28,7 @@
 .home-new-jobs {
   padding: 3em;
 
-  @media screen and (max-width: 991px) {
+  @media screen and (max-width: $md-device-width) {
     padding: 3em 0;
 
     .title {
@@ -51,7 +51,7 @@
     @media (min-width: 576px) {
       flex-direction: column-reverse;
 
-      @media (max-width: 991px) {
+      @media (max-width: $md-device-width) {
         padding-right: 3em;
       }
 
@@ -79,7 +79,7 @@
       box-shadow: 0 0 3px 0 rgba(0,0,0,.2);
       cursor: pointer;
 
-      @media (min-width: 992px) and (max-width: 1199px) {
+      @media (min-width: $md-device-width-upper) and (max-width: $lg-device-width) {
         width: 134px;
       }
 
@@ -103,12 +103,12 @@
       }
     }
 
-    @media (min-width: 992px) {
+    @media (min-width: $md-device-width-upper) {
       overflow-y: hidden;
       overflow-x: hidden;
     }
 
-    @media (max-width: 991px) {
+    @media (max-width: $md-device-width) {
 
       .item-container:first-of-type {
         margin-left: 3em;
