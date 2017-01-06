@@ -60,12 +60,11 @@
         <input class="form-control material-input" id="account-number-input" name="account-number-input" type="text" placeholder="{{'user.settings.form.account.number.placeholder' | translate}}" [(ngModel)]="user.accountNumber">
       </div>
 
-
       <div class="settings-button-container">
         <div *ngIf="errorMessage" class="error-message">{{errorMessage | translate}}</div>
         <div *ngIf="errorCause" class="error-message">{{errorCause | translate}}</div>
         <div *ngIf="saveSuccess" class="save-message">{{'user.settings.form.submit.success' | translate}}</div>
-        <button type="submit" class="btn-primary btn-small btn">{{'user.settings.form.submit.button' | translate}}</button>
+        <button type="submit" [disabled]="!formValidation()" class="btn-primary btn-small btn">{{'user.settings.form.submit.button' | translate}}</button>
       </div>
     </form>
   </div>

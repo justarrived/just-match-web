@@ -133,7 +133,7 @@ export class UserProfileComponent implements OnInit {
     }
   }
 
-  extendedFrontendValidation(): boolean {
+  formValidation(): boolean {
     return this.user.getNativeLanguage() && this.user.countryOfOriginCode && (this.gotPermit == 'false' || this.user.currentStatus) && true;
   }
 
@@ -153,10 +153,6 @@ export class UserProfileComponent implements OnInit {
     this.saveSuccess = false;
     this.errorMessage = '';
     this.errorCause = '';
-    if (!this.extendedFrontendValidation()) {
-      this.errorMessage = 'user.profile.form.submit.incomplete';
-      return;
-    }
     this.userProxy.updateUser(this.user.toJsonObject())
       .then((response) => {
         this.saveSuccess = true;

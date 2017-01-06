@@ -8,7 +8,7 @@
         <autocomplete-dropdown #nativeLanguageDropdown (dropdownListItemSelect)="onNativeLanguageSelect($event)" [placeholder]="'user.profile.form.native.language.placeholder' | translate" [autocompleteResultLabelFunction]="namePropertyLabel" [selectedItemLabelFunction]="namePropertyLabel"
             [getData]="getLanguages()">
         </autocomplete-dropdown>
-        <div *ngIf="!user.getNativeLanguage()" class="alert alert-danger">{{'user.profile.form.permit.type.validation' | translate}}.</div>
+        <div *ngIf="!user.getNativeLanguage()" class="alert alert-danger">{{'user.profile.form.native.language.validation.required' | translate}}.</div>
       </div>
 
       <div class="profile-input-container">
@@ -16,7 +16,7 @@
         <autocomplete-dropdown #countryDropdown (dropdownListItemSelect)="onNCountryOfOriginSelect($event)" [placeholder]="'user.profile.form.country.placeholder' | translate" [autocompleteResultLabelFunction]="namePropertyLabel" [selectedItemLabelFunction]="namePropertyLabel"
             [getData]="getCountries()">
         </autocomplete-dropdown>
-        <div *ngIf="!user.countryOfOriginCode" class="alert alert-danger">{{'user.profile.form.permit.type.validation' | translate}}.</div>
+        <div *ngIf="!user.countryOfOriginCode" class="alert alert-danger">{{'user.profile.form.country.validation.required' | translate}}.</div>
       </div>
 
       <div class="profile-input-container">
@@ -59,6 +59,7 @@
             {{'user.profile.form.permit.type.temporary' | translate}}</label>
           </div>
         </div>
+        <div *ngIf="gotPermit && !user.currentStatus" class="alert alert-danger">{{'user.profile.form.permit.type.validation.required' | translate}}.</div>
       </div>
 
       <div *ngIf="gotPermit === 'true'" class="profile-upload-button-container">
@@ -114,7 +115,7 @@ Documents not supported yet. TODO implement when documents supported in backend.
         <div *ngIf="errorMessage" class="error-message">{{errorMessage | translate}}</div>
         <div *ngIf="errorCause" class="error-message">{{errorCause | translate}}</div>
         <div *ngIf="saveSuccess" class="save-message">{{'user.profile.form.submit.success' | translate}}</div>
-        <button type="submit" class="btn-primary btn-small btn">{{'user.profile.form.submit.button' | translate}}</button>
+        <button type="submit" [disabled]="!formValidation()" class="btn-primary btn-small btn">{{'user.profile.form.submit.button' | translate}}</button>
       </div>
     </form>
 

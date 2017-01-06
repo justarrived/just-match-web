@@ -39,6 +39,10 @@ export class UserDetailsComponent {
     return this.passwordsSupplied() && this.user.newPassword !== this.user.repeatedPassword && true;
   }
 
+  formValidation(): boolean {
+    return this.settingsForm.valid && !this.passwordsSuppliedAndMisMatch() && true;
+  }
+
   handleServerErrors(errors, addPrefix: boolean = true) {
     this.errorMessage = 'user.settings.form.submit.error';
     if (errors.details) {
@@ -59,11 +63,6 @@ export class UserDetailsComponent {
     this.saveSuccess = false;
     this.errorMessage = '';
     this.errorCause = '';
-    if (this.passwordsSuppliedAndMisMatch()) {
-      this.errorMessage = 'user.settings.form.submit.error';
-      this.errorCause = 'user.settings.form.repeat.password.validation.mismatch';
-      return;
-    }
     this.userProxy.updateUser(this.user.toJsonObject())
       .then((response) => {
         if (this.passwordsSupplied()) {
