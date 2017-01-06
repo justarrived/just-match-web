@@ -11,6 +11,7 @@ import {Router} from '@angular/router';
 })
 export class ContactComponent {
   contactForm: FormGroup;
+  errors: any;
 
   constructor(private contactProxy: ContactProxy, private router: Router, private formBuilder: FormBuilder) {
     this.contactForm = formBuilder.group({
@@ -29,7 +30,7 @@ export class ContactComponent {
       }))
       .then(result => this.router.navigate(['/contact/confirmation']))
       .catch(errors => {
-        console.log(errors);
+        this.errors = errors.details ? errors.details : errors;
       });
   }
 }

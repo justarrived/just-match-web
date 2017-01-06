@@ -54,11 +54,11 @@ export class JobCreateComponent extends TranslationListener implements OnInit {
     this.job.languageId = this.translationService.getSelectedLanguage().id;
 
     this.jobProxy.saveJob(this.job.toJsonObject())
-        .then(() => {
-          this.router.navigate(['/jobs']);
-        }).catch(errors => {
-      this.errors = errors.details;
-      this.isPreview = false;
+      .then(() => {
+        this.router.navigate(['/jobs']);
+      }).catch(errors => {
+        this.errors = errors.details;
+        this.isPreview = false;
     });
   }
 }
