@@ -4,6 +4,7 @@ import {UserStatus} from '../../models/user/user-status';
 import {map} from 'lodash';
 import {UserImage} from '../../models/user/user-image';
 import {UserJob} from '../../models/user/user-job';
+import {getDataUrl} from '../../utils/image-to-data-url.util';
 
 @Injectable()
 export class UserProxy {
@@ -35,9 +36,10 @@ export class UserProxy {
       .then(response => map(response.data, data => new UserStatus(data)));
   }
 
-  saveImage(image: FormData): Promise<UserImage> {
-    return this.apiCall.postFile('users/images', image)
-      .then(response => new UserImage(response.data));
+  saveImage(userId, file: File, category: string): Promise<UserImage> {
+    return getDataUrl(file)
+      .then((dataUrl) => this.apiCall.post('users/' + userId + '/images', {'image': dataUrl,'category': category})
+        .then(response => new UserImage(response.data)));
   }
 
   getUserJobs(userId, additionOptions?: Object) {
@@ -52,6 +54,13 @@ export class UserProxy {
   resetPassword(email_or_phone: string) {
     return this.apiCall.post('users/reset-password', {
       'email_or_phone': email_or_phone
+    });
+  }
+
+  changePassword(password: string, oldPassword: string) {
+    return this.apiCall.post('users/change-password', {
+      'password': password,
+      'old_password': oldPassword
     });
   }
 }

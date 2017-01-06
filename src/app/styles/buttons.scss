@@ -196,3 +196,51 @@
     transform: rotate(-45deg);
   }
 }
+
+.input-radio-container {
+  display: flex;
+  margin-top: 30px;
+
+  .input-radio-button-container {
+    text-align: center;
+    width: 90px;
+
+    .input-radio-button-label {
+      font-size: 16px;
+      opacity: 0.7;
+
+      .input-radio-button-span {
+        display: block;
+      }
+
+      .input-radio-button-input {
+        border: 0;
+        height: 1px;
+        margin: -1px;
+        padding: 0;
+        position: absolute;
+        width: 1px;
+
+        + .input-radio-button-span:before {
+          content: '';
+          display: inline-block;
+          width: 2em;
+          height: 2em;
+          border-radius: 2em;
+          /*hard border*/
+          border: 0.125em solid $color-primary-cerise;
+          box-shadow: 0 0 0 0.1em $color-primary-cerise;
+          /*light shadow*/
+          margin: 0 auto;
+          transition: 0.5s ease all;
+          /*animation here*/
+        }
+
+        &:checked + .input-radio-button-span:before {
+          background: $color-primary-cerise;
+          box-shadow: 0 0 0 0.1em $color-primary-cerise;
+        }
+      }
+    }
+  }
+}

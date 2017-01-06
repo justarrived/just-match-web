@@ -136,11 +136,6 @@
         </div>
       </div>
 
-      <div class="material-group">
-        <input type="file" id="image-filename" name="imageFilename" class="material-input" (change)="onImageFilenameChange($event)" accept="image/*">
-        <label class="label-up material-label" for="image-filename">{{'user.form.picture' | translate}}</label>
-      </div>
-
       <div class="form-group text-center">
         <input type="checkbox" id="tac" name="tac" class="material-input" [(ngModel)]="userRegister.acceptedTermsAndConditions" required>
         <label for="tac">

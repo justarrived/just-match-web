@@ -2,6 +2,7 @@ import {UserImage} from './user/user-image';
 import {map, find} from 'lodash';
 import {UserLanguage} from './user/user-language';
 import {Company} from './company';
+import {Country} from './country';
 
 export class User {
   id: number;
@@ -21,7 +22,13 @@ export class User {
   frilansFinansPaymentDetails: boolean;
   company: Company;
   profileImage: UserImage;
-  password: string;
+  permitImage: UserImage;
+  countryOfOriginCode: string;
+  currentStatus: string;
+  accountClearingNumber: string;
+  accountNumber: string;
+  newPassword: string;
+  repeatedPassword: string;
   oldPassword: string;
 
   constructor(jsonObject: any) {
@@ -44,12 +51,21 @@ export class User {
     this.skills = jsonObject.competence_text;
     this.company = new Company(jsonObject.company);
     this.frilansFinansPaymentDetails = jsonObject.frilans_finans_payment_details;
-    this.profileImage = this.getProfileImage(jsonObject.user_images);
+    this.profileImage = this.getImageByCategory('profile');
+    this.permitImage = this.getImageByCategory('work_permit');
     this.languageId = jsonObject.language_id;
+    this.countryOfOriginCode = jsonObject.country_of_origin;
+    this.currentStatus = jsonObject.current_status;
+    this.accountClearingNumber = jsonObject.account_clearing_number;
+    this.accountNumber = jsonObject.account_number;
   }
 
-  private getProfileImage(userImages: any): UserImage {
-    return new UserImage(find(userImages, {category_name: 'profile'}));
+  getNativeLanguage(): UserLanguage {
+    return this.userLanguages.find(language => language.proficiency.proficiency === 5);
+  }
+
+  getImageByCategory(category): UserImage {
+    return this.images.find(image => image.category === category);
   }
 
   toJsonObject(): Object {
@@ -71,8 +87,10 @@ export class User {
       'last_name': this.lastName,
       'phone': this.phone,
       'language_id': this.languageId,
-      'password': this.password,
-      'old_password': this.oldPassword
+      'country_of_origin': this.countryOfOriginCode,
+      'current_status': this.currentStatus,
+      'account_clearing_number': this.accountClearingNumber,
+      'account_number': this.accountNumber
     };
   }
 }

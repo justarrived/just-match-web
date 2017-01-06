@@ -1,82 +1,127 @@
-<div class="centered-form-container">
-  <form class="centered-form" #form="ngForm" (ngSubmit)="onSubmit()">
-    <div class="material-group">
-      <i class="icon-ic-paper"></i>
+<div class="profile-container">
+  <div class="profile-form-container">
 
-      <label for="presentation">{{'profile.form.presentation' | translate | uppercase}}*</label>
-      <textarea name="presentation" id="presentation" class="material-input" [disabled]="!editMode" [(ngModel)]="user.presentation" required minlength="10"></textarea>
+    <form #form="ngForm" (ngSubmit)="onSubmit()">
 
-      <div class="fs-m0 material-group-error" *ngIf="form.controls.presentation && form.controls.presentation.invalid && form.controls.presentation.touched">
-        {{'profile.form.presentation.validation' | translate}}
+      <div class="profile-input-container">
+        <label>{{'user.profile.form.native.language.label' | translate}} *:</label>
+        <autocomplete-dropdown #nativeLanguageDropdown (dropdownListItemSelect)="onNativeLanguageSelect($event)" [placeholder]="'user.profile.form.native.language.placeholder' | translate" [autocompleteResultLabelFunction]="namePropertyLabel" [selectedItemLabelFunction]="namePropertyLabel"
+            [getData]="getLanguages()">
+        </autocomplete-dropdown>
+        <div *ngIf="!user.getNativeLanguage()" class="alert alert-danger">{{'user.profile.form.native.language.validation.required' | translate}}.</div>
       </div>
-    </div>
 
-    <div class="material-group">
-      <i class="icon-ic-user3"></i>
+      <div class="profile-input-container">
+        <label>{{'user.profile.form.country.label' | translate}} *:</label>
+        <autocomplete-dropdown #countryDropdown (dropdownListItemSelect)="onNCountryOfOriginSelect($event)" [placeholder]="'user.profile.form.country.placeholder' | translate" [autocompleteResultLabelFunction]="namePropertyLabel" [selectedItemLabelFunction]="namePropertyLabel"
+            [getData]="getCountries()">
+        </autocomplete-dropdown>
+        <div *ngIf="!user.countryOfOriginCode" class="alert alert-danger">{{'user.profile.form.country.validation.required' | translate}}.</div>
+      </div>
 
-      <label>{{'profile.form.languages' | translate | uppercase}}</label>
-      <autocomplete-dropdown (dropdownListItemSelect)="onLanguageSelect($event)"
-                             [clearDestinationAfterSelection]="true"
-                             [autocompleteResultLabelFunction]="namePropertyLabel"
-                             [selectedItemLabelFunction]="namePropertyLabel"
-                             [isDisabled]="!editMode"
-                             [getData]="getLanguages()">
-      </autocomplete-dropdown>
-
-      <div class="table max-width">
-        <div class="table-row" *ngFor="let userLanguage of user.userLanguages">
-          <div class="table-cell min-width-column">{{userLanguage.language.name}}</div>
-          <div class="table-cell"></div>
-          <div class="table-cell min-width-column">
-            <autocomplete-dropdown [lookupType]="'list'" [enumList]="languageProficiencyLevels"
-                                   [(destination)]="userLanguage.proficiency"
-                                   [placeholder]="'language.proficiency.placeholder' | translate"
-                                   [isDisabled]="!editMode"
-                                   [autocompleteResultLabelFunction]="namePropertyLabel"
-                                   [selectedItemLabelFunction]="namePropertyLabel">
-            </autocomplete-dropdown>
+      <div class="profile-input-container">
+        <label>{{'user.profile.form.permit.label' | translate}} *:</label>
+        <div class="input-radio-container">
+          <div class="input-radio-button-container">
+            <label class="input-radio-button-label" for="permit-yes">
+            <input class="input-radio-button-input" type="radio" name="permit" id="permit-yes" [(ngModel)]="gotPermit" value="true" />
+            <span class="input-radio-button-span"></span>
+            {{'common.yes' | translate}}</label>
           </div>
-          <div class="table-cell"></div>
-          <div class="table-cell min-width-column clickable" *ngIf="editMode" (click)="onRemoveUserLanguage(userLanguage)">
-            <i class="icon-ic-close"></i>
+          <div class="input-radio-button-container">
+            <label class="input-radio-button-label" for="permit-no">
+            <input class="input-radio-button-input" type="radio" name="permit" id="permit-no" [(ngModel)]="gotPermit" value="false" />
+            <span class="input-radio-button-span"></span>
+            {{'common.no' | translate}}</label>
           </div>
         </div>
       </div>
-    </div>
 
-    <div class="material-group">
-      <i class="icon-ic-star"></i>
+      <div *ngIf="gotPermit === 'true'" class="profile-input-container">
+        <label>{{'user.profile.form.permit.type.label' | translate}} *:</label>
+        <div class="input-radio-container">
+          <div class="input-radio-button-container">
+            <label class="input-radio-button-label" for="permit-type-asylum">
+            <input class="input-radio-button-input" type="radio" name="permit-type" id="permit-type-asylum" (focus)="serverValidationErrors.current_status = ''" [(ngModel)]="user.currentStatus" value="asylum_seeker" />
+            <span class="input-radio-button-span"></span>
+            {{'user.profile.form.permit.type.asylum' | translate}}</label>
+          </div>
+          <div class="input-radio-button-container">
+            <label class="input-radio-button-label" for="permit-type-permanent">
+            <input class="input-radio-button-input" type="radio" name="permit-type" id="permit-type-permanent" (focus)="serverValidationErrors.current_status = ''" [(ngModel)]="user.currentStatus" value="permanent_residence" />
+            <span class="input-radio-button-span"></span>
+            {{'user.profile.form.permit.type.permanent' | translate}}</label>
+          </div>
+          <div class="input-radio-button-container">
+            <label class="input-radio-button-label" for="permit-type-temporary">
+            <input class="input-radio-button-input" type="radio" name="permit-type" id="permit-type-temporary" (focus)="serverValidationErrors.current_status = ''" [(ngModel)]="user.currentStatus" value="temporary_residence_work" />
+            <span  class="input-radio-button-span"></span>
+            {{'user.profile.form.permit.type.temporary' | translate}}</label>
+          </div>
+        </div>
+        <div *ngIf="gotPermit && !user.currentStatus" class="alert alert-danger">{{'user.profile.form.permit.type.validation.required' | translate}}.</div>
+        <div *ngIf="serverValidationErrors.current_status" class="alert alert-danger">{{serverValidationErrors.current_status}}.</div>
+      </div>
 
-      <label for="work-experience">{{'profile.form.experience' | translate | uppercase}}</label>
-      <textarea name="workExperience" id="work-experience" class="material-input" [disabled]="!editMode" [(ngModel)]="user.workExperience"></textarea>
-    </div>
+      <div *ngIf="gotPermit === 'true'" class="profile-upload-button-container">
+        <input type="file" id="permit-image-filename" name="permit-image-filename" class="input-image-upload" (change)="onPermitImageFilenameChange($event)" accept="image/*">
+        <label for="permit-image-filename" class="btn-secondary btn-small btn btn-image-upload">{{'user.profile.form.permit.upload.button' | translate}}</label>
+        <p>{{'user.profile.form.permit.upload.description' | translate}}</p>
+        <div *ngIf="user.permitImage" class="permit-saved-message">{{'user.profile.form.permit.upload.uploaded' | translate}}</div>
+      </div>
 
-    <div class="material-group">
-      <i class="icon-ic-education"></i>
+      <hr>
 
-      <label for="education">{{'profile.form.education' | translate | uppercase}}</label>
-      <textarea name="education" id="education" class="material-input" [disabled]="!editMode" [(ngModel)]="user.education"></textarea>
-    </div>
+      <div class="profile-input-container">
+        <label>{{'user.profile.form.languages.label' | translate}}:</label>
+        <autocomplete-dropdown (dropdownListItemSelect)="onLanguageSelect($event)" [clearDestinationAfterSelection]="true" [placeholder]="'user.profile.form.languages.placeholder' | translate" [autocompleteResultLabelFunction]="namePropertyLabel" [selectedItemLabelFunction]="namePropertyLabel"
+            [getData]="getLanguagesExcludingNative()">
+        </autocomplete-dropdown>
 
-    <div class="material-group">
-      <i class="icon-ic-tool"></i>
+        <div class="profile-input-languages-table-container">
+          <div class="profile-input-languages-table-row-container" *ngFor="let userLanguage of user.userLanguages">
+            <div class="profile-input-languages-table-row-inner-container" *ngIf="userLanguage.proficiency.proficiency !== 5">
+              <div class="profile-input-languages-table-row-inner-language-container">
+                <p>{{userLanguage.language.name}}</p>
+              </div>
+              <div class="profile-input-languages-table-row-inner-icon-container" (click)="onRemoveUserLanguage(userLanguage)">
+                <i class="fa fa-times" aria-hidden="true"></i>
+              </div>
+              <div class="profile-input-languages-table-row-inner-dropdown-container">
+                <autocomplete-dropdown [lookupType]="'list'" [enumList]="languageProficiencyLevelsAvailable" [(destination)]="userLanguage.proficiency" [placeholder]="'language.proficiency.placeholder' | translate" [autocompleteResultLabelFunction]="namePropertyLabel"
+                    [selectedItemLabelFunction]="namePropertyLabel">
+                </autocomplete-dropdown>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
-      <label for="skills">{{'profile.form.skills' | translate | uppercase}}</label>
-      <textarea name="skills" id="skills" class="material-input" [disabled]="!editMode" [(ngModel)]="user.skills"></textarea>
-    </div>
+      <div class="profile-input-container">
+        <label>{{'user.profile.form.skills.label' | translate}}:</label>
+        <textarea class="form-control material-input" name="skills" id="skills" class="form-control material-input" (focus)="serverValidationErrors.competence_text = ''" autosize type="text" placeholder="{{'user.profile.form.skills.placeholder' | translate}}" [(ngModel)]="user.skills"></textarea>
+        <div *ngIf="serverValidationErrors.competence_text" class="alert alert-danger">{{serverValidationErrors.competence_text}}.</div>
+      </div>
 
-    <hr>
-    <div class="text-center fs-m">
-      {{'profile.create.notification' | translate}}
-    </div>
+      <div class="profile-input-container">
+        <label>{{'user.profile.form.work.experience.label' | translate}}:</label>
+        <textarea class="form-control material-input" name="workExperience" id="work-experience" class="form-control material-input" (focus)="serverValidationErrors.job_experience = ''" autosize type="text" placeholder="{{'user.profile.form.work.experience.placeholder' | translate}}" [(ngModel)]="user.workExperience"></textarea>
+        <div *ngIf="serverValidationErrors.job_experience" class="alert alert-danger">{{serverValidationErrors.job_experience}}.</div>
+      </div>
+      <!--
+Documents not supported yet. TODO implement when documents supported in backend.
+      <div class="profile-upload-button-container">
+        <button class="btn-secondary btn-small btn">{{'user.profile.form.resume.upload.button' | translate}}</button>
+        <p>{{'user.profile.form.resume.upload.description' | translate}}</p>
+      </div>
+-->
 
-    <div class="text-center">
-      <button type="button" class="button secondary form-control clickable" (click)="onEditClick()" *ngIf="!editMode">
-        {{'common.edit' | translate}}
-      </button>
-      <button type="submit" class="button primary form-control clickable" [disabled]="form.invalid" *ngIf="editMode">
-        {{'common.save' | translate}}
-      </button>
-    </div>
-  </form>
+      <div class="profile-button-container">
+        <div *ngIf="saveFail" class="error-message">{{'user.profile.form.submit.fail' | translate}}</div>
+        <div *ngIf="saveSuccess" class="save-message">{{'user.profile.form.submit.success' | translate}}</div>
+        <button type="submit" [disabled]="!formValidation()" class="btn-primary btn-small btn">{{'user.profile.form.submit.button' | translate}}</button>
+      </div>
+    </form>
+
+  </div>
 </div>

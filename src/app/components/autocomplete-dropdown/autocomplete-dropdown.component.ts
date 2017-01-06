@@ -143,7 +143,6 @@ export class AutocompleteDropdownComponent implements OnInit {
     if (this.isDropdownOpened) {
       this.isDropdownOpened = false;
     } else {
-      this.clearTextInput();
       this.getLookupData();
     }
   }

@@ -1,7 +1,118 @@
 @import '../../../../styles/variables';
+@import '../../../../styles/buttons';
 
-hr {
-  margin: 35px 0 25px;
-  border: 0;
-  border-top: 1px solid #eeeeee;
+.profile-form-container {
+  padding-top: 50px;
+  max-width: 500px;
+  margin: 0 auto;
+
+  .profile-input-container {
+    padding-bottom: 1.5em;
+    margin-bottom: 15px;
+
+    label {
+      color: black;
+      font-size: 20px;
+    }
+
+    textarea {
+      overflow: hidden;
+      word-wrap: break-word;
+      resize: none;
+    }
+  }
+
+  .profile-input-languages-table-container {
+    width: 100%;
+
+    .profile-input-languages-table-row-container {
+      width: 100%;
+      margin: 5px 0;
+
+      .profile-input-languages-table-row-inner-container {
+        display: flex;
+        height: 37px;
+
+        .profile-input-languages-table-row-inner-language-container {
+          display: table;
+          height: 100%;
+
+          > p {
+            display: table-cell;
+            vertical-align: middle;
+          }
+        }
+
+        .profile-input-languages-table-row-inner-dropdown-container {
+          width: 300px;
+          margin-left: auto;
+        }
+
+        .profile-input-languages-table-row-inner-icon-container {
+          margin-left: 10px;
+          margin-right: 20px;
+
+          i {
+            &:hover {
+              color: rgba(0, 0, 0, 0.3);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  hr {
+    width: 75%;
+    margin: 40px auto;
+  }
+
+  .profile-upload-button-container {
+    text-align: center;
+    margin-bottom: 40px;
+
+    input {
+      opacity: 0;
+      position: absolute;
+      z-index: -1;
+    }
+
+    label {
+      margin: 0 auto;
+      min-width: 200px;
+      pointer: cursor;
+    }
+
+    p {
+      margin-top: 10px;
+    }
+
+    .permit-saved-message {
+      color: green;
+    }
+  }
+
+  .profile-button-container {
+    padding-bottom: 1.5em;
+    text-align: center;
+
+    .save-message {
+      color: green;
+    }
+
+    .error-message {
+      color: $color-cerise-500;
+    }
+
+    button {
+      display: block;
+      margin: 15px auto 30px;
+      min-width: 250px;
+    }
+
+    a {
+      color: $color-accent-main;
+      font-weight: 600;
+    }
+  }
 }

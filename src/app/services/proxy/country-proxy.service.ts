@@ -13,4 +13,13 @@ export class CountryProxy {
       .then(response => map(response.data, data => new Country(data)));
   }
 
+  getCountryByCountryCode(countryCode: string): Promise<Country> {
+    return this.apiCall.get('countries', {'filter[country_code]': countryCode})
+      .then(response => {
+        if (response.data && response.data[0]) {
+          return new Country(response.data[0]);
+        }
+        return null;
+      });
+  }
 }

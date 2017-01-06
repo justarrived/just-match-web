@@ -25,7 +25,7 @@ export class LoginComponent {
         if (errors.details) {
           this.errorMessage = errors.details.password;
         } else {
-          console.log(errors);
+          throw errors;
         }
       });
   }
