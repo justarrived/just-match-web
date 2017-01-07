@@ -48,7 +48,10 @@
     > textarea {
       overflow: hidden;
       word-wrap: break-word;
-      border-color: black;
+    }
+
+    > input {
+      border: 1px solid rgba(0, 0, 0, 0.15);
     }
   }
 

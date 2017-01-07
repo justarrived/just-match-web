@@ -20,19 +20,23 @@
     margin: 0 auto;
 
     .login-input-container {
-      padding-bottom: 1.5em;
+
+      > input {
+        border: 1px solid rgba(0, 0, 0, 0.15);
+      }
     }
 
     .login-button-container {
-      padding-bottom: 1.5em;
       text-align: center;
+      margin-top: 20px;
+
       .error-message {
         color: $color-cerise-500;
       }
 
       button {
         display: block;
-        margin: 15px auto 30px;
+        margin: 10px auto;
         min-width: 200px;
       }
 
