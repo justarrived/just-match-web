@@ -16,7 +16,11 @@
           <input type="checkbox" checked>
           <i></i>
           <strong><translation-item [text]="faq.question" [translation]="faq.translated.question"></translation-item></strong>
-          <p><b>{{"faq.answer" | translate}}:</b><br><translation-item [text]="faq.answer" [translation]="faq.translated.answer"></translation-item></p>
+          <div class="faq-item-answer-container">
+            <p><b>{{"faq.answer" | translate}}:</b><br>
+              <translation-item [text]="faq.answer" [translation]="faq.translated.answer"></translation-item>
+            </p>
+          </div>
         </li>
       </ul>
     </div>

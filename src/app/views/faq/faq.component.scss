@@ -10,27 +10,32 @@
     top: 5px;
     color: $white;
   }
-
 }
 
 .faq-list-container {
   background-color: $default-bg-color;
+
   > div {
     width: 100%;
-    cursor: pointer; cursor: hand;
+    cursor: pointer;
+    cursor: hand;
   }
 
-  .transition, p {
+  .transition,
+  p {
     transition: all 0.25s ease-in-out;
   }
 
   ul li i {
-    &:before, &:after {
+    &:after,
+    &:before {
       transition: all 0.25s ease-in-out;
     }
   }
 
-  .flipIn, h1, ul li {
+  .flipIn,
+  h1,
+  ul li {
     animation: flipdown 0.5s ease both;
   }
 
@@ -39,6 +44,7 @@
     perspective: 900;
     padding: 0;
     margin: 0;
+
     li {
       position: relative;
       padding: 0;
@@ -49,31 +55,38 @@
       border-top: 1px dotted #dce7eb;
       @for $i from 1 through 40 {
         &:nth-of-type(#{$i}) {
-           animation-delay: #{$i * 0.1 + 0.25}s;
-         }
+          animation-delay: #{$i * 0.1 + 0.25}s;
+        }
       }
+
       &:last-of-type {
         padding-bottom: 0;
       }
+
       i {
         position: absolute;
         transform: translate(-6px, 0);
         margin-top: 5px;
         right: 20px;
-        &:before, &:after {
+
+        &:after,
+        &:before {
           content: "";
           position: absolute;
           background-color: $color-primary-cerise;
           width: 3px;
           height: 9px;
         }
+
         &:before {
           transform: translate(-2px, 0) rotate(45deg);
         }
+
         &:after {
           transform: translate(2px, 0) rotate(-45deg);
         }
       }
+
       input[type=checkbox] {
         position: absolute;
         cursor: pointer;
@@ -83,30 +96,37 @@
         opacity: 0;
         top: 0;
         left: 0;
+
         &:checked ~ {
-          p {
-            margin-top: 0;
-            padding-top: 0;
-            max-height: 0;
-            opacity: 0;
-            transform: translate(0, 50%);
-          }
-          i {
-            &:before {
-              transform: translate(3px, 0) rotate(45deg);
+          .faq-item-answer-container {
+            p {
+              display: none;
+              visibility: hidden;
+              animation: none;
             }
-            &:after {
-              transform: translate(-3px, 0) rotate(-45deg);
+
+            i {
+              &:before {
+                transform: translate(3px, 0) rotate(45deg);
+              }
+
+              &:after {
+                transform: translate(-3px, 0) rotate(-45deg);
+              }
             }
           }
         }
       }
-      p {
-        padding-top: 1em;
+
+      .faq-item-answer-container {
+        margin-top: 18px;
+        p {
+          animation: flipdown 0.5s ease both;
+          margin-right: 50px;
+        }
       }
     }
   }
-
   @keyframes flipdown {
     0% {
       opacity: 0;
@@ -135,5 +155,4 @@
       transform: rotateX(0deg);
     }
   }
-
 }
