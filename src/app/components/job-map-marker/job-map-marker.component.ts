@@ -12,7 +12,7 @@ export class JobMapMarkerComponent {
 
   constructor(private router: Router) { }
 
-  mapJobMarkerClicked(job) {
+  goToJob(job) {
     this.router.navigate(['/job', job.id]);
   }
 }

@@ -452,7 +452,7 @@
   "language.proficiency.placeholder": "Select language proficiency",
   "map.geolocation.error.prefix": "Your location could not be established because",
   "map.geolocation.error.unsupportedBrowser": "your browser does not support location services.",
-  "map.geolocation.error.permissionDenied": "you have rejected access to your location for this domain.",
+  "map.geolocation.error.permissionDenied": "you have disabled access to your location for this site.",
   "map.geolocation.error.positionUnavailable": "we are unable to determine your location.",
   "map.geolocation.error.timeout": "service timeout has been reached.",
   "map.geolocation.error.close": "Click to hide."
