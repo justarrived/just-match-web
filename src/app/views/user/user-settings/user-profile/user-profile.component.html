@@ -42,29 +42,11 @@
       <div *ngIf="profileForm.value.got_permit === 'true'" class="profile-input-container">
         <label>{{'user.profile.form.permit.type.label' | translate}} *:</label>
         <div class="input-radio-container">
-          <div class="input-radio-button-container">
-            <label class="input-radio-button-label" for="permit-type-asylum">
-            <input class="input-radio-button-input" type="radio" name="permit-type" id="permit-type-asylum" (focus)="serverValidationErrors.current_status = ''" [formControl]="profileForm.controls['current_status']" value="asylum_seeker" />
+          <div *ngFor="let status of statuses" class="input-radio-button-container">
+            <label class="input-radio-button-label" for="{{status.id}}">
+            <input class="input-radio-button-input" type="radio" name="permit-type" id="{{status.id}}" (focus)="serverValidationErrors.current_status = ''" [formControl]="profileForm.controls['current_status']" value="{{status.id}}" />
             <span class="input-radio-button-span"></span>
-            {{'user.profile.form.permit.type.asylum' | translate}}</label>
-          </div>
-          <div class="input-radio-button-container">
-            <label class="input-radio-button-label" for="permit-type-permanent">
-            <input class="input-radio-button-input" type="radio" name="permit-type" id="permit-type-permanent" (focus)="serverValidationErrors.current_status = ''" [formControl]="profileForm.controls['current_status']" value="permanent_residence" />
-            <span class="input-radio-button-span"></span>
-            {{'user.profile.form.permit.type.permanent' | translate}}</label>
-          </div>
-          <div class="input-radio-button-container">
-            <label class="input-radio-button-label" for="permit-type-temporary">
-            <input class="input-radio-button-input" type="radio" name="permit-type" id="permit-type-temporary" (focus)="serverValidationErrors.current_status = ''" [formControl]="profileForm.controls['current_status']" value="temporary_residence_work" />
-            <span  class="input-radio-button-span"></span>
-            {{'user.profile.form.permit.type.temporary' | translate}}</label>
-          </div>
-          <div class="input-radio-button-container">
-            <label class="input-radio-button-label" for="permit-type-student-visa">
-            <input class="input-radio-button-input" type="radio" name="permit-type" id="permit-type-student-visa" (focus)="serverValidationErrors.current_status = ''" [formControl]="profileForm.controls['current_status']" value="student_visa" />
-            <span  class="input-radio-button-span"></span>
-            {{'user.profile.form.permit.type.student' | translate}}</label>
+            {{status.name}}</label>
           </div>
         </div>
         <div *ngIf="profileForm.value.got_permit && !profileForm.value.current_status" class="alert alert-danger">{{'user.profile.form.permit.type.validation.required' | translate}}.</div>

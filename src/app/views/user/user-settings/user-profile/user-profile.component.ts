@@ -1,5 +1,6 @@
 import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {UserLanguage} from '../../../../models/user/user-language';
+import {UserStatus} from '../../../../models/user/user-status';
 import {UserImage} from '../../../../models/user/user-image';
 import {LanguageProxy} from '../../../../services/proxy/language-proxy.service';
 import {CountryProxy} from '../../../../services/proxy/country-proxy.service';
@@ -37,6 +38,8 @@ export class UserProfileComponent implements OnInit {
 
   profileForm: FormGroup;
 
+  statuses: UserStatus[];
+
   serverValidationErrors: any = {};
   saveSuccess: boolean;
   saveFail: boolean;
@@ -51,6 +54,8 @@ export class UserProfileComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.userProxy.getStatuses().then(statuses => this.statuses = statuses);
+
     this.profileForm = this.formBuilder.group({
       'user_languages': [this.user.userLanguages.slice()],
       'native_language': [this.user.getNativeLanguage(), Validators.compose([Validators.required])],
