@@ -22,18 +22,18 @@
     }
   }
 
-  .profile-input-languages-table-container {
+  .profile-input-table-container {
     width: 100%;
 
-    .profile-input-languages-table-row-container {
+    .profile-input-table-row-container {
       width: 100%;
       margin: 5px 0;
 
-      .profile-input-languages-table-row-inner-container {
+      .profile-input-table-row-inner-container {
         display: flex;
         height: 37px;
 
-        .profile-input-languages-table-row-inner-language-container {
+        .profile-input-table-row-inner-item-container {
           display: table;
           height: 100%;
 
@@ -43,12 +43,12 @@
           }
         }
 
-        .profile-input-languages-table-row-inner-dropdown-container {
+        .profile-input-table-row-inner-dropdown-container {
           width: 300px;
           margin-left: auto;
         }
 
-        .profile-input-languages-table-row-inner-icon-container {
+        .profile-input-table-row-inner-icon-container {
           margin-left: 10px;
           margin-right: 20px;
 
