@@ -34,7 +34,6 @@ export class UserSettingsComponent implements OnInit {
     let file = event.srcElement.files[0];
     if (file) {
       this.userProxy.saveImage(this.user.id, file, 'profile').then(userImage => {
-        this.user.images.push(userImage);
         this.user.profileImage = userImage;
       });
     }

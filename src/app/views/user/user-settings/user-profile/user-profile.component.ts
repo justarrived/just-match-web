@@ -58,8 +58,7 @@ export class UserProfileComponent implements OnInit {
       'current_status': [this.user.currentStatus],
       'competence_text': [this.user.workExperience],
       'job_experience': [this.user.workExperience],
-      'got_permit': [this.user.currentStatus ? 'true' : 'false'],
-      'permit_image': [this.user.getImageByCategory('work_permit')]
+      'got_permit': [this.user.currentStatus ? 'true' : 'false']
     });
 
     const nativeLanguage = this.profileForm.value.native_language || { language: { name: '' } };
@@ -145,7 +144,7 @@ export class UserProfileComponent implements OnInit {
     const file = event.srcElement.files[0];
     if (file) {
       this.userProxy.saveImage(this.user.id, file, 'work_permit').then(userImage => {
-        this.profileForm.controls['permit_image'].setValue(userImage);
+        this.user.permitImage = userImage;
         this.permitImgeSaveSuccess = true;
       }).catch(errors => {
         this.permitImageSaveFail = true;
