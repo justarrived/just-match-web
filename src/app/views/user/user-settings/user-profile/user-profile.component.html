@@ -60,6 +60,12 @@
             <span  class="input-radio-button-span"></span>
             {{'user.profile.form.permit.type.temporary' | translate}}</label>
           </div>
+          <div class="input-radio-button-container">
+            <label class="input-radio-button-label" for="permit-type-student-visa">
+            <input class="input-radio-button-input" type="radio" name="permit-type" id="permit-type-student-visa" (focus)="serverValidationErrors.current_status = ''" [formControl]="profileForm.controls['current_status']" value="student_visa" />
+            <span  class="input-radio-button-span"></span>
+            {{'user.profile.form.permit.type.student' | translate}}</label>
+          </div>
         </div>
         <div *ngIf="profileForm.value.got_permit && !profileForm.value.current_status" class="alert alert-danger">{{'user.profile.form.permit.type.validation.required' | translate}}.</div>
         <div *ngIf="serverValidationErrors.current_status" class="alert alert-danger">{{serverValidationErrors.current_status}}.</div>
