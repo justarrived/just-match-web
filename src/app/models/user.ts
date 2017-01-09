@@ -1,6 +1,7 @@
 import {UserImage} from './user/user-image';
 import {map, find} from 'lodash';
 import {UserLanguage} from './user/user-language';
+import {UserSkill} from './user/user-skill';
 import {Company} from './company';
 import {Country} from './country';
 
@@ -14,6 +15,7 @@ export class User {
   role: string;
   images: UserImage[];
   userLanguages: UserLanguage[];
+  userSkills: UserSkill[];
   presentation: string;
   workExperience: string;
   education: string;
@@ -45,6 +47,7 @@ export class User {
     this.role = jsonObject.primary_role;
     this.images = map(jsonObject.user_images, userImage => new UserImage(userImage));
     this.userLanguages = map(jsonObject.user_languages, userLanguage => new UserLanguage(userLanguage));
+    this.userSkills = map(jsonObject.user_skills, userSkill => new UserSkill(userSkill));
     this.presentation = jsonObject.description;
     this.workExperience = jsonObject.job_experience;
     this.education = jsonObject.education;
