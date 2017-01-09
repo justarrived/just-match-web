@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {AuthManager} from '../../../../services/auth-manager.service';
 import {User} from '../../../../models/user';
 import {UserProxy} from '../../../../services/proxy/user-proxy.service';
@@ -9,38 +9,47 @@ import {FormGroup, FormBuilder, Validators} from '@angular/forms';
   templateUrl: './user-details.component.html',
   styleUrls: ['./user-details.component.scss']
 })
-export class UserDetailsComponent {
+export class UserDetailsComponent implements OnInit {
 
   @Input() user: User;
 
   settingsForm: FormGroup;
+  passwordForm: FormGroup;
 
   serverValidationErrors: any = {};
   saveSuccess: boolean;
   saveFail: boolean;
 
   constructor(private authManager: AuthManager, private userProxy: UserProxy, private formBuilder: FormBuilder) {
-    this.settingsForm = formBuilder.group({
-      'first-name-input': [null, Validators.compose([Validators.required, Validators.minLength(2)])],
-      'last-name-input': [null, Validators.compose([Validators.required, Validators.minLength(2)])],
-      'email-input': [null, Validators.compose([Validators.required])],
-      'phone-input': [null, Validators.compose([Validators.required, Validators.minLength(9), Validators.pattern(/\+46.*/)])],
-      'new-password-input': [null, Validators.compose([Validators.minLength(6)])],
-      'old-password-input': [null],
-      'repeat-password-input': [null]
+  }
+
+  ngOnInit() {
+    this.settingsForm = this.formBuilder.group({
+      'first_name': [this.user.firstName, Validators.compose([Validators.required, Validators.minLength(2)])],
+      'last_name': [this.user.lastName, Validators.compose([Validators.required, Validators.minLength(2)])],
+      'email': [this.user.email, Validators.compose([Validators.required])],
+      'phone': [this.user.phone, Validators.compose([Validators.required, Validators.minLength(9), Validators.pattern(/\+46.*/)])],
+      'account_clearing_number': [this.user.accountClearingNumber],
+      'account_number': [this.user.accountNumber]
+    });
+
+    this.passwordForm = this.formBuilder.group({
+      'password': [null, Validators.compose([Validators.minLength(6)])],
+      'old_password': [null],
+      'repeat_password': [null]
     });
   }
 
   passwordsSupplied() {
-    return (this.user.newPassword || this.user.repeatedPassword) && true;
+    return (this.passwordForm.value.password || this.passwordForm.value.repeat_password) && true;
   }
 
   passwordsSuppliedAndMisMatch() {
-    return this.passwordsSupplied() && this.user.newPassword !== this.user.repeatedPassword && true;
+    return this.passwordsSupplied() && this.passwordForm.value.password !== this.passwordForm.value.repeat_password && true;
   }
 
   formValidation(): boolean {
-    return this.settingsForm.valid && !this.passwordsSuppliedAndMisMatch() && true;
+    return this.settingsForm.valid && this.passwordForm.valid && !this.passwordsSuppliedAndMisMatch() && true;
   }
 
   handleServerErrors(errors) {
@@ -51,18 +60,20 @@ export class UserDetailsComponent {
   onSubmit() {
     this.saveSuccess = false;
     this.saveFail = false;
-    this.userProxy.updateUser(this.user.toJsonObject())
+    this.serverValidationErrors = {};
+    this.userProxy.updateUser(this.user.id, this.settingsForm.value)
       .then((response) => {
         if (this.passwordsSupplied()) {
-          this.userProxy.changePassword(this.user.newPassword, this.user.oldPassword)
+          this.userProxy.changePassword(this.passwordForm.value.password, this.passwordForm.value.old_password)
             .then((response) => {
               // has to relogin to be authenticated now that password changed
-              this.authManager.logUser(this.user.email, this.user.newPassword)
+              this.authManager.logUser(this.settingsForm.value.email, this.passwordForm.value.password)
                 .then(result => {
-                  this.user.oldPassword = '';
-                  this.user.newPassword = '';
-                  this.user.repeatedPassword = '';
+                  this.passwordForm.value.old_password = '';
+                  this.passwordForm.value.password = '';
+                  this.passwordForm.value.repeat_password = '';
                   this.saveSuccess = true;
+                  this.authManager.authenticateIfNeeded()
                 });
             })
             .catch(errors => {
@@ -70,6 +81,7 @@ export class UserDetailsComponent {
             });
         } else {
           this.saveSuccess = true;
+          this.authManager.authenticateIfNeeded()
         }
       })
       .catch(errors => {

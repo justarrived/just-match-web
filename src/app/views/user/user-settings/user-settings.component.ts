@@ -9,7 +9,7 @@ import {AuthManager} from '../../../services/auth-manager.service';
   templateUrl: './user-settings.component.html',
   styleUrls: ['./user-settings.component.scss']
 })
-export class UserSettingsComponent {
+export class UserSettingsComponent implements OnInit {
   selectedState: string = 'profile';
   isCompanyUser: boolean;
 

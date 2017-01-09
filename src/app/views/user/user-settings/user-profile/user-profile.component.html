@@ -8,15 +8,17 @@
         <autocomplete-dropdown #nativeLanguageDropdown (dropdownListItemSelect)="onNativeLanguageSelect($event)" [placeholder]="'user.profile.form.native.language.placeholder' | translate" [autocompleteResultLabelFunction]="namePropertyLabel" [selectedItemLabelFunction]="namePropertyLabel"
             [getData]="getLanguages()">
         </autocomplete-dropdown>
-        <div *ngIf="!user.getNativeLanguage()" class="alert alert-danger">{{'user.profile.form.native.language.validation.required' | translate}}.</div>
+        <div *ngIf="profileForm.controls['native_language'].hasError('required')" class="alert alert-danger">{{'user.profile.form.native.language.validation.required' | translate}}.</div>
+        <div *ngIf="serverValidationErrors.language_id" class="alert alert-danger">{{serverValidationErrors.language_id}}.</div>
       </div>
 
       <div class="profile-input-container">
         <label>{{'user.profile.form.country.label' | translate}} *:</label>
-        <autocomplete-dropdown #countryDropdown (dropdownListItemSelect)="onNCountryOfOriginSelect($event)" [placeholder]="'user.profile.form.country.placeholder' | translate" [autocompleteResultLabelFunction]="namePropertyLabel" [selectedItemLabelFunction]="namePropertyLabel"
+        <autocomplete-dropdown #countryDropdown (dropdownListItemSelect)="onCountryOfOriginSelect($event)" [placeholder]="'user.profile.form.country.placeholder' | translate" [autocompleteResultLabelFunction]="namePropertyLabel" [selectedItemLabelFunction]="namePropertyLabel"
             [getData]="getCountries()">
         </autocomplete-dropdown>
-        <div *ngIf="!user.countryOfOriginCode" class="alert alert-danger">{{'user.profile.form.country.validation.required' | translate}}.</div>
+        <div *ngIf="profileForm.controls['country_of_origin'].hasError('required')" class="alert alert-danger">{{'user.profile.form.country.validation.required' | translate}}.</div>
+        <div *ngIf="serverValidationErrors.country_of_origin" class="alert alert-danger">{{serverValidationErrors.country_of_origin}}.</div>
       </div>
 
       <div class="profile-input-container">
@@ -24,50 +26,52 @@
         <div class="input-radio-container">
           <div class="input-radio-button-container">
             <label class="input-radio-button-label" for="permit-yes">
-            <input class="input-radio-button-input" type="radio" name="permit" id="permit-yes" [(ngModel)]="gotPermit" value="true" />
+            <input class="input-radio-button-input" type="radio" name="permit" id="permit-yes" [formControl]="profileForm.controls['got_permit']" value="true" />
             <span class="input-radio-button-span"></span>
             {{'common.yes' | translate}}</label>
           </div>
           <div class="input-radio-button-container">
             <label class="input-radio-button-label" for="permit-no">
-            <input class="input-radio-button-input" type="radio" name="permit" id="permit-no" [(ngModel)]="gotPermit" value="false" />
+            <input class="input-radio-button-input" type="radio" name="permit" id="permit-no" [formControl]="profileForm.controls['got_permit']" value="false" (click)="profileForm.controls['current_status'].setValue(null)"/>
             <span class="input-radio-button-span"></span>
             {{'common.no' | translate}}</label>
           </div>
         </div>
       </div>
 
-      <div *ngIf="gotPermit === 'true'" class="profile-input-container">
+      <div *ngIf="profileForm.value.got_permit === 'true'" class="profile-input-container">
         <label>{{'user.profile.form.permit.type.label' | translate}} *:</label>
         <div class="input-radio-container">
           <div class="input-radio-button-container">
             <label class="input-radio-button-label" for="permit-type-asylum">
-            <input class="input-radio-button-input" type="radio" name="permit-type" id="permit-type-asylum" (focus)="serverValidationErrors.current_status = ''" [(ngModel)]="user.currentStatus" value="asylum_seeker" />
+            <input class="input-radio-button-input" type="radio" name="permit-type" id="permit-type-asylum" (focus)="serverValidationErrors.current_status = ''" [formControl]="profileForm.controls['current_status']" value="asylum_seeker" />
             <span class="input-radio-button-span"></span>
             {{'user.profile.form.permit.type.asylum' | translate}}</label>
           </div>
           <div class="input-radio-button-container">
             <label class="input-radio-button-label" for="permit-type-permanent">
-            <input class="input-radio-button-input" type="radio" name="permit-type" id="permit-type-permanent" (focus)="serverValidationErrors.current_status = ''" [(ngModel)]="user.currentStatus" value="permanent_residence" />
+            <input class="input-radio-button-input" type="radio" name="permit-type" id="permit-type-permanent" (focus)="serverValidationErrors.current_status = ''" [formControl]="profileForm.controls['current_status']" value="permanent_residence" />
             <span class="input-radio-button-span"></span>
             {{'user.profile.form.permit.type.permanent' | translate}}</label>
           </div>
           <div class="input-radio-button-container">
             <label class="input-radio-button-label" for="permit-type-temporary">
-            <input class="input-radio-button-input" type="radio" name="permit-type" id="permit-type-temporary" (focus)="serverValidationErrors.current_status = ''" [(ngModel)]="user.currentStatus" value="temporary_residence_work" />
+            <input class="input-radio-button-input" type="radio" name="permit-type" id="permit-type-temporary" (focus)="serverValidationErrors.current_status = ''" [formControl]="profileForm.controls['current_status']" value="temporary_residence_work" />
             <span  class="input-radio-button-span"></span>
             {{'user.profile.form.permit.type.temporary' | translate}}</label>
           </div>
         </div>
-        <div *ngIf="gotPermit && !user.currentStatus" class="alert alert-danger">{{'user.profile.form.permit.type.validation.required' | translate}}.</div>
+        <div *ngIf="profileForm.value.got_permit && !profileForm.value.current_status" class="alert alert-danger">{{'user.profile.form.permit.type.validation.required' | translate}}.</div>
         <div *ngIf="serverValidationErrors.current_status" class="alert alert-danger">{{serverValidationErrors.current_status}}.</div>
       </div>
 
-      <div *ngIf="gotPermit === 'true'" class="profile-upload-button-container">
+      <div *ngIf="profileForm.value.got_permit === 'true'" class="profile-upload-button-container">
         <input type="file" id="permit-image-filename" name="permit-image-filename" class="input-image-upload" (change)="onPermitImageFilenameChange($event)" accept="image/*">
         <label for="permit-image-filename" class="btn-secondary btn-small btn btn-image-upload">{{'user.profile.form.permit.upload.button' | translate}}</label>
         <p>{{'user.profile.form.permit.upload.description' | translate}}</p>
-        <div *ngIf="user.permitImage" class="permit-saved-message">{{'user.profile.form.permit.upload.uploaded' | translate}}</div>
+        <div *ngIf="profileForm.value.permit_image" class="permit-image" [ngStyle]="{'background-image': 'url(' + profileForm.value.permit_image.imageUrl + ')'}"></div>
+        <div *ngIf="permitImgeSaveSuccess" class="save-message">{{'user.profile.form.permit.upload.success' | translate}}</div>
+        <div *ngIf="permitImageSaveFail" class="error-message">{{'user.profile.form.permit.upload.fail' | translate}}</div>
       </div>
 
       <hr>
@@ -79,7 +83,7 @@
         </autocomplete-dropdown>
 
         <div class="profile-input-languages-table-container">
-          <div class="profile-input-languages-table-row-container" *ngFor="let userLanguage of user.userLanguages">
+          <div class="profile-input-languages-table-row-container" *ngFor="let userLanguage of profileForm.value.user_languages">
             <div class="profile-input-languages-table-row-inner-container" *ngIf="userLanguage.proficiency.proficiency !== 5">
               <div class="profile-input-languages-table-row-inner-language-container">
                 <p>{{userLanguage.language.name}}</p>
@@ -99,13 +103,13 @@
 
       <div class="profile-input-container">
         <label>{{'user.profile.form.skills.label' | translate}}:</label>
-        <textarea class="form-control material-input" name="skills" id="skills" class="form-control material-input" (focus)="serverValidationErrors.competence_text = ''" autosize type="text" placeholder="{{'user.profile.form.skills.placeholder' | translate}}" [(ngModel)]="user.skills"></textarea>
+        <textarea class="form-control material-input" name="skills" id="skills" class="form-control material-input" (focus)="serverValidationErrors.competence_text = ''" autosize type="text" placeholder="{{'user.profile.form.skills.placeholder' | translate}}" [formControl]="profileForm.controls['competence_text']"></textarea>
         <div *ngIf="serverValidationErrors.competence_text" class="alert alert-danger">{{serverValidationErrors.competence_text}}.</div>
       </div>
 
       <div class="profile-input-container">
         <label>{{'user.profile.form.work.experience.label' | translate}}:</label>
-        <textarea class="form-control material-input" name="workExperience" id="work-experience" class="form-control material-input" (focus)="serverValidationErrors.job_experience = ''" autosize type="text" placeholder="{{'user.profile.form.work.experience.placeholder' | translate}}" [(ngModel)]="user.workExperience"></textarea>
+        <textarea class="form-control material-input" name="workExperience" id="work-experience" class="form-control material-input" (focus)="serverValidationErrors.job_experience = ''" autosize type="text" placeholder="{{'user.profile.form.work.experience.placeholder' | translate}}" [formControl]="profileForm.controls['job_experience']"></textarea>
         <div *ngIf="serverValidationErrors.job_experience" class="alert alert-danger">{{serverValidationErrors.job_experience}}.</div>
       </div>
       <!--

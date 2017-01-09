@@ -5,7 +5,7 @@ import {Company} from './company';
 import {Country} from './country';
 
 export class User {
-  id: number;
+  id: string;
   ssn: string;
   firstName: string;
   lastName: string;
@@ -66,31 +66,5 @@ export class User {
 
   getImageByCategory(category): UserImage {
     return this.images.find(image => image.category === category);
-  }
-
-  toJsonObject(): Object {
-    return {
-      'id': this.id,
-      'email': this.email,
-      'description': this.presentation,
-      'language_ids': map(this.userLanguages, userLanguage => {
-        return {
-          id: userLanguage.language.id,
-          proficiency: userLanguage.proficiency.proficiency
-        };
-      }),
-      'job_experience': this.workExperience,
-      'education': this.education,
-      'competence_text': this.skills,
-      'ssn': this.ssn,
-      'first_name': this.firstName,
-      'last_name': this.lastName,
-      'phone': this.phone,
-      'language_id': this.languageId,
-      'country_of_origin': this.countryOfOriginCode,
-      'current_status': this.currentStatus,
-      'account_clearing_number': this.accountClearingNumber,
-      'account_number': this.accountNumber
-    };
   }
 }

@@ -1,12 +1,13 @@
 import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {UserLanguage} from '../../../../models/user/user-language';
+import {UserImage} from '../../../../models/user/user-image';
 import {LanguageProxy} from '../../../../services/proxy/language-proxy.service';
 import {CountryProxy} from '../../../../services/proxy/country-proxy.service';
 import {AuthManager} from '../../../../services/auth-manager.service';
 import {Country} from '../../../../models/country';
 import {Language} from '../../../../models/language/language';
 import {User} from '../../../../models/user';
-import {isEmpty, some} from 'lodash';
+import {isEmpty, some, map} from 'lodash';
 import {deleteElementFromArray} from '../../../../utils/array-util';
 import {deleteElementFromArrayLambda} from '../../../../utils/array-util';
 import {namePropertyLabel} from '../../../../utils/label-util';
@@ -14,6 +15,7 @@ import {LanguageProficiency} from '../../../../models/language/language-proficie
 import {languageProficiencyLevels} from '../../../../enums/enums';
 import {UserProxy} from '../../../../services/proxy/user-proxy.service';
 import {AutocompleteDropdownComponent} from '../../../../components/autocomplete-dropdown/autocomplete-dropdown.component';
+import {FormGroup, FormBuilder, Validators} from '@angular/forms';
 
 @Component({
   selector: 'user-profile',
@@ -33,30 +35,43 @@ export class UserProfileComponent implements OnInit {
 
   @Input() user: User;
 
-  gotPermit: string;
+  profileForm: FormGroup;
+
   serverValidationErrors: any = {};
   saveSuccess: boolean;
   saveFail: boolean;
 
-  constructor(private languageProxy: LanguageProxy, private countryProxy: CountryProxy, private authManager: AuthManager, private userProxy: UserProxy) {
+  permitImgeSaveSuccess: boolean;
+  permitImageSaveFail: boolean;
+
+  constructor(private languageProxy: LanguageProxy, private countryProxy: CountryProxy, private authManager: AuthManager, private userProxy: UserProxy, private formBuilder: FormBuilder) {
     // remove native speaker as option
     this.languageProficiencyLevelsAvailable = this.languageProficiencyLevelsAvailable.slice();
     this.languageProficiencyLevelsAvailable.pop();
   }
 
   ngOnInit() {
-    const nativeLanguage = this.user.getNativeLanguage() || { language: { name: '' } };
+    this.profileForm = this.formBuilder.group({
+      'user_languages': [this.user.userLanguages.slice()],
+      'native_language': [this.user.getNativeLanguage(), Validators.compose([Validators.required])],
+      'country_of_origin': [this.user.countryOfOriginCode, Validators.compose([Validators.required])],
+      'current_status': [this.user.currentStatus],
+      'competence_text': [this.user.workExperience],
+      'job_experience': [this.user.workExperience],
+      'got_permit': [this.user.currentStatus ? 'true' : 'false'],
+      'permit_image': [this.user.getImageByCategory('work_permit')]
+    });
+
+    const nativeLanguage = this.profileForm.value.native_language || { language: { name: '' } };
     const nativeLanguageDropdown = this.nativeLanguageDropdown;
     setTimeout(function() {
       nativeLanguageDropdown.textInput = nativeLanguage.language.name;
     }, 100);
 
-    this.countryProxy.getCountryByCountryCode(this.user.countryOfOriginCode)
+    this.countryProxy.getCountryByCountryCode(this.profileForm.value.country_of_origin)
       .then((countryOfOrigin) => {
         this.countryDropdown.textInput = countryOfOrigin.name || '';
       });
-
-    this.gotPermit = this.user.currentStatus ? 'true' : 'false';
   }
 
   getLanguages() {
@@ -66,7 +81,7 @@ export class UserProfileComponent implements OnInit {
   }
 
   getLanguagesExcludingNative() {
-    const nativeLanguage = this.user.getNativeLanguage();
+    const nativeLanguage = this.profileForm.value.native_language;
     if (!nativeLanguage) {
       return this.getLanguages();
     } else {
@@ -88,11 +103,11 @@ export class UserProfileComponent implements OnInit {
   }
 
   onLanguageSelect(language) {
-    if (!isEmpty(language) && !some(this.user.userLanguages, { language: language })) {
+    if (!isEmpty(language) && !some(this.profileForm.value.user_languages, { language: language })) {
       const userLanguage = new UserLanguage({ proficiency: 1 });
       userLanguage.language = language;
 
-      this.user.userLanguages.push(userLanguage);
+      this.profileForm.value.user_languages.push(userLanguage);
     }
   }
 
@@ -101,41 +116,45 @@ export class UserProfileComponent implements OnInit {
       const nativeLanguage = new UserLanguage({ proficiency: 5 });
       nativeLanguage.language = language;
 
-      const oldNativeLanguage = this.user.getNativeLanguage();
+      const oldNativeLanguage = this.profileForm.value.native_language;
 
       if (oldNativeLanguage) {
-        deleteElementFromArray(this.user.userLanguages, oldNativeLanguage);
+        deleteElementFromArray(this.profileForm.value.user_languages, oldNativeLanguage);
       }
 
-      deleteElementFromArray(this.user.userLanguages, this.user.userLanguages.find(lang => lang.language && lang.language.languageCode === language.languageCode));
+      deleteElementFromArray(this.profileForm.value.user_languages, this.profileForm.value.user_languages.find(lang => lang.language && lang.language.languageCode === language.languageCode));
 
-      this.user.userLanguages.push(nativeLanguage);
-      this.user.languageId = language.id;
+      this.profileForm.value.user_languages.push(nativeLanguage);
+      this.profileForm.controls['native_language'].setValue(nativeLanguage);
     }
   }
 
-  onNCountryOfOriginSelect(country) {
+  onCountryOfOriginSelect(country) {
     if (country) {
-      this.user.countryOfOriginCode = country.countryCode;
+      this.profileForm.controls['country_of_origin'].setValue(country.countryCode);
     }
   }
 
   onRemoveUserLanguage(userLanguage) {
-    deleteElementFromArray(this.user.userLanguages, userLanguage);
+    deleteElementFromArray(this.profileForm.value.user_languages, userLanguage);
   }
 
   onPermitImageFilenameChange(event) {
+    this.permitImageSaveFail = false;
+    this.permitImgeSaveSuccess = false;
     const file = event.srcElement.files[0];
     if (file) {
       this.userProxy.saveImage(this.user.id, file, 'work_permit').then(userImage => {
-        this.user.images.push(userImage);
-        this.user.permitImage = userImage;
+        this.profileForm.controls['permit_image'].setValue(userImage);
+        this.permitImgeSaveSuccess = true;
+      }).catch(errors => {
+        this.permitImageSaveFail = true;
       });
     }
   }
 
   formValidation(): boolean {
-    return this.user.getNativeLanguage() && this.user.countryOfOriginCode && (this.gotPermit == 'false' || this.user.currentStatus) && true;
+    return this.profileForm.valid && (this.profileForm.value.got_permit == 'false' || this.profileForm.value.current_status) && true;
   }
 
   handleServerErrors(errors) {
@@ -146,9 +165,24 @@ export class UserProfileComponent implements OnInit {
   onSubmit() {
     this.saveSuccess = false;
     this.saveFail = false;
-    this.userProxy.updateUser(this.user.toJsonObject())
+    this.serverValidationErrors = {};
+
+    this.userProxy.updateUser(this.user.id, {
+      'language_ids': map(this.profileForm.value.user_languages, userLanguage => {
+        return {
+          id: userLanguage['language'].id,
+          proficiency: userLanguage['proficiency'].proficiency
+        };
+      }),
+      //'language_id': this.profileForm.value.native_language.language.id,
+      'country_of_origin': this.profileForm.value.country_of_origin,
+      'current_status': this.profileForm.value.current_status,
+      'competence_text': this.profileForm.value.competence_text,
+      'job_experience': this.profileForm.value.job_experience
+    })
       .then((response) => {
         this.saveSuccess = true;
+        this.authManager.authenticateIfNeeded();
       })
       .catch(errors => {
         this.handleServerErrors(errors);

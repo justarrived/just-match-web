@@ -87,22 +87,20 @@
       margin-top: 10px;
     }
 
-    .permit-saved-message {
-      color: green;
+    .permit-image {
+      margin: 0 auto;
+      background-size: 200px 200px;
+      background-repeat: no-repeat;
+      width: 200px;
+      height: 200px;
+      transition: background 0.3s;
+      overflow: hidden;
     }
   }
 
   .profile-button-container {
     padding-bottom: 1.5em;
     text-align: center;
-
-    .save-message {
-      color: green;
-    }
-
-    .error-message {
-      color: $color-cerise-500;
-    }
 
     button {
       display: block;
@@ -114,5 +112,13 @@
       color: $color-accent-main;
       font-weight: 600;
     }
+  }
+
+  .save-message {
+    color: green;
+  }
+
+  .error-message {
+    color: $color-cerise-500;
   }
 }
