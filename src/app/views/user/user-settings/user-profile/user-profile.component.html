@@ -58,7 +58,7 @@
         <label for="permit-image-filename" class="btn-secondary btn-small btn btn-image-upload">{{'user.profile.form.permit.upload.button' | translate}}</label>
         <p>{{'user.profile.form.permit.upload.description' | translate}}</p>
         <div *ngIf="user.permitImage" class="permit-image" [ngStyle]="{'background-image': 'url(' + user.permitImage.imageUrl + ')'}"></div>
-        <div *ngIf="permitImgeSaveSuccess" class="save-message">{{'user.profile.form.permit.upload.success' | translate}}</div>
+        <div *ngIf="permitImageSaveSuccess" class="save-message">{{'user.profile.form.permit.upload.success' | translate}}</div>
         <div *ngIf="permitImageSaveFail" class="error-message">{{'user.profile.form.permit.upload.fail' | translate}}</div>
       </div>
 

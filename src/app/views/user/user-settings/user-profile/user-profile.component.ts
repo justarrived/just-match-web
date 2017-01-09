@@ -49,7 +49,7 @@ export class UserProfileComponent implements OnInit {
   saveSuccess: boolean;
   saveFail: boolean;
 
-  permitImgeSaveSuccess: boolean;
+  permitImageSaveSuccess: boolean;
   permitImageSaveFail: boolean;
 
   constructor(
@@ -176,12 +176,12 @@ export class UserProfileComponent implements OnInit {
 
   onPermitImageFilenameChange(event) {
     this.permitImageSaveFail = false;
-    this.permitImgeSaveSuccess = false;
+    this.permitImageSaveSuccess = false;
     const file = event.srcElement.files[0];
     if (file) {
       this.userProxy.saveImage(this.user.id, file, 'work_permit').then(userImage => {
         this.user.permitImage = userImage;
-        this.permitImgeSaveSuccess = true;
+        this.permitImageSaveSuccess = true;
       }).catch(errors => {
         this.permitImageSaveFail = true;
       });
