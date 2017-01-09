@@ -18,7 +18,7 @@ export class AuthManager {
     return this.userProxy.getUserSession(email, password).then(response => {
       this.userManager.saveAuthorizationData(response.data);
 
-      return this.userProxy.getUser(this.userManager.getUserId(), {include: 'company,user_images,user_languages,user_languages.language,user_skills'});
+      return this.userProxy.getUser(this.userManager.getUserId(), {include: 'company,user_images,user_languages,user_languages.language,user_skills,user_skills.skill'});
     })
     .then(response => this.handleUserResult(response.data));
   }
