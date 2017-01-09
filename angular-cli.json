@@ -1,7 +1,7 @@
 {
   "project": {
-    "version": "1.0.0-beta.21",
-    "name": "ng-cli-test-scss"
+    "version": "1.0.0-beta.24",
+    "name": "just-arrived-web"
   },
   "apps": [
     {
@@ -20,7 +20,7 @@
       "mobile": false,
       "styles": [
         "../node_modules/font-awesome/scss/font-awesome.scss",
-        "../node_modules/bootstrap/scss/bootstrap-flex.scss",
+        "../node_modules/bootstrap/scss/bootstrap.scss",
         "styles.scss"
       ],
       "scripts": [
