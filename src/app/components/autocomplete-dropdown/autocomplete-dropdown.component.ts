@@ -3,6 +3,7 @@ import {cloneDeep, some, isEqual, isObject, assignIn, filter} from 'lodash';
 import {CountryProxy} from '../../services/proxy/country-proxy.service';
 import {deleteElementFromArray} from '../../utils/array-util';
 import Timer = NodeJS.Timer;
+import {FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'autocomplete-dropdown',
@@ -37,6 +38,8 @@ export class AutocompleteDropdownComponent implements OnInit {
   @Input() copyToDestination: boolean;
   @Input() iconClass: string;
   @Input() getData: Function;
+  @Input() touched: boolean = false;
+  @Output() touchedChange = new EventEmitter();
 
   private searchQueryTimeoutId: Timer;
   private isDefaultOptionSet: boolean = false;
@@ -135,10 +138,17 @@ export class AutocompleteDropdownComponent implements OnInit {
     this.dropdownListItemSelect.emit(item);
   }
 
+  markTouched() {
+    this.touched = true;
+    this.touchedChange.emit(this.touched);
+  }
+
   onInputClick() {
     if (this.isDisabled) {
       return;
     }
+
+    this.markTouched();
 
     if (this.isDropdownOpened) {
       this.isDropdownOpened = false;
