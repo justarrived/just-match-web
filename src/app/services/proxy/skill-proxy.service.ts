@@ -8,8 +8,8 @@ export class SkillProxy {
 
   constructor(private apiCall: ApiCall) { }
 
-  getSkills(name: string = ''): Promise<Array<Skill>> {
-    return this.apiCall.get('skills', {'filter[name]': name})
+  getSkills(name: string = '', sort: string = 'name', pageSize: number = 100, pageNumber: number = 1): Promise<Array<Skill>> {
+    return this.apiCall.get('skills', {'filter[name]': name, 'sort': name, 'page[size]': pageSize, 'page[number]': pageNumber})
       .then(response => map(response.data, data => new Skill(data)));
   }
 }
