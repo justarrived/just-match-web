@@ -58,7 +58,7 @@
         <label for="permit-image-filename" class="btn-secondary btn-small btn btn-image-upload">{{'user.profile.form.permit.upload.button' | translate}}</label>
         <p>{{'user.profile.form.permit.upload.description' | translate}}</p>
         <div *ngIf="user.permitImage" class="permit-image" [ngStyle]="{'background-image': 'url(' + user.permitImage.imageUrl + ')'}"></div>
-        <div *ngIf="permitImgeSaveSuccess" class="save-message">{{'user.profile.form.permit.upload.success' | translate}}</div>
+        <div *ngIf="permitImageSaveSuccess" class="save-message">{{'user.profile.form.permit.upload.success' | translate}}</div>
         <div *ngIf="permitImageSaveFail" class="error-message">{{'user.profile.form.permit.upload.fail' | translate}}</div>
       </div>
 
@@ -70,16 +70,16 @@
             [getData]="getLanguagesExcludingNative()">
         </autocomplete-dropdown>
 
-        <div class="profile-input-languages-table-container">
-          <div class="profile-input-languages-table-row-container" *ngFor="let userLanguage of profileForm.value.user_languages">
-            <div class="profile-input-languages-table-row-inner-container" *ngIf="userLanguage.proficiency.proficiency !== 5">
-              <div class="profile-input-languages-table-row-inner-language-container">
+        <div class="profile-input-table-container">
+          <div class="profile-input-table-row-container" *ngFor="let userLanguage of profileForm.value.user_languages">
+            <div class="profile-input-table-row-inner-container" *ngIf="userLanguage.proficiency.proficiency !== 5">
+              <div class="profile-input-table-row-inner-item-container">
                 <p>{{userLanguage.language.name}}</p>
               </div>
-              <div class="profile-input-languages-table-row-inner-icon-container" (click)="onRemoveUserLanguage(userLanguage)">
+              <div class="profile-input-table-row-inner-icon-container" (click)="onRemoveUserLanguage(userLanguage)">
                 <i class="fa fa-times" aria-hidden="true"></i>
               </div>
-              <div class="profile-input-languages-table-row-inner-dropdown-container">
+              <div class="profile-input-table-row-inner-dropdown-container">
                 <autocomplete-dropdown [lookupType]="'list'" [enumList]="languageProficiencyLevelsAvailable" [(destination)]="userLanguage.proficiency" [placeholder]="'language.proficiency.placeholder' | translate" [autocompleteResultLabelFunction]="namePropertyLabel"
                     [selectedItemLabelFunction]="namePropertyLabel">
                 </autocomplete-dropdown>
@@ -91,7 +91,32 @@
 
       <div class="profile-input-container">
         <label>{{'user.profile.form.skills.label' | translate}}:</label>
-        <textarea class="form-control material-input" name="skills" id="skills" class="form-control material-input" (focus)="serverValidationErrors.competence_text = ''" autosize type="text" placeholder="{{'user.profile.form.skills.placeholder' | translate}}" [formControl]="profileForm.controls['competence_text']"></textarea>
+        <autocomplete-dropdown (dropdownListItemSelect)="onSkillSelect($event)" [clearDestinationAfterSelection]="true" [placeholder]="'user.profile.form.skills.placeholder' | translate" [autocompleteResultLabelFunction]="namePropertyLabel" [selectedItemLabelFunction]="namePropertyLabel"
+            [getData]="getSkills()">
+        </autocomplete-dropdown>
+
+        <div class="profile-input-table-container">
+          <div class="profile-input-table-row-container" *ngFor="let userSkill of profileForm.value.user_skills">
+            <div class="profile-input-table-row-inner-container">
+              <div class="profile-input-table-row-inner-item-container">
+                <p>{{userSkill.skill.name}}</p>
+              </div>
+              <div class="profile-input-table-row-inner-icon-container" (click)="onRemoveUserSkill(userSkill)">
+                <i class="fa fa-times" aria-hidden="true"></i>
+              </div>
+              <div class="profile-input-table-row-inner-dropdown-container">
+                <autocomplete-dropdown [lookupType]="'list'" [enumList]="skillProficiencyLevelsAvailable" [(destination)]="userSkill.proficiency" [placeholder]="'skill.proficiency.placeholder' | translate" [autocompleteResultLabelFunction]="namePropertyLabel"
+                    [selectedItemLabelFunction]="namePropertyLabel">
+                </autocomplete-dropdown>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="profile-input-container">
+        <label>{{'user.profile.form.general.skills.label' | translate}}:</label>
+        <textarea class="form-control material-input" name="general-skills" id="general-skills" class="form-control material-input" (focus)="serverValidationErrors.competence_text = ''" autosize type="text" placeholder="{{'user.profile.form.general.skills.placeholder' | translate}}" [formControl]="profileForm.controls['competence_text']"></textarea>
         <div *ngIf="serverValidationErrors.competence_text" class="alert alert-danger">{{serverValidationErrors.competence_text}}.</div>
       </div>
 

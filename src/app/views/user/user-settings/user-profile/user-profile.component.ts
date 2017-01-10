@@ -1,11 +1,14 @@
 import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {UserLanguage} from '../../../../models/user/user-language';
+import {UserSkill} from '../../../../models/user/user-skill';
 import {UserStatus} from '../../../../models/user/user-status';
 import {UserImage} from '../../../../models/user/user-image';
 import {LanguageProxy} from '../../../../services/proxy/language-proxy.service';
 import {CountryProxy} from '../../../../services/proxy/country-proxy.service';
+import {SkillProxy} from '../../../../services/proxy/skill-proxy.service';
 import {AuthManager} from '../../../../services/auth-manager.service';
 import {Country} from '../../../../models/country';
+import {Skill} from '../../../../models/skill/skill';
 import {Language} from '../../../../models/language/language';
 import {User} from '../../../../models/user';
 import {isEmpty, some, map} from 'lodash';
@@ -14,6 +17,7 @@ import {deleteElementFromArrayLambda} from '../../../../utils/array-util';
 import {namePropertyLabel} from '../../../../utils/label-util';
 import {LanguageProficiency} from '../../../../models/language/language-proficiency';
 import {languageProficiencyLevels} from '../../../../enums/enums';
+import {skillProficiencyLevels} from '../../../../enums/enums';
 import {UserProxy} from '../../../../services/proxy/user-proxy.service';
 import {AutocompleteDropdownComponent} from '../../../../components/autocomplete-dropdown/autocomplete-dropdown.component';
 import {FormGroup, FormBuilder, Validators} from '@angular/forms';
@@ -33,6 +37,7 @@ export class UserProfileComponent implements OnInit {
   namePropertyLabel: Function = namePropertyLabel;
 
   languageProficiencyLevelsAvailable: LanguageProficiency[] = languageProficiencyLevels;
+  skillProficiencyLevelsAvailable: LanguageProficiency[] = skillProficiencyLevels;
 
   @Input() user: User;
 
@@ -44,10 +49,16 @@ export class UserProfileComponent implements OnInit {
   saveSuccess: boolean;
   saveFail: boolean;
 
-  permitImgeSaveSuccess: boolean;
+  permitImageSaveSuccess: boolean;
   permitImageSaveFail: boolean;
 
-  constructor(private languageProxy: LanguageProxy, private countryProxy: CountryProxy, private authManager: AuthManager, private userProxy: UserProxy, private formBuilder: FormBuilder) {
+  constructor(
+    private languageProxy: LanguageProxy,
+    private countryProxy: CountryProxy,
+    private skillProxy: SkillProxy,
+    private authManager: AuthManager,
+    private userProxy: UserProxy,
+    private formBuilder: FormBuilder) {
     // remove native speaker as option
     this.languageProficiencyLevelsAvailable = this.languageProficiencyLevelsAvailable.slice();
     this.languageProficiencyLevelsAvailable.pop();
@@ -63,7 +74,8 @@ export class UserProfileComponent implements OnInit {
       'current_status': [this.user.currentStatus],
       'competence_text': [this.user.workExperience],
       'job_experience': [this.user.workExperience],
-      'got_permit': [this.user.currentStatus ? 'true' : 'false']
+      'got_permit': [this.user.currentStatus ? 'true' : 'false'],
+      'user_skills': [this.user.userSkills.slice()]
     });
 
     const nativeLanguage = this.profileForm.value.native_language || { language: { name: '' } };
@@ -106,13 +118,10 @@ export class UserProfileComponent implements OnInit {
     };
   }
 
-  onLanguageSelect(language) {
-    if (!isEmpty(language) && !some(this.profileForm.value.user_languages, { language: language })) {
-      const userLanguage = new UserLanguage({ proficiency: 1 });
-      userLanguage.language = language;
-
-      this.profileForm.value.user_languages.push(userLanguage);
-    }
+  getSkills() {
+    return (searchText): Promise<Array<Skill>> => {
+      return this.skillProxy.getSkills(searchText);
+    };
   }
 
   onNativeLanguageSelect(language) {
@@ -126,7 +135,7 @@ export class UserProfileComponent implements OnInit {
         deleteElementFromArray(this.profileForm.value.user_languages, oldNativeLanguage);
       }
 
-      deleteElementFromArray(this.profileForm.value.user_languages, this.profileForm.value.user_languages.find(lang => lang.language && lang.language.languageCode === language.languageCode));
+      deleteElementFromArrayLambda(this.profileForm.value.user_languages, lang => lang.language && lang.language.languageCode === language.languageCode)
 
       this.profileForm.value.user_languages.push(nativeLanguage);
       this.profileForm.controls['native_language'].setValue(nativeLanguage);
@@ -139,18 +148,40 @@ export class UserProfileComponent implements OnInit {
     }
   }
 
+  onLanguageSelect(language) {
+    if (!isEmpty(language) && !some(this.profileForm.value.user_languages, { language: language })) {
+      const userLanguage = new UserLanguage({ proficiency: 1 });
+      userLanguage.language = language;
+
+      this.profileForm.value.user_languages.push(userLanguage);
+    }
+  }
+
+  onSkillSelect(skill) {
+    if (!isEmpty(skill) && !some(this.profileForm.value.user_skills, { skill: skill })) {
+      const userSkill = new UserSkill({ proficiency: 1 });
+      userSkill.skill = skill;
+
+      this.profileForm.value.user_skills.push(userSkill);
+    }
+  }
+
   onRemoveUserLanguage(userLanguage) {
     deleteElementFromArray(this.profileForm.value.user_languages, userLanguage);
   }
 
+  onRemoveUserSkill(userSkill) {
+    deleteElementFromArray(this.profileForm.value.user_skills, userSkill);
+  }
+
   onPermitImageFilenameChange(event) {
     this.permitImageSaveFail = false;
-    this.permitImgeSaveSuccess = false;
+    this.permitImageSaveSuccess = false;
     const file = event.srcElement.files[0];
     if (file) {
       this.userProxy.saveImage(this.user.id, file, 'work_permit').then(userImage => {
         this.user.permitImage = userImage;
-        this.permitImgeSaveSuccess = true;
+        this.permitImageSaveSuccess = true;
       }).catch(errors => {
         this.permitImageSaveFail = true;
       });
@@ -178,7 +209,12 @@ export class UserProfileComponent implements OnInit {
           proficiency: userLanguage['proficiency'].proficiency
         };
       }),
-      //'language_id': this.profileForm.value.native_language.language.id,
+      'skill_ids': map(this.profileForm.value.user_skills, userSkill => {
+        return {
+          id: userSkill['skill'].id,
+          proficiency: userSkill['proficiency'].proficiency
+        };
+      }),
       'country_of_origin': this.profileForm.value.country_of_origin,
       'current_status': this.profileForm.value.current_status,
       'competence_text': this.profileForm.value.competence_text,

@@ -19,6 +19,7 @@ import {DeletableItemComponent} from './components/autocomplete-dropdown/deletab
 import {AutocompleteDropdownListItemComponent} from './components/autocomplete-dropdown/autocomplete-dropdown-list-item/autocomplete-dropdown-list-item.component';
 import {AutocompleteDropdownComponent} from './components/autocomplete-dropdown/autocomplete-dropdown.component';
 import {LanguageProxy} from './services/proxy/language-proxy.service';
+import {SkillProxy} from './services/proxy/skill-proxy.service';
 import {LoginComponent} from './views/login/login.component';
 import {ForgotPasswordComponent} from './views/forgot-password/forgot-password.component';
 import {UserManager} from './services/user-manager.service';
@@ -116,6 +117,7 @@ import {ErrorComponent} from './views/error/error.component';
     UserProxy,
     CountryProxy,
     LanguageProxy,
+    SkillProxy,
     TranslationService,
     UserManager,
     Geolocation
