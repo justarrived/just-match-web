@@ -9,7 +9,7 @@ import {Router} from '@angular/router';
 })
 export class LoginComponent {
   loginForm: FormGroup;
-  errors: string;
+  errors: any = {};
 
   constructor(private authManager: AuthManager, private router: Router, private formBuilder: FormBuilder) {
     this.loginForm = formBuilder.group({
@@ -22,7 +22,7 @@ export class LoginComponent {
     this.authManager.logUser(value.email_or_phone, value.password)
       .then(result => this.router.navigate(['/home']))
       .catch(errors => {
-        this.errors = errors.details ? errors.details : errors;
+        this.errors = errors.details || errors;
       });
   }
 }
