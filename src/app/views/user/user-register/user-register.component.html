@@ -127,11 +127,6 @@
         <div *ngIf="errors.repeatPassword" class="alert alert-danger">{{errors.repeatPassword}}</div>
       </div>
 
-      <div class="form-group material-group input-container">
-        <input type="file" id="image-filename" name="imageFilename" class="material-input" (change)="onImageFilenameChange($event)" accept="image/*">
-        <label class="label-up material-label" for="image-filename">{{'user.form.picture' | translate}}</label>
-      </div>
-
       <div class="form-group text-center input-container"  [ngClass]="{'has-error':!registrationForm.controls['acceptedTermsAndConditions'].valid && registrationForm.controls['acceptedTermsAndConditions'].touched}">
         <input type="checkbox" id="tac" name="tac" class="material-input" [formControl]="registrationForm.controls['acceptedTermsAndConditions']">
         <label for="tac">

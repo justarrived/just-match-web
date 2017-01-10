@@ -1,83 +1,80 @@
-<div class="centered-form-container">
-  <form class="centered-form" #form="ngForm" (ngSubmit)="onSubmit()">
-    <div class="material-group">
-      <i class="icon-ic-paper"></i>
+<div class="settings-container">
+  <div class="settings-form-container">
 
-      <label for="ssn">{{'user.form.ssn' | translate}}</label>
-      <input type="text" id="ssn" [(ngModel)]="user.ssn" name="ssn" class="material-input" [disabled]="!editMode" [ngClass]="{'not-empty': user.ssn, 'has-error': errors.ssn}" required pattern="^[\d\-]+$" minlength="10">
+    <form #form="ngForm" (ngSubmit)="onSubmit()">
 
-      <div class="fs-m0 material-group-error" *ngIf="form.controls.ssn && form.controls.ssn.invalid && form.controls.ssn.touched">
-        {{'user.form.ssn.validation' | translate}}
+      <div class="input-group-header">{{'user.settings.form.personal.info.header' | translate}}</div>
+
+      <div class="form-group material-group settings-input-container" [ngClass]="{'has-error':!settingsForm.controls['first_name'].valid || !serverValidationErrors.first_name}">
+        <label for="first_name">{{'user.settings.form.first.name.label' | translate}} *:</label>
+        <input class="form-control material-input" id="first_name" name="frst-name-input" type="text" (focus)="serverValidationErrors.first_name = ''" placeholder="{{'user.settings.form.first.name.placeholder' | translate}}" [formControl]="settingsForm.controls['first_name']">
+        <div *ngIf="settingsForm.controls['first_name'].hasError('required')" class="alert alert-danger">{{'user.settings.form.first.name.validation.required' | translate}}.</div>
+        <div *ngIf="settingsForm.controls['first_name'].hasError('minlength')" class="alert alert-danger">{{'user.settings.form.first.name.validation.min.length' | translate}}.</div>
+        <div *ngIf="serverValidationErrors.first_name" class="alert alert-danger">{{serverValidationErrors.first_name}}.</div>
       </div>
-      <div class="fs-m0 material-group-error" *ngIf="errors.ssn">
-        {{errors.ssn}}
+
+      <div class="form-group material-group settings-input-container" [ngClass]="{'has-error':!settingsForm.controls['last_name'].valid || !serverValidationErrors.last_name}">
+        <label for="last_name">{{'user.settings.form.last.name.label' | translate}} *:</label>
+        <input class="form-control material-input" id="last_name" name="last_name" type="text" (focus)="serverValidationErrors.last_name = ''" placeholder="{{'user.settings.form.last.name.placeholder' | translate}}" [formControl]="settingsForm.controls['last_name']">
+        <div *ngIf="settingsForm.controls['last_name'].hasError('required')" class="alert alert-danger">{{'user.settings.form.last.name.validation.required' | translate}}.</div>
+        <div *ngIf="settingsForm.controls['last_name'].hasError('minlength')" class="alert alert-danger">{{'user.settings.form.last.name.validation.min.length' | translate}}.</div>
+        <div *ngIf="serverValidationErrors.last_name" class="alert alert-danger">{{serverValidationErrors.last_name}}.</div>
       </div>
-    </div>
 
-    <div class="material-group">
-      <i class="icon-ic-paper"></i>
-
-      <label for="first-name">{{'user.form.first_name' | translate}}</label>
-      <input type="text" id="first-name" [(ngModel)]="user.firstName" name="firstName" class="material-input" [disabled]="!editMode" [ngClass]="{'not-empty': user.firstName, 'has-error': errors.first_name}" required>
-
-      <div class="fs-m0 material-group-error" *ngIf="form.controls.firstName && form.controls.firstName.invalid && form.controls.firstName.touched">
-        {{'user.form.first_name.validation' | translate}}
+      <div class="form-group material-group settings-input-container" [ngClass]="{'has-error':!settingsForm.controls['email'].valid || !serverValidationErrors.email}">
+        <label for="email">{{'user.settings.form.email.label' | translate}} *:</label>
+        <input class="form-control material-input" id="email" name="email" type="email" (focus)="serverValidationErrors.email = ''" placeholder="{{'user.settings.form.email.placeholder' | translate}}" [formControl]="settingsForm.controls['email']">
+        <div *ngIf="settingsForm.controls['email'].hasError('required')" class="alert alert-danger">{{'user.settings.form.email.validation.required' | translate}}.</div>
+        <div *ngIf="serverValidationErrors.email" class="alert alert-danger">{{serverValidationErrors.email}}.</div>
       </div>
-      <div class="fs-m0 material-group-error" *ngIf="errors.first_name">
-        {{errors.first_name}}
+
+      <div class="form-group material-group settings-input-container" [ngClass]="{'has-error':!settingsForm.controls['phone'].valid  || !serverValidationErrors.phone}">
+        <label for="phone">{{'user.settings.form.phone.label' | translate}} *:</label>
+        <input class="form-control material-input" id="phone" name="phone" type="text" (focus)="serverValidationErrors.phone = ''" placeholder="{{'user.settings.form.phone.placeholder' | translate}}"  [formControl]="settingsForm.controls['phone']">
+        <div *ngIf="settingsForm.controls['phone'].hasError('required')" class="alert alert-danger">{{'user.settings.form.phone.validation.required' | translate}}.</div>
+        <div *ngIf="settingsForm.controls['phone'].hasError('minlength')" class="alert alert-danger">{{'user.settings.form.phone.validation.min.length' | translate}}.</div>
+        <div *ngIf="settingsForm.controls['phone'].hasError('pattern')" class="alert alert-danger">{{'user.settings.form.phone.validation.pattern' | translate}}.</div>
+        <div *ngIf="serverValidationErrors.phone" class="alert alert-danger">{{serverValidationErrors.phone}}.</div>
       </div>
-    </div>
 
-    <div class="material-group">
-      <i class="icon-ic-paper"></i>
+      <hr>
 
-      <label for="last-name">{{'user.form.last_name' | translate}}</label>
-      <input type="text" id="last-name" [(ngModel)]="user.lastName" name="lastName" class="material-input" [disabled]="!editMode" [ngClass]="{'not-empty': user.lastName, 'has-error': errors.last_name}" required>
+      <div class="input-group-header">{{'user.settings.form.change.password.header' | translate}}</div>
 
-      <div class="fs-m0 material-group-error" *ngIf="form.controls.lastName && form.controls.lastName.invalid && form.controls.lastName.touched">
-        {{'user.form.last_name.validation' | translate}}
+      <div class="form-group material-group settings-input-container" [ngClass]="{'has-error':!passwordForm.controls['password'].valid || !passwordForm.controls['repeat_password'].valid || !serverValidationErrors.password}">
+        <label for="password-input">{{'user.settings.form.new.password.label' | translate}}:</label>
+        <input class="form-control material-input" id="old_password" name="old_password" type="password" (focus)="serverValidationErrors.password = ''" placeholder="{{'user.settings.form.old.password.placeholder' | translate}}"
+            [formControl]="passwordForm.controls['old_password']">
+        <input class="form-control material-input" id="password" name="password" type="password" (focus)="serverValidationErrors.password = ''" placeholder="{{'user.settings.form.new.password.placeholder' | translate}}"
+            [formControl]="passwordForm.controls['password']">
+        <input class="form-control material-input" id="repeat_password" name="repeat_password" type="password" (focus)="serverValidationErrors.password = ''" placeholder="{{'user.settings.form.repeat.password.placeholder' | translate}}"
+            [formControl]="passwordForm.controls['repeat_password']">
+        <div *ngIf="passwordForm.controls['password'].hasError('minlength')" class="alert alert-danger">{{'user.settings.form.new.password.validation.min.length' | translate}}.</div>
+        <div *ngIf="passwordsSuppliedAndMisMatch()" class="alert alert-danger">{{'user.settings.form.repeat.password.validation.mismatch' | translate}}.</div>
+        <div *ngIf="serverValidationErrors.password" class="alert alert-danger">{{serverValidationErrors.password}}.</div>
       </div>
-      <div class="fs-m0 material-group-error" *ngIf="errors.last_name">
-        {{errors.last_name}}
+
+      <hr>
+
+      <div class="input-group-header">{{'user.settings.form.bank.details.header' | translate}}</div>
+
+      <div class="form-group material-group settings-input-container">
+        <label for="clearing-number-input">{{'user.settings.form.clearing.number.label' | translate}}:</label>
+        <input class="form-control material-input" id="clearing-number-input" name="clearing-number-input" type="text" (focus)="serverValidationErrors.account_clearing_number = ''" placeholder="{{'user.settings.form.clearing.number.placeholder' | translate}}" [formControl]="settingsForm.controls['account_clearing_number']">
+        <div *ngIf="serverValidationErrors.account_clearing_number" class="alert alert-danger">{{serverValidationErrors.account_clearing_number}}.</div>
       </div>
-    </div>
 
-    <div class="material-group">
-      <i class="icon-ic-paper"></i>
-
-      <label for="email">{{'user.form.email' | translate}}</label>
-      <input type="text" id="email" [(ngModel)]="user.email" name="email" class="material-input" [disabled]="!editMode" [ngClass]="{'not-empty': user.email, 'has-error': errors.email}"
-             required pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$">
-
-      <div class="fs-m0 material-group-error" *ngIf="form.controls.email && form.controls.email.invalid && form.controls.email.touched">
-        {{'user.form.email.validation' | translate}}
+      <div class="form-group material-group settings-input-container">
+        <label for="account-number-input">{{'user.settings.form.account.number.label' | translate}}:</label>
+        <input class="form-control material-input" id="account-number-input" name="account-number-input" type="text" (focus)="serverValidationErrors.account_number = ''" placeholder="{{'user.settings.form.account.number.placeholder' | translate}}" [formControl]="settingsForm.controls['account_number']">
+        <div *ngIf="serverValidationErrors.account_number" class="alert alert-danger">{{serverValidationErrors.account_number}}.</div>
       </div>
-      <div class="fs-m0 material-group-error" *ngIf="errors.email">
-        {{errors.email}}
+
+      <div class="settings-button-container">
+        <div *ngIf="saveFail" class="error-message">{{'user.settings.form.submit.fail' | translate}}</div>
+        <div *ngIf="saveSuccess" class="save-message">{{'user.settings.form.submit.success' | translate}}</div>
+        <button type="submit" [disabled]="!formValidation()" class="btn-primary btn-small btn">{{'user.settings.form.submit.button' | translate}}</button>
       </div>
-    </div>
-
-    <div class="material-group">
-      <i class="icon-ic-paper"></i>
-
-      <label for="phone">{{'user.form.phone' | translate}}</label>
-      <input type="text" id="phone" [(ngModel)]="user.phone" name="phone" class="material-input" [disabled]="!editMode" [ngClass]="{'not-empty': user.phone, 'has-error': errors.phone}" required minlength="9">
-
-      <div class="fs-m0 material-group-error" *ngIf="form.controls.phone && form.controls.phone.invalid && form.controls.phone.touched">
-        {{'user.form.phone.validation' | translate}}
-      </div>
-      <div class="fs-m0 material-group-error" *ngIf="errors.phone">
-        {{errors.phone}}
-      </div>
-    </div>
-
-    <div class="text-center">
-      <button type="button" class="button secondary form-control clickable" (click)="onEditClick()" *ngIf="!editMode">
-        {{'common.edit' | translate}}
-      </button>
-      <button type="submit" class="button primary form-control clickable" [disabled]="form.invalid" *ngIf="editMode">
-        {{'common.save' | translate}}
-      </button>
-    </div>
-  </form>
+    </form>
+  </div>
 </div>

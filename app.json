@@ -1,0 +1,17 @@
+{
+  "name": "just-match-web",
+  "description": "Just Match - Web app",
+  "scripts": {},
+  "env": {
+    "NPM_CONFIG_PRODUCTION": {
+      "required": true
+    }
+  },
+  "formation": {},
+  "addons": [],
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    }
+  ]
+}

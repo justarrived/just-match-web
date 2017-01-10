@@ -13,7 +13,6 @@ export class UserRegister {
   countryOfOrigin: Country;
   password: string;
   repeatPassword: string;
-  imageToken: string;
   acceptedTermsAndConditions: boolean;
 
   toJsonObject(): Object {
@@ -28,8 +27,7 @@ export class UserRegister {
       'at_und': this.atUndStatus.value,
       'arrived_at': this.arrivedAt,
       'country_of_origin': this.countryOfOrigin.countryCode,
-      'password': this.password,
-      'user_image_one_time_tokens': [this.imageToken]
+      'password': this.password
     };
   }
 }

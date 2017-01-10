@@ -1,34 +1,28 @@
-<div class="user-profile">
-  <div class="subheader text-center">
-    <div class="fs-l form-group">{{'profile' | translate | uppercase}}</div>
-    <div class="subheader-text form-group">{{'profile.create.description' | translate}}</div>
+<div class="user-profile-container">
+  <div class="user-profile-subheader-container">
+    <h2>{{'user.profile.header.title' | translate}}</h2>
+    <p>{{'user.profile.header.information' | translate}}</p>
 
-    <div class="table upload-group-container">
-      <div class="table-row">
-        <div class="table-cell upload-group">
-          <input type="file" id="image-filename" name="imageFilename" class="file" (change)="onImageFilenameChange($event)" accept="image/*">
-          <div class="icon-camera opacity-over" class="enabled">
-            <i class="demo-icon icon-ic-camera"></i>
-            <div class="fs-s text-center">{{'profile.form.photo.choose' | translate}}</div>
-          </div>
-
-          <div class="user-info-image" [ngStyle]="{'background-image': 'url(' + user.profileImage.imageUrl + ')'}"></div>
-        </div>
-        <div class="table-cell fs-m">{{user.firstName}} {{user.lastName}}</div>
+    <div class="user-profile-subheader-info-container">
+      <div class="user-profile-subheader-info-image-container">
+        <input type="file" id="image-filename" name="imageFilename" class="file" (change)="onProfileImageFilenameChange($event)" accept="image/*">
+        <div *ngIf="!user.profileImage" class="icon-camera"><i class="fa fa-camera" aria-hidden="true"></i></div>
+        <div *ngIf="user.profileImage" class="user-info-image" [ngStyle]="{'background-image': 'url(' + user.profileImage.imageUrl + ')'}"></div>
       </div>
+      <div class="user-profile-subheader-info-name-container"><span>{{user.firstName}} {{user.lastName}}</span></div>
     </div>
   </div>
 
-  <div class="row">
-    <div class="header-tab col-xs-6" [ngClass]="{'selected': selectedState == 'profile'}" (click)="setState('profile')" >
-      <h4>
-        {{'profile' | translate}}
-      </h4>
+  <div class="user-profile-tab-container">
+    <div class="user-profile-header-tab col-xs-6" [ngClass]="{'selected': selectedState == 'profile'}" (click)="setState('profile')">
+      <div class="user-profile-tab-header">
+        {{'user.profile.tab.profile.details.title' | translate}}
+      </div>
     </div>
-    <div class="header-tab col-xs-6" [ngClass]="{'selected': selectedState == 'details'}" (click)="setState('details')">
-      <h4>
-        {{"menu.settings.personal_data" | translate}}
-      </h4>
+    <div class="user-profile-header-tab col-xs-6" [ngClass]="{'selected': selectedState == 'details'}" (click)="setState('details')">
+      <div class="user-profile-tab-header">
+        {{'user.profile.tab.personal.details.title' | translate}}
+      </div>
     </div>
   </div>
 

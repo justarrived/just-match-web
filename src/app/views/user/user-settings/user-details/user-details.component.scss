@@ -1,0 +1,60 @@
+@import '../../../../styles/variables';
+@import '../../../../styles/buttons';
+
+.settings-form-container {
+  padding-top: 50px;
+  max-width: 500px;
+  margin: 0 auto;
+
+  .input-group-header {
+    color: black;
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+
+  .settings-input-container {
+    margin-bottom: 15px;
+
+    label {
+      color: black;
+      font-size: 20px;
+    }
+
+    input {
+      border: 1px solid rgba(0, 0, 0, 0.15)
+    }
+  }
+
+  hr {
+    width: 75%;
+    margin: 40px auto;
+  }
+
+  .settings-button-container {
+    margin: 40px 0;
+    text-align: center;
+
+    .save-message {
+      color: green;
+    }
+
+    .error-message {
+      color: red;
+    }
+
+    .error-message {
+      color: $color-cerise-500;
+    }
+
+    button {
+      display: block;
+      margin: 15px auto 30px;
+      min-width: 250px;
+    }
+
+    a {
+      color: $color-accent-main;
+      font-weight: 600;
+    }
+  }
+}

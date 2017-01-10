@@ -27,7 +27,7 @@ $disabled-background-color: #eeeeee;
   }
 
   .autocomplete-dropdown-container {
-    border: 1px solid $color-secondary-gray;
+    border: 1px solid rgba(0, 0, 0, 0.15);
     background-color: $background-color;
 
     &.table {
@@ -58,7 +58,7 @@ $disabled-background-color: #eeeeee;
     list-style: none;
     background-color: $background-color;
     background-clip: padding-box;
-    border: 1px solid $color-secondary-gray;
+    border: 1px solid rgba(0, 0, 0, 0.15);
     -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
     box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
 

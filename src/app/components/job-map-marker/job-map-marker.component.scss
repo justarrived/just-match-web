@@ -1,4 +1,5 @@
 @import '../../styles/variables';
+@import '../../styles/buttons';
 
 .job-map-marker-info-header {
   font-weight: bold;
@@ -6,6 +7,7 @@
 
 .job-map-marker-info-adress-field {
   color: $color-gray-400;
+  margin-bottom: 0;
 }
 
 .job-map-marker-info-salary {
@@ -16,4 +18,9 @@
   color: $color-gray-200;
   text-align: right;
   white-space: nowrap;
+}
+
+.job-map-marker-info-button {
+  display: block;
+  margin: 15px 15px 0 35px;
 }

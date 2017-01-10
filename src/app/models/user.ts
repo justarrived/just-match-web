@@ -1,10 +1,12 @@
 import {UserImage} from './user/user-image';
 import {map, find} from 'lodash';
 import {UserLanguage} from './user/user-language';
+import {UserSkill} from './user/user-skill';
 import {Company} from './company';
+import {Country} from './country';
 
 export class User {
-  id: number;
+  id: string;
   ssn: string;
   firstName: string;
   lastName: string;
@@ -13,6 +15,7 @@ export class User {
   role: string;
   images: UserImage[];
   userLanguages: UserLanguage[];
+  userSkills: UserSkill[];
   presentation: string;
   workExperience: string;
   education: string;
@@ -21,7 +24,13 @@ export class User {
   frilansFinansPaymentDetails: boolean;
   company: Company;
   profileImage: UserImage;
-  password: string;
+  permitImage: UserImage;
+  countryOfOriginCode: string;
+  currentStatus: string;
+  accountClearingNumber: string;
+  accountNumber: string;
+  newPassword: string;
+  repeatedPassword: string;
   oldPassword: string;
 
   constructor(jsonObject: any) {
@@ -38,41 +47,27 @@ export class User {
     this.role = jsonObject.primary_role;
     this.images = map(jsonObject.user_images, userImage => new UserImage(userImage));
     this.userLanguages = map(jsonObject.user_languages, userLanguage => new UserLanguage(userLanguage));
+    this.userSkills = map(jsonObject.user_skills, userSkill => new UserSkill(userSkill));
     this.presentation = jsonObject.description;
     this.workExperience = jsonObject.job_experience;
     this.education = jsonObject.education;
     this.skills = jsonObject.competence_text;
     this.company = new Company(jsonObject.company);
     this.frilansFinansPaymentDetails = jsonObject.frilans_finans_payment_details;
-    this.profileImage = this.getProfileImage(jsonObject.user_images);
+    this.profileImage = this.getImageByCategory('profile');
+    this.permitImage = this.getImageByCategory('work_permit');
     this.languageId = jsonObject.language_id;
+    this.countryOfOriginCode = jsonObject.country_of_origin;
+    this.currentStatus = jsonObject.current_status;
+    this.accountClearingNumber = jsonObject.account_clearing_number;
+    this.accountNumber = jsonObject.account_number;
   }
 
-  private getProfileImage(userImages: any): UserImage {
-    return new UserImage(find(userImages, {category_name: 'profile'}));
+  getNativeLanguage(): UserLanguage {
+    return this.userLanguages.find(language => language.proficiency.proficiency === 5);
   }
 
-  toJsonObject(): Object {
-    return {
-      'id': this.id,
-      'email': this.email,
-      'description': this.presentation,
-      'language_ids': map(this.userLanguages, userLanguage => {
-        return {
-          id: userLanguage.language.id,
-          proficiency: userLanguage.proficiency.proficiency
-        };
-      }),
-      'job_experience': this.workExperience,
-      'education': this.education,
-      'competence_text': this.skills,
-      'ssn': this.ssn,
-      'first_name': this.firstName,
-      'last_name': this.lastName,
-      'phone': this.phone,
-      'language_id': this.languageId,
-      'password': this.password,
-      'old_password': this.oldPassword
-    };
+  getImageByCategory(category): UserImage {
+    return this.images.find(image => image.category === category);
   }
 }

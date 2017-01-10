@@ -65,13 +65,6 @@ export class UserRegisterComponent extends TranslationListener implements OnInit
     this.countryProxy.getCountries().then(countries => this.countries = countries);
   }
 
-  onImageFilenameChange(event) {
-    let file = event.srcElement.files[0];
-    let data = new FormData();
-    data.append('image', file);
-    this.userProxy.saveImage(data).then(userImage => this.userRegister.imageToken = userImage.oneTimeToken);
-  }
-
   onSubmit() {
     this.errors = {};
 
