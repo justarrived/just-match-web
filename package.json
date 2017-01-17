@@ -44,6 +44,7 @@
   },
   "devDependencies": {
     "@angular/compiler-cli": "2.2.1",
+    "@ngtools/webpack": "^1.1.6",
     "@types/jasmine": "2.5.38",
     "@types/lodash": "^4.14.41",
     "@types/moment": "^2.13.0",
