@@ -15,11 +15,13 @@
       </div>
     </div>
   </div>
-  <div class="row home-new-jobs">
-    <div class="col-xs-12 col-sm-9 title">
-      <h2>{{'start.job_section.title' | translate}}</h2>
+
+
+  <div class="row home-slider-container my-jobs">
+    <div class="col-xs-12 col-sm-9 my-jobs-title">
+      <h2>{{'home_page.new_jobs_slider.title' | translate}}</h2>
     </div>
-    <div class="col-xs-12 col-sm-3 show-all">
+    <div class="col-xs-12 col-sm-3 my-jobs-show-all-button">
       <span routerLink="/jobs/1">{{'common.show_all' | translate | lowercase}} <i class="icon-ic-arrow-right"></i></span>
     </div>
     <div class="col-xs-12 jobs-slider">
@@ -27,12 +29,33 @@
         <div class="job-name"><div>
           <translation-item [text]="job.name" [translation]="job.translated.name" [short]="true" [length]="35"></translation-item>
         </div></div>
-        <div class="salary-container">
+        <div class="my-jobs-salary-container">
           {{job.hourlyPay.grossSalary * job.hours}} {{job.hourlyPay.currency}}
         </div>
       </div>
     </div>
   </div>
+
+  <div class="row home-slider-container user-jobs" *ngIf="userJobsVisible()">
+    <div class="col-xs-12 col-sm-9 user-jobs-title">
+      <h2>{{'home_page.user_jobs_slider.title' | translate}}</h2>
+    </div>
+    <div class="col-xs-12 col-sm-3 user-jobs-show-all-button">
+      <span routerLink="/jobs/1">{{'common.show_all' | translate | lowercase}} <i class="icon-ic-arrow-right"></i></span>
+    </div>
+    <div class="col-xs-12 jobs-slider">
+      <div *ngFor="let userJob of userJobs" class="item-container clickable">
+        <div class="job-name"><div>
+          <translation-item [text]="userJob.job.name" [translation]="userJob.job.translated.name" [short]="true" [length]="35"></translation-item>
+        </div></div>
+        <div class="user-jobs-salary-container user-jobs-salary-container-inactive">
+          PÅGÅENDE
+        </div>
+      </div>
+    </div>
+  </div>
+
+
   <div class="row" *ngIf="!user">
     <div class="col-xs-12 col-md-6 instructions-container">
       <h3>{{'start.instruction_section.slide_1.title' | translate}}</h3>
@@ -72,6 +95,8 @@
       <a routerLink="/user" class="medium-button-primary-light">{{'common.start_here' | translate}}</a>
     </div>
   </div>
+
+
   <div class="row home-partners">
     <h2>{{'start.partner_section.title' | translate}}</h2>
     <p>{{'start.partner_section.text' | translate}}</p>
