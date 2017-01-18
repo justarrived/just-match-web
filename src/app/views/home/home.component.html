@@ -33,7 +33,7 @@
       </div>
     </div>
   </div>
-  <div class="row">
+  <div class="row" *ngIf="!user">
     <div class="col-xs-12 col-md-6 instructions-container">
       <h3>{{'start.instruction_section.slide_1.title' | translate}}</h3>
       <ul class="list">
