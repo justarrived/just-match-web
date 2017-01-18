@@ -18,7 +18,8 @@
   <pager [maxResults]="totalJobs" [currentPage]="page" (pageChange)="onPageChange($event)"></pager>
 
   <div class="job-list-container row">
-    <div>
+    <loading-gif class="job-list-loading-gif-container" *ngIf="loadingJobs"></loading-gif>
+    <div class="job-list-item-container" *ngIf="!loadingJobs">
       <job-list-item style="display: block;" *ngFor="let job of jobs" [job]="job"></job-list-item>
     </div>
   </div>

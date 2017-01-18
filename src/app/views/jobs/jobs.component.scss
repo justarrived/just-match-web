@@ -50,7 +50,11 @@
   background-color: $default-bg-color;
   min-height: 1026px;
 
-  > div {
+  .job-list-loading-gif-container {
+    width: 100%;
+  }
+
+  .job-list-item-container {
     width: 100%;
     cursor: pointer;
     cursor: hand;
