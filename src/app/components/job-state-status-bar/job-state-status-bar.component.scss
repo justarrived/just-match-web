@@ -6,6 +6,37 @@
   color: white;
 }
 
+.job-status-container {
+  max-width: 400px;
+  height: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.job-status-icon-container {
+  display: flex;
+  align-items: center;
+}
+
+.job-status-icon-background {
+  border-radius: 50%;
+  background: black;
+  width: auto;
+  overflow: hidden;
+  height: 1%;
+  padding: 12px;
+}
+
+.job-status-text {
+  font-weight: 300;
+  text-align: right;
+}
+
+.company-logo {
+  width: auto;
+  height: auto;
+}
+
 .button {
   cursor: pointer;
 

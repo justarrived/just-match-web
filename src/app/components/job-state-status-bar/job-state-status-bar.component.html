@@ -1,5 +1,25 @@
 <div *ngIf="(user && !isCompanyUser && !isInUserView) && (!userJob || !userJob.invoice || !userJob.invoice.id)" class="job-status text-center">
-  <div class="btn-secondary-light btn-large btn" *ngIf="!userJob" (click)="onApplyForJobButtonClick()">{{'assignment.status.apply' | translate}}</div>
+  <div class="job-status-container">
+    <div class="row">
+      <div class="col-xs-12">
+        <h3 class="job-status-text">{{job.name}}</h3>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-5 job-status-icon-container">
+        <div class="job-status-icon-background">
+          <img [src]="job.companyLogoURL" class="company-logo">
+        </div>
+      </div>
+      <div class="col-xs-7">
+        <h4 class="job-status-text">{{job.company.name}}</h4>
+        <h6 class="job-status-text">{{job.jobDate | date: 'MMM dd'}} - {{job.jobEndDate | date: 'MMM dd'}}</h6>
+        <h6 class="job-status-text">{{job.street}}</h6>
+        <h2 class="job-status-text">{{job.grossSalary}} {{job.currency}}</h2>
+      </div>
+    </div>
+  </div>
+  <div class="btn-secondary-light btn-medium btn" *ngIf="!userJob" (click)="onApplyForJobButtonClick()">{{'assignment.status.apply' | translate}}</div>
   <span *ngIf="userJob && !userJob.accepted">{{'assignment.status.applied' | translate}}</span>
   <div class="table" *ngIf="userJob && userJob.accepted && !userJob.willPerform">
     <div class="table-row">
