@@ -6,16 +6,9 @@
 
 .header {
   width: 100%;
-  height: $header-height;
+  height: 54px;
   border-radius: 0;
-  padding-left: $header-horizontal-padding;
-  padding-right: $header-horizontal-padding;
   color: $color-gray-200;
-
-  @media screen and (max-width: $md-device-width) {
-    padding-left: $header-horizontal-padding*2;
-    padding-right: $header-horizontal-padding*2;
-  }
 
   .navbar-container {
     height: 100%;
@@ -25,16 +18,12 @@
       cursor: pointer;
 
       .back-button {
-        margin-right: $header-button-margin;
+        margin-right: 12px;
       }
     }
 
     .logo-img {
       max-width: 165px;
-
-      @media screen and (max-width: 576px) {
-        zoom: 0.7;
-      }
     }
 
     .menu-icon, .nav-language-icon{
@@ -71,47 +60,34 @@
   }
 }
 
-.menu-container {
+.menu-overlay-container {
   height: 100%;
   background: rgba(255, 255, 255, 0.5);
   text-align: right;
 
-  .menu {
+  .menu-container {
+    overflow-y: auto;
     background: rgba(34, 37, 49, 0.88);
     height: 100%;
-    width: 100%;
-    max-width: 375px;
+    width: 375px;
     display: inline-block;
     text-align: left;
     color: white;
 
-    .create-user {
+    @media screen and (max-width: $sm-device-width) {
       width: 100%;
-      text-align: center;
     }
 
-    > div {
+    .navigation-menu-container {
       display: flex;
       flex-direction: column;
       height: calc(100% - 54px);
-      padding: 1em;
+      padding: 15px;
 
-      > div {
-        &:nth-of-type(1) {
-          text-align: right;
-
-          i {
-            cursor: pointer;
-
-            &:hover {
-              opacity: 0.7;
-            }
-          }
-        }
-
-        &:nth-of-type(2) {
+        .navigation-menu-links-container {
           flex: 1;
-          padding: 40px;
+          margin: 0 auto;
+          margin-top: 40px;
 
           a {
             display: block;
@@ -132,8 +108,8 @@
           }
         }
 
-        &:nth-of-type(3) {
-          .user-info-image {
+        .navigation-menu-user-container {
+          .navigation-menu-user-logged-in-image {
             margin-right: 15px;
             border-radius: 50%;
             height: 35px;
@@ -153,66 +129,43 @@
             }
           }
         }
-      }
+
+        .navigation-menu-create-user-button {
+          width: 100%;
+          text-align: center;
+          margin: 0;
+        }
     }
   }
 
   .language-menu-container {
-    overflow-y: scroll;
     text-align: center;
 
-    .close-button {
-      text-align: right;
-    }
-
-    .language-information {
-      padding: 20px;
-    }
-
-    .credentials {
+    .language-menu-logo {
       display: block;
+      background: url(../assets/images/menu-logo.svg) center center no-repeat;
+      background-size: contain;
+      height: 60px;
+      font-size: 0;
+      margin: 40px 0;
       text-align: center;
-      position: relative;
-      transform: scale(0.75);
-
-      img {
-        max-height: 50px;
-        max-width: 130px;
-        width: auto;
-        margin: 0 auto;
-        padding: 5px 10px 10px 10px;
-      }
-
-      .start_name {
-        padding-top: 5px;
-      }
     }
 
-    .just-arrived-logo-container {
-      height: 50px;
-      padding: 20px;
-      margin-bottom: 2em;
-
-      .language-logo-img {
-        height: 100%;
-      }
-    }
-
-    .select-language-header-text {
+    .language-menu-header-container {
       color: $white;
     }
 
-    .select-language-container {
+    .language-menu-languages-container {
       padding: 20px;
 
-      .language-button-container {
+      .language-menu-language-button-container {
         display: inline-block;
         text-align: center;
         font-size: 14px;
         margin: 12px 7px;
         cursor: pointer;
 
-        .language-code {
+        .language-menu-language-button-code {
           width: 60px;
           height: 60px;
           display: inline-block;
@@ -226,7 +179,30 @@
           &:hover {
             background: rgba(0, 0, 0, 0.2);
           }
+
+          &.active-language {
+            background: $color-primary-cerise;
+          }
         }
+      }
+    }
+
+    .language-menu-information-container {
+      padding: 20px;
+    }
+
+    .language-menu-credentials-container {
+      display: block;
+      text-align: center;
+      position: relative;
+      transform: scale(0.75);
+
+      .language-menu-credentials-image {
+        max-height: 50px;
+        max-width: 130px;
+        width: auto;
+        margin: 0 auto;
+        padding: 5px 10px 10px 10px;
       }
     }
   }

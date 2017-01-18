@@ -112,6 +112,10 @@ export class AppComponent implements OnInit {
     this.router.navigate(['/home']);
   }
 
+  isActiveSystemLanguage(language: Language): boolean {
+   return this.translationService.getSelectedLanguage().languageCode === language.languageCode;
+  }
+
   get isSideMenuVisible(): boolean {
     return this.isNavigationMenuVisible || this.isLanguageMenuVisible;
   }
