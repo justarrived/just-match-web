@@ -1,5 +1,5 @@
 <div *ngIf="(user && !isCompanyUser && !isInUserView) && (!userJob || !userJob.invoice || !userJob.invoice.id)" class="job-status text-center">
-  <button class="button" *ngIf="!userJob" (click)="onApplyForJobButtonClick()">{{'assignment.status.apply' | translate}}</button>
+  <div class="btn-secondary-light btn-large btn" *ngIf="!userJob" (click)="onApplyForJobButtonClick()">{{'assignment.status.apply' | translate}}</div>
   <span *ngIf="userJob && !userJob.accepted">{{'assignment.status.applied' | translate}}</span>
   <div class="table" *ngIf="userJob && userJob.accepted && !userJob.willPerform">
     <div class="table-row">
