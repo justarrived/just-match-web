@@ -8,6 +8,6 @@ cd "$(dirname "$0")/.."
 #                locally.
 
 # ensure everything in the app is up to date.
-#script/update
+script/update
 
 npm run start-dev
