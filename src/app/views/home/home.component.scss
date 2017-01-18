@@ -25,7 +25,73 @@
   }
 }
 
-.home-new-jobs {
+.my-jobs {
+  background: $white;
+}
+
+.my-jobs-title {
+  color: $color-secondary-gray;
+}
+
+.my-jobs-show-all-button {
+  display: flex;
+
+  span {
+    cursor: pointer;
+    color: $color-primary-cerise;
+  }
+
+  @media (min-width: 576px) {
+    flex-direction: column-reverse;
+
+    @media (max-width: $md-device-width) {
+      padding-right: 3em;
+    }
+
+    span {
+      align-self: flex-end;
+    }
+  }
+
+  @media (max-width: 575px) {
+    padding-left: 3em;
+  }
+}
+
+.user-jobs {
+  background: $color-secondary-gray;
+}
+
+.user-jobs-title {
+  color: $white;
+}
+
+.user-jobs-show-all-button {
+  display: flex;
+
+  span {
+    cursor: pointer;
+    color: $white;
+  }
+
+  @media (min-width: 576px) {
+    flex-direction: column-reverse;
+
+    @media (max-width: $md-device-width) {
+      padding-right: 3em;
+    }
+
+    span {
+      align-self: flex-end;
+    }
+  }
+
+  @media (max-width: 575px) {
+    padding-left: 3em;
+  }
+}
+
+.home-slider-container {
   padding: 3em;
 
   @media screen and (max-width: $md-device-width) {
@@ -38,31 +104,6 @@
 
   > div {
     padding: 0;
-  }
-
-  .show-all {
-    display: flex;
-
-    span {
-      cursor: pointer;
-      color: $color-primary-cerise;
-    }
-
-    @media (min-width: 576px) {
-      flex-direction: column-reverse;
-
-      @media (max-width: $md-device-width) {
-        padding-right: 3em;
-      }
-
-      span {
-        align-self: flex-end;
-      }
-    }
-
-    @media (max-width: 575px) {
-      padding-left: 3em;
-    }
   }
 
   .jobs-slider {
@@ -94,13 +135,32 @@
         }
       }
 
-      .salary-container {
+      .my-jobs-salary-container {
         color: $white;
         background: $color-primary-cerise;
         padding: 5px;
         border-radius: 0 0 3px 3px;
         text-align: center;
       }
+
+      .user-jobs-salary-container {
+        color: $white;
+        background: $color-primary-cerise;
+        padding: 5px;
+        border-radius: 0 0 3px 3px;
+        text-align: center;
+      }
+
+      .user-jobs-salary-container-active {
+        background: $color-primary-cerise;
+        color: $white;
+      }
+
+      .user-jobs-salary-container-inactive {
+        background: $color-gray-50;
+        color: $color-gray-200;
+      }
+
     }
 
     @media (min-width: $md-device-width-upper) {
