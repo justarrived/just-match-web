@@ -41,16 +41,22 @@
       <h2>{{'home_page.user_jobs_slider.title' | translate}}</h2>
     </div>
     <div class="col-xs-12 col-sm-3 user-jobs-show-all-button">
-      <span routerLink="/jobs/1">{{'common.show_all' | translate | lowercase}} <i class="icon-ic-arrow-right"></i></span>
+      <span routerLink="/my-jobs">{{'common.show_all' | translate | lowercase}} <i class="icon-ic-arrow-right"></i></span>
     </div>
     <div class="col-xs-12 jobs-slider">
-      <div *ngFor="let userJob of userJobs" class="item-container clickable">
+      <div *ngFor="let userJob of userJobs" class="item-container clickable" [routerLink]="['/job', userJob.job.id]">
         <div class="job-name"><div>
           <translation-item [text]="userJob.job.name" [translation]="userJob.job.translated.name" [short]="true" [length]="35"></translation-item>
         </div></div>
-        <div class="user-jobs-salary-container user-jobs-salary-container-inactive">
-          PÅGÅENDE
+
+        <div *ngIf="userJob.concluded" class="user-jobs-salary-container user-jobs-salary-container-inactive">
+          {{home_page.user_jobs_slider_item.status.finished}}
         </div>
+
+        <div *ngIf="userJob.willPerform" class="user-jobs-salary-container user-jobs-salary-container-active">
+          {{home_page.user_jobs_slider_item.status.ongoing}}
+        </div>
+
       </div>
     </div>
   </div>

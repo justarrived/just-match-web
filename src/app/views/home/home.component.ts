@@ -46,7 +46,13 @@ export class HomeComponent extends TranslationListener implements OnInit {
   loadUserJobs(): void {
     this.userProxy.getUserJobs(this.user.id, {include: 'job'})
       .then(result => {
-        this.userJobs = result;
+        this.userJobs = [];
+
+        for(let userJob of result) {
+          if(userJob.performed /*// userJob.concluded*/) {
+            this.userJobs.push(userJob);
+          }
+        }
       });
   }
 
