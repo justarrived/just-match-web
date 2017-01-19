@@ -36,6 +36,17 @@
   text-align: right;
 }
 
+.sign-or-create-text {
+  text-align: center;
+  font-weight: 300;
+  margin-top: -5px;
+  margin-bottom: -5px;
+}
+
+.applied-text {
+  margin-bottom: 15px;
+}
+
 .expand-details-text-container {
   width: 100%;
 }
@@ -55,6 +66,26 @@
   text-align: center;
   text-decoration: underline;
   cursor: pointer;
+}
+
+.no-of-candidates-text {
+  font-weight: 300;
+  text-align: center;
+}
+
+.time-left-text {
+  font-weight: 300;
+  text-align: center;
+}
+
+.hired-text {
+  font-weight: 300;
+  text-align: center;
+}
+
+.accept-applicant-link {
+  color: $white;
+  text-decoration: underline;
 }
 
 .company-logo {
