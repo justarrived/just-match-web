@@ -61,6 +61,21 @@
     </div>
   </div>
 
+  <div class="row">
+    <div class="home-jobs-applied-for-header-wrapper col-xs-12">
+      <div class="home-jobs-applied-for-header col-xs-10 offset-xs-1">
+        <h3>Jobs applied for</h3>
+      </div>
+    </div>
+
+    <div *ngFor="let job of jobsAppliedFor" class="home-jobs-applied-for-job-item-wapper col-xs-12">
+      <div class="home-jobs-applied-for-job-item row col-xs-10 offset-xs-1">
+        <p class="col-xs-10 col-md-11">{{job.job.name}}</p>
+        <span class="col-xs-2 col-md-1"> > </span>
+      </div>
+    </div>
+
+  </div>
 
   <div class="row" *ngIf="!user">
     <div class="col-xs-12 col-md-6 instructions-container">
