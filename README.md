@@ -64,7 +64,7 @@ The configuration is in [.tx/config](.tx/config).
 - P1	**Must** be fixed.
 - P2	**Should** be fixed and is important to handle, but depends on time and resources available.
 - P3	Will be fixed depending on time and resources. Usually smaller design bugs aso.
-- P4	Noted … this is one step away from the black hole.
+- P4	We know about this, thank you :)
 
 ## Contributors
 
