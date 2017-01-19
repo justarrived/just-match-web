@@ -35,25 +35,13 @@
 
 .my-jobs-show-all-button {
   display: flex;
+  flex-direction: column-reverse;
 
   span {
     cursor: pointer;
     color: $color-primary-cerise;
-  }
-
-  @media (min-width: 576px) {
-    flex-direction: column-reverse;
-
-    @media (max-width: $md-device-width) {
-      padding-right: 3em;
-    }
-
-    span {
-      align-self: flex-end;
-    }
-  }
-
-  @media (max-width: 575px) {
+    align-self: flex-end;
+    padding-right: 3em;
     padding-left: 3em;
   }
 }
@@ -68,25 +56,13 @@
 
 .user-jobs-show-all-button {
   display: flex;
+  flex-direction: column-reverse;
 
   span {
     cursor: pointer;
     color: $white;
-  }
-
-  @media (min-width: 576px) {
-    flex-direction: column-reverse;
-
-    @media (max-width: $md-device-width) {
-      padding-right: 3em;
-    }
-
-    span {
-      align-self: flex-end;
-    }
-  }
-
-  @media (max-width: 575px) {
+    align-self: flex-end;
+    padding-right: 3em;
     padding-left: 3em;
   }
 }

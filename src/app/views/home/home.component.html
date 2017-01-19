@@ -18,11 +18,11 @@
 
 
   <div class="row home-slider-container my-jobs">
-    <div class="col-xs-12 col-sm-9 my-jobs-title">
+    <div class="col-xs-12 my-jobs-title">
       <h2>{{'home_page.new_jobs_slider.title' | translate}}</h2>
     </div>
-    <div class="col-xs-12 col-sm-3 my-jobs-show-all-button">
-      <span routerLink="/jobs/1">{{'common.show_all' | translate | lowercase}} <i class="icon-ic-arrow-right"></i></span>
+    <div class="col-xs-12 my-jobs-show-all-button">
+      <span routerLink="/jobs/1">{{'common.show_all' | translate | lowercase}} > <i class="icon-ic-arrow-right"></i></span>
     </div>
     <div class="col-xs-12 jobs-slider">
       <div *ngFor="let job of newJobs" class="item-container clickable" [routerLink]="['/job', job.id]">
@@ -39,11 +39,11 @@
   </div>
 
   <div class="row home-slider-container user-jobs" *ngIf="userJobsVisible()">
-    <div class="col-xs-12 col-sm-9 user-jobs-title">
+    <div class="col-xs-12 user-jobs-title">
       <h2>{{'home_page.user_jobs_slider.title' | translate}}</h2>
     </div>
-    <div class="col-xs-12 col-sm-3 user-jobs-show-all-button">
-      <span routerLink="/my-jobs">{{'common.show_all' | translate | lowercase}} <i class="icon-ic-arrow-right"></i></span>
+    <div class="col-xs-12 user-jobs-show-all-button">
+      <span routerLink="/my-jobs">{{'common.show_all' | translate | lowercase}} > <i class="icon-ic-arrow-right"></i></span>
     </div>
     <div class="col-xs-12 jobs-slider">
       <div *ngFor="let userJob of userJobs" class="item-container clickable" [routerLink]="['/job', userJob.job.id]">
