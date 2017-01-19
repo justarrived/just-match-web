@@ -6,8 +6,8 @@
     <div class="user-profile-subheader-info-container">
       <div class="user-profile-subheader-info-image-container">
         <input type="file" id="image-filename" name="imageFilename" class="file" (change)="onProfileImageFilenameChange($event)" accept="image/*">
-        <div *ngIf="!user.profileImage" class="icon-camera"><i class="fa fa-camera" aria-hidden="true"></i></div>
-        <div *ngIf="user.profileImage" class="user-info-image" [ngStyle]="{'background-image': 'url(' + user.profileImage.imageUrl + ')'}"></div>
+        <div *ngIf="!user.profile_image" class="icon-camera"><i class="fa fa-camera" aria-hidden="true"></i></div>
+        <div *ngIf="user.profile_image" class="user-info-image" [ngStyle]="{'background-image': 'url(' + user.profile_image.imageUrl + ')'}"></div>
       </div>
       <div class="user-profile-subheader-info-name-container"><span>{{user.firstName}} {{user.lastName}}</span></div>
     </div>
