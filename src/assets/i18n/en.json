@@ -430,6 +430,8 @@
   "assignment.status.rate": "Rate",
   "assignment.status.salary_will_be_paid": "Salary will be paid out",
   "assignment.status.performed": "Job performed",
+  "assignment.status.more_details": "For more details",
+  "assignment.status.click_here": "Click here",
   "warning.title": "We're sorry",
   "warning.description": "Unfortunately, your type of profile does not have access to this function.",
   "warning.url.title": "Home",

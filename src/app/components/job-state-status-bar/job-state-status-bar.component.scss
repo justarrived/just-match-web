@@ -32,6 +32,31 @@
   text-align: right;
 }
 
+.job-status-salary-text {
+  text-align: right;
+}
+
+.expand-details-text-container {
+  width: 100%;
+}
+
+.expand-details-text {
+  width: 100%;
+  font-weight: 300;
+  text-align: center;
+}
+
+.expand-link-container {
+  display: inline-block;
+}
+
+.expand-details-link {
+  font-weight: 300;
+  text-align: center;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
 .company-logo {
   width: auto;
   height: auto;
