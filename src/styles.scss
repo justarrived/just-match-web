@@ -3,6 +3,7 @@
 @import './app/styles/buttons';
 @import './app/styles/typography';
 @import './app/styles/tooltips';
+@import './app/styles/bootstrap-modifications';
 
 body,
 html {
@@ -288,44 +289,6 @@ body {
   }
 }
 
-/* 5 Columns */
-
-.col-xs-5ths,
-.col-sm-5ths,
-.col-md-5ths,
-.col-lg-5ths {
-    position: relative;
-    min-height: 1px;
-    padding-right: 10px;
-    padding-left: 10px;
-}
-
-.col-xs-5ths {
-    width: 20%;
-    float: left;
-}
-
-@media (min-width: 768px) {
-    .col-sm-5ths {
-        width: 20%;
-        float: left;
-    }
-}
-
-@media (min-width: 992px) {
-    .col-md-5ths {
-        width: 20%;
-        float: left;
-    }
-}
-
-@media (min-width: 1200px) {
-    .col-lg-5ths {
-        width: 20%;
-        float: left;
-    }
-}
-
 .navbar-fixed-top > .navbar-container,
 body > .app-container {
   height: 100%;
@@ -338,14 +301,4 @@ body > .app-container {
   @media screen and (max-width: $lg-device-width) {
     width: 100%;
   }
-}
-
-.row {
-  margin-right: 0;
-  margin-left: 0;
-}
-
-.container-fluid {
-  padding-left: 0;
-  padding-right: 0;
 }
