@@ -472,5 +472,7 @@
   "map.geolocation.error.timeout": "service timeout has been reached.",
   "map.geolocation.error.close": "Click to hide.",
   "home_page.new_jobs_slider.title": "New jobs",
-  "home_page.user_jobs_slider.title": "Your jobs"
+  "home_page.user_jobs_slider.title": "Your jobs",
+  "home_page.user_jobs_slider_item.status.finished": "FINISHED",
+  "home_page.user_jobs_slider_item.status.ongoing": "ONGOING"
 }
