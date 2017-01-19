@@ -1,11 +1,8 @@
 <div class="navbar-fixed-top" [ngStyle]="(isNavigationMenuVisible || isLanguageMenuVisible) && {'height': '100%'}">
   <div class="navbar-container">
-    <nav class="header navbar navbar-light bg-faded">
+    <nav class="header navbar-light bg-faded">
       <div class="row navbar-container">
         <div class="col-xs row flex-items-xs-middle">
-          <div class="clickable back-button-container" *ngIf="states.length > 1 && currentState !== '/home'" (click)="onBackButtonClick()">
-            <i class="fa fa-angle-left fa-2x back-button"></i>
-          </div>
           <a routerLink="/home">
             <img class="logo-img" src="/assets/images/logo.png" alt="Just Arrived" />
           </a>
@@ -23,11 +20,10 @@
         </div>
       </div>
     </nav>
-    <div class="menu-container" *ngIf="isSideMenuVisible" (click)="isNavigationMenuVisible = false; isLanguageMenuVisible = false;">
-      <div class="menu">
-        <div *ngIf="isNavigationMenuVisible">
-          <div><i class="fa fa-times fa-2x" (click)="isLanguageMenuVisible = false"></i></div>
-          <div>
+    <div class="menu-overlay-container" *ngIf="isSideMenuVisible" (click)="isNavigationMenuVisible = false; isLanguageMenuVisible = false;">
+      <div class="menu-container">
+        <div class="navigation-menu-container" *ngIf="isNavigationMenuVisible">
+          <div class="navigation-menu-links-container">
             <a routerLink="/my-jobs" *ngIf="user">
               <i class="fa fa-paperclip fa-lg"></i> {{'menu.main.my_assignment' | translate}}
             </a>
@@ -60,37 +56,34 @@
               <i class="fa fa-power-off fa-lg"></i> {{'menu.main.logout' | translate}}
             </a>
           </div>
-          <div>
-            <div *ngIf="user">
-              <div class="user-info-image" [ngStyle]="{'background-image': 'url(' + ((user.images && user.images[0] && user.images[0].imageUrl) || '/assets/images/placeholder-profile-image.png') + ')'}"></div>
+          <div class="navigation-menu-user-container">
+            <div class="navigation-menu-user-logged-in-container" *ngIf="user">
+              <div class="navigation-menu-user-logged-in-image" [ngStyle]="{'background-image': 'url(' + ((user.images && user.images[0] && user.images[0].imageUrl) || '/assets/images/placeholder-profile-image.png') + ')'}"></div>
               {{user.firstName}} {{user.lastName}}
             </div>
-            <div *ngIf="!user">
-              <a routerLink="/user/register" class="create-user medium-button-primary-light">Create User</a>
+            <div class="navigation-menu-user-logged-out-container" *ngIf="!user">
+              <a routerLink="/user/register" class="navigation-menu-create-user-button btn-secondary-light btn-medium btn">Create User</a>
             </div>
           </div>
         </div>
 
         <div *ngIf="isLanguageMenuVisible" class="language-menu-container">
-          <div class="close-button"><i class="fa fa-times fa-2x" (click)="isLanguageMenuVisible = false"></i></div>
-          <div class="just-arrived-logo-container">
-            <img class="language-logo-img" src="/assets/images/logo.png" alt="Just Arrived" />
-          </div>
-          <div class="select-language-header-text">{{'menu.language.title' | translate}}</div>
-          <div class="select-language-container">
-            <div *ngFor="let language of systemLanguages" class="language-button-container" (click)="onSelectLanguage(language)">
-              <div class="language-code">{{language.languageCode}}</div>
-              <div class="language-text">{{language.localName}}</div>
+          <div class="language-menu-logo"></div>
+          <div class="language-menu-header-container">{{'menu.language.title' | translate}}</div>
+          <div class="language-menu-languages-container">
+            <div *ngFor="let language of systemLanguages" class="language-menu-language-button-container" (click)="onSelectLanguage(language)">
+              <div [class.active-language]="isActiveSystemLanguage(language)" class="language-menu-language-button-code">{{language.languageCode}}</div>
+              <div class="language-menu-language-button-name">{{language.localName}}</div>
             </div>
 
           </div>
-          <div class="language-information">
+          <div class="language-menu-information-container">
             <p>{{'menu.language.text_1' | translate}}</p>
             <p>{{'menu.language.text_2' | translate}}</p>
           </div>
-          <div class="credentials">
+          <div class="language-menu-credentials-container">
             <p class="prominent">{{'menu.language.translation_by_probono' | translate}}:</p>
-            <img src="/assets/images/menu_semantix_logo.png" alt="Semantix" />
+            <img class="language-menu-credentials-image" src="/assets/images/menu_semantix_logo.png" alt="Semantix" />
           </div>
         </div>
       </div>

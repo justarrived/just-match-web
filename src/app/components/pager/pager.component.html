@@ -1,26 +1,26 @@
-<div class="row pagination-wrapper flex-items-xs-middle">
-  <div (click)="onFirstPageButtonClick()" class="back-button col-xs">
+<div class="row pagination-wrapper">
+  <div (click)="onFirstPageButtonClick()" class="back-button col-xs-5ths">
     <i class="fa fa-chevron-left navigation-left-arrow" aria-hidden="true"></i>
     <i class="fa fa-chevron-left" aria-hidden="true"></i>
   </div>
 
-  <div class="col-xs">
+  <div class="col-xs-5ths">
     <a (click)="onPreviousPageButtonClick()" class="pagination-button">
       <i class="fa fa-chevron-left" aria-hidden="true"></i>
     </a>
   </div>
 
-  <div class="pagination-text col-xs">
+  <div class="pagination-text col-xs-5ths">
     <p> {{currentPage}} / {{lastPage}} </p>
   </div>
 
-  <div class="col-xs" class="text-right">
+  <div class="text-right col-xs-5ths">
     <a (click)="onNextPageButtonClick()" class="pagination-button">
       <i class="fa fa-chevron-right" aria-hidden="true"></i>
     </a>
   </div>
 
-  <div (click)="onLastPageButtonClick()" class="forward-button col-xs">
+  <div (click)="onLastPageButtonClick()" class="forward-button col-xs-5ths">
     <i class="fa fa-chevron-right" aria-hidden="true"></i>
     <i class="fa fa-chevron-right navigation-right-arrow" aria-hidden="true"></i>
   </div>
