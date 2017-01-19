@@ -35,6 +35,7 @@ export class HomeComponent extends TranslationListener implements OnInit {
   ngOnInit() {
     this.loadData();
     this.loadUserJobs();
+    this.loadJobsAppliedFor();
   }
 
   loadData(): void {
@@ -45,16 +46,16 @@ export class HomeComponent extends TranslationListener implements OnInit {
   }
 
   loadUserJobs(): void {
-    this.userProxy.getUserJobs(this.user.id, {include: 'job'})
+    this.userProxy.getUserJobs(this.user.id, {include: 'job', 'sort': 'job.job.end_date', 'filter[will_perform]': true, 'page[size]': 5})
       .then(result => {
-        this.userJobs = [];
-        this.jobsAppliedFor = result;
+        this.userJobs = result;
+      });
+  }
 
-        for(let userJob of result) {
-          if(userJob.performed /*// userJob.concluded*/) {
-            this.userJobs.push(userJob);
-          }
-        }
+  loadJobsAppliedFor(): void {
+    this.userProxy.getUserJobs(this.user.id, {include: 'job', 'sort': '-created_at', 'page[size]': 10})
+      .then(result => {
+        this.jobsAppliedFor = result;
       });
   }
 
