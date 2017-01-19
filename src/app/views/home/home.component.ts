@@ -20,6 +20,7 @@ export class HomeComponent extends TranslationListener implements OnInit {
   password: string;
   newJobs: Job[];
   userJobs: UserJob[];
+  jobsAppliedFor: UserJob[];
   isCompanyUser: boolean;
   user: User;
   isEmpty = isEmpty;
@@ -47,6 +48,7 @@ export class HomeComponent extends TranslationListener implements OnInit {
     this.userProxy.getUserJobs(this.user.id, {include: 'job'})
       .then(result => {
         this.userJobs = [];
+        this.jobsAppliedFor = result;
 
         for(let userJob of result) {
           if(userJob.performed /*// userJob.concluded*/) {
