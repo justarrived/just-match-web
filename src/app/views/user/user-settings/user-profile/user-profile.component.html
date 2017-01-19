@@ -64,7 +64,7 @@
         <div *ngIf="serverValidationErrors.at_und" class="alert alert-danger">{{serverValidationErrors.at_und}}.</div>
       </div>
 
-      <div *ngIf="profileForm.value.at_und === 'yes'" class="profile-input-container">
+      <div *ngIf="profileForm.value.current_status === 'asylum_seeker' && profileForm.value.at_und === 'yes'" class="profile-input-container">
         <label>{{'user.profile.form.got.coordination.number.label' | translate}} *:</label>
         <div class="input-radio-container">
           <div class="input-radio-button-container">
@@ -83,14 +83,14 @@
         <div *ngIf="!profileForm.value.at_und" class="alert alert-danger">{{'user.profile.form.got.coordination.number.required' | translate}}.</div>
       </div>
 
-      <div *ngIf="profileForm.value.at_und === 'yes' && profileForm.value.got_coordination_number === 'yes'" class="form-group material-group profile-input-container" [ngClass]="{'has-error':!profileForm.value.coordination_number || !serverValidationErrors.coordination_number}">
+      <div *ngIf="profileForm.value.current_status === 'asylum_seeker' && profileForm.value.at_und === 'yes' && profileForm.value.got_coordination_number === 'yes'" class="form-group material-group profile-input-container" [ngClass]="{'has-error':!profileForm.value.coordination_number || !serverValidationErrors.coordination_number}">
         <label for="coordination_number">{{'user.profile.form.coordination.number.label' | translate}} *:</label>
         <input class="form-control material-input" id="coordination_number" name="coordination-number-input" type="text" (focus)="serverValidationErrors.coordination_number = ''" placeholder="{{'user.profile.form.coordination.number.placeholder' | translate}}" [formControl]="profileForm.controls['coordination_number']">
         <div *ngIf="!profileForm.value.coordination_number" class="alert alert-danger">{{'user.profile.form.coordination.number.required' | translate}}.</div>
         <div *ngIf="serverValidationErrors.coordination_number" class="alert alert-danger">{{serverValidationErrors.coordination_number}}.</div>
       </div>
 
-      <div *ngIf="profileForm.value.at_und === 'yes' && profileForm.value.got_coordination_number === 'yes'" class="profile-upload-button-container">
+      <div *ngIf="profileForm.value.current_status === 'asylum_seeker' && profileForm.value.at_und === 'yes' && profileForm.value.got_coordination_number === 'yes'" class="profile-upload-button-container">
         <input type="file" id="lma-image-filename" name="lma-image-filename" class="input-image-upload" (change)="onImageFilenameChange($event, 'lma_card', lmaImageStatusObject)" accept="image/*">
         <label for="lma-image-filename" class="btn-secondary btn-small btn btn-image-upload">{{'user.profile.form.lma.upload.button' | translate}}</label>
         <p>{{'user.profile.form.lma.upload.description' | translate}}*</p>
@@ -100,7 +100,7 @@
         <div *ngIf="!user.lma_card_image" class="alert alert-danger">{{'user.profile.form.lma.upload.required' | translate}}.</div>
       </div>
 
-      <div *ngIf="profileForm.value.at_und === 'yes' && profileForm.value.got_coordination_number === 'yes'" class="profile-upload-button-container">
+      <div *ngIf="profileForm.value.current_status === 'asylum_seeker' && profileForm.value.at_und === 'yes' && profileForm.value.got_coordination_number === 'yes'" class="profile-upload-button-container">
         <input type="file" id="skatteverket-certificate-image-filename" name="skatteverket-certificate-image-filename" class="input-image-upload" (change)="onImageFilenameChange($event, 'skatteverket_certificate', skatteverketCertificateImageStatusObject)" accept="image/*">
         <label for="skatteverket-certificate-image-filename" class="btn-secondary btn-small btn btn-image-upload">{{'user.profile.form.skatteverket.certificate.upload.button' | translate}}</label>
         <p>{{'user.profile.form.skatteverket.certificate.upload.description' | translate}}*</p>
