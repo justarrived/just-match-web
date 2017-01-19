@@ -59,6 +59,13 @@ $ script/push-translations
 
 The configuration is in [.tx/config](.tx/config).
 
+## Bug reporting convention
+
+- P1	**Must** be fixed.
+- P2	**Should** be fixed and is important to handle, but depends on time and resources available.
+- P3	Will be fixed depending on time and resources. Usually smaller design bugs aso.
+- P4	Noted … this is one step away from the black hole.
+
 ## Contributors
 
 [Our awesome contributors](https://github.com/justarrived/just-match-frontend/graphs/contributors).
