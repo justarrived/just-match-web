@@ -113,32 +113,31 @@
 
     .item-container {
       display: inline-block;
-      width: 139px;
+      width: 180px;
       margin: 5px;
       background-color: $default-bg-color;
       border-radius: 3px 3px 3px 3px;
-      box-shadow: 0 0 3px 0 rgba(0,0,0,.2);
+      webkit-box-shadow: 1px 1px 5px 1px rgba(0,0,0,0.1);
+      -moz-box-shadow: 1px 1px 5px 1px rgba(0,0,0,0.1);
+      box-shadow: 1px 1px 5px 1px rgba(0,0,0,0.1);
       cursor: pointer;
 
-      @media (min-width: $md-device-width-upper) and (max-width: $lg-device-width) {
-        width: 134px;
-      }
-
       .job-name {
-        height: 92px;
+        height: 110px;
         padding: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
 
-        div {
-          max-height: 100%;
-          overflow: hidden;
-          white-space: normal;
+        p {
+          text-align: center;
         }
       }
 
       .my-jobs-salary-container {
         color: $white;
         background: $color-primary-cerise;
-        padding: 5px;
+        padding: 10px;
         border-radius: 0 0 3px 3px;
         text-align: center;
       }
@@ -146,7 +145,7 @@
       .user-jobs-salary-container {
         color: $white;
         background: $color-primary-cerise;
-        padding: 5px;
+        padding: 10px;
         border-radius: 0 0 3px 3px;
         text-align: center;
       }
@@ -236,6 +235,9 @@
 }
 
 .home-jobs-applied-for-job-item {
+
+  cursor: pointer;
+
   p {
     margin-top: 15px;
     margin-bottom: 15px;

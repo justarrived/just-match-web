@@ -26,9 +26,11 @@
     </div>
     <div class="col-xs-12 jobs-slider">
       <div *ngFor="let job of newJobs" class="item-container clickable" [routerLink]="['/job', job.id]">
-        <div class="job-name"><div>
-          <translation-item [text]="job.name" [translation]="job.translated.name" [short]="true" [length]="35"></translation-item>
-        </div></div>
+        <div class="job-name">
+          <div>
+            <p>{{job.name}}</p>
+          </div>
+        </div>
         <div class="my-jobs-salary-container">
           {{job.hourlyPay.grossSalary * job.hours}} {{job.hourlyPay.currency}}
         </div>
@@ -45,16 +47,18 @@
     </div>
     <div class="col-xs-12 jobs-slider">
       <div *ngFor="let userJob of userJobs" class="item-container clickable" [routerLink]="['/job', userJob.job.id]">
-        <div class="job-name"><div>
-          <translation-item [text]="userJob.job.name" [translation]="userJob.job.translated.name" [short]="true" [length]="35"></translation-item>
-        </div></div>
+        <div class="job-name">
+          <div>
+            <p>{{userJob.job.name}}</p>
+          </div>
+        </div>
 
         <div *ngIf="userJob.concluded" class="user-jobs-salary-container user-jobs-salary-container-inactive">
-          {{home_page.user_jobs_slider_item.status.finished}}
+          {{'home_page.user_jobs_slider_item.status.finished' | translate}}
         </div>
 
         <div *ngIf="userJob.willPerform" class="user-jobs-salary-container user-jobs-salary-container-active">
-          {{home_page.user_jobs_slider_item.status.ongoing}}
+          {{'home_page.user_jobs_slider_item.status.ongoing' | translate}}
         </div>
 
       </div>
@@ -69,7 +73,7 @@
     </div>
 
     <div *ngFor="let job of jobsAppliedFor" class="home-jobs-applied-for-job-item-wapper col-xs-12">
-      <div class="home-jobs-applied-for-job-item row col-xs-10 offset-xs-1">
+      <div class="home-jobs-applied-for-job-item row col-xs-10 offset-xs-1" [routerLink]="['/job', job.job.id]">
         <p class="col-xs-10 col-md-11">{{job.job.name}}</p>
         <span class="col-xs-2 col-md-1"> > </span>
       </div>
