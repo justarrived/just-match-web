@@ -325,6 +325,7 @@
   "user.profile.form.residence.permit.upload.description": "Upload photo of permit",
   "user.profile.form.residence.permit.upload.success": "Photo of permit has been uploaded",
   "user.profile.form.residence.permit.upload.fail": "Photo of permit could not be uploaded",
+  "user.profile.form.residence.permit.upload.required": "Please upload a photo of your permit",
   "user.profile.form.at.und.label": "AT-UND",
   "user.profile.form.at.und.required": "Please select if you have an AT-UND permit",
   "user.profile.form.got.coordination.number.label": "Coordination number",

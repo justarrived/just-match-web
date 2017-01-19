@@ -38,10 +38,11 @@
       <div *ngIf="profileForm.value.current_status !== 'asylum_seeker'" class="profile-upload-button-container">
         <input type="file" id="residence-permit-image-filename" name="residence-permit-image-filename" class="input-image-upload" (change)="onImageFilenameChange($event, 'residence_permit', residencePermitImageStatusObject)" accept="image/*">
         <label for="residence-permit-image-filename" class="btn-secondary btn-small btn btn-image-upload">{{'user.profile.form.residence.permit.upload.button' | translate}}</label>
-        <p>{{'user.profile.form.residence.permit.upload.description' | translate}}</p>
+        <p>{{'user.profile.form.residence.permit.upload.description' | translate}}*</p>
         <div *ngIf="user.residence_permit_image" class="permit-image" [ngStyle]="{'background-image': 'url(' + user.residence_permit_image.imageUrl + ')'}"></div>
         <div *ngIf="residencePermitImageStatusObject.imageSaveSuccess" class="save-message">{{'user.profile.form.residence.permit.upload.success' | translate}}</div>
         <div *ngIf="residencePermitImageStatusObject.imageSaveFail" class="error-message">{{'user.profile.form.residence.permit.upload.fail' | translate}}</div>
+        <div *ngIf="!user.residence_permit_image" class="alert alert-danger">{{'user.profile.form.residence.permit.upload.required' | translate}}.</div>
       </div>
 
       <div *ngIf="profileForm.value.current_status === 'asylum_seeker'" class="profile-input-container">
@@ -107,7 +108,7 @@
         <div *ngIf="user.skatteverket_certificate_image" class="permit-image" [ngStyle]="{'background-image': 'url(' + user.skatteverket_certificate_image.imageUrl + ')'}"></div>
         <div *ngIf="skatteverketCertificateImageStatusObject.imageSaveSuccess" class="save-message">{{'user.profile.form.skatteverket.certificate.upload.success' | translate}}</div>
         <div *ngIf="skatteverketCertificateImageStatusObject.imageSaveFail" class="error-message">{{'user.profile.form.skatteverket.certificate.upload.fail' | translate}}</div>
-        <div *ngIf="!user.skatteverket_certificate_image" class="alert alert-danger">{{'user.profile.form.skatteverket.certificate.required' | translate}}.</div>
+        <div *ngIf="!user.skatteverket_certificate_image" class="alert alert-danger">{{'user.profile.form.skatteverket.certificate.upload.required' | translate}}.</div>
       </div>
 
       <hr>

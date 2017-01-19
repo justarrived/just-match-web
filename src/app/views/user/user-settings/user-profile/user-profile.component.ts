@@ -204,7 +204,7 @@ export class UserProfileComponent implements OnInit {
 
   formValidation(): boolean {
     return this.profileForm.valid && (
-      (this.profileForm.value.current_status !== "asylum_seeker") ||
+      (this.profileForm.value.current_status !== "asylum_seeker" && this.user.residence_permit_image) ||
       (this.profileForm.value.current_status === "asylum_seeker" && this.profileForm.value.at_und === "no") ||
       (this.profileForm.value.current_status === "asylum_seeker" && this.profileForm.value.at_und === "yes" && this.profileForm.value.got_coordination_number === "no") ||
       (this.profileForm.value.current_status === "asylum_seeker" && this.profileForm.value.at_und === "yes" && this.profileForm.value.got_coordination_number === "yes" && this.profileForm.value.coordination_number && this.user.lma_card_image && this.user.skatteverket_certificate_image)
