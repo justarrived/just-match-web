@@ -58,7 +58,7 @@
           </div>
           <div class="navigation-menu-user-container">
             <div class="navigation-menu-user-logged-in-container" *ngIf="user">
-              <div class="navigation-menu-user-logged-in-image" [ngStyle]="{'background-image': 'url(' + ((user.images && user.images[0] && user.images[0].imageUrl) || '/assets/images/placeholder-profile-image.png') + ')'}"></div>
+              <div class="navigation-menu-user-logged-in-image" [ngStyle]="{'background-image': 'url(' + ((user.profile_image && user.profile_image.imageUrl) || '/assets/images/placeholder-profile-image.png') + ')'}"></div>
               {{user.firstName}} {{user.lastName}}
             </div>
             <div class="navigation-menu-user-logged-out-container" *ngIf="!user">
