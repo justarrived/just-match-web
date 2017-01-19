@@ -218,6 +218,44 @@
   }
 }
 
+.home-jobs-applied-for-header-wrapper {
+  background: $color-gray-25;
+  border-bottom: 2px solid $color-primary-cerise;
+}
+
+.home-jobs-applied-for-header {
+  h3 {
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+}
+
+.home-jobs-applied-for-job-item-wapper {
+  border-top: 1px solid $color-gray-25;
+  border-bottom: 1px solid $color-gray-25;
+}
+
+.home-jobs-applied-for-job-item {
+  p {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  span {
+    color: $color-primary-cerise;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+
 .home-partners {
   text-align: center;
   background: $white;
