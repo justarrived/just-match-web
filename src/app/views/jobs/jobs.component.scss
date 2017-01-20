@@ -43,13 +43,27 @@
   .map {
     height: 400px;
     width: 100%;
+
+    @media screen and (max-width: $xs-device-width) {
+      height: 200px;
+    }
+
+    @media screen and (max-width: $sm-device-width) {
+      height: 300px;
+    }
   }
 }
 
 .job-list-container {
   background-color: $default-bg-color;
+  min-height: 1026px;
 
-  > div {
+  .job-list-loading-container {
+    width: 100%;
+    margin-top: 20px;
+  }
+
+  .job-list-item-container {
     width: 100%;
     cursor: pointer;
     cursor: hand;

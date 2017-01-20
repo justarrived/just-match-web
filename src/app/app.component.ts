@@ -102,14 +102,13 @@ export class AppComponent implements OnInit {
     this.translationService.setLanguage(language);
   }
 
-  onBackButtonClick() {
-    this.states.pop();
-    this.router.navigate([this.states.pop()]);
-  }
-
   onLogoutButtonClick() {
     this.authManager.logoutUser();
     this.router.navigate(['/home']);
+  }
+
+  isActiveSystemLanguage(language: Language): boolean {
+   return this.translationService.getSelectedLanguage().languageCode === language.languageCode;
   }
 
   get isSideMenuVisible(): boolean {

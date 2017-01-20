@@ -27,8 +27,9 @@
 }
 
 .pagination-text {
-  text-align: left;
-  white-space: nowrap;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .pagination-button {

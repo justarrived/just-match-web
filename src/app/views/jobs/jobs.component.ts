@@ -20,6 +20,7 @@ export class JobsComponent extends TranslationListener implements OnInit {
   totalJobs: number = 1;
   page: number = 1;
   pageSize: number = 10;
+  loadingJobs: boolean = true;
 
   mapZoom: number = 5;
   mapLocation: MapLocation = new MapLocation({ longitude: 18.0675109, latitude: 59.3349086 });
@@ -43,10 +44,12 @@ export class JobsComponent extends TranslationListener implements OnInit {
   }
 
   loadData() {
+    this.loadingJobs = true;
     this.jobProxy.getJobs({ include: 'owner,company,hourly_pay,company.company_images', 'filter[filled]': false, 'page[number]': this.page.toString() })
       .then(result => {
         this.jobs = result.data;
         this.totalJobs = result.total;
+        this.loadingJobs = false;
       });
   }
 
