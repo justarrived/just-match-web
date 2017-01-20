@@ -18,10 +18,10 @@
 
     .user-profile-subheader-info-container {
       margin: 0 auto;
-      display: flex;
-      width: 300px;
+      max-width: 300px;
 
       .user-profile-subheader-info-image-container {
+        margin: 0 auto;
         width: 85px;
         height: 85px;
         border-radius: 50%;
@@ -73,7 +73,7 @@
       .user-profile-subheader-info-name-container {
         display: table;
         height: 85px;
-        margin-left: auto;
+        margin: 0 auto;
 
         span {
           display: table-cell;

@@ -43,6 +43,14 @@
   .map {
     height: 400px;
     width: 100%;
+
+    @media screen and (max-width: $xs-device-width) {
+      height: 200px;
+    }
+
+    @media screen and (max-width: $sm-device-width) {
+      height: 300px;
+    }
   }
 }
 

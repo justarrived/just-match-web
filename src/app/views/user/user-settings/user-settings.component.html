@@ -3,7 +3,7 @@
     <h2>{{'user.profile.header.title' | translate}}</h2>
     <p>{{'user.profile.header.information' | translate}}</p>
 
-    <div class="user-profile-subheader-info-container">
+    <div class="user-profile-subheader-info-container row">
       <div class="user-profile-subheader-info-image-container">
         <input type="file" id="image-filename" name="imageFilename" class="file" (change)="onProfileImageFilenameChange($event)" accept="image/*">
         <div *ngIf="!user.profile_image" class="icon-camera"><i class="fa fa-camera" aria-hidden="true"></i></div>

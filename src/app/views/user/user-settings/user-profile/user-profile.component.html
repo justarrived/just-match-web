@@ -1,5 +1,5 @@
 <div class="profile-container">
-  <div class="profile-form-container">
+  <div class="profile-form-container col-xs-12 col-sm-10 col-md-8 col-lg-6">
 
     <form #form="ngForm" (ngSubmit)="onSubmit()">
 
@@ -23,7 +23,7 @@
 
       <div class="profile-input-container">
         <label>{{'user.profile.form.status.label' | translate}} *:</label>
-        <div class="input-radio-container">
+        <div class="input-radio-container row">
           <div *ngFor="let status of statuses" class="input-radio-button-container">
             <label class="input-radio-button-label" for="{{status.id}}">
             <input class="input-radio-button-input" type="radio" name="permit-type" id="{{status.id}}" (focus)="serverValidationErrors.current_status = ''" [formControl]="profileForm.controls['current_status']" value="{{status.id}}" />
@@ -123,10 +123,12 @@
           <div class="profile-input-table-row-container" *ngFor="let userLanguage of profileForm.value.user_languages">
             <div class="profile-input-table-row-inner-container" *ngIf="userLanguage.proficiency.proficiency !== 5">
               <div class="profile-input-table-row-inner-item-container">
-                <p>{{userLanguage.language.name}}</p>
-              </div>
-              <div class="profile-input-table-row-inner-icon-container" (click)="onRemoveUserLanguage(userLanguage)">
-                <i class="fa fa-times" aria-hidden="true"></i>
+                <div class="profile-input-table-row-inner-item-text">
+                {{userLanguage.language.name}}
+                </div>
+                <div class="profile-input-table-row-inner-icon-container" (click)="onRemoveUserLanguage(userLanguage)">
+                  <i class="fa fa-times" aria-hidden="true"></i>
+                </div>
               </div>
               <div class="profile-input-table-row-inner-dropdown-container">
                 <autocomplete-dropdown [lookupType]="'list'" [enumList]="languageProficiencyLevelsAvailable" [(destination)]="userLanguage.proficiency" [placeholder]="'language.proficiency.placeholder' | translate" [autocompleteResultLabelFunction]="namePropertyLabel"
@@ -148,10 +150,12 @@
           <div class="profile-input-table-row-container" *ngFor="let userSkill of profileForm.value.user_skills">
             <div class="profile-input-table-row-inner-container">
               <div class="profile-input-table-row-inner-item-container">
-                <p>{{userSkill.skill.name}}</p>
-              </div>
-              <div class="profile-input-table-row-inner-icon-container" (click)="onRemoveUserSkill(userSkill)">
-                <i class="fa fa-times" aria-hidden="true"></i>
+                <div class="profile-input-table-row-inner-item-text">
+                {{userSkill.skill.name}}
+                </div>
+                <div class="profile-input-table-row-inner-icon-container" (click)="onRemoveUserSkill(userSkill)">
+                  <i class="fa fa-times" aria-hidden="true"></i>
+                </div>
               </div>
               <div class="profile-input-table-row-inner-dropdown-container">
                 <autocomplete-dropdown [lookupType]="'list'" [enumList]="skillProficiencyLevelsAvailable" [(destination)]="userSkill.proficiency" [placeholder]="'skill.proficiency.placeholder' | translate" [autocompleteResultLabelFunction]="namePropertyLabel"
