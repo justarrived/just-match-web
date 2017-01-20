@@ -487,5 +487,9 @@
   "map.geolocation.error.permissionDenied": "you have disabled access to your location for this site.",
   "map.geolocation.error.positionUnavailable": "we are unable to determine your location.",
   "map.geolocation.error.timeout": "service timeout has been reached.",
-  "map.geolocation.error.close": "Click to hide."
+  "map.geolocation.error.close": "Click to hide.",
+  "home_page.new_jobs_slider.title": "New jobs",
+  "home_page.user_jobs_slider.title": "My jobs",
+  "home_page.user_jobs_slider_item.status.finished": "Finnished",
+  "home_page.user_jobs_slider_item.status.ongoing": "Ongoing"
 }

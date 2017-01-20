@@ -3,37 +3,87 @@
     <div class="col-xs" *ngIf="user">
       <h1>{{'common.welcome_user'| translate: {username: user.firstName} }}</h1>
       <div class="home-header-button-container">
-        <a routerLink="/user" class="medium-button-primary-light">{{'common.edit_profile'| translate}}</a><br>
-        <a routerLink="/jobs/1" class="medium-button-secondary-light">{{'menu.main.find_assignment'| translate}}</a>
+        <a routerLink="/user" class="btn-secondary-light btn-large btn">{{'common.edit_profile'| translate}}</a><br>
+        <a routerLink="/jobs/1" class="btn-secondary-light btn-large btn">{{'menu.main.find_assignment'| translate}}</a>
       </div>
     </div>
     <div class="col-xs" *ngIf="!user">
-      <div class="header-box-title">{{'start.hero_section.left.title' | translate}}</div>
-      <div class="header-box-text">{{'start.hero_section.left.text' | translate}}</div>
+      <h1>Welcome Andreas!</h1>
+      <div class="header-box-text">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </div>
       <div class="home-header-button-container">
-        <a routerLink="/user/register" class="medium-button-primary-light">{{'menu.main.create_account'| translate}}</a><br>
+        <div routerLink="/user/register" class="btn-secondary-light btn-large btn">{{'menu.main.create_account'| translate}}</div><br>
       </div>
     </div>
   </div>
-  <div class="row home-new-jobs">
-    <div class="col-xs-12 col-sm-9 title">
-      <h2>{{'start.job_section.title' | translate}}</h2>
+
+
+  <div class="row home-slider-container my-jobs">
+    <div class="col-xs-12 my-jobs-title">
+      <h2>{{'home_page.new_jobs_slider.title' | translate}}</h2>
     </div>
-    <div class="col-xs-12 col-sm-3 show-all">
-      <span routerLink="/jobs/1">{{'common.show_all' | translate | lowercase}} <i class="icon-ic-arrow-right"></i></span>
+    <div class="col-xs-12 my-jobs-show-all-button">
+      <span routerLink="/jobs/1">{{'common.show_all' | translate | lowercase}} > <i class="icon-ic-arrow-right"></i></span>
     </div>
-    <div class="col-xs-12 jobs-slider">
+    <div class="col-xs-12 jobs-slider" align="center">
       <div *ngFor="let job of newJobs" class="item-container clickable" [routerLink]="['/job', job.id]">
-        <div class="job-name"><div>
-          <translation-item [text]="job.name" [translation]="job.translated.name" [short]="true" [length]="35"></translation-item>
-        </div></div>
-        <div class="salary-container">
+        <div class="job-name">
+          <div>
+            <p>{{job.name}}</p>
+          </div>
+        </div>
+        <div class="my-jobs-salary-container">
           {{job.hourlyPay.grossSalary * job.hours}} {{job.hourlyPay.currency}}
         </div>
       </div>
     </div>
   </div>
-  <div class="row">
+
+  <div class="row home-slider-container user-jobs" *ngIf="userJobsVisible()">
+    <div class="col-xs-12 user-jobs-title">
+      <h2>{{'home_page.user_jobs_slider.title' | translate}}</h2>
+    </div>
+    <div class="col-xs-12 user-jobs-show-all-button">
+      <span routerLink="/my-jobs">{{'common.show_all' | translate | lowercase}} > <i class="icon-ic-arrow-right"></i></span>
+    </div>
+    <div class="col-xs-12 jobs-slider" align="center">
+      <div *ngFor="let userJob of userJobs" class="item-container clickable" [routerLink]="['/job', userJob.job.id]">
+        <div class="job-name">
+          <div>
+            <p>{{userJob.job.name}}</p>
+          </div>
+        </div>
+
+        <div *ngIf="userJob.concluded" class="user-jobs-salary-container user-jobs-salary-container-inactive">
+          {{'home_page.user_jobs_slider_item.status.finished' | translate | uppercase}}
+        </div>
+
+        <div *ngIf="userJob.willPerform" class="user-jobs-salary-container user-jobs-salary-container-active">
+          {{'home_page.user_jobs_slider_item.status.ongoing' | translate | uppercase}}
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="row" *ngIf="user">
+    <div class="home-jobs-applied-for-header-wrapper col-xs-12">
+      <div class="home-jobs-applied-for-header col-xs-10 offset-xs-1">
+        <h3>Jobs applied for</h3>
+      </div>
+    </div>
+
+    <div *ngFor="let job of jobsAppliedFor" class="home-jobs-applied-for-job-item-wrapper col-xs-12">
+      <div class="home-jobs-applied-for-job-item row col-xs-10 offset-xs-1" [routerLink]="['/job', job.job.id]">
+        <p class="col-xs-10 col-md-11">{{job.job.name}}</p>
+        <span class="col-xs-2 col-md-1"> > </span>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="row" *ngIf="!user">
     <div class="col-xs-12 col-md-6 instructions-container">
       <h3>{{'start.instruction_section.slide_1.title' | translate}}</h3>
       <ul class="list">
@@ -50,7 +100,7 @@
           {{'start.instruction_section.slide_1.text_3' | translate}}
         </li>
       </ul>
-      <a routerLink="/jobs/1" class="medium-button-primary-light">{{'common.find_assignment' | translate}}</a>
+      <div routerLink="/jobs/1" class="btn-secondary-light btn-medium btn">{{'common.find_assignment' | translate}}</div>
     </div>
     <div class="col-xs-12 col-md-6 instructions-container">
       <h3>{{'start.instruction_section.slide_2.title' | translate}}</h3>
@@ -69,9 +119,11 @@
           {{'start.instruction_section.slide_2.text_4' | translate}}
         </li>
       </ul>
-      <a routerLink="/user" class="medium-button-primary-light">{{'common.start_here' | translate}}</a>
+      <div routerLink="/user" class="btn-secondary-light btn-medium btn">{{'common.start_here' | translate}}</div>
     </div>
   </div>
+
+
   <div class="row home-partners">
     <h2>{{'start.partner_section.title' | translate}}</h2>
     <p>{{'start.partner_section.text' | translate}}</p>

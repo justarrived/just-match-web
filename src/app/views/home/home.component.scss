@@ -25,7 +25,49 @@
   }
 }
 
-.home-new-jobs {
+.my-jobs {
+  background: $white;
+}
+
+.my-jobs-title {
+  color: $color-secondary-gray;
+}
+
+.my-jobs-show-all-button {
+  display: flex;
+  flex-direction: column-reverse;
+
+  span {
+    cursor: pointer;
+    color: $color-primary-cerise;
+    align-self: flex-end;
+    padding-right: 3em;
+    padding-left: 3em;
+  }
+}
+
+.user-jobs {
+  background: $color-secondary-gray;
+}
+
+.user-jobs-title {
+  color: $white;
+}
+
+.user-jobs-show-all-button {
+  display: flex;
+  flex-direction: column-reverse;
+
+  span {
+    cursor: pointer;
+    color: $white;
+    align-self: flex-end;
+    padding-right: 3em;
+    padding-left: 3em;
+  }
+}
+
+.home-slider-container {
   padding: 3em;
 
   @media screen and (max-width: $md-device-width) {
@@ -40,31 +82,6 @@
     padding: 0;
   }
 
-  .show-all {
-    display: flex;
-
-    span {
-      cursor: pointer;
-      color: $color-primary-cerise;
-    }
-
-    @media (min-width: 576px) {
-      flex-direction: column-reverse;
-
-      @media (max-width: $md-device-width) {
-        padding-right: 3em;
-      }
-
-      span {
-        align-self: flex-end;
-      }
-    }
-
-    @media (max-width: 575px) {
-      padding-left: 3em;
-    }
-  }
-
   .jobs-slider {
     margin-top: 1em;
     overflow-y: scroll;
@@ -72,40 +89,51 @@
 
     .item-container {
       display: inline-block;
-      width: 139px;
+      width: 180px;
       margin: 5px;
       background-color: $default-bg-color;
       border-radius: 3px 3px 3px 3px;
-      box-shadow: 0 0 3px 0 rgba(0,0,0,.2);
+      box-shadow: 1px 1px 5px 1px rgba(0,0,0,0.1);
       cursor: pointer;
 
-      @media (min-width: $md-device-width-upper) and (max-width: $lg-device-width) {
-        width: 134px;
-      }
-
       .job-name {
-        height: 92px;
+        height: 110px;
         padding: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
 
-        div {
-          max-height: 100%;
-          overflow: hidden;
-          white-space: normal;
+        p {
+          text-align: center;
         }
       }
 
-      .salary-container {
+      .my-jobs-salary-container {
         color: $white;
         background: $color-primary-cerise;
-        padding: 5px;
+        padding: 10px;
         border-radius: 0 0 3px 3px;
         text-align: center;
       }
-    }
 
-    @media (min-width: $md-device-width-upper) {
-      overflow-y: hidden;
-      overflow-x: hidden;
+      .user-jobs-salary-container {
+        color: $white;
+        background: $color-primary-cerise;
+        padding: 10px;
+        border-radius: 0 0 3px 3px;
+        text-align: center;
+      }
+
+      .user-jobs-salary-container-active {
+        background: $color-primary-cerise;
+        color: $white;
+      }
+
+      .user-jobs-salary-container-inactive {
+        background: $color-gray-50;
+        color: $color-gray-200;
+      }
+
     }
 
     @media (max-width: $md-device-width) {
@@ -131,7 +159,7 @@
     background: $color-secondary-gray;
   }
 
-  .medium-button-primary-light {
+  .btn {
     width: calc(100% - 8em);
     margin: 4em;
     position: absolute;
@@ -155,6 +183,47 @@
         top: 5px;
       }
     }
+  }
+}
+
+.home-jobs-applied-for-header-wrapper {
+  background: $color-gray-25;
+  border-bottom: 2px solid $color-primary-cerise;
+}
+
+.home-jobs-applied-for-header {
+  h3 {
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+}
+
+.home-jobs-applied-for-job-item-wrapper {
+  border-top: 1px solid $color-gray-25;
+  border-bottom: 1px solid $color-gray-25;
+}
+
+.home-jobs-applied-for-job-item {
+
+  cursor: pointer;
+
+  p {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  span {
+    color: $color-primary-cerise;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 }
 
