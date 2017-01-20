@@ -3,8 +3,8 @@
     <div class="col-xs" *ngIf="user">
       <h1>{{'common.welcome_user'| translate: {username: user.firstName} }}</h1>
       <div class="home-header-button-container">
-        <a routerLink="/user" class="btn-secondary-light btn-large btn">{{'common.edit_profile'| translate}}</a><br>
-        <a routerLink="/jobs/1" class="btn-secondary-light btn-large btn">{{'menu.main.find_assignment'| translate}}</a>
+        <a routerLink="/user" class="medium-button-light-size btn-secondary-light btn-small btn">{{'common.edit_profile'| translate}}</a><br>
+        <a routerLink="/jobs/1" class="medium-button-light-size btn-primary-light btn-small btn">{{'menu.main.find_assignment'| translate}}</a>
       </div>
     </div>
     <div class="col-xs" *ngIf="!user">

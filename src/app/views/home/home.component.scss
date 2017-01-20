@@ -12,14 +12,14 @@
   }
 
   a:first-of-type {
-    margin-bottom: 1em;
+    margin-bottom: 0.5em;
   }
 
   .home-header-button-container {
     display: inline-block;
     margin-top: 1.5em;
 
-    .medium-button-primary-light, .medium-button-secondary-light {
+    .medium-button-light-size {
       width: 100%;
     }
   }
