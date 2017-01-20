@@ -2,19 +2,62 @@
   <div class="job-details-body">
     <job-state-status-bar [job]="job" [jobId]="job.id"></job-state-status-bar>
 
-    <div class="container-fluid">
+    <div class="job-details-container">
       <div class="row">
-        <div class="col-xs-12">
-          <div class="content">
-            <p><translation-item [text]="job.name" [translation]="job.translated.name"></translation-item></p>
-            <h4 class="title-primary">{{job.amount}} {{job.currency}} {{'common.gross_salary' | translate}}</h4>
-            <p>{{job.hours}} {{'common.hour' | translate}}</p>
-            <h5 class="title-primary">{{job.netAmount}} {{job.currency}} {{'common.net_salary' | translate}}</h5>
-          </div>
+        <div class="col-xs-12 close-container">
+          <i class="fa fa-times fa-lg"></i>
         </div>
       </div>
-
-      <job-preview [job]="job"></job-preview>
+      <div class="row">
+        <div class="col-xs-6">
+          <h4 class="job-title">{{'assignment' | translate | uppercase}}</h4>
+        </div>
+        <div class="col-xs-6 job-translate-container">
+          <i class="fa fa-language fa-lg"></i>
+        </div>
+      </div>
+      <hr class="separator"/>
+      <div class="row job-preview-row">
+        <div class="col-xs-1">
+          <div class="job-preview-icon-container">
+            <i class="fa fa-file-text-o fa-lg"></i>
+          </div>
+        </div>
+        <div class="col-xs-11">
+          <p class="job-preview-text">{{job.description}}</p>
+          <hr class="separator"/>
+        </div>
+      </div>
+      <div class="row job-preview-row">
+        <div class="col-xs-1"></div>
+        <div class="col-xs-11">
+          <p class="job-preview-text">{{job.hours}} {{'assignment.hours' | translate}} ({{job.hourlyPay.grossSalary}} {{job.hourlyPay.currency}}/{{'assignment.hour' | translate | lowercase}}) {{'assignment.rate.gross_salary' | translate}}<br/>
+          {{job.netAmount}} {{job.hourlyPay.currency}} {{'assignment.after_tax' | translate}}</p>
+          <hr class="separator"/>
+        </div>
+      </div>
+      <div class="row job-preview-row">
+        <div class="col-xs-1">
+          <div class="job-preview-icon-container">
+            <i class="fa fa-map-marker fa-lg"></i>
+          </div>
+        </div>
+        <div class="col-xs-11">
+          <p class="job-preview-text">{{job.street}}, {{job.zip}}</p>
+          <hr class="separator"/>
+        </div>
+      </div>
+      <div class="row job-preview-row">
+        <div class="col-xs-1">
+          <div class="job-preview-icon-container">
+            <i class="fa fa-calendar fa-lg"></i>
+          </div>
+        </div>
+        <div class="col-xs-11">
+          <p class="job-preview-text">{{job.jobDate | date: 'yyyy-mm-dd'}} - {{job.jobEndDate | date: 'yyyy-mm-dd'}}</p>
+          <hr class="separator"/>
+        </div>
+      </div>
     </div>
   </div>
 
