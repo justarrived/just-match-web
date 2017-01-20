@@ -14,6 +14,8 @@ Add the following if it feels necessary to understand the scenario:
 
 **Actual behavior:**
 
+--------------------------
+
 ###New feature task
 
 **Comments:**
