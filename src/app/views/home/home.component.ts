@@ -34,8 +34,10 @@ export class HomeComponent extends TranslationListener implements OnInit {
 
   ngOnInit() {
     this.loadData();
-    this.loadUserJobs();
-    this.loadJobsAppliedFor();
+    if(this.user) {
+      this.loadUserJobs();
+      this.loadJobsAppliedFor();
+    }
   }
 
   loadData(): void {
