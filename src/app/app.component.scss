@@ -12,6 +12,17 @@
 
   .navbar-container {
     height: 100%;
+    flex-wrap: nowrap;
+
+    .navbar-home {
+      margin-left: 15px;
+    }
+
+    .navbar-menus {
+      margin-left: auto;
+      margin-right: 15px;
+      flex-wrap: nowrap;
+    }
 
     .back-button-container {
       display: inline-block;

@@ -49,8 +49,20 @@ export class UserProfileComponent implements OnInit {
   saveSuccess: boolean;
   saveFail: boolean;
 
-  permitImageSaveSuccess: boolean;
-  permitImageSaveFail: boolean;
+  residencePermitImageStatusObject: any = {
+    imageSaveSuccess: false,
+    imageSaveFail: false
+  };
+
+  lmaImageStatusObject: any = {
+    imageSaveSuccess: false,
+    imageSaveFail: false
+  };
+
+  skatteverketCertificateImageStatusObject: any = {
+    imageSaveSuccess: false,
+    imageSaveFail: false
+  };
 
   constructor(
     private languageProxy: LanguageProxy,
@@ -71,10 +83,12 @@ export class UserProfileComponent implements OnInit {
       'user_languages': [this.user.userLanguages.slice()],
       'native_language': [this.user.getNativeLanguage(), Validators.compose([Validators.required])],
       'country_of_origin': [this.user.countryOfOriginCode, Validators.compose([Validators.required])],
-      'current_status': [this.user.currentStatus],
+      'current_status': [this.user.currentStatus, Validators.compose([Validators.required])],
+      'at_und': [this.user.atUnd ? this.user.atUnd : 'no'],
+      'got_coordination_number': [this.user.coordinationNumber ? 'yes' : 'no'],
+      'coordination_number': [this.user.coordinationNumber],
       'competence_text': [this.user.workExperience],
       'job_experience': [this.user.workExperience],
-      'got_permit': [this.user.currentStatus ? 'true' : 'false'],
       'user_skills': [this.user.userSkills.slice()]
     });
 
@@ -174,22 +188,27 @@ export class UserProfileComponent implements OnInit {
     deleteElementFromArray(this.profileForm.value.user_skills, userSkill);
   }
 
-  onPermitImageFilenameChange(event) {
-    this.permitImageSaveFail = false;
-    this.permitImageSaveSuccess = false;
+  onImageFilenameChange(event, type, uploadStatusObject) {
+    uploadStatusObject.imageSaveFail = false;
+    uploadStatusObject.imageSaveSuccess = false;
     const file = event.srcElement.files[0];
     if (file) {
-      this.userProxy.saveImage(this.user.id, file, 'work_permit').then(userImage => {
-        this.user.permitImage = userImage;
-        this.permitImageSaveSuccess = true;
+      this.userProxy.saveImage(this.user.id, file, type).then(userImage => {
+        this.user[type + '_image'] = userImage;
+        uploadStatusObject.imageSaveSuccess = true;
       }).catch(errors => {
-        this.permitImageSaveFail = true;
+        uploadStatusObject.imageSaveFail = true;
       });
     }
   }
 
   formValidation(): boolean {
-    return this.profileForm.valid && (this.profileForm.value.got_permit == 'false' || this.profileForm.value.current_status) && true;
+    return this.profileForm.valid && (
+      (this.profileForm.value.current_status !== "asylum_seeker" && this.user.residence_permit_image) ||
+      (this.profileForm.value.current_status === "asylum_seeker" && this.profileForm.value.at_und === "no") ||
+      (this.profileForm.value.current_status === "asylum_seeker" && this.profileForm.value.at_und === "yes" && this.profileForm.value.got_coordination_number === "no") ||
+      (this.profileForm.value.current_status === "asylum_seeker" && this.profileForm.value.at_und === "yes" && this.profileForm.value.got_coordination_number === "yes" && this.profileForm.value.coordination_number && this.user.lma_card_image && this.user.skatteverket_certificate_image)
+      ) && true;
   }
 
   handleServerErrors(errors) {
@@ -217,6 +236,8 @@ export class UserProfileComponent implements OnInit {
       }),
       'country_of_origin': this.profileForm.value.country_of_origin,
       'current_status': this.profileForm.value.current_status,
+      'at_und': this.profileForm.value.at_und,
+      'coordination_number': this.profileForm.value.coordination_number,
       'competence_text': this.profileForm.value.competence_text,
       'job_experience': this.profileForm.value.job_experience
     })

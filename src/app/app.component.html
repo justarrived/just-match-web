@@ -2,12 +2,12 @@
   <div class="navbar-container">
     <nav class="header navbar-light bg-faded">
       <div class="row navbar-container">
-        <div class="col-xs row flex-items-xs-middle">
+        <div class="navbar-home row flex-items-xs-middle">
           <a routerLink="/home">
             <img class="logo-img" src="/assets/images/logo.png" alt="Just Arrived" />
           </a>
         </div>
-        <div class="col-xs right row flex-items-xs-middle">
+        <div class="navbar-menus right row flex-items-xs-middle">
           <div (click)="onLanguageMenuButtonClick()" class="button-container">
             <div class="nav-language-icon">
               {{selectedLanguage.languageCode}}
@@ -58,7 +58,7 @@
           </div>
           <div class="navigation-menu-user-container">
             <div class="navigation-menu-user-logged-in-container" *ngIf="user">
-              <div class="navigation-menu-user-logged-in-image" [ngStyle]="{'background-image': 'url(' + ((user.images && user.images[0] && user.images[0].imageUrl) || '/assets/images/placeholder-profile-image.png') + ')'}"></div>
+              <div class="navigation-menu-user-logged-in-image" [ngStyle]="{'background-image': 'url(' + ((user.profile_image && user.profile_image.imageUrl) || '/assets/images/placeholder-profile-image.png') + ')'}"></div>
               {{user.firstName}} {{user.lastName}}
             </div>
             <div class="navigation-menu-user-logged-out-container" *ngIf="!user">

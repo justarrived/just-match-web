@@ -214,12 +214,7 @@
       }
 
       .input-radio-button-input {
-        border: 0;
-        height: 1px;
-        margin: -1px;
-        padding: 0;
-        position: absolute;
-        width: 1px;
+        display: none;
 
         + .input-radio-button-span:before {
           content: '';
