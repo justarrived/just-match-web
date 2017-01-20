@@ -3,15 +3,17 @@
     <div class="col-xs" *ngIf="user">
       <h1>{{'common.welcome_user'| translate: {username: user.firstName} }}</h1>
       <div class="home-header-button-container">
-        <a routerLink="/user" class="medium-button-primary-light">{{'common.edit_profile'| translate}}</a><br>
-        <a routerLink="/jobs/1" class="medium-button-secondary-light">{{'menu.main.find_assignment'| translate}}</a>
+        <a routerLink="/user" class="btn-secondary-light btn-large btn">{{'common.edit_profile'| translate}}</a><br>
+        <a routerLink="/jobs/1" class="btn-secondary-light btn-large btn">{{'menu.main.find_assignment'| translate}}</a>
       </div>
     </div>
     <div class="col-xs" *ngIf="!user">
-      <div class="header-box-title">{{'start.hero_section.left.title' | translate}}</div>
-      <div class="header-box-text">{{'start.hero_section.left.text' | translate}}</div>
+      <h1>Welcome Andreas!</h1>
+      <div class="header-box-text">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </div>
       <div class="home-header-button-container">
-        <a routerLink="/user/register" class="medium-button-primary-light">{{'menu.main.create_account'| translate}}</a><br>
+        <div routerLink="/user/register" class="btn-secondary-light btn-large btn">{{'menu.main.create_account'| translate}}</div><br>
       </div>
     </div>
   </div>
@@ -98,7 +100,7 @@
           {{'start.instruction_section.slide_1.text_3' | translate}}
         </li>
       </ul>
-      <a routerLink="/jobs/1" class="medium-button-primary-light">{{'common.find_assignment' | translate}}</a>
+      <div routerLink="/jobs/1" class="btn-secondary-light btn-medium btn">{{'common.find_assignment' | translate}}</div>
     </div>
     <div class="col-xs-12 col-md-6 instructions-container">
       <h3>{{'start.instruction_section.slide_2.title' | translate}}</h3>
@@ -117,7 +119,7 @@
           {{'start.instruction_section.slide_2.text_4' | translate}}
         </li>
       </ul>
-      <a routerLink="/user" class="medium-button-primary-light">{{'common.start_here' | translate}}</a>
+      <div routerLink="/user" class="btn-secondary-light btn-medium btn">{{'common.start_here' | translate}}</div>
     </div>
   </div>
 

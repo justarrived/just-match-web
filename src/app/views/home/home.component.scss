@@ -138,8 +138,6 @@
 
     }
 
-    
-
     @media (max-width: $md-device-width) {
 
       .item-container:first-of-type {
@@ -163,7 +161,7 @@
     background: $color-secondary-gray;
   }
 
-  .medium-button-primary-light {
+  .btn {
     width: calc(100% - 8em);
     margin: 4em;
     position: absolute;
