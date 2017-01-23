@@ -96,6 +96,10 @@
       box-shadow: 1px 1px 5px 1px rgba(0,0,0,0.1);
       cursor: pointer;
 
+      &:hover {
+        transform: scale(1.02);
+      }
+
       .job-name {
         height: 110px;
         padding: 10px;
@@ -133,7 +137,6 @@
         background: $color-gray-50;
         color: $color-gray-200;
       }
-
     }
 
     @media (max-width: $md-device-width) {
