@@ -33,7 +33,7 @@
             <p>{{job.name}}</p>
           </div>
         </div>
-        <div class="my-jobs-salary-container">
+        <div class="jobs-salary-container">
           {{job.hourlyPay.grossSalary * job.hours}} {{job.hourlyPay.currency}}
         </div>
       </div>
@@ -55,11 +55,11 @@
           </div>
         </div>
 
-        <div *ngIf="userJob.concluded" class="user-jobs-salary-container user-jobs-salary-container-inactive">
+        <div *ngIf="userJob.concluded" class="jobs-salary-container user-jobs-salary-container-inactive">
           {{'home_page.user_jobs_slider_item.status.finished' | translate | uppercase}}
         </div>
 
-        <div *ngIf="userJob.willPerform" class="user-jobs-salary-container user-jobs-salary-container-active">
+        <div *ngIf="userJob.willPerform" class="jobs-salary-container user-jobs-salary-container-active">
           {{'home_page.user_jobs_slider_item.status.ongoing' | translate | uppercase}}
         </div>
 

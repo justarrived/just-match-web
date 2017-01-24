@@ -92,8 +92,8 @@
       width: 180px;
       margin: 5px;
       background-color: $default-bg-color;
-      border-radius: 3px 3px 3px 3px;
-      box-shadow: 1px 1px 5px 1px rgba(0,0,0,0.1);
+      border-radius: $job-card-border-radius;
+      box-shadow: 0px 2px 6px 0px rgba(0,0,0,0.4);
       cursor: pointer;
 
       &:hover {
@@ -112,19 +112,14 @@
         }
       }
 
-      .my-jobs-salary-container {
+      .jobs-salary-container {
         color: $white;
         background: $color-primary-cerise;
         padding: 10px;
-        border-radius: 0 0 3px 3px;
-        text-align: center;
-      }
+        font-weight: 500;
+        /* TODO: Jobs border radius variable */
 
-      .user-jobs-salary-container {
-        color: $white;
-        background: $color-primary-cerise;
-        padding: 10px;
-        border-radius: 0 0 3px 3px;
+        border-radius: 0 0 $job-card-border-radius $job-card-border-radius;
         text-align: center;
       }
 
