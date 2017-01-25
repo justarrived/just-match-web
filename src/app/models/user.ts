@@ -12,6 +12,9 @@ export class User {
   lastName: string;
   phone: string;
   email: string;
+  street: string;
+  zip: string;
+  city: string;
   role: string;
   images: UserImage[];
   userLanguages: UserLanguage[];
@@ -49,6 +52,9 @@ export class User {
     this.lastName = jsonObject.last_name;
     this.email = jsonObject.email;
     this.phone = jsonObject.phone;
+    this.street = jsonObject.street;
+    this.zip = jsonObject.zip;
+    this.city = jsonObject.city;
     this.role = jsonObject.primary_role;
     this.images = map(jsonObject.user_images, userImage => new UserImage(userImage));
     this.userLanguages = map(jsonObject.user_languages, userLanguage => new UserLanguage(userLanguage));

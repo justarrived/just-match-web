@@ -41,6 +41,11 @@ export class UserProfileComponent implements OnInit {
 
   @Input() user: User;
 
+  countries: Country[];
+  languages: Language[];
+  languagesExcludingNative: Language[];
+  skills: Skill[];
+
   profileForm: FormGroup;
 
   statuses: UserStatus[];
@@ -98,6 +103,16 @@ export class UserProfileComponent implements OnInit {
 
   ngOnInit() {
     this.userProxy.getStatuses().then(statuses => this.statuses = statuses);
+    this.countryProxy.getCountries().then(countries => this.countries = countries);
+    this.languageProxy.getLanguages().then(languages => {
+      this.languages = languages;
+      this.languagesExcludingNative = languages.slice();
+      let nativeLanguage = this.user.getNativeLanguage();
+      if (nativeLanguage) {
+        deleteElementFromArrayLambda(this.languagesExcludingNative, lang => lang.languageCode === nativeLanguage.language.languageCode)
+      }
+    });
+    this.skillProxy.getSkills().then(skills => this.skills = skills);
 
     this.profileForm = this.formBuilder.group({
       'user_languages': [this.user.userLanguages.slice()],
@@ -124,40 +139,6 @@ export class UserProfileComponent implements OnInit {
       });
   }
 
-  getLanguages() {
-    return (searchText): Promise<Array<Language>> => {
-      return this.languageProxy.getLanguages(searchText);
-    };
-  }
-
-  getLanguagesExcludingNative() {
-    const nativeLanguage = this.profileForm.value.native_language;
-    if (!nativeLanguage) {
-      return this.getLanguages();
-    } else {
-      return (searchText): Promise<Array<Language>> => {
-        return this.languageProxy.getLanguages(searchText)
-          .then((languages) => {
-            deleteElementFromArrayLambda(languages, lang => lang.languageCode === nativeLanguage.language.languageCode)
-            return languages;
-          });
-      };
-    }
-
-  }
-
-  getCountries() {
-    return (searchText): Promise<Array<Country>> => {
-      return this.countryProxy.getCountries(searchText);
-    };
-  }
-
-  getSkills() {
-    return (searchText): Promise<Array<Skill>> => {
-      return this.skillProxy.getSkills(searchText);
-    };
-  }
-
   onNativeLanguageSelect(language) {
     if (language) {
       const nativeLanguage = new UserLanguage({ proficiency: 5 });
@@ -173,6 +154,9 @@ export class UserProfileComponent implements OnInit {
 
       this.profileForm.value.user_languages.push(nativeLanguage);
       this.profileForm.controls['native_language'].setValue(nativeLanguage);
+
+      this.languagesExcludingNative = this.languages.slice();
+      deleteElementFromArrayLambda(this.languagesExcludingNative, lang => lang.languageCode === nativeLanguage.language.languageCode)
     }
   }
 

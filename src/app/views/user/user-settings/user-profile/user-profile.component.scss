@@ -3,6 +3,7 @@
 
 .profile-form-container {
   padding-top: 50px;
+  max-width: 500px;
   margin: 0 auto;
   padding-left: 20px;
   padding-right: 20px;
@@ -114,11 +115,6 @@
       display: block;
       margin: 15px auto 30px;
       min-width: 250px;
-    }
-
-    a {
-      color: $color-accent-main;
-      font-weight: 600;
     }
   }
 

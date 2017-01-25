@@ -3,8 +3,10 @@ import {UserProxy} from '../../../services/proxy/user-proxy.service';
 import {UserStatus} from '../../../models/user/user-status';
 import {UserRegister} from '../../../models/user/user-register';
 import {CountryProxy} from '../../../services/proxy/country-proxy.service';
+import {LanguageProxy} from '../../../services/proxy/language-proxy.service';
 import {atUndStatuses} from '../../../enums/enums';
 import {Country} from '../../../models/country';
+import {Language} from '../../../models/language/language';
 import {AuthManager} from '../../../services/auth-manager.service';
 import {Router} from '@angular/router';
 import {namePropertyLabel} from '../../../utils/label-util';
@@ -16,71 +18,105 @@ import {FormGroup, FormBuilder, Validators} from '@angular/forms';
   templateUrl: './user-register.component.html',
   styleUrls: ['./user-register.component.scss']
 })
-export class UserRegisterComponent extends TranslationListener implements OnInit {
+export class UserRegisterComponent implements OnInit {
   namePropertyLabel: Function = namePropertyLabel;
 
-  atUndStatuses = atUndStatuses;
-
-  userRegister: UserRegister = new UserRegister();
-  statuses: UserStatus[];
   countries: Country[];
-  errors: any = {};
+  languages: Language[];
+  systemLanguages: Language[];
+  serverValidationErrors: any = {};
+  saveSuccess: boolean;
+  saveFail: boolean;
 
-  registrationForm: FormGroup;
-  currentStatusInputTouched: boolean = false;
-  undStatusInputTouched: boolean = false;
-  countryInputTouched: boolean = false;
+  registerForm: FormGroup;
+  countryOfOriginInputTouched: boolean = false;
+  nativeLanguageInputTouched: boolean = false;
+  defaultLanguageInputTouched: boolean = false;
 
   constructor(private router: Router,
-              private userProxy: UserProxy,
-              private countryProxy: CountryProxy,
-              private authManager: AuthManager,
-              protected translationService: TranslationService,
-              private formBuilder: FormBuilder) {
-    super(translationService);
+    private userProxy: UserProxy,
+    private countryProxy: CountryProxy,
+    private languageProxy: LanguageProxy,
+    private authManager: AuthManager,
+    private formBuilder: FormBuilder) {
 
-    this.registrationForm = formBuilder.group({
-      'ssn': ['', Validators.compose([Validators.required, Validators.minLength(10)/*, Validators.pattern("^[\d\-]+$")*/])],
-      'firstName': ['', Validators.compose([Validators.required])],
-      'lastName': ['', Validators.compose([Validators.required])],
-      'email': ['', Validators.compose([Validators.required, Validators.pattern("^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$")])],
-      'currentStatus': ['', Validators.compose([Validators.required])],
-      'atUndStatus': ['', Validators.compose([Validators.required])],
-      'arrivedAt': ['', Validators.compose([Validators.required, Validators.pattern("^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$")])],
-      'countryOfOrigin': ['', Validators.compose([Validators.required])],
-      'phone': ['', Validators.compose([Validators.required])],
-      'password': ['', Validators.compose([Validators.required])],
-      'repeatPassword': [, Validators.compose([Validators.required])],
-      'acceptedTermsAndConditions': ['', Validators.compose([Validators.required])]
+    this.registerForm = formBuilder.group({
+      'first_name': ['', Validators.compose([Validators.required, Validators.minLength(2)])],
+      'last_name': ['', Validators.compose([Validators.required, Validators.minLength(2)])],
+      'email': ['', Validators.compose([Validators.required, Validators.pattern(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)])],
+      'phone': ['', Validators.compose([Validators.required, Validators.minLength(9), Validators.pattern(/\+46.*/)])],
+      'street': [''],
+      'zip': [''],
+      'city': [''],
+      'country_of_origin': [''],
+      'native_language': [''],
+      'default_language': [''],
+      'password': ['', Validators.compose([Validators.required, Validators.minLength(6)])],
+      'repeat_password': [, Validators.compose([Validators.required])],
+      'accepted_terms_and_conditions': ['']
     });
   }
 
   ngOnInit(): void {
     this.loadData();
-    this.subcribeToFormChanges();
   }
 
   loadData() {
-    this.userProxy.getStatuses().then(statuses => this.statuses = statuses);
     this.countryProxy.getCountries().then(countries => this.countries = countries);
+    this.languageProxy.getLanguages().then(languages => this.languages = languages);
+    this.languageProxy.getSystemLanguages().then(languages => this.systemLanguages = languages);
+  }
+
+  getLanguages() {
+    return (searchText): Promise<Array<Language>> => {
+      return this.languageProxy.getLanguages(searchText);
+    };
+  }
+
+  handleServerErrors(errors) {
+    console.log(errors);
+    this.saveFail = true;
+    this.serverValidationErrors = errors.details || errors;
   }
 
   onSubmit() {
-    this.errors = {};
+    this.saveSuccess = false;
+    this.saveFail = false;
+    this.serverValidationErrors = {};
 
-    this.userRegister.languageId = Number(this.translationService.getSelectedLanguage().id);
-    this.userProxy.saveUser(this.userRegister.toJsonObject())
-      .then(() => {
-        return this.authManager.logUser(this.userRegister.email, this.userRegister.password);
-      }).then(() => {
-        this.router.navigate(['/user']);
-      }).catch(errors => {
-        this.errors = errors.details;
+    this.userProxy.saveUser({
+      'first_name': this.registerForm.value.first_name,
+      'last_name': this.registerForm.value.last_name,
+      'email': this.registerForm.value.email,
+      'phone': this.registerForm.value.phone,
+      'street': this.registerForm.value.street,
+      'zip': this.registerForm.value.zip,
+      'city': this.registerForm.value.city,
+      'country_of_origin': this.registerForm.value.country_of_origin.countryCode,
+      'language_id': this.registerForm.value.default_language.id,
+      'language_ids': [{
+        id: this.registerForm.value.native_language.id,
+        proficiency: 5
+      }],
+      'password': this.registerForm.value.password
+    })
+      .then((response) => {
+        this.saveSuccess = true;
+      })
+      .catch(errors => {
+        this.handleServerErrors(errors);
       });
   }
 
-  subcribeToFormChanges() {
-    const myFormValueChanges$ = this.registrationForm.valueChanges;
-    myFormValueChanges$.subscribe(values => Object.assign(this.userRegister, values));
+  passwordsSupplied() {
+    return (this.registerForm.value.password || this.registerForm.value.repeat_password) && true;
+  }
+
+  passwordsSuppliedAndMisMatch() {
+    return this.passwordsSupplied() && this.registerForm.value.password !== this.registerForm.value.repeat_password && true;
+  }
+
+  formValidation(): boolean {
+    return this.registerForm.valid && this.registerForm.value.accepted_terms_and_conditions && this.registerForm.value.native_language && this.registerForm.value.country_of_origin && this.registerForm.value.default_language && !this.passwordsSuppliedAndMisMatch() && true;
   }
 }
