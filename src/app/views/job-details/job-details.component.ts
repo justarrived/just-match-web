@@ -30,6 +30,7 @@ export class JobDetailsComponent extends TranslationListener implements OnInit {
   acceptTerms: boolean = false;
   bankAccount: UserBankAccount = new UserBankAccount();
   errors: any = {};
+  jobDetailsVisible: boolean;
 
   constructor(private route: ActivatedRoute, private jobProxy: JobProxy, private userManager: UserManager, private userProxy: UserProxy, private router: Router, protected translationService: TranslationService) {
     super(translationService);
@@ -38,6 +39,7 @@ export class JobDetailsComponent extends TranslationListener implements OnInit {
     this.route.params.subscribe(params => {
       this.currentJobId = parseInt(params['id']);
     });
+    this.jobDetailsVisible = true;
   }
 
   ngOnInit() {
@@ -99,5 +101,9 @@ export class JobDetailsComponent extends TranslationListener implements OnInit {
     return this.jobProxy.confirmForJob(this.job.id, this.userJob.id).then(response => {
       this.userJob = response;
     });
+  }
+
+  switchJobDetailsVisibility() {
+    this.jobDetailsVisible = !this.jobDetailsVisible;
   }
 }

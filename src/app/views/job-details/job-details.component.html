@@ -39,9 +39,10 @@
       <h5 class="hired-text" *ngIf="userJob && userJob.accepted && userJob.willPerform">{{'assignment.status.hired' | translate}}</h5>
 
       <div class="expand-details-text-container">
-        <h6 class="expand-details-text">{{'assignment.status.more_details' | translate}}</h6>
+        <h6 *ngIf="!jobDetailsVisible" class="expand-details-text">{{'assignment.status.more_details' | translate}}</h6>
+        <h6 *ngIf="jobDetailsVisible" class="expand-details-text">{{'assignment.status.hide_details' | translate}}</h6>
         <div class="expand-link-container">
-          <h6 class="expand-details-link">{{'assignment.status.click_here' | translate}}</h6>
+          <h6 class="expand-details-link" (click)="switchJobDetailsVisibility()">{{'assignment.status.click_here' | translate}}</h6>
         </div>
       </div>
     </div>
@@ -106,13 +107,10 @@
       </div>
     </div>
 
-    <div class="job-details-container">
+    <div *ngIf="jobDetailsVisible" class="job-details-container">
       <div class="row">
-        <div class="col-xs-6">
-          <h4 class="job-title">{{'assignment' | translate | uppercase}}</h4>
-        </div>
-        <div class="col-xs-6 close-container">
-          <i class="fa fa-times fa-lg"></i>
+        <div class="col-xs-12">
+          <h4 class="job-title">{{'assignment.details' | translate | uppercase}}</h4>
         </div>
       </div>
       <hr class="job-details-separator"/>
