@@ -1,5 +1,6 @@
-###Bug reporting convention
+### Bug report template
 
+Labels:
 - P1 **Must** be fixed.
 - P2 **Should** be fixed and is important to handle, but depends on time and resources available.
 - P3 Will be fixed depending on time and resources. Usually smaller design bugs aso.
@@ -7,19 +8,18 @@
 
 Add the following if it feels necessary to understand the scenario:
 
-**Browser:**
-**OS:**
+**Browser & OS:**
 
 **Expected behavior:**
 
 **Actual behavior:**
 
---------------------------
+---
 
-###New feature task
+### New feature template
 
 **Comments:**
 
-**Definition of Done:**
+**Definition of done:**
 
 **Added value:**
