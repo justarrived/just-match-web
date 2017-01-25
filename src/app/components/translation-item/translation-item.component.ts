@@ -42,11 +42,6 @@ export class TranslationItemComponent {
   constructor() {
   }
 
-  toggleTranslation(event) {
-    event.stopImmediatePropagation();
-    this.isTranslationHidden = !this.isTranslationHidden;
-  }
-
   private shortenText(text: string) {
     if (this.short && text.length > this.length) {
       text = text.slice(0, this.length);
