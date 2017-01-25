@@ -7,7 +7,7 @@
     </div>
     <div class="row">
       <div class="col-xs-5 job-status-icon-container">
-        <img [src]="job.companyLogoURL" class="company-logo" style="max-width: 100px; max-height: 100px;">
+        <img [src]="job.companyLogoURL" class="company-logo">
       </div>
       <div class="col-xs-7">
         <h4 class="job-status-text">{{job.company.name}}</h4>
@@ -21,8 +21,8 @@
 
   <div class="btn-secondary-light btn-medium btn" *ngIf="(user && !userJob)" (click)="onApplyForJobButtonClick()">{{'assignment.status.apply' | translate}}</div>
 
-  <div *ngIf="!user" style="display: inline-block; width: auto;">
-    <div class="btn-secondary-light btn-medium btn" style="width: calc(100% - 30px);" (click)="onApplyForJobButtonClick()">{{'assignment.status.log_in' | translate}}</div>
+  <div *ngIf="!user" class="sign-in-or-create-container">
+    <div class="btn-secondary-light btn-medium btn sign-in-button" (click)="onApplyForJobButtonClick()">{{'assignment.status.log_in' | translate}}</div>
     <h6 class="sign-or-create-text">or</h6>
     <div class="btn-primary-light btn-medium btn" (click)="onApplyForJobButtonClick()">{{'assignment.status.create_account' | translate}}</div>
   </div>

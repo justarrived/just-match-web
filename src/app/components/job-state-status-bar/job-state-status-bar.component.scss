@@ -88,9 +88,20 @@
   text-decoration: underline;
 }
 
+.sign-in-or-create-container {
+  display: inline-block;
+  width: auto;
+}
+
+.sign-in-button {
+  width: calc(100% - 30px);
+}
+
 .company-logo {
   width: auto;
   height: auto;
+  max-width: 100px;
+  max-height: 100px;
 }
 
 .button {
