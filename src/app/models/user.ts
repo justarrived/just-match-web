@@ -24,13 +24,14 @@ export class User {
   frilansFinansPaymentDetails: boolean;
   company: Company;
   profile_image: UserImage;
-  residence_permit_image: UserImage;
+  personal_id_image: UserImage;
+  residence_permit_front_image: UserImage;
+  residence_permit_back_image: UserImage;
   lma_card_image: UserImage;
   skatteverket_certificate_image: UserImage;
   countryOfOriginCode: string;
   currentStatus: string;
   atUnd: string;
-  coordinationNumber: string;
   accountClearingNumber: string;
   accountNumber: string;
   newPassword: string;
@@ -59,14 +60,15 @@ export class User {
     this.company = new Company(jsonObject.company);
     this.frilansFinansPaymentDetails = jsonObject.frilans_finans_payment_details;
     this.profile_image = this.getImageByCategory('profile');
-    this.residence_permit_image = this.getImageByCategory('residence_permit');
+    this.personal_id_image = this.getImageByCategory('personal_id');
+    this.residence_permit_front_image = this.getImageByCategory('residence_permit_front');
+    this.residence_permit_back_image = this.getImageByCategory('residence_permit_back');
     this.lma_card_image = this.getImageByCategory('lma_card');
     this.skatteverket_certificate_image = this.getImageByCategory('skatteverket_certificate');
     this.languageId = jsonObject.language_id;
     this.countryOfOriginCode = jsonObject.country_of_origin;
     this.currentStatus = jsonObject.current_status;
     this.atUnd = jsonObject.at_und;
-    this.coordinationNumber = jsonObject.coordination_number;
     this.accountClearingNumber = jsonObject.account_clearing_number;
     this.accountNumber = jsonObject.account_number;
   }

@@ -44,11 +44,11 @@
       <div class="form-group material-group settings-input-container" [ngClass]="{'has-error':!passwordForm.controls['password'].valid || !passwordForm.controls['repeat_password'].valid || !serverValidationErrors.password}">
         <label for="password-input">{{'user.settings.form.new.password.label' | translate}}:</label>
         <input class="form-control material-input" id="old_password" name="old_password" type="password" (focus)="serverValidationErrors.password = ''" placeholder="{{'user.settings.form.old.password.placeholder' | translate}}"
-            [formControl]="passwordForm.controls['old_password']">
+            [formControl]="passwordForm.controls['old_password']" maxlength="50">
         <input class="form-control material-input" id="password" name="password" type="password" (focus)="serverValidationErrors.password = ''" placeholder="{{'user.settings.form.new.password.placeholder' | translate}}"
-            [formControl]="passwordForm.controls['password']">
+            [formControl]="passwordForm.controls['password']" maxlength="50">
         <input class="form-control material-input" id="repeat_password" name="repeat_password" type="password" (focus)="serverValidationErrors.password = ''" placeholder="{{'user.settings.form.repeat.password.placeholder' | translate}}"
-            [formControl]="passwordForm.controls['repeat_password']">
+            [formControl]="passwordForm.controls['repeat_password']" maxlength="50">
         <div *ngIf="passwordForm.controls['password'].hasError('minlength')" class="alert alert-danger">{{'user.settings.form.new.password.validation.min.length' | translate}}.</div>
         <div *ngIf="passwordsSuppliedAndMisMatch()" class="alert alert-danger">{{'user.settings.form.repeat.password.validation.mismatch' | translate}}.</div>
         <div *ngIf="serverValidationErrors.password" class="alert alert-danger">{{serverValidationErrors.password}}.</div>

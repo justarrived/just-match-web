@@ -49,7 +49,12 @@ export class UserProfileComponent implements OnInit {
   saveSuccess: boolean;
   saveFail: boolean;
 
-  residencePermitImageStatusObject: any = {
+  residencePermitFrontImageStatusObject: any = {
+    imageSaveSuccess: false,
+    imageSaveFail: false
+  };
+
+  residencePermitBackImageStatusObject: any = {
     imageSaveSuccess: false,
     imageSaveFail: false
   };
@@ -60,6 +65,21 @@ export class UserProfileComponent implements OnInit {
   };
 
   skatteverketCertificateImageStatusObject: any = {
+    imageSaveSuccess: false,
+    imageSaveFail: false
+  };
+
+  personalIdImageStatusObject: any = {
+    imageSaveSuccess: false,
+    imageSaveFail: false
+  };
+
+  workPermitFrontImageStatusObject: any = {
+    imageSaveSuccess: false,
+    imageSaveFail: false
+  };
+
+  workPermitBackImageStatusObject: any = {
     imageSaveSuccess: false,
     imageSaveFail: false
   };
@@ -83,10 +103,10 @@ export class UserProfileComponent implements OnInit {
       'user_languages': [this.user.userLanguages.slice()],
       'native_language': [this.user.getNativeLanguage(), Validators.compose([Validators.required])],
       'country_of_origin': [this.user.countryOfOriginCode, Validators.compose([Validators.required])],
-      'current_status': [this.user.currentStatus, Validators.compose([Validators.required])],
+      'current_status': [this.user.currentStatus],
       'at_und': [this.user.atUnd ? this.user.atUnd : 'no'],
-      'got_coordination_number': [this.user.coordinationNumber ? 'yes' : 'no'],
-      'coordination_number': [this.user.coordinationNumber],
+      'got_coordination_number': [this.user.ssn ? 'yes' : 'no'],
+      'ssn': [this.user.ssn],
       'competence_text': [this.user.workExperience],
       'job_experience': [this.user.workExperience],
       'user_skills': [this.user.userSkills.slice()]
@@ -203,12 +223,7 @@ export class UserProfileComponent implements OnInit {
   }
 
   formValidation(): boolean {
-    return this.profileForm.valid && (
-      (this.profileForm.value.current_status !== "asylum_seeker" && this.user.residence_permit_image) ||
-      (this.profileForm.value.current_status === "asylum_seeker" && this.profileForm.value.at_und === "no") ||
-      (this.profileForm.value.current_status === "asylum_seeker" && this.profileForm.value.at_und === "yes" && this.profileForm.value.got_coordination_number === "no") ||
-      (this.profileForm.value.current_status === "asylum_seeker" && this.profileForm.value.at_und === "yes" && this.profileForm.value.got_coordination_number === "yes" && this.profileForm.value.coordination_number && this.user.lma_card_image && this.user.skatteverket_certificate_image)
-      ) && true;
+    return this.profileForm.valid && true;
   }
 
   handleServerErrors(errors) {
@@ -237,7 +252,7 @@ export class UserProfileComponent implements OnInit {
       'country_of_origin': this.profileForm.value.country_of_origin,
       'current_status': this.profileForm.value.current_status,
       'at_und': this.profileForm.value.at_und,
-      'coordination_number': this.profileForm.value.coordination_number,
+      'ssn': this.profileForm.value.ssn,
       'competence_text': this.profileForm.value.competence_text,
       'job_experience': this.profileForm.value.job_experience
     })
