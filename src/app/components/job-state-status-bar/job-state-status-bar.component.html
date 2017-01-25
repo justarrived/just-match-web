@@ -36,12 +36,12 @@
 
   <h5 class="hired-text" *ngIf="userJob && userJob.accepted && userJob.willPerform">{{'assignment.status.hired' | translate}}</h5>
 
-  <div class="expand-details-text-container">
+  <!--<div class="expand-details-text-container">
     <h6 class="expand-details-text">{{'assignment.status.more_details' | translate}}</h6>
     <div class="expand-link-container">
       <h6 class="expand-details-link">{{'assignment.status.click_here' | translate}}</h6>
     </div>
-  </div>
+  </div>--><!-- Add this when this view and its' components are merged -->
 </div>
 
 <div class="job-status text-center" *ngIf="(isCompanyUser && user.company.id == job.company.id) && (!userJob || !userJob.invoice || !userJob.invoice.id)">
