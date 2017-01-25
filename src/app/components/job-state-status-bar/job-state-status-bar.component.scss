@@ -6,6 +6,104 @@
   color: white;
 }
 
+.job-status-container {
+  max-width: 400px;
+  height: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.job-status-icon-container {
+  display: flex;
+  align-items: center;
+}
+
+.job-status-icon-background {
+  border-radius: 50%;
+  background: black;
+  width: auto;
+  overflow: hidden;
+  height: 1%;
+  padding: 12px;
+}
+
+.job-status-text {
+  font-weight: 300;
+  text-align: right;
+}
+
+.job-status-salary-text {
+  text-align: right;
+}
+
+.sign-or-create-text {
+  text-align: center;
+  font-weight: 300;
+  margin-top: -5px;
+  margin-bottom: -5px;
+}
+
+.applied-text {
+  margin-bottom: 15px;
+}
+
+.expand-details-text-container {
+  width: 100%;
+}
+
+.expand-details-text {
+  width: 100%;
+  font-weight: 300;
+  text-align: center;
+}
+
+.expand-link-container {
+  display: inline-block;
+}
+
+.expand-details-link {
+  font-weight: 300;
+  text-align: center;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.no-of-candidates-text {
+  font-weight: 300;
+  text-align: center;
+}
+
+.time-left-text {
+  font-weight: 300;
+  text-align: center;
+}
+
+.hired-text {
+  font-weight: 300;
+  text-align: center;
+}
+
+.accept-applicant-link {
+  color: $white;
+  text-decoration: underline;
+}
+
+.sign-in-or-create-container {
+  display: inline-block;
+  width: auto;
+}
+
+.sign-in-button {
+  width: calc(100% - 30px);
+}
+
+.company-logo {
+  width: auto;
+  height: auto;
+  max-width: 100px;
+  max-height: 100px;
+}
+
 .button {
   cursor: pointer;
 
