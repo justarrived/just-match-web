@@ -56,6 +56,7 @@ import {TranslationItemComponent} from './components/translation-item/translatio
 import {AutosizeDirective} from './components/textarea-autosize/textarea-autosize.directive';
 import {Geolocation} from './services/geolocation.service';
 import {ErrorComponent} from './views/error/error.component';
+import {NotFoundComponent} from './views/404/404.component';
 
 @NgModule({
   imports: [
@@ -109,7 +110,8 @@ import {ErrorComponent} from './views/error/error.component';
     UserSettingsComponent,
     TranslationItemComponent,
     AutosizeDirective,
-    ErrorComponent
+    ErrorComponent,
+    NotFoundComponent
   ],
   providers: [
     DataStore,

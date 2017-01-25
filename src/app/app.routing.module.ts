@@ -19,6 +19,7 @@ import {CandidateComponent} from './views/candidate/candidate.component';
 import {CandidatesComponent} from './views/candidates/candidates.component';
 import {MyJobsComponent} from './views/my-jobs/my-jobs.component';
 import {ErrorComponent} from './views/error/error.component';
+import {NotFoundComponent} from './views/404/404.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },
@@ -40,7 +41,8 @@ const routes: Routes = [
   { path: 'user', component: UserSettingsComponent, canActivate: [AuthGuard] },
   { path: 'my-jobs', component: MyJobsComponent, canActivate: [AuthGuard] },
   { path: 'error/:statusCode', component: ErrorComponent },
-  { path: '**', redirectTo: 'home' }
+  { path: '404', component: NotFoundComponent },
+  { path: '**', redirectTo: '404' }
 ];
 
 @NgModule({
