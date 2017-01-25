@@ -25,6 +25,17 @@
   }
 }
 
+.sign-or-create-text {
+  text-align: center;
+  font-weight: 300;
+  margin-top: -5px;
+  margin-bottom: -5px;
+}
+
+.sign-in-button {
+  width: calc(100% - 30px);
+}
+
 .my-jobs {
   background: $white;
 }
