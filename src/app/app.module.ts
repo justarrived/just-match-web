@@ -31,7 +31,6 @@ import {JobMapMarkerComponent} from './components/job-map-marker/job-map-marker.
 import {PagerComponent} from './components/pager/pager.component';
 import {JobDetailsComponent} from './views/job-details/job-details.component';
 import {CommentsComponent} from './components/comments/comments.component';
-import {JobStateStatusBarComponent} from './components/job-state-status-bar/job-state-status-bar.component';
 import {FaqComponent} from './views/faq/faq.component';
 import {ContactComponent} from './views/contact/contact.component';
 import {ContactConfirmationComponent} from './views/contact/confirmation/contact-confirmation.component';
@@ -91,7 +90,6 @@ import {NotFoundComponent} from './views/404/404.component';
     PagerComponent,
     JobDetailsComponent,
     CommentsComponent,
-    JobStateStatusBarComponent,
     FaqComponent,
     ContactComponent,
     ContactConfirmationComponent,
