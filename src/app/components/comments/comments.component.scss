@@ -48,53 +48,57 @@
 }
 
 .new-comment-container {
-  padding: 15px 0;
   background-color: $default-bg-color;
-
-  @media (max-width: $xs-device-width) {
-    width: 100%;
-  }
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
 
   &.moving {
+    width: 100%;
     position: fixed;
+    left: 50%;
+    transform: translate(-50%, 0);
     bottom: 0;
     box-shadow: 0 -1px 10px -3px #333;
+    margin-bottom: 0px;
   }
+}
 
-  .resizable-div-cell {
-    width: 100%;
-    padding: 5px;
+.resizable-div-cell {
+  width: 100%;
+  padding: 5px;
 
-    [contenteditable=true]:empty:before{
-      content: attr(placeholder);
-      display: block; /* For Firefox */
-      color: $color-gray-200;
-    }
-
-    .resizable-div {
-      border-radius: 5px;
-      border: 1px solid $color-gray-100;
-      padding: 10px;
-      word-break: break-all;
-    }
+  [contenteditable=true]:empty:before{
+    content: attr(placeholder);
+    display: block;
+    color: $color-gray-200;
   }
+}
 
-  .comment-send-button-container {
-    padding-left: 9px;
+.resizable-div {
+  border-radius: 5px;
+  border: 1px solid $color-gray-100;
+  padding: 10px;
+  word-break: break-all;
+}
 
-    .comment-send-button {
-      color: $color-secondary-blue;
-      font-weight: 700;
-      border: 0;
-      background: none;
-      font-size: 1.2em;
-      white-space: nowrap;
-      outline: none;
+.send-button-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-      &:disabled {
-        color: $color-gray-100;
-        cursor: default;
-      }
-    }
+.comment-send-button {
+  color: $color-secondary-blue;
+  font-weight: 700;
+  border: 0;
+  background: none;
+  font-size: 1.2em;
+  white-space: nowrap;
+  outline: none;
+
+  &:disabled {
+    color: $color-gray-100;
+    cursor: default;
   }
 }
