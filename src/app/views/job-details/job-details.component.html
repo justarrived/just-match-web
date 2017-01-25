@@ -13,7 +13,7 @@
           <h4 class="job-title">{{'assignment' | translate | uppercase}}</h4>
         </div>
       </div>
-      <hr class="separator"/>
+      <hr class="job-details-separator"/>
       <div class="row job-preview-row">
         <div class="col-xs-1">
           <div class="job-preview-icon-container">
@@ -22,7 +22,7 @@
         </div>
         <div class="col-xs-11">
           <p class="job-preview-text">{{job.description}}</p>
-          <hr class="separator"/>
+          <hr class="job-details-separator"/>
         </div>
       </div>
       <div class="row job-preview-row">
@@ -30,7 +30,7 @@
         <div class="col-xs-11">
           <p class="job-preview-text">{{job.hours}} {{'assignment.hours' | translate}} ({{job.hourlyPay.grossSalary}} {{job.hourlyPay.currency}}/{{'assignment.hour' | translate | lowercase}}) {{'assignment.rate.gross_salary' | translate}}<br/>
           {{job.netAmount}} {{job.hourlyPay.currency}} {{'assignment.after_tax' | translate}}</p>
-          <hr class="separator"/>
+          <hr class="job-details-separator"/>
         </div>
       </div>
       <div class="row job-preview-row">
@@ -41,7 +41,7 @@
         </div>
         <div class="col-xs-11">
           <p class="job-preview-text">{{job.street}}, {{job.zip}}</p>
-          <hr class="separator"/>
+          <hr class="job-details-separator"/>
         </div>
       </div>
       <div class="row job-preview-row">
@@ -52,7 +52,7 @@
         </div>
         <div class="col-xs-11">
           <p class="job-preview-text">{{job.jobDate | date: 'yyyy-mm-dd'}} - {{job.jobEndDate | date: 'yyyy-mm-dd'}}</p>
-          <hr class="separator"/>
+          <hr class="job-details-separator"/>
         </div>
       </div>
     </div>
