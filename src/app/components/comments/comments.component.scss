@@ -2,6 +2,9 @@
 
 .comments-container {
   background-color: $default-bg-color;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
 
   &.small-addition-padding {
     padding-bottom: 15px;
