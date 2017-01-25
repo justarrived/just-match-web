@@ -221,7 +221,7 @@ export class AutocompleteDropdownComponent implements OnInit {
 
   private shouldMatch(item, simpleLabel) {
     let label: string = (this.autocompleteResultLabelFunction && this.autocompleteResultLabelFunction(item)) || simpleLabel;
-    return !label || !this.textInput || label.toLowerCase().indexOf(this.textInput.toLowerCase()) > -1;
+    return !label || !this.textInput || label.toLowerCase().indexOf(this.textInput.toLowerCase()) === 0;
   }
 
   private selectedItemLabelFunctionActual(item: any) {
