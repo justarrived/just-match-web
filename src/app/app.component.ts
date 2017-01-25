@@ -76,6 +76,11 @@ export class AppComponent implements OnInit {
       this.isCompanyUser = this.userManager.isCompanyUser();
       this.user = user;
     });
+
+    this.userManager.getUserChangeEmmiter().subscribe(user => {
+      this.user = user;
+    });
+
   }
 
   onBodyClick(event) {
