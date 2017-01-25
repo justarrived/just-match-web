@@ -105,7 +105,6 @@ export class ApiCall {
         this.userManager.deleteUser();
         this.router.navigate(['/login']);
       }
-      this.router.navigate(['/home']);
     }
 
     if (response.status === 0 || response.status === 400 || response.status >= 500) {

@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import {User} from '../models/user';
 import {DataStore} from './data-store.service';
 
@@ -6,6 +6,7 @@ import {DataStore} from './data-store.service';
 export class UserManager {
   private storageAuthorizationData: string = 'authorizationData';
   private user: User;
+  private userChange: EventEmitter<User> = new EventEmitter<User>();
 
   constructor(private dataStore: DataStore) { }
 
@@ -21,6 +22,7 @@ export class UserManager {
   deleteUser() {
     this.user = null;
     this.dataStore.remove(this.storageAuthorizationData);
+    this.userChange.emit(null);
   }
 
   saveUser(user: User) {
@@ -45,5 +47,9 @@ export class UserManager {
     }
 
     return this.user.company.id;
+  }
+
+  public getUserChangeEmmiter(): EventEmitter<User> {
+    return this.userChange;
   }
 }
