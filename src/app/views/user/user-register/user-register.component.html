@@ -111,7 +111,7 @@
 
       <div class="form-group material-group input-container" [ngClass]="{'has-error':!registrationForm.controls['password'].valid && registrationForm.controls['password'].touched}">
         <input class="form-control material-input" type="password" placeholder="{{'user.form.password' | translate}}"
-               [formControl]="registrationForm.controls['password']">
+               [formControl]="registrationForm.controls['password']" maxlength="50">
 
         <div *ngIf="!registrationForm.controls['password'].valid && registrationForm.controls['password'].touched"
              class="alert alert-danger">{{'user.form.password.validation' | translate}}.</div>
@@ -120,7 +120,7 @@
 
       <div class="form-group material-group input-container" [ngClass]="{'has-error':!registrationForm.controls['repeatPassword'].valid && registrationForm.controls['repeatPassword'].touched}">
         <input class="form-control material-input" type="password" placeholder="{{'user.form.password' | translate}}"
-               [formControl]="registrationForm.controls['repeatPassword']">
+               [formControl]="registrationForm.controls['repeatPassword']" maxlength="50">
 
         <div *ngIf="!registrationForm.controls['repeatPassword'].valid && registrationForm.controls['repeatPassword'].touched"
              class="alert alert-danger">{{'user.form.passwordCompare.validation' | translate}}.</div>

@@ -18,7 +18,7 @@
         <div *ngIf="errors.email_or_phone" class="alert alert-danger">{{errors.email_or_phone}}.</div>
       </div>
       <div class="form-group  material-group login-input-container" [ngClass]="{'has-error':!loginForm.controls['password'].valid && loginForm.controls['password'].touched}">
-        <input class="form-control material-input fs-m0" type="password" placeholder="{{'login.form.password' | translate}}" [formControl]="loginForm.controls['password']">
+        <input class="form-control material-input fs-m0" type="password" placeholder="{{'login.form.password' | translate}}" [formControl]="loginForm.controls['password']" maxlength="50">
 
         <div *ngIf="loginForm.controls['password'].hasError('required') && loginForm.controls['password'].touched" class="alert alert-danger">{{'login.form.password.validation' | translate}}.</div>
         <div *ngIf="errors.password" class="alert alert-danger">{{errors.password}}</div>
