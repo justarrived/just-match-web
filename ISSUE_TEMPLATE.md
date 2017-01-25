@@ -10,9 +10,9 @@ Add the following if it feels necessary to understand the scenario:
 
 **Browser & OS:**
 
-**Expected behavior:**
+**Expected behaviour:**
 
-**Actual behavior:**
+**Actual behaviour:**
 
 ---
 
