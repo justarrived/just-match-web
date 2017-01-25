@@ -5,7 +5,7 @@ export class Country {
 
   constructor(jsonObject: any) {
     this.id = jsonObject.id;
-    this.name = jsonObject.en_name;
+    this.name = jsonObject.name;
     this.countryCode = jsonObject.country_code;
   }
 }

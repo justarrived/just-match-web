@@ -13,7 +13,7 @@ export class LanguageProxy {
       .then(response => map(response.data, data => new Language(data)));
   }
 
-  getLanguages(name: string = '', sort: string = 'en_name', pageSize: number = 25, pageNumber: number = 1): Promise<Array<Language>> {
+  getLanguages(name: string = '', sort: string = 'en_name', pageSize: number = 300, pageNumber: number = 1): Promise<Array<Language>> {
     return this.apiCall.get('languages', {'filter[en_name]': name, 'sort': sort, 'page[size]': pageSize, 'page[number]': pageNumber})
       .then(response => map(response.data, data => new Language(data)));
   }

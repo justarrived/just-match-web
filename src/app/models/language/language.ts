@@ -9,7 +9,7 @@ export class Language {
     this.id = jsonObject.id;
     this.direction = jsonObject.direction;
     this.languageCode = jsonObject.lang_code;
-    this.name = jsonObject.en_name;
+    this.name = jsonObject.name;
     this.localName = jsonObject.local_name;
   }
 }

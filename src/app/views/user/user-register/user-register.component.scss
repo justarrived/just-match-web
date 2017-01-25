@@ -1,7 +1,72 @@
 @import '../../../styles/variables';
 
-.user-register {
-  background-color: $default-bg-color;
+
+.register-container {
+  .register-header-container {
+    background-color: $color-primary-cerise;
+    width: 100%;
+    text-align: center;
+
+    h3 {
+      color: $white;
+      padding: 1em 0;
+    }
+  }
+
+  .register-form-outer-container {
+
+    .register-form-inner-container {
+      padding-top: 30px;
+      max-width: 500px;
+      margin: 0 auto;
+      padding-left: 20px;
+      padding-right: 20px;
+
+      .register-form-input-group-header {
+        margin-top: 30px;
+        h4 {
+          font-weight: 500;
+        }
+
+      }
+
+      .register-form-input-container {
+        margin-bottom: 0;
+        input {
+          border: 1px solid rgba(0, 0, 0, 0.15);
+        }
+
+        .register-form-input-description-text {
+          opacity: 0.5;
+          font-size: 12px;
+        }
+      }
+
+      .register-form-terms-container {
+        margin-top: 30px;
+      }
+
+      .register-form-button-container {
+        margin-top: 20px;
+        padding-bottom: 1.5em;
+        text-align: center;
+
+        button {
+          display: block;
+          margin: 15px auto 30px;
+          min-width: 250px;
+        }
+      }
+
+      .save-message {
+        color: green;
+      }
+
+      .error-message {
+        color: $color-cerise-500;
+      }
+    }
+  }
 }
 
 .page-header {
@@ -14,52 +79,4 @@
     color: $white;
   }
 
-}
-
-.page-form-container {
-  background-color: $default-bg-color;
-
-  .textarea {
-    width: 50%;
-    margin: 0 auto;
-    padding-top: 30px;
-    p {
-      text-align: center;
-      vertical-align: middle;
-    }
-  }
-
-  .envelope-icon-container {
-    margin: 0 auto;
-    width: 50%;
-    text-align: center;
-    padding-top: 10px;
-    padding-bottom: 50px;
-    i {
-      color: $color-primary-cerise;
-    }
-  }
-
-  .input-container {
-    width: 75%;
-    margin: 0 auto;
-    padding-bottom: 1.5em;
-    position: relative;
-
-    > textarea {
-      overflow: hidden;
-      word-wrap: break-word;
-      border-color: black;
-    }
-  }
-
-  .button-container {
-    width: 80%;
-    margin: 0 auto;
-    padding-bottom: 1.5em;
-    button {
-      margin: 0;
-      width: 100%;
-    }
-  }
 }

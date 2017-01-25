@@ -24,6 +24,7 @@
       <div class="form-group material-group settings-input-container" [ngClass]="{'has-error':!settingsForm.controls['email'].valid || !serverValidationErrors.email}">
         <label for="email">{{'user.settings.form.email.label' | translate}} *:</label>
         <input class="form-control material-input" id="email" name="email" type="email" (focus)="serverValidationErrors.email = ''" placeholder="{{'user.settings.form.email.placeholder' | translate}}" [formControl]="settingsForm.controls['email']">
+        <div *ngIf="settingsForm.controls['email'].hasError('pattern')" class="alert alert-danger">{{'user.settings.form.email.validation.pattern' | translate}}.</div>
         <div *ngIf="settingsForm.controls['email'].hasError('required')" class="alert alert-danger">{{'user.settings.form.email.validation.required' | translate}}.</div>
         <div *ngIf="serverValidationErrors.email" class="alert alert-danger">{{serverValidationErrors.email}}.</div>
       </div>
@@ -35,6 +36,19 @@
         <div *ngIf="settingsForm.controls['phone'].hasError('minlength')" class="alert alert-danger">{{'user.settings.form.phone.validation.min.length' | translate}}.</div>
         <div *ngIf="settingsForm.controls['phone'].hasError('pattern')" class="alert alert-danger">{{'user.settings.form.phone.validation.pattern' | translate}}.</div>
         <div *ngIf="serverValidationErrors.phone" class="alert alert-danger">{{serverValidationErrors.phone}}.</div>
+      </div>
+
+      <hr>
+
+      <div class="input-group-header">{{'user.settings.form.address.header' | translate}}</div>
+
+      <div class="form-group material-group settings-input-container" [ngClass]="{'has-error': !serverValidationErrors.city || !serverValidationErrors.street || !serverValidationErrors.zip}">
+        <input class="form-control material-input" id="street" name="street" type="text" (focus)="serverValidationErrors.street = ''" placeholder="{{'user.settings.form.street.placeholder' | translate}}" [formControl]="settingsForm.controls['street']">
+        <div *ngIf="serverValidationErrors.street" class="alert alert-danger">{{serverValidationErrors.street}}.</div>
+        <input class="form-control material-input" id="zip" name="zip" type="text" (focus)="serverValidationErrors.zip = ''" placeholder="{{'user.settings.form.zip.placeholder' | translate}}" [formControl]="settingsForm.controls['zip']">
+        <div *ngIf="serverValidationErrors.zip" class="alert alert-danger">{{serverValidationErrors.zip}}.</div>
+        <input class="form-control material-input" id="city" name="city" type="text" (focus)="serverValidationErrors.city = ''" placeholder="{{'user.settings.form.city.placeholder' | translate}}" [formControl]="settingsForm.controls['city']">
+        <div *ngIf="serverValidationErrors.city" class="alert alert-danger">{{serverValidationErrors.city}}.</div>
       </div>
 
       <hr>

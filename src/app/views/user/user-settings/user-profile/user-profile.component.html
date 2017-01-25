@@ -1,12 +1,12 @@
 <div class="profile-container">
-  <div class="profile-form-container col-xs-12 col-sm-10 col-md-8 col-lg-6">
+  <div class="profile-form-container">
 
     <form #form="ngForm" (ngSubmit)="onSubmit()">
 
       <div class="profile-input-container">
         <label>{{'user.profile.form.native.language.label' | translate}} *:</label>
         <autocomplete-dropdown #nativeLanguageDropdown (dropdownListItemSelect)="onNativeLanguageSelect($event)" [placeholder]="'user.profile.form.native.language.placeholder' | translate" [autocompleteResultLabelFunction]="namePropertyLabel" [selectedItemLabelFunction]="namePropertyLabel"
-            [getData]="getLanguages()">
+            [lookupType]="'list'" [enumList]="languages">
         </autocomplete-dropdown>
         <div *ngIf="profileForm.controls['native_language'].hasError('required')" class="alert alert-danger">{{'user.profile.form.native.language.validation.required' | translate}}.</div>
         <div *ngIf="serverValidationErrors.language_id" class="alert alert-danger">{{serverValidationErrors.language_id}}.</div>
@@ -15,7 +15,7 @@
       <div class="profile-input-container">
         <label>{{'user.profile.form.country.label' | translate}} *:</label>
         <autocomplete-dropdown #countryDropdown (dropdownListItemSelect)="onCountryOfOriginSelect($event)" [placeholder]="'user.profile.form.country.placeholder' | translate" [autocompleteResultLabelFunction]="namePropertyLabel" [selectedItemLabelFunction]="namePropertyLabel"
-            [getData]="getCountries()">
+            [lookupType]="'list'" [enumList]="countries">
         </autocomplete-dropdown>
         <div *ngIf="profileForm.controls['country_of_origin'].hasError('required')" class="alert alert-danger">{{'user.profile.form.country.validation.required' | translate}}.</div>
         <div *ngIf="serverValidationErrors.country_of_origin" class="alert alert-danger">{{serverValidationErrors.country_of_origin}}.</div>
@@ -71,13 +71,17 @@
         </div>
       </div>
 
-      <div *ngIf="profileForm.value.current_status && ((profileForm.value.current_status === 'asylum_seeker' && profileForm.value.at_und === 'yes' && profileForm.value.got_coordination_number === 'yes') || (profileForm.value.current_status !== 'asylum_seeker'))" class="form-group material-group profile-input-container" [ngClass]="{'has-error':!profileForm.value.ssn || !serverValidationErrors.ssn}">
+      <div *ngIf="profileForm.value.current_status && ((profileForm.value.current_status === 'asylum_seeker' && profileForm.value.at_und === 'yes' && profileForm.value.got_coordination_number === 'yes') || (profileForm.value.current_status !== 'asylum_seeker'))"
+          class="form-group material-group profile-input-container" [ngClass]="{'has-error':!profileForm.value.ssn || !serverValidationErrors.ssn}">
         <label *ngIf="profileForm.value.current_status === 'asylum_seeker'" for="ssn">{{'user.profile.form.coordination.number.label' | translate}}:</label>
         <label *ngIf="profileForm.value.current_status === 'eu_citizen'" for="ssn">{{'user.profile.form.coordination.number.or.ssn.label' | translate}}:</label>
         <label *ngIf="profileForm.value.current_status !== 'asylum_seeker' && profileForm.value.current_status !== 'eu_citizen'" for="ssn">{{'user.profile.form.ssn.label' | translate}}:</label>
-        <input *ngIf="profileForm.value.current_status === 'asylum_seeker'" class="form-control material-input" id="ssn" name="ssn-input" type="text" (focus)="serverValidationErrors.ssn = ''" placeholder="{{'user.profile.form.coordination.number.placeholder' | translate}}" [formControl]="profileForm.controls['ssn']">
-        <input *ngIf="profileForm.value.current_status === 'eu_citizen'" class="form-control material-input" id="ssn" name="ssn-input" type="text" (focus)="serverValidationErrors.ssn = ''" placeholder="{{'user.profile.form.coordination.number.or.ssn.placeholder' | translate}}" [formControl]="profileForm.controls['ssn']">
-        <input *ngIf="profileForm.value.current_status !== 'asylum_seeker' && profileForm.value.current_status !== 'eu_citizen'" class="form-control material-input" id="ssn" name="ssn-input" type="text" (focus)="serverValidationErrors.ssn = ''" placeholder="{{'user.profile.form.ssn.placeholder' | translate}}" [formControl]="profileForm.controls['ssn']">
+        <input *ngIf="profileForm.value.current_status === 'asylum_seeker'" class="form-control material-input" id="ssn" name="ssn-input" type="text" (focus)="serverValidationErrors.ssn = ''" placeholder="{{'user.profile.form.coordination.number.placeholder' | translate}}"
+            [formControl]="profileForm.controls['ssn']">
+        <input *ngIf="profileForm.value.current_status === 'eu_citizen'" class="form-control material-input" id="ssn" name="ssn-input" type="text" (focus)="serverValidationErrors.ssn = ''" placeholder="{{'user.profile.form.coordination.number.or.ssn.placeholder' | translate}}"
+            [formControl]="profileForm.controls['ssn']">
+        <input *ngIf="profileForm.value.current_status !== 'asylum_seeker' && profileForm.value.current_status !== 'eu_citizen'" class="form-control material-input" id="ssn" name="ssn-input" type="text" (focus)="serverValidationErrors.ssn = ''" placeholder="{{'user.profile.form.ssn.placeholder' | translate}}"
+            [formControl]="profileForm.controls['ssn']">
         <div *ngIf="serverValidationErrors.ssn" class="alert alert-danger">{{serverValidationErrors.ssn}}.</div>
       </div>
 
@@ -149,7 +153,7 @@
       <div class="profile-input-container">
         <label>{{'user.profile.form.languages.label' | translate}}:</label>
         <autocomplete-dropdown (dropdownListItemSelect)="onLanguageSelect($event)" [clearDestinationAfterSelection]="true" [placeholder]="'user.profile.form.languages.placeholder' | translate" [autocompleteResultLabelFunction]="namePropertyLabel" [selectedItemLabelFunction]="namePropertyLabel"
-            [getData]="getLanguagesExcludingNative()">
+            [lookupType]="'list'" [enumList]="languagesExcludingNative">
         </autocomplete-dropdown>
 
         <div class="profile-input-table-container">
@@ -157,7 +161,7 @@
             <div class="profile-input-table-row-inner-container" *ngIf="userLanguage.proficiency.proficiency !== 5">
               <div class="profile-input-table-row-inner-item-container">
                 <div class="profile-input-table-row-inner-item-text">
-                {{userLanguage.language.name}}
+                  {{userLanguage.language.name}}
                 </div>
                 <div class="profile-input-table-row-inner-icon-container" (click)="onRemoveUserLanguage(userLanguage)">
                   <i class="fa fa-times" aria-hidden="true"></i>
@@ -176,7 +180,7 @@
       <div class="profile-input-container">
         <label>{{'user.profile.form.skills.label' | translate}}:</label>
         <autocomplete-dropdown (dropdownListItemSelect)="onSkillSelect($event)" [clearDestinationAfterSelection]="true" [placeholder]="'user.profile.form.skills.placeholder' | translate" [autocompleteResultLabelFunction]="namePropertyLabel" [selectedItemLabelFunction]="namePropertyLabel"
-            [getData]="getSkills()">
+            [lookupType]="'list'" [enumList]="skills">
         </autocomplete-dropdown>
 
         <div class="profile-input-table-container">
@@ -184,15 +188,14 @@
             <div class="profile-input-table-row-inner-container">
               <div class="profile-input-table-row-inner-item-container">
                 <div class="profile-input-table-row-inner-item-text">
-                {{userSkill.skill.name}}
+                  {{userSkill.skill.name}}
                 </div>
                 <div class="profile-input-table-row-inner-icon-container" (click)="onRemoveUserSkill(userSkill)">
                   <i class="fa fa-times" aria-hidden="true"></i>
                 </div>
               </div>
               <div class="profile-input-table-row-inner-dropdown-container">
-                <autocomplete-dropdown [lookupType]="'list'" [enumList]="skillProficiencyLevelsAvailable" [(destination)]="userSkill.proficiency" [placeholder]="'skill.proficiency.placeholder' | translate" [autocompleteResultLabelFunction]="namePropertyLabel"
-                    [selectedItemLabelFunction]="namePropertyLabel">
+                <autocomplete-dropdown [lookupType]="'list'" [enumList]="skillProficiencyLevelsAvailable" [(destination)]="userSkill.proficiency" [placeholder]="'skill.proficiency.placeholder' | translate" [autocompleteResultLabelFunction]="namePropertyLabel" [selectedItemLabelFunction]="namePropertyLabel">
                 </autocomplete-dropdown>
               </div>
             </div>
@@ -202,13 +205,15 @@
 
       <div class="profile-input-container">
         <label>{{'user.profile.form.general.skills.label' | translate}}:</label>
-        <textarea class="form-control material-input" name="general-skills" id="general-skills" class="form-control material-input" (focus)="serverValidationErrors.competence_text = ''" autosize type="text" placeholder="{{'user.profile.form.general.skills.placeholder' | translate}}" [formControl]="profileForm.controls['competence_text']"></textarea>
+        <textarea class="form-control material-input" name="general-skills" id="general-skills" class="form-control material-input" (focus)="serverValidationErrors.competence_text = ''" autosize type="text" placeholder="{{'user.profile.form.general.skills.placeholder' | translate}}"
+            [formControl]="profileForm.controls['competence_text']"></textarea>
         <div *ngIf="serverValidationErrors.competence_text" class="alert alert-danger">{{serverValidationErrors.competence_text}}.</div>
       </div>
 
       <div class="profile-input-container">
         <label>{{'user.profile.form.work.experience.label' | translate}}:</label>
-        <textarea class="form-control material-input" name="workExperience" id="work-experience" class="form-control material-input" (focus)="serverValidationErrors.job_experience = ''" autosize type="text" placeholder="{{'user.profile.form.work.experience.placeholder' | translate}}" [formControl]="profileForm.controls['job_experience']"></textarea>
+        <textarea class="form-control material-input" name="workExperience" id="work-experience" class="form-control material-input" (focus)="serverValidationErrors.job_experience = ''" autosize type="text" placeholder="{{'user.profile.form.work.experience.placeholder' | translate}}"
+            [formControl]="profileForm.controls['job_experience']"></textarea>
         <div *ngIf="serverValidationErrors.job_experience" class="alert alert-danger">{{serverValidationErrors.job_experience}}.</div>
       </div>
       <!--
