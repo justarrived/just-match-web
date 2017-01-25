@@ -8,6 +8,7 @@ import {UserManager} from '../../services/user-manager.service';
 import {User} from '../../models/user';
 import {TranslationListener} from '../../components/translation.component';
 import {isEmpty} from 'lodash';
+import {AuthManager} from '../../services/auth-manager.service';
 
 @Component({
   templateUrl: './home.component.html',
@@ -25,11 +26,16 @@ export class HomeComponent extends TranslationListener implements OnInit {
   user: User;
   isEmpty = isEmpty;
 
-  constructor(private jobProxy: JobProxy, private userProxy: UserProxy, private userManager: UserManager, protected translationService: TranslationService) {
+  constructor(private jobProxy: JobProxy, private authManager: AuthManager, private userProxy: UserProxy, private userManager: UserManager, protected translationService: TranslationService) {
     super(translationService);
 
     this.isCompanyUser = userManager.isCompanyUser();
     this.user = userManager.getUser();
+
+    this.authManager.getUserChangeEmmiter().subscribe(user => {
+      this.user = user;
+    });
+
   }
 
   ngOnInit() {
