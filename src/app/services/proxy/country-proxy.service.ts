@@ -1,15 +1,18 @@
 import {Injectable} from '@angular/core';
 import {ApiCall} from '../api-call.service';
+import {TranslationService} from '../translation.service';
 import {map} from 'lodash';
 import {Country} from '../../models/country';
 
 @Injectable()
 export class CountryProxy {
 
-  constructor(private apiCall: ApiCall) { }
+  constructor(private apiCall: ApiCall, private translationService: TranslationService) { }
 
-  getCountries(name: string = ''): Promise<Array<Country>> {
-    return this.apiCall.get('countries', {'filter[name]': name})
+  getCountries(name: string = '', sort: string = this.translationService.getSelectedLanguageCode() + '_name'): Promise<Array<Country>> {
+    let nameFilter = 'filter[' + this.translationService.getSelectedLanguageCode() + '_name' + ']';
+
+    return this.apiCall.get('countries', {nameFilter: name, 'sort': sort})
       .then(response => map(response.data, data => new Country(data)));
   }
 
