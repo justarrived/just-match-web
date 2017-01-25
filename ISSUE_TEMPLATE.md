@@ -18,7 +18,7 @@ Add the following if it feels necessary to understand the scenario:
 
 ### New feature template
 
-**Comments:**
+**Description:**
 
 **Definition of done:**
 
