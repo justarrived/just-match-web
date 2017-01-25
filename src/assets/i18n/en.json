@@ -504,5 +504,7 @@
   "home_page.new_jobs_slider.title": "New jobs",
   "home_page.user_jobs_slider.title": "My jobs",
   "home_page.user_jobs_slider_item.status.finished": "Finnished",
-  "home_page.user_jobs_slider_item.status.ongoing": "Ongoing"
+  "home_page.user_jobs_slider_item.status.ongoing": "Ongoing",
+  "page_not_found_error.header" : "404 - Page Not Found",
+  "page_not_found_error.subtitle" : "Sorry, the page you are looking for does not exist."
 }
