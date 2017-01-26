@@ -24,9 +24,8 @@
       <div class="btn-secondary-light btn-medium btn" *ngIf="(user && !userJob)" (click)="onApplyForJobButtonClick()">{{'assignment.status.apply' | translate}}</div>
 
       <div *ngIf="!user" class="sign-in-or-create-container">
-        <div class="btn-secondary-light btn-medium btn sign-in-button" (click)="onApplyForJobButtonClick()">{{'assignment.status.log_in' | translate}}</div>
-        <h6 class="sign-or-create-text">or</h6>
-        <div class="btn-primary-light btn-medium btn" (click)="onApplyForJobButtonClick()">{{'assignment.status.create_account' | translate}}</div>
+        <div routerLink="/login" class="btn-secondary-light btn-small btn sign-in-button">{{'assignment.status.log_in' | translate}}</div><br/>
+        <div routerLink="/user/register" class="btn-primary-light btn-small btn">{{'assignment.status.create_account' | translate}}</div>
       </div>
 
       <h3 class="applied-text" *ngIf="userJob && !userJob.accepted">{{'assignment.status.applied' | translate}}</h3>
