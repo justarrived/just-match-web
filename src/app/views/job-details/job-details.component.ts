@@ -57,14 +57,12 @@ export class JobDetailsComponent extends TranslationListener implements OnInit {
     if (this.isCompanyUser && this.job.company.id === this.user.company.id) {
       this.jobProxy.getJobUsers(this.job.id, { include: 'user', 'filter[accepted]': true }).then(response => {
         this.userJob = response[0];
-        console.log(response);
       });
       this.jobProxy.getJobUsers(this.job.id, {}).then(response => {
         this.countOfApplicants = response.length;
       });
     } else if (this.userManager.getUser() && !this.isCompanyUser) {
       this.userProxy.getUserJobs(this.user.id, { 'filter[job_id]': this.job.id.toString() }).then(response => {
-        console.log(response);
         this.userJob = response[0];
       });
     }
