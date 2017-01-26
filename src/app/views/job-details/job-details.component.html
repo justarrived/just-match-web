@@ -1,16 +1,116 @@
 <div *ngIf="job">
   <div class="job-details-body">
-    <job-state-status-bar [job]="job" [jobId]="job.id"></job-state-status-bar>
 
-    <div class="job-details-container">
-      <!--<div class="row">
-        <div class="col-xs-12 close-container">
-          <i class="fa fa-times fa-lg"></i>
+    <div *ngIf="(!isCompanyUser && !isInUserView) && (!userJob || !userJob.invoice || !userJob.invoice.id)" class="job-status text-center">
+      <div class="job-status-container">
+        <div class="row">
+          <div class="col-xs-12">
+            <h3 class="job-status-text">{{job.name}}</h3>
+          </div>
         </div>
-      </div>--><!-- Add this when this view and its' components are merged -->
+        <div class="row">
+          <div class="col-xs-5 job-status-icon-container">
+            <img [src]="job.companyLogoURL" class="company-logo">
+          </div>
+          <div class="col-xs-7">
+            <h4 class="job-status-text">{{job.company.name}}</h4>
+            <h6 class="job-status-text">{{job.jobDate | date: 'MMM dd'}} - {{job.jobEndDate | date: 'MMM dd'}}</h6>
+            <h6 class="job-status-text">{{job.street}}</h6>
+            <h2 class="job-status-salary-text">{{job.grossAmount}} {{job.currency}}</h2>
+          </div>
+        </div>
+      </div>
+
+      <div class="btn-secondary-light btn-medium btn" *ngIf="(user && !userJob)" (click)="onApplyForJobButtonClick()">{{'assignment.status.apply' | translate}}</div>
+
+      <div *ngIf="!user" class="sign-in-or-create-container">
+        <div class="btn-secondary-light btn-medium btn sign-in-button" (click)="onApplyForJobButtonClick()">{{'assignment.status.log_in' | translate}}</div>
+        <h6 class="sign-or-create-text">or</h6>
+        <div class="btn-primary-light btn-medium btn" (click)="onApplyForJobButtonClick()">{{'assignment.status.create_account' | translate}}</div>
+      </div>
+
+      <h3 class="applied-text" *ngIf="userJob && !userJob.accepted">{{'assignment.status.applied' | translate}}</h3>
+
+      <div *ngIf="userJob && userJob.accepted && !userJob.willPerform">
+        <h5 class="time-left-text">{{'assignment.status.offer' | translate}} {{userJob.remainsConfirmationHours}} {{'common.hour' | translate}} {{userJob.remainsConfirmationMinutes}} {{'common.min' | translate}}</h5>
+        <div class="btn-secondary-light btn-medium btn" (click)="onConfirmJobButtonClick()">{{'assignment.status.reply' | translate}}</div>
+      </div>
+
+      <h5 class="hired-text" *ngIf="userJob && userJob.accepted && userJob.willPerform">{{'assignment.status.hired' | translate}}</h5>
+
+      <div class="expand-details-text-container">
+        <h6 *ngIf="!jobDetailsVisible" class="expand-details-text">{{'assignment.status.more_details' | translate}}</h6>
+        <h6 *ngIf="jobDetailsVisible" class="expand-details-text">{{'assignment.status.hide_details' | translate}}</h6>
+        <div class="expand-link-container">
+          <h6 class="expand-details-link" (click)="switchJobDetailsVisibility()">{{'assignment.status.click_here' | translate}}</h6>
+        </div>
+      </div>
+    </div>
+
+    <div class="job-status text-center" *ngIf="(isCompanyUser && user.company.id == job.company.id) && (!userJob || !userJob.invoice || !userJob.invoice.id)">
+      <div *ngIf="!userJob && !isInUserView">
+        <h5 class="no-of-candidates-text" *ngIf="countOfApplicants != 1">{{'common.you_have' | translate}} {{countOfApplicants}} {{'company.assignments.applications' | translate}}</h5>
+        <h5 class="no-of-candidates-text" *ngIf="countOfApplicants == 1">{{'common.you_have' | translate}} {{countOfApplicants}} {{'company.assignments.application' | translate}}</h5>
+        <div *ngIf="countOfApplicants > 0">
+          <a class="btn-secondary-light btn-medium btn" [routerLink]="['candidates']">{{'assignment.status.select_applicant' | translate}}</a>
+        </div>
+      </div>
+      <div *ngIf="!userJob && isInUserView"></div>
+      <h5 class="no-of-candidates-text" *ngIf="userJob && userJob.accepted && !userJob.willPerform">
+        {{userJob.user.firstName}} {{'common.have' | translate}} {{userJob.remainsConfirmationHours}} {{'common.hour' | translate}} {{userJob.remainsConfirmationMinutes}} {{'common.min' | translate}} {{'assignment.status.user_application.time_remaining' | translate}}
+      </h5>
+      <h5 class="accepted-text" *ngIf="userJob && userJob.accepted && userJob.willPerform"><a class="accept-applicant-link" [routerLink]="['/job', jobId, 'candidate', userJob.id]">{{'assignment.status.applicant_approved' | translate: {candidate_name: userJob.user.firstName} }}</a></h5>
+    </div>
+
+    <div *ngIf="showTermsAccept" class="candidate-bank-account-details-container">
+      <div>{{'common.congratulation' | translate}}</div>
+      <div>{{job.company.name}} {{'assignment.status.company.approve_user' | translate}}</div>
+      <div>{{'assignment.status.offer.approve' | translate}}</div>
+      <div>
+        <input id="accept-terms" type="checkbox" [(ngModel)]="acceptTerms">
+        <label for="accept-terms">{{'terms.frilans_finans.accept' | translate}}</label>
+        <span><a href="">{{'terms' | translate}}</a></span>
+      </div>
+      <div>
+        <button class="button" [disabled]="!acceptTerms" (click)="showTermsAccept = false;showCandidateBankAccountDetails = true">{{'common.yes' | translate}}</button>
+        <button class="button" (click)="showTermsAccept = false">{{'common.no' | translate}}</button>
+      </div>
+    </div>
+
+    <div *ngIf="showCandidateBankAccountDetails">
+      <div>{{'user.account' | translate}}</div>
+      <div>{{'user.account.description' | translate}}</div>
+      <form #form="ngForm" (ngSubmit)="onSubmit()">
+        <div class="material-group">
+          <input type="text" id="clearingNumber" [(ngModel)]="bankAccount.clearingNumber" name="clearingNumber" class="material-input" [ngClass]="{'not-empty': bankAccount.clearingNumber, 'has-error': errors.account_clearing_number}" required>
+          <label for="clearingNumber" class="material-label">{{'user.account.bank' | translate}}</label>
+          <div class="fs-m0 material-group-error" *ngIf="form.controls.clearingNumber && form.controls.clearingNumber.invalid && form.controls.clearingNumber.touched">
+            {{'finance.form.account_clearing_number.validation' | translate}}
+          </div>
+          <div class="fs-m0 material-group-error" *ngIf="errors.account_clearing_number">
+            {{errors.account_clearing_number}}
+          </div>
+        </div>
+        <div class="material-group">
+          <input type="text" id="accountNumber" [(ngModel)]="bankAccount.accountNumber" name="accountNumber" class="material-input" [ngClass]="{'not-empty': bankAccount.accountNumber, 'has-error': errors.account}" required>
+          <label for="accountNumber" class="material-label">{{'user.account.cardnr' | translate}}</label>
+          <div class="fs-m0 material-group-error" *ngIf="form.controls.accountNumber && form.controls.accountNumber.invalid && form.controls.accountNumber.touched">
+            {{'finance.form.account_number.validation' | translate}}
+          </div>
+          <div class="fs-m0 material-group-error" *ngIf="errors.account">
+            {{errors.account}}
+          </div>
+        </div>
+      </form>
+      <div class="text-center">
+        <button class="button primary form-group" (click)="submitBankAccount()" [disabled]="form.invalid">{{'common.save' | translate}}</button>
+      </div>
+    </div>
+
+    <div *ngIf="jobDetailsVisible" class="job-details-container">
       <div class="row">
         <div class="col-xs-12">
-          <h4 class="job-title">{{'assignment' | translate | uppercase}}</h4>
+          <h4 class="job-title">{{'assignment.details' | translate | uppercase}}</h4>
         </div>
       </div>
       <hr class="job-details-separator"/>
