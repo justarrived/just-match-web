@@ -91,6 +91,10 @@
     overflow-y: scroll;
     white-space: nowrap;
 
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
     .item-container {
       display: inline-block;
       width: 180px;
