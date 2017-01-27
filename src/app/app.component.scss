@@ -181,14 +181,14 @@
         border-right: 1px solid $color-primary-cerise;
         display: flex;
         align-items: center;
-        justify-content: center;
+        justify-content: flex-end;
       }
 
       .language-menu-logo-container-text {
         color: $color-primary-cerise;
         display: flex;
         align-items: center;
-        justify-content: center;
+        justify-content: flex-start;
 
         h4 {
           padding: 0;
