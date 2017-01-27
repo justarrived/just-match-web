@@ -70,7 +70,7 @@ export class JobDetailsComponent extends TranslationListener implements OnInit {
 
   onApplyForJobButtonClick() {
     this.jobProxy.applyForJob(this.job.id).then(response => {
-      this.router.navigate(['/confirmation/user-applied']);
+      this.router.navigate(['/confirmation/user-applied-for-job']);
     });
   }
 

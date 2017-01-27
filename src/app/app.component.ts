@@ -1,14 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthManager} from './services/auth-manager.service';
 import {ActsAsUser} from './services/acts-as-user.service';
-import {
-  Router,
-  NavigationStart,
-  RoutesRecognized,
-  NavigationCancel,
-  NavigationEnd,
-  NavigationError
-} from '@angular/router';
+import {Router, NavigationStart} from '@angular/router';
 import {User} from './models/user';
 import {TranslationService} from './services/translation.service';
 import {Language} from './models/language/language';
@@ -22,8 +15,6 @@ import {SystemLanguagesService} from './services/system-languages.service';
   providers: [SystemLanguagesService]
 })
 export class AppComponent implements OnInit {
-  states: Array<String> = [];
-  currentState: string;
   user: User;
   isCompanyUser: boolean;
   systemLanguages: Language[];
@@ -42,23 +33,6 @@ export class AppComponent implements OnInit {
       if (event instanceof NavigationStart) {
         this.isNavigationMenuVisible = false;
       }
-
-      if (event instanceof NavigationEnd) {
-        this.currentState = router.url;
-        this.states.push(router.url);
-      }
-
-      if (event instanceof NavigationCancel) {
-        console.log('NavigationCancel');
-      }
-
-      if (event instanceof NavigationError) {
-        console.log('NavigationError', event);
-      }
-
-      if (event instanceof RoutesRecognized) {
-        console.log('RoutesRecognized');
-      }
     });
 
     this.systemLanguagesService.getSystemLanguages().then(result => this.systemLanguages = result);
@@ -66,7 +40,6 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log('Application component initialized ...');
     this.authManager.authenticateIfNeeded().then(result => {
       this.router.initialNavigation();
       this.user = result;
@@ -81,6 +54,7 @@ export class AppComponent implements OnInit {
       this.user = user;
     });
 
+    console.log('Application component initialized ...');
   }
 
   onBodyClick(event) {

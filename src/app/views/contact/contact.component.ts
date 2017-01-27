@@ -28,7 +28,7 @@ export class ContactComponent {
         email: value.email,
         body: value.message
       }))
-      .then(result => this.router.navigate(['/contact/confirmation']))
+      .then(result => this.router.navigate(['/confirmation/contact-confirmation']))
       .catch(errors => {
         this.errors = errors.details || errors;
       });

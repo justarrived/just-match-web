@@ -12,6 +12,7 @@ import {AuthManager} from './services/auth-manager.service';
 import {UserProxy} from './services/proxy/user-proxy.service';
 import {ActsAsUser} from './services/acts-as-user.service';
 import {TranslationService} from './services/translation.service';
+import {NavigationService} from './services/navigation.service';
 import {SliderComponent} from './components/slider/slider.component';
 import {UserRegisterComponent} from './views/user/user-register/user-register.component';
 import {CountryProxy} from './services/proxy/country-proxy.service';
@@ -23,7 +24,6 @@ import {SkillProxy} from './services/proxy/skill-proxy.service';
 import {LoginComponent} from './views/login/login.component';
 import {ForgotPasswordComponent} from './views/forgot-password/forgot-password.component';
 import {UserManager} from './services/user-manager.service';
-import {JobCreateComponent} from './views/jobs/job-create/job-create.component';
 import {JobPreviewComponent} from './components/job-preview/job-preview.component';
 import {JobsComponent} from './views/jobs/jobs.component';
 import {JobListItemComponent} from './components/job-list-item/job-list-item.component';
@@ -33,14 +33,10 @@ import {JobDetailsComponent} from './views/job-details/job-details.component';
 import {CommentsComponent} from './components/comments/comments.component';
 import {FaqComponent} from './views/faq/faq.component';
 import {ContactComponent} from './views/contact/contact.component';
-import {ContactConfirmationComponent} from './views/contact/confirmation/contact-confirmation.component';
 import {ConfirmationComponent} from './views/confirmation/confirmation.component';
 import {CookiesAboutComponent} from './views/cookies-about/cookies-about.component';
 import {CookieBarComponent} from './components/cookie-bar/cookie-bar.component';
 import {LoadingComponent} from './components/loading-gif/loading.component';
-import {CandidateComponent} from './views/candidate/candidate.component';
-import {CandidateStateStatusBarComponent} from './components/candidate-state-status-bar/candidate-state-status-bar.component';
-import {CandidatesComponent} from './views/candidates/candidates.component';
 import {MyJobsComponent} from './views/my-jobs/my-jobs.component';
 import {CompanyJobsComponent} from './views/my-jobs/company-jobs/company-jobs.component';
 import {UserJobsComponent} from './views/my-jobs/user-jobs/user-jobs.component';
@@ -82,7 +78,6 @@ import {NotFoundComponent} from './views/404/404.component';
     AutocompleteDropdownComponent,
     LoginComponent,
     ForgotPasswordComponent,
-    JobCreateComponent,
     JobPreviewComponent,
     JobsComponent,
     JobListItemComponent,
@@ -92,14 +87,10 @@ import {NotFoundComponent} from './views/404/404.component';
     CommentsComponent,
     FaqComponent,
     ContactComponent,
-    ContactConfirmationComponent,
     ConfirmationComponent,
     CookiesAboutComponent,
     CookieBarComponent,
     LoadingComponent,
-    CandidatesComponent,
-    CandidateComponent,
-    CandidateStateStatusBarComponent,
     RatingComponent,
     MyJobsItemComponent,
     CompanyJobsComponent,
@@ -122,7 +113,8 @@ import {NotFoundComponent} from './views/404/404.component';
     SkillProxy,
     TranslationService,
     UserManager,
-    Geolocation
+    Geolocation,
+    NavigationService
     // {provide: ErrorHandler, useClass: GlobalExceptionHandler}
   ],
   bootstrap: [AppComponent]
