@@ -13,12 +13,16 @@ import {TranslationListener} from '../../../components/translation.component';
   providers: [UserProxy]
 })
 export class UserJobsComponent extends TranslationListener implements OnInit {
-  @Input() selectedState: string;
-  userJobs: UserJob[];
-  currentJobs: Job[] = []; // not invoiced
-  historyJobs: Job[] = []; // invoiced
+  @Input() private selectedState: string;
+  private userJobs: UserJob[];
+  private currentJobs: Job[] = []; // not invoiced
+  private historyJobs: Job[] = []; // invoiced
 
-  constructor(private userProxy: UserProxy, private userManager: UserManager, protected translationService: TranslationService) {
+  constructor(
+    private userProxy: UserProxy,
+    private userManager: UserManager,
+    protected translationService: TranslationService
+  ) {
     super(translationService);
   }
 
@@ -33,7 +37,7 @@ export class UserJobsComponent extends TranslationListener implements OnInit {
     });
   }
 
-  generateJobSections() {
+  private generateJobSections() {
     this.currentJobs = map(this.userJobs.filter((userJob) => !userJob.invoice.id), userJob => {
       let job = userJob.job;
       job.jobUsers = [userJob];

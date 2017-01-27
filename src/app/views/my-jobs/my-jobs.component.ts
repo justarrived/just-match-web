@@ -1,5 +1,4 @@
 import {Component} from '@angular/core';
-import {UserManager} from '../../services/user-manager.service';
 
 @Component({
   templateUrl: './my-jobs.component.html',
@@ -7,15 +6,13 @@ import {UserManager} from '../../services/user-manager.service';
 })
 
 export class MyJobsComponent {
-  selectedState: string = 'active';
+  private selectedState: string = 'active';
 
-  isCompanyUser: boolean;
-
-  constructor(private userManager: UserManager) {
-    this.isCompanyUser = userManager.isCompanyUser();
+  constructor(
+  ) {
   }
 
-  setState(newState) {
+  private setState(newState) {
     this.selectedState = newState;
   }
 }

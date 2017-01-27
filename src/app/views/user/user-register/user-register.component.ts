@@ -18,27 +18,31 @@ import {FormGroup, FormBuilder, Validators} from '@angular/forms';
   templateUrl: './user-register.component.html',
   styleUrls: ['./user-register.component.scss']
 })
-export class UserRegisterComponent implements OnInit {
-  namePropertyLabel: Function = namePropertyLabel;
+export class UserRegisterComponent extends TranslationListener implements OnInit {
+  private namePropertyLabel: Function = namePropertyLabel;
 
-  countries: Country[];
-  languages: Language[];
-  systemLanguages: Language[];
-  serverValidationErrors: any = {};
-  saveSuccess: boolean;
-  saveFail: boolean;
+  private countries: Country[];
+  private languages: Language[];
+  private systemLanguages: Language[];
+  private serverValidationErrors: any = {};
+  private saveSuccess: boolean;
+  private saveFail: boolean;
 
-  registerForm: FormGroup;
-  countryOfOriginInputTouched: boolean = false;
-  nativeLanguageInputTouched: boolean = false;
-  defaultLanguageInputTouched: boolean = false;
+  private registerForm: FormGroup;
+  private countryOfOriginInputTouched: boolean = false;
+  private nativeLanguageInputTouched: boolean = false;
+  private defaultLanguageInputTouched: boolean = false;
 
-  constructor(private router: Router,
+  constructor(
+    private router: Router,
     private userProxy: UserProxy,
     private countryProxy: CountryProxy,
     private languageProxy: LanguageProxy,
     private authManager: AuthManager,
-    private formBuilder: FormBuilder) {
+    private formBuilder: FormBuilder,
+    protected translationService: TranslationService
+  ) {
+    super(translationService)
 
     this.registerForm = formBuilder.group({
       'first_name': ['', Validators.compose([Validators.required, Validators.minLength(2)])],
@@ -67,19 +71,12 @@ export class UserRegisterComponent implements OnInit {
     this.languageProxy.getSystemLanguages().then(languages => this.systemLanguages = languages);
   }
 
-  getLanguages() {
-    return (searchText): Promise<Array<Language>> => {
-      return this.languageProxy.getLanguages(searchText);
-    };
-  }
-
-  handleServerErrors(errors) {
-    console.log(errors);
+  private handleServerErrors(errors) {
     this.saveFail = true;
     this.serverValidationErrors = errors.details || errors;
   }
 
-  onSubmit() {
+  private onSubmit() {
     this.saveSuccess = false;
     this.saveFail = false;
     this.serverValidationErrors = {};
@@ -108,15 +105,15 @@ export class UserRegisterComponent implements OnInit {
       });
   }
 
-  passwordsSupplied() {
+  private passwordsSupplied() {
     return (this.registerForm.value.password || this.registerForm.value.repeat_password) && true;
   }
 
-  passwordsSuppliedAndMisMatch() {
+  private passwordsSuppliedAndMisMatch() {
     return this.passwordsSupplied() && this.registerForm.value.password !== this.registerForm.value.repeat_password && true;
   }
 
-  formValidation(): boolean {
+  private formValidation(): boolean {
     return this.registerForm.valid && this.registerForm.value.accepted_terms_and_conditions && this.registerForm.value.native_language && this.registerForm.value.country_of_origin && this.registerForm.value.default_language && !this.passwordsSuppliedAndMisMatch() && true;
   }
 }

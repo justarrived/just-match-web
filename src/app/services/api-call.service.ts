@@ -1,17 +1,27 @@
 import {Injectable} from '@angular/core';
 import {
-  Http, Headers, Request, RequestOptions, RequestOptionsArgs, RequestMethod, URLSearchParams,
+  Http,
+  Headers,
+  Request,
+  RequestOptions,
+  RequestOptionsArgs,
+  RequestMethod,
+  URLSearchParams,
   Response
 } from '@angular/http';
 import {DataStore} from './data-store.service';
 import * as  _ from 'lodash';
-import {parseJsonapiResponse, parseJsonapiErrorResponse} from '../utils/jsonapi-parser.util';
+import {
+  parseJsonapiResponse,
+  parseJsonapiErrorResponse
+} from '../utils/jsonapi-parser.util';
 import {Observable} from 'rxjs';
-import {Router} from '@angular/router';
 import {environment} from '../../environments/environment';
 import {UserManager} from './user-manager.service';
 import {ActsAsUser} from './acts-as-user.service';
 import {TranslationService} from './translation.service';
+import {NavigationService} from './navigation.service';
+import {JARoutes} from '../routes/ja-routes';
 
 @Injectable()
 export class ApiCall {
@@ -23,24 +33,26 @@ export class ApiCall {
   private transformHeaderValue: string = 'underscore';
   private actAsUserHeaderName: string = 'X-API-ACT-AS-USER';
 
-  constructor(private http: Http,
-              private dataStore: DataStore,
-              private router: Router,
-              private userManager: UserManager,
-              private actsAsUser: ActsAsUser,
-              private translationService: TranslationService) {
+  constructor(
+    private http: Http,
+    private dataStore: DataStore,
+    private userManager: UserManager,
+    private actsAsUser: ActsAsUser,
+    private translationService: TranslationService,
+    private navigationService: NavigationService
+  ) {
   }
 
   public get(url: string, urlParams?: Object, contentType?: string): Promise<any> {
-      return this.requestHelper({ search: this.searchParamsBuilder(urlParams), method: RequestMethod.Get, url: this.urlBuilder(url), headers: this.contentTypeHeaderBuilder(contentType) });
+    return this.requestHelper({ search: this.searchParamsBuilder(urlParams), method: RequestMethod.Get, url: this.urlBuilder(url), headers: this.contentTypeHeaderBuilder(contentType) });
   }
 
   public post(url: string, body: any, contentType?: string): Promise<any> {
-      return this.requestHelper({ body: {data: {attributes: body}}, method: RequestMethod.Post, url: this.urlBuilder(url), headers: this.contentTypeHeaderBuilder(contentType) });
+    return this.requestHelper({ body: { data: { attributes: body } }, method: RequestMethod.Post, url: this.urlBuilder(url), headers: this.contentTypeHeaderBuilder(contentType) });
   }
 
   public put(url: string, body: any, contentType?: string): Promise<any> {
-    return this.requestHelper({ body: {data: {attributes: body}}, method: RequestMethod.Put, url: this.urlBuilder(url), headers: this.contentTypeHeaderBuilder(contentType) });
+    return this.requestHelper({ body: { data: { attributes: body } }, method: RequestMethod.Put, url: this.urlBuilder(url), headers: this.contentTypeHeaderBuilder(contentType) });
   }
 
   public delete(url: string, contentType?: string): Promise<any> {
@@ -48,7 +60,7 @@ export class ApiCall {
   }
 
   public patch(url: string, body: any, contentType?: string): Promise<any> {
-    return this.requestHelper({ body: {data: {attributes: body}}, method: RequestMethod.Patch, url: this.urlBuilder(url), headers: this.contentTypeHeaderBuilder(contentType) });
+    return this.requestHelper({ body: { data: { attributes: body } }, method: RequestMethod.Patch, url: this.urlBuilder(url), headers: this.contentTypeHeaderBuilder(contentType) });
   }
 
   public head(url: string, contentType?: string): Promise<any> {
@@ -87,7 +99,7 @@ export class ApiCall {
   }
 
   private contentTypeHeaderBuilder(contentType: string = 'application/vnd.api+json'): Headers {
-    return new Headers({'Content-Type': contentType});
+    return new Headers({ 'Content-Type': contentType });
   }
 
   private searchParamsBuilder(urlParams: Object): URLSearchParams {
@@ -100,15 +112,17 @@ export class ApiCall {
 
   private handleResponseErrors(response) {
     if (response.status === 401) {
-      let tokenExpiredObject = _.find(response.json().errors, {code: 'token_expired'});
+      let tokenExpiredObject = _.find(response.json().errors, { code: 'token_expired' });
       if (!!tokenExpiredObject) {
         this.userManager.deleteUser();
-        this.router.navigate(['/login']);
+        // TODO should be JARoutes.login . Will not load if used BUG
+        this.navigationService.navigate({ url: () => 'login'});
       }
     }
 
     if (response.status === 0 || response.status === 400 || response.status >= 500) {
-      this.router.navigateByUrl('/error/' + response.status, { skipLocationChange: true });
+      // TODO should be JARoutes.error . Will not load if used BUG
+      this.navigationService.navigateNoLocationChange({ url: (args?: string[]) => 'error/' + args[0]}, response.status);
     }
 
     return Observable.throw(parseJsonapiErrorResponse(response));

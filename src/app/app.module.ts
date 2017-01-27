@@ -4,7 +4,6 @@ import {BrowserModule} from '@angular/platform-browser';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AgmCoreModule} from 'angular2-google-maps/core';
 import {AppComponent} from './app.component';
-import {AboutComponent} from './views/about/about.component';
 import {HomeComponent} from './views/home/home.component';
 import {DataStore} from './services/data-store.service';
 import {ApiCall} from './services/api-call.service';
@@ -38,7 +37,6 @@ import {CookiesAboutComponent} from './views/cookies-about/cookies-about.compone
 import {CookieBarComponent} from './components/cookie-bar/cookie-bar.component';
 import {LoadingComponent} from './components/loading-gif/loading.component';
 import {MyJobsComponent} from './views/my-jobs/my-jobs.component';
-import {CompanyJobsComponent} from './views/my-jobs/company-jobs/company-jobs.component';
 import {UserJobsComponent} from './views/my-jobs/user-jobs/user-jobs.component';
 import {MyJobsItemComponent} from './components/my-jobs-item/my-jobs-item.component';
 import {RatingComponent} from './components/rating/rating.component';
@@ -67,7 +65,6 @@ import {NotFoundComponent} from './views/404/404.component';
   ],
   declarations: [
     AppComponent,
-    AboutComponent,
     HomeComponent,
     SliderComponent,
     UserRegisterComponent,
@@ -93,7 +90,6 @@ import {NotFoundComponent} from './views/404/404.component';
     LoadingComponent,
     RatingComponent,
     MyJobsItemComponent,
-    CompanyJobsComponent,
     UserJobsComponent,
     MyJobsComponent,
     UserSettingsComponent,

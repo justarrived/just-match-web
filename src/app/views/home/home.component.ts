@@ -16,20 +16,21 @@ import {AuthManager} from '../../services/auth-manager.service';
   providers: [JobProxy, UserProxy]
 })
 export class HomeComponent extends TranslationListener implements OnInit {
-  today: number = new Date().getDate();
-  email: string;
-  password: string;
-  newJobs: Job[];
-  userJobs: UserJob[];
-  jobsAppliedFor: UserJob[];
-  isCompanyUser: boolean;
-  user: User;
-  isEmpty = isEmpty;
+  private newJobs: Job[];
+  private userJobs: UserJob[];
+  private jobsAppliedFor: UserJob[];
+  private user: User;
+  private isEmpty = isEmpty;
 
-  constructor(private jobProxy: JobProxy, private authManager: AuthManager, private userProxy: UserProxy, private userManager: UserManager, protected translationService: TranslationService) {
+  constructor(
+    private jobProxy: JobProxy,
+    private authManager: AuthManager,
+    private userProxy: UserProxy,
+    private userManager: UserManager,
+    protected translationService: TranslationService
+  ) {
     super(translationService);
 
-    this.isCompanyUser = userManager.isCompanyUser();
     this.user = userManager.getUser();
 
     this.authManager.getUserChangeEmmiter().subscribe(user => {
@@ -40,38 +41,41 @@ export class HomeComponent extends TranslationListener implements OnInit {
 
   ngOnInit() {
     this.loadData();
-    if(this.user) {
+  }
+
+  loadData(): void {
+    this.loadJobs();
+    if (this.user) {
       this.loadUserJobs();
       this.loadJobsAppliedFor();
     }
   }
 
-  loadData(): void {
-    this.jobProxy.getJobs({include: 'company,hourly_pay,company.company_images', 'filter[filled]': false})
+  private loadJobs(): void {
+    this.jobProxy.getJobs({ include: 'company,hourly_pay,company.company_images', 'filter[filled]': false })
       .then(result => {
         this.newJobs = result.data;
       });
   }
 
-  loadUserJobs(): void {
-    this.userProxy.getUserJobs(this.user.id, {include: 'job', 'sort': 'job.job.end_date', 'filter[will_perform]': true, 'page[size]': 5})
+  private loadUserJobs(): void {
+    this.userProxy.getUserJobs(this.user.id, { include: 'job', 'sort': 'job.job.end_date', 'filter[will_perform]': true, 'page[size]': 5 })
       .then(result => {
         this.userJobs = result;
       });
   }
 
-  loadJobsAppliedFor(): void {
-    this.userProxy.getUserJobs(this.user.id, {include: 'job', 'sort': '-created_at', 'page[size]': 10})
+  private loadJobsAppliedFor(): void {
+    this.userProxy.getUserJobs(this.user.id, { include: 'job', 'sort': '-created_at', 'page[size]': 10 })
       .then(result => {
         this.jobsAppliedFor = result;
       });
   }
 
-  userJobsVisible() {
-    if(this.user) {
+  private userJobsVisible() {
+    if (this.user) {
       return !this.isEmpty(this.userJobs);
     }
     return false;
   }
-
 }

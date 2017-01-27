@@ -11,16 +11,20 @@ import {FormGroup, FormBuilder, Validators} from '@angular/forms';
 })
 export class UserDetailsComponent implements OnInit {
 
-  @Input() user: User;
+  @Input() private user: User;
 
-  settingsForm: FormGroup;
-  passwordForm: FormGroup;
+  private settingsForm: FormGroup;
+  private passwordForm: FormGroup;
 
-  serverValidationErrors: any = {};
-  saveSuccess: boolean;
-  saveFail: boolean;
+  private serverValidationErrors: any = {};
+  private saveSuccess: boolean;
+  private saveFail: boolean;
 
-  constructor(private authManager: AuthManager, private userProxy: UserProxy, private formBuilder: FormBuilder) {
+  constructor(
+    private authManager: AuthManager,
+    private userProxy: UserProxy,
+    private formBuilder: FormBuilder
+  ) {
   }
 
   ngOnInit() {
@@ -43,24 +47,24 @@ export class UserDetailsComponent implements OnInit {
     });
   }
 
-  passwordsSupplied() {
+  private passwordsSupplied(): boolean {
     return (this.passwordForm.value.password || this.passwordForm.value.repeat_password) && true;
   }
 
-  passwordsSuppliedAndMisMatch() {
+  private passwordsSuppliedAndMisMatch(): boolean {
     return this.passwordsSupplied() && this.passwordForm.value.password !== this.passwordForm.value.repeat_password && true;
   }
 
-  formValidation(): boolean {
+  private formValidation(): boolean {
     return this.settingsForm.valid && this.passwordForm.valid && !this.passwordsSuppliedAndMisMatch() && true;
   }
 
-  handleServerErrors(errors) {
+  private handleServerErrors(errors): void {
     this.saveFail = true;
     this.serverValidationErrors = errors.details || errors;
   }
 
-  onSubmit() {
+  private onSubmit(): void {
     this.saveSuccess = false;
     this.saveFail = false;
     this.serverValidationErrors = {};

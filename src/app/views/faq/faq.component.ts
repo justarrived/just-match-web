@@ -10,9 +10,12 @@ import {TranslationListener} from '../../components/translation.component';
   providers: [FaqProxy]
 })
 export class FaqComponent extends TranslationListener implements OnInit {
-  faqs: Faq[];
+  private faqs: Faq[];
 
-  constructor(private faqProxy: FaqProxy, protected translationService: TranslationService) {
+  constructor(
+    private faqProxy: FaqProxy,
+    protected translationService: TranslationService
+  ) {
     super(translationService);
   }
 

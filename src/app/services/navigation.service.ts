@@ -1,4 +1,5 @@
 import {Injectable} from '@angular/core';
+import {JARoute} from '../routes/ja-route';
 import {
   Router,
   NavigationStart,
@@ -10,13 +11,15 @@ import {
 
 @Injectable()
 export class NavigationService {
-  states: Array<String> = [];
-  currentState: string;
+  private states: Array<String> = [];
+  private currentState: string;
 
-  constructor(private router: Router) {
+  constructor(
+    private router: Router
+  ) {
     router.events.subscribe(event => {
       if (event instanceof NavigationStart) {
-        console.log('Starting navigation to ' + event)
+        console.log('Starting navigation to ' + event.url)
       }
 
       if (event instanceof NavigationEnd) {
@@ -39,75 +42,15 @@ export class NavigationService {
     });
   }
 
-  navigateToAbout(): void  {
-    this.router.navigate(['/about']);
-  }
-
-  navigateBack(): void {
+  public navigateBack(): void {
     this.router.navigate([this.states.pop()]);
   }
 
-  navigateToConfirmationContactMessageSent(): void {
-    this.router.navigate(['/confirmation/contact-message-sent']);
+  public navigate(route: JARoute, ...args: string[]): void {
+    this.router.navigate([route.url(args)]);
   }
 
-  navigateToConfirmationPasswordResetLinkSent(): void {
-    this.router.navigate(['/confirmation/password-reset-link-sent']);
-  }
-
-  navigateToConfirmationUserAppliedForJob(): void {
-    this.router.navigate(['/confirmation/user-applied-for-job']);
-  }
-
-  navigateToContact(): void {
-    this.router.navigate(['/contact']);
-  }
-
-  navigateToCookiesAbout(): void {
-    this.router.navigate(['/cookies-about']);
-  }
-
-  navigateToFaq(): void {
-    this.router.navigate(['/faq']);
-  }
-
-  navigateToForgotPassword(): void {
-    this.router.navigate(['/forgot-password']);
-  }
-
-  navigateToHome(): void {
-    this.router.navigate(['/']);
-  }
-
-  navigateToJob(id: string): void {
-    this.router.navigate(['/job/' + id]);
-  }
-
-  navigateToJobs(page: number): void {
-    this.router.navigate(['/jobs/' + page]);
-  }
-
-  navigateToLogin(): void  {
-    this.router.navigate(['/about']);
-  }
-
-  navigateToRegisterUser(): void  {
-    this.router.navigate(['/user/register']);
-  }
-
-  navigateToUser(): void  {
-    this.router.navigate(['/user']);
-  }
-
-  navigateToUserJobs(): void  {
-    this.router.navigate(['/my-jobs']);
-  }
-
-  navigateToError(statusCode: string): void  {
-    this.router.navigate(['/error/' + statusCode]);
-  }
-
-  navigateToNotFound(): void  {
-    this.router.navigate(['/404']);
+  public navigateNoLocationChange(route: JARoute, ...args: string[]): void {
+    this.router.navigateByUrl(route.url(args), { skipLocationChange: true });
   }
 }

@@ -5,9 +5,12 @@ import {ContactNotification} from '../../models/contact-notification';
 @Injectable()
 export class ContactProxy {
 
-  constructor(private apiCall: ApiCall) { }
+  constructor(
+    private apiCall: ApiCall
+  ) {
+  }
 
-  saveContactNotification(contactNotification: ContactNotification): Promise<any> {
+  public saveContactNotification(contactNotification: ContactNotification): Promise<any> {
     return this.apiCall.post('contacts', contactNotification.toJsonObject());
   }
 }

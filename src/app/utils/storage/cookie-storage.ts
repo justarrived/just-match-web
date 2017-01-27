@@ -4,23 +4,25 @@ export class CookieStorage implements StorageInterface {
   private data: Object = {};
   private DOM: any;
 
-  constructor(document: any) {
+  constructor(
+    document: any
+  ) {
     this.DOM = document;
 
     // initialise if there's already data
     this.data = this.getData();
   }
 
-  clear(): void {
+  public clear(): void {
     this.data = {};
     this.clearData();
   }
 
-  getItem(key: string): string {
+  public getItem(key: string): string {
     return this.data[key] === undefined ? null : this.data[key];
   }
 
-  removeItem(key: string): string {
+  public removeItem(key: string): string {
     const oldValue = this.data[key];
     delete this.data[key];
 
@@ -29,20 +31,20 @@ export class CookieStorage implements StorageInterface {
     return oldValue;
   }
 
-  setItem(key: string, value: string): void {
+  public setItem(key: string, value: string): void {
     this.data[key] = value;
     this.setData(this.data);
   }
 
-  persistsRefresh(): boolean {
+  public persistsRefresh(): boolean {
     return true;
   }
 
-  persistsSession(): boolean {
+  public persistsSession(): boolean {
     return true;
   }
 
-  supportsCaching(): boolean {
+  public supportsCaching(): boolean {
     return false;
   }
 

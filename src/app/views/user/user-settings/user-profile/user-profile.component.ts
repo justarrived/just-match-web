@@ -29,62 +29,62 @@ import {FormGroup, FormBuilder, Validators} from '@angular/forms';
 })
 export class UserProfileComponent implements OnInit {
   @ViewChild('nativeLanguageDropdown')
-  nativeLanguageDropdown: AutocompleteDropdownComponent;
+  private nativeLanguageDropdown: AutocompleteDropdownComponent;
 
   @ViewChild('countryDropdown')
-  countryDropdown: AutocompleteDropdownComponent;
+  private countryDropdown: AutocompleteDropdownComponent;
 
-  namePropertyLabel: Function = namePropertyLabel;
+  private namePropertyLabel: Function = namePropertyLabel;
 
-  languageProficiencyLevelsAvailable: LanguageProficiency[] = languageProficiencyLevels;
-  skillProficiencyLevelsAvailable: LanguageProficiency[] = skillProficiencyLevels;
+  private languageProficiencyLevelsAvailable: LanguageProficiency[] = languageProficiencyLevels;
+  private skillProficiencyLevelsAvailable: LanguageProficiency[] = skillProficiencyLevels;
 
-  @Input() user: User;
+  @Input() private user: User;
 
-  countries: Country[];
-  languages: Language[];
-  languagesExcludingNative: Language[];
-  skills: Skill[];
+  private countries: Country[];
+  private languages: Language[];
+  private languagesExcludingNative: Language[];
+  private skills: Skill[];
 
-  profileForm: FormGroup;
+  private profileForm: FormGroup;
 
-  statuses: UserStatus[];
+  private statuses: UserStatus[];
 
-  serverValidationErrors: any = {};
-  saveSuccess: boolean;
-  saveFail: boolean;
+  private serverValidationErrors: any = {};
+  private saveSuccess: boolean;
+  private saveFail: boolean;
 
-  residencePermitFrontImageStatusObject: any = {
+  private residencePermitFrontImageStatusObject: any = {
     imageSaveSuccess: false,
     imageSaveFail: false
   };
 
-  residencePermitBackImageStatusObject: any = {
+  private residencePermitBackImageStatusObject: any = {
     imageSaveSuccess: false,
     imageSaveFail: false
   };
 
-  lmaImageStatusObject: any = {
+  private lmaImageStatusObject: any = {
     imageSaveSuccess: false,
     imageSaveFail: false
   };
 
-  skatteverketCertificateImageStatusObject: any = {
+  private skatteverketCertificateImageStatusObject: any = {
     imageSaveSuccess: false,
     imageSaveFail: false
   };
 
-  personalIdImageStatusObject: any = {
+  private personalIdImageStatusObject: any = {
     imageSaveSuccess: false,
     imageSaveFail: false
   };
 
-  workPermitFrontImageStatusObject: any = {
+  private workPermitFrontImageStatusObject: any = {
     imageSaveSuccess: false,
     imageSaveFail: false
   };
 
-  workPermitBackImageStatusObject: any = {
+  private workPermitBackImageStatusObject: any = {
     imageSaveSuccess: false,
     imageSaveFail: false
   };
@@ -95,7 +95,8 @@ export class UserProfileComponent implements OnInit {
     private skillProxy: SkillProxy,
     private authManager: AuthManager,
     private userProxy: UserProxy,
-    private formBuilder: FormBuilder) {
+    private formBuilder: FormBuilder
+  ) {
     // remove native speaker as option
     this.languageProficiencyLevelsAvailable = this.languageProficiencyLevelsAvailable.slice();
     this.languageProficiencyLevelsAvailable.pop();
@@ -139,7 +140,7 @@ export class UserProfileComponent implements OnInit {
       });
   }
 
-  onNativeLanguageSelect(language) {
+  private onNativeLanguageSelect(language) {
     if (language) {
       const nativeLanguage = new UserLanguage({ proficiency: 5 });
       nativeLanguage.language = language;
@@ -160,13 +161,13 @@ export class UserProfileComponent implements OnInit {
     }
   }
 
-  onCountryOfOriginSelect(country) {
+  private onCountryOfOriginSelect(country) {
     if (country) {
       this.profileForm.controls['country_of_origin'].setValue(country.countryCode);
     }
   }
 
-  onLanguageSelect(language) {
+  private onLanguageSelect(language) {
     if (!isEmpty(language) && !some(this.profileForm.value.user_languages, { language: language })) {
       const userLanguage = new UserLanguage({ proficiency: 1 });
       userLanguage.language = language;
@@ -175,7 +176,7 @@ export class UserProfileComponent implements OnInit {
     }
   }
 
-  onSkillSelect(skill) {
+  private onSkillSelect(skill) {
     if (!isEmpty(skill) && !some(this.profileForm.value.user_skills, { skill: skill })) {
       const userSkill = new UserSkill({ proficiency: 1 });
       userSkill.skill = skill;
@@ -184,15 +185,15 @@ export class UserProfileComponent implements OnInit {
     }
   }
 
-  onRemoveUserLanguage(userLanguage) {
+  private onRemoveUserLanguage(userLanguage) {
     deleteElementFromArray(this.profileForm.value.user_languages, userLanguage);
   }
 
-  onRemoveUserSkill(userSkill) {
+  private onRemoveUserSkill(userSkill) {
     deleteElementFromArray(this.profileForm.value.user_skills, userSkill);
   }
 
-  onImageFilenameChange(event, type, uploadStatusObject) {
+  private onImageFilenameChange(event, type, uploadStatusObject) {
     uploadStatusObject.imageSaveFail = false;
     uploadStatusObject.imageSaveSuccess = false;
     const file = event.srcElement.files[0];
@@ -206,16 +207,16 @@ export class UserProfileComponent implements OnInit {
     }
   }
 
-  formValidation(): boolean {
+  private formValidation(): boolean {
     return this.profileForm.valid && true;
   }
 
-  handleServerErrors(errors) {
+  private handleServerErrors(errors) {
     this.saveFail = true;
     this.serverValidationErrors = errors.details || errors;
   }
 
-  onSubmit() {
+  private onSubmit() {
     this.saveSuccess = false;
     this.saveFail = false;
     this.serverValidationErrors = {};

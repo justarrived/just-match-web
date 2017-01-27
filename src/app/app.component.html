@@ -3,7 +3,7 @@
     <nav class="header navbar-light bg-faded">
       <div class="row navbar-container">
         <div class="navbar-home row flex-items-xs-middle">
-          <a routerLink="/home">
+          <a routerLink="">
             <img class="logo-img" src="/assets/images/logo.png" alt="Just Arrived" />
           </a>
         </div>
@@ -32,20 +32,12 @@
               <i class="fa fa-wrench fa-lg"></i> {{'menu.main.find_assignment' | translate}}
             </a>
 
-            <a routerLink="/job/create" *ngIf="isCompanyUser">
-              <i class="fa fa-plus fa-lg"></i> {{'menu.main.create_assignment' | translate}}
-            </a>
-
             <a routerLink="/faq">
               <i class="fa fa-clipboard fa-lg"></i> {{'menu.main.faq' | translate}}
             </a>
 
             <a routerLink="/contact">
               <i class="fa fa-comments fa-lg"></i> {{'menu.main.contact' | translate}}
-            </a>
-
-            <a routerLink="/user" *ngIf="user && !isCompanyUser">
-              <i class="fa fa-user fa-lg"></i> {{'profile' | translate}}
             </a>
 
             <a routerLink="/login" *ngIf="!user">
