@@ -22,6 +22,7 @@ export class AppComponent implements OnInit {
   private selectedLanguage: Language;
   private isNavigationMenuVisible: boolean = false;
   private isLanguageMenuVisible: boolean = false;
+  private JARoutes = JARoutes;
 
   constructor(
     private router: Router,

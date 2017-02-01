@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {DataStore} from '../../services/data-store.service';
+import {JARoutes} from '../../routes/ja-routes';
 
 
 @Component({
@@ -9,6 +10,7 @@ import {DataStore} from '../../services/data-store.service';
 })
 export class CookieBarComponent {
   private cookiesConsentData: string = 'cookiesConsentData';
+  private JARoutes = JARoutes;
 
   constructor(
     private dataStore: DataStore

@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {FormGroup, FormBuilder, Validators} from '@angular/forms';
 import {AuthManager} from '../../services/auth-manager.service';
 import {NavigationService} from '../../services/navigation.service';
+import {JARoutes} from '../../routes/ja-routes';
 
 @Component({
   templateUrl: './login.component.html',
@@ -10,6 +11,7 @@ import {NavigationService} from '../../services/navigation.service';
 export class LoginComponent {
   private loginForm: FormGroup;
   private errors: any = {};
+  private JARoutes = JARoutes;
 
   constructor(
     private authManager: AuthManager,

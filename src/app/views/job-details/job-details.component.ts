@@ -31,6 +31,7 @@ export class JobDetailsComponent extends TranslationListener implements OnInit {
   private bankAccount: UserBankAccount = new UserBankAccount();
   private errors: any = {};
   private jobDetailsVisible: boolean;
+  private JARoutes = JARoutes;
 
   constructor(
     private route: ActivatedRoute,

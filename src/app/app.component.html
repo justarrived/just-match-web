@@ -3,7 +3,7 @@
     <nav class="header navbar-light bg-faded">
       <div class="row navbar-container">
         <div class="navbar-home row flex-items-xs-middle">
-          <a routerLink="">
+          <a routerLink="{{JARoutes.home.url()}}">
             <img class="logo-img" src="/assets/images/logo.png" alt="Just Arrived" />
           </a>
         </div>
@@ -24,23 +24,23 @@
       <div class="menu-container">
         <div class="navigation-menu-container" *ngIf="isNavigationMenuVisible">
           <div class="navigation-menu-links-container">
-            <a routerLink="/my-jobs" *ngIf="user">
+            <a routerLink="{{JARoutes.userJobs.url()}}" *ngIf="user">
               <i class="fa fa-paperclip fa-lg"></i> {{'menu.main.my_assignment' | translate}}
             </a>
 
-            <a routerLink="/jobs/1">
+            <a routerLink="{{JARoutes.jobs.url(['1'])}}">
               <i class="fa fa-wrench fa-lg"></i> {{'menu.main.find_assignment' | translate}}
             </a>
 
-            <a routerLink="/faq">
+            <a routerLink="{{JARoutes.faq.url()}}">
               <i class="fa fa-clipboard fa-lg"></i> {{'menu.main.faq' | translate}}
             </a>
 
-            <a routerLink="/contact">
+            <a routerLink="{{JARoutes.contact.url()}}">
               <i class="fa fa-comments fa-lg"></i> {{'menu.main.contact' | translate}}
             </a>
 
-            <a routerLink="/login" *ngIf="!user">
+            <a routerLink="{{JARoutes.login.url()}}" *ngIf="!user">
               <i class="fa fa-power-off fa-lg"></i> {{'menu.main.login' | translate}}
             </a>
 
@@ -54,7 +54,7 @@
               {{user.firstName}} {{user.lastName}}
             </div>
             <div class="navigation-menu-user-logged-out-container" *ngIf="!user">
-              <a routerLink="/user/register" class="navigation-menu-create-user-button btn-secondary-light btn-medium btn">Create User</a>
+              <a routerLink="{{JARoutes.registerUser.url()}}" class="navigation-menu-create-user-button btn-secondary-light btn-medium btn">Create User</a>
             </div>
           </div>
         </div>

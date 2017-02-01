@@ -11,6 +11,7 @@ import {JARoutes} from '../../routes/ja-routes';
 export class ForgotPasswordComponent {
   private forgotPasswordForm: FormGroup;
   private displayErrorMessage: boolean;
+  private JARoutes = JARoutes;
 
   constructor(
     private userProxy: UserProxy,
