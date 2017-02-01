@@ -33,4 +33,10 @@ export class LoginComponent {
         this.errors = errors.details || errors;
       });
   }
+
+  private onEnterKeyUp() {
+    if (this.loginForm.valid) {
+      this.submitForm(this.loginForm.value);
+    }
+  }
 }
