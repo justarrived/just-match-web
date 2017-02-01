@@ -10,8 +10,9 @@ import {JARoutes} from '../../routes/ja-routes';
 })
 export class ForgotPasswordComponent {
   private forgotPasswordForm: FormGroup;
-  private displayErrorMessage: boolean;
+  private errors: any = {};
   private JARoutes = JARoutes;
+  private displayErrorMessage: boolean;
 
   constructor(
     private userProxy: UserProxy,
@@ -24,12 +25,20 @@ export class ForgotPasswordComponent {
   }
 
   private submitForm(value: any) {
+    this.displayErrorMessage = false;
     this.userProxy.resetPassword(value.email_or_phone)
       .then((result) => {
         this.navigationService.navigate(JARoutes.confirmation, 'password-reset-link-sent')
       })
       .catch((errors) => {
         this.displayErrorMessage = true;
+        this.errors = errors.details || errors;
       });
+  }
+
+  private onEnterKeyUp() {
+    if (this.forgotPasswordForm.valid) {
+      this.submitForm(this.forgotPasswordForm.value);
+    }
   }
 }
