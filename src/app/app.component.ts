@@ -98,4 +98,12 @@ export class AppComponent implements OnInit {
   get languageBtnIconClassName(): string {
     return this.isLanguageMenuVisible ? 'fa-caret-up' : 'fa-caret-down';
   }
+
+  get profileImagePath(): string {
+    if(this.user.profile_image && this.user.profile_image.imageUrl) {
+      return this.user.profile_image.imageUrl;
+    } else {
+      return '/assets/images/placeholder-profile-image.png';
+    }
+  }
 }

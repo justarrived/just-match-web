@@ -1,6 +1,7 @@
-import {NgModule} from '@angular/core';
+import {NgModule, ErrorHandler } from '@angular/core';
 import {HttpModule} from '@angular/http';
 import {BrowserModule} from '@angular/platform-browser';
+import * as Raven from 'raven-js';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AgmCoreModule} from 'angular2-google-maps/core';
 import {AppComponent} from './app.component';
@@ -50,6 +51,17 @@ import {AutosizeDirective} from './components/textarea-autosize/textarea-autosiz
 import {Geolocation} from './services/geolocation.service';
 import {ErrorComponent} from './views/error/error.component';
 import {NotFoundComponent} from './views/404/404.component';
+import {environment} from '../environments/environment';
+
+Raven
+  .config(environment.sentryURL)
+  .install();
+
+export class RavenErrorHandler implements ErrorHandler {
+  handleError(error: any) : void {
+    Raven.captureException(error.originalError);
+  }
+}
 
 @NgModule({
   imports: [
@@ -110,8 +122,8 @@ import {NotFoundComponent} from './views/404/404.component';
     TranslationService,
     UserManager,
     Geolocation,
-    NavigationService
-    // {provide: ErrorHandler, useClass: GlobalExceptionHandler}
+    NavigationService,
+    { provide: ErrorHandler, useClass: RavenErrorHandler }
   ],
   bootstrap: [AppComponent]
 })
