@@ -10,6 +10,7 @@ import {UserProxy} from '../../services/proxy/user-proxy.service';
 import {UserJob} from '../../models/user/user-job';
 import {UserBankAccount} from '../../models/user/user-bank-account';
 import {NavigationService} from '../../services/navigation.service';
+import {AuthManager} from '../../services/auth-manager.service';
 import {JARoutes} from '../../routes/ja-routes';
 
 @Component({
@@ -38,6 +39,7 @@ export class JobDetailsComponent extends TranslationListener implements OnInit {
     private jobProxy: JobProxy,
     private userManager: UserManager,
     private userProxy: UserProxy,
+    private authManager: AuthManager,
     private navigationService: NavigationService,
     protected translationService: TranslationService
   ) {
@@ -47,6 +49,9 @@ export class JobDetailsComponent extends TranslationListener implements OnInit {
       this.currentJobId = parseInt(params['id']);
     });
     this.jobDetailsVisible = true;
+    this.authManager.getUserChangeEmmiter().subscribe(user => {
+      this.user = user;
+    });
   }
 
   ngOnInit() {

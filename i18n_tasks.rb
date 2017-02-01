@@ -5,7 +5,7 @@ require 'set'
 #   $ ruby i18n_tasks.rb
 
 def extract_used_translations
-  system('npm run extract-translations')
+  system('yarn run extract-translations')
 end
 
 def print_hr

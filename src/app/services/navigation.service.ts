@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {JARoute} from '../routes/ja-route';
+import {JARoutes} from '../routes/ja-routes';
 import {
   Router,
   NavigationStart,
@@ -25,6 +26,7 @@ export class NavigationService {
       if (event instanceof NavigationEnd) {
         this.currentState = router.url;
         this.states.push(router.url);
+        document.body.scrollTop = 0;
         console.log('Navigation ended at ' + this.currentState);
       }
 

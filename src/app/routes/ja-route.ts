@@ -1,5 +1,4 @@
-import {Route} from '@angular/router';
 
-export interface JARoute extends Route {
+export interface JARoute {
   url(args?: string[]): string;
 }

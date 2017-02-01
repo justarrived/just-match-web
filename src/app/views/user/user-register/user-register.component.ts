@@ -10,6 +10,8 @@ import {Language} from '../../../models/language/language';
 import {AuthManager} from '../../../services/auth-manager.service';
 import {Router} from '@angular/router';
 import {namePropertyLabel} from '../../../utils/label-util';
+import {NavigationService} from '../../../services/navigation.service';
+import {JARoutes} from '../../../routes/ja-routes';
 import {TranslationService} from '../../../services/translation.service';
 import {TranslationListener} from '../../../components/translation.component';
 import {FormGroup, FormBuilder, Validators} from '@angular/forms';
@@ -40,6 +42,7 @@ export class UserRegisterComponent extends TranslationListener implements OnInit
     private languageProxy: LanguageProxy,
     private authManager: AuthManager,
     private formBuilder: FormBuilder,
+    private navigationService: NavigationService,
     protected translationService: TranslationService
   ) {
     super(translationService)
@@ -48,7 +51,7 @@ export class UserRegisterComponent extends TranslationListener implements OnInit
       'first_name': ['', Validators.compose([Validators.required, Validators.minLength(2)])],
       'last_name': ['', Validators.compose([Validators.required, Validators.minLength(2)])],
       'email': ['', Validators.compose([Validators.required, Validators.pattern(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)])],
-      'phone': ['', Validators.compose([Validators.required, Validators.minLength(9), Validators.pattern(/\+46.*/)])],
+      'phone': ['+46', Validators.compose([Validators.required, Validators.minLength(9), Validators.pattern(/\+46.*/)])],
       'street': [''],
       'zip': [''],
       'city': [''],
@@ -99,6 +102,10 @@ export class UserRegisterComponent extends TranslationListener implements OnInit
     })
       .then((response) => {
         this.saveSuccess = true;
+        this.authManager.logUser(this.registerForm.value.email, this.registerForm.value.password)
+        .then((response) => {
+          this.navigationService.navigate(JARoutes.home);
+        });
       })
       .catch(errors => {
         this.handleServerErrors(errors);

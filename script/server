@@ -7,7 +7,4 @@ cd "$(dirname "$0")/.."
 # script/server: Launch the application and any extra required processes
 #                locally.
 
-# ensure everything in the app is up to date.
-script/update
-
-npm run start-dev
+yarn run start-dev

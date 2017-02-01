@@ -80,11 +80,13 @@ export class AppComponent implements OnInit {
     this.isLanguageMenuVisible = false;
     this.selectedLanguage = language;
     this.translationService.setLanguage(language);
+    this.authManager.authenticateIfNeeded();
   }
 
   private onLogoutButtonClick() {
-    this.authManager.logoutUser();
     this.navigationService.navigate(JARoutes.home);
+    this.authManager.logoutUser();
+    this.isLanguageMenuVisible = false;
   }
 
   private isActiveSystemLanguage(language: Language): boolean {
