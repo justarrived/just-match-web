@@ -67,9 +67,6 @@ export class JobProxy {
 
   public addRating(jobId, ratingData) {
     return this.apiCall.post('jobs/' + jobId + '/ratings', ratingData);
-    //   .then(response => {
-    //   return; //TODO: rating Entity
-    // });
   }
 
   public getOwnedJobs(userId: string, additionOptions?: Object) {

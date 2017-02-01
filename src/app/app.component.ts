@@ -55,8 +55,6 @@ export class AppComponent implements OnInit {
     this.userManager.getUserChangeEmmiter().subscribe(user => {
       this.user = user;
     });
-
-    console.log('Application component initialized ...');
   }
 
   private onBodyClick(event) {
