@@ -3,13 +3,13 @@
 ## Built with
 
 - node v6.9
-- npm
+- yarn (/npm)
 - Angular 2
 - TypeScript 2
 
 ## Getting started
 
-_Prerequisites_: node v6.7, npm.
+_Prerequisites_: node v6.9, yarn.
 
 To setup your development environment
 
@@ -32,12 +32,12 @@ There are a few convenience commands
 - `script/pull-translations` - pull translation from Transifex
 - `script/push-translations` - push translation to Transifex
 
-NPM scripts
-- `npm run start-dev` - starts app
-- `npm run start-prod` - starts app in production mode
-- `npm run build` - builds app in `dist` folder
-- `npm run build-aot` - builds app with AoT in `dist` folder
-- `npm run lint` - runs app linting
+yarn(/npm) scripts
+- `yarn run start-dev` - starts app
+- `yarn run start-prod` - starts app in production mode
+- `yarn run build` - builds app in `dist` folder
+- `yarn run build-aot` - builds app with AoT in `dist` folder
+- `yarn run lint` - runs app linting
 
 ## Translations
 
