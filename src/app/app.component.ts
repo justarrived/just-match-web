@@ -80,6 +80,7 @@ export class AppComponent implements OnInit {
     this.isLanguageMenuVisible = false;
     this.selectedLanguage = language;
     this.translationService.setLanguage(language);
+    this.authManager.authenticateIfNeeded();
   }
 
   private onLogoutButtonClick() {

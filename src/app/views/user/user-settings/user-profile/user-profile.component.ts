@@ -21,13 +21,15 @@ import {skillProficiencyLevels} from '../../../../enums/enums';
 import {UserProxy} from '../../../../services/proxy/user-proxy.service';
 import {AutocompleteDropdownComponent} from '../../../../components/autocomplete-dropdown/autocomplete-dropdown.component';
 import {FormGroup, FormBuilder, Validators} from '@angular/forms';
+import {TranslationListener} from '../../../../components/translation.component';
+import {TranslationService} from '../../../../services/translation.service';
 
 @Component({
   selector: 'user-profile',
   templateUrl: './user-profile.component.html',
   styleUrls: ['./user-profile.component.scss']
 })
-export class UserProfileComponent implements OnInit {
+export class UserProfileComponent extends TranslationListener implements OnInit {
   @ViewChild('nativeLanguageDropdown')
   private nativeLanguageDropdown: AutocompleteDropdownComponent;
 
@@ -95,14 +97,26 @@ export class UserProfileComponent implements OnInit {
     private skillProxy: SkillProxy,
     private authManager: AuthManager,
     private userProxy: UserProxy,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    protected translationService: TranslationService
   ) {
+    super(translationService);
     // remove native speaker as option
     this.languageProficiencyLevelsAvailable = this.languageProficiencyLevelsAvailable.slice();
     this.languageProficiencyLevelsAvailable.pop();
   }
 
   ngOnInit() {
+    this.loadData();
+    this.initForm();
+
+    this.authManager.getUserChangeEmmiter().subscribe(user => {
+      this.user = user;
+      this.initForm();
+    });
+  }
+
+  loadData() {
     this.userProxy.getStatuses().then(statuses => this.statuses = statuses);
     this.countryProxy.getCountries().then(countries => this.countries = countries);
     this.languageProxy.getLanguages().then(languages => {
@@ -114,7 +128,9 @@ export class UserProfileComponent implements OnInit {
       }
     });
     this.skillProxy.getSkills().then(skills => this.skills = skills);
+  }
 
+  private initForm() {
     this.profileForm = this.formBuilder.group({
       'user_languages': [this.user.userLanguages.slice()],
       'native_language': [this.user.getNativeLanguage(), Validators.compose([Validators.required])],
