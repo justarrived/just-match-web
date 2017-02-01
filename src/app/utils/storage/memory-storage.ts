@@ -3,34 +3,34 @@ import {StorageInterface} from './storage-interface';
 export class MemoryStorage implements StorageInterface {
   private items: Object = {};
 
-  clear(): void {
+  public clear(): void {
     this.items = {};
   }
 
-  setItem(key: string, value: string): void {
+  public setItem(key: string, value: string): void {
     this.items[key] = value;
   }
 
-  getItem(key: string): string {
+  public getItem(key: string): string {
     return this.items[key];
   }
 
-  removeItem(key: string): string {
+  public removeItem(key: string): string {
     const oldValue = this.getItem(key);
     this.setItem(key, null);
 
     return oldValue;
   }
 
-  persistsRefresh(): boolean {
+  public persistsRefresh(): boolean {
     return false;
   }
 
-  persistsSession(): boolean {
+  public persistsSession(): boolean {
     return false;
   }
 
-  supportsCaching(): boolean {
+  public supportsCaching(): boolean {
     return true;
   }
 }

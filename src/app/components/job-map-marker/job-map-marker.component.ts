@@ -1,6 +1,7 @@
 import {Component, Input} from '@angular/core';
-import {Router} from '@angular/router';
 import {Job} from '../../models/job/job';
+import {NavigationService} from '../../services/navigation.service';
+import {JARoutes} from '../../routes/ja-routes';
 
 @Component({
   selector: 'job-map-marker',
@@ -10,9 +11,12 @@ import {Job} from '../../models/job/job';
 export class JobMapMarkerComponent {
   @Input() job: Job;
 
-  constructor(private router: Router) { }
+  constructor(
+    private navigationService: NavigationService
+  ) {
+  }
 
-  goToJob(job) {
-    this.router.navigate(['/job', job.id]);
+  private goToJob(): void {
+    this.navigationService.navigate(JARoutes.job, this.job.id);
   }
 }

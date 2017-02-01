@@ -11,39 +11,40 @@ import {SessionStorage} from '../utils/storage/session-storage';
 export class DataStore {
   private store: StorageInterface;
 
-  constructor() {
+  constructor(
+  ) {
     this.store = this.storeFactory();
   }
 
-  clear(): void {
+  public clear(): void {
     this.store.clear();
   }
 
-  set(key: string, value: any): void {
+  public set(key: string, value: any): void {
     this.setItem(key, JSON.stringify(value));
   }
 
-  get(key: string): any {
+  public get(key: string): any {
     const value = this.getItem(key);
     return value ? JSON.parse(value) : null;
   }
 
-  remove(key: string): any {
+  public remove(key: string): any {
     const oldValue = this.get(key);
     this.removeItem(key);
 
     return oldValue;
   }
 
-  persistsRefresh(): boolean {
+  public persistsRefresh(): boolean {
     return this.store.persistsRefresh();
   }
 
-  persistsSession(): boolean {
+  public persistsSession(): boolean {
     return this.store.persistsSession();
   }
 
-  supportsCaching(): boolean {
+  public supportsCaching(): boolean {
     return this.store.supportsCaching();
   }
 

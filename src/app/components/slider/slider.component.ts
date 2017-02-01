@@ -1,6 +1,5 @@
 import {Component, OnInit, ElementRef, Input} from '@angular/core';
 import {Job} from '../../models/job/job';
-import {UserManager} from '../../services/user-manager.service';
 
 @Component({
     selector: 'slider',
@@ -8,14 +7,15 @@ import {UserManager} from '../../services/user-manager.service';
     styleUrls: ['./slider.component.scss']
 })
 export class SliderComponent implements OnInit {
-  @Input() jobs: Array<Job>;
+  @Input() private jobs: Array<Job>;
   private slider: any;
   private sliderContainer: any;
   private lastFullyVisualizatedItemIndex: number;
-  isCompanyUser: boolean = false;
 
-  constructor(private sliderElement: ElementRef, private userManager: UserManager) {
-    this.isCompanyUser = userManager.isCompanyUser();
+  constructor(
+    private sliderElement: ElementRef
+  ) {
+
   }
 
   ngOnInit() {
@@ -23,7 +23,7 @@ export class SliderComponent implements OnInit {
     this.sliderContainer = this.sliderElement.nativeElement.getElementsByClassName('slider-container')[0];
   }
 
-  onSwipe(isLeftSwipe: boolean) {
+  private onSwipe(isLeftSwipe: boolean) {
     let firstItemContainerOffsetWidth = this.getFirstItemContainer().offsetWidth;
     let maxVisualizedItems = this.getMaxVisualisationItemContainers(firstItemContainerOffsetWidth);
     if (!this.lastFullyVisualizatedItemIndex) {
@@ -47,7 +47,7 @@ export class SliderComponent implements OnInit {
     }
   }
 
-  onResize(event) {
+  private onResize(event) {
     // TODO: make responsiveness on resizing
   }
 

@@ -5,7 +5,6 @@ import * as Raven from 'raven-js';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AgmCoreModule} from 'angular2-google-maps/core';
 import {AppComponent} from './app.component';
-import {AboutComponent} from './views/about/about.component';
 import {HomeComponent} from './views/home/home.component';
 import {DataStore} from './services/data-store.service';
 import {ApiCall} from './services/api-call.service';
@@ -13,6 +12,7 @@ import {AuthManager} from './services/auth-manager.service';
 import {UserProxy} from './services/proxy/user-proxy.service';
 import {ActsAsUser} from './services/acts-as-user.service';
 import {TranslationService} from './services/translation.service';
+import {NavigationService} from './services/navigation.service';
 import {SliderComponent} from './components/slider/slider.component';
 import {UserRegisterComponent} from './views/user/user-register/user-register.component';
 import {CountryProxy} from './services/proxy/country-proxy.service';
@@ -24,7 +24,6 @@ import {SkillProxy} from './services/proxy/skill-proxy.service';
 import {LoginComponent} from './views/login/login.component';
 import {ForgotPasswordComponent} from './views/forgot-password/forgot-password.component';
 import {UserManager} from './services/user-manager.service';
-import {JobCreateComponent} from './views/jobs/job-create/job-create.component';
 import {JobPreviewComponent} from './components/job-preview/job-preview.component';
 import {JobsComponent} from './views/jobs/jobs.component';
 import {JobListItemComponent} from './components/job-list-item/job-list-item.component';
@@ -34,16 +33,11 @@ import {JobDetailsComponent} from './views/job-details/job-details.component';
 import {CommentsComponent} from './components/comments/comments.component';
 import {FaqComponent} from './views/faq/faq.component';
 import {ContactComponent} from './views/contact/contact.component';
-import {ContactConfirmationComponent} from './views/contact/confirmation/contact-confirmation.component';
 import {ConfirmationComponent} from './views/confirmation/confirmation.component';
 import {CookiesAboutComponent} from './views/cookies-about/cookies-about.component';
 import {CookieBarComponent} from './components/cookie-bar/cookie-bar.component';
 import {LoadingComponent} from './components/loading-gif/loading.component';
-import {CandidateComponent} from './views/candidate/candidate.component';
-import {CandidateStateStatusBarComponent} from './components/candidate-state-status-bar/candidate-state-status-bar.component';
-import {CandidatesComponent} from './views/candidates/candidates.component';
 import {MyJobsComponent} from './views/my-jobs/my-jobs.component';
-import {CompanyJobsComponent} from './views/my-jobs/company-jobs/company-jobs.component';
 import {UserJobsComponent} from './views/my-jobs/user-jobs/user-jobs.component';
 import {MyJobsItemComponent} from './components/my-jobs-item/my-jobs-item.component';
 import {RatingComponent} from './components/rating/rating.component';
@@ -83,7 +77,6 @@ export class RavenErrorHandler implements ErrorHandler {
   ],
   declarations: [
     AppComponent,
-    AboutComponent,
     HomeComponent,
     SliderComponent,
     UserRegisterComponent,
@@ -94,7 +87,6 @@ export class RavenErrorHandler implements ErrorHandler {
     AutocompleteDropdownComponent,
     LoginComponent,
     ForgotPasswordComponent,
-    JobCreateComponent,
     JobPreviewComponent,
     JobsComponent,
     JobListItemComponent,
@@ -104,17 +96,12 @@ export class RavenErrorHandler implements ErrorHandler {
     CommentsComponent,
     FaqComponent,
     ContactComponent,
-    ContactConfirmationComponent,
     ConfirmationComponent,
     CookiesAboutComponent,
     CookieBarComponent,
     LoadingComponent,
-    CandidatesComponent,
-    CandidateComponent,
-    CandidateStateStatusBarComponent,
     RatingComponent,
     MyJobsItemComponent,
-    CompanyJobsComponent,
     UserJobsComponent,
     MyJobsComponent,
     UserSettingsComponent,
@@ -135,6 +122,7 @@ export class RavenErrorHandler implements ErrorHandler {
     TranslationService,
     UserManager,
     Geolocation,
+    NavigationService,
     { provide: ErrorHandler, useClass: RavenErrorHandler }
   ],
   bootstrap: [AppComponent]

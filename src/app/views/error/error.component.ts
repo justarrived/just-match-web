@@ -5,9 +5,9 @@ import {Component} from '@angular/core';
     styleUrls: ['./error.component.scss'],
 })
 export class ErrorComponent {
-  statusCode: number;
 
-  constructor() {
+  constructor(
+  ) {
   }
 
 }

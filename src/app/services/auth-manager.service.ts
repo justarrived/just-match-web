@@ -7,7 +7,10 @@ import {UserManager} from './user-manager.service';
 export class AuthManager {
   private userChange: EventEmitter<User> = new EventEmitter<User>();
 
-  constructor(private userProxy: UserProxy, private userManager: UserManager) {
+  constructor(
+    private userProxy: UserProxy,
+    private userManager: UserManager
+  ) {
   }
 
   public isUserLoggedin(): boolean {
@@ -18,16 +21,16 @@ export class AuthManager {
     return this.userProxy.getUserSession(email, password).then(response => {
       this.userManager.saveAuthorizationData(response.data);
 
-      return this.userProxy.getUser(this.userManager.getUserId(), {include: 'company,user_images,user_languages,user_languages.language,user_skills,user_skills.skill'});
+      return this.userProxy.getUser(this.userManager.getUserId(), { include: 'company,user_images,user_languages,user_languages.language,user_skills,user_skills.skill' });
     })
-    .then(response => this.handleUserResult(response.data));
+      .then(response => this.handleUserResult(response.data));
   }
 
   public authenticateIfNeeded(): Promise<User> {
     let userId = this.userManager.getUserId();
 
     if (userId) {
-      return this.userProxy.getUser(userId, {include: 'company,user_images,user_languages,user_languages.language,user_skills,user_skills.skill'}).then(response => {
+      return this.userProxy.getUser(userId, { include: 'company,user_images,user_languages,user_languages.language,user_skills,user_skills.skill' }).then(response => {
         return this.handleUserResult(response.data);
       });
     }

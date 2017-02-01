@@ -3,38 +3,40 @@ import {StorageInterface} from './storage-interface';
 export class SessionStorage implements StorageInterface {
   private store: any;
 
-  constructor(sessionStore: any) {
+  constructor(
+    sessionStore: any
+  ) {
     this.store = sessionStore;
   }
 
-  clear(): void {
+  public clear(): void {
     this.store.clear();
   }
 
-  getItem(key: string) {
+  public getItem(key: string) {
     return this.store.getItem(key);
   }
 
-  setItem(key: string, value: string) {
+  public setItem(key: string, value: string) {
     this.store.setItem(key, value);
   }
 
-  removeItem(key: string): string {
+  public removeItem(key: string): string {
     const oldValue = this.getItem(key);
     sessionStorage.removeItem(key);
 
     return oldValue;
   }
 
-  persistsRefresh(): boolean {
+  public persistsRefresh(): boolean {
     return true;
   }
 
-  persistsSession(): boolean {
+  public persistsSession(): boolean {
     return false;
   }
 
-  supportsCaching(): boolean {
+  public supportsCaching(): boolean {
     return true;
   }
 }

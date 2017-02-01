@@ -6,10 +6,12 @@ import {map} from 'lodash';
 @Injectable()
 export class CommentsProxy {
 
-  constructor(private apiCall: ApiCall) {
+  constructor(
+    private apiCall: ApiCall
+  ) {
   }
 
-  getComments(resourceName, resourceId, additionOptions?: Object) {
+  public getComments(resourceName, resourceId, additionOptions?: Object) {
     return this.apiCall.get(resourceName + '/' + resourceId + '/comments',  additionOptions).then(response => {
       return {
         data: map(response.data, data => new Comment(data)),
@@ -18,7 +20,7 @@ export class CommentsProxy {
     });
   }
 
-  sendComment(resourceName, resourceId, commentData) {
+  public sendComment(resourceName, resourceId, commentData) {
     return this.apiCall.post(resourceName + '/' + resourceId + '/comments', commentData);
   }
 }

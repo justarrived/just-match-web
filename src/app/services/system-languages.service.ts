@@ -8,7 +8,9 @@ export class SystemLanguagesService {
   private languages: Language[];
   private languagesPromise: Promise<any>;
 
-  constructor(private languageProxy: LanguageProxy) {
+  constructor(
+    private languageProxy: LanguageProxy
+  ) {
     this.languagesPromise = this.languageProxy.getSystemLanguages().then(result => this.languages = orderBy(result, ['languageCode']));
   }
 

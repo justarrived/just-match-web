@@ -6,9 +6,12 @@ import {Skill} from '../../models/skill/skill';
 @Injectable()
 export class SkillProxy {
 
-  constructor(private apiCall: ApiCall) { }
+  constructor(
+    private apiCall: ApiCall
+  ) {
+  }
 
-  getSkills(name: string = '', sort: string = 'name', pageSize: number = 500, pageNumber: number = 1): Promise<Array<Skill>> {
+  public getSkills(name: string = '', sort: string = 'name', pageSize: number = 500, pageNumber: number = 1): Promise<Array<Skill>> {
     return this.apiCall.get('skills', {'filter[name]': name, 'sort': name, 'page[size]': pageSize, 'page[number]': pageNumber})
       .then(response => map(response.data, data => new Skill(data)));
   }
