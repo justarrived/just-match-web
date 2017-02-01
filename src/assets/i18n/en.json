@@ -57,6 +57,7 @@
   "menu.main.find_assignment": "Find jobs",
   "menu.main.create_assignment": "Create jobs",
   "menu.main.my_assignment": "My jobs",
+  "menu.main.profile": "Profile",
   "menu.main.faq": "Questions and Answers",
   "menu.main.contact": "Contact",
   "menu.main.login": "Log in",
@@ -572,6 +573,6 @@
   "home_page.user_jobs_slider.title": "My jobs",
   "home_page.user_jobs_slider_item.status.finished": "Finnished",
   "home_page.user_jobs_slider_item.status.ongoing": "Ongoing",
-  "page_not_found_error.header" : "404 - Page Not Found",
-  "page_not_found_error.subtitle" : "Sorry, the page you are looking for does not exist."
+  "page_not_found_error.header": "404 - Page Not Found",
+  "page_not_found_error.subtitle": "Sorry, the page you are looking for does not exist."
 }
