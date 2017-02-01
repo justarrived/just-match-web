@@ -10,6 +10,7 @@ import {TranslationListener} from '../../components/translation.component';
 import {isEmpty} from 'lodash';
 import {AuthManager} from '../../services/auth-manager.service';
 import {JARoutes} from '../../routes/ja-routes';
+import {yyyymmdd} from '../../utils/date-util';
 
 @Component({
   templateUrl: './home.component.html',
@@ -54,7 +55,7 @@ export class HomeComponent extends TranslationListener implements OnInit {
   }
 
   private loadJobs(): void {
-    this.jobProxy.getJobs({ include: 'company,hourly_pay,company.company_images', 'filter[filled]': false })
+    this.jobProxy.getJobs({ include: 'company,hourly_pay,company.company_images', 'filter[filled]': false, 'filter[job_date]': yyyymmdd(new Date())  })
       .then(result => {
         this.newJobs = result.data;
       });
