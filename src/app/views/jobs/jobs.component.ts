@@ -53,7 +53,7 @@ export class JobsComponent extends TranslationListener implements OnInit {
 
   loadData() {
     this.loadingJobs = true;
-    this.jobProxy.getJobs({ include: 'company,hourly_pay,company.company_images', 'filter[filled]': false, 'page[number]': this.page.toString()})
+    this.jobProxy.getJobs({ include: 'company,hourly_pay,company.company_images', 'filter[filled]': false, 'page[number]': this.page.toString(), 'filter[job_date]': yyyymmdd(new Date()) })
       .then(result => {
         this.jobs = result.data;
         this.totalJobs = result.total;
