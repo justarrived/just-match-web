@@ -18,7 +18,7 @@ import {NotFoundComponent} from '../views/404/404.component';
 export class JARoutes {
   public static home: JARoute = { url: () => '', path: '', pathMatch: 'full', component: HomeComponent };
   public static login: JARoute = { url: () => 'login', path: 'login', component: LoginComponent };
-  public static forgotPassword: JARoute = { url: () => 'forgot-password', path: 'forgot-password', component: ForgotPasswordComponent };
+  public static forgotPassword: JARoute = { url: () => 'reset-password', path: 'reset-password', component: ForgotPasswordComponent };
   public static faq: JARoute = { url: () => 'faq', path: 'faq', component: FaqComponent };
   public static contact: JARoute = { url: () => 'contact', path: 'contact', component: ContactComponent };
   public static confirmation: JARoute = { url: (args?: string[]) => 'confirmation/' + args[0], path: 'confirmation/:type', component: ConfirmationComponent };
@@ -26,8 +26,8 @@ export class JARoutes {
   public static jobs: JARoute = { url: (args?: string[]) => 'jobs/' + args[0], path: 'jobs/:page', component: JobsComponent };
   public static job: JARoute = { url: (args?: string[]) => 'job/' + args[0], path: 'job/:id', component: JobDetailsComponent };
   public static registerUser: JARoute = { url: () => 'user/register', path: 'user/register', component: UserRegisterComponent };
-  public static user: JARoute = { url: () => 'user', path: 'user', component: UserSettingsComponent, canActivate: [AuthGuard] };
-  public static userJobs: JARoute = { url: () => 'my-jobs', path: 'my-jobs', component: MyJobsComponent, canActivate: [AuthGuard] };
+  public static user: JARoute = { url: (args?: string[]) => 'users/' + args[0], path: 'users/:user-id', component: UserSettingsComponent, canActivate: [AuthGuard] };
+  public static userJobs: JARoute = { url: (args?: string[]) => 'users/' + args[0] + '/jobs', path: 'users/:user-id/jobs', component: MyJobsComponent, canActivate: [AuthGuard] };
   public static error: JARoute = { url: (args?: string[]) => 'error/' + args[0], path: 'error/:statusCode', component: ErrorComponent };
   public static notFound: JARoute = { url: () => '404', path: '404', component: NotFoundComponent };
   public static catchOthers: JARoute = { url: () => '**', path: '**', redirectTo: '404' };
