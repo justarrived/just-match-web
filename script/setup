@@ -12,8 +12,8 @@ which npm 2>&1 >/dev/null || {
   exit 1
 }
 
-npm install typescript --global
-npm install typings --global
-npm install ts-node --global
+yarn global add typescript --prefix /usr/local
+yarn global add typings --prefix /usr/local
+yarn global add ts-node --prefix /usr/local
 
 script/bootstrap
