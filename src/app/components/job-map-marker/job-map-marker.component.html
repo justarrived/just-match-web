@@ -2,7 +2,7 @@
   <sebm-google-map-info-window [disableAutoPan]="true" [isOpen]="job.showJobInfo" (infoWindowClose)="job.showJobInfo = false">
     <p class="job-map-marker-info-header"><translation-item [text]="job.name" [translation]="job.translated.name"></translation-item></p>
     <p class="job-map-marker-info-adress-field"><i class="fa fa-map-marker" aria-hidden="true"></i> {{job.address}}</p>
-    <span class="job-map-marker-info-salary">{{job.amount}} {{job.hourlyPay.currency}}</span>
+    <span class="job-map-marker-info-salary">{{job.grossAmount}} {{job.hourlyPay.currency}}</span>
     <span class="job-map-marker-info-salary-per-hour">{{job.hours}}h ({{job.hourlyPay.grossSalary}} {{job.hourlyPay.currency}}/h)</span>
     <div class="btn-secondary btn-xsmall btn job-map-marker-info-button" (click)="goToJob()">Go to job</div>
   </sebm-google-map-info-window>
