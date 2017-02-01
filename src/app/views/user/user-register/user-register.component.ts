@@ -50,8 +50,8 @@ export class UserRegisterComponent extends TranslationListener implements OnInit
     this.registerForm = formBuilder.group({
       'first_name': ['', Validators.compose([Validators.required, Validators.minLength(2)])],
       'last_name': ['', Validators.compose([Validators.required, Validators.minLength(2)])],
-      'email': ['+46', Validators.compose([Validators.required, Validators.pattern(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)])],
-      'phone': ['', Validators.compose([Validators.required, Validators.minLength(9), Validators.pattern(/\+46.*/)])],
+      'email': ['', Validators.compose([Validators.required, Validators.pattern(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)])],
+      'phone': ['+46', Validators.compose([Validators.required, Validators.minLength(9), Validators.pattern(/\+46.*/)])],
       'street': [''],
       'zip': [''],
       'city': [''],
