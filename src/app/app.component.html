@@ -70,7 +70,7 @@
               <div class="col-xs-12 navigation-menu-user-logged-in-container" *ngIf="user">
                 <!--"{'background-image': 'url(' + ((user.profile_image && user.profile_image.imageUrl) || '/assets/images/placeholder-profile-image.png') + ')'}"-->
                 <div class="col-xs-12 text-center">
-                  <img [src]="user.profile_image.imageUrl"/>
+                  <img [src]="profileImagePath"/>
                 </div>
                 <h4 class="col-xs-12 text-center">{{user.firstName}} {{user.lastName}}</h4>
               </div>
