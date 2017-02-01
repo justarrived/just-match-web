@@ -1,5 +1,7 @@
 @import '../../styles/variables';
 @import '../../styles/buttons';
+@import '../../styles/mixins';
+
 
 .pagination-wrapper {
   background-color: $color-gray-25;
@@ -11,19 +13,11 @@
 }
 
 .back-button {
-  text-align: left;
-  color: $color-primary-cerise;
-  > i {
-    cursor: pointer; cursor: hand;
-  }
+  @include NavigationButtonProperties(left, $color-primary-cerise);
 }
 
 .forward-button {
-  text-align: right;
-  color: $color-primary-cerise;
-  > i {
-    cursor: pointer; cursor: hand;
-  }
+  @include NavigationButtonProperties(right, $color-primary-cerise);
 }
 
 .pagination-text {
