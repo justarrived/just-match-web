@@ -42,6 +42,10 @@
               {{'menu.main.find_assignment' | translate}}
             </a>
 
+            <a class="col-xs-12 navigation-menu-item" routerLink="{{JARoutes.user.url()}}">
+              {{'menu.main.profile' | translate}}
+            </a>
+
             <a class="col-xs-12 navigation-menu-item" routerLink="{{JARoutes.faq.url()}}">
               {{'menu.main.faq' | translate}}
             </a>
@@ -59,7 +63,7 @@
             </a>
 
             <div class="col-xs-12 navigation-menu-user-container">
-              <div class="col-xs-12 navigation-menu-user-logged-in-container" *ngIf="user">
+              <div class="col-xs-12 navigation-menu-user-logged-in-container" *ngIf="user" routerLink="{{JARoutes.user.url()}}">
                 <div class="col-xs-12 text-center">
                   <img [src]="profileImagePath"/>
                 </div>
