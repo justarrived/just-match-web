@@ -78,7 +78,7 @@ export class RavenErrorHandler implements ErrorHandler {
     AppTranslateModule,
     AppRoutingModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyABLDG-8LXDMSp6vsTNNI2uSPCWA4eNs-Y'
+      apiKey: environment.googleMapsKey
     })
   ],
   declarations: [
