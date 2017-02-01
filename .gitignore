@@ -33,3 +33,8 @@ testem.log
 #System Files
 .DS_Store
 Thumbs.db
+
+# I18n-tasks
+.byebug_history
+formatted_i18n.json
+used_i18n.json

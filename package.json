@@ -11,6 +11,7 @@
     "start": "node server.js",
     "start-dev": "ng serve",
     "start-prod": "ng serve --prod",
+    "extract-translations": "ng2-translate-extract --dir ./src --output ./used_i18n.json --format=json --clean",
     "build": "ng build --prod --env=prod",
     "build-aot": "ng build --prod --aot --env=prod",
     "lint": "tslint \"src/**/*.ts\"",
@@ -38,12 +39,14 @@
     "lodash": "^4.17.2",
     "moment": "^2.17.0",
     "ng2-translate": "^4.0.1",
+    "raven-js": "^3.10.0",
     "rxjs": "5.0.0-beta.12",
     "ts-helpers": "^1.1.1",
     "zone.js": "^0.6.23"
   },
   "devDependencies": {
     "@angular/compiler-cli": "2.2.1",
+    "@biesbjerg/ng2-translate-extract": "^0.6.0",
     "@ngtools/webpack": "1.1.6",
     "@types/jasmine": "2.5.38",
     "@types/lodash": "^4.14.41",

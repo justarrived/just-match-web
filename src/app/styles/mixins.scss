@@ -3,3 +3,12 @@
   padding: 0 5px;
   background-color: white;
 }
+
+@mixin NavigationButtonProperties($text-alignment, $primary-color) {
+  padding-top: 0.4em;
+  text-align: $text-alignment;
+  color: $primary-color;
+  > i {
+    cursor: pointer; cursor: hand;
+  }
+}

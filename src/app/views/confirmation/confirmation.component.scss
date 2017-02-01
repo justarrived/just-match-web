@@ -5,9 +5,10 @@
   width: 100%;
   height: 100%;
   position: fixed;
+  padding-top: 40px;
   top: 0;
   left: 0;
-  background: $color-secondary-gray;
+  background: $color-gray-25;
   z-index: 10000;
   color: white;
 
@@ -16,31 +17,30 @@
     width: 70%;
     margin: 0 auto;
 
-    .close-button {
+    .confirm-close-button {
       position: fixed;
       top: 0px;
       right: 0px;
       z-index: 100001;
       margin: 30px;
-      color: white;
-      transform: scale(1.2);
+      color: $color-gray-500;
+      cursor: pointer;
     }
 
     .item-icon {
       margin-bottom: 50px;
       i {
-        color: $color-accent-main;
+        color: $color-cerise-500;
       }
     }
 
-    .item-title {
-      margin: 45px 0;
-      font-size: $fs-xl;
-      padding: 0 20px;
+    .confirmation-item-title {
+      color: $color-cerise-500;
     }
 
-    .item-content {
-      font-size: $fs-l;
+    .confirmation-item-content {
+      margin-top: 30px;
+      color: $color-gray-200;
     }
 
     .button-container {
