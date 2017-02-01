@@ -274,8 +274,9 @@
       position: relative;
       transform: scale(0.75);
 
-      .language-menu-credentials-image {
-        border-right: 1px solid $color-gray-200;
+      .language-menu-credentials-container-image {
+        max-width: 300px;
+        margin: 0 auto;
       }
     }
 
