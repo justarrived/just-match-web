@@ -9,6 +9,7 @@ import {User} from '../../models/user';
 import {TranslationListener} from '../../components/translation.component';
 import {isEmpty} from 'lodash';
 import {AuthManager} from '../../services/auth-manager.service';
+import {JARoutes} from '../../routes/ja-routes';
 
 @Component({
   templateUrl: './home.component.html',
@@ -21,6 +22,7 @@ export class HomeComponent extends TranslationListener implements OnInit {
   private jobsAppliedFor: UserJob[];
   private user: User;
   private isEmpty = isEmpty;
+  private JARoutes = JARoutes;
 
   constructor(
     private jobProxy: JobProxy,

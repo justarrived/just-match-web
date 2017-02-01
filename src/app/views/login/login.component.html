@@ -25,7 +25,7 @@
       </div>
       <div class="form-group login-button-container">
         <button type="submit" [disabled]="!loginForm.valid" class="btn-primary btn-small btn">{{'common.login' | translate}}</button>
-        <a class="forgot-password fs-m0" routerLink="/forgot-password">{{'login.forgot_password' | translate}}</a>
+        <a class="forgot-password fs-m0" routerLink="{{JARoutes.forgotPassword.url()}}">{{'login.forgot_password' | translate}}</a>
       </div>
     </form>
 
