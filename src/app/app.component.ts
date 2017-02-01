@@ -84,8 +84,9 @@ export class AppComponent implements OnInit {
   }
 
   private onLogoutButtonClick() {
-    this.authManager.logoutUser();
     this.navigationService.navigate(JARoutes.home);
+    this.authManager.logoutUser();
+    this.isLanguageMenuVisible = false;
   }
 
   private isActiveSystemLanguage(language: Language): boolean {
