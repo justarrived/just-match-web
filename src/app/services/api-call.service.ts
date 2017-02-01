@@ -115,14 +115,12 @@ export class ApiCall {
       let tokenExpiredObject = _.find(response.json().errors, { code: 'token_expired' });
       if (!!tokenExpiredObject) {
         this.userManager.deleteUser();
-        // TODO should be JARoutes.login . Will not load if used BUG
-        this.navigationService.navigate({ url: () => 'login'});
+        this.navigationService.navigate(JARoutes.login);
       }
     }
 
     if (response.status === 0 || response.status === 400 || response.status >= 500) {
-      // TODO should be JARoutes.error . Will not load if used BUG
-      this.navigationService.navigateNoLocationChange({ url: (args?: string[]) => 'error/' + args[0]}, response.status);
+      this.navigationService.navigateNoLocationChange(JARoutes.error, response.status);
     }
 
     return Observable.throw(parseJsonapiErrorResponse(response));

@@ -52,6 +52,7 @@ import {Geolocation} from './services/geolocation.service';
 import {ErrorComponent} from './views/error/error.component';
 import {NotFoundComponent} from './views/404/404.component';
 import {environment} from '../environments/environment';
+import {JARoutes} from './routes/ja-routes';
 
 Raven
   .config(environment.sentryURL)
@@ -112,6 +113,7 @@ export class RavenErrorHandler implements ErrorHandler {
   ],
   providers: [
     DataStore,
+    NavigationService,
     ApiCall,
     AuthManager,
     ActsAsUser,
@@ -122,7 +124,6 @@ export class RavenErrorHandler implements ErrorHandler {
     TranslationService,
     UserManager,
     Geolocation,
-    NavigationService,
     { provide: ErrorHandler, useClass: RavenErrorHandler }
   ],
   bootstrap: [AppComponent]

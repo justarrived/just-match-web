@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {JARoute} from '../routes/ja-route';
+import {JARoutes} from '../routes/ja-routes';
 import {
   Router,
   NavigationStart,
