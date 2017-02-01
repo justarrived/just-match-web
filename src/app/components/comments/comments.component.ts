@@ -13,13 +13,13 @@ import {TranslationListener} from '../translation.component';
   providers: [CommentsProxy]
 })
 export class CommentsComponent extends TranslationListener implements OnInit {
-  @Input() resourceId: number;
-  @Input() resourceName: string;
+  @Input() private resourceId: number;
+  @Input() private resourceName: string;
   private newCommentContainer: any;
-  comments: Comment[];
-  userId: string;
-  newCommentBody: string;
-  isFooterVisible: boolean;
+  private comments: Comment[];
+  private userId: string;
+  private newCommentBody: string;
+  private isFooterVisible: boolean;
 
   @HostListener('window:scroll', ['$event']) onDocumentScroll(event: any) {
     this.calculateFooterVisibility();
@@ -35,7 +35,7 @@ export class CommentsComponent extends TranslationListener implements OnInit {
     this.calculateFooterVisibility();
   }
 
-  sendComment() {
+  private sendComment() {
     let comment = new Comment();
     comment.commentableId = this.resourceId;
     comment.commentableType = this.resourceName;
@@ -48,7 +48,7 @@ export class CommentsComponent extends TranslationListener implements OnInit {
     });
   }
 
-  onNewCommentInput(event) {
+  private onNewCommentInput(event) {
     if (!this.newCommentContainer) {
       this.newCommentContainer = event.target;
     }

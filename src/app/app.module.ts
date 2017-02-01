@@ -1,10 +1,10 @@
-import {NgModule} from '@angular/core';
+import {NgModule, ErrorHandler } from '@angular/core';
 import {HttpModule} from '@angular/http';
 import {BrowserModule} from '@angular/platform-browser';
+import * as Raven from 'raven-js';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AgmCoreModule} from 'angular2-google-maps/core';
 import {AppComponent} from './app.component';
-import {AboutComponent} from './views/about/about.component';
 import {HomeComponent} from './views/home/home.component';
 import {DataStore} from './services/data-store.service';
 import {ApiCall} from './services/api-call.service';
@@ -12,6 +12,7 @@ import {AuthManager} from './services/auth-manager.service';
 import {UserProxy} from './services/proxy/user-proxy.service';
 import {ActsAsUser} from './services/acts-as-user.service';
 import {TranslationService} from './services/translation.service';
+import {NavigationService} from './services/navigation.service';
 import {SliderComponent} from './components/slider/slider.component';
 import {UserRegisterComponent} from './views/user/user-register/user-register.component';
 import {CountryProxy} from './services/proxy/country-proxy.service';
@@ -23,7 +24,6 @@ import {SkillProxy} from './services/proxy/skill-proxy.service';
 import {LoginComponent} from './views/login/login.component';
 import {ForgotPasswordComponent} from './views/forgot-password/forgot-password.component';
 import {UserManager} from './services/user-manager.service';
-import {JobCreateComponent} from './views/jobs/job-create/job-create.component';
 import {JobPreviewComponent} from './components/job-preview/job-preview.component';
 import {JobsComponent} from './views/jobs/jobs.component';
 import {JobListItemComponent} from './components/job-list-item/job-list-item.component';
@@ -33,16 +33,11 @@ import {JobDetailsComponent} from './views/job-details/job-details.component';
 import {CommentsComponent} from './components/comments/comments.component';
 import {FaqComponent} from './views/faq/faq.component';
 import {ContactComponent} from './views/contact/contact.component';
-import {ContactConfirmationComponent} from './views/contact/confirmation/contact-confirmation.component';
 import {ConfirmationComponent} from './views/confirmation/confirmation.component';
 import {CookiesAboutComponent} from './views/cookies-about/cookies-about.component';
 import {CookieBarComponent} from './components/cookie-bar/cookie-bar.component';
 import {LoadingComponent} from './components/loading-gif/loading.component';
-import {CandidateComponent} from './views/candidate/candidate.component';
-import {CandidateStateStatusBarComponent} from './components/candidate-state-status-bar/candidate-state-status-bar.component';
-import {CandidatesComponent} from './views/candidates/candidates.component';
 import {MyJobsComponent} from './views/my-jobs/my-jobs.component';
-import {CompanyJobsComponent} from './views/my-jobs/company-jobs/company-jobs.component';
 import {UserJobsComponent} from './views/my-jobs/user-jobs/user-jobs.component';
 import {MyJobsItemComponent} from './components/my-jobs-item/my-jobs-item.component';
 import {RatingComponent} from './components/rating/rating.component';
@@ -56,6 +51,17 @@ import {AutosizeDirective} from './components/textarea-autosize/textarea-autosiz
 import {Geolocation} from './services/geolocation.service';
 import {ErrorComponent} from './views/error/error.component';
 import {NotFoundComponent} from './views/404/404.component';
+import {environment} from '../environments/environment';
+
+Raven
+  .config(environment.sentryURL)
+  .install();
+
+export class RavenErrorHandler implements ErrorHandler {
+  handleError(error: any) : void {
+    Raven.captureException(error.originalError);
+  }
+}
 
 @NgModule({
   imports: [
@@ -71,7 +77,6 @@ import {NotFoundComponent} from './views/404/404.component';
   ],
   declarations: [
     AppComponent,
-    AboutComponent,
     HomeComponent,
     SliderComponent,
     UserRegisterComponent,
@@ -82,7 +87,6 @@ import {NotFoundComponent} from './views/404/404.component';
     AutocompleteDropdownComponent,
     LoginComponent,
     ForgotPasswordComponent,
-    JobCreateComponent,
     JobPreviewComponent,
     JobsComponent,
     JobListItemComponent,
@@ -92,17 +96,12 @@ import {NotFoundComponent} from './views/404/404.component';
     CommentsComponent,
     FaqComponent,
     ContactComponent,
-    ContactConfirmationComponent,
     ConfirmationComponent,
     CookiesAboutComponent,
     CookieBarComponent,
     LoadingComponent,
-    CandidatesComponent,
-    CandidateComponent,
-    CandidateStateStatusBarComponent,
     RatingComponent,
     MyJobsItemComponent,
-    CompanyJobsComponent,
     UserJobsComponent,
     MyJobsComponent,
     UserSettingsComponent,
@@ -122,8 +121,9 @@ import {NotFoundComponent} from './views/404/404.component';
     SkillProxy,
     TranslationService,
     UserManager,
-    Geolocation
-    // {provide: ErrorHandler, useClass: GlobalExceptionHandler}
+    Geolocation,
+    NavigationService,
+    { provide: ErrorHandler, useClass: RavenErrorHandler }
   ],
   bootstrap: [AppComponent]
 })

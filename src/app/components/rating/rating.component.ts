@@ -7,13 +7,14 @@ import * as  _ from 'lodash';
   styleUrls: ['./rating.component.scss']
 })
 export class RatingComponent {
-  ratingValue: number = 0;
-  @Output() ratingChange = new EventEmitter;
+  private ratingValue: number = 0;
+  @Output() private ratingChange = new EventEmitter;
 
-  @Input() scale: number = 5;
-  @Input() editable: boolean;
+  @Input() private scale: number = 5;
+  @Input() private editable: boolean;
 
-  constructor() {
+  constructor(
+  ) {
   }
 
   @Input()
@@ -26,11 +27,11 @@ export class RatingComponent {
     this.ratingChange.emit(this.ratingValue);
   }
 
-  range(start, length) {
+  private range(start, length) {
     return _.range(start, length + 1);
   }
 
-  selectValue(number) {
+  private selectValue(number) {
     if (this.editable) {
       this.rating = number;
     }

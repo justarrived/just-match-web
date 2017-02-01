@@ -8,8 +8,9 @@ import {TranslationService} from '../../services/translation.service';
 import {TranslationListener} from '../../components/translation.component';
 import {UserProxy} from '../../services/proxy/user-proxy.service';
 import {UserJob} from '../../models/user/user-job';
-import {Router} from '@angular/router';
 import {UserBankAccount} from '../../models/user/user-bank-account';
+import {NavigationService} from '../../services/navigation.service';
+import {JARoutes} from '../../routes/ja-routes';
 
 @Component({
   templateUrl: './job-details.component.html',
@@ -17,24 +18,30 @@ import {UserBankAccount} from '../../models/user/user-bank-account';
   providers: [JobProxy]
 })
 export class JobDetailsComponent extends TranslationListener implements OnInit {
-  @Input() isInUserView: boolean;
-  @Input() userJobId: number;
+  @Input() private isInUserView: boolean;
+  @Input() private userJobId: number;
   private job: Job;
   private currentJobId: number;
-  user: User;
-  isCompanyUser: boolean;
-  userJob: UserJob;
-  countOfApplicants: number = 0;
-  showCandidateBankAccountDetails: boolean = false;
-  showTermsAccept: boolean = false;
-  acceptTerms: boolean = false;
-  bankAccount: UserBankAccount = new UserBankAccount();
-  errors: any = {};
-  jobDetailsVisible: boolean;
+  private user: User;
+  private userJob: UserJob;
+  private countOfApplicants: number = 0;
+  private showCandidateBankAccountDetails: boolean = false;
+  private showTermsAccept: boolean = false;
+  private acceptTerms: boolean = false;
+  private bankAccount: UserBankAccount = new UserBankAccount();
+  private errors: any = {};
+  private jobDetailsVisible: boolean;
+  private JARoutes = JARoutes;
 
-  constructor(private route: ActivatedRoute, private jobProxy: JobProxy, private userManager: UserManager, private userProxy: UserProxy, private router: Router, protected translationService: TranslationService) {
+  constructor(
+    private route: ActivatedRoute,
+    private jobProxy: JobProxy,
+    private userManager: UserManager,
+    private userProxy: UserProxy,
+    private navigationService: NavigationService,
+    protected translationService: TranslationService
+  ) {
     super(translationService);
-    this.isCompanyUser = this.userManager.isCompanyUser();
     this.user = userManager.getUser();
     this.route.params.subscribe(params => {
       this.currentJobId = parseInt(params['id']);
@@ -53,28 +60,21 @@ export class JobDetailsComponent extends TranslationListener implements OnInit {
     });
   }
 
-  getJobInfo() {
-    if (this.isCompanyUser && this.job.company.id === this.user.company.id) {
-      this.jobProxy.getJobUsers(this.job.id, { include: 'user', 'filter[accepted]': true }).then(response => {
-        this.userJob = response[0];
-      });
-      this.jobProxy.getJobUsers(this.job.id, {}).then(response => {
-        this.countOfApplicants = response.length;
-      });
-    } else if (this.userManager.getUser() && !this.isCompanyUser) {
+  private getJobInfo() {
+    if (this.user) {
       this.userProxy.getUserJobs(this.user.id, { 'filter[job_id]': this.job.id.toString() }).then(response => {
         this.userJob = response[0];
       });
     }
   }
 
-  onApplyForJobButtonClick() {
+  private onApplyForJobButtonClick() {
     this.jobProxy.applyForJob(this.job.id).then(response => {
-      this.router.navigate(['/confirmation/user-applied']);
+      this.navigationService.navigate(JARoutes.confirmation, 'user-applied-for-job');
     });
   }
 
-  onConfirmJobButtonClick() {
+  private onConfirmJobButtonClick() {
     if (!this.userJob.user.frilansFinansPaymentDetails) {
       this.showTermsAccept = true;
       this.acceptTerms = false;
@@ -84,7 +84,7 @@ export class JobDetailsComponent extends TranslationListener implements OnInit {
     this.confirmJob();
   }
 
-  submitBankAccount() {
+  private submitBankAccount() {
     this.userProxy.createFrilansFinans(this.userJob.user.id, this.bankAccount.toJsonObject()).then(reponse => {
       return this.confirmJob();
     }).then(response => {
@@ -101,7 +101,7 @@ export class JobDetailsComponent extends TranslationListener implements OnInit {
     });
   }
 
-  switchJobDetailsVisibility() {
+  private switchJobDetailsVisibility() {
     this.jobDetailsVisible = !this.jobDetailsVisible;
   }
 }

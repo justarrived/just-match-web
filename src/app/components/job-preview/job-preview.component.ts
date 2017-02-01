@@ -7,10 +7,11 @@ import {Job} from '../../models/job/job';
   styleUrls: ['./job-preview.component.scss']
 })
 export class JobPreviewComponent {
-  @Input() job: Job;
-  @Input() isPreview: boolean = false;
+  @Input() private job: Job;
+  @Input() private isPreview: boolean = false;
 
-  constructor() {
+  constructor(
+  ) {
   }
 
 }

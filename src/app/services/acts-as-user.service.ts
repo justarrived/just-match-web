@@ -7,7 +7,9 @@ const storageActAsUserIdKey: string = 'actAsUserId';
 export class ActsAsUser {
   private userId: string = null;
 
-  constructor(private dataStore: DataStore) {
+  constructor(
+    private dataStore: DataStore
+  ) {
     this.userId = this.getStorage(storageActAsUserIdKey);
   }
 

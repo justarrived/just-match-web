@@ -20,7 +20,6 @@
   </div>
 
   <div class="row" style="background-color: white;">
-    <company-jobs *ngIf="isCompanyUser" [selectedState]="selectedState"></company-jobs>
-    <user-jobs *ngIf="!isCompanyUser" [selectedState]="selectedState"></user-jobs>
+    <user-jobs [selectedState]="selectedState"></user-jobs>
   </div>
 </div>

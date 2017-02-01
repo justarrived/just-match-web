@@ -1,7 +1,7 @@
 import {Component, Input} from '@angular/core';
 import {Job} from '../../models/job/job';
-import {Router} from '@angular/router';
-import {UserManager} from '../../services/user-manager.service';
+import {NavigationService} from '../../services/navigation.service';
+import {JARoutes} from '../../routes/ja-routes';
 
 @Component({
   selector: 'job-list-item',
@@ -10,13 +10,13 @@ import {UserManager} from '../../services/user-manager.service';
 })
 export class JobListItemComponent {
   @Input() job: Job;
-  isCompanyUser: boolean;
 
-  constructor(private router: Router, private userManager: UserManager) {
-    this.isCompanyUser = this.userManager.isCompanyUser();
+  constructor(
+    private navigationService: NavigationService
+  ) {
   }
 
-  public onListItemClick() {
-    this.router.navigate(['/job', this.job.id]);
+  private onListItemClick(): void {
+    this.navigationService.navigate(JARoutes.job, this.job.id);
   }
 }

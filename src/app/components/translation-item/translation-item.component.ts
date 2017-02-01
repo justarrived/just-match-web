@@ -6,8 +6,16 @@ import {Component, Input} from '@angular/core';
   styleUrls: ['./translation-item.component.scss']
 })
 export class TranslationItemComponent {
-  originalText: string;
-  translatedText: string;
+  private originalText: string;
+  private translatedText: string;
+  @Input() private short: false;
+  @Input() private length: number;
+  private isTranslationHidden: boolean = true;
+  private isTranslationAvailable: boolean = true;
+
+  constructor(
+  ) {
+  }
 
   @Input()
   set text(text: string) {
@@ -31,15 +39,6 @@ export class TranslationItemComponent {
 
   get translation() {
     return this.translatedText;
-  }
-
-  @Input() short: false;
-  @Input() length: number;
-
-  isTranslationHidden: boolean = true;
-  isTranslationAvailable: boolean = true;
-
-  constructor() {
   }
 
   private shortenText(text: string) {

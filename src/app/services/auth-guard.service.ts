@@ -1,14 +1,18 @@
 import {Injectable} from '@angular/core';
-import {CanActivate, Router, ActivatedRouteSnapshot, RouterStateSnapshot} from '@angular/router';
+import {CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot} from '@angular/router';
 import {UserManager} from './user-manager.service';
+import {NavigationService} from './navigation.service';
+import {JARoutes} from '../routes/ja-routes';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
-  constructor(private userManager: UserManager, private router: Router) {
-
+  constructor(
+    private userManager: UserManager,
+    private navigationService: NavigationService
+  ) {
   }
 
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+  public canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     let canNavigateStatus = true;
     if (!this.userManager.getUser()) {
       canNavigateStatus = false;
@@ -19,7 +23,7 @@ export class AuthGuard implements CanActivate {
     }
 
     if (!canNavigateStatus) {
-      this.router.navigate(['/home']);
+      this.navigationService.navigate(JARoutes.home);
     }
     return canNavigateStatus;
   }

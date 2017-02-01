@@ -1,7 +1,7 @@
 <div *ngIf="job">
   <div class="job-details-body">
 
-    <div *ngIf="(!isCompanyUser && !isInUserView) && (!userJob || !userJob.invoice || !userJob.invoice.id)" class="job-status text-center">
+    <div *ngIf="(!isInUserView) && (!userJob || !userJob.invoice || !userJob.invoice.id)" class="job-status text-center">
       <div class="job-status-container">
         <div class="row">
           <div class="col-xs-12">
@@ -24,8 +24,8 @@
       <div class="btn-secondary-light btn-medium btn" *ngIf="(user && !userJob)" (click)="onApplyForJobButtonClick()">{{'assignment.status.apply' | translate}}</div>
 
       <div *ngIf="!user" class="sign-in-or-create-container">
-        <div routerLink="/login" class="btn-secondary-light btn-small btn sign-in-button">{{'assignment.status.log_in' | translate}}</div><br/>
-        <div routerLink="/user/register" class="btn-primary-light btn-small btn">{{'assignment.status.create_account' | translate}}</div>
+        <div routerLink="{{JARoutes.login.url()}}" class="btn-secondary-light btn-small btn sign-in-button">{{'assignment.status.log_in' | translate}}</div><br/>
+        <div routerLink="{{JARoutes.registerUser.url()}}" class="btn-primary-light btn-small btn">{{'assignment.status.create_account' | translate}}</div>
       </div>
 
       <h3 class="applied-text" *ngIf="userJob && !userJob.accepted">{{'assignment.status.applied' | translate}}</h3>
@@ -44,21 +44,6 @@
           <h6 class="expand-details-link" (click)="switchJobDetailsVisibility()">{{'assignment.status.click_here' | translate}}</h6>
         </div>
       </div>
-    </div>
-
-    <div class="job-status text-center" *ngIf="(isCompanyUser && user.company.id == job.company.id) && (!userJob || !userJob.invoice || !userJob.invoice.id)">
-      <div *ngIf="!userJob && !isInUserView">
-        <h5 class="no-of-candidates-text" *ngIf="countOfApplicants != 1">{{'common.you_have' | translate}} {{countOfApplicants}} {{'company.assignments.applications' | translate}}</h5>
-        <h5 class="no-of-candidates-text" *ngIf="countOfApplicants == 1">{{'common.you_have' | translate}} {{countOfApplicants}} {{'company.assignments.application' | translate}}</h5>
-        <div *ngIf="countOfApplicants > 0">
-          <a class="btn-secondary-light btn-medium btn" [routerLink]="['candidates']">{{'assignment.status.select_applicant' | translate}}</a>
-        </div>
-      </div>
-      <div *ngIf="!userJob && isInUserView"></div>
-      <h5 class="no-of-candidates-text" *ngIf="userJob && userJob.accepted && !userJob.willPerform">
-        {{userJob.user.firstName}} {{'common.have' | translate}} {{userJob.remainsConfirmationHours}} {{'common.hour' | translate}} {{userJob.remainsConfirmationMinutes}} {{'common.min' | translate}} {{'assignment.status.user_application.time_remaining' | translate}}
-      </h5>
-      <h5 class="accepted-text" *ngIf="userJob && userJob.accepted && userJob.willPerform"><a class="accept-applicant-link" [routerLink]="['/job', jobId, 'candidate', userJob.id]">{{'assignment.status.applicant_approved' | translate: {candidate_name: userJob.user.firstName} }}</a></h5>
     </div>
 
     <div *ngIf="showTermsAccept" class="candidate-bank-account-details-container">

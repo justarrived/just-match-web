@@ -1,19 +1,14 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthManager} from './services/auth-manager.service';
+import {NavigationService} from './services/navigation.service';
 import {ActsAsUser} from './services/acts-as-user.service';
-import {
-  Router,
-  NavigationStart,
-  RoutesRecognized,
-  NavigationCancel,
-  NavigationEnd,
-  NavigationError
-} from '@angular/router';
+import {Router, NavigationStart} from '@angular/router';
 import {User} from './models/user';
 import {TranslationService} from './services/translation.service';
 import {Language} from './models/language/language';
 import {UserManager} from './services/user-manager.service';
 import {SystemLanguagesService} from './services/system-languages.service';
+import {JARoutes} from './routes/ja-routes';
 
 @Component({
   selector: 'app',
@@ -22,42 +17,25 @@ import {SystemLanguagesService} from './services/system-languages.service';
   providers: [SystemLanguagesService]
 })
 export class AppComponent implements OnInit {
-  states: Array<String> = [];
-  currentState: string;
-  user: User;
-  isCompanyUser: boolean;
-  systemLanguages: Language[];
-  selectedLanguage: Language;
-  isNavigationMenuVisible: boolean = false;
-  isLanguageMenuVisible: boolean = false;
+  private user: User;
+  private systemLanguages: Language[];
+  private selectedLanguage: Language;
+  private isNavigationMenuVisible: boolean = false;
+  private isLanguageMenuVisible: boolean = false;
+  private JARoutes = JARoutes;
 
-  constructor(private router: Router,
-              private authManager: AuthManager,
-              private userManager: UserManager,
-              private actsAsUser: ActsAsUser,
-              private systemLanguagesService: SystemLanguagesService,
-              public translationService: TranslationService
+  constructor(
+    private router: Router,
+    private navigationService: NavigationService,
+    private authManager: AuthManager,
+    private userManager: UserManager,
+    private actsAsUser: ActsAsUser,
+    private systemLanguagesService: SystemLanguagesService,
+    private translationService: TranslationService
   ) {
     router.events.subscribe(event => {
       if (event instanceof NavigationStart) {
         this.isNavigationMenuVisible = false;
-      }
-
-      if (event instanceof NavigationEnd) {
-        this.currentState = router.url;
-        this.states.push(router.url);
-      }
-
-      if (event instanceof NavigationCancel) {
-        console.log('NavigationCancel');
-      }
-
-      if (event instanceof NavigationError) {
-        console.log('NavigationError', event);
-      }
-
-      if (event instanceof RoutesRecognized) {
-        console.log('RoutesRecognized');
       }
     });
 
@@ -66,24 +44,21 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log('Application component initialized ...');
     this.authManager.authenticateIfNeeded().then(result => {
       this.router.initialNavigation();
       this.user = result;
     });
 
     this.authManager.getUserChangeEmmiter().subscribe(user => {
-      this.isCompanyUser = this.userManager.isCompanyUser();
       this.user = user;
     });
 
     this.userManager.getUserChangeEmmiter().subscribe(user => {
       this.user = user;
     });
-
   }
 
-  onBodyClick(event) {
+  private onBodyClick(event) {
     let targetClasses = event.target.classList;
     if ((targetClasses.contains('overbody-container') || targetClasses.contains('menu-side-bar')) && (this.isNavigationMenuVisible || this.isLanguageMenuVisible)) {
       this.isNavigationMenuVisible = false;
@@ -91,29 +66,29 @@ export class AppComponent implements OnInit {
     }
   }
 
-  onNavigationMenuButtonClick() {
+  private onNavigationMenuButtonClick() {
     this.isLanguageMenuVisible = false;
     this.isNavigationMenuVisible = !this.isNavigationMenuVisible;
   }
 
-  onLanguageMenuButtonClick() {
+  private onLanguageMenuButtonClick() {
     this.isNavigationMenuVisible = false;
     this.isLanguageMenuVisible = !this.isLanguageMenuVisible;
   }
 
-  onSelectLanguage(language: Language) {
+  private onSelectLanguage(language: Language) {
     this.isLanguageMenuVisible = false;
     this.selectedLanguage = language;
     this.translationService.setLanguage(language);
   }
 
-  onLogoutButtonClick() {
+  private onLogoutButtonClick() {
     this.authManager.logoutUser();
-    this.router.navigate(['/home']);
+    this.navigationService.navigate(JARoutes.home);
   }
 
-  isActiveSystemLanguage(language: Language): boolean {
-   return this.translationService.getSelectedLanguage().languageCode === language.languageCode;
+  private isActiveSystemLanguage(language: Language): boolean {
+    return this.translationService.getSelectedLanguage().languageCode === language.languageCode;
   }
 
   get isSideMenuVisible(): boolean {
@@ -122,5 +97,13 @@ export class AppComponent implements OnInit {
 
   get languageBtnIconClassName(): string {
     return this.isLanguageMenuVisible ? 'fa-caret-up' : 'fa-caret-down';
+  }
+
+  get profileImagePath(): string {
+    if(this.user.profile_image && this.user.profile_image.imageUrl) {
+      return this.user.profile_image.imageUrl;
+    } else {
+      return '/assets/images/placeholder-profile-image.png';
+    }
   }
 }

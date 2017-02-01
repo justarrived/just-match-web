@@ -6,14 +6,15 @@ import {Component, OnInit, Input, OnChanges, Output, EventEmitter} from '@angula
   styleUrls: ['./pager.component.scss']
 })
 export class PagerComponent implements OnInit, OnChanges {
-  @Input() maxResults: number;
-  @Input() pageSize: number = 10;
-  @Input() currentPage: number;
-  @Output() pageChange = new EventEmitter();
+  @Input() private maxResults: number;
+  @Input() private pageSize: number = 10;
+  @Input() private currentPage: number;
+  @Output() private pageChange = new EventEmitter();
 
   private lastPage: number = 1;
 
-  constructor() {
+  constructor(
+  ) {
   }
 
   ngOnInit() {
@@ -28,7 +29,7 @@ export class PagerComponent implements OnInit, OnChanges {
     this.calculateLastPage();
   }
 
-  onFirstPageButtonClick() {
+  private onFirstPageButtonClick() {
     if (this.currentPage === 1) {
       return;
     }
@@ -37,7 +38,7 @@ export class PagerComponent implements OnInit, OnChanges {
     this.pageChange.emit(this.currentPage);
   }
 
-  onPreviousPageButtonClick() {
+  private onPreviousPageButtonClick() {
     if (this.currentPage === 1) {
       return;
     }

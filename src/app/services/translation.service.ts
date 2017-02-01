@@ -9,12 +9,15 @@ export class TranslationService {
   private selectedLanguage: Language;
   private languageChange: EventEmitter<any> = new EventEmitter();
 
-  constructor(private translateService: TranslateService, private dataStore: DataStore) {
-    this.selectedLanguage = this.dataStore.get(this.storageSelectedLanguageKey) || new Language({id: '156', lang_code: 'sv', local_name: 'Swedish'});
+  constructor(
+    private translateService: TranslateService,
+    private dataStore: DataStore
+  ) {
+    this.selectedLanguage = this.dataStore.get(this.storageSelectedLanguageKey) || new Language({ id: '156', lang_code: 'sv', local_name: 'Swedish' });
 
     this.translateService.addLangs(['ar', 'en', 'fa', 'fa_AF', 'ku', 'ps', 'sv', 'ti']);
     this.translateService.setDefaultLang('en');
-    this.translateService.getTranslation('en').subscribe(() => {}); // to use the fallback language: https://github.com/ocombe/ng2-translate/issues/185
+    this.translateService.getTranslation('en').subscribe(() => { }); // to use the fallback language: https://github.com/ocombe/ng2-translate/issues/185
 
     this.setLanguage(this.selectedLanguage);
   }
@@ -37,5 +40,4 @@ export class TranslationService {
   public getLanguageChangeEmitter() {
     return this.languageChange;
   }
-
 }

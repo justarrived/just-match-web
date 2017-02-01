@@ -3,7 +3,7 @@
     <nav class="header navbar-light bg-faded">
       <div class="row navbar-container">
         <div class="navbar-home row flex-items-xs-middle">
-          <a routerLink="/home">
+          <a routerLink="{{JARoutes.home.url()}}">
             <img class="logo-img" src="/assets/images/logo.png" alt="Just Arrived" />
           </a>
         </div>
@@ -20,74 +20,111 @@
         </div>
       </div>
     </nav>
+
     <div class="menu-overlay-container" *ngIf="isSideMenuVisible" (click)="isNavigationMenuVisible = false; isLanguageMenuVisible = false;">
       <div class="menu-container">
+
         <div class="navigation-menu-container" *ngIf="isNavigationMenuVisible">
-          <div class="navigation-menu-links-container">
-            <a routerLink="/my-jobs" *ngIf="user">
-              <i class="fa fa-paperclip fa-lg"></i> {{'menu.main.my_assignment' | translate}}
-            </a>
 
-            <a routerLink="/jobs/1">
-              <i class="fa fa-wrench fa-lg"></i> {{'menu.main.find_assignment' | translate}}
-            </a>
-
-            <a routerLink="/job/create" *ngIf="isCompanyUser">
-              <i class="fa fa-plus fa-lg"></i> {{'menu.main.create_assignment' | translate}}
-            </a>
-
-            <a routerLink="/faq">
-              <i class="fa fa-clipboard fa-lg"></i> {{'menu.main.faq' | translate}}
-            </a>
-
-            <a routerLink="/contact">
-              <i class="fa fa-comments fa-lg"></i> {{'menu.main.contact' | translate}}
-            </a>
-
-            <a routerLink="/user" *ngIf="user && !isCompanyUser">
-              <i class="fa fa-user fa-lg"></i> {{'profile' | translate}}
-            </a>
-
-            <a routerLink="/login" *ngIf="!user">
-              <i class="fa fa-power-off fa-lg"></i> {{'menu.main.login' | translate}}
-            </a>
-
-            <a (click)="onLogoutButtonClick()" *ngIf="user">
-              <i class="fa fa-power-off fa-lg"></i> {{'menu.main.logout' | translate}}
-            </a>
+          <div class="navigation-menu-logo-container row">
+              <div class="col-xs-12 text-center navigation-menu-logo-container-logo">
+                  <img src="apple-touch-icon.ico" alt="Just Arrived" />
+              </div>
           </div>
-          <div class="navigation-menu-user-container">
-            <div class="navigation-menu-user-logged-in-container" *ngIf="user">
-              <div class="navigation-menu-user-logged-in-image" [ngStyle]="{'background-image': 'url(' + ((user.profile_image && user.profile_image.imageUrl) || '/assets/images/placeholder-profile-image.png') + ')'}"></div>
-              {{user.firstName}} {{user.lastName}}
-            </div>
-            <div class="navigation-menu-user-logged-out-container" *ngIf="!user">
-              <a routerLink="/user/register" class="navigation-menu-create-user-button btn-secondary-light btn-medium btn">Create User</a>
+
+          <div class="navigation-menu-links-container row">
+
+            <a class="col-xs-12 navigation-menu-item" routerLink="{{JARoutes.userJobs.url()}}" *ngIf="user">
+              {{'menu.main.my_assignment' | translate}}
+            </a>
+
+            <a class="col-xs-12 navigation-menu-item" routerLink="{{JARoutes.jobs.url(['1'])}}">
+              {{'menu.main.find_assignment' | translate}}
+            </a>
+
+            <a class="col-xs-12 navigation-menu-item" routerLink="{{JARoutes.user.url()}}" *ngIf="user">
+              {{'menu.main.profile' | translate}}
+            </a>
+
+            <a class="col-xs-12 navigation-menu-item" routerLink="{{JARoutes.faq.url()}}">
+              {{'menu.main.faq' | translate}}
+            </a>
+
+            <a class="col-xs-12 navigation-menu-item" routerLink="{{JARoutes.contact.url()}}">
+              {{'menu.main.contact' | translate}}
+            </a>
+
+            <a class="col-xs-12 navigation-menu-item" routerLink="{{JARoutes.login.url()}}" *ngIf="!user">
+              {{'menu.main.login' | translate}}
+            </a>
+
+            <a class="col-xs-12 navigation-menu-item" (click)="onLogoutButtonClick()" *ngIf="user">
+              {{'menu.main.logout' | translate}}
+            </a>
+
+            <div class="col-xs-12 navigation-menu-user-container">
+              <div class="col-xs-12 navigation-menu-user-logged-in-container" *ngIf="user" routerLink="{{JARoutes.user.url()}}">
+                <div class="col-xs-12 text-center">
+                  <img [src]="profileImagePath"/>
+                </div>
+                <h4 class="col-xs-12 text-center">{{user.firstName}} {{user.lastName}}</h4>
+              </div>
+
+              <div class="navigation-menu-user-logged-out-container" *ngIf="!user">
+                <a routerLink="{{JARoutes.registerUser.url()}}" class="navigation-menu-create-user-button btn-primary btn-small btn">Create User</a>
+              </div>
             </div>
           </div>
+
+
+
         </div>
 
         <div *ngIf="isLanguageMenuVisible" class="language-menu-container">
-          <div class="language-menu-logo"></div>
-          <div class="language-menu-header-container">{{'menu.language.title' | translate}}</div>
-          <div class="language-menu-languages-container">
-            <div *ngFor="let language of systemLanguages" class="language-menu-language-button-container" (click)="onSelectLanguage(language)">
-              <div [class.active-language]="isActiveSystemLanguage(language)" class="language-menu-language-button-code">{{language.languageCode}}</div>
-              <div class="language-menu-language-button-name">{{language.localName}}</div>
-            </div>
+          <div class="language-menu-logo-container row">
+              <div class="col-xs-6 language-menu-logo-container-logo">
+                  <img src="apple-touch-icon.ico" alt="Just Arrived" />
+              </div>
+              <div class="col-xs-6 language-menu-logo-container-text">
+                  <h4>{{'menu.language.title' | translate}}</h4>
+              </div>
+          </div>
 
+          <div class="language-menu-languages-container container">
+            <div *ngFor="let language of systemLanguages" class="row language-menu-language-text-wrapper" (click)="onSelectLanguage(language)">
+              <div class="col-xs-10 language-menu-language-name" [ngClass]="{'language-menu-language-name-active':isActiveSystemLanguage(language)}" >{{language.localName}}</div>
+              <div class="col-xs-2 language-menu-language-checkmark">
+                <i *ngIf="isActiveSystemLanguage(language)" class="fa fa-check" aria-hidden="true"></i>
+              </div>
+            </div>
           </div>
-          <div class="language-menu-information-container">
-            <p>{{'menu.language.text_1' | translate}}</p>
-            <p>{{'menu.language.text_2' | translate}}</p>
+
+          <div class="language-menu-information-container row">
+            <p class="col-xs-12">{{'menu.language.text_1' | translate}}</p>
+            <p class="col-xs-12">{{'menu.language.text_2' | translate}}</p>
           </div>
-          <div class="language-menu-credentials-container">
-            <p class="prominent">{{'menu.language.translation_by_probono' | translate}}:</p>
-            <img class="language-menu-credentials-image" src="/assets/images/menu_semantix_logo.png" alt="Semantix" />
+
+          <div class="language-menu-credentials-container row">
+            <p class="col-xs-12 prominent">{{'menu.language.translation_by_probono' | translate}}:</p>
+            <img class="col-xs-12 language-menu-credentials-container-image" src="/assets/images/semantix.png" alt="Semantix" />
           </div>
+
+          <div class="language-menu-contributers-wrapper row">
+              <div class="col-xs-4 language-menu-contributers-text">
+                Farshid Fadaee
+              </div>
+              <div class="col-xs-4 language-menu-contributers-text">
+                Nick Chipperfield
+              </div>
+              <div class="col-xs-4 language-menu-contributers-text">
+                Hans-Erik Täpp
+              </div>
+          </div>
+
         </div>
       </div>
     </div>
+
   </div>
 </div>
 <div class="wrapper">

@@ -3,8 +3,8 @@
     <div class="col-xs" *ngIf="user">
       <h1>{{'common.welcome_user'| translate: {username: user.firstName} }}</h1>
       <div class="home-header-button-container">
-        <a routerLink="/user" class="medium-button-light-size btn-secondary-light btn-small btn">{{'common.edit_profile'| translate}}</a><br>
-        <a routerLink="/jobs/1" class="medium-button-light-size btn-primary-light btn-small btn">{{'menu.main.find_assignment'| translate}}</a>
+        <a routerLink="{{JARoutes.user.url()}}" class="medium-button-light-size btn-secondary-light btn-small btn">{{'common.edit_profile'| translate}}</a><br>
+        <a routerLink="{{JARoutes.jobs.url(['1'])}}" class="medium-button-light-size btn-primary-light btn-small btn">{{'menu.main.find_assignment'| translate}}</a>
       </div>
     </div>
     <div class="col-xs" *ngIf="!user">
@@ -13,8 +13,8 @@
         {{'start.header.body' | translate }}
       </div>
       <div class="home-header-button-container">
-        <div routerLink="/user/register" class="btn-secondary-light btn-small btn">{{'menu.main.create_account'| translate}}</div><br/>
-        <div routerLink="/login" class="btn-primary-light btn-small btn start-sign-in-button">{{'menu.main.sign_in'| translate}}</div>
+        <div routerLink="{{JARoutes.registerUser.url()}}" class="btn-secondary-light btn-small btn">{{'menu.main.create_account'| translate}}</div><br/>
+        <div routerLink="{{JARoutes.login.url()}}" class="btn-primary-light btn-small btn start-sign-in-button">{{'menu.main.sign_in'| translate}}</div>
       </div>
     </div>
   </div>
@@ -25,7 +25,7 @@
       <h2>{{'home_page.new_jobs_slider.title' | translate}}</h2>
     </div>
     <div class="col-xs-12 my-jobs-show-all-button">
-      <span routerLink="/jobs/1">{{'common.show_all' | translate | lowercase}} > <i class="icon-ic-arrow-right"></i></span>
+      <span routerLink="{{JARoutes.jobs.url(['1'])}}">{{'common.show_all' | translate | lowercase}} > <i class="icon-ic-arrow-right"></i></span>
     </div>
     <div class="col-xs-12 jobs-slider" align="center">
       <div *ngFor="let job of newJobs" class="item-container clickable" [routerLink]="['/job', job.id]">
@@ -46,7 +46,7 @@
       <h2>{{'home_page.user_jobs_slider.title' | translate}}</h2>
     </div>
     <div class="col-xs-12 user-jobs-show-all-button">
-      <span routerLink="/my-jobs">{{'common.show_all' | translate | lowercase}} > <i class="icon-ic-arrow-right"></i></span>
+      <span routerLink="{{JARoutes.userJobs.url()}}">{{'common.show_all' | translate | lowercase}} > <i class="icon-ic-arrow-right"></i></span>
     </div>
     <div class="col-xs-12 jobs-slider" align="center">
       <div *ngFor="let userJob of userJobs" class="item-container clickable" [routerLink]="['/job', userJob.job.id]">
@@ -56,11 +56,11 @@
           </div>
         </div>
 
-        <div *ngIf="userJob.concluded" class="jobs-salary-container user-jobs-salary-container-inactive">
+        <div *ngIf="userJob.job_ended" class="jobs-salary-container user-jobs-salary-container-inactive">
           {{'home_page.user_jobs_slider_item.status.finished' | translate | uppercase}}
         </div>
 
-        <div *ngIf="userJob.willPerform" class="jobs-salary-container user-jobs-salary-container-active">
+        <div *ngIf="userJob.willPerform && !userJob.job_ended" class="jobs-salary-container user-jobs-salary-container-active">
           {{'home_page.user_jobs_slider_item.status.ongoing' | translate | uppercase}}
         </div>
 
@@ -101,7 +101,7 @@
           {{'start.instruction_section.slide_1.text_3' | translate}}
         </li>
       </ul>
-      <div routerLink="/jobs/1" class="btn-secondary-light btn-medium btn">{{'common.find_assignment' | translate}}</div>
+      <div routerLink="{{JARoutes.jobs.url([1])}}" class="btn-secondary-light btn-medium btn">{{'common.find_assignment' | translate}}</div>
     </div>
     <div class="col-xs-12 col-md-6 instructions-container">
       <h3>{{'start.instruction_section.slide_2.title' | translate}}</h3>
@@ -120,7 +120,7 @@
           {{'start.instruction_section.slide_2.text_4' | translate}}
         </li>
       </ul>
-      <div routerLink="/user" class="btn-secondary-light btn-medium btn">{{'common.start_here' | translate}}</div>
+      <div routerLink="{{JARoutes.user.url()}}" class="btn-secondary-light btn-medium btn">{{'common.start_here' | translate}}</div>
     </div>
   </div>
 

@@ -1,78 +1,34 @@
 <div class="confirmation-container">
-  <div *ngIf="type === 'user-applied'" class="confirmation-item table text-center">
-    <i routerLink="/jobs/1" class="fa fa-times fa-2x confirm-close-button"></i>
+  <div *ngIf="type === 'contact-message-sent'" class="confirmation-item table text-center">
+    <i routerLink="{{JARoutes.contact.url()}}" class="fa fa-times fa-2x confirm-close-button"></i>
+    <div class="table-row">
+      <div class="table-cell">
+        <div class="item-icon"><i class="fa fa-envelope fa-5x" aria-hidden="true"></i></div>
+        <h3 class="confirmation-item-title">{{'contact.confirmation.title' | translate}}</h3>
+        <p class="confirmation-item-content"></p>
+        <div class="button-container"><a class="btn-primary btn-small btn" routerLink="{{JARoutes.contact.url()}}">{{"contact.confirmation.navigate.back" | translate}}</a></div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="type === 'user-applied-for-job'" class="confirmation-item table text-center">
+    <i routerLink="{{JARoutes.jobs.url(['1'])}}" class="fa fa-times fa-2x confirm-close-button"></i>
     <div class="table-row">
       <div class="table-cell">
         <div class="item-icon"><i class="fa fa-check fa-5x" aria-hidden="true"></i></div>
         <h3 class="confirmation-item-title">{{'user.apply.confirmation' | translate}}</h3>
         <p class="confirmation-item-content">{{'user.apply.confirmation.text' | translate}}</p>
-        <div class="button-container"><a class="btn-primary btn-small btn" routerLink="/jobs/1">{{'user.apply.find_more' | translate}}</a></div>
-      </div>
-    </div>
-  </div>
-  <div *ngIf="type === 'profile-created'" class="confirmation-item table text-center">
-    <i routerLink="/user" class="fa fa-times fa-2x confirm-close-button"></i>
-    <div class="table-row">
-      <div class="table-cell">
-        <div class="item-icon"><i class="fa fa-check fa-5x" aria-hidden="true"></i></div>
-        <h3 class="confirmation-item-title">{{'profile.create.confirmation.title' | translate}}</h3>
-        <p class="confirmation-item-content">{{'profile.create.confirmation.description' | translate}}</p>
-        <div class="button-container"><a class="btn-primary btn-small btn" routerLink="/jobs/1">{{'common.find_assignment' | translate}}</a></div>
-      </div>
-    </div>
-  </div>
-  <div *ngIf="type === 'assignment-created'" class="confirmation-item table text-center">
-    <i routerLink="/user" class="fa fa-times fa-2x confirm-close-button"></i>
-    <div class="table-row">
-      <div class="table-cell">
-        <div class="item-icon"><i class="fa fa-check fa-5x" aria-hidden="true"></i></div>
-        <h3 class="confirmation-item-title">{{'assignment.created.title' | translate}}</h3>
-        <p class="confirmation-item-content">{{'assignment.created.description' | translate}}</p>
-        <div class="button-container"><a class="btn-primary btn-small btn" routerLink="/user">{{'assignment.created.continue' | translate}}</a></div>
-      </div>
-    </div>
-  </div>
-  <div *ngIf="type === 'profile-created-applied'" class="confirmation-item table text-center">
-    <i routerLink="/user" class="fa fa-times fa-2x confirm-close-button"></i>
-    <div class="table-row">
-      <div class="table-cell">
-        <div class="item-icon"><i class="fa fa-check fa-5x" aria-hidden="true"></i></div>
-        <h3 class="confirmation-item-title">{{'profile.created.assignment.pending.email.titel' | translate}}</h3>
-        <p class="confirmation-item-content">{{'profile.create.confirmation.description' | translate}}</p>
-        <div class="button-container"><a class="btn-primary btn-small btn" routerLink="/jobs/1">{{'user.apply.find_more' | translate}}</a></div>
-      </div>
-    </div>
-  </div>
-  <div *ngIf="type === 'user-assignment-approved'" class="confirmation-item table text-center">
-    <i routerLink="/user" class="fa fa-times fa-2x confirm-close-button"></i>
-    <div class="table-row">
-      <div class="table-cell">
-        <div class="item-icon"><i class="fa fa-check fa-5x" aria-hidden="true"></i></div>
-        <h3 class="confirmation-item-title">{{'user.assignment.approved' | translate}}</h3>
-        <p class="confirmation-item-content">{{'user.assignment.add_reference' | translate}}</p>
-        <div class="button-container"><a class="btn-primary btn-small btn" routerLink="/user">{{'assignment.created.continue' | translate}}</a></div>
-      </div>
-    </div>
-  </div>
-  <div *ngIf="type === 'user-assignment-rejected-confirmation'" class="confirmation-item table text-center">
-    <i routerLink="/user" class="fa fa-times fa-2x confirm-close-button"></i>
-    <div class="table-row">
-      <div class="table-cell">
-        <div class="item-icon"><i class="fa fa-check fa-5x" aria-hidden="true"></i></div>
-        <h3 class="confirmation-item-title">{{'user.assignment.rejected.confirmation' | translate}}</h3>
-        <p class="confirmation-item-content">{{'user.assignment.rejected.confirmation.description' | translate}}</p>
-        <div class="button-container"><a class="btn-primary btn-small btn" routerLink="/user">{{'assignment.created.continue' | translate}}</a></div>
+        <div class="button-container"><a class="btn-primary btn-small btn" routerLink="{{JARoutes.jobs.url(['1'])}}">{{'user.apply.find_more' | translate}}</a></div>
       </div>
     </div>
   </div>
   <div *ngIf="type === 'password-reset-link-sent'" class="confirmation-item table text-center">
-    <i routerLink="/forgot-password" class="fa fa-times fa-2x confirm-close-button"></i>
+    <i routerLink="{{JARoutes.forgotPassword.url()}}" class="fa fa-times fa-2x confirm-close-button"></i>
     <div class="table-row">
       <div class="table-cell">
         <div class="item-icon"><i class="fa fa-envelope fa-5x" aria-hidden="true"></i></div>
         <h3 class="confirmation-item-title">{{'login.forgot_password.confirmation' | translate}}</h3>
         <p class="confirmation-item-content">{{'login.forgot_password.confirmation.description' | translate}}</p>
-        <div class="button-container"><a class="btn-primary btn-small btn" routerLink="/forgot-password">{{'common.back' | translate}}</a></div>
+        <div class="button-container"><a class="btn-primary btn-small btn" routerLink="{{JARoutes.forgotPassword.url()}}">{{'common.back' | translate}}</a></div>
       </div>
     </div>
   </div>
