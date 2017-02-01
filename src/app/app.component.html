@@ -42,7 +42,7 @@
               {{'menu.main.find_assignment' | translate}}
             </a>
 
-            <a class="col-xs-12 navigation-menu-item" routerLink="{{JARoutes.user.url()}}">
+            <a class="col-xs-12 navigation-menu-item" routerLink="{{JARoutes.user.url()}}" *ngIf="user">
               {{'menu.main.profile' | translate}}
             </a>
 
