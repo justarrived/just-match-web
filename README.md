@@ -2,7 +2,7 @@
 
 ## Built with
 
-- node v6.7
+- node v6.9
 - npm
 - Angular 2
 - TypeScript 2
