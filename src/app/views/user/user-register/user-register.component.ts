@@ -10,6 +10,8 @@ import {Language} from '../../../models/language/language';
 import {AuthManager} from '../../../services/auth-manager.service';
 import {Router} from '@angular/router';
 import {namePropertyLabel} from '../../../utils/label-util';
+import {NavigationService} from '../../../services/navigation.service';
+import {JARoutes} from '../../../routes/ja-routes';
 import {TranslationService} from '../../../services/translation.service';
 import {TranslationListener} from '../../../components/translation.component';
 import {FormGroup, FormBuilder, Validators} from '@angular/forms';
@@ -40,6 +42,7 @@ export class UserRegisterComponent extends TranslationListener implements OnInit
     private languageProxy: LanguageProxy,
     private authManager: AuthManager,
     private formBuilder: FormBuilder,
+    private navigationService: NavigationService,
     protected translationService: TranslationService
   ) {
     super(translationService)
@@ -99,6 +102,10 @@ export class UserRegisterComponent extends TranslationListener implements OnInit
     })
       .then((response) => {
         this.saveSuccess = true;
+        this.authManager.logUser(this.registerForm.value.email, this.registerForm.value.password)
+        .then((response) => {
+          this.navigationService.navigate(JARoutes.home);
+        });
       })
       .catch(errors => {
         this.handleServerErrors(errors);
