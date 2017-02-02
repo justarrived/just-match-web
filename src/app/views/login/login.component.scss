@@ -2,18 +2,6 @@
 @import '../../styles/buttons';
 
 .login-container {
-  .login-header-container {
-    background-color: $color-primary-cerise;
-    padding: 1em 0;
-
-    h3 {
-      position: relative;
-      top: 5px;
-      color: $white;
-    }
-
-  }
-
   .login-form-container {
     padding-top: 50px;
     max-width: 500px;
@@ -21,14 +9,14 @@
     padding-left: 20px;
     padding-right: 20px;
 
-    .login-input-container {
+    .login-form-input-container {
 
-      > input {
+      .login-form-text-input {
         border: 1px solid rgba(0, 0, 0, 0.15);
       }
     }
 
-    .login-button-container {
+    .login-form-button-container {
       text-align: center;
       margin-top: 20px;
 
@@ -36,15 +24,17 @@
         color: $color-cerise-500;
       }
 
-      button {
+      .login-form-button {
         display: block;
         margin: 10px auto;
         min-width: 200px;
       }
 
-      a {
+      .login-form-link {
         color: $color-accent-main;
         font-weight: 600;
+        display: block;
+        padding-bottom: 10px;
       }
     }
   }

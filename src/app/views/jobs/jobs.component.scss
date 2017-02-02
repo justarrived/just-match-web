@@ -1,17 +1,6 @@
 @import '../../styles/variables';
 @import '../../styles/tooltips';
 
-.jobs-header {
-  background-color: $color-primary-cerise;
-  padding: 1em 0;
-
-  h3 {
-    position: relative;
-    top: 5px;
-    color: $white;
-  }
-}
-
 .map-container {
   .tooltip-top {
     width: 50%;

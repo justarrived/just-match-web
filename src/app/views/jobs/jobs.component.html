@@ -1,11 +1,6 @@
 <div class="container-fluid">
-  <div class="jobs-header row">
-    <!-- All Jobs -->
-    <div class="col-xs-12">
-      <h3>
-        {{'common.all_jobs' | translate: {nbrOfJobs: totalJobs} }}
-      </h3>
-    </div>
+  <div class="sub-header-container">
+    <h3 class="sub-header-title">{{'common.all_jobs' | translate: {nbrOfJobs: totalJobs} }}</h3>
   </div>
   <div class="map-container row">
     <sebm-google-map class="map" [latitude]="mapLocation.latitude" [longitude]="mapLocation.longitude" [zoom]="mapZoom" [styles]="mapStyles" [disableDefaultUI]="true" [streetViewControl]="false">

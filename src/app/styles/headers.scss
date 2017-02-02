@@ -1,0 +1,11 @@
+.sub-header-container {
+  background-color: $color-primary-cerise;
+  width: 100%;
+  text-align: center;
+
+  .sub-header-title {
+    color: $white;
+    padding: 1em 0;
+    margin: 0;
+  }
+}
