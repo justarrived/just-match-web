@@ -76,11 +76,11 @@
         <label *ngIf="profileForm.value.current_status === 'asylum_seeker'" for="ssn">{{'user.profile.form.coordination.number.label' | translate}}:</label>
         <label *ngIf="profileForm.value.current_status === 'eu_citizen'" for="ssn">{{'user.profile.form.coordination.number.or.ssn.label' | translate}}:</label>
         <label *ngIf="profileForm.value.current_status !== 'asylum_seeker' && profileForm.value.current_status !== 'eu_citizen'" for="ssn">{{'user.profile.form.ssn.label' | translate}}:</label>
-        <input *ngIf="profileForm.value.current_status === 'asylum_seeker'" class="form-control material-input" id="ssn" name="ssn-input" type="text" (focus)="serverValidationErrors.ssn = ''" placeholder="{{'user.profile.form.coordination.number.placeholder' | translate}}"
+        <input *ngIf="profileForm.value.current_status === 'asylum_seeker'" class="form-control material-input" id="ssn" name="ssn-input" type="text" onkeypress="return event.charCode >= 48 && event.charCode <= 57" (focus)="serverValidationErrors.ssn = ''" placeholder="{{'user.profile.form.coordination.number.placeholder' | translate}}"
             [formControl]="profileForm.controls['ssn']">
-        <input *ngIf="profileForm.value.current_status === 'eu_citizen'" class="form-control material-input" id="ssn" name="ssn-input" type="text" (focus)="serverValidationErrors.ssn = ''" placeholder="{{'user.profile.form.coordination.number.or.ssn.placeholder' | translate}}"
+        <input *ngIf="profileForm.value.current_status === 'eu_citizen'" class="form-control material-input" id="ssn" name="ssn-input" type="text" onkeypress="return event.charCode >= 48 && event.charCode <= 57" (focus)="serverValidationErrors.ssn = ''" placeholder="{{'user.profile.form.coordination.number.or.ssn.placeholder' | translate}}"
             [formControl]="profileForm.controls['ssn']">
-        <input *ngIf="profileForm.value.current_status !== 'asylum_seeker' && profileForm.value.current_status !== 'eu_citizen'" class="form-control material-input" id="ssn" name="ssn-input" type="text" (focus)="serverValidationErrors.ssn = ''" placeholder="{{'user.profile.form.ssn.placeholder' | translate}}"
+        <input *ngIf="profileForm.value.current_status !== 'asylum_seeker' && profileForm.value.current_status !== 'eu_citizen'" class="form-control material-input" id="ssn" name="ssn-input" type="text" onkeypress="return event.charCode >= 48 && event.charCode <= 57" (focus)="serverValidationErrors.ssn = ''" placeholder="{{'user.profile.form.ssn.placeholder' | translate}}"
             [formControl]="profileForm.controls['ssn']">
         <div *ngIf="serverValidationErrors.ssn" class="alert alert-danger">{{serverValidationErrors.ssn}}.</div>
       </div>
