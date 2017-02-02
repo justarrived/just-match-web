@@ -22,7 +22,6 @@
 $default-font-family:  "Open Sans", sans-serif;
 $header-font-family:   $museo;
 
-
 h1, h2, h3, h4, h5, h6 {
   font-family: $header-font-family;
 }
@@ -63,12 +62,6 @@ p {
   line-height: 22px;
 }
 
-.hero-p {
-  font-family: $museo;
-  font-size: 18px;
-  line-height: 24px;
-}
-
 em {
   font-family: $default-font-family;
   font-size: 24px;
@@ -76,6 +69,30 @@ em {
   font-weight: 300;
 }
 
-.title-primary {
-  color: $color-primary-cerise;
+.fs-s {
+  font-size: $fs-s;
+}
+
+.fs-m0 {
+  font-size: $fs-m0;
+}
+
+.fs-m {
+  font-size: $fs-m;
+}
+
+.fs-l {
+  font-size: $fs-l;
+}
+
+.fs-xl {
+  font-size: $fs-xl;
+}
+
+.fs-xxl {
+  font-size: $fs-xxl;
+}
+
+.fs-xxxl {
+  font-size: $fs-xxxl;
 }

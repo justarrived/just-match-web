@@ -91,55 +91,6 @@ body {
     }
   }
 
-  .fs-s {
-    font-size: $fs-s;
-  }
-
-  .fs-m0 {
-    font-size: $fs-m0;
-  }
-
-  .fs-m {
-    font-size: $fs-m;
-  }
-
-  .fs-l {
-    font-size: $fs-l;
-  }
-
-  .fs-xl {
-    font-size: $fs-xl;
-  }
-
-  .fs-xxl {
-    font-size: $fs-xxl;
-  }
-
-  .fs-xxxl {
-    font-size: $fs-xxxl;
-  }
-
-  .subheader {
-    padding: 40px;
-    background: $color-secondary-blue;
-    color: white;
-
-    .subheader-text {
-      letter-spacing: 0.02em;
-      line-height: 20px;
-    }
-  }
-
-  .centered-form-container {
-    padding: 35px 0;
-
-    .centered-form {
-      width: 85%;
-      max-width: 500px;
-      margin: 0 auto;
-    }
-  }
-
   .material-group {
     position: relative;
     margin-bottom: 25px;
@@ -194,15 +145,6 @@ body {
       color: $color-primary-cerise;
       font-size: 12px;
     }
-  }
-
-  .no-select {
-    user-drag: none;
-    user-select: none;
-    -moz-user-select: none;
-    -webkit-user-drag: none;
-    -webkit-user-select: none;
-    -ms-user-select: none;
   }
 
   .rounded-image {
