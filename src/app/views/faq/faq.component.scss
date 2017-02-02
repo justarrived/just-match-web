@@ -1,17 +1,6 @@
 @import '../../styles/variables';
 @import '../../styles/buttons';
 
-.faq-header {
-  background-color: $color-primary-cerise;
-  padding: 1em 0;
-
-  h3 {
-    position: relative;
-    top: 5px;
-    color: $white;
-  }
-}
-
 .faq-list-container {
   background-color: $default-bg-color;
 

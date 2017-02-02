@@ -1,10 +1,8 @@
 <div class="container-fluid">
-  <div class="row my-jobs-header">
-    <h3>
-      {{"menu.main.my_assignment" | translate}}
-    </h3>
-  </div>
 
+  <div class="sub-header-container">
+    <h3 class="sub-header-title">{{"menu.main.my_assignment" | translate}}</h3>
+  </div>
 
   <div class="row">
     <div class="my-jobs-header-tab col-xs-6" [ngClass]="{'my-jobs-header-tab-selected': selectedState == 'active'}" (click)="setState('active')" >
