@@ -47,7 +47,6 @@
     cursor: pointer;
     color: $color-primary-cerise;
     align-self: flex-end;
-    padding-right: 3em;
     padding-left: 3em;
   }
 }
@@ -68,7 +67,6 @@
     cursor: pointer;
     color: $white;
     align-self: flex-end;
-    padding-right: 3em;
     padding-left: 3em;
   }
 }
@@ -77,7 +75,7 @@
   padding: 3em;
 
   @media screen and (max-width: $md-device-width) {
-    padding: 3em 0;
+    padding: 3em 1em;
 
     .title {
       padding-left: 3em;
