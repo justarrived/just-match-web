@@ -20,7 +20,8 @@
         <div *ngIf="errors.password" class="alert alert-danger">{{errors.password}}</div>
       </div>
       <div class="form-group login-form-button-container">
-        <button type="submit" [disabled]="!loginForm.valid" class="login-form-button btn-primary btn-small btn">{{'login.form.submit.button' | translate}}</button>
+        <loading *ngIf="loadingSubmit"></loading>
+        <button *ngIf="!loadingSubmit" type="submit" [disabled]="!loginForm.valid" class="login-form-button btn-primary btn-small btn">{{'login.form.submit.button' | translate}}</button>
         <a class="login-form-link fs-m0" routerLink="{{JARoutes.forgotPassword.url()}}">{{'login.form.forgot.password.link' | translate}}</a>
         <a class="login-form-link fs-m0" routerLink="{{JARoutes.registerUser.url()}}">{{'login.form.register.link' | translate}}</a>
       </div>

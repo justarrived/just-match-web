@@ -14,6 +14,7 @@ import {UserManager} from '../../services/user-manager.service';
 export class ContactComponent {
   private contactForm: FormGroup;
   private errors: any = {};
+  private loadingSubmit: boolean = false;
 
   constructor(
     private contactProxy: ContactProxy,
@@ -31,6 +32,8 @@ export class ContactComponent {
   }
 
   private submitForm(value: any) {
+    this.loadingSubmit = true;
+
     this.contactProxy.saveContactNotification(
       new ContactNotification({
         name: value.name,
@@ -38,10 +41,12 @@ export class ContactComponent {
         body: value.message
       }))
       .then((result) => {
-        this.navigationService.navigate(JARoutes.confirmation, 'contact-message-sent')
+        this.navigationService.navigate(JARoutes.confirmation, 'contact-message-sent');
+        this.loadingSubmit = false;
       })
       .catch((errors) => {
         this.errors = errors.details || errors;
+        this.loadingSubmit = false;
       });
   }
 }

@@ -12,6 +12,7 @@ export class LoginComponent {
   private loginForm: FormGroup;
   private errors: any = {};
   private JARoutes = JARoutes;
+  private loadingSubmit: boolean = false;
 
   constructor(
     private authManager: AuthManager,
@@ -25,11 +26,14 @@ export class LoginComponent {
   }
 
   private submitForm(value: any) {
+    this.loadingSubmit = true;
     this.authManager.logUser(value.email_or_phone, value.password)
       .then(result => {
-        this.navigationService.navigateBack();
+        this.navigationService.navigate(JARoutes.home);
+        this.loadingSubmit = false;
       })
       .catch(errors => {
+        this.loadingSubmit = false;
         this.errors = errors.details || errors;
       });
   }

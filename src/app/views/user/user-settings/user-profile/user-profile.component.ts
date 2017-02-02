@@ -55,6 +55,7 @@ export class UserProfileComponent extends TranslationListener implements OnInit 
   private serverValidationErrors: any = {};
   private saveSuccess: boolean;
   private saveFail: boolean;
+  private loadingSubmit: boolean = false;
 
   private residencePermitFrontImageStatusObject: any = {
     imageSaveSuccess: false,
@@ -235,6 +236,7 @@ export class UserProfileComponent extends TranslationListener implements OnInit 
   private onSubmit() {
     this.saveSuccess = false;
     this.saveFail = false;
+    this.loadingSubmit = true;
     this.serverValidationErrors = {};
 
     this.userProxy.updateUser(this.user.id, {
@@ -260,9 +262,11 @@ export class UserProfileComponent extends TranslationListener implements OnInit 
       .then((response) => {
         this.saveSuccess = true;
         this.authManager.authenticateIfNeeded();
+        this.loadingSubmit = false;
       })
       .catch(errors => {
         this.handleServerErrors(errors);
+        this.loadingSubmit = false;
       });
   }
 }
