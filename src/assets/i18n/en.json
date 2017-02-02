@@ -59,6 +59,7 @@
   "menu.main.create_account": "Create account",
   "menu.main.sign_in": "Sign in",
   "home_page.new_jobs_slider.title": "New jobs",
+  "home_page.jobs_applied_for.title": "Jobs applied for",
   "common.show_all": "Show all",
   "home_page.user_jobs_slider.title": "My jobs",
   "home_page.user_jobs_slider_item.status.finished": "Finnished",
