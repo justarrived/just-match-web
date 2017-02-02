@@ -8,7 +8,7 @@
         <autocomplete-dropdown #nativeLanguageDropdown (dropdownListItemSelect)="onNativeLanguageSelect($event)" [placeholder]="'user.profile.form.native.language.placeholder' | translate" [autocompleteResultLabelFunction]="namePropertyLabel" [selectedItemLabelFunction]="namePropertyLabel"
             [lookupType]="'list'" [enumList]="languages">
         </autocomplete-dropdown>
-        <div *ngIf="profileForm.controls['native_language'].hasError('required')" class="alert alert-danger">{{'user.profile.form.native.language.validation.required' | translate}}.</div>
+        <div *ngIf="profileForm.controls['native_language'].hasError('required')" class="alert alert-danger">{{'user.profile.form.native.language.validation.required' | translate}}</div>
         <div *ngIf="serverValidationErrors.language_id" class="alert alert-danger">{{serverValidationErrors.language_id}}.</div>
       </div>
 
@@ -17,7 +17,7 @@
         <autocomplete-dropdown #countryDropdown (dropdownListItemSelect)="onCountryOfOriginSelect($event)" [placeholder]="'user.profile.form.country.placeholder' | translate" [autocompleteResultLabelFunction]="namePropertyLabel" [selectedItemLabelFunction]="namePropertyLabel"
             [lookupType]="'list'" [enumList]="countries">
         </autocomplete-dropdown>
-        <div *ngIf="profileForm.controls['country_of_origin'].hasError('required')" class="alert alert-danger">{{'user.profile.form.country.validation.required' | translate}}.</div>
+        <div *ngIf="profileForm.controls['country_of_origin'].hasError('required')" class="alert alert-danger">{{'user.profile.form.country.validation.required' | translate}}</div>
         <div *ngIf="serverValidationErrors.country_of_origin" class="alert alert-danger">{{serverValidationErrors.country_of_origin}}.</div>
       </div>
 

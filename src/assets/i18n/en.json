@@ -158,6 +158,7 @@
   "user.register.form.password.placeholder": "Password",
   "user.register.form.repeat.password.placeholder": "Repeat password",
   "user.register.form.password.validation.min.length": "Password must be at least 6 characters long",
+  "user.register.form.password.validation.required": "Please supply your password twice",
   "user.register.form.repeat.password.validation.mismatch": "Supplied passwords does not match",
   "user.register.form.terms.accept": "I accept Just Arrived's terms, conditions and employment contract",
   "user.register.form.terms.validation.required": "To signup you have to agree to the terms above",
