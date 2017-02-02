@@ -13,6 +13,8 @@ export class UserSettingsComponent implements OnInit {
   private selectedState: string = 'profile';
 
   private user: User;
+  private imageSaveSuccess: boolean;
+  private imageSaveFail: boolean;
 
   constructor(
     private userProxy: UserProxy,
@@ -38,6 +40,11 @@ export class UserSettingsComponent implements OnInit {
     if (file) {
       this.userProxy.saveImage(this.user.id, file, 'profile').then(userImage => {
         this.user.profile_image = userImage;
+        this.imageSaveFail = false;
+        this.imageSaveSuccess = true;
+      }).catch(errors => {
+        this.imageSaveSuccess = false;
+        this.imageSaveFail = true;
       });
     }
   }

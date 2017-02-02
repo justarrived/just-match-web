@@ -81,6 +81,16 @@
           font-size: 18px;
         }
       }
+      .user-profile-subheader-info-success-msg {
+        margin-top: 8px;
+        width: 100%;
+        color: green;
+      }
+      .user-profile-subheader-info-error-msg {
+        margin-top: 8px;
+        width: 100%;
+        color: $color-cerise-500;
+      }
     }
   }
 
