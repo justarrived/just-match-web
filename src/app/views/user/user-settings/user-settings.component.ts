@@ -13,6 +13,7 @@ export class UserSettingsComponent implements OnInit {
   private selectedState: string = 'profile';
 
   private user: User;
+  private uploadingImage: boolean = false;
 
   constructor(
     private userProxy: UserProxy,
@@ -34,10 +35,14 @@ export class UserSettingsComponent implements OnInit {
   }
 
   private onProfileImageFilenameChange(event) {
+    this.uploadingImage = true;
     let file = event.srcElement.files[0];
     if (file) {
       this.userProxy.saveImage(this.user.id, file, 'profile').then(userImage => {
         this.user.profile_image = userImage;
+        this.uploadingImage = false;
+      }).catch(errors => {
+        this.uploadingImage = false;
       });
     }
   }
