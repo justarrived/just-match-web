@@ -7,3 +7,7 @@ export function yyyymmdd(date: Date) {
     (dd > 9 ? '' : '0') + dd
   ].join('');
 };
+
+export function nbrOfMonthsFromDate(date: Date, months: number) {
+  return new Date(new Date().getTime() + 1000 * 60 * 60 * 24 * 30 * months);
+};

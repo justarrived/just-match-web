@@ -9,7 +9,7 @@ import {ActivatedRoute} from '@angular/router';
 import {TranslationService} from '../../services/translation.service';
 import {TranslationListener} from '../../components/translation.component';
 import {customMapStyle} from '../../styles/google-maps-styles'
-import {yyyymmdd} from '../../utils/date-util'
+import {yyyymmdd, nbrOfMonthsFromDate} from '../../utils/date-util'
 
 @Component({
   templateUrl: './jobs.component.html',
@@ -53,7 +53,7 @@ export class JobsComponent extends TranslationListener implements OnInit {
 
   loadData() {
     this.loadingJobs = true;
-    this.jobProxy.getJobs({ include: 'company,hourly_pay,company.company_images', 'filter[filled]': false, 'page[number]': this.page.toString(), 'filter[job_date]': yyyymmdd(new Date()) })
+    this.jobProxy.getJobs({ include: 'company,hourly_pay,company.company_images', 'filter[filled]': false, 'page[number]': this.page.toString(), 'filter[job_date]': yyyymmdd(new Date())+'..'+yyyymmdd(nbrOfMonthsFromDate(new Date(), 6)) })
       .then(result => {
         this.jobs = result.data;
         this.totalJobs = result.total;
