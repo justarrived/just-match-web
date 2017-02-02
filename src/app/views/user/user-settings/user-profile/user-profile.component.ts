@@ -58,37 +58,44 @@ export class UserProfileComponent extends TranslationListener implements OnInit 
 
   private residencePermitFrontImageStatusObject: any = {
     imageSaveSuccess: false,
-    imageSaveFail: false
+    imageSaveFail: false,
+    uploadingImage: false
   };
 
   private residencePermitBackImageStatusObject: any = {
     imageSaveSuccess: false,
-    imageSaveFail: false
+    imageSaveFail: false,
+    uploadingImage: false
   };
 
   private lmaImageStatusObject: any = {
     imageSaveSuccess: false,
-    imageSaveFail: false
+    imageSaveFail: false,
+    uploadingImage: false
   };
 
   private skatteverketCertificateImageStatusObject: any = {
     imageSaveSuccess: false,
-    imageSaveFail: false
+    imageSaveFail: false,
+    uploadingImage: false
   };
 
   private personalIdImageStatusObject: any = {
     imageSaveSuccess: false,
-    imageSaveFail: false
+    imageSaveFail: false,
+    uploadingImage: false
   };
 
   private workPermitFrontImageStatusObject: any = {
     imageSaveSuccess: false,
-    imageSaveFail: false
+    imageSaveFail: false,
+    uploadingImage: false
   };
 
   private workPermitBackImageStatusObject: any = {
     imageSaveSuccess: false,
-    imageSaveFail: false
+    imageSaveFail: false,
+    uploadingImage: false
   };
 
   constructor(
@@ -212,13 +219,16 @@ export class UserProfileComponent extends TranslationListener implements OnInit 
   private onImageFilenameChange(event, type, uploadStatusObject) {
     uploadStatusObject.imageSaveFail = false;
     uploadStatusObject.imageSaveSuccess = false;
+    uploadStatusObject.uploadingImage = true;
     const file = event.srcElement.files[0];
     if (file) {
       this.userProxy.saveImage(this.user.id, file, type).then(userImage => {
         this.user[type + '_image'] = userImage;
         uploadStatusObject.imageSaveSuccess = true;
+        uploadStatusObject.uploadingImage = false;
       }).catch(errors => {
         uploadStatusObject.imageSaveFail = true;
+        uploadStatusObject.uploadingImage = false;
       });
     }
   }

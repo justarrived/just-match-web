@@ -13,8 +13,7 @@ export class UserSettingsComponent implements OnInit {
   private selectedState: string = 'profile';
 
   private user: User;
-  private imageSaveSuccess: boolean;
-  private imageSaveFail: boolean;
+  private uploadingImage: boolean = false;
 
   constructor(
     private userProxy: UserProxy,
@@ -36,15 +35,14 @@ export class UserSettingsComponent implements OnInit {
   }
 
   private onProfileImageFilenameChange(event) {
+    this.uploadingImage = true;
     let file = event.srcElement.files[0];
     if (file) {
       this.userProxy.saveImage(this.user.id, file, 'profile').then(userImage => {
         this.user.profile_image = userImage;
-        this.imageSaveFail = false;
-        this.imageSaveSuccess = true;
+        this.uploadingImage = false;
       }).catch(errors => {
-        this.imageSaveSuccess = false;
-        this.imageSaveFail = true;
+        this.uploadingImage = false;
       });
     }
   }

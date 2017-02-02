@@ -186,8 +186,6 @@
   "user.profile.form.lma.upload.description": "Upload photo of LMA card",
   "user.profile.form.lma.upload.success": "Photo of LMA card has been uploaded",
   "user.profile.form.lma.upload.fail": "Photo of LMA card could not be uploaded",
-  "user.profile.picture.upload.success": "New profile picture uploaded",
-  "user.profile.picture.upload.fail": "Could not upload profile picture",
   "user.profile.form.personal.id.upload.button": "Upload",
   "user.profile.form.personal.id.upload.description": "Upload photo of personal id card",
   "user.profile.form.personal.id.upload.success": "Photo of personal id has been uploaded",

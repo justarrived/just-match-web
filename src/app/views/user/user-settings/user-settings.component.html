@@ -1,17 +1,16 @@
 <div class="user-profile-container">
   <div class="user-profile-subheader-container">
-    <h2>{{'user.profile.header.title' | translate}}</h2>
-    <p>{{'user.profile.header.information' | translate}}</p>
+    <h2 class="user-profile-subheader-title">{{'user.profile.header.title' | translate}}</h2>
+    <p class="user-profile-subheader-information">{{'user.profile.header.information' | translate}}</p>
 
     <div class="user-profile-subheader-info-container row">
       <div class="user-profile-subheader-info-image-container">
-        <input type="file" id="image-filename" name="imageFilename" class="file" (change)="onProfileImageFilenameChange($event)" accept="image/jpeg,image/jpg,image/gif,image/png">
-        <div *ngIf="!user.profile_image" class="icon-camera"><i class="fa fa-camera" aria-hidden="true"></i></div>
-        <div *ngIf="user.profile_image" class="user-info-image" [ngStyle]="{'background-image': 'url(' + user.profile_image.imageUrl + ')'}"></div>
+        <loading *ngIf="uploadingImage" class="user-profile-subheader-info-image-loading"></loading>
+        <input *ngIf="!uploadingImage" type="file" id="image-filename" name="imageFilename" class="file" (change)="onProfileImageFilenameChange($event)" accept="image/jpeg,image/jpg,image/gif,image/png">
+        <div *ngIf="!uploadingImage && !user.profile_image" class="icon-camera"><i class="fa fa-camera" aria-hidden="true"></i></div>
+        <div *ngIf="!uploadingImage && user.profile_image" class="user-info-image" [ngStyle]="{'background-image': 'url(' + user.profile_image.imageUrl + ')'}"></div>
       </div>
       <div class="user-profile-subheader-info-name-container"><span>{{user.firstName}} {{user.lastName}}</span></div>
-      <div class="center user-profile-subheader-info-success-msg" *ngIf="imageSaveSuccess">{{'user.profile.picture.upload.success' | translate}}</div>
-      <div class="center user-profile-subheader-info-error-msg" *ngIf="imageSaveFail">{{'user.profile.picture.upload.fail' | translate}}</div>
     </div>
   </div>
 

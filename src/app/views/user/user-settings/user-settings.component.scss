@@ -8,11 +8,11 @@
     color: white;
     text-align: center;
 
-    > h2 {
+    .user-profile-subheader-title {
       margin-bottom: 20px;
     }
 
-    > p {
+    .user-profile-subheader-information {
       opacity: 0.8;
     }
 
@@ -21,11 +21,17 @@
       max-width: 300px;
 
       .user-profile-subheader-info-image-container {
+        display: table;
         margin: 0 auto;
         width: 85px;
         height: 85px;
         border-radius: 50%;
         background-color: rgba(255, 255, 255, 0.1);
+
+        .user-profile-subheader-info-image-loading {
+          display: table-cell;
+          vertical-align: middle;
+        }
 
         &:hover {
           background-color: rgba(255, 255, 255, 0.5);
@@ -111,9 +117,6 @@
       }
 
       &.selected {
-        h4 {
-          color: $color-gray-500;
-        }
         border-bottom: 4px solid $color-primary-cerise;
       }
     }
