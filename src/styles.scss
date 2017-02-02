@@ -140,84 +140,6 @@ body {
     }
   }
 
-  .button {
-    font-size: $fs-m;
-    color: white;
-    border: 1px solid white;
-    border-radius: 23px;
-    padding: 10px 40px;
-    display: inline-block;
-    user-select: none;
-    -moz-user-select: none;
-    -webkit-user-drag: none;
-    -webkit-user-select: none;
-    -ms-user-select: none;
-    outline: none;
-
-    &:focus,
-    &:hover {
-      background-color: rgba(0, 0, 0, 0.2);
-      opacity: 0.95;
-      color: white;
-      user-select: none;
-      -moz-user-select: none;
-      -webkit-user-drag: none;
-      -webkit-user-select: none;
-      -ms-user-select: none;
-      outline: none;
-    }
-
-    &.small {
-      padding: 5px 40px;
-      border-radius: 20px;
-      white-space: nowrap;
-      line-height: 24px;
-    }
-
-    &.primary {
-      font-size: $fs-l;
-      background-color: $color-primary-cerise;
-
-      &:focus,
-      &:hover {
-        background-color: darken($color-primary-cerise, 5%);
-      }
-    }
-
-    &.secondary {
-      font-size: $fs-l;
-      background-color: $color-secondary-gray;
-
-      &:focus,
-      &:hover {
-        background-color: darken($color-secondary-gray, 10%);
-      }
-    }
-
-    &.form-control {
-      font-size: 1.4em;
-      width: auto;
-      min-width: 180px;
-      margin: 30px auto 0;
-      display: inherit;
-
-      &.cancel {
-        margin: 15px auto;
-      }
-    }
-
-    &.disabled,
-    &[disabled] {
-      &,
-      &:hover {
-        background-color: $color-secondary-gray;
-        color: #eeeeee;
-        opacity: 0.5;
-        cursor: not-allowed;
-      }
-    }
-  }
-
   .material-group {
     position: relative;
     margin-bottom: 25px;
@@ -294,11 +216,9 @@ body {
 body > .app-container {
   height: 100%;
   margin: 0 auto;
-
   @media screen and (min-width: $lg-device-width) {
     width: $lg-device-width;
   }
-
   @media screen and (max-width: $lg-device-width) {
     width: 100%;
   }

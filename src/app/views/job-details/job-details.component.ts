@@ -8,7 +8,6 @@ import {TranslationService} from '../../services/translation.service';
 import {TranslationListener} from '../../components/translation.component';
 import {UserProxy} from '../../services/proxy/user-proxy.service';
 import {UserJob} from '../../models/user/user-job';
-import {UserBankAccount} from '../../models/user/user-bank-account';
 import {NavigationService} from '../../services/navigation.service';
 import {AuthManager} from '../../services/auth-manager.service';
 import {JARoutes} from '../../routes/ja-routes';
@@ -26,10 +25,6 @@ export class JobDetailsComponent extends TranslationListener implements OnInit {
   private user: User;
   private userJob: UserJob;
   private countOfApplicants: number = 0;
-  private showCandidateBankAccountDetails: boolean = false;
-  private showTermsAccept: boolean = false;
-  private acceptTerms: boolean = false;
-  private bankAccount: UserBankAccount = new UserBankAccount();
   private errors: any = {};
   private jobDetailsVisible: boolean;
   private JARoutes = JARoutes;
@@ -76,33 +71,6 @@ export class JobDetailsComponent extends TranslationListener implements OnInit {
   private onApplyForJobButtonClick() {
     this.jobProxy.applyForJob(this.job.id).then(response => {
       this.navigationService.navigate(JARoutes.confirmation, 'user-applied-for-job');
-    });
-  }
-
-  private onConfirmJobButtonClick() {
-    if (!this.userJob.user.frilansFinansPaymentDetails) {
-      this.showTermsAccept = true;
-      this.acceptTerms = false;
-      this.showCandidateBankAccountDetails = false;
-      return;
-    }
-    this.confirmJob();
-  }
-
-  private submitBankAccount() {
-    this.userProxy.createFrilansFinans(this.userJob.user.id, this.bankAccount.toJsonObject()).then(reponse => {
-      return this.confirmJob();
-    }).then(response => {
-      this.showTermsAccept = false;
-      this.userJob.willPerform = true;
-    }, errors => {
-      this.errors = errors.details;
-    });
-  }
-
-  private confirmJob(): Promise<any> {
-    return this.jobProxy.confirmForJob(this.job.id, this.userJob.id).then(response => {
-      this.userJob = response;
     });
   }
 
