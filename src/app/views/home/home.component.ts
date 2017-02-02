@@ -81,4 +81,11 @@ export class HomeComponent extends TranslationListener implements OnInit {
     }
     return false;
   }
+
+  private jobsAppliedForVisible() {
+    if (this.user) {
+      return !this.isEmpty(this.jobsAppliedFor);
+    }
+    return false
+  }
 }
