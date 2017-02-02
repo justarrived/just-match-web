@@ -13,6 +13,7 @@ export class ForgotPasswordComponent {
   private errors: any = {};
   private JARoutes = JARoutes;
   private displayErrorMessage: boolean;
+  private loadingSubmit: boolean = false;
 
   constructor(
     private userProxy: UserProxy,
@@ -25,12 +26,15 @@ export class ForgotPasswordComponent {
   }
 
   private submitForm(value: any) {
+    this.loadingSubmit = true;
     this.displayErrorMessage = false;
     this.userProxy.resetPassword(value.email_or_phone)
       .then((result) => {
         this.navigationService.navigate(JARoutes.confirmation, 'password-reset-link-sent')
+        this.loadingSubmit = false;
       })
       .catch((errors) => {
+        this.loadingSubmit = false;
         this.displayErrorMessage = true;
         this.errors = errors.details || errors;
       });

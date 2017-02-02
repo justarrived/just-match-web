@@ -29,6 +29,7 @@ export class UserRegisterComponent extends TranslationListener implements OnInit
   private serverValidationErrors: any = {};
   private saveSuccess: boolean;
   private saveFail: boolean;
+  private loadingSubmit: boolean = false;
 
   private registerForm: FormGroup;
   private countryOfOriginInputTouched: boolean = false;
@@ -82,6 +83,7 @@ export class UserRegisterComponent extends TranslationListener implements OnInit
   private onSubmit() {
     this.saveSuccess = false;
     this.saveFail = false;
+    this.loadingSubmit = true;
     this.serverValidationErrors = {};
 
     this.userProxy.saveUser({
@@ -105,10 +107,12 @@ export class UserRegisterComponent extends TranslationListener implements OnInit
         this.authManager.logUser(this.registerForm.value.email, this.registerForm.value.password)
         .then((response) => {
           this.navigationService.navigate(JARoutes.home);
+          this.loadingSubmit = false;
         });
       })
       .catch(errors => {
         this.handleServerErrors(errors);
+        this.loadingSubmit = false;
       });
   }
 

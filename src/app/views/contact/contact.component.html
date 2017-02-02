@@ -38,7 +38,8 @@
         <div *ngIf="errors.body" class="alert alert-danger">{{errors.body}}</div>
       </div>
       <div class="form-group contact-button-container">
-        <button type="submit" [disabled]="!contactForm.valid" class="btn-primary btn-medium btn">{{"common.submit" | translate}}</button>
+        <loading *ngIf="loadingSubmit"></loading>
+        <button *ngIf="!loadingSubmit" type="submit" [disabled]="!contactForm.valid" class="btn-primary btn-medium btn">{{"common.submit" | translate}}</button>
       </div>
     </form>
   </div>

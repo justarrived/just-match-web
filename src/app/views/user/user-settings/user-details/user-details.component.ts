@@ -19,6 +19,7 @@ export class UserDetailsComponent implements OnInit {
   private serverValidationErrors: any = {};
   private saveSuccess: boolean;
   private saveFail: boolean;
+  private loadingSubmit: boolean = false;
 
   constructor(
     private authManager: AuthManager,
@@ -67,7 +68,9 @@ export class UserDetailsComponent implements OnInit {
   private onSubmit(): void {
     this.saveSuccess = false;
     this.saveFail = false;
+    this.loadingSubmit = true;
     this.serverValidationErrors = {};
+
     this.userProxy.updateUser(this.user.id, this.settingsForm.value)
       .then((response) => {
         if (this.passwordsSupplied()) {
@@ -80,19 +83,23 @@ export class UserDetailsComponent implements OnInit {
                   this.passwordForm.value.password = '';
                   this.passwordForm.value.repeat_password = '';
                   this.saveSuccess = true;
-                  this.authManager.authenticateIfNeeded()
+                  this.authManager.authenticateIfNeeded();
+                  this.loadingSubmit = false;
                 });
             })
             .catch(errors => {
               this.handleServerErrors(errors);
+              this.loadingSubmit = false;
             });
         } else {
           this.saveSuccess = true;
-          this.authManager.authenticateIfNeeded()
+          this.authManager.authenticateIfNeeded();
+          this.loadingSubmit = false;
         }
       })
       .catch(errors => {
         this.handleServerErrors(errors);
+        this.loadingSubmit = false;
       });
   }
 }

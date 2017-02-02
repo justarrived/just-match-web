@@ -131,7 +131,8 @@
         <div class="register-form-button-container">
           <div *ngIf="saveFail" class="error-message">{{'user.register.form.submit.fail' | translate}}</div>
           <div *ngIf="saveSuccess" class="save-message">{{'user.register.form.submit.success' | translate}}</div>
-          <button type="submit" [disabled]="!formValidation()" class="btn-primary btn-small btn">{{'user.register.form.submit.button' | translate}}</button>
+          <loading *ngIf="loadingSubmit"></loading>
+          <button *ngIf="!loadingSubmit" type="submit" [disabled]="!formValidation()" class="btn-primary btn-small btn">{{'user.register.form.submit.button' | translate}}</button>
         </div>
       </form>
     </div>

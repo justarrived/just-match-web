@@ -227,7 +227,8 @@ Documents not supported yet. TODO implement when documents supported in backend.
       <div class="profile-button-container">
         <div *ngIf="saveFail" class="error-message">{{'user.profile.form.submit.fail' | translate}}</div>
         <div *ngIf="saveSuccess" class="save-message">{{'user.profile.form.submit.success' | translate}}</div>
-        <button type="submit" [disabled]="!formValidation()" class="btn-primary btn-small btn">{{'user.profile.form.submit.button' | translate}}</button>
+        <loading *ngIf="loadingSubmit"></loading>
+        <button *ngIf="!loadingSubmit" type="submit" [disabled]="!formValidation()" class="btn-primary btn-small btn">{{'user.profile.form.submit.button' | translate}}</button>
       </div>
     </form>
 
