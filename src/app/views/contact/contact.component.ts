@@ -4,6 +4,7 @@ import {ContactNotification} from '../../models/contact-notification';
 import {ContactProxy} from '../../services/proxy/contact-proxy.service';
 import {NavigationService} from '../../services/navigation.service';
 import {JARoutes} from '../../routes/ja-routes';
+import {UserManager} from '../../services/user-manager.service';
 
 @Component({
   templateUrl: './contact.component.html',
@@ -17,12 +18,15 @@ export class ContactComponent {
   constructor(
     private contactProxy: ContactProxy,
     private navigationService: NavigationService,
+    private userManager: UserManager,
     private formBuilder: FormBuilder
   ) {
+    const user = userManager.getUser();
+
     this.contactForm = formBuilder.group({
-      'name': [null, Validators.compose([Validators.required, Validators.minLength(2)])],
-      'email': [null, Validators.compose([Validators.required, Validators.minLength(6)])],
-      'message': [null, Validators.compose([Validators.required, Validators.minLength(2)])]
+      'name': [user ? user.firstName + ' ' + user.lastName : '', Validators.compose([Validators.required, Validators.minLength(2)])],
+      'email': [user ? user.email : '', Validators.compose([Validators.required, Validators.minLength(6)])],
+      'message': ['', Validators.compose([Validators.required, Validators.minLength(2)])]
     });
   }
 
