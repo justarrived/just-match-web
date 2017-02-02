@@ -59,7 +59,7 @@
 }
 
 .job-status {
-  background: $color-primary-cerise;
+  background: linear-gradient($color-cerise-600, $color-primary-cerise);
   padding: 30px;
   color: white;
 }
