@@ -24,25 +24,12 @@
       flex-wrap: nowrap;
     }
 
-    .back-button-container {
-      display: inline-block;
-      cursor: pointer;
-
-      .back-button {
-        margin-right: 12px;
-      }
-    }
-
     .logo-img {
       max-width: 165px;
     }
 
     .menu-icon, .nav-language-icon{
       cursor: pointer;
-    }
-
-    .button-container {
-      display: inline-block;
     }
 
     .nav-language-icon {
@@ -87,20 +74,6 @@
 
     @media screen and (max-width: $sm-device-width) {
       width: 100%;
-    }
-
-    .menu-close-container {
-      .menu-close-button {
-        font-size: 32px;
-        color: $color-gray-300;
-        cursor: pointer;
-
-        &:hover {
-          &::before, &::after {
-            color: $color-primary-cerise;
-          }
-        }
-      }
     }
 
     .navigation-menu-container {
