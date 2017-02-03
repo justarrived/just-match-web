@@ -41,6 +41,11 @@
   color: $white;
   border: 1px solid $color-primary-cerise;
   cursor: pointer; cursor: hand;
+
+  @media(max-width: 425px) {
+    position: relative;
+    left: -0.8em;
+  }
 }
 
 .navigation-left-arrow {
