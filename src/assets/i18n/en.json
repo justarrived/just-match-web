@@ -85,6 +85,7 @@
   "common.min": "minutes",
   "assignment.status.reply": "Provide answer",
   "assignment.status.hired": "Hired",
+  "assignment.status.finished": "Finished",
   "assignment.status.more_details": "For more details",
   "assignment.status.hide_details": "To hide details",
   "assignment.status.click_here": "Click here",
