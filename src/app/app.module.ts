@@ -53,6 +53,7 @@ import {ErrorComponent} from './views/error/error.component';
 import {NotFoundComponent} from './views/404/404.component';
 import {environment} from '../environments/environment';
 import {JARoutes} from './routes/ja-routes';
+import {TruncatePipe} from './utils/truncate';
 
 Raven
   .config(environment.sentryURL)
@@ -109,7 +110,8 @@ export class RavenErrorHandler implements ErrorHandler {
     TranslationItemComponent,
     AutosizeDirective,
     ErrorComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    TruncatePipe
   ],
   providers: [
     DataStore,
