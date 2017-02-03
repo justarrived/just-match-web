@@ -35,7 +35,7 @@
         <div class="btn-secondary-light btn-medium btn" (click)="onConfirmJobButtonClick()">{{'assignment.status.reply' | translate}}</div>
       </div>
 
-      <h5 class="hired-text" *ngIf="userJob && userJob.accepted && userJob.willPerform && userJob.job_ended">{{'assignment.status.finished' | translate}}</h5>
+      <h5 class="hired-text" *ngIf="userJob && userJob.job_ended">{{'assignment.status.finished' | translate}}</h5>
       <h5 class="hired-text" *ngIf="userJob && userJob.accepted && userJob.willPerform && !userJob.job_ended">{{'assignment.status.hired' | translate}}</h5>
 
       <div class="expand-details-text-container">
