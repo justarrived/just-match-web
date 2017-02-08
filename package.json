@@ -68,6 +68,5 @@
     "protractor": "4.0.9",
     "tslint": "3.13.0",
     "webdriver-manager": "10.2.5"
-  },
-  "cacheDirectories": []
+  }
 }
