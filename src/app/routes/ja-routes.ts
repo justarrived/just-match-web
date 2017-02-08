@@ -3,7 +3,8 @@ import {JARoute} from './ja-route';
 export class JARoutes {
   public static home: JARoute = { url: () => ''};
   public static login: JARoute = { url: () => '/login'};
-  public static forgotPassword: JARoute = { url: () => '/reset-password'};
+  public static forgotPassword: JARoute = { url: () => '/forgot-password'};
+  public static resetPassword: JARoute = { url: (args?: string[]) => '/reset-password/' + args[0]};
   public static faq: JARoute = { url: () => '/faq'};
   public static contact: JARoute = { url: () => '/contact'};
   public static confirmation: JARoute = { url: (args?: string[]) => '/confirmation/' + args[0]};
