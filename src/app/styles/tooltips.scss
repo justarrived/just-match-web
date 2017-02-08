@@ -15,11 +15,11 @@
 .tooltip-left span,
 .tooltip-right span,
 .tooltip-top span {
-  min-width: 180px;
+  min-width: 80px;
   font-family: arial, sans-serif !important;
   font-size: 13px !important;
   line-height: normal !important;
-  text-align: left !important;
+  text-align: center;
   padding: 10px 10px 12px !important;
   visibility: hidden;
   opacity: 0;
@@ -44,7 +44,6 @@
 /* Tool tip Top */
 .tooltip-top {
   span {
-    left: -10px;
     bottom: 100%;
     margin-bottom: 30px;
     transition-property: opacity, margin-bottom, visibility;
