@@ -67,5 +67,6 @@
     "typescript": "~2.0.3",
     "webdriver-manager": "10.2.5",
     "webpack": "2.2.0"
-  }
+  },
+  "cacheDirectories": ["node_modules"]
 }
