@@ -33,7 +33,7 @@ export class UserDetailsComponent implements OnInit {
       'first_name': [this.user.firstName, Validators.compose([Validators.required, Validators.minLength(2)])],
       'last_name': [this.user.lastName, Validators.compose([Validators.required, Validators.minLength(2)])],
       'email': [this.user.email, Validators.compose([Validators.required, Validators.pattern(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)])],
-      'phone': [this.user.phone, Validators.compose([Validators.required, Validators.minLength(9), Validators.pattern(/\+46.*/)])],
+      'phone': [this.user.phone, Validators.compose([Validators.required])],
       'street': [this.user.street],
       'zip': [this.user.zip],
       'city': [this.user.city],

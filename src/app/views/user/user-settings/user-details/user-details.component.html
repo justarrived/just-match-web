@@ -33,8 +33,6 @@
         <label for="phone">{{'user.settings.form.phone.label' | translate}} *:</label>
         <input class="form-control material-input" id="phone" name="phone" type="text" (focus)="serverValidationErrors.phone = ''" placeholder="{{'user.settings.form.phone.placeholder' | translate}}" [formControl]="settingsForm.controls['phone']">
         <div *ngIf="settingsForm.controls['phone'].hasError('required')" class="alert alert-danger">{{'user.settings.form.phone.validation.required' | translate}}</div>
-        <div *ngIf="settingsForm.controls['phone'].hasError('minlength')" class="alert alert-danger">{{'user.settings.form.phone.validation.min.length' | translate}}</div>
-        <div *ngIf="settingsForm.controls['phone'].hasError('pattern')" class="alert alert-danger">{{'user.settings.form.phone.validation.pattern' | translate}}</div>
         <div *ngIf="serverValidationErrors.phone" class="alert alert-danger">{{serverValidationErrors.phone}}.</div>
       </div>
 

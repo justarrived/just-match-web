@@ -45,8 +45,6 @@
         <div class="form-group material-group register-form-input-container" [ngClass]="{'has-error': (registerForm.controls['phone'].touched && !registerForm.controls['phone'].valid)  || !serverValidationErrors.phone}">
           <input class="form-control material-input" id="phone" name="phone" type="text" (focus)="serverValidationErrors.phone = ''" placeholder="{{'user.register.form.phone.placeholder' | translate}}" [formControl]="registerForm.controls['phone']">
           <div *ngIf="registerForm.controls['phone'].touched && registerForm.controls['phone'].hasError('required')" class="alert alert-danger">{{'user.register.form.phone.validation.required' | translate}}</div>
-          <div *ngIf="registerForm.controls['phone'].hasError('minlength')" class="alert alert-danger">{{'user.register.form.phone.validation.min.length' | translate}}</div>
-          <div *ngIf="registerForm.controls['phone'].hasError('pattern')" class="alert alert-danger">{{'user.register.form.phone.validation.pattern' | translate}}</div>
           <div *ngIf="serverValidationErrors.phone" class="alert alert-danger">{{serverValidationErrors.phone}}.</div>
         </div>
 
