@@ -47,13 +47,13 @@
     "typescript": "~2.0.3",
     "ts-helpers": "^1.1.1",
     "webpack": "2.2.0",
+    "@types/lodash": "4.14.50",
     "zone.js": "^0.6.23"
   },
   "devDependencies": {
     "@angular/compiler-cli": "2.3.1",
     "@biesbjerg/ng2-translate-extract": "^0.6.0",
     "@types/jasmine": "2.5.38",
-    "@types/lodash": "4.14.50",
     "@types/moment": "^2.13.0",
     "@types/node": "^6.0.42",
     "codelyzer": "~1.0.0-beta.3",
