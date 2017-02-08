@@ -68,5 +68,5 @@
     "tslint": "3.13.0",
     "webdriver-manager": "10.2.5"
   },
-  "cacheDirectories": ["node_modules"]
+  "cacheDirectories": []
 }
