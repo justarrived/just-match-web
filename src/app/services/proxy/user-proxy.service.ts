@@ -65,4 +65,11 @@ export class UserProxy {
       'old_password': oldPassword
     });
   }
+
+  public changePasswordWithToken(password: string, oneTimeToken: string) {
+    return this.apiCall.post('users/change-password', {
+      'password': password,
+      'one_time_token': oneTimeToken
+    });
+  }
 }
