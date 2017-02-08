@@ -24,7 +24,7 @@
   visibility: hidden;
   opacity: 0;
   position: absolute;
-  z-index: 9999999 !important;
+  z-index: 1000 !important;
   transition-duration: 0.25s;
   transition-timing-function: cubic-bezier(0.35, 0, 0.35, 1);
 }
