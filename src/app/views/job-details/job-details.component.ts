@@ -54,7 +54,7 @@ export class JobDetailsComponent extends TranslationListener implements OnInit {
   }
 
   loadData() {
-    this.jobProxy.getJob(this.currentJobId, {include: 'owner,company,hourly_pay,company.company_images,comments'}).then(result => {
+    this.jobProxy.getJob(this.currentJobId, { include: 'owner,company,hourly_pay,company.company_images,comments' }).then(result => {
       this.job = result;
       this.getJobInfo();
     });
@@ -77,4 +77,15 @@ export class JobDetailsComponent extends TranslationListener implements OnInit {
   private switchJobDetailsVisibility() {
     this.jobDetailsVisible = !this.jobDetailsVisible;
   }
+
+  private onConfirmJobButtonClick() {
+    this.confirmJob();
+  }
+
+  private confirmJob(): Promise<any> {
+    return this.jobProxy.confirmForJob(this.job.id, this.userJob.id).then(response => {
+      this.userJob = response;
+    });
+  }
+
 }
