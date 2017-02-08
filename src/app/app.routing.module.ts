@@ -7,6 +7,7 @@ import {UserRegisterComponent} from './views/user/user-register/user-register.co
 import {UserSettingsComponent} from './views/user/user-settings/user-settings.component';
 import {LoginComponent} from './views/login/login.component';
 import {ForgotPasswordComponent} from './views/forgot-password/forgot-password.component';
+import {ResetPasswordComponent} from './views/reset-password/reset-password.component';
 import {FaqComponent} from './views/faq/faq.component';
 import {ContactComponent} from './views/contact/contact.component';
 import {JobsComponent} from './views/jobs/jobs.component';
@@ -19,19 +20,22 @@ import {NotFoundComponent} from './views/404/404.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', component: HomeComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'reset-password', component: ForgotPasswordComponent },
-  { path: 'faq', component: FaqComponent },
+  { path: '404', component: NotFoundComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'confirmation/:type', component: ConfirmationComponent },
   { path: 'cookies-about', component: CookiesAboutComponent },
-  { path: 'jobs/:page', component: JobsComponent },
+  { path: 'error/:statusCode', component: ErrorComponent },
+  { path: 'faq', component: FaqComponent },
+  { path: 'forgot-password', component: ForgotPasswordComponent },
   { path: 'job/:id', component: JobDetailsComponent },
+  { path: 'jobs', redirectTo: 'jobs/1', pathMatch: 'full'},
+  { path: 'jobs/:page', component: JobsComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'reset-password', redirectTo: '404', pathMatch: 'full'},
+  { path: 'reset-password/:token', component: ResetPasswordComponent },
   { path: 'user/register', component: UserRegisterComponent },
   { path: 'users/:user-id', component: UserSettingsComponent, canActivate: [AuthGuard] },
   { path: 'users/:user-id/jobs', component: MyJobsComponent, canActivate: [AuthGuard] },
-  { path: 'error/:statusCode', component: ErrorComponent },
-  { path: '404', component: NotFoundComponent },
   { path: '**', redirectTo: '404' },
 ];
 

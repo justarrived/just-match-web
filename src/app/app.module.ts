@@ -23,6 +23,7 @@ import {LanguageProxy} from './services/proxy/language-proxy.service';
 import {SkillProxy} from './services/proxy/skill-proxy.service';
 import {LoginComponent} from './views/login/login.component';
 import {ForgotPasswordComponent} from './views/forgot-password/forgot-password.component';
+import {ResetPasswordComponent} from './views/reset-password/reset-password.component';
 import {UserManager} from './services/user-manager.service';
 import {JobPreviewComponent} from './components/job-preview/job-preview.component';
 import {JobsComponent} from './views/jobs/jobs.component';
@@ -89,6 +90,7 @@ export class RavenErrorHandler implements ErrorHandler {
     AutocompleteDropdownComponent,
     LoginComponent,
     ForgotPasswordComponent,
+    ResetPasswordComponent,
     JobPreviewComponent,
     JobsComponent,
     JobListItemComponent,
