@@ -20,7 +20,7 @@
     "e2e": "protractor",
     "postinstall": "ng build --aot -prod"
   },
-  "private": true,
+  "private": false,
   "dependencies": {
     "@angular/common": "2.3.1",
     "@angular/compiler": "2.3.1",
@@ -42,6 +42,8 @@
     "ng2-translate": "^4.0.1",
     "raven-js": "^3.10.0",
     "rxjs": "5.0.0-rc.4",
+    "extract-text-webpack-plugin": "2.0.0-beta.rc.2",
+    "ts-node": "1.2.1",
     "typescript": "~2.0.3",
     "ts-helpers": "^1.1.1",
     "webpack": "2.2.0",
@@ -55,7 +57,6 @@
     "@types/moment": "^2.13.0",
     "@types/node": "^6.0.42",
     "codelyzer": "~1.0.0-beta.3",
-    "extract-text-webpack-plugin": "2.0.0-beta.rc.2",
     "jasmine-core": "2.5.2",
     "jasmine-spec-reporter": "2.5.0",
     "karma": "1.2.0",
@@ -64,7 +65,6 @@
     "karma-jasmine": "^1.0.2",
     "karma-remap-istanbul": "^0.2.1",
     "protractor": "4.0.9",
-    "ts-node": "1.2.1",
     "tslint": "3.13.0",
     "webdriver-manager": "10.2.5"
   },
