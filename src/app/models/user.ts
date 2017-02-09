@@ -23,7 +23,7 @@ export class User {
   workExperience: string;
   education: string;
   skills: string;
-  languageId: number;
+  languageId: string;
   frilansFinansPaymentDetails: boolean;
   company: Company;
   profile_image: UserImage;
