@@ -3,7 +3,6 @@
 .home-header {
   background: linear-gradient($color-cerise-600, $color-primary-cerise);
   text-align: center;
-  padding: 3em;
   color: $white;
 
   h1 {
@@ -34,6 +33,21 @@
       left: -1em;
     }
   }
+}
+
+.map-image-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.start-page-text-container {
+  padding: 3em;
+}
+
+.map-image {
+  width: 100%;
+  height: auto;
 }
 
 .start-sign-in-button {

@@ -1,13 +1,13 @@
 <div class="container-fluid">
   <div class="row home-header">
-    <div class="col-xs" *ngIf="user">
+    <div class="col-xs-12 col-md-7 start-page-text-container" *ngIf="user">
       <h1>{{'common.welcome_user'| translate: {username: user.firstName} }}</h1>
       <div class="home-header-button-container">
         <a routerLink="{{JARoutes.user.url([user.id])}}" class="medium-button-light-size btn-secondary-light btn-small btn">{{'common.edit_profile'| translate}}</a><br>
         <a routerLink="{{JARoutes.jobs.url(['1'])}}" class="medium-button-light-size btn-primary-light btn-small btn">{{'menu.main.find_assignment'| translate}}</a>
       </div>
     </div>
-    <div class="col-xs" *ngIf="!user">
+    <div class="col-xs-12 col-md-7 start-page-text-container" *ngIf="!user">
       <h1>{{'start.header.title' | translate }}</h1>
       <h3 class="home-header-subtitle">{{'start.header.subtitle' | translate }}</h3>
       <div class="header-box-text">
@@ -17,6 +17,9 @@
         <div routerLink="{{JARoutes.registerUser.url()}}" class="btn-secondary-light btn-small btn">{{'menu.main.create_account'| translate}}</div><br/>
         <div routerLink="{{JARoutes.login.url()}}" class="btn-primary-light btn-small btn start-sign-in-button">{{'menu.main.sign_in'| translate}}</div>
       </div>
+    </div>
+    <div class="col-xs-12 col-md-5" style="padding: 0px;">
+      <img class="map-image" src="/assets/images/startpagemap.png" alt="Map" />
     </div>
   </div>
 
