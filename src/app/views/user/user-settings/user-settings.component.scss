@@ -1,7 +1,6 @@
 @import '../../../styles/variables';
 
 .user-profile-container {
-
   .user-profile-subheader-container {
     padding: 20px;
     background: $color-gray-500;
@@ -22,11 +21,12 @@
 
       .user-profile-subheader-info-image-container {
         display: table;
-        margin: 0 auto;
         width: 85px;
         height: 85px;
         border-radius: 50%;
         background-color: rgba(255, 255, 255, 0.1);
+        overflow: hidden;
+        position: relative;
 
         .user-profile-subheader-info-image-loading {
           display: table-cell;
@@ -51,9 +51,13 @@
         .icon-camera {
           width: 85px;
           height: 85px;
-          margin-top: -85px;
           pointer-events: none;
           display: table;
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          right: 0;
 
           .fa-camera {
             display: table-cell;
@@ -64,15 +68,15 @@
         }
 
         .user-info-image {
-          background-size: 85px 85px;
-          background-repeat: no-repeat;
+          pointer-events: none;
+          object-fit: cover;
           width: 85px;
           height: 85px;
-          margin-top: -85px;
-          pointer-events: none;
-          transition: background 0.3s;
-          border-radius: 50%;
-          overflow: hidden;
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          right: 0;
         }
       }
 
@@ -87,11 +91,13 @@
           font-size: 18px;
         }
       }
+
       .user-profile-subheader-info-success-msg {
         margin-top: 8px;
         width: 100%;
         color: green;
       }
+
       .user-profile-subheader-info-error-msg {
         margin-top: 8px;
         width: 100%;

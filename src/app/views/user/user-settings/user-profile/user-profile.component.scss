@@ -24,7 +24,7 @@
     }
 
     input {
-      border: 1px solid rgba(0, 0, 0, 0.15)
+      border: 1px solid rgba(0, 0, 0, 0.15);
     }
   }
 
@@ -98,12 +98,12 @@
 
     .permit-image {
       margin: 0 auto;
-      background-size: 200px 200px;
+      background-size: contain;
       background-repeat: no-repeat;
-      width: 200px;
+      background-position: center;
+      max-width: 100%;
       height: 200px;
       transition: background 0.3s;
-      overflow: hidden;
     }
   }
 
