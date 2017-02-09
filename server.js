@@ -15,7 +15,7 @@ var ensureHttpsOrRedirect = function(req, res, next) {
     return next();
   }
 };
-app.use(ensureHttpsOrRedirect);
+//app.use(ensureHttpsOrRedirect);
 
 // Run the app by serving the static files
 // in the dist directory
