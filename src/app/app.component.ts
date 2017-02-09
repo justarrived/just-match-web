@@ -102,8 +102,8 @@ export class AppComponent implements OnInit {
   }
 
   get profileImagePath(): string {
-    if(this.user.profile_image && this.user.profile_image.imageUrl) {
-      return this.user.profile_image.imageUrl;
+    if(this.user.profile_image && this.user.profile_image.mediumImageUrl) {
+      return this.user.profile_image.mediumImageUrl;
     } else {
       return '/assets/images/placeholder-profile-image.png';
     }
