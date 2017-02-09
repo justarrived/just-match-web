@@ -5,7 +5,7 @@
   "env": {
     "NPM_CONFIG_PRODUCTION": {
       "required": true,
-      "value": false
+      "value": "false"
     }
   },
   "formation": {},
