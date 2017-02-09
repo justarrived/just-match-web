@@ -33,6 +33,9 @@ export class UserProfileComponent extends TranslationListener implements OnInit 
   @ViewChild('nativeLanguageDropdown')
   private nativeLanguageDropdown: AutocompleteDropdownComponent;
 
+  @ViewChild('defaultLanguageDropdown')
+  private defaultLanguageDropdown: AutocompleteDropdownComponent;
+
   @ViewChild('countryDropdown')
   private countryDropdown: AutocompleteDropdownComponent;
 
@@ -45,7 +48,9 @@ export class UserProfileComponent extends TranslationListener implements OnInit 
 
   private countries: Country[];
   private languages: Language[];
+  private systemLanguages: Language[];
   private languagesExcludingNative: Language[];
+  private ss: Language;
   private skills: Skill[];
 
   private profileForm: FormGroup;
@@ -120,6 +125,7 @@ export class UserProfileComponent extends TranslationListener implements OnInit 
 
     this.authManager.getUserChangeEmmiter().subscribe(user => {
       this.user = user;
+      this.loadData();
       this.initForm();
     });
   }
@@ -127,6 +133,9 @@ export class UserProfileComponent extends TranslationListener implements OnInit 
   loadData() {
     this.userProxy.getStatuses().then(statuses => this.statuses = statuses);
     this.countryProxy.getCountries().then(countries => this.countries = countries);
+    this.languageProxy.getSystemLanguages().then(languages => {
+      this.systemLanguages = languages;
+    });
     this.languageProxy.getLanguages().then(languages => {
       this.languages = languages;
       this.languagesExcludingNative = languages.slice();
@@ -142,6 +151,7 @@ export class UserProfileComponent extends TranslationListener implements OnInit 
     this.profileForm = this.formBuilder.group({
       'user_languages': [this.user.userLanguages.slice()],
       'native_language': [this.user.getNativeLanguage(), Validators.compose([Validators.required])],
+      'default_language': [this.user.languageId, Validators.compose([Validators.required])],
       'country_of_origin': [this.user.countryOfOriginCode, Validators.compose([Validators.required])],
       'current_status': [this.user.currentStatus],
       'at_und': [this.user.atUnd ? this.user.atUnd : 'no'],
@@ -152,15 +162,20 @@ export class UserProfileComponent extends TranslationListener implements OnInit 
       'user_skills': [this.user.userSkills.slice()]
     });
 
-    const nativeLanguage = this.profileForm.value.native_language || { language: { name: '' } };
+    const nativeLanguage = this.user.getNativeLanguage() || { language: { name: '' } };
     const nativeLanguageDropdown = this.nativeLanguageDropdown;
     setTimeout(function() {
       nativeLanguageDropdown.textInput = nativeLanguage.language.name;
     }, 100);
 
-    this.countryProxy.getCountryByCountryCode(this.profileForm.value.country_of_origin)
+    this.countryProxy.getCountryByCountryCode(this.user.countryOfOriginCode)
       .then((countryOfOrigin) => {
         this.countryDropdown.textInput = countryOfOrigin.name || '';
+      });
+
+    this.languageProxy.getLanguage(this.user.languageId)
+      .then((defaultLanguage) => {
+        this.defaultLanguageDropdown.textInput = defaultLanguage.name || '';
       });
   }
 
@@ -188,6 +203,12 @@ export class UserProfileComponent extends TranslationListener implements OnInit 
   private onCountryOfOriginSelect(country) {
     if (country) {
       this.profileForm.controls['country_of_origin'].setValue(country.countryCode);
+    }
+  }
+
+  private onDefaultLanguageSelect(language) {
+    if (language) {
+      this.profileForm.value.default_language = language.id;
     }
   }
 
@@ -250,6 +271,7 @@ export class UserProfileComponent extends TranslationListener implements OnInit 
     this.serverValidationErrors = {};
 
     this.userProxy.updateUser(this.user.id, {
+      'language_id': this.profileForm.value.default_language,
       'language_ids': map(this.profileForm.value.user_languages, userLanguage => {
         return {
           id: userLanguage['language'].id,

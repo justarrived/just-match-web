@@ -4,12 +4,21 @@
     <form #form="ngForm" (ngSubmit)="onSubmit()">
 
       <div class="profile-input-container">
+        <label>{{'user.profile.form.default.language.label' | translate}} *:</label>
+        <autocomplete-dropdown #defaultLanguageDropdown (dropdownListItemSelect)="onDefaultLanguageSelect($event)" [lookupType]="'list'" [enumList]="systemLanguages" [placeholder]="'user.profile.form.default.language.placeholder' | translate"
+            [autocompleteResultLabelFunction]="namePropertyLabel" [selectedItemLabelFunction]="namePropertyLabel">
+        </autocomplete-dropdown>
+        <p class="profile-form-input-description-text">{{'user.profile.form.default.language.description' | translate}}</p>
+        <div *ngIf="!profileForm.value.default_language" class="alert alert-danger">{{'user.profile.form.default.language.required' | translate}}</div>
+        <div *ngIf="serverValidationErrors.language_id" class="alert alert-danger">{{serverValidationErrors.language_id}}</div>
+      </div>
+
+      <div class="profile-input-container">
         <label>{{'user.profile.form.native.language.label' | translate}} *:</label>
         <autocomplete-dropdown #nativeLanguageDropdown (dropdownListItemSelect)="onNativeLanguageSelect($event)" [placeholder]="'user.profile.form.native.language.placeholder' | translate" [autocompleteResultLabelFunction]="namePropertyLabel" [selectedItemLabelFunction]="namePropertyLabel"
             [lookupType]="'list'" [enumList]="languages">
         </autocomplete-dropdown>
         <div *ngIf="profileForm.controls['native_language'].hasError('required')" class="alert alert-danger">{{'user.profile.form.native.language.validation.required' | translate}}</div>
-        <div *ngIf="serverValidationErrors.language_id" class="alert alert-danger">{{serverValidationErrors.language_id}}.</div>
       </div>
 
       <div class="profile-input-container">
