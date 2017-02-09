@@ -23,8 +23,8 @@ export class LanguageProxy {
       .then(response => new Language(response.data));
   }
 
-  public getLanguages(name: string = '', sort: string = this.translationService.getSelectedLanguageCode() + '_name', pageSize: number = 300, pageNumber: number = 1): Promise<Array<Language>> {
-    let nameFilter = 'filter[' + this.translationService.getSelectedLanguageCode() + '_name' + ']';
+  public getLanguages(name: string = '', sort: 'name', pageSize: number = 300, pageNumber: number = 1): Promise<Array<Language>> {
+    let nameFilter = 'filter[name]';
 
     return this.apiCall.get('languages', {nameFilter: name, 'sort': sort, 'page[size]': pageSize, 'page[number]': pageNumber})
       .then(response => map(response.data, data => new Language(data)));
