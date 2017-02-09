@@ -6,8 +6,7 @@ const app = express();
 // Ensure that HTTPS is used in production or redirect to it
 var ensureHttpsOrRedirect = function(req, res, next) {
   if (process.env.NODE_ENV === 'production') {
-    let protocol = req.headers['x-forwarded-proto'];
-    if (protocol && protocol.toLowerCase() != 'https') {
+    if (req.headers['x-forwarded-proto'] != 'https') {
       return res.redirect('https://' + req.headers.host + req.url);
     } else {
       return next();
@@ -16,7 +15,7 @@ var ensureHttpsOrRedirect = function(req, res, next) {
     return next();
   }
 };
-app.use(ensureHttpsOrRedirect);
+//app.use(ensureHttpsOrRedirect);
 
 // Run the app by serving the static files
 // in the dist directory
