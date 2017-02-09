@@ -20,7 +20,9 @@
     clear: both;
 
     .comment-picture-container {
+      margin-top: 33px;
       img {
+        object-fit: cover;
         width: 35px;
         height: 35px;
       }

@@ -2,7 +2,7 @@
   <div *ngFor="let comment of comments" class="comment-container">
     <div class="comment-picture-container" [ngClass]="{'float-left': comment.owner.id != userId, 'float-right': comment.owner.id == userId}">
       <img class="rounded-image" *ngIf="comment.owner.company && comment.owner.company.id" [src]="(comment.owner.company.companyLogo && comment.owner.company.imageUrlSmall) || '/assets/images/placeholder-logo.png'">
-      <img class="rounded-image" *ngIf="!(comment.owner.company && comment.owner.company.id)" [src]="(comment.owner.images && comment.owner.images[0] && comment.owner.images[0].imageUrl) || '/assets/images/placeholder-profile-image.png'">
+      <img class="rounded-image" *ngIf="!(comment.owner.company && comment.owner.company.id)" [src]="(comment.owner.images && comment.owner.profile_image && comment.owner.profile_image.mediumImageUrl) || '/assets/images/placeholder-profile-image.png'">
     </div>
     <div class="comment-content" [ngClass]="{'left-moved': comment.owner.id != userId}">
       <div class="comment-meta-data">
