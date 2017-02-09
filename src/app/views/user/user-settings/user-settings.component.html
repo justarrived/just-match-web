@@ -8,7 +8,7 @@
         <loading *ngIf="uploadingImage" class="user-profile-subheader-info-image-loading"></loading>
         <input *ngIf="!uploadingImage" type="file" id="image-filename" name="imageFilename" class="file" (change)="onProfileImageFilenameChange($event)" accept="image/jpeg,image/jpg,image/gif,image/png">
         <div *ngIf="!uploadingImage && !user.profile_image" class="icon-camera"><i class="fa fa-camera" aria-hidden="true"></i></div>
-        <div *ngIf="!uploadingImage && user.profile_image" class="user-info-image" [ngStyle]="{'background-image': 'url(' + user.profile_image.imageUrl + ')'}"></div>
+        <img *ngIf="!uploadingImage && user.profile_image" class="user-info-image" [src]="user.profile_image.imageUrl"/>
       </div>
       <div class="user-profile-subheader-info-name-container"><span>{{user.firstName}} {{user.lastName}}</span></div>
     </div>
