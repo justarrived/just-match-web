@@ -1,5 +1,5 @@
-@import './app/styles/variables';
-@import './app/styles/mixins';
+@import './app/styles/colors';
+@import './app/styles/dimensions';
 @import './app/styles/buttons';
 @import './app/styles/typography';
 @import './app/styles/tooltips';
@@ -101,13 +101,6 @@ body {
       display: block;
       margin-bottom: 5px;
 
-      &.not-empty,
-      &:focus {
-        ~ .material-label:not(.label-up) {
-          @include label-up();
-        }
-      }
-
       &.has-error,
       &.ng-touched.ng-invalid {
         border: 1px solid $color-primary-cerise !important;
@@ -126,31 +119,6 @@ body {
     textarea.material-input {
       resize: none;
     }
-
-    .material-label {
-      position: absolute;
-      pointer-events: none;
-      left: 12px;
-      top: 11px;
-      transition: 0.2s ease all;
-      -moz-transition: 0.2s ease all;
-      -webkit-transition: 0.2s ease all;
-
-      &.label-up {
-        @include label-up();
-      }
-    }
-
-    .material-group-error {
-      color: $color-primary-cerise;
-      font-size: 12px;
-    }
-  }
-
-  .rounded-image {
-    border-radius: 50%;
-    vertical-align: middle;
-    box-shadow: inset 0 0 1px 0 rgba(0,0,0,.2);
   }
 }
 

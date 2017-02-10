@@ -1,3 +1,0 @@
-<span class="rating" [ngClass]="{'editable': editable}">
-  <i class="fa fa-2x" [ngClass]="{'fa-star': rating >= number, 'fa-star-o': rating < number}" *ngFor="let number of range(1,scale)" (click)="selectValue(number)"></i>
-</span>

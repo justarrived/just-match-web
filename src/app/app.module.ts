@@ -41,7 +41,6 @@ import {LoadingComponent} from './components/loading-gif/loading.component';
 import {MyJobsComponent} from './views/my-jobs/my-jobs.component';
 import {UserJobsComponent} from './views/my-jobs/user-jobs/user-jobs.component';
 import {MyJobsItemComponent} from './components/my-jobs-item/my-jobs-item.component';
-import {RatingComponent} from './components/rating/rating.component';
 import {AppTranslateModule} from './app.translate.module';
 import {AppRoutingModule} from './app.routing.module';
 import {UserSettingsComponent} from './views/user/user-settings/user-settings.component';
@@ -104,7 +103,6 @@ export class RavenErrorHandler implements ErrorHandler {
     CookiesAboutComponent,
     CookieBarComponent,
     LoadingComponent,
-    RatingComponent,
     MyJobsItemComponent,
     UserJobsComponent,
     MyJobsComponent,

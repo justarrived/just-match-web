@@ -1,4 +1,29 @@
-@import './variables';
+
+$museo: "museo", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$fs-s: 12px;
+$fs-m0: 14px;
+$fs-m: 16px;
+$fs-l: 18px;
+$fs-xl: 22px;
+$fs-xxl: 24px;
+$fs-xxxl: 32px;
+
+@mixin wrap-long-words() {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  -ms-word-break: break-all;
+  word-break: break-word;
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}
+
+@mixin truncate-owerflowing-text() {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
 
 @font-face {
   font-family: 'museo';
@@ -56,17 +81,10 @@ h6 {
   font-weight: 700;
 }
 
-p {
+p, div, span {
   font-family: $default-font-family;
   font-size: 16px;
   line-height: 22px;
-}
-
-em {
-  font-family: $default-font-family;
-  font-size: 24px;
-  line-height: 36px;
-  font-weight: 300;
 }
 
 .fs-s {

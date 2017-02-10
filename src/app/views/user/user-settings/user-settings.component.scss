@@ -1,4 +1,5 @@
-@import '../../../styles/variables';
+@import '../../../styles/colors';
+@import '../../../styles/typography';
 
 .user-profile-container {
   .user-profile-subheader-container {
@@ -81,15 +82,13 @@
       }
 
       .user-profile-subheader-info-name-container {
-        display: table;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
         height: 85px;
         margin: 0 auto;
-
-        span {
-          display: table-cell;
-          vertical-align: middle;
-          font-size: 18px;
-        }
+        max-width: 200px;
+        @include truncate-owerflowing-text;
       }
 
       .user-profile-subheader-info-success-msg {
