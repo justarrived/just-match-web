@@ -174,7 +174,7 @@
 
         <div class="profile-input-table-container">
           <div class="profile-input-table-row-container" *ngFor="let userLanguage of profileForm.value.user_languages">
-            <div class="profile-input-table-row-inner-container" *ngIf="userLanguage.proficiency.proficiency !== 5">
+            <div class="profile-input-table-row-inner-container" *ngIf="userLanguage.proficiency && userLanguage.proficiency.proficiency !== 5">
               <div class="profile-input-table-row-inner-item-container">
                 <div class="profile-input-table-row-inner-item-text">
                   {{userLanguage.language.name}}
