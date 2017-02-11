@@ -59,7 +59,7 @@ export class CommentsComponent extends TranslationListener implements OnInit {
     this.commentsProxy.getComments(this.resourceName, this.resourceId, {
       include: 'owner,owner.user-images,owner.company,owner.company.company-images'
     }).then(result => {
-      this.comments = orderBy(result.data, ['createdAt']);
+      this.comments = orderBy(result.data, ['createdAt']).map(data => new Comment(data));
       this.calculateFooterVisibility();
     });
   }
