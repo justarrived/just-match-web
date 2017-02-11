@@ -80,7 +80,7 @@ export class User {
   }
 
   getNativeLanguage(): UserLanguage {
-    return this.userLanguages.find(language => language.proficiency.proficiency === 5);
+    return this.userLanguages.find(language => language.proficiency && language.proficiency.proficiency === 5);
   }
 
   getImageByCategory(category): UserImage {
