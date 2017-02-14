@@ -46,7 +46,6 @@ import {AppRoutingModule} from './app.routing.module';
 import {UserSettingsComponent} from './views/user/user-settings/user-settings.component';
 import {UserProfileComponent} from './views/user/user-settings/user-profile/user-profile.component';
 import {UserDetailsComponent} from './views/user/user-settings/user-details/user-details.component';
-import {TranslationItemComponent} from './components/translation-item/translation-item.component';
 import {AutosizeDirective} from './components/textarea-autosize/textarea-autosize.directive';
 import {Geolocation} from './services/geolocation.service';
 import {ErrorComponent} from './views/error/error.component';
@@ -107,7 +106,6 @@ export class RavenErrorHandler implements ErrorHandler {
     UserJobsComponent,
     MyJobsComponent,
     UserSettingsComponent,
-    TranslationItemComponent,
     AutosizeDirective,
     ErrorComponent,
     NotFoundComponent,
