@@ -85,11 +85,11 @@
         <label *ngIf="profileForm.value.current_status === 'asylum_seeker'" for="ssn">{{'user.profile.form.coordination.number.label' | translate}}:</label>
         <label *ngIf="profileForm.value.current_status === 'eu_citizen'" for="ssn">{{'user.profile.form.coordination.number.or.ssn.label' | translate}}:</label>
         <label *ngIf="profileForm.value.current_status !== 'asylum_seeker' && profileForm.value.current_status !== 'eu_citizen'" for="ssn">{{'user.profile.form.ssn.label' | translate}}:</label>
-        <input *ngIf="profileForm.value.current_status === 'asylum_seeker'" class="form-control material-input" id="ssn" name="ssn-input" type="text" onkeypress="return event.charCode >= 48 && event.charCode <= 57" (focus)="serverValidationErrors.ssn = ''" placeholder="{{'user.profile.form.coordination.number.placeholder' | translate}}"
+        <input *ngIf="profileForm.value.current_status === 'asylum_seeker'" maxlength="20" class="form-control material-input" id="ssn" name="ssn-input" type="text" onkeypress="return event.charCode >= 48 && event.charCode <= 57" (focus)="serverValidationErrors.ssn = ''" placeholder="{{'user.profile.form.coordination.number.placeholder' | translate}}"
             [formControl]="profileForm.controls['ssn']">
-        <input *ngIf="profileForm.value.current_status === 'eu_citizen'" class="form-control material-input" id="ssn" name="ssn-input" type="text" onkeypress="return event.charCode >= 48 && event.charCode <= 57" (focus)="serverValidationErrors.ssn = ''" placeholder="{{'user.profile.form.coordination.number.or.ssn.placeholder' | translate}}"
+        <input *ngIf="profileForm.value.current_status === 'eu_citizen'" maxlength="20" class="form-control material-input" id="ssn" name="ssn-input" type="text" onkeypress="return event.charCode >= 48 && event.charCode <= 57" (focus)="serverValidationErrors.ssn = ''" placeholder="{{'user.profile.form.coordination.number.or.ssn.placeholder' | translate}}"
             [formControl]="profileForm.controls['ssn']">
-        <input *ngIf="profileForm.value.current_status !== 'asylum_seeker' && profileForm.value.current_status !== 'eu_citizen'" class="form-control material-input" id="ssn" name="ssn-input" type="text" onkeypress="return event.charCode >= 48 && event.charCode <= 57" (focus)="serverValidationErrors.ssn = ''" placeholder="{{'user.profile.form.ssn.placeholder' | translate}}"
+        <input *ngIf="profileForm.value.current_status !== 'asylum_seeker' && profileForm.value.current_status !== 'eu_citizen'" maxlength="20" class="form-control material-input" id="ssn" name="ssn-input" type="text" onkeypress="return event.charCode >= 48 && event.charCode <= 57" (focus)="serverValidationErrors.ssn = ''" placeholder="{{'user.profile.form.ssn.placeholder' | translate}}"
             [formControl]="profileForm.controls['ssn']">
         <div *ngIf="serverValidationErrors.ssn" class="alert alert-danger">{{serverValidationErrors.ssn}}.</div>
       </div>
@@ -221,14 +221,14 @@
 
       <div class="profile-input-container">
         <label>{{'user.profile.form.general.skills.label' | translate}}:</label>
-        <textarea class="form-control material-input" name="general-skills" id="general-skills" class="form-control material-input" (focus)="serverValidationErrors.competence_text = ''" autosize type="text" placeholder="{{'user.profile.form.general.skills.placeholder' | translate}}"
+        <textarea class="form-control material-input" maxlength="1000" name="general-skills" id="general-skills" class="form-control material-input" (focus)="serverValidationErrors.competence_text = ''" autosize type="text" placeholder="{{'user.profile.form.general.skills.placeholder' | translate}}"
             [formControl]="profileForm.controls['competence_text']"></textarea>
         <div *ngIf="serverValidationErrors.competence_text" class="alert alert-danger">{{serverValidationErrors.competence_text}}.</div>
       </div>
 
       <div class="profile-input-container">
         <label>{{'user.profile.form.work.experience.label' | translate}}:</label>
-        <textarea class="form-control material-input" name="workExperience" id="work-experience" class="form-control material-input" (focus)="serverValidationErrors.job_experience = ''" autosize type="text" placeholder="{{'user.profile.form.work.experience.placeholder' | translate}}"
+        <textarea class="form-control material-input" maxlength="1000" name="workExperience" id="work-experience" class="form-control material-input" (focus)="serverValidationErrors.job_experience = ''" autosize type="text" placeholder="{{'user.profile.form.work.experience.placeholder' | translate}}"
             [formControl]="profileForm.controls['job_experience']"></textarea>
         <div *ngIf="serverValidationErrors.job_experience" class="alert alert-danger">{{serverValidationErrors.job_experience}}.</div>
       </div>
