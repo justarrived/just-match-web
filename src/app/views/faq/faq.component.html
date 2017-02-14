@@ -1,6 +1,6 @@
 <div class="faq-container">
   <div class="sub-header-container">
-    <h3 class="sub-header-title">{{'faq' | translate}}</h3>
+    <h3 class="sub-header-title">{{'faq.title' | translate}}</h3>
   </div>
   <ul class="faq-list-container">
     <li class="faq-list-item" *ngFor="let faq of faqs">
@@ -10,7 +10,7 @@
         {{faq.question}}
       </div>
       <div class="faq-item-answer-container">
-        <b>{{"faq.answer" | translate}}:</b><br>
+        <b>{{'faq.answer.label' | translate}}:</b><br>
         {{faq.answer}}
       </div>
     </li>
