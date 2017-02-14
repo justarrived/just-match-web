@@ -189,6 +189,7 @@ padding: 2px 25px;
     .input-radio-button-label {
       font-size: 16px;
       opacity: 0.7;
+      @include wrap-long-words;
 
       .input-radio-button-span {
         display: block;

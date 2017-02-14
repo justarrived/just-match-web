@@ -177,6 +177,7 @@ $job-card-border-radius: 8px;
           text-align: center;
           margin: 0;
           white-space: normal;
+          @include truncate-owerflowing-text;
         }
       }
 
@@ -280,6 +281,7 @@ $job-card-border-radius: 8px;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    @include truncate-owerflowing-text;
   }
 
   span {
