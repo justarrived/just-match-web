@@ -1,10 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {UserProxy} from '../../../services/proxy/user-proxy.service';
-import {UserStatus} from '../../../models/user/user-status';
-import {UserRegister} from '../../../models/user/user-register';
 import {CountryProxy} from '../../../services/proxy/country-proxy.service';
 import {LanguageProxy} from '../../../services/proxy/language-proxy.service';
-import {atUndStatuses} from '../../../enums/enums';
 import {Country} from '../../../models/country';
 import {Language} from '../../../models/language/language';
 import {AuthManager} from '../../../services/auth-manager.service';
