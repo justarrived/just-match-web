@@ -1,147 +1,121 @@
 @import '../../styles/colors';
 
-
 .faq-list-container {
   background-color: $default-bg-color;
+  width: 100%;
+  cursor: hand;
+  list-style: none;
+  perspective: 900;
+  padding: 0;
+  margin: 0;
 
-  > div {
-    width: 100%;
-    cursor: pointer;
-    cursor: hand;
-  }
-
-  .transition,
-  p {
-    transition: all 0.25s ease-in-out;
-  }
-
-  ul li i {
-    &:after,
-    &:before {
-      transition: all 0.25s ease-in-out;
-    }
-  }
-
-  .flipIn,
-  h1,
-  ul li {
-    animation: flipdown 0.5s ease both;
-  }
-
-  ul {
-    list-style: none;
-    perspective: 900;
+  .faq-list-item {
+    position: relative;
     padding: 0;
     margin: 0;
-
-    li {
-      position: relative;
-      padding: 0;
-      margin: 0;
-      padding-bottom: 4px;
-      padding-top: 18px;
-      padding-left: 1em;
-      border-top: 1px dotted #dce7eb;
-      @for $i from 1 through 40 {
-        &:nth-of-type(#{$i}) {
-          animation-delay: #{$i * 0.1 + 0.25}s;
-        }
+    padding-bottom: 10px;
+    padding-top: 18px;
+    padding-left: 1em;
+    border-top: 1px dotted #dce7eb;
+    animation: flipdown 0.5s ease both;
+    @for $i from 1 through 40 {
+      &:nth-of-type(#{$i}) {
+        animation-delay: #{$i * 0.1 + 0.25}s;
       }
+    }
 
-      &:last-of-type {
-        padding-bottom: 0;
-      }
+    .faq-list-item-dropdown-icon {
+      position: absolute;
+      transform: translate(-6px, 0);
+      margin-top: 5px;
+      right: 20px;
 
-      i {
+      &:after,
+      &:before {
+        content: "";
         position: absolute;
-        transform: translate(-6px, 0);
-        margin-top: 5px;
-        right: 20px;
-
-        &:after,
-        &:before {
-          content: "";
-          position: absolute;
-          background-color: $color-primary-cerise;
-          width: 3px;
-          height: 9px;
-        }
-
-        &:before {
-          transform: translate(-2px, 0) rotate(45deg);
-        }
-
-        &:after {
-          transform: translate(2px, 0) rotate(-45deg);
-        }
+        background-color: $color-primary-cerise;
+        width: 3px;
+        height: 9px;
+        transition: all 0.25s ease-in-out;
       }
 
-      input[type=checkbox] {
-        position: absolute;
-        cursor: pointer;
-        width: 100%;
-        height: 100%;
-        z-index: 1;
-        opacity: 0;
-        top: 0;
-        left: 0;
+      &:before {
+        transform: translate(-2px, 0) rotate(45deg);
+      }
 
-        &:checked ~ {
-          .faq-item-answer-container {
-            p {
-              display: none;
-              visibility: hidden;
-              animation: none;
-            }
+      &:after {
+        transform: translate(2px, 0) rotate(-45deg);
+      }
+    }
 
-            i {
-              &:before {
-                transform: translate(3px, 0) rotate(45deg);
-              }
+    .faq-item-question-container {
+      margin-bottom: 10px;
+      font-weight: bold;
+      margin-right: 50px;
+    }
 
-              &:after {
-                transform: translate(-3px, 0) rotate(-45deg);
-              }
-            }
+    .faq-list-item-checkbox {
+      position: absolute;
+      cursor: pointer;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      opacity: 0;
+      top: 0;
+      left: 0;
+
+      &:checked ~ {
+        .faq-item-answer-container {
+          display: none;
+          visibility: hidden;
+          animation: none;
+        }
+
+        .faq-list-item-dropdown-icon {
+          &:before {
+            transform: translate(3px, 0) rotate(45deg);
+          }
+
+          &:after {
+            transform: translate(-3px, 0) rotate(-45deg);
           }
         }
       }
+    }
 
-      .faq-item-answer-container {
-        margin-top: 18px;
-        p {
-          animation: flipdown 0.5s ease both;
-          margin-right: 50px;
-        }
-      }
+    .faq-item-answer-container {
+      transition: all 0.25s ease-in-out;
+      animation: flipdown 0.5s ease both;
+      margin-right: 50px;
     }
   }
-  @keyframes flipdown {
-    0% {
-      opacity: 0;
-      transform-origin: top center;
-      transform: rotateX(-90deg);
-    }
+}
+@keyframes flipdown {
+  0% {
+    opacity: 0;
+    transform-origin: top center;
+    transform: rotateX(-90deg);
+  }
 
-    5% {
-      opacity: 1;
-    }
+  5% {
+    opacity: 1;
+  }
 
-    80% {
-      transform: rotateX(8deg);
-    }
+  80% {
+    transform: rotateX(8deg);
+  }
 
-    83% {
-      transform: rotateX(6deg);
-    }
+  83% {
+    transform: rotateX(6deg);
+  }
 
-    92% {
-      transform: rotateX(-3deg);
-    }
+  92% {
+    transform: rotateX(-3deg);
+  }
 
-    100% {
-      transform-origin: top center;
-      transform: rotateX(0deg);
-    }
+  100% {
+    transform-origin: top center;
+    transform: rotateX(0deg);
   }
 }
