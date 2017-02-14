@@ -1,42 +1,34 @@
 @import '../../styles/colors';
 
-
 .contact-form-container {
   background-color: $default-bg-color;
 
-  .textarea {
+  .contact-form-description {
     width: 50%;
     margin: 0 auto;
     padding-top: 30px;
-    p {
-      text-align: center;
-      vertical-align: middle;
-    }
+    text-align: center;
+    vertical-align: middle;
   }
 
-  .envelope-icon-container {
+  .contact-form-icon-container{
     margin: 0 auto;
-    width: 50%;
     text-align: center;
     padding-top: 10px;
     padding-bottom: 50px;
-    i {
+
+    .contact-form-icon {
       color: $color-primary-cerise;
     }
   }
 
-  .contact-input-container {
+  .contact-form-input-container {
     width: 75%;
     margin: 0 auto;
-    padding-bottom: 1.5em;
+    padding-bottom: 20px;
     position: relative;
 
-    > textarea {
-      overflow: hidden;
-      word-wrap: break-word;
-    }
-
-    > input {
+    .contact-form-text-input {
       border: 1px solid rgba(0, 0, 0, 0.15);
     }
   }
@@ -44,12 +36,11 @@
   .contact-button-container {
     width: 80%;
     margin: 0 auto;
-    padding-bottom: 1.5em;
-    button {
+    padding-bottom:30px;
+
+    .contact-button {
       margin: 0;
       width: 100%;
     }
   }
-
-
 }
