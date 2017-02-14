@@ -25,6 +25,7 @@ export class UserRegisterComponent extends TranslationListener implements OnInit
 
   private countries: Country[];
   private languages: Language[];
+  private genders: String[];
   private systemLanguages: Language[];
   private serverValidationErrors: any = {};
   private saveSuccess: boolean;
@@ -33,6 +34,7 @@ export class UserRegisterComponent extends TranslationListener implements OnInit
 
   private registerForm: FormGroup;
   private countryOfOriginInputTouched: boolean = false;
+  private genderInputTouched: boolean = false;
   private nativeLanguageInputTouched: boolean = false;
   private defaultLanguageInputTouched: boolean = false;
 
@@ -51,6 +53,7 @@ export class UserRegisterComponent extends TranslationListener implements OnInit
     this.registerForm = formBuilder.group({
       'first_name': ['', Validators.compose([Validators.required, Validators.minLength(2)])],
       'last_name': ['', Validators.compose([Validators.required, Validators.minLength(2)])],
+      'gender': [''],
       'email': ['', Validators.compose([Validators.required, Validators.pattern(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)])],
       'phone': ['', Validators.compose([Validators.required])],
       'street': [''],
@@ -70,6 +73,7 @@ export class UserRegisterComponent extends TranslationListener implements OnInit
   }
 
   loadData() {
+    this.genders = ['male', 'female', 'other'];
     this.countryProxy.getCountries().then(countries => this.countries = countries);
     this.languageProxy.getLanguages().then(languages => this.languages = languages);
     this.languageProxy.getSystemLanguages().then(languages => this.systemLanguages = languages);
@@ -89,6 +93,7 @@ export class UserRegisterComponent extends TranslationListener implements OnInit
     this.userProxy.saveUser({
       'first_name': this.registerForm.value.first_name,
       'last_name': this.registerForm.value.last_name,
+      'gender': this.registerForm.value.gender,
       'email': this.registerForm.value.email,
       'phone': this.registerForm.value.phone,
       'street': this.registerForm.value.street,
