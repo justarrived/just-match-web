@@ -135,6 +135,7 @@
   "user.apply.find_more": "Search for more jobs",
   "user.profile.form.at.und.label": "AT-UND",
   "user.profile.form.coordination.number.label": "Please provide the coordination number",
+  "user.profile.form.coordination.number.placeholder": "Coordination number",
   "user.profile.form.coordination.number.or.ssn.label": "Social security number or coordination number",
   "user.profile.form.country.label": "Country of origin",
   "user.profile.form.country.placeholder": "Select Country",
