@@ -62,6 +62,8 @@
   "cookies.info.description": "We use cookies for technical reasons to simplify the use of our services and to give you the user more relevant information when your visit our website. Cookies are also used to measure traffic to our website, for the collection of data and to improve our services. By using our services, you accept that we use cookies, as long as you have not disabled them in your cookies settings in your web browser.",
   "cookies.info.title": "About cookies",
   "cookies.read_more": "More about Cookies",
+  "error.description": "Oops, something went a bit wrong... But don't worry, we are on it!",
+  "error.title": "An error occured!",
   "faq.answer.label": "Answers",
   "faq.title": "Questions and answers",
   "finance.form.account_clearing_number.validation": "Clearing number missing",
