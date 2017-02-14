@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {ApiCall} from '../api-call.service';
 import {UserStatus} from '../../models/user/user-status';
+import {UserGender} from '../../models/user/user-gender';
 import {map} from 'lodash';
 import {UserImage} from '../../models/user/user-image';
 import {UserJob} from '../../models/user/user-job';
@@ -36,6 +37,11 @@ export class UserProxy {
   public getStatuses(): Promise<Array<UserStatus>> {
     return this.apiCall.get('users/statuses')
       .then(response => map(response.data, data => new UserStatus(data)));
+  }
+
+  public getGenders(): Promise<Array<UserGender>> {
+    return this.apiCall.get('users/genders')
+      .then(response => map(response.data, data => new UserGender(data)));
   }
 
   public saveImage(userId, file: File, category: string): Promise<UserImage> {

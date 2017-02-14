@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {UserProxy} from '../../../services/proxy/user-proxy.service';
 import {UserStatus} from '../../../models/user/user-status';
+import {UserGender} from '../../../models/user/user-gender';
 import {UserRegister} from '../../../models/user/user-register';
 import {CountryProxy} from '../../../services/proxy/country-proxy.service';
 import {LanguageProxy} from '../../../services/proxy/language-proxy.service';
@@ -25,6 +26,7 @@ export class UserRegisterComponent extends TranslationListener implements OnInit
 
   private countries: Country[];
   private languages: Language[];
+  private genders: UserGender[];
   private systemLanguages: Language[];
   private serverValidationErrors: any = {};
   private saveSuccess: boolean;
@@ -33,6 +35,7 @@ export class UserRegisterComponent extends TranslationListener implements OnInit
 
   private registerForm: FormGroup;
   private countryOfOriginInputTouched: boolean = false;
+  private genderInputTouched: boolean = false;
   private nativeLanguageInputTouched: boolean = false;
   private defaultLanguageInputTouched: boolean = false;
 
@@ -51,6 +54,7 @@ export class UserRegisterComponent extends TranslationListener implements OnInit
     this.registerForm = formBuilder.group({
       'first_name': ['', Validators.compose([Validators.required, Validators.minLength(2)])],
       'last_name': ['', Validators.compose([Validators.required, Validators.minLength(2)])],
+      'gender': [''],
       'email': ['', Validators.compose([Validators.required, Validators.pattern(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)])],
       'phone': ['', Validators.compose([Validators.required])],
       'street': [''],
@@ -70,6 +74,7 @@ export class UserRegisterComponent extends TranslationListener implements OnInit
   }
 
   loadData() {
+    this.userProxy.getGenders().then(genders => this.genders = genders);
     this.countryProxy.getCountries().then(countries => this.countries = countries);
     this.languageProxy.getLanguages().then(languages => this.languages = languages);
     this.languageProxy.getSystemLanguages().then(languages => this.systemLanguages = languages);
@@ -89,6 +94,7 @@ export class UserRegisterComponent extends TranslationListener implements OnInit
     this.userProxy.saveUser({
       'first_name': this.registerForm.value.first_name,
       'last_name': this.registerForm.value.last_name,
+      'gender': this.registerForm.value.gender.id,
       'email': this.registerForm.value.email,
       'phone': this.registerForm.value.phone,
       'street': this.registerForm.value.street,
@@ -125,6 +131,6 @@ export class UserRegisterComponent extends TranslationListener implements OnInit
   }
 
   private formValidation(): boolean {
-    return this.registerForm.valid && this.registerForm.value.accepted_terms_and_conditions && this.registerForm.value.native_language && this.registerForm.value.country_of_origin && this.registerForm.value.default_language && !this.passwordsSuppliedAndMisMatch() && true;
+    return this.registerForm.valid && this.registerForm.value.accepted_terms_and_conditions && this.registerForm.value.gender && this.registerForm.value.native_language && this.registerForm.value.country_of_origin && this.registerForm.value.default_language && !this.passwordsSuppliedAndMisMatch() && true;
   }
 }

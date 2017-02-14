@@ -30,6 +30,17 @@
         </div>
 
         <div class="register-form-input-group-header">
+          <h4>{{'user.register.form.gender.header' | translate}} *</h4></div>
+
+        <div class="form-group material-group register-form-input-container">
+          <autocomplete-dropdown [lookupType]="'list'" [enumList]="genders" [(touched)]="genderInputTouched" [placeholder]="'user.register.form.gender.placeholder' | translate" (dropdownListItemSelect)="registerForm.controls['gender'].setValue($event)"
+              [autocompleteResultLabelFunction]="namePropertyLabel" [selectedItemLabelFunction]="namePropertyLabel">
+          </autocomplete-dropdown>
+          <div *ngIf="!registerForm.value.gender && genderInputTouched" class="alert alert-danger">{{'user.register.form.gender.required' | translate}}</div>
+          <div *ngIf="serverValidationErrors.gender" class="alert alert-danger">{{serverValidationErrors.gender}}</div>
+        </div>
+
+        <div class="register-form-input-group-header">
           <h4>{{'user.register.form.email.header' | translate}} *</h4></div>
 
         <div class="form-group material-group register-form-input-container" [ngClass]="{'has-error': (registerForm.controls['email'].touched && !registerForm.controls['email'].valid) || !serverValidationErrors.email}">
