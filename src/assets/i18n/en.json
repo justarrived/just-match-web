@@ -269,5 +269,5 @@
   "user.settings.form.submit.button": "Save profile changes",
   "user.settings.form.submit.fail": "There are some errors, please review them above.",
   "user.settings.form.submit.success": "Your profile was updated successfully!",
-  "user.settings.form.zip.placeholder": "Zip",
+  "user.settings.form.zip.placeholder": "Zip"
 }
