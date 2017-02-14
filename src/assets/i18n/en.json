@@ -190,6 +190,8 @@
   "user.profile.form.work.permit.front.upload.description": "Upload front photo of work permit",
   "user.profile.form.work.permit.front.upload.fail": "Front photo of work permit could not be uploaded",
   "user.profile.form.work.permit.front.upload.success": "Front photo of work permit has been uploaded",
+  "user.profile.form.language.proficiency.placeholder": "Language proficiency",
+  "user.profile.form.skill.proficiency.placeholder": "Skill proficiency",
   "user.profile.header.information": "Remember that a complete profile increases your chances of getting jobs",
   "user.profile.header.title": "Profile",
   "user.profile.tab.personal.details.title": "Personal details",
