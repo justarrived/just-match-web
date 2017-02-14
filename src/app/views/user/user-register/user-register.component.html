@@ -37,7 +37,7 @@
               [autocompleteResultLabelFunction]="namePropertyLabel" [selectedItemLabelFunction]="namePropertyLabel">
           </autocomplete-dropdown>
           <div *ngIf="!registerForm.value.gender && genderInputTouched" class="alert alert-danger">{{'user.register.form.gender.required' | translate}}</div>
-          <div *ngIf="serverValidationErrors.language_id" class="alert alert-danger">{{serverValidationErrors.language_id}}</div>
+          <div *ngIf="serverValidationErrors.gender" class="alert alert-danger">{{serverValidationErrors.gender}}</div>
         </div>
 
         <div class="register-form-input-group-header">
