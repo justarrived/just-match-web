@@ -80,7 +80,7 @@
       <div class="form-group material-group settings-input-container">
         <label for="account-number-input">{{'user.settings.form.account.number.label' | translate}}:</label>
         <input class="form-control material-input" id="account-number-input" name="account-number-input" type="text" (focus)="serverValidationErrors.account_number = ''" placeholder="{{'user.settings.form.account.number.placeholder' | translate}}" [formControl]="settingsForm.controls['account_number']">
-        <div *ngIf="serverValidationErrors.account_number" class="alert alert-danger">{{serverValidationErrors.account_number}}.</div>
+        <div *ngIf="serverValidationErrors.account" class="alert alert-danger">{{serverValidationErrors.account}}.</div>
       </div>
 
       <div class="settings-button-container">
