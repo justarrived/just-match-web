@@ -1,139 +1,164 @@
-<div>
-  <div class="home-header">
+<div class="home-container">
+
+  <div class="home-header-container">
     <img class="home-header-map-image" src="/assets/images/startpagemap.png" alt="Map" />
     <div class="home-header-info-container home-header-info-container-logged-in" *ngIf="user">
-      <h2 class="home-header-info-title">{{'common.welcome_user'| translate: {username: user.firstName} }}</h2>
+      <h2 class="home-header-info-title">
+        {{'home.header.logged.in.title'| translate: {username: user.firstName} }}
+      </h2>
       <div class="home-header-button-container">
-        <a routerLink="{{JARoutes.user.url([user.id])}}" class="home-header-button btn-secondary-light btn-small btn">{{'common.edit_profile'| translate}}</a><br>
-        <a routerLink="{{JARoutes.jobs.url(['1'])}}" class="home-header-button btn-primary-light btn-small btn">{{'menu.main.find_assignment'| translate}}</a>
+        <a routerLink="{{JARoutes.user.url([user.id])}}" class="home-header-button btn-secondary-light btn-small btn">{{'home.header.logged.in.profile.button'| translate}}</a><br>
+        <a routerLink="{{JARoutes.jobs.url(['1'])}}" class="home-header-button btn-primary-light btn-small btn">{{'home.header.logged.in.jobs.button'| translate}}</a>
       </div>
     </div>
     <div class="home-header-info-container" *ngIf="!user">
-      <h2  class="home-header-info-title">{{'start.header.title' | translate }}</h2>
-      <h4 class="home-header-info-subtitle">{{'start.header.subtitle' | translate }}</h4>
-      <div class="header-info-description-container">
-        <p class="header-info-description">{{'start.header.body' | translate }}<p>
+      <h2 class="home-header-info-title">
+        {{'home.header.logged.out.title' | translate }}
+      </h2>
+      <h4 class="home-header-info-subtitle">
+        {{'home.header.logged.out.sub.title' | translate }}
+      </h4>
+      <div class="home-header-info-description-container">
+        {{'home.header.logged.out.description' | translate }}
       </div>
       <div class="home-header-button-container">
-        <div routerLink="{{JARoutes.registerUser.url()}}" class="home-header-button btn-secondary-light btn-small btn">{{'menu.main.create_account'| translate}}</div><br/>
-        <div routerLink="{{JARoutes.login.url()}}" class="home-header-button btn-primary-light btn-small btn start-sign-in-button">{{'menu.main.sign_in'| translate}}</div>
+        <a routerLink="{{JARoutes.registerUser.url()}}" class="home-header-button btn-secondary-light btn-small btn">{{'home.header.logged.out.register.button'| translate}}</a><br/>
+        <a routerLink="{{JARoutes.login.url()}}" class="home-header-button btn-primary-light btn-small btn">{{'home.header.logged.out.login.button'| translate}}</a>
       </div>
     </div>
   </div>
 
-
-  <div class="row home-slider-container my-jobs">
-    <div class="col-xs-12 my-jobs-title">
-      <h2>{{'home_page.new_jobs_slider.title' | translate}}</h2>
+  <div class="home-jobs-slider-container home-jobs-slider-new-jobs-container">
+    <div class="home-jobs-slider-new-jobs-title">
+      <h2>
+        {{'home.jobs.slider.new.jobs.title' | translate}}
+      </h2>
     </div>
-    <div class="col-xs-12 my-jobs-show-all-button">
-      <span routerLink="{{JARoutes.jobs.url(['1'])}}">{{'common.show_all' | translate | lowercase}} > <i class="icon-ic-arrow-right"></i></span>
+    <div class="home-jobs-slider-show-all-jobs-link-container">
+      <a class="home-jobs-slider-show-all-jobs-link home-jobs-slider-show-all-new-jobs-link" routerLink="{{JARoutes.jobs.url(['1'])}}">{{'home.jobs.slider.show.all.link' | translate | lowercase}} > <i class="icon-ic-arrow-right"></i></a>
     </div>
-    <div class="col-xs-12 jobs-slider" align="center">
-      <div *ngFor="let job of newJobs" class="item-container clickable" [routerLink]="['/job', job.id]">
-        <div class="job-name">
-            <p>{{job.name | truncate : 35}}</p>
+    <div class="home-jobs-slider" align="center">
+      <div *ngFor="let job of newJobs" class="home-job-item-container" routerLink="{{JARoutes.job.url([job.id])}}">
+        <div class="home-job-item-name-container">
+          <div class="home-job-item-name">
+            {{job.name}}
+          </div>
         </div>
-        <div class="jobs-salary-container">
+        <div class="home-job-item-salary-container">
           {{job.hourlyPay.grossSalary * job.hours}} {{job.hourlyPay.currency}}
         </div>
       </div>
     </div>
   </div>
 
-  <div class="row home-slider-container user-jobs" *ngIf="userJobsVisible()">
-    <div class="col-xs-12 user-jobs-title">
-      <h2>{{'home_page.user_jobs_slider.title' | translate}}</h2>
+  <div class="home-jobs-slider-container home-jobs-slider-user-jobs-container" *ngIf="userJobsVisible()">
+    <div class="home-jobs-slider-user-jobs-title">
+      <h2>
+        {{'home.jobs.slider.user.jobs.title' | translate}}
+      </h2>
     </div>
-    <div class="col-xs-12 user-jobs-show-all-button">
-      <span routerLink="{{JARoutes.userJobs.url([user.id])}}">{{'common.show_all' | translate | lowercase}} > <i class="icon-ic-arrow-right"></i></span>
+    <div class="home-jobs-slider-show-all-jobs-link-container">
+      <a class="home-jobs-slider-show-all-jobs-link home-jobs-slider-show-all-user-jobs-link" routerLink="{{JARoutes.userJobs.url([user.id])}}">{{'home.jobs.slider.show.all.link' | translate | lowercase}} > <i class="icon-ic-arrow-right"></i></a>
     </div>
-    <div class="col-xs-12 jobs-slider" align="center">
-      <div *ngFor="let userJob of userJobs" class="item-container clickable" [routerLink]="['/job', userJob.job.id]">
-        <div class="job-name">
-            <p>{{userJob.job.name | truncate : 35}}</p>
+    <div class="home-jobs-slider" align="center">
+      <div *ngFor="let userJob of userJobs" class="home-job-item-container" routerLink="{{JARoutes.job.url([userJob.job.id])}}">
+        <div class="home-job-item-name-container">
+          <div class="home-job-item-name">
+            {{userJob.job.name}}
+          </div>
         </div>
-
-        <div *ngIf="userJob.job_ended" class="jobs-salary-container user-jobs-salary-container-inactive">
-          {{'home_page.user_jobs_slider_item.status.finished' | translate | uppercase}}
+        <div *ngIf="userJob.job_ended" class="home-job-item-salary-container home-job-item-salary-job-ended-container">
+          {{'home.jobs.slider.user.jobs.job.ended.label' | translate | uppercase}}
         </div>
-
-        <div *ngIf="userJob.willPerform && !userJob.job_ended" class="jobs-salary-container user-jobs-salary-container-active">
-          {{'home_page.user_jobs_slider_item.status.ongoing' | translate | uppercase}}
+        <div *ngIf="userJob.willPerform && !userJob.job_ended" class="home-job-item-salary-container home-job-item-salary-will-perform-job-container">
+          {{'home.jobs.slider.user.jobs.will.perform.job.label' | translate | uppercase}}
         </div>
-
       </div>
     </div>
   </div>
 
-  <div class="row" *ngIf="jobsAppliedForVisible()">
-    <div class="home-jobs-applied-for-header-wrapper col-xs-12">
-      <div class="home-jobs-applied-for-header col-xs-10">
-        <h3>{{'home_page.jobs_applied_for.title' | translate}}</h3>
+  <div class="home-jobs-applied-for-container" *ngIf="jobsAppliedForVisible()">
+    <div class="home-jobs-applied-for-header-container">
+      <h3 class="home-jobs-applied-for-header">
+        {{'home.jobs.applied.for.title' | translate}}
+      </h3>
+    </div>
+    <div *ngFor="let job of jobsAppliedFor" class="home-jobs-applied-for-job-item-container">
+      <div class="home-jobs-applied-for-job-item" routerLink="{{JARoutes.job.url([job.job.id])}}">
+        <p class="home-jobs-applied-for-job-item-name">
+          {{job.job.name}}
+        </p>
+        <span class="home-jobs-applied-for-job-item-icon"> > </span>
       </div>
     </div>
-
-    <div *ngFor="let job of jobsAppliedFor" class="home-jobs-applied-for-job-item-wrapper col-xs-12">
-      <div class="home-jobs-applied-for-job-item row col-xs-12" [routerLink]="['/job', job.job.id]">
-        <p class="col-xs-10 col-md-11">{{job.job.name}}</p>
-        <span class="col-xs-2 col-md-1"> > </span>
-      </div>
-    </div>
-
   </div>
 
-  <div class="row" *ngIf="!user">
-    <div class="col-xs-12 col-md-6 instructions-container">
-      <h3>{{'start.instruction_section.slide_1.title' | translate}}</h3>
-      <ul class="list">
-        <li class="item">
-          <i class="fa fa-check-circle-o fa-2x"></i>
-          {{'start.instruction_section.slide_1.text_1' | translate}}
+  <div class="home-instructions-container" *ngIf="!user">
+    <div class="home-instructions-inner-container home-instructions-first-inner-container">
+      <h3>
+        {{'home.instructions.first.section.title' | translate}}
+      </h3>
+      <ul class="home-instructions-list">
+        <li class="home-instructions-list-item">
+          <i class="home-instructions-list-item-icon fa fa-check-circle-o fa-2x"></i> {{'home.instructions.first.section.instruction1' | translate}}
         </li>
-        <li class="item">
-          <i class="fa fa-check-circle-o fa-2x"></i>
-          {{'start.instruction_section.slide_1.text_2' | translate}}
+        <li class="home-instructions-list-item">
+          <i class="home-instructions-list-item-icon fa fa-check-circle-o fa-2x"></i> {{'home.instructions.first.section.instruction2' | translate}}
         </li>
-        <li class="item">
-          <i class="fa fa-check-circle-o fa-2x"></i>
-          {{'start.instruction_section.slide_1.text_3' | translate}}
+        <li class="home-instructions-list-item">
+          <i class="home-instructions-list-item-icon fa fa-check-circle-o fa-2x"></i> {{'home.instructions.first.section.instruction3' | translate}}
         </li>
       </ul>
-      <div routerLink="{{JARoutes.jobs.url([1])}}" class="btn-secondary-light btn-medium btn">{{'common.find_assignment' | translate}}</div>
+      <div routerLink="{{JARoutes.jobs.url([1])}}" class="home-instructions-button btn-secondary-light btn-medium btn">{{'common.find_assignment' | translate}}</div>
     </div>
-    <div class="col-xs-12 col-md-6 instructions-container">
-      <h3>{{'start.instruction_section.slide_2.title' | translate}}</h3>
-      <p>{{'start.instruction_section.slide_2.text_1' | translate}}</p>
-      <ul class="list">
-        <li class="item">
-          <i class="fa fa-check-circle-o fa-2x"></i>
-          {{'start.instruction_section.slide_2.text_2' | translate}}
+    <div class="home-instructions-inner-container home-instructions-second-inner-container">
+      <h3>
+        {{'home.instructions.second.section.title' | translate}}
+      </h3>
+      <p>
+        {{'home.instructions.second.section.description' | translate}}
+      </p>
+      <ul class="home-instructions-list">
+        <li class="home-instructions-list-item">
+          <i class="home-instructions-list-item-icon fa fa-check-circle-o fa-2x"></i> {{'home.instructions.second.section.instruction1' | translate}}
         </li>
-        <li class="item">
-          <i class="fa fa-check-circle-o fa-2x"></i>
-          {{'start.instruction_section.slide_2.text_3' | translate}}
+        <li class="home-instructions-list-item">
+          <i class="home-instructions-list-item-icon fa fa-check-circle-o fa-2x"></i> {{'home.instructions.second.section.instruction2' | translate}}
         </li>
-        <li class="item">
-          <i class="fa fa-check-circle-o fa-2x"></i>
-          {{'start.instruction_section.slide_2.text_4' | translate}}
+        <li class="home-instructions-list-item">
+          <i class="home-instructions-list-item-icon fa fa-check-circle-o fa-2x"></i> {{'home.instructions.second.section.instruction3' | translate}}
         </li>
       </ul>
-      <div routerLink="{{JARoutes.registerUser.url()}}" class="btn-secondary-light btn-medium btn">{{'common.start_here' | translate}}</div>
+      <div routerLink="{{JARoutes.registerUser.url()}}" class="home-instructions-button btn-secondary-light btn-medium btn">{{'common.start_here' | translate}}</div>
     </div>
   </div>
 
 
-  <div class="row home-partners">
-    <h2>{{'start.partner_section.title' | translate}}</h2>
+  <div class="home-partners-container">
+    <h2 class="home-partners-title">{{'start.partner_section.title' | translate}}</h2>
     <p>{{'start.partner_section.text' | translate}}</p>
-    <div class="partners-logos-container">
-      <div class="logo-container"><a href="http://antrop.se/"><img class="partner-logo" src="/assets/images/antrop-logo2.png" alt="Antrop"></a></div>
-      <div class="logo-container"><a href="http://universumglobal.com/"><img class="partner-logo" src="/assets/images/logo-universum.png" alt="Universum"></a></div>
-      <div class="logo-container"><a href="https://www.frilansfinans.se/"><img class="partner-logo" src="/assets/images/frilans_finans-logo.png" alt="Frilans Finans"></a></div>
-      <div class="logo-container"><a href="https://janssonnorin.se/"><img class="partner-logo" src="/assets/images/jansson_norin-logo.png" alt="Jansson Norin"></a></div>
-      <div class="logo-container"><a href="http://novasverige.se/"><img class="partner-logo left-padding" src="/assets/images/nova-logo.png" alt="Nova"></a></div>
-      <div class="logo-container"><a href="http://bondstreet.se/"><img class="partner-logo" src="/assets/images/bond_street_film_sthlm.png" alt="Bond Street Film"></a></div>
-      <div class="logo-container"><a href="http://halvarsson.se/"><img class="partner-logo" src="/assets/images/hallvarsson.jpg" alt="Hallvarsson Halvarsson"></a></div>
+    <div class="home-partners-logos-container">
+      <div class="home-logo-container">
+        <a href="http://antrop.se/"><img class="home-partner-logo" src="/assets/images/antrop-logo2.png" alt="Antrop"></a>
+      </div>
+      <div class="home-logo-container">
+        <a href="http://universumglobal.com/"><img class="home-partner-logo" src="/assets/images/logo-universum.png" alt="Universum"></a>
+      </div>
+      <div class="home-logo-container">
+        <a href="https://www.frilansfinans.se/"><img class="home-partner-logo" src="/assets/images/frilans_finans-logo.png" alt="Frilans Finans"></a>
+      </div>
+      <div class="home-logo-container">
+        <a href="https://janssonnorin.se/"><img class="home-partner-logo" src="/assets/images/jansson_norin-logo.png" alt="Jansson Norin"></a>
+      </div>
+      <div class="home-logo-container">
+        <a href="http://novasverige.se/"><img class="home-partner-logo home-partner-logo-extra-left-padding" src="/assets/images/nova-logo.png" alt="Nova"></a>
+      </div>
+      <div class="home-logo-container">
+        <a href="http://bondstreet.se/"><img class="home-partner-logo" src="/assets/images/bond_street_film_sthlm.png" alt="Bond Street Film"></a>
+      </div>
+      <div class="home-logo-container">
+        <a href="http://halvarsson.se/"><img class="home-partner-logo" src="/assets/images/hallvarsson.jpg" alt="Hallvarsson Halvarsson"></a>
+      </div>
     </div>
   </div>
 </div>
