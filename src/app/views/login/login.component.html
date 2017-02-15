@@ -8,7 +8,7 @@
 
     <form [formGroup]="loginForm" (ngSubmit)="submitForm(loginForm.value)">
       <div class="form-group material-group login-form-input-container" [ngClass]="{'has-error':!loginForm.controls['email_or_phone'].valid && loginForm.controls['email_or_phone'].touched}">
-        <input (keyup.enter)="onEnterKeyUp()" (focus)="errors.password = ''" class="login-form-text-input form-control material-input fs-m0" type="text" placeholder="{{'login.form.email.or.phone.placeholder' | translate}}" [formControl]="loginForm.controls['email_or_phone']">
+        <input maxlength="256" (keyup.enter)="onEnterKeyUp()" (focus)="errors.password = ''" class="login-form-text-input form-control material-input fs-m0" type="text" placeholder="{{'login.form.email.or.phone.placeholder' | translate}}" [formControl]="loginForm.controls['email_or_phone']">
 
         <div *ngIf="loginForm.controls['email_or_phone'].hasError('required') && loginForm.controls['email_or_phone'].touched" class="alert alert-danger">{{'login.form.email.or.phone.validation.required' | translate}}</div>
       </div>

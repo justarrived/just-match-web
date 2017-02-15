@@ -1,5 +1,3 @@
-// Colors from JustArrived style guide
-
 $color-blue-50: #E0EDFA;
 $color-blue-100: #B3D2F2;
 $color-blue-200: #80B4E9;
@@ -41,35 +39,8 @@ $color-accent-main: #45E2FF;
 $color-accent-darker: #00A9E5;
 $color-accent-lighter: #7FEBFF;
 
-$fs-s: 12px;
-$fs-m0: 14px;
-$fs-m: 16px;
-$fs-l: 18px;
-$fs-xl: 22px;
-$fs-xxl: 24px;
-$fs-xxxl: 32px;
-
-$header-horizontal-padding: 3%;
-$header-height: 54px;
-$header-button-margin: 12px;
-
-$xs-device-width: 543px;
-$xs-device-width-upper: #{$xs-device-width + 1px};
-$sm-device-width: 767px;
-$sm-device-width-upper: #{$sm-device-width + 1px};
-$md-device-width: 991px;
-$md-device-width-upper: #{$md-device-width + 1px};
-$lg-device-width: 1199px;
-$lg-device-width-upper: #{$lg-device-width + 1px};
-
 // Background colors
 $default-bg-color: $white;
 
 // Borders
 $white-bg-border: $color-gray-50;
-
-// Job cards
-$job-card-border-radius: 8px;
-
-//Fonts
-$museo:           "museo", "Helvetica Neue", Helvetica, Arial, sans-serif;

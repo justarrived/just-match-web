@@ -1,45 +1,44 @@
-<div class="container-fluid">
+<div class="contact-container">
 
   <div class="sub-header-container">
-    <h3 class="sub-header-title">{{"contact" | translate}}</h3>
+    <h3 class="sub-header-title">{{"contact.title" | translate}}</h3>
   </div>
 
   <div class="contact-form-container">
-    <div class="textarea">
-      <p>
-        {{"contact.description" | translate}} {{"contact.instruction" | translate}}
-      </p>
+    <div class="contact-form-description">
+      {{"contact.form.description" | translate}}<br>
+      {{"contact.form.instruction" | translate}}
     </div>
 
-    <div class="envelope-icon-container">
-      <i class="fa fa-envelope fa-5x" aria-hidden="true"></i>
+    <div class="contact-form-icon-container">
+      <i class="contact-form-icon fa fa-envelope fa-5x"></i>
     </div>
 
     <form [formGroup]="contactForm" (ngSubmit)="submitForm(contactForm.value)">
-      <div class="form-group material-group contact-input-container" [ngClass]="{'has-error':!contactForm.controls['name'].valid && contactForm.controls['name'].touched}">
-        <input class="form-control material-input" type="text" placeholder="{{'contact.form.name' | translate}}" [formControl]="contactForm.controls['name']">
+      <div class="form-group material-group contact-form-input-container" [ngClass]="{'has-error':!contactForm.controls['name'].valid && contactForm.controls['name'].touched}">
+        <input class="form-control material-input contact-form-text-input" maxlength="101" type="text" placeholder="{{'contact.form.name.placeholder' | translate}}" [formControl]="contactForm.controls['name']">
 
-        <div *ngIf="contactForm.controls['name'].hasError('required') && contactForm.controls['name'].touched" class="alert alert-danger">{{'contact.form.name.validation' | translate}}</div>
+        <div *ngIf="contactForm.controls['name'].hasError('required') && contactForm.controls['name'].touched" class="alert alert-danger">{{'contact.form.name.validation.required' | translate}}</div>
         <div *ngIf="contactForm.controls['name'].hasError('minlength') && contactForm.controls['name'].touched" class="alert alert-danger">{{'contact.form.name.validation.length' | translate}}</div>
         <div *ngIf="errors.name" class="alert alert-danger">{{errors.name}}</div>
       </div>
-      <div class="form-group  material-group contact-input-container" [ngClass]="{'has-error':!contactForm.controls['email'].valid && contactForm.controls['email'].touched}">
-        <input class="form-control material-input" type="email" placeholder="{{'contact.form.email' | translate}}" [formControl]="contactForm.controls['email']">
+      <div class="form-group material-group contact-form-input-container" [ngClass]="{'has-error':!contactForm.controls['email'].valid && contactForm.controls['email'].touched}">
+        <input class="form-control material-input contact-form-text-input" maxlength="256" type="email" placeholder="{{'contact.form.email.placeholder' | translate}}" [formControl]="contactForm.controls['email']">
 
-        <div *ngIf="contactForm.controls['email'].hasError('required') && contactForm.controls['email'].touched" class="alert alert-danger">{{'contact.form.email.validation' | translate}}</div>
+        <div *ngIf="contactForm.controls['email'].hasError('required') && contactForm.controls['email'].touched" class="alert alert-danger">{{'contact.form.email.validation.required' | translate}}</div>
         <div *ngIf="contactForm.controls['email'].hasError('minlength') && contactForm.controls['email'].touched" class="alert alert-danger">{{'contact.form.email.validation.length' | translate}}</div>
         <div *ngIf="errors.email" class="alert alert-danger">{{errors.email}}</div>
       </div>
-      <div class="form-group  material-group contact-input-container" [ngClass]="{'has-error':!contactForm.controls['message'].valid && contactForm.controls['message'].touched}">
-        <textarea class="form-control material-input" autosize type="text" placeholder="{{'contact.form.message' | translate}}" [formControl]="contactForm.controls['message']"></textarea>
+      <div class="form-group material-group contact-form-input-container" [ngClass]="{'has-error':!contactForm.controls['message'].valid && contactForm.controls['message'].touched}">
+        <textarea class="form-control material-input" maxlength="1000" autosize type="text" placeholder="{{'contact.form.message.placeholder' | translate}}" [formControl]="contactForm.controls['message']"></textarea>
 
-        <div *ngIf="contactForm.controls['message'].hasError('required') && contactForm.controls['message'].touched" class="alert alert-danger">{{'contact.form.message.validation' | translate}}</div>
+        <div *ngIf="contactForm.controls['message'].hasError('required') && contactForm.controls['message'].touched" class="alert alert-danger">{{'contact.form.message.validation.required' | translate}}</div>
         <div *ngIf="contactForm.controls['message'].hasError('minlength') && contactForm.controls['message'].touched" class="alert alert-danger">{{'contact.form.message.validation.length' | translate}}</div>
         <div *ngIf="errors.body" class="alert alert-danger">{{errors.body}}</div>
       </div>
-      <div class="form-group contact-button-container">
+      <div class="contact-button-container">
         <loading *ngIf="loadingSubmit"></loading>
-        <button *ngIf="!loadingSubmit" type="submit" [disabled]="!contactForm.valid" class="btn-primary btn-medium btn">{{"common.submit" | translate}}</button>
+        <button *ngIf="!loadingSubmit" type="submit" [disabled]="!contactForm.valid" class="btn-primary btn-medium btn contact-button">{{'contact.form.submit.button' | translate}}</button>
       </div>
     </form>
   </div>

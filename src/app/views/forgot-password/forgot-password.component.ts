@@ -5,8 +5,8 @@ import {NavigationService} from '../../services/navigation.service';
 import {JARoutes} from '../../routes/ja-routes';
 
 @Component({
-    templateUrl: './forgot-password.component.html',
-    styleUrls: ['./forgot-password.component.scss'],
+  templateUrl: './forgot-password.component.html',
+  styleUrls: ['./forgot-password.component.scss'],
 })
 export class ForgotPasswordComponent {
   private forgotPasswordForm: FormGroup;

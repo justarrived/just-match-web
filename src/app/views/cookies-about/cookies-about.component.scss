@@ -1,9 +1,7 @@
-@import '../../styles/variables';
+@import '../../styles/colors';
 
 .cookies-about-container {
-  background-color: $default-bg-color;
-  padding: 20px;
-  p {
-    margin: 0 0 10px;
+  .cookies-about-description {
+    padding: 20px 20px;
   }
 }

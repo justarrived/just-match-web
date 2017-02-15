@@ -6,8 +6,8 @@ import {JARoutes} from '../../routes/ja-routes';
 import {ActivatedRoute} from '@angular/router';
 
 @Component({
-    templateUrl: './reset-password.component.html',
-    styleUrls: ['./reset-password.component.scss'],
+  templateUrl: './reset-password.component.html',
+  styleUrls: ['./reset-password.component.scss'],
 })
 export class ResetPasswordComponent {
   private resetPasswordForm: FormGroup;
