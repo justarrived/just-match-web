@@ -1,4 +1,4 @@
-@import './variables';
+@import './colors';
 @import './typography';
 
 /* Style guide button styles */
@@ -19,6 +19,7 @@
   margin: 15px;
   line-height: 2.3;
   border: 2px solid;
+  @include truncate-owerflowing-text;
 }
 
 /*SIZE*/
@@ -188,6 +189,7 @@ padding: 2px 25px;
     .input-radio-button-label {
       font-size: 16px;
       opacity: 0.7;
+      @include wrap-long-words;
 
       .input-radio-button-span {
         display: block;

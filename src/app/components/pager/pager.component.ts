@@ -30,7 +30,7 @@ export class PagerComponent implements OnInit, OnChanges {
   }
 
   private onFirstPageButtonClick() {
-    if (this.currentPage === 1) {
+    if (this.currentPage <= 1) {
       return;
     }
 
@@ -39,7 +39,7 @@ export class PagerComponent implements OnInit, OnChanges {
   }
 
   private onPreviousPageButtonClick() {
-    if (this.currentPage === 1) {
+    if (this.currentPage <= 1) {
       return;
     }
 
@@ -48,7 +48,7 @@ export class PagerComponent implements OnInit, OnChanges {
   }
 
   onNextPageButtonClick() {
-    if (this.currentPage === this.lastPage) {
+    if (this.currentPage >= this.lastPage) {
       return;
     }
 
@@ -57,7 +57,7 @@ export class PagerComponent implements OnInit, OnChanges {
   }
 
   onLastPageButtonClick() {
-    if (this.currentPage === this.lastPage) {
+    if (this.currentPage >= this.lastPage) {
       return;
     }
 

@@ -4,7 +4,7 @@
     <span>{{job.jobDate | date: "dd"}}</span>
   </div>
   <div>
-      <h3><translation-item [text]="job.name" [translation]="job.translated.name"></translation-item></h3>
+      <h3>{{job.name}}</h3>
 
     <section>
       <p *ngIf="section == 'current'">{{job.street}}</p>

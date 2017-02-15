@@ -1,61 +1,64 @@
-@import '../../styles/variables';
-@import '../../styles/tooltips';
+@import '../../styles/colors';
+@import '../../styles/dimensions';
 
-.map-container {
-  .tooltip-top {
-    width: 80%;
-    max-width: 400px;
-    height: 0;
-    margin: 0 auto;
+.jobs-container {
+  .jobs-map-container {
+    display: flex;
+    flex-wrap: wrap;
 
-    span {
-      cursor: pointer;
-      min-width: 100%;
-
-      &:before {
-        border: none !important;
+    .jobs-map {
+      height: 400px;
+      width: 100%;
+      @media screen and (max-width: $xs-device-width) {
+        height: 200px;
       }
-
-      > div {
-        width: 100%;
-        text-align: center !important;
-        color: $color-blue-200;
+      @media screen and (max-width: $sm-device-width) {
+        height: 300px;
       }
+    }
 
-      &:hover {
-        > div {
-          color: white;
+    .jobs-map-tooltip {
+      width: 80%;
+      max-width: 400px;
+      height: 0;
+      margin: 0 auto;
+
+      .jobs-map-tooltip-content {
+        cursor: pointer;
+        min-width: 100%;
+
+        &:before {
+          border: none !important;
+        }
+
+        .jobs-map-tooltip-close-link {
+          width: 100%;
+          text-align: center !important;
+          color: $color-blue-200;
+        }
+
+        &:hover {
+          .jobs-map-tooltip-close-link {
+            color: white;
+          }
         }
       }
     }
   }
 
-  .map {
-    height: 400px;
-    width: 100%;
+  .jobs-list-container {
+    background-color: $default-bg-color;
+    min-height: 1026px;
 
-    @media screen and (max-width: $xs-device-width) {
-      height: 200px;
+    .jobs-list-loading-container {
+      width: 100%;
+      margin-top: 20px;
     }
 
-    @media screen and (max-width: $sm-device-width) {
-      height: 300px;
+    .jobs-list-item-container {
+      width: 100%;
+      cursor: pointer;
+      cursor: hand;
     }
-  }
-}
-
-.job-list-container {
-  background-color: $default-bg-color;
-  min-height: 1026px;
-
-  .job-list-loading-container {
-    width: 100%;
-    margin-top: 20px;
-  }
-
-  .job-list-item-container {
-    width: 100%;
-    cursor: pointer;
-    cursor: hand;
   }
 }

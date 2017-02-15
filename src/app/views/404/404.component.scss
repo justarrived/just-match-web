@@ -1,7 +1,6 @@
-.not-found-component-text {
-  text-align: center;
-}
-
-.not-found-component-wrapper {
-  margin-top: 100px;
+.not-found-container {
+  .not-found-description {
+    margin-top: 100px;
+    text-align: center;
+  }
 }

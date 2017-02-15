@@ -18,7 +18,7 @@ import {yyyymmdd, nbrOfMonthsFromDate} from '../../utils/date-util'
 })
 export class JobsComponent extends TranslationListener implements OnInit {
   private jobs: Job[];
-  private totalJobs: number = 1;
+  private totalJobs: number = 0;
   private page: number = 1;
   private pageSize: number = 10;
   private loadingJobs: boolean = true;
@@ -41,13 +41,16 @@ export class JobsComponent extends TranslationListener implements OnInit {
     super(translationService);
 
     this.route.params.subscribe(params => {
-      this.page = (params['page'] && parseInt(params['page'])) || 1;
+      this.page = params['page'] && parseInt(params['page']);
+      if (!this.page || this.page < 1) {
+        this.location.replaceState('/jobs/' + 1);
+        this.page = 1;
+      }
+      this.loadData();
     });
   }
 
   ngOnInit() {
-    this.loadData();
-
     this.initLocation();
   }
 
@@ -58,6 +61,11 @@ export class JobsComponent extends TranslationListener implements OnInit {
         this.jobs = result.data;
         this.totalJobs = result.total;
         this.loadingJobs = false;
+        if (this.pageSize * (this.page - 1) > this.totalJobs) {
+          this.onPageChange(1);
+        } else if (this.totalJobs === 0) {
+          this.page = 0;
+        }
       });
   }
 
