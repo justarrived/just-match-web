@@ -174,17 +174,17 @@
 
         <div class="profile-input-table-container">
           <div class="profile-input-table-row-container" *ngFor="let userLanguage of profileForm.value.user_languages">
-            <div class="profile-input-table-row-inner-container" *ngIf="userLanguage.proficiency && userLanguage.proficiency.proficiency !== 5">
+            <div class="profile-input-table-row-inner-container" *ngIf="userLanguage.proficiency">
               <div class="profile-input-table-row-inner-item-container">
                 <div class="profile-input-table-row-inner-item-text">
                   {{userLanguage.language.name}}
                 </div>
-                <div class="profile-input-table-row-inner-icon-container" (click)="onRemoveUserLanguage(userLanguage)">
+                <div class="profile-input-table-row-inner-icon-container" (click)="onRemoveUserLanguage(userLanguage)" *ngIf="userLanguage.proficiency.proficiency !== 5">
                   <i class="fa fa-times" aria-hidden="true"></i>
                 </div>
               </div>
               <div class="profile-input-table-row-inner-dropdown-container">
-                <autocomplete-dropdown [lookupType]="'list'" [enumList]="languageProficiencyLevelsAvailable" [(destination)]="userLanguage.proficiency" [placeholder]="'user.profile.form.language.proficiency.placeholder' | translate" [autocompleteResultLabelFunction]="namePropertyLabel"
+                <autocomplete-dropdown [lookupType]="'list'" [isDisabled]="userLanguage.proficiency.proficiency === 5" [enumList]="languageProficiencyLevelsAvailable" [(destination)]="userLanguage.proficiency" [placeholder]="'user.profile.form.language.proficiency.placeholder' | translate" [autocompleteResultLabelFunction]="namePropertyLabel"
                     [selectedItemLabelFunction]="namePropertyLabel">
                 </autocomplete-dropdown>
               </div>
