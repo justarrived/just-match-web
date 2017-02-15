@@ -11,7 +11,7 @@
       </div>
       <div class="faq-item-answer-container">
         <b>{{'faq.answer.label' | translate}}:</b><br>
-        {{faq.answer}}
+        <div [innerHTML]="faq.answer"></div>
       </div>
     </li>
   </ul>
