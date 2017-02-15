@@ -1,20 +1,20 @@
-<div>
+<div class="jobs-container">
   <div class="sub-header-container">
-    <h3 class="sub-header-title">{{'common.all_jobs' | translate: {nbrOfJobs: totalJobs} }}</h3>
+    <h3 class="sub-header-title">{{'jobs.title' | translate: {nbrOfJobs: totalJobs} }}</h3>
   </div>
-  <div class="map-container row">
-    <sebm-google-map class="map" [latitude]="mapLocation.latitude" [longitude]="mapLocation.longitude" [zoom]="mapZoom" [styles]="mapStyles" [disableDefaultUI]="true" [streetViewControl]="false">
-      <sebm-google-map-marker *ngIf="mapUserLocation" class="map-user-marker" [latitude]="mapUserLocation.latitude" [longitude]="mapUserLocation.longitude"></sebm-google-map-marker>
+  <div class="jobs-map-container">
+    <sebm-google-map class="jobs-map" [latitude]="mapLocation.latitude" [longitude]="mapLocation.longitude" [zoom]="mapZoom" [styles]="mapStyles" [disableDefaultUI]="true" [streetViewControl]="false">
+      <sebm-google-map-marker *ngIf="mapUserLocation" [latitude]="mapUserLocation.latitude" [longitude]="mapUserLocation.longitude"></sebm-google-map-marker>
       <job-map-marker *ngFor="let job of jobs" [job]="job"></job-map-marker>
     </sebm-google-map>
-    <div class="tooltip-top tooltip-color-blue"><span [class.tooltip-visible]="mapErrorShow" (click)="mapTooltipClicked()">{{'map.geolocation.error.prefix' | translate}} {{mapError | translate}} <div>{{'map.geolocation.error.close' | translate}}</div></span></div>
+    <div class="jobs-map-tooltip tooltip-top tooltip-color-blue"><span class="jobs-map-tooltip-content" [class.tooltip-visible]="mapErrorShow" (click)="mapTooltipClicked()">{{'map.geolocation.error.prefix' | translate: {mapError: mapError | translate} }} <div class="jobs-map-tooltip-close-link">{{'map.geolocation.error.close' | translate}}</div></span></div>
   </div>
 
   <pager [maxResults]="totalJobs" [currentPage]="page" (pageChange)="onPageChange($event)"></pager>
 
-  <div class="job-list-container row">
-    <loading class="job-list-loading-container" *ngIf="loadingJobs"></loading>
-    <div class="job-list-item-container" *ngIf="!loadingJobs">
+  <div class="jobs-list-container row">
+    <loading class="jobs-list-loading-container" *ngIf="loadingJobs"></loading>
+    <div class="jobs-list-item-container" *ngIf="!loadingJobs">
       <job-list-item style="display: block;" *ngFor="let job of jobs" [job]="job"></job-list-item>
     </div>
   </div>
