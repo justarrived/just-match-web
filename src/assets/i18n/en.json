@@ -280,6 +280,7 @@
   "user.settings.form.last.name.placeholder": "Last name",
   "user.settings.form.last.name.validation.min.length": "Last name must be at least 2 characters long",
   "user.settings.form.last.name.validation.required": "Last name is required",
+  "user.settings.form.gender.label": "Gender",
   "user.settings.form.new.password.label": "Change password",
   "user.settings.form.new.password.placeholder": "New password",
   "user.settings.form.new.password.validation.min.length": "Password must be at least 6 characters long",
