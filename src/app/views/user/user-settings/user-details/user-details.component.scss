@@ -1,57 +1,54 @@
 @import '../../../../styles/colors';
 
-.settings-form-container {
-  padding-top: 50px;
-  max-width: 500px;
-  margin: 0 auto;
-  padding-left: 20px;
-  padding-right: 20px;
+.user-details-container {
+  .user-details-form-container {
+    padding-top: 50px;
+    max-width: 500px;
+    margin: 0 auto;
+    padding-left: 20px;
+    padding-right: 20px;
 
-  .input-group-header {
-    color: black;
-    font-size: 24px;
-    margin-bottom: 20px;
-  }
-
-  .settings-input-container {
-    margin-bottom: 15px;
-
-    label {
+    .user-details-form-group-title {
       color: black;
-      font-size: 20px;
+      font-size: 24px;
+      margin-bottom: 20px;
     }
 
-    input {
-      border: 1px solid rgba(0, 0, 0, 0.15)
-    }
-  }
+    .user-details-form-input-container {
+      margin-bottom: 15px;
 
-  hr {
-    width: 75%;
-    margin: 40px auto;
-  }
+      .user-details-form-input-label {
+        color: black;
+        font-size: 20px;
+      }
 
-  .settings-button-container {
-    margin: 40px 0;
-    text-align: center;
-
-    .save-message {
-      color: green;
+      .user-details-form-input-text {
+        border: 1px solid rgba(0, 0, 0, 0.15);
+      }
     }
 
-    .error-message {
-      color: $color-cerise-500;
+    .user-details-form-ruler {
+      width: 75%;
+      margin: 40px auto;
     }
 
-    button {
-      display: block;
-      margin: 15px auto 30px;
-      min-width: 250px;
-    }
+    .user-details-form-button-container {
+      margin: 40px 0;
+      text-align: center;
 
-    a {
-      color: $color-accent-main;
-      font-weight: 600;
+      .user-details-form-save-message {
+        color: green;
+      }
+
+      .user-details-form-error-message {
+        color: $color-cerise-500;
+      }
+
+      .user-details-form-button {
+        display: block;
+        margin: 15px auto 30px;
+        min-width: 250px;
+      }
     }
   }
 }
