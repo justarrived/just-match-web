@@ -184,7 +184,7 @@
                 </div>
               </div>
               <div class="profile-input-table-row-inner-dropdown-container">
-                <autocomplete-dropdown [lookupType]="'list'" [enumList]="languageProficiencyLevelsAvailable" [(destination)]="userLanguage.proficiency" [placeholder]="'user.profile.form.language.proficiency.placeholder' | translate" [autocompleteResultLabelFunction]="namePropertyLabel"
+                <autocomplete-dropdown [lookupType]="'list'" [enumList]="languageProficiencyLevelsAvailable" [translateLabel]="true" [(destination)]="userLanguage.proficiency" [placeholder]="'user.profile.form.language.proficiency.placeholder' | translate" [autocompleteResultLabelFunction]="namePropertyLabel"
                     [selectedItemLabelFunction]="namePropertyLabel">
                 </autocomplete-dropdown>
               </div>
@@ -211,7 +211,7 @@
                 </div>
               </div>
               <div class="profile-input-table-row-inner-dropdown-container">
-                <autocomplete-dropdown [lookupType]="'list'" [enumList]="skillProficiencyLevelsAvailable" [(destination)]="userSkill.proficiency" [placeholder]="'user.profile.form.skill.proficiency.placeholder' | translate" [autocompleteResultLabelFunction]="namePropertyLabel" [selectedItemLabelFunction]="namePropertyLabel">
+                <autocomplete-dropdown [lookupType]="'list'" [enumList]="skillProficiencyLevelsAvailable" [translateLabel]="true" [(destination)]="userSkill.proficiency" [placeholder]="'user.profile.form.skill.proficiency.placeholder' | translate" [autocompleteResultLabelFunction]="namePropertyLabel" [selectedItemLabelFunction]="namePropertyLabel">
                 </autocomplete-dropdown>
               </div>
             </div>

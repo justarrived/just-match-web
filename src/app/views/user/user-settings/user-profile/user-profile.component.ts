@@ -16,8 +16,8 @@ import {deleteElementFromArray} from '../../../../utils/array-util';
 import {deleteElementFromArrayLambda} from '../../../../utils/array-util';
 import {namePropertyLabel} from '../../../../utils/label-util';
 import {LanguageProficiency} from '../../../../models/language/language-proficiency';
-import {languageProficiencyLevels} from '../../../../enums/enums';
-import {skillProficiencyLevels} from '../../../../enums/enums';
+import {LanguageProficiencyLevels, languageProficiencyLevelsList} from '../../../../models/language/language-proficiency-levels';
+import {SkillProficiencyLevels, skillProficiencyLevelsList} from '../../../../models/skill/skill-proficiency-levels';
 import {UserProxy} from '../../../../services/proxy/user-proxy.service';
 import {AutocompleteDropdownComponent} from '../../../../components/autocomplete-dropdown/autocomplete-dropdown.component';
 import {FormGroup, FormBuilder, Validators} from '@angular/forms';
@@ -41,8 +41,8 @@ export class UserProfileComponent extends TranslationListener implements OnInit 
 
   private namePropertyLabel: Function = namePropertyLabel;
 
-  private languageProficiencyLevelsAvailable: LanguageProficiency[] = languageProficiencyLevels;
-  private skillProficiencyLevelsAvailable: LanguageProficiency[] = skillProficiencyLevels;
+  private languageProficiencyLevelsAvailable: LanguageProficiency[] = languageProficiencyLevelsList;
+  private skillProficiencyLevelsAvailable: LanguageProficiency[] = skillProficiencyLevelsList;
 
   @Input() private user: User;
 
