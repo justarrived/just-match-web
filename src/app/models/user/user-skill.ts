@@ -1,6 +1,6 @@
 import {Skill} from '../skill/skill';
 import {SkillProficiency} from '../skill/skill-proficiency';
-import {skillProficiencyLevels} from '../../enums/enums';
+import {skillProficiencyLevelsList} from '../skill/skill-proficiency-levels';
 import {find} from 'lodash';
 
 export class UserSkill {
@@ -11,6 +11,6 @@ export class UserSkill {
   constructor(jsonObject: any) {
     this.id = jsonObject.id;
     this.skill = new Skill(jsonObject.skill || {});
-    this.proficiency = find(skillProficiencyLevels, proficiencyLevel => proficiencyLevel.proficiency === jsonObject.proficiency);
+    this.proficiency = find(skillProficiencyLevelsList, proficiencyLevel => proficiencyLevel.proficiency === jsonObject.proficiency);
   }
 }
