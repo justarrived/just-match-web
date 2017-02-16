@@ -113,7 +113,8 @@ export class ApiCall {
   private handleResponseErrors(response) {
     if (response.status === 401) {
       let tokenExpiredObject = _.find(response.json().errors, { code: 'token_expired' });
-      if (!!tokenExpiredObject) {
+      let tokenInvalidObject = _.find(response.json().errors, { code: 'login_required' });
+      if (!!tokenExpiredObject || !!tokenInvalidObject) {
         this.userManager.deleteUser();
         this.navigationService.navigate(JARoutes.login);
       }

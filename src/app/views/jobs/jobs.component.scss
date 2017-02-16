@@ -49,6 +49,7 @@
   .jobs-list-container {
     background-color: $default-bg-color;
     min-height: 1026px;
+    display: flex;
 
     .jobs-list-loading-container {
       width: 100%;

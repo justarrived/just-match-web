@@ -42,8 +42,8 @@
         <div *ngIf="serverValidationErrors.country_of_origin" class="alert alert-danger">{{serverValidationErrors.country_of_origin}}.</div>
       </div>
 
-      <div class="profile-input-container">
-        <label>{{'user.profile.form.status.label' | translate}}:</label>
+      <div class="profile-form-input-container">
+        <label class="profile-form-input-label">{{'user.profile.form.status.label' | translate}}:</label>
         <div class="input-radio-container row">
           <div *ngFor="let status of statuses" class="input-radio-button-container">
             <label class="input-radio-button-label" for="{{status.id}}">
@@ -60,8 +60,8 @@
         <div *ngIf="serverValidationErrors.current_status" class="alert alert-danger">{{serverValidationErrors.current_status}}.</div>
       </div>
 
-      <div *ngIf="profileForm.value.current_status === 'asylum_seeker'" class="profile-input-container">
-        <label>{{'user.profile.form.at.und.label' | translate}}:</label>
+      <div *ngIf="profileForm.value.current_status === 'asylum_seeker'" class="profile-form-input-container">
+        <label class="profile-form-input-label">{{'user.profile.form.at.und.label' | translate}}:</label>
         <div class="input-radio-container">
           <div class="input-radio-button-container">
             <label class="input-radio-button-label" for="at-und-yes">
@@ -89,8 +89,8 @@
         <div *ngIf="serverValidationErrors.at_und" class="alert alert-danger">{{serverValidationErrors.at_und}}.</div>
       </div>
 
-      <div *ngIf="profileForm.value.current_status === 'asylum_seeker' && profileForm.value.at_und === 'yes'" class="profile-input-container">
-        <label>{{'user.profile.form.got.coordination.number.label' | translate}}:</label>
+      <div *ngIf="profileForm.value.current_status === 'asylum_seeker' && profileForm.value.at_und === 'yes'" class="profile-form-input-container">
+        <label class="profile-form-input-label">{{'user.profile.form.got.coordination.number.label' | translate}}:</label>
         <div class="input-radio-container">
           <div class="input-radio-button-container">
             <label class="input-radio-button-label" for="got-coordination-number-yes">
@@ -118,7 +118,7 @@
       </div>
 
       <div *ngIf="profileForm.value.current_status && ((profileForm.value.current_status === 'asylum_seeker' && profileForm.value.at_und === 'yes' && profileForm.value.got_coordination_number === 'yes') || (profileForm.value.current_status !== 'asylum_seeker'))"
-          class="form-group material-group profile-input-container" [ngClass]="{'has-error':!profileForm.value.ssn || !serverValidationErrors.ssn}">
+          class="form-group material-group profile-form-input-container" [ngClass]="{'has-error':!profileForm.value.ssn || !serverValidationErrors.ssn}">
         <label *ngIf="profileForm.value.current_status === 'asylum_seeker'" for="ssn">{{'user.profile.form.coordination.number.label' | translate}}:</label>
         <label *ngIf="profileForm.value.current_status === 'eu_citizen'" for="ssn">{{'user.profile.form.coordination.number.or.ssn.label' | translate}}:</label>
         <label *ngIf="profileForm.value.current_status !== 'asylum_seeker' && profileForm.value.current_status !== 'eu_citizen'" for="ssn">{{'user.profile.form.ssn.label' | translate}}:</label>
@@ -149,7 +149,7 @@
         <div *ngIf="serverValidationErrors.ssn" class="alert alert-danger">{{serverValidationErrors.ssn}}.</div>
       </div>
 
-      <div *ngIf="profileForm.value.current_status === 'asylum_seeker' && profileForm.value.at_und === 'yes'" class="profile-upload-button-container">
+      <div *ngIf="profileForm.value.current_status === 'asylum_seeker' && profileForm.value.at_und === 'yes'" class="profile-form-upload-image-container">
         <loading *ngIf="lmaImageStatusObject.uploadingImage"></loading>
         <input *ngIf="!lmaImageStatusObject.uploadingImage"
             type="file" id="lma-image-filename"
@@ -166,7 +166,7 @@
         <div *ngIf="lmaImageStatusObject.imageSaveFail" class="error-message">{{'user.profile.form.lma.upload.fail' | translate}}</div>
       </div>
 
-      <div *ngIf="profileForm.value.current_status !== 'asylum_seeker'" class="profile-upload-button-container">
+      <div *ngIf="profileForm.value.current_status !== 'asylum_seeker'" class="profile-form-upload-image-container">
         <loading *ngIf="personalIdImageStatusObject.uploadingImage"></loading>
         <input *ngIf="!personalIdImageStatusObject.uploadingImage"
             type="file" id="personal-id-image-filename"
@@ -183,7 +183,7 @@
         <div *ngIf="personalIdImageStatusObject.imageSaveFail" class="error-message">{{'user.profile.form.personal.id.upload.fail' | translate}}</div>
       </div>
 
-      <div *ngIf="profileForm.value.current_status === 'temporary_residence' || profileForm.value.current_status === 'permanent_residence'" class="profile-upload-button-container">
+      <div *ngIf="profileForm.value.current_status === 'temporary_residence' || profileForm.value.current_status === 'permanent_residence'" class="profile-form-upload-image-container">
         <loading *ngIf="residencePermitFrontImageStatusObject.uploadingImage"></loading>
         <input *ngIf="!residencePermitFrontImageStatusObject.uploadingImage"
             type="file" id="residence-permit-front-image-filename"
@@ -200,7 +200,7 @@
         <div *ngIf="residencePermitFrontImageStatusObject.imageSaveFail" class="error-message">{{'user.profile.form.residence.permit.front.upload.fail' | translate}}</div>
       </div>
 
-      <div *ngIf="profileForm.value.current_status === 'temporary_residence' || profileForm.value.current_status === 'permanent_residence'" class="profile-upload-button-container">
+      <div *ngIf="profileForm.value.current_status === 'temporary_residence' || profileForm.value.current_status === 'permanent_residence'" class="profile-form-upload-image-container">
         <loading *ngIf="residencePermitBackImageStatusObject.uploadingImage"></loading>
         <input *ngIf="!residencePermitBackImageStatusObject.uploadingImage"
             type="file" id="residence-permit-back-image-filename"
@@ -217,7 +217,7 @@
         <div *ngIf="residencePermitBackImageStatusObject.imageSaveFail" class="error-message">{{'user.profile.form.residence.permit.back.upload.fail' | translate}}</div>
       </div>
 
-      <div *ngIf="profileForm.value.current_status === 'student_visa' || profileForm.value.current_status === 'temporary_residence'" class="profile-upload-button-container">
+      <div *ngIf="profileForm.value.current_status === 'student_visa' || profileForm.value.current_status === 'temporary_residence'" class="profile-form-upload-image-container">
         <loading *ngIf="workPermitFrontImageStatusObject.uploadingImage"></loading>
         <input *ngIf="!workPermitFrontImageStatusObject.uploadingImage"
             type="file" id="work-permit-front-image-filename"
@@ -234,7 +234,7 @@
         <div *ngIf="workPermitFrontImageStatusObject.imageSaveFail" class="error-message">{{'user.profile.form.work.permit.front.upload.fail' | translate}}</div>
       </div>
 
-      <div *ngIf="profileForm.value.current_status === 'student_visa' || profileForm.value.current_status === 'temporary_residence'" class="profile-upload-button-container">
+      <div *ngIf="profileForm.value.current_status === 'student_visa' || profileForm.value.current_status === 'temporary_residence'" class="profile-form-upload-image-container">
         <loading *ngIf="workPermitBackImageStatusObject.uploadingImage"></loading>
         <input *ngIf="!workPermitBackImageStatusObject.uploadingImage"
             type="file" id="work-permit-back-image-filename"
@@ -269,7 +269,7 @@
         <div *ngIf="skatteverketCertificateImageStatusObject.imageSaveFail" class="error-message">{{'user.profile.form.skatteverket.certificate.upload.fail' | translate}}</div>
       </div>
 
-      <hr>
+      <hr class="profile-form-input-ruler">
 
       <div class="profile-input-container">
         <label>{{'user.profile.form.languages.label' | translate}}:</label>
@@ -317,15 +317,15 @@
             [lookupType]="'list'" [enumList]="skills">
         </autocomplete-dropdown>
 
-        <div class="profile-input-table-container">
-          <div class="profile-input-table-row-container" *ngFor="let userSkill of profileForm.value.user_skills">
-            <div class="profile-input-table-row-inner-container">
-              <div class="profile-input-table-row-inner-item-container">
-                <div class="profile-input-table-row-inner-item-text">
+        <div class="profile-form-input-multiselect-container">
+          <div class="profile-form-input-multiselect-row-container" *ngFor="let userSkill of profileForm.value.user_skills">
+            <div class="profile-form-input-multiselect-row-inner-container">
+              <div class="profile-form-input-multiselect-row-item-container">
+                <div class="profile-form-input-multiselect-row-item-name">
                   {{userSkill.skill.name}}
                 </div>
-                <div class="profile-input-table-row-inner-icon-container" (click)="onRemoveUserSkill(userSkill)">
-                  <i class="fa fa-times" aria-hidden="true"></i>
+                <div class="profile-form-input-multiselect-row-item-icon-container" (click)="onRemoveUserSkill(userSkill)">
+                  <i class="profile-form-input-multiselect-row-item-icon fa fa-times"></i>
                 </div>
               </div>
               <div class="profile-input-table-row-inner-dropdown-container">
@@ -368,17 +368,17 @@
       </div>
       <!--
 Documents not supported yet. TODO implement when documents supported in backend.
-      <div class="profile-upload-button-container">
+      <div class="profile-form-upload-image-container">
         <button class="btn-secondary btn-small btn">{{'user.profile.form.resume.upload.button' | translate}}</button>
         <p>{{'user.profile.form.resume.upload.description' | translate}}</p>
       </div>
 -->
 
-      <div class="profile-button-container">
-        <div *ngIf="saveFail" class="error-message">{{'user.profile.form.submit.fail' | translate}}</div>
-        <div *ngIf="saveSuccess" class="save-message">{{'user.profile.form.submit.success' | translate}}</div>
+      <div class="profile-form-button-container">
+        <div *ngIf="saveFail" class="profile-form-error-message">{{'user.profile.form.submit.fail' | translate}}</div>
+        <div *ngIf="saveSuccess" class="profile-form-save-message">{{'user.profile.form.submit.success' | translate}}</div>
         <loading *ngIf="loadingSubmit"></loading>
-        <button *ngIf="!loadingSubmit" type="submit" [disabled]="!formValidation()" class="btn-primary btn-small btn">{{'user.profile.form.submit.button' | translate}}</button>
+        <button class="profile-form-button" *ngIf="!loadingSubmit" type="submit" [disabled]="!formValidation()" class="btn-primary btn-small btn">{{'user.profile.form.submit.button' | translate}}</button>
       </div>
     </form>
 
