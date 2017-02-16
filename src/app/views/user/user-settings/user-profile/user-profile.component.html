@@ -5,8 +5,13 @@
 
       <div class="profile-input-container">
         <label>{{'user.profile.form.default.language.label' | translate}} *:</label>
-        <autocomplete-dropdown #defaultLanguageDropdown (dropdownListItemSelect)="onDefaultLanguageSelect($event)" [lookupType]="'list'" [enumList]="systemLanguages" [placeholder]="'user.profile.form.default.language.placeholder' | translate"
-            [autocompleteResultLabelFunction]="namePropertyLabel" [selectedItemLabelFunction]="namePropertyLabel">
+        <autocomplete-dropdown #defaultLanguageDropdown
+            (dropdownListItemSelect)="onDefaultLanguageSelect($event)"
+            [lookupType]="'list'"
+            [enumList]="systemLanguages"
+            [placeholder]="'user.profile.form.default.language.placeholder' | translate"
+            [autocompleteResultLabelFunction]="namePropertyLabel"
+            [selectedItemLabelFunction]="namePropertyLabel">
         </autocomplete-dropdown>
         <p class="profile-form-input-description-text">{{'user.profile.form.default.language.description' | translate}}</p>
         <div *ngIf="!profileForm.value.default_language" class="alert alert-danger">{{'user.profile.form.default.language.required' | translate}}</div>
@@ -15,7 +20,11 @@
 
       <div class="profile-input-container">
         <label>{{'user.profile.form.native.language.label' | translate}} *:</label>
-        <autocomplete-dropdown #nativeLanguageDropdown (dropdownListItemSelect)="onNativeLanguageSelect($event)" [placeholder]="'user.profile.form.native.language.placeholder' | translate" [autocompleteResultLabelFunction]="namePropertyLabel" [selectedItemLabelFunction]="namePropertyLabel"
+        <autocomplete-dropdown #nativeLanguageDropdown
+            (dropdownListItemSelect)="onNativeLanguageSelect($event)"
+            [placeholder]="'user.profile.form.native.language.placeholder' | translate"
+            [autocompleteResultLabelFunction]="namePropertyLabel"
+            [selectedItemLabelFunction]="namePropertyLabel"
             [lookupType]="'list'" [enumList]="languages">
         </autocomplete-dropdown>
         <div *ngIf="profileForm.controls['native_language'].hasError('required')" class="alert alert-danger">{{'user.profile.form.native.language.validation.required' | translate}}</div>
@@ -23,7 +32,10 @@
 
       <div class="profile-input-container">
         <label>{{'user.profile.form.country.label' | translate}} *:</label>
-        <autocomplete-dropdown #countryDropdown (dropdownListItemSelect)="onCountryOfOriginSelect($event)" [placeholder]="'user.profile.form.country.placeholder' | translate" [autocompleteResultLabelFunction]="namePropertyLabel" [selectedItemLabelFunction]="namePropertyLabel"
+        <autocomplete-dropdown #countryDropdown
+            (dropdownListItemSelect)="onCountryOfOriginSelect($event)"
+            [placeholder]="'user.profile.form.country.placeholder' | translate"
+            [autocompleteResultLabelFunction]="namePropertyLabel" [selectedItemLabelFunction]="namePropertyLabel"
             [lookupType]="'list'" [enumList]="countries">
         </autocomplete-dropdown>
         <div *ngIf="profileForm.controls['country_of_origin'].hasError('required')" class="alert alert-danger">{{'user.profile.form.country.validation.required' | translate}}</div>
@@ -35,7 +47,12 @@
         <div class="input-radio-container row">
           <div *ngFor="let status of statuses" class="input-radio-button-container">
             <label class="input-radio-button-label" for="{{status.id}}">
-            <input class="input-radio-button-input" type="radio" name="permit-type" id="{{status.id}}" (focus)="serverValidationErrors.current_status = ''" [formControl]="profileForm.controls['current_status']" value="{{status.id}}" />
+            <input class="input-radio-button-input"
+                type="radio"
+                name="permit-type" id="{{status.id}}"
+                (focus)="serverValidationErrors.current_status = ''"
+                [formControl]="profileForm.controls['current_status']"
+                value="{{status.id}}" />
             <span class="input-radio-button-span"></span>
             {{status.name}}</label>
           </div>
@@ -48,13 +65,23 @@
         <div class="input-radio-container">
           <div class="input-radio-button-container">
             <label class="input-radio-button-label" for="at-und-yes">
-            <input class="input-radio-button-input" type="radio" name="at-und" id="at-und-yes" (focus)="serverValidationErrors.at_und = ''" [formControl]="profileForm.controls['at_und']" value="yes" />
+            <input class="input-radio-button-input"
+                type="radio"
+                name="at-und" id="at-und-yes"
+                (focus)="serverValidationErrors.at_und = ''"
+                [formControl]="profileForm.controls['at_und']"
+                value="yes" />
             <span class="input-radio-button-span"></span>
             {{'common.yes' | translate}}</label>
           </div>
           <div class="input-radio-button-container">
             <label class="input-radio-button-label" for="at-und-no">
-            <input class="input-radio-button-input" type="radio" name="at-und" id="at-und-no" (focus)="serverValidationErrors.at_und = ''" [formControl]="profileForm.controls['at_und']" value="no" />
+            <input class="input-radio-button-input"
+            type="radio"
+            name="at-und" id="at-und-no"
+            (focus)="serverValidationErrors.at_und = ''"
+            [formControl]="profileForm.controls['at_und']"
+            value="no" />
             <span class="input-radio-button-span"></span>
             {{'common.no' | translate}}</label>
           </div>
@@ -67,13 +94,23 @@
         <div class="input-radio-container">
           <div class="input-radio-button-container">
             <label class="input-radio-button-label" for="got-coordination-number-yes">
-            <input class="input-radio-button-input" type="radio" name="got-coordination-number" id="got-coordination-number-yes" (focus)="serverValidationErrors.got_coordination_number = ''" [formControl]="profileForm.controls['got_coordination_number']" value="yes" />
+            <input class="input-radio-button-input"
+                type="radio"
+                name="got-coordination-number" id="got-coordination-number-yes"
+                (focus)="serverValidationErrors.got_coordination_number = ''"
+                [formControl]="profileForm.controls['got_coordination_number']"
+                value="yes" />
             <span class="input-radio-button-span"></span>
             {{'common.yes' | translate}}</label>
           </div>
           <div class="input-radio-button-container">
             <label class="input-radio-button-label" for="got-coordination-number-no">
-            <input class="input-radio-button-input" type="radio" name="got-coordination-number" id="got-coordination-number-no" (focus)="serverValidationErrors.got_coordination_number = ''" [formControl]="profileForm.controls['got_coordination_number']" value="no" />
+            <input class="input-radio-button-input"
+                type="radio"
+                name="got-coordination-number" id="got-coordination-number-no"
+                (focus)="serverValidationErrors.got_coordination_number = ''"
+                [formControl]="profileForm.controls['got_coordination_number']"
+                value="no" />
             <span class="input-radio-button-span"></span>
             {{'common.no' | translate}}</label>
           </div>
@@ -85,19 +122,44 @@
         <label *ngIf="profileForm.value.current_status === 'asylum_seeker'" for="ssn">{{'user.profile.form.coordination.number.label' | translate}}:</label>
         <label *ngIf="profileForm.value.current_status === 'eu_citizen'" for="ssn">{{'user.profile.form.coordination.number.or.ssn.label' | translate}}:</label>
         <label *ngIf="profileForm.value.current_status !== 'asylum_seeker' && profileForm.value.current_status !== 'eu_citizen'" for="ssn">{{'user.profile.form.ssn.label' | translate}}:</label>
-        <input *ngIf="profileForm.value.current_status === 'asylum_seeker'" maxlength="20" class="form-control material-input" id="ssn" name="ssn-input" type="text" onkeypress="return event.charCode >= 48 && event.charCode <= 57" (focus)="serverValidationErrors.ssn = ''" placeholder="{{'user.profile.form.coordination.number.placeholder' | translate}}"
+        <input *ngIf="profileForm.value.current_status === 'asylum_seeker'"
+            maxlength="20"
+            class="form-control material-input" id="ssn"
+            name="ssn-input"
+            type="text"
+            onkeypress="return event.charCode >= 48 && event.charCode <= 57"
+            (focus)="serverValidationErrors.ssn = ''"
+            placeholder="{{'user.profile.form.coordination.number.placeholder' | translate}}"
             [formControl]="profileForm.controls['ssn']">
-        <input *ngIf="profileForm.value.current_status === 'eu_citizen'" maxlength="20" class="form-control material-input" id="ssn" name="ssn-input" type="text" onkeypress="return event.charCode >= 48 && event.charCode <= 57" (focus)="serverValidationErrors.ssn = ''" placeholder="{{'user.profile.form.coordination.number.or.ssn.placeholder' | translate}}"
+        <input *ngIf="profileForm.value.current_status === 'eu_citizen'"
+            maxlength="20" class="form-control material-input" id="ssn"
+            name="ssn-input"
+            type="text"
+            onkeypress="return event.charCode >= 48 && event.charCode <= 57"
+            (focus)="serverValidationErrors.ssn = ''"
+            placeholder="{{'user.profile.form.coordination.number.or.ssn.placeholder' | translate}}"
             [formControl]="profileForm.controls['ssn']">
-        <input *ngIf="profileForm.value.current_status !== 'asylum_seeker' && profileForm.value.current_status !== 'eu_citizen'" maxlength="20" class="form-control material-input" id="ssn" name="ssn-input" type="text" onkeypress="return event.charCode >= 48 && event.charCode <= 57" (focus)="serverValidationErrors.ssn = ''" placeholder="{{'user.profile.form.ssn.placeholder' | translate}}"
+        <input *ngIf="profileForm.value.current_status !== 'asylum_seeker' && profileForm.value.current_status !== 'eu_citizen'"
+            maxlength="20" class="form-control material-input" id="ssn"
+            name="ssn-input" type="text"
+            onkeypress="return event.charCode >= 48 && event.charCode <= 57"
+            (focus)="serverValidationErrors.ssn = ''"
+            placeholder="{{'user.profile.form.ssn.placeholder' | translate}}"
             [formControl]="profileForm.controls['ssn']">
         <div *ngIf="serverValidationErrors.ssn" class="alert alert-danger">{{serverValidationErrors.ssn}}.</div>
       </div>
 
       <div *ngIf="profileForm.value.current_status === 'asylum_seeker' && profileForm.value.at_und === 'yes'" class="profile-upload-button-container">
         <loading *ngIf="lmaImageStatusObject.uploadingImage"></loading>
-        <input *ngIf="!lmaImageStatusObject.uploadingImage" type="file" id="lma-image-filename" name="lma-image-filename" class="input-image-upload" (change)="onImageFilenameChange($event, 'lma_card', lmaImageStatusObject)" accept="image/jpeg,image/jpg,image/gif,image/png">
-        <label *ngIf="!lmaImageStatusObject.uploadingImage" for="lma-image-filename" class="btn-secondary btn-small btn btn-image-upload">{{'user.profile.form.lma.upload.button' | translate}}</label>
+        <input *ngIf="!lmaImageStatusObject.uploadingImage"
+            type="file" id="lma-image-filename"
+            name="lma-image-filename"
+            class="input-image-upload"
+            (change)="onImageFilenameChange($event, 'lma_card', lmaImageStatusObject)"
+            accept="image/jpeg,image/jpg,image/gif,image/png">
+        <label *ngIf="!lmaImageStatusObject.uploadingImage"
+            for="lma-image-filename"
+            class="btn-secondary btn-small btn btn-image-upload">{{'user.profile.form.lma.upload.button' | translate}}</label>
         <p>{{'user.profile.form.lma.upload.description' | translate}}</p>
         <div *ngIf="user.lma_card_image" class="permit-image" [ngStyle]="{'background-image': 'url(' + user.lma_card_image.largeImageUrl + ')'}"></div>
         <div *ngIf="lmaImageStatusObject.imageSaveSuccess" class="save-message">{{'user.profile.form.lma.upload.success' | translate}}</div>
@@ -106,8 +168,15 @@
 
       <div *ngIf="profileForm.value.current_status !== 'asylum_seeker'" class="profile-upload-button-container">
         <loading *ngIf="personalIdImageStatusObject.uploadingImage"></loading>
-        <input *ngIf="!personalIdImageStatusObject.uploadingImage" type="file" id="personal-id-image-filename" name="personal-id-image-filename" class="input-image-upload" (change)="onImageFilenameChange($event, 'personal_id', personalIdImageStatusObject)" accept="image/jpeg,image/jpg,image/gif,image/png">
-        <label *ngIf="!personalIdImageStatusObject.uploadingImage" for="personal-id-image-filename" class="btn-secondary btn-small btn btn-image-upload">{{'user.profile.form.personal.id.upload.button' | translate}}</label>
+        <input *ngIf="!personalIdImageStatusObject.uploadingImage"
+            type="file" id="personal-id-image-filename"
+            name="personal-id-image-filename"
+            class="input-image-upload"
+            (change)="onImageFilenameChange($event, 'personal_id', personalIdImageStatusObject)"
+            accept="image/jpeg,image/jpg,image/gif,image/png">
+        <label *ngIf="!personalIdImageStatusObject.uploadingImage"
+            for="personal-id-image-filename"
+            class="btn-secondary btn-small btn btn-image-upload">{{'user.profile.form.personal.id.upload.button' | translate}}</label>
         <p>{{'user.profile.form.personal.id.upload.description' | translate}}</p>
         <div *ngIf="user.personal_id_image" class="permit-image" [ngStyle]="{'background-image': 'url(' + user.personal_id_image.largeImageUrl + ')'}"></div>
         <div *ngIf="personalIdImageStatusObject.imageSaveSuccess" class="save-message">{{'user.profile.form.personal.id.upload.success' | translate}}</div>
@@ -116,8 +185,15 @@
 
       <div *ngIf="profileForm.value.current_status === 'temporary_residence' || profileForm.value.current_status === 'permanent_residence'" class="profile-upload-button-container">
         <loading *ngIf="residencePermitFrontImageStatusObject.uploadingImage"></loading>
-        <input *ngIf="!residencePermitFrontImageStatusObject.uploadingImage" type="file" id="residence-permit-front-image-filename" name="residence-permit-front-image-filename" class="input-image-upload" (change)="onImageFilenameChange($event, 'residence_permit_front', residencePermitFrontImageStatusObject)" accept="image/jpeg,image/jpg,image/gif,image/png">
-        <label *ngIf="!residencePermitFrontImageStatusObject.uploadingImage" for="residence-permit-front-image-filename" class="btn-secondary btn-small btn btn-image-upload">{{'user.profile.form.residence.permit.front.upload.button' | translate}}</label>
+        <input *ngIf="!residencePermitFrontImageStatusObject.uploadingImage"
+            type="file" id="residence-permit-front-image-filename"
+            name="residence-permit-front-image-filename"
+            class="input-image-upload"
+            (change)="onImageFilenameChange($event, 'residence_permit_front', residencePermitFrontImageStatusObject)"
+            accept="image/jpeg,image/jpg,image/gif,image/png">
+        <label *ngIf="!residencePermitFrontImageStatusObject.uploadingImage"
+            for="residence-permit-front-image-filename"
+            class="btn-secondary btn-small btn btn-image-upload">{{'user.profile.form.residence.permit.front.upload.button' | translate}}</label>
         <p>{{'user.profile.form.residence.permit.front.upload.description' | translate}}</p>
         <div *ngIf="user.residence_permit_front_image" class="permit-image" [ngStyle]="{'background-image': 'url(' + user.residence_permit_front_image.largeImageUrl + ')'}"></div>
         <div *ngIf="residencePermitFrontImageStatusObject.imageSaveSuccess" class="save-message">{{'user.profile.form.residence.permit.front.upload.success' | translate}}</div>
@@ -126,8 +202,15 @@
 
       <div *ngIf="profileForm.value.current_status === 'temporary_residence' || profileForm.value.current_status === 'permanent_residence'" class="profile-upload-button-container">
         <loading *ngIf="residencePermitBackImageStatusObject.uploadingImage"></loading>
-        <input *ngIf="!residencePermitBackImageStatusObject.uploadingImage" type="file" id="residence-permit-back-image-filename" name="residence-permit-back-image-filename" class="input-image-upload" (change)="onImageFilenameChange($event, 'residence_permit_back', residencePermitBackImageStatusObject)" accept="image/jpeg,image/jpg,image/gif,image/png">
-        <label *ngIf="!residencePermitBackImageStatusObject.uploadingImage" for="residence-permit-back-image-filename" class="btn-secondary btn-small btn btn-image-upload">{{'user.profile.form.residence.permit.back.upload.button' | translate}}</label>
+        <input *ngIf="!residencePermitBackImageStatusObject.uploadingImage"
+            type="file" id="residence-permit-back-image-filename"
+            name="residence-permit-back-image-filename"
+            class="input-image-upload"
+            (change)="onImageFilenameChange($event, 'residence_permit_back', residencePermitBackImageStatusObject)"
+            accept="image/jpeg,image/jpg,image/gif,image/png">
+        <label *ngIf="!residencePermitBackImageStatusObject.uploadingImage"
+            for="residence-permit-back-image-filename"
+            class="btn-secondary btn-small btn btn-image-upload">{{'user.profile.form.residence.permit.back.upload.button' | translate}}</label>
         <p>{{'user.profile.form.residence.permit.back.upload.description' | translate}}</p>
         <div *ngIf="user.residence_permit_back_image" class="permit-image" [ngStyle]="{'background-image': 'url(' + user.residence_permit_back_image.largeImageUrl + ')'}"></div>
         <div *ngIf="residencePermitBackImageStatusObject.imageSaveSuccess" class="save-message">{{'user.profile.form.residence.permit.back.upload.success' | translate}}</div>
@@ -136,8 +219,15 @@
 
       <div *ngIf="profileForm.value.current_status === 'student_visa' || profileForm.value.current_status === 'temporary_residence'" class="profile-upload-button-container">
         <loading *ngIf="workPermitFrontImageStatusObject.uploadingImage"></loading>
-        <input *ngIf="!workPermitFrontImageStatusObject.uploadingImage" type="file" id="work-permit-front-image-filename" name="work-permit-front-image-filename" class="input-image-upload" (change)="onImageFilenameChange($event, 'work_permit_front', workPermitFrontImageStatusObject)" accept="image/jpeg,image/jpg,image/gif,image/png">
-        <label *ngIf="!workPermitFrontImageStatusObject.uploadingImage" for="work-permit-front-image-filename" class="btn-secondary btn-small btn btn-image-upload">{{'user.profile.form.work.permit.front.upload.button' | translate}}</label>
+        <input *ngIf="!workPermitFrontImageStatusObject.uploadingImage"
+            type="file" id="work-permit-front-image-filename"
+            name="work-permit-front-image-filename"
+            class="input-image-upload"
+            (change)="onImageFilenameChange($event, 'work_permit_front', workPermitFrontImageStatusObject)"
+            accept="image/jpeg,image/jpg,image/gif,image/png">
+        <label *ngIf="!workPermitFrontImageStatusObject.uploadingImage"
+            for="work-permit-front-image-filename"
+            class="btn-secondary btn-small btn btn-image-upload">{{'user.profile.form.work.permit.front.upload.button' | translate}}</label>
         <p>{{'user.profile.form.work.permit.front.upload.description' | translate}}</p>
         <div *ngIf="user.work_permit_front_image" class="permit-image" [ngStyle]="{'background-image': 'url(' + user.work_permit_front_image.largeImageUrl + ')'}"></div>
         <div *ngIf="workPermitFrontImageStatusObject.imageSaveSuccess" class="save-message">{{'user.profile.form.work.permit.front.upload.success' | translate}}</div>
@@ -146,18 +236,33 @@
 
       <div *ngIf="profileForm.value.current_status === 'student_visa' || profileForm.value.current_status === 'temporary_residence'" class="profile-upload-button-container">
         <loading *ngIf="workPermitBackImageStatusObject.uploadingImage"></loading>
-        <input *ngIf="!workPermitBackImageStatusObject.uploadingImage" type="file" id="work-permit-back-image-filename" name="work-permit-back-image-filename" class="input-image-upload" (change)="onImageFilenameChange($event, 'work_permit_back', workPermitBackImageStatusObject)" accept="image/jpeg,image/jpg,image/gif,image/png">
-        <label *ngIf="!workPermitBackImageStatusObject.uploadingImage" for="work-permit-back-image-filename" class="btn-secondary btn-small btn btn-image-upload">{{'user.profile.form.work.permit.back.upload.button' | translate}}</label>
+        <input *ngIf="!workPermitBackImageStatusObject.uploadingImage"
+            type="file" id="work-permit-back-image-filename"
+            name="work-permit-back-image-filename"
+            class="input-image-upload"
+            (change)="onImageFilenameChange($event, 'work_permit_back', workPermitBackImageStatusObject)"
+            accept="image/jpeg,image/jpg,image/gif,image/png">
+        <label *ngIf="!workPermitBackImageStatusObject.uploadingImage"
+            for="work-permit-back-image-filename"
+            class="btn-secondary btn-small btn btn-image-upload">{{'user.profile.form.work.permit.back.upload.button' | translate}}</label>
         <p>{{'user.profile.form.work.permit.back.upload.description' | translate}}</p>
         <div *ngIf="user.work_permit_back_image" class="permit-image" [ngStyle]="{'background-image': 'url(' + user.work_permit_back_image.largeImageUrl + ')'}"></div>
         <div *ngIf="workPermitBackImageStatusObject.imageSaveSuccess" class="save-message">{{'user.profile.form.work.permit.back.upload.success' | translate}}</div>
         <div *ngIf="workPermitBackImageStatusObject.imageSaveFail" class="error-message">{{'user.profile.form.work.permit.back.upload.fail' | translate}}</div>
       </div>
 
-      <div *ngIf="profileForm.value.current_status === 'eu_citizen' || profileForm.value.current_status === 'asylum_seeker' && profileForm.value.at_und === 'yes' && profileForm.value.got_coordination_number === 'yes'" class="profile-upload-button-container">
+      <div *ngIf="profileForm.value.current_status === 'eu_citizen' || profileForm.value.current_status === 'asylum_seeker' && profileForm.value.at_und === 'yes' && profileForm.value.got_coordination_number === 'yes'"
+          class="profile-upload-button-container">
         <loading *ngIf="skatteverketCertificateImageStatusObject.uploadingImage"></loading>
-        <input *ngIf="!skatteverketCertificateImageStatusObject.uploadingImage" type="file" id="skatteverket-certificate-image-filename" name="skatteverket-certificate-image-filename" class="input-image-upload" (change)="onImageFilenameChange($event, 'skatteverket_certificate', skatteverketCertificateImageStatusObject)" accept="image/jpeg,image/jpg,image/gif,image/png">
-        <label *ngIf="!skatteverketCertificateImageStatusObject.uploadingImage" for="skatteverket-certificate-image-filename" class="btn-secondary btn-small btn btn-image-upload">{{'user.profile.form.skatteverket.certificate.upload.button' | translate}}</label>
+        <input *ngIf="!skatteverketCertificateImageStatusObject.uploadingImage"
+            type="file" id="skatteverket-certificate-image-filename"
+            name="skatteverket-certificate-image-filename"
+            class="input-image-upload"
+            (change)="onImageFilenameChange($event, 'skatteverket_certificate', skatteverketCertificateImageStatusObject)"
+            accept="image/jpeg,image/jpg,image/gif,image/png">
+        <label *ngIf="!skatteverketCertificateImageStatusObject.uploadingImage"
+            for="skatteverket-certificate-image-filename"
+            class="btn-secondary btn-small btn btn-image-upload">{{'user.profile.form.skatteverket.certificate.upload.button' | translate}}</label>
         <p>{{'user.profile.form.skatteverket.certificate.upload.description' | translate}}</p>
         <div *ngIf="user.skatteverket_certificate_image" class="permit-image" [ngStyle]="{'background-image': 'url(' + user.skatteverket_certificate_image.largeImageUrl + ')'}"></div>
         <div *ngIf="skatteverketCertificateImageStatusObject.imageSaveSuccess" class="save-message">{{'user.profile.form.skatteverket.certificate.upload.success' | translate}}</div>
@@ -168,7 +273,11 @@
 
       <div class="profile-input-container">
         <label>{{'user.profile.form.languages.label' | translate}}:</label>
-        <autocomplete-dropdown (dropdownListItemSelect)="onLanguageSelect($event)" [clearDestinationAfterSelection]="true" [placeholder]="'user.profile.form.languages.placeholder' | translate" [autocompleteResultLabelFunction]="namePropertyLabel" [selectedItemLabelFunction]="namePropertyLabel"
+        <autocomplete-dropdown (dropdownListItemSelect)="onLanguageSelect($event)"
+            [clearDestinationAfterSelection]="true"
+            [placeholder]="'user.profile.form.languages.placeholder' | translate"
+            [autocompleteResultLabelFunction]="namePropertyLabel"
+            [selectedItemLabelFunction]="namePropertyLabel"
             [lookupType]="'list'" [enumList]="languagesExcludingNative">
         </autocomplete-dropdown>
 
@@ -184,7 +293,12 @@
                 </div>
               </div>
               <div class="profile-input-table-row-inner-dropdown-container">
-                <autocomplete-dropdown [lookupType]="'list'" [isDisabled]="userLanguage.proficiency.proficiency === 5" [enumList]="languageProficiencyLevelsAvailable" [(destination)]="userLanguage.proficiency" [placeholder]="'user.profile.form.language.proficiency.placeholder' | translate" [autocompleteResultLabelFunction]="namePropertyLabel"
+                <autocomplete-dropdown [lookupType]="'list'"
+                    [isDisabled]="userLanguage.proficiency.proficiency === 5"
+                    [enumList]="languageProficiencyLevelsAvailable"
+                    [(destination)]="userLanguage.proficiency"
+                    [placeholder]="'user.profile.form.language.proficiency.placeholder' | translate"
+                    [autocompleteResultLabelFunction]="namePropertyLabel"
                     [selectedItemLabelFunction]="namePropertyLabel">
                 </autocomplete-dropdown>
               </div>
@@ -195,7 +309,11 @@
 
       <div class="profile-input-container">
         <label>{{'user.profile.form.skills.label' | translate}}:</label>
-        <autocomplete-dropdown (dropdownListItemSelect)="onSkillSelect($event)" [clearDestinationAfterSelection]="true" [placeholder]="'user.profile.form.skills.placeholder' | translate" [autocompleteResultLabelFunction]="namePropertyLabel" [selectedItemLabelFunction]="namePropertyLabel"
+        <autocomplete-dropdown (dropdownListItemSelect)="onSkillSelect($event)"
+            [clearDestinationAfterSelection]="true"
+            [placeholder]="'user.profile.form.skills.placeholder' | translate"
+            [autocompleteResultLabelFunction]="namePropertyLabel"
+            [selectedItemLabelFunction]="namePropertyLabel"
             [lookupType]="'list'" [enumList]="skills">
         </autocomplete-dropdown>
 
@@ -211,7 +329,12 @@
                 </div>
               </div>
               <div class="profile-input-table-row-inner-dropdown-container">
-                <autocomplete-dropdown [lookupType]="'list'" [enumList]="skillProficiencyLevelsAvailable" [(destination)]="userSkill.proficiency" [placeholder]="'user.profile.form.skill.proficiency.placeholder' | translate" [autocompleteResultLabelFunction]="namePropertyLabel" [selectedItemLabelFunction]="namePropertyLabel">
+                <autocomplete-dropdown [lookupType]="'list'"
+                    [enumList]="skillProficiencyLevelsAvailable"
+                    [(destination)]="userSkill.proficiency"
+                    [placeholder]="'user.profile.form.skill.proficiency.placeholder' | translate"
+                    [autocompleteResultLabelFunction]="namePropertyLabel"
+                    [selectedItemLabelFunction]="namePropertyLabel">
                 </autocomplete-dropdown>
               </div>
             </div>
@@ -221,14 +344,25 @@
 
       <div class="profile-input-container">
         <label>{{'user.profile.form.general.skills.label' | translate}}:</label>
-        <textarea class="form-control material-input" maxlength="1000" name="general-skills" id="general-skills" class="form-control material-input" (focus)="serverValidationErrors.competence_text = ''" autosize type="text" placeholder="{{'user.profile.form.general.skills.placeholder' | translate}}"
+        <textarea class="form-control material-input"
+            maxlength="1000" name="general-skills" id="general-skills"
+            class="form-control material-input"
+            (focus)="serverValidationErrors.competence_text = ''"
+            autosize type="text"
+            placeholder="{{'user.profile.form.general.skills.placeholder' | translate}}"
             [formControl]="profileForm.controls['competence_text']"></textarea>
         <div *ngIf="serverValidationErrors.competence_text" class="alert alert-danger">{{serverValidationErrors.competence_text}}.</div>
       </div>
 
       <div class="profile-input-container">
         <label>{{'user.profile.form.work.experience.label' | translate}}:</label>
-        <textarea class="form-control material-input" maxlength="1000" name="workExperience" id="work-experience" class="form-control material-input" (focus)="serverValidationErrors.job_experience = ''" autosize type="text" placeholder="{{'user.profile.form.work.experience.placeholder' | translate}}"
+        <textarea class="form-control material-input"
+            maxlength="1000"
+            name="workExperience" id="work-experience"
+            class="form-control material-input"
+            (focus)="serverValidationErrors.job_experience = ''"
+            autosize type="text"
+            placeholder="{{'user.profile.form.work.experience.placeholder' | translate}}"
             [formControl]="profileForm.controls['job_experience']"></textarea>
         <div *ngIf="serverValidationErrors.job_experience" class="alert alert-danger">{{serverValidationErrors.job_experience}}.</div>
       </div>
