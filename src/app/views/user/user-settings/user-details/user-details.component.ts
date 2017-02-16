@@ -1,7 +1,9 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {AuthManager} from '../../../../services/auth-manager.service';
 import {User} from '../../../../models/user';
 import {UserProxy} from '../../../../services/proxy/user-proxy.service';
+import {AutocompleteDropdownComponent} from '../../../../components/autocomplete-dropdown/autocomplete-dropdown.component';
+import {UserGender} from '../../../../models/user/user-gender';
 import {FormGroup, FormBuilder, Validators} from '@angular/forms';
 
 @Component({
@@ -12,6 +14,10 @@ import {FormGroup, FormBuilder, Validators} from '@angular/forms';
 export class UserDetailsComponent implements OnInit {
 
   @Input() private user: User;
+
+  @ViewChild('genderDropdown')
+  private genderDropdown: AutocompleteDropdownComponent;
+  private genders: UserGender[];
 
   private settingsForm: FormGroup;
   private passwordForm: FormGroup;
@@ -29,9 +35,21 @@ export class UserDetailsComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.loadData();
+    this.initForm();
+  }
+
+  loadData() {
+    this.userProxy.getGenders().then((genders) => {
+      this.genders = genders;
+    });
+  }
+
+  private initForm() {
     this.settingsForm = this.formBuilder.group({
       'first_name': [this.user.firstName, Validators.compose([Validators.required, Validators.minLength(2)])],
       'last_name': [this.user.lastName, Validators.compose([Validators.required, Validators.minLength(2)])],
+      'gender': [this.user.gender, Validators.compose([Validators.required])],
       'email': [this.user.email, Validators.compose([Validators.required, Validators.pattern(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)])],
       'phone': [this.user.phone, Validators.compose([Validators.required])],
       'street': [this.user.street],
@@ -46,6 +64,12 @@ export class UserDetailsComponent implements OnInit {
       'old_password': [null],
       'repeat_password': [null]
     });
+  }
+
+  private onGenderSelect(gender) {
+    if (gender) {
+      this.settingsForm.value.gender = gender.id;
+    }
   }
 
   private passwordsSupplied(): boolean {

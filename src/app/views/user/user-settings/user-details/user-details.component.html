@@ -21,6 +21,15 @@
         <div *ngIf="serverValidationErrors.last_name" class="alert alert-danger">{{serverValidationErrors.last_name}}.</div>
       </div>
 
+      <div class="form-group material-group user-details-form-input-container" [ngClass]="{'has-error':!settingsForm.controls['gender'].valid || !serverValidationErrors.gender}">
+        <label class="user-details-form-input-label" for="gender">{{'user.settings.form.gender.label' | translate}} *:</label>
+        <autocomplete-dropdown #genderDropDown (dropdownListItemSelect)="onGenderSelect($event)" [lookupType]="'list'" [enumList]="genders" [placeholder]="'user.settings.form.gender.placeholder' | translate"
+            [autocompleteResultLabelFunction]="namePropertyLabel" [selectedItemLabelFunction]="namePropertyLabel">
+        </autocomplete-dropdown>
+        <div *ngIf="!settingsForm.value.gender" class="alert alert-danger">{{'user.settings.form.gender.validation.required' | translate}}</div>
+        <div *ngIf="serverValidationErrors.language_id" class="alert alert-danger">{{serverValidationErrors.gender}}</div>
+      </div>
+
       <div class="form-group material-group user-details-form-input-container" [ngClass]="{'has-error':!settingsForm.controls['email'].valid || !serverValidationErrors.email}">
         <label class="user-details-form-input-label" for="email">{{'user.settings.form.email.label' | translate}} *:</label>
         <input class="user-details-form-input-text form-control material-input" maxlength="256" id="email" name="email" type="email" (focus)="serverValidationErrors.email = ''" placeholder="{{'user.settings.form.email.placeholder' | translate}}" [formControl]="settingsForm.controls['email']">
