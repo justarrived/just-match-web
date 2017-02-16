@@ -2,8 +2,8 @@ import {Component, Input, ElementRef, OnInit, EventEmitter, Output, HostListener
 import {cloneDeep, some, isEqual, isObject, assignIn, filter} from 'lodash';
 import {CountryProxy} from '../../services/proxy/country-proxy.service';
 import {deleteElementFromArray} from '../../utils/array-util';
-import Timer = NodeJS.Timer;
 import {FormGroup} from '@angular/forms';
+import {TranslateService} from 'ng2-translate/ng2-translate';
 
 @Component({
   selector: 'autocomplete-dropdown',
@@ -14,6 +14,7 @@ export class AutocompleteDropdownComponent implements OnInit {
   @Input() destination: any;
   @Output() destinationChange = new EventEmitter();
   @Output() dropdownListItemSelect = new EventEmitter();
+  @Input() translateLabel: boolean;
   @Input() clearDestinationAfterSelection: boolean;
   @Input() lookupType: string;
   @Input() lookupPrefix: string = 'client/lookup';
@@ -41,7 +42,7 @@ export class AutocompleteDropdownComponent implements OnInit {
   @Input() touched: boolean = false;
   @Output() touchedChange = new EventEmitter();
 
-  private searchQueryTimeoutId: Timer;
+  private searchQueryTimeoutId;
   private isDefaultOptionSet: boolean = false;
   private lastTextInput: string = '';
   private firstItemIndex: number = this.hasAllOption ? -1 : 0;
@@ -58,7 +59,12 @@ export class AutocompleteDropdownComponent implements OnInit {
 
   textInput: string = '';
 
-  constructor(private elementRef: ElementRef, private countryProxy: CountryProxy) { }
+  constructor(
+    private elementRef: ElementRef,
+    private countryProxy: CountryProxy,
+    private translateService: TranslateService
+  ) {
+  }
 
   ngOnInit() {
     this.destinationChange.subscribe(() => {
@@ -221,11 +227,18 @@ export class AutocompleteDropdownComponent implements OnInit {
 
   private shouldMatch(item, simpleLabel) {
     let label: string = (this.autocompleteResultLabelFunction && this.autocompleteResultLabelFunction(item)) || simpleLabel;
+    if (this.translateLabel) {
+      label = this.translateService.instant(label);
+    }
     return !label || !this.textInput || label.toLowerCase().indexOf(this.textInput.toLowerCase()) === 0;
   }
 
   private selectedItemLabelFunctionActual(item: any) {
-    return (this.selectedItemLabelFunction && this.selectedItemLabelFunction(item)) || item;
+    let label = (this.selectedItemLabelFunction && this.selectedItemLabelFunction(item)) || item;
+    if (this.translateLabel) {
+      label = this.translateService.instant(label);
+    }
+    return label;
   }
 
   private setLookupData(data: any) {
@@ -299,11 +312,17 @@ export class AutocompleteDropdownComponent implements OnInit {
     if (this.isArray) {
       if (this.maxItems === 1 && this.destination.length === 1) {
         this.textInput = this.selectedItemLabelFunctionActual(this.destination[0]);
+        if (this.translateLabel) {
+          this.textInput = this.translateService.instant(this.textInput);
+        }
       } else {
         this.textInput = '';
       }
     } else {
       this.textInput = this.selectedItemLabelFunctionActual(this.destination);
+      if (this.translateLabel) {
+        this.textInput = this.translateService.instant(this.textInput);
+      }
     }
     this.saveLastTextInput();
   }
