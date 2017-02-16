@@ -41,6 +41,7 @@ export class UserProfileComponent extends TranslationListener implements OnInit 
 
   private namePropertyLabel: Function = namePropertyLabel;
 
+  private languageExpertProficiency: LanguageProficiency = LanguageProficiencyLevels.expert;
   private languageProficiencyLevelsAvailable: LanguageProficiency[] = languageProficiencyLevelsList;
   private skillProficiencyLevelsAvailable: LanguageProficiency[] = skillProficiencyLevelsList;
 
