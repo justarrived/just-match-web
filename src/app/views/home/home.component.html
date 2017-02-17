@@ -93,12 +93,15 @@
     </div>
   </div>
 
-  <div class="home-instructions-container" *ngIf="!user">
+  <div class="home-instructions-container">
     <div class="home-instructions-inner-container home-instructions-first-inner-container">
       <h3>
         {{'home.instructions.first.section.title' | translate}}
       </h3>
       <ul class="home-instructions-list">
+        <li class="home-instructions-list-item">
+          <i class="home-instructions-list-item-icon fa fa-check-circle-o fa-2x"></i> {{'home.instructions.first.section.instruction0' | translate}}
+        </li>
         <li class="home-instructions-list-item">
           <i class="home-instructions-list-item-icon fa fa-check-circle-o fa-2x"></i> {{'home.instructions.first.section.instruction1' | translate}}
         </li>
@@ -129,7 +132,14 @@
           <i class="home-instructions-list-item-icon fa fa-check-circle-o fa-2x"></i> {{'home.instructions.second.section.instruction3' | translate}}
         </li>
       </ul>
-      <div routerLink="{{JARoutes.registerUser.url()}}" class="home-instructions-button btn-secondary-light btn-medium btn">{{'common.start_here' | translate}}</div>
+      <div *ngIf="!user">
+        <div routerLink="{{JARoutes.registerUser.url()}}" class="home-instructions-button btn-secondary-light btn-medium btn">{{'common.start_here' | translate}}</div>
+      </div>
+      <div *ngIf="user">
+        <div routerLink="{{JARoutes.user.url([user.id])}}" class="home-instructions-button btn-secondary-light btn-medium btn">
+          {{'home.header.logged.in.profile.button' | translate}}
+        </div>
+      </div>
     </div>
   </div>
 
