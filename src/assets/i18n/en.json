@@ -137,7 +137,7 @@
   "page.not.found.error.description": "Sorry, the page you are looking for does not exist.",
   "page.not.found.error.title": "404 - Page Not Found",
   "reset.password.form.password.placeholder": "New password",
-  "reset.password.form.password.validation.min.length": "Password must be atleast 6 characters long",
+  "reset.password.form.password.validation.min.length": "Password must be at least 6 characters long",
   "reset.password.form.password.validation.required": "New password missing",
   "reset.password.form.submit.button": "Change password",
   "reset.password.form.submit.error": "Unfortunately, the password could not be changed. Please request a new password reset link and try again.",

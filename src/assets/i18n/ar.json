@@ -105,7 +105,7 @@
   "page_not_found_error.header": "صفحة غير موجودة",
   "page_not_found_error.subtitle": "معذرة, الصفحة التي تبحث عنها غير موجودة.",
   "reset.password.form.password.placeholder": "New password",
-  "reset.password.form.password.validation.min.length": "Password must be atleast 6 characters long",
+  "reset.password.form.password.validation.min.length": "Password must be at least 6 characters long",
   "reset.password.form.password.validation.required": "New password missing",
   "reset.password.form.submit.button": "Change password",
   "reset.password.form.submit.error": "Unfortunately, the password could not be changed. Please request a new password reset link and try again.",
