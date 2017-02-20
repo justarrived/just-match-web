@@ -157,7 +157,7 @@ export class UserProfileComponent extends TranslationListener implements OnInit 
       'at_und': [this.user.atUnd ? this.user.atUnd : 'no'],
       'got_coordination_number': [this.user.ssn ? 'yes' : 'no'],
       'ssn': [this.user.ssn],
-      'competence_text': [this.user.workExperience],
+      'competence_text': [this.user.skills],
       'job_experience': [this.user.workExperience],
       'user_skills': [this.user.userSkills.slice()]
     });
@@ -292,9 +292,10 @@ export class UserProfileComponent extends TranslationListener implements OnInit 
       'job_experience': this.profileForm.value.job_experience
     })
       .then((response) => {
-        this.saveSuccess = true;
-        this.authManager.authenticateIfNeeded();
-        this.loadingSubmit = false;
+        this.authManager.authenticateIfNeeded().then(() => {
+          this.saveSuccess = true;
+          this.loadingSubmit = false;
+        });
       })
       .catch(errors => {
         this.handleServerErrors(errors);
