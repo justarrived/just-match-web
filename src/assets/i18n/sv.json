@@ -81,7 +81,7 @@
   "home.header.logged.in.profile.button": "Redigera profil",
   "home.header.logged.in.title": "Välkommen {{username}}!",
   "home.header.logged.out.description": "Just Arrived",
-  "home.header.logged.out.login.button": "Logga i",
+  "home.header.logged.out.login.button": "Logga in",
   "home.header.logged.out.register.button": "Skapa konto",
   "home.header.logged.out.sub.title": "Få erfarenheten du behöver för att komma in på den svenska arbetsmarknaden",
   "home.header.logged.out.title": "Välkommen!",
