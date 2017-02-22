@@ -5,6 +5,8 @@ import {UserProxy} from '../../../../services/proxy/user-proxy.service';
 import {AutocompleteDropdownComponent} from '../../../../components/autocomplete-dropdown/autocomplete-dropdown.component';
 import {UserGender} from '../../../../models/user/user-gender';
 import {FormGroup, FormBuilder, Validators} from '@angular/forms';
+import {namePropertyLabel} from '../../../../utils/label-util';
+import {find} from 'lodash';
 
 @Component({
   selector: 'user-details',
@@ -12,6 +14,7 @@ import {FormGroup, FormBuilder, Validators} from '@angular/forms';
   styleUrls: ['./user-details.component.scss']
 })
 export class UserDetailsComponent implements OnInit {
+  private namePropertyLabel: Function = namePropertyLabel;
 
   @Input() private user: User;
 
@@ -40,9 +43,10 @@ export class UserDetailsComponent implements OnInit {
   }
 
   loadData() {
-    this.userProxy.getGenders().then((genders) => {
+    this.genders = [new UserGender({id: 'male', name: 'Male'}), new UserGender({id: 'female', name: 'Female'}), new UserGender({id: 'other', name: 'Other'})];
+    /*this.userProxy.getGenders().then((genders) => {
       this.genders = genders;
-    });
+    });*/
   }
 
   private initForm() {
@@ -59,6 +63,16 @@ export class UserDetailsComponent implements OnInit {
       'account_number': [this.user.accountNumber]
     });
 
+    // This check is needed since some Users may have been created before Gender was needed
+    if(this.user.gender) {
+      const genderName = find(this.genders, {id: this.user.gender}).name;
+      const genderDropdown = this.genderDropdown;
+      const genders = this.genders;
+      setTimeout(function() {
+        genderDropdown.textInput = genderName;
+      }, 100);
+    }
+
     this.passwordForm = this.formBuilder.group({
       'password': [null, Validators.compose([Validators.minLength(6)])],
       'old_password': [null],
@@ -69,6 +83,7 @@ export class UserDetailsComponent implements OnInit {
   private onGenderSelect(gender) {
     if (gender) {
       this.settingsForm.value.gender = gender.id;
+      this.settingsForm.controls['gender'].setValue(gender.id);
     }
   }
 
