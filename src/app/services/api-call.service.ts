@@ -11,10 +11,8 @@ import {
 } from '@angular/http';
 import {DataStore} from './data-store.service';
 import * as  _ from 'lodash';
-import {
-  parseJsonapiResponse,
-  parseJsonapiErrorResponse
-} from '../utils/jsonapi-parser.util';
+import {parseJsonapiResponse} from '../utils/jsonapi-parser.util';
+import {ApiErrors} from '../models/api-errors';
 import {Observable} from 'rxjs';
 import {environment} from '../../environments/environment';
 import {UserManager} from './user-manager.service';
@@ -110,6 +108,7 @@ export class ApiCall {
     return params;
   }
 
+  // TODO: Add typing.. currently returns ErrorObservable<ApiErrors> (though I can't seem to import that symbol from rxjs...)
   private handleResponseErrors(response) {
     if (response.status === 401) {
       let tokenExpiredObject = _.find(response.json().errors, { code: 'token_expired' });
@@ -124,7 +123,7 @@ export class ApiCall {
       this.navigationService.navigateNoLocationChange(JARoutes.error, response.status);
     }
 
-    return Observable.throw(parseJsonapiErrorResponse(response));
+    return Observable.throw(new ApiErrors(response.json().errors));
   }
 
 }
