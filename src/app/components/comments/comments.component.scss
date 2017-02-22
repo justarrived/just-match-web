@@ -3,6 +3,7 @@
 
 .comments-container {
   background-color: $default-bg-color;
+  margin-top: 25px;
   max-width: 600px;
   margin-left: auto;
   margin-right: auto;
@@ -38,6 +39,11 @@
 
       &.move-left {
         margin-left: 50px;
+
+        > .comment-body {
+          background: $color-gray-50;
+          color: black;
+        }
       }
 
       .comment-meta-data-container {
@@ -46,6 +52,7 @@
         .comment-meta-data-user-name {
           @include truncate-owerflowing-text;
           opacity: 0.7;
+          font-weight: bold;
         }
 
         .comment-meta-data-date {
@@ -53,13 +60,14 @@
           flex-shrink: 0;
           padding-left: 10px;
           opacity: 0.3;
-          font-weight: 700;
+
         }
       }
 
       .comment-body {
-        border-radius: 5px;
-        background: $color-gray-100;
+        border-radius: 25px;
+        background: $color-blue-400;
+        color: white;
         padding: 10px 15px;
         margin-top: 5px;
         @include wrap-long-words;
@@ -73,6 +81,7 @@
   max-width: 600px;
   margin-left: auto;
   margin-right: auto;
+  padding-bottom: 0.2em;
 
   &.moving {
     width: 100%;
