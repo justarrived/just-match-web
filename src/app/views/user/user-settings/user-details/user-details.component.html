@@ -23,7 +23,7 @@
 
       <div class="form-group material-group user-details-form-input-container" [ngClass]="{'has-error':!settingsForm.controls['gender'].valid || !serverValidationErrors.gender}">
         <label class="user-details-form-input-label" for="gender">{{'user.settings.form.gender.label' | translate}} *:</label>
-        <autocomplete-dropdown #genderDropDown (dropdownListItemSelect)="onGenderSelect($event)" [lookupType]="'list'" [enumList]="genders" [placeholder]="'user.settings.form.gender.placeholder' | translate"
+        <autocomplete-dropdown #genderDropdown (dropdownListItemSelect)="onGenderSelect($event)" [lookupType]="'list'" [enumList]="genders" [placeholder]="'user.settings.form.gender.placeholder' | translate"
             [autocompleteResultLabelFunction]="namePropertyLabel" [selectedItemLabelFunction]="namePropertyLabel">
         </autocomplete-dropdown>
         <div *ngIf="!settingsForm.value.gender" class="alert alert-danger">{{'user.settings.form.gender.validation.required' | translate}}</div>
