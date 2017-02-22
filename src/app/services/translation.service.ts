@@ -17,7 +17,6 @@ export class TranslationService {
 
     this.translateService.addLangs(['ar', 'en', 'fa', 'fa_AF', 'ku', 'ps', 'sv', 'ti']);
     this.translateService.setDefaultLang('en');
-    this.translateService.getTranslation('en').subscribe(() => { }); // to use the fallback language: https://github.com/ocombe/ng2-translate/issues/185
 
     this.setLanguage(this.selectedLanguage);
   }

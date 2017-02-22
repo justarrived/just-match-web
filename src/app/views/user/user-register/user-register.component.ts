@@ -12,7 +12,7 @@ import {NavigationService} from '../../../services/navigation.service';
 import {JARoutes} from '../../../routes/ja-routes';
 import {TranslationService} from '../../../services/translation.service';
 import {TranslationListener} from '../../../components/translation.component';
-import {FormGroup, FormBuilder, Validators} from '@angular/forms';
+import {FormGroup, FormBuilder, FormControl, Validators} from '@angular/forms';
 
 @Component({
   templateUrl: './user-register.component.html',
@@ -51,19 +51,23 @@ export class UserRegisterComponent extends TranslationListener implements OnInit
     this.registerForm = formBuilder.group({
       'first_name': ['', Validators.compose([Validators.required, Validators.minLength(2)])],
       'last_name': ['', Validators.compose([Validators.required, Validators.minLength(2)])],
-      'gender': [''],
+      'gender': ['', Validators.compose([Validators.required])],
       'email': ['', Validators.compose([Validators.required, Validators.pattern(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)])],
       'phone': ['', Validators.compose([Validators.required])],
       'street': [''],
       'zip': [''],
       'city': [''],
-      'country_of_origin': [''],
-      'native_language': [''],
-      'default_language': [''],
+      'country_of_origin': ['', Validators.compose([Validators.required])],
+      'native_language': ['', Validators.compose([Validators.required])],
+      'default_language': ['', Validators.compose([Validators.required])],
       'password': ['', Validators.compose([Validators.required, Validators.minLength(6)])],
       'repeat_password': [, Validators.compose([Validators.required])],
-      'accepted_terms_and_conditions': ['']
+      'accepted_terms_and_conditions': ['', Validators.compose([Validators.required])]
     });
+
+    for(var control in this.registerForm.controls) {
+      this.registerForm.controls[control].valueChanges.subscribe(() => this.serverValidationErrors[control] = '');
+    }
   }
 
   ngOnInit(): void {
@@ -91,16 +95,16 @@ export class UserRegisterComponent extends TranslationListener implements OnInit
     this.userProxy.saveUser({
       'first_name': this.registerForm.value.first_name,
       'last_name': this.registerForm.value.last_name,
-      'gender': this.registerForm.value.gender.id,
+      'gender': this.registerForm.value.gender,
       'email': this.registerForm.value.email,
       'phone': this.registerForm.value.phone,
       'street': this.registerForm.value.street,
       'zip': this.registerForm.value.zip,
       'city': this.registerForm.value.city,
       'country_of_origin': this.registerForm.value.country_of_origin.countryCode,
-      'language_id': this.registerForm.value.default_language.id,
+      'language_id': this.registerForm.value.default_language,
       'language_ids': [{
-        id: this.registerForm.value.native_language.id,
+        id: this.registerForm.value.native_language,
         proficiency: 5
       }],
       'password': this.registerForm.value.password

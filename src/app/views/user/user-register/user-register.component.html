@@ -7,141 +7,317 @@
   <div class="register-form-outer-container">
     <div class="register-form-inner-container">
 
-      <form #form="ngForm" (ngSubmit)="onSubmit()">
+      <form #form="ngForm" class="ui form" (ngSubmit)="onSubmit()">
+        <sm-loader [complete]="!loadingSubmit" class="inverted" text="Loading..."></sm-loader>
 
-        <div class="register-form-input-group-header">
-          <h4>{{'user.register.form.first.name.header' | translate}} *</h4></div>
+        <h3 class="ui dividing header">{{'user.register.form.general.information.section.header' | translate}}</h3>
 
-        <div class="form-group material-group register-form-input-container" [ngClass]="{'has-error': (registerForm.controls['first_name'].touched && !registerForm.controls['first_name'].valid) || !serverValidationErrors.first_name}">
-          <input class="form-control material-input" maxlength="50" id="first_name" name="first-name-input" type="text" (focus)="serverValidationErrors.first_name = ''" placeholder="{{'user.register.form.first.name.placeholder' | translate}}" [formControl]="registerForm.controls['first_name']">
-          <div *ngIf="registerForm.controls['first_name'].touched && registerForm.controls['first_name'].hasError('required')" class="alert alert-danger">{{'user.register.form.first.name.validation.required' | translate}}</div>
-          <div *ngIf="registerForm.controls['first_name'].hasError('minlength')" class="alert alert-danger">{{'user.register.form.first.name.validation.min.length' | translate}}</div>
-          <div *ngIf="serverValidationErrors.first_name" class="alert alert-danger">{{serverValidationErrors.first_name}}</div>
+        <div class="field" [ngClass]="{'error': (registerForm.controls['first_name'].touched && !registerForm.controls['first_name'].valid) || serverValidationErrors.first_name}">
+          <sm-input
+            [control]="registerForm.controls['first_name']"
+            [label]="'user.register.form.first.name.header' | translate"
+            [placeholder]="'user.register.form.first.name.placeholder' | translate"
+            class="left"
+            icon="user"
+            type="text">
+          </sm-input>
+          <div
+            *ngIf="registerForm.controls['first_name'].touched && registerForm.controls['first_name'].hasError('required')"
+            class="ui pointing red basic label">
+            {{'user.register.form.first.name.validation.required' | translate}}
+          </div>
+          <div
+            *ngIf="registerForm.controls['first_name'].hasError('minlength')"
+            class="ui pointing red basic label">
+            {{'user.register.form.first.name.validation.min.length' | translate}}
+          </div>
+          <div
+            *ngIf="serverValidationErrors.first_name"
+            class="ui pointing red basic label">
+            {{serverValidationErrors.first_name}}
+          </div>
         </div>
 
-        <div class="register-form-input-group-header">
-          <h4>{{'user.register.form.last.name.header' | translate}} *</h4></div>
-
-        <div class="form-group material-group register-form-input-container" [ngClass]="{'has-error':  (registerForm.controls['last_name'].touched && !registerForm.controls['last_name'].valid) || !serverValidationErrors.last_name}">
-          <input class="form-control material-input" maxlength="50" id="last_name" name="last-name-input" type="text" (focus)="serverValidationErrors.last_name = ''" placeholder="{{'user.register.form.last.name.placeholder' | translate}}" [formControl]="registerForm.controls['last_name']">
-          <div *ngIf="registerForm.controls['last_name'].touched && registerForm.controls['last_name'].hasError('required')" class="alert alert-danger">{{'user.register.form.last.name.validation.required' | translate}}</div>
-          <div *ngIf="registerForm.controls['last_name'].hasError('minlength')" class="alert alert-danger">{{'user.register.form.last.name.validation.min.length' | translate}}</div>
-          <div *ngIf="serverValidationErrors.last_name" class="alert alert-danger">{{serverValidationErrors.last_name}}</div>
+        <div class="field" [ngClass]="{'error': (registerForm.controls['last_name'].touched && !registerForm.controls['last_name'].valid) || serverValidationErrors.last_name}">
+          <sm-input
+            [control]="registerForm.controls['last_name']"
+            [label]="'user.register.form.last.name.header' | translate"
+            [placeholder]="'user.register.form.last.name.placeholder' | translate"
+            class="left"
+            icon="user"
+            type="text">
+          </sm-input>
+          <div
+            *ngIf="registerForm.controls['last_name'].touched && registerForm.controls['last_name'].hasError('required')"
+            class="ui pointing red basic label">
+            {{'user.register.form.last.name.validation.required' | translate}}
+          </div>
+          <div
+            *ngIf="registerForm.controls['last_name'].hasError('minlength')"
+            class="ui pointing red basic label">
+            {{'user.register.form.last.name.validation.min.length' | translate}}
+          </div>
+          <div
+            *ngIf="serverValidationErrors.last_name"
+            class="ui pointing red basic label">
+            {{serverValidationErrors.last_name}}
+          </div>
         </div>
 
-        <div class="register-form-input-group-header">
-          <h4>{{'user.register.form.gender.header' | translate}} *</h4></div>
-
-        <div class="form-group material-group register-form-input-container">
-          <autocomplete-dropdown [lookupType]="'list'" [enumList]="genders" [(touched)]="genderInputTouched" [placeholder]="'user.register.form.gender.placeholder' | translate" (dropdownListItemSelect)="registerForm.controls['gender'].setValue($event)"
-              [autocompleteResultLabelFunction]="namePropertyLabel" [selectedItemLabelFunction]="namePropertyLabel">
-          </autocomplete-dropdown>
-          <div *ngIf="!registerForm.value.gender && genderInputTouched" class="alert alert-danger">{{'user.register.form.gender.required' | translate}}</div>
-          <div *ngIf="serverValidationErrors.gender" class="alert alert-danger">{{serverValidationErrors.gender}}</div>
+        <div class="field" [ngClass]="{'error': (registerForm.controls['email'].touched && !registerForm.controls['email'].valid) || serverValidationErrors.email}">
+          <sm-input
+            [control]="registerForm.controls['email']"
+            [label]="'user.register.form.email.header' | translate"
+            [placeholder]="'user.register.form.email.placeholder' | translate"
+            class="left"
+            icon="mail"
+            type="text">
+          </sm-input>
+          <div
+            *ngIf="registerForm.controls['email'].touched && registerForm.controls['email'].hasError('required')"
+            class="ui pointing red basic label">
+            {{'user.register.form.email.validation.required' | translate}}
+          </div>
+          <div
+            *ngIf="registerForm.controls['email'].hasError('pattern')"
+            class="ui pointing red basic label">
+            {{'user.register.form.email.validation.pattern' | translate}}
+          </div>
+          <div
+            *ngIf="serverValidationErrors.email"
+            class="ui pointing red basic label">
+            {{serverValidationErrors.email}}
+          </div>
         </div>
 
-        <div class="register-form-input-group-header">
-          <h4>{{'user.register.form.email.header' | translate}} *</h4></div>
-
-        <div class="form-group material-group register-form-input-container" [ngClass]="{'has-error': (registerForm.controls['email'].touched && !registerForm.controls['email'].valid) || !serverValidationErrors.email}">
-          <input class="form-control material-input" maxlength="256" id="email" name="email" type="email" (focus)="serverValidationErrors.email = ''" placeholder="{{'user.register.form.email.placeholder' | translate}}" [formControl]="registerForm.controls['email']">
-          <div *ngIf="registerForm.controls['email'].touched && registerForm.controls['email'].hasError('required')" class="alert alert-danger">{{'user.register.form.email.validation.required' | translate}}</div>
-          <div *ngIf="registerForm.controls['email'].hasError('pattern')" class="alert alert-danger">{{'user.register.form.email.validation.pattern' | translate}}</div>
-          <div *ngIf="serverValidationErrors.email" class="alert alert-danger">{{serverValidationErrors.email}}.</div>
+        <div class="field" [ngClass]="{'error': (registerForm.controls['phone'].touched && !registerForm.controls['phone'].valid) || serverValidationErrors.phone}">
+          <sm-input
+            [control]="registerForm.controls['phone']"
+            [label]="'user.register.form.phone.header' | translate"
+            [placeholder]="'user.register.form.phone.placeholder' | translate"
+            class="left"
+            icon="phone"
+            type="text">
+          </sm-input>
+          <div
+            *ngIf="registerForm.controls['phone'].touched && registerForm.controls['phone'].hasError('required')"
+            class="ui pointing red basic label">
+            {{'user.register.form.phone.validation.required' | translate}}
+          </div>
+          <div
+            *ngIf="serverValidationErrors.phone"
+            class="ui pointing red basic label">
+            {{serverValidationErrors.phone}}
+          </div>
         </div>
 
-        <div class="register-form-input-group-header">
-          <h4>{{'user.register.form.phone.header' | translate}} *</h4></div>
-
-        <div class="form-group material-group register-form-input-container" [ngClass]="{'has-error': (registerForm.controls['phone'].touched && !registerForm.controls['phone'].valid)  || !serverValidationErrors.phone}">
-          <input class="form-control material-input" maxlength="20" id="phone" name="phone" type="text" (focus)="serverValidationErrors.phone = ''" placeholder="{{'user.register.form.phone.placeholder' | translate}}" [formControl]="registerForm.controls['phone']">
-          <div *ngIf="registerForm.controls['phone'].touched && registerForm.controls['phone'].hasError('required')" class="alert alert-danger">{{'user.register.form.phone.validation.required' | translate}}</div>
-          <div *ngIf="serverValidationErrors.phone" class="alert alert-danger">{{serverValidationErrors.phone}}.</div>
+        <div class="field" [ngClass]="{'error': (registerForm.controls['gender'].touched && !registerForm.controls['gender'].valid) || serverValidationErrors.gender}">
+          <sm-select
+           [control]="registerForm.controls['gender']"
+           [label]="'user.register.form.gender.header' | translate"
+           [placeholder]="'user.register.form.gender.placeholder' | translate"
+           class="fluid">
+            <option *ngFor="let gender of genders" [value]="gender.id">
+              {{gender.name}}
+            </option>
+          </sm-select>
+          <div
+            *ngIf="registerForm.controls['gender'].touched && registerForm.controls['gender'].hasError('required')"
+            class="ui pointing red basic label">
+            {{'user.register.form.gender.validation.required' | translate}}
+          </div>
+          <div
+            *ngIf="serverValidationErrors.gender"
+            class="ui pointing red basic label">
+            {{serverValidationErrors.gender}}
+          </div>
         </div>
 
-        <div class="register-form-input-group-header">
-          <h4>{{'user.register.form.address.header' | translate}}</h4></div>
+        <h3 class="ui dividing header">{{'user.register.form.address.section.header' | translate}}</h3>
 
-        <div class="form-group material-group register-form-input-container" [ngClass]="{'has-error':!registerForm.controls['street'].valid || !serverValidationErrors.street}">
-          <input class="form-control material-input" maxlength="50" id="street" name="street" type="text" (focus)="serverValidationErrors.street = ''" placeholder="{{'user.register.form.street.placeholder' | translate}}" [formControl]="registerForm.controls['street']">
-          <div *ngIf="serverValidationErrors.street" class="alert alert-danger">{{serverValidationErrors.street}}.</div>
+        <div class="field" [ngClass]="{'error': (registerForm.controls['street'].touched && !registerForm.controls['street'].valid) || serverValidationErrors.street}">
+          <sm-input
+            [control]="registerForm.controls['street']"
+            [label]="'user.register.form.street.header' | translate"
+            [placeholder]="'user.register.form.street.placeholder' | translate"
+            class="left"
+            icon="map pin"
+            type="text">
+          </sm-input>
+          <div
+            *ngIf="serverValidationErrors.street"
+            class="ui pointing red basic label">
+            {{serverValidationErrors.street}}
+          </div>
         </div>
 
-        <div class="form-group material-group register-form-input-container" [ngClass]="{'has-error':!registerForm.controls['zip'].valid || !serverValidationErrors.zip}">
-          <input class="form-control material-input" maxlength="10" id="zip" name="zip" type="text" (focus)="serverValidationErrors.zip = ''" placeholder="{{'user.register.form.zip.placeholder' | translate}}" [formControl]="registerForm.controls['zip']">
-          <div *ngIf="serverValidationErrors.zip" class="alert alert-danger">{{serverValidationErrors.zip}}.</div>
+        <div class="field" [ngClass]="{'error': (registerForm.controls['zip'].touched && !registerForm.controls['zip'].valid) || serverValidationErrors.zip}">
+          <sm-input
+            [control]="registerForm.controls['zip']"
+            [label]="'user.register.form.zip.header' | translate"
+            [placeholder]="'user.register.form.zip.placeholder' | translate"
+            class="left"
+            icon="map"
+            type="text">
+          </sm-input>
+          <div
+            *ngIf="serverValidationErrors.zip"
+            class="ui pointing red basic label">
+            {{serverValidationErrors.zip}}
+          </div>
         </div>
 
-        <div class="form-group material-group register-form-input-container" [ngClass]="{'has-error':!registerForm.controls['city'].valid || !serverValidationErrors.city}">
-          <input class="form-control material-input" maxlength="50" id="city" name="city" type="text" (focus)="serverValidationErrors.city = ''" placeholder="{{'user.register.form.city.placeholder' | translate}}" [formControl]="registerForm.controls['city']">
-          <div *ngIf="serverValidationErrors.city" class="alert alert-danger">{{serverValidationErrors.city}}.</div>
+        <div class="field" [ngClass]="{'error': (registerForm.controls['city'].touched && !registerForm.controls['city'].valid) || serverValidationErrors.city}">
+          <sm-input
+            [control]="registerForm.controls['city']"
+            [label]="'user.register.form.city.header' | translate"
+            [placeholder]="'user.register.form.city.placeholder' | translate"
+            class="left"
+            icon="building"
+            type="text">
+          </sm-input>
+          <div
+            *ngIf="serverValidationErrors.city"
+            class="ui pointing red basic label">
+            {{serverValidationErrors.city}}
+          </div>
         </div>
 
-        <div class="register-form-input-group-header">
-          <h4>{{'user.register.form.native.language.header' | translate}} *</h4></div>
+        <h3 class="ui dividing header">{{'user.register.form.country.and.languages.section.header' | translate}}</h3>
 
-        <div class="form-group material-group register-form-input-container">
-          <autocomplete-dropdown [lookupType]="'list'" [enumList]="languages" [(touched)]="nativeLanguageInputTouched" [placeholder]="'user.register.form.native.language.placeholder' | translate" (dropdownListItemSelect)="registerForm.controls['native_language'].setValue($event)"
-              [autocompleteResultLabelFunction]="namePropertyLabel" [selectedItemLabelFunction]="namePropertyLabel">
-          </autocomplete-dropdown>
-          <div *ngIf="!registerForm.value.native_language && nativeLanguageInputTouched" class="alert alert-danger">{{'user.register.form.native.language.required' | translate}}</div>
-          <div *ngIf="serverValidationErrors.language_ids" class="alert alert-danger">{{serverValidationErrors.language_ids}}</div>
+        <div class="field" [ngClass]="{'error': (registerForm.controls['native_language'].touched && !registerForm.controls['native_language'].valid) || serverValidationErrors.language_ids}">
+          <sm-select
+           [control]="registerForm.controls['native_language']"
+           [label]="'user.register.form.native.language.header' | translate"
+           [placeholder]="'user.register.form.native.language.placeholder' | translate"
+           class="fluid search">
+            <option *ngFor="let language of languages" [value]="language.id">
+              {{language.name}}
+            </option>
+          </sm-select>
+          <div
+            *ngIf="registerForm.controls['native_language'].touched && registerForm.controls['native_language'].hasError('required')"
+            class="ui pointing red basic label">
+            {{'user.register.form.native.language.validation.required' | translate}}
+          </div>
+          <div
+            *ngIf="serverValidationErrors.language_ids"
+            class="ui pointing red basic label">
+            {{serverValidationErrors.language_ids}}
+          </div>
         </div>
 
-        <div class="register-form-input-group-header">
-          <h4>{{'user.register.form.default.language.header' | translate}} *</h4></div>
-
-        <div class="form-group material-group register-form-input-container">
-          <autocomplete-dropdown [lookupType]="'list'" [enumList]="systemLanguages" [(touched)]="defaultLanguageInputTouched" [placeholder]="'user.register.form.default.language.placeholder' | translate" (dropdownListItemSelect)="registerForm.controls['default_language'].setValue($event)"
-              [autocompleteResultLabelFunction]="namePropertyLabel" [selectedItemLabelFunction]="namePropertyLabel">
-          </autocomplete-dropdown>
-          <p class="register-form-input-description-text">{{'user.register.form.default.language.description' | translate}}</p>
-          <div *ngIf="!registerForm.value.default_language && defaultLanguageInputTouched" class="alert alert-danger">{{'user.register.form.default.language.required' | translate}}</div>
-          <div *ngIf="serverValidationErrors.language_id" class="alert alert-danger">{{serverValidationErrors.language_id}}</div>
+        <div class="field" [ngClass]="{'error': (registerForm.controls['default_language'].touched && !registerForm.controls['default_language'].valid) || serverValidationErrors.language_id}">
+          <sm-select
+           [control]="registerForm.controls['default_language']"
+           [label]="'user.register.form.default.language.header' | translate"
+           [placeholder]="'user.register.form.default.language.placeholder' | translate"
+           class="fluid search">
+            <option *ngFor="let language of systemLanguages" [value]="language.id">
+              {{language.name}}
+            </option>
+          </sm-select>
+          <div
+            *ngIf="registerForm.controls['default_language'].touched && registerForm.controls['default_language'].hasError('required')"
+            class="ui pointing red basic label">
+            {{'user.register.form.default.language.validation.required' | translate}}
+          </div>
+          <div
+            *ngIf="serverValidationErrors.language"
+            class="ui pointing red basic label">
+            {{serverValidationErrors.language}}
+          </div>
+          <div
+            class="ui pointing grey basic label">
+            {{'user.register.form.default.language.description' | translate}}
+          </div>
         </div>
 
-        <div class="register-form-input-group-header">
-          <h4>{{'user.register.form.country.of.origin.header' | translate}} *</h4></div>
-
-        <div class="form-group material-group register-form-input-container">
-          <autocomplete-dropdown [lookupType]="'list'" [enumList]="countries" [(touched)]="countryOfOriginInputTouched" [placeholder]="'user.register.form.country.of.origin.placeholder' | translate" (dropdownListItemSelect)="registerForm.controls['country_of_origin'].setValue($event)"
-              [autocompleteResultLabelFunction]="namePropertyLabel" [selectedItemLabelFunction]="namePropertyLabel">
-          </autocomplete-dropdown>
-          <input id="country_of_origin" name="country_of_origin" type="hidden" [(ngModel)]="registerForm.value.country_of_origin" [formControl]="registerForm.controls['country_of_origin']">
-
-          <div *ngIf="!registerForm.value.country_of_origin && countryOfOriginInputTouched" class="alert alert-danger">{{'user.register.form.country.of.origin.required' | translate}}</div>
-          <div *ngIf="serverValidationErrors.country_of_origin" class="alert alert-danger">{{serverValidationErrors.country_of_origin}}</div>
+        <div class="field" [ngClass]="{'error': (registerForm.controls['country_of_origin'].touched && !registerForm.controls['country_of_origin'].valid) || serverValidationErrors.country_of_origin}">
+          <sm-select
+           [control]="registerForm.controls['country_of_origin']"
+           [(model)]="registerForm.controls['country_of_origin'].value"
+           [label]="'user.register.form.country.of.origin.header' | translate"
+           [placeholder]="'user.register.form.country.of.origin.placeholder' | translate"
+           class="fluid search">
+            <option *ngFor="let country of countries" [value]="country.countryCode">
+              {{country.name}}
+            </option>
+          </sm-select>
+          <div
+            *ngIf="registerForm.controls['country_of_origin'].touched && registerForm.controls['country_of_origin'].hasError('required')"
+            class="ui pointing red basic label">
+            {{'user.register.form.country.of.origin.validation.required' | translate}}
+          </div>
+          <div
+            *ngIf="serverValidationErrors.country_of_origin"
+            class="ui pointing red basic label">
+            {{serverValidationErrors.country_of_origin}}
+          </div>
         </div>
 
-        <div class="register-form-input-group-header">
-          <h4>{{'user.register.form.password.header' | translate}} *</h4></div>
+        <h3 class="ui dividing header">{{'user.register.form.password.section.header' | translate}}</h3>
 
-        <div class="form-group material-group register-form-input-container" [ngClass]="{'has-error':!registerForm.controls['password'].valid || !registerForm.controls['repeat_password'].valid || !serverValidationErrors.password || passwordsSuppliedAndMisMatch()}">
-          <input class="form-control material-input" id="password" name="password" type="password" (focus)="serverValidationErrors.password = ''" placeholder="{{'user.register.form.password.placeholder' | translate}}" [formControl]="registerForm.controls['password']"
-              maxlength="50">
-          <input class="form-control material-input" id="repeat_password" name="repeat_password" type="password" (focus)="serverValidationErrors.password = ''" placeholder="{{'user.register.form.repeat.password.placeholder' | translate}}" [formControl]="registerForm.controls['repeat_password']"
-              maxlength="50">
-          <div *ngIf="registerForm.controls['password'].hasError('minlength')" class="alert alert-danger">{{'user.register.form.password.validation.min.length' | translate}}</div>
-          <div *ngIf="registerForm.controls['password'].touched && registerForm.controls['password'].hasError('required')" class="alert alert-danger">{{'user.register.form.password.validation.required' | translate}}</div>
-          <div *ngIf="passwordsSuppliedAndMisMatch()" class="alert alert-danger">{{'user.register.form.repeat.password.validation.mismatch' | translate}}</div>
-          <div *ngIf="serverValidationErrors.password" class="alert alert-danger">{{serverValidationErrors.password}}.</div>
+        <div class="field" [ngClass]="{'error': (registerForm.controls['password'].touched && !registerForm.controls['password'].valid) || serverValidationErrors.password}">
+          <sm-input
+            [control]="registerForm.controls['password']"
+            [label]="'user.register.form.password.header' | translate"
+            [placeholder]="'user.register.form.password.placeholder' | translate"
+            class="left"
+            icon="lock"
+            type="password">
+          </sm-input>
+          <div
+            *ngIf="registerForm.controls['password'].touched && registerForm.controls['password'].hasError('required')"
+            class="ui pointing red basic label">
+            {{'user.register.form.password.validation.required' | translate}}
+          </div>
+          <div
+            *ngIf="registerForm.controls['password'].hasError('minlength')"
+            class="ui pointing red basic label">
+            {{'user.register.form.password.validation.min.length' | translate}}
+          </div>
+          <div
+            *ngIf="serverValidationErrors.password"
+            class="ui pointing red basic label">
+            {{serverValidationErrors.password}}
+          </div>
         </div>
 
-        <div class="form-group text-center register-form-input-container register-form-terms-container" [ngClass]="{'has-error':!registerForm.controls['accepted_terms_and_conditions'].valid && registerForm.controls['accepted_terms_and_conditions'].touched}">
-          <label for="terms">
-            {{'user.register.form.terms.accept' | translate}}
-            <a href="/assets/terms/160523_2051-2_Terms_and_Conditions_(en).pdf" target="_blank"> PDF EN</a>,
-            <a href="/assets/terms/160520_2051-2_Anvandarvillkor_(sv).pdf" target="_blank"> PDF SV</a>
-          </label>
-          <input type="checkbox" id="terms" name="terms" class="material-input" [formControl]="registerForm.controls['accepted_terms_and_conditions']">
-          <div *ngIf="!registerForm.value.accepted_terms_and_conditions" class="alert alert-danger">{{'user.register.form.terms.validation.required' | translate}}</div>
+        <div class="field" [ngClass]="{'error': (registerForm.controls['repeat_password'].touched && !registerForm.controls['repeat_password'].valid) || serverValidationErrors.repeat_password || passwordsSuppliedAndMisMatch()}">
+          <sm-input
+            [control]="registerForm.controls['repeat_password']"
+            [label]="'user.register.form.repeat.password.header' | translate"
+            [placeholder]="'user.register.form.repeat.password.placeholder' | translate"
+            class="left"
+            icon="lock"
+            type="password">
+          </sm-input>
+          <div
+            *ngIf="passwordsSuppliedAndMisMatch()"
+            class="ui pointing red basic label">
+            {{'user.register.form.repeat.password.validation.mismatch' | translate}}
+          </div>
+          <div
+            *ngIf="serverValidationErrors.repeat_password"
+            class="ui pointing red basic label">
+            {{serverValidationErrors.repeat_password}}
+          </div>
+        </div>
+
+        <div class="field" [ngClass]="{'error': !registerForm.controls['accepted_terms_and_conditions'].valid}">
+          <sm-checkbox
+            [label]="'user.register.form.terms.accept' | translate"
+            [control]="registerForm.controls['accepted_terms_and_conditions']">
+          </sm-checkbox>
+          <a href="/assets/terms/160523_2051-2_Terms_and_Conditions_(en).pdf" target="_blank"> PDF EN</a>,
+          <a href="/assets/terms/160520_2051-2_Anvandarvillkor_(sv).pdf" target="_blank"> PDF SV</a>
         </div>
 
         <div class="register-form-button-container">
           <div *ngIf="saveFail" class="error-message">{{'user.register.form.submit.fail' | translate}}</div>
           <div *ngIf="saveSuccess" class="save-message">{{'user.register.form.submit.success' | translate}}</div>
-          <loading *ngIf="loadingSubmit"></loading>
-          <button *ngIf="!loadingSubmit" type="submit" [disabled]="!formValidation()" class="btn-primary btn-small btn">{{'user.register.form.submit.button' | translate}}</button>
+          <button *ngIf="!loadingSubmit" type="submit"  class="btn-primary btn-small btn">{{'user.register.form.submit.button' | translate}}</button>
         </div>
       </form>
     </div>

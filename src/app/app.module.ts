@@ -1,4 +1,5 @@
 import {NgModule, ErrorHandler } from '@angular/core';
+import {NgSemanticModule} from 'ng-semantic';
 import {HttpModule} from '@angular/http';
 import {BrowserModule} from '@angular/platform-browser';
 import * as Raven from 'raven-js';
@@ -59,7 +60,7 @@ Raven
   .install();
 
 export class RavenErrorHandler implements ErrorHandler {
-  handleError(error: any) : void {
+  handleError(error: any): void {
     Raven.captureException(error.originalError);
   }
 }
@@ -67,6 +68,7 @@ export class RavenErrorHandler implements ErrorHandler {
 @NgModule({
   imports: [
     BrowserModule,
+    NgSemanticModule,
     HttpModule,
     FormsModule,
     ReactiveFormsModule,
