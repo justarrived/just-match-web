@@ -19,7 +19,7 @@
   "assignment.status.offer.approve": "Would you still like to perform the assignment and can you commit to do so?",
   "assignment.status.offer": "You have received an offer to do this job. Answer within",
   "assignment.status.performed": "Job performed",
-  "assignment.status.reply": "Provide answer",
+  "assignment.status.reply": "Accept offer",
   "assignment.status.user_company_hire": "The company wants to hire you",
   "assignment.status.you_hired": "You've been hired",
   "assignment.comments.title": "Comment on the job",
