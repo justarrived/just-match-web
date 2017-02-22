@@ -16,8 +16,8 @@ import {deleteElementFromArray} from '../../../../utils/array-util';
 import {deleteElementFromArrayLambda} from '../../../../utils/array-util';
 import {namePropertyLabel} from '../../../../utils/label-util';
 import {LanguageProficiency} from '../../../../models/language/language-proficiency';
-import {languageProficiencyLevels} from '../../../../enums/enums';
-import {skillProficiencyLevels} from '../../../../enums/enums';
+import {LanguageProficiencyLevels, languageProficiencyLevelsList} from '../../../../models/language/language-proficiency-levels';
+import {SkillProficiencyLevels, skillProficiencyLevelsList} from '../../../../models/skill/skill-proficiency-levels';
 import {UserProxy} from '../../../../services/proxy/user-proxy.service';
 import {AutocompleteDropdownComponent} from '../../../../components/autocomplete-dropdown/autocomplete-dropdown.component';
 import {FormGroup, FormBuilder, Validators} from '@angular/forms';
@@ -30,6 +30,9 @@ import {TranslationService} from '../../../../services/translation.service';
   styleUrls: ['./user-profile.component.scss']
 })
 export class UserProfileComponent extends TranslationListener implements OnInit {
+  private readonly ZERO_DIGIT: number = 48;
+  private readonly NINE_DIGIT: number = 57;
+
   @ViewChild('nativeLanguageDropdown')
   private nativeLanguageDropdown: AutocompleteDropdownComponent;
 
@@ -41,8 +44,9 @@ export class UserProfileComponent extends TranslationListener implements OnInit 
 
   private namePropertyLabel: Function = namePropertyLabel;
 
-  private languageProficiencyLevelsAvailable: LanguageProficiency[] = languageProficiencyLevels;
-  private skillProficiencyLevelsAvailable: LanguageProficiency[] = skillProficiencyLevels;
+  private languageExpertProficiency: LanguageProficiency = LanguageProficiencyLevels.expert;
+  private languageProficiencyLevelsAvailable: LanguageProficiency[] = languageProficiencyLevelsList;
+  private skillProficiencyLevelsAvailable: LanguageProficiency[] = skillProficiencyLevelsList;
 
   @Input() private user: User;
 
@@ -157,7 +161,7 @@ export class UserProfileComponent extends TranslationListener implements OnInit 
       'at_und': [this.user.atUnd ? this.user.atUnd : 'no'],
       'got_coordination_number': [this.user.ssn ? 'yes' : 'no'],
       'ssn': [this.user.ssn],
-      'competence_text': [this.user.workExperience],
+      'competence_text': [this.user.skills],
       'job_experience': [this.user.workExperience],
       'user_skills': [this.user.userSkills.slice()]
     });
@@ -264,6 +268,10 @@ export class UserProfileComponent extends TranslationListener implements OnInit 
     this.serverValidationErrors = errors.details || errors;
   }
 
+  private checkInputType(event): boolean {
+    return event.charCode >= this.ZERO_DIGIT && event.charCode <= this.NINE_DIGIT;
+  }
+
   private onSubmit() {
     this.saveSuccess = false;
     this.saveFail = false;
@@ -292,9 +300,10 @@ export class UserProfileComponent extends TranslationListener implements OnInit 
       'job_experience': this.profileForm.value.job_experience
     })
       .then((response) => {
-        this.saveSuccess = true;
-        this.authManager.authenticateIfNeeded();
-        this.loadingSubmit = false;
+        this.authManager.authenticateIfNeeded().then(() => {
+          this.saveSuccess = true;
+          this.loadingSubmit = false;
+        });
       })
       .catch(errors => {
         this.handleServerErrors(errors);

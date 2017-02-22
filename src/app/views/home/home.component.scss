@@ -1,330 +1,322 @@
 @import '../../styles/colors';
 @import '../../styles/dimensions';
 @import '../../styles/typography';
-
 $job-card-border-radius: 8px;
 
-.home-header {
-  display: flex;
-  background: linear-gradient($color-cerise-600, $color-primary-cerise);
-  color: $white;
-  flex-flow: row-reverse;
-
-  @media screen and (max-width: $md-device-width) {
-    flex-flow: column;
-  }
-
-  .home-header-button-container {
-    display: inline-block;
-
-    .home-header-button {
-      width: 100%;
-      position: relative;
-      margin-left: 0px;
-    }
-  }
-
-  .home-header-info-container {
-    padding: 40px;
-    width: calc(100% - 426px);
-    text-align: left;
-
-    @media screen and (max-width: $md-device-width) {
-      padding-left: 10px;
-      padding-right: 10px;
-      width: auto;
-      max-width: 800px;
-      margin: 0 auto;
-      text-align: center;;
-    }
-
-    .home-header-info-title {
-      color: $white;
-      text-shadow: 0 0 3px rgba(0, 0, 0, 0.75);
-      @include wrap-long-words;
-    }
-
-    .home-header-info-subtitle {
-      padding-top: 1em;
-      padding-bottom: 0.2em;
-    }
-
-    .header-info-description-container {
-      margin: 0 auto;
-      .header-info-description {
-        font-size: 14px;
-      }
-    }
-
-    a:first-of-type {
-      margin-bottom: 0.5em;
-    }
-  }
-
-  .home-header-info-container-logged-in {
-    padding-left: 150px;
-    padding-top: 100px;
-
-    @media screen and (max-width: $md-device-width) {
-      padding-left: 0px;
-      padding-top: 40px;
-    }
-  }
-
-  .home-header-map-image {
-    width: 426px;
-    padding-right: 0px;
-
-    @media screen and (max-width: $md-device-width) {
-      margin: 0 auto;
-    }
-
-    @media screen and (max-width: 426px) {
-      width: 100%;
-    }
-  }
-}
-
-.start-sign-in-button {
-  width: calc(100% - 30px);
-}
-
-.my-jobs {
-  background: $white;
-}
-
-.my-jobs-title {
-  color: $color-secondary-gray;
-}
-
-.my-jobs-show-all-button {
-  display: flex;
-  flex-direction: column-reverse;
-
-  span {
-    cursor: pointer;
-    color: $color-primary-cerise;
-    align-self: flex-end;
-    padding-left: 3em;
-  }
-}
-
-.user-jobs {
-  background: $color-secondary-gray;
-}
-
-.user-jobs-title {
-  color: $white;
-}
-
-.user-jobs-show-all-button {
-  display: flex;
-  flex-direction: column-reverse;
-
-  span {
-    cursor: pointer;
+.home-container {
+  .home-header-container {
+    display: flex;
+    background: linear-gradient($color-cerise-600, $color-primary-cerise);
     color: $white;
-    align-self: flex-end;
-    padding-left: 3em;
-  }
-}
-
-.home-slider-container {
-  padding: 3em;
-
-  @media screen and (max-width: $md-device-width) {
-    padding: 3em 1em;
-
-    .title {
-      padding-left: 3em;
-    }
-  }
-
-  > div {
-    padding: 0;
-  }
-
-  .jobs-slider {
-    margin-top: 1em;
-    overflow-y: scroll;
-    white-space: nowrap;
-
-    &::-webkit-scrollbar {
-      display: none;
+    flex-flow: row-reverse;
+    @media screen and (max-width: $md-device-width) {
+      flex-flow: column;
     }
 
-    .item-container {
-      display: inline-block;
-      width: 180px;
-      margin: 5px;
-      background-color: $default-bg-color;
-      border-radius: $job-card-border-radius;
-      box-shadow: 0px 2px 6px 0px rgba(0,0,0,0.4);
-      cursor: pointer;
-
-      &:hover {
-        transform: scale(1.02);
+    .home-header-map-image {
+      width: 426px;
+      padding-right: 0;
+      @media screen and (max-width: $md-device-width) {
+        margin: 0 auto;
       }
-
-      .job-name {
-        height: 110px;
-        padding: 10px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-
-        p {
-          text-align: center;
-          margin: 0;
-          white-space: normal;
-          @include truncate-owerflowing-text;
-        }
+      @media screen and (max-width: 426px) {
+        width: 100%;
       }
+    }
 
-      .jobs-salary-container {
-        color: $white;
-        background: $color-primary-cerise;
-        padding: 10px;
-        font-weight: 500;
-        /* TODO: Jobs border radius variable */
-
-        border-radius: 0 0 $job-card-border-radius $job-card-border-radius;
+    .home-header-info-container {
+      padding: 40px;
+      width: calc(100% - 426px);
+      text-align: left;
+      @media screen and (max-width: $md-device-width) {
+        padding-left: 10px;
+        padding-right: 10px;
+        width: auto;
+        max-width: 800px;
+        margin: 0 auto;
         text-align: center;
       }
 
-      .user-jobs-salary-container-active {
-        background: $color-primary-cerise;
+      .home-header-info-title {
         color: $white;
+        text-shadow: 0 0 3px rgba(0, 0, 0, 0.75);
+        @include wrap-long-words;
       }
 
-      .user-jobs-salary-container-inactive {
-        background: $color-gray-50;
-        color: $color-gray-200;
+      .home-header-info-subtitle {
+        padding-top: 1em;
+        padding-bottom: 0.2em;
+      }
+
+      .home-header-info-description-container {
+        margin: 0 auto;
+        font-size: 14px;
+      }
+
+      .home-header-button-container {
+        display: inline-block;
+        margin-top: 20px;
+
+        .home-header-button {
+          width: 100%;
+          position: relative;
+          margin-left: 0;
+        }
       }
     }
 
-    @media (max-width: $md-device-width) {
-
-      .item-container:first-of-type {
-        margin-left: 3em;
-      }
-      .item-container:last-of-type {
-        margin-right: 3em;
+    .home-header-info-container-logged-in {
+      padding-left: 150px;
+      padding-top: 100px;
+      @media screen and (max-width: $md-device-width) {
+        padding-left: 0;
+        padding-top: 40px;
       }
     }
   }
-}
 
-.instructions-container {
-  padding: 4em 4em 8em 4em;
-  text-align: center;
-  color: $white;
-  background: $color-secondary-blue;
-  position: relative;
+  .home-jobs-slider-container {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 3em;
+    @media screen and (max-width: $md-device-width) {
+      padding: 3em 1em;
+    }
 
-  &:nth-of-type(2) {
+    .home-jobs-slider-new-jobs-title {
+      color: $color-secondary-gray;
+    }
+
+    .home-jobs-slider-user-jobs-title {
+      color: $white;
+    }
+
+    .home-jobs-slider-show-all-jobs-link-container {
+      width: 100%;
+      display: flex;
+      flex-direction: column-reverse;
+
+      .home-jobs-slider-show-all-jobs-link {
+        cursor: pointer;
+        align-self: flex-end;
+        padding-left: 3em;
+      }
+
+      .home-jobs-slider-show-all-new-jobs-link {
+        color: $color-primary-cerise;
+      }
+
+      .home-jobs-slider-show-all-user-jobs-link {
+        color: $white;
+      }
+    }
+
+    .home-jobs-slider {
+      width: 100%;
+      margin-top: 15px;
+      overflow-y: scroll;
+      white-space: nowrap;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+
+      .home-job-item-container {
+        display: inline-block;
+        width: 180px;
+        margin: 5px;
+        background-color: $default-bg-color;
+        border-radius: $job-card-border-radius;
+        box-shadow: 0 2px 6px 0 rgba(0,0,0,0.4);
+        cursor: pointer;
+
+        &:hover {
+          transform: scale(1.02);
+        }
+
+        .home-job-item-name-container {
+          height: 110px;
+          padding: 10px;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+
+          .home-job-item-name {
+            text-align: center;
+            white-space: normal;
+            @include truncate-owerflowing-text;
+          }
+        }
+
+        .home-job-item-salary-container {
+          color: $white;
+          background: $color-primary-cerise;
+          padding: 10px;
+          font-weight: 500;
+          /* TODO: Jobs border radius variable */
+          border-radius: 0 0 $job-card-border-radius $job-card-border-radius;
+          text-align: center;
+        }
+
+        .home-job-item-salary-will-perform-job-container {
+          background: $color-primary-cerise;
+          color: $white;
+        }
+
+        .home-job-item-salary-job-ended-container {
+          background: $color-gray-50;
+          color: $color-gray-200;
+        }
+      }
+      @media (max-width: $md-device-width) {
+        .home-job-item-container:first-of-type {
+          margin-left: 3em;
+        }
+
+        .home-job-item-container:last-of-type {
+          margin-right: 3em;
+        }
+      }
+    }
+  }
+
+  .home-jobs-slider-new-jobs-container {
+    background: $white;
+  }
+
+  .home-jobs-slider-user-jobs-container {
     background: $color-secondary-gray;
   }
 
-  .btn {
-    width: calc(100% - 8em);
-    margin: 4em;
-    position: absolute;
-    left: 0;
-    bottom: 0;;
-  }
+  .home-jobs-applied-for-container {
+    display: flex;
+    flex-wrap: wrap;
 
-  .list {
-    list-style: none;
-    margin: 0 auto;
-    padding: 0;
-    text-align: left;
+    .home-jobs-applied-for-header-container {
+      background: $color-gray-25;
+      border-bottom: 2px solid $color-primary-cerise;
+      width: 100%;
 
-    .item {
-      padding: 10px 0 10px 45px;
-      position: relative;
+      .home-jobs-applied-for-header {
+        margin-top: 15px;
+        margin-bottom: 15px;
+        margin-left: 48px;
+      }
+    }
 
-      .fa {
-        position: absolute;
-        left: 0;
-        top: 5px;
+    .home-jobs-applied-for-job-item-container {
+      border-top: 1px solid $color-gray-25;
+      border-bottom: 1px solid $color-gray-25;
+      width: 100%;
+
+      &:hover {
+        opacity: 0.5;
+      }
+
+      .home-jobs-applied-for-job-item {
+        cursor: pointer;
+        display: flex;
+        width: 100%;
+        padding-left: 48px;
+
+        .home-jobs-applied-for-job-item-name {
+          margin-top: 15px;
+          margin-bottom: 15px;
+          @include truncate-owerflowing-text;
+        }
+
+        .home-jobs-applied-for-job-item-icon {
+          color: $color-primary-cerise;
+          margin-top: 15px;
+          margin-bottom: 15px;
+          padding-left: 20px;
+          margin-left: auto;
+          margin-right: 48px;
+        }
       }
     }
   }
-}
 
-.home-jobs-applied-for-header-wrapper {
-  background: $color-gray-25;
-  border-bottom: 2px solid $color-primary-cerise;
-}
-
-.home-jobs-applied-for-header {
-  h3 {
-    margin-top: 15px;
-    margin-bottom: 15px;
-  }
-}
-
-.home-jobs-applied-for-job-item-wrapper {
-  border-top: 1px solid $color-gray-25;
-  border-bottom: 1px solid $color-gray-25;
-}
-
-.home-jobs-applied-for-job-item {
-
-  cursor: pointer;
-
-  p {
-    margin-top: 15px;
-    margin-bottom: 15px;
-    padding-left: 20px;
+  .home-instructions-container {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    @include truncate-owerflowing-text;
-  }
+    flex-wrap: wrap;
 
-  span {
-    color: $color-primary-cerise;
-    margin-top: 15px;
-    margin-bottom: 15px;
-    padding-left: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-}
-
-.home-partners {
-  text-align: center;
-  background: $white;
-  padding: 5em 2em;
-
-  .partners-logos-container {
-    width: 100%;
-  }
-
-  h2 {
-    width: 100%;
-  }
-
-  .logo-container {
-    padding: 15px 5px;
-    display: inline-block;
-    vertical-align: middle;
-    text-align: center;
-
-    .partner-logo {
-      width: auto;
-      max-height: 80px;
-      max-width: 130px;
-      filter: grayscale(100%);
-
-      &.extra-padding {
-        padding-top: 5%;
+    .home-instructions-inner-container {
+      padding: 4em 4em 8em;
+      text-align: center;
+      color: $white;
+      position: relative;
+      width: 100%;
+      @media screen and (min-width: $sm-device-width) {
+        width: 50%;
       }
-      &.left-padding {
-        padding-left: 10%;
+
+      .home-instructions-button {
+        width: calc(100% - 8em);
+        margin: 4em;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+      }
+
+      .home-instructions-list {
+        list-style: none;
+        margin: 0 auto;
+        padding: 0;
+        text-align: left;
+
+        .home-instructions-list-item {
+          padding: 10px 0 10px 45px;
+          position: relative;
+
+          .home-instructions-list-item-icon {
+            position: absolute;
+            left: 0;
+            top: 5px;
+          }
+        }
+      }
+    }
+
+    .home-instructions-first-inner-container {
+      background: $color-secondary-blue;
+    }
+
+    .home-instructions-second-inner-container {
+      background: $color-secondary-gray;
+    }
+  }
+
+  .home-partners-container {
+    text-align: center;
+    background: $white;
+    padding: 5em 2em;
+    display: flex;
+    flex-wrap: wrap;
+
+    .home-partners-logos-container {
+      width: 100%;
+    }
+
+    .home-partners-title {
+      width: 100%;
+    }
+
+    .home-logo-container {
+      padding: 15px 5px;
+      display: inline-block;
+      vertical-align: middle;
+      text-align: center;
+
+      .home-partner-logo {
+        width: auto;
+        max-height: 80px;
+        max-width: 130px;
+        filter: grayscale(100%);
+
+        &.home-partner-logo-extra-left-padding {
+          padding-left: 10%;
+        }
       }
     }
   }

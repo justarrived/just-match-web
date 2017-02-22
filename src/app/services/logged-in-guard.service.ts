@@ -1,11 +1,13 @@
+import {ActivatedRouteSnapshot} from '@angular/router';
+import {CanActivate} from '@angular/router';
 import {Injectable} from '@angular/core';
-import {CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot} from '@angular/router';
-import {UserManager} from './user-manager.service';
-import {NavigationService} from './navigation.service';
 import {JARoutes} from '../routes/ja-routes';
+import {NavigationService} from './navigation.service';
+import {RouterStateSnapshot} from '@angular/router';
+import {UserManager} from './user-manager.service';
 
 @Injectable()
-export class AuthGuard implements CanActivate {
+export class LoggedInGuard implements CanActivate {
   constructor(
     private userManager: UserManager,
     private navigationService: NavigationService

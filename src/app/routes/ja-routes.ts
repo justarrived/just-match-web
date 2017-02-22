@@ -1,7 +1,7 @@
 import {JARoute} from './ja-route';
 
 export class JARoutes {
-  public static home: JARoute = { url: () => ''};
+  public static home: JARoute = { url: () => '/home'};
   public static login: JARoute = { url: () => '/login'};
   public static forgotPassword: JARoute = { url: () => '/forgot-password'};
   public static resetPassword: JARoute = { url: (args?: string[]) => '/reset-password/' + args[0]};
