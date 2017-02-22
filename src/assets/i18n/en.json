@@ -22,6 +22,7 @@
   "assignment.status.reply": "Provide answer",
   "assignment.status.user_company_hire": "The company wants to hire you",
   "assignment.status.you_hired": "You've been hired",
+  "assignment.status.confirmation_error" : "An error occured when providing answer to this job.",
   "common.back": "Back",
   "common.congratulation": "Congratulations!",
   "common.edit_profile": "Edit profile",
