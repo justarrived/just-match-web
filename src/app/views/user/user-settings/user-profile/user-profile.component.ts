@@ -30,6 +30,9 @@ import {TranslationService} from '../../../../services/translation.service';
   styleUrls: ['./user-profile.component.scss']
 })
 export class UserProfileComponent extends TranslationListener implements OnInit {
+  private readonly ZERO_DIGIT: number = 48;
+  private readonly NINE_DIGIT: number = 57;
+
   @ViewChild('nativeLanguageDropdown')
   private nativeLanguageDropdown: AutocompleteDropdownComponent;
 
@@ -263,6 +266,10 @@ export class UserProfileComponent extends TranslationListener implements OnInit 
   private handleServerErrors(errors) {
     this.saveFail = true;
     this.serverValidationErrors = errors.details || errors;
+  }
+
+  private checkInputType(event): boolean {
+    return event.charCode >= this.ZERO_DIGIT && event.charCode <= this.NINE_DIGIT;
   }
 
   private onSubmit() {
