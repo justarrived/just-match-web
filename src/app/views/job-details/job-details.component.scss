@@ -5,8 +5,6 @@
   border-bottom: 1px solid $white-bg-border;
   .company-logo {
     float: right;
-    max-height: 80px;
-    border-radius: 2px;
     padding: 15px 0;
   }
 }
@@ -166,6 +164,7 @@
   height: auto;
   max-width: 100px;
   max-height: 100px;
+  border-radius: 10px;
 }
 
 .button {
