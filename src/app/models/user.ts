@@ -16,6 +16,7 @@ export class User {
   zip: string;
   city: string;
   role: string;
+  admin: boolean;
   images: UserImage[];
   userLanguages: UserLanguage[];
   userSkills: UserSkill[];
@@ -56,6 +57,7 @@ export class User {
     this.zip = jsonObject.zip;
     this.city = jsonObject.city;
     this.role = jsonObject.primary_role;
+    this.admin = jsonObject.admin;
     this.images = map(jsonObject.user_images, userImage => new UserImage(userImage));
     this.userLanguages = map(jsonObject.user_languages, userLanguage => new UserLanguage(userLanguage));
     this.userSkills = map(jsonObject.user_skills, userSkill => new UserSkill(userSkill));
