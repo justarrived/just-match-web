@@ -11,9 +11,9 @@
     </p>
 
     <div class="row">
-      <div> <span class="total-salary">{{job.grossAmount}} {{job.hourlyPay.currency}}</span>
+      <div> <span class="total-salary">{{job.grossAmountWithCurrency}}</span>
         <span class="salary-per-hour">
-          {{job.hours}}h ({{job.hourlyPay.grossSalaryWithUnit}})
+          {{'jobs.list.job_hours_and_hourly_salary' | translate: {hours: job.hours, hourlySalary: job.hourlyPay.grossSalaryWithUnit} }}
         </span>
       </div>
     </div>
