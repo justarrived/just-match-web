@@ -1,20 +1,22 @@
 <div class="job-list-container" (click)="onListItemClick()">
-  <p class="job-list-container-header">{{job.name}}</p>
-  <p class="adress-field" >
-    <i class="fa fa-map-marker" aria-hidden="true"></i> {{job.address}}
-  </p>
-
-  <div class="row">
-    <div class="col-xs-8">
-      <span class="total-salary">{{job.grossAmountWithCurrency}}</span>
-      <span class="salary-per-hour">
-        {{job.hours}}h ({{job.hourlyPay.grossSalaryWithUnit}})
-      </span>
-    </div>
-
-    <div class="salary-per-hour col-xs-4">
-      {{job.jobDate | date: 'yyyy-MM-dd'}}
-    </div>
-
+  <div class="date-container col-xs-4">
+    {{job.jobDate | date: 'MMM'}}<br/>
+    {{job.jobDate | date: 'dd'}}
   </div>
+
+  <div class="job-meta-details">
+    <p class="job-list-container-header">{{job.name}}</p>
+    <p class="adress-field" >
+      <i class="fa fa-map-marker" aria-hidden="true"></i>  {{job.address}}
+    </p>
+
+    <div class="row">
+      <div> <span class="total-salary">{{job.grossAmountWithCurrency}}</span>
+        <span class="salary-per-hour">
+          {{'jobs.list.job_hours_and_hourly_salary' | translate: {hours: job.hours, hourlySalary: job.hourlyPay.grossSalaryWithUnit} }}
+        </span>
+      </div>
+    </div>
+  </div>
+
 </div>

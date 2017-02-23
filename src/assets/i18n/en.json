@@ -104,6 +104,7 @@
   "home.partners.description": "Just Arrived is a joint pro-bono initiative designed to help newly arrived immigrants to the Swedish labour market. We are owned by a foundation and is run by an association of companies.",
   "home.partners.title": "Our partners",
   "jobs.title": "All jobs ({{nbrOfJobs}})",
+  "jobs.list.job_hours_and_hourly_salary": "{{hours}}h ({{hourlySalary}})",
   "language.proficiency.basic": "Basic knowledge",
   "language.proficiency.beginner": "Beginner",
   "language.proficiency.expert": "Native speaker",
