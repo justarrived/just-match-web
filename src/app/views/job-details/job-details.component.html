@@ -33,6 +33,7 @@
       <div *ngIf="userJob && userJob.accepted && !userJob.willPerform">
         <h5 class="time-left-text">{{'assignment.status.offer' | translate}} {{userJob.remainsConfirmationHours}} {{'common.hour' | translate}} {{userJob.remainsConfirmationMinutes}} {{'common.min' | translate}}</h5>
         <div class="btn-primary-light btn-large btn provide-answer-button" (click)="onConfirmJobButtonClick()">{{'assignment.status.reply' | translate}}</div>
+        <h3 *ngIf="applyForJobErrorMessageVisible">{{'assignment.status.confirmation_error' | translate}}</h3>
       </div>
 
       <h5 class="hired-text" *ngIf="userJob && userJob.job_ended">{{'assignment.status.finished' | translate}}</h5>

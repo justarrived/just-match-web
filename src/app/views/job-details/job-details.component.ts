@@ -27,6 +27,7 @@ export class JobDetailsComponent extends TranslationListener implements OnInit {
   private countOfApplicants: number = 0;
   private errors: any = {};
   private jobDetailsVisible: boolean;
+  private applyForJobErrorMessageVisible: boolean = false;
   private JARoutes = JARoutes;
 
   constructor(
@@ -85,6 +86,9 @@ export class JobDetailsComponent extends TranslationListener implements OnInit {
   private confirmJob(): Promise<any> {
     return this.jobProxy.confirmForJob(this.job.id, this.userJob.id).then(response => {
       this.userJob = response;
+      this.applyForJobErrorMessageVisible = false;
+    }).catch(errors => {
+      this.applyForJobErrorMessageVisible = true;
     });
   }
 
