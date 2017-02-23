@@ -1,22 +1,18 @@
-<div class="container-fluid">
+<div class="faq-container">
   <div class="sub-header-container">
-    <h3 class="sub-header-title">{{'faq' | translate}}</h3>
+    <h3 class="sub-header-title">{{'faq.title' | translate}}</h3>
   </div>
-  <div class="faq-list-container row">
-    <div>
-      <ul>
-        <li *ngFor="let faq of faqs">
-          <input type="checkbox" checked>
-          <i></i>
-          <strong><translation-item [text]="faq.question" [translation]="faq.translated.question"></translation-item></strong>
-          <div class="faq-item-answer-container">
-            <p><b>{{"faq.answer" | translate}}:</b><br>
-              <translation-item [text]="faq.answer" [translation]="faq.translated.answer"></translation-item>
-            </p>
-          </div>
-        </li>
-      </ul>
-    </div>
-  </div>
-
+  <ul class="faq-list-container">
+    <li class="faq-list-item" *ngFor="let faq of faqs">
+      <input class="faq-list-item-checkbox" type="checkbox" checked>
+      <i class="faq-list-item-dropdown-icon"></i>
+      <div class="faq-item-question-container">
+        {{faq.question}}
+      </div>
+      <div class="faq-item-answer-container">
+        <b>{{'faq.answer.label' | translate}}:</b><br>
+        <div [innerHTML]="faq.answer"></div>
+      </div>
+    </li>
+  </ul>
 </div>

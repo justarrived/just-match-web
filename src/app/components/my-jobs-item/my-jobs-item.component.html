@@ -4,12 +4,12 @@
     <span>{{job.jobDate | date: "dd"}}</span>
   </div>
   <div>
-      <h3><translation-item [text]="job.name" [translation]="job.translated.name"></translation-item></h3>
+      <h3>{{job.name}}</h3>
 
     <section>
       <p *ngIf="section == 'current'">{{job.street}}</p>
       <p *ngIf="section == 'current'">
-        <span *ngIf="!job.jobUsers[0].accepted && !job.jobUsers[0].willPerform">{{'user.apply.confirmation' | translate}}</span>
+        <span *ngIf="!job.jobUsers[0].accepted && !job.jobUsers[0].willPerform">{{'confirmation.applied.for.job.title' | translate}}</span>
         <span *ngIf="job.jobUsers[0].accepted && !job.jobUsers[0].willPerform">{{'assignment.status.user_company_hire' | translate}}</span>
         <span *ngIf="job.jobUsers[0].willPerform && !job.jobUsers[0].performed">{{'assignment.status.you_hired' | translate}}</span>
         <span *ngIf="job.jobUsers[0].performed">{{'assignment.status.performed' | translate}}</span>

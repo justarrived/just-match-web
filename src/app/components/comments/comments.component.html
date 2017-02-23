@@ -1,14 +1,25 @@
 <div class="comments-container" [ngClass]="{'addition-padding': !isFooterVisible && userId, 'small-addition-padding': !userId}">
-  <div *ngFor="let comment of comments" class="comment-container">
-    <div class="comment-picture-container" [ngClass]="{'float-left': comment.owner.id != userId, 'float-right': comment.owner.id == userId}">
-      <img class="rounded-image" *ngIf="comment.owner.company && comment.owner.company.id" [src]="(comment.owner.company.companyLogo && comment.owner.company.imageUrlSmall) || '/assets/images/placeholder-logo.png'">
-      <img class="rounded-image" *ngIf="!(comment.owner.company && comment.owner.company.id)" [src]="(comment.owner.images && comment.owner.profile_image && comment.owner.profile_image.mediumImageUrl) || '/assets/images/placeholder-profile-image.png'">
+  <div class="row">
+    <div class="col-xs-12">
+      <h4 class="chat-title">{{'assignment.comments.title' | translate}}</h4>
     </div>
-    <div class="comment-content" [ngClass]="{'left-moved': comment.owner.id != userId}">
-      <div class="comment-meta-data">
-        <span *ngIf="!(comment.owner.company && comment.owner.company.id)">{{comment.owner.firstName}}</span>
-        <span *ngIf="comment.owner.company && comment.owner.company.id">{{comment.owner.company.name}}</span>
-        &nbsp;&nbsp;{{comment.createdAt | date:'yyyy-MM-dd HH:mm'}}
+  </div>
+  <div *ngFor="let comment of comments" class="comment-container">
+    <div class="comment-image-container" [ngClass]="{'float-left': comment.owner.id != userId, 'float-right': comment.owner.id == userId}">
+      <img class="comment-image" *ngIf="comment.owner.company && comment.owner.company.id" [src]="(comment.owner.company.companyLogo && comment.owner.company.imageUrlSmall) || '/assets/images/placeholder-logo.png'">
+      <img class="comment-image" *ngIf="!(comment.owner.company && comment.owner.company.id)" [src]="(comment.owner.images && comment.owner.profile_image && comment.owner.profile_image.mediumImageUrl) || '/assets/images/placeholder-profile-image.png'">
+    </div>
+    <div class="comment-content" [ngClass]="{'move-left': comment.owner.id != userId}">
+      <div class="comment-meta-data-container">
+        <div class="comment-meta-data-user-name" *ngIf="!(comment.owner.company && comment.owner.company.id)">
+          {{comment.owner.firstName}}
+        </div>
+        <div class="comment-meta-data-user-name" *ngIf="comment.owner.company && comment.owner.company.id">
+          {{comment.owner.company.name}}
+        </div>
+        <div class="comment-meta-data-date">
+          {{comment.createdAt | date:'yMdjm'}}
+        </div>
       </div>
       <div class="comment-body">{{comment.body}}</div>
     </div>

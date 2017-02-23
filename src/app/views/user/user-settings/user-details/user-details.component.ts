@@ -79,12 +79,13 @@ export class UserDetailsComponent implements OnInit {
               // has to relogin to be authenticated now that password changed
               this.authManager.logUser(this.settingsForm.value.email, this.passwordForm.value.password)
                 .then(result => {
-                  this.passwordForm.value.old_password = '';
-                  this.passwordForm.value.password = '';
-                  this.passwordForm.value.repeat_password = '';
-                  this.saveSuccess = true;
-                  this.authManager.authenticateIfNeeded();
-                  this.loadingSubmit = false;
+                  this.authManager.authenticateIfNeeded().then(() => {
+                    this.passwordForm.value.old_password = '';
+                    this.passwordForm.value.password = '';
+                    this.passwordForm.value.repeat_password = '';
+                    this.saveSuccess = true;
+                    this.loadingSubmit = false;
+                  });
                 });
             })
             .catch(errors => {
@@ -92,9 +93,10 @@ export class UserDetailsComponent implements OnInit {
               this.loadingSubmit = false;
             });
         } else {
-          this.saveSuccess = true;
-          this.authManager.authenticateIfNeeded();
-          this.loadingSubmit = false;
+          this.authManager.authenticateIfNeeded().then(() => {
+            this.saveSuccess = true;
+            this.loadingSubmit = false;
+          });
         }
       })
       .catch(errors => {

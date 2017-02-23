@@ -1,5 +1,4 @@
-@import '../../../../styles/variables';
-@import '../../../../styles/buttons';
+@import '../../../../styles/colors';
 
 .profile-form-container {
   padding-top: 50px;
@@ -8,54 +7,54 @@
   padding-left: 20px;
   padding-right: 20px;
 
-  .profile-input-container {
+  .profile-form-input-container {
     padding-bottom: 1.5em;
     margin-bottom: 15px;
 
-    label {
+    .profile-form-input-label {
       color: black;
       font-size: 20px;
     }
 
-    textarea {
+    .profile-form-input-textarea {
       overflow: hidden;
       word-wrap: break-word;
       resize: none;
     }
 
-    input {
+    .profile-form-input-text {
       border: 1px solid rgba(0, 0, 0, 0.15);
     }
   }
 
-  .profile-input-table-container {
+  .profile-form-input-multiselect-container {
     width: 100%;
 
-    .profile-input-table-row-container {
+    .profile-form-input-multiselect-row-container {
       width: 100%;
       margin: 5px 0;
 
-      .profile-input-table-row-inner-container {
+      .profile-form-input-multiselect-row-inner-container {
         display: flex;
         height: 37px;
 
-        .profile-input-table-row-inner-item-container {
+        .profile-form-input-multiselect-row-item-container {
           flex: 1;
           height: 100%;
           display: flex;
           align-items: center;
 
-          .profile-input-table-row-inner-item-text {
+          .profile-form-input-multiselect-row-item-name {
             font-size: 14px;
             opacity: 0.7;
             padding-left: 3px;
           }
 
-          .profile-input-table-row-inner-icon-container {
+          .profile-form-input-multiselect-row-item-icon-container {
             margin-left: 10px;
             margin-right: auto;
 
-            i {
+            .profile-form-input-multiselect-row-item-icon {
               &:hover {
                 color: rgba(0, 0, 0, 0.3);
               }
@@ -63,7 +62,7 @@
           }
         }
 
-        .profile-input-table-row-inner-dropdown-container {
+        .profile-form-input-multiselect-row-dropdown-container {
           width: 250px;
           margin-left: auto;
         }
@@ -71,32 +70,31 @@
     }
   }
 
-  hr {
+  .profile-form-input-ruler {
     width: 75%;
     margin: 40px auto;
   }
 
-  .profile-upload-button-container {
+  .profile-form-upload-image-container {
     text-align: center;
     margin-bottom: 40px;
 
-    input {
+    .profile-form-upload-image-input {
       opacity: 0;
       position: absolute;
       z-index: -1;
     }
 
-    label {
+    .profile-form-upload-image-button {
       margin: 0 auto;
       min-width: 200px;
-      pointer: cursor;
     }
 
-    p {
+    .profile-form-upload-image-description {
       margin-top: 10px;
     }
 
-    .permit-image {
+    .profile-form-upload-image-preview {
       margin: 0 auto;
       background-size: contain;
       background-repeat: no-repeat;
@@ -107,22 +105,22 @@
     }
   }
 
-  .profile-button-container {
+  .profile-form-button-container {
     padding-bottom: 1.5em;
     text-align: center;
 
-    button {
+    .profile-form-button {
       display: block;
       margin: 15px auto 30px;
       min-width: 250px;
     }
   }
 
-  .save-message {
+  .profile-form-save-message {
     color: green;
   }
 
-  .error-message {
+  .profile-form-error-message {
     color: $color-cerise-500;
   }
 }

@@ -1,15 +1,25 @@
-@import '../../styles/variables';
-@import '../../styles/buttons';
-@import '../../styles/mixins';
+@import '../../styles/colors';
+
+
+@mixin navigationButtonProperties($text-alignment, $primary-color) {
+  padding-top: 0.4em;
+  text-align: $text-alignment;
+  color: $primary-color;
+  > i {
+    cursor: pointer; cursor: hand;
+  }
+}
+
 
 
 .pagination-wrapper {
   background-color: $color-gray-25;
   padding: 8px;
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  .pagination-button-container{
+    max-width: 500px;
+    margin: 0 auto;
+  }
 
   p {
     margin: 0;
@@ -17,12 +27,12 @@
 }
 
 .back-button {
-  @include NavigationButtonProperties(left, $color-primary-cerise);
+  @include navigationButtonProperties(left, $color-primary-cerise);
   padding-top: 0;
 }
 
 .forward-button {
-  @include NavigationButtonProperties(right, $color-primary-cerise);
+  @include navigationButtonProperties(right, $color-primary-cerise);
   padding-top: 0;
 }
 

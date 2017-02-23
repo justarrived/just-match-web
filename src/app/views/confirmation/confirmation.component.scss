@@ -1,49 +1,60 @@
-@import '../../styles/variables';
-@import '../../styles/buttons';
+@import '../../styles/colors';
+@import '../../styles/dimensions';
 
 .confirmation-container {
   width: 100%;
   height: 100%;
   position: fixed;
-  padding-top: 40px;
   top: 0;
   left: 0;
   background: $color-gray-25;
   z-index: 10000;
   color: white;
 
-  .confirmation-item {
+  .confirmation-inner-container {
     height: 100%;
     width: 70%;
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    @media screen and (max-width: $xs-device-width) {
+      margin-top: 100px;
+    }
 
-    .confirm-close-button {
+    .confirmation-close-button {
       position: fixed;
-      top: 0px;
-      right: 0px;
+      top: 0;
+      right: 0;
       z-index: 100001;
       margin: 30px;
       color: $color-gray-500;
       cursor: pointer;
+      &:hover {
+        opacity: 0.5;
+      }
     }
 
-    .item-icon {
+    .confirmation-icon-container {
       margin-bottom: 50px;
-      i {
+
+      .confirmation-icon {
         color: $color-cerise-500;
       }
     }
 
-    .confirmation-item-title {
+    .confirmation-title {
       color: $color-cerise-500;
     }
 
-    .confirmation-item-content {
+    .confirmation-content {
       margin-top: 30px;
       color: $color-gray-200;
     }
 
-    .button-container {
+    .confirmation-button-container {
       margin: 30px 0;
       padding-bottom: 100px;
     }

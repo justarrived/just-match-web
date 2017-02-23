@@ -41,13 +41,11 @@ import {LoadingComponent} from './components/loading-gif/loading.component';
 import {MyJobsComponent} from './views/my-jobs/my-jobs.component';
 import {UserJobsComponent} from './views/my-jobs/user-jobs/user-jobs.component';
 import {MyJobsItemComponent} from './components/my-jobs-item/my-jobs-item.component';
-import {RatingComponent} from './components/rating/rating.component';
 import {AppTranslateModule} from './app.translate.module';
 import {AppRoutingModule} from './app.routing.module';
 import {UserSettingsComponent} from './views/user/user-settings/user-settings.component';
 import {UserProfileComponent} from './views/user/user-settings/user-profile/user-profile.component';
 import {UserDetailsComponent} from './views/user/user-settings/user-details/user-details.component';
-import {TranslationItemComponent} from './components/translation-item/translation-item.component';
 import {AutosizeDirective} from './components/textarea-autosize/textarea-autosize.directive';
 import {Geolocation} from './services/geolocation.service';
 import {ErrorComponent} from './views/error/error.component';
@@ -104,12 +102,10 @@ export class RavenErrorHandler implements ErrorHandler {
     CookiesAboutComponent,
     CookieBarComponent,
     LoadingComponent,
-    RatingComponent,
     MyJobsItemComponent,
     UserJobsComponent,
     MyJobsComponent,
     UserSettingsComponent,
-    TranslationItemComponent,
     AutosizeDirective,
     ErrorComponent,
     NotFoundComponent,

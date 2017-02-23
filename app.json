@@ -3,7 +3,15 @@
   "description": "Just Match - Web app",
   "scripts": {},
   "env": {
+    "NODE_ENV": {
+      "required": true,
+      "value": "staging"
+    },
     "NPM_CONFIG_PRODUCTION": {
+      "required": true,
+      "value": "false"
+    },
+    "NODE_MODULES_CACHE": {
       "required": true,
       "value": "false"
     }

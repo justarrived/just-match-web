@@ -16,13 +16,14 @@ import {deleteElementFromArray} from '../../../../utils/array-util';
 import {deleteElementFromArrayLambda} from '../../../../utils/array-util';
 import {namePropertyLabel} from '../../../../utils/label-util';
 import {LanguageProficiency} from '../../../../models/language/language-proficiency';
-import {languageProficiencyLevels} from '../../../../enums/enums';
-import {skillProficiencyLevels} from '../../../../enums/enums';
+import {LanguageProficiencyLevels, languageProficiencyLevelsList} from '../../../../models/language/language-proficiency-levels';
+import {SkillProficiencyLevels, skillProficiencyLevelsList} from '../../../../models/skill/skill-proficiency-levels';
 import {UserProxy} from '../../../../services/proxy/user-proxy.service';
 import {AutocompleteDropdownComponent} from '../../../../components/autocomplete-dropdown/autocomplete-dropdown.component';
 import {FormGroup, FormBuilder, Validators} from '@angular/forms';
 import {TranslationListener} from '../../../../components/translation.component';
 import {TranslationService} from '../../../../services/translation.service';
+import {isValidSSNCharCode} from '../../../../utils/is-valid-ssn-char-code';
 
 @Component({
   selector: 'user-profile',
@@ -41,8 +42,9 @@ export class UserProfileComponent extends TranslationListener implements OnInit 
 
   private namePropertyLabel: Function = namePropertyLabel;
 
-  private languageProficiencyLevelsAvailable: LanguageProficiency[] = languageProficiencyLevels;
-  private skillProficiencyLevelsAvailable: LanguageProficiency[] = skillProficiencyLevels;
+  private languageExpertProficiency: LanguageProficiency = LanguageProficiencyLevels.expert;
+  private languageProficiencyLevelsAvailable: LanguageProficiency[] = languageProficiencyLevelsList;
+  private skillProficiencyLevelsAvailable: LanguageProficiency[] = skillProficiencyLevelsList;
 
   @Input() private user: User;
 
@@ -125,8 +127,10 @@ export class UserProfileComponent extends TranslationListener implements OnInit 
 
     this.authManager.getUserChangeEmmiter().subscribe(user => {
       this.user = user;
-      this.loadData();
-      this.initForm();
+      if(user !== null) {
+        this.loadData();
+        this.initForm();
+      }
     });
   }
 
@@ -157,7 +161,7 @@ export class UserProfileComponent extends TranslationListener implements OnInit 
       'at_und': [this.user.atUnd ? this.user.atUnd : 'no'],
       'got_coordination_number': [this.user.ssn ? 'yes' : 'no'],
       'ssn': [this.user.ssn],
-      'competence_text': [this.user.workExperience],
+      'competence_text': [this.user.skills],
       'job_experience': [this.user.workExperience],
       'user_skills': [this.user.userSkills.slice()]
     });
@@ -264,6 +268,10 @@ export class UserProfileComponent extends TranslationListener implements OnInit 
     this.serverValidationErrors = errors.details || errors;
   }
 
+  private isAllowedSSNChar(charCode): boolean {
+    return isValidSSNCharCode(charCode);
+  }
+
   private onSubmit() {
     this.saveSuccess = false;
     this.saveFail = false;
@@ -292,9 +300,10 @@ export class UserProfileComponent extends TranslationListener implements OnInit 
       'job_experience': this.profileForm.value.job_experience
     })
       .then((response) => {
-        this.saveSuccess = true;
-        this.authManager.authenticateIfNeeded();
-        this.loadingSubmit = false;
+        this.authManager.authenticateIfNeeded().then(() => {
+          this.saveSuccess = true;
+          this.loadingSubmit = false;
+        });
       })
       .catch(errors => {
         this.handleServerErrors(errors);
