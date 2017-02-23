@@ -14,7 +14,6 @@ import {ApiErrors} from '../../models/api-errors';
 })
 export class ContactComponent {
   private contactForm: FormGroup;
-  private errors: any = {};
   private loadingSubmit: boolean = false;
   private apiErrors: ApiErrors = new ApiErrors([]);
 
