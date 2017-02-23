@@ -34,6 +34,10 @@
 
           <div class="navigation-menu-links-container row">
 
+            <a class="col-xs-12 navigation-menu-item" *ngIf="godModeAvailable" routerLink="{{JARoutes.godMode.url()}}">
+              {{'menu.main.god_mode' | translate}}
+            </a>
+
             <a class="col-xs-12 navigation-menu-item" routerLink="{{JARoutes.userJobs.url([user.id])}}" *ngIf="user">
               {{'menu.main.my_assignment' | translate}}
             </a>
