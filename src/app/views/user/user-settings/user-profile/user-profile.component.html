@@ -127,7 +127,7 @@
             maxlength="20" class="profile-form-input-text form-control material-input" id="ssn"
             name="ssn-input"
             type="text"
-            (keypress)="checkInputType($event)"
+            (keypress)="isAllowedSSNChar($event.charCode)"
             (focus)="serverValidationErrors.ssn = ''"
             placeholder="{{'user.profile.form.coordination.number.placeholder' | translate}}"
             [formControl]="profileForm.controls['ssn']">
@@ -136,7 +136,7 @@
             class="profile-form-input-text form-control material-input" id="ssn"
             name="ssn-input"
             type="text"
-            (keypress)="checkInputType($event)"
+            (keypress)="isAllowedSSNChar($event.charCode)"
             (focus)="serverValidationErrors.ssn = ''"
             placeholder="{{'user.profile.form.coordination.number.or.ssn.placeholder' | translate}}"
             [formControl]="profileForm.controls['ssn']">
@@ -145,7 +145,7 @@
             class="profile-form-input-text form-control material-input" id="ssn"
             name="ssn-input"
             type="text"
-            (keypress)="checkInputType($event)"
+            (keypress)="isAllowedSSNChar($event.charCode)"
             (focus)="serverValidationErrors.ssn = ''"
             placeholder="{{'user.profile.form.ssn.placeholder' | translate}}"
             [formControl]="profileForm.controls['ssn']">
