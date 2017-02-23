@@ -31,6 +31,9 @@ import {ApiErrors} from '../../../../models/api-errors';
   styleUrls: ['./user-profile.component.scss']
 })
 export class UserProfileComponent extends TranslationListener implements OnInit {
+  private readonly ZERO_DIGIT: number = 48;
+  private readonly NINE_DIGIT: number = 57;
+
   @ViewChild('nativeLanguageDropdown')
   private nativeLanguageDropdown: AutocompleteDropdownComponent;
 
@@ -42,6 +45,7 @@ export class UserProfileComponent extends TranslationListener implements OnInit 
 
   private namePropertyLabel: Function = namePropertyLabel;
 
+  private languageExpertProficiency: LanguageProficiency = LanguageProficiencyLevels.expert;
   private languageProficiencyLevelsAvailable: LanguageProficiency[] = languageProficiencyLevelsList;
   private skillProficiencyLevelsAvailable: LanguageProficiency[] = skillProficiencyLevelsList;
 
@@ -258,6 +262,10 @@ export class UserProfileComponent extends TranslationListener implements OnInit 
 
   private formValidation(): boolean {
     return this.profileForm.valid && true;
+  }
+
+  private checkInputType(event): boolean {
+    return event.charCode >= this.ZERO_DIGIT && event.charCode <= this.NINE_DIGIT;
   }
 
   private onSubmit() {

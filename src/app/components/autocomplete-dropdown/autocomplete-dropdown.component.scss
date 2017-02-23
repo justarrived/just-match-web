@@ -17,12 +17,9 @@ $disabled-background-color: #eeeeee;
       right: 10px;
       top: calc(50% - 8px);
       font-size: 8px;
-      background-color: $default-bg-color;
+      background-color: unset;
       cursor: pointer;
 
-      &.disabled {
-        background-color: unset;
-      }
     }
   }
 
