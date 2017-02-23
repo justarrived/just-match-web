@@ -86,6 +86,10 @@ export class ApiErrors {
   }
 
   public errorsFor(fieldName): ApiError[] {
-    return this.errors.filter((error) => error.attribute === fieldName);
+    return this.errors.filter(error => error.attribute === fieldName);
+  }
+
+  public resetErrorsFor(fieldName): void {
+    this.errors = this.errors.filter(error => error.attribute !== fieldName);
   }
 }
