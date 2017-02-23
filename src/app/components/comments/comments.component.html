@@ -1,4 +1,9 @@
 <div class="comments-container" [ngClass]="{'addition-padding': !isFooterVisible && userId, 'small-addition-padding': !userId}">
+  <div class="row">
+    <div class="col-xs-12">
+      <h4 class="chat-title">{{'assignment.comments.title' | translate}}</h4>
+    </div>
+  </div>
   <div *ngFor="let comment of comments" class="comment-container">
     <div class="comment-image-container" [ngClass]="{'float-left': comment.owner.id != userId, 'float-right': comment.owner.id == userId}">
       <img class="comment-image" *ngIf="comment.owner.company && comment.owner.company.id" [src]="(comment.owner.company.companyLogo && comment.owner.company.imageUrlSmall) || '/assets/images/placeholder-logo.png'">
@@ -13,7 +18,7 @@
           {{comment.owner.company.name}}
         </div>
         <div class="comment-meta-data-date">
-          {{comment.createdAt | date:'yyyy-MM-dd HH:mm'}}
+          {{comment.createdAt | date:'yMdjm'}}
         </div>
       </div>
       <div class="comment-body">{{comment.body}}</div>

@@ -11,13 +11,15 @@
 }
 
 
+
 .pagination-wrapper {
   background-color: $color-gray-25;
   padding: 8px;
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  .pagination-button-container{
+    max-width: 500px;
+    margin: 0 auto;
+  }
 
   p {
     margin: 0;

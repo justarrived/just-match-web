@@ -23,6 +23,7 @@ import {AutocompleteDropdownComponent} from '../../../../components/autocomplete
 import {FormGroup, FormBuilder, Validators} from '@angular/forms';
 import {TranslationListener} from '../../../../components/translation.component';
 import {TranslationService} from '../../../../services/translation.service';
+import {isValidSSNCharCode} from '../../../../utils/is-valid-ssn-char-code';
 
 @Component({
   selector: 'user-profile',
@@ -41,6 +42,7 @@ export class UserProfileComponent extends TranslationListener implements OnInit 
 
   private namePropertyLabel: Function = namePropertyLabel;
 
+  private languageExpertProficiency: LanguageProficiency = LanguageProficiencyLevels.expert;
   private languageProficiencyLevelsAvailable: LanguageProficiency[] = languageProficiencyLevelsList;
   private skillProficiencyLevelsAvailable: LanguageProficiency[] = skillProficiencyLevelsList;
 
@@ -125,8 +127,10 @@ export class UserProfileComponent extends TranslationListener implements OnInit 
 
     this.authManager.getUserChangeEmmiter().subscribe(user => {
       this.user = user;
-      this.loadData();
-      this.initForm();
+      if(user !== null) {
+        this.loadData();
+        this.initForm();
+      }
     });
   }
 
@@ -262,6 +266,10 @@ export class UserProfileComponent extends TranslationListener implements OnInit 
   private handleServerErrors(errors) {
     this.saveFail = true;
     this.serverValidationErrors = errors.details || errors;
+  }
+
+  private isAllowedSSNChar(charCode): boolean {
+    return isValidSSNCharCode(charCode);
   }
 
   private onSubmit() {

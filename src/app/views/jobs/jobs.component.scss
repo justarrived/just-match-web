@@ -48,7 +48,7 @@
 
   .jobs-list-container {
     background-color: $default-bg-color;
-    min-height: 1026px;
+    min-height: 600px;
     display: flex;
 
     .jobs-list-loading-container {
@@ -58,8 +58,8 @@
 
     .jobs-list-item-container {
       width: 100%;
-      cursor: pointer;
-      cursor: hand;
+      // cursor: pointer;
+      // cursor: hand;
     }
   }
 }
