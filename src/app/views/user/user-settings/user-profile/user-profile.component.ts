@@ -129,7 +129,7 @@ export class UserProfileComponent extends TranslationListener implements OnInit 
 
     this.authManager.getUserChangeEmmiter().subscribe(user => {
       this.user = user;
-      if(user != null) {
+      if(user !== null) {
         this.loadData();
         this.initForm();
       }
