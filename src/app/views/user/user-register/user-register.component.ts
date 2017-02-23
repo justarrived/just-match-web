@@ -65,7 +65,7 @@ export class UserRegisterComponent extends TranslationListener implements OnInit
       'accepted_terms_and_conditions': ['', Validators.compose([Validators.required])]
     });
 
-    for(var control in this.registerForm.controls) {
+    for(let control in this.registerForm.controls) {
       this.registerForm.controls[control].valueChanges.subscribe(() => this.serverValidationErrors[control] = '');
     }
   }
@@ -132,6 +132,6 @@ export class UserRegisterComponent extends TranslationListener implements OnInit
   }
 
   private formValidation(): boolean {
-    return this.registerForm.valid && this.registerForm.value.accepted_terms_and_conditions && this.registerForm.value.gender && this.registerForm.value.native_language && this.registerForm.value.country_of_origin && this.registerForm.value.default_language && !this.passwordsSuppliedAndMisMatch() && true;
+    return this.registerForm.valid && this.registerForm.value.accepted_terms_and_conditions && !this.passwordsSuppliedAndMisMatch() && true;
   }
 }

@@ -4,8 +4,8 @@
     <h3 class="sub-header-title">{{"user.register.title" | translate}}</h3>
   </div>
 
-  <div class="register-form-outer-container">
-    <div class="register-form-inner-container">
+  <div class="ui centered grid">
+    <div class="fourteen wide phone ten wide tablet eight wide computer column">
 
       <form #form="ngForm" class="ui form" (ngSubmit)="onSubmit()">
         <sm-loader [complete]="!loadingSubmit" class="inverted" text="Loading..."></sm-loader>
@@ -15,7 +15,7 @@
         <div class="field" [ngClass]="{'error': (registerForm.controls['first_name'].touched && !registerForm.controls['first_name'].valid) || serverValidationErrors.first_name}">
           <sm-input
             [control]="registerForm.controls['first_name']"
-            [label]="'user.register.form.first.name.header' | translate"
+            [label]="('user.register.form.first.name.header' | translate) + ' *'"
             [placeholder]="'user.register.form.first.name.placeholder' | translate"
             class="left"
             icon="user"
@@ -41,7 +41,7 @@
         <div class="field" [ngClass]="{'error': (registerForm.controls['last_name'].touched && !registerForm.controls['last_name'].valid) || serverValidationErrors.last_name}">
           <sm-input
             [control]="registerForm.controls['last_name']"
-            [label]="'user.register.form.last.name.header' | translate"
+            [label]="('user.register.form.last.name.header' | translate) + ' *'"
             [placeholder]="'user.register.form.last.name.placeholder' | translate"
             class="left"
             icon="user"
@@ -67,7 +67,7 @@
         <div class="field" [ngClass]="{'error': (registerForm.controls['email'].touched && !registerForm.controls['email'].valid) || serverValidationErrors.email}">
           <sm-input
             [control]="registerForm.controls['email']"
-            [label]="'user.register.form.email.header' | translate"
+            [label]="('user.register.form.email.header' | translate) + ' *'"
             [placeholder]="'user.register.form.email.placeholder' | translate"
             class="left"
             icon="mail"
@@ -93,7 +93,7 @@
         <div class="field" [ngClass]="{'error': (registerForm.controls['phone'].touched && !registerForm.controls['phone'].valid) || serverValidationErrors.phone}">
           <sm-input
             [control]="registerForm.controls['phone']"
-            [label]="'user.register.form.phone.header' | translate"
+            [label]="('user.register.form.phone.header' | translate) + ' *'"
             [placeholder]="'user.register.form.phone.placeholder' | translate"
             class="left"
             icon="phone"
@@ -114,7 +114,7 @@
         <div class="field" [ngClass]="{'error': (registerForm.controls['gender'].touched && !registerForm.controls['gender'].valid) || serverValidationErrors.gender}">
           <sm-select
            [control]="registerForm.controls['gender']"
-           [label]="'user.register.form.gender.header' | translate"
+           [label]="('user.register.form.gender.header' | translate) + ' *'"
            [placeholder]="'user.register.form.gender.placeholder' | translate"
            class="fluid">
             <option *ngFor="let gender of genders" [value]="gender.id">
@@ -188,7 +188,7 @@
         <div class="field" [ngClass]="{'error': (registerForm.controls['native_language'].touched && !registerForm.controls['native_language'].valid) || serverValidationErrors.language_ids}">
           <sm-select
            [control]="registerForm.controls['native_language']"
-           [label]="'user.register.form.native.language.header' | translate"
+           [label]="('user.register.form.native.language.header' | translate) + ' *'"
            [placeholder]="'user.register.form.native.language.placeholder' | translate"
            class="fluid search">
             <option *ngFor="let language of languages" [value]="language.id">
@@ -210,7 +210,7 @@
         <div class="field" [ngClass]="{'error': (registerForm.controls['default_language'].touched && !registerForm.controls['default_language'].valid) || serverValidationErrors.language_id}">
           <sm-select
            [control]="registerForm.controls['default_language']"
-           [label]="'user.register.form.default.language.header' | translate"
+           [label]="('user.register.form.default.language.header' | translate) + ' *'"
            [placeholder]="'user.register.form.default.language.placeholder' | translate"
            class="fluid search">
             <option *ngFor="let language of systemLanguages" [value]="language.id">
@@ -237,7 +237,7 @@
           <sm-select
            [control]="registerForm.controls['country_of_origin']"
            [(model)]="registerForm.controls['country_of_origin'].value"
-           [label]="'user.register.form.country.of.origin.header' | translate"
+           [label]="('user.register.form.country.of.origin.header' | translate) + ' *'"
            [placeholder]="'user.register.form.country.of.origin.placeholder' | translate"
            class="fluid search">
             <option *ngFor="let country of countries" [value]="country.countryCode">
@@ -261,7 +261,7 @@
         <div class="field" [ngClass]="{'error': (registerForm.controls['password'].touched && !registerForm.controls['password'].valid) || serverValidationErrors.password}">
           <sm-input
             [control]="registerForm.controls['password']"
-            [label]="'user.register.form.password.header' | translate"
+            [label]="('user.register.form.password.header' | translate) + ' *'"
             [placeholder]="'user.register.form.password.placeholder' | translate"
             class="left"
             icon="lock"
@@ -287,7 +287,7 @@
         <div class="field" [ngClass]="{'error': (registerForm.controls['repeat_password'].touched && !registerForm.controls['repeat_password'].valid) || serverValidationErrors.repeat_password || passwordsSuppliedAndMisMatch()}">
           <sm-input
             [control]="registerForm.controls['repeat_password']"
-            [label]="'user.register.form.repeat.password.header' | translate"
+            [label]="('user.register.form.repeat.password.header' | translate) + ' *'"
             [placeholder]="'user.register.form.repeat.password.placeholder' | translate"
             class="left"
             icon="lock"
@@ -307,7 +307,7 @@
 
         <div class="field" [ngClass]="{'error': !registerForm.controls['accepted_terms_and_conditions'].valid}">
           <sm-checkbox
-            [label]="'user.register.form.terms.accept' | translate"
+            [label]="('user.register.form.terms.accept' | translate) + ' *'"
             [control]="registerForm.controls['accepted_terms_and_conditions']">
           </sm-checkbox>
           <a href="/assets/terms/160523_2051-2_Terms_and_Conditions_(en).pdf" target="_blank"> PDF EN</a>,
@@ -317,7 +317,7 @@
         <div class="register-form-button-container">
           <div *ngIf="saveFail" class="error-message">{{'user.register.form.submit.fail' | translate}}</div>
           <div *ngIf="saveSuccess" class="save-message">{{'user.register.form.submit.success' | translate}}</div>
-          <button *ngIf="!loadingSubmit" type="submit"  class="btn-primary btn-small btn">{{'user.register.form.submit.button' | translate}}</button>
+          <button *ngIf="!loadingSubmit" type="submit" [disabled]="!formValidation()" class="register-form-button btn-primary btn-small btn">{{'user.register.form.submit.button' | translate}}</button>
         </div>
       </form>
     </div>
