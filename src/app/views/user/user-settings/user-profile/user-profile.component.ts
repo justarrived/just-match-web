@@ -23,6 +23,7 @@ import {AutocompleteDropdownComponent} from '../../../../components/autocomplete
 import {FormGroup, FormBuilder, Validators} from '@angular/forms';
 import {TranslationListener} from '../../../../components/translation.component';
 import {TranslationService} from '../../../../services/translation.service';
+import {isValidSSNCharCode} from '../../../../utils/is-valid-ssn-char-code';
 
 @Component({
   selector: 'user-profile',
@@ -30,9 +31,6 @@ import {TranslationService} from '../../../../services/translation.service';
   styleUrls: ['./user-profile.component.scss']
 })
 export class UserProfileComponent extends TranslationListener implements OnInit {
-  private readonly ZERO_DIGIT: number = 48;
-  private readonly NINE_DIGIT: number = 57;
-
   @ViewChild('nativeLanguageDropdown')
   private nativeLanguageDropdown: AutocompleteDropdownComponent;
 
@@ -268,8 +266,8 @@ export class UserProfileComponent extends TranslationListener implements OnInit 
     this.serverValidationErrors = errors.details || errors;
   }
 
-  private checkInputType(event): boolean {
-    return event.charCode >= this.ZERO_DIGIT && event.charCode <= this.NINE_DIGIT;
+  private isAllowedSSNChar(charCode): boolean {
+    return isValidSSNCharCode(charCode);
   }
 
   private onSubmit() {
