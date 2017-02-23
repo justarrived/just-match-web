@@ -17,7 +17,11 @@ export class Job {
   id: string;
   invoiceAmount: number;
   grossAmount: number;
+  grossAmountDelimited: string;
+  grossAmountWithCurrency: string;
   netAmount: number;
+  netAmountDelimited: string;
+  netAmountWithCurrency: string;
   jobDate: string;
   jobEndDate: string;
   name: string;
@@ -40,6 +44,10 @@ export class Job {
     }
 
     this.grossAmount = jsonObject.gross_amount;
+    this.grossAmountDelimited = jsonObject.gross_amount_delimited;
+    this.grossAmountWithCurrency = jsonObject.gross_amount_with_currency;
+    this.netAmountDelimited = jsonObject.net_amount_delimited;
+    this.netAmountWithCurrency = jsonObject.net_amount_with_currency;
     this.netAmount = jsonObject.net_amount;
     this.company = new Company(jsonObject.company);
     this.createdAt = jsonObject.created_at;
@@ -115,9 +123,14 @@ export class Job {
 export class HourlyPay {
   active: boolean;
   currency: string;
+  unit: string;
   grossSalary: number;
+  grossSalaryDelmited: string;
+  grossSalaryWithUnit: string;
   id: string;
   netSalary: number;
+  netSalaryDelmited: string;
+  netSalaryWithUnit: string;
   rateIncludingVAT: number;
 
   constructor(jsonObject: any) {
@@ -126,9 +139,14 @@ export class HourlyPay {
     }
     this.active = jsonObject.active;
     this.currency = jsonObject.currency;
+    this.unit = jsonObject.unit;
     this.grossSalary = jsonObject.gross_salary;
+    this.grossSalaryDelmited = jsonObject.gross_salary_delmited;
+    this.grossSalaryWithUnit = jsonObject.gross_salary_with_unit;
     this.id = jsonObject.id;
     this.netSalary = jsonObject.net_salary;
+    this.netSalaryDelmited = jsonObject.net_salary_delmited;
+    this.netSalaryWithUnit = jsonObject.net_salary_with_unit;
     this.rateIncludingVAT = jsonObject.rate_including_vat;
   }
 }
