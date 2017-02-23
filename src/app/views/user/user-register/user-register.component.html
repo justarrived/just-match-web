@@ -12,21 +12,21 @@
         <div class="register-form-input-group-header">
           <h4>{{'user.register.form.first.name.header' | translate}} *</h4></div>
 
-        <div class="form-group material-group register-form-input-container" [ngClass]="{'has-error': (registerForm.controls['first_name'].touched && !registerForm.controls['first_name'].valid) || !serverValidationErrors.first_name}">
-          <input class="form-control material-input" maxlength="50" id="first_name" name="first-name-input" type="text" (focus)="serverValidationErrors.first_name = ''" placeholder="{{'user.register.form.first.name.placeholder' | translate}}" [formControl]="registerForm.controls['first_name']">
+        <div class="form-group material-group register-form-input-container" [ngClass]="{'has-error': (registerForm.controls['first_name'].touched && !registerForm.controls['first_name'].valid) || apiErrors.errorsFor('first_name').length > 0}">
+          <input class="form-control material-input" maxlength="50" id="first_name" name="first-name-input" type="text" placeholder="{{'user.register.form.first.name.placeholder' | translate}}" [formControl]="registerForm.controls['first_name']">
           <div *ngIf="registerForm.controls['first_name'].touched && registerForm.controls['first_name'].hasError('required')" class="alert alert-danger">{{'user.register.form.first.name.validation.required' | translate}}</div>
           <div *ngIf="registerForm.controls['first_name'].hasError('minlength')" class="alert alert-danger">{{'user.register.form.first.name.validation.min.length' | translate}}</div>
-          <div *ngIf="serverValidationErrors.first_name" class="alert alert-danger">{{serverValidationErrors.first_name}}</div>
+          <div *ngFor="let error of apiErrors.errorsFor('first_name')" class="alert alert-danger">{{error.detail}}</div>
         </div>
 
         <div class="register-form-input-group-header">
           <h4>{{'user.register.form.last.name.header' | translate}} *</h4></div>
 
-        <div class="form-group material-group register-form-input-container" [ngClass]="{'has-error':  (registerForm.controls['last_name'].touched && !registerForm.controls['last_name'].valid) || !serverValidationErrors.last_name}">
-          <input class="form-control material-input" maxlength="50" id="last_name" name="last-name-input" type="text" (focus)="serverValidationErrors.last_name = ''" placeholder="{{'user.register.form.last.name.placeholder' | translate}}" [formControl]="registerForm.controls['last_name']">
+        <div class="form-group material-group register-form-input-container" [ngClass]="{'has-error':  (registerForm.controls['last_name'].touched && !registerForm.controls['last_name'].valid) || apiErrors.errorsFor('last_name').length > 0}">
+          <input class="form-control material-input" maxlength="50" id="last_name" name="last-name-input" type="text" placeholder="{{'user.register.form.last.name.placeholder' | translate}}" [formControl]="registerForm.controls['last_name']">
           <div *ngIf="registerForm.controls['last_name'].touched && registerForm.controls['last_name'].hasError('required')" class="alert alert-danger">{{'user.register.form.last.name.validation.required' | translate}}</div>
           <div *ngIf="registerForm.controls['last_name'].hasError('minlength')" class="alert alert-danger">{{'user.register.form.last.name.validation.min.length' | translate}}</div>
-          <div *ngIf="serverValidationErrors.last_name" class="alert alert-danger">{{serverValidationErrors.last_name}}</div>
+          <div *ngFor="let error of apiErrors.errorsFor('last_name')" class="alert alert-danger">{{error.detail}}</div>
         </div>
 
         <div class="register-form-input-group-header">
@@ -37,44 +37,44 @@
               [autocompleteResultLabelFunction]="namePropertyLabel" [selectedItemLabelFunction]="namePropertyLabel">
           </autocomplete-dropdown>
           <div *ngIf="!registerForm.value.gender && genderInputTouched" class="alert alert-danger">{{'user.register.form.gender.required' | translate}}</div>
-          <div *ngIf="serverValidationErrors.gender" class="alert alert-danger">{{serverValidationErrors.gender}}</div>
+          <div *ngFor="let error of apiErrors.errorsFor('gender')" class="alert alert-danger">{{error.detail}}</div>
         </div>
 
         <div class="register-form-input-group-header">
           <h4>{{'user.register.form.email.header' | translate}} *</h4></div>
 
-        <div class="form-group material-group register-form-input-container" [ngClass]="{'has-error': (registerForm.controls['email'].touched && !registerForm.controls['email'].valid) || !serverValidationErrors.email}">
-          <input class="form-control material-input" maxlength="256" id="email" name="email" type="email" (focus)="serverValidationErrors.email = ''" placeholder="{{'user.register.form.email.placeholder' | translate}}" [formControl]="registerForm.controls['email']">
+        <div class="form-group material-group register-form-input-container" [ngClass]="{'has-error': (registerForm.controls['email'].touched && !registerForm.controls['email'].valid) || apiErrors.errorsFor('email').length > 0}">
+          <input class="form-control material-input" maxlength="256" id="email" name="email" type="email" placeholder="{{'user.register.form.email.placeholder' | translate}}" [formControl]="registerForm.controls['email']">
           <div *ngIf="registerForm.controls['email'].touched && registerForm.controls['email'].hasError('required')" class="alert alert-danger">{{'user.register.form.email.validation.required' | translate}}</div>
           <div *ngIf="registerForm.controls['email'].hasError('pattern')" class="alert alert-danger">{{'user.register.form.email.validation.pattern' | translate}}</div>
-          <div *ngIf="serverValidationErrors.email" class="alert alert-danger">{{serverValidationErrors.email}}.</div>
+          <div *ngFor="let error of apiErrors.errorsFor('email')" class="alert alert-danger">{{error.detail}}</div>
         </div>
 
         <div class="register-form-input-group-header">
           <h4>{{'user.register.form.phone.header' | translate}} *</h4></div>
 
-        <div class="form-group material-group register-form-input-container" [ngClass]="{'has-error': (registerForm.controls['phone'].touched && !registerForm.controls['phone'].valid)  || !serverValidationErrors.phone}">
-          <input class="form-control material-input" maxlength="20" id="phone" name="phone" type="text" (focus)="serverValidationErrors.phone = ''" placeholder="{{'user.register.form.phone.placeholder' | translate}}" [formControl]="registerForm.controls['phone']">
+        <div class="form-group material-group register-form-input-container" [ngClass]="{'has-error': (registerForm.controls['phone'].touched && !registerForm.controls['phone'].valid)  || apiErrors.errorsFor('phone').length > 0}">
+          <input class="form-control material-input" maxlength="20" id="phone" name="phone" type="text" placeholder="{{'user.register.form.phone.placeholder' | translate}}" [formControl]="registerForm.controls['phone']">
           <div *ngIf="registerForm.controls['phone'].touched && registerForm.controls['phone'].hasError('required')" class="alert alert-danger">{{'user.register.form.phone.validation.required' | translate}}</div>
-          <div *ngIf="serverValidationErrors.phone" class="alert alert-danger">{{serverValidationErrors.phone}}.</div>
+          <div *ngFor="let error of apiErrors.errorsFor('phone')" class="alert alert-danger">{{error.detail}}</div>
         </div>
 
         <div class="register-form-input-group-header">
           <h4>{{'user.register.form.address.header' | translate}}</h4></div>
 
-        <div class="form-group material-group register-form-input-container" [ngClass]="{'has-error':!registerForm.controls['street'].valid || !serverValidationErrors.street}">
-          <input class="form-control material-input" maxlength="50" id="street" name="street" type="text" (focus)="serverValidationErrors.street = ''" placeholder="{{'user.register.form.street.placeholder' | translate}}" [formControl]="registerForm.controls['street']">
-          <div *ngIf="serverValidationErrors.street" class="alert alert-danger">{{serverValidationErrors.street}}.</div>
+        <div class="form-group material-group register-form-input-container" [ngClass]="{'has-error':!registerForm.controls['street'].valid || apiErrors.errorsFor('street').length > 0}">
+          <input class="form-control material-input" maxlength="50" id="street" name="street" type="text" placeholder="{{'user.register.form.street.placeholder' | translate}}" [formControl]="registerForm.controls['street']">
+          <div *ngFor="let error of apiErrors.errorsFor('street')" class="alert alert-danger">{{error.detail}}</div>
         </div>
 
-        <div class="form-group material-group register-form-input-container" [ngClass]="{'has-error':!registerForm.controls['zip'].valid || !serverValidationErrors.zip}">
-          <input class="form-control material-input" maxlength="10" id="zip" name="zip" type="text" (focus)="serverValidationErrors.zip = ''" placeholder="{{'user.register.form.zip.placeholder' | translate}}" [formControl]="registerForm.controls['zip']">
-          <div *ngIf="serverValidationErrors.zip" class="alert alert-danger">{{serverValidationErrors.zip}}.</div>
+        <div class="form-group material-group register-form-input-container" [ngClass]="{'has-error':!registerForm.controls['zip'].valid || apiErrors.errorsFor('zip').length > 0}">
+          <input class="form-control material-input" maxlength="10" id="zip" name="zip" type="text" placeholder="{{'user.register.form.zip.placeholder' | translate}}" [formControl]="registerForm.controls['zip']">
+          <div *ngFor="let error of apiErrors.errorsFor('zip')" class="alert alert-danger">{{error.detail}}</div>
         </div>
 
-        <div class="form-group material-group register-form-input-container" [ngClass]="{'has-error':!registerForm.controls['city'].valid || !serverValidationErrors.city}">
-          <input class="form-control material-input" maxlength="50" id="city" name="city" type="text" (focus)="serverValidationErrors.city = ''" placeholder="{{'user.register.form.city.placeholder' | translate}}" [formControl]="registerForm.controls['city']">
-          <div *ngIf="serverValidationErrors.city" class="alert alert-danger">{{serverValidationErrors.city}}.</div>
+        <div class="form-group material-group register-form-input-container" [ngClass]="{'has-error':!registerForm.controls['city'].valid || apiErrors.errorsFor('city').length > 0}">
+          <input class="form-control material-input" maxlength="50" id="city" name="city" type="text" placeholder="{{'user.register.form.city.placeholder' | translate}}" [formControl]="registerForm.controls['city']">
+          <div *ngFor="let error of apiErrors.errorsFor('city')" class="alert alert-danger">{{error.detail}}</div>
         </div>
 
         <div class="register-form-input-group-header">
@@ -85,7 +85,7 @@
               [autocompleteResultLabelFunction]="namePropertyLabel" [selectedItemLabelFunction]="namePropertyLabel">
           </autocomplete-dropdown>
           <div *ngIf="!registerForm.value.native_language && nativeLanguageInputTouched" class="alert alert-danger">{{'user.register.form.native.language.required' | translate}}</div>
-          <div *ngIf="serverValidationErrors.language_ids" class="alert alert-danger">{{serverValidationErrors.language_ids}}</div>
+          <div *ngFor="let error of apiErrors.errorsFor('language_ids')" class="alert alert-danger">{{error.detail}}</div>
         </div>
 
         <div class="register-form-input-group-header">
@@ -97,7 +97,7 @@
           </autocomplete-dropdown>
           <p class="register-form-input-description-text">{{'user.register.form.default.language.description' | translate}}</p>
           <div *ngIf="!registerForm.value.default_language && defaultLanguageInputTouched" class="alert alert-danger">{{'user.register.form.default.language.required' | translate}}</div>
-          <div *ngIf="serverValidationErrors.language_id" class="alert alert-danger">{{serverValidationErrors.language_id}}</div>
+          <div *ngFor="let error of apiErrors.errorsFor('language_id')" class="alert alert-danger">{{error.detail}}</div>
         </div>
 
         <div class="register-form-input-group-header">
@@ -110,21 +110,21 @@
           <input id="country_of_origin" name="country_of_origin" type="hidden" [(ngModel)]="registerForm.value.country_of_origin" [formControl]="registerForm.controls['country_of_origin']">
 
           <div *ngIf="!registerForm.value.country_of_origin && countryOfOriginInputTouched" class="alert alert-danger">{{'user.register.form.country.of.origin.required' | translate}}</div>
-          <div *ngIf="serverValidationErrors.country_of_origin" class="alert alert-danger">{{serverValidationErrors.country_of_origin}}</div>
+          <div *ngFor="let error of apiErrors.errorsFor('country_of_origin')" class="alert alert-danger">{{error.detail}}</div>
         </div>
 
         <div class="register-form-input-group-header">
           <h4>{{'user.register.form.password.header' | translate}} *</h4></div>
 
-        <div class="form-group material-group register-form-input-container" [ngClass]="{'has-error':!registerForm.controls['password'].valid || !registerForm.controls['repeat_password'].valid || !serverValidationErrors.password || passwordsSuppliedAndMisMatch()}">
-          <input class="form-control material-input" id="password" name="password" type="password" (focus)="serverValidationErrors.password = ''" placeholder="{{'user.register.form.password.placeholder' | translate}}" [formControl]="registerForm.controls['password']"
+        <div class="form-group material-group register-form-input-container" [ngClass]="{'has-error':!registerForm.controls['password'].valid || !registerForm.controls['repeat_password'].valid || apiErrors.errorsFor('password').length > 0 || passwordsSuppliedAndMisMatch()}">
+          <input class="form-control material-input" id="password" name="password" type="password" placeholder="{{'user.register.form.password.placeholder' | translate}}" [formControl]="registerForm.controls['password']"
               maxlength="50">
-          <input class="form-control material-input" id="repeat_password" name="repeat_password" type="password" (focus)="serverValidationErrors.password = ''" placeholder="{{'user.register.form.repeat.password.placeholder' | translate}}" [formControl]="registerForm.controls['repeat_password']"
+          <input class="form-control material-input" id="repeat_password" name="repeat_password" type="password" placeholder="{{'user.register.form.repeat.password.placeholder' | translate}}" [formControl]="registerForm.controls['repeat_password']"
               maxlength="50">
           <div *ngIf="registerForm.controls['password'].hasError('minlength')" class="alert alert-danger">{{'user.register.form.password.validation.min.length' | translate}}</div>
           <div *ngIf="registerForm.controls['password'].touched && registerForm.controls['password'].hasError('required')" class="alert alert-danger">{{'user.register.form.password.validation.required' | translate}}</div>
           <div *ngIf="passwordsSuppliedAndMisMatch()" class="alert alert-danger">{{'user.register.form.repeat.password.validation.mismatch' | translate}}</div>
-          <div *ngIf="serverValidationErrors.password" class="alert alert-danger">{{serverValidationErrors.password}}.</div>
+          <div *ngFor="let error of apiErrors.errorsFor('password')" class="alert alert-danger">{{error.detail}}</div>
         </div>
 
         <div class="form-group text-center register-form-input-container register-form-terms-container" [ngClass]="{'has-error':!registerForm.controls['accepted_terms_and_conditions'].valid && registerForm.controls['accepted_terms_and_conditions'].touched}">

@@ -13,6 +13,7 @@ import {JARoutes} from '../../../routes/ja-routes';
 import {TranslationService} from '../../../services/translation.service';
 import {TranslationListener} from '../../../components/translation.component';
 import {FormGroup, FormBuilder, Validators} from '@angular/forms';
+import {ApiErrors} from '../../../models/api-errors';
 
 @Component({
   templateUrl: './user-register.component.html',
@@ -25,7 +26,7 @@ export class UserRegisterComponent extends TranslationListener implements OnInit
   private languages: Language[];
   private genders: UserGender[];
   private systemLanguages: Language[];
-  private serverValidationErrors: any = {};
+  private apiErrors: ApiErrors = new ApiErrors([]);
   private saveSuccess: boolean;
   private saveFail: boolean;
   private loadingSubmit: boolean = false;
@@ -77,16 +78,11 @@ export class UserRegisterComponent extends TranslationListener implements OnInit
     this.languageProxy.getSystemLanguages().then(languages => this.systemLanguages = languages);
   }
 
-  private handleServerErrors(errors) {
-    this.saveFail = true;
-    this.serverValidationErrors = errors.details || errors;
-  }
-
   private onSubmit() {
     this.saveSuccess = false;
     this.saveFail = false;
     this.loadingSubmit = true;
-    this.serverValidationErrors = {};
+    this.apiErrors = new ApiErrors([]);
 
     this.userProxy.saveUser({
       'first_name': this.registerForm.value.first_name,
@@ -114,8 +110,9 @@ export class UserRegisterComponent extends TranslationListener implements OnInit
         });
       })
       .catch(errors => {
-        this.handleServerErrors(errors);
+        this.saveFail = true;
         this.loadingSubmit = false;
+        this.apiErrors = errors;
       });
   }
 

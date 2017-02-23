@@ -5,6 +5,7 @@ import {ContactProxy} from '../../services/proxy/contact-proxy.service';
 import {NavigationService} from '../../services/navigation.service';
 import {JARoutes} from '../../routes/ja-routes';
 import {UserManager} from '../../services/user-manager.service';
+import {ApiErrors} from '../../models/api-errors';
 
 @Component({
   templateUrl: './contact.component.html',
@@ -13,8 +14,8 @@ import {UserManager} from '../../services/user-manager.service';
 })
 export class ContactComponent {
   private contactForm: FormGroup;
-  private errors: any = {};
   private loadingSubmit: boolean = false;
+  private apiErrors: ApiErrors = new ApiErrors([]);
 
   constructor(
     private contactProxy: ContactProxy,
@@ -45,7 +46,7 @@ export class ContactComponent {
         this.loadingSubmit = false;
       })
       .catch((errors) => {
-        this.errors = errors.details || errors;
+        this.apiErrors = errors;
         this.loadingSubmit = false;
       });
   }
