@@ -161,6 +161,11 @@
             type="text">
           </sm-input>
           <div
+            *ngIf="registerForm.controls['zip'].hasError('minlength')"
+            class="ui pointing red basic label">
+            {{'user.register.form.zip.validation.min.length' | translate}}
+          </div>
+          <div
             *ngIf="serverValidationErrors.zip"
             class="ui pointing red basic label">
             {{serverValidationErrors.zip}}
@@ -207,9 +212,9 @@
           </div>
         </div>
 
-        <div class="field" [ngClass]="{'error': (registerForm.controls['default_language'].touched && !registerForm.controls['default_language'].valid) || serverValidationErrors.language_id}">
+        <div class="field" [ngClass]="{'error': (registerForm.controls['language'].touched && !registerForm.controls['language'].valid) || serverValidationErrors.language}">
           <sm-select
-           [control]="registerForm.controls['default_language']"
+           [control]="registerForm.controls['language']"
            [label]="('user.register.form.default.language.header' | translate) + ' *'"
            [placeholder]="'user.register.form.default.language.placeholder' | translate"
            class="fluid search">
@@ -218,7 +223,7 @@
             </option>
           </sm-select>
           <div
-            *ngIf="registerForm.controls['default_language'].touched && registerForm.controls['default_language'].hasError('required')"
+            *ngIf="registerForm.controls['language'].touched && registerForm.controls['language'].hasError('required')"
             class="ui pointing red basic label">
             {{'user.register.form.default.language.validation.required' | translate}}
           </div>
@@ -298,11 +303,6 @@
             class="ui pointing red basic label">
             {{'user.register.form.repeat.password.validation.mismatch' | translate}}
           </div>
-          <div
-            *ngIf="serverValidationErrors.repeat_password"
-            class="ui pointing red basic label">
-            {{serverValidationErrors.repeat_password}}
-          </div>
         </div>
 
         <div class="field" [ngClass]="{'error': !registerForm.controls['accepted_terms_and_conditions'].valid}">
@@ -317,7 +317,7 @@
         <div class="register-form-button-container">
           <div *ngIf="saveFail" class="error-message">{{'user.register.form.submit.fail' | translate}}</div>
           <div *ngIf="saveSuccess" class="save-message">{{'user.register.form.submit.success' | translate}}</div>
-          <button *ngIf="!loadingSubmit" type="submit" [disabled]="!formValidation()" class="register-form-button btn-primary btn-small btn">{{'user.register.form.submit.button' | translate}}</button>
+          <button *ngIf="!loadingSubmit" type="submit" class="register-form-button btn-primary btn-small btn">{{'user.register.form.submit.button' | translate}}</button>
         </div>
       </form>
     </div>

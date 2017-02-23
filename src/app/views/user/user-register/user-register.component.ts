@@ -55,11 +55,11 @@ export class UserRegisterComponent extends TranslationListener implements OnInit
       'email': ['', Validators.compose([Validators.required, Validators.pattern(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)])],
       'phone': ['', Validators.compose([Validators.required])],
       'street': [''],
-      'zip': [''],
+      'zip': ['', Validators.compose([Validators.minLength(5)])],
       'city': [''],
       'country_of_origin': ['', Validators.compose([Validators.required])],
       'native_language': ['', Validators.compose([Validators.required])],
-      'default_language': ['', Validators.compose([Validators.required])],
+      'language': ['', Validators.compose([Validators.required])],
       'password': ['', Validators.compose([Validators.required, Validators.minLength(6)])],
       'repeat_password': [, Validators.compose([Validators.required])],
       'accepted_terms_and_conditions': ['', Validators.compose([Validators.required])]
@@ -102,7 +102,7 @@ export class UserRegisterComponent extends TranslationListener implements OnInit
       'zip': this.registerForm.value.zip,
       'city': this.registerForm.value.city,
       'country_of_origin': this.registerForm.value.country_of_origin.countryCode,
-      'language_id': this.registerForm.value.default_language,
+      'language_id': this.registerForm.value.language,
       'language_ids': [{
         id: this.registerForm.value.native_language,
         proficiency: 5

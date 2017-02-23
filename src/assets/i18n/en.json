@@ -267,6 +267,7 @@
   "user.register.form.terms.validation.required": "To signup you have to agree to the terms above",
   "user.register.form.zip.header": "Zip code",
   "user.register.form.zip.placeholder": "Zip",
+  "user.register.form.zip.validation.min.length": "Zip code must be at least 5 characters long",
   "user.register.title": "Sign up",
   "user.settings.form.account.number.label": "Account number",
   "user.settings.form.account.number.placeholder": "Account number",
