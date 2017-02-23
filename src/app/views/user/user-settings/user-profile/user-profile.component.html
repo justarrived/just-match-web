@@ -10,7 +10,7 @@
         </autocomplete-dropdown>
         <p class="profile-form-input-description-text">{{'user.profile.form.default.language.description' | translate}}</p>
         <div *ngIf="!profileForm.value.default_language" class="alert alert-danger">{{'user.profile.form.default.language.required' | translate}}</div>
-        <div *ngIf="serverValidationErrors.language_id" class="alert alert-danger">{{serverValidationErrors.language_id}}</div>
+        <div *ngFor="let error of apiErrors.errorsFor('language')" class="alert alert-danger">{{error.detail}}</div>
       </div>
 
       <div class="profile-form-input-container">
@@ -27,7 +27,7 @@
             [lookupType]="'list'" [enumList]="countries">
         </autocomplete-dropdown>
         <div *ngIf="profileForm.controls['country_of_origin'].hasError('required')" class="alert alert-danger">{{'user.profile.form.country.validation.required' | translate}}</div>
-        <div *ngIf="serverValidationErrors.country_of_origin" class="alert alert-danger">{{serverValidationErrors.country_of_origin}}.</div>
+        <div *ngFor="let error of apiErrors.errorsFor('country_of_origin')" class="alert alert-danger">{{error.detail}}</div>
       </div>
 
       <div class="profile-form-input-container">
@@ -35,12 +35,12 @@
         <div class="input-radio-container row">
           <div *ngFor="let status of statuses" class="input-radio-button-container">
             <label class="input-radio-button-label" for="{{status.id}}">
-            <input class="input-radio-button-input" type="radio" name="permit-type" id="{{status.id}}" (focus)="serverValidationErrors.current_status = ''" [formControl]="profileForm.controls['current_status']" value="{{status.id}}" />
+            <input class="input-radio-button-input" type="radio" name="permit-type" id="{{status.id}}" [formControl]="profileForm.controls['current_status']" value="{{status.id}}" />
             <span class="input-radio-button-span"></span>
             {{status.name}}</label>
           </div>
         </div>
-        <div *ngIf="serverValidationErrors.current_status" class="alert alert-danger">{{serverValidationErrors.current_status}}.</div>
+        <div *ngFor="let error of apiErrors.errorsFor('current_status')" class="alert alert-danger">{{error.detail}}</div>
       </div>
 
       <div *ngIf="profileForm.value.current_status === 'asylum_seeker'" class="profile-form-input-container">
@@ -48,18 +48,18 @@
         <div class="input-radio-container">
           <div class="input-radio-button-container">
             <label class="input-radio-button-label" for="at-und-yes">
-            <input class="input-radio-button-input" type="radio" name="at-und" id="at-und-yes" (focus)="serverValidationErrors.at_und = ''" [formControl]="profileForm.controls['at_und']" value="yes" />
+            <input class="input-radio-button-input" type="radio" name="at-und" id="at-und-yes" [formControl]="profileForm.controls['at_und']" value="yes" />
             <span class="input-radio-button-span"></span>
             {{'common.yes' | translate}}</label>
           </div>
           <div class="input-radio-button-container">
             <label class="input-radio-button-label" for="at-und-no">
-            <input class="input-radio-button-input" type="radio" name="at-und" id="at-und-no" (focus)="serverValidationErrors.at_und = ''" [formControl]="profileForm.controls['at_und']" value="no" />
+            <input class="input-radio-button-input" type="radio" name="at-und" id="at-und-no" [formControl]="profileForm.controls['at_und']" value="no" />
             <span class="input-radio-button-span"></span>
             {{'common.no' | translate}}</label>
           </div>
         </div>
-        <div *ngIf="serverValidationErrors.at_und" class="alert alert-danger">{{serverValidationErrors.at_und}}.</div>
+        <div *ngFor="let error of apiErrors.errorsFor('at_und')" class="alert alert-danger">{{error.detail}}</div>
       </div>
 
       <div *ngIf="profileForm.value.current_status === 'asylum_seeker' && profileForm.value.at_und === 'yes'" class="profile-form-input-container">
@@ -67,13 +67,13 @@
         <div class="input-radio-container">
           <div class="input-radio-button-container">
             <label class="input-radio-button-label" for="got-coordination-number-yes">
-            <input class="input-radio-button-input" type="radio" name="got-coordination-number" id="got-coordination-number-yes" (focus)="serverValidationErrors.got_coordination_number = ''" [formControl]="profileForm.controls['got_coordination_number']" value="yes" />
+            <input class="input-radio-button-input" type="radio" name="got-coordination-number" id="got-coordination-number-yes" [formControl]="profileForm.controls['got_coordination_number']" value="yes" />
             <span class="input-radio-button-span"></span>
             {{'common.yes' | translate}}</label>
           </div>
           <div class="input-radio-button-container">
             <label class="input-radio-button-label" for="got-coordination-number-no">
-            <input class="input-radio-button-input" type="radio" name="got-coordination-number" id="got-coordination-number-no" (focus)="serverValidationErrors.got_coordination_number = ''" [formControl]="profileForm.controls['got_coordination_number']" value="no" />
+            <input class="input-radio-button-input" type="radio" name="got-coordination-number" id="got-coordination-number-no" [formControl]="profileForm.controls['got_coordination_number']" value="no" />
             <span class="input-radio-button-span"></span>
             {{'common.no' | translate}}</label>
           </div>
@@ -81,17 +81,17 @@
       </div>
 
       <div *ngIf="profileForm.value.current_status && ((profileForm.value.current_status === 'asylum_seeker' && profileForm.value.at_und === 'yes' && profileForm.value.got_coordination_number === 'yes') || (profileForm.value.current_status !== 'asylum_seeker'))"
-          class="form-group material-group profile-form-input-container" [ngClass]="{'has-error':!profileForm.value.ssn || !serverValidationErrors.ssn}">
+          class="form-group material-group profile-form-input-container" [ngClass]="{'has-error':!profileForm.value.ssn || apiErrors.errorsFor('ssn').length > 0}">
         <label *ngIf="profileForm.value.current_status === 'asylum_seeker'" for="ssn">{{'user.profile.form.coordination.number.label' | translate}}:</label>
         <label *ngIf="profileForm.value.current_status === 'eu_citizen'" for="ssn">{{'user.profile.form.coordination.number.or.ssn.label' | translate}}:</label>
         <label *ngIf="profileForm.value.current_status !== 'asylum_seeker' && profileForm.value.current_status !== 'eu_citizen'" for="ssn">{{'user.profile.form.ssn.label' | translate}}:</label>
-        <input *ngIf="profileForm.value.current_status === 'asylum_seeker'" maxlength="20" class="profile-form-input-text form-control material-input" id="ssn" name="ssn-input" type="text" onkeypress="return event.charCode >= 48 && event.charCode <= 57" (focus)="serverValidationErrors.ssn = ''" placeholder="{{'user.profile.form.coordination.number.placeholder' | translate}}"
+        <input *ngIf="profileForm.value.current_status === 'asylum_seeker'" maxlength="20" class="profile-form-input-text form-control material-input" id="ssn" name="ssn-input" type="text" onkeypress="return event.charCode >= 48 && event.charCode <= 57" placeholder="{{'user.profile.form.coordination.number.placeholder' | translate}}"
             [formControl]="profileForm.controls['ssn']">
-        <input *ngIf="profileForm.value.current_status === 'eu_citizen'" maxlength="20" class="profile-form-input-text form-control material-input" id="ssn" name="ssn-input" type="text" onkeypress="return event.charCode >= 48 && event.charCode <= 57" (focus)="serverValidationErrors.ssn = ''" placeholder="{{'user.profile.form.coordination.number.or.ssn.placeholder' | translate}}"
+        <input *ngIf="profileForm.value.current_status === 'eu_citizen'" maxlength="20" class="profile-form-input-text form-control material-input" id="ssn" name="ssn-input" type="text" onkeypress="return event.charCode >= 48 && event.charCode <= 57" placeholder="{{'user.profile.form.coordination.number.or.ssn.placeholder' | translate}}"
             [formControl]="profileForm.controls['ssn']">
-        <input *ngIf="profileForm.value.current_status !== 'asylum_seeker' && profileForm.value.current_status !== 'eu_citizen'" maxlength="20" class="profile-form-input-text form-control material-input" id="ssn" name="ssn-input" type="text" onkeypress="return event.charCode >= 48 && event.charCode <= 57" (focus)="serverValidationErrors.ssn = ''" placeholder="{{'user.profile.form.ssn.placeholder' | translate}}"
+        <input *ngIf="profileForm.value.current_status !== 'asylum_seeker' && profileForm.value.current_status !== 'eu_citizen'" maxlength="20" class="profile-form-input-text form-control material-input" id="ssn" name="ssn-input" type="text" onkeypress="return event.charCode >= 48 && event.charCode <= 57" placeholder="{{'user.profile.form.ssn.placeholder' | translate}}"
             [formControl]="profileForm.controls['ssn']">
-        <div *ngIf="serverValidationErrors.ssn" class="alert alert-danger">{{serverValidationErrors.ssn}}.</div>
+        <div *ngFor="let error of apiErrors.errorsFor('ssn')" class="alert alert-danger">{{error.detail}}</div>
       </div>
 
       <div *ngIf="profileForm.value.current_status === 'asylum_seeker' && profileForm.value.at_und === 'yes'" class="profile-form-upload-image-container">
@@ -221,16 +221,16 @@
 
       <div class="profile-form-input-container">
         <label class="profile-form-input-label">{{'user.profile.form.general.skills.label' | translate}}:</label>
-        <textarea class="profile-form-input-textarea form-control material-input" maxlength="1000" name="general-skills" id="general-skills" class="form-control material-input" (focus)="serverValidationErrors.competence_text = ''" autosize type="text" placeholder="{{'user.profile.form.general.skills.placeholder' | translate}}"
+        <textarea class="profile-form-input-textarea form-control material-input" maxlength="1000" name="general-skills" id="general-skills" class="form-control material-input" autosize type="text" placeholder="{{'user.profile.form.general.skills.placeholder' | translate}}"
             [formControl]="profileForm.controls['competence_text']"></textarea>
-        <div *ngIf="serverValidationErrors.competence_text" class="alert alert-danger">{{serverValidationErrors.competence_text}}.</div>
+        <div *ngFor="let error of apiErrors.errorsFor('competence_text')" class="alert alert-danger">{{error.detail}}</div>
       </div>
 
       <div class="profile-form-input-container">
         <label class="profile-form-input-label">{{'user.profile.form.work.experience.label' | translate}}:</label>
-        <textarea class="profile-form-input-textarea form-control material-input" maxlength="1000" name="workExperience" id="work-experience" class="form-control material-input" (focus)="serverValidationErrors.job_experience = ''" autosize type="text" placeholder="{{'user.profile.form.work.experience.placeholder' | translate}}"
+        <textarea class="profile-form-input-textarea form-control material-input" maxlength="1000" name="workExperience" id="work-experience" class="form-control material-input" autosize type="text" placeholder="{{'user.profile.form.work.experience.placeholder' | translate}}"
             [formControl]="profileForm.controls['job_experience']"></textarea>
-        <div *ngIf="serverValidationErrors.job_experience" class="alert alert-danger">{{serverValidationErrors.job_experience}}.</div>
+        <div *ngFor="let error of apiErrors.errorsFor('job_experience')" class="alert alert-danger">{{error.detail}}</div>
       </div>
       <!--
 Documents not supported yet. TODO implement when documents supported in backend.

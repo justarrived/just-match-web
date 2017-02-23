@@ -23,6 +23,7 @@ import {AutocompleteDropdownComponent} from '../../../../components/autocomplete
 import {FormGroup, FormBuilder, Validators} from '@angular/forms';
 import {TranslationListener} from '../../../../components/translation.component';
 import {TranslationService} from '../../../../services/translation.service';
+import {ApiErrors} from '../../../../models/api-errors';
 
 @Component({
   selector: 'user-profile',
@@ -57,7 +58,7 @@ export class UserProfileComponent extends TranslationListener implements OnInit 
 
   private statuses: UserStatus[];
 
-  private serverValidationErrors: any = {};
+  private apiErrors: ApiErrors = new ApiErrors([]);
   private saveSuccess: boolean;
   private saveFail: boolean;
   private loadingSubmit: boolean = false;
@@ -259,16 +260,11 @@ export class UserProfileComponent extends TranslationListener implements OnInit 
     return this.profileForm.valid && true;
   }
 
-  private handleServerErrors(errors) {
-    this.saveFail = true;
-    this.serverValidationErrors = errors.details || errors;
-  }
-
   private onSubmit() {
     this.saveSuccess = false;
     this.saveFail = false;
     this.loadingSubmit = true;
-    this.serverValidationErrors = {};
+    this.apiErrors = new ApiErrors([]);
 
     this.userProxy.updateUser(this.user.id, {
       'language_id': this.profileForm.value.default_language,
@@ -298,7 +294,8 @@ export class UserProfileComponent extends TranslationListener implements OnInit 
         });
       })
       .catch(errors => {
-        this.handleServerErrors(errors);
+        this.saveFail = true;
+        this.apiErrors = errors;
         this.loadingSubmit = false;
       });
   }
