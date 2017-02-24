@@ -132,7 +132,6 @@ export class UserProfileComponent extends TranslationListener implements OnInit 
   }
 
   ngOnInit() {
-    console.log(this.user);
     this.loadData();
     this.initForm();
 

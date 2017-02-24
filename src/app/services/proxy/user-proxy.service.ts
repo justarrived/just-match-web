@@ -61,7 +61,6 @@ export class UserProxy {
   public saveUserDocument(userId, document: Document, category: string): Promise<UserDocument> {
     return this.apiCall.post('users/' + userId + '/documents', {'document_one_time_token': document.oneTimeToken,'category': category})
         .then((response) => {
-          console.log(response)
           const documentData = {
             id: response.data.id,
             oneTimeToken: document.oneTimeToken,
