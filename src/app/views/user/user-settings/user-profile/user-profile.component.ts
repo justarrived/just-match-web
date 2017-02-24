@@ -3,6 +3,8 @@ import {UserLanguage} from '../../../../models/user/user-language';
 import {UserSkill} from '../../../../models/user/user-skill';
 import {UserStatus} from '../../../../models/user/user-status';
 import {UserImage} from '../../../../models/user/user-image';
+import {UserDocument} from '../../../../models/user/user-document';
+import {Document} from '../../../../models/document';
 import {LanguageProxy} from '../../../../services/proxy/language-proxy.service';
 import {CountryProxy} from '../../../../services/proxy/country-proxy.service';
 import {SkillProxy} from '../../../../services/proxy/skill-proxy.service';
@@ -108,6 +110,12 @@ export class UserProfileComponent extends TranslationListener implements OnInit 
     uploadingImage: false
   };
 
+  private resumeDocumentStatusObject: any = {
+    documentSaveSuccess: false,
+    documentSaveFail: false,
+    uploadingDocument: false
+  };
+
   constructor(
     private languageProxy: LanguageProxy,
     private countryProxy: CountryProxy,
@@ -124,6 +132,7 @@ export class UserProfileComponent extends TranslationListener implements OnInit 
   }
 
   ngOnInit() {
+    console.log(this.user);
     this.loadData();
     this.initForm();
 
@@ -255,6 +264,28 @@ export class UserProfileComponent extends TranslationListener implements OnInit 
       }).catch(errors => {
         uploadStatusObject.imageSaveFail = true;
         uploadStatusObject.uploadingImage = false;
+      });
+    }
+  }
+
+  private onDocumentFilenameChange(event, type, uploadStatusObject) {
+    uploadStatusObject.documentSaveFail = false;
+    uploadStatusObject.documentSaveSuccess = false;
+    uploadStatusObject.uploadingDocument = true;
+    const file = event.srcElement.files[0];
+    if (file) {
+      this.userProxy.saveDocument(file).then((document) => {
+        this.userProxy.saveUserDocument(this.user.id, document, type).then(userDocument => {
+          this.user[type + '_document'] = userDocument;
+          uploadStatusObject.documentSaveSuccess = true;
+          uploadStatusObject.uploadingDocument = false;
+        }).catch(errors => {
+          uploadStatusObject.documentSaveFail = true;
+          uploadStatusObject.uploadingDocument = false;
+        });
+      }).catch(errors => {
+        uploadStatusObject.documentSaveFail = true;
+        uploadStatusObject.uploadingDocument = false;
       });
     }
   }
