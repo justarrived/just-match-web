@@ -4,6 +4,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import * as Raven from 'raven-js';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AgmCoreModule} from 'angular2-google-maps/core';
+import {MaterialModule} from '@angular/material';
 import {AppComponent} from './app.component';
 import {HomeComponent} from './views/home/home.component';
 import {DataStore} from './services/data-store.service';
@@ -72,6 +73,7 @@ export class RavenErrorHandler implements ErrorHandler {
     ReactiveFormsModule,
     AppTranslateModule,
     AppRoutingModule,
+    MaterialModule,
     AgmCoreModule.forRoot({
       apiKey: environment.googleMapsKey
     })
