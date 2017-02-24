@@ -105,6 +105,14 @@ export class AppComponent implements OnInit {
     }
   }
 
+  get godModePresent(): boolean {
+    if (this.actsAsUser.getUserId() === null) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
   get languageBtnIconClassName(): string {
     return this.isLanguageMenuVisible ? 'fa-caret-up' : 'fa-caret-down';
   }
