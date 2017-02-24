@@ -1,7 +1,7 @@
 <div class="navbar-fixed-top" [ngStyle]="(isNavigationMenuVisible || isLanguageMenuVisible) && {'height': '100%'}">
   <div class="navbar-container">
     <nav class="header navbar-light bg-faded">
-      <div class="row navbar-container">
+      <div class="row navbar-container" [ngClass]="{'navbar-god-mode': godModePresent}">
         <div class="navbar-home row flex-items-xs-middle">
           <a routerLink="{{JARoutes.home.url()}}">
             <img class="logo-img" src="/assets/images/logo.png" alt="Just Arrived" />
