@@ -43,7 +43,7 @@
     "jquery": "^3.1.1",
     "lodash": "^4.17.4",
     "moment": "^2.17.0",
-    "ng-semantic": "file:../ngSemantic",
+    "ng-semantic": "https://github.com/justarrived/ngSemantic/tarball/master",
     "ng2-translate": "^5.0.0",
     "postcss-loader": "^1.2.2",
     "raven-js": "^3.10.0",

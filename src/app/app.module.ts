@@ -1,5 +1,5 @@
 import {NgModule, ErrorHandler } from '@angular/core';
-import {NgSemanticModule} from 'ng-semantic';
+import {NgSemanticModule} from 'ng-semantic/ng-semantic';
 import {HttpModule} from '@angular/http';
 import {BrowserModule} from '@angular/platform-browser';
 import * as Raven from 'raven-js';
