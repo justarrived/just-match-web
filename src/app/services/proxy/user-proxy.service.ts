@@ -4,6 +4,8 @@ import {UserStatus} from '../../models/user/user-status';
 import {UserGender} from '../../models/user/user-gender';
 import {map} from 'lodash';
 import {UserImage} from '../../models/user/user-image';
+import {UserDocument} from '../../models/user/user-document';
+import {Document} from '../../models/document';
 import {UserJob} from '../../models/user/user-job';
 import {getDataUrl} from '../../utils/image-to-data-url.util';
 
@@ -48,6 +50,26 @@ export class UserProxy {
     return getDataUrl(file)
       .then((dataUrl) => this.apiCall.post('users/' + userId + '/images', {'image': dataUrl,'category': category})
         .then(response => new UserImage(response.data)));
+  }
+
+  public saveDocument(file: File): Promise<Document> {
+    return getDataUrl(file)
+      .then((dataUrl) => this.apiCall.post('documents/', {'document': dataUrl})
+        .then(response => new Document(response.data)));
+  }
+
+  public saveUserDocument(userId, document: Document, category: string): Promise<UserDocument> {
+    return this.apiCall.post('users/' + userId + '/documents', {'document_one_time_token': document.oneTimeToken,'category': category})
+        .then((response) => {
+          const documentData = {
+            id: response.data.id,
+            oneTimeToken: document.oneTimeToken,
+            documentUrl: document.documentUrl,
+            category: response.data.category
+          };
+
+          return new UserDocument(documentData);
+        });
   }
 
   public getUserJobs(userId, additionOptions?: Object) {

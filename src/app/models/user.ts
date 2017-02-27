@@ -1,4 +1,5 @@
 import {UserImage} from './user/user-image';
+import {UserDocument} from './user/user-document';
 import {map, find} from 'lodash';
 import {UserLanguage} from './user/user-language';
 import {UserSkill} from './user/user-skill';
@@ -17,6 +18,7 @@ export class User {
   city: string;
   role: string;
   images: UserImage[];
+  documents: UserDocument[];
   userLanguages: UserLanguage[];
   userSkills: UserSkill[];
   presentation: string;
@@ -32,6 +34,7 @@ export class User {
   residence_permit_back_image: UserImage;
   lma_card_image: UserImage;
   skatteverket_certificate_image: UserImage;
+  cvDocuments: UserDocument[];
   countryOfOriginCode: string;
   currentStatus: string;
   atUnd: string;
@@ -57,6 +60,7 @@ export class User {
     this.city = jsonObject.city;
     this.role = jsonObject.primary_role;
     this.images = map(jsonObject.user_images, userImage => new UserImage(userImage));
+    this.documents = map(jsonObject.user_documents, userDocument => new UserDocument(userDocument));
     this.userLanguages = map(jsonObject.user_languages, userLanguage => new UserLanguage(userLanguage));
     this.userSkills = map(jsonObject.user_skills, userSkill => new UserSkill(userSkill));
     this.presentation = jsonObject.description;
@@ -71,6 +75,7 @@ export class User {
     this.residence_permit_back_image = this.getImageByCategory('residence_permit_back');
     this.lma_card_image = this.getImageByCategory('lma_card');
     this.skatteverket_certificate_image = this.getImageByCategory('skatteverket_certificate');
+    this.cvDocuments = this.getDocumentsByCategory('cv');
     this.languageId = jsonObject.language_id;
     this.countryOfOriginCode = jsonObject.country_of_origin;
     this.currentStatus = jsonObject.current_status;
@@ -85,5 +90,9 @@ export class User {
 
   getImageByCategory(category): UserImage {
     return this.images.find(image => image.category === category);
+  }
+
+  getDocumentsByCategory(category): UserDocument[] {
+    return this.documents.filter(document => document.category === category);
   }
 }
