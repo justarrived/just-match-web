@@ -8,7 +8,7 @@
     <div class="fourteen wide phone ten wide tablet eight wide computer column">
 
       <form #form="ngForm" class="ui form" (ngSubmit)="onSubmit()">
-        <sm-loader [complete]="!loadingSubmit" class="inverted" text="Loading..."></sm-loader>
+        <sm-loader [complete]="!loadingSubmit" class="inverted" text="{{'component.loading' | translate}}"></sm-loader>
 
         <h3 class="ui dividing header">{{'user.register.form.general.information.section.header' | translate}}</h3>
 
