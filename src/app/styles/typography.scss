@@ -1,5 +1,5 @@
 
-$museo: "museo", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$museo: 'museo', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 $fs-s: 12px;
 $fs-m0: 14px;
 $fs-m: 16px;
@@ -27,24 +27,24 @@ $fs-xxxl: 32px;
 
 @font-face {
   font-family: 'museo';
-  src: url('/assets/fonts/museo/museo-300.otf') format("opentype");
+  src: url('/assets/fonts/museo/museo-300.otf') format('opentype');
   font-weight: 300;
 }
 
 @font-face {
     font-family: 'museo';
-    src: url('/assets/fonts/museo/museo-500.otf') format("opentype");
+    src: url('/assets/fonts/museo/museo-500.otf') format('opentype');
     font-weight: 500;
 }
 
 @font-face {
     font-family: 'museo';
-    src: url('/assets/fonts/museo/museo-700.otf') format("opentype");
+    src: url('/assets/fonts/museo/museo-700.otf') format('opentype');
     font-weight: 700;
 }
 
 // font stacks
-$default-font-family:  "Open Sans", sans-serif;
+$default-font-family:  'Open Sans', sans-serif;
 $header-font-family:   $museo;
 
 h1, h2, h3, h4, h5, h6 {
