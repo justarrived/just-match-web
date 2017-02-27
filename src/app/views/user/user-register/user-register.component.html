@@ -12,7 +12,7 @@
 
         <h3 class="ui dividing header">{{'user.register.form.general.information.section.header' | translate}}</h3>
 
-        <div class="field" [ngClass]="{'error': (registerForm.controls['first_name'].touched && !registerForm.controls['first_name'].valid) || serverValidationErrors.first_name}">
+        <div class="field" [ngClass]="{'error': (registerForm.controls['first_name'].touched && !registerForm.controls['first_name'].valid) || apiErrors.hasErrorsFor('first_name')}">
           <sm-input
             [control]="registerForm.controls['first_name']"
             [label]="('user.register.form.first.name.header' | translate) + ' *'"
@@ -32,13 +32,13 @@
             {{'user.register.form.first.name.validation.min.length' | translate}}
           </div>
           <div
-            *ngIf="serverValidationErrors.first_name"
+            *ngFor="let error of apiErrors.errorsFor('first_name')"
             class="ui pointing red basic label">
-            {{serverValidationErrors.first_name}}
+            {{error.detail}}
           </div>
         </div>
 
-        <div class="field" [ngClass]="{'error': (registerForm.controls['last_name'].touched && !registerForm.controls['last_name'].valid) || serverValidationErrors.last_name}">
+        <div class="field" [ngClass]="{'error': (registerForm.controls['last_name'].touched && !registerForm.controls['last_name'].valid) || apiErrors.hasErrorsFor('last_name')}">
           <sm-input
             [control]="registerForm.controls['last_name']"
             [label]="('user.register.form.last.name.header' | translate) + ' *'"
@@ -58,13 +58,13 @@
             {{'user.register.form.last.name.validation.min.length' | translate}}
           </div>
           <div
-            *ngIf="serverValidationErrors.last_name"
+            *ngFor="let error of apiErrors.errorsFor('last_name')"
             class="ui pointing red basic label">
-            {{serverValidationErrors.last_name}}
+            {{error.detail}}
           </div>
         </div>
 
-        <div class="field" [ngClass]="{'error': (registerForm.controls['email'].touched && !registerForm.controls['email'].valid) || serverValidationErrors.email}">
+        <div class="field" [ngClass]="{'error': (registerForm.controls['email'].touched && !registerForm.controls['email'].valid) || apiErrors.hasErrorsFor('email')}">
           <sm-input
             [control]="registerForm.controls['email']"
             [label]="('user.register.form.email.header' | translate) + ' *'"
@@ -84,13 +84,13 @@
             {{'user.register.form.email.validation.pattern' | translate}}
           </div>
           <div
-            *ngIf="serverValidationErrors.email"
+            *ngFor="let error of apiErrors.errorsFor('email')"
             class="ui pointing red basic label">
-            {{serverValidationErrors.email}}
+            {{error.detail}}
           </div>
         </div>
 
-        <div class="field" [ngClass]="{'error': (registerForm.controls['phone'].touched && !registerForm.controls['phone'].valid) || serverValidationErrors.phone}">
+        <div class="field" [ngClass]="{'error': (registerForm.controls['phone'].touched && !registerForm.controls['phone'].valid) || apiErrors.hasErrorsFor('phone')}">
           <sm-input
             [control]="registerForm.controls['phone']"
             [label]="('user.register.form.phone.header' | translate) + ' *'"
@@ -105,13 +105,13 @@
             {{'user.register.form.phone.validation.required' | translate}}
           </div>
           <div
-            *ngIf="serverValidationErrors.phone"
+            *ngFor="let error of apiErrors.errorsFor('phone')"
             class="ui pointing red basic label">
-            {{serverValidationErrors.phone}}
+            {{error.detail}}
           </div>
         </div>
 
-        <div class="field" [ngClass]="{'error': (registerForm.controls['gender'].touched && !registerForm.controls['gender'].valid) || serverValidationErrors.gender}">
+        <div class="field" [ngClass]="{'error': (registerForm.controls['gender'].touched && !registerForm.controls['gender'].valid) || apiErrors.hasErrorsFor('gender')}">
           <sm-select
            [control]="registerForm.controls['gender']"
            [label]="('user.register.form.gender.header' | translate) + ' *'"
@@ -127,15 +127,15 @@
             {{'user.register.form.gender.validation.required' | translate}}
           </div>
           <div
-            *ngIf="serverValidationErrors.gender"
+            *ngFor="let error of apiErrors.errorsFor('gender')"
             class="ui pointing red basic label">
-            {{serverValidationErrors.gender}}
+            {{error.detail}}
           </div>
         </div>
 
         <h3 class="ui dividing header">{{'user.register.form.address.section.header' | translate}}</h3>
 
-        <div class="field" [ngClass]="{'error': (registerForm.controls['street'].touched && !registerForm.controls['street'].valid) || serverValidationErrors.street}">
+        <div class="field" [ngClass]="{'error': (registerForm.controls['street'].touched && !registerForm.controls['street'].valid) || apiErrors.hasErrorsFor('street')}">
           <sm-input
             [control]="registerForm.controls['street']"
             [label]="'user.register.form.street.header' | translate"
@@ -145,13 +145,13 @@
             type="text">
           </sm-input>
           <div
-            *ngIf="serverValidationErrors.street"
+            *ngFor="let error of apiErrors.errorsFor('street')"
             class="ui pointing red basic label">
-            {{serverValidationErrors.street}}
+            {{error.detail}}
           </div>
         </div>
 
-        <div class="field" [ngClass]="{'error': (registerForm.controls['zip'].touched && !registerForm.controls['zip'].valid) || serverValidationErrors.zip}">
+        <div class="field" [ngClass]="{'error': (registerForm.controls['zip'].touched && !registerForm.controls['zip'].valid) || apiErrors.hasErrorsFor('zip')}">
           <sm-input
             [control]="registerForm.controls['zip']"
             [label]="'user.register.form.zip.header' | translate"
@@ -166,13 +166,13 @@
             {{'user.register.form.zip.validation.min.length' | translate}}
           </div>
           <div
-            *ngIf="serverValidationErrors.zip"
+            *ngFor="let error of apiErrors.errorsFor('zip')"
             class="ui pointing red basic label">
-            {{serverValidationErrors.zip}}
+            {{error.detail}}
           </div>
         </div>
 
-        <div class="field" [ngClass]="{'error': (registerForm.controls['city'].touched && !registerForm.controls['city'].valid) || serverValidationErrors.city}">
+        <div class="field" [ngClass]="{'error': (registerForm.controls['city'].touched && !registerForm.controls['city'].valid) || apiErrors.hasErrorsFor('city')}">
           <sm-input
             [control]="registerForm.controls['city']"
             [label]="'user.register.form.city.header' | translate"
@@ -182,15 +182,15 @@
             type="text">
           </sm-input>
           <div
-            *ngIf="serverValidationErrors.city"
+            *ngFor="let error of apiErrors.errorsFor('city')"
             class="ui pointing red basic label">
-            {{serverValidationErrors.city}}
+            {{error.detail}}
           </div>
         </div>
 
         <h3 class="ui dividing header">{{'user.register.form.country.and.languages.section.header' | translate}}</h3>
 
-        <div class="field" [ngClass]="{'error': (registerForm.controls['native_language'].touched && !registerForm.controls['native_language'].valid) || serverValidationErrors.language_ids}">
+        <div class="field" [ngClass]="{'error': (registerForm.controls['native_language'].touched && !registerForm.controls['native_language'].valid) || apiErrors.hasErrorsFor('language_ids')}">
           <sm-select
            [control]="registerForm.controls['native_language']"
            [label]="('user.register.form.native.language.header' | translate) + ' *'"
@@ -206,13 +206,13 @@
             {{'user.register.form.native.language.validation.required' | translate}}
           </div>
           <div
-            *ngIf="serverValidationErrors.language_ids"
+            *ngFor="let error of apiErrors.errorsFor('language_ids')"
             class="ui pointing red basic label">
-            {{serverValidationErrors.language_ids}}
+            {{error.detail}}
           </div>
         </div>
 
-        <div class="field" [ngClass]="{'error': (registerForm.controls['language'].touched && !registerForm.controls['language'].valid) || serverValidationErrors.language}">
+        <div class="field" [ngClass]="{'error': (registerForm.controls['language'].touched && !registerForm.controls['language'].valid) || apiErrors.hasErrorsFor('language')}">
           <sm-select
            [control]="registerForm.controls['language']"
            [label]="('user.register.form.default.language.header' | translate) + ' *'"
@@ -228,9 +228,9 @@
             {{'user.register.form.default.language.validation.required' | translate}}
           </div>
           <div
-            *ngIf="serverValidationErrors.language"
+            *ngFor="let error of apiErrors.errorsFor('language')"
             class="ui pointing red basic label">
-            {{serverValidationErrors.language}}
+            {{error.detail}}
           </div>
           <div
             class="ui pointing grey basic label">
@@ -238,7 +238,7 @@
           </div>
         </div>
 
-        <div class="field" [ngClass]="{'error': (registerForm.controls['country_of_origin'].touched && !registerForm.controls['country_of_origin'].valid) || serverValidationErrors.country_of_origin}">
+        <div class="field" [ngClass]="{'error': (registerForm.controls['country_of_origin'].touched && !registerForm.controls['country_of_origin'].valid) || apiErrors.hasErrorsFor('country_of_origin')}">
           <sm-select
            [control]="registerForm.controls['country_of_origin']"
            [(model)]="registerForm.controls['country_of_origin'].value"
@@ -255,15 +255,15 @@
             {{'user.register.form.country.of.origin.validation.required' | translate}}
           </div>
           <div
-            *ngIf="serverValidationErrors.country_of_origin"
+            *ngFor="let error of apiErrors.errorsFor('country_of_origin')"
             class="ui pointing red basic label">
-            {{serverValidationErrors.country_of_origin}}
+            {{error.detail}}
           </div>
         </div>
 
         <h3 class="ui dividing header">{{'user.register.form.password.section.header' | translate}}</h3>
 
-        <div class="field" [ngClass]="{'error': (registerForm.controls['password'].touched && !registerForm.controls['password'].valid) || serverValidationErrors.password}">
+        <div class="field" [ngClass]="{'error': (registerForm.controls['password'].touched && !registerForm.controls['password'].valid) || apiErrors.hasErrorsFor('password')}">
           <sm-input
             [control]="registerForm.controls['password']"
             [label]="('user.register.form.password.header' | translate) + ' *'"
@@ -283,13 +283,13 @@
             {{'user.register.form.password.validation.min.length' | translate}}
           </div>
           <div
-            *ngIf="serverValidationErrors.password"
+            *ngFor="let error of apiErrors.errorsFor('password')"
             class="ui pointing red basic label">
-            {{serverValidationErrors.password}}
+            {{error.detail}}
           </div>
         </div>
 
-        <div class="field" [ngClass]="{'error': (registerForm.controls['repeat_password'].touched && !registerForm.controls['repeat_password'].valid) || serverValidationErrors.repeat_password || passwordsSuppliedAndMisMatch()}">
+        <div class="field" [ngClass]="{'error': (registerForm.controls['repeat_password'].touched && !registerForm.controls['repeat_password'].valid) || passwordsSuppliedAndMisMatch()}">
           <sm-input
             [control]="registerForm.controls['repeat_password']"
             [label]="('user.register.form.repeat.password.header' | translate) + ' *'"

@@ -13,6 +13,7 @@ import {JARoutes} from '../../../routes/ja-routes';
 import {TranslationService} from '../../../services/translation.service';
 import {TranslationListener} from '../../../components/translation.component';
 import {FormGroup, FormBuilder, FormControl, Validators} from '@angular/forms';
+import {ApiErrors} from '../../../models/api-errors';
 
 @Component({
   templateUrl: './user-register.component.html',
@@ -25,7 +26,7 @@ export class UserRegisterComponent extends TranslationListener implements OnInit
   private languages: Language[];
   private genders: UserGender[];
   private systemLanguages: Language[];
-  private serverValidationErrors: any = {};
+  private apiErrors: ApiErrors = new ApiErrors([]);
   private saveSuccess: boolean;
   private saveFail: boolean;
   private loadingSubmit: boolean = false;
@@ -66,7 +67,7 @@ export class UserRegisterComponent extends TranslationListener implements OnInit
     });
 
     for(let control in this.registerForm.controls) {
-      this.registerForm.controls[control].valueChanges.subscribe(() => this.serverValidationErrors[control] = '');
+      this.registerForm.controls[control].valueChanges.subscribe(() => this.apiErrors.resetErrorsFor(control));
     }
   }
 
@@ -81,16 +82,11 @@ export class UserRegisterComponent extends TranslationListener implements OnInit
     this.languageProxy.getSystemLanguages().then(languages => this.systemLanguages = languages);
   }
 
-  private handleServerErrors(errors) {
-    this.saveFail = true;
-    this.serverValidationErrors = errors.details || errors;
-  }
-
   private onSubmit() {
     this.saveSuccess = false;
     this.saveFail = false;
     this.loadingSubmit = true;
-    this.serverValidationErrors = {};
+    this.apiErrors = new ApiErrors([]);
 
     this.userProxy.saveUser({
       'first_name': this.registerForm.value.first_name,
@@ -101,7 +97,7 @@ export class UserRegisterComponent extends TranslationListener implements OnInit
       'street': this.registerForm.value.street,
       'zip': this.registerForm.value.zip,
       'city': this.registerForm.value.city,
-      'country_of_origin': this.registerForm.value.country_of_origin.countryCode,
+      'country_of_origin': this.registerForm.value.country_of_origin,
       'language_id': this.registerForm.value.language,
       'language_ids': [{
         id: this.registerForm.value.native_language,
@@ -118,8 +114,9 @@ export class UserRegisterComponent extends TranslationListener implements OnInit
         });
       })
       .catch(errors => {
-        this.handleServerErrors(errors);
+        this.saveFail = true;
         this.loadingSubmit = false;
+        this.apiErrors = errors;
       });
   }
 

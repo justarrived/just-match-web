@@ -3,6 +3,7 @@ import {FormGroup, FormBuilder, Validators} from '@angular/forms';
 import {UserProxy} from '../../services/proxy/user-proxy.service';
 import {NavigationService} from '../../services/navigation.service';
 import {JARoutes} from '../../routes/ja-routes';
+import {ApiErrors} from '../../models/api-errors';
 
 @Component({
   templateUrl: './forgot-password.component.html',
@@ -10,7 +11,7 @@ import {JARoutes} from '../../routes/ja-routes';
 })
 export class ForgotPasswordComponent {
   private forgotPasswordForm: FormGroup;
-  private errors: any = {};
+  private apiErrors: ApiErrors = new ApiErrors([]);
   private JARoutes = JARoutes;
   private displayErrorMessage: boolean;
   private loadingSubmit: boolean = false;
@@ -36,7 +37,7 @@ export class ForgotPasswordComponent {
       .catch((errors) => {
         this.loadingSubmit = false;
         this.displayErrorMessage = true;
-        this.errors = errors.details || errors;
+        this.apiErrors = errors;
       });
   }
 

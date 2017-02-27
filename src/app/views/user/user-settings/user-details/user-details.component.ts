@@ -3,6 +3,7 @@ import {AuthManager} from '../../../../services/auth-manager.service';
 import {User} from '../../../../models/user';
 import {UserProxy} from '../../../../services/proxy/user-proxy.service';
 import {FormGroup, FormBuilder, Validators} from '@angular/forms';
+import {ApiErrors} from '../../../../models/api-errors';
 
 @Component({
   selector: 'user-details',
@@ -16,7 +17,7 @@ export class UserDetailsComponent implements OnInit {
   private settingsForm: FormGroup;
   private passwordForm: FormGroup;
 
-  private serverValidationErrors: any = {};
+  private apiErrors: ApiErrors = new ApiErrors([]);
   private saveSuccess: boolean;
   private saveFail: boolean;
   private loadingSubmit: boolean = false;
@@ -62,14 +63,14 @@ export class UserDetailsComponent implements OnInit {
 
   private handleServerErrors(errors): void {
     this.saveFail = true;
-    this.serverValidationErrors = errors.details || errors;
+    this.apiErrors = errors;
   }
 
   private onSubmit(): void {
     this.saveSuccess = false;
     this.saveFail = false;
     this.loadingSubmit = true;
-    this.serverValidationErrors = {};
+    this.apiErrors = new ApiErrors([]);
 
     this.userProxy.updateUser(this.user.id, this.settingsForm.value)
       .then((response) => {
