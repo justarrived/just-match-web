@@ -26,7 +26,6 @@ import {FormGroup, FormBuilder, Validators} from '@angular/forms';
 import {TranslationListener} from '../../../../components/translation.component';
 import {TranslationService} from '../../../../services/translation.service';
 import {isValidSSNCharCode} from '../../../../utils/is-valid-ssn-char-code';
-import {ApiErrors} from '../../../../models/api-errors';
 
 @Component({
   selector: 'user-profile',
@@ -62,7 +61,7 @@ export class UserProfileComponent extends TranslationListener implements OnInit 
 
   private statuses: UserStatus[];
 
-  private apiErrors: ApiErrors = new ApiErrors([]);
+  private serverValidationErrors: any = {};
   private saveSuccess: boolean;
   private saveFail: boolean;
   private loadingSubmit: boolean = false;
@@ -299,6 +298,11 @@ export class UserProfileComponent extends TranslationListener implements OnInit 
     return this.profileForm.valid && true;
   }
 
+  private handleServerErrors(errors): void {
+    this.saveFail = true;
+    this.serverValidationErrors = errors.details || errors;
+  }
+
   private isAllowedSSNChar(charCode): boolean {
     return isValidSSNCharCode(charCode);
   }
@@ -307,7 +311,7 @@ export class UserProfileComponent extends TranslationListener implements OnInit 
     this.saveSuccess = false;
     this.saveFail = false;
     this.loadingSubmit = true;
-    this.apiErrors = new ApiErrors([]);
+    this.serverValidationErrors = {};
 
     this.userProxy.updateUser(this.user.id, {
       'language_id': this.profileForm.value.default_language,
@@ -337,8 +341,7 @@ export class UserProfileComponent extends TranslationListener implements OnInit 
         });
       })
       .catch(errors => {
-        this.saveFail = true;
-        this.apiErrors = errors;
+        this.handleServerErrors(errors);
         this.loadingSubmit = false;
       });
   }

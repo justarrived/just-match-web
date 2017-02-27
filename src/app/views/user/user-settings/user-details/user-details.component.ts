@@ -42,6 +42,11 @@ export class UserDetailsComponent implements OnInit {
       'account_number': [this.user.accountNumber]
     });
 
+    for(let control in this.settingsForm.controls) {
+      this.settingsForm.controls[control].valueChanges
+        .subscribe(() => this.apiErrors.resetErrorsFor(control));
+    }
+
     this.passwordForm = this.formBuilder.group({
       'password': [null, Validators.compose([Validators.minLength(6)])],
       'old_password': [null],

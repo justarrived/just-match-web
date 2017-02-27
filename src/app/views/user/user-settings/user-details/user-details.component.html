@@ -1,93 +1,249 @@
 <div class="user-details-container">
   <div class="user-details-form-container">
 
-    <form #form="ngForm" (ngSubmit)="onSubmit()">
+    <form #form="ngForm" class="ui form" (ngSubmit)="onSubmit()">
+      <sm-loader [complete]="!loadingSubmit" class="inverted" text="{{'component.loading' | translate}}"></sm-loader>
 
       <div class="user-details-form-group-title">{{'user.settings.form.personal.info.header' | translate}}</div>
 
-      <div class="form-group material-group user-details-form-input-container" [ngClass]="{'has-error':!settingsForm.controls['first_name'].valid || apiErrors.hasErrorsFor('first_name')}">
-        <label class="user-details-form-input-label" for="first_name">{{'user.settings.form.first.name.label' | translate}} *:</label>
-        <input class="user-details-form-input-text form-control material-input" maxlength="50" id="first_name" name="frst-name-input" type="text" placeholder="{{'user.settings.form.first.name.placeholder' | translate}}" [formControl]="settingsForm.controls['first_name']">
-        <div *ngIf="settingsForm.controls['first_name'].hasError('required')" class="alert alert-danger">{{'user.settings.form.first.name.validation.required' | translate}}</div>
-        <div *ngIf="settingsForm.controls['first_name'].hasError('minlength')" class="alert alert-danger">{{'user.settings.form.first.name.validation.min.length' | translate}}</div>
-        <div *ngFor="let error of apiErrors.errorsFor('first_name')" class="alert alert-danger">{{error.detail}}</div>
+      <div class="field" [ngClass]="{'has-error':!settingsForm.controls['first_name'].valid || apiErrors.hasErrorsFor('first_name')}">
+        <sm-input
+          [control]="settingsForm.controls['first_name']"
+          [label]="('user.settings.form.first.name.label' | translate) + ' *'"
+          [placeholder]="'user.register.form.first.name.placeholder' | translate"
+          class="left"
+          icon="user"
+          type="text">
+        </sm-input>
+        <div
+          *ngIf="settingsForm.controls['first_name'].touched && settingsForm.controls['first_name'].hasError('required')"
+          class="ui pointing red basic label">
+          {{'user.settings.form.first.name.validation.required' | translate}}
+        </div>
+        <div
+          *ngIf="settingsForm.controls['first_name'].hasError('minlength')"
+          class="ui pointing red basic label">
+          {{'user.settings.form.first.name.validation.min.length' | translate}}
+        </div>
+        <div
+          *ngFor="let error of apiErrors.errorsFor('first_name')"
+          class="ui pointing red basic label">
+          {{error.detail}}
+        </div>
       </div>
 
-      <div class="form-group material-group user-details-form-input-container" [ngClass]="{'has-error':!settingsForm.controls['last_name'].valid || apiErrors.hasErrorsFor('last_name')}">
-        <label class="user-details-form-input-label" for="last_name">{{'user.settings.form.last.name.label' | translate}} *:</label>
-        <input class="user-details-form-input-text form-control material-input" maxlength="50" id="last_name" name="last_name" type="text" placeholder="{{'user.settings.form.last.name.placeholder' | translate}}" [formControl]="settingsForm.controls['last_name']">
-        <div *ngIf="settingsForm.controls['last_name'].hasError('required')" class="alert alert-danger">{{'user.settings.form.last.name.validation.required' | translate}}</div>
-        <div *ngIf="settingsForm.controls['last_name'].hasError('minlength')" class="alert alert-danger">{{'user.settings.form.last.name.validation.min.length' | translate}}</div>
-        <div *ngFor="let error of apiErrors.errorsFor('last_name')" class="alert alert-danger">{{error.detail}}</div>
+      <div class="field" [ngClass]="{'has-error':!settingsForm.controls['last_name'].valid || apiErrors.hasErrorsFor('last_name')}">
+        <sm-input
+          [control]="settingsForm.controls['last_name']"
+          [label]="('user.settings.form.last.name.label' | translate) + ' *'"
+          [placeholder]="'user.settings.form.last.name.placeholder' | translate"
+          class="left"
+          icon="user"
+          type="text">
+        </sm-input>
+        <div
+          *ngIf="settingsForm.controls['last_name'].touched && settingsForm.controls['last_name'].hasError('required')"
+          class="ui pointing red basic label">
+          {{'user.settings.form.last.name.validation.required' | translate}}
+        </div>
+        <div
+          *ngIf="settingsForm.controls['last_name'].hasError('minlength')"
+          class="ui pointing red basic label">
+          {{'user.settings.form.last.name.validation.min.length' | translate}}
+        </div>
+        <div
+          *ngFor="let error of apiErrors.errorsFor('last_name')"
+          class="ui pointing red basic label">
+          {{error.detail}}
+        </div>
       </div>
 
-      <div class="form-group material-group user-details-form-input-container" [ngClass]="{'has-error':!settingsForm.controls['email'].valid || apiErrors.hasErrorsFor('email')}">
-        <label class="user-details-form-input-label" for="email">{{'user.settings.form.email.label' | translate}} *:</label>
-        <input class="user-details-form-input-text form-control material-input" maxlength="256" id="email" name="email" type="email" placeholder="{{'user.settings.form.email.placeholder' | translate}}" [formControl]="settingsForm.controls['email']">
-        <div *ngIf="settingsForm.controls['email'].hasError('pattern')" class="alert alert-danger">{{'user.settings.form.email.validation.pattern' | translate}}</div>
-        <div *ngIf="settingsForm.controls['email'].hasError('required')" class="alert alert-danger">{{'user.settings.form.email.validation.required' | translate}}</div>
-        <div *ngFor="let error of apiErrors.errorsFor('email')" class="alert alert-danger">{{error.detail}}</div>
+      <div class="field" [ngClass]="{'has-error':!settingsForm.controls['email'].valid || apiErrors.hasErrorsFor('email')}">
+        <sm-input
+          [control]="settingsForm.controls['email']"
+          [label]="('user.settings.form.email.label' | translate) + ' *'"
+          [placeholder]="'user.settings.form.email.placeholder' | translate"
+          class="left"
+          icon="mail"
+          type="email">
+        </sm-input>
+        <div
+          *ngIf="settingsForm.controls['email'].touched && settingsForm.controls['email'].hasError('required')"
+          class="ui pointing red basic label">
+          {{'user.settings.form.email.validation.required' | translate}}
+        </div>
+        <div
+          *ngIf="settingsForm.controls['email'].hasError('pattern')"
+          class="ui pointing red basic label">
+          {{'user.settings.form.email.validation.pattern' | translate}}
+        </div>
+        <div
+          *ngFor="let error of apiErrors.errorsFor('email')"
+          class="ui pointing red basic label">
+          {{error.detail}}
+        </div>
       </div>
 
-      <div class="form-group material-group user-details-form-input-container" [ngClass]="{'has-error':!settingsForm.controls['phone'].valid  || apiErrors.hasErrorsFor('phone')}">
-        <label class="user-details-form-input-label" for="phone">{{'user.settings.form.phone.label' | translate}} *:</label>
-        <input class="user-details-form-input-text form-control material-input" maxlength="20" id="phone" name="phone" type="text" placeholder="{{'user.settings.form.phone.placeholder' | translate}}" [formControl]="settingsForm.controls['phone']">
-        <div *ngIf="settingsForm.controls['phone'].hasError('required')" class="alert alert-danger">{{'user.settings.form.phone.validation.required' | translate}}</div>
-        <div *ngFor="let error of apiErrors.errorsFor('phone')" class="alert alert-danger">{{error.detail}}</div>
+      <div class="field" [ngClass]="{'has-error':!settingsForm.controls['phone'].valid || apiErrors.hasErrorsFor('phone')}">
+        <sm-input
+          [control]="settingsForm.controls['phone']"
+          [label]="('user.settings.form.phone.label' | translate) + ' *'"
+          [placeholder]="'user.settings.form.phone.placeholder' | translate"
+          class="left"
+          icon="phone"
+          type="text">
+        </sm-input>
+        <div
+          *ngIf="settingsForm.controls['email'].touched && settingsForm.controls['phone'].hasError('required')"
+          class="ui pointing red basic label">
+          {{'user.settings.form.phone.validation.required' | translate}}
+        </div>
+        <div
+          *ngFor="let error of apiErrors.errorsFor('phone')"
+          class="ui pointing red basic label">
+          {{error.detail}}
+        </div>
       </div>
 
       <hr>
 
       <div class="user-details-form-group-title">{{'user.settings.form.address.header' | translate}}</div>
 
-      <div class="form-group material-group user-details-form-input-container" [ngClass]="{'has-error': apiErrors.hasErrorsFor('city') || apiErrors.hasErrorsFor('street') || apiErrors.hasErrorsFor('zip')}">
-        <input class="user-details-form-input-text form-control material-input" maxlength="50" id="street" name="street" type="text" placeholder="{{'user.settings.form.street.placeholder' | translate}}" [formControl]="settingsForm.controls['street']">
-        <div *ngFor="let error of apiErrors.errorsFor('street')" class="alert alert-danger">{{error.detail}}</div>
-        <input class="user-details-form-input-text form-control material-input" maxlength="10" id="zip" name="zip" type="text" placeholder="{{'user.settings.form.zip.placeholder' | translate}}" [formControl]="settingsForm.controls['zip']">
-        <div *ngFor="let error of apiErrors.errorsFor('zip')" class="alert alert-danger">{{error.detail}}</div>
-        <input class="user-details-form-input-text form-control material-input" maxlength="50" id="city" name="city" type="text" placeholder="{{'user.settings.form.city.placeholder' | translate}}" [formControl]="settingsForm.controls['city']">
-        <div *ngFor="let error of apiErrors.errorsFor('city')" class="alert alert-danger">{{error.detail}}</div>
+
+      <div class="field" [ngClass]="{'error': (settingsForm.controls['street'].touched && !settingsForm.controls['street'].valid) || apiErrors.hasErrorsFor('street')}">
+        <sm-input
+          [control]="settingsForm.controls['street']"
+          [label]="'user.register.form.street.header' | translate"
+          [placeholder]="'user.register.form.street.placeholder' | translate"
+          class="left"
+          icon="map pin"
+          type="text">
+        </sm-input>
+        <div
+          *ngFor="let error of apiErrors.errorsFor('street')"
+          class="ui pointing red basic label">
+          {{error.detail}}
+        </div>
+      </div>
+
+      <div class="field" [ngClass]="{'error': (settingsForm.controls['zip'].touched && !settingsForm.controls['zip'].valid) || apiErrors.hasErrorsFor('zip')}">
+        <sm-input
+          [control]="settingsForm.controls['zip']"
+          [label]="'user.register.form.zip.header' | translate"
+          [placeholder]="'user.register.form.zip.placeholder' | translate"
+          class="left"
+          icon="map"
+          type="text">
+        </sm-input>
+        <div
+          *ngIf="settingsForm.controls['zip'].hasError('minlength')"
+          class="ui pointing red basic label">
+          {{'user.register.form.zip.validation.min.length' | translate}}
+        </div>
+        <div
+          *ngFor="let error of apiErrors.errorsFor('zip')"
+          class="ui pointing red basic label">
+          {{error.detail}}
+        </div>
+      </div>
+
+      <div class="field" [ngClass]="{'error': (settingsForm.controls['city'].touched && !settingsForm.controls['city'].valid) || apiErrors.hasErrorsFor('city')}">
+        <sm-input
+          [control]="settingsForm.controls['city']"
+          [label]="'user.register.form.city.header' | translate"
+          [placeholder]="'user.register.form.city.placeholder' | translate"
+          class="left"
+          icon="building"
+          type="text">
+        </sm-input>
+        <div
+          *ngFor="let error of apiErrors.errorsFor('city')"
+          class="ui pointing red basic label">
+          {{error.detail}}
+        </div>
       </div>
 
       <hr>
 
       <div class="user-details-form-group-title">{{'user.settings.form.change.password.header' | translate}}</div>
 
-      <div class="form-group material-group user-details-form-input-container" [ngClass]="{'has-error':!passwordForm.controls['password'].valid || !passwordForm.controls['repeat_password'].valid || apiErrors.hasErrorsFor('password')}">
-        <label class="user-details-form-input-label" for="password-input">{{'user.settings.form.new.password.label' | translate}}:</label>
-        <input class="user-details-form-input-text form-control material-input" id="old_password" name="old_password" type="password" placeholder="{{'user.settings.form.old.password.placeholder' | translate}}" [formControl]="passwordForm.controls['old_password']"
-            maxlength="50">
-        <input class="user-details-form-input-text form-control material-input" id="password" name="password" type="password" placeholder="{{'user.settings.form.new.password.placeholder' | translate}}" [formControl]="passwordForm.controls['password']"
-            maxlength="50">
-        <input class="user-details-form-input-text form-control material-input" id="repeat_password" name="repeat_password" type="password" placeholder="{{'user.settings.form.repeat.password.placeholder' | translate}}" [formControl]="passwordForm.controls['repeat_password']"
-            maxlength="50">
-        <div *ngIf="passwordForm.controls['password'].hasError('minlength')" class="alert alert-danger">{{'user.settings.form.new.password.validation.min.length' | translate}}</div>
-        <div *ngIf="passwordsSuppliedAndMisMatch()" class="alert alert-danger">{{'user.settings.form.repeat.password.validation.mismatch' | translate}}</div>
-        <div *ngFor="let error of apiErrors.errorsFor('password')" class="alert alert-danger">{{error.detail}}</div>
+      <div class="field" [ngClass]="{'has-error':!passwordForm.controls['password'].valid || !passwordForm.controls['repeat_password'].valid || apiErrors.hasErrorsFor('password')}">
+        <sm-input
+          [control]="passwordForm.controls['old_password']"
+          [label]="'user.settings.form.new.password.label' | translate"
+          [placeholder]="'user.settings.form.old.password.placeholder' | translate"
+          class="left"
+          icon="lock"
+          type="password">
+        </sm-input>
+        <sm-input
+          [control]="passwordForm.controls['password']"
+          [label]="'user.settings.form.new.password.label' | translate"
+          [placeholder]="'user.settings.form.new.password.placeholder' | translate"
+          class="left"
+          icon="lock"
+          type="password">
+        </sm-input>
+        <sm-input
+          [control]="passwordForm.controls['repeat_password']"
+          [label]="'user.settings.form.new.password.label' | translate"
+          [placeholder]="'user.settings.form.repeat.password.placeholder' | translate"
+          class="left"
+          icon="lock"
+          type="password">
+        </sm-input>
+        <div *ngIf="passwordForm.controls['password'].hasError('minlength')" class="ui pointing red basic label">{{'user.settings.form.new.password.validation.min.length' | translate}}</div>
+        <div *ngIf="passwordsSuppliedAndMisMatch()" class="ui pointing red basic label">{{'user.settings.form.repeat.password.validation.mismatch' | translate}}</div>
+        <div
+          *ngFor="let error of apiErrors.errorsFor('password')"
+          class="ui pointing red basic label">
+          {{error.detail}}
+        </div>
       </div>
 
       <hr class="user-details-form-ruler">
 
       <div class="user-details-form-group-title">{{'user.settings.form.bank.details.header' | translate}}</div>
 
-      <div class="form-group material-group user-details-form-input-container">
-        <label class="user-details-form-input-label" for="clearing-number-input">{{'user.settings.form.clearing.number.label' | translate}}:</label>
-        <input class="user-details-form-input-text form-control material-input" id="clearing-number-input" name="clearing-number-input" type="text" placeholder="{{'user.settings.form.clearing.number.placeholder' | translate}}"
-            [formControl]="settingsForm.controls['account_clearing_number']">
-        <div *ngFor="let error of apiErrors.errorsFor('account_clearing_number')" class="alert alert-danger">{{error.detail}}</div>
+      <div class="field" [ngClass]="{'error': (settingsForm.controls['account_clearing_number'].touched && !settingsForm.controls['account_clearing_number'].valid) || apiErrors.hasErrorsFor('account_clearing_number')}">
+        <sm-input
+          [control]="settingsForm.controls['account_clearing_number']"
+          [label]="'user.settings.form.clearing.number.label' | translate"
+          [placeholder]="'user.settings.form.clearing.number.placeholder' | translate"
+          class="left"
+          type="text">
+        </sm-input>
+        <div
+          *ngFor="let error of apiErrors.errorsFor('account_clearing_number')"
+          class="ui pointing red basic label">
+          {{error.detail}}
+        </div>
       </div>
 
-      <div class="form-group material-group user-details-form-input-container">
-        <label class="user-details-form-input-label" for="account-number-input">{{'user.settings.form.account.number.label' | translate}}:</label>
-        <input class="user-details-form-input-text form-control material-input" id="account-number-input" name="account-number-input" type="text" placeholder="{{'user.settings.form.account.number.placeholder' | translate}}" [formControl]="settingsForm.controls['account_number']">
-        <div *ngFor="let error of apiErrors.errorsFor('account')" class="alert alert-danger">{{error.detail}}</div>
+      <div class="field" [ngClass]="{'error': (settingsForm.controls['account_number'].touched && !settingsForm.controls['account_number'].valid) || apiErrors.hasErrorsFor('account_number')}">
+        <sm-input
+          [control]="settingsForm.controls['account_number']"
+          [label]="'user.settings.form.account.number.label' | translate"
+          [placeholder]="'user.settings.form.account.number.placeholder' | translate"
+          class="left"
+          type="text">
+        </sm-input>
+        <div
+          *ngFor="let error of apiErrors.errorsFor('account_number')"
+          class="ui pointing red basic label">
+          {{error.detail}}
+        </div>
+        <div
+          *ngFor="let error of apiErrors.errorsFor('account')"
+          class="ui pointing red basic label">
+          {{error.detail}}
+        </div>
       </div>
 
       <div class="user-details-form-button-container">
         <div *ngIf="saveFail" class="user-details-form-error-message">{{'user.settings.form.submit.fail' | translate}}</div>
         <div *ngIf="saveSuccess" class="user-details-form-save-message">{{'user.settings.form.submit.success' | translate}}</div>
-        <loading *ngIf="loadingSubmit"></loading>
-        <button class="user-details-form-button" *ngIf="!loadingSubmit" type="submit" [disabled]="!formValidation()" class="btn-primary btn-small btn">{{'user.settings.form.submit.button' | translate}}</button>
+        <button class="user-details-form-button" *ngIf="!loadingSubmit" type="submit" class="btn-primary btn-small btn">{{'user.settings.form.submit.button' | translate}}</button>
       </div>
     </form>
   </div>
