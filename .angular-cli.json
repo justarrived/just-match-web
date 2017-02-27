@@ -1,7 +1,7 @@
 {
   "project": {
-    "version": "1.0.0-beta.21",
-    "name": "ng-cli-test-scss"
+    "version": "1.0.0-rc.0",
+    "name": "ng-cli-just-match-web"
   },
   "apps": [
     {
@@ -14,8 +14,9 @@
       ],
       "index": "index.html",
       "main": "main.ts",
+      "polyfills": "polyfills.ts",
       "test": "test.ts",
-      "tsconfig": "tsconfig.json",
+      "tsconfig": "tsconfig.app.json",
       "prefix": "app",
       "mobile": false,
       "styles": [
@@ -29,8 +30,8 @@
         "../node_modules/jquery/dist/jquery.min.js",
         "../node_modules/semantic-ui/dist/semantic.min.js"
       ],
+      "environmentSource": "environments/environment.ts",
       "environments": {
-        "source": "environments/environment.ts",
         "dev": "environments/environment.ts",
         "staging": "environments/environment.staging.ts",
         "production": "environments/environment.production.ts"

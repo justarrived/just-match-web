@@ -27,19 +27,19 @@ $fs-xxxl: 32px;
 
 @font-face {
   font-family: 'museo';
-  src: url('./assets/fonts/museo/museo-300.otf') format("opentype");
+  src: url('/assets/fonts/museo/museo-300.otf') format("opentype");
   font-weight: 300;
 }
 
 @font-face {
     font-family: 'museo';
-    src: url('./assets/fonts/museo/museo-500.otf') format("opentype");
+    src: url('/assets/fonts/museo/museo-500.otf') format("opentype");
     font-weight: 500;
 }
 
 @font-face {
     font-family: 'museo';
-    src: url('./assets/fonts/museo/museo-700.otf') format("opentype");
+    src: url('/assets/fonts/museo/museo-700.otf') format("opentype");
     font-weight: 700;
 }
 
