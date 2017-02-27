@@ -15,8 +15,7 @@ import {NgModule} from '@angular/core';
 import {NotFoundComponent} from './views/404/404.component';
 import {NotLoggedInGuard} from './services/not-logged-in-guard.service';
 import {ResetPasswordComponent} from './views/reset-password/reset-password.component';
-import {RouterModule} from '@angular/router';
-import {Routes} from '@angular/router';
+import {RouterModule, Routes} from '@angular/router';
 import {UserRegisterComponent} from './views/user/user-register/user-register.component';
 import {UserSettingsComponent} from './views/user/user-settings/user-settings.component';
 
@@ -44,7 +43,7 @@ const routes: Routes = [
 
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { initialNavigation: false })],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
   providers: [LoggedInGuard, NotLoggedInGuard]
 })
