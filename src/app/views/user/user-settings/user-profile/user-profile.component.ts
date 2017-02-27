@@ -255,16 +255,18 @@ export class UserProfileComponent extends TranslationListener implements OnInit 
     uploadStatusObject.imageSaveSuccess = false;
     uploadStatusObject.uploadingImage = true;
     const file = event.srcElement.files[0];
-    if (file) {
-      this.userProxy.saveImage(this.user.id, file, type).then(userImage => {
-        this.user[type + '_image'] = userImage;
-        uploadStatusObject.imageSaveSuccess = true;
-        uploadStatusObject.uploadingImage = false;
-      }).catch(errors => {
-        uploadStatusObject.imageSaveFail = true;
-        uploadStatusObject.uploadingImage = false;
-      });
+    if (!file) {
+      return;
     }
+
+    this.userProxy.saveImage(this.user.id, file, type).then(userImage => {
+      this.user[type + '_image'] = userImage;
+      uploadStatusObject.imageSaveSuccess = true;
+      uploadStatusObject.uploadingImage = false;
+    }).catch(errors => {
+      uploadStatusObject.imageSaveFail = true;
+      uploadStatusObject.uploadingImage = false;
+    });
   }
 
   private onDocumentFilenameChange(event, type, uploadStatusObject) {
@@ -272,21 +274,22 @@ export class UserProfileComponent extends TranslationListener implements OnInit 
     uploadStatusObject.documentSaveSuccess = false;
     uploadStatusObject.uploadingDocument = true;
     const file = event.srcElement.files[0];
-    if (file) {
-      this.userProxy.saveDocument(file).then((document) => {
-        this.userProxy.saveUserDocument(this.user.id, document, type).then(userDocument => {
-          this.user[type + '_document'] = userDocument;
-          uploadStatusObject.documentSaveSuccess = true;
-          uploadStatusObject.uploadingDocument = false;
-        }).catch(errors => {
-          uploadStatusObject.documentSaveFail = true;
-          uploadStatusObject.uploadingDocument = false;
-        });
+    if (!file) {
+      return;
+    }
+    this.userProxy.saveDocument(file).then((document) => {
+      this.userProxy.saveUserDocument(this.user.id, document, type).then(userDocument => {
+        this.user[type + '_document'] = userDocument;
+        uploadStatusObject.documentSaveSuccess = true;
+        uploadStatusObject.uploadingDocument = false;
       }).catch(errors => {
         uploadStatusObject.documentSaveFail = true;
         uploadStatusObject.uploadingDocument = false;
       });
-    }
+    }).catch(errors => {
+      uploadStatusObject.documentSaveFail = true;
+      uploadStatusObject.uploadingDocument = false;
+    });
   }
 
   private formValidation(): boolean {
