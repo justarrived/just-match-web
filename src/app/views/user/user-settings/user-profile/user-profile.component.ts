@@ -131,7 +131,7 @@ export class UserProfileComponent extends TranslationListener implements OnInit 
     this.languageProficiencyLevelsAvailable.pop();
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.loadData();
     this.initForm();
 
@@ -142,7 +142,7 @@ export class UserProfileComponent extends TranslationListener implements OnInit 
     });
   }
 
-  loadData() {
+  loadData(): void {
     this.userProxy.getStatuses().then(statuses => this.statuses = statuses);
     this.countryProxy.getCountries().then(countries => this.countries = countries);
     this.languageProxy.getSystemLanguages().then(languages => {
@@ -159,7 +159,7 @@ export class UserProfileComponent extends TranslationListener implements OnInit 
     this.skillProxy.getSkills().then(skills => this.skills = skills);
   }
 
-  private initForm() {
+  private initForm(): void {
     this.profileForm = this.formBuilder.group({
       'user_languages': [this.user.userLanguages.slice()],
       'native_language': [this.user.getNativeLanguage(), Validators.compose([Validators.required])],
@@ -191,40 +191,42 @@ export class UserProfileComponent extends TranslationListener implements OnInit 
       });
   }
 
-  private onNativeLanguageSelect(language) {
-    if (language) {
-      const nativeLanguage = new UserLanguage({ proficiency: 5 });
-      nativeLanguage.language = language;
-
-      const oldNativeLanguage = this.profileForm.value.native_language;
-
-      if (oldNativeLanguage) {
-        deleteElementFromArray(this.profileForm.value.user_languages, oldNativeLanguage);
-      }
-
-      deleteElementFromArrayLambda(this.profileForm.value.user_languages, lang => lang.language && lang.language.languageCode === language.languageCode)
-
-      this.profileForm.value.user_languages.push(nativeLanguage);
-      this.profileForm.controls['native_language'].setValue(nativeLanguage);
-
-      this.languagesExcludingNative = this.languages.slice();
-      deleteElementFromArrayLambda(this.languagesExcludingNative, lang => lang.languageCode === nativeLanguage.language.languageCode)
+  private onNativeLanguageSelect(language): void {
+    if (!language) {
+      return;
     }
+
+    const nativeLanguage = new UserLanguage({ proficiency: 5 });
+    nativeLanguage.language = language;
+
+    const oldNativeLanguage = this.profileForm.value.native_language;
+
+    if (oldNativeLanguage) {
+      deleteElementFromArray(this.profileForm.value.user_languages, oldNativeLanguage);
+    }
+
+    deleteElementFromArrayLambda(this.profileForm.value.user_languages, lang => lang.language && lang.language.languageCode === language.languageCode)
+
+    this.profileForm.value.user_languages.push(nativeLanguage);
+    this.profileForm.controls['native_language'].setValue(nativeLanguage);
+
+    this.languagesExcludingNative = this.languages.slice();
+    deleteElementFromArrayLambda(this.languagesExcludingNative, lang => lang.languageCode === nativeLanguage.language.languageCode)
   }
 
-  private onCountryOfOriginSelect(country) {
+  private onCountryOfOriginSelect(country): void {
     if (country) {
       this.profileForm.controls['country_of_origin'].setValue(country.countryCode);
     }
   }
 
-  private onDefaultLanguageSelect(language) {
+  private onDefaultLanguageSelect(language): void {
     if (language) {
       this.profileForm.value.default_language = language.id;
     }
   }
 
-  private onLanguageSelect(language) {
+  private onLanguageSelect(language): void {
     if (!isEmpty(language) && !some(this.profileForm.value.user_languages, { language: language })) {
       const userLanguage = new UserLanguage({ proficiency: 1 });
       userLanguage.language = language;
@@ -233,7 +235,7 @@ export class UserProfileComponent extends TranslationListener implements OnInit 
     }
   }
 
-  private onSkillSelect(skill) {
+  private onSkillSelect(skill): void {
     if (!isEmpty(skill) && !some(this.profileForm.value.user_skills, { skill: skill })) {
       const userSkill = new UserSkill({ proficiency: 1 });
       userSkill.skill = skill;
@@ -242,15 +244,15 @@ export class UserProfileComponent extends TranslationListener implements OnInit 
     }
   }
 
-  private onRemoveUserLanguage(userLanguage) {
+  private onRemoveUserLanguage(userLanguage): void {
     deleteElementFromArray(this.profileForm.value.user_languages, userLanguage);
   }
 
-  private onRemoveUserSkill(userSkill) {
+  private onRemoveUserSkill(userSkill): void {
     deleteElementFromArray(this.profileForm.value.user_skills, userSkill);
   }
 
-  private onImageFilenameChange(event, type, uploadStatusObject) {
+  private onImageFilenameChange(event, type, uploadStatusObject): void {
     uploadStatusObject.imageSaveFail = false;
     uploadStatusObject.imageSaveSuccess = false;
     uploadStatusObject.uploadingImage = true;
@@ -269,7 +271,7 @@ export class UserProfileComponent extends TranslationListener implements OnInit 
     });
   }
 
-  private onDocumentFilenameChange(event, type, uploadStatusObject) {
+  private onDocumentFilenameChange(event, type, uploadStatusObject): void {
     uploadStatusObject.documentSaveFail = false;
     uploadStatusObject.documentSaveSuccess = false;
     uploadStatusObject.uploadingDocument = true;
@@ -296,7 +298,7 @@ export class UserProfileComponent extends TranslationListener implements OnInit 
     return this.profileForm.valid && true;
   }
 
-  private handleServerErrors(errors) {
+  private handleServerErrors(errors): void {
     this.saveFail = true;
     this.serverValidationErrors = errors.details || errors;
   }
@@ -305,7 +307,7 @@ export class UserProfileComponent extends TranslationListener implements OnInit 
     return event.charCode >= this.ZERO_DIGIT && event.charCode <= this.NINE_DIGIT;
   }
 
-  private onSubmit() {
+  private onSubmit(): void {
     this.saveSuccess = false;
     this.saveFail = false;
     this.loadingSubmit = true;
