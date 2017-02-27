@@ -386,9 +386,17 @@
               for="resume-document-filename"
               class="profile-form-upload-image-button btn-secondary btn-small btn btn-image-upload">{{'user.profile.form.resume.upload.button' | translate}}</label>
           <p class="profile-form-upload-image-description">{{'user.profile.form.resume.upload.description' | translate}}</p>
-          <!--<div *ngIf="user.cv_document><i class="fa fa-file-text fa-5x"></i></div> Add when User.documents is exposed to frontend-->
           <div *ngIf="resumeDocumentStatusObject.documentSaveSuccess" class="profile-form-save-message">{{'user.profile.form.resume.upload.success' | translate}}</div>
           <div *ngIf="resumeDocumentStatusObject.documentSaveFail" class="profile-form-error-message">{{'user.profile.form.resume.upload.fail' | translate}}</div>
+
+          <p *ngIf="user.cvDocuments.length > 0">
+            <em>{{'user.profile.form.resume.list.title' | translate}}</em>
+          </p>
+          <div *ngFor="let document of user.cvDocuments">
+            <a href="{{document.documentUrl}}" target="_blank">
+              <i class="fa fa-file-text"></i> {{document.createdAt | date: 'yyyy-MM-dd HH:mm'}}
+            </a>
+          </div>
         </div>
       </div>
 

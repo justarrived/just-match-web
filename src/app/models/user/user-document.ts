@@ -3,6 +3,7 @@ export class UserDocument {
   oneTimeToken: string;
   documentUrl: string;
   category: string;
+  createdAt: Date;
 
   constructor(jsonObject: any) {
     if (!jsonObject) {
@@ -10,7 +11,8 @@ export class UserDocument {
     }
     this.id = jsonObject.id;
     this.oneTimeToken = jsonObject.oneTimeToken;
-    this.documentUrl = jsonObject.documentUrl;
+    this.documentUrl = jsonObject.document.document_url;
     this.category = jsonObject.category;
+    this.createdAt = new Date(jsonObject.created_at);
   }
 }

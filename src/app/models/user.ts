@@ -34,7 +34,7 @@ export class User {
   residence_permit_back_image: UserImage;
   lma_card_image: UserImage;
   skatteverket_certificate_image: UserImage;
-  cv_document: UserDocument;
+  cvDocuments: UserDocument[];
   countryOfOriginCode: string;
   currentStatus: string;
   atUnd: string;
@@ -75,7 +75,7 @@ export class User {
     this.residence_permit_back_image = this.getImageByCategory('residence_permit_back');
     this.lma_card_image = this.getImageByCategory('lma_card');
     this.skatteverket_certificate_image = this.getImageByCategory('skatteverket_certificate');
-    this.cv_document = this.getDocumentByCategory('cv');
+    this.cvDocuments = this.getDocumentsByCategory('cv');
     this.languageId = jsonObject.language_id;
     this.countryOfOriginCode = jsonObject.country_of_origin;
     this.currentStatus = jsonObject.current_status;
@@ -92,7 +92,7 @@ export class User {
     return this.images.find(image => image.category === category);
   }
 
-  getDocumentByCategory(category): UserDocument {
-    return this.documents.find(document => document.category === category);
+  getDocumentsByCategory(category): UserDocument[] {
+    return this.documents.filter(document => document.category === category);
   }
 }
