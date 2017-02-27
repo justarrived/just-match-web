@@ -19,7 +19,7 @@
   version "2.4.7"
   resolved "https://registry.yarnpkg.com/@angular/common/-/common-2.4.7.tgz#9316daf90e353e67187d2e0afec5521c2001bd4b"
 
-"@angular/compiler-cli@2.4.7", "@angular/compiler-cli@^2.3.1":
+"@angular/compiler-cli@2.4.7", "@angular/compiler-cli@^2.3.1", "@angular/compiler-cli@^2.4.7":
   version "2.4.7"
   resolved "https://registry.yarnpkg.com/@angular/compiler-cli/-/compiler-cli-2.4.7.tgz#15768141816903636593f430ff9a808d98a2a762"
   dependencies:
@@ -50,6 +50,12 @@
 "@angular/platform-browser@2.4.7":
   version "2.4.7"
   resolved "https://registry.yarnpkg.com/@angular/platform-browser/-/platform-browser-2.4.7.tgz#19f7996a70f07b34ce8d6d0e255544e62cae75f1"
+
+"@angular/platform-server@^2.4.7":
+  version "2.4.8"
+  resolved "https://registry.yarnpkg.com/@angular/platform-server/-/platform-server-2.4.8.tgz#6ccf9550f11137286007c7ff01d4b449c421acbe"
+  dependencies:
+    parse5 "^2.2.1"
 
 "@angular/router@3.4.7":
   version "3.4.7"
@@ -3130,9 +3136,12 @@ negotiator@0.6.1:
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/negotiator/-/negotiator-0.6.1.tgz#2b327184e8992101177b28563fb5e7102acd0ca9"
 
-"ng-semantic@https://github.com/justarrived/ngSemantic/tarball/aot":
-  version "1.1.1-3.ja-pre3"
-  resolved "https://github.com/justarrived/ngSemantic/tarball/aot#040e3c9bec540f5c779e959f24174f796a469b2a"
+"ng-semantic-ja@https://github.com/justarrived/ngSemantic/tarball/ja":
+  version "1.1.1-3.ja.1"
+  resolved "https://github.com/justarrived/ngSemantic/tarball/ja#62f0e052efc75a1ea7280b4ac76a1c72842cc2ea"
+  dependencies:
+    "@angular/compiler-cli" "^2.4.7"
+    "@angular/platform-server" "^2.4.7"
 
 ng2-translate@^5.0.0:
   version "5.0.0"
@@ -3453,6 +3462,10 @@ parse-json@^2.2.0:
   resolved "https://registry.yarnpkg.com/parse-json/-/parse-json-2.2.0.tgz#f480f40434ef80741f8469099f8dea18f55a4dc9"
   dependencies:
     error-ex "^1.2.0"
+
+parse5@^2.2.1:
+  version "2.2.3"
+  resolved "https://registry.yarnpkg.com/parse5/-/parse5-2.2.3.tgz#0c4fc41c1000c5e6b93d48b03f8083837834e9f6"
 
 parsejson@0.0.1:
   version "0.0.1"
