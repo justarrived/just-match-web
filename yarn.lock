@@ -1969,16 +1969,7 @@ extglob@^0.3.1:
   dependencies:
     is-extglob "^1.0.0"
 
-extract-text-webpack-plugin@2.0.0-beta.rc.2:
-  version "2.0.0-rc.3"
-  resolved "https://registry.yarnpkg.com/extract-text-webpack-plugin/-/extract-text-webpack-plugin-2.0.0-rc.3.tgz#7381aa7869ce26d4b39a7bab71cf09e5a38432b2"
-  dependencies:
-    ajv "^4.11.2"
-    async "^2.1.2"
-    loader-utils "^0.2.16"
-    webpack-sources "^0.1.0"
-
-extract-text-webpack-plugin@~2.0.0:
+extract-text-webpack-plugin@2.0.0, extract-text-webpack-plugin@~2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/extract-text-webpack-plugin/-/extract-text-webpack-plugin-2.0.0.tgz#8640f72609800a3528f13a2a9634d566a5c1ae60"
   dependencies:
