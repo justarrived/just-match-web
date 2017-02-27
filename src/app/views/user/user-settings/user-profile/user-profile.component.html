@@ -123,7 +123,6 @@
             name="ssn-input"
             type="text"
             (keypress)="isAllowedSSNChar($event.charCode)"
-            (focus)="serverValidationErrors.ssn = ''"
             placeholder="{{'user.profile.form.coordination.number.placeholder' | translate}}"
             [formControl]="profileForm.controls['ssn']">
         <input *ngIf="profileForm.value.current_status === 'eu_citizen'"
