@@ -305,13 +305,18 @@
           </div>
         </div>
 
-        <div class="field" [ngClass]="{'error': !registerForm.controls['accepted_terms_and_conditions'].valid}">
+        <div class="field" [ngClass]="{'error': !registerForm.controls['accepted_terms_and_conditions'].valid || apiErrors.hasErrorsFor('consent')}">
           <sm-checkbox
             [label]="('user.register.form.terms.accept' | translate) + ' *'"
             [control]="registerForm.controls['accepted_terms_and_conditions']">
           </sm-checkbox>
           <a href="/assets/terms/160523_2051-2_Terms_and_Conditions_(en).pdf" target="_blank"> PDF EN</a>,
           <a href="/assets/terms/160520_2051-2_Anvandarvillkor_(sv).pdf" target="_blank"> PDF SV</a>
+          <div
+            *ngFor="let error of apiErrors.errorsFor('consent')"
+            class="ui pointing red basic label">
+            {{error.detail}}
+          </div>
         </div>
 
         <div class="register-form-button-container">

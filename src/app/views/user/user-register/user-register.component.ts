@@ -103,7 +103,8 @@ export class UserRegisterComponent extends TranslationListener implements OnInit
         id: this.registerForm.value.native_language,
         proficiency: 5
       }],
-      'password': this.registerForm.value.password
+      'password': this.registerForm.value.password,
+      'consent': this.registerForm.value.accepted_terms_and_conditions !== ''
     })
       .then((response) => {
         this.saveSuccess = true;

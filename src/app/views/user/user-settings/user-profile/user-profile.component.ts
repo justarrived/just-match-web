@@ -3,6 +3,8 @@ import {UserLanguage} from '../../../../models/user/user-language';
 import {UserSkill} from '../../../../models/user/user-skill';
 import {UserStatus} from '../../../../models/user/user-status';
 import {UserImage} from '../../../../models/user/user-image';
+import {UserDocument} from '../../../../models/user/user-document';
+import {Document} from '../../../../models/document';
 import {LanguageProxy} from '../../../../services/proxy/language-proxy.service';
 import {CountryProxy} from '../../../../services/proxy/country-proxy.service';
 import {SkillProxy} from '../../../../services/proxy/skill-proxy.service';
@@ -107,6 +109,12 @@ export class UserProfileComponent extends TranslationListener implements OnInit 
     uploadingImage: false
   };
 
+  private resumeDocumentStatusObject: any = {
+    documentSaveSuccess: false,
+    documentSaveFail: false,
+    uploadingDocument: false
+  };
+
   constructor(
     private languageProxy: LanguageProxy,
     private countryProxy: CountryProxy,
@@ -122,7 +130,7 @@ export class UserProfileComponent extends TranslationListener implements OnInit 
     this.languageProficiencyLevelsAvailable.pop();
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.loadData();
     this.initForm();
 
@@ -135,7 +143,7 @@ export class UserProfileComponent extends TranslationListener implements OnInit 
     });
   }
 
-  loadData() {
+  loadData(): void {
     this.userProxy.getStatuses().then(statuses => this.statuses = statuses);
     this.countryProxy.getCountries().then(countries => this.countries = countries);
     this.languageProxy.getSystemLanguages().then(languages => {
@@ -152,7 +160,7 @@ export class UserProfileComponent extends TranslationListener implements OnInit 
     this.skillProxy.getSkills().then(skills => this.skills = skills);
   }
 
-  private initForm() {
+  private initForm(): void {
     this.profileForm = this.formBuilder.group({
       'user_languages': [this.user.userLanguages.slice()],
       'native_language': [this.user.getNativeLanguage(), Validators.compose([Validators.required])],
@@ -184,40 +192,42 @@ export class UserProfileComponent extends TranslationListener implements OnInit 
       });
   }
 
-  private onNativeLanguageSelect(language) {
-    if (language) {
-      const nativeLanguage = new UserLanguage({ proficiency: 5 });
-      nativeLanguage.language = language;
-
-      const oldNativeLanguage = this.profileForm.value.native_language;
-
-      if (oldNativeLanguage) {
-        deleteElementFromArray(this.profileForm.value.user_languages, oldNativeLanguage);
-      }
-
-      deleteElementFromArrayLambda(this.profileForm.value.user_languages, lang => lang.language && lang.language.languageCode === language.languageCode)
-
-      this.profileForm.value.user_languages.push(nativeLanguage);
-      this.profileForm.controls['native_language'].setValue(nativeLanguage);
-
-      this.languagesExcludingNative = this.languages.slice();
-      deleteElementFromArrayLambda(this.languagesExcludingNative, lang => lang.languageCode === nativeLanguage.language.languageCode)
+  private onNativeLanguageSelect(language): void {
+    if (!language) {
+      return;
     }
+
+    const nativeLanguage = new UserLanguage({ proficiency: 5 });
+    nativeLanguage.language = language;
+
+    const oldNativeLanguage = this.profileForm.value.native_language;
+
+    if (oldNativeLanguage) {
+      deleteElementFromArray(this.profileForm.value.user_languages, oldNativeLanguage);
+    }
+
+    deleteElementFromArrayLambda(this.profileForm.value.user_languages, lang => lang.language && lang.language.languageCode === language.languageCode)
+
+    this.profileForm.value.user_languages.push(nativeLanguage);
+    this.profileForm.controls['native_language'].setValue(nativeLanguage);
+
+    this.languagesExcludingNative = this.languages.slice();
+    deleteElementFromArrayLambda(this.languagesExcludingNative, lang => lang.languageCode === nativeLanguage.language.languageCode)
   }
 
-  private onCountryOfOriginSelect(country) {
+  private onCountryOfOriginSelect(country): void {
     if (country) {
       this.profileForm.controls['country_of_origin'].setValue(country.countryCode);
     }
   }
 
-  private onDefaultLanguageSelect(language) {
+  private onDefaultLanguageSelect(language): void {
     if (language) {
       this.profileForm.value.default_language = language.id;
     }
   }
 
-  private onLanguageSelect(language) {
+  private onLanguageSelect(language): void {
     if (!isEmpty(language) && !some(this.profileForm.value.user_languages, { language: language })) {
       const userLanguage = new UserLanguage({ proficiency: 1 });
       userLanguage.language = language;
@@ -226,7 +236,7 @@ export class UserProfileComponent extends TranslationListener implements OnInit 
     }
   }
 
-  private onSkillSelect(skill) {
+  private onSkillSelect(skill): void {
     if (!isEmpty(skill) && !some(this.profileForm.value.user_skills, { skill: skill })) {
       const userSkill = new UserSkill({ proficiency: 1 });
       userSkill.skill = skill;
@@ -235,29 +245,54 @@ export class UserProfileComponent extends TranslationListener implements OnInit 
     }
   }
 
-  private onRemoveUserLanguage(userLanguage) {
+  private onRemoveUserLanguage(userLanguage): void {
     deleteElementFromArray(this.profileForm.value.user_languages, userLanguage);
   }
 
-  private onRemoveUserSkill(userSkill) {
+  private onRemoveUserSkill(userSkill): void {
     deleteElementFromArray(this.profileForm.value.user_skills, userSkill);
   }
 
-  private onImageFilenameChange(event, type, uploadStatusObject) {
+  private onImageFilenameChange(event, type, uploadStatusObject): void {
     uploadStatusObject.imageSaveFail = false;
     uploadStatusObject.imageSaveSuccess = false;
     uploadStatusObject.uploadingImage = true;
     const file = event.srcElement.files[0];
-    if (file) {
-      this.userProxy.saveImage(this.user.id, file, type).then(userImage => {
-        this.user[type + '_image'] = userImage;
-        uploadStatusObject.imageSaveSuccess = true;
-        uploadStatusObject.uploadingImage = false;
-      }).catch(errors => {
-        uploadStatusObject.imageSaveFail = true;
-        uploadStatusObject.uploadingImage = false;
-      });
+    if (!file) {
+      return;
     }
+
+    this.userProxy.saveImage(this.user.id, file, type).then(userImage => {
+      this.user[type + '_image'] = userImage;
+      uploadStatusObject.imageSaveSuccess = true;
+      uploadStatusObject.uploadingImage = false;
+    }).catch(errors => {
+      uploadStatusObject.imageSaveFail = true;
+      uploadStatusObject.uploadingImage = false;
+    });
+  }
+
+  private onDocumentFilenameChange(event, type, uploadStatusObject): void {
+    uploadStatusObject.documentSaveFail = false;
+    uploadStatusObject.documentSaveSuccess = false;
+    uploadStatusObject.uploadingDocument = true;
+    const file = event.srcElement.files[0];
+    if (!file) {
+      return;
+    }
+    this.userProxy.saveDocument(file).then((document) => {
+      this.userProxy.saveUserDocument(this.user.id, document, type).then(userDocument => {
+        this.user[type + '_document'] = userDocument;
+        uploadStatusObject.documentSaveSuccess = true;
+        uploadStatusObject.uploadingDocument = false;
+      }).catch(errors => {
+        uploadStatusObject.documentSaveFail = true;
+        uploadStatusObject.uploadingDocument = false;
+      });
+    }).catch(errors => {
+      uploadStatusObject.documentSaveFail = true;
+      uploadStatusObject.uploadingDocument = false;
+    });
   }
 
   private formValidation(): boolean {
@@ -268,7 +303,7 @@ export class UserProfileComponent extends TranslationListener implements OnInit 
     return isValidSSNCharCode(charCode);
   }
 
-  private onSubmit() {
+  private onSubmit(): void {
     this.saveSuccess = false;
     this.saveFail = false;
     this.loadingSubmit = true;
