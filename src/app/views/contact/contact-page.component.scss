@@ -4,18 +4,18 @@
   background-color: $default-bg-color;
 
   .contact-form-description {
-    width: 50%;
     margin: 0 auto;
     padding-top: 30px;
     text-align: center;
     vertical-align: middle;
+    width: 50%;
   }
 
-  .contact-form-icon-container{
+  .contact-form-icon-container {
     margin: 0 auto;
-    text-align: center;
-    padding-top: 10px;
     padding-bottom: 50px;
+    padding-top: 10px;
+    text-align: center;
 
     .contact-form-icon {
       color: $color-primary-cerise;
@@ -23,9 +23,9 @@
   }
 
   .contact-button-container {
-    width: 80%;
     margin: 0 auto;
     padding-bottom:30px;
+    width: 80%;
 
     .contact-button {
       margin: 0;
