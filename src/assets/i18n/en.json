@@ -258,7 +258,6 @@
   "user.register.form.submit.fail": "There are some errors, please review them above.",
   "user.register.form.submit.success": "Your account was successfully created. You can now use it to sign in.",
   "user.register.form.terms.accept": "I accept Just Arrived's terms, conditions and employment contract",
-  "user.register.form.terms.validation.required": "To signup you have to agree to the terms above",
   "user.register.form.zip.header": "Zip code",
   "user.register.form.zip.placeholder": "Zip",
   "user.register.title": "Sign up",

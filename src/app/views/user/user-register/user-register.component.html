@@ -201,7 +201,12 @@
           </sm-checkbox>
           <a href="/assets/terms/160523_2051-2_Terms_and_Conditions_(en).pdf" target="_blank"> PDF EN</a>,
           <a href="/assets/terms/160520_2051-2_Anvandarvillkor_(sv).pdf" target="_blank"> PDF SV</a>
-          <input-errors [controls]="registerForm.controls" [apiErrors]="apiErrors" attribute="accepted_terms_and_conditions" apiAttribute="consent"></input-errors>
+          <input-errors
+            [controls]="registerForm.controls"
+            [apiErrors]="apiErrors"
+            attribute="accepted_terms_and_conditions"
+            apiAttribute="consent">
+          </input-errors>
         </div>
 
         <div class="register-form-button-container">
