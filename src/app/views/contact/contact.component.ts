@@ -24,10 +24,11 @@ export class ContactComponent {
     private formBuilder: FormBuilder
   ) {
     const user = userManager.getUser();
-
+    const name: string = user ? user.firstName + ' ' + user.lastName : '';
+    const email: string = user ? user.email : '';
     this.contactForm = formBuilder.group({
-      'name': [user ? user.firstName + ' ' + user.lastName : '', Validators.compose([Validators.required, Validators.minLength(2)])],
-      'email': [user ? user.email : '', Validators.compose([Validators.required, Validators.minLength(6)])],
+      'name': [name, Validators.compose([Validators.required, Validators.minLength(2)])],
+      'email': [email, Validators.compose([Validators.required, Validators.minLength(6)])],
       'message': ['', Validators.compose([Validators.required, Validators.minLength(2)])]
     });
   }
