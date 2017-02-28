@@ -38,7 +38,7 @@ import {ContactComponent} from './views/contact/contact.component';
 import {ConfirmationComponent} from './views/confirmation/confirmation.component';
 import {CookiesAboutComponent} from './views/cookies-about/cookies-about.component';
 import {CookieBarComponent} from './components/cookie-bar/cookie-bar.component';
-import {LoadingComponent} from './components/loading-gif/loading.component';
+import {LoadingComponent} from './components/loading/loading.component';
 import {MyJobsComponent} from './views/my-jobs/my-jobs.component';
 import {UserJobsComponent} from './views/my-jobs/user-jobs/user-jobs.component';
 import {MyJobsItemComponent} from './components/my-jobs-item/my-jobs-item.component';
