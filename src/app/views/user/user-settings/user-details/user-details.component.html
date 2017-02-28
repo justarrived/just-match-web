@@ -6,7 +6,7 @@
 
       <div class="user-details-form-group-title">{{'user.settings.form.personal.info.header' | translate}}</div>
 
-      <div class="field" [ngClass]="{'has-error':!settingsForm.controls['first_name'].valid || apiErrors.hasErrorsFor('first_name')}">
+      <div class="field">
         <sm-input
           [control]="settingsForm.controls['first_name']"
           [label]="('user.settings.form.first.name.label' | translate) + ' *'"
@@ -15,20 +15,10 @@
           icon="user"
           type="text">
         </sm-input>
-        <div
-          *ngIf="settingsForm.controls['first_name'].touched && settingsForm.controls['first_name'].hasError('required')"
-          class="ui pointing red basic label">
-          {{'user.settings.form.first.name.validation.required' | translate}}
-        </div>
-        <div
-          *ngIf="settingsForm.controls['first_name'].hasError('minlength')"
-          class="ui pointing red basic label">
-          {{'user.settings.form.first.name.validation.min.length' | translate}}
-        </div>
-        <api-errors [errors]="apiErrors" attribute="first_name"></api-errors>
+        <input-errors attribute="first_name" [controls]="settingsForm.controls" [apiErrors]="apiErrors"></input-errors>
       </div>
 
-      <div class="field" [ngClass]="{'has-error':!settingsForm.controls['last_name'].valid || apiErrors.hasErrorsFor('last_name')}">
+      <div class="field">
         <sm-input
           [control]="settingsForm.controls['last_name']"
           [label]="('user.settings.form.last.name.label' | translate) + ' *'"
@@ -37,20 +27,10 @@
           icon="user"
           type="text">
         </sm-input>
-        <div
-          *ngIf="settingsForm.controls['last_name'].touched && settingsForm.controls['last_name'].hasError('required')"
-          class="ui pointing red basic label">
-          {{'user.settings.form.last.name.validation.required' | translate}}
-        </div>
-        <div
-          *ngIf="settingsForm.controls['last_name'].hasError('minlength')"
-          class="ui pointing red basic label">
-          {{'user.settings.form.last.name.validation.min.length' | translate}}
-        </div>
-        <api-errors [errors]="apiErrors" attribute="last_name"></api-errors>
+        <input-errors attribute="last_name" [controls]="settingsForm.controls" [apiErrors]="apiErrors"></input-errors>
       </div>
 
-      <div class="field" [ngClass]="{'has-error':!settingsForm.controls['email'].valid || apiErrors.hasErrorsFor('email')}">
+      <div class="field">
         <sm-input
           [control]="settingsForm.controls['email']"
           [label]="('user.settings.form.email.label' | translate) + ' *'"
@@ -59,20 +39,15 @@
           icon="mail"
           type="email">
         </sm-input>
-        <div
-          *ngIf="settingsForm.controls['email'].touched && settingsForm.controls['email'].hasError('required')"
-          class="ui pointing red basic label">
-          {{'user.settings.form.email.validation.required' | translate}}
-        </div>
-        <div
-          *ngIf="settingsForm.controls['email'].hasError('pattern')"
-          class="ui pointing red basic label">
-          {{'user.settings.form.email.validation.pattern' | translate}}
-        </div>
-        <api-errors [errors]="apiErrors" attribute="email"></api-errors>
+        <input-errors
+          attribute="email"
+          [patternLabel]="'validations.email_pattern' | translate"
+          [controls]="settingsForm.controls"
+          [apiErrors]="apiErrors">
+        </input-errors>
       </div>
 
-      <div class="field" [ngClass]="{'has-error':!settingsForm.controls['phone'].valid || apiErrors.hasErrorsFor('phone')}">
+      <div class="field">
         <sm-input
           [control]="settingsForm.controls['phone']"
           [label]="('user.settings.form.phone.label' | translate) + ' *'"
@@ -81,20 +56,14 @@
           icon="phone"
           type="text">
         </sm-input>
-        <div
-          *ngIf="settingsForm.controls['email'].touched && settingsForm.controls['phone'].hasError('required')"
-          class="ui pointing red basic label">
-          {{'user.settings.form.phone.validation.required' | translate}}
-        </div>
-        <api-errors [errors]="apiErrors" attribute="phone"></api-errors>
+        <input-errors attribute="phone" [controls]="settingsForm.controls" [apiErrors]="apiErrors"></input-errors>
       </div>
 
       <hr>
 
       <div class="user-details-form-group-title">{{'user.settings.form.address.header' | translate}}</div>
 
-
-      <div class="field" [ngClass]="{'error': (settingsForm.controls['street'].touched && !settingsForm.controls['street'].valid) || apiErrors.hasErrorsFor('street')}">
+      <div class="field">
         <sm-input
           [control]="settingsForm.controls['street']"
           [label]="'user.register.form.street.header' | translate"
@@ -103,10 +72,10 @@
           icon="map pin"
           type="text">
         </sm-input>
-        <api-errors [errors]="apiErrors" attribute="street"></api-errors>
+        <input-errors attribute="street" [controls]="settingsForm.controls" [apiErrors]="apiErrors"></input-errors>
       </div>
 
-      <div class="field" [ngClass]="{'error': (settingsForm.controls['zip'].touched && !settingsForm.controls['zip'].valid) || apiErrors.hasErrorsFor('zip')}">
+      <div class="field">
         <sm-input
           [control]="settingsForm.controls['zip']"
           [label]="'user.register.form.zip.header' | translate"
@@ -115,15 +84,10 @@
           icon="map"
           type="text">
         </sm-input>
-        <div
-          *ngIf="settingsForm.controls['zip'].hasError('minlength')"
-          class="ui pointing red basic label">
-          {{'user.register.form.zip.validation.min.length' | translate}}
-        </div>
-        <api-errors [errors]="apiErrors" attribute="zip"></api-errors>
+        <input-errors attribute="zip" [controls]="settingsForm.controls" [apiErrors]="apiErrors"></input-errors>
       </div>
 
-      <div class="field" [ngClass]="{'error': (settingsForm.controls['city'].touched && !settingsForm.controls['city'].valid) || apiErrors.hasErrorsFor('city')}">
+      <div class="field">
         <sm-input
           [control]="settingsForm.controls['city']"
           [label]="'user.register.form.city.header' | translate"
@@ -132,14 +96,14 @@
           icon="building"
           type="text">
         </sm-input>
-        <api-errors [errors]="apiErrors" attribute="city"></api-errors>
+        <input-errors attribute="city" [controls]="settingsForm.controls" [apiErrors]="apiErrors"></input-errors>
       </div>
 
       <hr>
 
       <div class="user-details-form-group-title">{{'user.settings.form.change.password.header' | translate}}</div>
 
-      <div class="field" [ngClass]="{'has-error':!passwordForm.controls['password'].valid || !passwordForm.controls['repeat_password'].valid || apiErrors.hasErrorsFor('password')}">
+      <div class="field">
         <sm-input
           [control]="passwordForm.controls['old_password']"
           [label]="'user.settings.form.new.password.label' | translate"
@@ -164,16 +128,18 @@
           icon="lock"
           type="password">
         </sm-input>
-        <div *ngIf="passwordForm.controls['password'].hasError('minlength')" class="ui pointing red basic label">{{'user.settings.form.new.password.validation.min.length' | translate}}</div>
-        <div *ngIf="passwordsSuppliedAndMisMatch()" class="ui pointing red basic label">{{'user.settings.form.repeat.password.validation.mismatch' | translate}}</div>
-        <api-errors [errors]="apiErrors" attribute="password"></api-errors>
+        <input-errors attribute="password" [controls]="passwordForm.controls" [apiErrors]="apiErrors"></input-errors>
+        <input-error
+          [visible]="passwordsSuppliedAndMisMatch()"
+          [label]="'user.settings.form.repeat.password.validation.mismatch' | translate">
+        </input-error>
       </div>
 
       <hr class="user-details-form-ruler">
 
       <div class="user-details-form-group-title">{{'user.settings.form.bank.details.header' | translate}}</div>
 
-      <div class="field" [ngClass]="{'error': (settingsForm.controls['account_clearing_number'].touched && !settingsForm.controls['account_clearing_number'].valid) || apiErrors.hasErrorsFor('account_clearing_number')}">
+      <div class="field">
         <sm-input
           [control]="settingsForm.controls['account_clearing_number']"
           [label]="'user.settings.form.clearing.number.label' | translate"
@@ -181,10 +147,10 @@
           class="left"
           type="text">
         </sm-input>
-        <api-errors [errors]="apiErrors" attribute="account_clearing_number"></api-errors>
+        <input-errors attribute="account_clearing_number" [controls]="settingsForm.controls" [apiErrors]="apiErrors"></input-errors>
       </div>
 
-      <div class="field" [ngClass]="{'error': (settingsForm.controls['account_number'].touched && !settingsForm.controls['account_number'].valid) || apiErrors.hasErrorsFor('account_number')}">
+      <div class="field">
         <sm-input
           [control]="settingsForm.controls['account_number']"
           [label]="'user.settings.form.account.number.label' | translate"
@@ -192,7 +158,8 @@
           class="left"
           type="text">
         </sm-input>
-        <api-errors [errors]="apiErrors" attribute="account_number"></api-errors>
+        <input-errors attribute="account_number" [controls]="settingsForm.controls" [apiErrors]="apiErrors"></input-errors>
+        <!-- The API can return errors for account, which isn't bound to any instance of form control -->
         <api-errors [errors]="apiErrors" attribute="account"></api-errors>
       </div>
 
