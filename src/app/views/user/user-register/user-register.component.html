@@ -31,11 +31,7 @@
             class="ui pointing red basic label">
             {{'user.register.form.first.name.validation.min.length' | translate}}
           </div>
-          <div
-            *ngFor="let error of apiErrors.errorsFor('first_name')"
-            class="ui pointing red basic label">
-            {{error.detail}}
-          </div>
+          <api-errors [errors]="apiErrors" attribute="first_name"></api-errors>
         </div>
 
         <div class="field" [ngClass]="{'error': (registerForm.controls['last_name'].touched && !registerForm.controls['last_name'].valid) || apiErrors.hasErrorsFor('last_name')}">
@@ -57,11 +53,7 @@
             class="ui pointing red basic label">
             {{'user.register.form.last.name.validation.min.length' | translate}}
           </div>
-          <div
-            *ngFor="let error of apiErrors.errorsFor('last_name')"
-            class="ui pointing red basic label">
-            {{error.detail}}
-          </div>
+          <api-errors [errors]="apiErrors" attribute="last_name"></api-errors>
         </div>
 
         <div class="field" [ngClass]="{'error': (registerForm.controls['email'].touched && !registerForm.controls['email'].valid) || apiErrors.hasErrorsFor('email')}">
@@ -83,11 +75,7 @@
             class="ui pointing red basic label">
             {{'user.register.form.email.validation.pattern' | translate}}
           </div>
-          <div
-            *ngFor="let error of apiErrors.errorsFor('email')"
-            class="ui pointing red basic label">
-            {{error.detail}}
-          </div>
+          <api-errors [errors]="apiErrors" attribute="email"></api-errors>
         </div>
 
         <div class="field" [ngClass]="{'error': (registerForm.controls['phone'].touched && !registerForm.controls['phone'].valid) || apiErrors.hasErrorsFor('phone')}">
@@ -104,11 +92,7 @@
             class="ui pointing red basic label">
             {{'user.register.form.phone.validation.required' | translate}}
           </div>
-          <div
-            *ngFor="let error of apiErrors.errorsFor('phone')"
-            class="ui pointing red basic label">
-            {{error.detail}}
-          </div>
+          <api-errors [errors]="apiErrors" attribute="phone"></api-errors>
         </div>
 
         <div class="field" [ngClass]="{'error': (registerForm.controls['gender'].touched && !registerForm.controls['gender'].valid) || apiErrors.hasErrorsFor('gender')}">
@@ -127,11 +111,7 @@
             class="ui pointing red basic label">
             {{'user.register.form.gender.validation.required' | translate}}
           </div>
-          <div
-            *ngFor="let error of apiErrors.errorsFor('gender')"
-            class="ui pointing red basic label">
-            {{error.detail}}
-          </div>
+          <api-errors [errors]="apiErrors" attribute="gender"></api-errors>
         </div>
 
         <h3 class="ui dividing header">{{'user.register.form.address.section.header' | translate}}</h3>
@@ -145,11 +125,7 @@
             icon="map pin"
             type="text">
           </sm-input>
-          <div
-            *ngFor="let error of apiErrors.errorsFor('street')"
-            class="ui pointing red basic label">
-            {{error.detail}}
-          </div>
+          <api-errors [errors]="apiErrors" attribute="street"></api-errors>
         </div>
 
         <div class="field" [ngClass]="{'error': (registerForm.controls['zip'].touched && !registerForm.controls['zip'].valid) || apiErrors.hasErrorsFor('zip')}">
@@ -166,11 +142,7 @@
             class="ui pointing red basic label">
             {{'user.register.form.zip.validation.min.length' | translate}}
           </div>
-          <div
-            *ngFor="let error of apiErrors.errorsFor('zip')"
-            class="ui pointing red basic label">
-            {{error.detail}}
-          </div>
+          <api-errors [errors]="apiErrors" attribute="zip"></api-errors>
         </div>
 
         <div class="field" [ngClass]="{'error': (registerForm.controls['city'].touched && !registerForm.controls['city'].valid) || apiErrors.hasErrorsFor('city')}">
@@ -182,11 +154,7 @@
             icon="building"
             type="text">
           </sm-input>
-          <div
-            *ngFor="let error of apiErrors.errorsFor('city')"
-            class="ui pointing red basic label">
-            {{error.detail}}
-          </div>
+          <api-errors [errors]="apiErrors" attribute="city"></api-errors>
         </div>
 
         <h3 class="ui dividing header">{{'user.register.form.country.and.languages.section.header' | translate}}</h3>
@@ -207,11 +175,7 @@
             class="ui pointing red basic label">
             {{'user.register.form.native.language.validation.required' | translate}}
           </div>
-          <div
-            *ngFor="let error of apiErrors.errorsFor('language_ids')"
-            class="ui pointing red basic label">
-            {{error.detail}}
-          </div>
+          <api-errors [errors]="apiErrors" attribute="language_ids"></api-errors>
         </div>
 
         <div class="field" [ngClass]="{'error': (registerForm.controls['language'].touched && !registerForm.controls['language'].valid) || apiErrors.hasErrorsFor('language')}">
@@ -230,11 +194,7 @@
             class="ui pointing red basic label">
             {{'user.register.form.default.language.validation.required' | translate}}
           </div>
-          <div
-            *ngFor="let error of apiErrors.errorsFor('language')"
-            class="ui pointing red basic label">
-            {{error.detail}}
-          </div>
+          <api-errors [errors]="apiErrors" attribute="language"></api-errors>
           <div
             class="ui pointing grey basic label">
             {{'user.register.form.default.language.description' | translate}}
@@ -257,11 +217,7 @@
             class="ui pointing red basic label">
             {{'user.register.form.country.of.origin.validation.required' | translate}}
           </div>
-          <div
-            *ngFor="let error of apiErrors.errorsFor('country_of_origin')"
-            class="ui pointing red basic label">
-            {{error.detail}}
-          </div>
+          <api-errors [errors]="apiErrors" attribute="country_of_origin"></api-errors>
         </div>
 
         <h3 class="ui dividing header">{{'user.register.form.password.section.header' | translate}}</h3>
@@ -285,11 +241,7 @@
             class="ui pointing red basic label">
             {{'user.register.form.password.validation.min.length' | translate}}
           </div>
-          <div
-            *ngFor="let error of apiErrors.errorsFor('password')"
-            class="ui pointing red basic label">
-            {{error.detail}}
-          </div>
+          <api-errors [errors]="apiErrors" attribute="password"></api-errors>
         </div>
 
         <div class="field" [ngClass]="{'error': (registerForm.controls['repeat_password'].touched && !registerForm.controls['repeat_password'].valid) || passwordsSuppliedAndMisMatch()}">
@@ -315,11 +267,7 @@
           </sm-checkbox>
           <a href="/assets/terms/160523_2051-2_Terms_and_Conditions_(en).pdf" target="_blank"> PDF EN</a>,
           <a href="/assets/terms/160520_2051-2_Anvandarvillkor_(sv).pdf" target="_blank"> PDF SV</a>
-          <div
-            *ngFor="let error of apiErrors.errorsFor('consent')"
-            class="ui pointing red basic label">
-            {{error.detail}}
-          </div>
+          <api-errors [errors]="apiErrors" attribute="consent"></api-errors>
         </div>
 
         <div class="register-form-button-container">
