@@ -42,6 +42,6 @@
 
   <div class="contact-button-container">
     <loading *ngIf="loadingSubmit"></loading>
-    <button *ngIf="!loadingSubmit" type="submit" class="btn-primary btn-medium btn contact-button">{{'contact.form.submit.button' | translate}}</button>
+    <button *ngIf="!loadingSubmit" [disabled]="!contactForm.valid" type="submit" class="btn-primary btn-medium btn contact-button">{{'contact.form.submit.button' | translate}}</button>
   </div>
 </form>

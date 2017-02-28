@@ -12,7 +12,7 @@
 
         <h3 class="ui dividing header">{{'user.register.form.general.information.section.header' | translate}}</h3>
 
-        <div class="field" [ngClass]="{'error': (registerForm.controls['first_name'].touched && !registerForm.controls['first_name'].valid) || apiErrors.hasErrorsFor('first_name')}">
+        <div class="field">
           <sm-input
             [control]="registerForm.controls['first_name']"
             [label]="('user.register.form.first.name.header' | translate) + ' *'"
@@ -21,20 +21,10 @@
             icon="user"
             type="text">
           </sm-input>
-          <div
-            *ngIf="registerForm.controls['first_name'].touched && registerForm.controls['first_name'].hasError('required')"
-            class="ui pointing red basic label">
-            {{'user.register.form.first.name.validation.required' | translate}}
-          </div>
-          <div
-            *ngIf="registerForm.controls['first_name'].hasError('minlength')"
-            class="ui pointing red basic label">
-            {{'user.register.form.first.name.validation.min.length' | translate}}
-          </div>
-          <api-errors [errors]="apiErrors" attribute="first_name"></api-errors>
+          <input-errors [controls]="registerForm.controls" [apiErrors]="apiErrors" attribute="first_name"></input-errors>
         </div>
 
-        <div class="field" [ngClass]="{'error': (registerForm.controls['last_name'].touched && !registerForm.controls['last_name'].valid) || apiErrors.hasErrorsFor('last_name')}">
+        <div class="field">
           <sm-input
             [control]="registerForm.controls['last_name']"
             [label]="('user.register.form.last.name.header' | translate) + ' *'"
@@ -43,20 +33,10 @@
             icon="user"
             type="text">
           </sm-input>
-          <div
-            *ngIf="registerForm.controls['last_name'].touched && registerForm.controls['last_name'].hasError('required')"
-            class="ui pointing red basic label">
-            {{'user.register.form.last.name.validation.required' | translate}}
-          </div>
-          <div
-            *ngIf="registerForm.controls['last_name'].hasError('minlength')"
-            class="ui pointing red basic label">
-            {{'user.register.form.last.name.validation.min.length' | translate}}
-          </div>
-          <api-errors [errors]="apiErrors" attribute="last_name"></api-errors>
+          <input-errors [controls]="registerForm.controls" [apiErrors]="apiErrors" attribute="last_name"></input-errors>
         </div>
 
-        <div class="field" [ngClass]="{'error': (registerForm.controls['email'].touched && !registerForm.controls['email'].valid) || apiErrors.hasErrorsFor('email')}">
+        <div class="field">
           <sm-input
             [control]="registerForm.controls['email']"
             [label]="('user.register.form.email.header' | translate) + ' *'"
@@ -65,20 +45,15 @@
             icon="mail"
             type="text">
           </sm-input>
-          <div
-            *ngIf="registerForm.controls['email'].touched && registerForm.controls['email'].hasError('required')"
-            class="ui pointing red basic label">
-            {{'user.register.form.email.validation.required' | translate}}
-          </div>
-          <div
-            *ngIf="registerForm.controls['email'].hasError('pattern')"
-            class="ui pointing red basic label">
-            {{'user.register.form.email.validation.pattern' | translate}}
-          </div>
-          <api-errors [errors]="apiErrors" attribute="email"></api-errors>
+          <input-errors
+            [controls]="registerForm.controls"
+            [apiErrors]="apiErrors"
+            attribute="email"
+            [patternLabel]="'validations.email_pattern' | translate">
+          </input-errors>
         </div>
 
-        <div class="field" [ngClass]="{'error': (registerForm.controls['phone'].touched && !registerForm.controls['phone'].valid) || apiErrors.hasErrorsFor('phone')}">
+        <div class="field">
           <sm-input
             [control]="registerForm.controls['phone']"
             [label]="('user.register.form.phone.header' | translate) + ' *'"
@@ -87,12 +62,7 @@
             icon="phone"
             type="text">
           </sm-input>
-          <div
-            *ngIf="registerForm.controls['phone'].touched && registerForm.controls['phone'].hasError('required')"
-            class="ui pointing red basic label">
-            {{'user.register.form.phone.validation.required' | translate}}
-          </div>
-          <api-errors [errors]="apiErrors" attribute="phone"></api-errors>
+          <input-errors [controls]="registerForm.controls" [apiErrors]="apiErrors" attribute="phone"></input-errors>
         </div>
 
         <div class="field" [ngClass]="{'error': (registerForm.controls['gender'].touched && !registerForm.controls['gender'].valid) || apiErrors.hasErrorsFor('gender')}">
@@ -105,12 +75,7 @@
               {{gender.name}}
             </option>
           </sm-select>
-          <div
-            *ngIf="registerForm.controls['gender'].touched && registerForm.controls['gender'].hasError('required')"
-            class="ui pointing red basic label">
-            {{'user.register.form.gender.validation.required' | translate}}
-          </div>
-          <api-errors [errors]="apiErrors" attribute="gender"></api-errors>
+          <input-errors [controls]="registerForm.controls" [apiErrors]="apiErrors" attribute="gender"></input-errors>
         </div>
 
         <h3 class="ui dividing header">{{'user.register.form.address.section.header' | translate}}</h3>
@@ -124,7 +89,7 @@
             icon="map pin"
             type="text">
           </sm-input>
-          <api-errors [errors]="apiErrors" attribute="street"></api-errors>
+          <input-errors [controls]="registerForm.controls" [apiErrors]="apiErrors" attribute="street"></input-errors>
         </div>
 
         <div class="field" [ngClass]="{'error': (registerForm.controls['zip'].touched && !registerForm.controls['zip'].valid) || apiErrors.hasErrorsFor('zip')}">
@@ -136,12 +101,7 @@
             icon="map"
             type="text">
           </sm-input>
-          <div
-            *ngIf="registerForm.controls['zip'].hasError('minlength')"
-            class="ui pointing red basic label">
-            {{'user.register.form.zip.validation.min.length' | translate}}
-          </div>
-          <api-errors [errors]="apiErrors" attribute="zip"></api-errors>
+          <input-errors [controls]="registerForm.controls" [apiErrors]="apiErrors" attribute="zip"></input-errors>
         </div>
 
         <div class="field" [ngClass]="{'error': (registerForm.controls['city'].touched && !registerForm.controls['city'].valid) || apiErrors.hasErrorsFor('city')}">
@@ -153,7 +113,7 @@
             icon="building"
             type="text">
           </sm-input>
-          <api-errors [errors]="apiErrors" attribute="city"></api-errors>
+          <input-errors [controls]="registerForm.controls" [apiErrors]="apiErrors" attribute="city"></input-errors>
         </div>
 
         <h3 class="ui dividing header">{{'user.register.form.country.and.languages.section.header' | translate}}</h3>
@@ -168,12 +128,7 @@
               {{language.name}}
             </option>
           </sm-select>
-          <div
-            *ngIf="registerForm.controls['native_language'].touched && registerForm.controls['native_language'].hasError('required')"
-            class="ui pointing red basic label">
-            {{'user.register.form.native.language.validation.required' | translate}}
-          </div>
-          <api-errors [errors]="apiErrors" attribute="language_ids"></api-errors>
+          <input-errors [controls]="registerForm.controls" [apiErrors]="apiErrors" attribute="native_language" apiAttribute="language_ids"></input-errors>
         </div>
 
         <div class="field" [ngClass]="{'error': (registerForm.controls['language'].touched && !registerForm.controls['language'].valid) || apiErrors.hasErrorsFor('language')}">
@@ -186,12 +141,7 @@
               {{language.name}}
             </option>
           </sm-select>
-          <div
-            *ngIf="registerForm.controls['language'].touched && registerForm.controls['language'].hasError('required')"
-            class="ui pointing red basic label">
-            {{'user.register.form.default.language.validation.required' | translate}}
-          </div>
-          <api-errors [errors]="apiErrors" attribute="language"></api-errors>
+          <input-errors [controls]="registerForm.controls" [apiErrors]="apiErrors" attribute="language"></input-errors>
           <div
             class="ui pointing grey basic label">
             {{'user.register.form.default.language.description' | translate}}
@@ -209,12 +159,7 @@
               {{country.name}}
             </option>
           </sm-select>
-          <div
-            *ngIf="registerForm.controls['country_of_origin'].touched && registerForm.controls['country_of_origin'].hasError('required')"
-            class="ui pointing red basic label">
-            {{'user.register.form.country.of.origin.validation.required' | translate}}
-          </div>
-          <api-errors [errors]="apiErrors" attribute="country_of_origin"></api-errors>
+          <input-errors [controls]="registerForm.controls" [apiErrors]="apiErrors" attribute="country_of_origin"></input-errors>
         </div>
 
         <h3 class="ui dividing header">{{'user.register.form.password.section.header' | translate}}</h3>
@@ -228,17 +173,7 @@
             icon="lock"
             type="password">
           </sm-input>
-          <div
-            *ngIf="registerForm.controls['password'].touched && registerForm.controls['password'].hasError('required')"
-            class="ui pointing red basic label">
-            {{'user.register.form.password.validation.required' | translate}}
-          </div>
-          <div
-            *ngIf="registerForm.controls['password'].hasError('minlength')"
-            class="ui pointing red basic label">
-            {{'user.register.form.password.validation.min.length' | translate}}
-          </div>
-          <api-errors [errors]="apiErrors" attribute="password"></api-errors>
+          <input-errors [controls]="registerForm.controls" [apiErrors]="apiErrors" attribute="password"></input-errors>
         </div>
 
         <div class="field" [ngClass]="{'error': (registerForm.controls['repeat_password'].touched && !registerForm.controls['repeat_password'].valid) || passwordsSuppliedAndMisMatch()}">
@@ -250,11 +185,10 @@
             icon="lock"
             type="password">
           </sm-input>
-          <div
-            *ngIf="passwordsSuppliedAndMisMatch()"
-            class="ui pointing red basic label">
-            {{'user.register.form.repeat.password.validation.mismatch' | translate}}
-          </div>
+          <input-error
+            [visible]="passwordsSuppliedAndMisMatch()"
+            [label]="'user.register.form.repeat.password.validation.mismatch' | translate">
+          </input-error>
         </div>
 
         <div class="field" [ngClass]="{'error': !registerForm.controls['accepted_terms_and_conditions'].valid || apiErrors.hasErrorsFor('consent')}">
@@ -264,7 +198,7 @@
           </sm-checkbox>
           <a href="/assets/terms/160523_2051-2_Terms_and_Conditions_(en).pdf" target="_blank"> PDF EN</a>,
           <a href="/assets/terms/160520_2051-2_Anvandarvillkor_(sv).pdf" target="_blank"> PDF SV</a>
-          <api-errors [errors]="apiErrors" attribute="consent"></api-errors>
+          <input-errors [controls]="registerForm.controls" [apiErrors]="apiErrors" attribute="accepted_terms_and_conditions" apiAttribute="consent"></input-errors>
         </div>
 
         <div class="register-form-button-container">
