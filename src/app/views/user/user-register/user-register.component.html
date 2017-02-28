@@ -114,6 +114,7 @@
         <div class="field" [ngClass]="{'error': (registerForm.controls['gender'].touched && !registerForm.controls['gender'].valid) || apiErrors.hasErrorsFor('gender')}">
           <sm-select
            [control]="registerForm.controls['gender']"
+           [data]="genders"
            [label]="('user.register.form.gender.header' | translate) + ' *'"
            [placeholder]="'user.register.form.gender.placeholder' | translate"
            class="fluid">
@@ -193,6 +194,7 @@
         <div class="field" [ngClass]="{'error': (registerForm.controls['native_language'].touched && !registerForm.controls['native_language'].valid) || apiErrors.hasErrorsFor('language_ids')}">
           <sm-select
            [control]="registerForm.controls['native_language']"
+           [data]="languages"
            [label]="('user.register.form.native.language.header' | translate) + ' *'"
            [placeholder]="'user.register.form.native.language.placeholder' | translate"
            class="fluid search">
@@ -215,6 +217,7 @@
         <div class="field" [ngClass]="{'error': (registerForm.controls['language'].touched && !registerForm.controls['language'].valid) || apiErrors.hasErrorsFor('language')}">
           <sm-select
            [control]="registerForm.controls['language']"
+           [data]="systemLanguages"
            [label]="('user.register.form.default.language.header' | translate) + ' *'"
            [placeholder]="'user.register.form.default.language.placeholder' | translate"
            class="fluid search">
@@ -241,7 +244,7 @@
         <div class="field" [ngClass]="{'error': (registerForm.controls['country_of_origin'].touched && !registerForm.controls['country_of_origin'].valid) || apiErrors.hasErrorsFor('country_of_origin')}">
           <sm-select
            [control]="registerForm.controls['country_of_origin']"
-           [(model)]="registerForm.controls['country_of_origin'].value"
+           [data]="countries"
            [label]="('user.register.form.country.of.origin.header' | translate) + ' *'"
            [placeholder]="'user.register.form.country.of.origin.placeholder' | translate"
            class="fluid search">
