@@ -10,8 +10,7 @@
       icon="user"
       type="text">
     </sm-input>
-    <input-errors [control]="contactForm.controls['name']"></input-errors>
-    <api-errors [control]="contactForm.controls['name']" [errors]="apiErrors" attribute="name"></api-errors>
+    <input-errors [controls]="contactForm.controls" [apiErrors]="apiErrors" attribute='name'></input-errors>
   </div>
 
   <div class="field">
@@ -23,8 +22,7 @@
       icon="mail"
       type="text">
     </sm-input>
-    <input-errors [control]="contactForm.controls['email']" [patternLabel]="'validations.email_pattern' | translate"></input-errors>
-    <api-errors [control]="contactForm.controls['email']" [errors]="apiErrors" attribute="email"></api-errors>
+    <input-errors [controls]="contactForm.controls" [apiErrors]="apiErrors" attribute="email" [patternLabel]="'validations.email_pattern' | translate"></input-errors>
   </div>
 
   <div class="field">
@@ -34,8 +32,12 @@
       class="left"
       icon="mail">
     </sm-textarea>
-    <input-errors [control]="contactForm.controls['message']"></input-errors>
-    <api-errors [errors]="apiErrors" attribute="body"></api-errors>
+    <input-errors
+      [controls]="contactForm.controls"
+      [apiErrors]="apiErrors"
+      attribute="message"
+      apiAttribute="body">
+    </input-errors>
   </div>
 
   <div class="contact-button-container">

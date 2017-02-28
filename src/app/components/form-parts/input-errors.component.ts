@@ -1,19 +1,26 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {TranslateService} from 'ng2-translate/ng2-translate';
+import {ApiErrors} from '../../models/api-errors';
 
 @Component({
   selector: 'input-errors',
   template: `
+<api-errors [control]="control" [errors]="apiErrors" [attribute]="apiAttributeName"></api-errors>
 <input-error *ngFor="let error of formControlErrors" [label]="error"></input-error>
 `
 })
 export class InputErrorsComponent implements OnInit {
-  @Input() control: FormControl;
-  @Input() patternLabel: string = null;
-  @Input() requiredLabel: string = null;
-  @Input() minLengthLabel: string = null;
-  @Input() maxLengthLabel: string = null;
+  @Input() private controls: any;
+  @Input() private attribute: string;
+  @Input() private apiAttribute: string = null;
+  @Input() private apiErrors: ApiErrors = new ApiErrors([]);
+
+  // Client side
+  @Input() private patternLabel: string = null;
+  @Input() private requiredLabel: string = null;
+  @Input() private minLengthLabel: string = null;
+  @Input() private maxLengthLabel: string = null;
 
   formControlErrors: Array<string> = [];
 
@@ -29,6 +36,14 @@ export class InputErrorsComponent implements OnInit {
       maxlength: this.maxLengthLabel
     };
     this.control.valueChanges.subscribe(() => this.setErrors());
+  }
+
+  private get control(): FormControl {
+    return this.controls[this.attribute] || new Error('Unknown attriubte: ' + this.attribute);
+  }
+
+  private get apiAttributeName(): string {
+    return this.apiAttribute || this.attribute;
   }
 
   private setErrors(): void {
