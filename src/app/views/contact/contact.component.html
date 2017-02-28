@@ -20,22 +20,19 @@
 
         <div *ngIf="contactForm.controls['name'].hasError('required') && contactForm.controls['name'].touched" class="alert alert-danger">{{'contact.form.name.validation.required' | translate}}</div>
         <div *ngIf="contactForm.controls['name'].hasError('minlength') && contactForm.controls['name'].touched" class="alert alert-danger">{{'contact.form.name.validation.length' | translate}}</div>
-
-        <div *ngFor="let error of apiErrors.errorsFor('name')" class="alert alert-danger">{{error.detail}}</div>
+        <api-errors [errors]="apiErrors" attribute="name"></api-errors>
       </div>
       <div class="form-group material-group contact-form-input-container" [ngClass]="{'has-error':!contactForm.controls['email'].valid && contactForm.controls['email'].touched}">
         <input class="form-control material-input contact-form-text-input" maxlength="256" type="email" placeholder="{{'contact.form.email.placeholder' | translate}}" [formControl]="contactForm.controls['email']">
 
         <div *ngIf="contactForm.controls['email'].hasError('required') && contactForm.controls['email'].touched" class="alert alert-danger">{{'contact.form.email.validation.required' | translate}}</div>
-        <div *ngIf="contactForm.controls['email'].hasError('minlength') && contactForm.controls['email'].touched" class="alert alert-danger">{{'contact.form.email.validation.length' | translate}}</div>
-        <div *ngFor="let error of apiErrors.errorsFor('email')" class="alert alert-danger">{{error.detail}}</div>
+        <div *ngIf="contactForm.controls['email'].hasError('minlength') && contactForm.controls['email'].touched" class="alert alert-danger">{{'contact.form.email.validation.length' | translate}}</div>        <api-errors [errors]="apiErrors" attribute="email"></api-errors>
       </div>
       <div class="form-group material-group contact-form-input-container" [ngClass]="{'has-error':!contactForm.controls['message'].valid && contactForm.controls['message'].touched}">
         <textarea class="form-control material-input" maxlength="1000" autosize type="text" placeholder="{{'contact.form.message.placeholder' | translate}}" [formControl]="contactForm.controls['message']"></textarea>
 
         <div *ngIf="contactForm.controls['message'].hasError('required') && contactForm.controls['message'].touched" class="alert alert-danger">{{'contact.form.message.validation.required' | translate}}</div>
-        <div *ngIf="contactForm.controls['message'].hasError('minlength') && contactForm.controls['message'].touched" class="alert alert-danger">{{'contact.form.message.validation.length' | translate}}</div>
-        <div *ngFor="let error of apiErrors.errorsFor('body')" class="alert alert-danger">{{error.detail}}</div>
+        <div *ngIf="contactForm.controls['message'].hasError('minlength') && contactForm.controls['message'].touched" class="alert alert-danger">{{'contact.form.message.validation.length' | translate}}</div>        <api-errors [errors]="apiErrors" attribute="body"></api-errors>
       </div>
       <div class="contact-button-container">
         <loading *ngIf="loadingSubmit"></loading>
