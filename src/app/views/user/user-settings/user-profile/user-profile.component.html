@@ -16,6 +16,12 @@
         <p class="profile-form-input-description-text">{{'user.profile.form.default.language.description' | translate}}</p>
         <div *ngIf="!profileForm.value.default_language" class="alert alert-danger">{{'user.profile.form.default.language.required' | translate}}</div>
         <api-errors [errors]="apiErrors" attribute="language"></api-errors>
+        <input-errors
+          attribute="default_language"
+          apiAttribute="language_id"
+          [controls]="profileForm.controls"
+          [apiErrors]="apiErrors">
+        </input-errors>
       </div>
 
       <div class="profile-form-input-container">
@@ -27,7 +33,7 @@
             [selectedItemLabelFunction]="namePropertyLabel"
             [lookupType]="'list'" [enumList]="languages">
         </autocomplete-dropdown>
-        <div *ngIf="profileForm.controls['native_language'].hasError('required')" class="alert alert-danger">{{'user.profile.form.native.language.validation.required' | translate}}</div>
+        <input-errors attribute="native_language" [controls]="profileForm.controls"></input-errors>
       </div>
 
       <div class="profile-form-input-container">
@@ -39,8 +45,7 @@
             [selectedItemLabelFunction]="namePropertyLabel"
             [lookupType]="'list'" [enumList]="countries">
         </autocomplete-dropdown>
-        <div *ngIf="profileForm.controls['country_of_origin'].hasError('required')" class="alert alert-danger">{{'user.profile.form.country.validation.required' | translate}}</div>
-        <api-errors [errors]="apiErrors" attribute="country_of_origin"></api-errors>
+        <input-errors attribute="country_of_origin" [controls]="profileForm.controls" [apiErrors]="apiErrors"></input-errors>
       </div>
 
       <div class="profile-form-input-container">
@@ -57,7 +62,7 @@
             {{status.name}}</label>
           </div>
         </div>
-        <api-errors [errors]="apiErrors" attribute="current_status"></api-errors>
+        <input-errors attribute="current_status" [controls]="profileForm.controls" [apiErrors]="apiErrors"></input-errors>
       </div>
 
       <div *ngIf="profileForm.value.current_status === 'asylum_seeker'" class="profile-form-input-container">
@@ -84,7 +89,7 @@
             {{'common.no' | translate}}</label>
           </div>
         </div>
-        <api-errors [errors]="apiErrors" attribute="at_und"></api-errors>
+        <input-errors attribute="at_und" [controls]="profileForm.controls" [apiErrors]="apiErrors"></input-errors>
       </div>
 
       <div *ngIf="profileForm.value.current_status === 'asylum_seeker' && profileForm.value.at_und === 'yes'" class="profile-form-input-container">
@@ -141,7 +146,7 @@
             (keypress)="isAllowedSSNChar($event.charCode)"
             placeholder="{{'user.profile.form.ssn.placeholder' | translate}}"
             [formControl]="profileForm.controls['ssn']">
-        <api-errors [errors]="apiErrors" attribute="ssn"></api-errors>
+        <input-errors attribute="ssn" [controls]="profileForm.controls" [apiErrors]="apiErrors"></input-errors>
       </div>
 
       <div *ngIf="profileForm.value.current_status === 'asylum_seeker' && profileForm.value.at_und === 'yes'" class="profile-form-upload-image-container">
@@ -346,7 +351,7 @@
             autosize type="text"
             placeholder="{{'user.profile.form.general.skills.placeholder' | translate}}"
             [formControl]="profileForm.controls['competence_text']"></textarea>
-        <api-errors [errors]="apiErrors" attribute="competence_text"></api-errors>
+        <input-errors attribute="competence_text" [controls]="profileForm.controls" [apiErrors]="apiErrors"></input-errors>
       </div>
 
       <div class="profile-form-input-container">
@@ -358,7 +363,7 @@
             autosize type="text"
             placeholder="{{'user.profile.form.work.experience.placeholder' | translate}}"
             [formControl]="profileForm.controls['job_experience']"></textarea>
-        <api-errors [errors]="apiErrors" attribute="job_experience"></api-errors>
+        <input-errors attribute="job_experience" [controls]="profileForm.controls" [apiErrors]="apiErrors"></input-errors>
       </div>
 
       <div class="profile-form-input-container">
