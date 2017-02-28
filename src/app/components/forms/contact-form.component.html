@@ -1,7 +1,7 @@
 <form class="ui form" [formGroup]="contactForm" (ngSubmit)="submitForm(contactForm.value)">
   <sm-loader [complete]="!loadingSubmit" class="inverted" text="{{'component.loading' | translate}}"></sm-loader>
 
-  <div class="field" [ngClass]="{'error': (contactForm.controls['name'].touched && !contactForm.controls['name'].valid) || apiErrors.hasErrorsFor('name')}">
+  <div class="field">
     <sm-input
       [control]="contactForm.controls['name']"
       [label]="('contact.form.name.header' | translate) + ' *'"
@@ -10,20 +10,11 @@
       icon="user"
       type="text">
     </sm-input>
-    <div
-      *ngIf="contactForm.controls['name'].touched && contactForm.controls['name'].hasError('required')"
-      class="ui pointing red basic label">
-      {{'contact.form.name.validation.required' | translate}}
-    </div>
-    <div
-      *ngIf="contactForm.controls['name'].hasError('minlength')"
-      class="ui pointing red basic label">
-      {{'contact.form.name.validation.length' | translate}}
-    </div>
-    <api-errors [errors]="apiErrors" attribute="name"></api-errors>
+    <input-errors [control]="contactForm.controls['name']"></input-errors>
+    <api-errors [control]="contactForm.controls['name']" [errors]="apiErrors" attribute="name"></api-errors>
   </div>
 
-  <div class="field" [ngClass]="{'error': (contactForm.controls['email'].touched && !contactForm.controls['email'].valid) || apiErrors.hasErrorsFor('email')}">
+  <div class="field">
     <sm-input
       [control]="contactForm.controls['email']"
       [label]="('contact.form.email.header' | translate) + ' *'"
@@ -32,41 +23,23 @@
       icon="mail"
       type="text">
     </sm-input>
-    <div
-      *ngIf="contactForm.controls['email'].touched && contactForm.controls['email'].hasError('required')"
-      class="ui pointing red basic label">
-      {{'contact.form.email.validation.required' | translate}}
-    </div>
-    <div
-      *ngIf="contactForm.controls['email'].hasError('minlength')"
-      class="ui pointing red basic label">
-      {{'contact.form.email.validation.length' | translate}}
-    </div>
-    <api-errors [errors]="apiErrors" attribute="email"></api-errors>
+    <input-errors [control]="contactForm.controls['email']" [patternLabel]="'validations.email_pattern' | translate"></input-errors>
+    <api-errors [control]="contactForm.controls['email']" [errors]="apiErrors" attribute="email"></api-errors>
   </div>
 
-  <div class="field" [ngClass]="{'error': (contactForm.controls['message'].touched && !contactForm.controls['message'].valid) || apiErrors.hasErrorsFor('body')}">
+  <div class="field">
     <sm-textarea
       [control]="contactForm.controls['message']"
       [label]="('contact.form.message.placeholder' | translate) + ' *'"
       class="left"
       icon="mail">
     </sm-textarea>
-    <div
-      *ngIf="contactForm.controls['message'].touched && contactForm.controls['message'].hasError('required')"
-      class="ui pointing red basic label">
-      {{'contact.form.message.validation.required' | translate}}
-    </div>
-    <div
-      *ngIf="contactForm.controls['message'].hasError('minlength')"
-      class="ui pointing red basic label">
-      {{'contact.form.message.validation.length' | translate}}
-    </div>
+    <input-errors [control]="contactForm.controls['message']"></input-errors>
     <api-errors [errors]="apiErrors" attribute="body"></api-errors>
   </div>
 
   <div class="contact-button-container">
     <loading *ngIf="loadingSubmit"></loading>
-    <button *ngIf="!loadingSubmit" type="submit" [disabled]="!contactForm.valid" class="btn-primary btn-medium btn contact-button">{{'contact.form.submit.button' | translate}}</button>
+    <button *ngIf="!loadingSubmit" type="submit" class="btn-primary btn-medium btn contact-button">{{'contact.form.submit.button' | translate}}</button>
   </div>
 </form>

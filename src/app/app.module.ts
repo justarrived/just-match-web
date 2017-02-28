@@ -41,6 +41,8 @@ import {CookiesAboutComponent} from './views/cookies-about/cookies-about.compone
 import {CookieBarComponent} from './components/cookie-bar/cookie-bar.component';
 import {LoadingComponent} from './components/loading/loading.component';
 import {ApiErrorsComponent} from './components/form-parts/api-errors.component';
+import {InputErrorComponent} from './components/form-parts/input-error.component';
+import {InputErrorsComponent} from './components/form-parts/input-errors.component';
 import {MyJobsComponent} from './views/my-jobs/my-jobs.component';
 import {UserJobsComponent} from './views/my-jobs/user-jobs/user-jobs.component';
 import {MyJobsItemComponent} from './components/my-jobs-item/my-jobs-item.component';
@@ -108,6 +110,8 @@ export class RavenErrorHandler implements ErrorHandler {
     CookieBarComponent,
     LoadingComponent,
     ApiErrorsComponent,
+    InputErrorComponent,
+    InputErrorsComponent,
     MyJobsItemComponent,
     UserJobsComponent,
     MyJobsComponent,

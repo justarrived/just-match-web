@@ -1,4 +1,9 @@
 {
+  "validations.required": "can't be blank",
+  "validations.minlength": "is too short (minimum {{minLength}} characters)",
+  "validations.maxlength": "is too long (maximum {{maxLength}} characters)",
+  "validations.pattern": "does not conform to the required pattern",
+  "validations.email_pattern": "must look like an email address",
   "applications.title": "Just Arrived",
   "assignment.after_tax": "after tax",
   "assignment.assignments.title": "Job",
