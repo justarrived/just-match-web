@@ -8,11 +8,11 @@ import {UserManager} from '../../services/user-manager.service';
 import {ApiErrors} from '../../models/api-errors';
 
 @Component({
-  templateUrl: './contact.component.html',
-  styleUrls: ['./contact.component.scss'],
+  selector: 'contact-form',
+  templateUrl: './contact-form.component.html',
   providers: [ContactProxy]
 })
-export class ContactComponent {
+export class ContactFormComponent {
   private contactForm: FormGroup;
   private loadingSubmit: boolean = false;
   private apiErrors: ApiErrors = new ApiErrors([]);

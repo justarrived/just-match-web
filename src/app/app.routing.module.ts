@@ -1,6 +1,6 @@
 import {LoggedInGuard} from './services/logged-in-guard.service';
 import {ConfirmationComponent} from './views/confirmation/confirmation.component';
-import {ContactComponent} from './views/contact/contact.component';
+import {ContactPageComponent} from './views/contact/contact-page.component';
 import {CookiesAboutComponent} from './views/cookies-about/cookies-about.component';
 import {ErrorComponent} from './views/error/error.component';
 import {FaqComponent} from './views/faq/faq.component';
@@ -23,7 +23,7 @@ const routes: Routes = [
   { path: '', pathMatch: 'full', component: HomeComponent },
   { path: '404', component: NotFoundComponent },
   { path: 'confirmation/:type', component: ConfirmationComponent },
-  { path: 'contact', component: ContactComponent },
+  { path: 'contact', component: ContactPageComponent },
   { path: 'cookies-about', component: CookiesAboutComponent },
   { path: 'error/:statusCode', component: ErrorComponent },
   { path: 'faq', component: FaqComponent },
