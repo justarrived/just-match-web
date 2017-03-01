@@ -28,12 +28,12 @@
 
 <div class="new-comment-container" [ngClass]="{moving: !isFooterVisible}" *ngIf="userId">
   <div class="ui centered grid">
-    <div class="ten wide phone column">
+    <div class="twelve wide phone column">
       <div class="resizable-div-cell">
         <div contenteditable="true" class="resizable-div" placeholder="Write a comment" (input)="onNewCommentInput($event)"></div>
       </div>
     </div>
-    <div class="six wide phone column send-button-container">
+    <div class="four wide phone column send-button-container">
       <button class="comment-send-button clickable" (click)="sendComment()" [disabled]="!(newCommentBody && newCommentBody.trim())">{{'common.submit' | translate}}</button>
     </div>
   </div>
