@@ -16,6 +16,30 @@ Developer guide for Just Match Web.
 
 * __HTML conventions__
 
+Attribute alignment
+```
+<!--
+One attribute.
+Whole HTML element on one line.
+-->
+<div class="fourteen wide phone ten wide tablet eight wide computer column">
+
+<h3 class="ui dividing header">
+  {{'user.register.form.address.section.header' | translate}}
+</h3>
+
+<!--
+Two or more attributes.
+One attribute per line and sorted on attribute name.
+-->
+<input-errors
+  [apiErrors]="apiErrors"
+  [control]="registerForm.controls['first_name']"
+  apiAttribute="first_name">
+</input-errors>
+```
+
+
 * __SCSS conventions__
 
 * __Routes__
