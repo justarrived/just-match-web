@@ -24,10 +24,9 @@ export class ContactFormComponent {
     private formBuilder: FormBuilder
   ) {
     const user = userManager.getUser();
-    const name: string = user ? user.firstName + ' ' + user.lastName : '';
     const email: string = user ? user.email : '';
     this.contactForm = formBuilder.group({
-      'name': [name, Validators.compose([Validators.required, Validators.minLength(2)])],
+      'name': [user.name, Validators.compose([Validators.required, Validators.minLength(2)])],
       'email': [email, Validators.compose([Validators.required, Validators.minLength(6), Validators.pattern(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)])],
       'message': ['', Validators.compose([Validators.required, Validators.minLength(2)])]
     });
