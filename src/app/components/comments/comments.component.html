@@ -1,6 +1,6 @@
 <div class="comments-container" [ngClass]="{'addition-padding': !isFooterVisible && userId, 'small-addition-padding': !userId}">
   <div class="ui centered grid">
-    <div class="fourteen wide phone">
+    <div class="fourteen wide phone column">
       <h4 class="chat-title">{{'assignment.comments.title' | translate}}</h4>
     </div>
   </div>
@@ -27,13 +27,13 @@
 </div>
 
 <div class="new-comment-container" [ngClass]="{moving: !isFooterVisible}" *ngIf="userId">
-  <div class="row">
-    <div class="col-xs-8">
+  <div class="ui centered grid">
+    <div class="ten wide phone column">
       <div class="resizable-div-cell">
         <div contenteditable="true" class="resizable-div" placeholder="Write a comment" (input)="onNewCommentInput($event)"></div>
       </div>
     </div>
-    <div class="col-xs-4 send-button-container">
+    <div class="six wide phone column send-button-container">
       <button class="comment-send-button clickable" (click)="sendComment()" [disabled]="!(newCommentBody && newCommentBody.trim())">{{'common.submit' | translate}}</button>
     </div>
   </div>
