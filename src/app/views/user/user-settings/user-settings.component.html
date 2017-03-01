@@ -3,7 +3,7 @@
     <h2 class="user-profile-subheader-title">{{'user.profile.header.title' | translate}}</h2>
     <p class="user-profile-subheader-information">{{'user.profile.header.information' | translate}}</p>
 
-    <div class="user-profile-subheader-info-container row">
+    <div class="user-profile-subheader-info-container">
       <div class="user-profile-subheader-info-image-container">
         <loading *ngIf="uploadingImage" class="user-profile-subheader-info-image-loading"></loading>
         <input *ngIf="!uploadingImage" type="file" id="image-filename" name="imageFilename" class="file" (change)="onProfileImageFilenameChange($event)" accept="image/jpeg,image/jpg,image/gif,image/png">
@@ -14,13 +14,13 @@
     </div>
   </div>
 
-  <div class="user-profile-tab-container">
-    <div class="user-profile-header-tab col-xs-6" [ngClass]="{'selected': selectedState == 'profile'}" (click)="setState('profile')">
+  <div class="ui grid user-profile-tab-container">
+    <div class="eight wide phone column user-profile-header-tab" [ngClass]="{'selected': selectedState == 'profile'}" (click)="setState('profile')">
       <div class="user-profile-tab-header">
         {{'user.profile.tab.profile.details.title' | translate}}
       </div>
     </div>
-    <div class="user-profile-header-tab col-xs-6" [ngClass]="{'selected': selectedState == 'details'}" (click)="setState('details')">
+    <div class="eight wide phone column user-profile-header-tab" [ngClass]="{'selected': selectedState == 'details'}" (click)="setState('details')">
       <div class="user-profile-tab-header">
         {{'user.profile.tab.personal.details.title' | translate}}
       </div>
