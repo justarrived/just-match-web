@@ -9,15 +9,14 @@
     <form [formGroup]="loginForm" (ngSubmit)="submitForm(loginForm.value)">
       <div class="form-group material-group login-form-input-container" [ngClass]="{'has-error':!loginForm.controls['email_or_phone'].valid && loginForm.controls['email_or_phone'].touched}">
         <input maxlength="256" (keyup.enter)="onEnterKeyUp()" (focus)="errors.password = ''" class="login-form-text-input form-control material-input fs-m0" type="text" placeholder="{{'login.form.email.or.phone.placeholder' | translate}}" [formControl]="loginForm.controls['email_or_phone']">
-
-        <div *ngIf="loginForm.controls['email_or_phone'].hasError('required') && loginForm.controls['email_or_phone'].touched" class="alert alert-danger">{{'login.form.email.or.phone.validation.required' | translate}}</div>
+        <input-errors [control]="loginForm.controls['email_or_phone']"></input-errors>
       </div>
       <div class="form-group  material-group login-form-input-container" [ngClass]="{'has-error':!loginForm.controls['password'].valid && loginForm.controls['password'].touched}">
         <input (keyup.enter)="onEnterKeyUp()" (focus)="errors.password = ''" class="login-form-text-input form-control material-input fs-m0" type="password" placeholder="{{'login.form.password.placeholder' | translate}}" [formControl]="loginForm.controls['password']"
             maxlength="50">
 
-        <div *ngIf="loginForm.controls['password'].hasError('required') && loginForm.controls['password'].touched" class="alert alert-danger">{{'login.form.password.validation.required' | translate}}</div>
         <div *ngIf="errors.password" class="alert alert-danger">{{errors.password}}</div>
+        <input-errors [control]="loginForm.controls['password']"></input-errors>
       </div>
       <div class="form-group login-form-button-container">
         <loading *ngIf="loadingSubmit"></loading>
