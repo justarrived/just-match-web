@@ -5,8 +5,8 @@ Developer guide for Just Match Web.
 ## High level
 
 * __Technology__
-  - Angular 2.3
-  - Typescript 2.0
+  - Angular 2.4
+  - Typescript 2.2
   - SCSS
   - HTML5
 
