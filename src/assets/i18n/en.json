@@ -75,7 +75,6 @@
   "finance.form.account_clearing_number.validation": "Clearing number missing",
   "finance.form.account_number.validation": "Account number missing",
   "forgot.password.form.email.or.phone.placeholder": "Email or Phone number",
-  "forgot.password.form.email.or.phone.validation.required": "Email or Phone number missing",
   "forgot.password.form.submit.button": "Send",
   "forgot.password.login.link": "Sign in",
   "forgot.password.submit.error": "Unfortunately, a password reset link could not be sent.",

@@ -21,7 +21,7 @@
             icon="user"
             type="text">
           </sm-input>
-          <input-errors [controls]="registerForm.controls" [apiErrors]="apiErrors" attribute="first_name"></input-errors>
+          <input-errors [control]="registerForm.controls['first_name']" [apiErrors]="apiErrors" apiAttribute="first_name"></input-errors>
         </div>
 
         <div class="field">
@@ -33,7 +33,7 @@
             icon="user"
             type="text">
           </sm-input>
-          <input-errors [controls]="registerForm.controls" [apiErrors]="apiErrors" attribute="last_name"></input-errors>
+          <input-errors [control]="registerForm.controls['last_name']" [apiErrors]="apiErrors" apiAttribute="last_name"></input-errors>
         </div>
 
         <div class="field">
@@ -46,9 +46,9 @@
             type="text">
           </sm-input>
           <input-errors
-            [controls]="registerForm.controls"
+            [control]="registerForm.controls['email']"
             [apiErrors]="apiErrors"
-            attribute="email"
+            apiAttribute="email"
             [patternLabel]="'validations.email_pattern' | translate">
           </input-errors>
         </div>
@@ -62,7 +62,7 @@
             icon="phone"
             type="text">
           </sm-input>
-          <input-errors [controls]="registerForm.controls" [apiErrors]="apiErrors" attribute="phone"></input-errors>
+          <input-errors [control]="registerForm.controls['phone']" [apiErrors]="apiErrors" apiAttribute="phone"></input-errors>
         </div>
 
         <div class="field" [ngClass]="{'error': (registerForm.controls['gender'].touched && !registerForm.controls['gender'].valid) || apiErrors.hasErrorsFor('gender')}">
@@ -76,7 +76,7 @@
               {{gender.name}}
             </option>
           </sm-select>
-          <input-errors [controls]="registerForm.controls" [apiErrors]="apiErrors" attribute="gender"></input-errors>
+          <input-errors [control]="registerForm.controls['gender']" [apiErrors]="apiErrors" apiAttribute="gender"></input-errors>
         </div>
 
         <h3 class="ui dividing header">{{'user.register.form.address.section.header' | translate}}</h3>
@@ -90,7 +90,7 @@
             icon="map pin"
             type="text">
           </sm-input>
-          <input-errors [controls]="registerForm.controls" [apiErrors]="apiErrors" attribute="street"></input-errors>
+          <input-errors [control]="registerForm.controls['street']" [apiErrors]="apiErrors" apiAttribute="street"></input-errors>
         </div>
 
         <div class="field" [ngClass]="{'error': (registerForm.controls['zip'].touched && !registerForm.controls['zip'].valid) || apiErrors.hasErrorsFor('zip')}">
@@ -102,7 +102,7 @@
             icon="map"
             type="text">
           </sm-input>
-          <input-errors [controls]="registerForm.controls" [apiErrors]="apiErrors" attribute="zip"></input-errors>
+          <input-errors [control]="registerForm.controls['zip']" [apiErrors]="apiErrors" apiAttribute="zip"></input-errors>
         </div>
 
         <div class="field" [ngClass]="{'error': (registerForm.controls['city'].touched && !registerForm.controls['city'].valid) || apiErrors.hasErrorsFor('city')}">
@@ -114,7 +114,7 @@
             icon="building"
             type="text">
           </sm-input>
-          <input-errors [controls]="registerForm.controls" [apiErrors]="apiErrors" attribute="city"></input-errors>
+          <input-errors [control]="registerForm.controls['city']" [apiErrors]="apiErrors" apiAttribute="city"></input-errors>
         </div>
 
         <h3 class="ui dividing header">{{'user.register.form.country.and.languages.section.header' | translate}}</h3>
@@ -130,7 +130,7 @@
               {{language.name}}
             </option>
           </sm-select>
-          <input-errors [controls]="registerForm.controls" [apiErrors]="apiErrors" attribute="native_language" apiAttribute="language_ids"></input-errors>
+          <input-errors [control]="registerForm.controls['native_language']" [apiErrors]="apiErrors" apiAttribute="language_ids"></input-errors>
         </div>
 
         <div class="field" [ngClass]="{'error': (registerForm.controls['language'].touched && !registerForm.controls['language'].valid) || apiErrors.hasErrorsFor('language')}">
@@ -144,7 +144,7 @@
               {{language.name}}
             </option>
           </sm-select>
-          <input-errors [controls]="registerForm.controls" [apiErrors]="apiErrors" attribute="language"></input-errors>
+          <input-errors [control]="registerForm.controls['language']" [apiErrors]="apiErrors" apiAttribute="language"></input-errors>
           <div
             class="ui pointing grey basic label">
             {{'user.register.form.default.language.description' | translate}}
@@ -162,7 +162,7 @@
               {{country.name}}
             </option>
           </sm-select>
-          <input-errors [controls]="registerForm.controls" [apiErrors]="apiErrors" attribute="country_of_origin"></input-errors>
+          <input-errors [control]="registerForm.controls['country_of_origin']" [apiErrors]="apiErrors" apiAttribute="country_of_origin"></input-errors>
         </div>
 
         <h3 class="ui dividing header">{{'user.register.form.password.section.header' | translate}}</h3>
@@ -176,7 +176,7 @@
             icon="lock"
             type="password">
           </sm-input>
-          <input-errors [controls]="registerForm.controls" [apiErrors]="apiErrors" attribute="password"></input-errors>
+          <input-errors [control]="registerForm.controls['password']" [apiErrors]="apiErrors" apiAttribute="password"></input-errors>
         </div>
 
         <div class="field" [ngClass]="{'error': (registerForm.controls['repeat_password'].touched && !registerForm.controls['repeat_password'].valid) || passwordsSuppliedAndMisMatch()}">
@@ -202,9 +202,8 @@
           <a href="/assets/terms/160523_2051-2_Terms_and_Conditions_(en).pdf" target="_blank"> PDF EN</a>,
           <a href="/assets/terms/160520_2051-2_Anvandarvillkor_(sv).pdf" target="_blank"> PDF SV</a>
           <input-errors
-            [controls]="registerForm.controls"
+            [control]="registerForm.controls['accepted_terms_and_conditions']"
             [apiErrors]="apiErrors"
-            attribute="accepted_terms_and_conditions"
             apiAttribute="consent">
           </input-errors>
         </div>

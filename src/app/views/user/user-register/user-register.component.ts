@@ -65,10 +65,6 @@ export class UserRegisterComponent extends TranslationListener implements OnInit
       'repeat_password': [, Validators.compose([Validators.required])],
       'accepted_terms_and_conditions': ['', Validators.compose([Validators.required])]
     });
-
-    for(let control in this.registerForm.controls) {
-      this.registerForm.controls[control].valueChanges.subscribe(() => this.apiErrors.resetErrorsFor(control));
-    }
   }
 
   ngOnInit(): void {

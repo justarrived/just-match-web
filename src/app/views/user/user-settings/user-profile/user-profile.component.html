@@ -15,11 +15,10 @@
         </autocomplete-dropdown>
         <p class="profile-form-input-description-text">{{'user.profile.form.default.language.description' | translate}}</p>
         <div *ngIf="!profileForm.value.default_language" class="alert alert-danger">{{'user.profile.form.default.language.required' | translate}}</div>
-        <api-errors [errors]="apiErrors" attribute="language"></api-errors>
+        <api-errors [errors]="apiErrors" apiAttribute="language"></api-errors>
         <input-errors
-          attribute="default_language"
           apiAttribute="language_id"
-          [controls]="profileForm.controls"
+          [control]="profileForm.controls['default_language']"
           [apiErrors]="apiErrors">
         </input-errors>
       </div>
@@ -33,7 +32,7 @@
             [selectedItemLabelFunction]="namePropertyLabel"
             [lookupType]="'list'" [enumList]="languages">
         </autocomplete-dropdown>
-        <input-errors attribute="native_language" [controls]="profileForm.controls"></input-errors>
+        <input-errors [control]="profileForm.controls['native_language']"></input-errors>
       </div>
 
       <div class="profile-form-input-container">
@@ -45,7 +44,7 @@
             [selectedItemLabelFunction]="namePropertyLabel"
             [lookupType]="'list'" [enumList]="countries">
         </autocomplete-dropdown>
-        <input-errors attribute="country_of_origin" [controls]="profileForm.controls" [apiErrors]="apiErrors"></input-errors>
+        <input-errors apiAttribute="country_of_origin" [control]="profileForm.controls['country_of_origin']" [apiErrors]="apiErrors"></input-errors>
       </div>
 
       <div class="profile-form-input-container">
@@ -62,7 +61,7 @@
             {{status.name}}</label>
           </div>
         </div>
-        <input-errors attribute="current_status" [controls]="profileForm.controls" [apiErrors]="apiErrors"></input-errors>
+        <input-errors apiAttribute="current_status" [control]="profileForm.controls['current_status']" [apiErrors]="apiErrors"></input-errors>
       </div>
 
       <div *ngIf="profileForm.value.current_status === 'asylum_seeker'" class="profile-form-input-container">
@@ -89,7 +88,7 @@
             {{'common.no' | translate}}</label>
           </div>
         </div>
-        <input-errors attribute="at_und" [controls]="profileForm.controls" [apiErrors]="apiErrors"></input-errors>
+        <input-errors apiAttribute="at_und" [control]="profileForm.controls['at_und']" [apiErrors]="apiErrors"></input-errors>
       </div>
 
       <div *ngIf="profileForm.value.current_status === 'asylum_seeker' && profileForm.value.at_und === 'yes'" class="profile-form-input-container">
@@ -146,7 +145,7 @@
             (keypress)="isAllowedSSNChar($event.charCode)"
             placeholder="{{'user.profile.form.ssn.placeholder' | translate}}"
             [formControl]="profileForm.controls['ssn']">
-        <input-errors attribute="ssn" [controls]="profileForm.controls" [apiErrors]="apiErrors"></input-errors>
+        <input-errors apiAttribute="ssn" [control]="profileForm.controls['ssn']" [apiErrors]="apiErrors"></input-errors>
       </div>
 
       <div *ngIf="profileForm.value.current_status === 'asylum_seeker' && profileForm.value.at_und === 'yes'" class="profile-form-upload-image-container">
@@ -351,7 +350,7 @@
             autosize type="text"
             placeholder="{{'user.profile.form.general.skills.placeholder' | translate}}"
             [formControl]="profileForm.controls['competence_text']"></textarea>
-        <input-errors attribute="competence_text" [controls]="profileForm.controls" [apiErrors]="apiErrors"></input-errors>
+        <input-errors apiAttribute="competence_text" [control]="profileForm.controls['competence_text']" [apiErrors]="apiErrors"></input-errors>
       </div>
 
       <div class="profile-form-input-container">
@@ -363,7 +362,7 @@
             autosize type="text"
             placeholder="{{'user.profile.form.work.experience.placeholder' | translate}}"
             [formControl]="profileForm.controls['job_experience']"></textarea>
-        <input-errors attribute="job_experience" [controls]="profileForm.controls" [apiErrors]="apiErrors"></input-errors>
+        <input-errors apiAttribute="job_experience" [control]="profileForm.controls['job_experience']" [apiErrors]="apiErrors"></input-errors>
       </div>
 
       <div class="profile-form-input-container">

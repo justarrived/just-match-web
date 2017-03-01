@@ -15,7 +15,7 @@
           icon="user"
           type="text">
         </sm-input>
-        <input-errors attribute="first_name" [controls]="settingsForm.controls" [apiErrors]="apiErrors"></input-errors>
+        <input-errors apiAttribute="first_name" [control]="settingsForm.controls['first_name']" [apiErrors]="apiErrors"></input-errors>
       </div>
 
       <div class="field">
@@ -27,7 +27,7 @@
           icon="user"
           type="text">
         </sm-input>
-        <input-errors attribute="last_name" [controls]="settingsForm.controls" [apiErrors]="apiErrors"></input-errors>
+        <input-errors apiAttribute="last_name" [control]="settingsForm.controls['last_name']" [apiErrors]="apiErrors"></input-errors>
       </div>
 
       <div class="field">
@@ -40,9 +40,9 @@
           type="email">
         </sm-input>
         <input-errors
-          attribute="email"
+          apiAttribute="email"
           [patternLabel]="'validations.email_pattern' | translate"
-          [controls]="settingsForm.controls"
+          [control]="settingsForm.controls['email']"
           [apiErrors]="apiErrors">
         </input-errors>
       </div>
@@ -56,7 +56,7 @@
           icon="phone"
           type="text">
         </sm-input>
-        <input-errors attribute="phone" [controls]="settingsForm.controls" [apiErrors]="apiErrors"></input-errors>
+        <input-errors apiAttribute="phone" [control]="settingsForm.controls['phone']" [apiErrors]="apiErrors"></input-errors>
       </div>
 
       <hr>
@@ -72,7 +72,7 @@
           icon="map pin"
           type="text">
         </sm-input>
-        <input-errors attribute="street" [controls]="settingsForm.controls" [apiErrors]="apiErrors"></input-errors>
+        <input-errors apiAttribute="street" [control]="settingsForm.controls['street']" [apiErrors]="apiErrors"></input-errors>
       </div>
 
       <div class="field">
@@ -84,7 +84,7 @@
           icon="map"
           type="text">
         </sm-input>
-        <input-errors attribute="zip" [controls]="settingsForm.controls" [apiErrors]="apiErrors"></input-errors>
+        <input-errors apiAttribute="zip" [control]="settingsForm.controls['zip']" [apiErrors]="apiErrors"></input-errors>
       </div>
 
       <div class="field">
@@ -96,7 +96,7 @@
           icon="building"
           type="text">
         </sm-input>
-        <input-errors attribute="city" [controls]="settingsForm.controls" [apiErrors]="apiErrors"></input-errors>
+        <input-errors apiAttribute="city" [control]="settingsForm.controls['city']" [apiErrors]="apiErrors"></input-errors>
       </div>
 
       <hr>
@@ -128,7 +128,7 @@
           icon="lock"
           type="password">
         </sm-input>
-        <input-errors attribute="password" [controls]="passwordForm.controls" [apiErrors]="apiErrors"></input-errors>
+        <input-errors apiAttribute="password" [control]="passwordForm.controls['password']" [apiErrors]="apiErrors"></input-errors>
         <input-error
           [visible]="passwordsSuppliedAndMisMatch()"
           [label]="'user.settings.form.repeat.password.validation.mismatch' | translate">
@@ -147,7 +147,7 @@
           class="left"
           type="text">
         </sm-input>
-        <input-errors attribute="account_clearing_number" [controls]="settingsForm.controls" [apiErrors]="apiErrors"></input-errors>
+        <input-errors apiAttribute="account_clearing_number" [control]="settingsForm.controls['account_clearing_number']" [apiErrors]="apiErrors"></input-errors>
       </div>
 
       <div class="field">
@@ -158,9 +158,9 @@
           class="left"
           type="text">
         </sm-input>
-        <input-errors attribute="account_number" [controls]="settingsForm.controls" [apiErrors]="apiErrors"></input-errors>
+        <input-errors apiAttribute="account_number" [control]="settingsForm.controls['account_number']" [apiErrors]="apiErrors"></input-errors>
         <!-- The API can return errors for account, which isn't bound to any instance of form control -->
-        <api-errors [errors]="apiErrors" attribute="account"></api-errors>
+        <api-errors [errors]="apiErrors" apiAttribute="account"></api-errors>
       </div>
 
       <div class="user-details-form-button-container">

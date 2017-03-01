@@ -6,13 +6,12 @@ import {ApiErrors} from '../../models/api-errors';
 @Component({
   selector: 'input-errors',
   template: `
-<api-errors [control]="control" [errors]="apiErrors" [attribute]="apiAttributeName"></api-errors>
+<api-errors [control]="control" [errors]="apiErrors" [attribute]="apiAttribute"></api-errors>
 <input-error *ngFor="let error of formControlErrors" [label]="error"></input-error>
 `
 })
 export class InputErrorsComponent implements OnInit {
-  @Input() private controls: any;
-  @Input() private attribute: string;
+  @Input() private control: FormControl;
   @Input() private apiAttribute: string = null;
   @Input() private apiErrors: ApiErrors = new ApiErrors([]);
 
@@ -36,14 +35,6 @@ export class InputErrorsComponent implements OnInit {
       maxlength: this.maxLengthLabel
     };
     this.control.valueChanges.subscribe(() => this.setErrors());
-  }
-
-  private get control(): FormControl {
-    return this.controls[this.attribute] || new Error('Unknown attriubte: ' + this.attribute);
-  }
-
-  private get apiAttributeName(): string {
-    return this.apiAttribute || this.attribute;
   }
 
   private setErrors(): void {
