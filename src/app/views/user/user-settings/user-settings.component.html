@@ -10,7 +10,7 @@
         <div *ngIf="!uploadingImage && !user.profile_image" class="icon-camera"><i class="fa fa-camera" aria-hidden="true"></i></div>
         <img *ngIf="!uploadingImage && user.profile_image" class="user-info-image" [src]="user.profile_image.mediumImageUrl"/>
       </div>
-      <div class="user-profile-subheader-info-name-container">{{user.firstName}} {{user.lastName}}</div>
+      <div class="user-profile-subheader-info-name-container">{{user.name}}</div>
     </div>
   </div>
 
