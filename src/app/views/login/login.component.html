@@ -8,15 +8,14 @@
 
     <form [formGroup]="loginForm" (ngSubmit)="submitForm(loginForm.value)">
       <div class="form-group material-group login-form-input-container" [ngClass]="{'has-error':!loginForm.controls['email_or_phone'].valid && loginForm.controls['email_or_phone'].touched}">
-        <input maxlength="256" (keyup.enter)="onEnterKeyUp()" (focus)="errors.password = ''" class="login-form-text-input form-control material-input fs-m0" type="text" placeholder="{{'login.form.email.or.phone.placeholder' | translate}}" [formControl]="loginForm.controls['email_or_phone']">
-        <input-errors [control]="loginForm.controls['email_or_phone']"></input-errors>
+        <input maxlength="256" (keyup.enter)="onEnterKeyUp()" class="login-form-text-input form-control material-input fs-m0" type="text" placeholder="{{'login.form.email.or.phone.placeholder' | translate}}" [formControl]="loginForm.controls['email_or_phone']">
+        <input-errors [control]="loginForm.controls['email_or_phone']" [apiErrors]="apiErrors" apiAttribute="email_or_phone"></input-errors>
       </div>
       <div class="form-group  material-group login-form-input-container" [ngClass]="{'has-error':!loginForm.controls['password'].valid && loginForm.controls['password'].touched}">
-        <input (keyup.enter)="onEnterKeyUp()" (focus)="errors.password = ''" class="login-form-text-input form-control material-input fs-m0" type="password" placeholder="{{'login.form.password.placeholder' | translate}}" [formControl]="loginForm.controls['password']"
+        <input (keyup.enter)="onEnterKeyUp()" class="login-form-text-input form-control material-input fs-m0" type="password" placeholder="{{'login.form.password.placeholder' | translate}}" [formControl]="loginForm.controls['password']"
             maxlength="50">
 
-        <div *ngIf="errors.password" class="alert alert-danger">{{errors.password}}</div>
-        <input-errors [control]="loginForm.controls['password']"></input-errors>
+        <input-errors [control]="loginForm.controls['password']" [apiErrors]="apiErrors" apiAttribute="password"></input-errors>
       </div>
       <div class="form-group login-form-button-container">
         <loading *ngIf="loadingSubmit"></loading>

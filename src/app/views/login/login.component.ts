@@ -3,6 +3,7 @@ import {FormGroup, FormBuilder, Validators} from '@angular/forms';
 import {AuthManager} from '../../services/auth-manager.service';
 import {NavigationService} from '../../services/navigation.service';
 import {JARoutes} from '../../routes/ja-routes';
+import {ApiErrors} from '../../models/api-errors';
 
 @Component({
   templateUrl: './login.component.html',
@@ -10,7 +11,7 @@ import {JARoutes} from '../../routes/ja-routes';
 })
 export class LoginComponent {
   private loginForm: FormGroup;
-  private errors: any = {};
+  private apiErrors: ApiErrors = new ApiErrors([]);
   private JARoutes = JARoutes;
   private loadingSubmit: boolean = false;
 
@@ -34,7 +35,7 @@ export class LoginComponent {
       })
       .catch(errors => {
         this.loadingSubmit = false;
-        this.errors = errors.details || errors;
+        this.apiErrors = errors;
       });
   }
 
