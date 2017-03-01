@@ -7,7 +7,6 @@ import {Country} from '../../../models/country';
 import {Language} from '../../../models/language/language';
 import {AuthManager} from '../../../services/auth-manager.service';
 import {Router} from '@angular/router';
-import {namePropertyLabel} from '../../../utils/label-util';
 import {NavigationService} from '../../../services/navigation.service';
 import {JARoutes} from '../../../routes/ja-routes';
 import {TranslationService} from '../../../services/translation.service';
@@ -20,22 +19,17 @@ import {ApiErrors} from '../../../models/api-errors';
   styleUrls: ['./user-register.component.scss']
 })
 export class UserRegisterComponent extends TranslationListener implements OnInit {
-  private namePropertyLabel: Function = namePropertyLabel;
 
   private countries: Country[];
   private languages: Language[];
   private genders: UserGender[];
   private systemLanguages: Language[];
+
+  private registerForm: FormGroup;
   private apiErrors: ApiErrors = new ApiErrors([]);
   private saveSuccess: boolean;
   private saveFail: boolean;
   private loadingSubmit: boolean = false;
-
-  private registerForm: FormGroup;
-  private countryOfOriginInputTouched: boolean = false;
-  private genderInputTouched: boolean = false;
-  private nativeLanguageInputTouched: boolean = false;
-  private defaultLanguageInputTouched: boolean = false;
 
   constructor(
     private router: Router,
