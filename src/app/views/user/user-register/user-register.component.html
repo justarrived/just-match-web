@@ -93,14 +93,14 @@
           class="field">
           <sm-select
            [control]="registerForm.controls['gender']"
-           [data]="genders"
+           [data]="genders | async"
            [label]="('user.register.form.gender.header' | translate) + ' *'"
            [placeholder]="'user.register.form.gender.placeholder' | translate"
            class="fluid">
             <option
               [value]="gender.id"
+              *ngFor="let gender of genders | async">
               {{gender.name}}
-              *ngFor="let gender of genders">
             </option>
           </sm-select>
           <input-errors
@@ -177,13 +177,13 @@
           class="field">
           <sm-select
            [control]="registerForm.controls['native_language']"
-           [data]="languages"
+           [data]="languages | async"
            [label]="('user.register.form.native.language.header' | translate) + ' *'"
            [placeholder]="'user.register.form.native.language.placeholder' | translate"
            class="fluid search">
             <option
               [value]="language.id"
-              *ngFor="let language of languages">
+              *ngFor="let language of languages | async">
               {{language.name}}
             </option>
           </sm-select>
@@ -199,13 +199,13 @@
           class="field">
           <sm-select
            [control]="registerForm.controls['language']"
-           [data]="systemLanguages"
+           [data]="systemLanguages | async"
            [label]="('user.register.form.default.language.header' | translate) + ' *'"
            [placeholder]="'user.register.form.default.language.placeholder' | translate"
            class="fluid search">
             <option
               [value]="language.id"
-              *ngFor="let language of systemLanguages">
+              *ngFor="let language of systemLanguages | async">
               {{language.name}}
             </option>
           </sm-select>
@@ -225,13 +225,13 @@
           class="field">
           <sm-select
            [control]="registerForm.controls['country_of_origin']"
-           [data]="countries"
+           [data]="countries | async"
            [label]="('user.register.form.country.of.origin.header' | translate) + ' *'"
            [placeholder]="'user.register.form.country.of.origin.placeholder' | translate"
            class="fluid search">
             <option
               [value]="country.countryCode"
-              *ngFor="let country of countries">
+              *ngFor="let country of countries | async">
               {{country.name}}
             </option>
           </sm-select>
