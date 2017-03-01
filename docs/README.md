@@ -29,6 +29,39 @@ import {CountryProxy} from '../../../services/proxy/country-proxy.service';
 
 ```
 
+Constructor
+```
+/*
+Sorted arguments and styled as below examples:
+Examples:
+*/
+
+/*
+With arguments and ... statements
+*/
+constructor(
+  private authManager: AuthManager,
+  private countryProxy: CountryProxy,
+  private formBuilder: FormBuilder,
+  private languageProxy: LanguageProxy,
+  private navigationService: NavigationService,
+  private router: Router,
+  private userProxy: UserProxy,
+  protected translationService: TranslationService
+) {
+  ...
+}
+
+/*
+No arguments no statements
+*/
+constructor(
+) {
+}
+
+```
+
+
 * __HTML conventions__
 
 Attribute alignment
