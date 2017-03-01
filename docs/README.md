@@ -14,6 +14,21 @@ Developer guide for Just Match Web.
 
 * __Typescript conventions__
 
+Imports
+```
+/*
+Sorted and one import per line.
+Examples:
+*/
+import {ApiErrors} from '../../../models/api-errors';
+import {AuthManager} from '../../../services/auth-manager.service';
+import {Component} from '@angular/core';
+import {Country} from '../../../models/country';
+import {CountryProxy} from '../../../services/proxy/country-proxy.service';
+...
+
+```
+
 * __HTML conventions__
 
 Attribute alignment
@@ -21,6 +36,7 @@ Attribute alignment
 <!--
 One attribute.
 Whole HTML element on one line.
+Examples:
 -->
 <div class="fourteen wide phone ten wide tablet eight wide computer column">
 
@@ -31,6 +47,7 @@ Whole HTML element on one line.
 <!--
 Two or more attributes.
 One attribute per line and sorted on attribute name.
+Examples:
 -->
 <input-errors
   [apiErrors]="apiErrors"
