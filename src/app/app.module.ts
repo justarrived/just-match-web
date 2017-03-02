@@ -28,6 +28,9 @@ import {UserManager} from './services/user-manager.service';
 import {JobPreviewComponent} from './components/job-preview/job-preview.component';
 import {JobsComponent} from './views/jobs/jobs.component';
 import {JobListItemComponent} from './components/job-list-item/job-list-item.component';
+import {JobsSliderComponent} from './components/jobs-slider/jobs-slider.component';
+import {UserJobCardComponent} from './components/user-job-card/user-job-card.component';
+import {JobCardComponent} from './components/job-card/job-card.component';
 import {JobMapMarkerComponent} from './components/job-map-marker/job-map-marker.component';
 import {PagerComponent} from './components/pager/pager.component';
 import {JobDetailsComponent} from './views/job-details/job-details.component';
@@ -109,6 +112,9 @@ export class RavenErrorHandler implements ErrorHandler {
     AutosizeDirective,
     ErrorComponent,
     NotFoundComponent,
+    JobsSliderComponent,
+    UserJobCardComponent,
+    JobCardComponent,
     TruncatePipe
   ],
   providers: [
