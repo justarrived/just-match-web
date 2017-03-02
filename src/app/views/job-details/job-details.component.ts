@@ -1,16 +1,18 @@
-import {Component, OnInit, Input} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
+import {AuthManager} from '../../services/auth-manager.service';
+import {Component} from '@angular/core';
+import {Input} from '@angular/core';
+import {JARoutes} from '../../routes/ja-routes';
 import {Job} from '../../models/job/job';
 import {JobProxy} from '../../services/proxy/job-proxy.service';
-import {UserManager} from '../../services/user-manager.service';
-import {User} from '../../models/user';
-import {TranslationService} from '../../services/translation.service';
-import {TranslationListener} from '../../components/translation.component';
-import {UserProxy} from '../../services/proxy/user-proxy.service';
-import {UserJob} from '../../models/user/user-job';
 import {NavigationService} from '../../services/navigation.service';
-import {AuthManager} from '../../services/auth-manager.service';
-import {JARoutes} from '../../routes/ja-routes';
+import {OnInit} from '@angular/core';
+import {TranslationListener} from '../../components/translation.component';
+import {TranslationService} from '../../services/translation.service';
+import {User} from '../../models/user';
+import {UserJob} from '../../models/user/user-job';
+import {UserManager} from '../../services/user-manager.service';
+import {UserProxy} from '../../services/proxy/user-proxy.service';
 
 @Component({
   templateUrl: './job-details.component.html',

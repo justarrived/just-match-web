@@ -1,8 +1,9 @@
-import {Component, OnInit} from '@angular/core';
-import {UserProxy} from '../../../services/proxy/user-proxy.service';
+import {AuthManager} from '../../../services/auth-manager.service';
+import {Component} from '@angular/core';
+import {OnInit} from '@angular/core';
 import {User} from '../../../models/user';
 import {UserManager} from '../../../services/user-manager.service';
-import {AuthManager} from '../../../services/auth-manager.service';
+import {UserProxy} from '../../../services/proxy/user-proxy.service';
 
 @Component({
   selector: 'user-settings',
