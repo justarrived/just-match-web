@@ -112,7 +112,7 @@ Initialization
 
 ```
 /*
-All components should implement OnInit.
+All components with Initialization needs should implement OnInit.
 No Initialization is allowed in the constructor and should instead be performed
 in ngOnInit.
 */
