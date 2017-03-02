@@ -26,7 +26,8 @@ import {ErrorComponent} from './views/error/error.component';
 import {ErrorHandler } from '@angular/core';
 import {FaqComponent} from './views/faq/faq.component';
 import {FaqProxy} from './services/proxy/faq-proxy.service';
-import {ForgotPasswordComponent} from './views/forgot-password/forgot-password.component';
+import {ForgotPasswordPageComponent} from './views/forgot-password/forgot-password-page.component';
+import {ForgotPasswordFormComponent} from './components/forms/forgot-password-form/forgot-password-form.component';
 import {FormsModule} from '@angular/forms';
 import {Geolocation} from './services/geolocation.service';
 import {HomeComponent} from './views/home/home.component';
@@ -53,8 +54,9 @@ import {NotFoundComponent} from './views/404/404.component';
 import {PagerComponent} from './components/pager/pager.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {RegisterFormComponent} from './components/forms/register-form/register-form.component';
+import {ResetPasswordPageComponent} from './views/reset-password/reset-password-page.component';
+import {ResetPasswordFormComponent} from './components/forms/reset-password-form/reset-password-form.component';
 import {RegisterPageComponent} from './views/register/register-page.component';
-import {ResetPasswordComponent} from './views/reset-password/reset-password.component';
 import {SkillProxy} from './services/proxy/skill-proxy.service';
 import {SliderComponent} from './components/slider/slider.component';
 import {SystemLanguagesService} from './services/system-languages.service';
@@ -106,7 +108,8 @@ export class RavenErrorHandler implements ErrorHandler {
     DeletableItemComponent,
     ErrorComponent,
     FaqComponent,
-    ForgotPasswordComponent,
+    ForgotPasswordPageComponent,
+    ForgotPasswordFormComponent,
     HomeComponent,
     InputErrorComponent,
     InputErrorsComponent,
@@ -123,8 +126,9 @@ export class RavenErrorHandler implements ErrorHandler {
     NotFoundComponent,
     PagerComponent,
     RegisterFormComponent,
+    ResetPasswordPageComponent,
+    ResetPasswordFormComponent,
     RegisterPageComponent,
-    ResetPasswordComponent,
     SliderComponent,
     TruncatePipe,
     UserDetailsComponent,
