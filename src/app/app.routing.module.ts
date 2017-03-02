@@ -14,7 +14,7 @@ import {MyJobsComponent} from './views/my-jobs/my-jobs.component';
 import {NgModule} from '@angular/core';
 import {NotFoundComponent} from './views/404/404.component';
 import {NotLoggedInGuard} from './services/not-logged-in-guard.service';
-import {ResetPasswordComponent} from './views/reset-password/reset-password.component';
+import {ResetPasswordPageComponent} from './views/reset-password/reset-password-page.component';
 import {RouterModule, Routes} from '@angular/router';
 import {UserRegisterComponent} from './views/user/user-register/user-register.component';
 import {UserSettingsComponent} from './views/user/user-settings/user-settings.component';
@@ -34,7 +34,7 @@ const routes: Routes = [
   { path: 'jobs/:page', component: JobsComponent },
   { path: 'login', component: LoginComponent },
   { path: 'reset-password', redirectTo: '404', pathMatch: 'full'},
-  { path: 'reset-password/:token', component: ResetPasswordComponent },
+  { path: 'reset-password/:token', component: ResetPasswordPageComponent },
   { path: 'user/register', component: UserRegisterComponent, canActivate: [NotLoggedInGuard]},
   { path: 'users/:user-id', component: UserSettingsComponent, canActivate: [LoggedInGuard] },
   { path: 'users/:user-id/jobs', component: MyJobsComponent, canActivate: [LoggedInGuard] },
