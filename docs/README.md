@@ -14,7 +14,7 @@ Developer guide for Just Match Web.
 
 * __Typescript conventions__
 
-Line length 90 characters
+Line length 120 characters
 
 Imports
 ```
@@ -66,7 +66,7 @@ constructor(
 
 * __HTML conventions__
 
-Line length 90 characters
+Line length 120 characters
 
 Attribute alignment
 ```
@@ -96,7 +96,7 @@ Examples:
 
 * __SCSS conventions__
 
-Line length 90 characters
+Line length 120 characters
 
 * __Routes__
 
