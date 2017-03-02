@@ -1,0 +1,23 @@
+@import '../../../styles/colors';
+
+
+.login-form-button-container {
+  text-align: center;
+  margin-top: 20px;
+
+  .error-message {
+    color: $color-cerise-500;
+  }
+
+  .login-form-button {
+    margin: 10px auto;
+    min-width: 200px;
+  }
+
+  .login-form-link {
+    color: $color-accent-main;
+    font-weight: 600;
+    display: block;
+    padding-bottom: 10px;
+  }
+}

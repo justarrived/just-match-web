@@ -9,7 +9,7 @@ import {HomeComponent} from './views/home/home.component';
 import {JARoute} from './routes/ja-route';
 import {JobDetailsComponent} from './views/job-details/job-details.component';
 import {JobsComponent} from './views/jobs/jobs.component';
-import {LoginComponent} from './views/login/login.component';
+import {LoginPageComponent} from './views/login/login-page.component';
 import {MyJobsComponent} from './views/my-jobs/my-jobs.component';
 import {NgModule} from '@angular/core';
 import {NotFoundComponent} from './views/404/404.component';
@@ -32,7 +32,7 @@ const routes: Routes = [
   { path: 'job/:id', component: JobDetailsComponent },
   { path: 'jobs', redirectTo: 'jobs/1', pathMatch: 'full'},
   { path: 'jobs/:page', component: JobsComponent },
-  { path: 'login', component: LoginComponent },
+  { path: 'login', component: LoginPageComponent },
   { path: 'reset-password', redirectTo: '404', pathMatch: 'full'},
   { path: 'reset-password/:token', component: ResetPasswordComponent },
   { path: 'user/register', component: RegisterPageComponent, canActivate: [NotLoggedInGuard]},

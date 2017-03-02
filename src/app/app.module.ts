@@ -42,7 +42,8 @@ import {JobProxy} from './services/proxy/job-proxy.service';
 import {JobsComponent} from './views/jobs/jobs.component';
 import {LanguageProxy} from './services/proxy/language-proxy.service';
 import {LoadingComponent} from './components/loading/loading.component';
-import {LoginComponent} from './views/login/login.component';
+import {LoginFormComponent} from './components/forms/login-form/login-form.component';
+import {LoginPageComponent} from './views/login/login-page.component';
 import {MyJobsComponent} from './views/my-jobs/my-jobs.component';
 import {MyJobsItemComponent} from './components/my-jobs-item/my-jobs-item.component';
 import {NavigationService} from './services/navigation.service';
@@ -115,7 +116,8 @@ export class RavenErrorHandler implements ErrorHandler {
     JobPreviewComponent,
     JobsComponent,
     LoadingComponent,
-    LoginComponent,
+    LoginPageComponent,
+    LoginFormComponent,
     MyJobsComponent,
     MyJobsItemComponent,
     NotFoundComponent,
