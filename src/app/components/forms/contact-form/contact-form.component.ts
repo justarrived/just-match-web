@@ -10,6 +10,7 @@ import {UserManager} from '../../../services/user-manager.service';
 
 @Component({
   selector: 'contact-form',
+  styleUrls: ['./contact-form.component.scss'],
   templateUrl: './contact-form.component.html'
 })
 export class ContactFormComponent implements OnInit {
