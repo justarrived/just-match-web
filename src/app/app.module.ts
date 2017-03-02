@@ -52,6 +52,7 @@ import {NotFoundComponent} from './views/404/404.component';
 import {PagerComponent} from './components/pager/pager.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {RegisterFormComponent} from './components/forms/register-form/register-form.component';
+import {RegisterPageComponent} from './views/register/register-page.component';
 import {ResetPasswordComponent} from './views/reset-password/reset-password.component';
 import {SkillProxy} from './services/proxy/skill-proxy.service';
 import {SliderComponent} from './components/slider/slider.component';
@@ -63,7 +64,6 @@ import {UserJobsComponent} from './views/my-jobs/user-jobs/user-jobs.component';
 import {UserManager} from './services/user-manager.service';
 import {UserProfileComponent} from './views/user/user-settings/user-profile/user-profile.component';
 import {UserProxy} from './services/proxy/user-proxy.service';
-import {UserRegisterComponent} from './views/user/user-register/user-register.component';
 import {UserSettingsComponent} from './views/user/user-settings/user-settings.component';
 import * as Raven from 'raven-js';
 
@@ -121,13 +121,13 @@ export class RavenErrorHandler implements ErrorHandler {
     NotFoundComponent,
     PagerComponent,
     RegisterFormComponent,
+    RegisterPageComponent,
     ResetPasswordComponent,
     SliderComponent,
     TruncatePipe,
     UserDetailsComponent,
     UserJobsComponent,
     UserProfileComponent,
-    UserRegisterComponent,
     UserSettingsComponent
   ],
   providers: [

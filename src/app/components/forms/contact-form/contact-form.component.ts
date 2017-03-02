@@ -2,11 +2,13 @@ import {ApiErrors} from '../../../models/api-errors';
 import {Component} from '@angular/core';
 import {ContactNotification} from '../../../models/contact-notification';
 import {ContactProxy} from '../../../services/proxy/contact-proxy.service';
-import {FormGroup, FormBuilder, Validators} from '@angular/forms';
+import {FormBuilder} from '@angular/forms';
+import {FormGroup} from '@angular/forms';
 import {JARoutes} from '../../../routes/ja-routes';
 import {NavigationService} from '../../../services/navigation.service';
 import {OnInit} from '@angular/core';
 import {UserManager} from '../../../services/user-manager.service';
+import {Validators} from '@angular/forms';
 
 @Component({
   selector: 'contact-form',
@@ -14,9 +16,9 @@ import {UserManager} from '../../../services/user-manager.service';
   templateUrl: './contact-form.component.html'
 })
 export class ContactFormComponent implements OnInit {
-  private apiErrors: ApiErrors = new ApiErrors([]);
-  private contactForm: FormGroup;
-  private loadingSubmit: boolean = false;
+  apiErrors: ApiErrors = new ApiErrors([]);
+  contactForm: FormGroup;
+  loadingSubmit: boolean = false;
 
   constructor(
     private contactProxy: ContactProxy,
@@ -41,7 +43,7 @@ export class ContactFormComponent implements OnInit {
     });
   }
 
-  private submitForm(value: any) {
+  submitForm(value: any) {
     this.loadingSubmit = true;
 
     this.contactProxy.saveContactNotification(

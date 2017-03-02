@@ -16,7 +16,7 @@ import {NotFoundComponent} from './views/404/404.component';
 import {NotLoggedInGuard} from './services/not-logged-in-guard.service';
 import {ResetPasswordComponent} from './views/reset-password/reset-password.component';
 import {RouterModule, Routes} from '@angular/router';
-import {UserRegisterComponent} from './views/user/user-register/user-register.component';
+import {RegisterPageComponent} from './views/register/register-page.component';
 import {UserSettingsComponent} from './views/user/user-settings/user-settings.component';
 
 const routes: Routes = [
@@ -35,7 +35,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'reset-password', redirectTo: '404', pathMatch: 'full'},
   { path: 'reset-password/:token', component: ResetPasswordComponent },
-  { path: 'user/register', component: UserRegisterComponent, canActivate: [NotLoggedInGuard]},
+  { path: 'user/register', component: RegisterPageComponent, canActivate: [NotLoggedInGuard]},
   { path: 'users/:user-id', component: UserSettingsComponent, canActivate: [LoggedInGuard] },
   { path: 'users/:user-id/jobs', component: MyJobsComponent, canActivate: [LoggedInGuard] },
   { path: '**', redirectTo: '404' },
