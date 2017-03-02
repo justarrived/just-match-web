@@ -20,9 +20,7 @@ export class ApiErrorsComponent implements OnInit {
     if (this.control) {
       // Clear errors when touched
       this.control.valueChanges.subscribe(() => {
-        if (this.control.touched) {
-          this.errors.resetErrorsFor(this.attribute);
-        }
+        this.errors.resetErrorsFor(this.attribute);
       });
     }
   }
