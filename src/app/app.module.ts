@@ -26,7 +26,8 @@ import {ErrorComponent} from './views/error/error.component';
 import {ErrorHandler } from '@angular/core';
 import {FaqComponent} from './views/faq/faq.component';
 import {FaqProxy} from './services/proxy/faq-proxy.service';
-import {ForgotPasswordComponent} from './views/forgot-password/forgot-password.component';
+import {ForgotPasswordPageComponent} from './views/forgot-password/forgot-password-page.component';
+import {ForgotPasswordFormComponent} from './components/forms/forgot-password-form/forgot-password-form.component';
 import {FormsModule} from '@angular/forms';
 import {Geolocation} from './services/geolocation.service';
 import {HomeComponent} from './views/home/home.component';
@@ -105,7 +106,8 @@ export class RavenErrorHandler implements ErrorHandler {
     DeletableItemComponent,
     ErrorComponent,
     FaqComponent,
-    ForgotPasswordComponent,
+    ForgotPasswordPageComponent,
+    ForgotPasswordFormComponent,
     HomeComponent,
     InputErrorComponent,
     InputErrorsComponent,

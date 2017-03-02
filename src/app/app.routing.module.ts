@@ -4,7 +4,7 @@ import {ContactPageComponent} from './views/contact/contact-page.component';
 import {CookiesAboutComponent} from './views/cookies-about/cookies-about.component';
 import {ErrorComponent} from './views/error/error.component';
 import {FaqComponent} from './views/faq/faq.component';
-import {ForgotPasswordComponent} from './views/forgot-password/forgot-password.component';
+import {ForgotPasswordPageComponent} from './views/forgot-password/forgot-password-page.component';
 import {HomeComponent} from './views/home/home.component';
 import {JARoute} from './routes/ja-route';
 import {JobDetailsComponent} from './views/job-details/job-details.component';
@@ -27,7 +27,7 @@ const routes: Routes = [
   { path: 'cookies-about', component: CookiesAboutComponent },
   { path: 'error/:statusCode', component: ErrorComponent },
   { path: 'faq', component: FaqComponent },
-  { path: 'forgot-password', component: ForgotPasswordComponent },
+  { path: 'forgot-password', component: ForgotPasswordPageComponent },
   { path: 'home', redirectTo: ''},
   { path: 'job/:id', component: JobDetailsComponent },
   { path: 'jobs', redirectTo: 'jobs/1', pathMatch: 'full'},
