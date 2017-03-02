@@ -10,11 +10,11 @@ import {ApiErrors} from '../../models/api-errors';
   styleUrls: ['./forgot-password.component.scss'],
 })
 export class ForgotPasswordComponent {
-  private forgotPasswordForm: FormGroup;
-  private apiErrors: ApiErrors = new ApiErrors([]);
-  private JARoutes = JARoutes;
-  private displayErrorMessage: boolean;
-  private loadingSubmit: boolean = false;
+  forgotPasswordForm: FormGroup;
+  apiErrors: ApiErrors = new ApiErrors([]);
+  JARoutes = JARoutes;
+  displayErrorMessage: boolean;
+  loadingSubmit: boolean = false;
 
   constructor(
     private userProxy: UserProxy,
@@ -26,12 +26,12 @@ export class ForgotPasswordComponent {
     });
   }
 
-  private submitForm(value: any) {
+  submitForm(value: any) {
     this.loadingSubmit = true;
     this.displayErrorMessage = false;
     this.userProxy.resetPassword(value.email_or_phone)
       .then((result) => {
-        this.navigationService.navigate(JARoutes.confirmation, 'password-reset-link-sent')
+        this.navigationService.navigate(JARoutes.confirmation, 'password-reset-link-sent');
         this.loadingSubmit = false;
       })
       .catch((errors) => {
@@ -41,7 +41,7 @@ export class ForgotPasswordComponent {
       });
   }
 
-  private onEnterKeyUp() {
+  onEnterKeyUp() {
     if (this.forgotPasswordForm.valid) {
       this.submitForm(this.forgotPasswordForm.value);
     }

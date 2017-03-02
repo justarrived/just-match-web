@@ -12,15 +12,15 @@ import {ApiErrors} from '../../../../models/api-errors';
 })
 export class UserDetailsComponent implements OnInit {
 
-  @Input() private user: User;
+  @Input() user: User;
 
-  private settingsForm: FormGroup;
-  private passwordForm: FormGroup;
+  settingsForm: FormGroup;
+  passwordForm: FormGroup;
 
-  private apiErrors: ApiErrors = new ApiErrors([]);
-  private saveSuccess: boolean;
-  private saveFail: boolean;
-  private loadingSubmit: boolean = false;
+  apiErrors: ApiErrors = new ApiErrors([]);
+  saveSuccess: boolean;
+  saveFail: boolean;
+  loadingSubmit: boolean = false;
 
   constructor(
     private authManager: AuthManager,
@@ -49,15 +49,16 @@ export class UserDetailsComponent implements OnInit {
     });
   }
 
-  private passwordsSupplied(): boolean {
+  passwordsSupplied(): boolean {
     return (this.passwordForm.value.password || this.passwordForm.value.repeat_password) && true;
   }
 
-  private passwordsSuppliedAndMisMatch(): boolean {
-    return this.passwordsSupplied() && this.passwordForm.value.password !== this.passwordForm.value.repeat_password && true;
+  passwordsSuppliedAndMisMatch(): boolean {
+    return this.passwordsSupplied() && this.passwordForm.value.password !== this.passwordForm.value.repeat_password &&
+      true;
   }
 
-  private formValidation(): boolean {
+  formValidation(): boolean {
     return this.settingsForm.valid && this.passwordForm.valid && !this.passwordsSuppliedAndMisMatch() && true;
   }
 
@@ -66,7 +67,7 @@ export class UserDetailsComponent implements OnInit {
     this.apiErrors = errors;
   }
 
-  private onSubmit(): void {
+  onSubmit(): void {
     this.saveSuccess = false;
     this.saveFail = false;
     this.loadingSubmit = true;

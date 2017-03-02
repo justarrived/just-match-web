@@ -9,7 +9,7 @@ import {TranslationListener} from '../../components/translation.component';
   styleUrls: ['./faq.component.scss']
 })
 export class FaqComponent extends TranslationListener implements OnInit {
-  private faqs: Faq[];
+  faqs: Faq[];
 
   constructor(
     private faqProxy: FaqProxy,

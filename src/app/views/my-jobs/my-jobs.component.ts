@@ -6,13 +6,9 @@ import {Component} from '@angular/core';
 })
 
 export class MyJobsComponent {
-  private selectedState: string = 'active';
+  selectedState: string = 'active';
 
-  constructor(
-  ) {
-  }
-
-  private setState(newState) {
+  setState(newState) {
     this.selectedState = newState;
   }
 }

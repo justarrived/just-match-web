@@ -7,8 +7,8 @@ import {JARoutes} from '../../routes/ja-routes';
   styleUrls: ['./confirmation.component.scss']
 })
 export class ConfirmationComponent {
-  private type: string;
-  private JARoutes = JARoutes;
+  type: string;
+  JARoutes = JARoutes;
 
   constructor(
     private route: ActivatedRoute

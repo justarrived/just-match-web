@@ -12,10 +12,10 @@ import {TranslationListener} from '../../../components/translation.component';
   templateUrl: './user-jobs.component.html'
 })
 export class UserJobsComponent extends TranslationListener implements OnInit {
-  @Input() private selectedState: string;
-  private userJobs: UserJob[];
-  private currentJobs: Job[] = []; // not invoiced
-  private historyJobs: Job[] = []; // invoiced
+  @Input() selectedState: string;
+  userJobs: UserJob[];
+  currentJobs: Job[] = []; // not invoiced
+  historyJobs: Job[] = []; // invoiced
 
   constructor(
     private userProxy: UserProxy,

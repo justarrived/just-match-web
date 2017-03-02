@@ -17,17 +17,17 @@ import {JARoutes} from '../../routes/ja-routes';
   styleUrls: ['./job-details.component.scss']
 })
 export class JobDetailsComponent extends TranslationListener implements OnInit {
-  @Input() private isInUserView: boolean;
-  @Input() private userJobId: number;
-  private job: Job;
-  private currentJobId: number;
-  private user: User;
-  private userJob: UserJob;
-  private countOfApplicants: number = 0;
-  private errors: any = {};
-  private jobDetailsVisible: boolean;
-  private applyForJobErrorMessageVisible: boolean = false;
-  private JARoutes = JARoutes;
+  @Input() isInUserView: boolean;
+  @Input() userJobId: number;
+  job: Job;
+  currentJobId: number;
+  user: User;
+  userJob: UserJob;
+  countOfApplicants: number = 0;
+  errors: any = {};
+  jobDetailsVisible: boolean;
+  applyForJobErrorMessageVisible: boolean = false;
+  JARoutes = JARoutes;
 
   constructor(
     private route: ActivatedRoute,
@@ -54,41 +54,52 @@ export class JobDetailsComponent extends TranslationListener implements OnInit {
   }
 
   loadData() {
-    this.jobProxy.getJob(this.currentJobId, { include: 'owner,company,hourly_pay,company.company_images,comments' }).then(result => {
-      this.job = result;
-      this.getJobInfo();
-    });
+    this.jobProxy.getJob(
+      this.currentJobId,
+      {
+        include: 'owner,company,hourly_pay,company.company_images,comments'
+      })
+      .then(result => {
+        this.job = result;
+        this.getJobInfo();
+      });
   }
 
   private getJobInfo() {
     if (this.user) {
-      this.userProxy.getUserJobs(this.user.id, { 'filter[job_id]': this.job.id.toString() }).then(response => {
-        this.userJob = response[0];
-      });
+      this.userProxy.getUserJobs(
+        this.user.id,
+        {
+          'filter[job_id]': this.job.id.toString()
+        })
+        .then(response => {
+          this.userJob = response[0];
+        });
     }
   }
 
-  private onApplyForJobButtonClick() {
-    this.jobProxy.applyForJob(this.job.id).then(response => {
-      this.navigationService.navigate(JARoutes.confirmation, 'user-applied-for-job');
-    });
+  onApplyForJobButtonClick() {
+    this.jobProxy.applyForJob(this.job.id)
+      .then(response => {
+        this.navigationService.navigate(JARoutes.confirmation, 'user-applied-for-job');
+      });
   }
 
-  private switchJobDetailsVisibility() {
+  switchJobDetailsVisibility() {
     this.jobDetailsVisible = !this.jobDetailsVisible;
   }
 
-  private onConfirmJobButtonClick() {
+  onConfirmJobButtonClick() {
     this.confirmJob();
   }
 
-  private confirmJob(): Promise<any> {
-    return this.jobProxy.confirmForJob(this.job.id, this.userJob.id).then(response => {
-      this.userJob = response;
-      this.applyForJobErrorMessageVisible = false;
-    }).catch(errors => {
-      this.applyForJobErrorMessageVisible = true;
-    });
+  confirmJob(): Promise<any> {
+    return this.jobProxy.confirmForJob(this.job.id, this.userJob.id)
+      .then(response => {
+        this.userJob = response;
+        this.applyForJobErrorMessageVisible = false;
+      }).catch(errors => {
+        this.applyForJobErrorMessageVisible = true;
+      });
   }
-
 }

@@ -18,12 +18,12 @@ import {TruncatePipe} from '../../utils/truncate';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent extends TranslationListener implements OnInit {
-  private newJobs: Job[];
-  private userJobs: UserJob[];
-  private jobsAppliedFor: UserJob[];
-  private user: User;
-  private isEmpty = isEmpty;
-  private JARoutes = JARoutes;
+  newJobs: Job[];
+  userJobs: UserJob[];
+  jobsAppliedFor: UserJob[];
+  user: User;
+  isEmpty = isEmpty;
+  JARoutes = JARoutes;
 
   constructor(
     private jobProxy: JobProxy,
@@ -54,38 +54,57 @@ export class HomeComponent extends TranslationListener implements OnInit {
     }
   }
 
-  private loadJobs(): void {
-    this.jobProxy.getJobs({ include: 'company,hourly_pay,company.company_images', 'filter[filled]': false, 'filter[job_date]': yyyymmdd(new Date())+'..'+yyyymmdd(nbrOfMonthsFromDate(new Date(), 6))})
-      .then(result => {
-        this.newJobs = result.data;
-      });
-  }
-
-  private loadUserJobs(): void {
-    this.userProxy.getUserJobs(this.user.id, { include: 'job', 'sort': 'job.job.end_date', 'filter[will_perform]': true, 'page[size]': 5 })
-      .then(result => {
-        this.userJobs = result;
-      });
-  }
-
-  private loadJobsAppliedFor(): void {
-    this.userProxy.getUserJobs(this.user.id, { include: 'job', 'sort': '-created_at', 'page[size]': 10 })
-      .then(result => {
-        this.jobsAppliedFor = result;
-      });
-  }
-
-  private userJobsVisible() {
+  userJobsVisible() {
     if (this.user) {
       return !this.isEmpty(this.userJobs);
     }
     return false;
   }
 
-  private jobsAppliedForVisible() {
+  jobsAppliedForVisible() {
     if (this.user) {
       return !this.isEmpty(this.jobsAppliedFor);
     }
-    return false
+    return false;
+  }
+
+  private loadJobs(): void {
+    this.jobProxy.getJobs(
+      {
+        include: 'company,hourly_pay,company.company_images',
+        'filter[filled]': false,
+        'filter[job_date]': yyyymmdd(new Date()) + '..'
+        + yyyymmdd(nbrOfMonthsFromDate(new Date(), 6))
+      })
+      .then(result => {
+        this.newJobs = result.data;
+      });
+  }
+
+  private loadUserJobs(): void {
+    this.userProxy.getUserJobs(
+      this.user.id,
+      {
+        include: 'job',
+        'sort': 'job.job.end_date',
+        'filter[will_perform]': true,
+        'page[size]': 5
+      })
+      .then(result => {
+        this.userJobs = result;
+      });
+  }
+
+  private loadJobsAppliedFor(): void {
+    this.userProxy.getUserJobs(
+      this.user.id,
+      {
+        include: 'job',
+        'sort': '-created_at',
+        'page[size]': 10
+      })
+      .then(result => {
+        this.jobsAppliedFor = result;
+      });
   }
 }

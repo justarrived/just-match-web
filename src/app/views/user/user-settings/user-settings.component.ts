@@ -10,10 +10,10 @@ import {AuthManager} from '../../../services/auth-manager.service';
   styleUrls: ['./user-settings.component.scss']
 })
 export class UserSettingsComponent implements OnInit {
-  private selectedState: string = 'profile';
+  selectedState: string = 'profile';
 
-  private user: User;
-  private uploadingImage: boolean = false;
+  user: User;
+  uploadingImage: boolean = false;
 
   constructor(
     private userProxy: UserProxy,
@@ -29,12 +29,12 @@ export class UserSettingsComponent implements OnInit {
     });
   }
 
-  private setState(newState) {
+  setState(newState) {
     this.authManager.authenticateIfNeeded();
     this.selectedState = newState;
   }
 
-  private onProfileImageFilenameChange(event) {
+  onProfileImageFilenameChange(event) {
     this.uploadingImage = true;
     let file = event.srcElement.files[0];
     if (file) {

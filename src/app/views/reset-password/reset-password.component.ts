@@ -10,12 +10,12 @@ import {ActivatedRoute} from '@angular/router';
   styleUrls: ['./reset-password.component.scss'],
 })
 export class ResetPasswordComponent {
-  private resetPasswordForm: FormGroup;
-  private errors: any = {};
-  private JARoutes = JARoutes;
-  private displayErrorMessage: boolean;
-  private loadingSubmit: boolean = false;
-  private oneTimeToken: string;
+  resetPasswordForm: FormGroup;
+  errors: any = {};
+  JARoutes = JARoutes;
+  displayErrorMessage: boolean;
+  loadingSubmit: boolean = false;
+  oneTimeToken: string;
 
   constructor(
     private userProxy: UserProxy,
@@ -32,12 +32,12 @@ export class ResetPasswordComponent {
     });
   }
 
-  private submitForm(value: any) {
+  submitForm(value: any) {
     this.loadingSubmit = true;
     this.displayErrorMessage = false;
     this.userProxy.changePasswordWithToken(value.password, this.oneTimeToken)
       .then((result) => {
-        this.navigationService.navigate(JARoutes.confirmation, 'password-reset')
+        this.navigationService.navigate(JARoutes.confirmation, 'password-reset');
         this.loadingSubmit = false;
       })
       .catch((errors) => {
@@ -47,7 +47,7 @@ export class ResetPasswordComponent {
       });
   }
 
-  private onEnterKeyUp() {
+  onEnterKeyUp() {
     if (this.resetPasswordForm.valid) {
       this.submitForm(this.resetPasswordForm.value);
     }
