@@ -1,0 +1,15 @@
+<div class="home-job-item-container">
+  <div class="home-job-item-name-container">
+    <div class="home-job-item-name">
+      {{userJob.job.name}}
+    </div>
+  </div>
+  <div *ngIf="userJob.job_ended"
+    class="home-job-item-salary-container home-job-item-salary-job-ended-container">
+    {{'home.jobs.slider.user.jobs.job.ended.label' | translate | uppercase}}
+  </div>
+  <div *ngIf="userJob.willPerform && !userJob.job_ended"
+    class="home-job-item-salary-container home-job-item-salary-will-perform-job-container">
+    {{'home.jobs.slider.user.jobs.will.perform.job.label' | translate | uppercase}}
+  </div>
+</div>
