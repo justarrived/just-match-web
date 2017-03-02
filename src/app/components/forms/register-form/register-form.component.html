@@ -77,9 +77,7 @@
     </input-errors>
   </div>
 
-  <div
-    [ngClass]="{'error': (registerForm.controls['gender'].touched && !registerForm.controls['gender'].valid) || apiErrors.hasErrorsFor('gender')}"
-    class="field">
+  <div class="field">
     <sm-select
      [control]="registerForm.controls['gender']"
      [data]="genders | async"
@@ -103,9 +101,7 @@
     {{'user.register.form.address.section.header' | translate}}
   </h3>
 
-  <div
-    [ngClass]="{'error': (registerForm.controls['street'].touched && !registerForm.controls['street'].valid) || apiErrors.hasErrorsFor('street')}"
-    class="field">
+  <div class="field">
     <sm-input
       [control]="registerForm.controls['street']"
       [label]="'user.register.form.street.header' | translate"
@@ -121,9 +117,7 @@
     </input-errors>
   </div>
 
-  <div
-    [ngClass]="{'error': (registerForm.controls['zip'].touched && !registerForm.controls['zip'].valid) || apiErrors.hasErrorsFor('zip')}"
-    class="field">
+  <div class="field">
     <sm-input
       [control]="registerForm.controls['zip']"
       [label]="'user.register.form.zip.header' | translate"
@@ -139,9 +133,7 @@
     </input-errors>
   </div>
 
-  <div
-    [ngClass]="{'error': (registerForm.controls['city'].touched && !registerForm.controls['city'].valid) || apiErrors.hasErrorsFor('city')}"
-    class="field">
+  <div class="field">
     <sm-input
       [control]="registerForm.controls['city']"
       [label]="'user.register.form.city.header' | translate"
@@ -161,9 +153,7 @@
     {{'user.register.form.country.and.languages.section.header' | translate}}
   </h3>
 
-  <div
-    [ngClass]="{'error': (registerForm.controls['native_language'].touched && !registerForm.controls['native_language'].valid) || apiErrors.hasErrorsFor('language_ids')}"
-    class="field">
+  <div class="field">
     <sm-select
      [control]="registerForm.controls['native_language']"
      [data]="languages | async"
@@ -183,9 +173,7 @@
     </input-errors>
   </div>
 
-  <div
-    [ngClass]="{'error': (registerForm.controls['language'].touched && !registerForm.controls['language'].valid) || apiErrors.hasErrorsFor('language')}"
-    class="field">
+  <div class="field">
     <sm-select
      [control]="registerForm.controls['language']"
      [data]="systemLanguages | async"
@@ -209,9 +197,7 @@
     </div>
   </div>
 
-  <div
-    [ngClass]="{'error': (registerForm.controls['country_of_origin'].touched && !registerForm.controls['country_of_origin'].valid) || apiErrors.hasErrorsFor('country_of_origin')}"
-    class="field">
+  <div class="field">
     <sm-select
      [control]="registerForm.controls['country_of_origin']"
      [data]="countries | async"
@@ -235,9 +221,7 @@
     {{'user.register.form.password.section.header' | translate}}
   </h3>
 
-  <div
-    [ngClass]="{'error': (registerForm.controls['password'].touched && !registerForm.controls['password'].valid) || apiErrors.hasErrorsFor('password')}"
-    class="field">
+  <div class="field">
     <sm-input
       [control]="registerForm.controls['password']"
       [label]="('user.register.form.password.header' | translate) + ' *'"
@@ -253,9 +237,7 @@
     </input-errors>
   </div>
 
-  <div
-    [ngClass]="{'error': (registerForm.controls['repeat_password'].touched && !registerForm.controls['repeat_password'].valid) || passwordsSuppliedAndMisMatch()}"
-    class="field">
+  <div class="field">
     <sm-input
       [control]="registerForm.controls['repeat_password']"
       [label]="('user.register.form.repeat.password.header' | translate) + ' *'"
@@ -270,9 +252,7 @@
     </input-error>
   </div>
 
-  <div
-    [ngClass]="{'error': !registerForm.controls['accepted_terms_and_conditions'].valid || apiErrors.hasErrorsFor('consent')}"
-    class="field">
+  <div class="field">
     <sm-checkbox
       [control]="registerForm.controls['accepted_terms_and_conditions']"
       [label]="('user.register.form.terms.accept' | translate) + ' *'">
