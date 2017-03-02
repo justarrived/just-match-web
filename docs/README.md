@@ -108,6 +108,55 @@ Examples:
 
 * __Components__
 
+Initialization
+
+```
+/*
+All components should implement OnInit.
+No Initialization is allowed in the constructor and should instead be performed
+in ngOnInit.
+*/
+...
+export class ContactFormComponent implements OnInit {
+...
+  constructor(
+    ...
+  ) {
+  }
+
+  ngOnInit(): void {
+    this.initForm();
+  }
+```
+
+```
+/*
+If the component depend on proxy data the component should extend TranslationListener
+and hence implement the function loadData.
+loadData is called whenever user language changes.
+*/
+...
+export class UserRegisterComponent extends TranslationListener implements OnInit {
+  ...
+  constructor(
+    ...
+  ) {
+  }
+
+  ngOnInit(): void {
+    this.loadData();
+    this.initForm();
+  }
+
+  loadData() {
+    this.countries = this.countryProxy.getCountries();
+    this.genders = this.userProxy.getGenders();
+    this.languages = this.languageProxy.getLanguages();
+    this.systemLanguages = this.languageProxy.getSystemLanguages();
+  }
+
+```
+
 * __Assets__
 
 * __Tests__
