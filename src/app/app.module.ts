@@ -34,7 +34,7 @@ import {PagerComponent} from './components/pager/pager.component';
 import {JobDetailsComponent} from './views/job-details/job-details.component';
 import {CommentsComponent} from './components/comments/comments.component';
 import {FaqComponent} from './views/faq/faq.component';
-import {ContactFormComponent} from './components/forms/contact-form.component';
+import {ContactFormComponent} from './components/forms/contact-form/contact-form.component';
 import {ContactPageComponent} from './views/contact/contact-page.component';
 import {ConfirmationComponent} from './views/confirmation/confirmation.component';
 import {CookiesAboutComponent} from './views/cookies-about/cookies-about.component';

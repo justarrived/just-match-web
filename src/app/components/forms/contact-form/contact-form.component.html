@@ -1,5 +1,12 @@
-<form class="ui form" [formGroup]="contactForm" (ngSubmit)="submitForm(contactForm.value)">
-  <sm-loader [complete]="!loadingSubmit" class="inverted" text="{{'component.loading' | translate}}"></sm-loader>
+<form
+  (ngSubmit)="submitForm(contactForm.value)"
+  [formGroup]="contactForm"
+  class="ui form">
+  <sm-loader
+    [complete]="!loadingSubmit"
+    class="inverted"
+    text="{{'component.loading' | translate}}">
+  </sm-loader>
 
   <div class="field">
     <sm-input
@@ -10,7 +17,11 @@
       icon="user"
       type="text">
     </sm-input>
-    <input-errors [control]="contactForm.controls['name']" [apiErrors]="apiErrors" apiAttribute="name"></input-errors>
+    <input-errors
+      [apiErrors]="apiErrors"
+      [control]="contactForm.controls['name']"
+      apiAttribute="name">
+    </input-errors>
   </div>
 
   <div class="field">
@@ -22,7 +33,12 @@
       icon="mail"
       type="text">
     </sm-input>
-    <input-errors [control]="contactForm.controls['email']" [apiErrors]="apiErrors" apiAttribute="email" [patternLabel]="'validations.email_pattern' | translate"></input-errors>
+    <input-errors
+      [apiErrors]="apiErrors"
+      [control]="contactForm.controls['email']"
+      [patternLabel]="'validations.email_pattern' | translate"
+      apiAttribute="email">
+    </input-errors>
   </div>
 
   <div class="field">
@@ -33,14 +49,18 @@
       icon="mail">
     </sm-textarea>
     <input-errors
-      [control]="contactForm.controls['message']"
       [apiErrors]="apiErrors"
+      [control]="contactForm.controls['message']"
       apiAttribute="body">
     </input-errors>
   </div>
 
   <div class="contact-button-container">
-    <loading *ngIf="loadingSubmit"></loading>
-    <button *ngIf="!loadingSubmit" [disabled]="!contactForm.valid" type="submit" class="btn-primary btn-medium btn contact-button">{{'contact.form.submit.button' | translate}}</button>
+    <button
+      [disabled]="!contactForm.valid"
+      class="btn-primary btn-medium btn contact-button"
+      type="submit">
+      {{'contact.form.submit.button' | translate}}
+    </button>
   </div>
 </form>
