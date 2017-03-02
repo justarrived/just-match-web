@@ -63,6 +63,7 @@ import {SystemLanguagesService} from './services/system-languages.service';
 import {TranslationService} from './services/translation.service';
 import {TruncatePipe} from './utils/truncate';
 import {UserDetailsComponent} from './views/user/user-settings/user-details/user-details.component';
+import {UserDetailsFormComponent} from './components/forms/user-details-form/user-details-form.component';
 import {UserJobsComponent} from './views/my-jobs/user-jobs/user-jobs.component';
 import {UserManager} from './services/user-manager.service';
 import {UserProfileComponent} from './views/user/user-settings/user-profile/user-profile.component';
@@ -132,6 +133,7 @@ export class RavenErrorHandler implements ErrorHandler {
     SliderComponent,
     TruncatePipe,
     UserDetailsComponent,
+    UserDetailsFormComponent,
     UserJobsComponent,
     UserProfileComponent,
     UserSettingsComponent
