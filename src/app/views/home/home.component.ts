@@ -15,8 +15,7 @@ import {TruncatePipe} from '../../utils/truncate';
 
 @Component({
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss'],
-  providers: [JobProxy, UserProxy]
+  styleUrls: ['./home.component.scss']
 })
 export class HomeComponent extends TranslationListener implements OnInit {
   private newJobs: Job[];

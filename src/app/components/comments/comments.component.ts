@@ -9,8 +9,7 @@ import {TranslationListener} from '../translation.component';
 @Component({
   selector: 'comments',
   templateUrl: './comments.component.html',
-  styleUrls: ['./comments.component.scss'],
-  providers: [CommentsProxy]
+  styleUrls: ['./comments.component.scss']
 })
 export class CommentsComponent extends TranslationListener implements OnInit {
   @Input() private resourceId: number;

@@ -6,8 +6,7 @@ import {TranslationListener} from '../../components/translation.component';
 
 @Component({
   templateUrl: './faq.component.html',
-  styleUrls: ['./faq.component.scss'],
-  providers: [FaqProxy]
+  styleUrls: ['./faq.component.scss']
 })
 export class FaqComponent extends TranslationListener implements OnInit {
   private faqs: Faq[];

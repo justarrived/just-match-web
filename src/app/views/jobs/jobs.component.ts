@@ -13,8 +13,7 @@ import {yyyymmdd, nbrOfMonthsFromDate} from '../../utils/date-util'
 
 @Component({
   templateUrl: './jobs.component.html',
-  styleUrls: ['./jobs.component.scss'],
-  providers: [JobProxy]
+  styleUrls: ['./jobs.component.scss']
 })
 export class JobsComponent extends TranslationListener implements OnInit {
   private jobs: Job[];

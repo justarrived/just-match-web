@@ -14,8 +14,7 @@ import {JARoutes} from '../../routes/ja-routes';
 
 @Component({
   templateUrl: './job-details.component.html',
-  styleUrls: ['./job-details.component.scss'],
-  providers: [JobProxy]
+  styleUrls: ['./job-details.component.scss']
 })
 export class JobDetailsComponent extends TranslationListener implements OnInit {
   @Input() private isInUserView: boolean;

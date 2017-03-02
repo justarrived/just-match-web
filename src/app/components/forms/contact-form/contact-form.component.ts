@@ -10,8 +10,7 @@ import {UserManager} from '../../../services/user-manager.service';
 
 @Component({
   selector: 'contact-form',
-  templateUrl: './contact-form.component.html',
-  providers: [ContactProxy]
+  templateUrl: './contact-form.component.html'
 })
 export class ContactFormComponent implements OnInit {
   private apiErrors: ApiErrors = new ApiErrors([]);

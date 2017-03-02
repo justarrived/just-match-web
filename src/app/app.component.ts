@@ -13,8 +13,7 @@ import {JARoutes} from './routes/ja-routes';
 @Component({
   selector: 'app',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
-  providers: [SystemLanguagesService]
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
   private user: User;

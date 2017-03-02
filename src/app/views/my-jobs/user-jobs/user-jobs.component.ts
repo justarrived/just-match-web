@@ -9,8 +9,7 @@ import {TranslationListener} from '../../../components/translation.component';
 
 @Component({
   selector: 'user-jobs',
-  templateUrl: './user-jobs.component.html',
-  providers: [UserProxy]
+  templateUrl: './user-jobs.component.html'
 })
 export class UserJobsComponent extends TranslationListener implements OnInit {
   @Input() private selectedState: string;
