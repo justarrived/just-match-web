@@ -52,10 +52,10 @@ $job-card-border-radius: 8px;
 }
 @media (max-width: $md-device-width) {
   .home-job-item-container:first-of-type {
-    margin-left: 3em;
+    margin-left: 20px;
   }
 
   .home-job-item-container:last-of-type {
-    margin-right: 3em;
+    margin-right: 20px;
   }
 }

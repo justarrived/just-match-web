@@ -6,9 +6,9 @@ $job-card-border-radius: 8px;
 .home-jobs-slider-container {
   display: flex;
   flex-wrap: wrap;
-  padding: 3em;
+  padding: 20px;
   @media screen and (max-width: $md-device-width) {
-    padding: 3em 1em;
+    padding: 20px 7px;
   }
 
   .home-jobs-slider-new-jobs-title {
@@ -27,7 +27,7 @@ $job-card-border-radius: 8px;
     .home-jobs-slider-show-all-jobs-link {
       cursor: pointer;
       align-self: flex-end;
-      padding-left: 3em;
+      padding-left: 20px;
     }
 
     .home-jobs-slider-show-all-new-jobs-link {
