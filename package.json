@@ -10,16 +10,16 @@
   "scripts": {
     "start": "node server.js",
     "start-dev": "ng serve",
-    "start-prod": "ng serve --env=production",
-    "start-production": "ng serve --env=production",
+    "start-prod": "ng serve -prod",
+    "start-production": "ng serve -prod",
     "extract-translations": "ng2-translate-extract --dir ./src --output ./used_i18n.json --format=json --clean",
-    "build": "ng build --env=${NODE_ENV-production}",
-    "build-aot": "ng build --env=${NODE_ENV-production}",
+    "build": "ng build -${NODE_ENV-prod}",
+    "build-aot": "ng build -${NODE_ENV-prod} --aot",
     "lint": "tslint \"src/**/*.ts\"",
     "test": "ng test",
     "pree2e": "webdriver-manager update",
     "e2e": "protractor",
-    "postinstall": "ng build --env=${NODE_ENV-production}"
+    "postinstall": "ng build -${NODE_ENV-prod} --aot"
   },
   "private": false,
   "dependencies": {
