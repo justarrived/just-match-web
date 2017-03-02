@@ -4,7 +4,7 @@ import {ContactPageComponent} from './views/contact/contact-page.component';
 import {CookiesAboutComponent} from './views/cookies-about/cookies-about.component';
 import {ErrorComponent} from './views/error/error.component';
 import {FaqComponent} from './views/faq/faq.component';
-import {ForgotPasswordComponent} from './views/forgot-password/forgot-password.component';
+import {ForgotPasswordPageComponent} from './views/forgot-password/forgot-password-page.component';
 import {HomeComponent} from './views/home/home.component';
 import {JARoute} from './routes/ja-route';
 import {JobDetailsComponent} from './views/job-details/job-details.component';
@@ -16,7 +16,7 @@ import {NotFoundComponent} from './views/404/404.component';
 import {NotLoggedInGuard} from './services/not-logged-in-guard.service';
 import {ResetPasswordPageComponent} from './views/reset-password/reset-password-page.component';
 import {RouterModule, Routes} from '@angular/router';
-import {UserRegisterComponent} from './views/user/user-register/user-register.component';
+import {RegisterPageComponent} from './views/register/register-page.component';
 import {UserSettingsComponent} from './views/user/user-settings/user-settings.component';
 
 const routes: Routes = [
@@ -27,7 +27,7 @@ const routes: Routes = [
   { path: 'cookies-about', component: CookiesAboutComponent },
   { path: 'error/:statusCode', component: ErrorComponent },
   { path: 'faq', component: FaqComponent },
-  { path: 'forgot-password', component: ForgotPasswordComponent },
+  { path: 'forgot-password', component: ForgotPasswordPageComponent },
   { path: 'home', redirectTo: ''},
   { path: 'job/:id', component: JobDetailsComponent },
   { path: 'jobs', redirectTo: 'jobs/1', pathMatch: 'full'},
@@ -35,7 +35,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'reset-password', redirectTo: '404', pathMatch: 'full'},
   { path: 'reset-password/:token', component: ResetPasswordPageComponent },
-  { path: 'user/register', component: UserRegisterComponent, canActivate: [NotLoggedInGuard]},
+  { path: 'user/register', component: RegisterPageComponent, canActivate: [NotLoggedInGuard]},
   { path: 'users/:user-id', component: UserSettingsComponent, canActivate: [LoggedInGuard] },
   { path: 'users/:user-id/jobs', component: MyJobsComponent, canActivate: [LoggedInGuard] },
   { path: '**', redirectTo: '404' },
