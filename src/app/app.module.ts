@@ -66,6 +66,7 @@ import {UserDetailsComponent} from './views/user/user-settings/user-details/user
 import {UserJobsComponent} from './views/my-jobs/user-jobs/user-jobs.component';
 import {UserManager} from './services/user-manager.service';
 import {UserProfileComponent} from './views/user/user-settings/user-profile/user-profile.component';
+import {UserProfileFormComponent} from './components/forms/user-profile-form/user-profile-form.component';
 import {UserProxy} from './services/proxy/user-proxy.service';
 import {UserSettingsComponent} from './views/user/user-settings/user-settings.component';
 import * as Raven from 'raven-js';
@@ -134,6 +135,7 @@ export class RavenErrorHandler implements ErrorHandler {
     UserDetailsComponent,
     UserJobsComponent,
     UserProfileComponent,
+    UserProfileFormComponent,
     UserSettingsComponent
   ],
   providers: [
