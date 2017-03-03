@@ -9,6 +9,7 @@ import {AuthManager} from './services/auth-manager.service';
 import {AutocompleteDropdownComponent} from './components/autocomplete-dropdown/autocomplete-dropdown.component';
 import {AutocompleteDropdownListItemComponent} from './components/autocomplete-dropdown/autocomplete-dropdown-list-item/autocomplete-dropdown-list-item.component';
 import {AutosizeDirective} from './components/textarea-autosize/textarea-autosize.directive';
+import {BaseMessageComponent} from './components/messages/base-message.component';
 import {BrowserModule} from '@angular/platform-browser';
 import {CommentsComponent} from './components/comments/comments.component';
 import {CommentsProxy} from './services/proxy/comments-proxy.service';
@@ -22,9 +23,10 @@ import {CountryProxy} from './services/proxy/country-proxy.service';
 import {DataStore} from './services/data-store.service';
 import {DeletableItemComponent} from './components/autocomplete-dropdown/deletable-item/deletable-item.component';
 import {environment} from '../environments/environment';
-import {ErrorComponent} from './views/error/error.component';
+import {ErrorPageComponent} from './views/error/error-page.component';
 import {ErrorHandler } from '@angular/core';
-import {FaqAccordionComponent} from './components/accordions/faq-accordion/faq-accordion.component'
+import {ErrorMessageComponent} from './components/messages/error-message/error-message.component';
+import {FaqAccordionComponent} from './components/accordions/faq-accordion/faq-accordion.component';
 import {FaqPageComponent} from './views/faq/faq-page.component';
 import {FaqProxy} from './services/proxy/faq-proxy.service';
 import {ForgotPasswordFormComponent} from './components/forms/forgot-password-form/forgot-password-form.component';
@@ -33,6 +35,7 @@ import {FormsModule} from '@angular/forms';
 import {Geolocation} from './services/geolocation.service';
 import {HomeComponent} from './views/home/home.component';
 import {HttpModule} from '@angular/http';
+import {InfoMessageComponent} from './components/messages/info-message/info-message.component';
 import {InputErrorComponent} from './components/form-parts/input-error.component';
 import {InputErrorsComponent} from './components/form-parts/input-errors.component';
 import {JARoutes} from './routes/ja-routes';
@@ -54,6 +57,7 @@ import {NgSemanticModule} from 'ng-semantic-ja/ng-semantic';
 import {NO_ERRORS_SCHEMA} from '@angular/core';
 import {NotFoundComponent} from './views/404/404.component';
 import {PagerComponent} from './components/pager/pager.component';
+import {PositiveMessageComponent} from './components/messages/positive-message/positive-message.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {RegisterFormComponent} from './components/forms/register-form/register-form.component';
 import {RegisterPageComponent} from './views/register/register-page.component';
@@ -102,6 +106,7 @@ export class RavenErrorHandler implements ErrorHandler {
     AutocompleteDropdownComponent,
     AutocompleteDropdownListItemComponent,
     AutosizeDirective,
+    BaseMessageComponent,
     CommentsComponent,
     ConfirmationComponent,
     ContactFormComponent,
@@ -109,12 +114,14 @@ export class RavenErrorHandler implements ErrorHandler {
     CookieBarComponent,
     CookiesAboutComponent,
     DeletableItemComponent,
-    ErrorComponent,
+    ErrorMessageComponent,
+    ErrorPageComponent,
     FaqAccordionComponent,
     FaqPageComponent,
-    ForgotPasswordPageComponent,
     ForgotPasswordFormComponent,
+    ForgotPasswordPageComponent,
     HomeComponent,
+    InfoMessageComponent,
     InputErrorComponent,
     InputErrorsComponent,
     JobDetailsComponent,
@@ -123,16 +130,17 @@ export class RavenErrorHandler implements ErrorHandler {
     JobPreviewComponent,
     JobsComponent,
     LoadingComponent,
-    LoginPageComponent,
     LoginFormComponent,
+    LoginPageComponent,
     MyJobsComponent,
     MyJobsItemComponent,
     NotFoundComponent,
     PagerComponent,
+    PositiveMessageComponent,
     RegisterFormComponent,
-    ResetPasswordPageComponent,
-    ResetPasswordFormComponent,
     RegisterPageComponent,
+    ResetPasswordFormComponent,
+    ResetPasswordPageComponent,
     SliderComponent,
     TruncatePipe,
     UserDetailsComponent,

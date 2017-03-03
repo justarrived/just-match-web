@@ -2,7 +2,7 @@ import {LoggedInGuard} from './services/logged-in-guard.service';
 import {ConfirmationComponent} from './views/confirmation/confirmation.component';
 import {ContactPageComponent} from './views/contact/contact-page.component';
 import {CookiesAboutComponent} from './views/cookies-about/cookies-about.component';
-import {ErrorComponent} from './views/error/error.component';
+import {ErrorPageComponent} from './views/error/error-page.component';
 import {FaqPageComponent} from './views/faq/faq-page.component';
 import {ForgotPasswordPageComponent} from './views/forgot-password/forgot-password-page.component';
 import {HomeComponent} from './views/home/home.component';
@@ -25,7 +25,7 @@ const routes: Routes = [
   { path: 'confirmation/:type', component: ConfirmationComponent },
   { path: 'contact', component: ContactPageComponent },
   { path: 'cookies-about', component: CookiesAboutComponent },
-  { path: 'error/:statusCode', component: ErrorComponent },
+  { path: 'error/:statusCode', component: ErrorPageComponent },
   { path: 'faq', component: FaqPageComponent },
   { path: 'forgot-password', component: ForgotPasswordPageComponent },
   { path: 'home', redirectTo: ''},
