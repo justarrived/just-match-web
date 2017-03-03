@@ -1,34 +1,35 @@
-import {Component, OnInit, Input} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
+import {AuthManager} from '../../services/auth-manager.service';
+import {Component} from '@angular/core';
+import {Input} from '@angular/core';
+import {JARoutes} from '../../routes/ja-routes';
 import {Job} from '../../models/job/job';
 import {JobProxy} from '../../services/proxy/job-proxy.service';
-import {UserManager} from '../../services/user-manager.service';
-import {User} from '../../models/user';
-import {TranslationService} from '../../services/translation.service';
-import {TranslationListener} from '../../components/translation.component';
-import {UserProxy} from '../../services/proxy/user-proxy.service';
-import {UserJob} from '../../models/user/user-job';
 import {NavigationService} from '../../services/navigation.service';
-import {AuthManager} from '../../services/auth-manager.service';
-import {JARoutes} from '../../routes/ja-routes';
+import {OnInit} from '@angular/core';
+import {TranslationListener} from '../../components/translation.component';
+import {TranslationService} from '../../services/translation.service';
+import {User} from '../../models/user';
+import {UserJob} from '../../models/user/user-job';
+import {UserManager} from '../../services/user-manager.service';
+import {UserProxy} from '../../services/proxy/user-proxy.service';
 
 @Component({
   templateUrl: './job-details.component.html',
-  styleUrls: ['./job-details.component.scss'],
-  providers: [JobProxy]
+  styleUrls: ['./job-details.component.scss']
 })
 export class JobDetailsComponent extends TranslationListener implements OnInit {
-  @Input() private isInUserView: boolean;
-  @Input() private userJobId: number;
-  private job: Job;
-  private currentJobId: number;
-  private user: User;
-  private userJob: UserJob;
-  private countOfApplicants: number = 0;
-  private errors: any = {};
-  private jobDetailsVisible: boolean;
-  private applyForJobErrorMessageVisible: boolean = false;
-  private JARoutes = JARoutes;
+  @Input() isInUserView: boolean;
+  @Input() userJobId: number;
+  job: Job;
+  currentJobId: number;
+  user: User;
+  userJob: UserJob;
+  countOfApplicants: number = 0;
+  errors: any = {};
+  jobDetailsVisible: boolean;
+  applyForJobErrorMessageVisible: boolean = false;
+  JARoutes = JARoutes;
 
   constructor(
     private route: ActivatedRoute,
@@ -55,41 +56,52 @@ export class JobDetailsComponent extends TranslationListener implements OnInit {
   }
 
   loadData() {
-    this.jobProxy.getJob(this.currentJobId, { include: 'owner,company,hourly_pay,company.company_images,comments' }).then(result => {
-      this.job = result;
-      this.getJobInfo();
-    });
+    this.jobProxy.getJob(
+      this.currentJobId,
+      {
+        include: 'owner,company,hourly_pay,company.company_images,comments'
+      })
+      .then(result => {
+        this.job = result;
+        this.getJobInfo();
+      });
   }
 
   private getJobInfo() {
     if (this.user) {
-      this.userProxy.getUserJobs(this.user.id, { 'filter[job_id]': this.job.id.toString() }).then(response => {
-        this.userJob = response[0];
-      });
+      this.userProxy.getUserJobs(
+        this.user.id,
+        {
+          'filter[job_id]': this.job.id.toString()
+        })
+        .then(response => {
+          this.userJob = response[0];
+        });
     }
   }
 
-  private onApplyForJobButtonClick() {
-    this.jobProxy.applyForJob(this.job.id).then(response => {
-      this.navigationService.navigate(JARoutes.confirmation, 'user-applied-for-job');
-    });
+  onApplyForJobButtonClick() {
+    this.jobProxy.applyForJob(this.job.id)
+      .then(response => {
+        this.navigationService.navigate(JARoutes.confirmation, 'user-applied-for-job');
+      });
   }
 
-  private switchJobDetailsVisibility() {
+  switchJobDetailsVisibility() {
     this.jobDetailsVisible = !this.jobDetailsVisible;
   }
 
-  private onConfirmJobButtonClick() {
+  onConfirmJobButtonClick() {
     this.confirmJob();
   }
 
-  private confirmJob(): Promise<any> {
-    return this.jobProxy.confirmForJob(this.job.id, this.userJob.id).then(response => {
-      this.userJob = response;
-      this.applyForJobErrorMessageVisible = false;
-    }).catch(errors => {
-      this.applyForJobErrorMessageVisible = true;
-    });
+  confirmJob(): Promise<any> {
+    return this.jobProxy.confirmForJob(this.job.id, this.userJob.id)
+      .then(response => {
+        this.userJob = response;
+        this.applyForJobErrorMessageVisible = false;
+      }).catch(errors => {
+        this.applyForJobErrorMessageVisible = true;
+      });
   }
-
 }

@@ -41,3 +41,4 @@ used_i18n.json
 
 # YARN
 yarn-error.log
+yarn.lock

@@ -9,6 +9,7 @@ import {Country} from './country';
 export class User {
   id: string;
   ssn: string;
+  name: string;
   firstName: string;
   lastName: string;
   phone: string;
@@ -51,6 +52,7 @@ export class User {
 
     this.id = jsonObject.id;
     this.ssn = jsonObject.ssn;
+    this.name = jsonObject.name;
     this.firstName = jsonObject.first_name;
     this.lastName = jsonObject.last_name;
     this.email = jsonObject.email;

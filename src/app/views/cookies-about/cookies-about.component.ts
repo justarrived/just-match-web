@@ -4,9 +4,4 @@ import {Component} from '@angular/core';
   templateUrl: './cookies-about.component.html',
   styleUrls: ['./cookies-about.component.scss']
 })
-export class CookiesAboutComponent {
-
-  constructor(
-  ) {
-  }
-}
+export class CookiesAboutComponent {}

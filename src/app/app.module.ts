@@ -1,65 +1,82 @@
-import {NgModule, ErrorHandler } from '@angular/core';
-import {HttpModule} from '@angular/http';
-import {BrowserModule} from '@angular/platform-browser';
-import * as Raven from 'raven-js';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {AgmCoreModule} from 'angular2-google-maps/core';
-import {AppComponent} from './app.component';
-import {HomeComponent} from './views/home/home.component';
-import {DataStore} from './services/data-store.service';
-import {ApiCall} from './services/api-call.service';
-import {AuthManager} from './services/auth-manager.service';
-import {UserProxy} from './services/proxy/user-proxy.service';
 import {ActsAsUser} from './services/acts-as-user.service';
-import {TranslationService} from './services/translation.service';
-import {NavigationService} from './services/navigation.service';
-import {SliderComponent} from './components/slider/slider.component';
-import {UserRegisterComponent} from './views/user/user-register/user-register.component';
-import {CountryProxy} from './services/proxy/country-proxy.service';
-import {DeletableItemComponent} from './components/autocomplete-dropdown/deletable-item/deletable-item.component';
-import {AutocompleteDropdownListItemComponent} from './components/autocomplete-dropdown/autocomplete-dropdown-list-item/autocomplete-dropdown-list-item.component';
+import {AgmCoreModule} from 'angular2-google-maps/core';
+import {ApiCall} from './services/api-call.service';
+import {ApiErrorsComponent} from './components/form-parts/api-errors.component';
+import {AppComponent} from './app.component';
+import {AppRoutingModule} from './app.routing.module';
+import {AppTranslateModule} from './app.translate.module';
+import {AuthManager} from './services/auth-manager.service';
 import {AutocompleteDropdownComponent} from './components/autocomplete-dropdown/autocomplete-dropdown.component';
-import {LanguageProxy} from './services/proxy/language-proxy.service';
-import {SkillProxy} from './services/proxy/skill-proxy.service';
-import {LoginComponent} from './views/login/login.component';
-import {ForgotPasswordComponent} from './views/forgot-password/forgot-password.component';
-import {ResetPasswordComponent} from './views/reset-password/reset-password.component';
-import {UserManager} from './services/user-manager.service';
-import {JobPreviewComponent} from './components/job-preview/job-preview.component';
-import {JobsComponent} from './views/jobs/jobs.component';
+import {AutocompleteDropdownListItemComponent} from './components/autocomplete-dropdown/autocomplete-dropdown-list-item/autocomplete-dropdown-list-item.component';
+import {AutosizeDirective} from './components/textarea-autosize/textarea-autosize.directive';
+import {BrowserModule} from '@angular/platform-browser';
+import {CommentsComponent} from './components/comments/comments.component';
+import {CommentsProxy} from './services/proxy/comments-proxy.service';
+import {ConfirmationComponent} from './views/confirmation/confirmation.component';
+import {ContactFormComponent} from './components/forms/contact-form/contact-form.component';
+import {ContactPageComponent} from './views/contact/contact-page.component';
+import {ContactProxy} from './services/proxy/contact-proxy.service';
+import {CookieBarComponent} from './components/cookie-bar/cookie-bar.component';
+import {CookiesAboutComponent} from './views/cookies-about/cookies-about.component';
+import {CountryProxy} from './services/proxy/country-proxy.service';
+import {DataStore} from './services/data-store.service';
+import {DeletableItemComponent} from './components/autocomplete-dropdown/deletable-item/deletable-item.component';
+import {environment} from '../environments/environment';
+import {ErrorComponent} from './views/error/error.component';
+import {ErrorHandler } from '@angular/core';
+import {FaqComponent} from './views/faq/faq.component';
+import {FaqProxy} from './services/proxy/faq-proxy.service';
+import {ForgotPasswordFormComponent} from './components/forms/forgot-password-form/forgot-password-form.component';
+import {ForgotPasswordPageComponent} from './views/forgot-password/forgot-password-page.component';
+import {FormsModule} from '@angular/forms';
+import {Geolocation} from './services/geolocation.service';
+import {HomeComponent} from './views/home/home.component';
+import {HttpModule} from '@angular/http';
+import {InputErrorComponent} from './components/form-parts/input-error.component';
+import {InputErrorsComponent} from './components/form-parts/input-errors.component';
+import {JARoutes} from './routes/ja-routes';
+import {JobDetailsComponent} from './views/job-details/job-details.component';
 import {JobListItemComponent} from './components/job-list-item/job-list-item.component';
 import {JobMapMarkerComponent} from './components/job-map-marker/job-map-marker.component';
-import {PagerComponent} from './components/pager/pager.component';
-import {JobDetailsComponent} from './views/job-details/job-details.component';
-import {CommentsComponent} from './components/comments/comments.component';
-import {FaqComponent} from './views/faq/faq.component';
-import {ContactComponent} from './views/contact/contact.component';
-import {ConfirmationComponent} from './views/confirmation/confirmation.component';
-import {CookiesAboutComponent} from './views/cookies-about/cookies-about.component';
-import {CookieBarComponent} from './components/cookie-bar/cookie-bar.component';
-import {LoadingComponent} from './components/loading-gif/loading.component';
+import {JobPreviewComponent} from './components/job-preview/job-preview.component';
+import {JobProxy} from './services/proxy/job-proxy.service';
+import {JobsComponent} from './views/jobs/jobs.component';
+import {LanguageProxy} from './services/proxy/language-proxy.service';
+import {LoadingComponent} from './components/loading/loading.component';
+import {LoginFormComponent} from './components/forms/login-form/login-form.component';
+import {LoginPageComponent} from './views/login/login-page.component';
 import {MyJobsComponent} from './views/my-jobs/my-jobs.component';
-import {UserJobsComponent} from './views/my-jobs/user-jobs/user-jobs.component';
 import {MyJobsItemComponent} from './components/my-jobs-item/my-jobs-item.component';
-import {AppTranslateModule} from './app.translate.module';
-import {AppRoutingModule} from './app.routing.module';
-import {UserSettingsComponent} from './views/user/user-settings/user-settings.component';
-import {UserProfileComponent} from './views/user/user-settings/user-profile/user-profile.component';
-import {UserDetailsComponent} from './views/user/user-settings/user-details/user-details.component';
-import {AutosizeDirective} from './components/textarea-autosize/textarea-autosize.directive';
-import {Geolocation} from './services/geolocation.service';
-import {ErrorComponent} from './views/error/error.component';
+import {NavigationService} from './services/navigation.service';
+import {NgModule} from '@angular/core';
+import {NgSemanticModule} from 'ng-semantic-ja/ng-semantic';
 import {NotFoundComponent} from './views/404/404.component';
-import {environment} from '../environments/environment';
-import {JARoutes} from './routes/ja-routes';
+import {PagerComponent} from './components/pager/pager.component';
+import {ReactiveFormsModule} from '@angular/forms';
+import {RegisterFormComponent} from './components/forms/register-form/register-form.component';
+import {RegisterPageComponent} from './views/register/register-page.component';
+import {ResetPasswordFormComponent} from './components/forms/reset-password-form/reset-password-form.component';
+import {ResetPasswordPageComponent} from './views/reset-password/reset-password-page.component';
+import {SkillProxy} from './services/proxy/skill-proxy.service';
+import {SliderComponent} from './components/slider/slider.component';
+import {SystemLanguagesService} from './services/system-languages.service';
+import {TranslationService} from './services/translation.service';
 import {TruncatePipe} from './utils/truncate';
+import {UserDetailsComponent} from './views/user/user-settings/user-details/user-details.component';
+import {UserDetailsFormComponent} from './components/forms/user-details-form/user-details-form.component';
+import {UserJobsComponent} from './views/my-jobs/user-jobs/user-jobs.component';
+import {UserManager} from './services/user-manager.service';
+import {UserProfileComponent} from './views/user/user-settings/user-profile/user-profile.component';
+import {UserProxy} from './services/proxy/user-proxy.service';
+import {UserSettingsComponent} from './views/user/user-settings/user-settings.component';
+import * as Raven from 'raven-js';
 
 Raven
   .config(environment.sentryURL)
   .install();
 
 export class RavenErrorHandler implements ErrorHandler {
-  handleError(error: any) : void {
+  handleError(error: any): void {
     Raven.captureException(error.originalError);
   }
 }
@@ -67,6 +84,7 @@ export class RavenErrorHandler implements ErrorHandler {
 @NgModule({
   imports: [
     BrowserModule,
+    NgSemanticModule,
     HttpModule,
     FormsModule,
     ReactiveFormsModule,
@@ -77,50 +95,64 @@ export class RavenErrorHandler implements ErrorHandler {
     })
   ],
   declarations: [
+    ApiErrorsComponent,
     AppComponent,
-    HomeComponent,
-    SliderComponent,
-    UserRegisterComponent,
-    UserProfileComponent,
-    UserDetailsComponent,
-    DeletableItemComponent,
-    AutocompleteDropdownListItemComponent,
     AutocompleteDropdownComponent,
-    LoginComponent,
-    ForgotPasswordComponent,
-    ResetPasswordComponent,
-    JobPreviewComponent,
-    JobsComponent,
+    AutocompleteDropdownListItemComponent,
+    AutosizeDirective,
+    CommentsComponent,
+    ConfirmationComponent,
+    ContactFormComponent,
+    ContactPageComponent,
+    CookieBarComponent,
+    CookiesAboutComponent,
+    DeletableItemComponent,
+    ErrorComponent,
+    FaqComponent,
+    ForgotPasswordPageComponent,
+    ForgotPasswordFormComponent,
+    HomeComponent,
+    InputErrorComponent,
+    InputErrorsComponent,
+    JobDetailsComponent,
     JobListItemComponent,
     JobMapMarkerComponent,
-    PagerComponent,
-    JobDetailsComponent,
-    CommentsComponent,
-    FaqComponent,
-    ContactComponent,
-    ConfirmationComponent,
-    CookiesAboutComponent,
-    CookieBarComponent,
+    JobPreviewComponent,
+    JobsComponent,
     LoadingComponent,
-    MyJobsItemComponent,
-    UserJobsComponent,
+    LoginPageComponent,
+    LoginFormComponent,
     MyJobsComponent,
-    UserSettingsComponent,
-    AutosizeDirective,
-    ErrorComponent,
+    MyJobsItemComponent,
     NotFoundComponent,
-    TruncatePipe
+    PagerComponent,
+    RegisterFormComponent,
+    ResetPasswordPageComponent,
+    ResetPasswordFormComponent,
+    RegisterPageComponent,
+    SliderComponent,
+    TruncatePipe,
+    UserDetailsComponent,
+    UserDetailsFormComponent,
+    UserJobsComponent,
+    UserProfileComponent,
+    UserSettingsComponent
   ],
   providers: [
     DataStore,
     NavigationService,
+    SystemLanguagesService,
     ApiCall,
     AuthManager,
     ActsAsUser,
-    UserProxy,
+    CommentsProxy,
+    ContactProxy,
     CountryProxy,
+    FaqProxy,
+    JobProxy,
     LanguageProxy,
     SkillProxy,
+    UserProxy,
     TranslationService,
     UserManager,
     Geolocation,
