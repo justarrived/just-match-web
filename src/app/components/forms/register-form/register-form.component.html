@@ -12,19 +12,15 @@
     {{'user.register.form.general.information.section.header' | translate}}
   </h3>
 
-  <div class="field">
-    <user-first-name-input
-       [control]="registerForm.controls['first_name']"
-       [apiErrors]="apiErrors">
-     </user-first-name-input>
-  </div>
+  <user-first-name-input
+     [control]="registerForm.controls['first_name']"
+     [apiErrors]="apiErrors">
+   </user-first-name-input>
 
-  <div class="field">
-    <user-last-name-input
-       [control]="registerForm.controls['last_name']"
-       [apiErrors]="apiErrors">
-     </user-last-name-input>
-  </div>
+  <user-last-name-input
+     [control]="registerForm.controls['last_name']"
+     [apiErrors]="apiErrors">
+   </user-last-name-input>
 
   <div class="field">
     <sm-input
