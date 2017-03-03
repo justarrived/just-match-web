@@ -25,16 +25,16 @@ import {Validators} from '@angular/forms';
 })
 export class RegisterFormComponent extends TranslationListener implements OnInit {
 
-  private countries: Promise<Country[]>;
-  private genders: Promise<UserGender[]>;
-  private languages: Promise<Language[]>;
-  private systemLanguages: Promise<Language[]>;
+  public countries: Promise<Country[]>;
+  public genders: Promise<UserGender[]>;
+  public languages: Promise<Language[]>;
+  public systemLanguages: Promise<Language[]>;
 
-  private apiErrors: ApiErrors = new ApiErrors([]);
-  private loadingSubmit: boolean = false;
-  private registerForm: FormGroup;
-  private saveFail: boolean;
-  private saveSuccess: boolean;
+  public apiErrors: ApiErrors = new ApiErrors([]);
+  public loadingSubmit: boolean = false;
+  public registerForm: FormGroup;
+  public saveFail: boolean;
+  public saveSuccess: boolean;
 
   constructor(
     private authManager: AuthManager,
@@ -46,15 +46,15 @@ export class RegisterFormComponent extends TranslationListener implements OnInit
     private userProxy: UserProxy,
     protected translationService: TranslationService
   ) {
-    super(translationService)
+    super(translationService);
   }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.loadData();
     this.initForm();
   }
 
-  loadData() {
+  protected loadData() {
     this.countries = this.countryProxy.getCountries();
     this.genders = this.userProxy.getGenders();
     this.languages = this.languageProxy.getLanguages();
@@ -80,7 +80,7 @@ export class RegisterFormComponent extends TranslationListener implements OnInit
     });
   }
 
-  private onSubmit() {
+  public onSubmit() {
     this.apiErrors = new ApiErrors([]);
     this.loadingSubmit = true;
     this.saveFail = false;
@@ -119,15 +119,19 @@ export class RegisterFormComponent extends TranslationListener implements OnInit
       });
   }
 
-  private passwordsSupplied() {
+  public passwordsSupplied() {
     return (this.registerForm.value.password || this.registerForm.value.repeat_password) && true;
   }
 
-  private passwordsSuppliedAndMisMatch() {
-    return this.passwordsSupplied() && this.registerForm.value.password !== this.registerForm.value.repeat_password && true;
+  public passwordsSuppliedAndMisMatch() {
+    return this.passwordsSupplied() &&
+      this.registerForm.value.password !== this.registerForm.value.repeat_password &&
+      true;
   }
 
-  private formValidation(): boolean {
-    return this.registerForm.valid && this.registerForm.value.accepted_terms_and_conditions && !this.passwordsSuppliedAndMisMatch() && true;
+  public formValidation(): boolean {
+    return this.registerForm.valid &&
+      this.registerForm.value.accepted_terms_and_conditions &&
+      !this.passwordsSuppliedAndMisMatch() && true;
   }
 }

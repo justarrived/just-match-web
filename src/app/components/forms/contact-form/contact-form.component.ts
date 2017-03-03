@@ -16,9 +16,9 @@ import {Validators} from '@angular/forms';
   templateUrl: './contact-form.component.html'
 })
 export class ContactFormComponent implements OnInit {
-  apiErrors: ApiErrors = new ApiErrors([]);
-  contactForm: FormGroup;
-  loadingSubmit: boolean = false;
+  public apiErrors: ApiErrors = new ApiErrors([]);
+  public contactForm: FormGroup;
+  public loadingSubmit: boolean = false;
 
   constructor(
     private contactProxy: ContactProxy,
@@ -43,7 +43,7 @@ export class ContactFormComponent implements OnInit {
     });
   }
 
-  submitForm(value: any) {
+  public submitForm(value: any) {
     this.loadingSubmit = true;
 
     this.contactProxy.saveContactNotification(

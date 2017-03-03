@@ -4,8 +4,8 @@ import {FormBuilder} from '@angular/forms';
 import {FormGroup} from '@angular/forms';
 import {JARoutes} from '../../../routes/ja-routes';
 import {NavigationService} from '../../../services/navigation.service';
-import {UserProxy} from '../../../services/proxy/user-proxy.service';
 import {OnInit} from '@angular/core';
+import {UserProxy} from '../../../services/proxy/user-proxy.service';
 import {Validators} from '@angular/forms';
 
 @Component({
@@ -27,7 +27,7 @@ export class ForgotPasswordFormComponent implements OnInit {
   ) {
   }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.initForm();
   }
 
@@ -37,7 +37,7 @@ export class ForgotPasswordFormComponent implements OnInit {
     });
   }
 
-  submitForm(value: any) {
+  public submitForm(value: any) {
     this.displayErrorMessage = false;
     this.loadingSubmit = true;
     this.userProxy.resetPassword(value.email_or_phone)
@@ -52,7 +52,7 @@ export class ForgotPasswordFormComponent implements OnInit {
       });
   }
 
-  onEnterKeyUp() {
+  public onEnterKeyUp() {
     if (this.forgotPasswordForm.valid) {
       this.submitForm(this.forgotPasswordForm.value);
     }

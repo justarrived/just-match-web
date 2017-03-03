@@ -1,18 +1,24 @@
-import {Component, Input} from '@angular/core';
+import {Component} from '@angular/core';
+import {Input} from '@angular/core';
 
 @Component({
   selector: 'input-error',
-  template: `<div *ngIf="visible" class="ui pointing red basic label">{{label}}</div>`
+  template: `
+  <div
+    *ngIf="visible"
+    class="ui pointing red basic label">
+    {{label}}
+  </div>`
 })
 export class InputErrorComponent {
-  @Input() label: string;
-  @Input() visible: boolean = true;
+  @Input() public label: string;
+  @Input() public visible: boolean = true;
 
-  hideError(): void {
+  public hideError(): void {
     this.visible = false;
   }
 
-  showError(): void {
+  public showError(): void {
     this.visible = true;
   }
 }

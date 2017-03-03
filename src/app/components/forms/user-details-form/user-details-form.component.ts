@@ -15,7 +15,7 @@ import {Validators} from '@angular/forms';
   styleUrls: ['./user-details-form.component.scss']
 })
 export class UserDetailsFormComponent implements OnInit {
-  @Input() user: User;
+  @Input() public user: User;
   public apiErrors: ApiErrors = new ApiErrors([]);
   public loadingSubmit: boolean = false;
   public passwordForm: FormGroup;
@@ -30,7 +30,7 @@ export class UserDetailsFormComponent implements OnInit {
   ) {
   }
 
-  ngOnInit() {
+  public ngOnInit() {
     this.initSettingsForm();
     this.initPasswordForm();
   }
@@ -57,16 +57,16 @@ export class UserDetailsFormComponent implements OnInit {
     });
   }
 
-  passwordsSupplied(): boolean {
+  public passwordsSupplied(): boolean {
     return (this.passwordForm.value.password || this.passwordForm.value.repeat_password) && true;
   }
 
-  passwordsSuppliedAndMisMatch(): boolean {
+  public passwordsSuppliedAndMisMatch(): boolean {
     return this.passwordsSupplied() && this.passwordForm.value.password !== this.passwordForm.value.repeat_password &&
       true;
   }
 
-  formValidation(): boolean {
+  public formValidation(): boolean {
     return this.settingsForm.valid && this.passwordForm.valid && !this.passwordsSuppliedAndMisMatch() && true;
   }
 
@@ -75,7 +75,7 @@ export class UserDetailsFormComponent implements OnInit {
     this.apiErrors = errors;
   }
 
-  onSubmit(): void {
+  public onSubmit(): void {
     this.saveSuccess = false;
     this.saveFail = false;
     this.loadingSubmit = true;

@@ -1,7 +1,6 @@
 import {Component} from '@angular/core';
 
 @Component({
-  styleUrls: ['./register-page.component.scss'],
   template: `
   <div class="register-container">
 
