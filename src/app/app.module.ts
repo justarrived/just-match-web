@@ -69,6 +69,9 @@ import {UserManager} from './services/user-manager.service';
 import {UserProfileComponent} from './views/user/user-settings/user-profile/user-profile.component';
 import {UserProxy} from './services/proxy/user-proxy.service';
 import {UserSettingsComponent} from './views/user/user-settings/user-settings.component';
+import {TextInputComponent} from './components/form-parts/inputs/text-input/text-input.component';
+import {UserFirstNameInputComponent} from './components/form-parts/inputs/user-first-name-input/user-first-name-input.component';
+import {UserLastNameInputComponent} from './components/form-parts/inputs/user-last-name-input/user-last-name-input.component';
 import * as Raven from 'raven-js';
 
 Raven
@@ -136,6 +139,9 @@ export class RavenErrorHandler implements ErrorHandler {
     UserDetailsFormComponent,
     UserJobsComponent,
     UserProfileComponent,
+    TextInputComponent,
+    UserFirstNameInputComponent,
+    UserLastNameInputComponent,
     UserSettingsComponent
   ],
   providers: [
