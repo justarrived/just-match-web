@@ -1,8 +1,12 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {AuthManager} from '../../../../services/auth-manager.service';
 import {User} from '../../../../models/user';
 import {UserProxy} from '../../../../services/proxy/user-proxy.service';
+import {AutocompleteDropdownComponent} from '../../../../components/autocomplete-dropdown/autocomplete-dropdown.component';
+import {UserGender} from '../../../../models/user/user-gender';
 import {FormGroup, FormBuilder, Validators} from '@angular/forms';
+import {namePropertyLabel} from '../../../../utils/label-util';
+import {find} from 'lodash';
 
 @Component({
   selector: 'user-details',
@@ -10,8 +14,13 @@ import {FormGroup, FormBuilder, Validators} from '@angular/forms';
   styleUrls: ['./user-details.component.scss']
 })
 export class UserDetailsComponent implements OnInit {
+  private namePropertyLabel: Function = namePropertyLabel;
 
   @Input() private user: User;
+
+  @ViewChild('genderDropdown')
+  private genderDropdown: AutocompleteDropdownComponent;
+  private genders: UserGender[];
 
   private settingsForm: FormGroup;
   private passwordForm: FormGroup;
@@ -29,9 +38,22 @@ export class UserDetailsComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.loadData();
+    this.initForm();
+  }
+
+  loadData() {
+    this.genders = [new UserGender({id: 'male', name: 'Male'}), new UserGender({id: 'female', name: 'Female'}), new UserGender({id: 'other', name: 'Other'})];
+    /*this.userProxy.getGenders().then((genders) => {
+      this.genders = genders;
+    });*/
+  }
+
+  private initForm() {
     this.settingsForm = this.formBuilder.group({
       'first_name': [this.user.firstName, Validators.compose([Validators.required, Validators.minLength(2)])],
       'last_name': [this.user.lastName, Validators.compose([Validators.required, Validators.minLength(2)])],
+      'gender': [this.user.gender, Validators.compose([Validators.required])],
       'email': [this.user.email, Validators.compose([Validators.required, Validators.pattern(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)])],
       'phone': [this.user.phone, Validators.compose([Validators.required])],
       'street': [this.user.street],
@@ -41,11 +63,28 @@ export class UserDetailsComponent implements OnInit {
       'account_number': [this.user.accountNumber]
     });
 
+    // This check is needed since some Users may have been created before Gender was needed
+    if(this.user.gender) {
+      const genderName = find(this.genders, {id: this.user.gender}).name;
+      const genderDropdown = this.genderDropdown;
+      const genders = this.genders;
+      setTimeout(function() {
+        genderDropdown.textInput = genderName;
+      }, 100);
+    }
+
     this.passwordForm = this.formBuilder.group({
       'password': [null, Validators.compose([Validators.minLength(6)])],
       'old_password': [null],
       'repeat_password': [null]
     });
+  }
+
+  private onGenderSelect(gender) {
+    if (gender) {
+      this.settingsForm.value.gender = gender.id;
+      this.settingsForm.controls['gender'].setValue(gender.id);
+    }
   }
 
   private passwordsSupplied(): boolean {
