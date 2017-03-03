@@ -24,7 +24,8 @@ import {DeletableItemComponent} from './components/autocomplete-dropdown/deletab
 import {environment} from '../environments/environment';
 import {ErrorComponent} from './views/error/error.component';
 import {ErrorHandler } from '@angular/core';
-import {FaqComponent} from './views/faq/faq.component';
+import {FaqAccordionComponent} from './components/accordions/faq-accordion/faq-accordion.component'
+import {FaqPageComponent} from './views/faq/faq-page.component';
 import {FaqProxy} from './services/proxy/faq-proxy.service';
 import {ForgotPasswordFormComponent} from './components/forms/forgot-password-form/forgot-password-form.component';
 import {ForgotPasswordPageComponent} from './views/forgot-password/forgot-password-page.component';
@@ -50,6 +51,7 @@ import {MyJobsItemComponent} from './components/my-jobs-item/my-jobs-item.compon
 import {NavigationService} from './services/navigation.service';
 import {NgModule} from '@angular/core';
 import {NgSemanticModule} from 'ng-semantic-ja/ng-semantic';
+import {NO_ERRORS_SCHEMA} from '@angular/core';
 import {NotFoundComponent} from './views/404/404.component';
 import {PagerComponent} from './components/pager/pager.component';
 import {ReactiveFormsModule} from '@angular/forms';
@@ -108,7 +110,8 @@ export class RavenErrorHandler implements ErrorHandler {
     CookiesAboutComponent,
     DeletableItemComponent,
     ErrorComponent,
-    FaqComponent,
+    FaqAccordionComponent,
+    FaqPageComponent,
     ForgotPasswordPageComponent,
     ForgotPasswordFormComponent,
     HomeComponent,
@@ -158,7 +161,7 @@ export class RavenErrorHandler implements ErrorHandler {
     Geolocation,
     { provide: ErrorHandler, useClass: RavenErrorHandler }
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [NO_ERRORS_SCHEMA]
 })
-export class AppModule {
-}
+export class AppModule {}

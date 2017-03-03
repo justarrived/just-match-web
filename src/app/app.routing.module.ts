@@ -3,7 +3,7 @@ import {ConfirmationComponent} from './views/confirmation/confirmation.component
 import {ContactPageComponent} from './views/contact/contact-page.component';
 import {CookiesAboutComponent} from './views/cookies-about/cookies-about.component';
 import {ErrorComponent} from './views/error/error.component';
-import {FaqComponent} from './views/faq/faq.component';
+import {FaqPageComponent} from './views/faq/faq-page.component';
 import {ForgotPasswordPageComponent} from './views/forgot-password/forgot-password-page.component';
 import {HomeComponent} from './views/home/home.component';
 import {JARoute} from './routes/ja-route';
@@ -26,7 +26,7 @@ const routes: Routes = [
   { path: 'contact', component: ContactPageComponent },
   { path: 'cookies-about', component: CookiesAboutComponent },
   { path: 'error/:statusCode', component: ErrorComponent },
-  { path: 'faq', component: FaqComponent },
+  { path: 'faq', component: FaqPageComponent },
   { path: 'forgot-password', component: ForgotPasswordPageComponent },
   { path: 'home', redirectTo: ''},
   { path: 'job/:id', component: JobDetailsComponent },
