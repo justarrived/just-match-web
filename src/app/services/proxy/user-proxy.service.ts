@@ -63,8 +63,8 @@ export class UserProxy {
         .then((response) => {
           const documentData = {
             id: response.data.id,
-            oneTimeToken: document.oneTimeToken,
-            documentUrl: document.documentUrl,
+            one_time_token: document.oneTimeToken,
+            document_url: document.documentUrl,
             category: response.data.category
           };
 
