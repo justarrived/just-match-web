@@ -1,6 +1,7 @@
 import {UserImage} from './user/user-image';
 import {UserDocument} from './user/user-document';
 import {map, find} from 'lodash';
+import {UserGender} from './user/user-gender';
 import {UserLanguage} from './user/user-language';
 import {UserSkill} from './user/user-skill';
 import {Company} from './company';
@@ -13,6 +14,7 @@ export class User {
   firstName: string;
   lastName: string;
   phone: string;
+  gender: string;
   email: string;
   street: string;
   zip: string;
@@ -57,6 +59,7 @@ export class User {
     this.lastName = jsonObject.last_name;
     this.email = jsonObject.email;
     this.phone = jsonObject.phone;
+    this.gender = jsonObject.gender;
     this.street = jsonObject.street;
     this.zip = jsonObject.zip;
     this.city = jsonObject.city;
