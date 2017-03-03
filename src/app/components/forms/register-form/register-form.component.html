@@ -13,35 +13,17 @@
   </h3>
 
   <div class="field">
-    <sm-input
-      [control]="registerForm.controls['first_name']"
-      [label]="('user.register.form.first.name.header' | translate) + ' *'"
-      [placeholder]="'user.register.form.first.name.placeholder' | translate"
-      class="left"
-      icon="user"
-      type="text">
-    </sm-input>
-    <input-errors
-      [apiErrors]="apiErrors"
-      [control]="registerForm.controls['first_name']"
-      apiAttribute="first_name">
-    </input-errors>
+    <user-first-name-input
+       [control]="registerForm.controls['first_name']"
+       [apiErrors]="apiErrors">
+     </user-first-name-input>
   </div>
 
   <div class="field">
-    <sm-input
-      [control]="registerForm.controls['last_name']"
-      [label]="('user.register.form.last.name.header' | translate) + ' *'"
-      [placeholder]="'user.register.form.last.name.placeholder' | translate"
-      class="left"
-      icon="user"
-      type="text">
-    </sm-input>
-    <input-errors
-      [apiErrors]="apiErrors"
-      [control]="registerForm.controls['last_name']"
-      apiAttribute="last_name">
-    </input-errors>
+    <user-last-name-input
+       [control]="registerForm.controls['last_name']"
+       [apiErrors]="apiErrors">
+     </user-last-name-input>
   </div>
 
   <div class="field">
