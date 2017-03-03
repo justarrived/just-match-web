@@ -1,4 +1,4 @@
-# Just Match Web
+# Just Match Web [![Dependency Status][david-badge]][david-badge-url] [![devDependency Status][david-dev-badge]][david-dev-badge-url]
 
 ## Built with
 
@@ -75,3 +75,8 @@ We would love if you'd like to help us build and improve this product for the
 benefit of everyone. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](CODE_OF_CONDUCT.md).
 
 Any contributions, feedback and suggestions are more than welcome.
+
+[david-badge]: https://david-dm.org/justarrived/just-match-web.svg
+[david-badge-url]: https://david-dm.org/justarrived/just-match-web
+[david-dev-badge]: https://david-dm.org/justarrived/just-match-web/dev-status.svg
+[david-dev-badge-url]: https://david-dm.org/justarrived/just-match-web?type=dev

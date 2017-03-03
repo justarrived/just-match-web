@@ -19,7 +19,6 @@
     "test": "ng test",
     "pree2e": "webdriver-manager update",
     "e2e": "protractor",
-    "preinstall": "npm install -g node-gyp",
     "heroku-prebuild": "npm install -g @angular/cli",
     "heroku-postbuild": "ng build -prod --aot --env=${ENV_CONFIG-prod}"
   },
