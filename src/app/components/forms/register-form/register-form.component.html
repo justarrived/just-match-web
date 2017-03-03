@@ -198,22 +198,11 @@
   <h3 class="ui dividing header">
     {{'user.register.form.password.section.header' | translate}}
   </h3>
-
-  <div class="field">
-    <sm-input
-      [control]="registerForm.controls['password']"
-      [label]="('user.register.form.password.header' | translate) + ' *'"
-      [placeholder]="'user.register.form.password.placeholder' | translate"
-      class="left"
-      icon="lock"
-      type="password">
-    </sm-input>
-    <input-errors
-      [apiErrors]="apiErrors"
-      [control]="registerForm.controls['password']"
-      apiAttribute="password">
-    </input-errors>
-  </div>
+  
+  <user-password-input
+     [control]="registerForm.controls['password']"
+     [apiErrors]="apiErrors">
+   </user-password-input>
 
   <div class="field">
     <sm-input
