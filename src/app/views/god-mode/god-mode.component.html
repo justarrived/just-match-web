@@ -1,0 +1,12 @@
+<div>
+  <h1>Choose to act as a user below</h1>
+
+  <a (click)="activateGodMode()">KLICK PÅ MIG DÅ!!</a>
+
+  <div *ngFor="let user of users">
+    <p>
+      {{user.first_name}} {{user.last_name}} {{user.id}}
+    </p>
+  </div>
+
+</div>

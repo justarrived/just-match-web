@@ -1,7 +1,7 @@
 <div class="navbar-fixed-top" [ngStyle]="(isNavigationMenuVisible || isLanguageMenuVisible) && {'height': '100%'}">
   <div class="navbar-container">
     <nav class="header navbar-light bg-faded">
-      <div class="row navbar-container">
+      <div class="row navbar-container" [ngClass]="{'navbar-god-mode': godModePresent}">
         <div class="navbar-home row flex-items-xs-middle">
           <a routerLink="{{JARoutes.home.url()}}">
             <img class="logo-img" src="/assets/images/logo.png" alt="Just Arrived" />
@@ -33,6 +33,10 @@
           </div>
 
           <div class="navigation-menu-links-container row">
+
+            <a class="col-xs-12 navigation-menu-item" *ngIf="godModeAvailable" routerLink="{{JARoutes.godMode.url()}}">
+              {{'menu.main.god_mode' | translate}}
+            </a>
 
             <a class="col-xs-12 navigation-menu-item" routerLink="{{JARoutes.userJobs.url([user.id])}}" *ngIf="user">
               {{'menu.main.my_assignment' | translate}}

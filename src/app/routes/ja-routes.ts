@@ -15,5 +15,6 @@ export class JARoutes {
   public static user: JARoute = { url: (args?: string[]) => '/users/' + args[0]};
   public static userJobs: JARoute = { url: (args?: string[]) => '/users/' + args[0] + '/jobs'};
   public static error: JARoute = { url: (args?: string[]) => '/error/' + args[0]};
+  public static godMode: JARoute = { url: () => '/god-mode'};
   public static notFound: JARoute = { url: () => '/404'};
 }

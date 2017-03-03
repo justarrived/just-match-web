@@ -50,6 +50,7 @@ import {AutosizeDirective} from './components/textarea-autosize/textarea-autosiz
 import {Geolocation} from './services/geolocation.service';
 import {ErrorComponent} from './views/error/error.component';
 import {NotFoundComponent} from './views/404/404.component';
+import {GodModeComponent} from './views/god-mode/god-mode.component';
 import {environment} from '../environments/environment';
 import {JARoutes} from './routes/ja-routes';
 import {TruncatePipe} from './utils/truncate';
@@ -109,6 +110,7 @@ export class RavenErrorHandler implements ErrorHandler {
     AutosizeDirective,
     ErrorComponent,
     NotFoundComponent,
+    GodModeComponent,
     TruncatePipe
   ],
   providers: [

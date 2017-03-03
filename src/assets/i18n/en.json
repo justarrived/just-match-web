@@ -136,6 +136,7 @@
   "menu.main.logout": "Log out",
   "menu.main.my_assignment": "My jobs",
   "menu.main.profile": "Profile",
+  "menu.main.god_mode": "God Mode",
   "page.not.found.error.description": "Sorry, the page you are looking for does not exist.",
   "page.not.found.error.title": "404 - Page Not Found",
   "reset.password.form.password.placeholder": "New password",

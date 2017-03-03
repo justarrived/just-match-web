@@ -21,6 +21,10 @@ export class UserProxy {
     return this.apiCall.get('users/' + userId, includes);
   }
 
+  public getUsers(includes?: Object): Promise<any> {
+    return this.apiCall.get('users', includes);
+  }
+
   public getUserSession(email, password) {
     return this.apiCall.post('users/sessions', {
       'email_or_phone': email,
