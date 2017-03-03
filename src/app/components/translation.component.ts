@@ -10,5 +10,5 @@ export abstract class TranslationListener {
     });
   }
 
-  abstract loadData(): void;
+  protected abstract loadData(): void;
 }
