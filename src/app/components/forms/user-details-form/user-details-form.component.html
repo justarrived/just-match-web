@@ -78,6 +78,26 @@
     </input-errors>
   </div>
 
+  <div class="field">
+    <sm-select
+     [control]="settingsForm.controls['gender']"
+     [data]="genders | async"
+     [label]="('user.register.form.gender.header' | translate) + ' *'"
+     [placeholder]="'user.register.form.gender.placeholder' | translate"
+     class="fluid">
+      <option
+        [value]="gender.id"
+        *ngFor="let gender of genders | async">
+        {{gender.name}}
+      </option>
+    </sm-select>
+    <input-errors
+      [apiErrors]="apiErrors"
+      [control]="settingsForm.controls['gender']"
+      apiAttribute="gender">
+    </input-errors>
+  </div>
+
   <h3 class="ui dividing header">
     {{'user.settings.form.address.header' | translate}}
   </h3>
