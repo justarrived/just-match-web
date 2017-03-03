@@ -3,9 +3,9 @@
 
 .user-profile-container {
   .user-profile-subheader-container {
-    padding: 20px;
     background: $color-gray-500;
     color: white;
+    padding: 20px;
     text-align: center;
 
     .user-profile-subheader-title {
@@ -17,17 +17,16 @@
     }
 
     .user-profile-subheader-info-container {
-      margin: 0 auto;
-      max-width: 300px;
 
       .user-profile-subheader-info-image-container {
-        display: table;
-        width: 85px;
-        height: 85px;
-        border-radius: 50%;
         background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        display: inline-block;
+        height: 85px;
+        margin-right: 20px;
         overflow: hidden;
         position: relative;
+        width: 85px;
 
         .user-profile-subheader-info-image-loading {
           display: table-cell;
@@ -39,10 +38,10 @@
         }
 
         .file {
-          width: 85px;
+          cursor: pointer;
           height: 85px;
           opacity: 0;
-          cursor: pointer;
+          width: 85px;
 
           &[disabled] {
             pointer-events: none;
@@ -50,57 +49,58 @@
         }
 
         .icon-camera {
-          width: 85px;
-          height: 85px;
-          pointer-events: none;
-          display: table;
-          position: absolute;
-          top: 0;
           bottom: 0;
+          display: table;
+          height: 85px;
           left: 0;
+          pointer-events: none;
+          position: absolute;
           right: 0;
+          top: 0;
+          width: 85px;
 
           .fa-camera {
-            display: table-cell;
-            vertical-align: middle;
-            font-size: 35px;
             color: rgba(255, 255, 255, 0.7);
+            display: table-cell;
+            font-size: 35px;
+            vertical-align: middle;
           }
         }
 
         .user-info-image {
-          pointer-events: none;
-          object-fit: cover;
-          width: 85px;
-          height: 85px;
-          position: absolute;
-          top: 0;
           bottom: 0;
+          height: 85px;
           left: 0;
+          object-fit: cover;
+          pointer-events: none;
+          position: absolute;
           right: 0;
+          top: 0;
+          width: 85px;
         }
       }
 
       .user-profile-subheader-info-name-container {
-        display: flex;
-        flex-wrap: wrap;
+        @include wrap-long-words;
         align-items: center;
+        display: inline-block;
+        flex-wrap: wrap;
         height: 85px;
         margin: 0 auto;
         max-width: 200px;
-        @include wrap-long-words;
+        vertical-align: middle;
       }
 
       .user-profile-subheader-info-success-msg {
+        color: green;
         margin-top: 8px;
         width: 100%;
-        color: green;
       }
 
       .user-profile-subheader-info-error-msg {
+        color: $color-cerise-500;
         margin-top: 8px;
         width: 100%;
-        color: $color-cerise-500;
       }
     }
   }
@@ -109,11 +109,11 @@
     display: flex;
 
     .user-profile-header-tab {
+      background-color: $default-bg-color;
+      border-bottom: 4px solid $color-gray-50;
+      cursor: pointer;
       padding: 8px;
       text-align: center;
-      background-color: $default-bg-color;
-      cursor: pointer;
-      border-bottom: 4px solid $color-gray-50;
 
       .user-profile-tab-header {
         color: $color-gray-200;

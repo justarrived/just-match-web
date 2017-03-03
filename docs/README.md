@@ -5,8 +5,8 @@ Developer guide for Just Match Web.
 ## High level
 
 * __Technology__
-  - Angular 2.3
-  - Typescript 2.0
+  - Angular 2.4
+  - Typescript 2.2
   - SCSS
   - HTML5
 
@@ -14,9 +14,89 @@ Developer guide for Just Match Web.
 
 * __Typescript conventions__
 
+Line length 120 characters
+
+Imports
+```
+/*
+Sorted and one import per line.
+Examples:
+*/
+import {ApiErrors} from '../../../models/api-errors';
+import {AuthManager} from '../../../services/auth-manager.service';
+import {Component} from '@angular/core';
+import {Country} from '../../../models/country';
+import {CountryProxy} from '../../../services/proxy/country-proxy.service';
+...
+
+```
+
+Constructor
+```
+/*
+Sorted arguments and styled as below examples:
+Examples:
+*/
+
+/*
+With arguments and ... statements
+*/
+constructor(
+  private authManager: AuthManager,
+  private countryProxy: CountryProxy,
+  private formBuilder: FormBuilder,
+  private languageProxy: LanguageProxy,
+  private navigationService: NavigationService,
+  private router: Router,
+  private userProxy: UserProxy,
+  protected translationService: TranslationService
+) {
+  ...
+}
+
+/*
+No arguments no statements
+*/
+constructor(
+) {
+}
+
+```
+
+
 * __HTML conventions__
 
+Line length 120 characters
+
+Attribute alignment
+```
+<!--
+One attribute.
+Whole HTML element on one line.
+Examples:
+-->
+<div class="fourteen wide phone ten wide tablet eight wide computer column">
+
+<h3 class="ui dividing header">
+  {{'user.register.form.address.section.header' | translate}}
+</h3>
+
+<!--
+Two or more attributes.
+One attribute per line and sorted on attribute name.
+Examples:
+-->
+<input-errors
+  [apiErrors]="apiErrors"
+  [control]="registerForm.controls['first_name']"
+  apiAttribute="first_name">
+</input-errors>
+```
+
+
 * __SCSS conventions__
+
+Line length 120 characters
 
 * __Routes__
 
@@ -33,6 +113,86 @@ Developer guide for Just Match Web.
 * __Views__
 
 * __Components__
+
+Initialization
+
+```
+/*
+All components with Initialization needs should implement OnInit.
+No Initialization is allowed in the constructor and should instead be performed
+in ngOnInit.
+*/
+...
+export class ContactFormComponent implements OnInit {
+...
+  constructor(
+    ...
+  ) {
+  }
+
+  ngOnInit(): void {
+    this.initForm();
+  }
+```
+
+```
+/*
+If the component depend on proxy data the component should extend TranslationListener
+and hence implement the function loadData.
+loadData is called whenever user language changes.
+*/
+...
+export class UserRegisterComponent extends TranslationListener implements OnInit {
+  ...
+  constructor(
+    ...
+  ) {
+  }
+
+  ngOnInit(): void {
+    this.loadData();
+    this.initForm();
+  }
+
+  loadData() {
+    this.countries = this.countryProxy.getCountries();
+    this.genders = this.userProxy.getGenders();
+    this.languages = this.languageProxy.getLanguages();
+    this.systemLanguages = this.languageProxy.getSystemLanguages();
+  }
+
+```
+
+Inline template vs seperate html file.
+```
+/*
+20 or less lines of html -> inline the html:
+*/
+...
+@Component({
+  selector: 'api-errors',
+  template: `
+<div
+  *ngFor="let error of apiErrors"
+  class="ui pointing red basic label">
+  {{error.detail}}
+</div>
+`})
+export class ApiErrorsComponent implements OnInit {
+  ...
+
+/*
+More than 20 lines of html -> seprate template file
+*/
+...
+@Component({
+  selector: 'contact-form',
+  styleUrls: ['./contact-form.component.scss'],
+  templateUrl: './contact-form.component.html'
+})
+export class ContactFormComponent implements OnInit {
+  ...
+```
 
 * __Assets__
 

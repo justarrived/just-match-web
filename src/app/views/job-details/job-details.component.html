@@ -3,19 +3,15 @@
 
     <div class="job-status text-center">
       <div class="job-status-container">
-        <div class="row">
-          <div class="col-xs-12">
-            <h3 class="job-status-text">{{job.name}}</h3>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-xs-7">
+        <h3 class="job-status-text">{{job.name}}</h3>
+        <div class="ui grid">
+          <div class="ten wide phone">
             <h4 class="job-status-text">{{job.company.name}}</h4>
             <h6 class="job-status-text">{{job.jobDate | date: 'MMM dd'}} - {{job.jobEndDate | date: 'MMM dd'}}</h6>
             <h6 class="job-status-text">{{job.street}}</h6>
             <h2 class="job-status-salary-text">{{job.grossAmountWithCurrency}}</h2>
           </div>
-          <div class="col-xs-5 job-status-icon-container">
+          <div class="six wide phone job-status-icon-container">
             <img [src]="job.companyLogoURL" class="company-logo">
           </div>
         </div>
@@ -49,53 +45,49 @@
     </div>
 
     <div *ngIf="jobDetailsVisible" class="job-details-container">
-      <div class="row">
-        <div class="col-xs-12">
-          <h4 class="job-title">{{'assignment.details' | translate | uppercase}}</h4>
-        </div>
-      </div>
+      <h4 class="job-title">{{'assignment.details' | translate | uppercase}}</h4>
       <hr class="job-details-separator"/>
-      <div class="row job-preview-row">
-        <div class="col-xs-1">
+      <div class="ui grid job-preview-row">
+        <div class="one wide phone column">
           <div class="job-preview-icon-container">
             <i class="fa fa-file-text-o fa-lg"></i>
           </div>
         </div>
-        <div class="col-xs-11">
+        <div class="fifteen wide phone column">
           <p class="job-preview-text">{{job.description}}</p>
-          <hr class="job-details-separator"/>
         </div>
       </div>
-      <div class="row job-preview-row">
-        <div class="col-xs-1"></div>
-        <div class="col-xs-11">
+      <hr class="job-details-separator"/>
+      <div class="ui grid job-preview-row">
+        <div class="one wide phone column"></div>
+        <div class="fifteen wide phone column">
           <p class="job-preview-text">{{job.hours}} {{'assignment.hours' | translate}} ({{job.hourlyPay.grossSalaryWithUnit}} {{'assignment.rate.gross_salary' | translate}})<br/>
           {{job.netAmountWithCurrency}} {{'assignment.after_tax' | translate}}</p>
-          <hr class="job-details-separator"/>
         </div>
       </div>
-      <div class="row job-preview-row">
-        <div class="col-xs-1">
+      <hr class="job-details-separator"/>
+      <div class="ui grid job-preview-row">
+        <div class="one wide phone column">
           <div class="job-preview-icon-container">
             <i class="fa fa-map-marker fa-lg"></i>
           </div>
         </div>
-        <div class="col-xs-11">
+        <div class="fifteen wide phone column">
           <p class="job-preview-text">{{job.street}}, {{job.zip}}</p>
-          <hr class="job-details-separator"/>
         </div>
       </div>
-      <div class="row job-preview-row">
-        <div class="col-xs-1">
+      <hr class="job-details-separator"/>
+      <div class="ui grid job-preview-row">
+        <div class="one wide phone column">
           <div class="job-preview-icon-container">
             <i class="fa fa-calendar fa-lg"></i>
           </div>
         </div>
-        <div class="col-xs-11">
+        <div class="fifteen wide phone column">
           <p class="job-preview-text">{{job.jobDate | date: 'yyyy-MM-dd'}} - {{job.jobEndDate | date: 'yyyy-MM-dd'}}</p>
-          <hr class="job-details-separator"/>
         </div>
       </div>
+      <hr class="job-details-separator"/>
     </div>
   </div>
 

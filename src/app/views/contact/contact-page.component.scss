@@ -1,0 +1,24 @@
+@import '../../styles/colors';
+
+.contact-form-container {
+  background-color: $default-bg-color;
+
+  .contact-form-description {
+    margin: 0 auto;
+    padding-top: 30px;
+    text-align: center;
+    vertical-align: middle;
+    width: 50%;
+  }
+
+  .contact-form-icon-container {
+    margin: 0 auto;
+    padding-bottom: 50px;
+    padding-top: 10px;
+    text-align: center;
+
+    .contact-form-icon {
+      color: $color-primary-cerise;
+    }
+  }
+}

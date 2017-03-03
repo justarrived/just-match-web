@@ -1,19 +1,19 @@
 @import '../../styles/colors';
 
 .adress-field {
-  padding-top: 2px;
-  padding-bottom: 2px;
   font-size: 14px;
+  padding-bottom: 2px;
+  padding-top: 2px;
 }
 
 .job-list-container {
-  color: $color-gray-400;
-  max-width: 840px;
-  margin: 0 auto;
-  cursor: pointer;
-  cursor: hand;
-  padding: 1em;
   border-bottom: 1px solid $color-gray-50;
+  color: $color-gray-400;
+  cursor: hand;
+  cursor: pointer;
+  margin: 0 auto;
+  max-width: 840px;
+  padding: 1em;
   p {
     margin-bottom: 2px;
   }
@@ -21,13 +21,14 @@
 
 .date-container {
   color: $color-gray-700;
-  text-transform: uppercase;
-  text-align: center;
+  float: left;
   font-size: 18px;
   font-weight: 500;
   line-height: 20px;
+  margin-top: 15px;
+  text-align: center;
+  text-transform: uppercase;
   top: 0.85em;
-  float: left;
   width: 100px;
 }
 .job-meta-details {

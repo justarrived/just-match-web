@@ -1,31 +1,42 @@
-import {Component, Input, OnInit, ViewChild} from '@angular/core';
-import {UserLanguage} from '../../../../models/user/user-language';
-import {UserSkill} from '../../../../models/user/user-skill';
-import {UserStatus} from '../../../../models/user/user-status';
-import {UserImage} from '../../../../models/user/user-image';
-import {UserDocument} from '../../../../models/user/user-document';
-import {Document} from '../../../../models/document';
-import {LanguageProxy} from '../../../../services/proxy/language-proxy.service';
-import {CountryProxy} from '../../../../services/proxy/country-proxy.service';
-import {SkillProxy} from '../../../../services/proxy/skill-proxy.service';
+import {ApiErrors} from '../../../../models/api-errors';
 import {AuthManager} from '../../../../services/auth-manager.service';
+import {AutocompleteDropdownComponent} from
+'../../../../components/autocomplete-dropdown/autocomplete-dropdown.component';
+import {Component} from '@angular/core';
 import {Country} from '../../../../models/country';
-import {Skill} from '../../../../models/skill/skill';
-import {Language} from '../../../../models/language/language';
-import {User} from '../../../../models/user';
-import {isEmpty, some, map} from 'lodash';
+import {CountryProxy} from '../../../../services/proxy/country-proxy.service';
 import {deleteElementFromArray} from '../../../../utils/array-util';
 import {deleteElementFromArrayLambda} from '../../../../utils/array-util';
-import {namePropertyLabel} from '../../../../utils/label-util';
+import {Document} from '../../../../models/document';
+import {FormBuilder} from '@angular/forms';
+import {FormGroup} from '@angular/forms';
+import {Input} from '@angular/core';
+import {isEmpty} from 'lodash';
+import {isValidSSNCharCode} from '../../../../utils/is-valid-ssn-char-code';
+import {Language} from '../../../../models/language/language';
 import {LanguageProficiency} from '../../../../models/language/language-proficiency';
-import {LanguageProficiencyLevels, languageProficiencyLevelsList} from '../../../../models/language/language-proficiency-levels';
-import {SkillProficiencyLevels, skillProficiencyLevelsList} from '../../../../models/skill/skill-proficiency-levels';
-import {UserProxy} from '../../../../services/proxy/user-proxy.service';
-import {AutocompleteDropdownComponent} from '../../../../components/autocomplete-dropdown/autocomplete-dropdown.component';
-import {FormGroup, FormBuilder, Validators} from '@angular/forms';
+import {LanguageProficiencyLevels} from '../../../../models/language/language-proficiency-levels';
+import {languageProficiencyLevelsList} from '../../../../models/language/language-proficiency-levels';
+import {LanguageProxy} from '../../../../services/proxy/language-proxy.service';
+import {map} from 'lodash';
+import {namePropertyLabel} from '../../../../utils/label-util';
+import {OnInit} from '@angular/core';
+import {Skill} from '../../../../models/skill/skill';
+import {SkillProficiencyLevels} from '../../../../models/skill/skill-proficiency-levels';
+import {skillProficiencyLevelsList} from '../../../../models/skill/skill-proficiency-levels';
+import {SkillProxy} from '../../../../services/proxy/skill-proxy.service';
+import {some} from 'lodash';
 import {TranslationListener} from '../../../../components/translation.component';
 import {TranslationService} from '../../../../services/translation.service';
-import {isValidSSNCharCode} from '../../../../utils/is-valid-ssn-char-code';
+import {User} from '../../../../models/user';
+import {UserDocument} from '../../../../models/user/user-document';
+import {UserImage} from '../../../../models/user/user-image';
+import {UserLanguage} from '../../../../models/user/user-language';
+import {UserProxy} from '../../../../services/proxy/user-proxy.service';
+import {UserSkill} from '../../../../models/user/user-skill';
+import {UserStatus} from '../../../../models/user/user-status';
+import {Validators} from '@angular/forms';
+import {ViewChild} from '@angular/core';
 
 @Component({
   selector: 'user-profile',
@@ -34,81 +45,80 @@ import {isValidSSNCharCode} from '../../../../utils/is-valid-ssn-char-code';
 })
 export class UserProfileComponent extends TranslationListener implements OnInit {
   @ViewChild('nativeLanguageDropdown')
-  private nativeLanguageDropdown: AutocompleteDropdownComponent;
+  nativeLanguageDropdown: AutocompleteDropdownComponent;
 
   @ViewChild('defaultLanguageDropdown')
-  private defaultLanguageDropdown: AutocompleteDropdownComponent;
+  defaultLanguageDropdown: AutocompleteDropdownComponent;
 
   @ViewChild('countryDropdown')
-  private countryDropdown: AutocompleteDropdownComponent;
+  countryDropdown: AutocompleteDropdownComponent;
 
-  private namePropertyLabel: Function = namePropertyLabel;
+  namePropertyLabel: Function = namePropertyLabel;
 
-  private languageExpertProficiency: LanguageProficiency = LanguageProficiencyLevels.expert;
-  private languageProficiencyLevelsAvailable: LanguageProficiency[] = languageProficiencyLevelsList;
-  private skillProficiencyLevelsAvailable: LanguageProficiency[] = skillProficiencyLevelsList;
+  languageExpertProficiency: LanguageProficiency = LanguageProficiencyLevels.expert;
+  languageProficiencyLevelsAvailable: LanguageProficiency[] = languageProficiencyLevelsList;
+  skillProficiencyLevelsAvailable: LanguageProficiency[] = skillProficiencyLevelsList;
 
-  @Input() private user: User;
+  @Input() user: User;
 
-  private countries: Country[];
-  private languages: Language[];
-  private systemLanguages: Language[];
-  private languagesExcludingNative: Language[];
-  private ss: Language;
-  private skills: Skill[];
+  countries: Country[];
+  languages: Language[];
+  systemLanguages: Language[];
+  languagesExcludingNative: Language[];
+  skills: Skill[];
 
-  private profileForm: FormGroup;
+  profileForm: FormGroup;
 
-  private statuses: UserStatus[];
+  statuses: UserStatus[];
 
-  private serverValidationErrors: any = {};
-  private saveSuccess: boolean;
-  private saveFail: boolean;
-  private loadingSubmit: boolean = false;
+  apiErrors: ApiErrors = new ApiErrors([]);
+  saveSuccess: boolean;
+  saveFail: boolean;
+  loadingSubmit: boolean = false;
 
-  private residencePermitFrontImageStatusObject: any = {
+  residencePermitFrontImageStatusObject: any = {
     imageSaveSuccess: false,
     imageSaveFail: false,
     uploadingImage: false
   };
 
-  private residencePermitBackImageStatusObject: any = {
+  residencePermitBackImageStatusObject: any = {
     imageSaveSuccess: false,
     imageSaveFail: false,
     uploadingImage: false
   };
 
-  private lmaImageStatusObject: any = {
+  lmaImageStatusObject: any = {
     imageSaveSuccess: false,
     imageSaveFail: false,
     uploadingImage: false
   };
 
-  private skatteverketCertificateImageStatusObject: any = {
+  skatteverketCertificateImageStatusObject: any = {
     imageSaveSuccess: false,
     imageSaveFail: false,
     uploadingImage: false
   };
 
-  private personalIdImageStatusObject: any = {
+  personalIdImageStatusObject: any = {
     imageSaveSuccess: false,
     imageSaveFail: false,
     uploadingImage: false
   };
 
-  private workPermitFrontImageStatusObject: any = {
+  workPermitFrontImageStatusObject: any = {
     imageSaveSuccess: false,
     imageSaveFail: false,
     uploadingImage: false
   };
 
-  private workPermitBackImageStatusObject: any = {
+  workPermitBackImageStatusObject: any = {
     imageSaveSuccess: false,
     imageSaveFail: false,
     uploadingImage: false
   };
 
-  private resumeDocumentStatusObject: any = {
+  resumeDocumentStatusObject: any = {
     documentSaveSuccess: false,
     documentSaveFail: false,
     uploadingDocument: false
@@ -125,7 +135,8 @@ export class UserProfileComponent extends TranslationListener implements OnInit 
   ) {
     super(translationService);
     // remove native speaker as option
-    this.languageProficiencyLevelsAvailable = this.languageProficiencyLevelsAvailable.slice();
+    this.languageProficiencyLevelsAvailable =
+      this.languageProficiencyLevelsAvailable.slice();
     this.languageProficiencyLevelsAvailable.pop();
   }
 
@@ -135,7 +146,7 @@ export class UserProfileComponent extends TranslationListener implements OnInit 
 
     this.authManager.getUserChangeEmmiter().subscribe(user => {
       this.user = user;
-      if(user !== null) {
+      if (user !== null) {
         this.loadData();
         this.initForm();
       }
@@ -153,7 +164,8 @@ export class UserProfileComponent extends TranslationListener implements OnInit 
       this.languagesExcludingNative = languages.slice();
       let nativeLanguage = this.user.getNativeLanguage();
       if (nativeLanguage) {
-        deleteElementFromArrayLambda(this.languagesExcludingNative, lang => lang.languageCode === nativeLanguage.language.languageCode)
+        deleteElementFromArrayLambda(this.languagesExcludingNative,
+          lang => lang.languageCode === nativeLanguage.language.languageCode);
       }
     });
     this.skillProxy.getSkills().then(skills => this.skills = skills);
@@ -191,7 +203,7 @@ export class UserProfileComponent extends TranslationListener implements OnInit 
       });
   }
 
-  private onNativeLanguageSelect(language): void {
+  onNativeLanguageSelect(language): void {
     if (!language) {
       return;
     }
@@ -205,28 +217,30 @@ export class UserProfileComponent extends TranslationListener implements OnInit 
       deleteElementFromArray(this.profileForm.value.user_languages, oldNativeLanguage);
     }
 
-    deleteElementFromArrayLambda(this.profileForm.value.user_languages, lang => lang.language && lang.language.languageCode === language.languageCode)
+    deleteElementFromArrayLambda(this.profileForm.value.user_languages,
+      lang => lang.language && lang.language.languageCode === language.languageCode);
 
     this.profileForm.value.user_languages.push(nativeLanguage);
     this.profileForm.controls['native_language'].setValue(nativeLanguage);
 
     this.languagesExcludingNative = this.languages.slice();
-    deleteElementFromArrayLambda(this.languagesExcludingNative, lang => lang.languageCode === nativeLanguage.language.languageCode)
+    deleteElementFromArrayLambda(this.languagesExcludingNative,
+      lang => lang.languageCode === nativeLanguage.language.languageCode);
   }
 
-  private onCountryOfOriginSelect(country): void {
+  onCountryOfOriginSelect(country): void {
     if (country) {
       this.profileForm.controls['country_of_origin'].setValue(country.countryCode);
     }
   }
 
-  private onDefaultLanguageSelect(language): void {
+  onDefaultLanguageSelect(language): void {
     if (language) {
       this.profileForm.value.default_language = language.id;
     }
   }
 
-  private onLanguageSelect(language): void {
+  onLanguageSelect(language): void {
     if (!isEmpty(language) && !some(this.profileForm.value.user_languages, { language: language })) {
       const userLanguage = new UserLanguage({ proficiency: 1 });
       userLanguage.language = language;
@@ -235,7 +249,7 @@ export class UserProfileComponent extends TranslationListener implements OnInit 
     }
   }
 
-  private onSkillSelect(skill): void {
+  onSkillSelect(skill): void {
     if (!isEmpty(skill) && !some(this.profileForm.value.user_skills, { skill: skill })) {
       const userSkill = new UserSkill({ proficiency: 1 });
       userSkill.skill = skill;
@@ -244,15 +258,15 @@ export class UserProfileComponent extends TranslationListener implements OnInit 
     }
   }
 
-  private onRemoveUserLanguage(userLanguage): void {
+  onRemoveUserLanguage(userLanguage): void {
     deleteElementFromArray(this.profileForm.value.user_languages, userLanguage);
   }
 
-  private onRemoveUserSkill(userSkill): void {
+  onRemoveUserSkill(userSkill): void {
     deleteElementFromArray(this.profileForm.value.user_skills, userSkill);
   }
 
-  private onImageFilenameChange(event, type, uploadStatusObject): void {
+  onImageFilenameChange(event, type, uploadStatusObject): void {
     uploadStatusObject.imageSaveFail = false;
     uploadStatusObject.imageSaveSuccess = false;
     uploadStatusObject.uploadingImage = true;
@@ -271,7 +285,7 @@ export class UserProfileComponent extends TranslationListener implements OnInit 
     });
   }
 
-  private onDocumentFilenameChange(event, type, uploadStatusObject): void {
+  onDocumentFilenameChange(event, type, uploadStatusObject): void {
     uploadStatusObject.documentSaveFail = false;
     uploadStatusObject.documentSaveSuccess = false;
     uploadStatusObject.uploadingDocument = true;
@@ -294,24 +308,19 @@ export class UserProfileComponent extends TranslationListener implements OnInit 
     });
   }
 
-  private formValidation(): boolean {
+  formValidation(): boolean {
     return this.profileForm.valid && true;
   }
 
-  private handleServerErrors(errors): void {
-    this.saveFail = true;
-    this.serverValidationErrors = errors.details || errors;
-  }
-
-  private isAllowedSSNChar(charCode): boolean {
+  isAllowedSSNChar(charCode): boolean {
     return isValidSSNCharCode(charCode);
   }
 
-  private onSubmit(): void {
+  onSubmit(): void {
     this.saveSuccess = false;
     this.saveFail = false;
     this.loadingSubmit = true;
-    this.serverValidationErrors = {};
+    this.apiErrors = new ApiErrors([]);
 
     this.userProxy.updateUser(this.user.id, {
       'language_id': this.profileForm.value.default_language,
@@ -341,7 +350,8 @@ export class UserProfileComponent extends TranslationListener implements OnInit 
         });
       })
       .catch(errors => {
-        this.handleServerErrors(errors);
+        this.saveFail = true;
+        this.apiErrors = errors;
         this.loadingSubmit = false;
       });
   }
