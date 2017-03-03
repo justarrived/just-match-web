@@ -72,6 +72,7 @@ import {UserSettingsComponent} from './views/user/user-settings/user-settings.co
 import {TextInputComponent} from './components/form-parts/inputs/text-input/text-input.component';
 import {UserFirstNameInputComponent} from './components/form-parts/inputs/user-first-name-input/user-first-name-input.component';
 import {UserLastNameInputComponent} from './components/form-parts/inputs/user-last-name-input/user-last-name-input.component';
+import {UserPasswordInputComponent} from './components/form-parts/inputs/user-password-input/user-password-input.component';
 import * as Raven from 'raven-js';
 
 Raven
@@ -142,6 +143,7 @@ export class RavenErrorHandler implements ErrorHandler {
     TextInputComponent,
     UserFirstNameInputComponent,
     UserLastNameInputComponent,
+    UserPasswordInputComponent,
     UserSettingsComponent
   ],
   providers: [
