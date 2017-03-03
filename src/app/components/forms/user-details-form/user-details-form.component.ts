@@ -8,6 +8,7 @@ import {OnInit} from '@angular/core';
 import {User} from '../../../models/user';
 import {UserProxy} from '../../../services/proxy/user-proxy.service';
 import {Validators} from '@angular/forms';
+import {UserGender} from '../../../models/user/user-gender';
 
 @Component({
   selector: 'user-details-form',
@@ -16,6 +17,7 @@ import {Validators} from '@angular/forms';
 })
 export class UserDetailsFormComponent implements OnInit {
   @Input() user: User;
+  private genders: Promise<UserGender[]>;
   public apiErrors: ApiErrors = new ApiErrors([]);
   public loadingSubmit: boolean = false;
   public passwordForm: FormGroup;
@@ -33,6 +35,11 @@ export class UserDetailsFormComponent implements OnInit {
   ngOnInit() {
     this.initSettingsForm();
     this.initPasswordForm();
+    this.loadData();
+  }
+
+  loadData() {
+    this.genders = this.userProxy.getGenders();
   }
 
   private initSettingsForm() {
@@ -41,6 +48,7 @@ export class UserDetailsFormComponent implements OnInit {
       'last_name': [this.user.lastName, Validators.compose([Validators.required, Validators.minLength(2)])],
       'email': [this.user.email, Validators.compose([Validators.required])],
       'phone': [this.user.phone, Validators.compose([Validators.required])],
+      'gender': [this.user.gender, Validators.compose([Validators.required])],
       'street': [this.user.street],
       'zip': [this.user.zip],
       'city': [this.user.city],
