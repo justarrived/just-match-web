@@ -158,6 +158,8 @@
   "form.parts.user.first.name.input.placeholder": "First name",
   "form.parts.user.last.name.input.label": "Last name",
   "form.parts.user.last.name.input.placeholder": "Last name",
+  "form.parts.user.password.input.label": "Password",
+  "form.parts.user.password.input.placeholder": "Password",
   "user.profile.form.at.und.label": "AT-UND",
   "user.profile.form.coordination.number.label": "Please provide the coordination number",
   "user.profile.form.coordination.number.or.ssn.label": "Social security number or coordination number",
