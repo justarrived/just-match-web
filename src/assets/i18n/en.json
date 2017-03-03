@@ -270,6 +270,8 @@
   "user.settings.form.email.placeholder": "Email",
   "user.settings.form.first.name.label": "First name",
   "user.settings.form.first.name.placeholder": "First name",
+  "user.settings.form.gender.header": "Gender",
+  "user.settings.form.gender.placeholder": "Gender",
   "user.settings.form.last.name.label": "Last name",
   "user.settings.form.last.name.placeholder": "Last name",
   "user.settings.form.new.password.label": "Change password",
