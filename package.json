@@ -19,7 +19,8 @@
     "test": "ng test",
     "pree2e": "webdriver-manager update",
     "e2e": "protractor",
-    "postinstall": "ng build -prod --aot --env=${ENV_CONFIG-prod}"
+    "preinstall": "npm install -g node-gyp",
+    "heroku-postbuild": "ng build -prod --aot --env=${ENV_CONFIG-prod}"
   },
   "private": false,
   "dependencies": {
