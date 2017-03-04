@@ -57,7 +57,6 @@ import {NgSemanticModule} from 'ng-semantic-ja/ng-semantic';
 import {NO_ERRORS_SCHEMA} from '@angular/core';
 import {NotFoundComponent} from './views/404/404.component';
 import {PagerComponent} from './components/pager/pager.component';
-import {PositiveMessageComponent} from './components/messages/positive-message/positive-message.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {RegisterFormComponent} from './components/forms/register-form/register-form.component';
 import {RegisterPageComponent} from './views/register/register-page.component';
@@ -65,6 +64,7 @@ import {ResetPasswordFormComponent} from './components/forms/reset-password-form
 import {ResetPasswordPageComponent} from './views/reset-password/reset-password-page.component';
 import {SkillProxy} from './services/proxy/skill-proxy.service';
 import {SliderComponent} from './components/slider/slider.component';
+import {SuccessMessageComponent} from './components/messages/success-message/success-message.component';
 import {SystemLanguagesService} from './services/system-languages.service';
 import {TranslationService} from './services/translation.service';
 import {TruncatePipe} from './utils/truncate';
@@ -136,7 +136,7 @@ export class RavenErrorHandler implements ErrorHandler {
     MyJobsItemComponent,
     NotFoundComponent,
     PagerComponent,
-    PositiveMessageComponent,
+    SuccessMessageComponent,
     RegisterFormComponent,
     RegisterPageComponent,
     ResetPasswordFormComponent,

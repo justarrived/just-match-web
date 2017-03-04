@@ -2,17 +2,17 @@ import {Component} from '@angular/core';
 import {Input} from '@angular/core';
 
 @Component({
-  selector: 'error-message',
+  selector: 'success-message',
   template: `
   <base-message
     [description]="description"
     [header]="header"
     [icon]="icon"
-    type="error">
+    type="success">
   </base-message>`
 })
-export class ErrorMessageComponent {
-  @Input() public description: string;
+export class SuccessMessageComponent {
   @Input() public header: string;
+  @Input() public description: string;
   @Input() public icon: string;
 }
