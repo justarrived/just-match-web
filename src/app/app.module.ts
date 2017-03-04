@@ -12,6 +12,7 @@ import {AutosizeDirective} from './directives/textarea-autosize/textarea-autosiz
 import {BaseMessageComponent} from './components/messages/base-message.component';
 import {BasicBorderHeaderComponent} from './components/headers/basic-border-header/basic-border-header.component';
 import {BrowserModule} from '@angular/platform-browser';
+import {AutocompleteDropdownListItemComponent} from './components/autocomplete-dropdown/autocomplete-dropdown-list-item/autocomplete-dropdown-list-item.component';
 import {CommentsComponent} from './components/comments/comments.component';
 import {CommentsProxy} from './services/proxy/comments-proxy.service';
 import {ConfirmationComponent} from './views/confirmation/confirmation.component';
@@ -40,12 +41,14 @@ import {InfoMessageComponent} from './components/messages/info-message/info-mess
 import {InputErrorComponent} from './components/form-parts/input-error.component';
 import {InputErrorsComponent} from './components/form-parts/input-errors.component';
 import {JARoutes} from './routes/ja-routes';
+import {JobCardComponent} from './components/job-card/job-card.component';
 import {JobDetailsComponent} from './views/job-details/job-details.component';
 import {JobListItemComponent} from './components/job-list-item/job-list-item.component';
 import {JobMapMarkerComponent} from './components/job-map-marker/job-map-marker.component';
 import {JobPreviewComponent} from './components/job-preview/job-preview.component';
 import {JobProxy} from './services/proxy/job-proxy.service';
 import {JobsComponent} from './views/jobs/jobs.component';
+import {JobsSliderComponent} from './components/jobs-slider/jobs-slider.component';
 import {LanguageProxy} from './services/proxy/language-proxy.service';
 import {LoadingComponent} from './components/loading/loading.component';
 import {LoginFormComponent} from './components/forms/login-form/login-form.component';
@@ -71,6 +74,7 @@ import {TranslationService} from './services/translation.service';
 import {TruncatePipe} from './utils/truncate';
 import {UserDetailsComponent} from './views/user/user-settings/user-details/user-details.component';
 import {UserDetailsFormComponent} from './components/forms/user-details-form/user-details-form.component';
+import {UserJobCardComponent} from './components/user-job-card/user-job-card.component';
 import {UserJobsComponent} from './views/my-jobs/user-jobs/user-jobs.component';
 import {UserManager} from './services/user-manager.service';
 import {UserProfileComponent} from './views/user/user-settings/user-profile/user-profile.component';
@@ -126,11 +130,13 @@ export class RavenErrorHandler implements ErrorHandler {
     InfoMessageComponent,
     InputErrorComponent,
     InputErrorsComponent,
+    JobCardComponent,
     JobDetailsComponent,
     JobListItemComponent,
     JobMapMarkerComponent,
     JobPreviewComponent,
     JobsComponent,
+    JobsSliderComponent,
     LoadingComponent,
     LoginFormComponent,
     LoginPageComponent,
@@ -147,6 +153,7 @@ export class RavenErrorHandler implements ErrorHandler {
     TruncatePipe,
     UserDetailsComponent,
     UserDetailsFormComponent,
+    UserJobCardComponent,
     UserJobsComponent,
     UserProfileComponent,
     UserSettingsComponent
