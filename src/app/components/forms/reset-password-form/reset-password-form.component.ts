@@ -15,9 +15,9 @@ import {Validators} from '@angular/forms';
   styleUrls: ['./reset-password-form.component.scss'],
 })
 export class ResetPasswordFormComponent implements OnInit {
-  private JARoutes = JARoutes;
   public apiErrors: ApiErrors = new ApiErrors([]);
   public displayErrorMessage: boolean;
+  public JARoutes = JARoutes;
   public loadingSubmit: boolean = false;
   public resetPasswordForm: FormGroup;
 
@@ -29,7 +29,7 @@ export class ResetPasswordFormComponent implements OnInit {
   ) {
   }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.initForm();
     this.initToken();
   }
@@ -47,7 +47,7 @@ export class ResetPasswordFormComponent implements OnInit {
     });
   }
 
-  submitForm(value: any) {
+  public submitForm(value: any) {
     this.loadingSubmit = true;
     this.displayErrorMessage = false;
     this.userProxy.changePasswordWithToken(value.password, value.one_time_token)
@@ -62,7 +62,7 @@ export class ResetPasswordFormComponent implements OnInit {
       });
   }
 
-  onEnterKeyUp() {
+  public onEnterKeyUp() {
     if (this.resetPasswordForm.valid) {
       this.submitForm(this.resetPasswordForm.value);
     }

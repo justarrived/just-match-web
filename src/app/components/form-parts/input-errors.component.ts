@@ -1,38 +1,48 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {FormControl} from '@angular/forms';
-import {TranslateService} from 'ng2-translate/ng2-translate';
 import {ApiErrors} from '../../models/api-errors';
+import {Component} from '@angular/core';
+import {FormControl} from '@angular/forms';
+import {Input} from '@angular/core';
+import {OnInit} from '@angular/core';
+import {TranslateService} from 'ng2-translate/ng2-translate';
 
 @Component({
   selector: 'input-errors',
   template: `
-<api-errors [control]="control" [errors]="apiErrors" [attribute]="apiAttribute"></api-errors>
-<input-error *ngFor="let error of formControlErrors" [label]="error"></input-error>
-`
+  <api-errors
+    [control]="control"
+    [errors]="apiErrors"
+    [attribute]="apiAttribute">
+  </api-errors>
+  <input-error
+    *ngFor="let error of formControlErrors"
+    [label]="error">
+  </input-error>`
 })
 export class InputErrorsComponent implements OnInit {
-  @Input() private control: FormControl;
-  @Input() private apiAttribute: string = null;
-  @Input() private apiErrors: ApiErrors = new ApiErrors([]);
+  @Input() public apiAttribute: string = null;
+  @Input() public apiErrors: ApiErrors = new ApiErrors([]);
+  @Input() public control: FormControl;
 
   // Client side
-  @Input() private patternLabel: string = null;
-  @Input() private requiredLabel: string = null;
-  @Input() private minLengthLabel: string = null;
-  @Input() private maxLengthLabel: string = null;
+  @Input() public maxLengthLabel: string = null;
+  @Input() public minLengthLabel: string = null;
+  @Input() public patternLabel: string = null;
+  @Input() public requiredLabel: string = null;
 
-  formControlErrors: Array<string> = [];
+  public formControlErrors: Array<string> = [];
 
   private errorLabels: any = {};
 
-  constructor(private translateService: TranslateService) {}
+  constructor(
+    private translateService: TranslateService
+  ) {}
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.errorLabels = {
-      pattern: this.patternLabel,
-      required: this.requiredLabel,
+      maxlength: this.maxLengthLabel,
       minlength: this.minLengthLabel,
-      maxlength: this.maxLengthLabel
+      pattern: this.patternLabel,
+      required: this.requiredLabel
     };
     this.control.valueChanges.subscribe(() => this.setErrors());
   }

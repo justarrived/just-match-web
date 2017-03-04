@@ -3,14 +3,11 @@ import {OnInit} from '@angular/core';
 
 @Component({
   template: `
-  <div class="faq-container">
-    <div class="sub-header-container">
-      <h3 class="sub-header-title">
-        {{'faq.title' | translate}}
-      </h3>
-    </div>
-    <faq-accordion></faq-accordion>
-  </div>
+  <basic-border-header
+    [header]="'faq.title' | translate"
+    icon="info circle">
+  </basic-border-header>
+  <faq-accordion></faq-accordion>
   `
 })
 export class FaqPageComponent {}

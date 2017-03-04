@@ -14,10 +14,10 @@ import {Validators} from '@angular/forms';
   styleUrls: ['./login-form.component.scss'],
 })
 export class LoginFormComponent implements OnInit  {
-  apiErrors: ApiErrors = new ApiErrors([]);
-  JARoutes = JARoutes;
-  loadingSubmit: boolean = false;
-  loginForm: FormGroup;
+  public apiErrors: ApiErrors = new ApiErrors([]);
+  public JARoutes = JARoutes;
+  public loadingSubmit: boolean = false;
+  public loginForm: FormGroup;
 
   constructor(
     private authManager: AuthManager,
@@ -26,7 +26,7 @@ export class LoginFormComponent implements OnInit  {
   ) {
   }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.initForm();
   }
 
@@ -37,7 +37,7 @@ export class LoginFormComponent implements OnInit  {
     });
   }
 
-  submitForm(value: any) {
+  public submitForm(value: any) {
     this.loadingSubmit = true;
     this.authManager.logUser(value.email_or_phone, value.password)
       .then(result => {
@@ -50,7 +50,7 @@ export class LoginFormComponent implements OnInit  {
       });
   }
 
-  onEnterKeyUp() {
+  public onEnterKeyUp() {
     if (this.loginForm.valid) {
       this.submitForm(this.loginForm.value);
     }

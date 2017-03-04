@@ -118,7 +118,7 @@
       </div>
 
       <div *ngIf="profileForm.value.current_status && ((profileForm.value.current_status === 'asylum_seeker' && profileForm.value.at_und === 'yes' && profileForm.value.got_coordination_number === 'yes') || (profileForm.value.current_status !== 'asylum_seeker'))"
-          class="form-group material-group profile-form-input-container" [ngClass]="{'has-error':!profileForm.value.ssn || apiErrors.hasErrorsFor('ssn')}">
+          class="profile-form-input-container" [ngClass]="{'has-error':!profileForm.value.ssn || apiErrors.hasErrorsFor('ssn')}">
         <label *ngIf="profileForm.value.current_status === 'asylum_seeker'" for="ssn">{{'user.profile.form.coordination.number.label' | translate}}:</label>
         <label *ngIf="profileForm.value.current_status === 'eu_citizen'" for="ssn">{{'user.profile.form.coordination.number.or.ssn.label' | translate}}:</label>
         <label *ngIf="profileForm.value.current_status !== 'asylum_seeker' && profileForm.value.current_status !== 'eu_citizen'" for="ssn">{{'user.profile.form.ssn.label' | translate}}:</label>
