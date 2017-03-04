@@ -1,12 +1,11 @@
 import {Component} from '@angular/core';
 
 @Component({
-  template:
-  `<div class="sub-header-container">
-    <h3 class="sub-header-title">
-      {{"contact.title" | translate}}
-    </h3>
-  </div>
+  template: `
+  <basic-border-header
+    [header]="'contact.title' | translate"
+    icon="comments">
+  </basic-border-header>
   <div class="ui centered grid">
     <div class="fourteen wide phone ten wide tablet eight wide computer column">
       <div class="contact-form-container">

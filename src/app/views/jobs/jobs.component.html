@@ -1,7 +1,8 @@
 <div class="jobs-container">
-  <div class="sub-header-container">
-    <h3 class="sub-header-title">{{'jobs.title' | translate: {nbrOfJobs: totalJobs} }}</h3>
-  </div>
+  <basic-border-header
+    [header]="'jobs.title' | translate: {nbrOfJobs: totalJobs}"
+    icon="industry">
+  </basic-border-header>
   <div class="jobs-map-container">
     <sebm-google-map class="jobs-map" [latitude]="mapLocation.latitude" [longitude]="mapLocation.longitude" [zoom]="mapZoom" [styles]="mapStyles" [disableDefaultUI]="true" [streetViewControl]="false">
       <sebm-google-map-marker *ngIf="mapUserLocation" [latitude]="mapUserLocation.latitude" [longitude]="mapUserLocation.longitude"></sebm-google-map-marker>

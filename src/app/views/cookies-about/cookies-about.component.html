@@ -1,8 +1,8 @@
 <div class="cookies-about-container">
-
-  <div class="sub-header-container">
-    <h3 class="sub-header-title">{{ 'cookies.info.title' | translate }}</h3>
-  </div>
+  <basic-border-header
+    [header]="'cookies.info.title' | translate"
+    icon="info circle">
+  </basic-border-header>
 
   <div class="cookies-about-description">
     {{ 'cookies.info.description' | translate}}

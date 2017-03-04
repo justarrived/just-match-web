@@ -10,6 +10,7 @@ import {AutocompleteDropdownComponent} from './components/autocomplete-dropdown/
 import {AutocompleteDropdownListItemComponent} from './components/autocomplete-dropdown/autocomplete-dropdown-list-item/autocomplete-dropdown-list-item.component';
 import {AutosizeDirective} from './components/textarea-autosize/textarea-autosize.directive';
 import {BaseMessageComponent} from './components/messages/base-message.component';
+import {BasicBorderHeaderComponent} from './components/headers/basic-border-header/basic-border-header.component';
 import {BrowserModule} from '@angular/platform-browser';
 import {CommentsComponent} from './components/comments/comments.component';
 import {CommentsProxy} from './services/proxy/comments-proxy.service';
@@ -107,6 +108,7 @@ export class RavenErrorHandler implements ErrorHandler {
     AutocompleteDropdownListItemComponent,
     AutosizeDirective,
     BaseMessageComponent,
+    BasicBorderHeaderComponent,
     CommentsComponent,
     ConfirmationComponent,
     ContactFormComponent,

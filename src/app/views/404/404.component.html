@@ -1,8 +1,8 @@
 <div class="not-found-container">
-
-  <div class="sub-header-container">
-    <h3 class="sub-header-title">{{'page.not.found.error.title' | translate}}</h3>
-  </div>
+  <basic-border-header
+    [header]='page.not.found.error.title' | translate
+    icon="exclamation triangle">
+  </basic-border-header>
 
   <h3 class="not-found-description">
     {{'page.not.found.error.description' | translate}} 😞

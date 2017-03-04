@@ -2,11 +2,10 @@ import {Component} from '@angular/core';
 
 @Component({
   template: `
-  <div class="sub-header-container">
-    <h3 class="sub-header-title">
-      {{'forgot.password.title' | translate}}
-    </h3>
-  </div>
+  <basic-border-header
+    [header]="'forgot.password.title' | translate"
+    icon="unlock">
+  </basic-border-header>
 
   <div class="ui centered grid forgot-password-form-container">
     <div class="fourteen wide phone ten wide tablet eight wide computer column">

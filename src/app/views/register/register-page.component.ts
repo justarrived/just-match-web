@@ -2,19 +2,15 @@ import {Component} from '@angular/core';
 
 @Component({
   template: `
-  <div class="register-container">
+  <basic-border-header
+    [header]="'user.register.title' | translate"
+    icon="add user">
+  </basic-border-header>
 
-    <div class="sub-header-container">
-      <h3 class="sub-header-title">
-        {{"user.register.title" | translate}}
-      </h3>
-    </div>
+  <div class="ui centered grid">
+    <div class="fourteen wide phone ten wide tablet eight wide computer column">
 
-    <div class="ui centered grid">
-      <div class="fourteen wide phone ten wide tablet eight wide computer column">
-
-        <register-form></register-form>
-      </div>
+      <register-form></register-form>
     </div>
   </div>`
 })
