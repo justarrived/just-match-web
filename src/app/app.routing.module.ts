@@ -12,7 +12,7 @@ import {JobsComponent} from './views/jobs/jobs.component';
 import {LoginPageComponent} from './views/login/login-page.component';
 import {MyJobsComponent} from './views/my-jobs/my-jobs.component';
 import {NgModule} from '@angular/core';
-import {NotFoundComponent} from './views/404/404.component';
+import {NotFoundPageComponent} from './views/404/404-page.component';
 import {NotLoggedInGuard} from './services/not-logged-in-guard.service';
 import {ResetPasswordPageComponent} from './views/reset-password/reset-password-page.component';
 import {RouterModule, Routes} from '@angular/router';
@@ -21,7 +21,7 @@ import {UserSettingsComponent} from './views/user/user-settings/user-settings.co
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', component: HomeComponent },
-  { path: '404', component: NotFoundComponent },
+  { path: '404', component: NotFoundPageComponent },
   { path: 'confirmation/:type', component: ConfirmationComponent },
   { path: 'contact', component: ContactPageComponent },
   { path: 'cookies-about', component: CookiesAboutComponent },
