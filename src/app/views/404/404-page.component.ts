@@ -13,4 +13,4 @@ import {Component} from '@angular/core';
     </error-message>
   </div>`
 })
-export class NotFoundComponent {}
+export class NotFoundPageComponent {}
