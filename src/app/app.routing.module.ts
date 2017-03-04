@@ -1,6 +1,6 @@
 import {ConfirmationComponent} from './views/confirmation/confirmation.component';
 import {ContactPageComponent} from './views/contact/contact-page.component';
-import {CookiesAboutComponent} from './views/cookies-about/cookies-about.component';
+import {CookiesAboutPageComponent} from './views/cookies-about/cookies-about-page.component';
 import {ErrorPageComponent} from './views/error/error-page.component';
 import {FaqPageComponent} from './views/faq/faq-page.component';
 import {ForgotPasswordPageComponent} from './views/forgot-password/forgot-password-page.component';
@@ -25,18 +25,18 @@ const routes: Routes = [
   { path: '404', component: NotFoundPageComponent },
   { path: 'confirmation/:type', component: ConfirmationComponent },
   { path: 'contact', component: ContactPageComponent },
-  { path: 'cookies-about', component: CookiesAboutComponent },
+  { path: 'cookies-about', component: CookiesAboutPageComponent },
   { path: 'error/:statusCode', component: ErrorPageComponent },
   { path: 'faq', component: FaqPageComponent },
   { path: 'forgot-password', component: ForgotPasswordPageComponent },
-  { path: 'home', redirectTo: ''},
+  { path: 'home', redirectTo: '' },
   { path: 'job/:id', component: JobDetailsComponent },
-  { path: 'jobs', redirectTo: 'jobs/1', pathMatch: 'full'},
+  { path: 'jobs', redirectTo: 'jobs/1', pathMatch: 'full' },
   { path: 'jobs/:page', component: JobsComponent },
   { path: 'login', component: LoginPageComponent },
-  { path: 'reset-password', redirectTo: '404', pathMatch: 'full'},
+  { path: 'reset-password', redirectTo: '404', pathMatch: 'full' },
   { path: 'reset-password/:token', component: ResetPasswordPageComponent },
-  { path: 'user/register', component: RegisterPageComponent, canActivate: [NotLoggedInGuard]},
+  { path: 'user/register', component: RegisterPageComponent, canActivate: [NotLoggedInGuard] },
   { path: 'users/:user-id', component: UserSettingsComponent, canActivate: [LoggedInGuard] },
   { path: 'users/:user-id/jobs', component: MyJobsComponent, canActivate: [LoggedInGuard] },
   { path: '**', redirectTo: '404' },

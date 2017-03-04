@@ -19,7 +19,7 @@ import {ContactFormComponent} from './components/forms/contact-form/contact-form
 import {ContactPageComponent} from './views/contact/contact-page.component';
 import {ContactProxy} from './services/proxy/contact-proxy.service';
 import {CookieBarComponent} from './components/cookie-bar/cookie-bar.component';
-import {CookiesAboutComponent} from './views/cookies-about/cookies-about.component';
+import {CookiesAboutPageComponent} from './views/cookies-about/cookies-about-page.component';
 import {CountryProxy} from './services/proxy/country-proxy.service';
 import {DataStore} from './services/data-store.service';
 import {DeletableItemComponent} from './components/autocomplete-dropdown/deletable-item/deletable-item.component';
@@ -114,7 +114,7 @@ export class RavenErrorHandler implements ErrorHandler {
     ContactFormComponent,
     ContactPageComponent,
     CookieBarComponent,
-    CookiesAboutComponent,
+    CookiesAboutPageComponent,
     DeletableItemComponent,
     ErrorMessageComponent,
     ErrorPageComponent,

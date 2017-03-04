@@ -1,7 +1,7 @@
 <div class="jobs-container">
   <basic-border-header
     [header]="'jobs.title' | translate: {nbrOfJobs: totalJobs}"
-    icon="industry">
+    icon="search">
   </basic-border-header>
   <div class="jobs-map-container">
     <sebm-google-map class="jobs-map" [latitude]="mapLocation.latitude" [longitude]="mapLocation.longitude" [zoom]="mapZoom" [styles]="mapStyles" [disableDefaultUI]="true" [streetViewControl]="false">
