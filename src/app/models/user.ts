@@ -22,7 +22,7 @@ export class User {
   documents: UserDocument[];
   userLanguages: UserLanguage[];
   userSkills: UserSkill[];
-  presentation: string;
+  description: string;
   workExperience: string;
   education: string;
   skills: string;
@@ -65,7 +65,7 @@ export class User {
     this.documents = map(jsonObject.user_documents, userDocument => new UserDocument(userDocument));
     this.userLanguages = map(jsonObject.user_languages, userLanguage => new UserLanguage(userLanguage));
     this.userSkills = map(jsonObject.user_skills, userSkill => new UserSkill(userSkill));
-    this.presentation = jsonObject.description;
+    this.description = jsonObject.description;
     this.workExperience = jsonObject.job_experience;
     this.education = jsonObject.education;
     this.skills = jsonObject.competence_text;

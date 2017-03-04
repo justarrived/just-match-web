@@ -164,6 +164,8 @@
   "user.profile.form.default.language.label": "Default language",
   "user.profile.form.default.language.placeholder": "Default language",
   "user.profile.form.default.language.required": "Please choose the default language",
+  "user.profile.form.general.description.label": "Presentation",
+  "user.profile.form.general.description.placeholder": "Presentation",
   "user.profile.form.general.skills.label": "General skills",
   "user.profile.form.general.skills.placeholder": "General skills",
   "user.profile.form.got.coordination.number.label": "Coordination number",
