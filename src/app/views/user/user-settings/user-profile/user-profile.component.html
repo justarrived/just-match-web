@@ -342,15 +342,13 @@
       </div>
 
       <div class="profile-form-input-container">
-        <label class="profile-form-input-label">{{'user.profile.form.general.description.label' | translate}}</label>
-        <textarea class="profile-form-input-textarea form-control material-input"
-            maxlength="200 000"
-            name="description" id="description"
-            class="form-control material-input"
-            autosize type="text"
-            placeholder="{{'user.profile.form.general.description.placeholder' | translate}}"
-            [formControl]="profileForm.controls['description']"></textarea>
-        <input-errors apiAttribute="description" [control]="profileForm.controls['description']" [apiErrors]="apiErrors"></input-errors>
+        <textarea-input
+          apiAttribute="description"
+          [label]="'user.profile.form.general.description.label' | translate"
+          [placeholder]="'user.profile.form.general.description.placeholder' | translate"
+          [apiErrors]="apiErrors"
+          [control]="profileForm.controls['description']">
+        </textarea-input>
       </div>
 
       <div class="profile-form-input-container">
