@@ -8,7 +8,7 @@ import {AppTranslateModule} from './app.translate.module';
 import {AuthManager} from './services/auth-manager.service';
 import {AutocompleteDropdownComponent} from './components/autocomplete-dropdown/autocomplete-dropdown.component';
 import {AutocompleteDropdownListItemComponent} from './components/autocomplete-dropdown/autocomplete-dropdown-list-item/autocomplete-dropdown-list-item.component';
-import {AutosizeDirective} from './components/textarea-autosize/textarea-autosize.directive';
+import {AutosizeDirective} from './directives/textarea-autosize/textarea-autosize.directive';
 import {BaseMessageComponent} from './components/messages/base-message.component';
 import {BasicBorderHeaderComponent} from './components/headers/basic-border-header/basic-border-header.component';
 import {BrowserModule} from '@angular/platform-browser';

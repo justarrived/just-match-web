@@ -1,4 +1,3 @@
-import {LoggedInGuard} from './services/logged-in-guard.service';
 import {ConfirmationComponent} from './views/confirmation/confirmation.component';
 import {ContactPageComponent} from './views/contact/contact-page.component';
 import {CookiesAboutComponent} from './views/cookies-about/cookies-about.component';
@@ -9,14 +8,16 @@ import {HomeComponent} from './views/home/home.component';
 import {JARoute} from './routes/ja-route';
 import {JobDetailsComponent} from './views/job-details/job-details.component';
 import {JobsComponent} from './views/jobs/jobs.component';
+import {LoggedInGuard} from './services/logged-in-guard.service';
 import {LoginPageComponent} from './views/login/login-page.component';
 import {MyJobsComponent} from './views/my-jobs/my-jobs.component';
 import {NgModule} from '@angular/core';
 import {NotFoundPageComponent} from './views/404/404-page.component';
 import {NotLoggedInGuard} from './services/not-logged-in-guard.service';
-import {ResetPasswordPageComponent} from './views/reset-password/reset-password-page.component';
-import {RouterModule, Routes} from '@angular/router';
 import {RegisterPageComponent} from './views/register/register-page.component';
+import {ResetPasswordPageComponent} from './views/reset-password/reset-password-page.component';
+import {RouterModule} from '@angular/router';
+import {Routes} from '@angular/router';
 import {UserSettingsComponent} from './views/user/user-settings/user-settings.component';
 
 const routes: Routes = [
