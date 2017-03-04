@@ -39,8 +39,6 @@ import {HttpModule} from '@angular/http';
 import {InfoMessageComponent} from './components/messages/info-message/info-message.component';
 import {InputErrorComponent} from './components/form-parts/input-error.component';
 import {InputErrorsComponent} from './components/form-parts/input-errors.component';
-import {TextareaInputComponent} from './components/form-parts/inputs/textarea-input.component';
-import {UserDescriptionInputComponent} from './components/users/inputs/user-description-input.component';
 import {JARoutes} from './routes/ja-routes';
 import {JobDetailsComponent} from './views/job-details/job-details.component';
 import {JobListItemComponent} from './components/job-list-item/job-list-item.component';
@@ -69,6 +67,7 @@ import {SkillProxy} from './services/proxy/skill-proxy.service';
 import {SliderComponent} from './components/slider/slider.component';
 import {SuccessMessageComponent} from './components/messages/success-message/success-message.component';
 import {SystemLanguagesService} from './services/system-languages.service';
+import {TextareaInputComponent} from './components/form-parts/inputs/textarea-input.component';
 import {TranslationService} from './services/translation.service';
 import {TruncatePipe} from './utils/truncate';
 import {UserDetailsComponent} from './views/user/user-settings/user-details/user-details.component';
@@ -126,8 +125,6 @@ export class RavenErrorHandler implements ErrorHandler {
     ForgotPasswordPageComponent,
     HomeComponent,
     InfoMessageComponent,
-    UserDescriptionInputComponent,
-    TextareaInputComponent,
     InputErrorComponent,
     InputErrorsComponent,
     JobDetailsComponent,
@@ -142,12 +139,13 @@ export class RavenErrorHandler implements ErrorHandler {
     MyJobsItemComponent,
     NotFoundPageComponent,
     PagerComponent,
-    SuccessMessageComponent,
     RegisterFormComponent,
     RegisterPageComponent,
     ResetPasswordFormComponent,
     ResetPasswordPageComponent,
     SliderComponent,
+    SuccessMessageComponent,
+    TextareaInputComponent,
     TruncatePipe,
     UserDetailsComponent,
     UserDetailsFormComponent,
