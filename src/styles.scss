@@ -1,9 +1,10 @@
+@import './app/styles/bootstrap-modifications';
+@import './app/styles/buttons';
 @import './app/styles/colors';
 @import './app/styles/dimensions';
-@import './app/styles/buttons';
-@import './app/styles/typography';
+@import './app/styles/semantic-ui-modifications';
 @import './app/styles/tooltips';
-@import './app/styles/bootstrap-modifications';
+@import './app/styles/typography';
 
 body,
 html {
