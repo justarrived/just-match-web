@@ -182,6 +182,7 @@ export class UserProfileComponent extends TranslationListener implements OnInit 
       'got_coordination_number': [this.user.ssn ? 'yes' : 'no'],
       'ssn': [this.user.ssn],
       'competence_text': [this.user.skills],
+      'description': [this.user.description],
       'job_experience': [this.user.workExperience],
       'user_skills': [this.user.userSkills.slice()]
     });
@@ -340,6 +341,7 @@ export class UserProfileComponent extends TranslationListener implements OnInit 
       'current_status': this.profileForm.value.current_status,
       'at_und': this.profileForm.value.at_und,
       'ssn': this.profileForm.value.ssn,
+      'description': this.profileForm.value.description,
       'competence_text': this.profileForm.value.competence_text,
       'job_experience': this.profileForm.value.job_experience
     })

@@ -2,14 +2,12 @@ import {Component} from '@angular/core';
 
 @Component({
   template:
-  `<div class="reset-password-container">
-
-    <div class="sub-header-container">
-      <h3
-        class="sub-header-title">
-        {{'reset.password.title' | translate}}
-      </h3>
-    </div>
+  `
+  <div class="reset-password-container">
+    <basic-border-header
+      [header]="'reset.password.title' | translate"
+      icon="key">
+    </basic-border-header>
 
     <div class="ui centered grid reset-password-form-container">
       <div class="fourteen wide phone ten wide tablet eight wide computer column">

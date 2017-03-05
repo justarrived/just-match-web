@@ -1,8 +1,8 @@
 <div>
-
-  <div class="sub-header-container">
-    <h3 class="sub-header-title">{{"menu.main.my_assignment" | translate}}</h3>
-  </div>
+  <basic-border-header
+    [header]="'menu.main.my_assignment' | translate"
+    icon="briefcase">
+  </basic-border-header>
 
   <div class="ui equal width grid">
     <div class="column my-jobs-header-tab" [ngClass]="{'my-jobs-header-tab-selected': selectedState == 'active'}" (click)="setState('active')" >

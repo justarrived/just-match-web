@@ -45,8 +45,10 @@
     <sm-textarea
       [control]="contactForm.controls['message']"
       [label]="('contact.form.message.placeholder' | translate) + ' *'"
+      [placeholder]="'contact.form.message.placeholder' | translate"
       class="left"
-      icon="mail">
+      icon="mail"
+      rows="10">
     </sm-textarea>
     <input-errors
       [apiErrors]="apiErrors"
