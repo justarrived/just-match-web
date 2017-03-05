@@ -6,6 +6,7 @@ import {User} from '../user';
 const companyPlaceholderLogoURL: string = '/assets/images/placeholder-logo.png';
 
 export class Job {
+  city: string;
   amount: number;
   company: Company;
   createdAt: string;
@@ -43,6 +44,7 @@ export class Job {
       return;
     }
 
+    this.city = jsonObject.city;
     this.grossAmount = jsonObject.gross_amount;
     this.grossAmountDelimited = jsonObject.gross_amount_delimited;
     this.grossAmountWithCurrency = jsonObject.gross_amount_with_currency;

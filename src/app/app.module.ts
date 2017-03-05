@@ -40,6 +40,7 @@ import {InfoMessageComponent} from './components/messages/info-message/info-mess
 import {InputErrorComponent} from './components/form-parts/input-error.component';
 import {InputErrorsComponent} from './components/form-parts/input-errors.component';
 import {JARoutes} from './routes/ja-routes';
+import {JobCardComponent} from './components/cards/job-card/job-card.component';
 import {JobDetailsComponent} from './views/job-details/job-details.component';
 import {JobListItemComponent} from './components/job-list-item/job-list-item.component';
 import {JobMapMarkerComponent} from './components/job-map-marker/job-map-marker.component';
@@ -126,6 +127,7 @@ export class RavenErrorHandler implements ErrorHandler {
     InfoMessageComponent,
     InputErrorComponent,
     InputErrorsComponent,
+    JobCardComponent,
     JobDetailsComponent,
     JobListItemComponent,
     JobMapMarkerComponent,

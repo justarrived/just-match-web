@@ -1,4 +1,6 @@
 {
+  "job.card.hours": "{{hours}} hours",
+  "job.card.currency.per.hour": "{{currency}}/hour",
   "validations.required": "can't be blank",
   "validations.minlength": "is too short (minimum {{minLength}} characters)",
   "validations.maxlength": "is too long (maximum {{maxLength}} characters)",
