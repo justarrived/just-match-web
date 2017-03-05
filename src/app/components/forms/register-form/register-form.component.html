@@ -56,53 +56,12 @@
     {{'user.register.form.address.section.header' | translate}}
   </h3>
 
-  <div class="field">
-    <sm-input
-      [control]="registerForm.controls['street']"
-      [label]="'user.register.form.street.header' | translate"
-      [placeholder]="'user.register.form.street.placeholder' | translate"
-      class="left"
-      icon="map pin"
-      type="text">
-    </sm-input>
-    <input-errors
-      [apiErrors]="apiErrors"
-      [control]="registerForm.controls['street']"
-      apiAttribute="street">
-    </input-errors>
-  </div>
-
-  <div class="field">
-    <sm-input
-      [control]="registerForm.controls['zip']"
-      [label]="'user.register.form.zip.header' | translate"
-      [placeholder]="'user.register.form.zip.placeholder' | translate"
-      class="left"
-      icon="map"
-      type="text">
-    </sm-input>
-    <input-errors
-      [apiErrors]="apiErrors"
-      [control]="registerForm.controls['zip']"
-      apiAttribute="zip">
-    </input-errors>
-  </div>
-
-  <div class="field">
-    <sm-input
-      [control]="registerForm.controls['city']"
-      [label]="'user.register.form.city.header' | translate"
-      [placeholder]="'user.register.form.city.placeholder' | translate"
-      class="left"
-      icon="building"
-      type="text">
-    </sm-input>
-    <input-errors
-      [apiErrors]="apiErrors"
-      [control]="registerForm.controls['city']"
-      apiAttribute="city">
-    </input-errors>
-  </div>
+  <user-address-input
+    [streetControl]="registerForm.controls['street']"
+    [zipControl]="registerForm.controls['zip']"
+    [cityControl]="registerForm.controls['city']"
+    [apiErrors]="apiErrors">
+  </user-address-input>
 
   <h3 class="ui dividing header">
     {{'user.register.form.country.and.languages.section.header' | translate}}

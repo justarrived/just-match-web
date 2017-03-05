@@ -72,15 +72,16 @@ import {TextareaInputComponent} from './components/forms/inputs/textarea-input/t
 import {TextInputComponent} from './components/forms/inputs/text-input/text-input.component';
 import {TranslationService} from './services/translation.service';
 import {TruncatePipe} from './utils/truncate';
+import {UserAddressInputComponent} from './components/users/inputs/user-address-input.component';
 import {UserDetailsComponent} from './views/user/user-settings/user-details/user-details.component';
 import {UserDetailsFormComponent} from './components/forms/user-details-form/user-details-form.component';
 import {UserEmailInputComponent} from './components/users/inputs/user-email-input.component';
 import {UserFirstNameInputComponent} from './components/users/inputs/user-first-name-input/user-first-name-input.component';
-import {UserPhoneInputComponent} from './components/users/inputs/user-phone-input.component';
 import {UserJobsComponent} from './views/my-jobs/user-jobs/user-jobs.component';
 import {UserLastNameInputComponent} from './components/users/inputs/user-last-name-input/user-last-name-input.component';
 import {UserManager} from './services/user-manager.service';
 import {UserPasswordInputComponent} from './components/users/inputs/user-password-input/user-password-input.component';
+import {UserPhoneInputComponent} from './components/users/inputs/user-phone-input.component';
 import {UserProfileComponent} from './views/user/user-settings/user-profile/user-profile.component';
 import {UserProxy} from './services/proxy/user-proxy.service';
 import {UserSettingsComponent} from './views/user/user-settings/user-settings.component';
@@ -156,6 +157,7 @@ export class RavenErrorHandler implements ErrorHandler {
     TextareaInputComponent,
     TextInputComponent,
     TruncatePipe,
+    UserAddressInputComponent,
     UserDetailsComponent,
     UserDetailsFormComponent,
     UserEmailInputComponent,
