@@ -17,6 +17,6 @@ import {Input} from '@angular/core';
   `
 })
 export class UserFirstNameInputComponent {
-  @Input() apiErrors: any;
+  @Input() apiErrors: ApiErrors;
   @Input() control: any;
 }

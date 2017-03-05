@@ -32,7 +32,7 @@ import {Input} from '@angular/core';
   `
 })
 export class UserAddressInputComponent {
-  @Input() apiErrors: any;
+  @Input() apiErrors: ApiErrors;
   @Input() streetControl: any;
   @Input() zipControl: any;
   @Input() cityControl: any;

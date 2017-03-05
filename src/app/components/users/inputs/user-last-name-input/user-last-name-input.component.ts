@@ -18,6 +18,6 @@ import {Input} from '@angular/core';
   `
 })
 export class UserLastNameInputComponent {
-  @Input() apiErrors: any;
+  @Input() apiErrors: ApiErrors;
   @Input() control: any;
 }

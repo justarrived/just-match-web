@@ -16,6 +16,6 @@ import {Input} from '@angular/core';
   `
 })
 export class UserPhoneInputComponent {
-  @Input() apiErrors: any;
+  @Input() apiErrors: ApiErrors;
   @Input() control: any;
 }

@@ -23,14 +23,11 @@ import {Input} from '@angular/core';
   </text-input>
 
   <!-- The API can return errors for account, which isn't bound to any instance of form control -->
-  <api-errors
-    [errors]="apiErrors"
-    apiAttribute="account">
-  </api-errors>
+  <api-errors attribute="account" [errors]="apiErrors"></api-errors>
   `
 })
 export class UserBankAccountInputComponent {
-  @Input() apiErrors: any;
+  @Input() apiErrors: ApiErrors;
   @Input() accountClearingNumberControl: FormControl;
   @Input() accountNumberControl: FormControl;
 }
