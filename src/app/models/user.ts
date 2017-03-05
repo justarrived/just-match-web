@@ -30,6 +30,7 @@ export class User {
   frilansFinansPaymentDetails: boolean;
   justArrivedStaffing: boolean;
   admin: boolean;
+  supportChatActivated: boolean;
   company: Company;
   profile_image: UserImage;
   personal_id_image: UserImage;
@@ -75,6 +76,7 @@ export class User {
     this.frilansFinansPaymentDetails = jsonObject.frilans_finans_payment_details;
     this.justArrivedStaffing = jsonObject.just_arrived_staffing;
     this.admin = jsonObject.admin;
+    this.supportChatActivated = jsonObject.supportChatActivated;
     this.profile_image = this.getImageByCategory('profile');
     this.personal_id_image = this.getImageByCategory('personal_id');
     this.residence_permit_front_image = this.getImageByCategory('residence_permit_front');
