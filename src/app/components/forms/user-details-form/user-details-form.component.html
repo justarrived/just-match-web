@@ -13,122 +13,36 @@
     {{'user.settings.form.personal.info.header' | translate}}
   </h3>
 
-  <div class="field">
-    <sm-input
-      [control]="settingsForm.controls['first_name']"
-      [label]="('user.settings.form.first.name.label' | translate) + ' *'"
-      [placeholder]="'user.register.form.first.name.placeholder' | translate"
-      class="left"
-      icon="user"
-      type="text">
-    </sm-input>
-    <input-errors
-      apiAttribute="first_name"
-      [control]="settingsForm.controls['first_name']"
-      [apiErrors]="apiErrors">
-    </input-errors>
-  </div>
+  <user-first-name-input
+    [control]="settingsForm.controls['first_name']"
+    [apiErrors]="apiErrors">
+  </user-first-name-input>
 
-  <div class="field">
-    <sm-input
-      [control]="settingsForm.controls['last_name']"
-      [label]="('user.settings.form.last.name.label' | translate) + ' *'"
-      [placeholder]="'user.settings.form.last.name.placeholder' | translate"
-      class="left"
-      icon="user"
-      type="text">
-    </sm-input>
-    <input-errors
-      apiAttribute="last_name"
-      [control]="settingsForm.controls['last_name']"
-      [apiErrors]="apiErrors">
-    </input-errors>
-  </div>
+  <user-last-name-input
+    [control]="settingsForm.controls['last_name']"
+    [apiErrors]="apiErrors">
+  </user-last-name-input>
 
-  <div class="field">
-    <sm-input
-      [control]="settingsForm.controls['email']"
-      [label]="('user.settings.form.email.label' | translate) + ' *'"
-      [placeholder]="'user.settings.form.email.placeholder' | translate"
-      class="left"
-      icon="mail"
-      type="email">
-    </sm-input>
-    <input-errors
-      apiAttribute="email"
-      [patternLabel]="'validations.email_pattern' | translate"
-      [control]="settingsForm.controls['email']"
-      [apiErrors]="apiErrors">
-    </input-errors>
-  </div>
+  <user-email-input
+    [control]="settingsForm.controls['email']"
+    [apiErrors]="apiErrors">
+  </user-email-input>
 
-  <div class="field">
-    <sm-input
-      [control]="settingsForm.controls['phone']"
-      [label]="('user.settings.form.phone.label' | translate) + ' *'"
-      [placeholder]="'user.settings.form.phone.placeholder' | translate"
-      class="left"
-      icon="phone"
-      type="text">
-    </sm-input>
-    <input-errors
-      apiAttribute="phone"
-      [control]="settingsForm.controls['phone']"
-      [apiErrors]="apiErrors">
-    </input-errors>
-  </div>
+  <user-phone-input
+    [control]="settingsForm.controls['phone']"
+    [apiErrors]="apiErrors">
+  </user-phone-input>
 
   <h3 class="ui dividing header">
     {{'user.settings.form.address.header' | translate}}
   </h3>
 
-  <div class="field">
-    <sm-input
-      [control]="settingsForm.controls['street']"
-      [label]="'user.register.form.street.header' | translate"
-      [placeholder]="'user.register.form.street.placeholder' | translate"
-      class="left"
-      icon="map pin"
-      type="text">
-    </sm-input>
-    <input-errors
-      apiAttribute="street"
-      [control]="settingsForm.controls['street']"
-      [apiErrors]="apiErrors">
-    </input-errors>
-  </div>
-
-  <div class="field">
-    <sm-input
-      [control]="settingsForm.controls['zip']"
-      [label]="'user.register.form.zip.header' | translate"
-      [placeholder]="'user.register.form.zip.placeholder' | translate"
-      class="left"
-      icon="map"
-      type="text">
-    </sm-input>
-    <input-errors
-      apiAttribute="zip"
-      [control]="settingsForm.controls['zip']"
-      [apiErrors]="apiErrors">
-    </input-errors>
-  </div>
-
-  <div class="field">
-    <sm-input
-      [control]="settingsForm.controls['city']"
-      [label]="'user.register.form.city.header' | translate"
-      [placeholder]="'user.register.form.city.placeholder' | translate"
-      class="left"
-      icon="building"
-      type="text">
-    </sm-input>
-    <input-errors
-      apiAttribute="city"
-      [control]="settingsForm.controls['city']"
-      [apiErrors]="apiErrors">
-    </input-errors>
-  </div>
+  <user-address-input
+    [streetControl]="settingsForm.controls['street']"
+    [zipControl]="settingsForm.controls['zip']"
+    [cityControl]="settingsForm.controls['city']"
+    [apiErrors]="apiErrors">
+  </user-address-input>
 
   <h3 class="ui dividing header">
     {{'user.settings.form.change.password.header' | translate}}
@@ -170,44 +84,13 @@
     </input-error>
   </div>
 
-  <h3 class="ui dividing header">
-    {{'user.settings.form.bank.details.header' | translate}}
-  </h3>
+  <h3 class="ui dividing header">{{'user.settings.form.bank.details.header' | translate}}</h3>
 
-  <div class="field">
-    <sm-input
-      [control]="settingsForm.controls['account_clearing_number']"
-      [label]="'user.settings.form.clearing.number.label' | translate"
-      [placeholder]="'user.settings.form.clearing.number.placeholder' | translate"
-      class="left"
-      type="text">
-    </sm-input>
-    <input-errors
-      apiAttribute="account_clearing_number"
-      [control]="settingsForm.controls['account_clearing_number']"
-      [apiErrors]="apiErrors">
-    </input-errors>
-  </div>
-
-  <div class="field">
-    <sm-input
-      [control]="settingsForm.controls['account_number']"
-      [label]="'user.settings.form.account.number.label' | translate"
-      [placeholder]="'user.settings.form.account.number.placeholder' | translate"
-      class="left"
-      type="text">
-    </sm-input>
-    <input-errors
-      apiAttribute="account_number"
-      [control]="settingsForm.controls['account_number']"
-      [apiErrors]="apiErrors">
-    </input-errors>
-    <!-- The API can return errors for account, which isn't bound to any instance of form control -->
-    <api-errors
-      [errors]="apiErrors"
-      apiAttribute="account">
-    </api-errors>
-  </div>
+  <user-bank-account-input
+    [accountClearingNumberControl]="settingsForm.controls['account_clearing_number']"
+    [accountNumberControl]="settingsForm.controls['account_number']"
+    [apiErrors]="apiErrors">
+  </user-bank-account-input>
 
   <div class="user-details-form-button-container">
     <div
