@@ -27,21 +27,10 @@
     [apiErrors]="apiErrors">
   </user-email-input>
 
-  <div class="field">
-    <sm-input
-      [control]="registerForm.controls['phone']"
-      [label]="('user.register.form.phone.header' | translate) + ' *'"
-      [placeholder]="'user.register.form.phone.placeholder' | translate"
-      class="left"
-      icon="phone"
-      type="text">
-    </sm-input>
-    <input-errors
-      [apiErrors]="apiErrors"
-      [control]="registerForm.controls['phone']"
-      apiAttribute="phone">
-    </input-errors>
-  </div>
+  <user-phone-input
+    [control]="registerForm.controls['phone']"
+    [apiErrors]="apiErrors">
+  </user-phone-input>
 
   <div class="field">
     <sm-select

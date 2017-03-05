@@ -76,6 +76,7 @@ import {UserDetailsComponent} from './views/user/user-settings/user-details/user
 import {UserDetailsFormComponent} from './components/forms/user-details-form/user-details-form.component';
 import {UserEmailInputComponent} from './components/users/inputs/user-email-input.component';
 import {UserFirstNameInputComponent} from './components/users/inputs/user-first-name-input/user-first-name-input.component';
+import {UserPhoneInputComponent} from './components/users/inputs/user-phone-input.component';
 import {UserJobsComponent} from './views/my-jobs/user-jobs/user-jobs.component';
 import {UserLastNameInputComponent} from './components/users/inputs/user-last-name-input/user-last-name-input.component';
 import {UserManager} from './services/user-manager.service';
@@ -162,6 +163,7 @@ export class RavenErrorHandler implements ErrorHandler {
     UserJobsComponent,
     UserLastNameInputComponent,
     UserPasswordInputComponent,
+    UserPhoneInputComponent,
     UserProfileComponent,
     UserSettingsComponent
   ],

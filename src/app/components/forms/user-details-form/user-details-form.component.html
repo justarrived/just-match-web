@@ -28,21 +28,10 @@
     [apiErrors]="apiErrors">
   </user-email-input>
 
-  <div class="field">
-    <sm-input
-      [control]="settingsForm.controls['phone']"
-      [label]="('user.settings.form.phone.label' | translate) + ' *'"
-      [placeholder]="'user.settings.form.phone.placeholder' | translate"
-      class="left"
-      icon="phone"
-      type="text">
-    </sm-input>
-    <input-errors
-      apiAttribute="phone"
-      [control]="settingsForm.controls['phone']"
-      [apiErrors]="apiErrors">
-    </input-errors>
-  </div>
+  <user-phone-input
+    [control]="settingsForm.controls['phone']"
+    [apiErrors]="apiErrors">
+  </user-phone-input>
 
   <h3 class="ui dividing header">
     {{'user.settings.form.address.header' | translate}}
