@@ -7,6 +7,8 @@ import {Input} from '@angular/core';
 import {OnInit} from '@angular/core';
 import {User} from '../../../models/user';
 import {UserProxy} from '../../../services/proxy/user-proxy.service';
+import {TranslationListener} from '../../../components/translation.component';
+import {TranslationService} from '../../../services/translation.service';
 import {Validators} from '@angular/forms';
 import {UserGender} from '../../../models/user/user-gender';
 
@@ -15,7 +17,7 @@ import {UserGender} from '../../../models/user/user-gender';
   templateUrl: './user-details-form.component.html',
   styleUrls: ['./user-details-form.component.scss']
 })
-export class UserDetailsFormComponent implements OnInit {
+export class UserDetailsFormComponent extends TranslationListener implements OnInit {
   @Input() user: User;
   public genders: Promise<UserGender[]>;
   public apiErrors: ApiErrors = new ApiErrors([]);
@@ -28,14 +30,16 @@ export class UserDetailsFormComponent implements OnInit {
   constructor(
     private authManager: AuthManager,
     private userProxy: UserProxy,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    protected translationService: TranslationService
   ) {
+    super(translationService);
   }
 
   ngOnInit() {
+    this.loadData();
     this.initSettingsForm();
     this.initPasswordForm();
-    this.loadData();
   }
 
   loadData() {
