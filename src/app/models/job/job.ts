@@ -11,6 +11,7 @@ export class Job {
   company: Company;
   createdAt: string;
   description: string;
+  descriptionHTML: string;
   featured: boolean;
   filled: boolean;
   hourlyPay: HourlyPay;
@@ -54,6 +55,7 @@ export class Job {
     this.company = new Company(jsonObject.company);
     this.createdAt = jsonObject.created_at;
     this.description = jsonObject.description;
+    this.descriptionHTML = jsonObject.description_html;
     this.featured = jsonObject.featured;
     this.filled = jsonObject.filled;
     this.hourlyPay = new HourlyPay(jsonObject.hourly_pay);
