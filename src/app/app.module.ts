@@ -73,6 +73,7 @@ import {TextInputComponent} from './components/forms/inputs/text-input/text-inpu
 import {TranslationService} from './services/translation.service';
 import {TruncatePipe} from './utils/truncate';
 import {UserAddressInputComponent} from './components/users/inputs/user-address-input.component';
+import {UserBankAccountInputComponent} from './components/users/inputs/user-bank-account-input.component';
 import {UserDetailsComponent} from './views/user/user-settings/user-details/user-details.component';
 import {UserDetailsFormComponent} from './components/forms/user-details-form/user-details-form.component';
 import {UserEmailInputComponent} from './components/users/inputs/user-email-input.component';
@@ -158,6 +159,7 @@ export class RavenErrorHandler implements ErrorHandler {
     TextInputComponent,
     TruncatePipe,
     UserAddressInputComponent,
+    UserBankAccountInputComponent,
     UserDetailsComponent,
     UserDetailsFormComponent,
     UserEmailInputComponent,
