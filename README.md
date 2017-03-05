@@ -1,4 +1,4 @@
-# Just Match Web [![Dependency Status][david-badge]][david-badge-url] [![devDependency Status][david-dev-badge]][david-dev-badge-url]
+# Just Match Web [![Stories in Ready](https://badge.waffle.io/justarrived/just-match-web.svg?label=ready&title=Ready)](http://waffle.io/justarrived/just-match-web) [![Dependency Status][david-badge]][david-badge-url] [![devDependency Status][david-dev-badge]][david-dev-badge-url]
 
 ## Built with
 
