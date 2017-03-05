@@ -69,19 +69,19 @@ import {SliderComponent} from './components/slider/slider.component';
 import {SuccessMessageComponent} from './components/messages/success-message/success-message.component';
 import {SystemLanguagesService} from './services/system-languages.service';
 import {TextareaInputComponent} from './components/form-parts/inputs/textarea-input.component';
+import {TextInputComponent} from './components/form-parts/inputs/text-input/text-input.component';
 import {TranslationService} from './services/translation.service';
 import {TruncatePipe} from './utils/truncate';
 import {UserDetailsComponent} from './views/user/user-settings/user-details/user-details.component';
 import {UserDetailsFormComponent} from './components/forms/user-details-form/user-details-form.component';
+import {UserFirstNameInputComponent} from './components/form-parts/inputs/user-first-name-input/user-first-name-input.component';
 import {UserJobsComponent} from './views/my-jobs/user-jobs/user-jobs.component';
+import {UserLastNameInputComponent} from './components/form-parts/inputs/user-last-name-input/user-last-name-input.component';
 import {UserManager} from './services/user-manager.service';
+import {UserPasswordInputComponent} from './components/form-parts/inputs/user-password-input/user-password-input.component';
 import {UserProfileComponent} from './views/user/user-settings/user-profile/user-profile.component';
 import {UserProxy} from './services/proxy/user-proxy.service';
 import {UserSettingsComponent} from './views/user/user-settings/user-settings.component';
-import {TextInputComponent} from './components/form-parts/inputs/text-input/text-input.component';
-import {UserFirstNameInputComponent} from './components/form-parts/inputs/user-first-name-input/user-first-name-input.component';
-import {UserLastNameInputComponent} from './components/form-parts/inputs/user-last-name-input/user-last-name-input.component';
-import {UserPasswordInputComponent} from './components/form-parts/inputs/user-password-input/user-password-input.component';
 import * as Raven from 'raven-js';
 
 Raven
@@ -96,13 +96,13 @@ export class RavenErrorHandler implements ErrorHandler {
 
 @NgModule({
   imports: [
-    BrowserModule,
-    NgSemanticModule,
-    HttpModule,
-    FormsModule,
-    ReactiveFormsModule,
-    AppTranslateModule,
     AppRoutingModule,
+    AppTranslateModule,
+    BrowserModule,
+    FormsModule,
+    HttpModule,
+    NgSemanticModule,
+    ReactiveFormsModule,
     AgmCoreModule.forRoot({
       apiKey: environment.googleMapsKey
     })
@@ -152,35 +152,35 @@ export class RavenErrorHandler implements ErrorHandler {
     SliderComponent,
     SuccessMessageComponent,
     TextareaInputComponent,
+    TextInputComponent,
     TruncatePipe,
     UserDetailsComponent,
     UserDetailsFormComponent,
-    UserJobsComponent,
-    UserProfileComponent,
-    TextInputComponent,
     UserFirstNameInputComponent,
+    UserJobsComponent,
     UserLastNameInputComponent,
     UserPasswordInputComponent,
+    UserProfileComponent,
     UserSettingsComponent
   ],
   providers: [
-    DataStore,
-    NavigationService,
-    SystemLanguagesService,
+    ActsAsUser,
     ApiCall,
     AuthManager,
-    ActsAsUser,
     CommentsProxy,
     ContactProxy,
     CountryProxy,
+    DataStore,
     FaqProxy,
+    Geolocation,
     JobProxy,
     LanguageProxy,
+    NavigationService,
     SkillProxy,
-    UserProxy,
+    SystemLanguagesService,
     TranslationService,
     UserManager,
-    Geolocation,
+    UserProxy,
     { provide: ErrorHandler, useClass: RavenErrorHandler }
   ],
   bootstrap: [AppComponent],
