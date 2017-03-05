@@ -13,8 +13,8 @@
   }
 
   .home-header-map-image {
-    padding-right: 0;
     width: 426px;
+    padding-right: 0;
 
     @media screen and (max-width: $md-device-width) {
       margin: 0 auto;
@@ -42,26 +42,27 @@
     .home-header-info-title {
       @include wrap-long-words;
       color: $white;
-      text-shadow: 0 0 3px rgba(0, 0, 0, 0.75);
+      text-shadow: 0 0 3px rgba(0, 0, 0, .75);
     }
 
     .home-header-info-subtitle {
-      padding-bottom: 0.2em;
       padding-top: 1em;
+      padding-bottom: .2em;
     }
 
     .home-header-info-description-container {
-      font-size: 14px;
       margin: 0 auto;
+      font-size: 14px;
     }
 
     .home-header-button-container {
       display: inline-block;
       margin-top: 20px;
+
       .home-header-button {
-        margin-left: 0;
         position: relative;
         width: 100%;
+        margin-left: 0;
       }
     }
   }
