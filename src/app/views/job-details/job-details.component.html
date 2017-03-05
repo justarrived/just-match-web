@@ -54,14 +54,18 @@
           </div>
         </div>
         <div class="fifteen wide phone column">
-          <p class="job-preview-text">{{job.description}}</p>
+          <div [innerHTML]="job.descriptionHTML"></div>
         </div>
       </div>
       <hr class="job-details-separator"/>
       <div class="ui grid job-preview-row">
-        <div class="one wide phone column"></div>
+        <div class="one wide phone column">
+          <div class="job-preview-icon-container">
+            <i class="fa fa-clock-o fa-lg"></i>
+          </div>
+        </div>
         <div class="fifteen wide phone column">
-          <p class="job-preview-text">{{job.hours}} {{'assignment.hours' | translate}} ({{job.hourlyPay.grossSalaryWithUnit}} {{'assignment.rate.gross_salary' | translate}})<br/>
+          <p>{{job.hours}} {{'assignment.hours' | translate}} ({{job.hourlyPay.grossSalaryWithUnit}} {{'assignment.rate.gross_salary' | translate}})<br/>
           {{job.netAmountWithCurrency}} {{'assignment.after_tax' | translate}}</p>
         </div>
       </div>
@@ -73,7 +77,7 @@
           </div>
         </div>
         <div class="fifteen wide phone column">
-          <p class="job-preview-text">{{job.street}}, {{job.zip}}</p>
+          <p>{{job.street}}, {{job.zip}}</p>
         </div>
       </div>
       <hr class="job-details-separator"/>
@@ -84,7 +88,7 @@
           </div>
         </div>
         <div class="fifteen wide phone column">
-          <p class="job-preview-text">{{job.jobDate | date: 'yyyy-MM-dd'}} - {{job.jobEndDate | date: 'yyyy-MM-dd'}}</p>
+          <p>{{job.jobDate | date: 'yyyy-MM-dd'}} - {{job.jobEndDate | date: 'yyyy-MM-dd'}}</p>
         </div>
       </div>
       <hr class="job-details-separator"/>
