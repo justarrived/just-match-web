@@ -8,7 +8,9 @@ import {OnInit} from '@angular/core';
   selector: 'job-card',
   styleUrls: ['./job-card.component.scss'],
   template: `
-  <div class="ui raised card link job-card" routerLink="{{JARoutes.job.url([job.id])}}">
+  <div
+    class="ui raised card link job-card"
+    routerLink="{{JARoutes.job.url([job.id])}}">
     <div class="content">
       <img
         class="right floated mini ui image"
@@ -31,11 +33,19 @@ import {OnInit} from '@angular/core';
       </div>
     </div>
     <div class="extra content job-salary-container">
-      <span class="job-salary">{{job.grossSalary}}  </span>
-      <span class="job-salary-currency">{{'job.card.currency.per.hour' | translate: {currency: job.currency} }}</span>
+      <span class="job-salary">
+        {{job.grossSalary}}
+      </span>
+      <span class="job-salary-currency">
+        {{'job.card.currency.per.hour' | translate: {currency: job.currency} }}
+      </span>
       <div class="job-salary-additional-info">
-        <span class="job-hours">{{'job.card.hours' | translate: {hours: job.hours} }}</span>
-        <span class="right floated job-total-salary">{{job.grossAmountWithCurrency}}</span>
+        <span class="job-hours">
+          {{'job.card.hours' | translate: {hours: job.hours} }}
+        </span>
+        <span class="right floated job-total-salary">
+          {{job.grossAmountWithCurrency}}
+        </span>
       </div>
     </div>
   </div>
