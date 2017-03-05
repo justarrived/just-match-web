@@ -9,8 +9,8 @@ import {Input} from '@angular/core';
   <text-input
     [apiErrors]="apiErrors"
     [control]="control"
-    [label]="('form.parts.user.last.name.input.label' | translate) + ' *'"
-    [placeholder]="'form.parts.user.last.name.input.placeholder' | translate"
+    [label]="('user.form.last.name.input.label' | translate) + ' *'"
+    [placeholder]="'user.form.last.name.input.placeholder' | translate"
     apiAttribute="last_name"
     icon="user"
     type="text">

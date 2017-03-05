@@ -13,37 +13,15 @@
     {{'user.settings.form.personal.info.header' | translate}}
   </h3>
 
-  <div class="field">
-    <sm-input
-      [control]="settingsForm.controls['first_name']"
-      [label]="('user.settings.form.first.name.label' | translate) + ' *'"
-      [placeholder]="'user.register.form.first.name.placeholder' | translate"
-      class="left"
-      icon="user"
-      type="text">
-    </sm-input>
-    <input-errors
-      apiAttribute="first_name"
-      [control]="settingsForm.controls['first_name']"
-      [apiErrors]="apiErrors">
-    </input-errors>
-  </div>
+  <user-first-name-input
+    [control]="settingsForm.controls['first_name']"
+    [apiErrors]="apiErrors">
+  </user-first-name-input>
 
-  <div class="field">
-    <sm-input
-      [control]="settingsForm.controls['last_name']"
-      [label]="('user.settings.form.last.name.label' | translate) + ' *'"
-      [placeholder]="'user.settings.form.last.name.placeholder' | translate"
-      class="left"
-      icon="user"
-      type="text">
-    </sm-input>
-    <input-errors
-      apiAttribute="last_name"
-      [control]="settingsForm.controls['last_name']"
-      [apiErrors]="apiErrors">
-    </input-errors>
-  </div>
+  <user-last-name-input
+    [control]="settingsForm.controls['last_name']"
+    [apiErrors]="apiErrors">
+  </user-last-name-input>
 
   <user-email-input
     [control]="settingsForm.controls['email']"

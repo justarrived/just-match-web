@@ -9,8 +9,8 @@ import {Input} from '@angular/core';
   <text-input
     [apiErrors]="apiErrors"
     [control]="control"
-    [label]="('form.parts.user.password.input.label' | translate) + ' *'"
-    [placeholder]="'form.parts.user.password.input.placeholder' | translate"
+    [label]="('user.form.password.input.label' | translate) + ' *'"
+    [placeholder]="'user.form.password.input.placeholder' | translate"
     apiAttribute="password"
     icon="lock"
     type="password">

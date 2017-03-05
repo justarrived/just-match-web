@@ -8,8 +8,8 @@ import {Input} from '@angular/core';
   <text-input
     [apiErrors]="apiErrors"
     [control]="control"
-    [label]="('form.parts.user.first.name.input.label' | translate) + ' *'"
-    [placeholder]="'form.parts.user.first.name.input.placeholder' | translate"
+    [label]="('user.form.first.name.input.label' | translate) + ' *'"
+    [placeholder]="'user.form.first.name.input.placeholder' | translate"
     apiAttribute="first_name"
     icon="user"
     type="text">
