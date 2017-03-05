@@ -1,5 +1,6 @@
 import {ApiErrors} from '../../../models/api-errors';
 import {Component} from '@angular/core';
+import {FormControl} from '@angular/forms';
 import {Input} from '@angular/core';
 
 @Component({
@@ -18,5 +19,5 @@ import {Input} from '@angular/core';
 })
 export class UserEmailInputComponent {
   @Input() apiErrors: ApiErrors;
-  @Input() control: any;
+  @Input() control: FormControl;
 }

@@ -1,5 +1,6 @@
 import {ApiErrors} from '../../../models/api-errors';
 import {Component} from '@angular/core';
+import {FormControl} from '@angular/forms';
 import {Input} from '@angular/core';
 
 @Component({
@@ -33,7 +34,7 @@ import {Input} from '@angular/core';
 })
 export class UserAddressInputComponent {
   @Input() apiErrors: ApiErrors;
-  @Input() streetControl: any;
-  @Input() zipControl: any;
-  @Input() cityControl: any;
+  @Input() streetControl: FormControl;
+  @Input() zipControl: FormControl;
+  @Input() cityControl: FormControl;
 }
