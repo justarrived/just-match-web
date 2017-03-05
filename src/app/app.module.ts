@@ -68,6 +68,7 @@ import {SkillProxy} from './services/proxy/skill-proxy.service';
 import {SliderComponent} from './components/slider/slider.component';
 import {SuccessMessageComponent} from './components/messages/success-message/success-message.component';
 import {SystemLanguagesService} from './services/system-languages.service';
+import {TextareaInputComponent} from './components/form-parts/inputs/textarea-input.component';
 import {TranslationService} from './services/translation.service';
 import {TruncatePipe} from './utils/truncate';
 import {UserDetailsComponent} from './views/user/user-settings/user-details/user-details.component';
@@ -140,12 +141,13 @@ export class RavenErrorHandler implements ErrorHandler {
     MyJobsItemComponent,
     NotFoundPageComponent,
     PagerComponent,
-    SuccessMessageComponent,
     RegisterFormComponent,
     RegisterPageComponent,
     ResetPasswordFormComponent,
     ResetPasswordPageComponent,
     SliderComponent,
+    SuccessMessageComponent,
+    TextareaInputComponent,
     TruncatePipe,
     UserDetailsComponent,
     UserDetailsFormComponent,
