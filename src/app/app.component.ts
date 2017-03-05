@@ -102,7 +102,7 @@ export class AppComponent implements OnInit {
   }
 
   get canStaffingTimeReport(): boolean {
-    return this.user && this.user.justArrivedStaffing;
+    return this.user && (this.user.justArrivedStaffing || this.user.admin);
   }
 
   get languageBtnIconClassName(): string {
