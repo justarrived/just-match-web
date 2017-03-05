@@ -32,7 +32,7 @@ export class TextInputComponent {
   @Input() public label: any;
   @Input() public placeholder: any;
   @Input() public icon: string;
-  @Input() public type: string;
+  @Input() public type: string = 'text';
   @Input() public apiAttribute: string;
   @Input() public patternLabel: string;
   @Input() public requiredLabel: string;

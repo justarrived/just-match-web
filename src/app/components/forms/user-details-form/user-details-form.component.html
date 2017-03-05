@@ -45,22 +45,10 @@
     </input-errors>
   </div>
 
-  <div class="field">
-    <sm-input
-      [control]="settingsForm.controls['email']"
-      [label]="('user.settings.form.email.label' | translate) + ' *'"
-      [placeholder]="'user.settings.form.email.placeholder' | translate"
-      class="left"
-      icon="mail"
-      type="email">
-    </sm-input>
-    <input-errors
-      apiAttribute="email"
-      [patternLabel]="'validations.email_pattern' | translate"
-      [control]="settingsForm.controls['email']"
-      [apiErrors]="apiErrors">
-    </input-errors>
-  </div>
+  <user-email-input
+    [control]="settingsForm.controls['email']"
+    [apiErrors]="apiErrors">
+  </user-email-input>
 
   <div class="field">
     <sm-input

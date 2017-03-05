@@ -18,26 +18,14 @@
    </user-first-name-input>
 
   <user-last-name-input
-     [control]="registerForm.controls['last_name']"
+    [control]="registerForm.controls['last_name']"
      [apiErrors]="apiErrors">
    </user-last-name-input>
 
-  <div class="field">
-    <sm-input
-      [control]="registerForm.controls['email']"
-      [label]="('user.register.form.email.header' | translate) + ' *'"
-      [placeholder]="'user.register.form.email.placeholder' | translate"
-      class="left"
-      icon="mail"
-      type="text">
-    </sm-input>
-    <input-errors
-      [apiErrors]="apiErrors"
-      [control]="registerForm.controls['email']"
-      [patternLabel]="'validations.email_pattern' | translate"
-      apiAttribute="email">
-    </input-errors>
-  </div>
+  <user-email-input
+    [control]="registerForm.controls['email']"
+    [apiErrors]="apiErrors">
+  </user-email-input>
 
   <div class="field">
     <sm-input
@@ -198,7 +186,7 @@
   <h3 class="ui dividing header">
     {{'user.register.form.password.section.header' | translate}}
   </h3>
-  
+
   <user-password-input
      [control]="registerForm.controls['password']"
      [apiErrors]="apiErrors">
