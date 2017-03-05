@@ -44,10 +44,12 @@
     .job-salary {
       font-size: $fs-xxxxl;
       color: $color-primary-cerise;
+      @include truncate-owerflowing-text;
     }
 
     .job-salary-currency {
       font-size: $fs-xxl;
+      @include truncate-owerflowing-text;
     }
 
     .job-salary-additional-info {
