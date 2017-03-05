@@ -17,7 +17,7 @@ import {UserGender} from '../../../models/user/user-gender';
 })
 export class UserDetailsFormComponent implements OnInit {
   @Input() user: User;
-  private genders: Promise<UserGender[]>;
+  public genders: Promise<UserGender[]>;
   public apiErrors: ApiErrors = new ApiErrors([]);
   public loadingSubmit: boolean = false;
   public passwordForm: FormGroup;
