@@ -1,32 +1,5 @@
 <div class="home-container">
-
-  <div class="home-header-container">
-    <img class="home-header-map-image" src="/assets/images/startpagemap.png" alt="Map" />
-    <div class="home-header-info-container home-header-info-container-logged-in" *ngIf="user">
-      <h2 class="home-header-info-title">
-        {{'home.header.logged.in.title'| translate: {username: user.firstName} }}
-      </h2>
-      <div class="home-header-button-container">
-        <a routerLink="{{JARoutes.user.url([user.id])}}" class="home-header-button btn-secondary-light btn-small btn">{{'home.header.logged.in.profile.button'| translate}}</a><br>
-        <a routerLink="{{JARoutes.jobs.url(['1'])}}" class="home-header-button btn-primary-light btn-small btn">{{'home.header.logged.in.jobs.button'| translate}}</a>
-      </div>
-    </div>
-    <div class="home-header-info-container" *ngIf="!user">
-      <h2 class="home-header-info-title">
-        {{'home.header.logged.out.title' | translate }}
-      </h2>
-      <h4 class="home-header-info-subtitle">
-        {{'home.header.logged.out.sub.title' | translate }}
-      </h4>
-      <div class="home-header-info-description-container">
-        {{'home.header.logged.out.description' | translate }}
-      </div>
-      <div class="home-header-button-container">
-        <a routerLink="{{JARoutes.registerUser.url()}}" class="home-header-button btn-secondary-light btn-small btn">{{'home.header.logged.out.register.button'| translate}}</a><br/>
-        <a routerLink="{{JARoutes.login.url()}}" class="home-header-button btn-primary-light btn-small btn">{{'home.header.logged.out.login.button'| translate}}</a>
-      </div>
-    </div>
-  </div>
+  <home-top-banner [JaRoutes]="JaRoutes" [user]="user"></home-top-banner>
 
   <div class="home-jobs-slider-container home-jobs-slider-new-jobs-container">
     <div class="home-jobs-slider-new-jobs-title">
@@ -35,10 +8,17 @@
       </h2>
     </div>
     <div class="home-jobs-slider-show-all-jobs-link-container">
-      <a class="home-jobs-slider-show-all-jobs-link home-jobs-slider-show-all-new-jobs-link" routerLink="{{JARoutes.jobs.url(['1'])}}">{{'home.jobs.slider.show.all.link' | translate | lowercase}} > <i class="icon-ic-arrow-right"></i></a>
+      <a
+        class="home-jobs-slider-show-all-jobs-link home-jobs-slider-show-all-new-jobs-link"
+        routerLink="{{JARoutes.jobs.url(['1'])}}">
+        {{'home.jobs.slider.show.all.link' | translate | lowercase}} > <i class="icon-ic-arrow-right"></i>
+      </a>
     </div>
     <div class="home-jobs-slider" align="center">
-      <div *ngFor="let job of newJobs" class="home-job-item-container" routerLink="{{JARoutes.job.url([job.id])}}">
+      <div
+        *ngFor="let job of newJobs"
+        class="home-job-item-container"
+        routerLink="{{JARoutes.job.url([job.id])}}">
         <div class="home-job-item-name-container">
           <div class="home-job-item-name">
             {{job.name}}
@@ -58,10 +38,17 @@
       </h2>
     </div>
     <div class="home-jobs-slider-show-all-jobs-link-container">
-      <a class="home-jobs-slider-show-all-jobs-link home-jobs-slider-show-all-user-jobs-link" routerLink="{{JARoutes.userJobs.url([user.id])}}">{{'home.jobs.slider.show.all.link' | translate | lowercase}} > <i class="icon-ic-arrow-right"></i></a>
+      <a
+        class="home-jobs-slider-show-all-jobs-link home-jobs-slider-show-all-user-jobs-link"
+        routerLink="{{JARoutes.userJobs.url([user.id])}}">
+        {{'home.jobs.slider.show.all.link' | translate | lowercase}} > <i class="icon-ic-arrow-right"></i>
+      </a>
     </div>
     <div class="home-jobs-slider" align="center">
-      <div *ngFor="let userJob of userJobs" class="home-job-item-container" routerLink="{{JARoutes.job.url([userJob.job.id])}}">
+      <div
+        *ngFor="let userJob of userJobs"
+        class="home-job-item-container"
+        routerLink="{{JARoutes.job.url([userJob.job.id])}}">
         <div class="home-job-item-name-container">
           <div class="home-job-item-name">
             {{userJob.job.name}}
@@ -70,7 +57,9 @@
         <div *ngIf="userJob.job_ended" class="home-job-item-salary-container home-job-item-salary-job-ended-container">
           {{'home.jobs.slider.user.jobs.job.ended.label' | translate | uppercase}}
         </div>
-        <div *ngIf="userJob.willPerform && !userJob.job_ended" class="home-job-item-salary-container home-job-item-salary-will-perform-job-container">
+        <div
+          *ngIf="userJob.willPerform && !userJob.job_ended"
+          class="home-job-item-salary-container home-job-item-salary-will-perform-job-container">
           {{'home.jobs.slider.user.jobs.will.perform.job.label' | translate | uppercase}}
         </div>
       </div>
@@ -112,7 +101,11 @@
           <i class="home-instructions-list-item-icon fa fa-check-circle-o fa-2x"></i> {{'home.instructions.first.section.instruction3' | translate}}
         </li>
       </ul>
-      <div routerLink="{{JARoutes.jobs.url([1])}}" class="home-instructions-button btn-secondary-light btn-medium btn">{{'common.find_assignment' | translate}}</div>
+      <div
+        routerLink="{{JARoutes.jobs.url([1])}}"
+        class="home-instructions-button btn-secondary-light btn-medium btn">
+        {{'common.find_assignment' | translate}}
+      </div>
     </div>
     <div class="home-instructions-inner-container home-instructions-second-inner-container">
       <h3>
@@ -133,10 +126,16 @@
         </li>
       </ul>
       <div *ngIf="!user">
-        <div routerLink="{{JARoutes.registerUser.url()}}" class="home-instructions-button btn-secondary-light btn-medium btn">{{'common.start_here' | translate}}</div>
+        <div
+          routerLink="{{JARoutes.registerUser.url()}}"
+          class="home-instructions-button btn-secondary-light btn-medium btn">
+          {{'common.start_here' | translate}}
+        </div>
       </div>
       <div *ngIf="user">
-        <div routerLink="{{JARoutes.user.url([user.id])}}" class="home-instructions-button btn-secondary-light btn-medium btn">
+        <div
+          routerLink="{{JARoutes.user.url([user.id])}}"
+          class="home-instructions-button btn-secondary-light btn-medium btn">
           {{'home.header.logged.in.profile.button' | translate}}
         </div>
       </div>

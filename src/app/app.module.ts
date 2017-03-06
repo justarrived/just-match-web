@@ -35,6 +35,7 @@ import {ForgotPasswordPageComponent} from './views/forgot-password/forgot-passwo
 import {FormsModule} from '@angular/forms';
 import {Geolocation} from './services/geolocation.service';
 import {HomeComponent} from './views/home/home.component';
+import {HomeTopBannerComponent} from './components/home/home-top-banner.component';
 import {HttpModule} from '@angular/http';
 import {InfoMessageComponent} from './components/messages/info-message/info-message.component';
 import {InputErrorComponent} from './components/forms/input-error.component';
@@ -133,6 +134,7 @@ export class RavenErrorHandler implements ErrorHandler {
     ForgotPasswordFormComponent,
     ForgotPasswordPageComponent,
     HomeComponent,
+    HomeTopBannerComponent,
     InfoMessageComponent,
     InputErrorComponent,
     InputErrorsComponent,
