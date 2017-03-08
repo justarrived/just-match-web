@@ -118,6 +118,8 @@
   "input.gender.placeholder": "Gender",
   "input.last.name.label": "Last name",
   "input.last.name.placeholder": "Last name",
+  "input.message.label": "Message",
+  "input.message.placeholder": "Message",
   "input.password.label": "Password",
   "input.password.placeholder": "Password",
   "input.phone.label": "Phone",

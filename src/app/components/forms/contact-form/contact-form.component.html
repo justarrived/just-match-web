@@ -24,38 +24,15 @@
     </input-errors>
   </div>
 
-  <div class="field">
-    <sm-input
-      [control]="contactForm.controls['email']"
-      [label]="('contact.form.email.header' | translate) + ' *'"
-      [placeholder]="'contact.form.email.placeholder' | translate"
-      class="left"
-      icon="mail"
-      type="text">
-    </sm-input>
-    <input-errors
-      [apiErrors]="apiErrors"
-      [control]="contactForm.controls['email']"
-      [patternLabel]="'validations.email_pattern' | translate"
-      apiAttribute="email">
-    </input-errors>
-  </div>
+  <email-input
+    [control]="contactForm.controls['email']"
+    [apiErrors]="apiErrors">
+  </email-input>
 
-  <div class="field">
-    <sm-textarea
-      [control]="contactForm.controls['message']"
-      [label]="('contact.form.message.placeholder' | translate) + ' *'"
-      [placeholder]="'contact.form.message.placeholder' | translate"
-      class="left"
-      icon="mail"
-      rows="10">
-    </sm-textarea>
-    <input-errors
-      [apiErrors]="apiErrors"
-      [control]="contactForm.controls['message']"
-      apiAttribute="body">
-    </input-errors>
-  </div>
+  <message-input
+    [control]="contactForm.controls['message']"
+    [apiErrors]="apiErrors">
+  </message-input>
 
   <form-submit-button
     [submitFail]="submitFail"

@@ -58,6 +58,7 @@ import {LastNameInputComponent} from './components/inputs/last-name-input/last-n
 import {LoadingComponent} from './components/loading/loading.component';
 import {LoginFormComponent} from './components/forms/login-form/login-form.component';
 import {LoginPageComponent} from './views/login/login-page.component';
+import {MessageInputComponent} from './components/inputs/message-input/message-input.component';
 import {MyJobsComponent} from './views/my-jobs/my-jobs.component';
 import {MyJobsItemComponent} from './components/my-jobs-item/my-jobs-item.component';
 import {NavigationService} from './services/navigation.service';
@@ -162,6 +163,7 @@ export class RavenErrorHandler implements ErrorHandler {
     LoadingComponent,
     LoginFormComponent,
     LoginPageComponent,
+    MessageInputComponent,
     MyJobsComponent,
     MyJobsItemComponent,
     NotFoundPageComponent,
