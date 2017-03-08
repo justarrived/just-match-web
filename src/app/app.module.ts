@@ -35,7 +35,6 @@ import {ForgotPasswordPageComponent} from './views/forgot-password/forgot-passwo
 import {FormsModule} from '@angular/forms';
 import {Geolocation} from './services/geolocation.service';
 import {HomeComponent} from './views/home/home.component';
-import {HomeTopBannerComponent} from './components/home/home-top-banner.component';
 import {HttpModule} from '@angular/http';
 import {InfoMessageComponent} from './components/messages/info-message/info-message.component';
 import {InputErrorComponent} from './components/form-errors/input-error/input-error.component';
@@ -87,6 +86,7 @@ import {UserProfileComponent} from './views/user/user-settings/user-profile/user
 import {UserProfileFormComponent} from './components/forms/user-profile-form/user-profile-form.component';
 import {UserProxy} from './services/proxy/user-proxy.service';
 import {UserSettingsComponent} from './views/user/user-settings/user-settings.component';
+import {WelcomeHeaderComponent} from './components/headers/welcome-header/welcome-header.component';
 import * as Raven from 'raven-js';
 
 Raven
@@ -134,7 +134,6 @@ export class RavenErrorHandler implements ErrorHandler {
     ForgotPasswordFormComponent,
     ForgotPasswordPageComponent,
     HomeComponent,
-    HomeTopBannerComponent,
     InfoMessageComponent,
     InputErrorComponent,
     InputErrorsComponent,
@@ -171,7 +170,8 @@ export class RavenErrorHandler implements ErrorHandler {
     UserPhoneInputComponent,
     UserProfileComponent,
     UserProfileFormComponent,
-    UserSettingsComponent
+    UserSettingsComponent,
+    WelcomeHeaderComponent,
   ],
   providers: [
     ActsAsUser,
