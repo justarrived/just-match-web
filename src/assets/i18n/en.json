@@ -120,6 +120,8 @@
   "input.last.name.placeholder": "Last name",
   "input.message.label": "Message",
   "input.message.placeholder": "Message",
+  "input.name.label": "Name",
+  "input.name.placeholder": "Name",
   "input.password.label": "Password",
   "input.password.placeholder": "Password",
   "input.phone.label": "Phone",

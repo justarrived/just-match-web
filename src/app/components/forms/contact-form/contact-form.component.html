@@ -8,21 +8,10 @@
     text="{{'component.loading' | translate}}">
   </sm-loader>
 
-  <div class="field">
-    <sm-input
-      [control]="contactForm.controls['name']"
-      [label]="('contact.form.name.header' | translate) + ' *'"
-      [placeholder]="'contact.form.name.placeholder' | translate"
-      class="left"
-      icon="user"
-      type="text">
-    </sm-input>
-    <input-errors
-      [apiErrors]="apiErrors"
-      [control]="contactForm.controls['name']"
-      apiAttribute="name">
-    </input-errors>
-  </div>
+  <name-input
+    [control]="contactForm.controls['name']"
+    [apiErrors]="apiErrors">
+  </name-input>
 
   <email-input
     [control]="contactForm.controls['email']"

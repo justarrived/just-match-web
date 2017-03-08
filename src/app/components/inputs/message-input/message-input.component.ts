@@ -12,7 +12,7 @@ import {Input} from '@angular/core';
     [label]="'input.message.label' | translate"
     [placeholder]="'input.message.placeholder' | translate"
     [rows]="10"
-    apiAttribute="message">
+    apiAttribute="body">
   </textarea-input>
   `
 })

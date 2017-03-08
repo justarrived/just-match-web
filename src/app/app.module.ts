@@ -61,6 +61,7 @@ import {LoginPageComponent} from './views/login/login-page.component';
 import {MessageInputComponent} from './components/inputs/message-input/message-input.component';
 import {MyJobsComponent} from './views/my-jobs/my-jobs.component';
 import {MyJobsItemComponent} from './components/my-jobs-item/my-jobs-item.component';
+import {NameInputComponent} from './components/inputs/name-input/name-input.component';
 import {NavigationService} from './services/navigation.service';
 import {NgModule} from '@angular/core';
 import {NgSemanticModule} from 'ng-semantic-ja/ng-semantic';
@@ -166,6 +167,7 @@ export class RavenErrorHandler implements ErrorHandler {
     MessageInputComponent,
     MyJobsComponent,
     MyJobsItemComponent,
+    NameInputComponent,
     NotFoundPageComponent,
     PagerComponent,
     PasswordInputComponent,
