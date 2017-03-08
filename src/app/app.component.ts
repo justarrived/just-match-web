@@ -57,6 +57,11 @@ export class AppComponent implements OnInit {
     });
   }
 
+  public onStaffingTimeReportButtonClick() {
+    window.location.href = 'https://justarrived-se.web.intelliplan.eu/croupier/login/';
+    this.isNavigationMenuVisible = false;
+  }
+
   private onBodyClick(event) {
     let targetClasses = event.target.classList;
     if ((targetClasses.contains('overbody-container') || targetClasses.contains('menu-side-bar')) && (this.isNavigationMenuVisible || this.isLanguageMenuVisible)) {
@@ -94,6 +99,10 @@ export class AppComponent implements OnInit {
 
   get isSideMenuVisible(): boolean {
     return this.isNavigationMenuVisible || this.isLanguageMenuVisible;
+  }
+
+  get canStaffingTimeReport(): boolean {
+    return this.user && (this.user.justArrivedStaffing || this.user.admin);
   }
 
   get languageBtnIconClassName(): string {

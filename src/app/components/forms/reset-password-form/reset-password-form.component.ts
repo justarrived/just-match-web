@@ -15,10 +15,9 @@ import {Validators} from '@angular/forms';
   styleUrls: ['./reset-password-form.component.scss'],
 })
 export class ResetPasswordFormComponent implements OnInit {
-  private JARoutes = JARoutes;
-  private oneTimeToken: string;
   public apiErrors: ApiErrors = new ApiErrors([]);
   public displayErrorMessage: boolean;
+  public JARoutes = JARoutes;
   public loadingSubmit: boolean = false;
   public resetPasswordForm: FormGroup;
 
@@ -30,27 +29,28 @@ export class ResetPasswordFormComponent implements OnInit {
   ) {
   }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.initForm();
-    this.fetchRouterParam();
+    this.initToken();
   }
 
   private initForm() {
     this.resetPasswordForm = this.formBuilder.group({
-      'password': ['', Validators.compose([Validators.required, Validators.minLength(6)])]
+      'password': ['', Validators.compose([Validators.required, Validators.minLength(6)])],
+      'one_time_token': ['', Validators.compose([Validators.required])]
     });
   }
 
-  private fetchRouterParam() {
+  private initToken() {
     this.route.params.subscribe(params => {
-      this.oneTimeToken = params['token'];
+      this.resetPasswordForm.controls['one_time_token'].setValue(params['token']);
     });
   }
 
-  submitForm(value: any) {
+  public submitForm(value: any) {
     this.loadingSubmit = true;
     this.displayErrorMessage = false;
-    this.userProxy.changePasswordWithToken(value.password, this.oneTimeToken)
+    this.userProxy.changePasswordWithToken(value.password, value.one_time_token)
       .then((result) => {
         this.navigationService.navigate(JARoutes.confirmation, 'password-reset');
         this.loadingSubmit = false;
@@ -62,7 +62,7 @@ export class ResetPasswordFormComponent implements OnInit {
       });
   }
 
-  onEnterKeyUp() {
+  public onEnterKeyUp() {
     if (this.resetPasswordForm.valid) {
       this.submitForm(this.resetPasswordForm.value);
     }

@@ -44,17 +44,6 @@ import {ViewChild} from '@angular/core';
   styleUrls: ['./user-profile-form.component.scss']
 })
 export class UserProfileFormComponent extends TranslationListener implements OnInit {
-  @ViewChild('nativeLanguageDropdown')
-  nativeLanguageDropdown: AutocompleteDropdownComponent;
-
-  @ViewChild('defaultLanguageDropdown')
-  defaultLanguageDropdown: AutocompleteDropdownComponent;
-
-  @ViewChild('countryDropdown')
-  countryDropdown: AutocompleteDropdownComponent;
-
-  namePropertyLabel: Function = namePropertyLabel;
-
   languageExpertProficiency: LanguageProficiency = LanguageProficiencyLevels.expert;
   languageProficiencyLevelsAvailable: LanguageProficiency[] = languageProficiencyLevelsList;
   skillProficiencyLevelsAvailable: LanguageProficiency[] = skillProficiencyLevelsList;
@@ -63,18 +52,16 @@ export class UserProfileFormComponent extends TranslationListener implements OnI
 
   countries: Promise<Country[]>;
   languages: Promise<Language[]>;
+  skills: Promise<Skill[]>;
+  statuses: Promise<UserStatus[]>;
   systemLanguages: Promise<Language[]>;
-  languagesExcludingNative: Promise<Language[]>; //Remove this
-  skills: Skill[];
 
   profileForm: FormGroup;
-
-  statuses: UserStatus[];
 
   apiErrors: ApiErrors = new ApiErrors([]);
   saveSuccess: boolean;
   saveFail: boolean;
-  loadingSubmit: boolean = false;
+  loadingSubmit: boolean;
 
   residencePermitFrontImageStatusObject: any = {
     imageSaveSuccess: false,
@@ -134,10 +121,6 @@ export class UserProfileFormComponent extends TranslationListener implements OnI
     protected translationService: TranslationService
   ) {
     super(translationService);
-    // remove native speaker as option
-    this.languageProficiencyLevelsAvailable =
-      this.languageProficiencyLevelsAvailable.slice();
-    this.languageProficiencyLevelsAvailable.pop();
   }
 
   ngOnInit(): void {
@@ -153,27 +136,17 @@ export class UserProfileFormComponent extends TranslationListener implements OnI
     });
   }
 
-  loadData(): void {
-    this.userProxy.getStatuses().then(statuses => this.statuses = statuses);
+  public loadData(): void {
+    this.statuses = this.userProxy.getStatuses();
     this.countries = this.countryProxy.getCountries();
     this.systemLanguages = this.languageProxy.getSystemLanguages();
     this.languages = this.languageProxy.getLanguages();
-    /*this.languageProxy.getLanguages().then(languages => {
-      this.languages = languages;
-      this.languagesExcludingNative = languages.slice();
-      let nativeLanguage = this.user.getNativeLanguage();
-      if (nativeLanguage) {
-        deleteElementFromArrayLambda(this.languagesExcludingNative,
-          lang => lang.languageCode === nativeLanguage.language.languageCode);
-      }
-    });*/
-    this.skillProxy.getSkills().then(skills => this.skills = skills);
+    this.skills = this.skillProxy.getSkills();
   }
 
   private initForm(): void {
     this.profileForm = this.formBuilder.group({
       'user_languages': [this.user.userLanguages.slice()],
-      'native_language': [this.user.getNativeLanguage(), Validators.compose([Validators.required])],
       'default_language': [this.user.languageId, Validators.compose([Validators.required])],
       'country_of_origin': [this.user.countryOfOriginCode, Validators.compose([Validators.required])],
       'current_status': [this.user.currentStatus],
@@ -184,59 +157,6 @@ export class UserProfileFormComponent extends TranslationListener implements OnI
       'job_experience': [this.user.workExperience],
       'user_skills': [this.user.userSkills.slice()]
     });
-
-    const nativeLanguage = this.user.getNativeLanguage() || { language: { name: '' } };
-    const nativeLanguageDropdown = this.nativeLanguageDropdown;
-    setTimeout(function() {
-      nativeLanguageDropdown.textInput = nativeLanguage.language.name;
-    }, 100);
-
-    this.countryProxy.getCountryByCountryCode(this.user.countryOfOriginCode)
-      .then((countryOfOrigin) => {
-        this.countryDropdown.textInput = countryOfOrigin.name || '';
-      });
-
-    this.languageProxy.getLanguage(this.user.languageId)
-      .then((defaultLanguage) => {
-        this.defaultLanguageDropdown.textInput = defaultLanguage.name || '';
-      });
-  }
-
-  onNativeLanguageSelect(language): void {
-    if (!language) {
-      return;
-    }
-
-    const nativeLanguage = new UserLanguage({ proficiency: 5 });
-    nativeLanguage.language = language;
-
-    const oldNativeLanguage = this.profileForm.value.native_language;
-
-    if (oldNativeLanguage) {
-      deleteElementFromArray(this.profileForm.value.user_languages, oldNativeLanguage);
-    }
-
-    deleteElementFromArrayLambda(this.profileForm.value.user_languages,
-      lang => lang.language && lang.language.languageCode === language.languageCode);
-
-    this.profileForm.value.user_languages.push(nativeLanguage);
-    this.profileForm.controls['native_language'].setValue(nativeLanguage);
-
-    this.languagesExcludingNative = this.languages;
-    //deleteElementFromArrayLambda(this.languagesExcludingNative,
-      //lang => lang.languageCode === nativeLanguage.language.languageCode);
-  }
-
-  onCountryOfOriginSelect(country): void {
-    if (country) {
-      this.profileForm.controls['country_of_origin'].setValue(country.countryCode);
-    }
-  }
-
-  onDefaultLanguageSelect(language): void {
-    if (language) {
-      this.profileForm.value.default_language = language.id;
-    }
   }
 
   onLanguageSelect(language): void {

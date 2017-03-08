@@ -12,70 +12,25 @@
     {{'user.register.form.general.information.section.header' | translate}}
   </h3>
 
-  <div class="field">
-    <sm-input
-      [control]="registerForm.controls['first_name']"
-      [label]="('user.register.form.first.name.header' | translate) + ' *'"
-      [placeholder]="'user.register.form.first.name.placeholder' | translate"
-      class="left"
-      icon="user"
-      type="text">
-    </sm-input>
-    <input-errors
-      [apiErrors]="apiErrors"
-      [control]="registerForm.controls['first_name']"
-      apiAttribute="first_name">
-    </input-errors>
-  </div>
+  <user-first-name-input
+     [control]="registerForm.controls['first_name']"
+     [apiErrors]="apiErrors">
+   </user-first-name-input>
 
-  <div class="field">
-    <sm-input
-      [control]="registerForm.controls['last_name']"
-      [label]="('user.register.form.last.name.header' | translate) + ' *'"
-      [placeholder]="'user.register.form.last.name.placeholder' | translate"
-      class="left"
-      icon="user"
-      type="text">
-    </sm-input>
-    <input-errors
-      [apiErrors]="apiErrors"
-      [control]="registerForm.controls['last_name']"
-      apiAttribute="last_name">
-    </input-errors>
-  </div>
+  <user-last-name-input
+    [control]="registerForm.controls['last_name']"
+     [apiErrors]="apiErrors">
+   </user-last-name-input>
 
-  <div class="field">
-    <sm-input
-      [control]="registerForm.controls['email']"
-      [label]="('user.register.form.email.header' | translate) + ' *'"
-      [placeholder]="'user.register.form.email.placeholder' | translate"
-      class="left"
-      icon="mail"
-      type="text">
-    </sm-input>
-    <input-errors
-      [apiErrors]="apiErrors"
-      [control]="registerForm.controls['email']"
-      [patternLabel]="'validations.email_pattern' | translate"
-      apiAttribute="email">
-    </input-errors>
-  </div>
+  <user-email-input
+    [control]="registerForm.controls['email']"
+    [apiErrors]="apiErrors">
+  </user-email-input>
 
-  <div class="field">
-    <sm-input
-      [control]="registerForm.controls['phone']"
-      [label]="('user.register.form.phone.header' | translate) + ' *'"
-      [placeholder]="'user.register.form.phone.placeholder' | translate"
-      class="left"
-      icon="phone"
-      type="text">
-    </sm-input>
-    <input-errors
-      [apiErrors]="apiErrors"
-      [control]="registerForm.controls['phone']"
-      apiAttribute="phone">
-    </input-errors>
-  </div>
+  <user-phone-input
+    [control]="registerForm.controls['phone']"
+    [apiErrors]="apiErrors">
+  </user-phone-input>
 
   <div class="field">
     <sm-select
@@ -101,53 +56,12 @@
     {{'user.register.form.address.section.header' | translate}}
   </h3>
 
-  <div class="field">
-    <sm-input
-      [control]="registerForm.controls['street']"
-      [label]="'user.register.form.street.header' | translate"
-      [placeholder]="'user.register.form.street.placeholder' | translate"
-      class="left"
-      icon="map pin"
-      type="text">
-    </sm-input>
-    <input-errors
-      [apiErrors]="apiErrors"
-      [control]="registerForm.controls['street']"
-      apiAttribute="street">
-    </input-errors>
-  </div>
-
-  <div class="field">
-    <sm-input
-      [control]="registerForm.controls['zip']"
-      [label]="'user.register.form.zip.header' | translate"
-      [placeholder]="'user.register.form.zip.placeholder' | translate"
-      class="left"
-      icon="map"
-      type="text">
-    </sm-input>
-    <input-errors
-      [apiErrors]="apiErrors"
-      [control]="registerForm.controls['zip']"
-      apiAttribute="zip">
-    </input-errors>
-  </div>
-
-  <div class="field">
-    <sm-input
-      [control]="registerForm.controls['city']"
-      [label]="'user.register.form.city.header' | translate"
-      [placeholder]="'user.register.form.city.placeholder' | translate"
-      class="left"
-      icon="building"
-      type="text">
-    </sm-input>
-    <input-errors
-      [apiErrors]="apiErrors"
-      [control]="registerForm.controls['city']"
-      apiAttribute="city">
-    </input-errors>
-  </div>
+  <user-address-input
+    [streetControl]="registerForm.controls['street']"
+    [zipControl]="registerForm.controls['zip']"
+    [cityControl]="registerForm.controls['city']"
+    [apiErrors]="apiErrors">
+  </user-address-input>
 
   <h3 class="ui dividing header">
     {{'user.register.form.country.and.languages.section.header' | translate}}
@@ -163,7 +77,7 @@
       <option
         [value]="language.id"
         *ngFor="let language of languages | async">
-        {{language.name}}
+        {{language.translated.name}}
       </option>
     </sm-select>
     <input-errors
@@ -183,7 +97,7 @@
       <option
         [value]="language.id"
         *ngFor="let language of systemLanguages | async">
-        {{language.name}}
+        {{language.translated.name}}
       </option>
     </sm-select>
     <input-errors
@@ -207,7 +121,7 @@
       <option
         [value]="country.countryCode"
         *ngFor="let country of countries | async">
-        {{country.name}}
+        {{country.translated.name}}
       </option>
     </sm-select>
     <input-errors
@@ -221,21 +135,10 @@
     {{'user.register.form.password.section.header' | translate}}
   </h3>
 
-  <div class="field">
-    <sm-input
-      [control]="registerForm.controls['password']"
-      [label]="('user.register.form.password.header' | translate) + ' *'"
-      [placeholder]="'user.register.form.password.placeholder' | translate"
-      class="left"
-      icon="lock"
-      type="password">
-    </sm-input>
-    <input-errors
-      [apiErrors]="apiErrors"
-      [control]="registerForm.controls['password']"
-      apiAttribute="password">
-    </input-errors>
-  </div>
+  <user-password-input
+     [control]="registerForm.controls['password']"
+     [apiErrors]="apiErrors">
+   </user-password-input>
 
   <div class="field">
     <sm-input

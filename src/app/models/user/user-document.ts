@@ -10,8 +10,8 @@ export class UserDocument {
       return;
     }
     this.id = jsonObject.id;
-    this.oneTimeToken = jsonObject.oneTimeToken;
-    this.documentUrl = jsonObject.document.document_url;
+    this.oneTimeToken = jsonObject.one_time_token;
+    this.documentUrl = jsonObject.document_url;
     this.category = jsonObject.category;
     this.createdAt = new Date(jsonObject.created_at);
   }

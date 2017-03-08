@@ -1,10 +1,10 @@
+@import './app/styles/bootstrap-modifications';
+@import './app/styles/buttons';
 @import './app/styles/colors';
 @import './app/styles/dimensions';
-@import './app/styles/buttons';
-@import './app/styles/typography';
+@import './app/styles/semantic-ui-modifications';
 @import './app/styles/tooltips';
-@import './app/styles/bootstrap-modifications';
-@import './app/styles/headers';
+@import './app/styles/typography';
 
 body,
 html {
@@ -13,14 +13,6 @@ html {
 
 body {
   background-color: $color-background !important;
-
-  input {
-    outline: none;
-  }
-
-  input[type="date"] {
-    text-transform: uppercase;
-  }
 
   .clickable {
     cursor: pointer;
@@ -41,20 +33,12 @@ body {
     float: right;
   }
 
-  .clearfix {
-    clear: both;
-  }
-
   .block {
     display: block;
   }
 
   .inline-block {
     display: inline-block;
-  }
-
-  .form-group {
-    margin-bottom: 15px;
   }
 
   .text-left {
@@ -88,36 +72,6 @@ body {
     &.min-width-column {
       white-space: nowrap;
       width: 1px;
-    }
-  }
-
-  .material-group {
-    position: relative;
-    margin-bottom: 25px;
-
-    .material-input {
-      width: 100%;
-      padding: 10px 12px;
-      display: block;
-      margin-bottom: 5px;
-
-      &.has-error,
-      &.ng-touched.ng-invalid {
-        border: 1px solid $color-primary-cerise !important;
-        color: $color-primary-cerise !important;
-
-        ~ .material-label {
-          color: $color-primary-cerise !important;
-        }
-      }
-    }
-
-    input.material-input {
-      border: 1px solid $color-secondary-gray;
-    }
-
-    textarea.material-input {
-      resize: none;
     }
   }
 }

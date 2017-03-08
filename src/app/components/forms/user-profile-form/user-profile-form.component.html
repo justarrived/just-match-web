@@ -18,7 +18,7 @@
       <option
         [value]="language.id"
         *ngFor="let language of systemLanguages | async">
-        {{language.name}}
+        {{language.translated.name}}
       </option>
     </sm-select>
     <input-errors
@@ -32,39 +32,6 @@
     </div>
   </div>
 
-  <!-- Mostly finished implementation, although Users' Native Language is not auto selected-->
-  <div class="field">
-    <sm-select
-     [control]="profileForm.controls['native_language']"
-     [data]="languages | async"
-     [label]="('user.profile.form.native.language.label' | translate) + ' *'"
-     [placeholder]="'user.profile.form.native.language.placeholder' | translate"
-     class="fluid search">
-      <option
-        [value]="language.id"
-        *ngFor="let language of languages | async">
-        {{language.name}}
-      </option>
-    </sm-select>
-    <input-errors
-      [apiErrors]="apiErrors"
-      [control]="profileForm.controls['native_language']"
-      apiAttribute="language_ids">
-    </input-errors>
-  </div>
-
-  <!--<div class="profile-form-input-container">
-    <label class="profile-form-input-label">{{'user.profile.form.native.language.label' | translate}} *:</label>
-    <autocomplete-dropdown #nativeLanguageDropdown
-        (dropdownListItemSelect)="onNativeLanguageSelect($event)"
-        [placeholder]="'user.profile.form.native.language.placeholder' | translate"
-        [autocompleteResultLabelFunction]="namePropertyLabel"
-        [selectedItemLabelFunction]="namePropertyLabel"
-        [lookupType]="'list'" [enumList]="languages">
-    </autocomplete-dropdown>
-    <input-errors [control]="profileForm.controls['native_language']"></input-errors>
-  </div>-->
-
   <div class="field">
     <sm-select
      [control]="profileForm.controls['country_of_origin']"
@@ -75,7 +42,7 @@
       <option
         [value]="country.countryCode"
         *ngFor="let country of countries | async">
-        {{country.name}}
+        {{country.translated.name}}
       </option>
     </sm-select>
     <input-errors
@@ -107,7 +74,7 @@
   <div class="profile-form-input-container">
     <label class="profile-form-input-label">{{'user.profile.form.status.label' | translate}}:</label>
     <div class="input-radio-container row">
-      <div *ngFor="let status of statuses" class="input-radio-button-container">
+      <div *ngFor="let status of statuses | async" class="input-radio-button-container">
         <label class="input-radio-button-label" for="{{status.id}}">
         <input class="input-radio-button-input"
             type="radio"
@@ -176,7 +143,7 @@
     <input-errors apiAttribute="at_und" [control]="profileForm.controls['at_und']" [apiErrors]="apiErrors"></input-errors>
   </div>
 
-  <div *ngIf="profileForm.value.current_status === 'asylum_seeker' && profileForm.value.at_und === 'yes'" class="field">
+  <!--<div *ngIf="profileForm.value.current_status === 'asylum_seeker' && profileForm.value.at_und === 'yes'" class="field">
     <label>{{'user.profile.form.got.coordination.number.label' | translate}}:</label>
     <div class="inline fields">
       <sm-checkbox
@@ -196,9 +163,9 @@
         value="no">
       </sm-checkbox>
     </div>
-  </div>
+  </div> -->
 
-  <!--<div *ngIf="profileForm.value.current_status === 'asylum_seeker' && profileForm.value.at_und === 'yes'" class="profile-form-input-container">
+  <div *ngIf="profileForm.value.current_status === 'asylum_seeker' && profileForm.value.at_und === 'yes'" class="profile-form-input-container">
     <label class="profile-form-input-label">{{'user.profile.form.got.coordination.number.label' | translate}}:</label>
     <div class="input-radio-container">
       <div class="input-radio-button-container">
@@ -222,7 +189,7 @@
         {{'common.no' | translate}}</label>
       </div>
     </div>
-  </div>-->
+  </div>
 
   <div *ngIf="profileForm.value.current_status && ((profileForm.value.current_status === 'asylum_seeker' && profileForm.value.at_und === 'yes' && profileForm.value.got_coordination_number === 'yes') || (profileForm.value.current_status !== 'asylum_seeker'))"
       class="form-group material-group profile-form-input-container" [ngClass]="{'has-error':!profileForm.value.ssn || apiErrors.hasErrorsFor('ssn')}">
@@ -375,6 +342,7 @@
 
   <hr class="profile-form-input-ruler">
 
+  <!--
   <div class="profile-form-input-container">
     <label class="profile-form-input-label">{{'user.profile.form.languages.label' | translate}}:</label>
     <autocomplete-dropdown (dropdownListItemSelect)="onLanguageSelect($event)"
@@ -447,6 +415,8 @@
       </div>
     </div>
   </div>
+
+-->
 
   <div class="profile-form-input-container">
     <label class="profile-form-input-label">{{'user.profile.form.general.skills.label' | translate}}:</label>

@@ -22,11 +22,13 @@ class ApiErrorSource {
   attribute: string;
 
   constructor(source: any) {
-    const pointer = source.pointer;
-    const attributeName = pointer.substr(pointer.lastIndexOf('/') + 1);
+    if (source) {
+      const pointer = source.pointer;
+      const attributeName = pointer.substr(pointer.lastIndexOf('/') + 1);
 
-    this.attribute = attributeName;
-    this.parameter = source.paramter;
+      this.attribute = attributeName;
+      this.parameter = source.paramter;
+    }
   }
 }
 
@@ -52,9 +54,7 @@ export class ApiError {
     this.title = error.title;
     this.detail = error.detail;
 
-    if (error.source) {
-      this.source = new ApiErrorSource(error.source);
-    }
+    this.source = new ApiErrorSource(error.source);
 
     this.meta = error.meta;
     this.setLinks(error);

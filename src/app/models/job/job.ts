@@ -6,10 +6,12 @@ import {User} from '../user';
 const companyPlaceholderLogoURL: string = '/assets/images/placeholder-logo.png';
 
 export class Job {
+  city: string;
   amount: number;
   company: Company;
   createdAt: string;
   description: string;
+  descriptionHTML: string;
   featured: boolean;
   filled: boolean;
   hourlyPay: HourlyPay;
@@ -43,6 +45,7 @@ export class Job {
       return;
     }
 
+    this.city = jsonObject.city;
     this.grossAmount = jsonObject.gross_amount;
     this.grossAmountDelimited = jsonObject.gross_amount_delimited;
     this.grossAmountWithCurrency = jsonObject.gross_amount_with_currency;
@@ -52,6 +55,7 @@ export class Job {
     this.company = new Company(jsonObject.company);
     this.createdAt = jsonObject.created_at;
     this.description = jsonObject.description;
+    this.descriptionHTML = jsonObject.description_html;
     this.featured = jsonObject.featured;
     this.filled = jsonObject.filled;
     this.hourlyPay = new HourlyPay(jsonObject.hourly_pay);
@@ -73,7 +77,7 @@ export class Job {
     this.jobUsers = map(jsonObject.job_users, user => new UserJob(user));
     this.languageId = jsonObject.language_id;
 
-    if (!!jsonObject.translated_text) {
+    if (jsonObject.translated_text) {
       this.translated = new Job(jsonObject.translated_text);
     }
   }

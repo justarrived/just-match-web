@@ -1,0 +1,20 @@
+@import '../../../styles/colors';
+
+.user-details-form-button-container {
+  margin: 40px 0;
+  text-align: center;
+
+  .user-details-form-save-message {
+    color: green;
+  }
+
+  .user-details-form-error-message {
+    color: $color-cerise-500;
+  }
+
+  .user-details-form-button {
+    display: block;
+    margin: 15px auto 30px;
+    min-width: 250px;
+  }
+}

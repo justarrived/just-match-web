@@ -16,7 +16,7 @@ export class Faq {
     this.category = jsonObject.category;
     this.languageId = jsonObject.languageId;
 
-    if (!!jsonObject.translated_text) {
+    if (jsonObject.translated_text) {
       this.translated = new Faq(jsonObject.translated_text);
     }
   }

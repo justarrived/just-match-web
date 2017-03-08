@@ -1,7 +1,11 @@
 // server.js
 const path = require('path');
+const compression = require('compression');
 const express = require('express');
 const app = express();
+
+// Use Gzip compression
+app.use(compression());
 
 // Run the app by serving the static files
 // in the dist directory

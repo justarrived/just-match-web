@@ -58,6 +58,14 @@
               {{'menu.main.login' | translate}}
             </a>
 
+            <a
+              class="col-xs-12 navigation-menu-item"
+              href="#"
+              (click)="onStaffingTimeReportButtonClick()"
+              *ngIf="canStaffingTimeReport">
+              {{'menu.main.staffing_time_report' | translate}}
+            </a>
+
             <a class="col-xs-12 navigation-menu-item" (click)="onLogoutButtonClick()" *ngIf="user">
               {{'menu.main.logout' | translate}}
             </a>

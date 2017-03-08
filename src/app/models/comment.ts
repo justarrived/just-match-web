@@ -8,6 +8,7 @@ export class Comment {
   createdAt: number;
   languageId: string;
   owner: User;
+  translated: Comment;
 
   constructor(jsonObject?: any) {
     if (!jsonObject) {
@@ -20,6 +21,10 @@ export class Comment {
     this.createdAt = jsonObject.created_at;
     this.languageId = jsonObject.language_id;
     this.owner = new User(jsonObject.owner);
+
+    if (jsonObject.translated_text) {
+      this.translated = new Comment(jsonObject.translated_text);
+    }
   }
 
   public toJsonObject() {

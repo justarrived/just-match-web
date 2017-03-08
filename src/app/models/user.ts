@@ -22,12 +22,15 @@ export class User {
   documents: UserDocument[];
   userLanguages: UserLanguage[];
   userSkills: UserSkill[];
-  presentation: string;
+  description: string;
   workExperience: string;
   education: string;
   skills: string;
   languageId: string;
   frilansFinansPaymentDetails: boolean;
+  justArrivedStaffing: boolean;
+  admin: boolean;
+  supportChatActivated: boolean;
   company: Company;
   profile_image: UserImage;
   personal_id_image: UserImage;
@@ -44,6 +47,7 @@ export class User {
   newPassword: string;
   repeatedPassword: string;
   oldPassword: string;
+  translated: User;
 
   constructor(jsonObject: any) {
     if (!jsonObject) {
@@ -65,12 +69,15 @@ export class User {
     this.documents = map(jsonObject.user_documents, userDocument => new UserDocument(userDocument));
     this.userLanguages = map(jsonObject.user_languages, userLanguage => new UserLanguage(userLanguage));
     this.userSkills = map(jsonObject.user_skills, userSkill => new UserSkill(userSkill));
-    this.presentation = jsonObject.description;
+    this.description = jsonObject.description;
     this.workExperience = jsonObject.job_experience;
     this.education = jsonObject.education;
     this.skills = jsonObject.competence_text;
     this.company = new Company(jsonObject.company);
     this.frilansFinansPaymentDetails = jsonObject.frilans_finans_payment_details;
+    this.justArrivedStaffing = jsonObject.just_arrived_staffing;
+    this.admin = jsonObject.admin;
+    this.supportChatActivated = jsonObject.supportChatActivated;
     this.profile_image = this.getImageByCategory('profile');
     this.personal_id_image = this.getImageByCategory('personal_id');
     this.residence_permit_front_image = this.getImageByCategory('residence_permit_front');
@@ -84,6 +91,10 @@ export class User {
     this.atUnd = jsonObject.at_und;
     this.accountClearingNumber = jsonObject.account_clearing_number;
     this.accountNumber = jsonObject.account_number;
+
+    if (jsonObject.translated_text) {
+      this.translated = new User(jsonObject.translated_text);
+    }
   }
 
   getNativeLanguage(): UserLanguage {
