@@ -17,6 +17,7 @@ import {CityInputComponent} from './components/inputs/city-input/city-input.comp
 import {ClearingNumberInputComponent} from './components/inputs/clearing-number-input/clearing-number-input.component';
 import {CommentsComponent} from './components/comments/comments.component';
 import {CommentsProxy} from './services/proxy/comments-proxy.service';
+import {CompetenceInputComponent} from './components/inputs/competence-input/competence-input.component';
 import {ConfirmationComponent} from './views/confirmation/confirmation.component';
 import {ContactFormComponent} from './components/forms/contact-form/contact-form.component';
 import {ContactPageComponent} from './views/contact/contact-page.component';
@@ -50,6 +51,7 @@ import {InputErrorsComponent} from './components/form-errors/input-errors/input-
 import {JARoutes} from './routes/ja-routes';
 import {JobCardComponent} from './components/cards/job-card/job-card.component';
 import {JobDetailsComponent} from './views/job-details/job-details.component';
+import {JobExperienceInputComponent} from './components/inputs/job-experience-input/job-experience-input.component';
 import {JobListItemComponent} from './components/job-list-item/job-list-item.component';
 import {JobMapMarkerComponent} from './components/job-map-marker/job-map-marker.component';
 import {JobProxy} from './services/proxy/job-proxy.service';
@@ -138,6 +140,7 @@ export class RavenErrorHandler implements ErrorHandler {
     CityInputComponent,
     ClearingNumberInputComponent,
     CommentsComponent,
+    CompetenceInputComponent,
     ConfirmationComponent,
     ContactFormComponent,
     ContactPageComponent,
@@ -161,6 +164,7 @@ export class RavenErrorHandler implements ErrorHandler {
     InputErrorsComponent,
     JobCardComponent,
     JobDetailsComponent,
+    JobExperienceInputComponent,
     JobListItemComponent,
     JobMapMarkerComponent,
     JobsComponent,

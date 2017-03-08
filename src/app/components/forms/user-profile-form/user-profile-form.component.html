@@ -52,6 +52,7 @@
     </input-errors>
   </div>-->
 
+
   <div *ngIf="profileForm.value.current_status === 'asylum_seeker'" class="profile-form-input-container">
     <label class="profile-form-input-label">{{'user.profile.form.at.und.label' | translate}}:</label>
     <div class="input-radio-container">
@@ -354,29 +355,15 @@
 
 -->
 
-  <div class="profile-form-input-container">
-    <label class="profile-form-input-label">{{'user.profile.form.general.skills.label' | translate}}:</label>
-    <textarea class="profile-form-input-textarea form-control material-input"
-        maxlength="1000"
-        name="general-skills" id="general-skills"
-        class="form-control material-input"
-        autosize type="text"
-        placeholder="{{'user.profile.form.general.skills.placeholder' | translate}}"
-        [formControl]="profileForm.controls['competence_text']"></textarea>
-    <input-errors apiAttribute="competence_text" [control]="profileForm.controls['competence_text']" [apiErrors]="apiErrors"></input-errors>
-  </div>
+  <competence-input
+    [control]="profileForm.controls['competence_text']"
+    [apiErrors]="apiErrors">
+  </competence-input>
 
-  <div class="profile-form-input-container">
-    <label class="profile-form-input-label">{{'user.profile.form.work.experience.label' | translate}}:</label>
-    <textarea class="profile-form-input-textarea form-control material-input"
-        maxlength="1000"
-        name="workExperience" id="work-experience"
-        class="form-control material-input"
-        autosize type="text"
-        placeholder="{{'user.profile.form.work.experience.placeholder' | translate}}"
-        [formControl]="profileForm.controls['job_experience']"></textarea>
-    <input-errors apiAttribute="job_experience" [control]="profileForm.controls['job_experience']" [apiErrors]="apiErrors"></input-errors>
-  </div>
+  <job-experience-input
+    [control]="profileForm.controls['job_experience']"
+    [apiErrors]="apiErrors">
+  </job-experience-input>
 
   <div class="profile-form-input-container">
     <label class="profile-form-input-label">{{'user.profile.form.resume.label' | translate}}:</label>
