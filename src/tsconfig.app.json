@@ -17,6 +17,7 @@
   },
   "exclude": [
     "node_modules",
+    "script",
     "test.ts",
     "**/*.spec.ts"
   ]
