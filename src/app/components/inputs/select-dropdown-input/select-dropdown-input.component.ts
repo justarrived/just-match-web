@@ -11,7 +11,7 @@ import {Input} from '@angular/core';
        [data]="data"
        [label]="label"
        [placeholder]="placeholder"
-       class="fluid">
+       class="fluid search">
         <option
           [value]="item[dataItemValueProoerty]"
           *ngFor="let item of data">

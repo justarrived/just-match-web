@@ -23,6 +23,7 @@ import {ContactPageComponent} from './views/contact/contact-page.component';
 import {ContactProxy} from './services/proxy/contact-proxy.service';
 import {CookieBarComponent} from './components/cookie-bar/cookie-bar.component';
 import {CookiesAboutPageComponent} from './views/cookies-about/cookies-about-page.component';
+import {CountryOfOriginInputComponent} from './components/inputs/country-of-origin-input/country-of-origin-input.component';
 import {CountryProxy} from './services/proxy/country-proxy.service';
 import {DataStore} from './services/data-store.service';
 import {EmailInputComponent} from './components/inputs/email-input/email-input.component';
@@ -135,6 +136,7 @@ export class RavenErrorHandler implements ErrorHandler {
     ContactPageComponent,
     CookieBarComponent,
     CookiesAboutPageComponent,
+    CountryOfOriginInputComponent,
     EmailInputComponent,
     ErrorMessageComponent,
     ErrorPageComponent,

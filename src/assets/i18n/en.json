@@ -104,6 +104,8 @@
   "input.account.number.placeholder": "Account number",
   "input.city.label": "City",
   "input.city.placeholder": "City",
+  "input.country.of.origin.label": "Country of origin",
+  "input.country.of.origin.placeholder": "Country of origin",
   "input.clearing.number.label": "Clearing number",
   "input.clearing.number.placeholder": "Clearing number",
   "input.email.label": "Email",

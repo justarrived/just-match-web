@@ -25,9 +25,7 @@ import {Validators} from '@angular/forms';
 })
 export class RegisterFormComponent extends TranslationListener implements OnInit {
 
-  public countries: Promise<Country[]>;
   public languages: Promise<Language[]>;
-  public systemLanguages: Promise<Language[]>;
 
   public apiErrors: ApiErrors = new ApiErrors([]);
   public loadingSubmit: boolean = false;
@@ -54,9 +52,7 @@ export class RegisterFormComponent extends TranslationListener implements OnInit
   }
 
   protected loadData() {
-    this.countries = this.countryProxy.getCountries();
     this.languages = this.languageProxy.getLanguages();
-    this.systemLanguages = this.languageProxy.getSystemLanguages();
   }
 
   private initForm() {
