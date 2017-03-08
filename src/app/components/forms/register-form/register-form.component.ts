@@ -26,7 +26,6 @@ import {Validators} from '@angular/forms';
 export class RegisterFormComponent extends TranslationListener implements OnInit {
 
   public countries: Promise<Country[]>;
-  public genders: Promise<UserGender[]>;
   public languages: Promise<Language[]>;
   public systemLanguages: Promise<Language[]>;
 
@@ -56,7 +55,6 @@ export class RegisterFormComponent extends TranslationListener implements OnInit
 
   protected loadData() {
     this.countries = this.countryProxy.getCountries();
-    this.genders = this.userProxy.getGenders();
     this.languages = this.languageProxy.getLanguages();
     this.systemLanguages = this.languageProxy.getSystemLanguages();
   }

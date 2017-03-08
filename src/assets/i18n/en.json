@@ -110,6 +110,8 @@
   "input.email.placeholder": "Email",
   "input.first.name.label": "First name",
   "input.first.name.placeholder": "First name",
+  "input.gender.label": "Gender",
+  "input.gender.placeholder": "Gender",
   "input.last.name.label": "Last name",
   "input.last.name.placeholder": "Last name",
   "input.password.label": "Password",

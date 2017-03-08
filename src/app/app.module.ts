@@ -37,6 +37,7 @@ import {FirstNameInputComponent} from './components/inputs/first-name-input/firs
 import {ForgotPasswordFormComponent} from './components/forms/forgot-password-form/forgot-password-form.component';
 import {ForgotPasswordPageComponent} from './views/forgot-password/forgot-password-page.component';
 import {FormsModule} from '@angular/forms';
+import {GenderInputComponent} from './components/inputs/gender-input/gender-input.component';
 import {Geolocation} from './services/geolocation.service';
 import {HomeComponent} from './views/home/home.component';
 import {HttpModule} from '@angular/http';
@@ -141,6 +142,7 @@ export class RavenErrorHandler implements ErrorHandler {
     FirstNameInputComponent,
     ForgotPasswordFormComponent,
     ForgotPasswordPageComponent,
+    GenderInputComponent,
     HomeComponent,
     InfoMessageComponent,
     InputErrorComponent,

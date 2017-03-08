@@ -8,7 +8,7 @@ import {User} from '../../../models/user';
   template: `
     <div class="welcome-header-container">
       <img class="welcome-header-map-image" src="/assets/images/startpagemap.png" alt="Map" />
-      <div class="welcome-header-info-container home-header-info-container-logged-in" *ngIf="user">
+      <div class="welcome-header-info-container welcome-header-info-container-logged-in" *ngIf="user">
         <h2 class="welcome-header-info-title">
           {{'home.header.logged.in.title'| translate: {username: user.firstName} }}
         </h2>
