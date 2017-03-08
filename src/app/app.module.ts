@@ -64,17 +64,18 @@ import {MyJobsComponent} from './views/my-jobs/my-jobs.component';
 import {MyJobsItemComponent} from './components/my-jobs-item/my-jobs-item.component';
 import {NameInputComponent} from './components/inputs/name-input/name-input.component';
 import {NavigationService} from './services/navigation.service';
+import {NewPasswordInputComponent} from './components/inputs/new-password-input/new-password-input.component';
 import {NgModule} from '@angular/core';
 import {NgSemanticModule} from 'ng-semantic-ja/ng-semantic';
 import {NO_ERRORS_SCHEMA} from '@angular/core';
 import {NotFoundPageComponent} from './views/404/404-page.component';
+import {OldPasswordInputComponent} from './components/inputs/old-password-input/old-password-input.component';
 import {PagerComponent} from './components/pager/pager.component';
 import {PasswordInputComponent} from './components/inputs/password-input/password-input.component';
 import {PhoneInputComponent} from './components/inputs/phone-input/phone-input.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {RegisterFormComponent} from './components/forms/register-form/register-form.component';
 import {RegisterPageComponent} from './views/register/register-page.component';
-import {RepeatPasswordInputComponent} from './components/inputs/repeat-password-input/repeat-password-input.component';
 import {ResetPasswordFormComponent} from './components/forms/reset-password-form/reset-password-form.component';
 import {ResetPasswordPageComponent} from './views/reset-password/reset-password-page.component';
 import {SelectDropdownInputComponent} from './components/inputs/select-dropdown-input/select-dropdown-input.component';
@@ -170,13 +171,14 @@ export class RavenErrorHandler implements ErrorHandler {
     MyJobsComponent,
     MyJobsItemComponent,
     NameInputComponent,
+    NewPasswordInputComponent,
     NotFoundPageComponent,
+    OldPasswordInputComponent,
     PagerComponent,
     PasswordInputComponent,
     PhoneInputComponent,
     RegisterFormComponent,
     RegisterPageComponent,
-    RepeatPasswordInputComponent,
     ResetPasswordFormComponent,
     ResetPasswordPageComponent,
     SelectDropdownInputComponent,

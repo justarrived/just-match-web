@@ -4,19 +4,19 @@ import {FormControl} from '@angular/forms';
 import {Input} from '@angular/core';
 
 @Component({
-  selector: 'repeat-password-input',
+  selector: 'old-password-input',
   template: `
     <text-input
       [apiErrors]="apiErrors"
       [control]="control"
-      [label]="'input.repeat.password.label' | translate"
-      [placeholder]="'input.repeat.password.placeholder' | translate"
-      apiAttribute="password"
+      [label]="'input.old.password.label' | translate"
+      [placeholder]="'input.old.password.placeholder' | translate"
+      apiAttribute="old_password"
       icon="lock"
       type="password">
     </text-input>`
 })
-export class RepeatPasswordInputComponent {
+export class OldPasswordInputComponent {
   @Input() apiErrors: ApiErrors;
   @Input() control: FormControl;
 }

@@ -8,35 +8,15 @@
     text="{{'component.loading' | translate}}">
   </sm-loader>
 
-  <div class="field">
-    <sm-input
-      [control]="loginForm.controls['email_or_phone']"
-      [placeholder]="'login.form.email.or.phone.placeholder' | translate"
-      class="left"
-      icon="user"
-      type="text">
-    </sm-input>
-    <input-errors
-      [apiErrors]="apiErrors"
-      [control]="loginForm.controls['email_or_phone']"
-      apiAttribute="email_or_phone">
-    </input-errors>
-  </div>
+  <email-or-phone-input
+    [control]="loginForm.controls['email_or_phone']"
+    [apiErrors]="apiErrors">
+  </email-or-phone-input>
 
-  <div class="field">
-    <sm-input
-      [control]="loginForm.controls['password']"
-      [placeholder]="'login.form.password.placeholder' | translate"
-      class="left"
-      icon="lock"
-      type="password">
-    </sm-input>
-    <input-errors
-      [apiErrors]="apiErrors"
-      [control]="loginForm.controls['password']"
-      apiAttribute="password">
-    </input-errors>
-  </div>
+  <password-input
+    [control]="loginForm.controls['password']"
+    [apiErrors]="apiErrors">
+  </password-input>
 
   <form-submit-button
     [submitFail]="submitFail"

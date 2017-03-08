@@ -48,41 +48,15 @@
     {{'user.settings.form.change.password.header' | translate}}
   </h3>
 
-  <div class="field">
-    <sm-input
-      [control]="passwordForm.controls['old_password']"
-      [label]="'user.settings.form.new.password.label' | translate"
-      [placeholder]="'user.settings.form.old.password.placeholder' | translate"
-      class="left"
-      icon="lock"
-      type="password">
-    </sm-input>
-    <sm-input
-      [control]="passwordForm.controls['password']"
-      [label]="'user.settings.form.new.password.label' | translate"
-      [placeholder]="'user.settings.form.new.password.placeholder' | translate"
-      class="left"
-      icon="lock"
-      type="password">
-    </sm-input>
-    <sm-input
-      [control]="passwordForm.controls['repeat_password']"
-      [label]="'user.settings.form.new.password.label' | translate"
-      [placeholder]="'user.settings.form.repeat.password.placeholder' | translate"
-      class="left"
-      icon="lock"
-      type="password">
-    </sm-input>
-    <input-errors
-      apiAttribute="password"
-      [control]="passwordForm.controls['password']"
-      [apiErrors]="apiErrors">
-    </input-errors>
-    <input-error
-      [visible]="passwordsSuppliedAndMisMatch()"
-      [label]="'user.settings.form.repeat.password.validation.mismatch' | translate">
-    </input-error>
-  </div>
+  <old-password-input
+    [control]="passwordForm.controls['old_password']"
+    [apiErrors]="apiErrors">
+  </old-password-input>
+
+  <new-password-input
+    [control]="passwordForm.controls['password']"
+    [apiErrors]="apiErrors">
+  </new-password-input>
 
   <h3 class="ui dividing header">{{'user.settings.form.bank.details.header' | translate}}</h3>
 
