@@ -57,11 +57,9 @@
     </input-errors>
   </div>
 
-  <div class="contact-button-container">
-    <button
-      class="btn-primary btn-medium btn contact-button"
-      type="submit">
-      {{'contact.form.submit.button' | translate}}
-    </button>
-  </div>
+  <form-submit-button
+    [submitFail]="submitFail"
+    [submitSuccess]="submitSuccess"
+    [buttonText]="'contact.form.submit.button' | translate">
+  </form-submit-button>
 </form>

@@ -92,23 +92,9 @@
     [apiErrors]="apiErrors">
   </bank-account-input>
 
-  <div class="user-details-form-button-container">
-    <div
-      *ngIf="saveFail"
-      class="user-details-form-error-message">
-      {{'user.settings.form.submit.fail' | translate}}
-    </div>
-    <div
-      *ngIf="saveSuccess"
-      class="user-details-form-save-message">
-      {{'user.settings.form.submit.success' | translate}}
-    </div>
-    <button
-      class="user-details-form-button"
-      *ngIf="!loadingSubmit"
-      type="submit"
-      class="btn-primary btn-small btn">
-      {{'user.settings.form.submit.button' | translate}}
-    </button>
-  </div>
+  <form-submit-button
+    [submitFail]="submitFail"
+    [submitSuccess]="submitSuccess"
+    [buttonText]="'user.settings.form.submit.button' | translate">
+  </form-submit-button>
 </form>

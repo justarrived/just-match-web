@@ -12,13 +12,14 @@ import {Validators} from '@angular/forms';
 
 @Component({
   selector: 'contact-form',
-  styleUrls: ['./contact-form.component.scss'],
   templateUrl: './contact-form.component.html'
 })
 export class ContactFormComponent implements OnInit {
   public apiErrors: ApiErrors = new ApiErrors([]);
   public contactForm: FormGroup;
-  public loadingSubmit: boolean = false;
+  public loadingSubmit: boolean;
+  public submitFail: boolean;
+  public submitSuccess: boolean;
 
   constructor(
     private contactProxy: ContactProxy,
@@ -37,7 +38,7 @@ export class ContactFormComponent implements OnInit {
     const name: string = user ? user.name : '';
     const email: string = user ? user.email : '';
     this.contactForm = this.formBuilder.group({
-      'email': [email, Validators.compose([Validators.required, Validators.minLength(6), Validators.pattern(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)])],
+      'email': [email, Validators.compose([Validators.required, Validators.minLength(6)])],
       'message': ['', Validators.compose([Validators.required, Validators.minLength(2)])],
       'name': [name, Validators.compose([Validators.required, Validators.minLength(2)])]
     });
@@ -45,6 +46,8 @@ export class ContactFormComponent implements OnInit {
 
   public submitForm(value: any) {
     this.loadingSubmit = true;
+    this.submitFail = false;
+    this.submitSuccess = false;
 
     this.contactProxy.saveContactNotification(
       new ContactNotification({
@@ -53,12 +56,15 @@ export class ContactFormComponent implements OnInit {
         name: value.name
       }))
       .then((result) => {
+        this.submitSuccess = true;
         this.navigationService.navigate(JARoutes.confirmation, 'contact-message-sent');
         this.loadingSubmit = false;
+
       })
       .catch((errors) => {
         this.apiErrors = errors;
         this.loadingSubmit = false;
+        this.submitFail = true;
       });
   }
 }

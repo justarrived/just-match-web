@@ -57,8 +57,8 @@ export class UserProfileFormComponent extends TranslationListener implements OnI
   profileForm: FormGroup;
 
   apiErrors: ApiErrors = new ApiErrors([]);
-  saveSuccess: boolean;
-  saveFail: boolean;
+  submitSuccess: boolean;
+  submitFail: boolean;
   loadingSubmit: boolean;
 
   residencePermitFrontImageStatusObject: any = {
@@ -234,8 +234,8 @@ export class UserProfileFormComponent extends TranslationListener implements OnI
   }
 
   onSubmit(): void {
-    this.saveSuccess = false;
-    this.saveFail = false;
+    this.submitSuccess = false;
+    this.submitFail = false;
     this.loadingSubmit = true;
     this.apiErrors = new ApiErrors([]);
 
@@ -262,12 +262,12 @@ export class UserProfileFormComponent extends TranslationListener implements OnI
     })
       .then((response) => {
         this.authManager.authenticateIfNeeded().then(() => {
-          this.saveSuccess = true;
+          this.submitSuccess = true;
           this.loadingSubmit = false;
         });
       })
       .catch(errors => {
-        this.saveFail = true;
+        this.submitFail = true;
         this.apiErrors = errors;
         this.loadingSubmit = false;
       });

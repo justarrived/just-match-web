@@ -15,10 +15,11 @@ import {Validators} from '@angular/forms';
 })
 export class ForgotPasswordFormComponent implements OnInit {
   public apiErrors: ApiErrors = new ApiErrors([]);
-  public displayErrorMessage: boolean;
   public forgotPasswordForm: FormGroup;
   public JARoutes = JARoutes;
-  public loadingSubmit: boolean = false;
+  public loadingSubmit: boolean;
+  public submitFail: boolean;
+  public submitSuccess: boolean;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -33,28 +34,25 @@ export class ForgotPasswordFormComponent implements OnInit {
 
   private initForm() {
     this.forgotPasswordForm = this.formBuilder.group({
-      'email_or_phone': [null, Validators.compose([Validators.required])]
+      'email_or_phone': ['']
     });
   }
 
   public submitForm(value: any) {
-    this.displayErrorMessage = false;
+    this.submitFail = false;
+    this.submitSuccess = false;
     this.loadingSubmit = true;
+
     this.userProxy.resetPassword(value.email_or_phone)
       .then((result) => {
+        this.submitSuccess = true;
         this.loadingSubmit = false;
         this.navigationService.navigate(JARoutes.confirmation, 'password-reset-link-sent');
       })
       .catch((errors) => {
         this.apiErrors = errors;
-        this.displayErrorMessage = true;
+        this.submitFail = true;
         this.loadingSubmit = false;
       });
-  }
-
-  public onEnterKeyUp() {
-    if (this.forgotPasswordForm.valid) {
-      this.submitForm(this.forgotPasswordForm.value);
-    }
   }
 }

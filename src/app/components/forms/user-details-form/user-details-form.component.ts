@@ -11,16 +11,15 @@ import {Validators} from '@angular/forms';
 
 @Component({
   selector: 'user-details-form',
-  templateUrl: './user-details-form.component.html',
-  styleUrls: ['./user-details-form.component.scss']
+  templateUrl: './user-details-form.component.html'
 })
 export class UserDetailsFormComponent implements OnInit {
   @Input() public user: User;
   public apiErrors: ApiErrors = new ApiErrors([]);
-  public loadingSubmit: boolean = false;
+  public loadingSubmit: boolean;
   public passwordForm: FormGroup;
-  public saveFail: boolean;
-  public saveSuccess: boolean;
+  public submitFail: boolean;
+  public submitSuccess: boolean;
   public settingsForm: FormGroup;
 
   constructor(
@@ -33,7 +32,6 @@ export class UserDetailsFormComponent implements OnInit {
   public ngOnInit() {
     this.initSettingsForm();
     this.initPasswordForm();
-    console.log(this.settingsForm);
   }
 
   private initSettingsForm() {
@@ -72,13 +70,13 @@ export class UserDetailsFormComponent implements OnInit {
   }
 
   private handleServerErrors(errors): void {
-    this.saveFail = true;
+    this.submitFail = true;
     this.apiErrors = errors;
   }
 
   public onSubmit(): void {
-    this.saveSuccess = false;
-    this.saveFail = false;
+    this.submitSuccess = false;
+    this.submitFail = false;
     this.loadingSubmit = true;
     this.apiErrors = new ApiErrors([]);
 
@@ -94,7 +92,7 @@ export class UserDetailsFormComponent implements OnInit {
                     this.passwordForm.value.old_password = '';
                     this.passwordForm.value.password = '';
                     this.passwordForm.value.repeat_password = '';
-                    this.saveSuccess = true;
+                    this.submitSuccess = true;
                     this.loadingSubmit = false;
                   });
                 });
@@ -105,7 +103,7 @@ export class UserDetailsFormComponent implements OnInit {
             });
         } else {
           this.authManager.authenticateIfNeeded().then(() => {
-            this.saveSuccess = true;
+            this.submitSuccess = true;
             this.loadingSubmit = false;
           });
         }

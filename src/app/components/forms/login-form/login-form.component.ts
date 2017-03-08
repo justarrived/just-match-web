@@ -16,8 +16,10 @@ import {Validators} from '@angular/forms';
 export class LoginFormComponent implements OnInit  {
   public apiErrors: ApiErrors = new ApiErrors([]);
   public JARoutes = JARoutes;
-  public loadingSubmit: boolean = false;
+  public loadingSubmit: boolean;
   public loginForm: FormGroup;
+  public submitFail: boolean;
+  public submitSuccess: boolean;
 
   constructor(
     private authManager: AuthManager,
@@ -38,14 +40,18 @@ export class LoginFormComponent implements OnInit  {
   }
 
   public submitForm(value: any) {
+    this.submitFail = false;
+    this.submitSuccess = false;
     this.loadingSubmit = true;
     this.authManager.logUser(value.email_or_phone, value.password)
       .then(result => {
         this.navigationService.navigate(JARoutes.home);
         this.loadingSubmit = false;
+        this.submitSuccess = true;
       })
       .catch(errors => {
         this.loadingSubmit = false;
+        this.submitFail = true;
         this.apiErrors = errors;
       });
   }
