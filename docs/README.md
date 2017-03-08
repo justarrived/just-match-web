@@ -166,23 +166,23 @@ export class UserRegisterComponent extends TranslationListener implements OnInit
 Inline template vs seperate html file.
 ```
 /*
-20 or less lines of html -> inline the html:
+50 or less lines of html -> inline the html:
 */
 ...
 @Component({
   selector: 'api-errors',
   template: `
-<div
-  *ngFor="let error of apiErrors"
-  class="ui pointing red basic label">
-  {{error.detail}}
-</div>
-`})
+    <div
+      *ngFor="let error of apiErrors"
+      class="ui pointing red basic label">
+      {{error.detail}}
+    </div>`
+})
 export class ApiErrorsComponent implements OnInit {
   ...
 
 /*
-More than 20 lines of html -> seprate template file
+More than 50 lines of html -> seprate template file
 */
 ...
 @Component({
