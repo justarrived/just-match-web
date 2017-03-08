@@ -15,12 +15,12 @@
   <first-name-input
      [control]="registerForm.controls['first_name']"
      [apiErrors]="apiErrors">
-   </first-name-input>
+  </first-name-input>
 
   <last-name-input
     [control]="registerForm.controls['last_name']"
      [apiErrors]="apiErrors">
-   </last-name-input>
+  </last-name-input>
 
   <email-input
     [control]="registerForm.controls['email']"
@@ -69,29 +69,16 @@
   <password-input
      [control]="registerForm.controls['password']"
      [apiErrors]="apiErrors">
-   </password-input>
+  </password-input>
 
-  <div class="field">
-    <sm-checkbox
-      [control]="registerForm.controls['accepted_terms_and_conditions']"
-      [label]="('user.register.form.terms.accept' | translate) + ' *'">
-    </sm-checkbox>
-    <a
-      href="/assets/terms/160523_2051-2_Terms_and_Conditions_(en).pdf"
-      target="_blank">
-       PDF EN
-    </a>,
-    <a
-      href="/assets/terms/160520_2051-2_Anvandarvillkor_(sv).pdf"
-      target="_blank">
-       PDF SV
-     </a>
-    <input-errors
-      [apiErrors]="apiErrors"
-      [control]="registerForm.controls['accepted_terms_and_conditions']"
-      apiAttribute="consent">
-    </input-errors>
-  </div>
+  <h3 class="ui dividing header">
+    {{'user.register.form.terms.section.header' | translate}}
+  </h3>
+
+  <terms-input
+    [control]="registerForm.controls['accepted_terms_and_conditions']"
+    [apiErrors]="apiErrors">
+  </terms-input>
 
   <div class="register-form-button-container">
     <div

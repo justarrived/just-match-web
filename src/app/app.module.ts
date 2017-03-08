@@ -80,6 +80,7 @@ import {StreetInputComponent} from './components/inputs/street-input/street-inpu
 import {SuccessMessageComponent} from './components/messages/success-message/success-message.component';
 import {SystemLanguageInputComponent} from './components/inputs/system-language-input/system-language-input.component';
 import {SystemLanguagesService} from './services/system-languages.service';
+import {TermsInputComponent} from './components/inputs/terms-input/terms-input.component';
 import {TextareaInputComponent} from './components/inputs/textarea-input/textarea-input.component';
 import {TextInputComponent} from './components/inputs/text-input/text-input.component';
 import {TranslationService} from './services/translation.service';
@@ -175,6 +176,7 @@ export class RavenErrorHandler implements ErrorHandler {
     StreetInputComponent,
     SuccessMessageComponent,
     SystemLanguageInputComponent,
+    TermsInputComponent,
     TextareaInputComponent,
     TextInputComponent,
     TruncatePipe,
