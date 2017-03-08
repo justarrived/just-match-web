@@ -2,7 +2,7 @@
   <div class="slider-container" (swipeleft)="onSwipe(true)" (swiperight)="onSwipe(false)">
       <div *ngFor="let job of jobs" class="item-container clickable" [routerLink]="['/job', job.id]">
         <div class="job-name"><div>
-          {{job.name}}
+          {{job.translated.name}}
         </div></div>
         <div class="salary-container">{{job.grossAmountWithCurrency}}</div>
       </div>

@@ -284,7 +284,7 @@
             <div class="profile-form-input-multiselect-row-inner-container" *ngIf="userLanguage.proficiency">
               <div class="profile-form-input-multiselect-row-item-container">
                 <div class="profile-form-input-multiselect-row-item-name">
-                  {{userLanguage.language.name}}
+                  {{userLanguage.language.translated.name}}
                 </div>
                 <div class="profile-form-input-multiselect-row-item-icon-container" (click)="onRemoveUserLanguage(userLanguage)" *ngIf="userLanguage.proficiency !== languageExpertProficiency">
                   <i class="profile-form-input-multiselect-row-item-icon fa fa-times"></i>
@@ -320,7 +320,7 @@
             <div class="profile-form-input-multiselect-row-inner-container">
               <div class="profile-form-input-multiselect-row-item-container">
                 <div class="profile-form-input-multiselect-row-item-name">
-                  {{userSkill.skill.name}}
+                  {{userSkill.skill.translated.name}}
                 </div>
                 <div class="profile-form-input-multiselect-row-item-icon-container" (click)="onRemoveUserSkill(userSkill)">
                   <i class="profile-form-input-multiselect-row-item-icon fa fa-times"></i>

@@ -17,7 +17,7 @@ import {OnInit} from '@angular/core';
         src="{{job.companyLogoURL}}">
       <div class="job-header-container">
         <div class="header job-header">
-          {{job.name}}
+          {{job.translated.name}}
         </div>
       </div>
       <div class="meta job-company">
@@ -28,7 +28,7 @@ import {OnInit} from '@angular/core';
       </div>
       <div class="job-description-container">
         <div class="description job-description">
-          {{job.description}}
+          {{job.translated.short_description}}
         </div>
       </div>
     </div>

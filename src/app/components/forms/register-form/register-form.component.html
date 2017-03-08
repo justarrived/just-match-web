@@ -77,7 +77,7 @@
       <option
         [value]="language.id"
         *ngFor="let language of languages | async">
-        {{language.name}}
+        {{language.translated.name}}
       </option>
     </sm-select>
     <input-errors
@@ -97,7 +97,7 @@
       <option
         [value]="language.id"
         *ngFor="let language of systemLanguages | async">
-        {{language.name}}
+        {{language.translated.name}}
       </option>
     </sm-select>
     <input-errors
@@ -121,7 +121,7 @@
       <option
         [value]="country.countryCode"
         *ngFor="let country of countries | async">
-        {{country.name}}
+        {{country.translated.name}}
       </option>
     </sm-select>
     <input-errors

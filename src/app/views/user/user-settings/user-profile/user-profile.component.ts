@@ -187,20 +187,20 @@ export class UserProfileComponent extends TranslationListener implements OnInit 
       'user_skills': [this.user.userSkills.slice()]
     });
 
-    const nativeLanguage = this.user.getNativeLanguage() || { language: { name: '' } };
-    const nativeLanguageDropdown = this.nativeLanguageDropdown;
+    const nativeLanguage = this.user.getNativeLanguage() || { language: {translated: { name: '' }}};
+    const nativeLanguageDropdown = this.nativeLanguageDropdown
     setTimeout(function() {
-      nativeLanguageDropdown.textInput = nativeLanguage.language.name;
+      nativeLanguageDropdown.textInput = nativeLanguage.language.translated.name;
     }, 100);
 
     this.countryProxy.getCountryByCountryCode(this.user.countryOfOriginCode)
       .then((countryOfOrigin) => {
-        this.countryDropdown.textInput = countryOfOrigin.name || '';
+        this.countryDropdown.textInput = countryOfOrigin.translated.name || '';
       });
 
     this.languageProxy.getLanguage(this.user.languageId)
       .then((defaultLanguage) => {
-        this.defaultLanguageDropdown.textInput = defaultLanguage.name || '';
+        this.defaultLanguageDropdown.textInput = defaultLanguage.translated.name || '';
       });
   }
 

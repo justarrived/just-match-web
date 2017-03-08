@@ -3,7 +3,7 @@
 
     <div class="job-status text-center">
       <div class="job-status-container">
-        <h3 class="job-status-text">{{job.name}}</h3>
+        <h3 class="job-status-text">{{job.translated.name}}</h3>
         <div class="ui grid">
           <div class="ten wide phone">
             <h4 class="job-status-text">{{job.company.name}}</h4>
@@ -54,7 +54,7 @@
           </div>
         </div>
         <div class="fifteen wide phone column">
-          <div [innerHTML]="job.descriptionHTML"></div>
+          <div [innerHTML]="job.translated.descriptionHTML"></div>
         </div>
       </div>
       <hr class="job-details-separator"/>
