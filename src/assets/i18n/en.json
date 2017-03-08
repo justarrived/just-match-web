@@ -112,6 +112,8 @@
   "input.country.of.origin.placeholder": "Country of origin",
   "input.email.label": "Email",
   "input.email.placeholder": "Email",
+  "input.email.or.phone.label": "Email or phone",
+  "input.email.or.phone.placeholder": "Email or phone",
   "input.first.name.label": "First name",
   "input.first.name.placeholder": "First name",
   "input.gender.label": "Gender",
