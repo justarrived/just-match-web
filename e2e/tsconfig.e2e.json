@@ -1,0 +1,21 @@
+{
+ "extends": "../tsconfig.json",
+ "compilerOptions": {
+   "outDir": "../dist/out-tsc-e2e",
+   "module": "commonjs",
+   "target": "es6",
+   "types":[
+     "jasmine",
+     "node"
+   ],
+   "typeRoots": [
+     "../node_modules/@types"
+   ]
+ },
+ "exclude": [
+   "node_modules",
+   "script",
+   "test.ts",
+   "**/*.spec.ts"
+ ]
+}

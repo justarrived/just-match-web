@@ -1,0 +1,20 @@
+{
+  "_comment": "Update to angular-cli tsconfig.spec.json when this fix is released: https://github.com/angular/angular-cli/issues/5082",
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../out-tsc/spec",
+    "module": "commonjs",
+    "target": "es6",
+    "types": [
+      "jasmine",
+      "node"
+    ],
+    "typeRoots": [
+      "../node_modules/@types"
+    ]
+  },
+  "exclude": [
+    "node_modules",
+    "script"
+  ]
+}
