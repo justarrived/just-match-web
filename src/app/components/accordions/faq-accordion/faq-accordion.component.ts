@@ -11,10 +11,10 @@ import {TranslationService} from '../../../services/translation.service';
   <sm-accordion class="styled fluid" [options]="{ exclusive: true, on: 'mouseenter' }">
     <sm-accordion-item *ngFor="let faq of faqs | async">
       <accordion-title>
-        {{faq.question}}
+        {{faq.translated.question}}
       </accordion-title>
       <accordion-content >
-        <div class="ui padded raised segment" [innerHTML]="faq.answer">
+        <div class="ui padded raised segment" [innerHTML]="faq.translated.answer">
         </div>
       </accordion-content>
     </sm-accordion-item>

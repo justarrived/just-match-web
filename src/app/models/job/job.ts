@@ -77,7 +77,7 @@ export class Job {
     this.jobUsers = map(jsonObject.job_users, user => new UserJob(user));
     this.languageId = jsonObject.language_id;
 
-    if (!!jsonObject.translated_text) {
+    if (jsonObject.translated_text) {
       this.translated = new Job(jsonObject.translated_text);
     }
   }

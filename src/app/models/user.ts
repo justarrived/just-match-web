@@ -47,6 +47,7 @@ export class User {
   newPassword: string;
   repeatedPassword: string;
   oldPassword: string;
+  translated: User;
 
   constructor(jsonObject: any) {
     if (!jsonObject) {
@@ -90,6 +91,10 @@ export class User {
     this.atUnd = jsonObject.at_und;
     this.accountClearingNumber = jsonObject.account_clearing_number;
     this.accountNumber = jsonObject.account_number;
+
+    if (jsonObject.translated_text) {
+      this.translated = new User(jsonObject.translated_text);
+    }
   }
 
   getNativeLanguage(): UserLanguage {

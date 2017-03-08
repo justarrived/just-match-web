@@ -21,7 +21,7 @@
         routerLink="{{JARoutes.job.url([job.id])}}">
         <div class="home-job-item-name-container">
           <div class="home-job-item-name">
-            {{job.name}}
+            {{job.translated.name}}
           </div>
         </div>
         <div class="home-job-item-salary-container">
@@ -51,7 +51,7 @@
         routerLink="{{JARoutes.job.url([userJob.job.id])}}">
         <div class="home-job-item-name-container">
           <div class="home-job-item-name">
-            {{userJob.job.name}}
+            {{userJob.job.translated.name}}
           </div>
         </div>
         <div *ngIf="userJob.job_ended" class="home-job-item-salary-container home-job-item-salary-job-ended-container">
@@ -75,7 +75,7 @@
     <div *ngFor="let job of jobsAppliedFor" class="home-jobs-applied-for-job-item-container">
       <div class="home-jobs-applied-for-job-item" routerLink="{{JARoutes.job.url([job.job.id])}}">
         <p class="home-jobs-applied-for-job-item-name">
-          {{job.job.name}}
+          {{job.job.translated.name}}
         </p>
         <span class="home-jobs-applied-for-job-item-icon"> > </span>
       </div>
