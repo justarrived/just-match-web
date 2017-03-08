@@ -5,26 +5,26 @@ import {Input} from '@angular/core';
 @Component({
   selector: 'text-input',
   template: `
-  <div class="field">
-    <sm-input
-      [control]="control"
-      [icon]="icon"
-      [label]="label"
-      [placeholder]="placeholder"
-      [type]="type"
-      class="left">
-    </sm-input>
-    <input-errors
-      [apiAttribute]="apiAttribute"
-      [apiErrors]="apiErrors"
-      [control]="control"
-      [maxLengthLabel]="maxLengthLabel"
-      [minLengthLabel]="minLengthLabel"
-      [patternLabel]="patternLabel"
-      [requiredLabel]="requiredLabel">
-    </input-errors>
-  </div>
-  `
+    <div class="field">
+      <sm-input
+        [control]="control"
+        [icon]="icon"
+        [label]="label"
+        [placeholder]="placeholder"
+        [type]="type"
+        class="left">
+      </sm-input>
+      <input-errors
+        [apiAttribute]="apiAttribute"
+        [apiErrors]="apiErrors"
+        [control]="control"
+        [maxLengthLabel]="maxLengthLabel"
+        [minLengthLabel]="minLengthLabel"
+        [patternLabel]="patternLabel"
+        [requiredLabel]="requiredLabel">
+      </input-errors>
+      <ng-content></ng-content>
+    </div>`
 })
 export class TextInputComponent {
   @Input() public apiAttribute: string;

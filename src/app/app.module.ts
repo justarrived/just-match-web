@@ -77,6 +77,7 @@ import {SkillProxy} from './services/proxy/skill-proxy.service';
 import {SliderComponent} from './components/slider/slider.component';
 import {StreetInputComponent} from './components/inputs/street-input/street-input.component';
 import {SuccessMessageComponent} from './components/messages/success-message/success-message.component';
+import {SystemLanguageInputComponent} from './components/inputs/system-language-input/system-language-input.component';
 import {SystemLanguagesService} from './services/system-languages.service';
 import {TextareaInputComponent} from './components/inputs/textarea-input/textarea-input.component';
 import {TextInputComponent} from './components/inputs/text-input/text-input.component';
@@ -171,6 +172,7 @@ export class RavenErrorHandler implements ErrorHandler {
     SliderComponent,
     StreetInputComponent,
     SuccessMessageComponent,
+    SystemLanguageInputComponent,
     TextareaInputComponent,
     TextInputComponent,
     TruncatePipe,

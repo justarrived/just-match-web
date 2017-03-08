@@ -27,6 +27,7 @@ import {Input} from '@angular/core';
         [patternLabel]="patternLabel"
         [requiredLabel]="requiredLabel">
       </input-errors>
+      <ng-content></ng-content>
     </div>`
 })
 export class SelectDropdownInputComponent {

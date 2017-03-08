@@ -5,22 +5,25 @@ import {Input} from '@angular/core';
 @Component({
   selector: 'textarea-input',
   template: `
-    <textarea
-      [formControl]="control"
-      [id]="apiAttribute"
-      [label]="label"
-      [maxlength]="maxlength"
-      [name]="apiAttribute"
-      [placeholder]="placeholder"
-      autosize
-      class="form-control material-input"
-      type="text">
-    </textarea>
-    <input-errors
-      [apiAttribute]="apiAttribute"
-      [apiErrors]="apiErrors"
-      [control]="control">
-    </input-errors>`
+    <div class="field">
+      <textarea
+        [formControl]="control"
+        [id]="apiAttribute"
+        [label]="label"
+        [maxlength]="maxlength"
+        [name]="apiAttribute"
+        [placeholder]="placeholder"
+        autosize
+        class="form-control material-input"
+        type="text">
+      </textarea>
+      <input-errors
+        [apiAttribute]="apiAttribute"
+        [apiErrors]="apiErrors"
+        [control]="control">
+      </input-errors>
+      <ng-content></ng-content>
+    </div>`
 })
 export class TextareaInputComponent {
   @Input() public apiAttribute: string;
