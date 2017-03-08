@@ -8,85 +8,21 @@
     text="{{'component.loading' | translate}}">
   </sm-loader>
 
-  <div class="field">
-    <sm-select
-     [control]="profileForm.controls['default_language']"
-     [data]="systemLanguages | async"
-     [label]="('user.profile.form.default.language.label' | translate) + ' *'"
-     [placeholder]="'user.profile.form.default.language.placeholder' | translate"
-     class="fluid search">
-      <option
-        [value]="language.id"
-        *ngFor="let language of systemLanguages | async">
-        {{language.translated.name}}
-      </option>
-    </sm-select>
-    <input-errors
-      [apiErrors]="apiErrors"
-      [control]="profileForm.controls['default_language']"
-      apiAttribute="language">
-    </input-errors>
-    <div
-      class="ui pointing grey basic label">
-      {{'user.profile.form.default.language.description' | translate}}
-    </div>
-  </div>
+  <system-language-input
+    [control]="profileForm.controls['default_language']"
+    [apiErrors]="apiErrors">
+  </system-language-input>
 
-  <div class="field">
-    <sm-select
-     [control]="profileForm.controls['country_of_origin']"
-     [data]="countries | async"
-     [label]="('user.profile.form.country.label' | translate) + ' *'"
-     [placeholder]="'user.profile.form.country.placeholder' | translate"
-     class="fluid search">
-      <option
-        [value]="country.countryCode"
-        *ngFor="let country of countries | async">
-        {{country.translated.name}}
-      </option>
-    </sm-select>
-    <input-errors
-      [apiErrors]="apiErrors"
-      [control]="profileForm.controls['country_of_origin']"
-      apiAttribute="country_of_origin">
-    </input-errors>
-  </div>
+  <country-of-origin-input
+    [control]="profileForm.controls['country_of_origin']"
+    [apiErrors]="apiErrors">
+  </country-of-origin-input>
 
-  <!-- Checkbox implementation unfinished -->
-  <!--<div class="grouped fields">
-    <label>{{'user.profile.form.status.label' | translate}}:</label>
-    <sm-checkbox
-      *ngFor="let status of statuses"
-      type="radio"
-      label="{{status.name}}"
-      name="permit-type"
-      id="{{status.id}}"
-      [control]="profileForm.controls['current_status']"
-      value="{{status.id}}">
-    </sm-checkbox>
-    <input-errors
-      apiAttribute="current_status"
-      [control]="profileForm.controls['current_status']"
-      [apiErrors]="apiErrors">
-    </input-errors>
-  </div>-->
+  <status-input
+    [control]="profileForm.controls['current_status']"
+    [apiErrors]="apiErrors">
+  </status-input>
 
-  <div class="profile-form-input-container">
-    <label class="profile-form-input-label">{{'user.profile.form.status.label' | translate}}:</label>
-    <div class="input-radio-container row">
-      <div *ngFor="let status of statuses | async" class="input-radio-button-container">
-        <label class="input-radio-button-label" for="{{status.id}}">
-        <input class="input-radio-button-input"
-            type="radio"
-            name="permit-type" id="{{status.id}}"
-            [formControl]="profileForm.controls['current_status']"
-            value="{{status.id}}" />
-        <span class="input-radio-button-span"></span>
-        {{status.name}}</label>
-      </div>
-    </div>
-    <input-errors apiAttribute="current_status" [control]="profileForm.controls['current_status']" [apiErrors]="apiErrors"></input-errors>
-  </div>
 
   <!-- Checkbox implementation unfinished -->
   <!--<div *ngIf="profileForm.value.current_status === 'asylum_seeker'" class="field">

@@ -32,7 +32,6 @@ import {UserImage} from '../../../models/user/user-image';
 import {UserLanguage} from '../../../models/user/user-language';
 import {UserProxy} from '../../../services/proxy/user-proxy.service';
 import {UserSkill} from '../../../models/user/user-skill';
-import {UserStatus} from '../../../models/user/user-status';
 import {Validators} from '@angular/forms';
 import {ViewChild} from '@angular/core';
 
@@ -48,11 +47,8 @@ export class UserProfileFormComponent extends TranslationListener implements OnI
 
   @Input() user: User;
 
-  countries: Promise<Country[]>;
   languages: Promise<Language[]>;
   skills: Promise<Skill[]>;
-  statuses: Promise<UserStatus[]>;
-  systemLanguages: Promise<Language[]>;
 
   profileForm: FormGroup;
 
@@ -135,9 +131,6 @@ export class UserProfileFormComponent extends TranslationListener implements OnI
   }
 
   public loadData(): void {
-    this.statuses = this.userProxy.getStatuses();
-    this.countries = this.countryProxy.getCountries();
-    this.systemLanguages = this.languageProxy.getSystemLanguages();
     this.languages = this.languageProxy.getLanguages();
     this.skills = this.skillProxy.getSkills();
   }

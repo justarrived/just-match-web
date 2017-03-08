@@ -134,6 +134,8 @@
   "input.phone.placeholder": "Phone",
   "input.repeat.password.label": "Repeat password",
   "input.repeat.password.placeholder": "Repeat password",
+  "input.status.label": "Current status",
+  "input.status.placeholder": "Current status",
   "input.street.label": "Street",
   "input.street.placeholder": "Street",
   "input.system.language.description": "This is the language we will use to communicate with you",
