@@ -1,4 +1,4 @@
-import {ApiErrors} from '../../../../models/api-errors';
+import {ApiErrors} from '../../../models/api-errors';
 import {Component} from '@angular/core';
 import {Input} from '@angular/core';
 
@@ -8,34 +8,34 @@ import {Input} from '@angular/core';
   <div class="field">
     <sm-input
       [control]="control"
+      [icon]="icon"
       [label]="label"
       [placeholder]="placeholder"
-      class="left"
-      [icon]="icon"
-      [type]="type">
+      [type]="type"
+      class="left">
     </sm-input>
     <input-errors
+      [apiAttribute]="apiAttribute"
       [apiErrors]="apiErrors"
       [control]="control"
-      [apiAttribute]="apiAttribute"
-      [patternLabel]="patternLabel"
-      [requiredLabel]="requiredLabel"
+      [maxLengthLabel]="maxLengthLabel"
       [minLengthLabel]="minLengthLabel"
-      [maxLengthLabel]="maxLengthLabel">
+      [patternLabel]="patternLabel"
+      [requiredLabel]="requiredLabel">
     </input-errors>
   </div>
   `
 })
 export class TextInputComponent {
+  @Input() public apiAttribute: string;
   @Input() public apiErrors: any;
   @Input() public control: any;
-  @Input() public label: any;
-  @Input() public placeholder: any;
   @Input() public icon: string;
-  @Input() public type: string = 'text';
-  @Input() public apiAttribute: string;
-  @Input() public patternLabel: string;
-  @Input() public requiredLabel: string;
-  @Input() public minLengthLabel: string;
+  @Input() public label: any;
   @Input() public maxLengthLabel: string;
+  @Input() public minLengthLabel: string;
+  @Input() public patternLabel: string;
+  @Input() public placeholder: any;
+  @Input() public requiredLabel: string;
+  @Input() public type: string = 'text';
 }
