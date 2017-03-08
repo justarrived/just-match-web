@@ -65,7 +65,6 @@ export class RegisterFormComponent extends TranslationListener implements OnInit
       'gender': [''],
       'language': ['', Validators.compose([Validators.required])],
       'last_name': ['', Validators.compose([Validators.required, Validators.minLength(2)])],
-      'native_language': [''],
       'password': ['', Validators.compose([Validators.required, Validators.minLength(6)])],
       'phone': [''],
       'street': [''],
@@ -87,10 +86,6 @@ export class RegisterFormComponent extends TranslationListener implements OnInit
       'first_name': this.registerForm.value.first_name,
       'gender': this.registerForm.value.gender,
       'language_id': this.registerForm.value.language,
-      'language_ids': [{
-        id: this.registerForm.value.native_language,
-        proficiency: 5
-      }],
       'last_name': this.registerForm.value.last_name,
       'password': this.registerForm.value.password,
       'phone': this.registerForm.value.phone,
