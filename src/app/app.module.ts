@@ -6,8 +6,6 @@ import {AppComponent} from './app.component';
 import {AppRoutingModule} from './app.routing.module';
 import {AppTranslateModule} from './app.translate.module';
 import {AuthManager} from './services/auth-manager.service';
-import {AutocompleteDropdownComponent} from './components/autocomplete-dropdown/autocomplete-dropdown.component';
-import {AutocompleteDropdownListItemComponent} from './components/autocomplete-dropdown/autocomplete-dropdown-list-item/autocomplete-dropdown-list-item.component';
 import {AutosizeDirective} from './directives/textarea-autosize/textarea-autosize.directive';
 import {BaseMessageComponent} from './components/messages/base-message.component';
 import {BasicBorderHeaderComponent} from './components/headers/basic-border-header/basic-border-header.component';
@@ -22,7 +20,6 @@ import {CookieBarComponent} from './components/cookie-bar/cookie-bar.component';
 import {CookiesAboutPageComponent} from './views/cookies-about/cookies-about-page.component';
 import {CountryProxy} from './services/proxy/country-proxy.service';
 import {DataStore} from './services/data-store.service';
-import {DeletableItemComponent} from './components/autocomplete-dropdown/deletable-item/deletable-item.component';
 import {environment} from '../environments/environment';
 import {ErrorHandler } from '@angular/core';
 import {ErrorMessageComponent} from './components/messages/error-message/error-message.component';
@@ -115,8 +112,6 @@ export class RavenErrorHandler implements ErrorHandler {
   declarations: [
     ApiErrorsComponent,
     AppComponent,
-    AutocompleteDropdownComponent,
-    AutocompleteDropdownListItemComponent,
     AutosizeDirective,
     BaseMessageComponent,
     BasicBorderHeaderComponent,
@@ -126,7 +121,6 @@ export class RavenErrorHandler implements ErrorHandler {
     ContactPageComponent,
     CookieBarComponent,
     CookiesAboutPageComponent,
-    DeletableItemComponent,
     ErrorMessageComponent,
     ErrorPageComponent,
     FaqAccordionComponent,

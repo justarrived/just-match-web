@@ -1,7 +1,5 @@
 import {ApiErrors} from '../../../models/api-errors';
 import {AuthManager} from '../../../services/auth-manager.service';
-import {AutocompleteDropdownComponent} from
-'../../../components/autocomplete-dropdown/autocomplete-dropdown.component';
 import {Component} from '@angular/core';
 import {Country} from '../../../models/country';
 import {CountryProxy} from '../../../services/proxy/country-proxy.service';
