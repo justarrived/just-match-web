@@ -52,6 +52,11 @@
     {{'user.register.form.country.and.languages.section.header' | translate}}
   </h3>
 
+  <system-language-input
+    [control]="registerForm.controls['language']"
+    [apiErrors]="apiErrors">
+  </system-language-input>
+
   <div class="field">
     <sm-select
      [control]="registerForm.controls['native_language']"
@@ -72,11 +77,6 @@
     </input-errors>
   </div>
 
-  <system-language-input
-    [control]="registerForm.controls['language']"
-    [apiErrors]="apiErrors">
-  </system-language-input>
-
   <country-of-origin-input
     [control]="registerForm.controls['country_of_origin']"
     [apiErrors]="apiErrors">>
@@ -90,21 +90,6 @@
      [control]="registerForm.controls['password']"
      [apiErrors]="apiErrors">
    </password-input>
-
-  <div class="field">
-    <sm-input
-      [control]="registerForm.controls['repeat_password']"
-      [label]="('user.register.form.repeat.password.header' | translate) + ' *'"
-      [placeholder]="'user.register.form.repeat.password.placeholder' | translate"
-      class="left"
-      icon="lock"
-      type="password">
-    </sm-input>
-    <input-error
-      [label]="'user.register.form.repeat.password.validation.mismatch' | translate"
-      [visible]="passwordsSuppliedAndMisMatch()">
-    </input-error>
-  </div>
 
   <div class="field">
     <sm-checkbox

@@ -59,16 +59,15 @@ export class RegisterFormComponent extends TranslationListener implements OnInit
     this.registerForm = this.formBuilder.group({
       'accepted_terms_and_conditions': ['', Validators.compose([Validators.required])],
       'city': [''],
-      'country_of_origin': ['', Validators.compose([Validators.required])],
-      'email': ['', Validators.compose([Validators.required, Validators.pattern(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)])],
-      'first_name': ['', Validators.compose([Validators.required, Validators.minLength(2)])],
-      'gender': ['', Validators.compose([Validators.required])],
+      'country_of_origin': [''],
+      'email': ['', Validators.compose([Validators.required])],
+      'first_name': ['', Validators.compose([Validators.required, Validators.minLength(1)])],
+      'gender': [''],
       'language': ['', Validators.compose([Validators.required])],
       'last_name': ['', Validators.compose([Validators.required, Validators.minLength(2)])],
-      'native_language': ['', Validators.compose([Validators.required])],
+      'native_language': [''],
       'password': ['', Validators.compose([Validators.required, Validators.minLength(6)])],
-      'phone': ['', Validators.compose([Validators.required])],
-      'repeat_password': [, Validators.compose([Validators.required])],
+      'phone': [''],
       'street': [''],
       'zip': ['', Validators.compose([Validators.minLength(5)])]
     });
@@ -111,21 +110,5 @@ export class RegisterFormComponent extends TranslationListener implements OnInit
         this.loadingSubmit = false;
         this.saveFail = true;
       });
-  }
-
-  public passwordsSupplied() {
-    return (this.registerForm.value.password || this.registerForm.value.repeat_password) && true;
-  }
-
-  public passwordsSuppliedAndMisMatch() {
-    return this.passwordsSupplied() &&
-      this.registerForm.value.password !== this.registerForm.value.repeat_password &&
-      true;
-  }
-
-  public formValidation(): boolean {
-    return this.registerForm.valid &&
-      this.registerForm.value.accepted_terms_and_conditions &&
-      !this.passwordsSuppliedAndMisMatch() && true;
   }
 }
