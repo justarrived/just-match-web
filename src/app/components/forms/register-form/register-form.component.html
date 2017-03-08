@@ -80,22 +80,9 @@
     [apiErrors]="apiErrors">
   </terms-input>
 
-  <div class="register-form-button-container">
-    <div
-      *ngIf="saveFail"
-      class="error-message">
-      {{'user.register.form.submit.fail' | translate}}
-    </div>
-    <div
-      *ngIf="saveSuccess"
-      class="save-message">
-      {{'user.register.form.submit.success' | translate}}
-    </div>
-    <button
-      *ngIf="!loadingSubmit"
-      class="register-form-button btn-primary btn-small btn"
-      type="submit">
-      {{'user.register.form.submit.button' | translate}}
-    </button>
-  </div>
+  <form-submit-button
+    [submitFail]="saveFail"
+    [submitSuccess]="saveSuccess"
+    [buttonText]="'user.register.form.submit.button' | translate">
+  </form-submit-button>
 </form>
