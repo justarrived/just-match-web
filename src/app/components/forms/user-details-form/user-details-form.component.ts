@@ -33,6 +33,7 @@ export class UserDetailsFormComponent implements OnInit {
   public ngOnInit() {
     this.initSettingsForm();
     this.initPasswordForm();
+    console.log(this.settingsForm);
   }
 
   private initSettingsForm() {

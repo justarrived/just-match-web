@@ -13,36 +13,36 @@
     {{'user.settings.form.personal.info.header' | translate}}
   </h3>
 
-  <user-first-name-input
+  <first-name-input
     [control]="settingsForm.controls['first_name']"
     [apiErrors]="apiErrors">
-  </user-first-name-input>
+  </first-name-input>
 
-  <user-last-name-input
+  <last-name-input
     [control]="settingsForm.controls['last_name']"
     [apiErrors]="apiErrors">
-  </user-last-name-input>
+  </last-name-input>
 
-  <user-email-input
+  <email-input
     [control]="settingsForm.controls['email']"
     [apiErrors]="apiErrors">
-  </user-email-input>
+  </email-input>
 
-  <user-phone-input
+  <phone-input
     [control]="settingsForm.controls['phone']"
     [apiErrors]="apiErrors">
-  </user-phone-input>
+  </phone-input>
 
   <h3 class="ui dividing header">
     {{'user.settings.form.address.header' | translate}}
   </h3>
 
-  <user-address-input
+  <address-input
     [streetControl]="settingsForm.controls['street']"
     [zipControl]="settingsForm.controls['zip']"
     [cityControl]="settingsForm.controls['city']"
     [apiErrors]="apiErrors">
-  </user-address-input>
+  </address-input>
 
   <h3 class="ui dividing header">
     {{'user.settings.form.change.password.header' | translate}}
@@ -86,11 +86,11 @@
 
   <h3 class="ui dividing header">{{'user.settings.form.bank.details.header' | translate}}</h3>
 
-  <user-bank-account-input
+  <bank-account-input
     [accountClearingNumberControl]="settingsForm.controls['account_clearing_number']"
     [accountNumberControl]="settingsForm.controls['account_number']"
     [apiErrors]="apiErrors">
-  </user-bank-account-input>
+  </bank-account-input>
 
   <div class="user-details-form-button-container">
     <div

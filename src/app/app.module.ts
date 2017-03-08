@@ -1,4 +1,6 @@
+import {AccountNumberInputComponent} from './components/inputs/account-number-input/account-number-input.component';
 import {ActsAsUser} from './services/acts-as-user.service';
+import {AddressInputComponent} from './components/inputs/address-input/address-input.component';
 import {AgmCoreModule} from 'angular2-google-maps/core';
 import {ApiCall} from './services/api-call.service';
 import {ApiErrorsComponent} from './components/form-errors/api-errors/api-errors.component';
@@ -7,9 +9,12 @@ import {AppRoutingModule} from './app.routing.module';
 import {AppTranslateModule} from './app.translate.module';
 import {AuthManager} from './services/auth-manager.service';
 import {AutosizeDirective} from './directives/textarea-autosize/textarea-autosize.directive';
+import {BankAccountInputComponent} from './components/inputs/bank-account-input/bank-account-input.component';
 import {BaseMessageComponent} from './components/messages/base-message.component';
 import {BasicBorderHeaderComponent} from './components/headers/basic-border-header/basic-border-header.component';
 import {BrowserModule} from '@angular/platform-browser';
+import {CityInputComponent} from './components/inputs/city-input/city-input.component';
+import {ClearingNumberInputComponent} from './components/inputs/clearing-number-input/clearing-number-input.component';
 import {CommentsComponent} from './components/comments/comments.component';
 import {CommentsProxy} from './services/proxy/comments-proxy.service';
 import {ConfirmationComponent} from './views/confirmation/confirmation.component';
@@ -20,6 +25,7 @@ import {CookieBarComponent} from './components/cookie-bar/cookie-bar.component';
 import {CookiesAboutPageComponent} from './views/cookies-about/cookies-about-page.component';
 import {CountryProxy} from './services/proxy/country-proxy.service';
 import {DataStore} from './services/data-store.service';
+import {EmailInputComponent} from './components/inputs/email-input/email-input.component';
 import {environment} from '../environments/environment';
 import {ErrorHandler } from '@angular/core';
 import {ErrorMessageComponent} from './components/messages/error-message/error-message.component';
@@ -27,6 +33,7 @@ import {ErrorPageComponent} from './views/error/error-page.component';
 import {FaqAccordionComponent} from './components/accordions/faq-accordion/faq-accordion.component';
 import {FaqPageComponent} from './views/faq/faq-page.component';
 import {FaqProxy} from './services/proxy/faq-proxy.service';
+import {FirstNameInputComponent} from './components/inputs/first-name-input/first-name-input.component';
 import {ForgotPasswordFormComponent} from './components/forms/forgot-password-form/forgot-password-form.component';
 import {ForgotPasswordPageComponent} from './views/forgot-password/forgot-password-page.component';
 import {FormsModule} from '@angular/forms';
@@ -44,6 +51,7 @@ import {JobMapMarkerComponent} from './components/job-map-marker/job-map-marker.
 import {JobProxy} from './services/proxy/job-proxy.service';
 import {JobsComponent} from './views/jobs/jobs.component';
 import {LanguageProxy} from './services/proxy/language-proxy.service';
+import {LastNameInputComponent} from './components/inputs/last-name-input/last-name-input.component';
 import {LoadingComponent} from './components/loading/loading.component';
 import {LoginFormComponent} from './components/forms/login-form/login-form.component';
 import {LoginPageComponent} from './views/login/login-page.component';
@@ -55,6 +63,8 @@ import {NgSemanticModule} from 'ng-semantic-ja/ng-semantic';
 import {NO_ERRORS_SCHEMA} from '@angular/core';
 import {NotFoundPageComponent} from './views/404/404-page.component';
 import {PagerComponent} from './components/pager/pager.component';
+import {PasswordInputComponent} from './components/inputs/password-input/password-input.component';
+import {PhoneInputComponent} from './components/inputs/phone-input/phone-input.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {RegisterFormComponent} from './components/forms/register-form/register-form.component';
 import {RegisterPageComponent} from './views/register/register-page.component';
@@ -62,28 +72,23 @@ import {ResetPasswordFormComponent} from './components/forms/reset-password-form
 import {ResetPasswordPageComponent} from './views/reset-password/reset-password-page.component';
 import {SkillProxy} from './services/proxy/skill-proxy.service';
 import {SliderComponent} from './components/slider/slider.component';
+import {StreetInputComponent} from './components/inputs/street-input/street-input.component';
 import {SuccessMessageComponent} from './components/messages/success-message/success-message.component';
 import {SystemLanguagesService} from './services/system-languages.service';
 import {TextareaInputComponent} from './components/inputs/textarea-input/textarea-input.component';
 import {TextInputComponent} from './components/inputs/text-input/text-input.component';
 import {TranslationService} from './services/translation.service';
 import {TruncatePipe} from './utils/truncate';
-import {UserAddressInputComponent} from './components/users/inputs/user-address-input.component';
-import {UserBankAccountInputComponent} from './components/users/inputs/user-bank-account-input.component';
 import {UserDetailsComponent} from './views/user/user-settings/user-details/user-details.component';
 import {UserDetailsFormComponent} from './components/forms/user-details-form/user-details-form.component';
-import {UserEmailInputComponent} from './components/users/inputs/user-email-input.component';
-import {UserFirstNameInputComponent} from './components/users/inputs/user-first-name-input/user-first-name-input.component';
 import {UserJobsComponent} from './views/my-jobs/user-jobs/user-jobs.component';
-import {UserLastNameInputComponent} from './components/users/inputs/user-last-name-input/user-last-name-input.component';
 import {UserManager} from './services/user-manager.service';
-import {UserPasswordInputComponent} from './components/users/inputs/user-password-input/user-password-input.component';
-import {UserPhoneInputComponent} from './components/users/inputs/user-phone-input.component';
 import {UserProfileComponent} from './views/user/user-settings/user-profile/user-profile.component';
 import {UserProfileFormComponent} from './components/forms/user-profile-form/user-profile-form.component';
 import {UserProxy} from './services/proxy/user-proxy.service';
 import {UserSettingsComponent} from './views/user/user-settings/user-settings.component';
 import {WelcomeHeaderComponent} from './components/headers/welcome-header/welcome-header.component';
+import {ZipInputComponent} from './components/inputs/zip-input/zip-input.component';
 import * as Raven from 'raven-js';
 
 Raven
@@ -110,21 +115,28 @@ export class RavenErrorHandler implements ErrorHandler {
     })
   ],
   declarations: [
+    AccountNumberInputComponent,
+    AddressInputComponent,
     ApiErrorsComponent,
     AppComponent,
     AutosizeDirective,
+    BankAccountInputComponent,
     BaseMessageComponent,
     BasicBorderHeaderComponent,
+    CityInputComponent,
+    ClearingNumberInputComponent,
     CommentsComponent,
     ConfirmationComponent,
     ContactFormComponent,
     ContactPageComponent,
     CookieBarComponent,
     CookiesAboutPageComponent,
+    EmailInputComponent,
     ErrorMessageComponent,
     ErrorPageComponent,
     FaqAccordionComponent,
     FaqPageComponent,
+    FirstNameInputComponent,
     ForgotPasswordFormComponent,
     ForgotPasswordPageComponent,
     HomeComponent,
@@ -136,6 +148,7 @@ export class RavenErrorHandler implements ErrorHandler {
     JobListItemComponent,
     JobMapMarkerComponent,
     JobsComponent,
+    LastNameInputComponent,
     LoadingComponent,
     LoginFormComponent,
     LoginPageComponent,
@@ -143,29 +156,26 @@ export class RavenErrorHandler implements ErrorHandler {
     MyJobsItemComponent,
     NotFoundPageComponent,
     PagerComponent,
+    PasswordInputComponent,
+    PhoneInputComponent,
     RegisterFormComponent,
     RegisterPageComponent,
     ResetPasswordFormComponent,
     ResetPasswordPageComponent,
     SliderComponent,
+    StreetInputComponent,
     SuccessMessageComponent,
     TextareaInputComponent,
     TextInputComponent,
     TruncatePipe,
-    UserAddressInputComponent,
-    UserBankAccountInputComponent,
     UserDetailsComponent,
     UserDetailsFormComponent,
-    UserEmailInputComponent,
-    UserFirstNameInputComponent,
     UserJobsComponent,
-    UserLastNameInputComponent,
-    UserPasswordInputComponent,
-    UserPhoneInputComponent,
     UserProfileComponent,
     UserProfileFormComponent,
     UserSettingsComponent,
     WelcomeHeaderComponent,
+    ZipInputComponent,
   ],
   providers: [
     ActsAsUser,

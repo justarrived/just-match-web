@@ -4,20 +4,20 @@ import {FormControl} from '@angular/forms';
 import {Input} from '@angular/core';
 
 @Component({
-  selector: 'user-email-input',
+  selector: 'email-input',
   template: `
   <text-input
     [apiErrors]="apiErrors"
     [control]="control"
-    [label]="('user.form.email.header' | translate) + ' *'"
-    [placeholder]="'user.form.email.placeholder' | translate"
+    [label]="'input.email.label' | translate"
+    [placeholder]="'input.email.placeholder' | translate"
     [patternLabel]="'validations.email_pattern' | translate"
     apiAttribute="email"
     icon="mail">
   </text-input>
   `
 })
-export class UserEmailInputComponent {
+export class EmailInputComponent {
   @Input() apiErrors: ApiErrors;
   @Input() control: FormControl;
 }

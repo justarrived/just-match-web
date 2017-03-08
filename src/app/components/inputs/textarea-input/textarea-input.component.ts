@@ -8,12 +8,13 @@ import {Input} from '@angular/core';
     <textarea
       [formControl]="control"
       [id]="apiAttribute"
-      [label]="label"
+      [label]="label + (control.errors.required ? ' *' : '')"
       [maxlength]="maxlength"
       [name]="apiAttribute"
       [placeholder]="placeholder"
-      autosize type="text"
-      class="form-control material-input">
+      autosize
+      class="form-control material-input"
+      type="text">
     </textarea>
     <input-errors
       [apiAttribute]="apiAttribute"

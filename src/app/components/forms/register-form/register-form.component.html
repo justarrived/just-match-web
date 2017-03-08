@@ -12,25 +12,25 @@
     {{'user.register.form.general.information.section.header' | translate}}
   </h3>
 
-  <user-first-name-input
+  <first-name-input
      [control]="registerForm.controls['first_name']"
      [apiErrors]="apiErrors">
-   </user-first-name-input>
+   </first-name-input>
 
-  <user-last-name-input
+  <last-name-input
     [control]="registerForm.controls['last_name']"
      [apiErrors]="apiErrors">
-   </user-last-name-input>
+   </last-name-input>
 
-  <user-email-input
+  <email-input
     [control]="registerForm.controls['email']"
     [apiErrors]="apiErrors">
-  </user-email-input>
+  </email-input>
 
-  <user-phone-input
+  <phone-input
     [control]="registerForm.controls['phone']"
     [apiErrors]="apiErrors">
-  </user-phone-input>
+  </phone-input>
 
   <div class="field">
     <sm-select
@@ -56,12 +56,12 @@
     {{'user.register.form.address.section.header' | translate}}
   </h3>
 
-  <user-address-input
+  <address-input
     [streetControl]="registerForm.controls['street']"
     [zipControl]="registerForm.controls['zip']"
     [cityControl]="registerForm.controls['city']"
     [apiErrors]="apiErrors">
-  </user-address-input>
+  </address-input>
 
   <h3 class="ui dividing header">
     {{'user.register.form.country.and.languages.section.header' | translate}}
@@ -135,10 +135,10 @@
     {{'user.register.form.password.section.header' | translate}}
   </h3>
 
-  <user-password-input
+  <password-input
      [control]="registerForm.controls['password']"
      [apiErrors]="apiErrors">
-   </user-password-input>
+   </password-input>
 
   <div class="field">
     <sm-input
