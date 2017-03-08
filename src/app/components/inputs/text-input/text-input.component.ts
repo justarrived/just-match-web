@@ -31,11 +31,11 @@ export class TextInputComponent {
   @Input() public apiErrors: any;
   @Input() public control: any;
   @Input() public icon: string;
-  @Input() public label: any;
+  @Input() public label: string;
   @Input() public maxLengthLabel: string;
   @Input() public minLengthLabel: string;
   @Input() public patternLabel: string;
-  @Input() public placeholder: any;
+  @Input() public placeholder: string;
   @Input() public requiredLabel: string;
   @Input() public type: string = 'text';
 }

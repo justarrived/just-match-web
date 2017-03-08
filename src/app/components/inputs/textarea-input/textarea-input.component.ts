@@ -8,7 +8,7 @@ import {Input} from '@angular/core';
     <textarea
       [formControl]="control"
       [id]="apiAttribute"
-      [label]="label + (control.errors.required ? ' *' : '')"
+      [label]="label"
       [maxlength]="maxlength"
       [name]="apiAttribute"
       [placeholder]="placeholder"
