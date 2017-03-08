@@ -68,6 +68,7 @@ import {PhoneInputComponent} from './components/inputs/phone-input/phone-input.c
 import {ReactiveFormsModule} from '@angular/forms';
 import {RegisterFormComponent} from './components/forms/register-form/register-form.component';
 import {RegisterPageComponent} from './views/register/register-page.component';
+import {RepeatPasswordInputComponent} from './components/inputs/repeat-password-input/repeat-password-input.component';
 import {ResetPasswordFormComponent} from './components/forms/reset-password-form/reset-password-form.component';
 import {ResetPasswordPageComponent} from './views/reset-password/reset-password-page.component';
 import {SkillProxy} from './services/proxy/skill-proxy.service';
@@ -160,6 +161,7 @@ export class RavenErrorHandler implements ErrorHandler {
     PhoneInputComponent,
     RegisterFormComponent,
     RegisterPageComponent,
+    RepeatPasswordInputComponent,
     ResetPasswordFormComponent,
     ResetPasswordPageComponent,
     SliderComponent,

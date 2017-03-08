@@ -116,6 +116,8 @@
   "input.password.placeholder": "Password",
   "input.phone.label": "Phone",
   "input.phone.placeholder": "Phone",
+  "input.repeat.password.label": "Repeat password",
+  "input.repeat.password.placeholder": "Repeat password",
   "input.street.label": "Street",
   "input.street.placeholder": "Street",
   "input.zip.label": "Zip code",
