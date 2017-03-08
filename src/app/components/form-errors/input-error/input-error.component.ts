@@ -4,11 +4,11 @@ import {Input} from '@angular/core';
 @Component({
   selector: 'input-error',
   template: `
-  <div
-    *ngIf="visible"
-    class="ui pointing red basic label">
-    {{label}}
-  </div>`
+    <div
+      *ngIf="visible"
+      class="ui pointing red basic label">
+      {{label}}
+    </div>`
 })
 export class InputErrorComponent {
   @Input() public label: string;

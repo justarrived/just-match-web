@@ -1,4 +1,4 @@
-import {ApiErrors} from '../../models/api-errors';
+import {ApiErrors} from '../../../models/api-errors';
 import {Component} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {Input} from '@angular/core';
@@ -8,15 +8,15 @@ import {TranslateService} from 'ng2-translate/ng2-translate';
 @Component({
   selector: 'input-errors',
   template: `
-  <api-errors
-    [control]="control"
-    [errors]="apiErrors"
-    [attribute]="apiAttribute">
-  </api-errors>
-  <input-error
-    *ngFor="let error of formControlErrors"
-    [label]="error">
-  </input-error>`
+    <api-errors
+      [control]="control"
+      [errors]="apiErrors"
+      [attribute]="apiAttribute">
+    </api-errors>
+    <input-error
+      *ngFor="let error of formControlErrors"
+      [label]="error">
+    </input-error>`
 })
 export class InputErrorsComponent implements OnInit {
   @Input() public apiAttribute: string = null;

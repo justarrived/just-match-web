@@ -1,5 +1,5 @@
-import {ApiError} from '../../models/api-errors';
-import {ApiErrors} from '../../models/api-errors';
+import {ApiError} from '../../../models/api-errors';
+import {ApiErrors} from '../../../models/api-errors';
 import {Component} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {Input} from '@angular/core';
@@ -8,11 +8,11 @@ import {OnInit} from '@angular/core';
 @Component({
   selector: 'api-errors',
   template: `
-  <div
-    *ngFor="let error of apiErrors"
-    class="ui pointing red basic label">
-    {{error.detail}}
-  </div>`
+    <div
+      *ngFor="let error of apiErrors"
+      class="ui pointing red basic label">
+      {{error.detail}}
+    </div>`
 })
 export class ApiErrorsComponent implements OnInit {
   @Input() public errors: ApiErrors;
