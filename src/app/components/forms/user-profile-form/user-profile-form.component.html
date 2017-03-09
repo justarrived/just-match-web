@@ -279,93 +279,17 @@
 
   <hr class="profile-form-input-ruler">
 
-  <languages-input
-    [languagesControl]="profileForm.controls['languages']"
-    [userLanguagesControl]="profileForm.controls['user_languages']"
-    [apiErrors]="apiErrors">
-  </languages-input>
-
   <skills-input
     [skillsControl]="profileForm.controls['skills']"
     [userSkillsControl]="profileForm.controls['user_skills']"
     [apiErrors]="apiErrors">
   </skills-input>
 
-  <!--
-  <div class="profile-form-input-container">
-    <label class="profile-form-input-label">{{'user.profile.form.languages.label' | translate}}:</label>
-    <autocomplete-dropdown (dropdownListItemSelect)="onLanguageSelect($event)"
-        [clearDestinationAfterSelection]="true"
-        [placeholder]="'user.profile.form.languages.placeholder' | translate"
-        [autocompleteResultLabelFunction]="namePropertyLabel"
-        [selectedItemLabelFunction]="namePropertyLabel"
-        [lookupType]="'list'"
-        [enumList]="languagesExcludingNative">
-    </autocomplete-dropdown>
-
-    <div class="profile-form-input-multiselect-container">
-      <div class="profile-form-input-multiselect-row-container" *ngFor="let userLanguage of profileForm.value.user_languages">
-        <div class="profile-form-input-multiselect-row-inner-container" *ngIf="userLanguage.proficiency">
-          <div class="profile-form-input-multiselect-row-item-container">
-            <div class="profile-form-input-multiselect-row-item-name">
-              {{userLanguage.language.name}}
-            </div>
-            <div class="profile-form-input-multiselect-row-item-icon-container" (click)="onRemoveUserLanguage(userLanguage)" *ngIf="userLanguage.proficiency !== languageExpertProficiency">
-              <i class="profile-form-input-multiselect-row-item-icon fa fa-times"></i>
-            </div>
-          </div>
-          <div class="profile-form-input-multiselect-row-dropdown-container">
-            <autocomplete-dropdown [lookupType]="'list'"
-                [isDisabled]="userLanguage.proficiency === languageExpertProficiency"
-                [enumList]="languageProficiencyLevelsAvailable"
-                [translateLabel]="true"
-                [(destination)]="userLanguage.proficiency" [placeholder]="'user.profile.form.language.proficiency.placeholder' | translate"
-                [autocompleteResultLabelFunction]="namePropertyLabel"
-                [selectedItemLabelFunction]="namePropertyLabel">
-            </autocomplete-dropdown>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="profile-form-input-container">
-    <label class="profile-form-input-label">{{'user.profile.form.skills.label' | translate}}:</label>
-    <autocomplete-dropdown (dropdownListItemSelect)="onSkillSelect($event)"
-        [clearDestinationAfterSelection]="true"
-        [placeholder]="'user.profile.form.skills.placeholder' | translate"
-        [autocompleteResultLabelFunction]="namePropertyLabel"
-        [selectedItemLabelFunction]="namePropertyLabel"
-        [lookupType]="'list'" [enumList]="skills">
-    </autocomplete-dropdown>
-
-    <div class="profile-form-input-multiselect-container">
-      <div class="profile-form-input-multiselect-row-container" *ngFor="let userSkill of profileForm.value.user_skills">
-        <div class="profile-form-input-multiselect-row-inner-container">
-          <div class="profile-form-input-multiselect-row-item-container">
-            <div class="profile-form-input-multiselect-row-item-name">
-              {{userSkill.skill.name}}
-            </div>
-            <div class="profile-form-input-multiselect-row-item-icon-container" (click)="onRemoveUserSkill(userSkill)">
-              <i class="profile-form-input-multiselect-row-item-icon fa fa-times"></i>
-            </div>
-          </div>
-          <div class="profile-form-input-multiselect-row-dropdown-container">
-            <autocomplete-dropdown [lookupType]="'list'"
-                [enumList]="skillProficiencyLevelsAvailable"
-                [translateLabel]="true"
-                [(destination)]="userSkill.proficiency"
-                [placeholder]="'user.profile.form.skill.proficiency.placeholder' | translate"
-                [autocompleteResultLabelFunction]="namePropertyLabel"
-                [selectedItemLabelFunction]="namePropertyLabel">
-            </autocomplete-dropdown>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
--->
+  <languages-input
+    [languagesControl]="profileForm.controls['languages']"
+    [userLanguagesControl]="profileForm.controls['user_languages']"
+    [apiErrors]="apiErrors">
+  </languages-input>
 
   <competence-input
     [control]="profileForm.controls['competence_text']"
