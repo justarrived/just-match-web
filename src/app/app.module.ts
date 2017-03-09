@@ -27,6 +27,8 @@ import {CookiesAboutPageComponent} from './views/cookies-about/cookies-about-pag
 import {CountryOfOriginInputComponent} from './components/inputs/country-of-origin-input/country-of-origin-input.component';
 import {CountryProxy} from './services/proxy/country-proxy.service';
 import {DataStore} from './services/data-store.service';
+import {DescriptionInputComponent} from './components/inputs/description-input/description-input.component';
+import {EducationInputComponent} from './components/inputs/education-input/education-input.component';
 import {EmailInputComponent} from './components/inputs/email-input/email-input.component';
 import {EmailOrPhoneInputComponent} from './components/inputs/email-or-phone-input/email-or-phone-input.component';
 import {environment} from '../environments/environment';
@@ -151,6 +153,8 @@ export class RavenErrorHandler implements ErrorHandler {
     CookieBarComponent,
     CookiesAboutPageComponent,
     CountryOfOriginInputComponent,
+    DescriptionInputComponent,
+    EducationInputComponent,
     EmailInputComponent,
     EmailOrPhoneInputComponent,
     ErrorMessageComponent,

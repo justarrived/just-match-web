@@ -100,9 +100,9 @@ export class UserProfileFormComponent implements OnInit {
     this.profileForm = this.formBuilder.group({
       'at_und': [this.user.atUnd ? this.user.atUnd : 'no'],
       'competence_text': [this.user.skills],
-      'country_of_origin': [this.user.countryOfOriginCode, Validators.compose([Validators.required])],
       'current_status': [this.user.currentStatus],
-      'default_language': [this.user.languageId, Validators.compose([Validators.required])],
+      'description': [this.user.description],
+      'education': [this.user.education],
       'got_coordination_number': [this.user.ssn ? 'yes' : 'no'],
       'job_experience': [this.user.workExperience],
       'languages': [''],
@@ -166,25 +166,25 @@ export class UserProfileFormComponent implements OnInit {
     this.apiErrors = new ApiErrors([]);
 
     this.userProxy.updateUser(this.user.id, {
-      'language_id': this.profileForm.value.default_language,
+      'at_und': this.profileForm.value.at_und,
+      'competence_text': this.profileForm.value.competence_text,
+      'current_status': this.profileForm.value.current_status,
+      'description': this.profileForm.value.description,
+      'education': this.profileForm.value.description,
       'language_ids': map(this.profileForm.value.user_languages, userLanguage => {
         return {
           id: userLanguage['language'].id,
           proficiency: userLanguage['proficiency']
         };
       }),
+      'job_experience': this.profileForm.value.job_experience,
       'skill_ids': map(this.profileForm.value.user_skills, userSkill => {
         return {
           id: userSkill['skill'].id,
           proficiency: userSkill['proficiency']
         };
       }),
-      'country_of_origin': this.profileForm.value.country_of_origin,
-      'current_status': this.profileForm.value.current_status,
-      'at_und': this.profileForm.value.at_und,
       'ssn': this.profileForm.value.ssn,
-      'competence_text': this.profileForm.value.competence_text,
-      'job_experience': this.profileForm.value.job_experience
     })
       .then((response) => {
         this.authManager.authenticateIfNeeded().then(() => {

@@ -8,15 +8,20 @@
     text="{{'component.loading' | translate}}">
   </sm-loader>
 
-  <system-language-input
-    [control]="profileForm.controls['default_language']"
-    [apiErrors]="apiErrors">
-  </system-language-input>
+  <h3 class="ui horizontal divider pink header">
+    <i class="user icon"></i>
+    Personal presentation
+  </h3>
 
-  <country-of-origin-input
-    [control]="profileForm.controls['country_of_origin']"
-    [apiErrors]="apiErrors">
-  </country-of-origin-input>
+  <description-input
+    [apiErrors]="apiErrors"
+    [control]="profileForm.controls['description']">
+  </description-input>
+
+  <h3 class="ui horizontal divider pink header">
+    <i class="id card icon"></i>
+    Status
+  </h3>
 
   <status-input
     [control]="profileForm.controls['current_status']"
@@ -277,13 +282,10 @@
     <div *ngIf="skatteverketCertificateImageStatusObject.imageSaveFail" class="profile-form-error-message">{{'user.profile.form.skatteverket.certificate.upload.fail' | translate}}</div>
   </div>
 
-  <hr class="profile-form-input-ruler">
-
-  <skills-input
-    [skillsControl]="profileForm.controls['skills']"
-    [userSkillsControl]="profileForm.controls['user_skills']"
-    [apiErrors]="apiErrors">
-  </skills-input>
+  <h3 class="ui horizontal divider pink header">
+    <i class="world icon"></i>
+    Language skills
+  </h3>
 
   <languages-input
     [languagesControl]="profileForm.controls['languages']"
@@ -291,10 +293,41 @@
     [apiErrors]="apiErrors">
   </languages-input>
 
+  <h3 class="ui horizontal divider pink header">
+    <i class="rocket icon"></i>
+    General skills
+  </h3>
+
+  <skills-input
+    [skillsControl]="profileForm.controls['skills']"
+    [userSkillsControl]="profileForm.controls['user_skills']"
+    [apiErrors]="apiErrors">
+  </skills-input>
+
   <competence-input
     [control]="profileForm.controls['competence_text']"
     [apiErrors]="apiErrors">
   </competence-input>
+
+  <h3 class="ui horizontal divider pink header">
+    <i class="thumbs up icon"></i>
+    Fields of interest
+  </h3>
+
+  <h3 class="ui horizontal divider pink header">
+    <i class="student icon"></i>
+    Education
+  </h3>
+
+  <education-input
+    [apiErrors]="apiErrors"
+    [control]="profileForm.controls['education']">
+  </education-input>
+
+  <h3 class="ui horizontal divider pink header">
+    <i class="suitcase icon"></i>
+    Experience
+  </h3>
 
   <job-experience-input
     [control]="profileForm.controls['job_experience']"

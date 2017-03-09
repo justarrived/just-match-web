@@ -33,6 +33,11 @@
     [apiErrors]="apiErrors">
   </phone-input>
 
+  <country-of-origin-input
+    [control]="settingsForm.controls['country_of_origin']"
+    [apiErrors]="apiErrors">
+  </country-of-origin-input>
+
   <h3 class="ui dividing header">
     {{'user.settings.form.address.header' | translate}}
   </h3>
@@ -43,6 +48,25 @@
     [cityControl]="settingsForm.controls['city']"
     [apiErrors]="apiErrors">
   </address-input>
+
+  <h3 class="ui dividing header">
+    {{'user.settings.form.bank.details.header' | translate}}
+  </h3>
+
+  <bank-account-input
+    [accountClearingNumberControl]="settingsForm.controls['account_clearing_number']"
+    [accountNumberControl]="settingsForm.controls['account_number']"
+    [apiErrors]="apiErrors">
+  </bank-account-input>
+
+  <h3 class="ui dividing header">
+    {{'user.settings.form.settings.header' | translate}}
+  </h3>
+
+  <system-language-input
+    [control]="settingsForm.controls['language_id']"
+    [apiErrors]="apiErrors">
+  </system-language-input>
 
   <h3 class="ui dividing header">
     {{'user.settings.form.change.password.header' | translate}}
@@ -57,14 +81,6 @@
     [control]="passwordForm.controls['password']"
     [apiErrors]="apiErrors">
   </new-password-input>
-
-  <h3 class="ui dividing header">{{'user.settings.form.bank.details.header' | translate}}</h3>
-
-  <bank-account-input
-    [accountClearingNumberControl]="settingsForm.controls['account_clearing_number']"
-    [accountNumberControl]="settingsForm.controls['account_number']"
-    [apiErrors]="apiErrors">
-  </bank-account-input>
 
   <form-submit-button
     [submitFail]="submitFail"

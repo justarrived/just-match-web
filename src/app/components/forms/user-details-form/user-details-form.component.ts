@@ -42,6 +42,8 @@ export class UserDetailsFormComponent implements OnInit {
     this.settingsForm = this.formBuilder.group({
       'first_name': [this.user.firstName, Validators.compose([Validators.required, Validators.minLength(2)])],
       'last_name': [this.user.lastName, Validators.compose([Validators.required, Validators.minLength(2)])],
+      'country_of_origin': [this.user.countryOfOriginCode],
+      'language_id': [this.user.languageId, Validators.compose([Validators.required])],
       'email': [this.user.email, Validators.compose([Validators.required])],
       'phone': [this.user.phone, Validators.compose([Validators.required])],
       'street': [this.user.street],
