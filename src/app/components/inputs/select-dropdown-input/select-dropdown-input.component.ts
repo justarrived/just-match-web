@@ -3,6 +3,7 @@ import {Component} from '@angular/core';
 import {EventEmitter} from '@angular/core';
 import {Input} from '@angular/core';
 import {Output} from '@angular/core';
+import {getNestedProperty} from '../../../utils/object-util';
 
 @Component({
   selector: 'select-dropdown-input',
@@ -16,9 +17,9 @@ import {Output} from '@angular/core';
        (onChange)="change($event)"
        class="fluid search">
         <option
-          [value]="item[dataItemValueProoerty]"
+          [value]="getNestedProperty(item, dataItemValueProoerty)"
           *ngFor="let item of data">
-          {{item[dataItemLabelProoerty]}}
+          {{getNestedProperty(item, dataItemLabelProoerty)}}
         </option>
       </sm-select>
       <input-errors
@@ -47,6 +48,7 @@ export class SelectDropdownInputComponent {
   @Input() public placeholder: string;
   @Input() public requiredLabel: string;
   @Output() public onChange = new EventEmitter();
+  public getNestedProperty = getNestedProperty;
 
   change(value) {
     this.onChange.emit(value);

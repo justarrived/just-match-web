@@ -98,7 +98,6 @@ import {TermsInputComponent} from './components/inputs/terms-input/terms-input.c
 import {TextareaInputComponent} from './components/inputs/textarea-input/textarea-input.component';
 import {TextInputComponent} from './components/inputs/text-input/text-input.component';
 import {TranslationService} from './services/translation.service';
-import {TruncatePipe} from './utils/truncate';
 import {UserDetailsComponent} from './views/user/user-settings/user-details/user-details.component';
 import {UserDetailsFormComponent} from './components/forms/user-details-form/user-details-form.component';
 import {UserJobsComponent} from './views/my-jobs/user-jobs/user-jobs.component';
@@ -207,7 +206,6 @@ export class RavenErrorHandler implements ErrorHandler {
     TermsInputComponent,
     TextareaInputComponent,
     TextInputComponent,
-    TruncatePipe,
     UserDetailsComponent,
     UserDetailsFormComponent,
     UserJobsComponent,

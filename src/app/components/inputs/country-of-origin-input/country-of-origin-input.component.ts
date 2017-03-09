@@ -18,7 +18,7 @@ import {TranslationService} from '../../../services/translation.service';
       [label]="'input.country.of.origin.label' | translate"
       [placeholder]="'input.country.of.origin.placeholder' | translate"
       apiAttribute="country_of_origin"
-      dataItemLabelProoerty="name"
+      dataItemLabelProoerty="translated.name"
       dataItemValueProoerty="countryCode">
     </select-dropdown-input>`
 })

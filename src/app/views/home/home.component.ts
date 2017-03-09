@@ -11,7 +11,6 @@ import {isEmpty} from 'lodash';
 import {AuthManager} from '../../services/auth-manager.service';
 import {JARoutes} from '../../routes/ja-routes';
 import {yyyymmdd, nbrOfMonthsFromDate} from '../../utils/date-util';
-import {TruncatePipe} from '../../utils/truncate';
 
 @Component({
   templateUrl: './home.component.html',

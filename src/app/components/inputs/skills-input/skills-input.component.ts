@@ -29,7 +29,7 @@ import {UserSkill} from '../../../models/user/user-skill';
       [label]="'input.skills.label' | translate"
       [placeholder]="'input.skills.placeholder' | translate"
       apiAttribute="skill_ids"
-      dataItemLabelProoerty="name"
+      dataItemLabelProoerty="translated.name"
       dataItemValueProoerty="id">
     </select-dropdown-input>
     <div *ngFor="let userSkill of userSkillsControl.value">
@@ -37,7 +37,7 @@ import {UserSkill} from '../../../models/user/user-skill';
         (onDelete)="onRemoveUserSkill(userSkill)"
         (onRate)="onProficiencyChange($event, userSkill)"
         [initialRating]="userSkill.proficiency"
-        [label]="userSkill.skill.name"
+        [label]="userSkill.skill.translated.name"
         *ngIf="userSkill.proficiency">
       </skill-proficiency-input>
     </div>

@@ -29,7 +29,7 @@ import {UserLanguage} from '../../../models/user/user-language';
       [label]="'input.languages.label' | translate"
       [placeholder]="'input.languages.placeholder' | translate"
       apiAttribute="language_ids"
-      dataItemLabelProoerty="name"
+      dataItemLabelProoerty="translated.name"
       dataItemValueProoerty="id">
     </select-dropdown-input>
     <div *ngFor="let userLanguage of userLanguagesControl.value">
@@ -37,7 +37,7 @@ import {UserLanguage} from '../../../models/user/user-language';
         (onDelete)="onRemoveUserLanguage(userLanguage)"
         (onRate)="onProficiencyChange($event, userLanguage)"
         [initialRating]="userLanguage.proficiency"
-        [label]="userLanguage.language.name"
+        [label]="userLanguage.language.translated.name"
         *ngIf="userLanguage.proficiency">
       </language-proficiency-input>
     </div>

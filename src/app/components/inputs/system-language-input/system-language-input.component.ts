@@ -18,7 +18,7 @@ import {LanguageProxy} from '../../../services/proxy/language-proxy.service';
       [label]="'input.system.language.label' | translate"
       [placeholder]="'input.system.language.placeholder' | translate"
       apiAttribute="language"
-      dataItemLabelProoerty="name"
+      dataItemLabelProoerty="translated.name"
       dataItemValueProoerty="id">
       <div
         class="ui pointing grey basic label">
