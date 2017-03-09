@@ -82,6 +82,8 @@ export class LanguagesInputComponent extends TranslationListener implements OnIn
         userLanguage.language = language;
         this.userLanguagesControl.value.push(userLanguage);
         this.loadingLanguage = false;
+      }).catch(errors => {
+        this.loadingLanguage = false;
       });
     }
   }
