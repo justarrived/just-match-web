@@ -69,6 +69,7 @@ import {MyJobsItemComponent} from './components/my-jobs-item/my-jobs-item.compon
 import {NameInputComponent} from './components/inputs/name-input/name-input.component';
 import {NavigationService} from './services/navigation.service';
 import {NewPasswordInputComponent} from './components/inputs/new-password-input/new-password-input.component';
+import {NgPipesModule} from 'ngx-pipes';
 import {NgModule} from '@angular/core';
 import {NgSemanticModule} from 'ng-semantic-ja/ng-semantic';
 import {NO_ERRORS_SCHEMA} from '@angular/core';
@@ -127,6 +128,7 @@ export class RavenErrorHandler implements ErrorHandler {
     BrowserModule,
     FormsModule,
     HttpModule,
+    NgPipesModule,
     NgSemanticModule,
     ReactiveFormsModule,
     AgmCoreModule.forRoot({
