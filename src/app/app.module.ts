@@ -84,7 +84,9 @@ import {RegisterPageComponent} from './views/register/register-page.component';
 import {ResetPasswordFormComponent} from './components/forms/reset-password-form/reset-password-form.component';
 import {ResetPasswordPageComponent} from './views/reset-password/reset-password-page.component';
 import {SelectDropdownInputComponent} from './components/inputs/select-dropdown-input/select-dropdown-input.component';
+import {SkillProficiencyInputComponent} from './components/inputs/skill-proficiency-input/skill-proficiency-input.component';
 import {SkillProxy} from './services/proxy/skill-proxy.service';
+import {SkillsInputComponent} from './components/inputs/skills-input/skills-input.component';
 import {SliderComponent} from './components/slider/slider.component';
 import {StatusInputComponent} from './components/inputs/status-input/status-input.component';
 import {StreetInputComponent} from './components/inputs/street-input/street-input.component';
@@ -193,6 +195,8 @@ export class RavenErrorHandler implements ErrorHandler {
     ResetPasswordFormComponent,
     ResetPasswordPageComponent,
     SelectDropdownInputComponent,
+    SkillProficiencyInputComponent,
+    SkillsInputComponent,
     SliderComponent,
     StatusInputComponent,
     StreetInputComponent,

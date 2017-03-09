@@ -98,16 +98,17 @@ export class UserProfileFormComponent implements OnInit {
 
   private initForm(): void {
     this.profileForm = this.formBuilder.group({
-      'user_languages': [this.user.userLanguages.slice()],
-      'languages': [''],
-      'default_language': [this.user.languageId, Validators.compose([Validators.required])],
+      'at_und': [this.user.atUnd ? this.user.atUnd : 'no'],
+      'competence_text': [this.user.skills],
       'country_of_origin': [this.user.countryOfOriginCode, Validators.compose([Validators.required])],
       'current_status': [this.user.currentStatus],
-      'at_und': [this.user.atUnd ? this.user.atUnd : 'no'],
+      'default_language': [this.user.languageId, Validators.compose([Validators.required])],
       'got_coordination_number': [this.user.ssn ? 'yes' : 'no'],
-      'ssn': [this.user.ssn],
-      'competence_text': [this.user.skills],
       'job_experience': [this.user.workExperience],
+      'languages': [''],
+      'skills': [''],
+      'ssn': [this.user.ssn],
+      'user_languages': [this.user.userLanguages.slice()],
       'user_skills': [this.user.userSkills.slice()]
     });
   }

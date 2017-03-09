@@ -285,6 +285,12 @@
     [apiErrors]="apiErrors">
   </languages-input>
 
+  <skills-input
+    [skillsControl]="profileForm.controls['skills']"
+    [userSkillsControl]="profileForm.controls['user_skills']"
+    [apiErrors]="apiErrors">
+  </skills-input>
+
   <!--
   <div class="profile-form-input-container">
     <label class="profile-form-input-label">{{'user.profile.form.languages.label' | translate}}:</label>

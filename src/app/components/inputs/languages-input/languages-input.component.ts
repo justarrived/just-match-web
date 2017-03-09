@@ -49,7 +49,7 @@ export class LanguagesInputComponent extends TranslationListener implements OnIn
   @Input() userLanguagesControl: FormControl;
 
   public languages: Promise<Language[]>;
-  private loadingLanguage: boolean;
+  public loadingLanguage: boolean;
 
   constructor(
     private languageProxy: LanguageProxy,

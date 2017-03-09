@@ -140,6 +140,8 @@
   "input.phone.placeholder": "Phone",
   "input.repeat.password.label": "Repeat password",
   "input.repeat.password.placeholder": "Repeat password",
+  "input.skills.label": "Skills",
+  "input.skills.placeholder": "Skills",
   "input.status.label": "Current status",
   "input.status.placeholder": "Current status",
   "input.street.label": "Street",

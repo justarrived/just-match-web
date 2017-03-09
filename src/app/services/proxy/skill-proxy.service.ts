@@ -11,6 +11,11 @@ export class SkillProxy {
   ) {
   }
 
+  public getSkill(id: string): Promise<Skill> {
+    return this.apiCall.get('skills/' + id)
+      .then(response => new Skill(response.data));
+  }
+
   public getSkills(name: string = '', sort: string = 'name', pageSize: number = 500, pageNumber: number = 1): Promise<Array<Skill>> {
     return this.apiCall.get('skills', {'filter[name]': name, 'sort': name, 'page[size]': pageSize, 'page[number]': pageNumber})
       .then(response => map(response.data, data => new Skill(data)));
