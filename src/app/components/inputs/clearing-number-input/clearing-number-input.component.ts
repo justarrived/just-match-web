@@ -12,6 +12,7 @@ import {Input} from '@angular/core';
       [label]="'input.clearing.number.label' | translate"
       [placeholder]="'input.clearing.number.placeholder' | translate"
       apiAttribute="clearing_number"
+      icon="credit card alternative"
       type="text">
     </text-input>`
 })
