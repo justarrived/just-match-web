@@ -2,6 +2,7 @@ import {ActsAsUser} from './services/acts-as-user.service';
 import {AgmCoreModule} from 'angular2-google-maps/core';
 import {ApiCall} from './services/api-call.service';
 import {ApiErrorsComponent} from './components/forms/api-errors.component';
+import {APP_BASE_HREF} from '@angular/common';
 import {AppComponent} from './app.component';
 import {AppRoutingModule} from './app.routing.module';
 import {AppTranslateModule} from './app.translate.module';
@@ -189,9 +190,10 @@ export class RavenErrorHandler implements ErrorHandler {
     TranslationService,
     UserManager,
     UserProxy,
-    { provide: ErrorHandler, useClass: RavenErrorHandler }
+    { provide: ErrorHandler, useClass: RavenErrorHandler },
+    { provide: APP_BASE_HREF, useValue: '/' }
   ],
   bootstrap: [AppComponent],
   schemas: [NO_ERRORS_SCHEMA]
 })
-export class AppModule {}
+export class AppModule { }
