@@ -14,7 +14,7 @@ import {TranslationService} from '../../../services/translation.service';
     <select-dropdown-input
       [apiErrors]="apiErrors"
       [control]="control"
-      [data]="statuses | async"
+      [data]="statuses | async | orderBy: 'name'"
       [label]="'input.status.label' | translate"
       [placeholder]="'input.status.placeholder' | translate"
       apiAttribute="current_status"

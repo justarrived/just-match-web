@@ -13,7 +13,7 @@ import {LanguageProxy} from '../../../services/proxy/language-proxy.service';
   template: `
     <select-dropdown-input
       [apiErrors]="apiErrors"
-      [data]="systemLanguages | async"
+      [data]="systemLanguages | async | orderBy: 'translated.name'"
       [control]="control"
       [label]="'input.system.language.label' | translate"
       [placeholder]="'input.system.language.placeholder' | translate"

@@ -13,7 +13,7 @@ import {UserProxy} from '../../../services/proxy/user-proxy.service';
   template: `
     <select-dropdown-input
       [apiErrors]="apiErrors"
-      [data]="genders | async"
+      [data]="genders | async | orderBy: 'name'"
       [control]="control"
       [label]="'input.gender.label' | translate"
       [placeholder]="'input.gender.placeholder' | translate"

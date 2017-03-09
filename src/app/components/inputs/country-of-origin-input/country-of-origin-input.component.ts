@@ -14,7 +14,7 @@ import {TranslationService} from '../../../services/translation.service';
     <select-dropdown-input
       [apiErrors]="apiErrors"
       [control]="control"
-      [data]="countries | async"
+      [data]="countries | async | orderBy: 'translated.name'"
       [label]="'input.country.of.origin.label' | translate"
       [placeholder]="'input.country.of.origin.placeholder' | translate"
       apiAttribute="country_of_origin"
