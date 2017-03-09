@@ -25,14 +25,14 @@ import {UserLanguage} from '../../../models/user/user-language';
       (onChange)="onAddLanguage($event)"
       [apiErrors]="apiErrors"
       [control]="languagesControl"
-      [data]="languages | async | orderBy: 'translated.name'"
+      [data]="languages | async"
       [label]="'input.languages.label' | translate"
       [placeholder]="'input.languages.placeholder' | translate"
       apiAttribute="language_ids"
       dataItemLabelProoerty="translated.name"
       dataItemValueProoerty="id">
     </select-dropdown-input>
-    <div *ngFor="let userLanguage of userLanguagesControl.value | orderBy: 'language.translated.name'">
+    <div *ngFor="let userLanguage of userLanguagesControl.value">
       <language-proficiency-input
         (onDelete)="onRemoveUserLanguage(userLanguage)"
         (onRate)="onProficiencyChange($event, userLanguage)"

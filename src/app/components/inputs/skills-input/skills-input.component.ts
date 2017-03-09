@@ -25,14 +25,14 @@ import {UserSkill} from '../../../models/user/user-skill';
       (onChange)="onAddSkill($event)"
       [apiErrors]="apiErrors"
       [control]="skillsControl"
-      [data]="skills | async | orderBy: 'translated.name'"
+      [data]="skills | async"
       [label]="'input.skills.label' | translate"
       [placeholder]="'input.skills.placeholder' | translate"
       apiAttribute="skill_ids"
       dataItemLabelProoerty="translated.name"
       dataItemValueProoerty="id">
     </select-dropdown-input>
-    <div *ngFor="let userSkill of userSkillsControl.value | orderBy: 'skill.translated.name'">
+    <div *ngFor="let userSkill of userSkillsControl.value">
       <skill-proficiency-input
         (onDelete)="onRemoveUserSkill(userSkill)"
         (onRate)="onProficiencyChange($event, userSkill)"
