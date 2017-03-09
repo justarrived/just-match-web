@@ -56,6 +56,8 @@ import {JobListItemComponent} from './components/job-list-item/job-list-item.com
 import {JobMapMarkerComponent} from './components/job-map-marker/job-map-marker.component';
 import {JobProxy} from './services/proxy/job-proxy.service';
 import {JobsComponent} from './views/jobs/jobs.component';
+import {LanguagesInputComponent} from './components/inputs/languages-input/languages-input.component';
+import {LanguageProficiencyInputComponent} from './components/inputs/language-proficiency-input/language-proficiency-input.component';
 import {LanguageProxy} from './services/proxy/language-proxy.service';
 import {LastNameInputComponent} from './components/inputs/last-name-input/last-name-input.component';
 import {LoadingComponent} from './components/loading/loading.component';
@@ -75,6 +77,7 @@ import {OldPasswordInputComponent} from './components/inputs/old-password-input/
 import {PagerComponent} from './components/pager/pager.component';
 import {PasswordInputComponent} from './components/inputs/password-input/password-input.component';
 import {PhoneInputComponent} from './components/inputs/phone-input/phone-input.component';
+import {RatingInputComponent} from './components/inputs/rating-input/rating-input.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {RegisterFormComponent} from './components/forms/register-form/register-form.component';
 import {RegisterPageComponent} from './views/register/register-page.component';
@@ -168,6 +171,8 @@ export class RavenErrorHandler implements ErrorHandler {
     JobListItemComponent,
     JobMapMarkerComponent,
     JobsComponent,
+    LanguagesInputComponent,
+    LanguageProficiencyInputComponent,
     LastNameInputComponent,
     LoadingComponent,
     LoginFormComponent,
@@ -182,6 +187,7 @@ export class RavenErrorHandler implements ErrorHandler {
     PagerComponent,
     PasswordInputComponent,
     PhoneInputComponent,
+    RatingInputComponent,
     RegisterFormComponent,
     RegisterPageComponent,
     ResetPasswordFormComponent,

@@ -1,6 +1,8 @@
 import {ApiErrors} from '../../../models/api-errors';
 import {Component} from '@angular/core';
+import {EventEmitter} from '@angular/core';
 import {Input} from '@angular/core';
+import {Output} from '@angular/core';
 
 @Component({
   selector: 'select-dropdown-input',
@@ -11,6 +13,7 @@ import {Input} from '@angular/core';
        [data]="data"
        [label]="label"
        [placeholder]="placeholder"
+       (onChange)="change($event)"
        class="fluid search">
         <option
           [value]="item[dataItemValueProoerty]"
@@ -43,4 +46,9 @@ export class SelectDropdownInputComponent {
   @Input() public patternLabel: string;
   @Input() public placeholder: string;
   @Input() public requiredLabel: string;
+  @Output() public onChange = new EventEmitter();
+
+  change(value) {
+    this.onChange.emit(value);
+  }
 }

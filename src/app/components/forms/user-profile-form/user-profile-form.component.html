@@ -279,6 +279,12 @@
 
   <hr class="profile-form-input-ruler">
 
+  <languages-input
+    [languagesControl]="profileForm.controls['languages']"
+    [userLanguagesControl]="profileForm.controls['user_languages']"
+    [apiErrors]="apiErrors">
+  </languages-input>
+
   <!--
   <div class="profile-form-input-container">
     <label class="profile-form-input-label">{{'user.profile.form.languages.label' | translate}}:</label>

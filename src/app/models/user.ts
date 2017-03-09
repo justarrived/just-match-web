@@ -84,7 +84,7 @@ export class User {
     this.residence_permit_back_image = this.getImageByCategory('residence_permit_back');
     this.lma_card_image = this.getImageByCategory('lma_card');
     this.skatteverket_certificate_image = this.getImageByCategory('skatteverket_certificate');
-    this.cvDocuments = this.getDocumentsByCategory('cv');
+    this.cvDocuments = this.getDocumentByCategory('cv');
     this.languageId = jsonObject.language_id;
     this.countryOfOriginCode = jsonObject.country_of_origin;
     this.currentStatus = jsonObject.current_status;
@@ -97,15 +97,11 @@ export class User {
     }
   }
 
-  getNativeLanguage(): UserLanguage {
-    return this.userLanguages.find(language => language.proficiency && language.proficiency.proficiency === 5);
-  }
-
   getImageByCategory(category): UserImage {
     return this.images.find(image => image.category === category);
   }
 
-  getDocumentsByCategory(category): UserDocument[] {
+  getDocumentByCategory(category): UserDocument[] {
     return this.documents.filter(document => document.category === category);
   }
 }

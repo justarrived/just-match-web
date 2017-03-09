@@ -122,6 +122,8 @@
   "input.gender.placeholder": "Gender",
   "input.job.experience.label": "Work experience",
   "input.job.experience.placeholder": "Work experience",
+  "input.languages.label": "Language skills",
+  "input.languages.placeholder": "Language skills",
   "input.last.name.label": "Last name",
   "input.last.name.placeholder": "Last name",
   "input.message.label": "Message",
