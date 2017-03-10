@@ -7,6 +7,7 @@ import {ApiErrorsComponent} from './components/form-errors/api-errors/api-errors
 import {AppComponent} from './app.component';
 import {AppRoutingModule} from './app.routing.module';
 import {AppTranslateModule} from './app.translate.module';
+import {AtUndInputComponent} from './components/inputs/at-und-input/at-und-input.component';
 import {AuthManager} from './services/auth-manager.service';
 import {AutosizeDirective} from './directives/textarea-autosize/textarea-autosize.directive';
 import {BankAccountInputComponent} from './components/inputs/bank-account-input/bank-account-input.component';
@@ -26,6 +27,7 @@ import {CookieBarComponent} from './components/cookie-bar/cookie-bar.component';
 import {CookiesAboutPageComponent} from './views/cookies-about/cookies-about-page.component';
 import {CountryOfOriginInputComponent} from './components/inputs/country-of-origin-input/country-of-origin-input.component';
 import {CountryProxy} from './services/proxy/country-proxy.service';
+import {CustomRadioButtonInputComponent} from './components/inputs/custom-radio-button-input/custom-radio-button-input.component';
 import {DataStore} from './services/data-store.service';
 import {DescriptionInputComponent} from './components/inputs/description-input/description-input.component';
 import {EducationInputComponent} from './components/inputs/education-input/education-input.component';
@@ -45,6 +47,7 @@ import {FormsModule} from '@angular/forms';
 import {FormSubmitButtonComponent} from './components/buttons/form-submit-button/form-submit-button.component';
 import {GenderInputComponent} from './components/inputs/gender-input/gender-input.component';
 import {Geolocation} from './services/geolocation.service';
+import {GotCoordinationNumberInputComponent} from './components/inputs/got-coordination-number-input/got-coordination-number-input.component';
 import {HomeComponent} from './views/home/home.component';
 import {HttpModule} from '@angular/http';
 import {InfoMessageComponent} from './components/messages/info-message/info-message.component';
@@ -108,6 +111,7 @@ import {UserProfileFormComponent} from './components/forms/user-profile-form/use
 import {UserProxy} from './services/proxy/user-proxy.service';
 import {UserSettingsComponent} from './views/user/user-settings/user-settings.component';
 import {WelcomeHeaderComponent} from './components/headers/welcome-header/welcome-header.component';
+import {YesNoInputComponent} from './components/inputs/yes-no-input/yes-no-input.component';
 import {ZipInputComponent} from './components/inputs/zip-input/zip-input.component';
 import * as Raven from 'raven-js';
 
@@ -139,6 +143,7 @@ export class RavenErrorHandler implements ErrorHandler {
     AddressInputComponent,
     ApiErrorsComponent,
     AppComponent,
+    AtUndInputComponent,
     AutosizeDirective,
     BankAccountInputComponent,
     BaseMessageComponent,
@@ -153,6 +158,7 @@ export class RavenErrorHandler implements ErrorHandler {
     CookieBarComponent,
     CookiesAboutPageComponent,
     CountryOfOriginInputComponent,
+    CustomRadioButtonInputComponent,
     DescriptionInputComponent,
     EducationInputComponent,
     EmailInputComponent,
@@ -166,6 +172,7 @@ export class RavenErrorHandler implements ErrorHandler {
     ForgotPasswordPageComponent,
     FormSubmitButtonComponent,
     GenderInputComponent,
+    GotCoordinationNumberInputComponent,
     HomeComponent,
     InfoMessageComponent,
     InputErrorComponent,
@@ -176,8 +183,8 @@ export class RavenErrorHandler implements ErrorHandler {
     JobListItemComponent,
     JobMapMarkerComponent,
     JobsComponent,
-    LanguagesInputComponent,
     LanguageProficiencyInputComponent,
+    LanguagesInputComponent,
     LastNameInputComponent,
     LoadingComponent,
     LoginFormComponent,
@@ -215,6 +222,7 @@ export class RavenErrorHandler implements ErrorHandler {
     UserProfileFormComponent,
     UserSettingsComponent,
     WelcomeHeaderComponent,
+    YesNoInputComponent,
     ZipInputComponent,
   ],
   providers: [

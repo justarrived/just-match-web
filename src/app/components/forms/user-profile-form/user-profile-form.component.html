@@ -24,114 +24,22 @@
   </h3>
 
   <status-input
-    [control]="profileForm.controls['current_status']"
-    [apiErrors]="apiErrors">
+    [apiErrors]="apiErrors"
+    [control]="profileForm.controls['current_status']">
   </status-input>
 
+  <at-und-input
+    [apiErrors]="apiErrors"
+    [control]="profileForm.controls['at_und']"
+    *ngIf="profileForm.value.current_status === 'asylum_seeker'">
+  </at-und-input>
 
-  <!-- Checkbox implementation unfinished -->
-  <!--<div *ngIf="profileForm.value.current_status === 'asylum_seeker'" class="field">
-    <label>{{'user.profile.form.at.und.label' | translate}}:</label>
-    <div class="inline fields">
-      <sm-checkbox
-        type="radio"
-        label="{{'common.yes' | translate}}"
-        name="at-und"
-        id="at-und-yes"
-        [control]="profileForm.controls['at_und']"
-        value="yes">
-      </sm-checkbox>
-      <sm-checkbox
-        type="radio"
-        label="{{'common.no' | translate}}"
-        name="at-und"
-        id="at-und-no"
-        [control]="profileForm.controls['at_und']"
-        value="no">
-      </sm-checkbox>
-    </div>
-    <input-errors
-      apiAttribute="at_und"
-      [control]="profileForm.controls['at_und']"
-      [apiErrors]="apiErrors">
-    </input-errors>
-  </div>-->
+  <got-coordination-number-input
+    [apiErrors]="apiErrors"
+    [control]="profileForm.controls['got_coordination_number']"
+    *ngIf="profileForm.value.current_status === 'asylum_seeker' && profileForm.value.at_und === 'yes'">
+  </got-coordination-number-input>
 
-
-  <div *ngIf="profileForm.value.current_status === 'asylum_seeker'" class="profile-form-input-container">
-    <label class="profile-form-input-label">{{'user.profile.form.at.und.label' | translate}}:</label>
-    <div class="input-radio-container">
-      <div class="input-radio-button-container">
-        <label class="input-radio-button-label" for="at-und-yes">
-        <input class="input-radio-button-input"
-            type="radio"
-            name="at-und" id="at-und-yes"
-            [formControl]="profileForm.controls['at_und']"
-            value="yes" />
-        <span class="input-radio-button-span"></span>
-        {{'common.yes' | translate}}</label>
-      </div>
-      <div class="input-radio-button-container">
-        <label class="input-radio-button-label" for="at-und-no">
-        <input class="input-radio-button-input"
-            type="radio"
-            name="at-und" id="at-und-no"
-            [formControl]="profileForm.controls['at_und']"
-            value="no" />
-        <span class="input-radio-button-span"></span>
-        {{'common.no' | translate}}</label>
-      </div>
-    </div>
-    <input-errors apiAttribute="at_und" [control]="profileForm.controls['at_und']" [apiErrors]="apiErrors"></input-errors>
-  </div>
-
-  <!--<div *ngIf="profileForm.value.current_status === 'asylum_seeker' && profileForm.value.at_und === 'yes'" class="field">
-    <label>{{'user.profile.form.got.coordination.number.label' | translate}}:</label>
-    <div class="inline fields">
-      <sm-checkbox
-        type="radio"
-        label="{{'common.yes' | translate}}"
-        name="got-coordination-number"
-        id="got-coordination-number-yes"
-        [control]="profileForm.controls['got_coordination_number']"
-        value="yes">
-      </sm-checkbox>
-      <sm-checkbox
-        type="radio"
-        label="{{'common.no' | translate}}"
-        name="got-coordination-number"
-        id="got-coordination-number-no"
-        [control]="profileForm.controls['got_coordination_number']"
-        value="no">
-      </sm-checkbox>
-    </div>
-  </div> -->
-
-  <div *ngIf="profileForm.value.current_status === 'asylum_seeker' && profileForm.value.at_und === 'yes'" class="profile-form-input-container">
-    <label class="profile-form-input-label">{{'user.profile.form.got.coordination.number.label' | translate}}:</label>
-    <div class="input-radio-container">
-      <div class="input-radio-button-container">
-        <label class="input-radio-button-label" for="got-coordination-number-yes">
-        <input class="input-radio-button-input"
-            type="radio"
-            name="got-coordination-number" id="got-coordination-number-yes"
-            [formControl]="profileForm.controls['got_coordination_number']"
-            value="yes" />
-        <span class="input-radio-button-span"></span>
-        {{'common.yes' | translate}}</label>
-      </div>
-      <div class="input-radio-button-container">
-        <label class="input-radio-button-label" for="got-coordination-number-no">
-        <input class="input-radio-button-input"
-            type="radio"
-            name="got-coordination-number" id="got-coordination-number-no"
-            [formControl]="profileForm.controls['got_coordination_number']"
-            value="no" />
-        <span class="input-radio-button-span"></span>
-        {{'common.no' | translate}}</label>
-      </div>
-    </div>
-  </div>
 
   <div *ngIf="profileForm.value.current_status && ((profileForm.value.current_status === 'asylum_seeker' && profileForm.value.at_und === 'yes' && profileForm.value.got_coordination_number === 'yes') || (profileForm.value.current_status !== 'asylum_seeker'))"
       class="form-group material-group profile-form-input-container" [ngClass]="{'has-error':!profileForm.value.ssn || apiErrors.hasErrorsFor('ssn')}">
@@ -298,16 +206,16 @@
     General skills
   </h3>
 
+  <competence-input
+    [control]="profileForm.controls['competence_text']"
+    [apiErrors]="apiErrors">
+  </competence-input>
+
   <skills-input
     [skillsControl]="profileForm.controls['skills']"
     [userSkillsControl]="profileForm.controls['user_skills']"
     [apiErrors]="apiErrors">
   </skills-input>
-
-  <competence-input
-    [control]="profileForm.controls['competence_text']"
-    [apiErrors]="apiErrors">
-  </competence-input>
 
   <h3 class="ui horizontal divider pink header">
     <i class="thumbs up icon"></i>
@@ -334,8 +242,13 @@
     [apiErrors]="apiErrors">
   </job-experience-input>
 
+  <div class="field">
+    <label>
+      {{'user.profile.form.resume.label' | translate}}
+    </label>
+  </div>
+
   <div class="profile-form-input-container">
-    <label class="profile-form-input-label">{{'user.profile.form.resume.label' | translate}}:</label>
     <div class="profile-form-upload-image-container">
       <loading *ngIf="resumeDocumentStatusObject.uploadingDocument"></loading>
 
