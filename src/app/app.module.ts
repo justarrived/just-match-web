@@ -58,9 +58,9 @@ import {JobListItemComponent} from './components/job-list-item/job-list-item.com
 import {JobMapMarkerComponent} from './components/job-map-marker/job-map-marker.component';
 import {JobProxy} from './services/proxy/job-proxy.service';
 import {JobsComponent} from './views/jobs/jobs.component';
-import {LanguagesInputComponent} from './components/inputs/languages-input/languages-input.component';
 import {LanguageProficiencyInputComponent} from './components/inputs/language-proficiency-input/language-proficiency-input.component';
 import {LanguageProxy} from './services/proxy/language-proxy.service';
+import {LanguagesInputComponent} from './components/inputs/languages-input/languages-input.component';
 import {LastNameInputComponent} from './components/inputs/last-name-input/last-name-input.component';
 import {LoadingComponent} from './components/loading/loading.component';
 import {LoginFormComponent} from './components/forms/login-form/login-form.component';

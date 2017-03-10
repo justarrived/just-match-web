@@ -8,7 +8,8 @@ export class AuthManager {
   private userChange: EventEmitter<User> = new EventEmitter<User>();
   private defaultIncludeResources: String[] = [
     'company', 'user_images', 'user_languages', 'user_languages.language',
-    'user_skills', 'user_skills.skill', 'user_documents', 'user_documents.document'
+    'user_skills', 'user_skills.skill', 'user_documents', 'user_documents.document',
+    'user_interests', 'user_interests.interest'
   ];
 
   constructor(

@@ -13,6 +13,7 @@ import {getNestedProperty} from '../../../utils/object-util';
        [control]="control"
        [data]="data"
        [label]="label"
+       [options]="options"
        [placeholder]="placeholder"
        (onChange)="change($event)"
        class="fluid search">
@@ -44,6 +45,7 @@ export class SelectDropdownInputComponent {
   @Input() public label: string;
   @Input() public maxLengthLabel: string;
   @Input() public minLengthLabel: string;
+  @Input() public options: any;
   @Input() public patternLabel: string;
   @Input() public placeholder: string;
   @Input() public requiredLabel: string;
