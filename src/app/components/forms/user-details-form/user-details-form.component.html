@@ -33,6 +33,11 @@
     [apiErrors]="apiErrors">
   </phone-input>
 
+  <ssn-input
+    [apiErrors]="apiErrors"
+    [control]="settingsForm.controls['ssn']">
+  </ssn-input>
+
   <country-of-origin-input
     [control]="settingsForm.controls['country_of_origin']"
     [apiErrors]="apiErrors">

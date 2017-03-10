@@ -40,37 +40,11 @@
     *ngIf="profileForm.value.current_status === 'asylum_seeker' && profileForm.value.at_und === 'yes'">
   </got-coordination-number-input>
 
-
-  <div *ngIf="profileForm.value.current_status && ((profileForm.value.current_status === 'asylum_seeker' && profileForm.value.at_und === 'yes' && profileForm.value.got_coordination_number === 'yes') || (profileForm.value.current_status !== 'asylum_seeker'))"
-      class="form-group material-group profile-form-input-container" [ngClass]="{'has-error':!profileForm.value.ssn || apiErrors.hasErrorsFor('ssn')}">
-    <label *ngIf="profileForm.value.current_status === 'asylum_seeker'" for="ssn">{{'user.profile.form.coordination.number.label' | translate}}:</label>
-    <label *ngIf="profileForm.value.current_status === 'eu_citizen'" for="ssn">{{'user.profile.form.coordination.number.or.ssn.label' | translate}}:</label>
-    <label *ngIf="profileForm.value.current_status !== 'asylum_seeker' && profileForm.value.current_status !== 'eu_citizen'" for="ssn">{{'user.profile.form.ssn.label' | translate}}:</label>
-    <input *ngIf="profileForm.value.current_status === 'asylum_seeker'"
-        maxlength="20" class="profile-form-input-text form-control material-input" id="ssn"
-        name="ssn-input"
-        type="text"
-        (keypress)="isAllowedSSNChar($event.charCode)"
-        placeholder="{{'user.profile.form.coordination.number.placeholder' | translate}}"
-        [formControl]="profileForm.controls['ssn']">
-    <input *ngIf="profileForm.value.current_status === 'eu_citizen'"
-        maxlength="20"
-        class="profile-form-input-text form-control material-input" id="ssn"
-        name="ssn-input"
-        type="text"
-        (keypress)="isAllowedSSNChar($event.charCode)"
-        placeholder="{{'user.profile.form.coordination.number.or.ssn.placeholder' | translate}}"
-        [formControl]="profileForm.controls['ssn']">
-    <input *ngIf="profileForm.value.current_status !== 'asylum_seeker' && profileForm.value.current_status !== 'eu_citizen'"
-        maxlength="20"
-        class="profile-form-input-text form-control material-input" id="ssn"
-        name="ssn-input"
-        type="text"
-        (keypress)="isAllowedSSNChar($event.charCode)"
-        placeholder="{{'user.profile.form.ssn.placeholder' | translate}}"
-        [formControl]="profileForm.controls['ssn']">
-    <input-errors apiAttribute="ssn" [control]="profileForm.controls['ssn']" [apiErrors]="apiErrors"></input-errors>
-  </div>
+  <ssn-input
+    [apiErrors]="apiErrors"
+    [control]="profileForm.controls['ssn']"
+    *ngIf="profileForm.value.current_status && ((profileForm.value.current_status === 'asylum_seeker' && profileForm.value.at_und === 'yes' && profileForm.value.got_coordination_number === 'yes') || (profileForm.value.current_status !== 'asylum_seeker'))">
+  </ssn-input>
 
   <div *ngIf="profileForm.value.current_status === 'asylum_seeker' && profileForm.value.at_und === 'yes'" class="profile-form-upload-image-container">
     <loading *ngIf="lmaImageStatusObject.uploadingImage"></loading>

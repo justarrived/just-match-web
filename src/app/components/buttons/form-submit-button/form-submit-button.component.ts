@@ -13,7 +13,7 @@ import {Input} from '@angular/core';
     <success-message
       *ngIf="submitSuccess"
       [header]="'button.form.submit.success' | translate"
-      icon="smile o">
+      icon="hand spock">
     </success-message>
     <div class="ui basic center aligned segment">
       <button

@@ -96,6 +96,7 @@ import {SliderComponent} from './components/slider/slider.component';
 import {StatusInputComponent} from './components/inputs/status-input/status-input.component';
 import {StreetInputComponent} from './components/inputs/street-input/street-input.component';
 import {SuccessMessageComponent} from './components/messages/success-message/success-message.component';
+import {SSNInputComponent} from './components/inputs/ssn-input/ssn-input.component';
 import {SystemLanguageInputComponent} from './components/inputs/system-language-input/system-language-input.component';
 import {SystemLanguagesService} from './services/system-languages.service';
 import {TermsInputComponent} from './components/inputs/terms-input/terms-input.component';
@@ -211,6 +212,7 @@ export class RavenErrorHandler implements ErrorHandler {
     StatusInputComponent,
     StreetInputComponent,
     SuccessMessageComponent,
+    SSNInputComponent,
     SystemLanguageInputComponent,
     TermsInputComponent,
     TextareaInputComponent,
