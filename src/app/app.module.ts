@@ -50,6 +50,7 @@ import {Geolocation} from './services/geolocation.service';
 import {GotCoordinationNumberInputComponent} from './components/inputs/got-coordination-number-input/got-coordination-number-input.component';
 import {HomeComponent} from './views/home/home.component';
 import {HttpModule} from '@angular/http';
+import {UploadImageCardComponent} from './components/cards/upload-image-card/upload-image-card.component';
 import {InfoMessageComponent} from './components/messages/info-message/info-message.component';
 import {InputErrorComponent} from './components/form-errors/input-error/input-error.component';
 import {InputErrorsComponent} from './components/form-errors/input-errors/input-errors.component';
@@ -65,6 +66,7 @@ import {LanguageProficiencyInputComponent} from './components/inputs/language-pr
 import {LanguageProxy} from './services/proxy/language-proxy.service';
 import {LanguagesInputComponent} from './components/inputs/languages-input/languages-input.component';
 import {LastNameInputComponent} from './components/inputs/last-name-input/last-name-input.component';
+import {LMACardInputComponent} from './components/inputs/lma-card-input/lma-card-input.component';
 import {LoadingComponent} from './components/loading/loading.component';
 import {LoginFormComponent} from './components/forms/login-form/login-form.component';
 import {LoginPageComponent} from './views/login/login-page.component';
@@ -81,6 +83,7 @@ import {NotFoundPageComponent} from './views/404/404-page.component';
 import {OldPasswordInputComponent} from './components/inputs/old-password-input/old-password-input.component';
 import {PagerComponent} from './components/pager/pager.component';
 import {PasswordInputComponent} from './components/inputs/password-input/password-input.component';
+import {PersonalIDInputComponent} from './components/inputs/personal-id-input/personal-id-input.component';
 import {PhoneInputComponent} from './components/inputs/phone-input/phone-input.component';
 import {RatingInputComponent} from './components/inputs/rating-input/rating-input.component';
 import {ReactiveFormsModule} from '@angular/forms';
@@ -88,7 +91,12 @@ import {RegisterFormComponent} from './components/forms/register-form/register-f
 import {RegisterPageComponent} from './views/register/register-page.component';
 import {ResetPasswordFormComponent} from './components/forms/reset-password-form/reset-password-form.component';
 import {ResetPasswordPageComponent} from './views/reset-password/reset-password-page.component';
+import {ResidencePermitBackInputComponent} from './components/inputs/residence-permit-back-input/residence-permit-back-input.component';
+import {ResidencePermitFrontInputComponent} from './components/inputs/residence-permit-front-input/residence-permit-front-input.component';
+import {WorkPermitBackInputComponent} from './components/inputs/work-permit-back-input/work-permit-back-input.component';
+import {WorkPermitFrontInputComponent} from './components/inputs/work-permit-front-input/work-permit-front-input.component';
 import {SelectDropdownInputComponent} from './components/inputs/select-dropdown-input/select-dropdown-input.component';
+import {SkatteverketCertificateInputComponent} from './components/inputs/skatteverket-certificate-input/skatteverket-certificate-input.component';
 import {SkillProficiencyInputComponent} from './components/inputs/skill-proficiency-input/skill-proficiency-input.component';
 import {SkillProxy} from './services/proxy/skill-proxy.service';
 import {SkillsInputComponent} from './components/inputs/skills-input/skills-input.component';
@@ -105,6 +113,7 @@ import {TextInputComponent} from './components/inputs/text-input/text-input.comp
 import {TranslationService} from './services/translation.service';
 import {UserDetailsComponent} from './views/user/user-settings/user-details/user-details.component';
 import {UserDetailsFormComponent} from './components/forms/user-details-form/user-details-form.component';
+import {UserImageCardInputComponent} from './components/inputs/user-image-card-input/user-image-card-input.component';
 import {UserJobsComponent} from './views/my-jobs/user-jobs/user-jobs.component';
 import {UserManager} from './services/user-manager.service';
 import {UserProfileComponent} from './views/user/user-settings/user-profile/user-profile.component';
@@ -175,6 +184,7 @@ export class RavenErrorHandler implements ErrorHandler {
     GenderInputComponent,
     GotCoordinationNumberInputComponent,
     HomeComponent,
+    UploadImageCardComponent,
     InfoMessageComponent,
     InputErrorComponent,
     InputErrorsComponent,
@@ -187,6 +197,7 @@ export class RavenErrorHandler implements ErrorHandler {
     LanguageProficiencyInputComponent,
     LanguagesInputComponent,
     LastNameInputComponent,
+    LMACardInputComponent,
     LoadingComponent,
     LoginFormComponent,
     LoginPageComponent,
@@ -199,13 +210,19 @@ export class RavenErrorHandler implements ErrorHandler {
     OldPasswordInputComponent,
     PagerComponent,
     PasswordInputComponent,
+    PersonalIDInputComponent,
     PhoneInputComponent,
     RatingInputComponent,
     RegisterFormComponent,
     RegisterPageComponent,
     ResetPasswordFormComponent,
     ResetPasswordPageComponent,
+    ResidencePermitBackInputComponent,
+    ResidencePermitFrontInputComponent,
+    WorkPermitBackInputComponent,
+    WorkPermitFrontInputComponent,
     SelectDropdownInputComponent,
+    SkatteverketCertificateInputComponent,
     SkillProficiencyInputComponent,
     SkillsInputComponent,
     SliderComponent,
@@ -219,6 +236,7 @@ export class RavenErrorHandler implements ErrorHandler {
     TextInputComponent,
     UserDetailsComponent,
     UserDetailsFormComponent,
+    UserImageCardInputComponent,
     UserJobsComponent,
     UserProfileComponent,
     UserProfileFormComponent,

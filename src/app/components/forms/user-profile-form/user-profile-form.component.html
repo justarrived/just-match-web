@@ -46,123 +46,54 @@
     *ngIf="profileForm.value.current_status && ((profileForm.value.current_status === 'asylum_seeker' && profileForm.value.at_und === 'yes' && profileForm.value.got_coordination_number === 'yes') || (profileForm.value.current_status !== 'asylum_seeker'))">
   </ssn-input>
 
-  <div *ngIf="profileForm.value.current_status === 'asylum_seeker' && profileForm.value.at_und === 'yes'" class="profile-form-upload-image-container">
-    <loading *ngIf="lmaImageStatusObject.uploadingImage"></loading>
-    <input *ngIf="!lmaImageStatusObject.uploadingImage"
-        type="file" id="lma-image-filename"
-        name="lma-image-filename"
-        class="profile-form-upload-image-input"
-        (change)="onImageFilenameChange($event, 'lma_card', lmaImageStatusObject)"
-        accept="image/jpeg,image/jpg,image/gif,image/png">
-    <label *ngIf="!lmaImageStatusObject.uploadingImage" for="lma-image-filename" class="profile-form-upload-image-button btn-secondary btn-small btn btn-image-upload">{{'user.profile.form.lma.upload.button' | translate}}</label>
-    <p class="profile-form-upload-image-description">{{'user.profile.form.lma.upload.description' | translate}}</p>
-    <div *ngIf="user.lma_card_image" class="profile-form-upload-image-preview" [ngStyle]="{'background-image': 'url(' + user.lma_card_image.largeImageUrl + ')'}"></div>
-    <div *ngIf="lmaImageStatusObject.imageSaveSuccess" class="profile-form-save-message">{{'user.profile.form.lma.upload.success' | translate}}</div>
-    <div *ngIf="lmaImageStatusObject.imageSaveFail" class="profile-form-error-message">{{'user.profile.form.lma.upload.fail' | translate}}</div>
-  </div>
+  <lma-card-input
+    [centered]="true"
+    [user]="user"
+    [showLabel]="true"
+    *ngIf="profileForm.value.current_status === 'asylum_seeker' && profileForm.value.at_und === 'yes'">
+  </lma-card-input>
 
-  <div *ngIf="profileForm.value.current_status !== 'asylum_seeker'" class="profile-form-upload-image-container">
-    <loading *ngIf="personalIdImageStatusObject.uploadingImage"></loading>
-    <input *ngIf="!personalIdImageStatusObject.uploadingImage"
-        type="file" id="personal-id-image-filename"
-        name="personal-id-image-filename"
-        class="profile-form-upload-image-input"
-        (change)="onImageFilenameChange($event, 'personal_id', personalIdImageStatusObject)"
-        accept="image/jpeg,image/jpg,image/gif,image/png">
-    <label *ngIf="!personalIdImageStatusObject.uploadingImage"
-        for="personal-id-image-filename"
-        class="profile-form-upload-image-button btn-secondary btn-small btn btn-image-upload">{{'user.profile.form.personal.id.upload.button' | translate}}</label>
-    <p class="profile-form-upload-image-description">{{'user.profile.form.personal.id.upload.description' | translate}}</p>
-    <div *ngIf="user.personal_id_image" class="profile-form-upload-image-preview" [ngStyle]="{'background-image': 'url(' + user.personal_id_image.largeImageUrl + ')'}"></div>
-    <div *ngIf="personalIdImageStatusObject.imageSaveSuccess" class="profile-form-save-message">{{'user.profile.form.personal.id.upload.success' | translate}}</div>
-    <div *ngIf="personalIdImageStatusObject.imageSaveFail" class="profile-form-error-message">{{'user.profile.form.personal.id.upload.fail' | translate}}</div>
-  </div>
+  <personal-id-input
+    [centered]="true"
+    [user]="user"
+    [showLabel]="true"
+    *ngIf="profileForm.value.current_status !== 'asylum_seeker'">
+  </personal-id-input>
 
-  <div *ngIf="profileForm.value.current_status === 'temporary_residence' || profileForm.value.current_status === 'permanent_residence'" class="profile-form-upload-image-container">
-    <loading *ngIf="residencePermitFrontImageStatusObject.uploadingImage"></loading>
-    <input *ngIf="!residencePermitFrontImageStatusObject.uploadingImage"
-        type="file" id="residence-permit-front-image-filename"
-        name="residence-permit-front-image-filename"
-        class="profile-form-upload-image-input"
-        (change)="onImageFilenameChange($event, 'residence_permit_front', residencePermitFrontImageStatusObject)"
-        accept="image/jpeg,image/jpg,image/gif,image/png">
-    <label *ngIf="!residencePermitFrontImageStatusObject.uploadingImage"
-        for="residence-permit-front-image-filename"
-        class="profile-form-upload-image-button btn-secondary btn-small btn btn-image-upload">{{'user.profile.form.residence.permit.front.upload.button' | translate}}</label>
-    <p class="profile-form-upload-image-description">{{'user.profile.form.residence.permit.front.upload.description' | translate}}</p>
-    <div *ngIf="user.residence_permit_front_image" class="profile-form-upload-image-preview" [ngStyle]="{'background-image': 'url(' + user.residence_permit_front_image.largeImageUrl + ')'}"></div>
-    <div *ngIf="residencePermitFrontImageStatusObject.imageSaveSuccess" class="profile-form-save-message">{{'user.profile.form.residence.permit.front.upload.success' | translate}}</div>
-    <div *ngIf="residencePermitFrontImageStatusObject.imageSaveFail" class="profile-form-error-message">{{'user.profile.form.residence.permit.front.upload.fail' | translate}}</div>
-  </div>
+  <residence-permit-front-input
+    [centered]="true"
+    [user]="user"
+    [showLabel]="true"
+    *ngIf="profileForm.value.current_status === 'temporary_residence' || profileForm.value.current_status === 'permanent_residence'">
+  </residence-permit-front-input>
 
-  <div *ngIf="profileForm.value.current_status === 'temporary_residence' || profileForm.value.current_status === 'permanent_residence'" class="profile-form-upload-image-container">
-    <loading *ngIf="residencePermitBackImageStatusObject.uploadingImage"></loading>
-    <input *ngIf="!residencePermitBackImageStatusObject.uploadingImage"
-        type="file" id="residence-permit-back-image-filename"
-        name="residence-permit-back-image-filename"
-        class="profile-form-upload-image-input"
-        (change)="onImageFilenameChange($event, 'residence_permit_back', residencePermitBackImageStatusObject)"
-        accept="image/jpeg,image/jpg,image/gif,image/png">
-    <label *ngIf="!residencePermitBackImageStatusObject.uploadingImage"
-        for="residence-permit-back-image-filename"
-        class="profile-form-upload-image-button btn-secondary btn-small btn btn-image-upload">{{'user.profile.form.residence.permit.back.upload.button' | translate}}</label>
-    <p class="profile-form-upload-image-description">{{'user.profile.form.residence.permit.back.upload.description' | translate}}</p>
-    <div *ngIf="user.residence_permit_back_image" class="profile-form-upload-image-preview" [ngStyle]="{'background-image': 'url(' + user.residence_permit_back_image.largeImageUrl + ')'}"></div>
-    <div *ngIf="residencePermitBackImageStatusObject.imageSaveSuccess" class="profile-form-save-message">{{'user.profile.form.residence.permit.back.upload.success' | translate}}</div>
-    <div *ngIf="residencePermitBackImageStatusObject.imageSaveFail" class="profile-form-error-message">{{'user.profile.form.residence.permit.back.upload.fail' | translate}}</div>
-  </div>
+  <residence-permit-back-input
+    [centered]="true"
+    [user]="user"
+    [showLabel]="true"
+    *ngIf="profileForm.value.current_status === 'temporary_residence' || profileForm.value.current_status === 'permanent_residence'">
+  </residence-permit-back-input>
 
-  <div *ngIf="profileForm.value.current_status === 'student_visa' || profileForm.value.current_status === 'temporary_residence'" class="profile-form-upload-image-container">
-    <loading *ngIf="workPermitFrontImageStatusObject.uploadingImage"></loading>
-    <input *ngIf="!workPermitFrontImageStatusObject.uploadingImage"
-        type="file" id="work-permit-front-image-filename"
-        name="work-permit-front-image-filename"
-        class="profile-form-upload-image-input"
-        (change)="onImageFilenameChange($event, 'work_permit_front', workPermitFrontImageStatusObject)"
-        accept="image/jpeg,image/jpg,image/gif,image/png">
-    <label *ngIf="!workPermitFrontImageStatusObject.uploadingImage"
-        for="work-permit-front-image-filename"
-        class="profile-form-upload-image-button btn-secondary btn-small btn btn-image-upload">{{'user.profile.form.work.permit.front.upload.button' | translate}}</label>
-    <p class="profile-form-upload-image-description">{{'user.profile.form.work.permit.front.upload.description' | translate}}</p>
-    <div *ngIf="user.work_permit_front_image" class="profile-form-upload-image-preview" [ngStyle]="{'background-image': 'url(' + user.work_permit_front_image.largeImageUrl + ')'}"></div>
-    <div *ngIf="workPermitFrontImageStatusObject.imageSaveSuccess" class="profile-form-save-message">{{'user.profile.form.work.permit.front.upload.success' | translate}}</div>
-    <div *ngIf="workPermitFrontImageStatusObject.imageSaveFail" class="profile-form-error-message">{{'user.profile.form.work.permit.front.upload.fail' | translate}}</div>
-  </div>
+  <work-permit-front-input
+    [centered]="true"
+    [user]="user"
+    [showLabel]="true"
+    *ngIf="profileForm.value.current_status === 'student_visa' || profileForm.value.current_status === 'temporary_residence'">
+  </work-permit-front-input>
 
-  <div *ngIf="profileForm.value.current_status === 'student_visa' || profileForm.value.current_status === 'temporary_residence'" class="profile-form-upload-image-container">
-    <loading *ngIf="workPermitBackImageStatusObject.uploadingImage"></loading>
-    <input *ngIf="!workPermitBackImageStatusObject.uploadingImage"
-        type="file" id="work-permit-back-image-filename"
-        name="work-permit-back-image-filename"
-        class="profile-form-upload-image-input"
-        (change)="onImageFilenameChange($event, 'work_permit_back', workPermitBackImageStatusObject)"
-        accept="image/jpeg,image/jpg,image/gif,image/png">
-    <label *ngIf="!workPermitBackImageStatusObject.uploadingImage"
-        for="work-permit-back-image-filename"
-        class="profile-form-upload-image-button btn-secondary btn-small btn btn-image-upload">{{'user.profile.form.work.permit.back.upload.button' | translate}}</label>
-    <p class="profile-form-upload-image-description">{{'user.profile.form.work.permit.back.upload.description' | translate}}</p>
-    <div *ngIf="user.work_permit_back_image" class="profile-form-upload-image-preview" [ngStyle]="{'background-image': 'url(' + user.work_permit_back_image.largeImageUrl + ')'}"></div>
-    <div *ngIf="workPermitBackImageStatusObject.imageSaveSuccess" class="profile-form-save-message">{{'user.profile.form.work.permit.back.upload.success' | translate}}</div>
-    <div *ngIf="workPermitBackImageStatusObject.imageSaveFail" class="profile-form-error-message">{{'user.profile.form.work.permit.back.upload.fail' | translate}}</div>
-  </div>
+  <work-permit-back-input
+    [centered]="true"
+    [user]="user"
+    [showLabel]="true"
+    *ngIf="profileForm.value.current_status === 'student_visa' || profileForm.value.current_status === 'temporary_residence'">
+  </work-permit-back-input>
 
-  <div *ngIf="profileForm.value.current_status === 'eu_citizen' || profileForm.value.current_status === 'asylum_seeker' && profileForm.value.at_und === 'yes' && profileForm.value.got_coordination_number === 'yes'"
-      class="profile-form-upload-image-container">
-    <loading *ngIf="skatteverketCertificateImageStatusObject.uploadingImage"></loading>
-    <input *ngIf="!skatteverketCertificateImageStatusObject.uploadingImage"
-        type="file" id="skatteverket-certificate-image-filename"
-        name="skatteverket-certificate-image-filename"
-        class="profile-form-upload-image-input"
-        (change)="onImageFilenameChange($event, 'skatteverket_certificate', skatteverketCertificateImageStatusObject)"
-        accept="image/jpeg,image/jpg,image/gif,image/png">
-    <label *ngIf="!skatteverketCertificateImageStatusObject.uploadingImage"
-        for="skatteverket-certificate-image-filename"
-        class="profile-form-upload-image-button btn-secondary btn-small btn btn-image-upload">{{'user.profile.form.skatteverket.certificate.upload.button' | translate}}</label>
-    <p class="profile-form-upload-image-description">{{'user.profile.form.skatteverket.certificate.upload.description' | translate}}</p>
-    <div *ngIf="user.skatteverket_certificate_image" class="profile-form-upload-image-preview" [ngStyle]="{'background-image': 'url(' + user.skatteverket_certificate_image.largeImageUrl + ')'}"></div>
-    <div *ngIf="skatteverketCertificateImageStatusObject.imageSaveSuccess" class="profile-form-save-message">{{'user.profile.form.skatteverket.certificate.upload.success' | translate}}</div>
-    <div *ngIf="skatteverketCertificateImageStatusObject.imageSaveFail" class="profile-form-error-message">{{'user.profile.form.skatteverket.certificate.upload.fail' | translate}}</div>
-  </div>
+  <skatteverket-certificate-input
+    [centered]="true"
+    [user]="user"
+    [showLabel]="true"
+    *ngIf="profileForm.value.current_status === 'eu_citizen' || profileForm.value.current_status === 'asylum_seeker' && profileForm.value.at_und === 'yes' && profileForm.value.got_coordination_number === 'yes'">
+  </skatteverket-certificate-input>
 
   <h3 class="ui horizontal divider pink header">
     <i class="world icon"></i>

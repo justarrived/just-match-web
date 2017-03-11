@@ -46,9 +46,11 @@ export class User {
   public street: string;
   public supportChatActivated: boolean;
   public translated: User;
-  public userLanguages: UserLanguage[];
   public userInterests: UserInterest[];
+  public userLanguages: UserLanguage[];
   public userSkills: UserSkill[];
+  public work_permit_back_image: UserImage;
+  public work_permit_front_image: UserImage;
   public workExperience: string;
   public zip: string;
 
@@ -97,6 +99,8 @@ export class User {
     this.residence_permit_back_image = this.getImageByCategory('residence_permit_back');
     this.residence_permit_front_image = this.getImageByCategory('residence_permit_front');
     this.skatteverket_certificate_image = this.getImageByCategory('skatteverket_certificate');
+    this.work_permit_back_image = this.getImageByCategory('work_permit_back');
+    this.work_permit_front_image = this.getImageByCategory('work_permit_front');
 
     if (jsonObject.translated_text) {
       this.translated = new User(jsonObject.translated_text);

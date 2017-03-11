@@ -20,57 +20,13 @@ import {Validators} from '@angular/forms';
   styleUrls: ['./user-profile-form.component.scss']
 })
 export class UserProfileFormComponent implements OnInit {
+  @Input() public user: User;
 
-  @Input() user: User;
-
-  profileForm: FormGroup;
-
-  apiErrors: ApiErrors = new ApiErrors([]);
-  submitSuccess: boolean;
-  submitFail: boolean;
-  loadingSubmit: boolean;
-
-  residencePermitFrontImageStatusObject: any = {
-    imageSaveSuccess: false,
-    imageSaveFail: false,
-    uploadingImage: false
-  };
-
-  residencePermitBackImageStatusObject: any = {
-    imageSaveSuccess: false,
-    imageSaveFail: false,
-    uploadingImage: false
-  };
-
-  lmaImageStatusObject: any = {
-    imageSaveSuccess: false,
-    imageSaveFail: false,
-    uploadingImage: false
-  };
-
-  skatteverketCertificateImageStatusObject: any = {
-    imageSaveSuccess: false,
-    imageSaveFail: false,
-    uploadingImage: false
-  };
-
-  personalIdImageStatusObject: any = {
-    imageSaveSuccess: false,
-    imageSaveFail: false,
-    uploadingImage: false
-  };
-
-  workPermitFrontImageStatusObject: any = {
-    imageSaveSuccess: false,
-    imageSaveFail: false,
-    uploadingImage: false
-  };
-
-  workPermitBackImageStatusObject: any = {
-    imageSaveSuccess: false,
-    imageSaveFail: false,
-    uploadingImage: false
-  };
+  public apiErrors: ApiErrors = new ApiErrors([]);
+  public loadingSubmit: boolean;
+  public profileForm: FormGroup;
+  public submitFail: boolean;
+  public submitSuccess: boolean;
 
   resumeDocumentStatusObject: any = {
     documentSaveSuccess: false,
@@ -170,7 +126,7 @@ export class UserProfileFormComponent implements OnInit {
       'competence_text': this.profileForm.value.competence_text,
       'current_status': this.profileForm.value.current_status,
       'description': this.profileForm.value.description,
-      'education': this.profileForm.value.description,
+      'education': this.profileForm.value.education,
       'language_ids': map(this.profileForm.value.user_languages, userLanguage => {
         return {
           id: userLanguage['language'].id,
