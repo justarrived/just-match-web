@@ -20,9 +20,10 @@ import {LanguageProxy} from '../../../services/proxy/language-proxy.service';
       apiAttribute="language"
       dataItemLabelProoerty="translated.name"
       dataItemValueProoerty="id">
-      <div
-        class="ui pointing grey basic label">
-        {{'input.system.language.description' | translate}}
+      <div style="text-align: center">
+        <div class="ui pointing grey basic label">
+          {{'input.system.language.description' | translate}}
+        </div>
       </div>
     </select-dropdown-input>`
 })

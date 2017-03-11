@@ -8,15 +8,17 @@ import {TranslateService} from 'ng2-translate/ng2-translate';
 @Component({
   selector: 'input-errors',
   template: `
-    <api-errors
-      [control]="control"
-      [errors]="apiErrors"
-      [attribute]="apiAttribute">
-    </api-errors>
-    <input-error
-      *ngFor="let error of formControlErrors"
-      [label]="error">
-    </input-error>`
+    <div style="text-align: center">
+      <api-errors
+        [control]="control"
+        [errors]="apiErrors"
+        [attribute]="apiAttribute">
+      </api-errors>
+      <input-error
+        *ngFor="let error of formControlErrors"
+        [label]="error">
+      </input-error>
+    </div>`
 })
 export class InputErrorsComponent implements OnInit {
   @Input() public apiAttribute: string = null;
