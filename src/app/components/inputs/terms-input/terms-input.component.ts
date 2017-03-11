@@ -2,11 +2,15 @@ import {ApiErrors} from '../../../models/api-errors';
 import {Component} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {Input} from '@angular/core';
+import {InputErrorsComponent} from '../../form-errors/input-errors/input-errors.component';
+import {ViewChild} from '@angular/core';
 
 @Component({
   selector: 'terms-input',
   template: `
-    <div class="field">
+    <div
+      [ngClass]="{'error': inputErrors.hasErrors()}"
+      class="field">
       <div class="ui segment">
         <sm-checkbox
           [control]="control"
@@ -35,4 +39,5 @@ import {Input} from '@angular/core';
 export class TermsInputComponent {
   @Input() apiErrors: ApiErrors;
   @Input() control: FormControl;
+  @ViewChild(InputErrorsComponent) inputErrors: InputErrorsComponent;
 }

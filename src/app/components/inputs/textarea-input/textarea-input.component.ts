@@ -1,11 +1,15 @@
 import {ApiErrors} from '../../../models/api-errors';
 import {Component} from '@angular/core';
 import {Input} from '@angular/core';
+import {InputErrorsComponent} from '../../form-errors/input-errors/input-errors.component';
+import {ViewChild} from '@angular/core';
 
 @Component({
   selector: 'textarea-input',
   template: `
-    <div class="field">
+    <div
+      [ngClass]="{'error': inputErrors.hasErrors()}"
+      class="field">
       <sm-textarea
         [control]="control"
         [label]="label"
@@ -35,4 +39,5 @@ export class TextareaInputComponent {
   @Input() public patternLabel: string;
   @Input() public placeholder: string;
   @Input() public requiredLabel: string;
+  @ViewChild(InputErrorsComponent) inputErrors: InputErrorsComponent;
 }

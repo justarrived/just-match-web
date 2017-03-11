@@ -90,7 +90,7 @@ export class ApiErrors {
   }
 
   public hasErrorsFor(fieldName: string): boolean {
-    return this.errorsFor(fieldName).length > 0;
+    return this.errors.some(error => error.attribute === fieldName);
   }
 
   public resetErrorsFor(fieldName: string): void {

@@ -1,5 +1,6 @@
 import {ActivatedRoute} from '@angular/router';
 import {ApiErrors} from '../../../models/api-errors';
+import {ChangeDetectorRef} from '@angular/core';
 import {Component} from '@angular/core';
 import {FormBuilder} from '@angular/forms';
 import {FormGroup} from '@angular/forms';
@@ -22,10 +23,11 @@ export class ResetPasswordFormComponent implements OnInit {
   public resetPasswordForm: FormGroup;
 
   constructor(
-    private userProxy: UserProxy,
-    private navigationService: NavigationService,
+    private changeDetector: ChangeDetectorRef,
     private formBuilder: FormBuilder,
+    private navigationService: NavigationService,
     private route: ActivatedRoute,
+    private userProxy: UserProxy
   ) {
   }
 
@@ -47,6 +49,13 @@ export class ResetPasswordFormComponent implements OnInit {
     });
   }
 
+  private handleServerErrors(errors): void {
+    this.submitFail = true;
+    this.apiErrors = errors;
+    this.loadingSubmit = false;
+    this.changeDetector.detectChanges();
+  }
+
   public submitForm(value: any) {
     this.loadingSubmit = true;
     this.submitFail = false;
@@ -58,9 +67,7 @@ export class ResetPasswordFormComponent implements OnInit {
         this.submitSuccess = true;
       })
       .catch((errors) => {
-        this.apiErrors = errors;
-        this.submitFail = true;
-        this.loadingSubmit = false;
+        this.handleServerErrors(errors);
       });
   }
 

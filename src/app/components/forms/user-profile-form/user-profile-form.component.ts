@@ -1,5 +1,6 @@
 import {ApiErrors} from '../../../models/api-errors';
 import {AuthManager} from '../../../services/auth-manager.service';
+import {ChangeDetectorRef} from '@angular/core';
 import {Component} from '@angular/core';
 import {Document} from '../../../models/document';
 import {FormBuilder} from '@angular/forms';
@@ -36,12 +37,13 @@ export class UserProfileFormComponent implements OnInit {
 
   constructor(
     private authManager: AuthManager,
+    private changeDetector: ChangeDetectorRef,
     private userProxy: UserProxy,
     private formBuilder: FormBuilder
   ) {
   }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.initForm();
 
     this.authManager.getUserChangeEmmiter().subscribe(user => {
@@ -69,26 +71,7 @@ export class UserProfileFormComponent implements OnInit {
     });
   }
 
-  onImageFilenameChange(event, type, uploadStatusObject): void {
-    uploadStatusObject.imageSaveFail = false;
-    uploadStatusObject.imageSaveSuccess = false;
-    uploadStatusObject.uploadingImage = true;
-    const file = event.srcElement.files[0];
-    if (!file) {
-      return;
-    }
-
-    this.userProxy.saveImage(this.user.id, file, type).then(userImage => {
-      this.user[type + '_image'] = userImage;
-      uploadStatusObject.imageSaveSuccess = true;
-      uploadStatusObject.uploadingImage = false;
-    }).catch(errors => {
-      uploadStatusObject.imageSaveFail = true;
-      uploadStatusObject.uploadingImage = false;
-    });
-  }
-
-  onDocumentFilenameChange(event, type, uploadStatusObject): void {
+  public onDocumentFilenameChange(event, type, uploadStatusObject): void {
     uploadStatusObject.documentSaveFail = false;
     uploadStatusObject.documentSaveSuccess = false;
     uploadStatusObject.uploadingDocument = true;
@@ -111,11 +94,18 @@ export class UserProfileFormComponent implements OnInit {
     });
   }
 
-  isAllowedSSNChar(charCode): boolean {
+  public isAllowedSSNChar(charCode): boolean {
     return isValidSSNCharCode(charCode);
   }
 
-  onSubmit(): void {
+  private handleServerErrors(errors): void {
+    this.submitFail = true;
+    this.apiErrors = errors;
+    this.loadingSubmit = false;
+    this.changeDetector.detectChanges();
+  }
+
+  public onSubmit(): void {
     this.submitSuccess = false;
     this.submitFail = false;
     this.loadingSubmit = true;
@@ -149,9 +139,7 @@ export class UserProfileFormComponent implements OnInit {
         });
       })
       .catch(errors => {
-        this.submitFail = true;
-        this.apiErrors = errors;
-        this.loadingSubmit = false;
+        this.handleServerErrors(errors);
       });
   }
 }

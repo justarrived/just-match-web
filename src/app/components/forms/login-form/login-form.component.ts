@@ -1,5 +1,6 @@
 import {ApiErrors} from '../../../models/api-errors';
 import {AuthManager} from '../../../services/auth-manager.service';
+import {ChangeDetectorRef} from '@angular/core';
 import {Component} from '@angular/core';
 import {FormBuilder} from '@angular/forms';
 import {FormGroup} from '@angular/forms';
@@ -23,6 +24,7 @@ export class LoginFormComponent implements OnInit  {
 
   constructor(
     private authManager: AuthManager,
+    private changeDetector: ChangeDetectorRef,
     private formBuilder: FormBuilder,
     private navigationService: NavigationService
   ) {
@@ -39,6 +41,13 @@ export class LoginFormComponent implements OnInit  {
     });
   }
 
+  private handleServerErrors(errors): void {
+    this.submitFail = true;
+    this.apiErrors = errors;
+    this.loadingSubmit = false;
+    this.changeDetector.detectChanges();
+  }
+
   public submitForm(value: any) {
     this.submitFail = false;
     this.submitSuccess = false;
@@ -50,9 +59,7 @@ export class LoginFormComponent implements OnInit  {
         this.submitSuccess = true;
       })
       .catch(errors => {
-        this.loadingSubmit = false;
-        this.submitFail = true;
-        this.apiErrors = errors;
+        this.handleServerErrors(errors);
       });
   }
 

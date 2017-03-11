@@ -1,4 +1,5 @@
 import {ApiErrors} from '../../../models/api-errors';
+import {ChangeDetectorRef} from '@angular/core';
 import {Component} from '@angular/core';
 import {FormBuilder} from '@angular/forms';
 import {FormGroup} from '@angular/forms';
@@ -22,6 +23,7 @@ export class ForgotPasswordFormComponent implements OnInit {
   public submitSuccess: boolean;
 
   constructor(
+    private changeDetector: ChangeDetectorRef,
     private formBuilder: FormBuilder,
     private navigationService: NavigationService,
     private userProxy: UserProxy
@@ -38,6 +40,13 @@ export class ForgotPasswordFormComponent implements OnInit {
     });
   }
 
+  private handleServerErrors(errors): void {
+    this.submitFail = true;
+    this.apiErrors = errors;
+    this.loadingSubmit = false;
+    this.changeDetector.detectChanges();
+  }
+
   public submitForm(value: any) {
     this.submitFail = false;
     this.submitSuccess = false;
@@ -50,9 +59,7 @@ export class ForgotPasswordFormComponent implements OnInit {
         this.navigationService.navigate(JARoutes.confirmation, 'password-reset-link-sent');
       })
       .catch((errors) => {
-        this.apiErrors = errors;
-        this.submitFail = true;
-        this.loadingSubmit = false;
+        this.handleServerErrors(errors);
       });
   }
 }

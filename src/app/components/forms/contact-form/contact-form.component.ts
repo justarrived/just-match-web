@@ -1,4 +1,5 @@
 import {ApiErrors} from '../../../models/api-errors';
+import {ChangeDetectorRef} from '@angular/core';
 import {Component} from '@angular/core';
 import {ContactNotification} from '../../../models/contact-notification';
 import {ContactProxy} from '../../../services/proxy/contact-proxy.service';
@@ -22,6 +23,7 @@ export class ContactFormComponent implements OnInit {
   public submitSuccess: boolean;
 
   constructor(
+    private changeDetector: ChangeDetectorRef,
     private contactProxy: ContactProxy,
     private formBuilder: FormBuilder,
     private navigationService: NavigationService,
@@ -29,7 +31,7 @@ export class ContactFormComponent implements OnInit {
   ) {
   }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.initForm();
   }
 
@@ -42,6 +44,13 @@ export class ContactFormComponent implements OnInit {
       'message': ['', Validators.compose([Validators.required, Validators.minLength(2)])],
       'name': [name, Validators.compose([Validators.required, Validators.minLength(2)])]
     });
+  }
+
+  private handleServerErrors(errors): void {
+    this.submitFail = true;
+    this.apiErrors = errors;
+    this.loadingSubmit = false;
+    this.changeDetector.detectChanges();
   }
 
   public submitForm(value: any) {
@@ -62,9 +71,7 @@ export class ContactFormComponent implements OnInit {
 
       })
       .catch((errors) => {
-        this.apiErrors = errors;
-        this.loadingSubmit = false;
-        this.submitFail = true;
+        this.handleServerErrors(errors);
       });
   }
 }

@@ -1,14 +1,18 @@
 import {ApiErrors} from '../../../models/api-errors';
 import {Component} from '@angular/core';
 import {EventEmitter} from '@angular/core';
-import {Input} from '@angular/core';
-import {Output} from '@angular/core';
 import {getNestedProperty} from '../../../utils/object-util';
+import {Input} from '@angular/core';
+import {InputErrorsComponent} from '../../form-errors/input-errors/input-errors.component';
+import {Output} from '@angular/core';
+import {ViewChild} from '@angular/core';
 
 @Component({
   selector: 'select-dropdown-input',
   template: `
-    <div class="field">
+    <div
+      [ngClass]="{'error': inputErrors.hasErrors()}"
+      class="field">
       <sm-select
        [control]="control"
        [data]="data"
@@ -50,6 +54,7 @@ export class SelectDropdownInputComponent {
   @Input() public placeholder: string;
   @Input() public requiredLabel: string;
   @Output() public onChange = new EventEmitter();
+  @ViewChild(InputErrorsComponent) inputErrors: InputErrorsComponent;
   public getNestedProperty = getNestedProperty;
 
   change(value) {

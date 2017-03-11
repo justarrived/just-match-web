@@ -1,12 +1,13 @@
 import {ApiErrors} from '../../../models/api-errors';
 import {AuthManager} from '../../../services/auth-manager.service';
+import {ChangeDetectorRef} from '@angular/core';
 import {Component} from '@angular/core';
 import {FormBuilder} from '@angular/forms';
 import {FormGroup} from '@angular/forms';
 import {Input} from '@angular/core';
+import {JARoutes} from '../../../routes/ja-routes';
 import {NavigationService} from '../../../services/navigation.service';
 import {OnInit} from '@angular/core';
-import {JARoutes} from '../../../routes/ja-routes';
 import {User} from '../../../models/user';
 import {UserProxy} from '../../../services/proxy/user-proxy.service';
 import {Validators} from '@angular/forms';
@@ -27,9 +28,10 @@ export class UserDetailsFormComponent implements OnInit {
 
   constructor(
     private authManager: AuthManager,
-    private userProxy: UserProxy,
+    private changeDetector: ChangeDetectorRef,
     private formBuilder: FormBuilder,
-    private navigationService: NavigationService
+    private navigationService: NavigationService,
+    private userProxy: UserProxy
   ) {
   }
 
@@ -69,6 +71,8 @@ export class UserDetailsFormComponent implements OnInit {
   private handleServerErrors(errors): void {
     this.submitFail = true;
     this.apiErrors = errors;
+    this.loadingSubmit = false;
+    this.changeDetector.detectChanges();
   }
 
   public onSubmit(): void {
@@ -94,13 +98,11 @@ export class UserDetailsFormComponent implements OnInit {
                 })
                 .catch(errors => {
                   this.handleServerErrors(errors);
-                  this.loadingSubmit = false;
                   this.navigationService.navigate(JARoutes.login);
                 });
             })
             .catch(errors => {
               this.handleServerErrors(errors);
-              this.loadingSubmit = false;
             });
         } else {
           this.authManager.authenticateIfNeeded().then(() => {
@@ -111,7 +113,6 @@ export class UserDetailsFormComponent implements OnInit {
       })
       .catch(errors => {
         this.handleServerErrors(errors);
-        this.loadingSubmit = false;
       });
   }
 }

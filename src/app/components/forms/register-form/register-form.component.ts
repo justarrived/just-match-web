@@ -1,5 +1,6 @@
 import {ApiErrors} from '../../../models/api-errors';
 import {AuthManager} from '../../../services/auth-manager.service';
+import {ChangeDetectorRef} from '@angular/core';
 import {Component} from '@angular/core';
 import {FormBuilder} from '@angular/forms';
 import {FormGroup} from '@angular/forms';
@@ -22,6 +23,7 @@ export class RegisterFormComponent implements OnInit {
 
   constructor(
     private authManager: AuthManager,
+    private changeDetector: ChangeDetectorRef,
     private formBuilder: FormBuilder,
     private navigationService: NavigationService,
     private userProxy: UserProxy,
@@ -47,6 +49,13 @@ export class RegisterFormComponent implements OnInit {
       'street': [''],
       'zip': ['', Validators.compose([Validators.minLength(5)])]
     });
+  }
+
+  private handleServerErrors(errors): void {
+    this.submitFail = true;
+    this.apiErrors = errors;
+    this.loadingSubmit = false;
+    this.changeDetector.detectChanges();
   }
 
   public onSubmit() {
@@ -75,12 +84,14 @@ export class RegisterFormComponent implements OnInit {
           .then((response) => {
             this.navigationService.navigate(JARoutes.home);
             this.loadingSubmit = false;
+          })
+          .catch(errors => {
+            this.handleServerErrors(errors);
+            this.navigationService.navigate(JARoutes.login);
           });
       })
       .catch(errors => {
-        this.apiErrors = errors;
-        this.loadingSubmit = false;
-        this.submitFail = true;
+        this.handleServerErrors(errors);
       });
   }
 }

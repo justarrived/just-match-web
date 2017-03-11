@@ -47,6 +47,10 @@ export class InputErrorsComponent implements OnInit {
     this.control.valueChanges.subscribe(() => this.setErrors());
   }
 
+  public hasErrors(): boolean {
+    return this.formControlErrors.length > 0 || this.apiErrors.hasErrorsFor(this.apiAttribute);
+  }
+
   private setErrors(): void {
     const errors: Array<string> = [];
     let interpolationData: any = {};

@@ -2,11 +2,15 @@ import {ApiErrors} from '../../../models/api-errors';
 import {Component} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {Input} from '@angular/core';
+import {InputErrorsComponent} from '../../form-errors/input-errors/input-errors.component';
+import {ViewChild} from '@angular/core';
 
 @Component({
   selector: 'yes-no-input',
   template: `
-    <div class="field">
+    <div
+      [ngClass]="{'error': inputErrors.hasErrors()}"
+      class="field">
       <label
         *ngIf="label">
         {{label}}
@@ -38,4 +42,5 @@ export class YesNoInputComponent {
   @Input() public label: string;
   @Input() public name: string;
   @Input() public requiredLabel: string;
+  @ViewChild(InputErrorsComponent) inputErrors: InputErrorsComponent;
 }
