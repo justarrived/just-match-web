@@ -8,7 +8,8 @@
     text="{{'component.loading' | translate}}">
   </sm-loader>
 
-  <h3 class="ui dividing header">
+  <h3 class="ui horizontal divider pink header">
+    <i class="user icon"></i>
     {{'user.register.form.general.information.section.header' | translate}}
   </h3>
 
@@ -37,7 +38,13 @@
     [apiErrors]="apiErrors">
   </gender-input>
 
-  <h3 class="ui dividing header">
+  <country-of-origin-input
+    [control]="registerForm.controls['country_of_origin']"
+    [apiErrors]="apiErrors">
+  </country-of-origin-input>
+
+  <h3 class="ui horizontal divider pink header">
+    <i class="marker icon"></i>
     {{'user.register.form.address.section.header' | translate}}
   </h3>
 
@@ -48,8 +55,9 @@
     [apiErrors]="apiErrors">
   </address-input>
 
-  <h3 class="ui dividing header">
-    {{'user.register.form.country.and.languages.section.header' | translate}}
+  <h3 class="ui horizontal divider pink header">
+    <i class="settings icon"></i>
+    {{'user.register.form.settings.section.header' | translate}}
   </h3>
 
   <system-language-input
@@ -57,12 +65,8 @@
     [apiErrors]="apiErrors">
   </system-language-input>
 
-  <country-of-origin-input
-    [control]="registerForm.controls['country_of_origin']"
-    [apiErrors]="apiErrors">
-  </country-of-origin-input>
-
-  <h3 class="ui dividing header">
+  <h3 class="ui horizontal divider pink header">
+    <i class="lock icon"></i>
     {{'user.register.form.password.section.header' | translate}}
   </h3>
 
@@ -71,7 +75,8 @@
      [apiErrors]="apiErrors">
   </password-input>
 
-  <h3 class="ui dividing header">
+  <h3 class="ui horizontal divider pink header">
+    <i class="info icon"></i>
     {{'user.register.form.terms.section.header' | translate}}
   </h3>
 

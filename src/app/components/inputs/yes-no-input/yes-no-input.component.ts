@@ -12,7 +12,8 @@ import {ViewChild} from '@angular/core';
       [ngClass]="{'error': inputErrors.hasErrors()}"
       class="field">
       <label
-        *ngIf="label">
+        *ngIf="label"
+        style="margin-bottom: 20px">
         {{label}}
       </label>
       <custom-radio-button-input
