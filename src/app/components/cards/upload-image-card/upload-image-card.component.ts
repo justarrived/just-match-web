@@ -20,10 +20,11 @@ import {Output} from '@angular/core';
         <img *ngIf="!imageUrl"  src="/assets/images/image.png">
       </div>
       <div class="content">
-        <a
-          class="header">
+        <div
+          class="ui pink header"
+          [style.margin-bottom]="0">
           {{header}}
-        </a>
+        </div>
         <div class="meta">
           <span class="date">
             {{subHeader}}

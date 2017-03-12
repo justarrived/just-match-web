@@ -51,7 +51,6 @@ import {Geolocation} from './services/geolocation.service';
 import {GotCoordinationNumberInputComponent} from './components/inputs/got-coordination-number-input/got-coordination-number-input.component';
 import {HomeComponent} from './views/home/home.component';
 import {HttpModule} from '@angular/http';
-import {UploadImageCardComponent} from './components/cards/upload-image-card/upload-image-card.component';
 import {InfoMessageComponent} from './components/messages/info-message/info-message.component';
 import {InputErrorComponent} from './components/form-errors/input-error/input-error.component';
 import {InputErrorsComponent} from './components/form-errors/input-errors/input-errors.component';
@@ -94,26 +93,28 @@ import {ResetPasswordFormComponent} from './components/forms/reset-password-form
 import {ResetPasswordPageComponent} from './views/reset-password/reset-password-page.component';
 import {ResidencePermitBackInputComponent} from './components/inputs/residence-permit-back-input/residence-permit-back-input.component';
 import {ResidencePermitFrontInputComponent} from './components/inputs/residence-permit-front-input/residence-permit-front-input.component';
-import {WorkPermitBackInputComponent} from './components/inputs/work-permit-back-input/work-permit-back-input.component';
-import {WorkPermitFrontInputComponent} from './components/inputs/work-permit-front-input/work-permit-front-input.component';
+import {ResumeInputComponent} from './components/inputs/resume-input/resume-input.component';
 import {SelectDropdownInputComponent} from './components/inputs/select-dropdown-input/select-dropdown-input.component';
 import {SkatteverketCertificateInputComponent} from './components/inputs/skatteverket-certificate-input/skatteverket-certificate-input.component';
 import {SkillProficiencyInputComponent} from './components/inputs/skill-proficiency-input/skill-proficiency-input.component';
 import {SkillProxy} from './services/proxy/skill-proxy.service';
 import {SkillsInputComponent} from './components/inputs/skills-input/skills-input.component';
 import {SliderComponent} from './components/slider/slider.component';
+import {SSNInputComponent} from './components/inputs/ssn-input/ssn-input.component';
 import {StatusInputComponent} from './components/inputs/status-input/status-input.component';
 import {StreetInputComponent} from './components/inputs/street-input/street-input.component';
 import {SuccessMessageComponent} from './components/messages/success-message/success-message.component';
-import {SSNInputComponent} from './components/inputs/ssn-input/ssn-input.component';
 import {SystemLanguageInputComponent} from './components/inputs/system-language-input/system-language-input.component';
 import {SystemLanguagesService} from './services/system-languages.service';
 import {TermsInputComponent} from './components/inputs/terms-input/terms-input.component';
 import {TextareaInputComponent} from './components/inputs/textarea-input/textarea-input.component';
 import {TextInputComponent} from './components/inputs/text-input/text-input.component';
 import {TranslationService} from './services/translation.service';
+import {UploadDocumentCardComponent} from './components/cards/upload-document-card/upload-document-card.component';
+import {UploadImageCardComponent} from './components/cards/upload-image-card/upload-image-card.component';
 import {UserDetailsComponent} from './views/user/user-settings/user-details/user-details.component';
 import {UserDetailsFormComponent} from './components/forms/user-details-form/user-details-form.component';
+import {UserDocumentCardInputComponent} from './components/inputs/user-document-card-input/user-document-card-input.component';
 import {UserImageCardInputComponent} from './components/inputs/user-image-card-input/user-image-card-input.component';
 import {UserJobsComponent} from './views/my-jobs/user-jobs/user-jobs.component';
 import {UserManager} from './services/user-manager.service';
@@ -122,6 +123,8 @@ import {UserProfileFormComponent} from './components/forms/user-profile-form/use
 import {UserProxy} from './services/proxy/user-proxy.service';
 import {UserSettingsComponent} from './views/user/user-settings/user-settings.component';
 import {WelcomeHeaderComponent} from './components/headers/welcome-header/welcome-header.component';
+import {WorkPermitBackInputComponent} from './components/inputs/work-permit-back-input/work-permit-back-input.component';
+import {WorkPermitFrontInputComponent} from './components/inputs/work-permit-front-input/work-permit-front-input.component';
 import {YesNoInputComponent} from './components/inputs/yes-no-input/yes-no-input.component';
 import {ZipInputComponent} from './components/inputs/zip-input/zip-input.component';
 import * as Raven from 'raven-js';
@@ -186,7 +189,6 @@ export class RavenErrorHandler implements ErrorHandler {
     GenderInputComponent,
     GotCoordinationNumberInputComponent,
     HomeComponent,
-    UploadImageCardComponent,
     InfoMessageComponent,
     InputErrorComponent,
     InputErrorsComponent,
@@ -221,29 +223,33 @@ export class RavenErrorHandler implements ErrorHandler {
     ResetPasswordPageComponent,
     ResidencePermitBackInputComponent,
     ResidencePermitFrontInputComponent,
-    WorkPermitBackInputComponent,
-    WorkPermitFrontInputComponent,
+    ResumeInputComponent,
     SelectDropdownInputComponent,
     SkatteverketCertificateInputComponent,
     SkillProficiencyInputComponent,
     SkillsInputComponent,
     SliderComponent,
+    SSNInputComponent,
     StatusInputComponent,
     StreetInputComponent,
     SuccessMessageComponent,
-    SSNInputComponent,
     SystemLanguageInputComponent,
     TermsInputComponent,
     TextareaInputComponent,
     TextInputComponent,
+    UploadDocumentCardComponent,
+    UploadImageCardComponent,
     UserDetailsComponent,
     UserDetailsFormComponent,
+    UserDocumentCardInputComponent,
     UserImageCardInputComponent,
     UserJobsComponent,
     UserProfileComponent,
     UserProfileFormComponent,
     UserSettingsComponent,
     WelcomeHeaderComponent,
+    WorkPermitBackInputComponent,
+    WorkPermitFrontInputComponent,
     YesNoInputComponent,
     ZipInputComponent,
   ],

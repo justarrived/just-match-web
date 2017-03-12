@@ -17,7 +17,7 @@ export class User {
   public company: Company;
   public countryOfOriginCode: string;
   public currentStatus: string;
-  public cvDocuments: UserDocument[];
+  public cv_documents: UserDocument[];
   public description: string;
   public documents: UserDocument[];
   public education: string;
@@ -91,7 +91,7 @@ export class User {
     this.workExperience = jsonObject.job_experience;
     this.zip = jsonObject.zip;
 
-    this.cvDocuments = this.getDocumentByCategory('cv');
+    this.cv_documents = this.getDocumentByCategory('cv');
 
     this.lma_card_image = this.getImageByCategory('lma_card');
     this.personal_id_image = this.getImageByCategory('personal_id');

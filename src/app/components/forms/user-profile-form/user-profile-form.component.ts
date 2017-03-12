@@ -17,8 +17,7 @@ import {Validators} from '@angular/forms';
 
 @Component({
   selector: 'user-profile-form',
-  templateUrl: './user-profile-form.component.html',
-  styleUrls: ['./user-profile-form.component.scss']
+  templateUrl: './user-profile-form.component.html'
 })
 export class UserProfileFormComponent implements OnInit {
   @Input() public user: User;

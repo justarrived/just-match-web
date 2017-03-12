@@ -142,39 +142,11 @@
     [apiErrors]="apiErrors">
   </job-experience-input>
 
-  <div class="field">
-    <label>
-      {{'user.profile.form.resume.label' | translate}}
-    </label>
-  </div>
-
-  <div class="profile-form-input-container">
-    <div class="profile-form-upload-image-container">
-      <loading *ngIf="resumeDocumentStatusObject.uploadingDocument"></loading>
-
-      <input *ngIf="!resumeDocumentStatusObject.uploadingDocument"
-          type="file" id="resume-document-filename"
-          name="resume-document-filename"
-          class="profile-form-upload-image-input"
-          (change)="onDocumentFilenameChange($event, 'cv', resumeDocumentStatusObject)">
-
-      <label *ngIf="!resumeDocumentStatusObject.uploadingDocument"
-          for="resume-document-filename"
-          class="profile-form-upload-image-button btn-secondary btn-small btn btn-image-upload">{{'user.profile.form.resume.upload.button' | translate}}</label>
-      <p class="profile-form-upload-image-description">{{'user.profile.form.resume.upload.description' | translate}}</p>
-      <div *ngIf="resumeDocumentStatusObject.documentSaveSuccess" class="profile-form-save-message">{{'user.profile.form.resume.upload.success' | translate}}</div>
-      <div *ngIf="resumeDocumentStatusObject.documentSaveFail" class="profile-form-error-message">{{'user.profile.form.resume.upload.fail' | translate}}</div>
-
-      <p *ngIf="user.cvDocuments.length > 0">
-        <em>{{'user.profile.form.resume.list.title' | translate}}</em>
-      </p>
-      <div *ngFor="let document of user.cvDocuments">
-        <a href="{{document.documentUrl}}" target="_blank">
-          <i class="fa fa-file-text"></i> {{document.createdAt | date: 'yyyy-MM-dd HH:mm'}}
-        </a>
-      </div>
-    </div>
-  </div>
+  <resume-input
+    [centered]="true"
+    [user]="user"
+    [showLabel]="true">
+  </resume-input>
 
   <form-submit-button
     [submitFail]="submitFail"
