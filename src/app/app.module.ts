@@ -11,6 +11,7 @@ import {AtUndInputComponent} from './components/inputs/at-und-input/at-und-input
 import {AuthManager} from './services/auth-manager.service';
 import {AutosizeDirective} from './directives/textarea-autosize/textarea-autosize.directive';
 import {BankAccountInputComponent} from './components/inputs/bank-account-input/bank-account-input.component';
+import {BaseButtonComponent} from './components/buttons/base-button/base-button.component';
 import {BaseMessageComponent} from './components/messages/base-message.component';
 import {BasicBorderHeaderComponent} from './components/headers/basic-border-header/basic-border-header.component';
 import {BrowserModule} from '@angular/platform-browser';
@@ -156,6 +157,7 @@ export class RavenErrorHandler implements ErrorHandler {
     AtUndInputComponent,
     AutosizeDirective,
     BankAccountInputComponent,
+    BaseButtonComponent,
     BaseMessageComponent,
     BasicBorderHeaderComponent,
     CityInputComponent,

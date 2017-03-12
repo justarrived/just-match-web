@@ -16,16 +16,20 @@ import {Input} from '@angular/core';
       icon="hand spock">
     </success-message>
     <div class="ui basic center aligned segment">
-      <button
-        class="btn-primary btn-small btn"
-        type="submit">
-        {{buttonText}}
-      </button>
+      <base-button
+        [buttonText]="buttonText"
+        [fluid]="false"
+        [icon]="icon"
+        buttonType="submit"
+        kind="primary"
+        size="medium">
+      </base-button>
       <ng-content></ng-content>
     </div>`
 })
 export class FormSubmitButtonComponent {
+  @Input() buttonText: string;
+  @Input() icon: string;
   @Input() submitFail: boolean;
   @Input() submitSuccess: boolean;
-  @Input() buttonText: string;
 }
