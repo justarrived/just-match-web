@@ -13,16 +13,21 @@ import {User} from '../../../models/user';
           {{'home.header.logged.in.title'| translate: {username: user.firstName} }}
         </h2>
         <div class="welcome-header-button-container">
-          <a
-            routerLink="{{JARoutes.user.url([user.id])}}"
-            class="welcome-header-button btn-secondary-light btn-small btn">
-            {{'home.header.logged.in.profile.button'| translate}}
-          </a><br>
-          <a
-            routerLink="{{JARoutes.jobs.url(['1'])}}"
-            class="welcome-header-button btn-primary-light btn-small btn">
-            {{'home.header.logged.in.jobs.button'| translate}}
-          </a>
+          <base-button
+            [buttonText]="'home.header.logged.in.profile.button' | translate"
+            [fluid]="true"
+            [routerLink]="JARoutes.user.url([user.id])"
+            kind="secondary-light"
+            size="small">
+          </base-button>
+          <br>
+          <base-button
+            [buttonText]="'home.header.logged.in.jobs.button' | translate"
+            [fluid]="true"
+            [routerLink]="JARoutes.jobs.url(['1'])"
+            kind="primary-light"
+            size="small">
+          </base-button>
         </div>
       </div>
       <div class="welcome-header-info-container" *ngIf="!user">
@@ -36,16 +41,21 @@ import {User} from '../../../models/user';
           {{'home.header.logged.out.description' | translate }}
         </div>
         <div class="welcome-header-button-container">
-          <a
-            routerLink="{{JARoutes.registerUser.url()}}"
-            class="welcome-header-button btn-secondary-light btn-small btn">
-            {{'home.header.logged.out.register.button'| translate}}
-          </a><br/>
-          <a
-            routerLink="{{JARoutes.login.url()}}"
-            class="welcome-header-button btn-primary-light btn-small btn">
-            {{'home.header.logged.out.login.button'| translate}}
-          </a>
+          <base-button
+            [buttonText]="'home.header.logged.out.register.button' | translate"
+            [fluid]="true"
+            [routerLink]="JARoutes.registerUser.url()"
+            kind="secondary-light"
+            size="small">
+          </base-button>
+          <br>
+          <base-button
+            [buttonText]="'home.header.logged.out.login.button' | translate"
+            [fluid]="true"
+            [routerLink]="JARoutes.login.url()"
+            kind="primary-light"
+            size="small">
+          </base-button>
         </div>
       </div>
     </div>`,

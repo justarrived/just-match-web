@@ -171,22 +171,13 @@ $job-card-border-radius: 8px;
     flex-wrap: wrap;
 
     .home-instructions-inner-container {
-      padding: 4em 4em 8em;
+      padding: 56px;
       text-align: center;
       color: $white;
       position: relative;
       width: 100%;
       @media screen and (min-width: $sm-device-width) {
         width: 50%;
-      }
-
-      .home-instructions-button {
-        width: calc(100% - 8em);
-        margin-bottom: 2em;
-        margin-left: 4em;
-        position: absolute;
-        left: 0;
-        bottom: 0;
       }
 
       .home-instructions-list {

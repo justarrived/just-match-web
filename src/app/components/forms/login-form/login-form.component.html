@@ -19,9 +19,9 @@
   </password-input>
 
   <form-submit-button
+    [buttonText]="'login.form.submit.button' | translate"
     [submitFail]="submitFail"
-    [submitSuccess]="submitSuccess"
-    [buttonText]="'login.form.submit.button' | translate">
+    [submitSuccess]="submitSuccess">
     <div>
       <a
         class="login-form-link"

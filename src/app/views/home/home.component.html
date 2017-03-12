@@ -101,11 +101,13 @@
           <i class="home-instructions-list-item-icon fa fa-check-circle-o fa-2x"></i> {{'home.instructions.first.section.instruction3' | translate}}
         </li>
       </ul>
-      <div
-        routerLink="{{JARoutes.jobs.url([1])}}"
-        class="home-instructions-button btn-secondary-light btn-medium btn">
-        {{'common.find_assignment' | translate}}
-      </div>
+      <base-button
+        [buttonText]="'common.find_assignment' | translate"
+        [fluid]="true"
+        [routerLink]="JARoutes.jobs.url(['1'])"
+        kind="secondary-light"
+        size="medium">
+      </base-button>
     </div>
     <div class="home-instructions-inner-container home-instructions-second-inner-container">
       <h3>
@@ -126,18 +128,22 @@
         </li>
       </ul>
       <div *ngIf="!user">
-        <div
-          routerLink="{{JARoutes.registerUser.url()}}"
-          class="home-instructions-button btn-secondary-light btn-medium btn">
-          {{'common.start_here' | translate}}
-        </div>
+        <base-button
+          [buttonText]="'common.start_here' | translate"
+          [fluid]="true"
+          [routerLink]="JARoutes.registerUser.url()"
+          kind="secondary-light"
+          size="medium">
+        </base-button>
       </div>
       <div *ngIf="user">
-        <div
-          routerLink="{{JARoutes.user.url([user.id])}}"
-          class="home-instructions-button btn-secondary-light btn-medium btn">
-          {{'home.header.logged.in.profile.button' | translate}}
-        </div>
+        <base-button
+          [buttonText]="'home.header.logged.in.profile.button' | translate"
+          [fluid]="true"
+          [routerLink]="JARoutes.user.url([user.id])"
+          kind="secondary-light"
+          size="medium">
+        </base-button>
       </div>
     </div>
   </div>

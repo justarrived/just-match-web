@@ -4,6 +4,7 @@ $fs-s: 12px;
 $fs-m0: 14px;
 $fs-m: 16px;
 $fs-l: 18px;
+$fs-l0: 20px;
 $fs-xl: 22px;
 $fs-xxl: 24px;
 $fs-xxxl: 32px;
@@ -141,6 +142,10 @@ p {
 
 .fs-l {
   font-size: $fs-l;
+}
+
+.fs-l0 {
+  font-size: $fs-l0;
 }
 
 .fs-xl {

@@ -40,21 +40,6 @@
       @media screen and (min-width: $sm-device-width) {
         margin: auto;
       }
-
-      button {
-        background-color: $color-blue-500;
-
-        &:hover {
-          background-color: $color-blue-700;
-          color: inherit;
-        }
-
-        &:active {
-          background-color: $color-blue-700;
-          color: inherit;
-          border-color: inherit;
-        }
-      }
     }
   }
 }
