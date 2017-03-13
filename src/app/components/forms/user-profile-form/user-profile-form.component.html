@@ -1,0 +1,156 @@
+<form
+  (ngSubmit)="onSubmit()"
+  #form="ngForm"
+  class="ui form">
+  <sm-loader
+    [complete]="!loadingSubmit"
+    class="inverted"
+    text="{{'component.loading' | translate}}">
+  </sm-loader>
+
+  <h3 class="ui horizontal divider pink header">
+    <i class="user icon"></i>
+    {{'user.profile.form.personal.presentation.section.header' | translate}}
+  </h3>
+
+  <description-input
+    [apiErrors]="apiErrors"
+    [control]="profileForm.controls['description']">
+  </description-input>
+
+  <h3 class="ui horizontal divider pink header">
+    <i class="id card icon"></i>
+    {{'user.profile.form.status.section.header' | translate}}
+  </h3>
+
+  <status-input
+    [apiErrors]="apiErrors"
+    [control]="profileForm.controls['current_status']">
+  </status-input>
+
+  <at-und-input
+    [apiErrors]="apiErrors"
+    [control]="profileForm.controls['at_und']"
+    *ngIf="profileForm.value.current_status === 'asylum_seeker'">
+  </at-und-input>
+
+  <got-coordination-number-input
+    [apiErrors]="apiErrors"
+    [control]="profileForm.controls['got_coordination_number']"
+    *ngIf="profileForm.value.current_status === 'asylum_seeker' && profileForm.value.at_und === 'yes'">
+  </got-coordination-number-input>
+
+  <ssn-input
+    [apiErrors]="apiErrors"
+    [control]="profileForm.controls['ssn']"
+    *ngIf="profileForm.value.current_status && ((profileForm.value.current_status === 'asylum_seeker' && profileForm.value.at_und === 'yes' && profileForm.value.got_coordination_number === 'yes') || (profileForm.value.current_status !== 'asylum_seeker'))">
+  </ssn-input>
+
+  <lma-card-input
+    [centered]="true"
+    [user]="user"
+    [showLabel]="true"
+    *ngIf="profileForm.value.current_status === 'asylum_seeker' && profileForm.value.at_und === 'yes'">
+  </lma-card-input>
+
+  <personal-id-input
+    [centered]="true"
+    [user]="user"
+    [showLabel]="true"
+    *ngIf="profileForm.value.current_status && profileForm.value.current_status !== 'asylum_seeker'">
+  </personal-id-input>
+
+  <residence-permit-front-input
+    [centered]="true"
+    [user]="user"
+    [showLabel]="true"
+    *ngIf="profileForm.value.current_status === 'temporary_residence' || profileForm.value.current_status === 'permanent_residence'">
+  </residence-permit-front-input>
+
+  <residence-permit-back-input
+    [centered]="true"
+    [user]="user"
+    [showLabel]="true"
+    *ngIf="profileForm.value.current_status === 'temporary_residence' || profileForm.value.current_status === 'permanent_residence'">
+  </residence-permit-back-input>
+
+  <work-permit-front-input
+    [centered]="true"
+    [user]="user"
+    [showLabel]="true"
+    *ngIf="profileForm.value.current_status === 'student_visa' || profileForm.value.current_status === 'temporary_residence'">
+  </work-permit-front-input>
+
+  <work-permit-back-input
+    [centered]="true"
+    [user]="user"
+    [showLabel]="true"
+    *ngIf="profileForm.value.current_status === 'student_visa' || profileForm.value.current_status === 'temporary_residence'">
+  </work-permit-back-input>
+
+  <skatteverket-certificate-input
+    [centered]="true"
+    [user]="user"
+    [showLabel]="true"
+    *ngIf="profileForm.value.current_status === 'eu_citizen' || profileForm.value.current_status === 'asylum_seeker' && profileForm.value.at_und === 'yes' && profileForm.value.got_coordination_number === 'yes'">
+  </skatteverket-certificate-input>
+
+  <h3 class="ui horizontal divider pink header">
+    <i class="world icon"></i>
+    {{'user.profile.form.language.skills.section.header' | translate}}
+  </h3>
+
+  <languages-input
+    [languagesControl]="profileForm.controls['languages']"
+    [userLanguagesControl]="profileForm.controls['user_languages']"
+    [apiErrors]="apiErrors">
+  </languages-input>
+
+  <h3 class="ui horizontal divider pink header">
+    <i class="rocket icon"></i>
+    {{'user.profile.form.general.skills.section.header' | translate}}
+  </h3>
+
+  <competence-input
+    [control]="profileForm.controls['competence_text']"
+    [apiErrors]="apiErrors">
+  </competence-input>
+
+  <skills-input
+    [skillsControl]="profileForm.controls['skills']"
+    [userSkillsControl]="profileForm.controls['user_skills']"
+    [apiErrors]="apiErrors">
+  </skills-input>
+
+  <h3 class="ui horizontal divider pink header">
+    <i class="student icon"></i>
+    {{'user.profile.form.education.section.header' | translate}}
+  </h3>
+
+  <education-input
+    [apiErrors]="apiErrors"
+    [control]="profileForm.controls['education']">
+  </education-input>
+
+  <h3 class="ui horizontal divider pink header">
+    <i class="suitcase icon"></i>
+    {{'user.profile.form.work.experience.section.header' | translate}}
+  </h3>
+
+  <resume-input
+    [centered]="true"
+    [user]="user"
+    [showLabel]="true">
+  </resume-input>
+
+  <job-experience-input
+    [control]="profileForm.controls['job_experience']"
+    [apiErrors]="apiErrors">
+  </job-experience-input>
+
+  <form-submit-button
+    [submitFail]="submitFail"
+    [submitSuccess]="submitSuccess"
+    [buttonText]="'user.profile.form.submit.button' | translate">
+  </form-submit-button>
+</form>

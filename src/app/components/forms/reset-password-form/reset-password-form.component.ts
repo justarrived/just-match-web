@@ -1,5 +1,6 @@
 import {ActivatedRoute} from '@angular/router';
 import {ApiErrors} from '../../../models/api-errors';
+import {ChangeDetectorRef} from '@angular/core';
 import {Component} from '@angular/core';
 import {FormBuilder} from '@angular/forms';
 import {FormGroup} from '@angular/forms';
@@ -11,21 +12,22 @@ import {Validators} from '@angular/forms';
 
 @Component({
   selector: 'reset-password-form',
-  templateUrl: './reset-password-form.component.html',
-  styleUrls: ['./reset-password-form.component.scss'],
+  templateUrl: './reset-password-form.component.html'
 })
 export class ResetPasswordFormComponent implements OnInit {
   public apiErrors: ApiErrors = new ApiErrors([]);
-  public displayErrorMessage: boolean;
   public JARoutes = JARoutes;
-  public loadingSubmit: boolean = false;
+  public loadingSubmit: boolean;
+  public submitFail: boolean;
+  public submitSuccess: boolean;
   public resetPasswordForm: FormGroup;
 
   constructor(
-    private userProxy: UserProxy,
-    private navigationService: NavigationService,
+    private changeDetector: ChangeDetectorRef,
     private formBuilder: FormBuilder,
+    private navigationService: NavigationService,
     private route: ActivatedRoute,
+    private userProxy: UserProxy
   ) {
   }
 
@@ -47,18 +49,25 @@ export class ResetPasswordFormComponent implements OnInit {
     });
   }
 
+  private handleServerErrors(errors): void {
+    this.submitFail = true;
+    this.apiErrors = errors;
+    this.loadingSubmit = false;
+    this.changeDetector.detectChanges();
+  }
+
   public submitForm(value: any) {
     this.loadingSubmit = true;
-    this.displayErrorMessage = false;
+    this.submitFail = false;
+    this.submitSuccess = false;
     this.userProxy.changePasswordWithToken(value.password, value.one_time_token)
       .then((result) => {
         this.navigationService.navigate(JARoutes.confirmation, 'password-reset');
         this.loadingSubmit = false;
+        this.submitSuccess = true;
       })
       .catch((errors) => {
-        this.apiErrors = errors;
-        this.displayErrorMessage = true;
-        this.loadingSubmit = false;
+        this.handleServerErrors(errors);
       });
   }
 

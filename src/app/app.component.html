@@ -78,8 +78,13 @@
                 <h4 class="col-xs-12 text-center">{{user.name}}</h4>
               </div>
 
-              <div class="navigation-menu-user-logged-out-container" *ngIf="!user">
-                <a routerLink="{{JARoutes.registerUser.url()}}" class="navigation-menu-create-user-button btn-primary btn-small btn">Create User</a>
+              <div class="ui basic center aligned segment" *ngIf="!user">
+                <base-button
+                  [buttonText]="'menu.main.register' | translate"
+                  [routerLink]="JARoutes.registerUser.url()"
+                  kind="secondary"
+                  size="small">
+                </base-button>
               </div>
             </div>
           </div>

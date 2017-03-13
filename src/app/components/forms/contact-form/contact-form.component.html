@@ -8,60 +8,24 @@
     text="{{'component.loading' | translate}}">
   </sm-loader>
 
-  <div class="field">
-    <sm-input
-      [control]="contactForm.controls['name']"
-      [label]="('contact.form.name.header' | translate) + ' *'"
-      [placeholder]="'contact.form.name.placeholder' | translate"
-      class="left"
-      icon="user"
-      type="text">
-    </sm-input>
-    <input-errors
-      [apiErrors]="apiErrors"
-      [control]="contactForm.controls['name']"
-      apiAttribute="name">
-    </input-errors>
-  </div>
+  <name-input
+    [control]="contactForm.controls['name']"
+    [apiErrors]="apiErrors">
+  </name-input>
 
-  <div class="field">
-    <sm-input
-      [control]="contactForm.controls['email']"
-      [label]="('contact.form.email.header' | translate) + ' *'"
-      [placeholder]="'contact.form.email.placeholder' | translate"
-      class="left"
-      icon="mail"
-      type="text">
-    </sm-input>
-    <input-errors
-      [apiErrors]="apiErrors"
-      [control]="contactForm.controls['email']"
-      [patternLabel]="'validations.email_pattern' | translate"
-      apiAttribute="email">
-    </input-errors>
-  </div>
+  <email-input
+    [control]="contactForm.controls['email']"
+    [apiErrors]="apiErrors">
+  </email-input>
 
-  <div class="field">
-    <sm-textarea
-      [control]="contactForm.controls['message']"
-      [label]="('contact.form.message.placeholder' | translate) + ' *'"
-      [placeholder]="'contact.form.message.placeholder' | translate"
-      class="left"
-      icon="mail"
-      rows="10">
-    </sm-textarea>
-    <input-errors
-      [apiErrors]="apiErrors"
-      [control]="contactForm.controls['message']"
-      apiAttribute="body">
-    </input-errors>
-  </div>
+  <message-input
+    [control]="contactForm.controls['message']"
+    [apiErrors]="apiErrors">
+  </message-input>
 
-  <div class="contact-button-container">
-    <button
-      class="btn-primary btn-medium btn contact-button"
-      type="submit">
-      {{'contact.form.submit.button' | translate}}
-    </button>
-  </div>
+  <form-submit-button
+    [submitFail]="submitFail"
+    [submitSuccess]="submitSuccess"
+    [buttonText]="'contact.form.submit.button' | translate">
+  </form-submit-button>
 </form>

@@ -1,0 +1,128 @@
+@import '../../../styles/colors';
+@import '../../../styles/typography';
+
+// GENERAL
+.btn {
+  border-radius: 30px;
+  border: 2px solid;
+  font-family: $default-font-family;
+  font-weight: 700;
+  line-height: 2.3;
+  margin: 15px 0;
+  outline:none !important;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  @include truncate-owerflowing-text;
+}
+// FLUID
+.btn.fluid {
+  width: 100%;
+}
+// SIZE
+.btn.xsmall {
+  font-size: $fs-s;
+  padding: 0 10px;
+  min-width: 100px;
+}
+
+.btn.small {
+  font-size: $fs-m0;
+  padding: 6px 25px;
+  min-width: 100px;
+  padding: 2px 25px;
+}
+
+.btn.medium {
+  font-size: $fs-m;
+  padding: 8px 30px;
+  min-width: 150px;
+}
+
+.btn.large {
+  font-size: $fs-l0;
+  padding: 8px 35px;
+  min-width: 180px;
+}
+// PRIMARY
+.btn.primary {
+  color: $white;
+  background-color: $color-cerise-500;
+  border-color: $color-cerise-400;
+}
+
+.btn.primary:hover {
+  background-color: $color-cerise-400;
+  border-color: $color-cerise-300;
+}
+
+.btn.primary:active {
+  background-color: $color-cerise-600;
+  border-color: $color-cerise-500;
+}
+// PRIMARY LIGHT
+.btn.primary-light {
+  color: $color-cerise-500;
+  background-color: $white;
+  border-color: #f6f6f6;
+}
+
+.btn.primary-light:hover {
+  color: $white;
+  background-color: $color-cerise-400;
+  border-color: $color-cerise-300;
+}
+
+.btn.primary-light:active {
+  color: $white;
+  background-color: $color-cerise-600;
+  border-color: $color-cerise-500;
+}
+// SECONDARY
+.btn.secondary {
+  color: $color-cerise-500;
+  background-color: transparent;
+  border-color: $color-cerise-500;
+}
+
+.btn.secondary:hover {
+  color: $white;
+  background-color: $color-cerise-400;
+  border-color: $color-cerise-400;
+}
+
+.btn.secondary:active {
+  color: $white;
+  background-color: $color-cerise-600;
+  border-color: $color-cerise-600;
+}
+// SECONDARY LIGHT
+.btn.secondary-light {
+  color: $white;
+  background-color: transparent;
+  border-color: $white;
+}
+
+.btn.secondary-light:hover {
+  color: $color-cerise-500;
+  background-color: $white;
+  border-color: #f6f6f6;
+}
+
+.btn.secondary-light:active {
+  color: $white;
+  background-color: $color-cerise-600;
+  border-color: $color-cerise-600;
+}
+// INACTIVE BUTTONS
+.btn.inactive-light {
+  color: rgba(255, 255, 255, .5);
+  background-color: rgba(255, 255, 255, .2);
+  border-color: rgba(255, 255, 255, .15);
+}
+
+.btn.inactive-dark {
+  color: rgba(34, 37, 49, .4);
+  background-color: rgba(34, 37, 49, .1);
+  border-color: rgba(34, 37, 49, .05);
+}

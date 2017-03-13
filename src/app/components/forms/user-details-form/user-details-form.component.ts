@@ -1,9 +1,12 @@
 import {ApiErrors} from '../../../models/api-errors';
 import {AuthManager} from '../../../services/auth-manager.service';
+import {ChangeDetectorRef} from '@angular/core';
 import {Component} from '@angular/core';
 import {FormBuilder} from '@angular/forms';
 import {FormGroup} from '@angular/forms';
 import {Input} from '@angular/core';
+import {JARoutes} from '../../../routes/ja-routes';
+import {NavigationService} from '../../../services/navigation.service';
 import {OnInit} from '@angular/core';
 import {User} from '../../../models/user';
 import {UserProxy} from '../../../services/proxy/user-proxy.service';
@@ -11,22 +14,24 @@ import {Validators} from '@angular/forms';
 
 @Component({
   selector: 'user-details-form',
-  templateUrl: './user-details-form.component.html',
-  styleUrls: ['./user-details-form.component.scss']
+  templateUrl: './user-details-form.component.html'
 })
 export class UserDetailsFormComponent implements OnInit {
   @Input() public user: User;
   public apiErrors: ApiErrors = new ApiErrors([]);
-  public loadingSubmit: boolean = false;
+  public JARoutes = JARoutes;
+  public loadingSubmit: boolean;
   public passwordForm: FormGroup;
-  public saveFail: boolean;
-  public saveSuccess: boolean;
   public settingsForm: FormGroup;
+  public submitFail: boolean;
+  public submitSuccess: boolean;
 
   constructor(
     private authManager: AuthManager,
-    private userProxy: UserProxy,
-    private formBuilder: FormBuilder
+    private changeDetector: ChangeDetectorRef,
+    private formBuilder: FormBuilder,
+    private navigationService: NavigationService,
+    private userProxy: UserProxy
   ) {
   }
 
@@ -39,9 +44,13 @@ export class UserDetailsFormComponent implements OnInit {
     this.settingsForm = this.formBuilder.group({
       'first_name': [this.user.firstName, Validators.compose([Validators.required, Validators.minLength(2)])],
       'last_name': [this.user.lastName, Validators.compose([Validators.required, Validators.minLength(2)])],
+      'country_of_origin': [this.user.countryOfOriginCode],
+      'language_id': [this.user.languageId, Validators.compose([Validators.required])],
       'email': [this.user.email, Validators.compose([Validators.required])],
+      'gender': [this.user.gender],
       'phone': [this.user.phone, Validators.compose([Validators.required])],
       'street': [this.user.street],
+      'ssn': [this.user.ssn],
       'zip': [this.user.zip],
       'city': [this.user.city],
       'account_clearing_number': [this.user.accountClearingNumber],
@@ -52,32 +61,24 @@ export class UserDetailsFormComponent implements OnInit {
   private initPasswordForm() {
     this.passwordForm = this.formBuilder.group({
       'password': ['', Validators.compose([Validators.minLength(6)])],
-      'old_password': [''],
-      'repeat_password': ['']
+      'old_password': ['']
     });
   }
 
   public passwordsSupplied(): boolean {
-    return (this.passwordForm.value.password || this.passwordForm.value.repeat_password) && true;
-  }
-
-  public passwordsSuppliedAndMisMatch(): boolean {
-    return this.passwordsSupplied() && this.passwordForm.value.password !== this.passwordForm.value.repeat_password &&
-      true;
-  }
-
-  public formValidation(): boolean {
-    return this.settingsForm.valid && this.passwordForm.valid && !this.passwordsSuppliedAndMisMatch() && true;
+    return !!this.passwordForm.value.password;
   }
 
   private handleServerErrors(errors): void {
-    this.saveFail = true;
+    this.submitFail = true;
     this.apiErrors = errors;
+    this.loadingSubmit = false;
+    this.changeDetector.detectChanges();
   }
 
   public onSubmit(): void {
-    this.saveSuccess = false;
-    this.saveFail = false;
+    this.submitSuccess = false;
+    this.submitFail = false;
     this.loadingSubmit = true;
     this.apiErrors = new ApiErrors([]);
 
@@ -90,28 +91,29 @@ export class UserDetailsFormComponent implements OnInit {
               this.authManager.logUser(this.settingsForm.value.email, this.passwordForm.value.password)
                 .then(result => {
                   this.authManager.authenticateIfNeeded().then(() => {
-                    this.passwordForm.value.old_password = '';
-                    this.passwordForm.value.password = '';
-                    this.passwordForm.value.repeat_password = '';
-                    this.saveSuccess = true;
+                    this.passwordForm.controls['old_password'].setValue('');
+                    this.passwordForm.controls['password'].setValue('');
+                    this.submitSuccess = true;
                     this.loadingSubmit = false;
                   });
+                })
+                .catch(errors => {
+                  this.handleServerErrors(errors);
+                  this.navigationService.navigate(JARoutes.login);
                 });
             })
             .catch(errors => {
               this.handleServerErrors(errors);
-              this.loadingSubmit = false;
             });
         } else {
           this.authManager.authenticateIfNeeded().then(() => {
-            this.saveSuccess = true;
+            this.submitSuccess = true;
             this.loadingSubmit = false;
           });
         }
       })
       .catch(errors => {
         this.handleServerErrors(errors);
-        this.loadingSubmit = false;
       });
   }
 }

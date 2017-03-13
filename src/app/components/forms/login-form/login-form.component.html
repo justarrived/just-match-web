@@ -8,52 +8,31 @@
     text="{{'component.loading' | translate}}">
   </sm-loader>
 
-  <div class="field">
-    <sm-input
-      [control]="loginForm.controls['email_or_phone']"
-      [placeholder]="'login.form.email.or.phone.placeholder' | translate"
-      class="left"
-      icon="user"
-      type="text">
-    </sm-input>
-    <input-errors
-      [apiErrors]="apiErrors"
-      [control]="loginForm.controls['email_or_phone']"
-      apiAttribute="email_or_phone">
-    </input-errors>
-  </div>
+  <email-or-phone-input
+    [control]="loginForm.controls['email_or_phone']"
+    [apiErrors]="apiErrors">
+  </email-or-phone-input>
 
-  <div class="field">
-    <sm-input
-      [control]="loginForm.controls['password']"
-      [placeholder]="'login.form.password.placeholder' | translate"
-      class="left"
-      icon="lock"
-      type="password">
-    </sm-input>
-    <input-errors
-      [apiErrors]="apiErrors"
-      [control]="loginForm.controls['password']"
-      apiAttribute="password">
-    </input-errors>
-  </div>
+  <password-input
+    [control]="loginForm.controls['password']"
+    [apiErrors]="apiErrors">
+  </password-input>
 
-
-  <div class="login-form-button-container">
-    <button
-      type="submit"
-      class="login-form-button btn-primary btn-small btn">
-      {{'login.form.submit.button' | translate}}
-    </button>
-    <a
-      class="login-form-link fs-m0"
-      routerLink="{{JARoutes.forgotPassword.url()}}">
-      {{'login.form.forgot.password.link' | translate}}
-    </a>
-    <a
-      class="login-form-link fs-m0"
-      routerLink="{{JARoutes.registerUser.url()}}">
-      {{'login.form.register.link' | translate}}
-    </a>
-  </div>
+  <form-submit-button
+    [buttonText]="'login.form.submit.button' | translate"
+    [submitFail]="submitFail"
+    [submitSuccess]="submitSuccess">
+    <div>
+      <a
+        class="login-form-link"
+        routerLink="{{JARoutes.forgotPassword.url()}}">
+        {{'login.form.forgot.password.link' | translate}}
+      </a>
+      <a
+        class="login-form-link"
+        routerLink="{{JARoutes.registerUser.url()}}">
+        {{'login.form.register.link' | translate}}
+      </a>
+    </div>
+  </form-submit-button>
 </form>

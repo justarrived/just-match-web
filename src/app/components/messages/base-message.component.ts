@@ -4,7 +4,7 @@ import {Input} from '@angular/core';
 @Component({
   selector: 'base-message',
   template: `
-  <div class="ui {{type}} message" [ngClass]="{'icon': icon}">
+  <div class="ui {{type}} visible message" [ngClass]="{'icon': icon}">
     <i *ngIf="icon" [ngClass]="[icon, 'icon']"></i>
     <div class="content">
       <div class="header">

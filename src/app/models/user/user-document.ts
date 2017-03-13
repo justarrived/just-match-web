@@ -1,7 +1,8 @@
+import {Document} from '../document';
+
 export class UserDocument {
   id: string;
-  oneTimeToken: string;
-  documentUrl: string;
+  document: Document;
   category: string;
   createdAt: Date;
 
@@ -10,8 +11,7 @@ export class UserDocument {
       return;
     }
     this.id = jsonObject.id;
-    this.oneTimeToken = jsonObject.one_time_token;
-    this.documentUrl = jsonObject.document_url;
+    this.document = new Document(jsonObject.document);
     this.category = jsonObject.category;
     this.createdAt = new Date(jsonObject.created_at);
   }

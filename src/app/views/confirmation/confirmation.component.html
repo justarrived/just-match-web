@@ -1,30 +1,58 @@
 <div class="confirmation-container">
   <div *ngIf="type === 'contact-message-sent'" class="confirmation-inner-container">
-    <i routerLink="{{JARoutes.contact.url()}}" class="fa fa-times fa-2x confirmation-close-button"></i>
+    <i [routerLink]="JARoutes.contact.url()" class="fa fa-times fa-2x confirmation-close-button"></i>
     <div class="confirmation-icon-container"><i class="confirmation-icon fa fa-envelope fa-5x"></i></div>
     <h3 class="confirmation-title">{{'confirmation.contact.title' | translate}}</h3>
     <p class="confirmation-content"></p>
-    <div class="confirmation-button-container"><a class="btn-primary btn-small btn" routerLink="{{JARoutes.contact.url()}}">{{"confirmation.contact.button" | translate}}</a></div>
+    <div class="confirmation-button-container">
+      <base-button
+        [buttonText]="'confirmation.contact.button' | translate"
+        kind="primary"
+        [routerLink]="JARoutes.contact.url()"
+        size="small">
+      </base-button>
+    </div>
   </div>
   <div *ngIf="type === 'user-applied-for-job'" class="confirmation-inner-container">
-    <i routerLink="{{JARoutes.jobs.url(['1'])}}" class="fa fa-times fa-2x confirmation-close-button"></i>
+    <i [routerLink]="JARoutes.jobs.url(['1'])" class="fa fa-times fa-2x confirmation-close-button"></i>
     <div class="confirmation-icon-container"><i class="confirmation-icon fa fa-check fa-5x"></i></div>
     <h3 class="confirmation-title">{{'confirmation.applied.for.job.title' | translate}}</h3>
     <p class="confirmation-content">{{'confirmation.applied.for.job.description' | translate}}</p>
-    <div class="confirmation-button-container"><a class="btn-primary btn-small btn" routerLink="{{JARoutes.jobs.url(['1'])}}">{{'confirmation.applied.for.job.button' | translate}}</a></div>
+    <div class="confirmation-button-container">
+      <base-button
+        [buttonText]="'confirmation.applied.for.job.button' | translate"
+        kind="primary"
+        [routerLink]="JARoutes.jobs.url(['1'])"
+        size="small">
+      </base-button>
+    </div>
   </div>
   <div *ngIf="type === 'password-reset-link-sent'" class="confirmation-inner-container">
-    <i routerLink="{{JARoutes.forgotPassword.url()}}" class="fa fa-times fa-2x confirmation-close-button"></i>
+    <i [routerLink]="JARoutes.forgotPassword.url()" class="fa fa-times fa-2x confirmation-close-button"></i>
     <div class="confirmation-icon-container"><i class="confirmation-icon fa fa-envelope fa-5x"></i></div>
     <h3 class="confirmation-title">{{'confirmation.password.reset.link.title' | translate}}</h3>
     <p class="confirmation-content">{{'confirmation.password.reset.link.description' | translate}}</p>
-    <div class="confirmation-button-container"><a class="btn-primary btn-small btn" routerLink="{{JARoutes.forgotPassword.url()}}">{{'confirmation.password.reset.link.button' | translate}}</a></div>
+    <div class="confirmation-button-container">
+      <base-button
+        [buttonText]="'confirmation.password.reset.link.button' | translate"
+        kind="primary"
+        [routerLink]="JARoutes.forgotPassword.url()"
+        size="small">
+      </base-button>
+    </div>
   </div>
   <div *ngIf="type === 'password-reset'" class="confirmation-inner-container">
-    <i routerLink="{{JARoutes.login.url()}}" class="fa fa-times fa-2x confirmation-close-button"></i>
+    <i [routerLink]="JARoutes.login.url()" class="fa fa-times fa-2x confirmation-close-button"></i>
     <div class="confirmation-icon-container"><i class="confirmation-icon fa fa-envelope fa-5x"></i></div>
     <h3 class="confirmation-title">{{'confirmation.password.reset.title' | translate}}</h3>
     <p class="confirmation-content">{{'confirmation.password.reset.description' | translate}}</p>
-    <div class="confirmation-button-container"><a class="confirmation-button btn-primary btn-small btn" routerLink="{{JARoutes.login.url()}}">{{'confirmation.password.reset.button' | translate}}</a></div>
+    <div class="confirmation-button-container">
+      <base-button
+        [buttonText]="'confirmation.password.reset.button' | translate"
+        kind="primary"
+        [routerLink]="JARoutes.login.url()"
+        size="small">
+      </base-button>
+    </div>
   </div>
 </div>

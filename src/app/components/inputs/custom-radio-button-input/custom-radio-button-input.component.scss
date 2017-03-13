@@ -1,0 +1,41 @@
+@import '../../../styles/colors';
+@import '../../../styles/typography';
+
+.custom-radio-button-container {
+  display: inline-block;
+  text-align: center;
+  width: 80px;
+
+  .custom-radio-button-label {
+    font-size: $fs-m0;
+    @include wrap-long-words;
+
+    .custom-radio-button-span {
+      display: block;
+    }
+
+    .custom-radio-button-input {
+      display: none;
+
+      + .custom-radio-button-span:before {
+        content: '';
+        display: inline-block;
+        width: 2em;
+        height: 2em;
+        border-radius: 2em;
+        // hard border
+        border: .125em solid $color-primary-cerise;
+        box-shadow: 0 0 0 .1em $color-primary-cerise;
+        // light shadow
+        margin: 0 auto;
+        transition: .5s ease all;
+        // animation here
+      }
+
+      &:checked + .custom-radio-button-span:before {
+        background: $color-primary-cerise;
+        box-shadow: 0 0 0 .1em $color-primary-cerise;
+      }
+    }
+  }
+}

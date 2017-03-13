@@ -1,7 +1,7 @@
 <form
+  (ngSubmit)="onSubmit()"
   #form="ngForm"
-  class="ui form"
-  (ngSubmit)="onSubmit()">
+  class="ui form">
 
   <sm-loader
     [complete]="!loadingSubmit"
@@ -9,106 +9,97 @@
     text="{{'component.loading' | translate}}">
   </sm-loader>
 
-  <h3 class="ui dividing header">
+  <h3 class="ui horizontal divider pink header">
+    <i class="user icon"></i>
     {{'user.settings.form.personal.info.header' | translate}}
   </h3>
 
-  <user-first-name-input
-    [control]="settingsForm.controls['first_name']"
-    [apiErrors]="apiErrors">
-  </user-first-name-input>
+  <first-name-input
+    [apiErrors]="apiErrors"
+    [control]="settingsForm.controls['first_name']">
+  </first-name-input>
 
-  <user-last-name-input
-    [control]="settingsForm.controls['last_name']"
-    [apiErrors]="apiErrors">
-  </user-last-name-input>
+  <last-name-input
+    [apiErrors]="apiErrors"
+    [control]="settingsForm.controls['last_name']">
+  </last-name-input>
 
-  <user-email-input
-    [control]="settingsForm.controls['email']"
-    [apiErrors]="apiErrors">
-  </user-email-input>
+  <email-input
+    [apiErrors]="apiErrors"
+    [control]="settingsForm.controls['email']">
+  </email-input>
 
-  <user-phone-input
-    [control]="settingsForm.controls['phone']"
-    [apiErrors]="apiErrors">
-  </user-phone-input>
+  <phone-input
+    [apiErrors]="apiErrors"
+    [control]="settingsForm.controls['phone']">
+  </phone-input>
 
-  <h3 class="ui dividing header">
+  <ssn-input
+    [apiErrors]="apiErrors"
+    [control]="settingsForm.controls['ssn']">
+  </ssn-input>
+
+  <gender-input
+    [apiErrors]="apiErrors"
+    [control]="settingsForm.controls['gender']">
+  </gender-input>
+
+  <country-of-origin-input
+    [apiErrors]="apiErrors"
+    [control]="settingsForm.controls['country_of_origin']">
+  </country-of-origin-input>
+
+  <h3 class="ui horizontal divider pink header">
+    <i class="marker icon"></i>
     {{'user.settings.form.address.header' | translate}}
   </h3>
 
-  <user-address-input
-    [streetControl]="settingsForm.controls['street']"
-    [zipControl]="settingsForm.controls['zip']"
+  <address-input
+    [apiErrors]="apiErrors"
     [cityControl]="settingsForm.controls['city']"
-    [apiErrors]="apiErrors">
-  </user-address-input>
+    [streetControl]="settingsForm.controls['street']"
+    [zipControl]="settingsForm.controls['zip']">
+  </address-input>
 
-  <h3 class="ui dividing header">
-    {{'user.settings.form.change.password.header' | translate}}
+  <h3 class="ui horizontal divider pink header">
+    <i class="money icon"></i>
+    {{'user.settings.form.bank.details.header' | translate}}
   </h3>
 
-  <div class="field">
-    <sm-input
-      [control]="passwordForm.controls['old_password']"
-      [label]="'user.settings.form.new.password.label' | translate"
-      [placeholder]="'user.settings.form.old.password.placeholder' | translate"
-      class="left"
-      icon="lock"
-      type="password">
-    </sm-input>
-    <sm-input
-      [control]="passwordForm.controls['password']"
-      [label]="'user.settings.form.new.password.label' | translate"
-      [placeholder]="'user.settings.form.new.password.placeholder' | translate"
-      class="left"
-      icon="lock"
-      type="password">
-    </sm-input>
-    <sm-input
-      [control]="passwordForm.controls['repeat_password']"
-      [label]="'user.settings.form.new.password.label' | translate"
-      [placeholder]="'user.settings.form.repeat.password.placeholder' | translate"
-      class="left"
-      icon="lock"
-      type="password">
-    </sm-input>
-    <input-errors
-      apiAttribute="password"
-      [control]="passwordForm.controls['password']"
-      [apiErrors]="apiErrors">
-    </input-errors>
-    <input-error
-      [visible]="passwordsSuppliedAndMisMatch()"
-      [label]="'user.settings.form.repeat.password.validation.mismatch' | translate">
-    </input-error>
-  </div>
-
-  <h3 class="ui dividing header">{{'user.settings.form.bank.details.header' | translate}}</h3>
-
-  <user-bank-account-input
+  <bank-account-input
     [accountClearingNumberControl]="settingsForm.controls['account_clearing_number']"
     [accountNumberControl]="settingsForm.controls['account_number']"
     [apiErrors]="apiErrors">
-  </user-bank-account-input>
+  </bank-account-input>
 
-  <div class="user-details-form-button-container">
-    <div
-      *ngIf="saveFail"
-      class="user-details-form-error-message">
-      {{'user.settings.form.submit.fail' | translate}}
-    </div>
-    <div
-      *ngIf="saveSuccess"
-      class="user-details-form-save-message">
-      {{'user.settings.form.submit.success' | translate}}
-    </div>
-    <button
-      class="user-details-form-button"
-      *ngIf="!loadingSubmit"
-      type="submit"
-      class="btn-primary btn-small btn">
-      {{'user.settings.form.submit.button' | translate}}
-    </button>
-  </div>
+  <h3 class="ui horizontal divider pink header">
+    <i class="settings icon"></i>
+    {{'user.settings.form.settings.header' | translate}}
+  </h3>
+
+  <system-language-input
+    [apiErrors]="apiErrors"
+    [control]="settingsForm.controls['language_id']">
+  </system-language-input>
+
+  <h3 class="ui horizontal divider pink header">
+    <i class="lock icon"></i>
+    {{'user.settings.form.change.password.header' | translate}}
+  </h3>
+
+  <old-password-input
+    [apiErrors]="apiErrors"
+    [control]="passwordForm.controls['old_password']">
+  </old-password-input>
+
+  <new-password-input
+    [apiErrors]="apiErrors"
+    [control]="passwordForm.controls['password']">
+  </new-password-input>
+
+  <form-submit-button
+    [buttonText]="'user.settings.form.submit.button' | translate"
+    [submitFail]="submitFail"
+    [submitSuccess]="submitSuccess">
+  </form-submit-button>
 </form>

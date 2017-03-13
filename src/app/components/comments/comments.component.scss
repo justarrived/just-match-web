@@ -51,7 +51,7 @@
 
         .comment-meta-data-user-name {
           @include truncate-owerflowing-text;
-          opacity: 0.7;
+          opacity: .7;
           font-weight: bold;
         }
 
@@ -59,7 +59,7 @@
           margin-left: auto;
           flex-shrink: 0;
           padding-left: 10px;
-          opacity: 0.3;
+          opacity: .3;
 
         }
       }
@@ -81,7 +81,7 @@
   max-width: 600px;
   margin-left: auto;
   margin-right: auto;
-  padding-bottom: 0.2em;
+  padding-bottom: .2em;
 
   &.moving {
     width: 100%;

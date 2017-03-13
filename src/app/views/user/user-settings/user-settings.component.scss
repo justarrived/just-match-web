@@ -1,129 +1,23 @@
 @import '../../../styles/colors';
-@import '../../../styles/typography';
 
-.user-profile-container {
-  .user-profile-subheader-container {
-    background: $color-gray-500;
-    color: white;
-    padding: 20px;
+.user-profile-tab-container {
+  display: flex;
+
+  .user-profile-header-tab {
+    background-color: $default-bg-color;
+    border-bottom: 4px solid $color-gray-50;
+    cursor: pointer;
+    padding: 8px;
     text-align: center;
 
-    .user-profile-subheader-title {
-      margin-bottom: 20px;
+    .user-profile-tab-header {
+      color: $color-gray-200;
+      font-size: 18px;
+      font-weight: 700;
     }
 
-    .user-profile-subheader-information {
-      opacity: 0.8;
-    }
-
-    .user-profile-subheader-info-container {
-
-      .user-profile-subheader-info-image-container {
-        background-color: rgba(255, 255, 255, 0.1);
-        border-radius: 50%;
-        display: inline-block;
-        height: 85px;
-        margin-right: 20px;
-        overflow: hidden;
-        position: relative;
-        width: 85px;
-
-        .user-profile-subheader-info-image-loading {
-          display: table-cell;
-          vertical-align: middle;
-        }
-
-        &:hover {
-          background-color: rgba(255, 255, 255, 0.5);
-        }
-
-        .file {
-          cursor: pointer;
-          height: 85px;
-          opacity: 0;
-          width: 85px;
-
-          &[disabled] {
-            pointer-events: none;
-          }
-        }
-
-        .icon-camera {
-          bottom: 0;
-          display: table;
-          height: 85px;
-          left: 0;
-          pointer-events: none;
-          position: absolute;
-          right: 0;
-          top: 0;
-          width: 85px;
-
-          .fa-camera {
-            color: rgba(255, 255, 255, 0.7);
-            display: table-cell;
-            font-size: 35px;
-            vertical-align: middle;
-          }
-        }
-
-        .user-info-image {
-          bottom: 0;
-          height: 85px;
-          left: 0;
-          object-fit: cover;
-          pointer-events: none;
-          position: absolute;
-          right: 0;
-          top: 0;
-          width: 85px;
-        }
-      }
-
-      .user-profile-subheader-info-name-container {
-        @include wrap-long-words;
-        align-items: center;
-        display: inline-block;
-        flex-wrap: wrap;
-        height: 85px;
-        margin: 0 auto;
-        max-width: 200px;
-        vertical-align: middle;
-      }
-
-      .user-profile-subheader-info-success-msg {
-        color: green;
-        margin-top: 8px;
-        width: 100%;
-      }
-
-      .user-profile-subheader-info-error-msg {
-        color: $color-cerise-500;
-        margin-top: 8px;
-        width: 100%;
-      }
-    }
-  }
-
-  .user-profile-tab-container {
-    display: flex;
-
-    .user-profile-header-tab {
-      background-color: $default-bg-color;
-      border-bottom: 4px solid $color-gray-50;
-      cursor: pointer;
-      padding: 8px;
-      text-align: center;
-
-      .user-profile-tab-header {
-        color: $color-gray-200;
-        font-size: 18px;
-        font-weight: 700;
-      }
-
-      &.selected {
-        border-bottom: 4px solid $color-primary-cerise;
-      }
+    &.selected {
+      border-bottom: 4px solid $color-primary-cerise;
     }
   }
 }

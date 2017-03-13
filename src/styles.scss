@@ -1,5 +1,4 @@
 @import './app/styles/bootstrap-modifications';
-@import './app/styles/buttons';
 @import './app/styles/colors';
 @import './app/styles/dimensions';
 @import './app/styles/semantic-ui-modifications';
@@ -20,7 +19,7 @@ body {
     &.disabled {
       box-shadow: none;
       cursor: not-allowed;
-      opacity: 0.95;
+      opacity: .95;
       pointer-events: none;
     }
   }

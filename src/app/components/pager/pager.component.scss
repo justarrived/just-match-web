@@ -2,7 +2,7 @@
 
 
 @mixin navigationButtonProperties($text-alignment, $primary-color) {
-  padding-top: 0.4em;
+  padding-top: .4em;
   text-align: $text-alignment;
   color: $primary-color;
   > i {
