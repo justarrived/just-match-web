@@ -34,18 +34,18 @@ import {Output} from '@angular/core';
           {{description}}
         </div>
       </div>
-      <div class="extra content">
-        <label
-          [for]="imageUniqueName"
-          class="circular fluid ui pink icon button">
-          <i class="icon upload"></i>
-        </label>
-        <input
-          (change)="onImageFilenameChange($event)"
-          [id]="imageUniqueName"
+      <div
+        [style.padding-bottom]="0"
+        [style.padding-top]="0"
+        class="extra content">
+        <file-input-button
+          (onChange)="onImageFilenameChange($event)"
+          [fluid]="true"
           accept="image/jpeg,image/jpg,image/gif,image/png"
-          style="display: none"
-          type="file"/>
+          icon="upload"
+          kind="primary"
+          size="small">
+        </file-input-button>
       </div>
     </div>`
 })
@@ -62,6 +62,7 @@ export class UploadImageCardComponent {
   @Output() public onFileSelect: EventEmitter<any> = new EventEmitter();
 
   onImageFilenameChange(event) {
+    console.log(1);
     const file = event.srcElement.files[0];
     if (!file) {
       return;

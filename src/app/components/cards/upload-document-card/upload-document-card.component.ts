@@ -42,17 +42,17 @@ import {UserDocument} from '../../../models/user/user-document';
         </div>
       </div>
     </div>
-    <div class="extra content">
-      <label
-        [for]="documentUniqueName"
-        class="circular fluid ui pink icon button">
-        <i class="icon upload"></i>
-      </label>
-      <input
-        (change)="onDocumentFilenameChange($event)"
-        [id]="documentUniqueName"
-        style="display: none"
-        type="file"/>
+    <div
+      [style.padding-bottom]="0"
+      [style.padding-top]="0"
+      class="extra content">
+      <file-input-button
+        (onChange)="onDocumentFilenameChange($event)"
+        [fluid]="true"
+        icon="upload"
+        kind="primary"
+        size="small">
+      </file-input-button>
     </div>
   </div>`
 })

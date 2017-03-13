@@ -15,7 +15,7 @@ import {Input} from '@angular/core';
     </button>`
 })
 export class BaseButtonComponent {
-  @Input() buttonText: string = 'default';
+  @Input() buttonText: string = '';
   @Input() fluid: boolean;
   @Input() kind: string = 'primary'; // One of ['primary', 'primary-light', 'secondary', 'secondary-light', 'inactive-light', 'inactive-dark']
   @Input() icon: string;
