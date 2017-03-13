@@ -82,7 +82,7 @@ $job-card-border-radius: 8px;
           background: $color-primary-cerise;
           padding: 10px;
           font-weight: 500;
-          /* TODO: Jobs border radius variable */
+          // TODO: Jobs border radius variable
           border-radius: 0 0 $job-card-border-radius $job-card-border-radius;
           text-align: center;
         }
@@ -139,7 +139,7 @@ $job-card-border-radius: 8px;
       width: 100%;
 
       &:hover {
-        opacity: 0.5;
+        opacity: .5;
       }
 
       .home-jobs-applied-for-job-item {
@@ -171,11 +171,11 @@ $job-card-border-radius: 8px;
     flex-wrap: wrap;
 
     .home-instructions-inner-container {
-      padding: 56px;
-      text-align: center;
-      color: $white;
       position: relative;
       width: 100%;
+      padding: 56px;
+      color: $white;
+      text-align: center;
       @media screen and (min-width: $sm-device-width) {
         width: 50%;
       }

@@ -1,7 +1,7 @@
 @import '../../../styles/colors';
 @import '../../../styles/typography';
 
-/*GENERAL*/
+// GENERAL
 .btn {
   border-radius: 30px;
   border: 2px solid;
@@ -15,11 +15,11 @@
   text-transform: uppercase;
   @include truncate-owerflowing-text;
 }
-/*FLUID*/
+// FLUID
 .btn.fluid {
   width: 100%;
 }
-/*SIZE*/
+// SIZE
 .btn.xsmall {
   font-size: $fs-s;
   padding: 0 10px;
@@ -44,7 +44,7 @@
   padding: 8px 35px;
   min-width: 180px;
 }
-/*PRIMARY*/
+// PRIMARY
 .btn.primary {
   color: $white;
   background-color: $color-cerise-500;
@@ -60,7 +60,7 @@
   background-color: $color-cerise-600;
   border-color: $color-cerise-500;
 }
-/*PRIMARY LIGHT*/
+// PRIMARY LIGHT
 .btn.primary-light {
   color: $color-cerise-500;
   background-color: $white;
@@ -78,7 +78,7 @@
   background-color: $color-cerise-600;
   border-color: $color-cerise-500;
 }
-/*SECONDARY*/
+// SECONDARY
 .btn.secondary {
   color: $color-cerise-500;
   background-color: transparent;
@@ -96,7 +96,7 @@
   background-color: $color-cerise-600;
   border-color: $color-cerise-600;
 }
-/*SECONDARY LIGHT*/
+// SECONDARY LIGHT
 .btn.secondary-light {
   color: $white;
   background-color: transparent;
@@ -114,15 +114,15 @@
   background-color: $color-cerise-600;
   border-color: $color-cerise-600;
 }
-/*INACTIVE BUTTONS*/
+// INACTIVE BUTTONS
 .btn.inactive-light {
-  color: rgba(255, 255, 255, 0.5);
-  background-color: rgba(255, 255, 255, 0.2);
-  border-color: rgba(255, 255, 255, 0.15);
+  color: rgba(255, 255, 255, .5);
+  background-color: rgba(255, 255, 255, .2);
+  border-color: rgba(255, 255, 255, .15);
 }
 
 .btn.inactive-dark {
-  color: rgba(34, 37, 49, 0.4);
-  background-color: rgba(34, 37, 49, 0.1);
-  border-color: rgba(34, 37, 49, 0.05);
+  color: rgba(34, 37, 49, .4);
+  background-color: rgba(34, 37, 49, .1);
+  border-color: rgba(34, 37, 49, .05);
 }

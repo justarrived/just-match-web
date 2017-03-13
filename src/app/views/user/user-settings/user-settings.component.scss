@@ -13,7 +13,7 @@
     }
 
     .user-profile-subheader-information {
-      opacity: 0.8;
+      opacity: .8;
     }
 
     .user-profile-subheader-info-container {
@@ -34,7 +34,7 @@
         }
 
         &:hover {
-          background-color: rgba(255, 255, 255, 0.5);
+          background-color: rgba(255, 255, 255, .5);
         }
 
         .file {
@@ -60,7 +60,7 @@
           width: 85px;
 
           .fa-camera {
-            color: rgba(255, 255, 255, 0.7);
+            color: rgba(255, 255, 255, .7);
             display: table-cell;
             font-size: 35px;
             vertical-align: middle;
