@@ -1,0 +1,58 @@
+@import '../../../styles/colors';
+
+.app-navbar-container {
+  width: 100%;
+  height: 54px;
+  border-radius: 0;
+  color: $color-gray-200;
+  background-color: #f7f7f9;
+
+  .app-navbar-inner-container {
+    display: flex;
+    height: 100%;
+    flex-wrap: nowrap;
+
+    .app-navbar-home {
+      display: flex;
+      flex-wrap: nowrap;
+      align-items: center;
+      margin-left: 15px;
+
+      .app-navbar-logo-image {
+        max-width: 165px;
+      }
+    }
+
+    .app-navbar-menus {
+      align-items: center;
+      display: flex;
+      margin-left: auto;
+      margin-right: 15px;
+      flex-wrap: nowrap;
+
+      .app-navbar-menu-icon, .app-navbar-language-icon{
+        cursor: pointer;
+      }
+
+      .app-navbar-language-icon {
+        font-size: 11px;
+        border-radius: 23px;
+        border-width: 2px;
+        border-style: solid;
+        border-color: $color-gray-200;
+        padding: 0 .5em;
+        text-align: center;
+        vertical-align: center;
+        line-height: 22px;
+        margin: auto;
+        margin-right: 12px;
+        text-transform: uppercase;
+        user-select: none;
+
+        .app-navbar-language-icon-arrow {
+          margin-left: 5px;
+        }
+      }
+    }
+  }
+}

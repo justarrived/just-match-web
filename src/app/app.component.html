@@ -1,25 +1,12 @@
 <div class="navbar-fixed-top" [ngStyle]="(isNavigationMenuVisible || isLanguageMenuVisible) && {'height': '100%'}">
   <div class="navbar-container">
-    <nav class="header navbar-light bg-faded">
-      <div class="row navbar-container">
-        <div class="navbar-home row flex-items-xs-middle">
-          <a routerLink="{{JARoutes.home.url()}}">
-            <img class="logo-img" src="/assets/images/logo.png" alt="Just Arrived" />
-          </a>
-        </div>
-        <div class="navbar-menus right row flex-items-xs-middle">
-          <div (click)="onLanguageMenuButtonClick()" class="button-container">
-            <div class="nav-language-icon">
-              {{selectedLanguage.languageCode}}
-              <div class="fa lang-arrow" [ngClass]="[languageBtnIconClassName]"></div>
-            </div>
-          </div>
-          <div (click)="onNavigationMenuButtonClick()" class="button-container">
-            <span class="fa fa-bars fa-2x menu-icon"></span>
-          </div>
-        </div>
-      </div>
-    </nav>
+    <app-navbar
+      (onLanguageMenuButtonClick)="onLanguageMenuButtonClick()"
+      (onNavigationMenuButtonClick)="onNavigationMenuButtonClick()"
+      [isLanguageMenuVisible]="isLanguageMenuVisible"
+      [isNavigationMenuVisible]="isNavigationMenuVisible"
+      [selectedLanguage]="selectedLanguage">
+    </app-navbar>
 
     <div class="menu-overlay-container" *ngIf="isSideMenuVisible" (click)="isNavigationMenuVisible = false; isLanguageMenuVisible = false;">
       <div class="menu-container">

@@ -6,6 +6,7 @@ import {ApiCall} from './services/api-call.service';
 import {ApiErrorsComponent} from './components/form-errors/api-errors/api-errors.component';
 import {APP_BASE_HREF} from '@angular/common';
 import {AppComponent} from './app.component';
+import {AppNavbarComponent} from './components/navbars/app-navbar/app-navbar.component';
 import {AppRoutingModule} from './app.routing.module';
 import {AppTranslateModule} from './app.translate.module';
 import {AtUndInputComponent} from './components/inputs/at-und-input/at-und-input.component';
@@ -163,6 +164,7 @@ export class RavenErrorHandler implements ErrorHandler {
     AddressInputComponent,
     ApiErrorsComponent,
     AppComponent,
+    AppNavbarComponent,
     AtUndInputComponent,
     AutosizeDirective,
     BankAccountInputComponent,
