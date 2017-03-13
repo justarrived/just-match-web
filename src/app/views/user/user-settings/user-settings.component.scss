@@ -3,7 +3,7 @@
 
 .user-profile-container {
   .user-profile-subheader-container {
-    background: $color-gray-500;
+    background: $color-cerise-500;
     color: white;
     padding: 20px;
     text-align: center;
@@ -19,7 +19,7 @@
     .user-profile-subheader-info-container {
 
       .user-profile-subheader-info-image-container {
-        background-color: rgba(255, 255, 255, 0.1);
+        background-color: $color-gray-100;
         border-radius: 50%;
         display: inline-block;
         height: 85px;

@@ -15,7 +15,9 @@ import {Input} from '@angular/core';
       [header]="'button.form.submit.success' | translate"
       icon="hand spock">
     </success-message>
-    <div class="ui basic center aligned segment">
+    <div
+      [style.padding]="0"
+      class="ui basic center aligned segment">
       <base-button
         [buttonText]="buttonText"
         [fluid]="false"
