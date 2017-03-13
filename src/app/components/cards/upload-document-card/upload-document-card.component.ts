@@ -37,7 +37,7 @@ import {UserDocument} from '../../../models/user/user-document';
             {{document.createdAt | date: 'yyyy-MM-dd HH:mm'}}
           </a>
         </div>
-        <div *ngIf="!documents">
+        <div *ngIf="documents.length < 1">
           {{'card.document.upload.empty.documents' | translate}}
         </div>
       </div>

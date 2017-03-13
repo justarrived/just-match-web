@@ -57,7 +57,7 @@
     [centered]="true"
     [user]="user"
     [showLabel]="true"
-    *ngIf="profileForm.value.current_status !== 'asylum_seeker'">
+    *ngIf="profileForm.value.current_status && profileForm.value.current_status !== 'asylum_seeker'">
   </personal-id-input>
 
   <residence-permit-front-input
@@ -137,16 +137,16 @@
     {{'user.profile.form.work.experience.section.header' | translate}}
   </h3>
 
-  <job-experience-input
-    [control]="profileForm.controls['job_experience']"
-    [apiErrors]="apiErrors">
-  </job-experience-input>
-
   <resume-input
     [centered]="true"
     [user]="user"
     [showLabel]="true">
   </resume-input>
+
+  <job-experience-input
+    [control]="profileForm.controls['job_experience']"
+    [apiErrors]="apiErrors">
+  </job-experience-input>
 
   <form-submit-button
     [submitFail]="submitFail"
