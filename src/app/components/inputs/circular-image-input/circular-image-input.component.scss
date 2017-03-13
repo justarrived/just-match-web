@@ -1,5 +1,11 @@
 .ui.image {
   object-fit: cover;
+  cursor: pointer;
+
+  &.uploading {
+    cursor: none;
+    opacity: 0.4;
+  }
 
   &.mini {
     height: 35px;

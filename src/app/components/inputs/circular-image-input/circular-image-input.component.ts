@@ -17,9 +17,8 @@ import {ViewChild} from '@angular/core';
     </div>
     <img
       (click)="onImageClick()"
-      [ngClass]="{'centered': centered}"
-      [src]="imageUrl || '/assets/images/generic-logo.png'"
-      [style.cursor]="'pointer'"
+      [ngClass]="{'centered': centered, 'uploading': uploadingImage}"
+      [src]="imageUrl || placeholderImageUrl || '/assets/images/image.png'"
       class="ui {{size}} circular bordered image">
     <input
       #fileInput
@@ -31,6 +30,7 @@ import {ViewChild} from '@angular/core';
 export class CircularImageInputComponent {
   @Input() public centered: boolean;
   @Input() public imageUrl: string;
+  @Input() public placeholderImageUrl: string;
   @Input() public imageSaveFail: boolean;
   @Input() public imageSaveSuccess: boolean;
   @Input() public uploadingImage: boolean;

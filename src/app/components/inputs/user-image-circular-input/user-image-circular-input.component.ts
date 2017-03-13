@@ -13,6 +13,7 @@ import {UserProxy} from '../../../services/proxy/user-proxy.service';
         [imageSaveFail]="imageSaveFail"
         [imageSaveSuccess]="imageSaveSuccess"
         [imageUrl]="this.user && this.user[this.imageType + '_image']?.mediumImageUrl"
+        [placeholderImageUrl]="placeholderImageUrl"
         [size]="size"
         [uploadingImage]="uploadingImage">
       </circular-image-input>`
@@ -20,6 +21,7 @@ import {UserProxy} from '../../../services/proxy/user-proxy.service';
 export class UserImageCircularInputComponent {
   @Input() public centered: boolean;
   @Input() public imageType: string;
+  @Input() public placeholderImageUrl: string;
   @Input() public size: string = 'medium'; // One of ['mini', 'tiny', 'small', 'medium', 'large', 'big', 'huge', massive]
   @Input() public user: User;
   public imageSaveFail: boolean;

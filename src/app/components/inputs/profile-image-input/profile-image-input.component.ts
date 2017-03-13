@@ -9,7 +9,8 @@ import {User} from '../../../models/user';
     [centered]="centered"
     [size]="size"
     [user]="user"
-    imageType="profile">
+    imageType="profile"
+    placeholderImageUrl="/assets/images/placeholder-profile-image.png">
   </user-image-circular-input>
   `
 })
