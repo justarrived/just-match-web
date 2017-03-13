@@ -28,12 +28,6 @@ export class UserProfileFormComponent implements OnInit {
   public submitFail: boolean;
   public submitSuccess: boolean;
 
-  resumeDocumentStatusObject: any = {
-    documentSaveSuccess: false,
-    documentSaveFail: false,
-    uploadingDocument: false
-  };
-
   constructor(
     private authManager: AuthManager,
     private changeDetector: ChangeDetectorRef,
@@ -47,7 +41,7 @@ export class UserProfileFormComponent implements OnInit {
 
     this.authManager.getUserChangeEmmiter().subscribe(user => {
       this.user = user;
-      if (user !== null) {
+      if (user) {
         this.initForm();
       }
     });
@@ -68,33 +62,6 @@ export class UserProfileFormComponent implements OnInit {
       'user_languages': [this.user.userLanguages.slice()],
       'user_skills': [this.user.userSkills.slice()]
     });
-  }
-
-  public onDocumentFilenameChange(event, type, uploadStatusObject): void {
-    uploadStatusObject.documentSaveFail = false;
-    uploadStatusObject.documentSaveSuccess = false;
-    uploadStatusObject.uploadingDocument = true;
-    const file = event.srcElement.files[0];
-    if (!file) {
-      return;
-    }
-    this.userProxy.saveDocument(file).then((document) => {
-      this.userProxy.saveUserDocument(this.user.id, document, type).then(userDocument => {
-        this.user[type + '_document'] = userDocument;
-        uploadStatusObject.documentSaveSuccess = true;
-        uploadStatusObject.uploadingDocument = false;
-      }).catch(errors => {
-        uploadStatusObject.documentSaveFail = true;
-        uploadStatusObject.uploadingDocument = false;
-      });
-    }).catch(errors => {
-      uploadStatusObject.documentSaveFail = true;
-      uploadStatusObject.uploadingDocument = false;
-    });
-  }
-
-  public isAllowedSSNChar(charCode): boolean {
-    return isValidSSNCharCode(charCode);
   }
 
   private handleServerErrors(errors): void {
