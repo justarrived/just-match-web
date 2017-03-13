@@ -23,7 +23,7 @@ import {Input} from '@angular/core';
         [fluid]="false"
         [icon]="icon"
         buttonType="submit"
-        kind="primary"
+        kind="secondary"
         size="medium">
       </base-button>
       <ng-content></ng-content>
