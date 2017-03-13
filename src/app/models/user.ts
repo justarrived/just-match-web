@@ -24,6 +24,7 @@ export class User {
   public email: string;
   public firstName: string;
   public frilansFinansPaymentDetails: boolean;
+  public gender: string;
   public id: string;
   public images: UserImage[];
   public justArrivedStaffing: boolean;
@@ -73,6 +74,7 @@ export class User {
     this.email = jsonObject.email;
     this.firstName = jsonObject.first_name;
     this.frilansFinansPaymentDetails = jsonObject.frilans_finans_payment_details;
+    this.gender = jsonObject.gender;
     this.id = jsonObject.id;
     this.images = map(jsonObject.user_images, userImage => new UserImage(userImage));
     this.justArrivedStaffing = jsonObject.just_arrived_staffing;

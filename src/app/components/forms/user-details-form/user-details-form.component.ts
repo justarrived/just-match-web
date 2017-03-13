@@ -47,6 +47,7 @@ export class UserDetailsFormComponent implements OnInit {
       'country_of_origin': [this.user.countryOfOriginCode],
       'language_id': [this.user.languageId, Validators.compose([Validators.required])],
       'email': [this.user.email, Validators.compose([Validators.required])],
+      'gender': [this.user.gender],
       'phone': [this.user.phone, Validators.compose([Validators.required])],
       'street': [this.user.street],
       'ssn': [this.user.ssn],

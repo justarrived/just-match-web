@@ -18,7 +18,7 @@ import {UserProxy} from '../../../services/proxy/user-proxy.service';
       [label]="'input.gender.label' | translate"
       [placeholder]="'input.gender.placeholder' | translate"
       apiAttribute="gender"
-      dataItemLabelProoerty="name"
+      dataItemLabelProoerty="translated.name"
       dataItemValueProoerty="id">
     </select-dropdown-input>`
 })

@@ -1,7 +1,7 @@
 <form
+  (ngSubmit)="onSubmit()"
   #form="ngForm"
-  class="ui form"
-  (ngSubmit)="onSubmit()">
+  class="ui form">
 
   <sm-loader
     [complete]="!loadingSubmit"
@@ -15,23 +15,23 @@
   </h3>
 
   <first-name-input
-    [control]="settingsForm.controls['first_name']"
-    [apiErrors]="apiErrors">
+    [apiErrors]="apiErrors"
+    [control]="settingsForm.controls['first_name']">
   </first-name-input>
 
   <last-name-input
-    [control]="settingsForm.controls['last_name']"
-    [apiErrors]="apiErrors">
+    [apiErrors]="apiErrors"
+    [control]="settingsForm.controls['last_name']">
   </last-name-input>
 
   <email-input
-    [control]="settingsForm.controls['email']"
-    [apiErrors]="apiErrors">
+    [apiErrors]="apiErrors"
+    [control]="settingsForm.controls['email']">
   </email-input>
 
   <phone-input
-    [control]="settingsForm.controls['phone']"
-    [apiErrors]="apiErrors">
+    [apiErrors]="apiErrors"
+    [control]="settingsForm.controls['phone']">
   </phone-input>
 
   <ssn-input
@@ -39,9 +39,14 @@
     [control]="settingsForm.controls['ssn']">
   </ssn-input>
 
+  <gender-input
+    [apiErrors]="apiErrors"
+    [control]="settingsForm.controls['gender']">
+  </gender-input>
+
   <country-of-origin-input
-    [control]="settingsForm.controls['country_of_origin']"
-    [apiErrors]="apiErrors">
+    [apiErrors]="apiErrors"
+    [control]="settingsForm.controls['country_of_origin']">
   </country-of-origin-input>
 
   <h3 class="ui horizontal divider pink header">
@@ -50,10 +55,10 @@
   </h3>
 
   <address-input
-    [streetControl]="settingsForm.controls['street']"
-    [zipControl]="settingsForm.controls['zip']"
+    [apiErrors]="apiErrors"
     [cityControl]="settingsForm.controls['city']"
-    [apiErrors]="apiErrors">
+    [streetControl]="settingsForm.controls['street']"
+    [zipControl]="settingsForm.controls['zip']">
   </address-input>
 
   <h3 class="ui horizontal divider pink header">
@@ -73,8 +78,8 @@
   </h3>
 
   <system-language-input
-    [control]="settingsForm.controls['language_id']"
-    [apiErrors]="apiErrors">
+    [apiErrors]="apiErrors"
+    [control]="settingsForm.controls['language_id']">
   </system-language-input>
 
   <h3 class="ui horizontal divider pink header">
@@ -83,18 +88,18 @@
   </h3>
 
   <old-password-input
-    [control]="passwordForm.controls['old_password']"
-    [apiErrors]="apiErrors">
+    [apiErrors]="apiErrors"
+    [control]="passwordForm.controls['old_password']">
   </old-password-input>
 
   <new-password-input
-    [control]="passwordForm.controls['password']"
-    [apiErrors]="apiErrors">
+    [apiErrors]="apiErrors"
+    [control]="passwordForm.controls['password']">
   </new-password-input>
 
   <form-submit-button
+    [buttonText]="'user.settings.form.submit.button' | translate"
     [submitFail]="submitFail"
-    [submitSuccess]="submitSuccess"
-    [buttonText]="'user.settings.form.submit.button' | translate">
+    [submitSuccess]="submitSuccess">
   </form-submit-button>
 </form>
