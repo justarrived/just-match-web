@@ -1,0 +1,35 @@
+.ui.image {
+  object-fit: cover;
+
+  &.mini {
+    height: 35px;
+  }
+
+  &.tiny {
+    height: 80px;
+  }
+
+  &.small {
+    height: 150px;
+  }
+
+  &.medium {
+    height: 300px;
+  }
+
+  &.large {
+    height: 450px;
+  }
+
+  &.big {
+    height: 600px;
+  }
+
+  &.huge {
+    height: 800px;
+  }
+
+  &.massive {
+    height: 960px;
+  }
+}

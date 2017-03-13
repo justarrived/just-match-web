@@ -30,8 +30,8 @@ import {Input} from '@angular/core';
     </div>`
 })
 export class FormSubmitButtonComponent {
-  @Input() buttonText: string;
-  @Input() icon: string;
-  @Input() submitFail: boolean;
-  @Input() submitSuccess: boolean;
+  @Input() public buttonText: string;
+  @Input() public icon: string;
+  @Input() public submitFail: boolean;
+  @Input() public submitSuccess: boolean;
 }

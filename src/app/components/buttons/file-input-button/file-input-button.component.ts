@@ -27,14 +27,14 @@ import {ViewChild} from '@angular/core';
       type="file"/>`
 })
 export class FileInputButtonComponent {
-  @Input() accept: string;
-  @Input() buttonText: string;
-  @Input() fluid: boolean;
-  @Input() icon: string;
-  @Input() kind: string = 'primary'; // One of ['primary', 'primary-light', 'secondary', 'secondary-light', 'inactive-light', 'inactive-dark']
-  @Input() size: string = 'medium'; // One of ['xsmall', 'small', 'medium', 'large']
-  @Output() onChange: EventEmitter<any> = new EventEmitter();
-  @ViewChild('fileInput') fileInput: ElementRef;
+  @Input() public accept: string;
+  @Input() public buttonText: string;
+  @Input() public fluid: boolean;
+  @Input() public icon: string;
+  @Input() public kind: string = 'primary'; // One of ['primary', 'primary-light', 'secondary', 'secondary-light', 'inactive-light', 'inactive-dark']
+  @Input() public size: string = 'medium'; // One of ['xsmall', 'small', 'medium', 'large']
+  @Output() public onChange: EventEmitter<any> = new EventEmitter();
+  @ViewChild('fileInput') public fileInput: ElementRef;
 
   constructor(
     private rendered: Renderer

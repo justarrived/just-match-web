@@ -12,8 +12,7 @@ import {User} from '../../../models/user';
     [showLabel]="showLabel"
     [subHeader]="'input.residence.permit.front.description' | translate"
     [user]="user"
-    imageType="residence_permit_front"
-    imageUniqueName="residence_permit_back">
+    imageType="residence_permit_front">
   </user-image-card-input>
   `
 })

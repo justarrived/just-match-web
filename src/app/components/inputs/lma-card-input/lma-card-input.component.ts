@@ -12,8 +12,7 @@ import {User} from '../../../models/user';
     [showLabel]="showLabel"
     [subHeader]="'input.lma.card.description' | translate"
     [user]="user"
-    imageType="lma_card"
-    imageUniqueName="lma_card">
+    imageType="lma_card">
   </user-image-card-input>
   `
 })

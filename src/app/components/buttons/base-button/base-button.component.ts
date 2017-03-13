@@ -15,10 +15,10 @@ import {Input} from '@angular/core';
     </button>`
 })
 export class BaseButtonComponent {
-  @Input() buttonText: string = '';
-  @Input() fluid: boolean;
-  @Input() kind: string = 'primary'; // One of ['primary', 'primary-light', 'secondary', 'secondary-light', 'inactive-light', 'inactive-dark']
-  @Input() icon: string;
-  @Input() size: string = 'medium'; // One of ['xsmall', 'small', 'medium', 'large']
-  @Input() buttonType: string = 'button'; // One of ['button', 'submit', 'reset']
+  @Input() public buttonText: string = '';
+  @Input() public fluid: boolean;
+  @Input() public kind: string = 'primary'; // One of ['primary', 'primary-light', 'secondary', 'secondary-light', 'inactive-light', 'inactive-dark']
+  @Input() public icon: string;
+  @Input() public size: string = 'medium'; // One of ['xsmall', 'small', 'medium', 'large']
+  @Input() public buttonType: string = 'button'; // One of ['button', 'submit', 'reset']
 }

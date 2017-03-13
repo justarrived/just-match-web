@@ -12,8 +12,7 @@ import {User} from '../../../models/user';
     [showLabel]="showLabel"
     [subHeader]="'input.work.permit.front.description' | translate"
     [user]="user"
-    imageType="work_permit_front"
-    imageUniqueName="work_permit_front">
+    imageType="work_permit_front">
   </user-image-card-input>
   `
 })

@@ -12,8 +12,7 @@ import {User} from '../../../models/user';
     [showLabel]="showLabel"
     [subHeader]="'input.personal.id.description' | translate"
     [user]="user"
-    imageType="personal_id"
-    imageUniqueName="personal_id">
+    imageType="personal_id">
   </user-image-card-input>
   `
 })

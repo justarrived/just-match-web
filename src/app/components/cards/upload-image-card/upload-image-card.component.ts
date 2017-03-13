@@ -16,8 +16,12 @@ import {Output} from '@angular/core';
         text="{{'component.loading' | translate}}">
       </sm-loader>
       <div class="image">
-        <img *ngIf="imageUrl" [src]="imageUrl">
-        <img *ngIf="!imageUrl"  src="/assets/images/image.png">
+        <img
+          [src]="imageUrl"
+          *ngIf="imageUrl">
+        <img
+          *ngIf="!imageUrl"
+          src="/assets/images/image.png">
       </div>
       <div class="content">
         <div
@@ -55,14 +59,12 @@ export class UploadImageCardComponent {
   @Input() public header: string;
   @Input() public imageSaveFail: boolean;
   @Input() public imageSaveSuccess: boolean;
-  @Input() public imageUniqueName: string;
   @Input() public imageUrl: string;
   @Input() public subHeader: string;
   @Input() public uploadingImage: boolean;
   @Output() public onFileSelect: EventEmitter<any> = new EventEmitter();
 
   onImageFilenameChange(event) {
-    console.log(1);
     const file = event.srcElement.files[0];
     if (!file) {
       return;

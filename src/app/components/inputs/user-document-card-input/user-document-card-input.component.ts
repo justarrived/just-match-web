@@ -18,7 +18,6 @@ import {UserProxy} from '../../../services/proxy/user-proxy.service';
         [header]="header"
         [documentSaveFail]="documentSaveFail"
         [documentSaveSuccess]="documentSaveSuccess"
-        [documentUniqueName]="documentUniqueName"
         [documents]="user && user[documentType + '_documents']?.slice(-maxNbrDocuments)"
         [subHeader]="subHeader"
         [uploadingDocument]="uploadingDocument">
@@ -28,7 +27,6 @@ import {UserProxy} from '../../../services/proxy/user-proxy.service';
 export class UserDocumentCardInputComponent {
   @Input() public centered: boolean;
   @Input() public documentType: string;
-  @Input() public documentUniqueName: string;
   @Input() public header: string;
   @Input() public label: string;
   @Input() public maxNbrDocuments: number = 5;

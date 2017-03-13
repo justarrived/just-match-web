@@ -12,8 +12,7 @@ import {User} from '../../../models/user';
     [showLabel]="showLabel"
     [subHeader]="'input.skatteverket.certificate.description' | translate"
     [user]="user"
-    imageType="skatteverket_certificate"
-    imageUniqueName="skatteverket_certificate">
+    imageType="skatteverket_certificate">
   </user-image-card-input>
   `
 })

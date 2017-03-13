@@ -16,6 +16,7 @@ import {BaseButtonComponent} from './components/buttons/base-button/base-button.
 import {BaseMessageComponent} from './components/messages/base-message.component';
 import {BasicBorderHeaderComponent} from './components/headers/basic-border-header/basic-border-header.component';
 import {BrowserModule} from '@angular/platform-browser';
+import {CircularImageInputComponent} from './components/inputs/circular-image-input/circular-image-input.component';
 import {CityInputComponent} from './components/inputs/city-input/city-input.component';
 import {ClearingNumberInputComponent} from './components/inputs/clearing-number-input/clearing-number-input.component';
 import {CommentsComponent} from './components/comments/comments.component';
@@ -87,6 +88,7 @@ import {PagerComponent} from './components/pager/pager.component';
 import {PasswordInputComponent} from './components/inputs/password-input/password-input.component';
 import {PersonalIDInputComponent} from './components/inputs/personal-id-input/personal-id-input.component';
 import {PhoneInputComponent} from './components/inputs/phone-input/phone-input.component';
+import {ProfileImageInputComponent} from './components/inputs/profile-image-input/profile-image-input.component';
 import {RatingInputComponent} from './components/inputs/rating-input/rating-input.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {RegisterFormComponent} from './components/forms/register-form/register-form.component';
@@ -118,10 +120,12 @@ import {UserDetailsComponent} from './views/user/user-settings/user-details/user
 import {UserDetailsFormComponent} from './components/forms/user-details-form/user-details-form.component';
 import {UserDocumentCardInputComponent} from './components/inputs/user-document-card-input/user-document-card-input.component';
 import {UserImageCardInputComponent} from './components/inputs/user-image-card-input/user-image-card-input.component';
+import {UserImageCircularInputComponent} from './components/inputs/user-image-circular-input/user-image-circular-input.component';
 import {UserJobsComponent} from './views/my-jobs/user-jobs/user-jobs.component';
 import {UserManager} from './services/user-manager.service';
 import {UserProfileComponent} from './views/user/user-settings/user-profile/user-profile.component';
 import {UserProfileFormComponent} from './components/forms/user-profile-form/user-profile-form.component';
+import {UserProfileHeaderComponent} from './components/headers/user-profile-header/user-profile-header.component';
 import {UserProxy} from './services/proxy/user-proxy.service';
 import {UserSettingsComponent} from './views/user/user-settings/user-settings.component';
 import {WelcomeHeaderComponent} from './components/headers/welcome-header/welcome-header.component';
@@ -165,6 +169,7 @@ export class RavenErrorHandler implements ErrorHandler {
     BaseButtonComponent,
     BaseMessageComponent,
     BasicBorderHeaderComponent,
+    CircularImageInputComponent,
     CityInputComponent,
     ClearingNumberInputComponent,
     CommentsComponent,
@@ -219,6 +224,7 @@ export class RavenErrorHandler implements ErrorHandler {
     PasswordInputComponent,
     PersonalIDInputComponent,
     PhoneInputComponent,
+    ProfileImageInputComponent,
     RatingInputComponent,
     RegisterFormComponent,
     RegisterPageComponent,
@@ -246,9 +252,11 @@ export class RavenErrorHandler implements ErrorHandler {
     UserDetailsFormComponent,
     UserDocumentCardInputComponent,
     UserImageCardInputComponent,
+    UserImageCircularInputComponent,
     UserJobsComponent,
     UserProfileComponent,
     UserProfileFormComponent,
+    UserProfileHeaderComponent,
     UserSettingsComponent,
     WelcomeHeaderComponent,
     WorkPermitBackInputComponent,

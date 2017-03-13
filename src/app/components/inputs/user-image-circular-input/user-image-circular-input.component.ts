@@ -5,38 +5,27 @@ import {User} from '../../../models/user';
 import {UserProxy} from '../../../services/proxy/user-proxy.service';
 
 @Component({
-  selector: 'user-image-card-input',
+  selector: 'user-image-circular-input',
   template: `
-    <div class="ui field">
-      <label
-        *ngIf="showLabel">
-        {{label}}
-      </label>
-      <upload-image-card
+      <circular-image-input
         (onFileSelect)="onUploadImage($event)"
         [centered]="centered"
-        [description]="description"
-        [header]="header"
         [imageSaveFail]="imageSaveFail"
         [imageSaveSuccess]="imageSaveSuccess"
         [imageUrl]="this.user && this.user[this.imageType + '_image']?.mediumImageUrl"
-        [subHeader]="subHeader"
+        [size]="size"
         [uploadingImage]="uploadingImage">
-      </upload-image-card>
-    </div>`
+      </circular-image-input>`
 })
-export class UserImageCardInputComponent {
+export class UserImageCircularInputComponent {
   @Input() public centered: boolean;
-  @Input() public description: string;
-  @Input() public header: string;
   @Input() public imageType: string;
-  @Input() public label: string;
-  @Input() public showLabel: boolean;
-  @Input() public subHeader: string;
+  @Input() public size: string = 'medium'; // One of ['mini', 'tiny', 'small', 'medium', 'large', 'big', 'huge', massive]
   @Input() public user: User;
   public imageSaveFail: boolean;
   public imageSaveSuccess: boolean;
   public uploadingImage: boolean;
+
 
   constructor(
     private userProxy: UserProxy

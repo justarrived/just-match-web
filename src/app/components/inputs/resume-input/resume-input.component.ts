@@ -13,8 +13,7 @@ import {User} from '../../../models/user';
     [showLabel]="showLabel"
     [subHeader]="'input.resume.subheader' | translate"
     [user]="user"
-    documentType="cv"
-    documentUniqueName="cv">
+    documentType="cv">
   </user-document-card-input>
   `
 })

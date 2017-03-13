@@ -61,7 +61,6 @@ export class UploadDocumentCardComponent {
   @Input() public documents: UserDocument[];
   @Input() public documentSaveFail: boolean;
   @Input() public documentSaveSuccess: boolean;
-  @Input() public documentUniqueName: string;
   @Input() public header: string;
   @Input() public subHeader: string;
   @Input() public uploadingDocument: boolean;
