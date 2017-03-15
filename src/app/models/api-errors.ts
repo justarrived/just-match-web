@@ -79,21 +79,31 @@ export class ApiError {
 }
 
 export class ApiErrors {
-  errors: ApiError[];
 
   constructor(private rawErrors: Array<any>) {
-    this.errors = rawErrors.map(error => new ApiError(error));
+    const errors = rawErrors.map(error => new ApiError(error));
+    for (let error of errors) {
+      if (Array.isArray(this[error.attribute])) {
+        this[error.attribute].push(error);
+      } else {
+        this[error.attribute] = [error];
+      }
+    }
   }
 
   public errorsFor(fieldName: string): ApiError[] {
-    return this.errors.filter(error => error.attribute === fieldName);
+    if (Array.isArray(this[fieldName])) {
+      return this[fieldName];
+    } else {
+      return [];
+    }
   }
 
   public hasErrorsFor(fieldName: string): boolean {
-    return this.errors.some(error => error.attribute === fieldName);
-  }
-
-  public resetErrorsFor(fieldName: string): void {
-    this.errors = this.errors.filter(error => error.attribute !== fieldName);
+    if (Array.isArray(this[fieldName])) {
+      return this[fieldName].length > 0;
+    } else {
+      return false;
+    }
   }
 }

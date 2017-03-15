@@ -10,20 +10,26 @@ import {TranslateService} from 'ng2-translate/ng2-translate';
   template: `
     <div style="text-align: center">
       <api-errors
+        [attribute]="apiAttribute"
         [control]="control"
-        [errors]="apiErrors"
-        [attribute]="apiAttribute">
+        [errors]="apiErrorsActual"
+        *ngIf="showApiErrors">
       </api-errors>
       <input-error
-        *ngFor="let error of formControlErrors"
-        [label]="error">
+        [label]="error"
+        *ngFor="let error of formControlErrors">
       </input-error>
     </div>`
 })
 export class InputErrorsComponent implements OnInit {
   @Input() public apiAttribute: string = null;
-  @Input() public apiErrors: ApiErrors = new ApiErrors([]);
   @Input() public control: FormControl;
+
+  @Input('apiErrors')
+  public set apiErrors(errors: ApiErrors) {
+      this.showApiErrors = true;
+      this.apiErrorsActual = errors;
+  }
 
   // Client side
   @Input() public maxLengthLabel: string = null;
@@ -32,6 +38,8 @@ export class InputErrorsComponent implements OnInit {
   @Input() public requiredLabel: string = null;
 
   public formControlErrors: Array<string> = [];
+  public apiErrorsActual: ApiErrors = new ApiErrors([]);
+  public showApiErrors: boolean = false;
 
   private errorLabels: any = {};
 
@@ -46,11 +54,15 @@ export class InputErrorsComponent implements OnInit {
       pattern: this.patternLabel,
       required: this.requiredLabel
     };
-    this.control.valueChanges.subscribe(() => this.setErrors());
+    this.control.valueChanges.subscribe(() => {
+      this.setErrors();
+      this.showApiErrors = false;
+    });
   }
 
   public hasErrors(): boolean {
-    return this.formControlErrors.length > 0 || this.apiErrors.hasErrorsFor(this.apiAttribute);
+    return this.formControlErrors.length > 0 ||
+      (this.apiErrorsActual.hasErrorsFor(this.apiAttribute) && this.showApiErrors);
   }
 
   private setErrors(): void {
