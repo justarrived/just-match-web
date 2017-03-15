@@ -4,6 +4,7 @@ import {EventEmitter} from '@angular/core';
 import {Output} from '@angular/core';
 import {JARoutes} from '../../../routes/ja-routes';
 import {Language} from '../../../models/language/language';
+import {TranslationService} from '../../../services/translation.service';
 
 @Component({
   selector: 'app-navbar',
@@ -21,10 +22,10 @@ import {Language} from '../../../models/language/language';
       </div>
       <div class="app-navbar-menus">
         <div
-          (click)="onLanguageMenuClick()"
+          (click)="onLanguageMenuButtonClick()"
           class="app-navbar-button-container">
           <div class="app-navbar-language-icon">
-            {{selectedLanguage.languageCode}}
+            {{getSelectedLanguageCode()}}
             <div
               [ngClass]="[isLanguageMenuVisible ? 'fa-caret-up' : 'fa-caret-down']"
               class="fa app-navbar-language-icon-arrow">
@@ -32,7 +33,7 @@ import {Language} from '../../../models/language/language';
           </div>
         </div>
         <div
-          (click)="onNavigationMenuClick()"
+          (click)="onNavigationMenuButtonClick()"
           class="app-navbar-button-container">
           <span class="fa fa-bars fa-2x app-navbar-menu-icon"></span>
         </div>
@@ -44,16 +45,30 @@ import {Language} from '../../../models/language/language';
 export class AppNavbarComponent {
   @Input() isLanguageMenuVisible: boolean;
   @Input() isNavigationMenuVisible: boolean;
-  @Input() selectedLanguage: Language;
-  @Output() onLanguageMenuButtonClick: EventEmitter<any> = new EventEmitter();
-  @Output() onNavigationMenuButtonClick: EventEmitter<any> = new EventEmitter();
+  @Output() isLanguageMenuVisibleChange: EventEmitter<boolean> = new EventEmitter();
+  @Output() isNavigationMenuVisibleChange: EventEmitter<boolean> = new EventEmitter();
   public JARoutes = JARoutes;
 
-  public onLanguageMenuClick() {
-    this.onLanguageMenuButtonClick.emit();
+  constructor (
+    private translationService: TranslationService
+  ) {
   }
 
-  public onNavigationMenuClick() {
-    this.onNavigationMenuButtonClick.emit();
+  public getSelectedLanguageCode() {
+    return this.translationService.getSelectedLanguage().languageCode;
+  }
+
+  public onNavigationMenuButtonClick() {
+    this.isLanguageMenuVisible = false;
+    this.isNavigationMenuVisible = !this.isNavigationMenuVisible;
+    this.isLanguageMenuVisibleChange.emit(this.isLanguageMenuVisible);
+    this.isNavigationMenuVisibleChange.emit(this.isNavigationMenuVisible);
+  }
+
+  public onLanguageMenuButtonClick() {
+    this.isNavigationMenuVisible = false;
+    this.isLanguageMenuVisible = !this.isLanguageMenuVisible;
+    this.isLanguageMenuVisibleChange.emit(this.isLanguageMenuVisible);
+    this.isNavigationMenuVisibleChange.emit(this.isNavigationMenuVisible);
   }
 }

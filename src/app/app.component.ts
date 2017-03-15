@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {HostListener} from '@angular/core';
 import {AuthManager} from './services/auth-manager.service';
 import {NavigationService} from './services/navigation.service';
 import {ActsAsUser} from './services/acts-as-user.service';
@@ -7,7 +8,6 @@ import {User} from './models/user';
 import {TranslationService} from './services/translation.service';
 import {Language} from './models/language/language';
 import {UserManager} from './services/user-manager.service';
-import {SystemLanguagesService} from './services/system-languages.service';
 import {JARoutes} from './routes/ja-routes';
 
 @Component({
@@ -17,8 +17,6 @@ import {JARoutes} from './routes/ja-routes';
 })
 export class AppComponent implements OnInit {
   private user: User;
-  private systemLanguages: Language[];
-  private selectedLanguage: Language;
   private isNavigationMenuVisible: boolean = false;
   private isLanguageMenuVisible: boolean = false;
   private JARoutes = JARoutes;
@@ -29,7 +27,6 @@ export class AppComponent implements OnInit {
     private authManager: AuthManager,
     private userManager: UserManager,
     private actsAsUser: ActsAsUser,
-    private systemLanguagesService: SystemLanguagesService,
     private translationService: TranslationService
   ) {
     router.events.subscribe(event => {
@@ -37,9 +34,6 @@ export class AppComponent implements OnInit {
         this.isNavigationMenuVisible = false;
       }
     });
-
-    this.systemLanguagesService.getSystemLanguages().then(result => this.systemLanguages = result);
-    this.selectedLanguage = this.translationService.getSelectedLanguage();
   }
 
   ngOnInit() {
@@ -70,31 +64,10 @@ export class AppComponent implements OnInit {
     }
   }
 
-  private onNavigationMenuButtonClick() {
-    this.isLanguageMenuVisible = false;
-    this.isNavigationMenuVisible = !this.isNavigationMenuVisible;
-  }
-
-  private onLanguageMenuButtonClick() {
-    this.isNavigationMenuVisible = false;
-    this.isLanguageMenuVisible = !this.isLanguageMenuVisible;
-  }
-
-  private onSelectLanguage(language: Language) {
-    this.isLanguageMenuVisible = false;
-    this.selectedLanguage = language;
-    this.translationService.setLanguage(language);
-    this.authManager.authenticateIfNeeded();
-  }
-
   private onLogoutButtonClick() {
     this.navigationService.navigate(JARoutes.home);
     this.authManager.logoutUser();
     this.isLanguageMenuVisible = false;
-  }
-
-  private isActiveSystemLanguage(language: Language): boolean {
-    return this.translationService.getSelectedLanguage().languageCode === language.languageCode;
   }
 
   get isSideMenuVisible(): boolean {

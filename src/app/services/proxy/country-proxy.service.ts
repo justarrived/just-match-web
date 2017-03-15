@@ -13,8 +13,8 @@ export class CountryProxy {
   ) {
   }
 
-  public getCountries(name: string = '', sort: string = this.translationService.getSelectedLanguageCode() + '_name'): Promise<Array<Country>> {
-    let nameFilter = 'filter[' + this.translationService.getSelectedLanguageCode() + '_name' + ']';
+  public getCountries(name: string = '', sort: string = 'name'): Promise<Array<Country>> {
+    let nameFilter = 'filter[name]';
 
     return this.apiCall.get('countries', {nameFilter: name, 'sort': sort})
       .then(response => map(response.data, data => new Country(data)));

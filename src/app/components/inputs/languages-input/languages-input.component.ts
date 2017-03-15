@@ -37,8 +37,7 @@ import {UserLanguage} from '../../../models/user/user-language';
         (onDelete)="onRemoveUserLanguage(userLanguage)"
         (onRate)="onProficiencyChange($event, userLanguage)"
         [initialRating]="userLanguage.proficiency"
-        [label]="userLanguage.language.translated.name"
-        *ngIf="userLanguage.proficiency">
+        [label]="userLanguage.language.translated.name">
       </language-proficiency-input>
     </div>
   </form>`
@@ -63,7 +62,7 @@ export class LanguagesInputComponent extends TranslationListener implements OnIn
   }
 
   protected loadData(): void {
-    this.languages = this.languageProxy.getLanguages();
+    this.languages = this.languageProxy.getLanguages().then();
   }
 
   public onRemoveUserLanguage(userLanguage): void {
@@ -76,7 +75,7 @@ export class LanguagesInputComponent extends TranslationListener implements OnIn
 
   public onAddLanguage(languageId): void {
     if (languageId && !some(this.userLanguagesControl.value, { language: {id: languageId} })) {
-      const userLanguage = new UserLanguage({ proficiency: 1 });
+      const userLanguage = new UserLanguage({});
       this.loadingLanguage = true;
       this.languageProxy.getLanguage(languageId).then((language) => {
         userLanguage.language = language;

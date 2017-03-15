@@ -1,11 +1,8 @@
 <div class="navbar-fixed-top" [ngStyle]="(isNavigationMenuVisible || isLanguageMenuVisible) && {'height': '100%'}">
   <div class="navbar-container">
     <app-navbar
-      (onLanguageMenuButtonClick)="onLanguageMenuButtonClick()"
-      (onNavigationMenuButtonClick)="onNavigationMenuButtonClick()"
-      [isLanguageMenuVisible]="isLanguageMenuVisible"
-      [isNavigationMenuVisible]="isNavigationMenuVisible"
-      [selectedLanguage]="selectedLanguage">
+      [(isLanguageMenuVisible)]="isLanguageMenuVisible"
+      [(isNavigationMenuVisible)]="isNavigationMenuVisible">
     </app-navbar>
 
     <div class="menu-overlay-container" *ngIf="isSideMenuVisible" (click)="isNavigationMenuVisible = false; isLanguageMenuVisible = false;">
@@ -80,48 +77,10 @@
 
         </div>
 
-        <div *ngIf="isLanguageMenuVisible" class="language-menu-container">
-          <div class="language-menu-logo-container row">
-              <div class="col-xs-6 language-menu-logo-container-logo">
-                  <img src="apple-touch-icon.ico" alt="Just Arrived" />
-              </div>
-              <div class="col-xs-6 language-menu-logo-container-text">
-                  <h4>{{'menu.language.title' | translate}}</h4>
-              </div>
-          </div>
+        <language-menu
+          [(isLanguageMenuVisible)]=isLanguageMenuVisible>
+        </language-menu>
 
-          <div class="language-menu-languages-container container">
-            <div *ngFor="let language of systemLanguages" class="row language-menu-language-text-wrapper" (click)="onSelectLanguage(language)">
-              <div class="col-xs-10 language-menu-language-name" [ngClass]="{'language-menu-language-name-active':isActiveSystemLanguage(language)}" >{{language.localName}}</div>
-              <div class="col-xs-2 language-menu-language-checkmark">
-                <i *ngIf="isActiveSystemLanguage(language)" class="fa fa-check" aria-hidden="true"></i>
-              </div>
-            </div>
-          </div>
-
-          <div class="language-menu-information-container row">
-            <p class="col-xs-12">{{'menu.language.text_1' | translate}}</p>
-            <p class="col-xs-12">{{'menu.language.text_2' | translate}}</p>
-          </div>
-
-          <div class="language-menu-credentials-container row">
-            <p class="col-xs-12 prominent">{{'menu.language.translation_by_probono' | translate}}:</p>
-            <img class="col-xs-12 language-menu-credentials-container-image" src="/assets/images/semantix.png" alt="Semantix" />
-          </div>
-
-          <div class="language-menu-contributers-wrapper row">
-              <div class="col-xs-4 language-menu-contributers-text">
-                Farshid Fadaee
-              </div>
-              <div class="col-xs-4 language-menu-contributers-text">
-                Nick Chipperfield
-              </div>
-              <div class="col-xs-4 language-menu-contributers-text">
-                Hans-Erik Täpp
-              </div>
-          </div>
-
-        </div>
       </div>
     </div>
 

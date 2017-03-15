@@ -66,6 +66,7 @@ import {JobListItemComponent} from './components/job-list-item/job-list-item.com
 import {JobMapMarkerComponent} from './components/job-map-marker/job-map-marker.component';
 import {JobProxy} from './services/proxy/job-proxy.service';
 import {JobsComponent} from './views/jobs/jobs.component';
+import {LanguageMenuComponent} from './components/menus/language-menu/language-menu.component';
 import {LanguageProficiencyInputComponent} from './components/inputs/language-proficiency-input/language-proficiency-input.component';
 import {LanguageProxy} from './services/proxy/language-proxy.service';
 import {LanguagesInputComponent} from './components/inputs/languages-input/languages-input.component';
@@ -208,6 +209,7 @@ export class RavenErrorHandler implements ErrorHandler {
     JobListItemComponent,
     JobMapMarkerComponent,
     JobsComponent,
+    LanguageMenuComponent,
     LanguageProficiencyInputComponent,
     LanguagesInputComponent,
     LastNameInputComponent,

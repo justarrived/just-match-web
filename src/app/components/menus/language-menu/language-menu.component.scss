@@ -1,0 +1,114 @@
+@import '../../../styles/colors';
+
+.language-menu-container {
+  text-align: center;
+  height: 100%;
+
+  .language-menu-logo-container {
+    padding-top: 10px;
+
+    .language-menu-logo {
+      display: block;
+      height: 60px;
+      font-size: 0;
+      margin: 40px 0;
+      text-align: center;
+    }
+
+    .language-menu-logo-container-logo {
+      border-right: 1px solid $color-primary-cerise;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+    }
+
+    .language-menu-logo-container-text {
+      color: $color-primary-cerise;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+
+      h4 {
+        margin: 0;
+      }
+    }
+  }
+
+  .language-menu-languages-container {
+    padding: 20px;
+
+    .language-menu-language-text-wrapper {
+      margin: 0;
+      padding-top: 5px;
+      padding-bottom: 5px;
+      border-top: 1px solid $color-gray-100;
+      color: $color-gray-200;
+
+      &:hover {
+        color: $color-primary-cerise;
+      }
+
+      .language-menu-language-name {
+        text-align: left;
+        padding-top: 6px;
+        padding-bottom: 6px;
+        cursor: pointer;
+      }
+
+      .language-menu-language-name-active {
+        color: $color-primary-cerise;
+      }
+
+      .language-menu-language-checkmark {
+        color: $color-primary-cerise;
+        padding-top: 6px;
+        padding-bottom: 6px;
+      }
+    }
+
+
+    .language-menu-language-text-wrapper:last-of-type {
+      border-bottom: 1px solid $color-gray-100;
+    }
+  }
+
+  .language-menu-information-container {
+    color: $color-gray-200;
+    padding: 6px 20px;
+
+    p {
+      font-size: 12px;
+      padding: 0;
+      margin: 0;
+    }
+  }
+
+  .language-menu-credentials-container {
+    color: $color-gray-200;
+    margin-top: 10px;
+    text-align: center;
+    position: relative;
+    transform: scale(0.75);
+
+    .language-menu-credentials-container-image {
+      max-width: 300px;
+      margin: 0 auto;
+    }
+  }
+
+  .language-menu-contributers-wrapper {
+    font-size: 10px;
+
+    .language-menu-contributers-text {
+      color: $color-gray-200;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-right: 1px solid $color-gray-100;
+    }
+
+    .language-menu-contributers-text:last-of-type {
+      border-right: none;
+    }
+  }
+}

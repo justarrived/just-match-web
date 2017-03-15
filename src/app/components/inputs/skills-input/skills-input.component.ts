@@ -37,8 +37,7 @@ import {UserSkill} from '../../../models/user/user-skill';
         (onDelete)="onRemoveUserSkill(userSkill)"
         (onRate)="onProficiencyChange($event, userSkill)"
         [initialRating]="userSkill.proficiency"
-        [label]="userSkill.skill.translated.name"
-        *ngIf="userSkill.proficiency">
+        [label]="userSkill.skill.translated.name">
       </skill-proficiency-input>
     </div>
   </form>`
@@ -76,7 +75,7 @@ export class SkillsInputComponent extends TranslationListener implements OnInit 
 
   public onAddSkill(skillId): void {
     if (skillId && !some(this.userSkillsControl.value, { skill: {id: skillId} })) {
-      const userSkill = new UserSkill({ proficiency: 1 });
+      const userSkill = new UserSkill({});
       this.loadingSkill = true;
       this.skillProxy.getSkill(skillId).then((skill) => {
         userSkill.skill = skill;
