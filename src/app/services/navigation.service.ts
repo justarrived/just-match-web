@@ -1,31 +1,35 @@
+import {ActivatedRoute} from '@angular/router';
 import {Injectable} from '@angular/core';
 import {JARoute} from '../routes/ja-route';
 import {JARoutes} from '../routes/ja-routes';
-import {
-  Router,
-  NavigationStart,
-  RoutesRecognized,
-  NavigationCancel,
-  NavigationEnd,
-  NavigationError
-} from '@angular/router';
+import {NavigationCancel} from '@angular/router';
+import {NavigationEnd} from '@angular/router';
+import {NavigationError} from '@angular/router';
+import {NavigationStart} from '@angular/router';
+import {Router} from '@angular/router';
+import {RoutesRecognized} from '@angular/router';
 
 @Injectable()
 export class NavigationService {
   private states: Array<String> = [];
   private currentState: string;
 
-  constructor(
+  public constructor(
+    private activatedRoute: ActivatedRoute,
     private router: Router
   ) {
-    router.events.subscribe(event => {
+    this.initService();
+  }
+
+  public initService() {
+    this.router.events.subscribe(event => {
       if (event instanceof NavigationStart) {
         console.log('Starting navigation to ' + event.url)
       }
 
       if (event instanceof NavigationEnd) {
-        this.currentState = router.url;
-        this.states.push(router.url);
+        this.currentState = this.router.url;
+        this.states.push(this.router.url);
         document.body.scrollTop = 0;
         console.log('Navigation ended at ' + this.currentState);
       }

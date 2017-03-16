@@ -1,6 +1,5 @@
 import {Injectable} from '@angular/core';
 import {ApiCall} from '../api-call.service';
-import {TranslationService} from '../translation.service';
 import {map} from 'lodash';
 import {Country} from '../../models/country';
 
@@ -9,7 +8,6 @@ export class CountryProxy {
 
   constructor(
     private apiCall: ApiCall,
-    private translationService: TranslationService
   ) {
   }
 

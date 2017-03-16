@@ -1,14 +1,11 @@
 import {AuthManager} from '../../../services/auth-manager.service';
 import {Component} from '@angular/core';
-import {ElementRef} from '@angular/core';
 import {EventEmitter} from '@angular/core';
-import {HostListener} from '@angular/core';
 import {Input} from '@angular/core';
-import {JARoutes} from '../../../routes/ja-routes';
 import {Language} from '../../../models/language/language';
-import {SystemLanguagesService} from '../../../services/system-languages.service'
 import {OnInit} from '@angular/core';
 import {Output} from '@angular/core';
+import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
 import {TranslationService} from '../../../services/translation.service';
 
 @Component({
@@ -18,11 +15,6 @@ import {TranslationService} from '../../../services/translation.service';
   <div
     class="ui basic segment language-menu-container"
     *ngIf="isLanguageMenuVisible">
-    <sm-loader
-      [promise]="systemLanguages"
-      class="ui inverted"
-      text="{{'component.loading' | translate}}">
-    </sm-loader>
     <div class="ui grid language-menu-logo-container">
         <div class="eight wide column language-menu-logo-container-logo">
             <img
@@ -37,7 +29,7 @@ import {TranslationService} from '../../../services/translation.service';
     <div class="language-menu-languages-container">
       <div
         (click)="onSelectLanguage(language)"
-        *ngFor="let language of systemLanguages | async"
+        *ngFor="let language of systemLanguages"
         class="ui grid language-menu-language-text-wrapper">
         <div
           [ngClass]="{'language-menu-language-name-active':isActiveSystemLanguage(language)}"
@@ -85,18 +77,17 @@ export class LanguageMenuComponent implements OnInit {
   @Input() public isLanguageMenuVisible: boolean;
   @Output() isLanguageMenuVisibleChange: EventEmitter<boolean> = new EventEmitter();
 
-  public systemLanguages: Promise<Language[]>;
+  public systemLanguages: Language[];
 
   constructor (
     private authManager: AuthManager,
-    private elementRef: ElementRef,
-    private systemLanguagesService: SystemLanguagesService,
-    private translationService: TranslationService
+    private translationService: TranslationService,
+    private systemLanguagesResolver: SystemLanguagesResolver
   ) {
   }
 
   public ngOnInit() {
-    this.systemLanguages = this.systemLanguagesService.getSystemLanguages();
+    this.systemLanguages = this.systemLanguagesResolver.getSystemLanguages();
   }
 
   public isActiveSystemLanguage(language: Language): boolean {

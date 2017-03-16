@@ -1,25 +1,32 @@
-import {Component, OnInit} from '@angular/core';
-import {HostListener} from '@angular/core';
-import {AuthManager} from './services/auth-manager.service';
-import {NavigationService} from './services/navigation.service';
 import {ActsAsUser} from './services/acts-as-user.service';
-import {Router, NavigationStart} from '@angular/router';
-import {User} from './models/user';
-import {TranslationService} from './services/translation.service';
-import {Language} from './models/language/language';
-import {UserManager} from './services/user-manager.service';
+import {AuthManager} from './services/auth-manager.service';
+import {Component} from '@angular/core';
+import {HostListener} from '@angular/core';
 import {JARoutes} from './routes/ja-routes';
+import {Language} from './models/language/language';
+import {NavigationService} from './services/navigation.service';
+import {NavigationStart} from '@angular/router';
+import {Subscription} from 'rxjs/Subscription';
+import {OnDestroy} from '@angular/core';
+import {OnInit} from '@angular/core';
+import {Router} from '@angular/router';
+import {TranslationService} from './services/translation.service';
+import {User} from './models/user';
+import {UserManager} from './services/user-manager.service';
 
 @Component({
   selector: 'app',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, OnDestroy {
   private user: User;
   private isNavigationMenuVisible: boolean = false;
   private isLanguageMenuVisible: boolean = false;
   private JARoutes = JARoutes;
+
+  private userChangeSubscription1: Subscription;
+  private userChangeSubscription2: Subscription;
 
   constructor(
     private router: Router,
@@ -36,19 +43,24 @@ export class AppComponent implements OnInit {
     });
   }
 
-  ngOnInit() {
+  public ngOnInit() {
     this.authManager.authenticateIfNeeded().then(result => {
       this.router.initialNavigation();
       this.user = result;
     });
 
-    this.authManager.getUserChangeEmmiter().subscribe(user => {
+    this.userChangeSubscription1 = this.authManager.getUserChangeEmmiter().subscribe(user => {
       this.user = user;
     });
 
-    this.userManager.getUserChangeEmmiter().subscribe(user => {
+    this.userChangeSubscription2 = this.userManager.getUserChangeEmmiter().subscribe(user => {
       this.user = user;
     });
+  }
+
+  public ngOnDestroy() {
+    this.userChangeSubscription1.unsubscribe();
+    this.userChangeSubscription2.unsubscribe();
   }
 
   public onStaffingTimeReportButtonClick() {
@@ -83,7 +95,7 @@ export class AppComponent implements OnInit {
   }
 
   get profileImagePath(): string {
-    if(this.user.profile_image && this.user.profile_image.mediumImageUrl) {
+    if (this.user.profile_image && this.user.profile_image.mediumImageUrl) {
       return this.user.profile_image.mediumImageUrl;
     } else {
       return '/assets/images/placeholder-profile-image.png';

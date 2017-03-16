@@ -79,6 +79,7 @@ import {MessageInputComponent} from './components/inputs/message-input/message-i
 import {MyJobsComponent} from './views/my-jobs/my-jobs.component';
 import {MyJobsItemComponent} from './components/my-jobs-item/my-jobs-item.component';
 import {NameInputComponent} from './components/inputs/name-input/name-input.component';
+import {NavigationMenuComponent} from './components/menus/navigation-menu/navigation-menu.component';
 import {NavigationService} from './services/navigation.service';
 import {NewPasswordInputComponent} from './components/inputs/new-password-input/new-password-input.component';
 import {NgModule} from '@angular/core';
@@ -111,7 +112,7 @@ import {StatusInputComponent} from './components/inputs/status-input/status-inpu
 import {StreetInputComponent} from './components/inputs/street-input/street-input.component';
 import {SuccessMessageComponent} from './components/messages/success-message/success-message.component';
 import {SystemLanguageInputComponent} from './components/inputs/system-language-input/system-language-input.component';
-import {SystemLanguagesService} from './services/system-languages.service';
+import {SystemLanguagesResolver} from './resolvers/system-languages/system-languages.resolver';
 import {TermsInputComponent} from './components/inputs/terms-input/terms-input.component';
 import {TextareaInputComponent} from './components/inputs/textarea-input/textarea-input.component';
 import {TextInputComponent} from './components/inputs/text-input/text-input.component';
@@ -221,6 +222,7 @@ export class RavenErrorHandler implements ErrorHandler {
     MyJobsComponent,
     MyJobsItemComponent,
     NameInputComponent,
+    NavigationMenuComponent,
     NewPasswordInputComponent,
     NotFoundPageComponent,
     OldPasswordInputComponent,
@@ -282,7 +284,7 @@ export class RavenErrorHandler implements ErrorHandler {
     LanguageProxy,
     NavigationService,
     SkillProxy,
-    SystemLanguagesService,
+    SystemLanguagesResolver,
     TranslationService,
     UserManager,
     UserProxy,
