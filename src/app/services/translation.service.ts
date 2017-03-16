@@ -24,7 +24,7 @@ export class TranslationService {
     this.translateService.addLangs(TranslationService.SUPPORTED_LANGUAGE_CODES);
     this.translateService.setDefaultLang(TranslationService.FALLBACK_LAMGUAGE_CODE);
     let selectedLanguage = this.dataStore.get(TranslationService.STORAGE_SELECTED_LANGUAGE_KEY) ||
-      new Language({lang_code: 'sv', local_name: 'Svenska'});
+      new Language({lang_code: 'sv', local_name: 'Svenska', id: 144});
     this.setLanguage(selectedLanguage);
   }
 
