@@ -15,11 +15,11 @@ import {MyJobsComponent} from './views/my-jobs/my-jobs.component';
 import {NgModule} from '@angular/core';
 import {NotFoundPageComponent} from './views/404/404-page.component';
 import {NotLoggedInGuard} from './services/not-logged-in-guard.service';
-import {SystemLanguagesResolver} from './resolvers/system-languages/system-languages.resolver';
 import {RegisterPageComponent} from './views/register/register-page.component';
 import {ResetPasswordPageComponent} from './views/reset-password/reset-password-page.component';
 import {RouterModule} from '@angular/router';
 import {Routes} from '@angular/router';
+import {SystemLanguagesResolver} from './resolvers/system-languages/system-languages.resolver';
 import {UserSettingsComponent} from './views/user/user-settings/user-settings.component';
 
 const routes: Routes = [

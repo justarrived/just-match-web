@@ -12,7 +12,7 @@ import {SystemLanguagesResolver} from '../../../resolvers/system-languages/syste
   styleUrls: ['./language-menu.component.scss'],
   template: `
   <div
-    class="ui basic segment language-menu-container"
+    class="language-menu-container"
     *ngIf="isLanguageMenuVisible">
     <div class="ui grid language-menu-logo-container">
         <div class="eight wide column language-menu-logo-container-logo">
@@ -74,7 +74,7 @@ import {SystemLanguagesResolver} from '../../../resolvers/system-languages/syste
 })
 export class LanguageMenuComponent implements OnInit {
   @Input() public isLanguageMenuVisible: boolean;
-  @Output() isLanguageMenuVisibleChange: EventEmitter<boolean> = new EventEmitter();
+  @Output() isLanguageMenuVisibleChange: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   public systemLanguages: Language[];
 

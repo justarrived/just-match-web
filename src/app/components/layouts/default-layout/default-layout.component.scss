@@ -23,13 +23,6 @@
     }
 
     .navigation-menu-container {
-      .navigation-logo-container {
-        .navigation-menu-logo-container-logo {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
-      }
 
       .navigation-menu-links-container {
         margin-top: 20px;
@@ -61,19 +54,16 @@
 
       .navigation-menu-user-container {
         .navigation-menu-user-logged-in-container {
+          text-align: center;
+          color: $color-gray-300;
+
           img {
-            object-fit: cover;
-            margin-top: 20px;
-            width: 70px;
-            height: 70px;
-            border-radius: 35px;
+            border-radius: 50%;
             border: 2px solid $color-primary-cerise;
           }
 
           h4 {
             margin-top: 10px;
-            margin-bottom: 10px;
-            color: $color-gray-300;
           }
         }
       }

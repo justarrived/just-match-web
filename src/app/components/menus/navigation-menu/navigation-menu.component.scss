@@ -1,1 +1,52 @@
 @import '../../../styles/colors';
+
+.navigation-menu-container {
+  .navigation-menu-links-container {
+    margin-top: 20px;
+
+    .navigation-menu-item {
+      border-top: 1px solid $color-gray-50;
+      color: $color-gray-300;
+      padding-top: 12px;
+      padding-bottom: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .navigation-menu-item:nth-last-of-type(1) {
+      border-bottom: 1px solid $color-gray-50;
+    }
+
+    a {
+      display: block;
+      cursor: pointer;
+      font-size: 16px;
+
+      &:hover {
+        color: $color-primary-cerise;
+      }
+    }
+  }
+
+  .navigation-menu-user-container {
+    .navigation-menu-user-logged-in-container {
+      text-align: center;
+      color: $color-gray-300;
+
+      img {
+        border-radius: 50%;
+        border: 2px solid $color-primary-cerise;
+      }
+
+      h4 {
+        margin-top: 10px;
+      }
+    }
+  }
+
+  .navigation-menu-create-user-button {
+    width: 60%;
+    margin: 40px auto 0;
+  }
+}
