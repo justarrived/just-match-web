@@ -16,26 +16,26 @@ import {yyyymmdd, nbrOfMonthsFromDate} from '../../utils/date-util';
   styleUrls: ['./jobs.component.scss']
 })
 export class JobsComponent extends SystemLanguageListener implements OnInit {
-  jobs: Job[];
-  totalJobs: number = 0;
-  page: number = 1;
-  pageSize: number = 10;
-  loadingJobs: boolean = true;
+  public jobs: Job[];
+  public totalJobs: number = 0;
+  public page: number = 1;
+  public pageSize: number = 10;
+  public loadingJobs: boolean = true;
 
-  mapZoom: number = 5;
-  mapLocation: MapLocation = new MapLocation({ longitude: 18.0675109, latitude: 59.3349086 });
-  mapUserLocation: MapLocation;
-  mapStyles = customMapStyle;
-  mapError: string;
-  mapErrorShow: boolean = false;
+  public mapZoom: number = 5;
+  public mapLocation: MapLocation = new MapLocation({ longitude: 18.0675109, latitude: 59.3349086 });
+  public mapUserLocation: MapLocation;
+  public mapStyles = customMapStyle;
+  public mapError: string;
+  public mapErrorShow: boolean = false;
 
   constructor(
-    private router: Router,
+    private geolocationService: Geolocation,
     private jobProxy: JobProxy,
     private location: Location,
     private route: ActivatedRoute,
-    protected systemLanguagesResolver: SystemLanguagesResolver,
-    private geolocationService: Geolocation
+    private router: Router,
+    protected systemLanguagesResolver: SystemLanguagesResolver
   ) {
     super(systemLanguagesResolver);
 
@@ -59,8 +59,9 @@ export class JobsComponent extends SystemLanguageListener implements OnInit {
       {
         include: 'company,hourly_pay,company.company_images',
         'filter[filled]': false,
-        'page[number]': this.page.toString(),
-        'filter[job_date]': yyyymmdd(new Date()) + '..' + yyyymmdd(nbrOfMonthsFromDate(new Date(), 6))
+        'filter[job_date]': yyyymmdd(new Date()) + '..' + yyyymmdd(nbrOfMonthsFromDate(new Date(), 6)),
+        sort: 'job_date',
+        'page[number]': this.page
       })
       .then(result => {
         this.jobs = result.data;
