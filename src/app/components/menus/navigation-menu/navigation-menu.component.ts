@@ -105,7 +105,7 @@ import {User} from '../../../models/user';
   </div>
   `
 })
-export class NavigationMenuComponent  {
+export class NavigationMenuComponent implements OnInit  {
   @Input() public isNavigationMenuVisible: boolean;
   @Input() public user: User;
   @Output() isNavigationMenuVisibleChange: EventEmitter<boolean> = new EventEmitter<boolean>();
@@ -117,6 +117,15 @@ export class NavigationMenuComponent  {
     private navigationService: NavigationService,
     private authManager: AuthManager
   ) {
+  }
+
+  public ngOnInit() {
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationStart) {
+        this.isNavigationMenuVisible = false;
+        this.isNavigationMenuVisibleChange.emit(this.isNavigationMenuVisible);
+      }
+    });
   }
 
   public get canStaffingTimeReport(): boolean {

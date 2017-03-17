@@ -74,16 +74,3 @@ body {
     }
   }
 }
-
-.navbar-fixed-top > .navbar-container,
-body > .app-container {
-  height: 100%;
-  @media screen and (min-width: $lg-device-width) {
-    width: $lg-device-width;
-    margin: 0 auto;
-  }
-  @media screen and (max-width: $lg-device-width) {
-    width: 100%;
-    max-width: 100vw;
-  }
-}
