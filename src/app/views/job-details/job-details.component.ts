@@ -7,8 +7,8 @@ import {Job} from '../../models/job/job';
 import {JobProxy} from '../../services/proxy/job-proxy.service';
 import {NavigationService} from '../../services/navigation.service';
 import {OnInit} from '@angular/core';
-import {TranslationListener} from '../../components/translation.component';
-import {TranslationService} from '../../services/translation.service';
+import {SystemLanguageListener} from '../../resolvers/system-languages/system-languages.resolver';
+import {SystemLanguagesResolver} from '../../resolvers/system-languages/system-languages.resolver';
 import {User} from '../../models/user';
 import {UserJob} from '../../models/user/user-job';
 import {UserManager} from '../../services/user-manager.service';
@@ -18,7 +18,7 @@ import {UserProxy} from '../../services/proxy/user-proxy.service';
   templateUrl: './job-details.component.html',
   styleUrls: ['./job-details.component.scss']
 })
-export class JobDetailsComponent extends TranslationListener implements OnInit {
+export class JobDetailsComponent extends SystemLanguageListener implements OnInit {
   @Input() isInUserView: boolean;
   @Input() userJobId: number;
   job: Job;
@@ -38,9 +38,9 @@ export class JobDetailsComponent extends TranslationListener implements OnInit {
     private userProxy: UserProxy,
     private authManager: AuthManager,
     private navigationService: NavigationService,
-    protected translationService: TranslationService
+    protected systemLanguagesResolver: SystemLanguagesResolver
   ) {
-    super(translationService);
+    super(systemLanguagesResolver);
     this.user = userManager.getUser();
     this.route.params.subscribe(params => {
       this.currentJobId = parseInt(params['id']);

@@ -4,7 +4,7 @@ import {EventEmitter} from '@angular/core';
 import {Output} from '@angular/core';
 import {JARoutes} from '../../../routes/ja-routes';
 import {Language} from '../../../models/language/language';
-import {TranslationService} from '../../../services/translation.service';
+import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
 
 @Component({
   selector: 'app-navbar',
@@ -25,7 +25,7 @@ import {TranslationService} from '../../../services/translation.service';
           (click)="onLanguageMenuButtonClick()"
           class="app-navbar-button-container">
           <div class="app-navbar-language-icon">
-            {{getSelectedLanguageCode()}}
+            {{getSelectedSystemLanguageCode()}}
             <div
               [ngClass]="[isLanguageMenuVisible ? 'fa-caret-up' : 'fa-caret-down']"
               class="fa app-navbar-language-icon-arrow">
@@ -50,12 +50,12 @@ export class AppNavbarComponent {
   public JARoutes = JARoutes;
 
   constructor (
-    private translationService: TranslationService
+    private systemLanguagesResolver: SystemLanguagesResolver
   ) {
   }
 
-  public getSelectedLanguageCode() {
-    return this.translationService.getSelectedLanguage().languageCode;
+  public getSelectedSystemLanguageCode() {
+    return this.systemLanguagesResolver.getSelectedSystemLanguage().languageCode;
   }
 
   public onNavigationMenuButtonClick() {

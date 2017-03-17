@@ -41,7 +41,7 @@ Examples:
 /*
 With arguments and ... statements
 */
-constructor(
+public constructor(
   private authManager: AuthManager,
   private countryProxy: CountryProxy,
   private formBuilder: FormBuilder,
@@ -49,7 +49,7 @@ constructor(
   private navigationService: NavigationService,
   private router: Router,
   private userProxy: UserProxy,
-  protected translationService: TranslationService
+  protected systemLanguagesResolver: SystemLanguagesResolver
 ) {
   ...
 }
@@ -57,7 +57,7 @@ constructor(
 /*
 No arguments no statements
 */
-constructor(
+public constructor(
 ) {
 }
 
@@ -125,36 +125,36 @@ in ngOnInit.
 ...
 export class ContactFormComponent implements OnInit {
 ...
-  constructor(
+  public constructor(
     ...
   ) {
   }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.initForm();
   }
 ```
 
 ```
 /*
-If the component depend on proxy data the component should extend TranslationListener
+If the component depend on proxy data the component should extend SystemLanguageListener
 and hence implement the function loadData.
 loadData is called whenever user language changes.
 */
 ...
-export class UserRegisterComponent extends TranslationListener implements OnInit {
+export class UserRegisterComponent extends SystemLanguageListener implements OnInit {
   ...
-  constructor(
+  public constructor(
     ...
   ) {
   }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.loadData();
     this.initForm();
   }
 
-  loadData() {
+  protected loadData() {
     this.countries = this.countryProxy.getCountries();
     this.genders = this.userProxy.getGenders();
     this.languages = this.languageProxy.getLanguages();
@@ -162,6 +162,26 @@ export class UserRegisterComponent extends TranslationListener implements OnInit
   }
 
 ```
+
+Teardown
+```
+/*
+All components with Observable or EventEmitter subscriptions should implement OnDestroy and unsubscribe to avoid
+memory leaks.
+*/
+...
+export class ContactFormComponent implements OnDestroy {
+...
+  public constructor(
+    ...
+  ) {
+  }
+
+  public ngOnDestroy() {
+    this.userChangeSubscription.unsubscribe();
+  }
+```
+
 
 Inline template vs seperate html file.
 ```

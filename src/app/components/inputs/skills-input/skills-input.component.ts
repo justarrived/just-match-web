@@ -7,8 +7,8 @@ import {Skill} from '../../../models/skill/skill';
 import {SkillProxy} from '../../../services/proxy/skill-proxy.service';
 import {OnInit} from '@angular/core';
 import {some} from 'lodash';
-import {TranslationListener} from '../../translation.component';
-import {TranslationService} from '../../../services/translation.service';
+import {SystemLanguageListener} from '../../../resolvers/system-languages/system-languages.resolver';
+import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
 import {UserSkill} from '../../../models/user/user-skill';
 
 @Component({
@@ -42,7 +42,7 @@ import {UserSkill} from '../../../models/user/user-skill';
     </div>
   </form>`
 })
-export class SkillsInputComponent extends TranslationListener implements OnInit {
+export class SkillsInputComponent extends SystemLanguageListener implements OnInit {
   @Input() apiErrors: ApiErrors;
   @Input() skillsControl: FormControl;
   @Input() userSkillsControl: FormControl;
@@ -52,9 +52,9 @@ export class SkillsInputComponent extends TranslationListener implements OnInit 
 
   constructor(
     private skillProxy: SkillProxy,
-    protected translationService: TranslationService
+    protected systemLanguagesResolver: SystemLanguagesResolver
   ) {
-    super(translationService);
+    super(systemLanguagesResolver);
   }
 
   public ngOnInit(): void {

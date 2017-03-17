@@ -3,10 +3,10 @@ import {JobProxy} from '../../services/proxy/job-proxy.service';
 import {UserProxy} from '../../services/proxy/user-proxy.service';
 import {Job} from '../../models/job/job';
 import {UserJob} from '../../models/user/user-job';
-import {TranslationService} from '../../services/translation.service';
+import {SystemLanguagesResolver} from '../../resolvers/system-languages/system-languages.resolver';
 import {UserManager} from '../../services/user-manager.service';
 import {User} from '../../models/user';
-import {TranslationListener} from '../../components/translation.component';
+import {SystemLanguageListener} from '../../resolvers/system-languages/system-languages.resolver';
 import {isEmpty} from 'lodash';
 import {AuthManager} from '../../services/auth-manager.service';
 import {JARoutes} from '../../routes/ja-routes';
@@ -16,7 +16,7 @@ import {yyyymmdd, nbrOfMonthsFromDate} from '../../utils/date-util';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent extends TranslationListener implements OnInit {
+export class HomeComponent extends SystemLanguageListener implements OnInit {
   newJobs: Job[];
   userJobs: UserJob[];
   jobsAppliedFor: UserJob[];
@@ -29,9 +29,9 @@ export class HomeComponent extends TranslationListener implements OnInit {
     private authManager: AuthManager,
     private userProxy: UserProxy,
     private userManager: UserManager,
-    protected translationService: TranslationService
+    protected systemLanguagesResolver: SystemLanguagesResolver
   ) {
-    super(translationService);
+    super(systemLanguagesResolver);
 
     this.user = userManager.getUser();
 

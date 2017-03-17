@@ -5,8 +5,8 @@ import {UserProxy} from '../../../services/proxy/user-proxy.service';
 import {FormControl} from '@angular/forms';
 import {Input} from '@angular/core';
 import {OnInit} from '@angular/core';
-import {TranslationListener} from '../../translation.component';
-import {TranslationService} from '../../../services/translation.service';
+import {SystemLanguageListener} from '../../../resolvers/system-languages/system-languages.resolver';
+import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
 
 @Component({
   selector: 'status-input',
@@ -22,7 +22,7 @@ import {TranslationService} from '../../../services/translation.service';
       dataItemValueProoerty="id">
     </select-dropdown-input>`
 })
-export class StatusInputComponent extends TranslationListener implements OnInit {
+export class StatusInputComponent extends SystemLanguageListener implements OnInit {
   @Input() apiErrors: ApiErrors;
   @Input() control: FormControl;
 
@@ -30,9 +30,9 @@ export class StatusInputComponent extends TranslationListener implements OnInit 
 
   constructor(
     private userProxy: UserProxy,
-    protected translationService: TranslationService
+    protected systemLanguagesResolver: SystemLanguagesResolver
   ) {
-    super(translationService);
+    super(systemLanguagesResolver);
   }
 
   public ngOnInit(): void {

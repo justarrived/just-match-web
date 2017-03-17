@@ -6,8 +6,8 @@ import {Geolocation} from '../../services/geolocation.service';
 import {JobProxy} from '../../services/proxy/job-proxy.service';
 import {Location} from '@angular/common';
 import {ActivatedRoute} from '@angular/router';
-import {TranslationService} from '../../services/translation.service';
-import {TranslationListener} from '../../components/translation.component';
+import {SystemLanguagesResolver} from '../../resolvers/system-languages/system-languages.resolver';
+import {SystemLanguageListener} from '../../resolvers/system-languages/system-languages.resolver';
 import {customMapStyle} from '../../styles/google-maps-styles';
 import {yyyymmdd, nbrOfMonthsFromDate} from '../../utils/date-util';
 
@@ -15,7 +15,7 @@ import {yyyymmdd, nbrOfMonthsFromDate} from '../../utils/date-util';
   templateUrl: './jobs.component.html',
   styleUrls: ['./jobs.component.scss']
 })
-export class JobsComponent extends TranslationListener implements OnInit {
+export class JobsComponent extends SystemLanguageListener implements OnInit {
   jobs: Job[];
   totalJobs: number = 0;
   page: number = 1;
@@ -34,10 +34,10 @@ export class JobsComponent extends TranslationListener implements OnInit {
     private jobProxy: JobProxy,
     private location: Location,
     private route: ActivatedRoute,
-    protected translationService: TranslationService,
+    protected systemLanguagesResolver: SystemLanguagesResolver,
     private geolocationService: Geolocation
   ) {
-    super(translationService);
+    super(systemLanguagesResolver);
 
     this.route.params.subscribe(params => {
       this.page = params['page'] && parseInt(params['page']);

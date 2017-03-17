@@ -5,8 +5,8 @@ import {CountryProxy} from '../../../services/proxy/country-proxy.service';
 import {FormControl} from '@angular/forms';
 import {Input} from '@angular/core';
 import {OnInit} from '@angular/core';
-import {TranslationListener} from '../../translation.component';
-import {TranslationService} from '../../../services/translation.service';
+import {SystemLanguageListener} from '../../../resolvers/system-languages/system-languages.resolver';
+import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
 
 @Component({
   selector: 'country-of-origin-input',
@@ -22,7 +22,7 @@ import {TranslationService} from '../../../services/translation.service';
       dataItemValueProoerty="countryCode">
     </select-dropdown-input>`
 })
-export class CountryOfOriginInputComponent extends TranslationListener implements OnInit {
+export class CountryOfOriginInputComponent extends SystemLanguageListener implements OnInit {
   @Input() apiErrors: ApiErrors;
   @Input() control: FormControl;
 
@@ -30,9 +30,9 @@ export class CountryOfOriginInputComponent extends TranslationListener implement
 
   constructor(
     private countryProxy: CountryProxy,
-    protected translationService: TranslationService
+    protected systemLanguagesResolver: SystemLanguagesResolver
   ) {
-    super(translationService);
+    super(systemLanguagesResolver);
   }
 
   public ngOnInit(): void {

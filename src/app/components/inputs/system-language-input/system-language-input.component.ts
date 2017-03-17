@@ -3,8 +3,8 @@ import {Component} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {Input} from '@angular/core';
 import {OnInit} from '@angular/core';
-import {TranslationListener} from '../../translation.component';
-import {TranslationService} from '../../../services/translation.service';
+import {SystemLanguageListener} from '../../../resolvers/system-languages/system-languages.resolver';
+import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
 import {Language} from '../../../models/language/language';
 import {LanguageProxy} from '../../../services/proxy/language-proxy.service';
 
@@ -27,7 +27,7 @@ import {LanguageProxy} from '../../../services/proxy/language-proxy.service';
       </div>
     </select-dropdown-input>`
 })
-export class SystemLanguageInputComponent extends TranslationListener implements OnInit {
+export class SystemLanguageInputComponent extends SystemLanguageListener implements OnInit {
   @Input() apiErrors: ApiErrors;
   @Input() control: FormControl;
 
@@ -35,9 +35,9 @@ export class SystemLanguageInputComponent extends TranslationListener implements
 
   constructor(
     private languageProxy: LanguageProxy,
-    protected translationService: TranslationService
+    protected systemLanguagesResolver: SystemLanguagesResolver
   ) {
-    super(translationService);
+    super(systemLanguagesResolver);
   }
 
   public ngOnInit(): void {

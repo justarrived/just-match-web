@@ -3,8 +3,8 @@ import {Component} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {Input} from '@angular/core';
 import {OnInit} from '@angular/core';
-import {TranslationListener} from '../../translation.component';
-import {TranslationService} from '../../../services/translation.service';
+import {SystemLanguageListener} from '../../../resolvers/system-languages/system-languages.resolver';
+import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
 import {UserGender} from '../../../models/user/user-gender';
 import {UserProxy} from '../../../services/proxy/user-proxy.service';
 
@@ -22,7 +22,7 @@ import {UserProxy} from '../../../services/proxy/user-proxy.service';
       dataItemValueProoerty="id">
     </select-dropdown-input>`
 })
-export class GenderInputComponent extends TranslationListener implements OnInit {
+export class GenderInputComponent extends SystemLanguageListener implements OnInit {
   @Input() apiErrors: ApiErrors;
   @Input() control: FormControl;
 
@@ -30,9 +30,9 @@ export class GenderInputComponent extends TranslationListener implements OnInit 
 
   constructor(
     private userProxy: UserProxy,
-    protected translationService: TranslationService
+    protected systemLanguagesResolver: SystemLanguagesResolver
   ) {
-    super(translationService);
+    super(systemLanguagesResolver);
   }
 
   public ngOnInit(): void {

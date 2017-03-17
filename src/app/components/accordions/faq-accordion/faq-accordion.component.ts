@@ -2,8 +2,8 @@ import {Component} from '@angular/core';
 import {Faq} from '../../../models/faq';
 import {FaqProxy} from '../../../services/proxy/faq-proxy.service';
 import {OnInit} from '@angular/core';
-import {TranslationListener} from '../../../components/translation.component';
-import {TranslationService} from '../../../services/translation.service';
+import {SystemLanguageListener} from '../../../resolvers/system-languages/system-languages.resolver';
+import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
 
 @Component({
   selector: 'faq-accordion',
@@ -20,14 +20,14 @@ import {TranslationService} from '../../../services/translation.service';
     </sm-accordion-item>
   </sm-accordion>`
 })
-export class FaqAccordionComponent extends TranslationListener implements OnInit {
+export class FaqAccordionComponent extends SystemLanguageListener implements OnInit {
   public faqs: Promise<Faq[]>;
 
   constructor(
     private faqProxy: FaqProxy,
-    protected translationService: TranslationService
+    protected systemLanguagesResolver: SystemLanguagesResolver
   ) {
-    super(translationService);
+    super(systemLanguagesResolver);
   }
 
   public ngOnInit() {

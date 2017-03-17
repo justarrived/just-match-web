@@ -34,6 +34,7 @@ import {CountryProxy} from './services/proxy/country-proxy.service';
 import {CustomRadioButtonInputComponent} from './components/inputs/custom-radio-button-input/custom-radio-button-input.component';
 import {DataStore} from './services/data-store.service';
 import {DescriptionInputComponent} from './components/inputs/description-input/description-input.component';
+import {DefaultLayoutComponent} from './components/layouts/default-layout/default-layout.component';
 import {EducationInputComponent} from './components/inputs/education-input/education-input.component';
 import {EmailInputComponent} from './components/inputs/email-input/email-input.component';
 import {EmailOrPhoneInputComponent} from './components/inputs/email-or-phone-input/email-or-phone-input.component';
@@ -116,7 +117,6 @@ import {SystemLanguagesResolver} from './resolvers/system-languages/system-langu
 import {TermsInputComponent} from './components/inputs/terms-input/terms-input.component';
 import {TextareaInputComponent} from './components/inputs/textarea-input/textarea-input.component';
 import {TextInputComponent} from './components/inputs/text-input/text-input.component';
-import {TranslationService} from './services/translation.service';
 import {UploadDocumentCardComponent} from './components/cards/upload-document-card/upload-document-card.component';
 import {UploadImageCardComponent} from './components/cards/upload-image-card/upload-image-card.component';
 import {UserDetailsComponent} from './views/user/user-settings/user-details/user-details.component';
@@ -185,6 +185,7 @@ export class RavenErrorHandler implements ErrorHandler {
     CookiesAboutPageComponent,
     CountryOfOriginInputComponent,
     CustomRadioButtonInputComponent,
+    DefaultLayoutComponent,
     DescriptionInputComponent,
     EducationInputComponent,
     EmailInputComponent,
@@ -285,7 +286,6 @@ export class RavenErrorHandler implements ErrorHandler {
     NavigationService,
     SkillProxy,
     SystemLanguagesResolver,
-    TranslationService,
     UserManager,
     UserProxy,
     { provide: ErrorHandler, useClass: RavenErrorHandler },

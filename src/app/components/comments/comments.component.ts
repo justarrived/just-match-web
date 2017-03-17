@@ -2,16 +2,16 @@ import {Component, OnInit, Input, HostListener, ElementRef} from '@angular/core'
 import {CommentsProxy} from '../../services/proxy/comments-proxy.service';
 import {Comment} from '../../models/comment';
 import {UserManager} from '../../services/user-manager.service';
-import {TranslationService} from '../../services/translation.service';
+import {SystemLanguagesResolver} from '../../resolvers/system-languages/system-languages.resolver';
 import {orderBy} from 'lodash';
-import {TranslationListener} from '../translation.component';
+import {SystemLanguageListener} from '../../resolvers/system-languages/system-languages.resolver';
 
 @Component({
   selector: 'comments',
   templateUrl: './comments.component.html',
   styleUrls: ['./comments.component.scss']
 })
-export class CommentsComponent extends TranslationListener implements OnInit {
+export class CommentsComponent extends SystemLanguageListener implements OnInit {
   @Input() private resourceId: number;
   @Input() private resourceName: string;
   private newCommentContainer: any;
@@ -24,8 +24,8 @@ export class CommentsComponent extends TranslationListener implements OnInit {
     this.calculateFooterVisibility();
   }
 
-  constructor(private commentsProxy: CommentsProxy, private userManager: UserManager, protected translationService: TranslationService, private elementRef: ElementRef) {
-    super(translationService);
+  constructor(private commentsProxy: CommentsProxy, private userManager: UserManager, protected systemLanguagesResolver: SystemLanguagesResolver, private elementRef: ElementRef) {
+    super(systemLanguagesResolver);
     this.userId = this.userManager.getUserId();
   }
 
@@ -38,7 +38,7 @@ export class CommentsComponent extends TranslationListener implements OnInit {
     let comment = new Comment();
     comment.commentableId = this.resourceId;
     comment.commentableType = this.resourceName;
-    comment.languageId = this.translationService.getSelectedLanguage().id;
+    comment.languageId = this.systemLanguagesResolver.getSelectedSystemLanguage().id;
     comment.body = this.newCommentBody;
     this.commentsProxy.sendComment(this.resourceName, this.resourceId, comment.toJsonObject()).then(result => {
       this.newCommentContainer.textContent = '';

@@ -1,6 +1,7 @@
 import {ConfirmationComponent} from './views/confirmation/confirmation.component';
 import {ContactPageComponent} from './views/contact/contact-page.component';
 import {CookiesAboutPageComponent} from './views/cookies-about/cookies-about-page.component';
+import {DefaultLayoutComponent} from './components/layouts/default-layout/default-layout.component';
 import {ErrorPageComponent} from './views/error/error-page.component';
 import {FaqPageComponent} from './views/faq/faq-page.component';
 import {ForgotPasswordPageComponent} from './views/forgot-password/forgot-password-page.component';
@@ -22,7 +23,7 @@ import {Routes} from '@angular/router';
 import {UserSettingsComponent} from './views/user/user-settings/user-settings.component';
 
 const routes: Routes = [
-  { path: '', resolve: {systemLanguages: SystemLanguagesResolver}, children: [
+  { path: '', component: DefaultLayoutComponent, resolve: {systemLanguages: SystemLanguagesResolver}, children: [
     { path: '', pathMatch: 'full', component: HomeComponent},
     { path: '404', component: NotFoundPageComponent },
     { path: 'confirmation/:type', component: ConfirmationComponent },

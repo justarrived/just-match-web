@@ -6,7 +6,6 @@ import {Language} from '../../../models/language/language';
 import {OnInit} from '@angular/core';
 import {Output} from '@angular/core';
 import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
-import {TranslationService} from '../../../services/translation.service';
 
 @Component({
   selector: 'language-menu',
@@ -81,7 +80,6 @@ export class LanguageMenuComponent implements OnInit {
 
   constructor (
     private authManager: AuthManager,
-    private translationService: TranslationService,
     private systemLanguagesResolver: SystemLanguagesResolver
   ) {
   }
@@ -91,13 +89,13 @@ export class LanguageMenuComponent implements OnInit {
   }
 
   public isActiveSystemLanguage(language: Language): boolean {
-    return this.translationService.getSelectedLanguageCode() === language.languageCode;
+    return this.systemLanguagesResolver.getSelectedSystemLanguageCode() === language.languageCode;
   }
 
   public onSelectLanguage(language: Language) {
     this.isLanguageMenuVisible = false;
     this.isLanguageMenuVisibleChange.emit(this.isLanguageMenuVisible);
-    this.translationService.setLanguage(language);
+    this.systemLanguagesResolver.setSystemLanguage(language);
     this.authManager.authenticateIfNeeded();
   }
 }

@@ -17,26 +17,25 @@ import {Observable} from 'rxjs';
 import {environment} from '../../environments/environment';
 import {UserManager} from './user-manager.service';
 import {ActsAsUser} from './acts-as-user.service';
-import {TranslationService} from './translation.service';
 import {NavigationService} from './navigation.service';
 import {JARoutes} from '../routes/ja-routes';
 
 @Injectable()
 export class ApiCall {
-  private authorizationHeaderName: string = 'Authorization';
-  private authorizationHeaderPrefix: string = 'Token token=';
-  private storageAuthorizationData: string = 'authorizationData';
-  private languageHeaderName: string = 'X-API-LOCALE';
-  private transformHeaderName: string = 'X-API-KEY-TRANSFORM';
-  private transformHeaderValue: string = 'underscore';
-  private actAsUserHeaderName: string = 'X-API-ACT-AS-USER';
+  private readonly actAsUserHeaderName: string = 'X-API-ACT-AS-USER';
+  private readonly authorizationHeaderName: string = 'Authorization';
+  private readonly authorizationHeaderPrefix: string = 'Token token=';
+  private readonly languageHeaderName: string = 'X-API-LOCALE';
+  private readonly storageAuthorizationData: string = 'authorizationData';
+  private readonly storageSystemLanguageCodeKey: string = 'systemLanguageCode';
+  private readonly transformHeaderName: string = 'X-API-KEY-TRANSFORM';
+  private readonly transformHeaderValue: string = 'underscore';
 
   constructor(
     private http: Http,
     private dataStore: DataStore,
     private userManager: UserManager,
     private actsAsUser: ActsAsUser,
-    private translationService: TranslationService,
     private navigationService: NavigationService
   ) {
   }
@@ -78,7 +77,7 @@ export class ApiCall {
       req.headers.set(this.authorizationHeaderName, this.authorizationHeaderPrefix + authorizationData['auth_token']);
     }
 
-    req.headers.set(this.languageHeaderName, this.translationService.getSelectedLanguageCode());
+    req.headers.set(this.languageHeaderName, this.dataStore.get(this.storageSystemLanguageCodeKey));
     req.headers.set(this.transformHeaderName, this.transformHeaderValue);
 
     const actAsUserId = this.actsAsUser.getUserId();

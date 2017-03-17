@@ -4,14 +4,14 @@ import {UserManager} from '../../../services/user-manager.service';
 import {UserJob} from '../../../models/user/user-job';
 import {map} from 'lodash';
 import {UserProxy} from '../../../services/proxy/user-proxy.service';
-import {TranslationService} from '../../../services/translation.service';
-import {TranslationListener} from '../../../components/translation.component';
+import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
+import {SystemLanguageListener} from '../../../resolvers/system-languages/system-languages.resolver';
 
 @Component({
   selector: 'user-jobs',
   templateUrl: './user-jobs.component.html'
 })
-export class UserJobsComponent extends TranslationListener implements OnInit {
+export class UserJobsComponent extends SystemLanguageListener implements OnInit {
   @Input() selectedState: string;
   userJobs: UserJob[];
   currentJobs: Job[] = []; // not invoiced
@@ -20,9 +20,9 @@ export class UserJobsComponent extends TranslationListener implements OnInit {
   constructor(
     private userProxy: UserProxy,
     private userManager: UserManager,
-    protected translationService: TranslationService
+    protected systemLanguagesResolver: SystemLanguagesResolver
   ) {
-    super(translationService);
+    super(systemLanguagesResolver);
   }
 
   ngOnInit() {

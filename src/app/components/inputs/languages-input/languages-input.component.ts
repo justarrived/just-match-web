@@ -7,8 +7,8 @@ import {Language} from '../../../models/language/language';
 import {LanguageProxy} from '../../../services/proxy/language-proxy.service';
 import {OnInit} from '@angular/core';
 import {some} from 'lodash';
-import {TranslationListener} from '../../translation.component';
-import {TranslationService} from '../../../services/translation.service';
+import {SystemLanguageListener} from '../../../resolvers/system-languages/system-languages.resolver';
+import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
 import {UserLanguage} from '../../../models/user/user-language';
 
 @Component({
@@ -42,7 +42,7 @@ import {UserLanguage} from '../../../models/user/user-language';
     </div>
   </form>`
 })
-export class LanguagesInputComponent extends TranslationListener implements OnInit {
+export class LanguagesInputComponent extends SystemLanguageListener implements OnInit {
   @Input() apiErrors: ApiErrors;
   @Input() languagesControl: FormControl;
   @Input() userLanguagesControl: FormControl;
@@ -52,9 +52,9 @@ export class LanguagesInputComponent extends TranslationListener implements OnIn
 
   constructor(
     private languageProxy: LanguageProxy,
-    protected translationService: TranslationService
+    protected systemLanguagesResolver: SystemLanguagesResolver
   ) {
-    super(translationService);
+    super(systemLanguagesResolver);
   }
 
   public ngOnInit(): void {

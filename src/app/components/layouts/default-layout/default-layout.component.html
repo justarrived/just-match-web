@@ -1,0 +1,106 @@
+<div class="navbar-fixed-top" [ngStyle]="(isNavigationMenuVisible || isLanguageMenuVisible) && {'height': '100%'}">
+  <div class="navbar-container">
+    <app-navbar
+      [(isLanguageMenuVisible)]="isLanguageMenuVisible"
+      [(isNavigationMenuVisible)]="isNavigationMenuVisible">
+    </app-navbar>
+
+    <div class="menu-overlay-container" *ngIf="isSideMenuVisible" (click)="isNavigationMenuVisible = false; isLanguageMenuVisible = false;">
+      <div class="menu-container">
+
+        <div class="navigation-menu-container" *ngIf="isNavigationMenuVisible">
+
+          <div class="navigation-menu-logo-container row">
+              <div class="col-xs-12 text-center navigation-menu-logo-container-logo">
+                  <img src="apple-touch-icon.ico" alt="Just Arrived" />
+              </div>
+          </div>
+
+          <div class="navigation-menu-links-container row">
+
+            <a class="col-xs-12 navigation-menu-item" routerLink="{{JARoutes.userJobs.url([user.id])}}" *ngIf="user">
+              {{'menu.main.my_assignment' | translate}}
+            </a>
+
+            <a class="col-xs-12 navigation-menu-item" routerLink="{{JARoutes.jobs.url(['1'])}}">
+              {{'menu.main.find_assignment' | translate}}
+            </a>
+
+            <a class="col-xs-12 navigation-menu-item" routerLink="{{JARoutes.user.url([user.id])}}" *ngIf="user">
+              {{'menu.main.profile' | translate}}
+            </a>
+
+            <a class="col-xs-12 navigation-menu-item" routerLink="{{JARoutes.faq.url()}}">
+              {{'menu.main.faq' | translate}}
+            </a>
+
+            <a class="col-xs-12 navigation-menu-item" routerLink="{{JARoutes.contact.url()}}">
+              {{'menu.main.contact' | translate}}
+            </a>
+
+            <a class="col-xs-12 navigation-menu-item" routerLink="{{JARoutes.login.url()}}" *ngIf="!user">
+              {{'menu.main.login' | translate}}
+            </a>
+
+            <a
+              class="col-xs-12 navigation-menu-item"
+              href="#"
+              (click)="onStaffingTimeReportButtonClick()"
+              *ngIf="canStaffingTimeReport">
+              {{'menu.main.staffing_time_report' | translate}}
+            </a>
+
+            <a class="col-xs-12 navigation-menu-item" (click)="onLogoutButtonClick()" *ngIf="user">
+              {{'menu.main.logout' | translate}}
+            </a>
+
+            <div class="col-xs-12 navigation-menu-user-container">
+              <div class="col-xs-12 navigation-menu-user-logged-in-container" *ngIf="user" routerLink="{{JARoutes.user.url([user.id])}}">
+                <div class="col-xs-12 text-center">
+                  <img [src]="profileImagePath"/>
+                </div>
+                <h4 class="col-xs-12 text-center">{{user.name}}</h4>
+              </div>
+
+              <div class="ui basic center aligned segment" *ngIf="!user">
+                <base-button
+                  [buttonText]="'menu.main.register' | translate"
+                  [routerLink]="JARoutes.registerUser.url()"
+                  kind="secondary"
+                  size="small">
+                </base-button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <language-menu
+          [(isLanguageMenuVisible)]=isLanguageMenuVisible>
+        </language-menu>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+<div class="wrapper">
+  <div class="header-padder-table-row"></div>
+  <section class="app-content-container">
+    <cookie-bar></cookie-bar>
+    <router-outlet></router-outlet>
+  </section>
+  <footer class="footer">
+    <div>
+      <div>
+        <p>
+          <span>{{'applications.title' | translate}}</span>
+        </p>
+        <p>
+          <span>Birger Jarlsgatan 57C,</span>
+          <span>113 56 Stockholm</span>
+        </p>
+        <p><a href="mailto:hej@justarrived.se"><span>hej@justarrived.se</span></a></p>
+      </div>
+    </div>
+  </footer>
+</div>
