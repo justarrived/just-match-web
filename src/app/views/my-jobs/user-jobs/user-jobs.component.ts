@@ -1,36 +1,38 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
+import {Input} from '@angular/core';
 import {Job} from '../../../models/job/job';
-import {UserManager} from '../../../services/user-manager.service';
-import {UserJob} from '../../../models/user/user-job';
 import {map} from 'lodash';
-import {UserProxy} from '../../../services/proxy/user-proxy.service';
-import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
+import {OnInit} from '@angular/core';
 import {SystemLanguageListener} from '../../../resolvers/system-languages/system-languages.resolver';
+import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
+import {UserJob} from '../../../models/user/user-job';
+import {UserProxy} from '../../../services/proxy/user-proxy.service';
+import {UserResolver} from '../../../resolvers/user/user.resolver';
 
 @Component({
   selector: 'user-jobs',
   templateUrl: './user-jobs.component.html'
 })
 export class UserJobsComponent extends SystemLanguageListener implements OnInit {
-  @Input() selectedState: string;
-  userJobs: UserJob[];
-  currentJobs: Job[] = []; // not invoiced
-  historyJobs: Job[] = []; // invoiced
+  @Input() public selectedState: string;
+  public currentJobs: Job[] = []; // not invoiced
+  public historyJobs: Job[] = []; // invoiced
+  public userJobs: UserJob[];
 
-  constructor(
+  public constructor(
     private userProxy: UserProxy,
-    private userManager: UserManager,
+    private userResolver: UserResolver,
     protected systemLanguagesResolver: SystemLanguagesResolver
   ) {
     super(systemLanguagesResolver);
   }
 
-  ngOnInit() {
+  public ngOnInit() {
     this.loadData();
   }
 
-  loadData() {
-    this.userProxy.getUserJobs(this.userManager.getUserId(), {include: 'job, job.company'}).then((jobs) => {
+  protected loadData() {
+    this.userProxy.getUserJobs(this.userResolver.getUser().id, {include: 'job, job.company'}).then((jobs) => {
       this.userJobs = jobs;
       this.generateJobSections();
     });

@@ -1,5 +1,4 @@
 import {ApiErrors} from '../../../models/api-errors';
-import {AuthManager} from '../../../services/auth-manager.service';
 import {ChangeDetectorRef} from '@angular/core';
 import {Component} from '@angular/core';
 import {FormBuilder} from '@angular/forms';
@@ -8,6 +7,7 @@ import {JARoutes} from '../../../routes/ja-routes';
 import {NavigationService} from '../../../services/navigation.service';
 import {OnInit} from '@angular/core';
 import {UserProxy} from '../../../services/proxy/user-proxy.service';
+import {UserResolver} from '../../../resolvers/user/user.resolver';
 import {Validators} from '@angular/forms';
 
 @Component({
@@ -21,12 +21,12 @@ export class RegisterFormComponent implements OnInit {
   public submitFail: boolean;
   public submitSuccess: boolean;
 
-  constructor(
-    private authManager: AuthManager,
+  public constructor(
     private changeDetector: ChangeDetectorRef,
     private formBuilder: FormBuilder,
     private navigationService: NavigationService,
     private userProxy: UserProxy,
+    private userResolver: UserResolver,
   ) {
   }
 
@@ -80,7 +80,7 @@ export class RegisterFormComponent implements OnInit {
     })
       .then((response) => {
         this.submitSuccess = true;
-        this.authManager.logUser(this.registerForm.value.email, this.registerForm.value.password)
+        this.userResolver.login(this.registerForm.value.email, this.registerForm.value.password)
           .then((response) => {
             this.navigationService.navigate(JARoutes.home);
             this.loadingSubmit = false;

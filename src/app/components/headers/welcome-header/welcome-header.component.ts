@@ -16,7 +16,7 @@ import {User} from '../../../models/user';
           <base-button
             [buttonText]="'home.header.logged.in.profile.button' | translate"
             [fluid]="true"
-            [routerLink]="JARoutes.user.url([user.id])"
+            [routerLink]="JARoutes.user.url()"
             kind="secondary-light"
             size="small">
           </base-button>

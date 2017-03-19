@@ -1,5 +1,4 @@
 import {ApiErrors} from '../../../models/api-errors';
-import {AuthManager} from '../../../services/auth-manager.service';
 import {ChangeDetectorRef} from '@angular/core';
 import {Component} from '@angular/core';
 import {FormBuilder} from '@angular/forms';
@@ -7,6 +6,7 @@ import {FormGroup} from '@angular/forms';
 import {JARoutes} from '../../../routes/ja-routes';
 import {NavigationService} from '../../../services/navigation.service';
 import {OnInit} from '@angular/core';
+import {UserResolver} from '../../../resolvers/user/user.resolver';
 import {Validators} from '@angular/forms';
 
 @Component({
@@ -23,10 +23,10 @@ export class LoginFormComponent implements OnInit  {
   public submitSuccess: boolean;
 
   constructor(
-    private authManager: AuthManager,
     private changeDetector: ChangeDetectorRef,
     private formBuilder: FormBuilder,
-    private navigationService: NavigationService
+    private navigationService: NavigationService,
+    private userResolver: UserResolver
   ) {
   }
 
@@ -52,7 +52,7 @@ export class LoginFormComponent implements OnInit  {
     this.submitFail = false;
     this.submitSuccess = false;
     this.loadingSubmit = true;
-    this.authManager.logUser(value.email_or_phone, value.password)
+    this.userResolver.login(value.email_or_phone, value.password)
       .then(result => {
         this.navigationService.navigate(JARoutes.home);
         this.loadingSubmit = false;

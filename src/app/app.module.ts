@@ -10,7 +10,6 @@ import {AppNavbarComponent} from './components/navbars/app-navbar/app-navbar.com
 import {AppRoutingModule} from './app.routing.module';
 import {AppTranslateModule} from './app.translate.module';
 import {AtUndInputComponent} from './components/inputs/at-und-input/at-und-input.component';
-import {AuthManager} from './services/auth-manager.service';
 import {AutosizeDirective} from './directives/textarea-autosize/textarea-autosize.directive';
 import {BankAccountInputComponent} from './components/inputs/bank-account-input/bank-account-input.component';
 import {BaseButtonComponent} from './components/buttons/base-button/base-button.component';
@@ -115,6 +114,7 @@ import {StreetInputComponent} from './components/inputs/street-input/street-inpu
 import {SuccessMessageComponent} from './components/messages/success-message/success-message.component';
 import {SystemLanguageInputComponent} from './components/inputs/system-language-input/system-language-input.component';
 import {SystemLanguagesResolver} from './resolvers/system-languages/system-languages.resolver';
+import {UserResolver} from './resolvers/user/user.resolver';
 import {TermsInputComponent} from './components/inputs/terms-input/terms-input.component';
 import {TextareaInputComponent} from './components/inputs/textarea-input/textarea-input.component';
 import {TextInputComponent} from './components/inputs/text-input/text-input.component';
@@ -126,7 +126,6 @@ import {UserDocumentCardInputComponent} from './components/inputs/user-document-
 import {UserImageCardInputComponent} from './components/inputs/user-image-card-input/user-image-card-input.component';
 import {UserImageCircularInputComponent} from './components/inputs/user-image-circular-input/user-image-circular-input.component';
 import {UserJobsComponent} from './views/my-jobs/user-jobs/user-jobs.component';
-import {UserManager} from './services/user-manager.service';
 import {UserProfileComponent} from './views/user/user-settings/user-profile/user-profile.component';
 import {UserProfileFormComponent} from './components/forms/user-profile-form/user-profile-form.component';
 import {UserProfileHeaderComponent} from './components/headers/user-profile-header/user-profile-header.component';
@@ -276,7 +275,6 @@ export class RavenErrorHandler implements ErrorHandler {
   providers: [
     ActsAsUser,
     ApiCall,
-    AuthManager,
     CommentsProxy,
     ContactProxy,
     CountryProxy,
@@ -288,8 +286,8 @@ export class RavenErrorHandler implements ErrorHandler {
     NavigationService,
     SkillProxy,
     SystemLanguagesResolver,
-    UserManager,
     UserProxy,
+    UserResolver,
     { provide: ErrorHandler, useClass: RavenErrorHandler },
     { provide: APP_BASE_HREF, useValue: '/' }
   ],

@@ -1,70 +1,61 @@
-import {Component, OnInit} from '@angular/core';
-import {JobProxy} from '../../services/proxy/job-proxy.service';
-import {UserProxy} from '../../services/proxy/user-proxy.service';
-import {Job} from '../../models/job/job';
-import {UserJob} from '../../models/user/user-job';
-import {SystemLanguagesResolver} from '../../resolvers/system-languages/system-languages.resolver';
-import {UserManager} from '../../services/user-manager.service';
-import {User} from '../../models/user';
-import {SystemLanguageListener} from '../../resolvers/system-languages/system-languages.resolver';
+import {Component} from '@angular/core';
 import {isEmpty} from 'lodash';
-import {AuthManager} from '../../services/auth-manager.service';
 import {JARoutes} from '../../routes/ja-routes';
-import {yyyymmdd, nbrOfMonthsFromDate} from '../../utils/date-util';
+import {Job} from '../../models/job/job';
+import {JobProxy} from '../../services/proxy/job-proxy.service';
+import {nbrOfMonthsFromDate} from '../../utils/date-util';
+import {OnDestroy} from '@angular/core';
+import {OnInit} from '@angular/core';
+import {Subscription} from 'rxjs/Subscription';
+import {SystemLanguageListener} from '../../resolvers/system-languages/system-languages.resolver';
+import {SystemLanguagesResolver} from '../../resolvers/system-languages/system-languages.resolver';
+import {User} from '../../models/user';
+import {UserJob} from '../../models/user/user-job';
+import {UserProxy} from '../../services/proxy/user-proxy.service';
+import {UserResolver} from '../../resolvers/user/user.resolver';
+import {yyyymmdd} from '../../utils/date-util';
 
 @Component({
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent extends SystemLanguageListener implements OnInit {
-  newJobs: Job[];
-  userJobs: UserJob[];
-  jobsAppliedFor: UserJob[];
-  user: User;
-  isEmpty = isEmpty;
-  JARoutes = JARoutes;
+export class HomeComponent extends SystemLanguageListener implements OnInit, OnDestroy {
+  public isEmpty = isEmpty;
+  public JARoutes = JARoutes;
+  public jobsAppliedFor: UserJob[];
+  public newJobs: Job[];
+  public user: User;
+  public userJobs: UserJob[];
 
-  constructor(
+  private userSubscription: Subscription;
+
+  public constructor(
     private jobProxy: JobProxy,
-    private authManager: AuthManager,
     private userProxy: UserProxy,
-    private userManager: UserManager,
+    private userResolver: UserResolver,
     protected systemLanguagesResolver: SystemLanguagesResolver
   ) {
     super(systemLanguagesResolver);
-
-    this.user = userManager.getUser();
-
-    this.authManager.getUserChangeEmmiter().subscribe(user => {
-      this.user = user;
-    });
-
   }
 
-  ngOnInit() {
+  public ngOnInit() {
+    this.initUser();
     this.loadData();
   }
 
-  loadData(): void {
+  private initUser() {
+    this.user = this.userResolver.getUser();
+    this.userSubscription = this.userResolver.getUserChangeEmitter().subscribe(user => {
+      this.user = user;
+    });
+  }
+
+  protected loadData(): void {
     this.loadJobs();
     if (this.user) {
       this.loadUserJobs();
       this.loadJobsAppliedFor();
     }
-  }
-
-  userJobsVisible() {
-    if (this.user) {
-      return !this.isEmpty(this.userJobs);
-    }
-    return false;
-  }
-
-  jobsAppliedForVisible() {
-    if (this.user) {
-      return !this.isEmpty(this.jobsAppliedFor);
-    }
-    return false;
   }
 
   private loadJobs(): void {
@@ -105,5 +96,23 @@ export class HomeComponent extends SystemLanguageListener implements OnInit {
       .then(result => {
         this.jobsAppliedFor = result;
       });
+  }
+
+  public ngOnDestroy() {
+    this.userSubscription.unsubscribe();
+  }
+
+  public userJobsVisible() {
+    if (this.user) {
+      return !this.isEmpty(this.userJobs);
+    }
+    return false;
+  }
+
+  public jobsAppliedForVisible() {
+    if (this.user) {
+      return !this.isEmpty(this.jobsAppliedFor);
+    }
+    return false;
   }
 }

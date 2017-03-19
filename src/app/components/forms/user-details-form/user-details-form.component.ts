@@ -1,5 +1,4 @@
 import {ApiErrors} from '../../../models/api-errors';
-import {AuthManager} from '../../../services/auth-manager.service';
 import {ChangeDetectorRef} from '@angular/core';
 import {Component} from '@angular/core';
 import {FormBuilder} from '@angular/forms';
@@ -7,17 +6,19 @@ import {FormGroup} from '@angular/forms';
 import {Input} from '@angular/core';
 import {JARoutes} from '../../../routes/ja-routes';
 import {NavigationService} from '../../../services/navigation.service';
+import {OnDestroy} from '@angular/core';
 import {OnInit} from '@angular/core';
+import {Subscription} from 'rxjs/Subscription';
 import {User} from '../../../models/user';
 import {UserProxy} from '../../../services/proxy/user-proxy.service';
+import {UserResolver} from '../../../resolvers/user/user.resolver';
 import {Validators} from '@angular/forms';
 
 @Component({
   selector: 'user-details-form',
   templateUrl: './user-details-form.component.html'
 })
-export class UserDetailsFormComponent implements OnInit {
-  @Input() public user: User;
+export class UserDetailsFormComponent implements OnInit, OnDestroy {
   public apiErrors: ApiErrors = new ApiErrors([]);
   public JARoutes = JARoutes;
   public loadingSubmit: boolean;
@@ -25,22 +26,38 @@ export class UserDetailsFormComponent implements OnInit {
   public settingsForm: FormGroup;
   public submitFail: boolean;
   public submitSuccess: boolean;
+  public user: User;
+
+  private userSubscription: Subscription;
 
   constructor(
-    private authManager: AuthManager,
     private changeDetector: ChangeDetectorRef,
     private formBuilder: FormBuilder,
     private navigationService: NavigationService,
-    private userProxy: UserProxy
+    private userProxy: UserProxy,
+    private userResolver: UserResolver,
   ) {
   }
 
-  public ngOnInit() {
+  public ngOnInit(): void {
+    this.initUser();
+    this.initForm();
+  }
+
+  private initUser(): void {
+    this.user = this.userResolver.getUser();
+    this.userSubscription = this.userResolver.getUserChangeEmitter().subscribe(user => {
+      this.user = user;
+      this.initForm();
+    });
+  }
+
+  private initForm(): void {
     this.initSettingsForm();
     this.initPasswordForm();
   }
 
-  private initSettingsForm() {
+  private initSettingsForm(): void {
     this.settingsForm = this.formBuilder.group({
       'first_name': [this.user.firstName, Validators.compose([Validators.required, Validators.minLength(2)])],
       'last_name': [this.user.lastName, Validators.compose([Validators.required, Validators.minLength(2)])],
@@ -58,11 +75,15 @@ export class UserDetailsFormComponent implements OnInit {
     });
   }
 
-  private initPasswordForm() {
+  private initPasswordForm(): void {
     this.passwordForm = this.formBuilder.group({
       'password': ['', Validators.compose([Validators.minLength(6)])],
       'old_password': ['']
     });
+  }
+
+  public ngOnDestroy(): void {
+    this.userSubscription.unsubscribe();
   }
 
   public passwordsSupplied(): boolean {
@@ -88,11 +109,9 @@ export class UserDetailsFormComponent implements OnInit {
           this.userProxy.changePassword(this.passwordForm.value.password, this.passwordForm.value.old_password)
             .then((response) => {
               // has to relogin to be authenticated now that password changed
-              this.authManager.logUser(this.settingsForm.value.email, this.passwordForm.value.password)
+              this.userResolver.login(this.settingsForm.value.email, this.passwordForm.value.password)
                 .then(result => {
-                  this.authManager.authenticateIfNeeded().then(() => {
-                    this.passwordForm.controls['old_password'].setValue('');
-                    this.passwordForm.controls['password'].setValue('');
+                  this.userResolver.reloadUser().then(() => {
                     this.submitSuccess = true;
                     this.loadingSubmit = false;
                   });
@@ -106,7 +125,7 @@ export class UserDetailsFormComponent implements OnInit {
               this.handleServerErrors(errors);
             });
         } else {
-          this.authManager.authenticateIfNeeded().then(() => {
+          this.userResolver.reloadUser().then(() => {
             this.submitSuccess = true;
             this.loadingSubmit = false;
           });

@@ -1,6 +1,5 @@
 import {Component} from '@angular/core';
 import {Input} from '@angular/core';
-import {User} from '../../../models/user';
 
 @Component({
   selector: 'default-navigation',
@@ -19,8 +18,7 @@ import {User} from '../../../models/user';
         class="menu-overlay-container">
         <div class="menu-container">
           <navigation-menu
-            [(isNavigationMenuVisible)]=isNavigationMenuVisible
-            [user]=user>
+            [(isNavigationMenuVisible)]=isNavigationMenuVisible>
           </navigation-menu>
 
           <language-menu
@@ -31,7 +29,6 @@ import {User} from '../../../models/user';
     </div>`
 })
 export class DefaultNavigationComponent {
-  @Input() public user: User;
   public isLanguageMenuVisible: boolean;
   public isNavigationMenuVisible: boolean;
 

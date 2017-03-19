@@ -1,50 +1,41 @@
-import {AuthManager} from '../../../services/auth-manager.service';
 import {Component} from '@angular/core';
+import {OnDestroy} from '@angular/core';
 import {OnInit} from '@angular/core';
+import {Subscription} from 'rxjs/Subscription';
 import {User} from '../../../models/user';
-import {UserManager} from '../../../services/user-manager.service';
-import {UserProxy} from '../../../services/proxy/user-proxy.service';
+import {UserResolver} from '../../../resolvers/user/user.resolver';
 
 @Component({
   selector: 'user-settings',
   templateUrl: './user-settings.component.html',
   styleUrls: ['./user-settings.component.scss']
 })
-export class UserSettingsComponent implements OnInit {
-  selectedState: string = 'profile';
+export class UserSettingsComponent implements OnInit, OnDestroy {
+  public selectedState: string = 'profile';
+  public user: User;
+  public userSubscription: Subscription;
 
-  user: User;
-  uploadingImage: boolean = false;
-
-  constructor(
-    private userProxy: UserProxy,
-    private userManager: UserManager,
-    private authManager: AuthManager
+  public constructor(
+    private userResolver: UserResolver
   ) {
-    this.user = this.userManager.getUser();
   }
 
-  ngOnInit() {
-    this.authManager.getUserChangeEmmiter().subscribe(user => {
+  public ngOnInit(): void {
+    this.initUser();
+  }
+
+  private initUser(): void {
+    this.user = this.userResolver.getUser();
+    this.userSubscription = this.userResolver.getUserChangeEmitter().subscribe(user => {
       this.user = user;
     });
   }
 
-  setState(newState) {
-    this.authManager.authenticateIfNeeded();
-    this.selectedState = newState;
+  public ngOnDestroy(): void {
+    this.userSubscription.unsubscribe();
   }
 
-  onProfileImageFilenameChange(event) {
-    this.uploadingImage = true;
-    let file = event.srcElement.files[0];
-    if (file) {
-      this.userProxy.saveImage(this.user.id, file, 'profile').then(userImage => {
-        this.user.profile_image = userImage;
-        this.uploadingImage = false;
-      }).catch(errors => {
-        this.uploadingImage = false;
-      });
-    }
+  public setState(newState): void {
+    this.selectedState = newState;
   }
 }
