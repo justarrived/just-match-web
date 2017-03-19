@@ -10,8 +10,8 @@ import {JARoutes} from '../../routes/ja-routes';
   styleUrls: ['./my-jobs-item.component.scss']
 })
 export class MyJobsItemComponent {
-  @Input() private job: Job;
-  @Input() private section: string;
+  @Input() public job: Job;
+  @Input() public section: string;
 
   constructor(
     private navigationService: NavigationService
