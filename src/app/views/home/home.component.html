@@ -1,5 +1,5 @@
 <div class="home-container">
-  <welcome-header [user]="user"></welcome-header>
+  <welcome-header></welcome-header>
 
   <div class="home-jobs-slider-container home-jobs-slider-new-jobs-container">
     <div class="home-jobs-slider-new-jobs-title">
@@ -40,7 +40,7 @@
     <div class="home-jobs-slider-show-all-jobs-link-container">
       <a
         class="home-jobs-slider-show-all-jobs-link home-jobs-slider-show-all-user-jobs-link"
-        routerLink="{{JARoutes.userJobs.url([user.id])}}">
+        [routerLink]="JARoutes.userJobs.url()">
         {{'home.jobs.slider.show.all.link' | translate | lowercase}} > <i class="icon-ic-arrow-right"></i>
       </a>
     </div>
@@ -140,7 +140,7 @@
         <base-button
           [buttonText]="'home.header.logged.in.profile.button' | translate"
           [fluid]="true"
-          [routerLink]="JARoutes.user.url([user.id])"
+          [routerLink]="JARoutes.user.url()"
           kind="secondary-light"
           size="medium">
         </base-button>

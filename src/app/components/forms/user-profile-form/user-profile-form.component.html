@@ -48,49 +48,42 @@
 
   <lma-card-input
     [centered]="true"
-    [user]="user"
     [showLabel]="true"
     *ngIf="profileForm.value.current_status === 'asylum_seeker' && profileForm.value.at_und === 'yes'">
   </lma-card-input>
 
   <personal-id-input
     [centered]="true"
-    [user]="user"
     [showLabel]="true"
     *ngIf="profileForm.value.current_status && profileForm.value.current_status !== 'asylum_seeker'">
   </personal-id-input>
 
   <residence-permit-front-input
     [centered]="true"
-    [user]="user"
     [showLabel]="true"
     *ngIf="profileForm.value.current_status === 'temporary_residence' || profileForm.value.current_status === 'permanent_residence'">
   </residence-permit-front-input>
 
   <residence-permit-back-input
     [centered]="true"
-    [user]="user"
     [showLabel]="true"
     *ngIf="profileForm.value.current_status === 'temporary_residence' || profileForm.value.current_status === 'permanent_residence'">
   </residence-permit-back-input>
 
   <work-permit-front-input
     [centered]="true"
-    [user]="user"
     [showLabel]="true"
     *ngIf="profileForm.value.current_status === 'student_visa' || profileForm.value.current_status === 'temporary_residence'">
   </work-permit-front-input>
 
   <work-permit-back-input
     [centered]="true"
-    [user]="user"
     [showLabel]="true"
     *ngIf="profileForm.value.current_status === 'student_visa' || profileForm.value.current_status === 'temporary_residence'">
   </work-permit-back-input>
 
   <skatteverket-certificate-input
     [centered]="true"
-    [user]="user"
     [showLabel]="true"
     *ngIf="profileForm.value.current_status === 'eu_citizen' || profileForm.value.current_status === 'asylum_seeker' && profileForm.value.at_und === 'yes' && profileForm.value.got_coordination_number === 'yes'">
   </skatteverket-certificate-input>
@@ -139,7 +132,6 @@
 
   <resume-input
     [centered]="true"
-    [user]="user"
     [showLabel]="true">
   </resume-input>
 

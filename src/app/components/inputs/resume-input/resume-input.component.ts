@@ -12,13 +12,11 @@ import {User} from '../../../models/user';
     [maxNbrDocuments]="5"
     [showLabel]="showLabel"
     [subHeader]="'input.resume.subheader' | translate"
-    [user]="user"
     documentType="cv">
   </user-document-card-input>
   `
 })
 export class ResumeInputComponent {
-  @Input() user: User;
   @Input() centered: boolean;
   @Input() showLabel: boolean;
 }

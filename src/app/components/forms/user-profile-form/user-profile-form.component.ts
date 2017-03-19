@@ -1,5 +1,4 @@
 import {ApiErrors} from '../../../models/api-errors';
-import {AuthManager} from '../../../services/auth-manager.service';
 import {ChangeDetectorRef} from '@angular/core';
 import {Component} from '@angular/core';
 import {Document} from '../../../models/document';
@@ -8,42 +7,47 @@ import {FormGroup} from '@angular/forms';
 import {Input} from '@angular/core';
 import {isValidSSNCharCode} from '../../../utils/is-valid-ssn-char-code';
 import {map} from 'lodash';
+import {OnDestroy} from '@angular/core';
 import {OnInit} from '@angular/core';
+import {Subscription} from 'rxjs/Subscription';
 import {User} from '../../../models/user';
 import {UserDocument} from '../../../models/user/user-document';
 import {UserImage} from '../../../models/user/user-image';
 import {UserProxy} from '../../../services/proxy/user-proxy.service';
+import {UserResolver} from '../../../resolvers/user/user.resolver';
 import {Validators} from '@angular/forms';
 
 @Component({
   selector: 'user-profile-form',
   templateUrl: './user-profile-form.component.html'
 })
-export class UserProfileFormComponent implements OnInit {
-  @Input() public user: User;
-
+export class UserProfileFormComponent implements OnInit, OnDestroy {
   public apiErrors: ApiErrors = new ApiErrors([]);
   public loadingSubmit: boolean;
   public profileForm: FormGroup;
   public submitFail: boolean;
   public submitSuccess: boolean;
+  public user: User;
+  private userSubscription: Subscription;
 
   constructor(
-    private authManager: AuthManager,
     private changeDetector: ChangeDetectorRef,
+    private formBuilder: FormBuilder,
     private userProxy: UserProxy,
-    private formBuilder: FormBuilder
+    private userResolver: UserResolver,
   ) {
   }
 
   public ngOnInit(): void {
+    this.initUser();
     this.initForm();
+  }
 
-    this.authManager.getUserChangeEmmiter().subscribe(user => {
+  private initUser(): void {
+    this.user = this.userResolver.getUser();
+    this.userSubscription = this.userResolver.getUserChangeEmitter().subscribe(user => {
       this.user = user;
-      if (user) {
-        this.initForm();
-      }
+      this.initForm();
     });
   }
 
@@ -62,6 +66,10 @@ export class UserProfileFormComponent implements OnInit {
       'user_languages': [this.user.userLanguages.slice()],
       'user_skills': [this.user.userSkills.slice()]
     });
+  }
+
+  public ngOnDestroy(): void {
+    this.userSubscription.unsubscribe();
   }
 
   private handleServerErrors(errors): void {
@@ -99,7 +107,7 @@ export class UserProfileFormComponent implements OnInit {
       'ssn': this.profileForm.value.ssn,
     })
       .then((response) => {
-        this.authManager.authenticateIfNeeded().then(() => {
+        this.userResolver.reloadUser().then(() => {
           this.submitSuccess = true;
           this.loadingSubmit = false;
         });

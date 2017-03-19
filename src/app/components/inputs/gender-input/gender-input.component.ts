@@ -11,16 +11,23 @@ import {UserProxy} from '../../../services/proxy/user-proxy.service';
 @Component({
   selector: 'gender-input',
   template: `
-    <select-dropdown-input
-      [apiErrors]="apiErrors"
-      [data]="genders | async"
-      [control]="control"
-      [label]="'input.gender.label' | translate"
-      [placeholder]="'input.gender.placeholder' | translate"
-      apiAttribute="gender"
-      dataItemLabelProoerty="translated.name"
-      dataItemValueProoerty="id">
-    </select-dropdown-input>`
+    <div class="ui form">
+      <sm-loader
+        [promise]="genders"
+        class="inverted"
+        text="{{'component.loading' | translate}}">
+      </sm-loader>
+      <select-dropdown-input
+        [apiErrors]="apiErrors"
+        [data]="genders | async"
+        [control]="control"
+        [label]="'input.gender.label' | translate"
+        [placeholder]="'input.gender.placeholder' | translate"
+        apiAttribute="gender"
+        dataItemLabelProoerty="translated.name"
+        dataItemValueProoerty="id">
+      </select-dropdown-input>
+    </div>`
 })
 export class GenderInputComponent extends SystemLanguageListener implements OnInit {
   @Input() apiErrors: ApiErrors;

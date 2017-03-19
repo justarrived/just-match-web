@@ -1,14 +1,16 @@
-import {AuthManager} from '../../../services/auth-manager.service';
 import {Component} from '@angular/core';
 import {EventEmitter} from '@angular/core';
 import {Input} from '@angular/core';
 import {JARoutes} from '../../../routes/ja-routes';
 import {NavigationService} from '../../../services/navigation.service';
 import {NavigationStart} from '@angular/router';
+import {OnDestroy} from '@angular/core';
 import {OnInit} from '@angular/core';
 import {Output} from '@angular/core';
 import {Router} from '@angular/router';
+import {Subscription} from 'rxjs/Subscription';
 import {User} from '../../../models/user';
+import {UserResolver} from '../../../resolvers/user/user.resolver';
 
 @Component({
   selector: 'navigation-menu',
@@ -16,7 +18,8 @@ import {User} from '../../../models/user';
   template: `
   <div
     *ngIf="isNavigationMenuVisible"
-    class="navigation-menu-container ui basic segment">
+    class="navigation-menu-container ui loading basic segment"
+    [class.loading]="user && user.isBeingReloaded">
 
     <img
       alt="Just Arrived"
@@ -28,7 +31,7 @@ import {User} from '../../../models/user';
       <a
         *ngIf="user"
         class="navigation-menu-item"
-        [routerLink]="JARoutes.userJobs.url([user.id])">
+        [routerLink]="JARoutes.userJobs.url()">
         {{'menu.main.my_assignment' | translate}}
       </a>
 
@@ -41,7 +44,7 @@ import {User} from '../../../models/user';
       <a
         *ngIf="user"
         class="navigation-menu-item"
-        [routerLink]="JARoutes.user.url([user.id])">
+        [routerLink]="JARoutes.user.url()">
         {{'menu.main.profile' | translate}}
       </a>
 
@@ -83,7 +86,7 @@ import {User} from '../../../models/user';
         <div
           *ngIf="user"
           class="navigation-menu-user-logged-in-container"
-          [routerLink]="JARoutes.user.url([user.id])">
+          [routerLink]="JARoutes.user.url()">
           <img
             class="ui centered tiny circular image"
             [src]="this.user.profile_image?.mediumImageUrl || '/assets/images/placeholder-profile-image.png'">
@@ -105,22 +108,37 @@ import {User} from '../../../models/user';
   </div>
   `
 })
-export class NavigationMenuComponent implements OnInit  {
+export class NavigationMenuComponent implements OnInit, OnDestroy {
   @Input() public isNavigationMenuVisible: boolean;
-  @Input() public user: User;
   @Output() isNavigationMenuVisibleChange: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   public JARoutes = JARoutes;
+  public user: User;
+
+  private routerEventSubscription: Subscription;
+  private userSubscription: Subscription;
 
   public constructor(
-    private router: Router,
     private navigationService: NavigationService,
-    private authManager: AuthManager
+    private router: Router,
+    private userResolver: UserResolver
   ) {
   }
 
-  public ngOnInit() {
-    this.router.events.subscribe(event => {
+  public ngOnInit(): void {
+    this.initUser();
+    this.initRouterEventSubscription();
+  }
+
+  private initUser(): void {
+    this.user = this.userResolver.getUser();
+    this.userSubscription = this.userResolver.getUserChangeEmitter().subscribe(user => {
+      this.user = user;
+    });
+  }
+
+  private initRouterEventSubscription(): void {
+    this.routerEventSubscription = this.router.events.subscribe(event => {
       if (event instanceof NavigationStart) {
         this.isNavigationMenuVisible = false;
         this.isNavigationMenuVisibleChange.emit(this.isNavigationMenuVisible);
@@ -128,19 +146,24 @@ export class NavigationMenuComponent implements OnInit  {
     });
   }
 
+  public ngOnDestroy(): void {
+    this.routerEventSubscription.unsubscribe();
+    this.userSubscription.unsubscribe();
+  }
+
   public get canStaffingTimeReport(): boolean {
     return this.user && (this.user.justArrivedStaffing || this.user.admin);
   }
 
-  public onStaffingTimeReportButtonClick() {
+  public onStaffingTimeReportButtonClick(): void {
     window.location.href = 'https://justarrived-se.web.intelliplan.eu/croupier/login/';
     this.isNavigationMenuVisible = false;
     this.isNavigationMenuVisibleChange.emit(this.isNavigationMenuVisible);
   }
 
-  public onLogoutButtonClick() {
+  public onLogoutButtonClick(): void {
     this.navigationService.navigate(JARoutes.home);
-    this.authManager.logoutUser();
+    this.userResolver.logout();
     this.isNavigationMenuVisible = false;
     this.isNavigationMenuVisibleChange.emit(this.isNavigationMenuVisible);
   }

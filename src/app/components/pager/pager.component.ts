@@ -6,10 +6,10 @@ import {Component, OnInit, Input, OnChanges, Output, EventEmitter} from '@angula
   styleUrls: ['./pager.component.scss']
 })
 export class PagerComponent implements OnInit, OnChanges {
-  @Input() private maxResults: number;
-  @Input() private pageSize: number = 10;
-  @Input() private currentPage: number;
-  @Output() private pageChange = new EventEmitter();
+  @Input() public maxResults: number;
+  @Input() public pageSize: number = 10;
+  @Input() public currentPage: number;
+  @Output() public pageChange = new EventEmitter();
 
   private lastPage: number = 1;
 

@@ -1,6 +1,4 @@
-<user-profile-header
-  [user]="user">
-</user-profile-header>
+<user-profile-header></user-profile-header>
 
 <div class="ui grid user-profile-tab-container">
   <div
@@ -21,5 +19,5 @@
   </div>
 </div>
 
-<user-profile *ngIf="selectedState == 'profile'" [user]="user"></user-profile>
-<user-details *ngIf="selectedState == 'details'" [user]="user"></user-details>
+<user-profile *ngIf="selectedState == 'profile'"></user-profile>
+<user-details *ngIf="selectedState == 'details'"></user-details>

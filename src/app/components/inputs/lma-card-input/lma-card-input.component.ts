@@ -11,13 +11,11 @@ import {User} from '../../../models/user';
     [label]="'input.lma.card.label' | translate"
     [showLabel]="showLabel"
     [subHeader]="'input.lma.card.description' | translate"
-    [user]="user"
     imageType="lma_card">
   </user-image-card-input>
   `
 })
 export class LMACardInputComponent {
-  @Input() user: User;
   @Input() centered: boolean;
   @Input() showLabel: boolean;
 }

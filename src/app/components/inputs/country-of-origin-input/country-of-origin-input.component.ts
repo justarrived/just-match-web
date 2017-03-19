@@ -11,6 +11,12 @@ import {SystemLanguagesResolver} from '../../../resolvers/system-languages/syste
 @Component({
   selector: 'country-of-origin-input',
   template: `
+  <div class="ui form">
+    <sm-loader
+      [promise]="countries"
+      class="inverted"
+      text="{{'component.loading' | translate}}">
+    </sm-loader>
     <select-dropdown-input
       [apiErrors]="apiErrors"
       [control]="control"
@@ -20,7 +26,8 @@ import {SystemLanguagesResolver} from '../../../resolvers/system-languages/syste
       apiAttribute="country_of_origin"
       dataItemLabelProoerty="translated.name"
       dataItemValueProoerty="countryCode">
-    </select-dropdown-input>`
+    </select-dropdown-input>
+  </div>`
 })
 export class CountryOfOriginInputComponent extends SystemLanguageListener implements OnInit {
   @Input() apiErrors: ApiErrors;

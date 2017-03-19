@@ -14,10 +14,10 @@ import {UserSkill} from '../../../models/user/user-skill';
 @Component({
   selector: 'skills-input',
   template: `
-  <form
-    class="ui form">
+  <div class="ui form">
     <sm-loader
       [complete]="!loadingSkill"
+      [promise]="skills"
       class="inverted"
       text="{{'component.loading' | translate}}">
     </sm-loader>
@@ -40,7 +40,7 @@ import {UserSkill} from '../../../models/user/user-skill';
         [label]="userSkill.skill.translated.name">
       </skill-proficiency-input>
     </div>
-  </form>`
+  </div>`
 })
 export class SkillsInputComponent extends SystemLanguageListener implements OnInit {
   @Input() apiErrors: ApiErrors;

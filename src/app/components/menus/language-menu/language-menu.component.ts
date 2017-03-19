@@ -1,4 +1,3 @@
-import {AuthManager} from '../../../services/auth-manager.service';
 import {Component} from '@angular/core';
 import {EventEmitter} from '@angular/core';
 import {Input} from '@angular/core';
@@ -6,6 +5,7 @@ import {Language} from '../../../models/language/language';
 import {OnInit} from '@angular/core';
 import {Output} from '@angular/core';
 import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
+import {UserResolver} from '../../../resolvers/user/user.resolver';
 
 @Component({
   selector: 'language-menu',
@@ -79,7 +79,7 @@ export class LanguageMenuComponent implements OnInit {
   public systemLanguages: Language[];
 
   constructor (
-    private authManager: AuthManager,
+    private userResolver: UserResolver,
     private systemLanguagesResolver: SystemLanguagesResolver
   ) {
   }
@@ -96,6 +96,8 @@ export class LanguageMenuComponent implements OnInit {
     this.isLanguageMenuVisible = false;
     this.isLanguageMenuVisibleChange.emit(this.isLanguageMenuVisible);
     this.systemLanguagesResolver.setSystemLanguage(language);
-    this.authManager.authenticateIfNeeded();
+    if (this.userResolver.getUser()) {
+      this.userResolver.reloadUser();
+    }
   }
 }

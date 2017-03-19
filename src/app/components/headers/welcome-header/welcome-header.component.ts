@@ -1,7 +1,11 @@
 import {Component} from '@angular/core';
 import {Input} from '@angular/core';
 import {JARoutes} from '../../../routes/ja-routes';
+import {OnDestroy} from '@angular/core';
+import {OnInit} from '@angular/core';
+import {Subscription} from 'rxjs/Subscription';
 import {User} from '../../../models/user';
+import {UserResolver} from '../../../resolvers/user/user.resolver';
 
 @Component({
   selector: 'welcome-header',
@@ -16,7 +20,7 @@ import {User} from '../../../models/user';
           <base-button
             [buttonText]="'home.header.logged.in.profile.button' | translate"
             [fluid]="true"
-            [routerLink]="JARoutes.user.url([user.id])"
+            [routerLink]="JARoutes.user.url()"
             kind="secondary-light"
             size="small">
           </base-button>
@@ -61,7 +65,29 @@ import {User} from '../../../models/user';
     </div>`,
   styleUrls: ['./welcome-header.component.scss']
 })
-export class WelcomeHeaderComponent {
-  @Input() public user: User;
+export class WelcomeHeaderComponent implements OnInit, OnDestroy {
   public JARoutes = JARoutes;
+  public user: User;
+  private userSubscription: Subscription;
+
+  public constructor(
+    private userResolver: UserResolver
+  ) {
+  }
+
+  public ngOnInit(): void {
+    this.initUser();
+  }
+
+  private initUser(): void {
+    this.user = this.userResolver.getUser();
+    this.userSubscription = this.userResolver.getUserChangeEmitter().subscribe(user => {
+      this.user = user;
+    });
+  }
+
+  public ngOnDestroy(): void {
+    this.userSubscription.unsubscribe();
+  }
+
 }

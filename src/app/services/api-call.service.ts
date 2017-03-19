@@ -15,7 +15,6 @@ import {parseJsonapiResponse} from '../utils/jsonapi-parser.util';
 import {ApiErrors} from '../models/api-errors';
 import {Observable} from 'rxjs';
 import {environment} from '../../environments/environment';
-import {UserManager} from './user-manager.service';
 import {ActsAsUser} from './acts-as-user.service';
 import {NavigationService} from './navigation.service';
 import {JARoutes} from '../routes/ja-routes';
@@ -26,15 +25,14 @@ export class ApiCall {
   private readonly authorizationHeaderName: string = 'Authorization';
   private readonly authorizationHeaderPrefix: string = 'Token token=';
   private readonly languageHeaderName: string = 'X-API-LOCALE';
-  private readonly storageAuthorizationData: string = 'authorizationData';
-  private readonly storageSystemLanguageCodeKey: string = 'systemLanguageCode';
+  private readonly storageSessionKey: string = 'sessionData'; // MUST be same as key in user resolver
+  private readonly storageSystemLanguageCodeKey: string = 'systemLanguageCode'; // MUST be same as key in system languages resolver
   private readonly transformHeaderName: string = 'X-API-KEY-TRANSFORM';
   private readonly transformHeaderValue: string = 'underscore';
 
   constructor(
     private http: Http,
     private dataStore: DataStore,
-    private userManager: UserManager,
     private actsAsUser: ActsAsUser,
     private navigationService: NavigationService
   ) {
@@ -72,9 +70,9 @@ export class ApiCall {
     let options = new RequestOptions(requestArgs);
 
     let req: Request = new Request(options);
-    let authorizationData = this.dataStore.get(this.storageAuthorizationData);
-    if (!!authorizationData) {
-      req.headers.set(this.authorizationHeaderName, this.authorizationHeaderPrefix + authorizationData['auth_token']);
+    let session = this.dataStore.get(this.storageSessionKey);
+    if (session && session.auth_token) {
+      req.headers.set(this.authorizationHeaderName, this.authorizationHeaderPrefix + session['auth_token']);
     }
 
     req.headers.set(this.languageHeaderName, this.dataStore.get(this.storageSystemLanguageCodeKey));
@@ -88,7 +86,7 @@ export class ApiCall {
     return this.http.request(req)
       .catch((response: Response) => this.handleResponseErrors(response))
       .toPromise()
-      .then(response => Promise.resolve(parseJsonapiResponse(response)));
+      .then(response => parseJsonapiResponse(response));
   }
 
   private urlBuilder(url: string): string {
@@ -112,8 +110,8 @@ export class ApiCall {
     if (response.status === 401) {
       let tokenExpiredObject = _.find(response.json().errors, { code: 'token_expired' });
       let tokenInvalidObject = _.find(response.json().errors, { code: 'login_required' });
-      if (!!tokenExpiredObject || !!tokenInvalidObject) {
-        this.userManager.deleteUser();
+      if (tokenExpiredObject || tokenInvalidObject) {
+        this.dataStore.remove(this.storageSessionKey);
         this.navigationService.navigate(JARoutes.login);
       }
     }

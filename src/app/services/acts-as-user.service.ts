@@ -1,21 +1,20 @@
-import {Injectable} from '@angular/core';
 import {DataStore} from './data-store.service';
-
-const storageActAsUserIdKey: string = 'actAsUserId';
+import {Injectable} from '@angular/core';
 
 @Injectable()
 export class ActsAsUser {
+  private readonly storageActAsUserIdKey: string = 'actAsUserId';
   private userId: string = null;
 
-  constructor(
+  public constructor(
     private dataStore: DataStore
   ) {
-    this.userId = this.getStorage(storageActAsUserIdKey);
+    this.userId = this.getStorage(this.storageActAsUserIdKey);
   }
 
   public setUserId(userId: string) {
     this.userId = userId;
-    this.setStorage(storageActAsUserIdKey, userId);
+    this.setStorage(this.storageActAsUserIdKey, userId);
   }
 
   public getUserId() {

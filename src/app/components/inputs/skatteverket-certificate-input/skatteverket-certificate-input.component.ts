@@ -11,13 +11,11 @@ import {User} from '../../../models/user';
     [label]="'input.skatteverket.certificate.label' | translate"
     [showLabel]="showLabel"
     [subHeader]="'input.skatteverket.certificate.description' | translate"
-    [user]="user"
     imageType="skatteverket_certificate">
   </user-image-card-input>
   `
 })
 export class SkatteverketCertificateInputComponent {
-  @Input() user: User;
   @Input() centered: boolean;
   @Input() showLabel: boolean;
 }

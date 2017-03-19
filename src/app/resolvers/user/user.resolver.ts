@@ -1,13 +1,15 @@
 import {DataStore} from '../../services/data-store.service';
 import {EventEmitter} from '@angular/core';
 import {Injectable} from '@angular/core';
+import {JARoutes} from '../../routes/ja-routes';
+import {NavigationService} from '../../services/navigation.service';
 import {Resolve} from '@angular/router';
 import {User} from '../../models/user';
 import {UserProxy} from '../../services/proxy/user-proxy.service';
 
 @Injectable()
 export class UserResolver implements Resolve<User> {
-  private readonly storageAuthorizationData: string = 'authorizationData';
+  private readonly storageSessionKey: string = 'sessionData';
   private readonly defaultIncludeResources: String[] = [
     'company', 'user_images', 'user_languages', 'user_languages.language',
     'user_skills', 'user_skills.skill', 'user_documents', 'user_documents.document',
@@ -20,25 +22,29 @@ export class UserResolver implements Resolve<User> {
 
   public constructor(
     private dataStore: DataStore,
+    private navigationService: NavigationService,
     private userProxy: UserProxy
   ) {
   }
 
   public resolve(): Promise<User> {
-    if (this.user) {
-      return Promise.resolve(this.user);
-    }
+    const session = this.dataStore.get(this.storageSessionKey);
 
-    const authorizationData = this.dataStore.get(this.storageAuthorizationData);
+    if (this.validateSession(session)) {
 
-    if (authorizationData && authorizationData.user_id) {
-      return this.userProxy.getUser(authorizationData.user_id, { include: this.defaultIncludeResourcesString }).then(user => {
+      if (this.user) {
+        return Promise.resolve(this.user);
+      }
+
+      return this.userProxy.getUser(session.user_id, { include: this.defaultIncludeResourcesString }).then(user => {
         this.init(user);
         return user;
       });
     }
 
-    Promise.resolve(null);
+    this.dataStore.remove(this.storageSessionKey);
+    this.init(null);
+    return Promise.resolve(null);
   }
 
   public init(user: User): void {
@@ -46,17 +52,21 @@ export class UserResolver implements Resolve<User> {
   }
 
   public reloadUser(): Promise<User> {
-    const authorizationData = this.dataStore.get(this.storageAuthorizationData);
+    const session = this.dataStore.get(this.storageSessionKey);
 
-    if (authorizationData && authorizationData.user_id) {
-      return this.userProxy.getUser(authorizationData.user_id, { include: this.defaultIncludeResourcesString }).then(user => {
+    if (this.validateSession(session)) {
+      if (this.user) {
+        this.user.isBeingReloaded = true;
+      }
+      return this.userProxy.getUser(session.user_id, { include: this.defaultIncludeResourcesString }).then(user => {
         this.user = user;
         this.userChange.emit(this.user);
         return user;
       });
     }
 
-    // TODO navigate to login
+    this.logout();
+    this.navigationService.navigate(JARoutes.login);
     return Promise.resolve(null);
   }
 
@@ -66,15 +76,22 @@ export class UserResolver implements Resolve<User> {
 
   public logout(): void {
     this.user = null;
-    this.dataStore.remove(this.storageAuthorizationData);
+    this.dataStore.remove(this.storageSessionKey);
     this.userChange.emit(this.user);
   }
 
   public login(email: string, password: string): Promise<User> {
     return this.userProxy.getUserSession(email, password).then(response => {
-      this.dataStore.set(this.storageAuthorizationData, response.data);
+      this.dataStore.set(this.storageSessionKey, response.data);
       return this.reloadUser();
     });
+  }
 
+  public getUserChangeEmitter(): EventEmitter<User> {
+    return this.userChange;
+  }
+
+  private validateSession(session): boolean {
+    return session && session.user_id && session.auth_token && session.expires_at && new Date(session.expires_at) > new Date();
   }
 }

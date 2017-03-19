@@ -1,10 +1,14 @@
-import {Component, OnInit, Input, HostListener, ElementRef} from '@angular/core';
-import {CommentsProxy} from '../../services/proxy/comments-proxy.service';
 import {Comment} from '../../models/comment';
-import {UserManager} from '../../services/user-manager.service';
-import {SystemLanguagesResolver} from '../../resolvers/system-languages/system-languages.resolver';
+import {CommentsProxy} from '../../services/proxy/comments-proxy.service';
+import {Component} from '@angular/core';
+import {ElementRef} from '@angular/core';
+import {HostListener} from '@angular/core';
+import {Input} from '@angular/core';
+import {OnInit} from '@angular/core';
 import {orderBy} from 'lodash';
 import {SystemLanguageListener} from '../../resolvers/system-languages/system-languages.resolver';
+import {SystemLanguagesResolver} from '../../resolvers/system-languages/system-languages.resolver';
+import {UserResolver} from '../../resolvers/user/user.resolver';
 
 @Component({
   selector: 'comments',
@@ -12,29 +16,35 @@ import {SystemLanguageListener} from '../../resolvers/system-languages/system-la
   styleUrls: ['./comments.component.scss']
 })
 export class CommentsComponent extends SystemLanguageListener implements OnInit {
-  @Input() private resourceId: number;
-  @Input() private resourceName: string;
-  private newCommentContainer: any;
-  private comments: Comment[];
-  private userId: string;
-  private newCommentBody: string;
-  private isFooterVisible: boolean;
+  @Input() public resourceId: number;
+  @Input() public resourceName: string;
+  public newCommentContainer: any;
+  public comments: Comment[];
+  public userId: string;
+  public newCommentBody: string;
+  public isFooterVisible: boolean;
 
   @HostListener('window:scroll', ['$event']) onDocumentScroll(event: any) {
     this.calculateFooterVisibility();
   }
 
-  constructor(private commentsProxy: CommentsProxy, private userManager: UserManager, protected systemLanguagesResolver: SystemLanguagesResolver, private elementRef: ElementRef) {
+  public constructor(
+    private commentsProxy: CommentsProxy,
+    private elementRef: ElementRef,
+    private userResolver: UserResolver,
+    protected systemLanguagesResolver: SystemLanguagesResolver
+  ) {
     super(systemLanguagesResolver);
-    this.userId = this.userManager.getUserId();
+    const user = this.userResolver.getUser();
+    this.userId = user && user.id;
   }
 
-  ngOnInit() {
+  public ngOnInit() {
     this.loadData();
     this.calculateFooterVisibility();
   }
 
-  private sendComment() {
+  public sendComment() {
     let comment = new Comment();
     comment.commentableId = this.resourceId;
     comment.commentableType = this.resourceName;
@@ -47,14 +57,14 @@ export class CommentsComponent extends SystemLanguageListener implements OnInit 
     });
   }
 
-  private onNewCommentInput(event) {
+  public onNewCommentInput(event) {
     if (!this.newCommentContainer) {
       this.newCommentContainer = event.target;
     }
     this.newCommentBody = event.target.textContent;
   }
 
-  loadData() {
+  protected loadData() {
     this.commentsProxy.getComments(this.resourceName, this.resourceId, {
       include: 'owner,owner.user-images,owner.company,owner.company.company-images',
       sort: '-created_at'
@@ -75,7 +85,7 @@ export class CommentsComponent extends SystemLanguageListener implements OnInit 
   private calculateFooterVisibility() {
     let scrollHeight = document.body.scrollTop;
     let windowHeight = window.innerHeight;
-    let footerHeight = document.getElementsByTagName('footer')[0]['offsetHeight'];
+    let footerHeight = document.getElementsByTagName('default-footer')[0]['offsetHeight'];
     let documentHeight = this.getDocumentHeight();
     let isFooterVisibleActual = windowHeight + scrollHeight >= documentHeight - footerHeight;
     if (isFooterVisibleActual !== this.isFooterVisible) {

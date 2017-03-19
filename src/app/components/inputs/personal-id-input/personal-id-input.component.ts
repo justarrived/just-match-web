@@ -11,13 +11,11 @@ import {User} from '../../../models/user';
     [label]="'input.personal.id.label' | translate"
     [showLabel]="showLabel"
     [subHeader]="'input.personal.id.description' | translate"
-    [user]="user"
     imageType="personal_id">
   </user-image-card-input>
   `
 })
 export class PersonalIDInputComponent {
-  @Input() user: User;
   @Input() centered: boolean;
   @Input() showLabel: boolean;
 }
