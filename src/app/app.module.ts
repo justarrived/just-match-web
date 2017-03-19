@@ -27,7 +27,7 @@ import {ConfirmationComponent} from './views/confirmation/confirmation.component
 import {ContactFormComponent} from './components/forms/contact-form/contact-form.component';
 import {ContactPageComponent} from './views/contact/contact-page.component';
 import {ContactProxy} from './services/proxy/contact-proxy.service';
-import {CookieBarComponent} from './components/cookie-bar/cookie-bar.component';
+import {CookieBarComponent} from './components/bars/cookie-bar/cookie-bar.component';
 import {CookiesAboutPageComponent} from './views/cookies-about/cookies-about-page.component';
 import {CountryOfOriginInputComponent} from './components/inputs/country-of-origin-input/country-of-origin-input.component';
 import {CountryProxy} from './services/proxy/country-proxy.service';
