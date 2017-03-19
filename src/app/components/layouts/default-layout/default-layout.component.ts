@@ -16,27 +16,13 @@ import {UserManager} from '../../../services/user-manager.service';
       <default-navigation
         [user]="user">
       </default-navigation>
-
-      <div class="wrapper">
-        <div class="header-padder-table-row"></div>
-        <section class="app-content-container">
+      <div class="layout-inner-wrapper">
+        <div class="layout-header-padder"></div>
+        <section class="layout-content">
           <cookie-bar></cookie-bar>
           <router-outlet></router-outlet>
         </section>
-        <footer class="footer">
-          <div>
-            <div>
-              <p>
-                <span>{{'applications.title' | translate}}</span>
-              </p>
-              <p>
-                <span>Birger Jarlsgatan 57C,</span>
-                <span>113 56 Stockholm</span>
-              </p>
-              <p><a href="mailto:hej@justarrived.se"><span>hej@justarrived.se</span></a></p>
-            </div>
-          </div>
-        </footer>
+        <default-footer class="layout-footer"></default-footer>
       </div>
     </div>`
 })

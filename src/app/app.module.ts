@@ -33,6 +33,7 @@ import {CountryOfOriginInputComponent} from './components/inputs/country-of-orig
 import {CountryProxy} from './services/proxy/country-proxy.service';
 import {CustomRadioButtonInputComponent} from './components/inputs/custom-radio-button-input/custom-radio-button-input.component';
 import {DataStore} from './services/data-store.service';
+import {DefaultFooterComponent} from './components/footers/default-footer/default-footer.component';
 import {DefaultLayoutComponent} from './components/layouts/default-layout/default-layout.component';
 import {DefaultNavigationComponent} from './components/navigations/default-navigation/default-navigation.component';
 import {DescriptionInputComponent} from './components/inputs/description-input/description-input.component';
@@ -186,6 +187,7 @@ export class RavenErrorHandler implements ErrorHandler {
     CookiesAboutPageComponent,
     CountryOfOriginInputComponent,
     CustomRadioButtonInputComponent,
+    DefaultFooterComponent,
     DefaultLayoutComponent,
     DefaultNavigationComponent,
     DescriptionInputComponent,
