@@ -25,7 +25,7 @@ export class ContactFormComponent implements OnInit, OnDestroy {
   public submitFail: boolean;
   public submitSuccess: boolean;
   public user: User;
-  public userSubscription: Subscription;
+  private userSubscription: Subscription;
 
   public constructor(
     private changeDetector: ChangeDetectorRef,

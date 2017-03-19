@@ -25,7 +25,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
         [imageSaveSuccess]="imageSaveSuccess"
         [imageUrl]="this.user && this.user[this.imageType + '_image']?.mediumImageUrl"
         [subHeader]="subHeader"
-        [uploadingImage]="uploadingImage || user.isBeingReloaded">
+        [uploadingImage]="uploadingImage">
       </upload-image-card>
     </div>`
 })
@@ -41,7 +41,7 @@ export class UserImageCardInputComponent implements OnInit, OnDestroy {
   public imageSaveSuccess: boolean;
   public uploadingImage: boolean;
   public user: User;
-  public userSubscription: Subscription;
+  private userSubscription: Subscription;
 
   public constructor(
     private userProxy: UserProxy,

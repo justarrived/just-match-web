@@ -68,7 +68,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
 export class WelcomeHeaderComponent implements OnInit, OnDestroy {
   public JARoutes = JARoutes;
   public user: User;
-  public userSubscription: Subscription;
+  private userSubscription: Subscription;
 
   public constructor(
     private userResolver: UserResolver

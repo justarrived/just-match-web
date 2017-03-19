@@ -28,7 +28,7 @@ export class UserProfileFormComponent implements OnInit, OnDestroy {
   public submitFail: boolean;
   public submitSuccess: boolean;
   public user: User;
-  public userSubscription: Subscription;
+  private userSubscription: Subscription;
 
   constructor(
     private changeDetector: ChangeDetectorRef,

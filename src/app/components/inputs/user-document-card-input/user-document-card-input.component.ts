@@ -24,7 +24,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
         [documentSaveSuccess]="documentSaveSuccess"
         [documents]="user && user[documentType + '_documents']?.slice(-maxNbrDocuments)"
         [subHeader]="subHeader"
-        [uploadingDocument]="uploadingDocument || user.isBeingReloaded">
+        [uploadingDocument]="uploadingDocument">
       </upload-document-card>
     </div>`
 })
@@ -40,7 +40,7 @@ export class UserDocumentCardInputComponent implements OnInit, OnDestroy {
   public documentSaveSuccess: boolean;
   public uploadingDocument: boolean;
   public user: User;
-  public userSubscription: Subscription;
+  private userSubscription: Subscription;
 
   public constructor(
     private userProxy: UserProxy,

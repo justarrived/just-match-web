@@ -32,7 +32,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
 })
 export class UserProfileHeaderComponent implements OnInit, OnDestroy {
   public user: User;
-  public userSubscription: Subscription;
+  private userSubscription: Subscription;
 
   public constructor(
     private userResolver: UserResolver

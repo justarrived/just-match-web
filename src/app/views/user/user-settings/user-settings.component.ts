@@ -13,7 +13,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
 export class UserSettingsComponent implements OnInit, OnDestroy {
   public selectedState: string = 'profile';
   public user: User;
-  public userSubscription: Subscription;
+  private userSubscription: Subscription;
 
   public constructor(
     private userResolver: UserResolver

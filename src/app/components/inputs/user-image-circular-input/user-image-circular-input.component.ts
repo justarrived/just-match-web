@@ -19,7 +19,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
         [imageUrl]="this.user && this.user[this.imageType + '_image']?.mediumImageUrl"
         [placeholderImageUrl]="placeholderImageUrl"
         [size]="size"
-        [uploadingImage]="uploadingImage || user.isBeingReloaded">
+        [uploadingImage]="uploadingImage">
       </circular-image-input>`
 })
 export class UserImageCircularInputComponent implements OnInit, OnDestroy {
@@ -31,7 +31,7 @@ export class UserImageCircularInputComponent implements OnInit, OnDestroy {
   public imageSaveSuccess: boolean;
   public uploadingImage: boolean;
   public user: User;
-  public userSubscription: Subscription;
+  private userSubscription: Subscription;
 
   public constructor(
     private userProxy: UserProxy,
