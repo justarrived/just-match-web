@@ -109,7 +109,6 @@ import {SkatteverketCertificateInputComponent} from './components/inputs/skattev
 import {SkillProficiencyInputComponent} from './components/inputs/skill-proficiency-input/skill-proficiency-input.component';
 import {SkillProxy} from './services/proxy/skill-proxy.service';
 import {SkillsInputComponent} from './components/inputs/skills-input/skills-input.component';
-import {SliderComponent} from './components/slider/slider.component';
 import {SSNInputComponent} from './components/inputs/ssn-input/ssn-input.component';
 import {StatusInputComponent} from './components/inputs/status-input/status-input.component';
 import {StreetInputComponent} from './components/inputs/street-input/street-input.component';
@@ -248,7 +247,6 @@ export class RavenErrorHandler implements ErrorHandler {
     SkatteverketCertificateInputComponent,
     SkillProficiencyInputComponent,
     SkillsInputComponent,
-    SliderComponent,
     SSNInputComponent,
     StatusInputComponent,
     StreetInputComponent,
