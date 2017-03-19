@@ -1,9 +1,13 @@
 export class Interest {
-  id: string;
-  name: string;
-  translated: Interest;
+  public id: string;
+  public name: string;
+  public translated: Interest;
 
-  constructor(jsonObject: any) {
+  public constructor(jsonObject: any) {
+    if (!jsonObject) {
+      return;
+    }
+
     this.id = jsonObject.id;
     this.name = jsonObject.name;
 

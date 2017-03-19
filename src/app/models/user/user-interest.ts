@@ -1,12 +1,15 @@
 import {Interest} from '../interest/interest';
-import {find} from 'lodash';
 
 export class UserInterest {
-  id: string;
-  interest: Interest;
-  proficiency: number;
+  public id: string;
+  public interest: Interest;
+  public proficiency: number;
 
-  constructor(jsonObject: any) {
+  public constructor(jsonObject: any) {
+    if (!jsonObject) {
+      return;
+    }
+
     this.id = jsonObject.id;
     this.interest = new Interest(jsonObject.interest || {});
     this.proficiency = jsonObject.proficiency;

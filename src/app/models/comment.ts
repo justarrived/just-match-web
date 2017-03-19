@@ -1,24 +1,25 @@
 import {User} from './user';
 
 export class Comment {
-  id: number;
-  body: string;
-  commentableId: number;
-  commentableType: string;
-  createdAt: number;
-  languageId: string;
-  owner: User;
-  translated: Comment;
+  public body: string;
+  public commentableId: number;
+  public commentableType: string;
+  public createdAt: number;
+  public id: number;
+  public languageId: string;
+  public owner: User;
+  public translated: Comment;
 
-  constructor(jsonObject?: any) {
+  public constructor(jsonObject?: any) {
     if (!jsonObject) {
       return;
     }
-    this.id = jsonObject.id;
+
     this.body = jsonObject.body;
     this.commentableId = jsonObject.commentable_id;
     this.commentableType = jsonObject.commentable_type;
     this.createdAt = jsonObject.created_at;
+    this.id = jsonObject.id;
     this.languageId = jsonObject.language_id;
     this.owner = new User(jsonObject.owner);
 

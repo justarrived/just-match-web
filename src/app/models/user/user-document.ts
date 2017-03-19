@@ -1,18 +1,19 @@
 import {Document} from '../document';
 
 export class UserDocument {
-  id: string;
-  document: Document;
-  category: string;
-  createdAt: Date;
+  public category: string;
+  public createdAt: Date;
+  public document: Document;
+  public id: string;
 
-  constructor(jsonObject: any) {
+  public constructor(jsonObject: any) {
     if (!jsonObject) {
       return;
     }
-    this.id = jsonObject.id;
-    this.document = new Document(jsonObject.document);
+
     this.category = jsonObject.category;
     this.createdAt = new Date(jsonObject.created_at);
+    this.document = new Document(jsonObject.document);
+    this.id = jsonObject.id;
   }
 }

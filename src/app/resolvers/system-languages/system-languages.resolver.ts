@@ -28,12 +28,12 @@ export class SystemLanguagesResolver implements Resolve<Language[]> {
     }
 
     return this.languageProxy.getSystemLanguages().then(result => {
-      this.initService(result);
+      this.init(result);
       return result;
     });
   }
 
-  public initService(languages: Language[]) {
+  public init(languages: Language[]) {
     this.translateService.addLangs(languages.map(language => language.languageCode));
     this.translateService.setDefaultLang(this.fallbackLanguageCode);
 

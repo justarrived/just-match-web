@@ -1,14 +1,17 @@
 import {Language} from '../language/language';
-import {find} from 'lodash';
 
 export class UserLanguage {
-  id: number;
-  language: Language;
-  proficiency: number;
+  public id: number;
+  public language: Language;
+  public proficiency: number;
 
-  constructor(jsonObject: any) {
+  public constructor(jsonObject: any) {
+    if (!jsonObject) {
+      return;
+    }
+
     this.id = jsonObject.id;
-    this.language = new Language(jsonObject.language || {});
+    this.language = new Language(jsonObject.language);
     this.proficiency = jsonObject.proficiency;
   }
 }

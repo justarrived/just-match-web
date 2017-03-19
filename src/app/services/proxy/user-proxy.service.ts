@@ -3,6 +3,7 @@ import {ApiCall} from '../api-call.service';
 import {UserStatus} from '../../models/user/user-status';
 import {UserGender} from '../../models/user/user-gender';
 import {map} from 'lodash';
+import {User} from '../../models/user';
 import {UserImage} from '../../models/user/user-image';
 import {UserDocument} from '../../models/user/user-document';
 import {Document} from '../../models/document';
@@ -17,8 +18,9 @@ export class UserProxy {
   ) {
   }
 
-  public getUser(userId: string, includes?: Object): Promise<any> {
-    return this.apiCall.get('users/' + userId, includes);
+  public getUser(userId: string, includes?: Object): Promise<User> {
+    return this.apiCall.get('users/' + userId, includes)
+      .then(response => new User(response.data));
   }
 
   public getUserSession(email, password) {

@@ -1,9 +1,9 @@
 class ApiLink {
   // JSONAPI spec attributes
-  href: string;
-  meta: any;
+  public href: string;
+  public meta: any;
 
-  constructor(link: any) {
+  public constructor(link: any) {
     if (typeof link === 'string') {
       this.href = link;
     } else {
@@ -15,13 +15,13 @@ class ApiLink {
 
 class ApiErrorSource {
   // JSONAPI spec attributes
-  pointer: string;
-  parameter: string;
+  public parameter: string;
+  public pointer: string;
 
   // Convenience attributes
-  attribute: string;
+  public attribute: string;
 
-  constructor(source: any) {
+  public constructor(source: any) {
     if (source) {
       const pointer = source.pointer;
       const attributeName = pointer.substr(pointer.lastIndexOf('/') + 1);
@@ -34,37 +34,35 @@ class ApiErrorSource {
 
 export class ApiError {
   // JSONAPI spec attributes
-  id: string;
-  status: number;
-  code: string;
-  title: string;
-  detail: string;
-
-  source: ApiErrorSource;
-  links: any;
-  meta: any;
+  public code: string;
+  public detail: string;
+  public id: string;
+  public links: any;
+  public meta: any;
+  public source: ApiErrorSource;
+  public status: number;
+  public title: string;
 
   // Convenience attributes
-  aboutLink: ApiLink;
+  public aboutLink: ApiLink;
 
-  constructor(private error: any) {
-    this.id = error.id;
-    this.status = error.status;
+  public constructor(private error: any) {
     this.code = error.code;
-    this.title = error.title;
     this.detail = error.detail;
-
-    this.source = new ApiErrorSource(error.source);
-
+    this.id = error.id;
     this.meta = error.meta;
+    this.source = new ApiErrorSource(error.source);
+    this.status = error.status;
+    this.title = error.title;
+
     this.setLinks(error);
   }
 
-  get attribute(): string {
+  public get attribute(): string {
     return this.source.attribute;
   }
 
-  get httpStatus(): number {
+  public get httpStatus(): number {
     return this.status;
   }
 
@@ -79,8 +77,7 @@ export class ApiError {
 }
 
 export class ApiErrors {
-
-  constructor(private rawErrors: Array<any>) {
+  public constructor(private rawErrors: Array<any>) {
     const errors = rawErrors.map(error => new ApiError(error));
     for (let error of errors) {
       if (Array.isArray(this[error.attribute])) {

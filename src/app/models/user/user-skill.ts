@@ -1,14 +1,17 @@
 import {Skill} from '../skill/skill';
-import {find} from 'lodash';
 
 export class UserSkill {
-  id: string;
-  skill: Skill;
-  proficiency: number;
+  public id: string;
+  public proficiency: number;
+  public skill: Skill;
 
-  constructor(jsonObject: any) {
+  public constructor(jsonObject: any) {
+    if (!jsonObject) {
+      return;
+    }
+
     this.id = jsonObject.id;
-    this.skill = new Skill(jsonObject.skill || {});
     this.proficiency = jsonObject.proficiency;
+    this.skill = new Skill(jsonObject.skill);
   }
 }

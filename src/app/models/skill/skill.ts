@@ -1,9 +1,13 @@
 export class Skill {
-  id: string;
-  name: string;
-  translated: Skill;
+  public id: string;
+  public name: string;
+  public translated: Skill;
 
   constructor(jsonObject: any) {
+    if (!jsonObject) {
+      return;
+    }
+
     this.id = jsonObject.id;
     this.name = jsonObject.name;
 

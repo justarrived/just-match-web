@@ -1,20 +1,21 @@
 export class UserImage {
-  id: string;
-  imageUrl: string;
-  smallImageUrl: string;
-  mediumImageUrl: string;
-  largeImageUrl: string;
-  category: string;
+  public category: string;
+  public id: string;
+  public imageUrl: string;
+  public largeImageUrl: string;
+  public mediumImageUrl: string;
+  public smallImageUrl: string;
 
-  constructor(jsonObject: any) {
+  public constructor(jsonObject: any) {
     if (!jsonObject) {
       return;
     }
+
+    this.category = jsonObject.category;
     this.id = jsonObject.id;
     this.imageUrl = jsonObject.image_url;
-    this.smallImageUrl = jsonObject.image_url_small;
-    this.mediumImageUrl = jsonObject.image_url_medium;
     this.largeImageUrl = jsonObject.image_url_large;
-    this.category = jsonObject.category;
+    this.mediumImageUrl = jsonObject.image_url_medium;
+    this.smallImageUrl = jsonObject.image_url_small;
   }
 }

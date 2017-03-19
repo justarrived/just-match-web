@@ -25,17 +25,18 @@ export class AuthManager {
   public logUser(email: string, password: string) {
     return this.userProxy.getUserSession(email, password).then(response => {
       this.userManager.saveAuthorizationData(response.data);
-      return this.userProxy.getUser(this.userManager.getUserId(), { include: this.defaultIncludeResources.join(',') });
-    })
-      .then(response => this.handleUserResult(response.data));
+      console.log(response.data);
+      return this.userProxy.getUser(this.userManager.getUserId(), { include: this.defaultIncludeResources.join(',') }).then(user => this.handleUserResult(user));
+    });
+
   }
 
   public authenticateIfNeeded(): Promise<User> {
     let userId = this.userManager.getUserId();
 
     if (userId) {
-      return this.userProxy.getUser(userId, { include: this.defaultIncludeResources.join(',') }).then(response => {
-        return this.handleUserResult(response.data);
+      return this.userProxy.getUser(userId, { include: this.defaultIncludeResources.join(',') }).then(user => {
+        return this.handleUserResult(user);
       });
     }
 
@@ -47,8 +48,8 @@ export class AuthManager {
     this.userChange.emit(null);
   }
 
-  public handleUserResult(data) {
-    this.userManager.saveUser(new User(data));
+  public handleUserResult(us) {
+    this.userManager.saveUser(us);
     let user = this.userManager.getUser();
     this.userChange.emit(user);
     return Promise.resolve(user);

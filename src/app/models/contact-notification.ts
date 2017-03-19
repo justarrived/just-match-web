@@ -1,22 +1,23 @@
 export class ContactNotification {
-  name: string;
-  email: string;
-  body: string;
+  public body: string;
+  public email: string;
+  public name: string;
 
-  constructor(jsonObject?: any) {
+  public constructor(jsonObject?: any) {
     if (!jsonObject) {
       return;
     }
-    this.name = jsonObject.name;
-    this.email = jsonObject.email;
+
     this.body = jsonObject.body;
+    this.email = jsonObject.email;
+    this.name = jsonObject.name;
   }
 
   toJsonObject(): Object {
     return {
-      'name': this.name,
+      'body': this.body,
       'email': this.email,
-      'body': this.body
+      'name': this.name
     };
   }
 }

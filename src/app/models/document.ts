@@ -1,14 +1,15 @@
 export class Document {
-  id: string;
-  oneTimeToken: string;
-  documentUrl: string;
+  public documentUrl: string;
+  public id: string;
+  public oneTimeToken: string;
 
-  constructor(jsonObject: any) {
+  public constructor(jsonObject: any) {
     if (!jsonObject) {
       return;
     }
+
+    this.documentUrl = jsonObject.document_url;
     this.id = jsonObject.id;
     this.oneTimeToken = jsonObject.one_time_token;
-    this.documentUrl = jsonObject.document_url;
   }
 }

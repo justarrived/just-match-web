@@ -1,8 +1,12 @@
 export class UserStatus {
-  id: string;
-  name: string;
+  public id: string;
+  public name: string;
 
-  constructor(jsonObject: any) {
+  public constructor(jsonObject: any) {
+    if (!jsonObject) {
+      return;
+    }
+
     this.id = jsonObject.id;
     this.name = jsonObject.name;
   }

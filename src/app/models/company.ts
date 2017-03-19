@@ -1,21 +1,22 @@
 import {find} from 'lodash';
 
 export class Company {
-  cin: string;
-  city: string;
-  companyLogo: CompanyImage;
-  email: string;
-  id: string;
-  name: string;
-  phone: string;
-  street: string;
-  website: string;
-  zip: string;
+  public cin: string;
+  public city: string;
+  public companyLogo: CompanyImage;
+  public email: string;
+  public id: string;
+  public name: string;
+  public phone: string;
+  public street: string;
+  public website: string;
+  public zip: string;
 
-  constructor(jsonObject: any) {
+  public constructor(jsonObject: any) {
     if (!jsonObject) {
       return;
     }
+
     this.cin = jsonObject.cin;
     this.city = jsonObject.city;
     this.email = jsonObject.email;
@@ -25,6 +26,7 @@ export class Company {
     this.street = jsonObject.street;
     this.website = jsonObject.website;
     this.zip = jsonObject.zip;
+
     if (!!jsonObject.company_images && jsonObject.company_images.length > 0) {
       this.companyLogo = this.getCompanyLogo(jsonObject.company_images);
     }
@@ -36,18 +38,19 @@ export class Company {
 }
 
 export class CompanyImage {
-  categoryName: string;
-  id: string;
-  imageUrl: string;
-  imageUrlLarge: string;
-  imageUrlMedium: string;
-  imageUrlSmall: string;
-  oneTimeToken: string;
+  public categoryName: string;
+  public id: string;
+  public imageUrl: string;
+  public imageUrlLarge: string;
+  public imageUrlMedium: string;
+  public imageUrlSmall: string;
+  public oneTimeToken: string;
 
-  constructor(jsonObject: any) {
+  public constructor(jsonObject: any) {
     if (!jsonObject) {
       return;
     }
+
     this.categoryName = jsonObject.category_name;
     this.id = jsonObject.id;
     this.imageUrl = jsonObject.image_url;

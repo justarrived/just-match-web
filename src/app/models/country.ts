@@ -1,13 +1,13 @@
 export class Country {
-  id: string;
-  name: string;
-  countryCode: string;
-  translated: Country;
+  public countryCode: string;
+  public id: string;
+  public name: string;
+  public translated: Country;
 
-  constructor(jsonObject: any) {
+  public constructor(jsonObject: any) {
+    this.countryCode = jsonObject.country_code;
     this.id = jsonObject.id;
     this.name = jsonObject.name;
-    this.countryCode = jsonObject.country_code;
 
     if (jsonObject.translated_text) {
       this.translated = new Country(jsonObject.translated_text);

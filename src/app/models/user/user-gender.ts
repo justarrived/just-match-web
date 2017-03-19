@@ -1,9 +1,13 @@
 export class UserGender {
-  id: string;
-  name: string;
-  translated: UserGender;
+  public id: string;
+  public name: string;
+  public translated: UserGender;
 
-  constructor(jsonObject: any) {
+  public constructor(jsonObject: any) {
+    if (!jsonObject) {
+      return;
+    }
+
     this.id = jsonObject.id;
     this.name = jsonObject.name;
 
