@@ -8,7 +8,7 @@ import {Output} from '@angular/core';
 @Component({
   selector: 'language-proficiency-input',
   template: `
-    <div class="field">
+    <div style="margin-bottom: 10px">
       <rating-input
         (onRate)="onRating($event)"
         [initialRating]="initialRating"
