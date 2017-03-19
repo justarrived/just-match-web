@@ -54,6 +54,8 @@ export class User {
   public workExperience: string;
   public zip: string;
 
+  public isBeingReloaded: boolean;
+
   constructor(jsonObject: any) {
     if (!jsonObject) {
       return;

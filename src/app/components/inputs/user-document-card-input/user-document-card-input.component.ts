@@ -1,8 +1,12 @@
 import {Component} from '@angular/core';
 import {Input} from '@angular/core';
+import {OnDestroy} from '@angular/core';
+import {OnInit} from '@angular/core';
 import {Output} from '@angular/core';
+import {Subscription} from 'rxjs/Subscription';
 import {User} from '../../../models/user';
 import {UserProxy} from '../../../services/proxy/user-proxy.service';
+import {UserResolver} from '../../../resolvers/user/user.resolver';
 
 @Component({
   selector: 'user-document-card-input',
@@ -20,11 +24,11 @@ import {UserProxy} from '../../../services/proxy/user-proxy.service';
         [documentSaveSuccess]="documentSaveSuccess"
         [documents]="user && user[documentType + '_documents']?.slice(-maxNbrDocuments)"
         [subHeader]="subHeader"
-        [uploadingDocument]="uploadingDocument">
+        [uploadingDocument]="uploadingDocument || user.isBeingReloaded">
       </upload-document-card>
     </div>`
 })
-export class UserDocumentCardInputComponent {
+export class UserDocumentCardInputComponent implements OnInit, OnDestroy {
   @Input() public centered: boolean;
   @Input() public documentType: string;
   @Input() public header: string;
@@ -32,14 +36,31 @@ export class UserDocumentCardInputComponent {
   @Input() public maxNbrDocuments: number = 5;
   @Input() public showLabel: boolean;
   @Input() public subHeader: string;
-  @Input() public user: User;
   public documentSaveFail: boolean;
   public documentSaveSuccess: boolean;
   public uploadingDocument: boolean;
+  public user: User;
+  public userSubscription: Subscription;
 
-  constructor(
-    private userProxy: UserProxy
+  public constructor(
+    private userProxy: UserProxy,
+    private userResolver: UserResolver
   ) {
+  }
+
+  public ngOnInit(): void {
+    this.initUser();
+  }
+
+  private initUser(): void {
+    this.user = this.userResolver.getUser();
+    this.userSubscription = this.userResolver.getUserChangeEmitter().subscribe(user => {
+      this.user = user;
+    });
+  }
+
+  public ngOnDestroy(): void {
+    this.userSubscription.unsubscribe();
   }
 
   public onUploadDocument(file) {

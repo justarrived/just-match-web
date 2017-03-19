@@ -18,6 +18,7 @@ import {UserSkill} from '../../../models/user/user-skill';
     class="ui form">
     <sm-loader
       [complete]="!loadingSkill"
+      [promise]="skills"
       class="inverted"
       text="{{'component.loading' | translate}}">
     </sm-loader>

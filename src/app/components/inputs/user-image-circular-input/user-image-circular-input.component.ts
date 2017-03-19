@@ -1,8 +1,12 @@
 import {Component} from '@angular/core';
 import {Input} from '@angular/core';
+import {OnDestroy} from '@angular/core';
+import {OnInit} from '@angular/core';
 import {Output} from '@angular/core';
+import {Subscription} from 'rxjs/Subscription';
 import {User} from '../../../models/user';
 import {UserProxy} from '../../../services/proxy/user-proxy.service';
+import {UserResolver} from '../../../resolvers/user/user.resolver';
 
 @Component({
   selector: 'user-image-circular-input',
@@ -15,23 +19,39 @@ import {UserProxy} from '../../../services/proxy/user-proxy.service';
         [imageUrl]="this.user && this.user[this.imageType + '_image']?.mediumImageUrl"
         [placeholderImageUrl]="placeholderImageUrl"
         [size]="size"
-        [uploadingImage]="uploadingImage">
+        [uploadingImage]="uploadingImage || user.isBeingReloaded">
       </circular-image-input>`
 })
-export class UserImageCircularInputComponent {
+export class UserImageCircularInputComponent implements OnInit, OnDestroy {
   @Input() public centered: boolean;
   @Input() public imageType: string;
   @Input() public placeholderImageUrl: string;
   @Input() public size: string = 'medium'; // One of ['mini', 'tiny', 'small', 'medium', 'large', 'big', 'huge', massive]
-  @Input() public user: User;
   public imageSaveFail: boolean;
   public imageSaveSuccess: boolean;
   public uploadingImage: boolean;
+  public user: User;
+  public userSubscription: Subscription;
 
-
-  constructor(
-    private userProxy: UserProxy
+  public constructor(
+    private userProxy: UserProxy,
+    private userResolver: UserResolver
   ) {
+  }
+
+  public ngOnInit(): void {
+    this.initUser();
+  }
+
+  private initUser(): void {
+    this.user = this.userResolver.getUser();
+    this.userSubscription = this.userResolver.getUserChangeEmitter().subscribe(user => {
+      this.user = user;
+    });
+  }
+
+  public ngOnDestroy(): void {
+    this.userSubscription.unsubscribe();
   }
 
   public onUploadImage(file) {

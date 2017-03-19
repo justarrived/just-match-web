@@ -1,8 +1,12 @@
 import {Component} from '@angular/core';
 import {Input} from '@angular/core';
+import {OnDestroy} from '@angular/core';
+import {OnInit} from '@angular/core';
 import {Output} from '@angular/core';
+import {Subscription} from 'rxjs/Subscription';
 import {User} from '../../../models/user';
 import {UserProxy} from '../../../services/proxy/user-proxy.service';
+import {UserResolver} from '../../../resolvers/user/user.resolver';
 
 @Component({
   selector: 'user-image-card-input',
@@ -21,11 +25,11 @@ import {UserProxy} from '../../../services/proxy/user-proxy.service';
         [imageSaveSuccess]="imageSaveSuccess"
         [imageUrl]="this.user && this.user[this.imageType + '_image']?.mediumImageUrl"
         [subHeader]="subHeader"
-        [uploadingImage]="uploadingImage">
+        [uploadingImage]="uploadingImage || user.isBeingReloaded">
       </upload-image-card>
     </div>`
 })
-export class UserImageCardInputComponent {
+export class UserImageCardInputComponent implements OnInit, OnDestroy {
   @Input() public centered: boolean;
   @Input() public description: string;
   @Input() public header: string;
@@ -33,14 +37,31 @@ export class UserImageCardInputComponent {
   @Input() public label: string;
   @Input() public showLabel: boolean;
   @Input() public subHeader: string;
-  @Input() public user: User;
   public imageSaveFail: boolean;
   public imageSaveSuccess: boolean;
   public uploadingImage: boolean;
+  public user: User;
+  public userSubscription: Subscription;
 
-  constructor(
-    private userProxy: UserProxy
+  public constructor(
+    private userProxy: UserProxy,
+    private userResolver: UserResolver
   ) {
+  }
+
+  public ngOnInit(): void {
+    this.initUser();
+  }
+
+  private initUser(): void {
+    this.user = this.userResolver.getUser();
+    this.userSubscription = this.userResolver.getUserChangeEmitter().subscribe(user => {
+      this.user = user;
+    });
+  }
+
+  public ngOnDestroy(): void {
+    this.userSubscription.unsubscribe();
   }
 
   public onUploadImage(file) {

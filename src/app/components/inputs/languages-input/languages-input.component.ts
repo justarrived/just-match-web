@@ -18,6 +18,7 @@ import {UserLanguage} from '../../../models/user/user-language';
     class="ui form">
     <sm-loader
       [complete]="!loadingLanguage"
+      [promise]="languages"
       class="inverted"
       text="{{'component.loading' | translate}}">
     </sm-loader>

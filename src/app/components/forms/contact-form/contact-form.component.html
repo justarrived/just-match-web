@@ -3,7 +3,7 @@
   [formGroup]="contactForm"
   class="ui form">
   <sm-loader
-    [complete]="!loadingSubmit"
+    [complete]="!loadingSubmit && (!user || !user.isBeingReloaded)"
     class="inverted"
     text="{{'component.loading' | translate}}">
   </sm-loader>

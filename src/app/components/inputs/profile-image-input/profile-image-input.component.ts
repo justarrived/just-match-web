@@ -8,14 +8,12 @@ import {User} from '../../../models/user';
   <user-image-circular-input
     [centered]="centered"
     [size]="size"
-    [user]="user"
     imageType="profile"
     placeholderImageUrl="/assets/images/placeholder-profile-image.png">
   </user-image-circular-input>
   `
 })
 export class ProfileImageInputComponent {
-  @Input() public user: User;
   @Input() public centered: boolean;
   @Input() public size: string = 'medium'; // One of ['mini', 'tiny', 'small', 'medium', 'large', 'big', 'huge', massive]
 }

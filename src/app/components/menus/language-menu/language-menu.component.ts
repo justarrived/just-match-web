@@ -96,6 +96,8 @@ export class LanguageMenuComponent implements OnInit {
     this.isLanguageMenuVisible = false;
     this.isLanguageMenuVisibleChange.emit(this.isLanguageMenuVisible);
     this.systemLanguagesResolver.setSystemLanguage(language);
-    this.userResolver.reloadUser();
+    if (this.userResolver.getUser()) {
+      this.userResolver.reloadUser();
+    }
   }
 }

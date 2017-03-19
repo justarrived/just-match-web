@@ -11,16 +11,24 @@ import {SystemLanguagesResolver} from '../../../resolvers/system-languages/syste
 @Component({
   selector: 'status-input',
   template: `
-    <select-dropdown-input
-      [apiErrors]="apiErrors"
-      [control]="control"
-      [data]="statuses | async"
-      [label]="'input.status.label' | translate"
-      [placeholder]="'input.status.placeholder' | translate"
-      apiAttribute="current_status"
-      dataItemLabelProoerty="name"
-      dataItemValueProoerty="id">
-    </select-dropdown-input>`
+    <form
+      class="ui form">
+      <sm-loader
+        [promise]="statuses"
+        class="inverted"
+        text="{{'component.loading' | translate}}">
+      </sm-loader>
+      <select-dropdown-input
+        [apiErrors]="apiErrors"
+        [control]="control"
+        [data]="statuses | async"
+        [label]="'input.status.label' | translate"
+        [placeholder]="'input.status.placeholder' | translate"
+        apiAttribute="current_status"
+        dataItemLabelProoerty="name"
+        dataItemValueProoerty="id">
+      </select-dropdown-input>
+    </form>`
 })
 export class StatusInputComponent extends SystemLanguageListener implements OnInit {
   @Input() apiErrors: ApiErrors;

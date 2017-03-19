@@ -11,13 +11,11 @@ import {User} from '../../../models/user';
     [label]="'input.residence.permit.back.label' | translate"
     [showLabel]="showLabel"
     [subHeader]="'input.residence.permit.back.description' | translate"
-    [user]="user"
     imageType="residence_permit_back">
   </user-image-card-input>
   `
 })
 export class ResidencePermitBackInputComponent {
-  @Input() user: User;
   @Input() centered: boolean;
   @Input() showLabel: boolean;
 }

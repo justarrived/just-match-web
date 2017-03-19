@@ -1,6 +1,10 @@
 import {Component} from '@angular/core';
 import {Input} from '@angular/core';
+import {OnDestroy} from '@angular/core';
+import {OnInit} from '@angular/core';
+import {Subscription} from 'rxjs/Subscription';
 import {User} from '../../../models/user';
+import {UserResolver} from '../../../resolvers/user/user.resolver';
 
 @Component({
   selector: 'user-profile-header',
@@ -11,7 +15,6 @@ import {User} from '../../../models/user';
       <div class="ui basic segment">
         <profile-image-input
           [centered]="true"
-          [user]="user"
           size="small">
         </profile-image-input>
       </div>
@@ -27,6 +30,27 @@ import {User} from '../../../models/user';
     </div>
   </div>`
 })
-export class UserProfileHeaderComponent {
-  @Input() user: User
+export class UserProfileHeaderComponent implements OnInit, OnDestroy {
+  public user: User;
+  public userSubscription: Subscription;
+
+  public constructor(
+    private userResolver: UserResolver
+  ) {
+  }
+
+  public ngOnInit(): void {
+    this.initUser();
+  }
+
+  private initUser(): void {
+    this.user = this.userResolver.getUser();
+    this.userSubscription = this.userResolver.getUserChangeEmitter().subscribe(user => {
+      this.user = user;
+    });
+  }
+
+  public ngOnDestroy(): void {
+    this.userSubscription.unsubscribe();
+  }
 }

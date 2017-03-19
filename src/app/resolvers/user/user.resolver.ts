@@ -55,6 +55,9 @@ export class UserResolver implements Resolve<User> {
     const session = this.dataStore.get(this.storageSessionKey);
 
     if (this.validateSession(session)) {
+      if (this.user) {
+        this.user.isBeingReloaded = true;
+      }
       return this.userProxy.getUser(session.user_id, { include: this.defaultIncludeResourcesString }).then(user => {
         this.user = user;
         this.userChange.emit(this.user);

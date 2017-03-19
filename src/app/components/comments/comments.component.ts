@@ -85,7 +85,7 @@ export class CommentsComponent extends SystemLanguageListener implements OnInit 
   private calculateFooterVisibility() {
     let scrollHeight = document.body.scrollTop;
     let windowHeight = window.innerHeight;
-    let footerHeight = document.getElementsByTagName('footer')[0]['offsetHeight'];
+    let footerHeight = document.getElementsByTagName('default-footer')[0]['offsetHeight'];
     let documentHeight = this.getDocumentHeight();
     let isFooterVisibleActual = windowHeight + scrollHeight >= documentHeight - footerHeight;
     if (isFooterVisibleActual !== this.isFooterVisible) {
