@@ -11,8 +11,7 @@ import {LanguageProxy} from '../../../services/proxy/language-proxy.service';
 @Component({
   selector: 'system-language-input',
   template: `
-    <form
-      class="ui form">
+    <div class="ui form">
       <sm-loader
         [promise]="systemLanguages"
         class="inverted"
@@ -33,7 +32,7 @@ import {LanguageProxy} from '../../../services/proxy/language-proxy.service';
           </div>
         </div>
       </select-dropdown-input>
-    </form>`
+    </div>`
 })
 export class SystemLanguageInputComponent extends SystemLanguageListener implements OnInit {
   @Input() apiErrors: ApiErrors;

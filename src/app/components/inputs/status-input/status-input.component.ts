@@ -11,8 +11,7 @@ import {SystemLanguagesResolver} from '../../../resolvers/system-languages/syste
 @Component({
   selector: 'status-input',
   template: `
-    <form
-      class="ui form">
+    <div class="ui form">
       <sm-loader
         [promise]="statuses"
         class="inverted"
@@ -28,7 +27,7 @@ import {SystemLanguagesResolver} from '../../../resolvers/system-languages/syste
         dataItemLabelProoerty="name"
         dataItemValueProoerty="id">
       </select-dropdown-input>
-    </form>`
+    </div>`
 })
 export class StatusInputComponent extends SystemLanguageListener implements OnInit {
   @Input() apiErrors: ApiErrors;

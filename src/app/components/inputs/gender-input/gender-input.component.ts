@@ -11,8 +11,7 @@ import {UserProxy} from '../../../services/proxy/user-proxy.service';
 @Component({
   selector: 'gender-input',
   template: `
-    <form
-      class="ui form">
+    <div class="ui form">
       <sm-loader
         [promise]="genders"
         class="inverted"
@@ -28,7 +27,7 @@ import {UserProxy} from '../../../services/proxy/user-proxy.service';
         dataItemLabelProoerty="translated.name"
         dataItemValueProoerty="id">
       </select-dropdown-input>
-    </form>`
+    </div>`
 })
 export class GenderInputComponent extends SystemLanguageListener implements OnInit {
   @Input() apiErrors: ApiErrors;

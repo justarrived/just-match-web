@@ -14,8 +14,7 @@ import {UserLanguage} from '../../../models/user/user-language';
 @Component({
   selector: 'languages-input',
   template: `
-  <form
-    class="ui form">
+  <div class="ui form">
     <sm-loader
       [complete]="!loadingLanguage"
       [promise]="languages"
@@ -41,7 +40,7 @@ import {UserLanguage} from '../../../models/user/user-language';
         [label]="userLanguage.language.translated.name">
       </language-proficiency-input>
     </div>
-  </form>`
+  </div>`
 })
 export class LanguagesInputComponent extends SystemLanguageListener implements OnInit {
   @Input() apiErrors: ApiErrors;
