@@ -1,85 +1,68 @@
 <div class="home-container">
   <welcome-header></welcome-header>
 
-  <div class="home-jobs-slider-container home-jobs-slider-new-jobs-container">
-    <div class="home-jobs-slider-new-jobs-title">
-      <h2>
-        {{'home.jobs.slider.new.jobs.title' | translate}}
-      </h2>
-    </div>
-    <div class="home-jobs-slider-show-all-jobs-link-container">
-      <a
-        class="home-jobs-slider-show-all-jobs-link home-jobs-slider-show-all-new-jobs-link"
-        routerLink="{{JARoutes.jobs.url(['1'])}}">
-        {{'home.jobs.slider.show.all.link' | translate | lowercase}} > <i class="icon-ic-arrow-right"></i>
-      </a>
-    </div>
-    <div class="home-jobs-slider" align="center">
-      <div
+  <div class="ui basic padded center aligned segment">
+    <h2>
+      {{'home.jobs.slider.new.jobs.title' | translate}}
+    </h2>
+    <div class="ui centered grid">
+      <job-card
+        class="ui basic left aligned segment"
         *ngFor="let job of newJobs"
-        class="home-job-item-container"
-        routerLink="{{JARoutes.job.url([job.id])}}">
-        <div class="home-job-item-name-container">
-          <div class="home-job-item-name">
-            {{job.translated.name}}
-          </div>
-        </div>
-        <div class="home-job-item-salary-container">
-          {{job.grossAmountWithCurrency }}
-        </div>
-      </div>
+        style="margin: 1rem 0"
+        [job]="job">
+      </job-card>
     </div>
+    <base-button
+      [buttonText]="'home.jobs.slider.show.all.link' | translate"
+      [routerLink]="JARoutes.jobs.url(['1'])"
+      kind="primary"
+      size="medium">
+    </base-button>
   </div>
 
-  <div class="home-jobs-slider-container home-jobs-slider-user-jobs-container" *ngIf="userJobsVisible()">
-    <div class="home-jobs-slider-user-jobs-title">
-      <h2>
-        {{'home.jobs.slider.user.jobs.title' | translate}}
-      </h2>
-    </div>
-    <div class="home-jobs-slider-show-all-jobs-link-container">
-      <a
-        class="home-jobs-slider-show-all-jobs-link home-jobs-slider-show-all-user-jobs-link"
-        [routerLink]="JARoutes.userJobs.url()">
-        {{'home.jobs.slider.show.all.link' | translate | lowercase}} > <i class="icon-ic-arrow-right"></i>
-      </a>
-    </div>
-    <div class="home-jobs-slider" align="center">
+  <div
+    class="user-jobs-container ui basic very padded center aligned segment"
+    style="margin: 0"
+    *ngIf="userJobsVisible()">
+    <h2>
+      {{'home.jobs.slider.user.jobs.title' | translate}}
+    </h2>
+    <div
+      class="ui centered grid"
+      style="margin: 40px 0">
       <div
         *ngFor="let userJob of userJobs"
-        class="home-job-item-container"
-        routerLink="{{JARoutes.job.url([userJob.job.id])}}">
-        <div class="home-job-item-name-container">
-          <div class="home-job-item-name">
+        class="job-item-container"
+        [routerLink]="JARoutes.job.url([userJob.job.id])">
+        <div class="job-item-name-container">
+          <div class="job-item-name">
             {{userJob.job.translated.name}}
           </div>
         </div>
-        <div *ngIf="userJob.job_ended" class="home-job-item-salary-container home-job-item-salary-job-ended-container">
+        <div
+          *ngIf="userJob.willPerform && userJob.job_ended"
+          class="job-item-label-container job-item-label-secondary-container">
           {{'home.jobs.slider.user.jobs.job.ended.label' | translate | uppercase}}
         </div>
         <div
+          *ngIf="!userJob.willPerform"
+          class="job-item-label-container job-item-label-secondary-container">
+          {{'home.jobs.slider.user.jobs.job.applied.label' | translate | uppercase}}
+        </div>
+        <div
           *ngIf="userJob.willPerform && !userJob.job_ended"
-          class="home-job-item-salary-container home-job-item-salary-will-perform-job-container">
+          class="job-item-label-container job-item-label-primary-container">
           {{'home.jobs.slider.user.jobs.will.perform.job.label' | translate | uppercase}}
         </div>
       </div>
     </div>
-  </div>
-
-  <div class="home-jobs-applied-for-container" *ngIf="jobsAppliedForVisible()">
-    <div class="home-jobs-applied-for-header-container">
-      <h3 class="home-jobs-applied-for-header">
-        {{'home.jobs.applied.for.title' | translate}}
-      </h3>
-    </div>
-    <div *ngFor="let job of jobsAppliedFor" class="home-jobs-applied-for-job-item-container">
-      <div class="home-jobs-applied-for-job-item" routerLink="{{JARoutes.job.url([job.job.id])}}">
-        <p class="home-jobs-applied-for-job-item-name">
-          {{job.job.translated.name}}
-        </p>
-        <span class="home-jobs-applied-for-job-item-icon"> > </span>
-      </div>
-    </div>
+    <base-button
+      [buttonText]="'home.jobs.slider.show.all.link' | translate"
+      [routerLink]="JARoutes.userJobs.url()"
+      kind="primary"
+      size="medium">
+    </base-button>
   </div>
 
   <div class="home-instructions-container">

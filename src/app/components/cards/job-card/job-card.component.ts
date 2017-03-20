@@ -28,7 +28,7 @@ import {OnInit} from '@angular/core';
       </div>
       <div class="job-description-container">
         <div class="description job-description">
-          {{job.translated.short_description}}
+          {{job.translated.description}}
         </div>
       </div>
     </div>

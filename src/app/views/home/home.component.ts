@@ -22,7 +22,6 @@ import {yyyymmdd} from '../../utils/date-util';
 export class HomeComponent extends SystemLanguageListener implements OnInit, OnDestroy {
   public isEmpty = isEmpty;
   public JARoutes = JARoutes;
-  public jobsAppliedFor: UserJob[];
   public newJobs: Job[];
   public user: User;
   public userJobs: UserJob[];
@@ -54,17 +53,16 @@ export class HomeComponent extends SystemLanguageListener implements OnInit, OnD
     this.loadJobs();
     if (this.user) {
       this.loadUserJobs();
-      this.loadJobsAppliedFor();
     }
   }
 
   private loadJobs(): void {
     this.jobProxy.getJobs(
       {
-        include: 'company,hourly_pay,company.company_images',
-        'filter[filled]': false,
-        'filter[job_date]': yyyymmdd(new Date()) + '..'
-        + yyyymmdd(nbrOfMonthsFromDate(new Date(), 6))
+        'include': 'company,hourly_pay,company.company_images',
+        'sort': 'job_date',
+        'page[size]': 4,
+        'filter[filled]': false
       })
       .then(result => {
         this.newJobs = result.data;
@@ -75,26 +73,12 @@ export class HomeComponent extends SystemLanguageListener implements OnInit, OnD
     this.userProxy.getUserJobs(
       this.user.id,
       {
-        include: 'job',
-        'sort': 'job.job.end_date',
-        'filter[will_perform]': true,
+        'include': 'job',
+        'sort': 'job_date',
         'page[size]': 5
       })
       .then(result => {
         this.userJobs = result;
-      });
-  }
-
-  private loadJobsAppliedFor(): void {
-    this.userProxy.getUserJobs(
-      this.user.id,
-      {
-        include: 'job',
-        'sort': '-created_at',
-        'page[size]': 10
-      })
-      .then(result => {
-        this.jobsAppliedFor = result;
       });
   }
 
@@ -105,13 +89,6 @@ export class HomeComponent extends SystemLanguageListener implements OnInit, OnD
   public userJobsVisible() {
     if (this.user) {
       return !this.isEmpty(this.userJobs);
-    }
-    return false;
-  }
-
-  public jobsAppliedForVisible() {
-    if (this.user) {
-      return !this.isEmpty(this.jobsAppliedFor);
     }
     return false;
   }

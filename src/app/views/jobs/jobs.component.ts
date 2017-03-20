@@ -57,10 +57,10 @@ export class JobsComponent extends SystemLanguageListener implements OnInit {
     this.loadingJobs = true;
     this.jobProxy.getJobs(
       {
-        include: 'company,hourly_pay,company.company_images',
+        'include': 'company,hourly_pay,company.company_images',
         'filter[filled]': false,
-        'filter[job_date]': yyyymmdd(new Date()) + '..' + yyyymmdd(nbrOfMonthsFromDate(new Date(), 6)),
-        sort: 'job_date',
+        'filter[job_date]': yyyymmdd(new Date()) + '..' + yyyymmdd(nbrOfMonthsFromDate(new Date(), 12)),
+        'sort': 'job_date',
         'page[number]': this.page
       })
       .then(result => {

@@ -4,163 +4,53 @@
 $job-card-border-radius: 8px;
 
 .home-container {
-  .home-jobs-slider-container {
-    display: flex;
-    flex-wrap: wrap;
-    padding: 3em;
-    @media screen and (max-width: $md-device-width) {
-      padding: 3em 1em;
-    }
+  .user-jobs-container {
+    background: $color-gray-25;
 
-    .home-jobs-slider-new-jobs-title {
-      color: $color-secondary-gray;
-    }
-
-    .home-jobs-slider-user-jobs-title {
-      color: $white;
-    }
-
-    .home-jobs-slider-show-all-jobs-link-container {
-      width: 100%;
-      display: flex;
-      flex-direction: column-reverse;
-
-      .home-jobs-slider-show-all-jobs-link {
-        cursor: pointer;
-        align-self: flex-end;
-        padding-left: 3em;
-      }
-
-      .home-jobs-slider-show-all-new-jobs-link {
-        color: $color-primary-cerise;
-      }
-
-      .home-jobs-slider-show-all-user-jobs-link {
-        color: $white;
-      }
-    }
-
-    .home-jobs-slider {
-      width: 100%;
-      margin-top: 15px;
-      overflow-y: scroll;
-      white-space: nowrap;
-
-      &::-webkit-scrollbar {
-        display: none;
-      }
-
-      .home-job-item-container {
-        display: inline-block;
-        width: 180px;
-        margin: 5px;
-        background-color: $default-bg-color;
-        border-radius: $job-card-border-radius;
-        box-shadow: 0 2px 6px 0 rgba(0,0,0,0.4);
-        cursor: pointer;
-
-        &:hover {
-          transform: scale(1.02);
-        }
-
-        .home-job-item-name-container {
-          height: 110px;
-          padding: 10px;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-
-          .home-job-item-name {
-            text-align: center;
-            white-space: normal;
-            @include truncate-owerflowing-text;
-          }
-        }
-
-        .home-job-item-salary-container {
-          color: $white;
-          background: $color-primary-cerise;
-          padding: 10px;
-          font-weight: 500;
-          border-radius: 0 0 $job-card-border-radius $job-card-border-radius;
-          text-align: center;
-        }
-
-        .home-job-item-salary-will-perform-job-container {
-          background: $color-primary-cerise;
-          color: $white;
-        }
-
-        .home-job-item-salary-job-ended-container {
-          background: $color-gray-50;
-          color: $color-gray-200;
-        }
-      }
-      @media (max-width: $md-device-width) {
-        .home-job-item-container:first-of-type {
-          margin-left: 3em;
-        }
-
-        .home-job-item-container:last-of-type {
-          margin-right: 3em;
-        }
-      }
-    }
-  }
-
-  .home-jobs-slider-new-jobs-container {
-    background: $white;
-  }
-
-  .home-jobs-slider-user-jobs-container {
-    background: $color-secondary-gray;
-  }
-
-  .home-jobs-applied-for-container {
-    display: flex;
-    flex-wrap: wrap;
-
-    .home-jobs-applied-for-header-container {
-      background: $color-gray-25;
-      border-bottom: 2px solid $color-primary-cerise;
-      width: 100%;
-
-      .home-jobs-applied-for-header {
-        margin-top: 15px;
-        margin-bottom: 15px;
-        margin-left: 48px;
-      }
-    }
-
-    .home-jobs-applied-for-job-item-container {
-      border-top: 1px solid $color-gray-25;
-      border-bottom: 1px solid $color-gray-25;
-      width: 100%;
+    .job-item-container {
+      width: 180px;
+      margin: 5px;
+      background-color: $default-bg-color;
+      border-radius: $job-card-border-radius;
+      box-shadow: 0 2px 6px 0 rgba(0,0,0,0.4);
+      cursor: pointer;
+      padding: 0;
 
       &:hover {
-        opacity: .5;
+        transform: scale(1.02);
       }
 
-      .home-jobs-applied-for-job-item {
-        cursor: pointer;
+      .job-item-name-container {
+        height: 110px;
+        padding: 10px;
         display: flex;
-        width: 100%;
-        padding-left: 48px;
+        flex-direction: column;
+        justify-content: center;
 
-        .home-jobs-applied-for-job-item-name {
-          margin-top: 15px;
-          margin-bottom: 15px;
+        .job-item-name {
+          text-align: center;
+          white-space: normal;
           @include truncate-owerflowing-text;
         }
+      }
 
-        .home-jobs-applied-for-job-item-icon {
-          color: $color-primary-cerise;
-          margin-top: 15px;
-          margin-bottom: 15px;
-          padding-left: 20px;
-          margin-left: auto;
-          margin-right: 48px;
-        }
+      .job-item-label-container {
+        color: $white;
+        background: $color-primary-cerise;
+        padding: 10px;
+        font-weight: 500;
+        border-radius: 0 0 $job-card-border-radius $job-card-border-radius;
+        text-align: center;
+      }
+
+      .job-item-label-primary-container {
+        background: $color-primary-cerise;
+        color: $white;
+      }
+
+      .job-item-label-secondary-container {
+        background: $color-gray-50;
+        color: $color-gray-200;
       }
     }
   }
