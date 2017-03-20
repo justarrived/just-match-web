@@ -75,12 +75,13 @@ export class HomeComponent extends SystemLanguageListener implements OnInit, OnD
       {
         'include': 'job',
         'sort': 'job_date',
-        'page[size]': 5
+        'page[size]': 14
       })
       .then(result => {
         this.userJobs = result;
       });
   }
+
 
   public ngOnDestroy() {
     this.userSubscription.unsubscribe();

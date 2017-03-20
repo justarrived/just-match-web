@@ -8,7 +8,7 @@ $job-card-border-radius: 8px;
     background: $color-gray-25;
 
     .job-item-container {
-      width: 180px;
+      width: 140px;
       background-color: $default-bg-color;
       border-radius: $job-card-border-radius;
       box-shadow: 0 2px 6px 0 rgba(0,0,0,0.4);
@@ -20,7 +20,7 @@ $job-card-border-radius: 8px;
       }
 
       .job-item-name-container {
-        height: 110px;
+        height: 90px;
         padding: 10px;
         display: flex;
         flex-direction: column;
