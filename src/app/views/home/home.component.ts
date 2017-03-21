@@ -62,7 +62,8 @@ export class HomeComponent extends SystemLanguageListener implements OnInit, OnD
         'include': 'company,hourly_pay,company.company_images',
         'sort': 'job_date',
         'page[size]': 4,
-        'filter[filled]': false
+        'filter[filled]': false,
+        'filter[job_date]': yyyymmdd(new Date()) + '..' + yyyymmdd(nbrOfMonthsFromDate(new Date(), 12))
       })
       .then(result => {
         this.newJobs = result.data;
