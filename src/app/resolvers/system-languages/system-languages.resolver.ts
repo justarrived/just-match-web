@@ -42,6 +42,7 @@ export class SystemLanguagesResolver implements Resolve<Language[]> {
     let systemLanguageCode = this.dataStore.get(this.storageSystemLanguageCodeKey) || 'sv';
     this.systemLanguage = this.systemLanguages.find(language => language.languageCode === systemLanguageCode);
     this.dataStore.set(this.storageSystemLanguageCodeKey, systemLanguageCode);
+    this.translateService.use(systemLanguageCode);
   }
 
   public getSystemLanguages(): Language[] {
