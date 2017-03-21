@@ -48,71 +48,7 @@
     </base-button>
   </div>
 
-  <div class="home-instructions-container">
-    <div class="home-instructions-inner-container home-instructions-first-inner-container">
-      <h3>
-        {{'home.instructions.first.section.title' | translate}}
-      </h3>
-      <ul class="home-instructions-list">
-        <li class="home-instructions-list-item">
-          <i class="home-instructions-list-item-icon fa fa-check-circle-o fa-2x"></i> {{'home.instructions.first.section.instruction0' | translate}}
-        </li>
-        <li class="home-instructions-list-item">
-          <i class="home-instructions-list-item-icon fa fa-check-circle-o fa-2x"></i> {{'home.instructions.first.section.instruction1' | translate}}
-        </li>
-        <li class="home-instructions-list-item">
-          <i class="home-instructions-list-item-icon fa fa-check-circle-o fa-2x"></i> {{'home.instructions.first.section.instruction2' | translate}}
-        </li>
-        <li class="home-instructions-list-item">
-          <i class="home-instructions-list-item-icon fa fa-check-circle-o fa-2x"></i> {{'home.instructions.first.section.instruction3' | translate}}
-        </li>
-      </ul>
-      <base-button
-        [buttonText]="'common.find_assignment' | translate"
-        [fluid]="true"
-        [routerLink]="JARoutes.jobs.url(['1'])"
-        kind="secondary-light"
-        size="medium">
-      </base-button>
-    </div>
-    <div class="home-instructions-inner-container home-instructions-second-inner-container">
-      <h3>
-        {{'home.instructions.second.section.title' | translate}}
-      </h3>
-      <p>
-        {{'home.instructions.second.section.description' | translate}}
-      </p>
-      <ul class="home-instructions-list">
-        <li class="home-instructions-list-item">
-          <i class="home-instructions-list-item-icon fa fa-check-circle-o fa-2x"></i> {{'home.instructions.second.section.instruction1' | translate}}
-        </li>
-        <li class="home-instructions-list-item">
-          <i class="home-instructions-list-item-icon fa fa-check-circle-o fa-2x"></i> {{'home.instructions.second.section.instruction2' | translate}}
-        </li>
-        <li class="home-instructions-list-item">
-          <i class="home-instructions-list-item-icon fa fa-check-circle-o fa-2x"></i> {{'home.instructions.second.section.instruction3' | translate}}
-        </li>
-      </ul>
-      <div *ngIf="!user">
-        <base-button
-          [buttonText]="'common.start_here' | translate"
-          [fluid]="true"
-          [routerLink]="JARoutes.registerUser.url()"
-          kind="secondary-light"
-          size="medium">
-        </base-button>
-      </div>
-      <div *ngIf="user">
-        <base-button
-          [buttonText]="'home.header.logged.in.profile.button' | translate"
-          [fluid]="true"
-          [routerLink]="JARoutes.user.url()"
-          kind="secondary-light"
-          size="medium">
-        </base-button>
-      </div>
-    </div>
-  </div>
+  <how-it-works-and-maximize-chances-section></how-it-works-and-maximize-chances-section>
 
   <partners-section></partners-section>
 </div>

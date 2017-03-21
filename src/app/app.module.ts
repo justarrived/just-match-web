@@ -1,4 +1,6 @@
 import {AccountNumberInputComponent} from './components/inputs/account-number-input/account-number-input.component';
+import {MaximizeChancessSectionComponent} from './components/sections/maximize-chances-section/maximize-chances-section.component';
+import {HowItWorksAndMaximizeChancesSectionComponent} from './components/sections/how-it-works-and-maximize-chances-section/how-it-works-and-maximize-chances-section.component';
 import {ActsAsUser} from './services/acts-as-user.service';
 import {AddressInputComponent} from './components/inputs/address-input/address-input.component';
 import {AgmCoreModule} from 'angular2-google-maps/core';
@@ -56,6 +58,7 @@ import {GenderInputComponent} from './components/inputs/gender-input/gender-inpu
 import {Geolocation} from './services/geolocation.service';
 import {GotCoordinationNumberInputComponent} from './components/inputs/got-coordination-number-input/got-coordination-number-input.component';
 import {HomeComponent} from './views/home/home.component';
+import {HowItWorksSectionComponent} from './components/sections/how-it-works-section/how-it-works-section.component';
 import {HttpModule} from '@angular/http';
 import {InfoMessageComponent} from './components/messages/info-message/info-message.component';
 import {InputErrorComponent} from './components/form-errors/input-error/input-error.component';
@@ -185,6 +188,7 @@ export class RavenErrorHandler implements ErrorHandler {
     ContactPageComponent,
     CookieBarComponent,
     CookiesAboutPageComponent,
+    HowItWorksAndMaximizeChancesSectionComponent,
     CountryOfOriginInputComponent,
     CustomRadioButtonInputComponent,
     DefaultFooterComponent,
@@ -206,6 +210,7 @@ export class RavenErrorHandler implements ErrorHandler {
     GenderInputComponent,
     GotCoordinationNumberInputComponent,
     HomeComponent,
+    HowItWorksSectionComponent,
     InfoMessageComponent,
     InputErrorComponent,
     InputErrorsComponent,
@@ -230,6 +235,7 @@ export class RavenErrorHandler implements ErrorHandler {
     NavigationMenuComponent,
     NewJobsSectionComponent,
     NewPasswordInputComponent,
+    MaximizeChancessSectionComponent,
     NotFoundPageComponent,
     OldPasswordInputComponent,
     PagerComponent,

@@ -18,7 +18,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
   template: `
   <div
     *ngIf="isNavigationMenuVisible"
-    class="navigation-menu-container ui loading basic segment"
+    class="navigation-menu-container ui basic segment"
     [class.loading]="user && user.isBeingReloaded">
 
     <img

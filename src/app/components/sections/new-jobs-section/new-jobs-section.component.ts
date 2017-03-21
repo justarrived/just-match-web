@@ -10,7 +10,6 @@ import {yyyymmdd} from '../../../utils/date-util';
 
 @Component({
   selector: 'new-jobs-section',
-  styleUrls: ['./new-jobs-section.component.scss'],
   template: `
     <div class="ui basic padded center aligned segment">
       <sm-loader
