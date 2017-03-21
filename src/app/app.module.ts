@@ -91,6 +91,7 @@ import {NotFoundPageComponent} from './components/pages/404-page/404-page.compon
 import {OldPasswordInputComponent} from './components/inputs/old-password-input/old-password-input.component';
 import {PagerComponent} from './components/pager/pager.component';
 import {PasswordInputComponent} from './components/inputs/password-input/password-input.component';
+import {PartnersSectionComponent} from './components/sections/partners-section/partners-section.component';
 import {PersonalIDInputComponent} from './components/inputs/personal-id-input/personal-id-input.component';
 import {PhoneInputComponent} from './components/inputs/phone-input/phone-input.component';
 import {ProfileImageInputComponent} from './components/inputs/profile-image-input/profile-image-input.component';
@@ -231,6 +232,7 @@ export class RavenErrorHandler implements ErrorHandler {
     OldPasswordInputComponent,
     PagerComponent,
     PasswordInputComponent,
+    PartnersSectionComponent,
     PersonalIDInputComponent,
     PhoneInputComponent,
     ProfileImageInputComponent,
