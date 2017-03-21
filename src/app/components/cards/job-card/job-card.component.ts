@@ -11,7 +11,7 @@ import {OnInit} from '@angular/core';
   <div
     class="ui raised card link job-card"
     routerLink="{{JARoutes.job.url([job.id])}}">
-    <div class="content">
+    <div class="content job-content-container">
       <img
         class="right floated mini ui image"
         src="{{job.companyLogoURL}}">

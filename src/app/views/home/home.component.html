@@ -1,25 +1,7 @@
 <div class="home-container">
   <welcome-header></welcome-header>
 
-  <div class="ui basic padded center aligned segment">
-    <h2>
-      {{'home.jobs.slider.new.jobs.title' | translate}}
-    </h2>
-    <div class="ui centered grid">
-      <job-card
-        class="ui basic left aligned segment"
-        *ngFor="let job of newJobs"
-        style="margin: 1rem 0"
-        [job]="job">
-      </job-card>
-    </div>
-    <base-button
-      [buttonText]="'home.jobs.slider.show.all.link' | translate"
-      [routerLink]="JARoutes.jobs.url(['1'])"
-      kind="primary"
-      size="medium">
-    </base-button>
-  </div>
+  <new-jobs-section></new-jobs-section>
 
   <div
     class="user-jobs-container ui basic center aligned segment"

@@ -64,7 +64,7 @@ export class JobsComponent extends SystemLanguageListener implements OnInit {
         'page[number]': this.page
       })
       .then(result => {
-        this.jobs = result.data;
+        this.jobs = result.jobs;
         this.totalJobs = result.total;
         this.loadingJobs = false;
         if (this.pageSize * (this.page - 1) > this.totalJobs) {

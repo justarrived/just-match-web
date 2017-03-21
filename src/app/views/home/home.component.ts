@@ -1,8 +1,6 @@
 import {Component} from '@angular/core';
 import {isEmpty} from 'lodash';
 import {JARoutes} from '../../routes/ja-routes';
-import {Job} from '../../models/job/job';
-import {JobProxy} from '../../services/proxy/job-proxy.service';
 import {nbrOfMonthsFromDate} from '../../utils/date-util';
 import {OnDestroy} from '@angular/core';
 import {OnInit} from '@angular/core';
@@ -22,14 +20,12 @@ import {yyyymmdd} from '../../utils/date-util';
 export class HomeComponent extends SystemLanguageListener implements OnInit, OnDestroy {
   public isEmpty = isEmpty;
   public JARoutes = JARoutes;
-  public newJobs: Job[];
   public user: User;
   public userJobs: UserJob[];
 
   private userSubscription: Subscription;
 
   public constructor(
-    private jobProxy: JobProxy,
     private userProxy: UserProxy,
     private userResolver: UserResolver,
     protected systemLanguagesResolver: SystemLanguagesResolver
@@ -50,24 +46,9 @@ export class HomeComponent extends SystemLanguageListener implements OnInit, OnD
   }
 
   protected loadData(): void {
-    this.loadJobs();
     if (this.user) {
       this.loadUserJobs();
     }
-  }
-
-  private loadJobs(): void {
-    this.jobProxy.getJobs(
-      {
-        'include': 'company,hourly_pay,company.company_images',
-        'sort': '-created_at',
-        'page[size]': 4,
-        'filter[filled]': false,
-        'filter[job_date]': yyyymmdd(new Date()) + '..' + yyyymmdd(nbrOfMonthsFromDate(new Date(), 12))
-      })
-      .then(result => {
-        this.newJobs = result.data;
-      });
   }
 
   private loadUserJobs(): void {

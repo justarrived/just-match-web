@@ -83,6 +83,7 @@ import {MyJobsItemComponent} from './components/my-jobs-item/my-jobs-item.compon
 import {NameInputComponent} from './components/inputs/name-input/name-input.component';
 import {NavigationMenuComponent} from './components/menus/navigation-menu/navigation-menu.component';
 import {NavigationService} from './services/navigation.service';
+import {NewJobsSectionComponent} from './components/sections/new-jobs-section/new-jobs-section.component';
 import {NewPasswordInputComponent} from './components/inputs/new-password-input/new-password-input.component';
 import {NgModule} from '@angular/core';
 import {NgSemanticModule} from 'ng-semantic-ja/ng-semantic';
@@ -90,8 +91,8 @@ import {NO_ERRORS_SCHEMA} from '@angular/core';
 import {NotFoundPageComponent} from './components/pages/404-page/404-page.component';
 import {OldPasswordInputComponent} from './components/inputs/old-password-input/old-password-input.component';
 import {PagerComponent} from './components/pager/pager.component';
-import {PasswordInputComponent} from './components/inputs/password-input/password-input.component';
 import {PartnersSectionComponent} from './components/sections/partners-section/partners-section.component';
+import {PasswordInputComponent} from './components/inputs/password-input/password-input.component';
 import {PersonalIDInputComponent} from './components/inputs/personal-id-input/personal-id-input.component';
 import {PhoneInputComponent} from './components/inputs/phone-input/phone-input.component';
 import {ProfileImageInputComponent} from './components/inputs/profile-image-input/profile-image-input.component';
@@ -115,7 +116,6 @@ import {StreetInputComponent} from './components/inputs/street-input/street-inpu
 import {SuccessMessageComponent} from './components/messages/success-message/success-message.component';
 import {SystemLanguageInputComponent} from './components/inputs/system-language-input/system-language-input.component';
 import {SystemLanguagesResolver} from './resolvers/system-languages/system-languages.resolver';
-import {UserResolver} from './resolvers/user/user.resolver';
 import {TermsInputComponent} from './components/inputs/terms-input/terms-input.component';
 import {TextareaInputComponent} from './components/inputs/textarea-input/textarea-input.component';
 import {TextInputComponent} from './components/inputs/text-input/text-input.component';
@@ -131,6 +131,7 @@ import {UserProfileComponent} from './views/user/user-settings/user-profile/user
 import {UserProfileFormComponent} from './components/forms/user-profile-form/user-profile-form.component';
 import {UserProfileHeaderComponent} from './components/headers/user-profile-header/user-profile-header.component';
 import {UserProxy} from './services/proxy/user-proxy.service';
+import {UserResolver} from './resolvers/user/user.resolver';
 import {UserSettingsComponent} from './views/user/user-settings/user-settings.component';
 import {WelcomeHeaderComponent} from './components/headers/welcome-header/welcome-header.component';
 import {WorkPermitBackInputComponent} from './components/inputs/work-permit-back-input/work-permit-back-input.component';
@@ -227,12 +228,13 @@ export class RavenErrorHandler implements ErrorHandler {
     MyJobsItemComponent,
     NameInputComponent,
     NavigationMenuComponent,
+    NewJobsSectionComponent,
     NewPasswordInputComponent,
     NotFoundPageComponent,
     OldPasswordInputComponent,
     PagerComponent,
-    PasswordInputComponent,
     PartnersSectionComponent,
+    PasswordInputComponent,
     PersonalIDInputComponent,
     PhoneInputComponent,
     ProfileImageInputComponent,
