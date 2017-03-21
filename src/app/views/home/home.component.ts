@@ -60,7 +60,7 @@ export class HomeComponent extends SystemLanguageListener implements OnInit, OnD
     this.jobProxy.getJobs(
       {
         'include': 'company,hourly_pay,company.company_images',
-        'sort': 'job_date',
+        'sort': '-created_at',
         'page[size]': 4,
         'filter[filled]': false,
         'filter[job_date]': yyyymmdd(new Date()) + '..' + yyyymmdd(nbrOfMonthsFromDate(new Date(), 12))
@@ -75,7 +75,7 @@ export class HomeComponent extends SystemLanguageListener implements OnInit, OnD
       this.user.id,
       {
         'include': 'job',
-        'sort': 'job_date',
+        'sort': '-created_at',
         'page[size]': 14
       })
       .then(result => {
