@@ -32,9 +32,16 @@ export class UserJobsComponent extends SystemLanguageListener implements OnInit 
   }
 
   protected loadData() {
-    this.userProxy.getUserJobs(this.userResolver.getUser().id, {include: 'job, job.company'}).then((jobs) => {
-      this.userJobs = jobs;
-      this.generateJobSections();
+    this.userProxy.getUserJobs(
+      this.userResolver.getUser().id,
+      {
+        'include': 'job, job.company',
+        'sort': '-created_at',
+        'page[size]': 14
+      })
+      .then((jobs) => {
+        this.userJobs = jobs;
+        this.generateJobSections();
     });
   }
 
