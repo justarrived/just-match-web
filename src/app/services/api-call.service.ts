@@ -79,7 +79,7 @@ export class ApiCall {
     req.headers.set(this.transformHeaderName, this.transformHeaderValue);
 
     const actAsUserId = this.actsAsUser.getUserId();
-    if (actAsUserId != null) {
+    if (actAsUserId !== null) {
       req.headers.set(this.actAsUserHeaderName, actAsUserId);
     }
 

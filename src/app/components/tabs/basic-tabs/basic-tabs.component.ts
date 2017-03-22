@@ -24,9 +24,9 @@ export class BasicTabsComponent {
   public tabs: BasicTabComponent[] = [];
 
   public selectTab(tab: BasicTabComponent): void {
-    this.tabs.forEach((tab) => {
+    for (let tab of this.tabs) {
       tab.active = false;
-    });
+    }
     tab.active = true;
   }
 
