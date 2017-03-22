@@ -33,7 +33,8 @@ import {yyyymmdd} from '../../../utils/date-util';
         style="margin: 20px 0">
         <user-job-status-card
           [userJob]="userJob"
-          *ngFor="let userJob of userJobs | async">
+          *ngFor="let userJob of userJobs | async"
+          style="padding: 15px 10px">
         </user-job-status-card>
       </div>
       <base-button

@@ -9,7 +9,6 @@ import {UserJob} from '../../../models/user/user-job';
   template: `
     <div
       class="job-item-container"
-      style="margin: 15px 10px"
       [routerLink]="JARoutes.job.url([userJob.job.id])">
       <div class="job-item-name-container">
         <div class="job-item-name">
