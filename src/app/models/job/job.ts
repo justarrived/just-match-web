@@ -1,6 +1,6 @@
-import {Company} from '../company';
+import {Company} from '../company/company';
 import {map} from 'lodash';
-import {User} from '../user';
+import {User} from '../user/user';
 import {UserJob} from '../user/user-job';
 
 export class Job {
@@ -40,7 +40,7 @@ export class Job {
   public zipLatitude: number;
   public zipLongitude: number;
 
-  public constructor(jsonObject: any) {
+  public constructor(jsonObject?: any) {
     if (!jsonObject) {
       return;
     }
@@ -98,29 +98,13 @@ export class Job {
     return this.street + ', ' + this.zip;
   }
 
-  public get companyLogoURL(): string {
-    let companyLogo = this.company.companyLogo;
-    if (companyLogo && companyLogo.imageUrlSmall) {
-      return companyLogo.imageUrlSmall;
+  public get companyLogoImageURL(): string {
+    let logoImage = this.company.logoImage;
+    if (logoImage && logoImage.imageUrlSmall) {
+      return logoImage.imageUrlSmall;
     }
 
     return this.companyPlaceholderLogoURL;
-  }
-
-  public toJsonObject(): Object {
-    return {
-      'name': this.name,
-      'category_id': this.category.id,
-      'description': this.description,
-      'short_description': this.shortDescription,
-      'street': this.street,
-      'zip': this.zip,
-      'job_date': this.jobDate,
-      'job_end_date': this.jobEndDate,
-      'hours': this.hours,
-      'hourly_pay_id': this.hourlyPay.id,
-      'language_id': this.languageId
-    };
   }
 }
 

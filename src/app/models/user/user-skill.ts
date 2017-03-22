@@ -5,7 +5,7 @@ export class UserSkill {
   public proficiency: number;
   public skill: Skill;
 
-  public constructor(jsonObject: any) {
+  public constructor(jsonObject?: any) {
     if (!jsonObject) {
       return;
     }

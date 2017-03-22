@@ -1,4 +1,4 @@
-import {ApiErrors} from '../../../models/api-errors';
+import {ApiErrors} from '../../../models/api-models/api-errors/api-errors';
 import {Component} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {Input} from '@angular/core';
@@ -24,7 +24,7 @@ import {LanguageProxy} from '../../../services/proxy/language-proxy.service';
         [label]="'input.system.language.label' | translate"
         [placeholder]="'input.system.language.placeholder' | translate"
         apiAttribute="language"
-        dataItemLabelProoerty="translated.name"
+        dataItemLabelProoerty="translatedText.name"
         dataItemValueProoerty="id">
         <div style="text-align: center">
           <div class="ui pointing grey basic label">

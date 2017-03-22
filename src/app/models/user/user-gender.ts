@@ -3,7 +3,7 @@ export class UserGender {
   public name: string;
   public translated: UserGender;
 
-  public constructor(jsonObject: any) {
+  public constructor(jsonObject?: any) {
     if (!jsonObject) {
       return;
     }

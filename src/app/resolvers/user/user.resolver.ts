@@ -4,7 +4,7 @@ import {Injectable} from '@angular/core';
 import {JARoutes} from '../../routes/ja-routes';
 import {NavigationService} from '../../services/navigation.service';
 import {Resolve} from '@angular/router';
-import {User} from '../../models/user';
+import {User} from '../../models/user/user';
 import {UserProxy} from '../../services/proxy/user-proxy.service';
 
 @Injectable()

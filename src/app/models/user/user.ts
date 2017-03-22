@@ -1,11 +1,11 @@
-import {Company} from './company';
-import {Country} from './country';
+import {Company} from '../company/company';
+import {Country} from '../country/country';
 import {map} from 'lodash';
-import {UserDocument} from './user/user-document';
-import {UserImage} from './user/user-image';
-import {UserInterest} from './user/user-interest';
-import {UserLanguage} from './user/user-language';
-import {UserSkill} from './user/user-skill';
+import {UserDocument} from './user-document';
+import {UserImage} from './user-image';
+import {UserInterest} from './user-interest';
+import {UserLanguage} from './user-language';
+import {UserSkill} from './user-skill';
 
 export class User {
   public accountClearingNumber: string;
@@ -56,7 +56,7 @@ export class User {
 
   public isBeingReloaded: boolean;
 
-  constructor(jsonObject: any) {
+  constructor(jsonObject?: any) {
     if (!jsonObject) {
       return;
     }
@@ -110,11 +110,11 @@ export class User {
     }
   }
 
-  getImageByCategory(category): UserImage {
+  private getImageByCategory(category): UserImage {
     return this.images.find(image => image.category === category);
   }
 
-  getDocumentByCategory(category): UserDocument[] {
+  private getDocumentByCategory(category): UserDocument[] {
     return this.documents.filter(document => document.category === category);
   }
 }

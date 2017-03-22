@@ -1,4 +1,4 @@
-import {Document} from '../document';
+import {Document} from '../document/document';
 
 export class UserDocument {
   public category: string;
@@ -6,7 +6,7 @@ export class UserDocument {
   public document: Document;
   public id: string;
 
-  public constructor(jsonObject: any) {
+  public constructor(jsonObject?: any) {
     if (!jsonObject) {
       return;
     }

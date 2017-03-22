@@ -1,4 +1,4 @@
-import {Comment} from '../../models/comment';
+import {Comment} from '../../models/comment/comment';
 import {CommentsProxy} from '../../services/proxy/comments-proxy.service';
 import {Component} from '@angular/core';
 import {ElementRef} from '@angular/core';
@@ -45,15 +45,19 @@ export class CommentsComponent extends SystemLanguageListener implements OnInit 
   }
 
   public sendComment() {
-    let comment = new Comment();
-    comment.commentableId = this.resourceId;
-    comment.commentableType = this.resourceName;
-    comment.languageId = this.systemLanguagesResolver.getSelectedSystemLanguage().id;
-    comment.body = this.newCommentBody;
-    this.commentsProxy.sendComment(this.resourceName, this.resourceId, comment.toJsonObject()).then(result => {
-      this.newCommentContainer.textContent = '';
-      this.newCommentBody = null;
-      this.loadData();
+    this.commentsProxy.sendComment(
+      this.resourceName,
+      this.resourceId,
+      {
+        commentable_id: this.resourceId,
+        commentable_type: this.resourceName,
+        language_id: this.systemLanguagesResolver.getSelectedSystemLanguage().id,
+        body: this.newCommentBody
+      })
+      .then(result => {
+        this.newCommentContainer.textContent = '';
+        this.newCommentBody = null;
+        this.loadData();
     });
   }
 

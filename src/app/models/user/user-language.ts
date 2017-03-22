@@ -5,7 +5,7 @@ export class UserLanguage {
   public language: Language;
   public proficiency: number;
 
-  public constructor(jsonObject: any) {
+  public constructor(jsonObject?: any) {
     if (!jsonObject) {
       return;
     }

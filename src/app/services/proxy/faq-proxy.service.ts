@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {ApiCall} from '../api-call.service';
-import {Faq} from '../../models/faq';
+import {Faq} from '../../models/faq/faq';
 import {map} from 'lodash';
 
 @Injectable()

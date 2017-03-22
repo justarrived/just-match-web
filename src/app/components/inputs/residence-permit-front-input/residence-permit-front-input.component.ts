@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {Input} from '@angular/core';
-import {User} from '../../../models/user';
+import {User} from '../../../models/user/user';
 
 @Component({
   selector: 'residence-permit-front-input',

@@ -3,10 +3,10 @@ import {ApiCall} from '../api-call.service';
 import {UserStatus} from '../../models/user/user-status';
 import {UserGender} from '../../models/user/user-gender';
 import {map} from 'lodash';
-import {User} from '../../models/user';
+import {User} from '../../models/user/user';
 import {UserImage} from '../../models/user/user-image';
 import {UserDocument} from '../../models/user/user-document';
-import {Document} from '../../models/document';
+import {Document} from '../../models/document/document';
 import {UserJob} from '../../models/user/user-job';
 import {getDataUrl} from '../../utils/image-to-data-url.util';
 

@@ -10,7 +10,7 @@ import {OnInit} from '@angular/core';
 import {Subscription} from 'rxjs/Subscription';
 import {SystemLanguageListener} from '../../resolvers/system-languages/system-languages.resolver';
 import {SystemLanguagesResolver} from '../../resolvers/system-languages/system-languages.resolver';
-import {User} from '../../models/user';
+import {User} from '../../models/user/user';
 import {UserJob} from '../../models/user/user-job';
 import {UserProxy} from '../../services/proxy/user-proxy.service';
 import {UserResolver} from '../../resolvers/user/user.resolver';

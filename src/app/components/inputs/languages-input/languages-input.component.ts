@@ -1,4 +1,4 @@
-import {ApiErrors} from '../../../models/api-errors';
+import {ApiErrors} from '../../../models/api-models/api-errors/api-errors';
 import {Component} from '@angular/core';
 import {deleteElementFromArray} from '../../../utils/array-util';
 import {FormControl} from '@angular/forms';
@@ -29,7 +29,7 @@ import {UserLanguage} from '../../../models/user/user-language';
       [label]="'input.languages.label' | translate"
       [placeholder]="'input.languages.placeholder' | translate"
       apiAttribute="language_ids"
-      dataItemLabelProoerty="translated.name"
+      dataItemLabelProoerty="translatedText.name"
       dataItemValueProoerty="id">
     </select-dropdown-input>
     <div *ngFor="let userLanguage of userLanguagesControl.value">
@@ -37,7 +37,7 @@ import {UserLanguage} from '../../../models/user/user-language';
         (onDelete)="onRemoveUserLanguage(userLanguage)"
         (onRate)="onProficiencyChange($event, userLanguage)"
         [initialRating]="userLanguage.proficiency"
-        [label]="userLanguage.language.translated.name">
+        [label]="userLanguage.language.translatedText.name">
       </language-proficiency-input>
     </div>
   </div>`

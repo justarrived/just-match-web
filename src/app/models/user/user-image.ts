@@ -6,7 +6,7 @@ export class UserImage {
   public mediumImageUrl: string;
   public smallImageUrl: string;
 
-  public constructor(jsonObject: any) {
+  public constructor(jsonObject?: any) {
     if (!jsonObject) {
       return;
     }

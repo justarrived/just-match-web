@@ -1,5 +1,5 @@
 import {Job} from '../job/job';
-import {User} from '../user';
+import {User} from './user';
 import * as moment from 'moment';
 
 export class UserJob {
@@ -21,7 +21,7 @@ export class UserJob {
   public willPerform: boolean;
   public willPerformConfirmationBy: string;
 
-  public constructor(jsonObject: any) {
+  public constructor(jsonObject?: any) {
     if (!jsonObject) {
       return;
     }

@@ -13,7 +13,7 @@ import {Job} from '../../../models/job/job';
     <div class="content job-content-container">
       <img
         class="right floated mini ui image"
-        src="{{job.companyLogoURL}}">
+        src="{{job.companyLogoImageURL}}">
       <div class="job-header-container">
         <div class="header job-header">
           {{job.translated.name}}

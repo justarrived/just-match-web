@@ -1,4 +1,4 @@
-import {ApiErrors} from '../../../models/api-errors';
+import {ApiErrors} from '../../../models/api-models/api-errors/api-errors';
 import {Component} from '@angular/core';
 import {Input} from '@angular/core';
 
