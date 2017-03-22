@@ -20,8 +20,8 @@ import {ResetPasswordPageComponent} from './components/pages/reset-password-page
 import {RouterModule} from '@angular/router';
 import {Routes} from '@angular/router';
 import {SystemLanguagesResolver} from './resolvers/system-languages/system-languages.resolver';
+import {UserProfilePageComponent} from './components/pages/user-profile-page/user-profile-page.component';
 import {UserResolver} from './resolvers/user/user.resolver';
-import {UserSettingsComponent} from './views/user/user-settings/user-settings.component';
 
 const routes: Routes = [
   {
@@ -45,13 +45,11 @@ const routes: Routes = [
     { path: 'register', component: RegisterPageComponent, canActivate: [NotLoggedInGuard] },
     { path: 'reset-password', redirectTo: '404', pathMatch: 'full', canActivate: [NotLoggedInGuard] },
     { path: 'reset-password/:token', component: ResetPasswordPageComponent, canActivate: [NotLoggedInGuard] },
-    { path: 'user', component: UserSettingsComponent, canActivate: [LoggedInGuard] },
+    { path: 'user', component: UserProfilePageComponent, canActivate: [LoggedInGuard] },
     { path: 'user/jobs', component: MyJobsComponent, canActivate: [LoggedInGuard] },
     { path: '**', redirectTo: '404' },
   ]}
 ];
-
-
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],

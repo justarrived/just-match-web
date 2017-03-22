@@ -15,6 +15,8 @@ import {BankAccountInputComponent} from './components/inputs/bank-account-input/
 import {BaseButtonComponent} from './components/buttons/base-button/base-button.component';
 import {BaseMessageComponent} from './components/messages/base-message.component';
 import {BasicBorderHeaderComponent} from './components/headers/basic-border-header/basic-border-header.component';
+import {BasicTabComponent} from './components/tabs/basic-tab/basic-tab.component';
+import {BasicTabsComponent} from './components/tabs/basic-tabs/basic-tabs.component';
 import {BrowserModule} from '@angular/platform-browser';
 import {CircularImageInputComponent} from './components/inputs/circular-image-input/circular-image-input.component';
 import {CityInputComponent} from './components/inputs/city-input/city-input.component';
@@ -124,7 +126,6 @@ import {TextareaInputComponent} from './components/inputs/textarea-input/textare
 import {TextInputComponent} from './components/inputs/text-input/text-input.component';
 import {UploadDocumentCardComponent} from './components/cards/upload-document-card/upload-document-card.component';
 import {UploadImageCardComponent} from './components/cards/upload-image-card/upload-image-card.component';
-import {UserDetailsComponent} from './views/user/user-settings/user-details/user-details.component';
 import {UserDetailsFormComponent} from './components/forms/user-details-form/user-details-form.component';
 import {UserDocumentCardInputComponent} from './components/inputs/user-document-card-input/user-document-card-input.component';
 import {UserImageCardInputComponent} from './components/inputs/user-image-card-input/user-image-card-input.component';
@@ -132,12 +133,11 @@ import {UserImageCircularInputComponent} from './components/inputs/user-image-ci
 import {UserJobsComponent} from './views/my-jobs/user-jobs/user-jobs.component';
 import {UserJobsStatusSectionComponent} from './components/sections/user-jobs-status-section/user-jobs-status-section.component';
 import {UserJobStatusCardComponent} from './components/cards/user-job-status-card/user-job-status-card.component';
-import {UserProfileComponent} from './views/user/user-settings/user-profile/user-profile.component';
 import {UserProfileFormComponent} from './components/forms/user-profile-form/user-profile-form.component';
 import {UserProfileHeaderComponent} from './components/headers/user-profile-header/user-profile-header.component';
+import {UserProfilePageComponent} from './components/pages/user-profile-page/user-profile-page.component';
 import {UserProxy} from './services/proxy/user-proxy.service';
 import {UserResolver} from './resolvers/user/user.resolver';
-import {UserSettingsComponent} from './views/user/user-settings/user-settings.component';
 import {WelcomeHeaderComponent} from './components/headers/welcome-header/welcome-header.component';
 import {WorkPermitBackInputComponent} from './components/inputs/work-permit-back-input/work-permit-back-input.component';
 import {WorkPermitFrontInputComponent} from './components/inputs/work-permit-front-input/work-permit-front-input.component';
@@ -180,6 +180,8 @@ export class RavenErrorHandler implements ErrorHandler {
     BaseButtonComponent,
     BaseMessageComponent,
     BasicBorderHeaderComponent,
+    BasicTabComponent,
+    BasicTabsComponent,
     CircularImageInputComponent,
     CityInputComponent,
     ClearingNumberInputComponent,
@@ -268,7 +270,6 @@ export class RavenErrorHandler implements ErrorHandler {
     TextInputComponent,
     UploadDocumentCardComponent,
     UploadImageCardComponent,
-    UserDetailsComponent,
     UserDetailsFormComponent,
     UserDocumentCardInputComponent,
     UserImageCardInputComponent,
@@ -276,10 +277,9 @@ export class RavenErrorHandler implements ErrorHandler {
     UserJobsComponent,
     UserJobsStatusSectionComponent,
     UserJobStatusCardComponent,
-    UserProfileComponent,
     UserProfileFormComponent,
     UserProfileHeaderComponent,
-    UserSettingsComponent,
+    UserProfilePageComponent,
     WelcomeHeaderComponent,
     WorkPermitBackInputComponent,
     WorkPermitFrontInputComponent,
