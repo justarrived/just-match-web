@@ -11,8 +11,8 @@
       <p *ngIf="section == 'current'">
         <span *ngIf="!job.jobUsers[0].accepted && !job.jobUsers[0].willPerform">{{'confirmation.applied.for.job.title' | translate}}</span>
         <span *ngIf="job.jobUsers[0].accepted && !job.jobUsers[0].willPerform">{{'assignment.status.user_company_hire' | translate}}</span>
-        <span *ngIf="job.jobUsers[0].willPerform && !job.jobUsers[0].performed">{{'assignment.status.you_hired' | translate}}</span>
-        <span *ngIf="job.jobUsers[0].performed">{{'assignment.status.performed' | translate}}</span>
+        <span *ngIf="job.jobUsers[0].willPerform && !job.jobUsers[0].job_ended">{{'assignment.status.you_hired' | translate}}</span>
+        <span *ngIf="job.jobUsers[0].willPerform && job.jobUsers[0].job_ended">{{'assignment.status.performed' | translate}}</span>
       </p>
 
       <p *ngIf="section == 'history'">{{job.company.name}}</p>

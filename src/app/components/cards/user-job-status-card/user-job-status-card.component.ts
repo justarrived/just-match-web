@@ -27,12 +27,12 @@ import {UserJob} from '../../../models/user/user-job';
         {{'home.jobs.slider.user.jobs.job.offered.label' | translate | uppercase}}
       </div>
       <div
-        *ngIf="userJob.willPerform && !userJob.performed"
+        *ngIf="userJob.willPerform && !userJob.job_ended"
         class="job-item-label-container job-item-label-will-perform-container">
         {{'home.jobs.slider.user.jobs.will.perform.job.label' | translate | uppercase}}
       </div>
       <div
-        *ngIf="userJob.performed"
+        *ngIf="userJob.willPerform && userJob.job_ended"
         class="job-item-label-container job-item-label-performed-container">
         {{'home.jobs.slider.user.jobs.job.ended.label' | translate | uppercase}}
       </div>
