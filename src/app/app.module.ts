@@ -1,6 +1,4 @@
 import {AccountNumberInputComponent} from './components/inputs/account-number-input/account-number-input.component';
-import {MaximizeChancessSectionComponent} from './components/sections/maximize-chances-section/maximize-chances-section.component';
-import {HowItWorksAndMaximizeChancesSectionComponent} from './components/sections/how-it-works-and-maximize-chances-section/how-it-works-and-maximize-chances-section.component';
 import {ActsAsUser} from './services/acts-as-user.service';
 import {AddressInputComponent} from './components/inputs/address-input/address-input.component';
 import {AgmCoreModule} from 'angular2-google-maps/core';
@@ -57,7 +55,8 @@ import {FormSubmitButtonComponent} from './components/buttons/form-submit-button
 import {GenderInputComponent} from './components/inputs/gender-input/gender-input.component';
 import {Geolocation} from './services/geolocation.service';
 import {GotCoordinationNumberInputComponent} from './components/inputs/got-coordination-number-input/got-coordination-number-input.component';
-import {HomeComponent} from './views/home/home.component';
+import {HomePageComponent} from './components/pages/home-page/home-page.component';
+import {HowItWorksAndMaximizeChancesSectionComponent} from './components/sections/how-it-works-and-maximize-chances-section/how-it-works-and-maximize-chances-section.component';
 import {HowItWorksSectionComponent} from './components/sections/how-it-works-section/how-it-works-section.component';
 import {HttpModule} from '@angular/http';
 import {InfoMessageComponent} from './components/messages/info-message/info-message.component';
@@ -80,6 +79,7 @@ import {LMACardInputComponent} from './components/inputs/lma-card-input/lma-card
 import {LoadingComponent} from './components/loading/loading.component';
 import {LoginFormComponent} from './components/forms/login-form/login-form.component';
 import {LoginPageComponent} from './components/pages/login-page/login-page.component';
+import {MaximizeChancessSectionComponent} from './components/sections/maximize-chances-section/maximize-chances-section.component';
 import {MessageInputComponent} from './components/inputs/message-input/message-input.component';
 import {MyJobsComponent} from './views/my-jobs/my-jobs.component';
 import {MyJobsItemComponent} from './components/my-jobs-item/my-jobs-item.component';
@@ -130,6 +130,8 @@ import {UserDocumentCardInputComponent} from './components/inputs/user-document-
 import {UserImageCardInputComponent} from './components/inputs/user-image-card-input/user-image-card-input.component';
 import {UserImageCircularInputComponent} from './components/inputs/user-image-circular-input/user-image-circular-input.component';
 import {UserJobsComponent} from './views/my-jobs/user-jobs/user-jobs.component';
+import {UserJobsStatusSectionComponent} from './components/sections/user-jobs-status-section/user-jobs-status-section.component';
+import {UserJobStatusCardComponent} from './components/cards/user-job-status-card/user-job-status-card.component';
 import {UserProfileComponent} from './views/user/user-settings/user-profile/user-profile.component';
 import {UserProfileFormComponent} from './components/forms/user-profile-form/user-profile-form.component';
 import {UserProfileHeaderComponent} from './components/headers/user-profile-header/user-profile-header.component';
@@ -188,7 +190,6 @@ export class RavenErrorHandler implements ErrorHandler {
     ContactPageComponent,
     CookieBarComponent,
     CookiesAboutPageComponent,
-    HowItWorksAndMaximizeChancesSectionComponent,
     CountryOfOriginInputComponent,
     CustomRadioButtonInputComponent,
     DefaultFooterComponent,
@@ -209,7 +210,8 @@ export class RavenErrorHandler implements ErrorHandler {
     FormSubmitButtonComponent,
     GenderInputComponent,
     GotCoordinationNumberInputComponent,
-    HomeComponent,
+    HomePageComponent,
+    HowItWorksAndMaximizeChancesSectionComponent,
     HowItWorksSectionComponent,
     InfoMessageComponent,
     InputErrorComponent,
@@ -228,6 +230,7 @@ export class RavenErrorHandler implements ErrorHandler {
     LoadingComponent,
     LoginFormComponent,
     LoginPageComponent,
+    MaximizeChancessSectionComponent,
     MessageInputComponent,
     MyJobsComponent,
     MyJobsItemComponent,
@@ -235,7 +238,6 @@ export class RavenErrorHandler implements ErrorHandler {
     NavigationMenuComponent,
     NewJobsSectionComponent,
     NewPasswordInputComponent,
-    MaximizeChancessSectionComponent,
     NotFoundPageComponent,
     OldPasswordInputComponent,
     PagerComponent,
@@ -272,6 +274,8 @@ export class RavenErrorHandler implements ErrorHandler {
     UserImageCardInputComponent,
     UserImageCircularInputComponent,
     UserJobsComponent,
+    UserJobsStatusSectionComponent,
+    UserJobStatusCardComponent,
     UserProfileComponent,
     UserProfileFormComponent,
     UserProfileHeaderComponent,

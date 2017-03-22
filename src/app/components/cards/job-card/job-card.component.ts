@@ -2,7 +2,6 @@ import {Component} from '@angular/core';
 import {Input} from '@angular/core';
 import {JARoutes} from '../../../routes/ja-routes';
 import {Job} from '../../../models/job/job';
-import {OnInit} from '@angular/core';
 
 @Component({
   selector: 'job-card',

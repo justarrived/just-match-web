@@ -55,7 +55,7 @@ export class JobsComponent extends SystemLanguageListener implements OnInit {
 
   loadData() {
     this.loadingJobs = true;
-    this.jobProxy.getJobs(
+    this.jobProxy.getJobsWithTotal(
       {
         'include': 'company,hourly_pay,company.company_images',
         'filter[filled]': false,
