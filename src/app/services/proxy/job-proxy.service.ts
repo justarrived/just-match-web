@@ -12,13 +12,18 @@ export class JobProxy {
   ) {
   }
 
-  public getJobs(additionOptions?: Object) {
+  public getJobsWithTotal(additionOptions?: Object) {
     return this.apiCall.get('jobs',  additionOptions).then(response => {
       return {
-        data: map(response.data, data => new Job(data)),
+        jobs: response.data.map(data => new Job(data)),
         total: response.total
       };
     });
+  }
+
+  public getJobs(additionOptions?: Object): Promise<Job[]> {
+    return this.apiCall.get('jobs',  additionOptions)
+      .then(response => response.data.map(data => new Job(data)));
   }
 
   public getHourlyPays(additionOptions?: Object) {

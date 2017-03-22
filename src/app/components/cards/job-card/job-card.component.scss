@@ -8,33 +8,37 @@
     transform: scale(1.02);
   }
 
-  .job-header-container {
-    min-height: 80px;
-    color: black;
+  .job-content-container {
+    height: 241px;
 
-    .job-header {
-      @include truncate-owerflowing-text-multiline($font-size: $fs-l, $line-height: 1.1, $lines-to-show: 3, $excerpt-bg: $white);
+    .job-header-container {
+      min-height: 80px;
+      color: black;
+
+      .job-header {
+        @include truncate-owerflowing-text-multiline($font-size: $fs-l, $line-height: 1.1, $lines-to-show: 3, $excerpt-bg: $white);
+      }
     }
-  }
 
-  .job-company {
-    color: $color-primary-cerise;
-    font-weight: bold;
-    @include truncate-owerflowing-text;
-  }
+    .job-company {
+      color: $color-primary-cerise;
+      font-weight: bold;
+      @include truncate-owerflowing-text;
+    }
 
-  .job-city {
-    margin-top: 5px;
-    text-transform: uppercase;
-    @include truncate-owerflowing-text;
-  }
+    .job-city {
+      margin-top: 5px;
+      text-transform: uppercase;
+      @include truncate-owerflowing-text;
+    }
 
-  .job-description-container {
-    margin-top: 10px;
-    min-height: 80px;
+    .job-description-container {
+      margin-top: 10px;
+      min-height: 80px;
 
-    .job-description {
-      @include truncate-owerflowing-text-multiline($font-size: $fs-m0, $line-height: 1.3, $lines-to-show: 4, $excerpt-bg: $white);
+      .job-description {
+        @include truncate-owerflowing-text-multiline($font-size: $fs-m0, $line-height: 1.3, $lines-to-show: 4, $excerpt-bg: $white);
+      }
     }
   }
 

@@ -1,0 +1,59 @@
+@import '../../../styles/colors';
+@import '../../../styles/typography';
+
+.job-item-container {
+  width: 140px;
+  background-color: $default-bg-color;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px 0 rgba(0,0,0,0.4);
+  cursor: pointer;
+  padding: 0;
+
+  &:hover {
+    transform: scale(1.02);
+  }
+
+  .job-item-name-container {
+    height: 90px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .job-item-name {
+      text-align: center;
+      white-space: normal;
+      @include truncate-owerflowing-text;
+    }
+  }
+
+  .job-item-label-container {
+    color: $white;
+    background: $color-primary-cerise;
+    padding: 10px;
+    font-weight: 500;
+    border-radius: 0 0 8px 8px;
+    text-align: center;
+  }
+
+  .job-item-label-applied-container {
+    background: $color-gray-50;
+    color: $color-gray-200;
+  }
+
+  .job-item-label-offered-container {
+    background: $color-blue-500;
+    color: $white;
+  }
+
+  .job-item-label-will-perform-container {
+    background: $color-primary-cerise;
+    color: $white;
+  }
+
+  .job-item-label-performed-container {
+    background: springgreen;
+    color: $white;
+  }
+
+}

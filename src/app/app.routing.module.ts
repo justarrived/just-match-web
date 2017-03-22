@@ -5,7 +5,7 @@ import {DefaultLayoutComponent} from './components/layouts/default-layout/defaul
 import {ErrorPageComponent} from './components/pages/error-page/error-page.component';
 import {FaqPageComponent} from './components/pages/faq-page/faq-page.component';
 import {ForgotPasswordPageComponent} from './components/pages/forgot-password-page/forgot-password-page.component';
-import {HomeComponent} from './views/home/home.component';
+import {HomePageComponent} from './components/pages/home-page/home-page.component';
 import {JARoute} from './routes/ja-route';
 import {JobDetailsComponent} from './views/job-details/job-details.component';
 import {JobsComponent} from './views/jobs/jobs.component';
@@ -29,7 +29,7 @@ const routes: Routes = [
     component: DefaultLayoutComponent,
     resolve: {systemLanguages: SystemLanguagesResolver, user: UserResolver},
     children: [
-    { path: '', pathMatch: 'full', component: HomeComponent},
+    { path: '', pathMatch: 'full', component: HomePageComponent},
     { path: '404', component: NotFoundPageComponent },
     { path: 'confirmation/:type', component: ConfirmationComponent },
     { path: 'contact', component: ContactPageComponent },

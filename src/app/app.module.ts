@@ -55,7 +55,9 @@ import {FormSubmitButtonComponent} from './components/buttons/form-submit-button
 import {GenderInputComponent} from './components/inputs/gender-input/gender-input.component';
 import {Geolocation} from './services/geolocation.service';
 import {GotCoordinationNumberInputComponent} from './components/inputs/got-coordination-number-input/got-coordination-number-input.component';
-import {HomeComponent} from './views/home/home.component';
+import {HomePageComponent} from './components/pages/home-page/home-page.component';
+import {HowItWorksAndMaximizeChancesSectionComponent} from './components/sections/how-it-works-and-maximize-chances-section/how-it-works-and-maximize-chances-section.component';
+import {HowItWorksSectionComponent} from './components/sections/how-it-works-section/how-it-works-section.component';
 import {HttpModule} from '@angular/http';
 import {InfoMessageComponent} from './components/messages/info-message/info-message.component';
 import {InputErrorComponent} from './components/form-errors/input-error/input-error.component';
@@ -77,12 +79,14 @@ import {LMACardInputComponent} from './components/inputs/lma-card-input/lma-card
 import {LoadingComponent} from './components/loading/loading.component';
 import {LoginFormComponent} from './components/forms/login-form/login-form.component';
 import {LoginPageComponent} from './components/pages/login-page/login-page.component';
+import {MaximizeChancessSectionComponent} from './components/sections/maximize-chances-section/maximize-chances-section.component';
 import {MessageInputComponent} from './components/inputs/message-input/message-input.component';
 import {MyJobsComponent} from './views/my-jobs/my-jobs.component';
 import {MyJobsItemComponent} from './components/my-jobs-item/my-jobs-item.component';
 import {NameInputComponent} from './components/inputs/name-input/name-input.component';
 import {NavigationMenuComponent} from './components/menus/navigation-menu/navigation-menu.component';
 import {NavigationService} from './services/navigation.service';
+import {NewJobsSectionComponent} from './components/sections/new-jobs-section/new-jobs-section.component';
 import {NewPasswordInputComponent} from './components/inputs/new-password-input/new-password-input.component';
 import {NgModule} from '@angular/core';
 import {NgSemanticModule} from 'ng-semantic-ja/ng-semantic';
@@ -90,6 +94,7 @@ import {NO_ERRORS_SCHEMA} from '@angular/core';
 import {NotFoundPageComponent} from './components/pages/404-page/404-page.component';
 import {OldPasswordInputComponent} from './components/inputs/old-password-input/old-password-input.component';
 import {PagerComponent} from './components/pager/pager.component';
+import {PartnersSectionComponent} from './components/sections/partners-section/partners-section.component';
 import {PasswordInputComponent} from './components/inputs/password-input/password-input.component';
 import {PersonalIDInputComponent} from './components/inputs/personal-id-input/personal-id-input.component';
 import {PhoneInputComponent} from './components/inputs/phone-input/phone-input.component';
@@ -114,7 +119,6 @@ import {StreetInputComponent} from './components/inputs/street-input/street-inpu
 import {SuccessMessageComponent} from './components/messages/success-message/success-message.component';
 import {SystemLanguageInputComponent} from './components/inputs/system-language-input/system-language-input.component';
 import {SystemLanguagesResolver} from './resolvers/system-languages/system-languages.resolver';
-import {UserResolver} from './resolvers/user/user.resolver';
 import {TermsInputComponent} from './components/inputs/terms-input/terms-input.component';
 import {TextareaInputComponent} from './components/inputs/textarea-input/textarea-input.component';
 import {TextInputComponent} from './components/inputs/text-input/text-input.component';
@@ -126,10 +130,13 @@ import {UserDocumentCardInputComponent} from './components/inputs/user-document-
 import {UserImageCardInputComponent} from './components/inputs/user-image-card-input/user-image-card-input.component';
 import {UserImageCircularInputComponent} from './components/inputs/user-image-circular-input/user-image-circular-input.component';
 import {UserJobsComponent} from './views/my-jobs/user-jobs/user-jobs.component';
+import {UserJobsStatusSectionComponent} from './components/sections/user-jobs-status-section/user-jobs-status-section.component';
+import {UserJobStatusCardComponent} from './components/cards/user-job-status-card/user-job-status-card.component';
 import {UserProfileComponent} from './views/user/user-settings/user-profile/user-profile.component';
 import {UserProfileFormComponent} from './components/forms/user-profile-form/user-profile-form.component';
 import {UserProfileHeaderComponent} from './components/headers/user-profile-header/user-profile-header.component';
 import {UserProxy} from './services/proxy/user-proxy.service';
+import {UserResolver} from './resolvers/user/user.resolver';
 import {UserSettingsComponent} from './views/user/user-settings/user-settings.component';
 import {WelcomeHeaderComponent} from './components/headers/welcome-header/welcome-header.component';
 import {WorkPermitBackInputComponent} from './components/inputs/work-permit-back-input/work-permit-back-input.component';
@@ -203,7 +210,9 @@ export class RavenErrorHandler implements ErrorHandler {
     FormSubmitButtonComponent,
     GenderInputComponent,
     GotCoordinationNumberInputComponent,
-    HomeComponent,
+    HomePageComponent,
+    HowItWorksAndMaximizeChancesSectionComponent,
+    HowItWorksSectionComponent,
     InfoMessageComponent,
     InputErrorComponent,
     InputErrorsComponent,
@@ -221,15 +230,18 @@ export class RavenErrorHandler implements ErrorHandler {
     LoadingComponent,
     LoginFormComponent,
     LoginPageComponent,
+    MaximizeChancessSectionComponent,
     MessageInputComponent,
     MyJobsComponent,
     MyJobsItemComponent,
     NameInputComponent,
     NavigationMenuComponent,
+    NewJobsSectionComponent,
     NewPasswordInputComponent,
     NotFoundPageComponent,
     OldPasswordInputComponent,
     PagerComponent,
+    PartnersSectionComponent,
     PasswordInputComponent,
     PersonalIDInputComponent,
     PhoneInputComponent,
@@ -262,6 +274,8 @@ export class RavenErrorHandler implements ErrorHandler {
     UserImageCardInputComponent,
     UserImageCircularInputComponent,
     UserJobsComponent,
+    UserJobsStatusSectionComponent,
+    UserJobStatusCardComponent,
     UserProfileComponent,
     UserProfileFormComponent,
     UserProfileHeaderComponent,
