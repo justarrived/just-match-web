@@ -1,5 +1,5 @@
 class ApiLink {
-  // JSONAPI spec attributes
+  // API fields
   public href: string;
   public meta: any;
 
@@ -14,11 +14,11 @@ class ApiLink {
 }
 
 class ApiErrorSource {
-  // JSONAPI spec attributes
+  // API fields
   public parameter: string;
   public pointer: string;
 
-  // Convenience attributes
+  // Client fields
   public attribute: string;
 
   public constructor(source: any) {
@@ -33,7 +33,7 @@ class ApiErrorSource {
 }
 
 export class ApiError {
-  // JSONAPI spec attributes
+  // API fields
   public code: string;
   public detail: string;
   public id: string;
@@ -43,7 +43,7 @@ export class ApiError {
   public status: number;
   public title: string;
 
-  // Convenience attributes
+  // Client fields
   public aboutLink: ApiLink;
 
   public constructor(private error: any) {
@@ -68,9 +68,8 @@ export class ApiError {
 
   private setLinks(error): void {
     for (let key in error.links) {
-      const link = new ApiLink(error.links[key]);
       if (key === 'about') {
-        this.aboutLink = link;
+        this.aboutLink = new ApiLink(error.links[key]);
       }
     }
   }
