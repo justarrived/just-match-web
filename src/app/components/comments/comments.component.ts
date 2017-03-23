@@ -70,7 +70,7 @@ export class CommentsComponent extends SystemLanguageListener implements OnInit 
 
   protected loadData() {
     this.commentsProxy.getComments(this.resourceName, this.resourceId, {
-      include: 'owner,owner.user-images,owner.company,owner.company.company-images',
+      include: 'owner,owner.user_images,owner.company,owner.company.company_images',
       sort: '-created_at'
     }).then(result => {
       this.comments = result.data.reverse();

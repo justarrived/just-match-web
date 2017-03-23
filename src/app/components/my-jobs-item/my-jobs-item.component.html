@@ -1,21 +1,21 @@
 <div class="my-jobs-item clickable" (click)="onListItemClick()">
   <div>
-    {{job.jobDate | date: "MMM"}}<br/>
-    <span>{{job.jobDate | date: "dd"}}</span>
+    {{application.job.jobDate | date: "MMM"}}<br/>
+    <span>{{application.job.jobDate | date: "dd"}}</span>
   </div>
   <div>
-      <h3>{{job.translated.name}}</h3>
+      <h3>{{application.job.translatedText.name}}</h3>
 
     <section>
-      <p *ngIf="section == 'current'">{{job.street}}</p>
+      <p *ngIf="section == 'current'">{{application.job.street}}</p>
       <p *ngIf="section == 'current'">
-        <span *ngIf="!job.jobUsers[0].accepted && !job.jobUsers[0].willPerform">{{'confirmation.applied.for.job.title' | translate}}</span>
-        <span *ngIf="job.jobUsers[0].accepted && !job.jobUsers[0].willPerform">{{'assignment.status.user_company_hire' | translate}}</span>
-        <span *ngIf="job.jobUsers[0].willPerform && !job.jobUsers[0].job_ended">{{'assignment.status.you_hired' | translate}}</span>
-        <span *ngIf="job.jobUsers[0].willPerform && job.jobUsers[0].job_ended">{{'assignment.status.performed' | translate}}</span>
+        <span *ngIf="!application.accepted && !application.willPerform">{{'confirmation.applied.for.job.title' | translate}}</span>
+        <span *ngIf="application.accepted && !application.willPerform">{{'assignment.status.user_company_hire' | translate}}</span>
+        <span *ngIf="application.willPerform && !application.jobEnded">{{'assignment.status.you_hired' | translate}}</span>
+        <span *ngIf="application.willPerform && application.jobEnded">{{'assignment.status.performed' | translate}}</span>
       </p>
 
-      <p *ngIf="section == 'history'">{{job.company.name}}</p>
+      <p *ngIf="section == 'history'">{{application.job.company.name}}</p>
     </section>
   </div>
 </div>

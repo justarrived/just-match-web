@@ -8,6 +8,7 @@ import {User} from '../../../models/user/user';
   <user-image-circular-input
     [centered]="centered"
     [size]="size"
+    imageField="profileImage"
     imageType="profile"
     placeholderImageUrl="/assets/images/placeholder-profile-image.png">
   </user-image-circular-input>

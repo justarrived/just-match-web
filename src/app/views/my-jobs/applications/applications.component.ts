@@ -1,23 +1,22 @@
+import {Application} from '../../../models/application/application';
 import {Component} from '@angular/core';
 import {Input} from '@angular/core';
-import {Job} from '../../../models/job/job';
 import {map} from 'lodash';
 import {OnInit} from '@angular/core';
 import {SystemLanguageListener} from '../../../resolvers/system-languages/system-languages.resolver';
 import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
-import {UserJob} from '../../../models/user/user-job';
 import {UserProxy} from '../../../services/proxy/user-proxy.service';
 import {UserResolver} from '../../../resolvers/user/user.resolver';
 
 @Component({
-  selector: 'user-jobs',
-  templateUrl: './user-jobs.component.html'
+  selector: 'applications',
+  templateUrl: './applications.component.html'
 })
-export class UserJobsComponent extends SystemLanguageListener implements OnInit {
+export class ApplicationsComponent extends SystemLanguageListener implements OnInit {
   @Input() public selectedState: string;
-  public currentJobs: Job[] = []; // not invoiced
-  public historyJobs: Job[] = []; // invoiced
-  public userJobs: UserJob[];
+  public applications: Application[];
+  public currentApplications: Application[] = []; // not invoiced
+  public historyApplications: Application[] = []; // invoiced
 
   public constructor(
     private userProxy: UserProxy,
@@ -32,26 +31,21 @@ export class UserJobsComponent extends SystemLanguageListener implements OnInit 
   }
 
   protected loadData() {
-    this.userProxy.getUserJobs(
+    this.userProxy.getApplications(
       this.userResolver.getUser().id,
       {
         'include': 'job, job.company',
         'sort': '-created_at',
         'page[size]': 14
       })
-      .then((jobs) => {
-        this.userJobs = jobs;
+      .then((applications) => {
+        this.applications = applications;
         this.generateJobSections();
     });
   }
 
   private generateJobSections() {
-    this.currentJobs = map(this.userJobs.filter((userJob) => !userJob.invoice.id), userJob => {
-      let job = userJob.job;
-      job.jobUsers = [userJob];
-      return job;
-    });
-
-    this.historyJobs = map(this.userJobs.filter((userJob) => !!userJob.invoice.id), userJob => userJob.job);
+    this.currentApplications = this.applications.filter(application => !application.invoice.id);
+    this.historyApplications = this.applications.filter(application => !!application.invoice.id);
   }
 }

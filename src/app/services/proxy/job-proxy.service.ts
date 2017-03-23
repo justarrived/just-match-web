@@ -1,8 +1,10 @@
-import {Injectable} from '@angular/core';
 import {ApiCall} from '../api-call.service';
+import {Application} from '../../models/application/application';
+import {Category} from '../../models/category/category';
+import {HourlyPay} from '../../models/hourly-pay/hourly-pay';
+import {Injectable} from '@angular/core';
+import {Job} from '../../models/job/job';
 import {map} from 'lodash';
-import {Job, HourlyPay, Category} from '../../models/job/job';
-import {UserJob} from '../../models/user/user-job';
 
 @Injectable()
 export class JobProxy {
@@ -48,25 +50,25 @@ export class JobProxy {
     return this.apiCall.post('jobs/' + jobId + '/users', {});
   }
 
-  public acceptForJob(jobId, userJobId) {
-    return this.apiCall.post('jobs/' + jobId + '/users/' + userJobId + '/acceptances ', {}).then(response => {
-      return new UserJob(response.data);
+  public acceptForJob(jobId, applicationId) {
+    return this.apiCall.post('jobs/' + jobId + '/users/' + applicationId + '/acceptances ', {}).then(response => {
+      return new Application(response.data);
     });
   }
 
-  public confirmForJob(jobId, userJobId) {
-    return this.apiCall.post('jobs/' + jobId + '/users/' + userJobId + '/confirmations ', {}).then(response => {
-      return new UserJob(response.data);
+  public confirmForJob(jobId, applicationId) {
+    return this.apiCall.post('jobs/' + jobId + '/users/' + applicationId + '/confirmations ', {}).then(response => {
+      return new Application(response.data);
     });
   }
 
-  public createInvoice(jobId, userJobId) {
-    return this.apiCall.post('jobs/' + jobId + '/users/' + userJobId + '/invoices ', {});
+  public createInvoice(jobId, applicationId) {
+    return this.apiCall.post('jobs/' + jobId + '/users/' + applicationId + '/invoices ', {});
   }
 
-  public getUserJob(jobId, userJobId, additionOptions?: Object) {
-    return this.apiCall.get('jobs/' + jobId + '/users/' + userJobId, additionOptions).then(response => {
-      return new UserJob(response.data);
+  public getApplication(jobId, applicationId, additionOptions?: Object) {
+    return this.apiCall.get('jobs/' + jobId + '/users/' + applicationId, additionOptions).then(response => {
+      return new Application(response.data);
     });
   }
 
@@ -78,8 +80,8 @@ export class JobProxy {
     return this.apiCall.get('users/' + userId + '/owned-jobs',  additionOptions).then(response => map(response.data, data => new Job(data)));
   }
 
-  public getJobUsers(jobId, additionOptions?: Object): Promise<UserJob[]> {
-    return this.apiCall.get('jobs/' + jobId + '/users',  additionOptions).then(response => map(response.data, data => new UserJob(data)));
+  public getApplications(jobId, additionOptions?: Object): Promise<Application[]> {
+    return this.apiCall.get('jobs/' + jobId + '/users',  additionOptions).then(response => map(response.data, data => new Application(data)));
   }
 
 }

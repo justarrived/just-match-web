@@ -1,5 +1,5 @@
 <div class="comments-container" [ngClass]="{'addition-padding': !isFooterVisible && userId, 'small-addition-padding': !userId}">
-  <div class="ui centered grid">
+  <div class="ui centered grid" *ngIf="comments && comments.length > 0">
     <div class="fourteen wide phone column">
       <h4 class="chat-title">{{'assignment.comments.title' | translate}}</h4>
     </div>
@@ -7,7 +7,7 @@
   <div *ngFor="let comment of comments" class="comment-container">
     <div class="comment-image-container" [ngClass]="{'float-left': comment.owner.id != userId, 'float-right': comment.owner.id == userId}">
       <img class="comment-image" *ngIf="comment.owner.company && comment.owner.company.id" [src]="(comment.owner.company.logoImage && comment.owner.company.logoImage.imageUrlSmall) || '/assets/images/placeholder-logo.png'">
-      <img class="comment-image" *ngIf="!(comment.owner.company && comment.owner.company.id)" [src]="(comment.owner.images && comment.owner.profile_image && comment.owner.profile_image.mediumImageUrl) || '/assets/images/placeholder-profile-image.png'">
+      <img class="comment-image" *ngIf="!(comment.owner.company && comment.owner.company.id)" [src]="(comment.owner.profileImage && comment.owner.profileImage.smallImageUrl) || '/assets/images/placeholder-profile-image.png'">
     </div>
     <div class="comment-content" [ngClass]="{'move-left': comment.owner.id != userId}">
       <div class="comment-meta-data-container">

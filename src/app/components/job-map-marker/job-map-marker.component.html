@@ -1,7 +1,7 @@
 <sebm-google-map-marker class="job-map-marker" [latitude]="job.zipLatitude" [longitude]="job.zipLongitude" [iconUrl]="'assets/images/map_job_icon.png'" (markerClick)="job.showJobInfo = true">
   <sebm-google-map-info-window [disableAutoPan]="true" [isOpen]="job.showJobInfo" (infoWindowClose)="job.showJobInfo = false">
-    <p class="job-map-marker-info-header">{{job.translated.name}}
-    <p class="job-map-marker-info-adress-field"><i class="fa fa-map-marker" aria-hidden="true"></i> {{job.address}}</p>
+    <p class="job-map-marker-info-header">{{job.translatedText.name}}
+    <p class="job-map-marker-info-adress-field"><i class="fa fa-map-marker" aria-hidden="true"></i> {{job.fullStreetAddress}}</p>
     <span class="job-map-marker-info-salary">{{job.grossAmountWithCurrency}}</span>
     <span class="job-map-marker-info-salary-per-hour">{{job.hours}}h ({{job.hourlyPay.grossSalary}} {{job.hourlyPay.currency}}/h)</span>
     <base-button

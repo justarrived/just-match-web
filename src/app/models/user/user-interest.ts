@@ -1,9 +1,10 @@
 import {Interest} from '../interest/interest';
 
 export class UserInterest {
+  // API fields
   public id: string;
   public interest: Interest;
-  public proficiency: number;
+  public level: number;
 
   public constructor(jsonObject?: any) {
     if (!jsonObject) {
@@ -12,6 +13,6 @@ export class UserInterest {
 
     this.id = jsonObject.id;
     this.interest = new Interest(jsonObject.interest);
-    this.proficiency = jsonObject.proficiency;
+    this.level = jsonObject.level;
   }
 }

@@ -5,7 +5,7 @@ import {Input} from '@angular/core';
 import {OnInit} from '@angular/core';
 import {SystemLanguageListener} from '../../../resolvers/system-languages/system-languages.resolver';
 import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
-import {UserGender} from '../../../models/user/user-gender';
+import {Gender} from '../../../models/gender/gender';
 import {UserProxy} from '../../../services/proxy/user-proxy.service';
 
 @Component({
@@ -24,7 +24,7 @@ import {UserProxy} from '../../../services/proxy/user-proxy.service';
         [label]="'input.gender.label' | translate"
         [placeholder]="'input.gender.placeholder' | translate"
         apiAttribute="gender"
-        dataItemLabelProoerty="translated.name"
+        dataItemLabelProoerty="translatedText.name"
         dataItemValueProoerty="id">
       </select-dropdown-input>
     </div>`
@@ -33,7 +33,7 @@ export class GenderInputComponent extends SystemLanguageListener implements OnIn
   @Input() apiErrors: ApiErrors;
   @Input() control: FormControl;
 
-  public genders: Promise<UserGender[]>;
+  public genders: Promise<Gender[]>;
 
   constructor(
     private userProxy: UserProxy,

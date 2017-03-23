@@ -62,7 +62,7 @@ export class LanguagesInputComponent extends SystemLanguageListener implements O
   }
 
   protected loadData(): void {
-    this.languages = this.languageProxy.getLanguages().then();
+    this.languages = this.languageProxy.getLanguages();
   }
 
   public onRemoveUserLanguage(userLanguage): void {

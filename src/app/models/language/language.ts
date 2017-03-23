@@ -3,6 +3,7 @@ export class Language {
   public direction: string;
   public id: string;
   public languageCode: string;
+  public languageId: string;
   public localName: string;
   public name: string;
   public systemLanguage: boolean;
@@ -16,6 +17,7 @@ export class Language {
     this.direction = jsonObject.direction;
     this.id = jsonObject.id;
     this.languageCode = jsonObject.lang_code;
+    this.languageId = jsonObject.language_id;
     this.localName = jsonObject.local_name;
     this.name = jsonObject.name;
     this.systemLanguage = jsonObject.system_language;
@@ -25,8 +27,8 @@ export class Language {
 
 export class LanguageTranslatedText {
   // API fields
-  // TODO check why language_id is missing in API here
   public name: string;
+  public languageId: string
 
   public constructor(jsonObject?: any) {
     if (!jsonObject) {
@@ -34,5 +36,6 @@ export class LanguageTranslatedText {
     }
 
     this.name = jsonObject.name;
+    this.languageId = jsonObject.language_id;
   }
 }

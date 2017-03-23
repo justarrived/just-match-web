@@ -11,6 +11,7 @@ import {User} from '../../../models/user/user';
     [label]="'input.personal.id.label' | translate"
     [showLabel]="showLabel"
     [subHeader]="'input.personal.id.description' | translate"
+    imageField="personalIdImage"
     imageType="personal_id">
   </user-image-card-input>
   `

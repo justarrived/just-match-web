@@ -11,6 +11,7 @@ import {User} from '../../../models/user/user';
     [label]="'input.lma.card.label' | translate"
     [showLabel]="showLabel"
     [subHeader]="'input.lma.card.description' | translate"
+    imageField="lmaCardImage"
     imageType="lma_card">
   </user-image-card-input>
   `

@@ -1,6 +1,6 @@
 import {ApiErrors} from '../../../models/api-models/api-errors/api-errors';
 import {Component} from '@angular/core';
-import {UserStatus} from '../../../models/user/user-status';
+import {Status} from '../../../models/status/status';
 import {UserProxy} from '../../../services/proxy/user-proxy.service';
 import {FormControl} from '@angular/forms';
 import {Input} from '@angular/core';
@@ -24,7 +24,7 @@ import {SystemLanguagesResolver} from '../../../resolvers/system-languages/syste
         [label]="'input.status.label' | translate"
         [placeholder]="'input.status.placeholder' | translate"
         apiAttribute="current_status"
-        dataItemLabelProoerty="name"
+        dataItemLabelProoerty="translatedText.name"
         dataItemValueProoerty="id">
       </select-dropdown-input>
     </div>`
@@ -33,7 +33,7 @@ export class StatusInputComponent extends SystemLanguageListener implements OnIn
   @Input() apiErrors: ApiErrors;
   @Input() control: FormControl;
 
-  public statuses: Promise<UserStatus[]>;
+  public statuses: Promise<Status[]>;
 
   constructor(
     private userProxy: UserProxy,

@@ -12,6 +12,7 @@ import {User} from '../../../models/user/user';
     [maxNbrDocuments]="5"
     [showLabel]="showLabel"
     [subHeader]="'input.resume.subheader' | translate"
+    documentsField="cvDocuments"
     documentType="cv">
   </user-document-card-input>
   `

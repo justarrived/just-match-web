@@ -1,5 +1,6 @@
+import {Invoice} from '../invoice/invoice'
 import {Job} from '../job/job';
-import {User} from './user';
+import {User} from '../user/user';
 import * as moment from 'moment';
 
 export class Application {
@@ -64,18 +65,5 @@ export class ApplicationTranslatedText {
 
     this.applyMessage = jsonObject.apply_message;
     this.languageId = jsonObject.language_id;
-  }
-}
-
-
-export class Invoice {
-  id: number;
-
-  constructor(jsonObject: any) {
-    if (!jsonObject) {
-      return;
-    }
-
-    this.id = jsonObject.id;
   }
 }

@@ -3,8 +3,8 @@
 
     <div class="job-status text-center">
       <div class="job-status-container">
-        <h3 class="job-status-text">{{job.translated.name}}</h3>
-        <div class="ui grid">
+        <h3 class="job-status-text">{{job.translatedText.name}}</h3>
+        <div class="ui grid" style="flex-wrap: nowrap;">
           <div class="ten wide phone">
             <h4 class="job-status-text">{{job.company.name}}</h4>
             <h6 class="job-status-text">{{job.jobDate | date: 'MMM dd'}} - {{job.jobEndDate | date: 'MMM dd'}}</h6>
@@ -12,7 +12,9 @@
             <h2 class="job-status-salary-text">{{job.grossAmountWithCurrency}}</h2>
           </div>
           <div class="six wide phone job-status-icon-container">
-            <img [src]="job.companyLogoImageURL" class="company-logo">
+            <img
+              [src]="job?.company?.logoImage?.imageUrlSmall || '/assets/images/placeholder-logo.png'"
+              class="company-logo">
           </div>
         </div>
       </div>
@@ -20,7 +22,7 @@
       <base-button
         (click)="onApplyForJobButtonClick()"
         [buttonText]="'assignment.status.apply' | translate"
-        *ngIf="(user && !userJob)"
+        *ngIf="(user && !application)"
         kind="secondary-light"
         size="medium">
       </base-button>
@@ -43,10 +45,10 @@
         </base-button>
       </div>
 
-      <h3 class="applied-text" *ngIf="userJob && !userJob.accepted">{{'assignment.status.applied' | translate}}</h3>
+      <h3 class="applied-text" *ngIf="application && !application.accepted">{{'assignment.status.applied' | translate}}</h3>
 
-      <div *ngIf="userJob && userJob.accepted && !userJob.willPerform">
-        <h5 class="time-left-text">{{'assignment.status.offer' | translate}} {{userJob.remainsConfirmationHours}} {{'common.hour' | translate}} {{userJob.remainsConfirmationMinutes}} {{'common.min' | translate}}</h5>
+      <div *ngIf="application && application.accepted && !application.willPerform">
+        <h5 class="time-left-text">{{'assignment.status.offer' | translate}} {{application.remainsConfirmationHours}} {{'common.hour' | translate}} {{application.remainsConfirmationMinutes}} {{'common.min' | translate}}</h5>
         <base-button
           (click)="onConfirmJobButtonClick()"
           [buttonText]="'assignment.status.reply' | translate"
@@ -56,8 +58,8 @@
         <h3 *ngIf="applyForJobErrorMessageVisible">{{'assignment.status.confirmation_error' | translate}}</h3>
       </div>
 
-      <h5 class="hired-text" *ngIf="userJob && userJob.job_ended">{{'assignment.status.finished' | translate}}</h5>
-      <h5 class="hired-text" *ngIf="userJob && userJob.accepted && userJob.willPerform && !userJob.job_ended">{{'assignment.status.hired' | translate}}</h5>
+      <h5 class="hired-text" *ngIf="application && application.jobEnded">{{'assignment.status.finished' | translate}}</h5>
+      <h5 class="hired-text" *ngIf="application && application.accepted && application.willPerform && !application.jobEnded">{{'assignment.status.hired' | translate}}</h5>
 
       <div class="expand-details-text-container">
         <h6 *ngIf="!jobDetailsVisible" class="expand-details-text">{{'assignment.status.more_details' | translate}}</h6>
@@ -78,7 +80,7 @@
           </div>
         </div>
         <div class="fifteen wide phone column">
-          <div [innerHTML]="job.translated.descriptionHTML"></div>
+          <div [innerHTML]="job.translatedText.descriptionHtml"></div>
         </div>
       </div>
       <hr class="job-details-separator"/>

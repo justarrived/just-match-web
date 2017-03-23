@@ -11,6 +11,7 @@ import {User} from '../../../models/user/user';
     [label]="'input.residence.permit.back.label' | translate"
     [showLabel]="showLabel"
     [subHeader]="'input.residence.permit.back.description' | translate"
+    imageField="residencePermitBackImage"
     imageType="residence_permit_back">
   </user-image-card-input>
   `

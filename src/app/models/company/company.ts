@@ -16,7 +16,7 @@ export class Company {
   public website: string;
   public zip: string;
 
-  // Convenience fields
+  // Client fields
   public logoImage: CompanyImage;
 
   public constructor(jsonObject?: any) {

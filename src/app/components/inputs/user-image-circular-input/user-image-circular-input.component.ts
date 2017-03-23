@@ -16,7 +16,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
         [centered]="centered"
         [imageSaveFail]="imageSaveFail"
         [imageSaveSuccess]="imageSaveSuccess"
-        [imageUrl]="this.user && this.user[this.imageType + '_image']?.mediumImageUrl"
+        [imageUrl]="this.user && this.user[this.imageField]?.mediumImageUrl"
         [placeholderImageUrl]="placeholderImageUrl"
         [size]="size"
         [uploadingImage]="uploadingImage">
@@ -24,6 +24,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
 })
 export class UserImageCircularInputComponent implements OnInit, OnDestroy {
   @Input() public centered: boolean;
+  @Input() public imageField: string;
   @Input() public imageType: string;
   @Input() public placeholderImageUrl: string;
   @Input() public size: string = 'medium'; // One of ['mini', 'tiny', 'small', 'medium', 'large', 'big', 'huge', massive]
@@ -60,7 +61,7 @@ export class UserImageCircularInputComponent implements OnInit, OnDestroy {
     this.uploadingImage = true;
 
     this.userProxy.saveImage(this.user.id, file, this.imageType).then(userImage => {
-      this.user[this.imageType + '_image'] = userImage;
+      this.user[this.imageField] = userImage;
       this.imageSaveSuccess = true;
       this.uploadingImage = false;
     }).catch(errors => {

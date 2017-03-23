@@ -1,8 +1,8 @@
-import {Component, Input} from '@angular/core';
-import {Job} from '../../models/job/job';
-import {NavigationService} from '../../services/navigation.service';
+import {Application} from '../../models/application/application';
+import {Component} from '@angular/core';
+import {Input} from '@angular/core';
 import {JARoutes} from '../../routes/ja-routes';
-
+import {NavigationService} from '../../services/navigation.service';
 
 @Component({
   selector: 'my-jobs-item',
@@ -10,7 +10,7 @@ import {JARoutes} from '../../routes/ja-routes';
   styleUrls: ['./my-jobs-item.component.scss']
 })
 export class MyJobsItemComponent {
-  @Input() public job: Job;
+  @Input() public application: Application;
   @Input() public section: string;
 
   constructor(
@@ -19,6 +19,6 @@ export class MyJobsItemComponent {
   }
 
   private onListItemClick() {
-    this.navigationService.navigate(JARoutes.job, this.job.id);
+    this.navigationService.navigate(JARoutes.job, this.application.job.id);
   }
 }
