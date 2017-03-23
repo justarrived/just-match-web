@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {EventEmitter} from '@angular/core';
 import {Input} from '@angular/core';
 import {Output} from '@angular/core';
-import {UserDocument} from '../../../models/user/user-document';
+import {UserDocument} from '../../../models/api-models/user/user-document';
 
 @Component({
   selector: 'upload-document-card',

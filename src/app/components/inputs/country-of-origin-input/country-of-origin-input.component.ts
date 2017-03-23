@@ -1,6 +1,6 @@
 import {ApiErrors} from '../../../models/api-models/api-errors/api-errors';
 import {Component} from '@angular/core';
-import {Country} from '../../../models/country/country';
+import {Country} from '../../../models/api-models/country/country';
 import {CountryProxy} from '../../../services/proxy/country-proxy.service';
 import {FormControl} from '@angular/forms';
 import {Input} from '@angular/core';

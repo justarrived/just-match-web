@@ -5,7 +5,7 @@ import {Input} from '@angular/core';
 import {OnInit} from '@angular/core';
 import {SystemLanguageListener} from '../../../resolvers/system-languages/system-languages.resolver';
 import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
-import {Gender} from '../../../models/gender/gender';
+import {Gender} from '../../../models/api-models/gender/gender';
 import {UserProxy} from '../../../services/proxy/user-proxy.service';
 
 @Component({

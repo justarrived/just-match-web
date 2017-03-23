@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {JARoutes} from '../../../routes/ja-routes';
-import {Job} from '../../../models/job/job';
+import {Job} from '../../../models/api-models/job/job';
 import {JobProxy} from '../../../services/proxy/job-proxy.service';
 import {nbrOfMonthsFromDate} from '../../../utils/date-util';
 import {OnInit} from '@angular/core';

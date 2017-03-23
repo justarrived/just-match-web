@@ -1,4 +1,4 @@
-import {Application} from '../../../models/application/application';
+import {Application} from '../../../models/api-models/application/application';
 import {Component} from '@angular/core';
 import {JARoutes} from '../../../routes/ja-routes';
 import {nbrOfMonthsFromDate} from '../../../utils/date-util';
@@ -7,7 +7,7 @@ import {OnInit} from '@angular/core';
 import {Subscription} from 'rxjs/Subscription';
 import {SystemLanguageListener} from '../../../resolvers/system-languages/system-languages.resolver';
 import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
-import {User} from '../../../models/user/user';
+import {User} from '../../../models/api-models/user/user';
 import {UserProxy} from '../../../services/proxy/user-proxy.service';
 import {UserResolver} from '../../../resolvers/user/user.resolver';
 import {yyyymmdd} from '../../../utils/date-util';

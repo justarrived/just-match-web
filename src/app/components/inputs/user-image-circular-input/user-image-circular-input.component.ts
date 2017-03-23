@@ -4,7 +4,7 @@ import {OnDestroy} from '@angular/core';
 import {OnInit} from '@angular/core';
 import {Output} from '@angular/core';
 import {Subscription} from 'rxjs/Subscription';
-import {User} from '../../../models/user/user';
+import {User} from '../../../models/api-models/user/user';
 import {UserProxy} from '../../../services/proxy/user-proxy.service';
 import {UserResolver} from '../../../resolvers/user/user.resolver';
 

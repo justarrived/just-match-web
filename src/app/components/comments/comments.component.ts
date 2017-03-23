@@ -1,4 +1,4 @@
-import {Comment} from '../../models/comment/comment';
+import {Comment} from '../../models/api-models/comment/comment';
 import {CommentsProxy} from '../../services/proxy/comments-proxy.service';
 import {Component} from '@angular/core';
 import {ElementRef} from '@angular/core';

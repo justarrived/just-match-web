@@ -9,7 +9,7 @@ import {OnInit} from '@angular/core';
 import {Output} from '@angular/core';
 import {Router} from '@angular/router';
 import {Subscription} from 'rxjs/Subscription';
-import {User} from '../../../models/user/user';
+import {User} from '../../../models/api-models/user/user';
 import {UserResolver} from '../../../resolvers/user/user.resolver';
 
 @Component({

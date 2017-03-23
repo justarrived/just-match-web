@@ -1,9 +1,9 @@
 import {ApiCall} from '../api-call.service';
-import {Application} from '../../models/application/application';
-import {Category} from '../../models/category/category';
-import {HourlyPay} from '../../models/hourly-pay/hourly-pay';
+import {Application} from '../../models/api-models/application/application';
+import {Category} from '../../models/api-models/category/category';
+import {HourlyPay} from '../../models/api-models/hourly-pay/hourly-pay';
 import {Injectable} from '@angular/core';
-import {Job} from '../../models/job/job';
+import {Job} from '../../models/api-models/job/job';
 import {map} from 'lodash';
 
 @Injectable()

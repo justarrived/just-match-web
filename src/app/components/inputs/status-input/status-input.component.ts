@@ -1,6 +1,6 @@
 import {ApiErrors} from '../../../models/api-models/api-errors/api-errors';
 import {Component} from '@angular/core';
-import {Status} from '../../../models/status/status';
+import {Status} from '../../../models/api-models/status/status';
 import {UserProxy} from '../../../services/proxy/user-proxy.service';
 import {FormControl} from '@angular/forms';
 import {Input} from '@angular/core';

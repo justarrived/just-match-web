@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {Input} from '@angular/core';
-import {User} from '../../../models/user/user';
+import {User} from '../../../models/api-models/user/user';
 
 @Component({
   selector: 'skatteverket-certificate-input',

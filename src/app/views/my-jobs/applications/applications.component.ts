@@ -1,4 +1,4 @@
-import {Application} from '../../../models/application/application';
+import {Application} from '../../../models/api-models/application/application';
 import {Component} from '@angular/core';
 import {Input} from '@angular/core';
 import {map} from 'lodash';

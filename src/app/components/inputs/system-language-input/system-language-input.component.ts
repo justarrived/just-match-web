@@ -5,7 +5,7 @@ import {Input} from '@angular/core';
 import {OnInit} from '@angular/core';
 import {SystemLanguageListener} from '../../../resolvers/system-languages/system-languages.resolver';
 import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
-import {Language} from '../../../models/language/language';
+import {Language} from '../../../models/api-models/language/language';
 import {LanguageProxy} from '../../../services/proxy/language-proxy.service';
 
 @Component({

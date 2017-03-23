@@ -3,13 +3,13 @@ import {Component} from '@angular/core';
 import {deleteElementFromArray} from '../../../utils/array-util';
 import {FormControl} from '@angular/forms';
 import {Input} from '@angular/core';
-import {Language} from '../../../models/language/language';
+import {Language} from '../../../models/api-models/language/language';
 import {LanguageProxy} from '../../../services/proxy/language-proxy.service';
 import {OnInit} from '@angular/core';
 import {some} from 'lodash';
 import {SystemLanguageListener} from '../../../resolvers/system-languages/system-languages.resolver';
 import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
-import {UserLanguage} from '../../../models/user/user-language';
+import {UserLanguage} from '../../../models/api-models/user/user-language';
 
 @Component({
   selector: 'languages-input',

@@ -1,14 +1,14 @@
 import {ApiCall} from '../api-call.service';
-import {Application} from '../../models/application/application';
-import {Document} from '../../models/document/document';
-import {Gender} from '../../models/gender/gender';
+import {Application} from '../../models/api-models/application/application';
+import {Document} from '../../models/api-models/document/document';
+import {Gender} from '../../models/api-models/gender/gender';
 import {getDataUrl} from '../../utils/image-to-data-url.util';
 import {Injectable} from '@angular/core';
 import {map} from 'lodash';
-import {Status} from '../../models/status/status';
-import {User} from '../../models/user/user';
-import {UserDocument} from '../../models/user/user-document';
-import {UserImage} from '../../models/user/user-image';
+import {Status} from '../../models/api-models/status/status';
+import {User} from '../../models/api-models/user/user';
+import {UserDocument} from '../../models/api-models/user/user-document';
+import {UserImage} from '../../models/api-models/user/user-image';
 
 @Injectable()
 export class UserProxy {

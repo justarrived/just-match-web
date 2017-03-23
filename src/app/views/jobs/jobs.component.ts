@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
-import {Job} from '../../models/job/job';
+import {Job} from '../../models/api-models/job/job';
 import {MapLocation} from '../../models/map-location';
 import {Geolocation} from '../../services/geolocation.service';
 import {JobProxy} from '../../services/proxy/job-proxy.service';
