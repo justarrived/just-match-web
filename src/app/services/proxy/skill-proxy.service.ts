@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {ApiCall} from '../api-call.service';
 import {map} from 'lodash';
-import {Skill} from '../../models/skill/skill';
+import {Skill} from '../../models/api-models/skill/skill';
 
 @Injectable()
 export class SkillProxy {

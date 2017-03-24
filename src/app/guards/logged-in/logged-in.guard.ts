@@ -20,7 +20,7 @@ export class LoggedInGuard implements CanActivate {
       if (!user) {
         canNavigateStatus = false;
         if ( route.data && route.data['roles']) {
-          canNavigateStatus = route.data['roles'].indexOf(user.role) >= 0;
+          canNavigateStatus = route.data['roles'].indexOf(user.primaryRole) >= 0;
         }
       }
 

@@ -6,7 +6,7 @@ import {Component} from '@angular/core';
 
     <new-jobs-section></new-jobs-section>
 
-    <user-jobs-status-section></user-jobs-status-section>
+    <applications-status-section></applications-status-section>
 
     <how-it-works-and-maximize-chances-section></how-it-works-and-maximize-chances-section>
 

@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {Input} from '@angular/core';
-import {User} from '../../../models/user';
+import {User} from '../../../models/api-models/user/user';
 
 @Component({
   selector: 'lma-card-input',
@@ -11,6 +11,7 @@ import {User} from '../../../models/user';
     [label]="'input.lma.card.label' | translate"
     [showLabel]="showLabel"
     [subHeader]="'input.lma.card.description' | translate"
+    imageField="lmaCardImage"
     imageType="lma_card">
   </user-image-card-input>
   `

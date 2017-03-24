@@ -1,15 +1,15 @@
-import {ApiErrors} from '../../../models/api-errors';
+import {ApiErrors} from '../../../models/api-models/api-errors/api-errors';
 import {Component} from '@angular/core';
 import {deleteElementFromArray} from '../../../utils/array-util';
 import {FormControl} from '@angular/forms';
 import {Input} from '@angular/core';
-import {Skill} from '../../../models/skill/skill';
+import {Skill} from '../../../models/api-models/skill/skill';
 import {SkillProxy} from '../../../services/proxy/skill-proxy.service';
 import {OnInit} from '@angular/core';
 import {some} from 'lodash';
 import {SystemLanguageListener} from '../../../resolvers/system-languages/system-languages.resolver';
 import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
-import {UserSkill} from '../../../models/user/user-skill';
+import {UserSkill} from '../../../models/api-models/user/user-skill';
 
 @Component({
   selector: 'skills-input',
@@ -29,7 +29,7 @@ import {UserSkill} from '../../../models/user/user-skill';
       [label]="'input.skills.label' | translate"
       [placeholder]="'input.skills.placeholder' | translate"
       apiAttribute="skill_ids"
-      dataItemLabelProoerty="translated.name"
+      dataItemLabelProoerty="translatedText.name"
       dataItemValueProoerty="id">
     </select-dropdown-input>
     <div *ngFor="let userSkill of userSkillsControl.value">
@@ -37,7 +37,7 @@ import {UserSkill} from '../../../models/user/user-skill';
         (onDelete)="onRemoveUserSkill(userSkill)"
         (onRate)="onProficiencyChange($event, userSkill)"
         [initialRating]="userSkill.proficiency"
-        [label]="userSkill.skill.translated.name">
+        [label]="userSkill.skill.translatedText.name">
       </skill-proficiency-input>
     </div>
   </div>`

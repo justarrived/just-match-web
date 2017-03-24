@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {Input} from '@angular/core';
-import {User} from '../../../models/user';
+import {User} from '../../../models/api-models/user/user';
 
 @Component({
   selector: 'personal-id-input',
@@ -11,6 +11,7 @@ import {User} from '../../../models/user';
     [label]="'input.personal.id.label' | translate"
     [showLabel]="showLabel"
     [subHeader]="'input.personal.id.description' | translate"
+    imageField="personalIdImage"
     imageType="personal_id">
   </user-image-card-input>
   `

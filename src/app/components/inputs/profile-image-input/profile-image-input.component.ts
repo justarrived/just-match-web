@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {Input} from '@angular/core';
-import {User} from '../../../models/user';
+import {User} from '../../../models/api-models/user/user';
 
 @Component({
   selector: 'profile-image-input',
@@ -8,6 +8,7 @@ import {User} from '../../../models/user';
   <user-image-circular-input
     [centered]="centered"
     [size]="size"
+    imageField="profileImage"
     imageType="profile"
     placeholderImageUrl="/assets/images/placeholder-profile-image.png">
   </user-image-circular-input>

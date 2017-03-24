@@ -9,7 +9,7 @@ import {OnInit} from '@angular/core';
 import {Output} from '@angular/core';
 import {Router} from '@angular/router';
 import {Subscription} from 'rxjs/Subscription';
-import {User} from '../../../models/user';
+import {User} from '../../../models/api-models/user/user';
 import {UserResolver} from '../../../resolvers/user/user.resolver';
 
 @Component({
@@ -31,7 +31,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
       <a
         *ngIf="user"
         class="navigation-menu-item"
-        [routerLink]="JARoutes.userJobs.url()">
+        [routerLink]="JARoutes.applications.url()">
         {{'menu.main.my_assignment' | translate}}
       </a>
 
@@ -89,7 +89,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
           [routerLink]="JARoutes.user.url()">
           <img
             class="ui centered tiny circular image"
-            [src]="this.user.profile_image?.mediumImageUrl || '/assets/images/placeholder-profile-image.png'">
+            [src]="this.user.profileImage?.mediumImageUrl || '/assets/images/placeholder-profile-image.png'">
           <h4>{{user.name}}</h4>
         </div>
 

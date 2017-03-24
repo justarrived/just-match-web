@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {Input} from '@angular/core';
-import {User} from '../../../models/user';
+import {User} from '../../../models/api-models/user/user';
 
 @Component({
   selector: 'resume-input',
@@ -12,6 +12,7 @@ import {User} from '../../../models/user';
     [maxNbrDocuments]="5"
     [showLabel]="showLabel"
     [subHeader]="'input.resume.subheader' | translate"
+    documentsField="cvDocuments"
     documentType="cv">
   </user-document-card-input>
   `

@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {Input} from '@angular/core';
-import {User} from '../../../models/user';
+import {User} from '../../../models/api-models/user/user';
 
 @Component({
   selector: 'work-permit-back-input',
@@ -11,6 +11,7 @@ import {User} from '../../../models/user';
     [label]="'input.work.permit.back.label' | translate"
     [showLabel]="showLabel"
     [subHeader]="'input.work.permit.back.description' | translate"
+    imageField="workPermitBackImage"
     imageType="work_permit_back">
   </user-image-card-input>
   `

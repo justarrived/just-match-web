@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {Input} from '@angular/core';
-import {User} from '../../../models/user';
+import {User} from '../../../models/api-models/user/user';
 
 @Component({
   selector: 'skatteverket-certificate-input',
@@ -11,6 +11,7 @@ import {User} from '../../../models/user';
     [label]="'input.skatteverket.certificate.label' | translate"
     [showLabel]="showLabel"
     [subHeader]="'input.skatteverket.certificate.description' | translate"
+    imageField="skatteverketCertificateImage"
     imageType="skatteverket_certificate">
   </user-image-card-input>
   `

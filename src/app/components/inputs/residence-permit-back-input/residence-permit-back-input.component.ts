@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {Input} from '@angular/core';
-import {User} from '../../../models/user';
+import {User} from '../../../models/api-models/user/user';
 
 @Component({
   selector: 'residence-permit-back-input',
@@ -11,6 +11,7 @@ import {User} from '../../../models/user';
     [label]="'input.residence.permit.back.label' | translate"
     [showLabel]="showLabel"
     [subHeader]="'input.residence.permit.back.description' | translate"
+    imageField="residencePermitBackImage"
     imageType="residence_permit_back">
   </user-image-card-input>
   `

@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {Input} from '@angular/core';
-import {User} from '../../../models/user';
+import {User} from '../../../models/api-models/user/user';
 
 @Component({
   selector: 'residence-permit-front-input',
@@ -11,6 +11,7 @@ import {User} from '../../../models/user';
     [label]="'input.residence.permit.front.label' | translate"
     [showLabel]="showLabel"
     [subHeader]="'input.residence.permit.front.description' | translate"
+    imageField="residencePermitFrontImage"
     imageType="residence_permit_front">
   </user-image-card-input>
   `

@@ -12,7 +12,7 @@ import {
 import {DataStore} from './data-store.service';
 import * as  _ from 'lodash';
 import {parseJsonapiResponse} from '../utils/jsonapi-parser.util';
-import {ApiErrors} from '../models/api-errors';
+import {ApiErrors} from '../models/api-models/api-errors/api-errors';
 import {Observable} from 'rxjs';
 import {environment} from '../../environments/environment';
 import {ActsAsUser} from './acts-as-user.service';

@@ -4,7 +4,7 @@ import {OnDestroy} from '@angular/core';
 import {OnInit} from '@angular/core';
 import {Output} from '@angular/core';
 import {Subscription} from 'rxjs/Subscription';
-import {User} from '../../../models/user';
+import {User} from '../../../models/api-models/user/user';
 import {UserProxy} from '../../../services/proxy/user-proxy.service';
 import {UserResolver} from '../../../resolvers/user/user.resolver';
 
@@ -23,7 +23,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
         [header]="header"
         [documentSaveFail]="documentSaveFail"
         [documentSaveSuccess]="documentSaveSuccess"
-        [documents]="user && user[documentType + '_documents']?.slice(-maxNbrDocuments)"
+        [documents]="user && user[documentsField]?.slice(-maxNbrDocuments)"
         [subHeader]="subHeader"
         [uploadingDocument]="uploadingDocument">
       </upload-document-card>
@@ -31,6 +31,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
 })
 export class UserDocumentCardInputComponent implements OnInit, OnDestroy {
   @Input() public centered: boolean;
+  @Input() public documentsField: string;
   @Input() public documentType: string;
   @Input() public header: string;
   @Input() public label: string;
@@ -71,7 +72,7 @@ export class UserDocumentCardInputComponent implements OnInit, OnDestroy {
 
     this.userProxy.saveDocument(file).then((document) => {
       this.userProxy.saveUserDocument(this.user.id, document, this.documentType).then(userDocument => {
-        this.user[this.documentType + '_documents'].push(userDocument);
+        this.user[this.documentsField].push(userDocument);
         this.documentSaveSuccess = true;
         this.uploadingDocument = false;
       }).catch(errors => {

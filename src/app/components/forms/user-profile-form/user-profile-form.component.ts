@@ -1,7 +1,7 @@
-import {ApiErrors} from '../../../models/api-errors';
+import {ApiErrors} from '../../../models/api-models/api-errors/api-errors';
 import {ChangeDetectorRef} from '@angular/core';
 import {Component} from '@angular/core';
-import {Document} from '../../../models/document';
+import {Document} from '../../../models/api-models/document/document';
 import {FormBuilder} from '@angular/forms';
 import {FormGroup} from '@angular/forms';
 import {Input} from '@angular/core';
@@ -10,9 +10,9 @@ import {map} from 'lodash';
 import {OnDestroy} from '@angular/core';
 import {OnInit} from '@angular/core';
 import {Subscription} from 'rxjs/Subscription';
-import {User} from '../../../models/user';
-import {UserDocument} from '../../../models/user/user-document';
-import {UserImage} from '../../../models/user/user-image';
+import {User} from '../../../models/api-models/user/user';
+import {UserDocument} from '../../../models/api-models/user/user-document';
+import {UserImage} from '../../../models/api-models/user/user-image';
 import {UserProxy} from '../../../services/proxy/user-proxy.service';
 import {UserResolver} from '../../../resolvers/user/user.resolver';
 import {Validators} from '@angular/forms';
@@ -54,12 +54,12 @@ export class UserProfileFormComponent implements OnInit, OnDestroy {
   private initForm(): void {
     this.profileForm = this.formBuilder.group({
       'at_und': [this.user.atUnd ? this.user.atUnd : 'no'],
-      'competence_text': [this.user.skills],
+      'competence_text': [this.user.competenceText],
       'current_status': [this.user.currentStatus],
       'description': [this.user.description],
       'education': [this.user.education],
       'got_coordination_number': [this.user.ssn ? 'yes' : 'no'],
-      'job_experience': [this.user.workExperience],
+      'job_experience': [this.user.jobExperience],
       'languages': [''],
       'skills': [''],
       'ssn': [this.user.ssn],

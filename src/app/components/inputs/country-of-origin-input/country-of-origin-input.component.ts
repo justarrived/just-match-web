@@ -1,6 +1,6 @@
-import {ApiErrors} from '../../../models/api-errors';
+import {ApiErrors} from '../../../models/api-models/api-errors/api-errors';
 import {Component} from '@angular/core';
-import {Country} from '../../../models/country';
+import {Country} from '../../../models/api-models/country/country';
 import {CountryProxy} from '../../../services/proxy/country-proxy.service';
 import {FormControl} from '@angular/forms';
 import {Input} from '@angular/core';
@@ -24,7 +24,7 @@ import {SystemLanguagesResolver} from '../../../resolvers/system-languages/syste
       [label]="'input.country.of.origin.label' | translate"
       [placeholder]="'input.country.of.origin.placeholder' | translate"
       apiAttribute="country_of_origin"
-      dataItemLabelProoerty="translated.name"
+      dataItemLabelProoerty="translatedText.name"
       dataItemValueProoerty="countryCode">
     </select-dropdown-input>
   </div>`

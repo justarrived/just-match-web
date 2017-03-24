@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {Input} from '@angular/core';
 import {JARoutes} from '../../../routes/ja-routes';
-import {Job} from '../../../models/job/job';
+import {Job} from '../../../models/api-models/job/job';
 
 @Component({
   selector: 'job-card',
@@ -12,11 +12,11 @@ import {Job} from '../../../models/job/job';
     routerLink="{{JARoutes.job.url([job.id])}}">
     <div class="content job-content-container">
       <img
-        class="right floated mini ui image"
-        src="{{job.companyLogoURL}}">
+        [src]="job?.company?.logoImage?.imageUrlSmall || '/assets/images/placeholder-logo.png'"
+        class="right floated mini ui image">
       <div class="job-header-container">
         <div class="header job-header">
-          {{job.translated.name}}
+          {{job.translatedText.name}}
         </div>
       </div>
       <div class="meta job-company">
@@ -27,13 +27,13 @@ import {Job} from '../../../models/job/job';
       </div>
       <div class="job-description-container">
         <div class="description job-description">
-          {{job.translated.description}}
+          {{job.translatedText.description}}
         </div>
       </div>
     </div>
     <div class="extra content job-salary-container">
       <span class="job-salary">
-        {{job.grossSalary}}
+        {{job.hourlyPay.grossSalary}}
       </span>
       <span class="job-salary-currency">
         {{'job.card.currency.per.hour' | translate: {currency: job.currency} }}

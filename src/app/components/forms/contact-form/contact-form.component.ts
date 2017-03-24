@@ -1,7 +1,6 @@
-import {ApiErrors} from '../../../models/api-errors';
+import {ApiErrors} from '../../../models/api-models/api-errors/api-errors';
 import {ChangeDetectorRef} from '@angular/core';
 import {Component} from '@angular/core';
-import {ContactNotification} from '../../../models/contact-notification';
 import {ContactProxy} from '../../../services/proxy/contact-proxy.service';
 import {FormBuilder} from '@angular/forms';
 import {FormGroup} from '@angular/forms';
@@ -10,7 +9,7 @@ import {NavigationService} from '../../../services/navigation.service';
 import {OnDestroy} from '@angular/core';
 import {OnInit} from '@angular/core';
 import {Subscription} from 'rxjs/Subscription';
-import {User} from '../../../models/user';
+import {User} from '../../../models/api-models/user/user';
 import {UserResolver} from '../../../resolvers/user/user.resolver';
 import {Validators} from '@angular/forms';
 
@@ -76,11 +75,11 @@ export class ContactFormComponent implements OnInit, OnDestroy {
     this.submitSuccess = false;
 
     this.contactProxy.saveContactNotification(
-      new ContactNotification({
+      {
         body: value.message,
         email: value.email,
         name: value.name
-      }))
+      })
       .then((result) => {
         this.submitSuccess = true;
         this.navigationService.navigate(JARoutes.confirmation, 'contact-message-sent');

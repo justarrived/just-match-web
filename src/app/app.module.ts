@@ -6,6 +6,9 @@ import {ApiCall} from './services/api-call.service';
 import {ApiErrorsComponent} from './components/form-errors/api-errors/api-errors.component';
 import {APP_BASE_HREF} from '@angular/common';
 import {AppComponent} from './app.component';
+import {ApplicationsComponent} from './views/my-jobs/applications/applications.component';
+import {ApplicationsStatusSectionComponent} from './components/sections/applications-status-section/applications-status-section.component';
+import {ApplicationStatusCardComponent} from './components/cards/application-status-card/application-status-card.component';
 import {AppNavbarComponent} from './components/navbars/app-navbar/app-navbar.component';
 import {AppRoutingModule} from './app.routing.module';
 import {AppTranslateModule} from './app.translate.module';
@@ -130,9 +133,6 @@ import {UserDetailsFormComponent} from './components/forms/user-details-form/use
 import {UserDocumentCardInputComponent} from './components/inputs/user-document-card-input/user-document-card-input.component';
 import {UserImageCardInputComponent} from './components/inputs/user-image-card-input/user-image-card-input.component';
 import {UserImageCircularInputComponent} from './components/inputs/user-image-circular-input/user-image-circular-input.component';
-import {UserJobsComponent} from './views/my-jobs/user-jobs/user-jobs.component';
-import {UserJobsStatusSectionComponent} from './components/sections/user-jobs-status-section/user-jobs-status-section.component';
-import {UserJobStatusCardComponent} from './components/cards/user-job-status-card/user-job-status-card.component';
 import {UserProfileFormComponent} from './components/forms/user-profile-form/user-profile-form.component';
 import {UserProfileHeaderComponent} from './components/headers/user-profile-header/user-profile-header.component';
 import {UserProfilePageComponent} from './components/pages/user-profile-page/user-profile-page.component';
@@ -173,6 +173,9 @@ export class RavenErrorHandler implements ErrorHandler {
     AddressInputComponent,
     ApiErrorsComponent,
     AppComponent,
+    ApplicationsComponent,
+    ApplicationsStatusSectionComponent,
+    ApplicationStatusCardComponent,
     AppNavbarComponent,
     AtUndInputComponent,
     AutosizeDirective,
@@ -274,9 +277,6 @@ export class RavenErrorHandler implements ErrorHandler {
     UserDocumentCardInputComponent,
     UserImageCardInputComponent,
     UserImageCircularInputComponent,
-    UserJobsComponent,
-    UserJobsStatusSectionComponent,
-    UserJobStatusCardComponent,
     UserProfileFormComponent,
     UserProfileHeaderComponent,
     UserProfilePageComponent,

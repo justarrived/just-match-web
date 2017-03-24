@@ -3,7 +3,7 @@ import {Input} from '@angular/core';
 import {EventEmitter} from '@angular/core';
 import {Output} from '@angular/core';
 import {JARoutes} from '../../../routes/ja-routes';
-import {Language} from '../../../models/language/language';
+import {Language} from '../../../models/api-models/language/language';
 import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
 
 @Component({

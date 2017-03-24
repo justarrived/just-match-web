@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {Job} from '../../models/job/job';
+import {Job} from '../../models/api-models/job/job';
 import {NavigationService} from '../../services/navigation.service';
 import {JARoutes} from '../../routes/ja-routes';
 

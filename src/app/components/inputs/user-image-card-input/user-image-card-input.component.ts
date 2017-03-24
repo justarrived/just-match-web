@@ -4,7 +4,7 @@ import {OnDestroy} from '@angular/core';
 import {OnInit} from '@angular/core';
 import {Output} from '@angular/core';
 import {Subscription} from 'rxjs/Subscription';
-import {User} from '../../../models/user';
+import {User} from '../../../models/api-models/user/user';
 import {UserProxy} from '../../../services/proxy/user-proxy.service';
 import {UserResolver} from '../../../resolvers/user/user.resolver';
 
@@ -24,7 +24,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
         [header]="header"
         [imageSaveFail]="imageSaveFail"
         [imageSaveSuccess]="imageSaveSuccess"
-        [imageUrl]="this.user && this.user[this.imageType + '_image']?.mediumImageUrl"
+        [imageUrl]="this.user && this.user[this.imageField]?.mediumImageUrl"
         [subHeader]="subHeader"
         [uploadingImage]="uploadingImage">
       </upload-image-card>
@@ -34,6 +34,7 @@ export class UserImageCardInputComponent implements OnInit, OnDestroy {
   @Input() public centered: boolean;
   @Input() public description: string;
   @Input() public header: string;
+  @Input() public imageField: string;
   @Input() public imageType: string;
   @Input() public label: string;
   @Input() public showLabel: boolean;
@@ -71,7 +72,7 @@ export class UserImageCardInputComponent implements OnInit, OnDestroy {
     this.uploadingImage = true;
 
     this.userProxy.saveImage(this.user.id, file, this.imageType).then(userImage => {
-      this.user[this.imageType + '_image'] = userImage;
+      this.user[this.imageField] = userImage;
       this.imageSaveSuccess = true;
       this.uploadingImage = false;
     }).catch(errors => {

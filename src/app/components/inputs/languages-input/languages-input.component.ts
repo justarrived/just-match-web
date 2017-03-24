@@ -1,15 +1,15 @@
-import {ApiErrors} from '../../../models/api-errors';
+import {ApiErrors} from '../../../models/api-models/api-errors/api-errors';
 import {Component} from '@angular/core';
 import {deleteElementFromArray} from '../../../utils/array-util';
 import {FormControl} from '@angular/forms';
 import {Input} from '@angular/core';
-import {Language} from '../../../models/language/language';
+import {Language} from '../../../models/api-models/language/language';
 import {LanguageProxy} from '../../../services/proxy/language-proxy.service';
 import {OnInit} from '@angular/core';
 import {some} from 'lodash';
 import {SystemLanguageListener} from '../../../resolvers/system-languages/system-languages.resolver';
 import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
-import {UserLanguage} from '../../../models/user/user-language';
+import {UserLanguage} from '../../../models/api-models/user/user-language';
 
 @Component({
   selector: 'languages-input',
@@ -29,7 +29,7 @@ import {UserLanguage} from '../../../models/user/user-language';
       [label]="'input.languages.label' | translate"
       [placeholder]="'input.languages.placeholder' | translate"
       apiAttribute="language_ids"
-      dataItemLabelProoerty="translated.name"
+      dataItemLabelProoerty="translatedText.name"
       dataItemValueProoerty="id">
     </select-dropdown-input>
     <div *ngFor="let userLanguage of userLanguagesControl.value">
@@ -37,7 +37,7 @@ import {UserLanguage} from '../../../models/user/user-language';
         (onDelete)="onRemoveUserLanguage(userLanguage)"
         (onRate)="onProficiencyChange($event, userLanguage)"
         [initialRating]="userLanguage.proficiency"
-        [label]="userLanguage.language.translated.name">
+        [label]="userLanguage.language.translatedText.name">
       </language-proficiency-input>
     </div>
   </div>`
@@ -62,7 +62,7 @@ export class LanguagesInputComponent extends SystemLanguageListener implements O
   }
 
   protected loadData(): void {
-    this.languages = this.languageProxy.getLanguages().then();
+    this.languages = this.languageProxy.getLanguages();
   }
 
   public onRemoveUserLanguage(userLanguage): void {
