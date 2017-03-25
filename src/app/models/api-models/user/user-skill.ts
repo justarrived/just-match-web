@@ -1,18 +1,28 @@
 import {Skill} from '../skill/skill';
+import {SkillFactory} from '../skill/skill';
 
-export class UserSkill {
-  // API fields
-  public id: string;
-  public proficiency: number;
-  public skill: Skill;
+// API attribute interfaces
+interface UserSkillApiAttributes {
+  id: string;
+  proficiency: number;
+  skill: Skill;
+}
 
-  public constructor(jsonObject?: any) {
+// Client interfaces
+export interface UserSkill extends UserSkillApiAttributes {
+}
+
+// Factories
+export class UserSkillFactory {
+  public static createUserSkill(jsonObject?: any): UserSkill {
     if (!jsonObject) {
       return;
     }
 
-    this.id = jsonObject.id;
-    this.proficiency = jsonObject.proficiency;
-    this.skill = new Skill(jsonObject.skill);
+    return {
+      id: jsonObject.id,
+      proficiency: jsonObject.proficiency,
+      skill: SkillFactory.createSkill(jsonObject.skill),
+    };
   }
 }

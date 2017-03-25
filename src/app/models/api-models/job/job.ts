@@ -1,115 +1,136 @@
 import {Application} from '../application/application';
+import {ApplicationFactory} from '../application/application';
 import {Category} from '../category/category';
+import {CategoryFactory} from '../category/category';
 import {Company} from '../company/company';
+import {CompanyFactory} from '../company/company';
 import {HourlyPay} from '../hourly-pay/hourly-pay';
+import {HourlyPayFactory} from '../hourly-pay/hourly-pay';
+import {Language} from '../language/language';
+import {LanguageFactory} from '../language/language';
 import {map} from 'lodash';
 import {User} from '../user/user';
+import {UserFactory} from '../user/user';
 
-export class Job {
-  // API fields
-  public applications: Application[];
-  public category: Category;
-  public city: string;
-  public company: Company;
-  public createdAt: Date;
-  public currency: string;
-  public description: string;
-  public descriptionHtml: string;
-  public directRecruitmentJob: boolean;
-  public featured: boolean;
-  public filled: boolean;
-  public fullStreetAddress: string;
-  public grossAmount: number;
-  public grossAmountDelimited: string;
-  public grossAmountWithCurrency: string;
-  public hourlyPay: HourlyPay;
-  public hours: number;
-  public id: string;
-  public invoiceAmount: number;
-  public jobDate: Date;
-  public jobEndDate: Date;
-  public languageId: string;
-  public name: string;
-  public netAmount: number;
-  public netAmountDelimited: string;
-  public netAmountWithCurrency: string;
-  public owner: User;
-  public shortDescription: string;
-  public staffingJob: boolean;
-  public street: string;
-  public translatedText: JobTranslatedText;
-  public upcoming: boolean;
-  public updatedAt: Date;
-  public verified: boolean;
-  public zip: string;
-  public zipLatitude: number;
-  public zipLongitude: number;
+// API attribute interfaces
+interface JobApiAttributes {
+  applications: Application[];
+  category: Category;
+  city: string;
+  company: Company;
+  createdAt: Date;
+  currency: string;
+  description: string;
+  descriptionHtml: string;
+  directRecruitmentJob: boolean;
+  featured: boolean;
+  filled: boolean;
+  fullStreetAddress: string;
+  grossAmount: number;
+  grossAmountDelimited: string;
+  grossAmountWithCurrency: string;
+  hourlyPay: HourlyPay;
+  hours: number;
+  id: string;
+  invoiceAmount: number;
+  jobDate: Date;
+  jobEndDate: Date;
+  language: Language;
+  languageId: string;
+  name: string;
+  netAmount: number;
+  netAmountDelimited: string;
+  netAmountWithCurrency: string;
+  owner: User;
+  shortDescription: string;
+  staffingJob: boolean;
+  street: string;
+  translatedText: JobTranslatedText;
+  upcoming: boolean;
+  updatedAt: Date;
+  verified: boolean;
+  zip: string;
+  zipLatitude: number;
+  zipLongitude: number;
+}
 
-  // Client fields
-  private readonly companyPlaceholderLogoURL: string = '/assets/images/placeholder-logo.png';
+interface JobTranslatedTextApiAttributes {
+  description: string;
+  descriptionHtml: string;
+  languageId: string;
+  name: string;
+  shortDescription: string;
+}
 
-  public constructor(jsonObject?: any) {
+// Client interfaces
+export interface Job extends JobApiAttributes {
+}
+
+export interface JobTranslatedText extends JobTranslatedTextApiAttributes {
+}
+
+// Factories
+export class JobFactory {
+  public static createJob(jsonObject?: any): Job {
     if (!jsonObject) {
       return;
     }
 
-    this.applications = map(jsonObject.job_users, application => new Application(application));
-    this.category = new Category(jsonObject.category);
-    this.city = jsonObject.city;
-    this.company = new Company(jsonObject.company);
-    this.createdAt = new Date(jsonObject.created_at);
-    this.currency = jsonObject.currency;
-    this.description = jsonObject.description;
-    this.descriptionHtml = jsonObject.description_html;
-    this.directRecruitmentJob = jsonObject.direct_recruitment_job;
-    this.featured = jsonObject.featured;
-    this.filled = jsonObject.filled;
-    this.fullStreetAddress = jsonObject.full_street_address;
-    this.grossAmount = jsonObject.gross_amount;
-    this.grossAmountDelimited = jsonObject.gross_amount_delimited;
-    this.grossAmountWithCurrency = jsonObject.gross_amount_with_currency;
-    this.hourlyPay = new HourlyPay(jsonObject.hourly_pay);
-    this.hours = jsonObject.hours;
-    this.id = jsonObject.id;
-    this.invoiceAmount = jsonObject.invoice_amount;
-    this.jobDate = new Date(jsonObject.job_date);
-    this.jobEndDate = new Date(jsonObject.job_end_date);
-    this.languageId = jsonObject.language_id;
-    this.name = jsonObject.name;
-    this.netAmount = jsonObject.net_amount;
-    this.netAmountDelimited = jsonObject.net_amount_delimited;
-    this.netAmountWithCurrency = jsonObject.net_amount_with_currency;
-    this.owner = new User(jsonObject.owner);
-    this.shortDescription = jsonObject.short_description;
-    this.staffingJob = jsonObject.staffingJob;
-    this.street = jsonObject.street;
-    this.translatedText = new JobTranslatedText(jsonObject.translated_text);
-    this.upcoming = jsonObject.upcoming;
-    this.updatedAt = new Date(jsonObject.updated_at);
-    this.verified = jsonObject.verified;
-    this.zip = jsonObject.zip;
-    this.zipLatitude = jsonObject.zip_latitude;
-    this.zipLongitude = jsonObject.zip_longitude;
+    return {
+      applications: map(jsonObject.job_users, application => ApplicationFactory.createApplication(application)),
+      category: CategoryFactory.createCategory(jsonObject.category),
+      city: jsonObject.city,
+      company: CompanyFactory.createCompany(jsonObject.company),
+      createdAt: new Date(jsonObject.created_at),
+      currency: jsonObject.currency,
+      description: jsonObject.description,
+      descriptionHtml: jsonObject.description_html,
+      directRecruitmentJob: jsonObject.direct_recruitment_job,
+      featured: jsonObject.featured,
+      filled: jsonObject.filled,
+      fullStreetAddress: jsonObject.full_street_address,
+      grossAmount: jsonObject.gross_amount,
+      grossAmountDelimited: jsonObject.gross_amount_delimited,
+      grossAmountWithCurrency: jsonObject.gross_amount_with_currency,
+      hourlyPay: HourlyPayFactory.createHourlyPay(jsonObject.hourly_pay),
+      hours: jsonObject.hours,
+      id: jsonObject.id,
+      invoiceAmount: jsonObject.invoice_amount,
+      jobDate: new Date(jsonObject.job_date),
+      jobEndDate: new Date(jsonObject.job_end_date),
+      language: LanguageFactory.createLanguage(jsonObject.language),
+      languageId: jsonObject.language_id,
+      name: jsonObject.name,
+      netAmount: jsonObject.net_amount,
+      netAmountDelimited: jsonObject.net_amount_delimited,
+      netAmountWithCurrency: jsonObject.net_amount_with_currency,
+      owner: UserFactory.createUser(jsonObject.owner),
+      shortDescription: jsonObject.short_description,
+      staffingJob: jsonObject.staffingJob,
+      street: jsonObject.street,
+      translatedText: JobTranslatedTextFactory.createJobTranslatedText(jsonObject.translated_text),
+      upcoming: jsonObject.upcoming,
+      updatedAt: new Date(jsonObject.updated_at),
+      verified: jsonObject.verified,
+      zip: jsonObject.zip,
+      zipLatitude: jsonObject.zip_latitude,
+      zipLongitude: jsonObject.zip_longitude,
+    };
   }
 }
 
-export class JobTranslatedText {
-  // API fields
-  public description: string;
-  public descriptionHtml: string;
-  public languageId: string;
-  public name: string;
-  public shortDescription: string;
-
-  public constructor(jsonObject?: any) {
+class JobTranslatedTextFactory {
+  public static createJobTranslatedText(jsonObject?: any): JobTranslatedText {
     if (!jsonObject) {
       return;
     }
 
-    this.description = jsonObject.description;
-    this.descriptionHtml = jsonObject.description_html;
-    this.languageId = jsonObject.language_id;
-    this.name = jsonObject.name;
-    this.shortDescription = jsonObject.short_description;
+    return {
+      description: jsonObject.description,
+      descriptionHtml: jsonObject.description_html,
+      languageId: jsonObject.language_id,
+      name: jsonObject.name,
+      shortDescription: jsonObject.short_description,
+    };
   }
 }

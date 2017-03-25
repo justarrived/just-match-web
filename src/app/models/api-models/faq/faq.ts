@@ -1,39 +1,59 @@
-export class Faq {
-  // API fields
-  public answer: string;
-  public category: string;
-  public id: number;
-  public languageId: string;
-  public question: string;
-  public translatedText: FaqTranslatedText;
+import {Language} from '../language/language';
+import {LanguageFactory} from '../language/language';
 
-  public constructor(jsonObject?: any) {
+// API attribute interfaces
+interface FaqApiAttributes {
+  answer: string;
+  category: string;
+  id: number;
+  language: Language;
+  languageId: string;
+  question: string;
+  translatedText: FaqTranslatedText;
+}
+
+interface FaqTranslatedTextApiAttributes {
+  answer: string;
+  languageId: string;
+  question: string;
+}
+
+// Client interfaces
+export interface Faq extends FaqApiAttributes {
+}
+
+export interface FaqTranslatedText extends FaqTranslatedTextApiAttributes {
+}
+
+// Factories
+export class FaqFactory {
+  public static createFaq(jsonObject?: any): Faq {
     if (!jsonObject) {
       return;
     }
 
-    this.answer = jsonObject.answer;
-    this.category = jsonObject.category;
-    this.id = jsonObject.id;
-    this.languageId = jsonObject.language_id;
-    this.question = jsonObject.question;
-    this.translatedText = new FaqTranslatedText(jsonObject.translated_text);
+    return {
+      answer: jsonObject.answer,
+      category: jsonObject.category,
+      id: jsonObject.id,
+      language: LanguageFactory.createLanguage(jsonObject.language),
+      languageId: jsonObject.language_id,
+      question: jsonObject.question,
+      translatedText: FaqTranslatedTextFactory.createFaqTranslatedText(jsonObject.translated_text),
+    };
   }
 }
 
-export class FaqTranslatedText {
-  // API fields
-  public answer: string;
-  public languageId: string;
-  public question: string;
-
-  public constructor(jsonObject?: any) {
+class FaqTranslatedTextFactory {
+  public static createFaqTranslatedText(jsonObject?: any): FaqTranslatedText {
     if (!jsonObject) {
       return;
     }
 
-    this.answer = jsonObject.answer;
-    this.languageId = jsonObject.language_id;
-    this.question = jsonObject.question;
+    return {
+      answer: jsonObject.answer,
+      languageId: jsonObject.language_id,
+      question: jsonObject.question,
+    };
   }
 }

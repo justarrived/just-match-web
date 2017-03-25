@@ -1,33 +1,53 @@
-export class Skill {
-  // API fields
-  public id: string;
-  public languageId: string;
-  public name: string;
-  public translatedText: SkillTranslatedText;
+import {Language} from '../language/language';
+import {LanguageFactory} from '../language/language';
 
-  constructor(jsonObject?: any) {
+// API attribute interfaces
+interface SkillApiAttributes {
+  id: string;
+  language: Language;
+  languageId: string;
+  name: string;
+  translatedText: SkillTranslatedText;
+}
+
+interface SkillTranslatedTextApiAttributes {
+  languageId: string;
+  name: string;
+}
+
+// Client interfaces
+export interface Skill extends SkillApiAttributes {
+}
+
+export interface SkillTranslatedText extends SkillTranslatedTextApiAttributes {
+}
+
+// Factories
+export class SkillFactory {
+  public static createSkill(jsonObject?: any): Skill {
     if (!jsonObject) {
       return;
     }
 
-    this.id = jsonObject.id;
-    this.languageId = jsonObject.language_id;
-    this.name = jsonObject.name;
-    this.translatedText = new SkillTranslatedText(jsonObject.translated_text);
+    return {
+      id: jsonObject.id,
+      language: LanguageFactory.createLanguage(jsonObject.language),
+      languageId: jsonObject.language_id,
+      name: jsonObject.name,
+      translatedText: SkillTranslatedTextFactory.createSkillTranslatedText(jsonObject.translated_text),
+    };
   }
 }
 
-export class SkillTranslatedText {
-  // API fields
-  public languageId: string;
-  public name: string;
-
-  public constructor(jsonObject?: any) {
+class SkillTranslatedTextFactory {
+  public static createSkillTranslatedText(jsonObject?: any): SkillTranslatedText {
     if (!jsonObject) {
       return;
     }
 
-    this.languageId = jsonObject.language_id;
-    this.name = jsonObject.name;
+    return {
+      languageId: jsonObject.language_id,
+      name: jsonObject.name,
+    };
   }
 }

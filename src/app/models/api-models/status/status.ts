@@ -1,37 +1,57 @@
-export class Status {
-  // API fields
-  public description: string;
-  public id: string;
-  public languageId: string;
-  public name: string;
-  public translatedText: StatusTranslatedText;
+import {Language} from '../language/language';
+import {LanguageFactory} from '../language/language';
 
-  public constructor(jsonObject?: any) {
+// API attribute interfaces
+interface StatusApiAttributes {
+  description: string;
+  id: string;
+  language: Language;
+  languageId: string;
+  name: string;
+  translatedText: StatusTranslatedText;
+}
+
+interface StatusTranslatedTextApiAttributes {
+  description: string;
+  languageId: string;
+  name: string;
+}
+
+// Client interfaces
+export interface Status extends StatusApiAttributes {
+}
+
+export interface StatusTranslatedText extends StatusTranslatedTextApiAttributes {
+}
+
+// Factories
+export class StatusFactory {
+  public static createStatus(jsonObject?: any): Status {
     if (!jsonObject) {
       return;
     }
 
-    this.description = jsonObject.description;
-    this.languageId = jsonObject.language_id;
-    this.id = jsonObject.id;
-    this.name = jsonObject.name;
-    this.translatedText = new StatusTranslatedText(jsonObject.translated_text);
+    return {
+      description: jsonObject.description,
+      language: LanguageFactory.createLanguage(jsonObject.language),
+      languageId: jsonObject.language_id,
+      id: jsonObject.id,
+      name: jsonObject.name,
+      translatedText: StatusTranslatedTextFactory.createStatusTranslatedText(jsonObject.translated_text),
+    };
   }
 }
 
-export class StatusTranslatedText {
-  // API fields
-  public description: string;
-  public languageId: string;
-  public name: string;
-
-  public constructor(jsonObject?: any) {
+class StatusTranslatedTextFactory {
+  public static createStatusTranslatedText(jsonObject?: any): StatusTranslatedText {
     if (!jsonObject) {
       return;
     }
 
-    this.description = jsonObject.description;
-    this.languageId = jsonObject.language_id;
-    this.name = jsonObject.name;
+    return {
+      description: jsonObject.description,
+      languageId: jsonObject.language_id,
+      name: jsonObject.name,
+    };
   }
 }

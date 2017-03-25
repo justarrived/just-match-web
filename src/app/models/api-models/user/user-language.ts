@@ -1,18 +1,28 @@
 import {Language} from '../language/language';
+import {LanguageFactory} from '../language/language';
 
-export class UserLanguage {
-  // API fields
-  public id: number;
-  public language: Language;
-  public proficiency: number;
+// API attribute interfaces
+interface UserLanguageApiAttributes {
+  id: number;
+  language: Language;
+  proficiency: number;
+}
 
-  public constructor(jsonObject?: any) {
+// Client interfaces
+export interface UserLanguage extends UserLanguageApiAttributes {
+}
+
+// Factories
+export class UserLanguageFactory {
+  public static createUserLanguage(jsonObject?: any): UserLanguage {
     if (!jsonObject) {
       return;
     }
 
-    this.id = jsonObject.id;
-    this.language = new Language(jsonObject.language);
-    this.proficiency = jsonObject.proficiency;
+    return {
+      id: jsonObject.id,
+      language: LanguageFactory.createLanguage(jsonObject.language),
+      proficiency: jsonObject.proficiency,
+    };
   }
 }

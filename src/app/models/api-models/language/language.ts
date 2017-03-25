@@ -1,41 +1,56 @@
-export class Language {
-  // API fields
-  public direction: string;
-  public id: string;
-  public languageCode: string;
-  public languageId: string;
-  public localName: string;
-  public name: string;
-  public systemLanguage: boolean;
-  public translatedText: LanguageTranslatedText;
+// API attribute interfaces
+interface LanguageApiAttributes {
+  direction: string;
+  id: string;
+  languageCode: string;
+  languageId: string;
+  localName: string;
+  name: string;
+  systemLanguage: boolean;
+  translatedText: LanguageTranslatedText;
+}
 
-  public constructor(jsonObject?: any) {
+interface LanguageTranslatedTextApiAttributes {
+  languageId: string;
+  name: string;
+}
+
+// Client interfaces
+export interface Language extends LanguageApiAttributes {
+}
+
+export interface LanguageTranslatedText extends LanguageTranslatedTextApiAttributes {
+}
+
+// Factories
+export class LanguageFactory {
+  public static createLanguage(jsonObject?: any): Language {
     if (!jsonObject) {
       return;
     }
 
-    this.direction = jsonObject.direction;
-    this.id = jsonObject.id;
-    this.languageCode = jsonObject.lang_code;
-    this.languageId = jsonObject.language_id;
-    this.localName = jsonObject.local_name;
-    this.name = jsonObject.name;
-    this.systemLanguage = jsonObject.system_language;
-    this.translatedText = new LanguageTranslatedText(jsonObject.translated_text);
+    return {
+      direction: jsonObject.direction,
+      id: jsonObject.id,
+      languageCode: jsonObject.lang_code,
+      languageId: jsonObject.language_id,
+      localName: jsonObject.local_name,
+      name: jsonObject.name,
+      systemLanguage: jsonObject.system_language,
+      translatedText: LanguageTranslatedTextFactory.createLanguageTranslatedText(jsonObject.translated_text),
+    };
   }
 }
 
-export class LanguageTranslatedText {
-  // API fields
-  public name: string;
-  public languageId: string
-
-  public constructor(jsonObject?: any) {
+class LanguageTranslatedTextFactory {
+  public static createLanguageTranslatedText(jsonObject?: any): LanguageTranslatedText {
     if (!jsonObject) {
       return;
     }
 
-    this.name = jsonObject.name;
-    this.languageId = jsonObject.language_id;
+    return {
+      languageId: jsonObject.language_id,
+      name: jsonObject.name,
+    };
   }
 }

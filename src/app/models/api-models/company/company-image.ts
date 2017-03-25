@@ -1,26 +1,35 @@
-export class CompanyImage {
-  // API fields
-  public categoryName: string;
-  public id: string;
-  public imageUrl: string;
-  public imageUrlLarge: string;
-  public imageUrlMedium: string;
-  public imageUrlSmall: string;
-  public oneTimeToken: string;
-  public oneTimeTokenExpiresAt: Date;
+// API attribute interfaces
+interface CompanyImageApiAttributes {
+  categoryName: string;
+  id: string;
+  imageUrl: string;
+  imageUrlLarge: string;
+  imageUrlMedium: string;
+  imageUrlSmall: string;
+  oneTimeToken: string;
+  oneTimeTokenExpiresAt: Date;
+}
 
-  public constructor(jsonObject: any) {
+// Client interfaces
+export interface CompanyImage extends CompanyImageApiAttributes {
+}
+
+// Factories
+export class CompanyImageFactory {
+  public static createCompanyImage(jsonObject?: any): CompanyImage {
     if (!jsonObject) {
       return;
     }
 
-    this.categoryName = jsonObject.category_name;
-    this.id = jsonObject.id;
-    this.imageUrl = jsonObject.image_url;
-    this.imageUrlLarge = jsonObject.image_url_large;
-    this.imageUrlMedium = jsonObject.image_url_medium;
-    this.imageUrlSmall = jsonObject.image_url_small;
-    this.oneTimeToken = jsonObject.one_time_token;
-    this.oneTimeTokenExpiresAt = new Date(jsonObject.one_time_token_expires_at);
+    return {
+      categoryName: jsonObject.category_name,
+      id: jsonObject.id,
+      imageUrl: jsonObject.image_url,
+      imageUrlLarge: jsonObject.image_url_large,
+      imageUrlMedium: jsonObject.image_url_medium,
+      imageUrlSmall: jsonObject.image_url_small,
+      oneTimeToken: jsonObject.one_time_token,
+      oneTimeTokenExpiresAt: new Date(jsonObject.one_time_token_expires_at),
+    };
   }
 }

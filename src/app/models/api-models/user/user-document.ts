@@ -1,22 +1,32 @@
 import {Document} from '../document/document';
+import {DocumentFactory} from '../document/document';
 
-export class UserDocument {
-  // API fields
-  public category: string;
-  public categoryName: string;
-  public createdAt: Date;
-  public document: Document;
-  public id: string;
+// API attribute interfaces
+interface UserDocumentApiAttributes {
+  category: string;
+  categoryName: string;
+  createdAt: Date;
+  document: Document;
+  id: string;
+}
 
-  public constructor(jsonObject?: any) {
+// Client interfaces
+export interface UserDocument extends UserDocumentApiAttributes {
+}
+
+// Factories
+export class UserDocumentFactory {
+  public static createUserDocument(jsonObject?: any): UserDocument {
     if (!jsonObject) {
       return;
     }
 
-    this.category = jsonObject.category;
-    this.categoryName = jsonObject.category_name;
-    this.createdAt = new Date(jsonObject.created_at);
-    this.document = new Document(jsonObject.document);
-    this.id = jsonObject.id;
+    return {
+      category: jsonObject.category,
+      categoryName: jsonObject.category_name,
+      createdAt: new Date(jsonObject.created_at),
+      document: DocumentFactory.createDocument(jsonObject.document),
+      id: jsonObject.id,
+    };
   }
 }

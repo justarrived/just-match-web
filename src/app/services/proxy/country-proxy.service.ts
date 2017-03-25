@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {ApiCall} from '../api-call.service';
 import {map} from 'lodash';
 import {Country} from '../../models/api-models/country/country';
+import {CountryFactory} from '../../models/api-models/country/country';
 
 @Injectable()
 export class CountryProxy {
@@ -15,14 +16,14 @@ export class CountryProxy {
     let nameFilter = 'filter[name]';
 
     return this.apiCall.get('countries', {nameFilter: name, 'sort': sort})
-      .then(response => map(response.data, data => new Country(data)));
+      .then(response => map(response.data, data => CountryFactory.createCountry(data)));
   }
 
   public getCountryByCountryCode(countryCode: string): Promise<Country> {
     return this.apiCall.get('countries', {'filter[country_code]': countryCode})
       .then(response => {
         if (response.data && response.data[0]) {
-          return new Country(response.data[0]);
+          return CountryFactory.createCountry(response.data[0]);
         }
         return null;
       });

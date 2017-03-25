@@ -6,7 +6,7 @@ export class Geolocation {
 
 	/**
 	 * Obtains the geographic position, in terms of latitude and longitude coordinates, of the device.
-	 * @param {Object} [opts] An object literal to specify one or more of the following attributes and desired values:
+	 * @param {any} [opts] An object literal to specify one or more of the following attributes and desired values:
 	 *   - enableHighAccuracy: Specify true to obtain the most accurate position possible, or false to optimize in favor of performance and power consumption.
 	 *   - timeout: An Integer value that indicates the time, in milliseconds, allowed for obtaining the position.
 	 *              If timeout is Infinity, (the default value) the location request will not time out.

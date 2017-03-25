@@ -1,14 +1,21 @@
 import {ApiCall} from '../api-call.service';
 import {Application} from '../../models/api-models/application/application';
+import {ApplicationFactory} from '../../models/api-models/application/application'
 import {Document} from '../../models/api-models/document/document';
+import {DocumentFactory} from '../../models/api-models/document/document';
 import {Gender} from '../../models/api-models/gender/gender';
+import {GenderFactory} from '../../models/api-models/gender/gender';
 import {getDataUrl} from '../../utils/image-to-data-url.util';
 import {Injectable} from '@angular/core';
 import {map} from 'lodash';
 import {Status} from '../../models/api-models/status/status';
+import {StatusFactory} from '../../models/api-models/status/status';
 import {User} from '../../models/api-models/user/user';
 import {UserDocument} from '../../models/api-models/user/user-document';
+import {UserDocumentFactory} from '../../models/api-models/user/user-document';
+import {UserFactory} from '../../models/api-models/user/user';
 import {UserImage} from '../../models/api-models/user/user-image';
+import {UserImageFactory} from '../../models/api-models/user/user-image';
 
 @Injectable()
 export class UserProxy {
@@ -18,9 +25,9 @@ export class UserProxy {
   ) {
   }
 
-  public getUser(userId: string, includes?: Object): Promise<User> {
+  public getUser(userId: string, includes?: any): Promise<User> {
     return this.apiCall.get('users/' + userId, includes)
-      .then(response => new User(response.data));
+      .then(response => UserFactory.createUser(response.data));
   }
 
   public getUserSession(email, password) {
@@ -40,38 +47,38 @@ export class UserProxy {
 
   public getStatuses(): Promise<Array<Status>> {
     return this.apiCall.get('users/statuses')
-      .then(response => map(response.data, data => new Status(data)));
+      .then(response => map(response.data, data => StatusFactory.createStatus(data)));
   }
 
   public getGenders(): Promise<Array<Gender>> {
     return this.apiCall.get('users/genders')
-      .then(response => map(response.data, data => new Gender(data)));
+      .then(response => map(response.data, data => GenderFactory.createGender(data)));
   }
 
   public saveImage(userId, file: File, category: string): Promise<UserImage> {
     return getDataUrl(file)
       .then((dataUrl) => this.apiCall.post('users/' + userId + '/images', {'image': dataUrl,'category': category})
-        .then(response => new UserImage(response.data)));
+        .then(response => UserImageFactory.createUserImage(response.data)));
   }
 
   public saveDocument(file: File): Promise<Document> {
     return getDataUrl(file)
       .then((dataUrl) => this.apiCall.post('documents/', {'document': dataUrl})
-        .then(response => new Document(response.data)));
+        .then(response => DocumentFactory.createDocument(response.data)));
   }
 
   public saveUserDocument(userId, document: Document, category: string): Promise<UserDocument> {
     return this.apiCall.post('users/' + userId + '/documents', {'document_one_time_token': document.oneTimeToken,'category': category})
         .then((response) => {
-          const userDocument = new UserDocument(response.data);
+          const userDocument = UserDocumentFactory.createUserDocument(response.data);
           userDocument.document = document;
           return userDocument;
         });
   }
 
-  public getApplications(userId, additionOptions?: Object) {
+  public getApplications(userId, additionOptions?: any) {
     return this.apiCall.get('users/' + userId + '/jobs', additionOptions)
-      .then(response => map(response.data, data => new Application(data)));
+      .then(response => map(response.data, data => ApplicationFactory.createApplication(data)));
   }
 
   public createFrilansFinans(userId, bankAccount) {

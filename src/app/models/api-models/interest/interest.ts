@@ -1,33 +1,53 @@
-export class Interest {
-  // API fields
-  public id: string;
-  public languageId: string;
-  public name: string;
-  public translatedText: InterestTranslatedText;
+import {Language} from '../language/language';
+import {LanguageFactory} from '../language/language';
 
-  public constructor(jsonObject?: any) {
+// API attribute interfaces
+interface InterestApiAttributes {
+  id: string;
+  languageId: string;
+  language: Language;
+  name: string;
+  translatedText: InterestTranslatedText;
+}
+
+interface InterestTranslatedTextApiAttributes {
+  languageId: string;
+  name: string;
+}
+
+// Client interfaces
+export interface Interest extends InterestApiAttributes {
+}
+
+export interface InterestTranslatedText extends InterestTranslatedTextApiAttributes {
+}
+
+// Factories
+export class InterestFactory {
+  public static createInterest(jsonObject?: any): Interest {
     if (!jsonObject) {
       return;
     }
 
-    this.id = jsonObject.id;
-    this.languageId = jsonObject.language_id;
-    this.name = jsonObject.name;
-    this.translatedText = new InterestTranslatedText(jsonObject.translated_text);
+    return {
+      id: jsonObject.id,
+      language: LanguageFactory.createLanguage(jsonObject.language),
+      languageId: jsonObject.language_id,
+      name: jsonObject.name,
+      translatedText: InterestTranslatedTextFactory.createInterestTranslatedText(jsonObject.translated_text),
+    };
   }
 }
 
-export class InterestTranslatedText {
-  // API fields
-  public languageId: string;
-  public name: string;
-
-  public constructor(jsonObject?: any) {
+class InterestTranslatedTextFactory {
+  public static createInterestTranslatedText(jsonObject?: any): InterestTranslatedText {
     if (!jsonObject) {
       return;
     }
 
-    this.languageId = jsonObject.language_id;
-    this.name = jsonObject.name;
+    return {
+      languageId: jsonObject.language_id,
+      name: jsonObject.name,
+    };
   }
 }

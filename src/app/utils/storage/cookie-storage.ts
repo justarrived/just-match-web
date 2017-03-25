@@ -1,7 +1,7 @@
 import {StorageInterface} from './storage-interface';
 
 export class CookieStorage implements StorageInterface {
-  private data: Object = {};
+  private data: any = {};
   private DOM: any;
 
   constructor(
@@ -90,7 +90,7 @@ export class CookieStorage implements StorageInterface {
     this.createCookie('localStorage', '', 365);
   }
 
-  private getData(): Object {
+  private getData(): any {
     const data = this.readCookie('localStorage');
     return data ? JSON.parse(data) : {};
   }

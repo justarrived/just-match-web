@@ -1,18 +1,27 @@
-export class Document {
-  // API fields
-  public documentUrl: string;
-  public id: string;
-  public oneTimeToken: string;
-  public oneTimeTokenExpiresAt: Date;
+// API attribute interfaces
+interface DocumentApiAttributes {
+  documentUrl: string;
+  id: string;
+  oneTimeToken: string;
+  oneTimeTokenExpiresAt: Date;
+}
 
-  public constructor(jsonObject: any) {
+// Client interfaces
+export interface Document extends DocumentApiAttributes {
+}
+
+// Factories
+export class DocumentFactory {
+  public static createDocument(jsonObject?: any): Document {
     if (!jsonObject) {
       return;
     }
 
-    this.documentUrl = jsonObject.document_url;
-    this.id = jsonObject.id;
-    this.oneTimeToken = jsonObject.one_time_token;
-    this.oneTimeTokenExpiresAt = new Date(jsonObject.one_time_token_expires_at);
+    return {
+      documentUrl: jsonObject.document_url,
+      id: jsonObject.id,
+      oneTimeToken: jsonObject.one_time_token,
+      oneTimeTokenExpiresAt: new Date(jsonObject.one_time_token_expires_at),
+    };
   }
 }

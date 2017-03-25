@@ -10,6 +10,7 @@ import {some} from 'lodash';
 import {SystemLanguageListener} from '../../../resolvers/system-languages/system-languages.resolver';
 import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
 import {UserLanguage} from '../../../models/api-models/user/user-language';
+import {UserLanguageFactory} from '../../../models/api-models/user/user-language';
 
 @Component({
   selector: 'languages-input',
@@ -75,7 +76,7 @@ export class LanguagesInputComponent extends SystemLanguageListener implements O
 
   public onAddLanguage(languageId): void {
     if (languageId && !some(this.userLanguagesControl.value, { language: {id: languageId} })) {
-      const userLanguage = new UserLanguage({});
+      const userLanguage = UserLanguageFactory.createUserLanguage({});
       this.loadingLanguage = true;
       this.languageProxy.getLanguage(languageId).then((language) => {
         userLanguage.language = language;

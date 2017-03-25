@@ -1,34 +1,43 @@
-export class HourlyPay {
-  // API fields
-  public active: boolean;
-  public currency: string;
-  public grossSalary: number;
-  public grossSalaryDelmited: string;
-  public grossSalaryWithUnit: string;
-  public id: string;
-  public netSalary: number;
-  public netSalaryDelmited: string;
-  public netSalaryWithUnit: string;
-  public rateIncludingVat: number;
-  public rateExcludingVat: number;
-  public unit: string;
+// API attribute interfaces
+interface HourlyPayApiAttributes {
+  active: boolean;
+  currency: string;
+  grossSalary: number;
+  grossSalaryDelmited: string;
+  grossSalaryWithUnit: string;
+  id: string;
+  netSalary: number;
+  netSalaryDelmited: string;
+  netSalaryWithUnit: string;
+  rateIncludingVat: number;
+  rateExcludingVat: number;
+  unit: string;
+}
 
-  public constructor(jsonObject: any) {
+// Client interfaces
+export interface HourlyPay extends HourlyPayApiAttributes {
+}
+
+// Factories
+export class HourlyPayFactory {
+  public static createHourlyPay(jsonObject?: any): HourlyPay {
     if (!jsonObject) {
       return;
     }
 
-    this.active = jsonObject.active;
-    this.currency = jsonObject.currency;
-    this.grossSalary = jsonObject.gross_salary;
-    this.grossSalaryDelmited = jsonObject.gross_salary_delmited;
-    this.grossSalaryWithUnit = jsonObject.gross_salary_with_unit;
-    this.id = jsonObject.id;
-    this.netSalary = jsonObject.net_salary;
-    this.netSalaryDelmited = jsonObject.net_salary_delmited;
-    this.netSalaryWithUnit = jsonObject.net_salary_with_unit;
-    this.rateIncludingVat = jsonObject.rate_including_vat;
-    this.rateExcludingVat = jsonObject.rate_excluding_vat;
-    this.unit = jsonObject.unit;
+    return {
+      active: jsonObject.active,
+      currency: jsonObject.currency,
+      grossSalary: jsonObject.gross_salary,
+      grossSalaryDelmited: jsonObject.gross_salary_delmited,
+      grossSalaryWithUnit: jsonObject.gross_salary_with_unit,
+      id: jsonObject.id,
+      netSalary: jsonObject.net_salary,
+      netSalaryDelmited: jsonObject.net_salary_delmited,
+      netSalaryWithUnit: jsonObject.net_salary_with_unit,
+      rateIncludingVat: jsonObject.rate_including_vat,
+      rateExcludingVat: jsonObject.rate_excluding_vat,
+      unit: jsonObject.unit,
+    };
   }
 }

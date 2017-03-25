@@ -1,37 +1,57 @@
-export class Country {
-  // API fields
-  public countryCode: string;
-  public id: string;
-  public languageId: string;
-  public localName: string;
-  public name: string;
-  public translatedText: CountryTranslatedText;
+import {Language} from '../language/language';
+import {LanguageFactory} from '../language/language';
 
-  public constructor(jsonObject?: any) {
+// API attribute interfaces
+interface CountryApiAttributes {
+  countryCode: string;
+  id: string;
+  languageId: string;
+  language: Language;
+  localName: string;
+  name: string;
+  translatedText: CountryTranslatedText;
+}
+
+interface CountryTranslatedTextApiAttributes {
+  languageId: string;
+  name: string;
+}
+
+// Client interfaces
+export interface Country extends CountryApiAttributes {
+}
+
+export interface CountryTranslatedText extends CountryTranslatedTextApiAttributes {
+}
+
+// Factories
+export class CountryFactory {
+  public static createCountry(jsonObject?: any): Country {
     if (!jsonObject) {
       return;
     }
 
-    this.countryCode = jsonObject.country_code;
-    this.id = jsonObject.id;
-    this.languageId = jsonObject.language_id;
-    this.localName = jsonObject.local_name;
-    this.name = jsonObject.name;
-    this.translatedText = new CountryTranslatedText(jsonObject.translated_text);
+    return {
+      countryCode: jsonObject.country_code,
+      id: jsonObject.id,
+      language: LanguageFactory.createLanguage(jsonObject.language),
+      languageId: jsonObject.language_id,
+      localName: jsonObject.local_name,
+      name: jsonObject.name,
+      translatedText: CountryTranslatedTextFactory.createCountryTranslatedText(jsonObject.translated_text),
+    };
   }
 }
 
-export class CountryTranslatedText {
-  // API fields
-  public languageId: string;
-  public name: string;
-
-  public constructor(jsonObject?: any) {
+class CountryTranslatedTextFactory {
+  public static createCountryTranslatedText(jsonObject?: any): CountryTranslatedText {
     if (!jsonObject) {
       return;
     }
 
-    this.languageId = jsonObject.language_id;
-    this.name = jsonObject.name;
+    return {
+      languageId: jsonObject.language_id,
+      name: jsonObject.name,
+    };
   }
 }
