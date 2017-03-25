@@ -9,7 +9,7 @@ import {JARoutes} from '../../routes/ja-routes';
   styleUrls: ['./job-map-marker.component.scss']
 })
 export class JobMapMarkerComponent {
-  @Input() job: Job;
+  @Input() job = null as Job;
 
   constructor(
     private navigationService: NavigationService

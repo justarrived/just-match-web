@@ -1,29 +1,27 @@
-import {Injectable} from '@angular/core';
-import {
-  Http,
-  Headers,
-  Request,
-  RequestOptions,
-  RequestOptionsArgs,
-  RequestMethod,
-  URLSearchParams,
-  Response
-} from '@angular/http';
-import {DataStore} from './data-store.service';
-import * as  _ from 'lodash';
-import {parseJsonapiResponse} from '../utils/jsonapi-parser.util';
-import {ApiErrors} from '../models/api-models/api-errors/api-errors';
-import {Observable} from 'rxjs';
-import {environment} from '../../environments/environment';
 import {ActsAsUser} from './acts-as-user.service';
-import {NavigationService} from './navigation.service';
+import {ApiErrors} from '../models/api-models/api-errors/api-errors';
+import {DataStore} from './data-store.service';
+import {environment} from '../../environments/environment';
+import {Headers} from '@angular/http';
+import {Http} from '@angular/http';
+import {Injectable} from '@angular/core';
 import {JARoutes} from '../routes/ja-routes';
+import {NavigationService} from './navigation.service';
+import {Observable} from 'rxjs';
+import {parseJsonapiResponse} from '../utils/jsonapi-parser.util';
+import {Request} from '@angular/http';
+import {RequestMethod} from '@angular/http';
+import {RequestOptions} from '@angular/http';
+import {RequestOptionsArgs} from '@angular/http';
+import {Response} from '@angular/http';
+import {URLSearchParams} from '@angular/http';
+import * as  _ from 'lodash';
 
 @Injectable()
 export class ApiCall {
   private readonly actAsUserHeaderName: string = 'X-API-ACT-AS-USER';
-  private readonly authorizationHeaderName: string = 'Authorization';
-  private readonly authorizationHeaderPrefix: string = 'Token token=';
+  private readonly sessionHeaderName: string = 'Authorization';
+  private readonly sessionHeaderPrefix: string = 'Token token=';
   private readonly languageHeaderName: string = 'X-API-LOCALE';
   private readonly storageSessionKey: string = 'sessionData'; // MUST be same as key in user resolver
   private readonly storageSystemLanguageCodeKey: string = 'systemLanguageCode'; // MUST be same as key in system languages resolver
@@ -38,32 +36,56 @@ export class ApiCall {
   ) {
   }
 
-  public get(url: string, urlParams?: Object, contentType?: string): Promise<any> {
-    return this.requestHelper({ search: this.searchParamsBuilder(urlParams), method: RequestMethod.Get, url: this.urlBuilder(url), headers: this.contentTypeHeaderBuilder(contentType) });
+  public get(url: string, searchParameters?: any, contentType?: string): Promise<any> {
+    return this.requestHelper(
+      {
+        search: this.searchParametersBuilder(searchParameters),
+        method: RequestMethod.Get,
+        url: this.urlBuilder(url),
+        headers: this.contentTypeHeaderBuilder(contentType)
+      });
   }
 
-  public post(url: string, body: any, contentType?: string): Promise<any> {
-    return this.requestHelper({ body: { data: { attributes: body } }, method: RequestMethod.Post, url: this.urlBuilder(url), headers: this.contentTypeHeaderBuilder(contentType) });
+  public post(url: string, attributes: any, contentType?: string): Promise<any> {
+    return this.requestHelper(
+      {
+        body:
+        {
+          data:
+          {
+            attributes: attributes
+          }
+        },
+        method: RequestMethod.Post,
+        url: this.urlBuilder(url),
+        headers: this.contentTypeHeaderBuilder(contentType)
+      });
   }
 
-  public put(url: string, body: any, contentType?: string): Promise<any> {
-    return this.requestHelper({ body: { data: { attributes: body } }, method: RequestMethod.Put, url: this.urlBuilder(url), headers: this.contentTypeHeaderBuilder(contentType) });
+  public patch(url: string, attributes: any, contentType?: string): Promise<any> {
+    return this.requestHelper(
+      {
+        body:
+        {
+          data:
+          {
+            attributes: attributes
+          }
+        },
+        method: RequestMethod.Patch,
+        url: this.urlBuilder(url),
+        headers: this.contentTypeHeaderBuilder(contentType)
+      });
   }
 
   public delete(url: string, contentType?: string): Promise<any> {
-    return this.requestHelper({ body: '', method: RequestMethod.Delete, url: this.urlBuilder(url), headers: this.contentTypeHeaderBuilder(contentType) });
-  }
-
-  public patch(url: string, body: any, contentType?: string): Promise<any> {
-    return this.requestHelper({ body: { data: { attributes: body } }, method: RequestMethod.Patch, url: this.urlBuilder(url), headers: this.contentTypeHeaderBuilder(contentType) });
-  }
-
-  public head(url: string, contentType?: string): Promise<any> {
-    return this.requestHelper({ body: '', method: RequestMethod.Head, url: this.urlBuilder(url), headers: this.contentTypeHeaderBuilder(contentType) });
-  }
-
-  public options(url: string, contentType?: string): Promise<any> {
-    return this.requestHelper({ body: '', method: RequestMethod.Options, url: this.urlBuilder(url), headers: this.contentTypeHeaderBuilder(contentType) });
+    return this.requestHelper(
+      {
+        body: '',
+        method: RequestMethod.Delete,
+        url: this.urlBuilder(url),
+        headers: this.contentTypeHeaderBuilder(contentType)
+      });
   }
 
   private requestHelper(requestArgs: RequestOptionsArgs): Promise<any> {
@@ -72,7 +94,7 @@ export class ApiCall {
     let req: Request = new Request(options);
     let session = this.dataStore.get(this.storageSessionKey);
     if (session && session.auth_token) {
-      req.headers.set(this.authorizationHeaderName, this.authorizationHeaderPrefix + session['auth_token']);
+      req.headers.set(this.sessionHeaderName, this.sessionHeaderPrefix + session['auth_token']);
     }
 
     req.headers.set(this.languageHeaderName, this.dataStore.get(this.storageSystemLanguageCodeKey));
@@ -97,9 +119,9 @@ export class ApiCall {
     return new Headers({ 'Content-Type': contentType });
   }
 
-  private searchParamsBuilder(urlParams: Object): URLSearchParams {
+  private searchParametersBuilder(searchParameters: any): URLSearchParams {
     let params: URLSearchParams = new URLSearchParams();
-    _.forIn(urlParams, function(value, key) {
+    _.forIn(searchParameters, function(value, key) {
       params.set(key, value);
     });
     return params;

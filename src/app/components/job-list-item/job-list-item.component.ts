@@ -9,7 +9,7 @@ import {JARoutes} from '../../routes/ja-routes';
   styleUrls: ['./job-list-item.component.scss']
 })
 export class JobListItemComponent {
-  @Input() job: Job;
+  @Input() job = null as Job;
 
   constructor(
     private navigationService: NavigationService

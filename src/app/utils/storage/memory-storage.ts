@@ -1,7 +1,7 @@
 import {StorageInterface} from './storage-interface';
 
 export class MemoryStorage implements StorageInterface {
-  private items: Object = {};
+  private items: any = {};
 
   public clear(): void {
     this.items = {};

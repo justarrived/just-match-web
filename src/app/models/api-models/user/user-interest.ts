@@ -1,18 +1,28 @@
 import {Interest} from '../interest/interest';
+import {InterestFactory} from '../interest/interest';
 
-export class UserInterest {
-  // API fields
-  public id: string;
-  public interest: Interest;
-  public level: number;
+// API attribute interfaces
+interface UserInterestApiAttributes {
+  id: string;
+  interest: Interest;
+  level: number;
+}
 
-  public constructor(jsonObject?: any) {
+// Client interfaces
+export interface UserInterest extends UserInterestApiAttributes {
+}
+
+// Factories
+export class UserInterestFactory {
+  public static createUserInterest(jsonObject?: any): UserInterest {
     if (!jsonObject) {
       return;
     }
 
-    this.id = jsonObject.id;
-    this.interest = new Interest(jsonObject.interest);
-    this.level = jsonObject.level;
+    return {
+      id: jsonObject.id,
+      interest: InterestFactory.createInterest(jsonObject.interest),
+      level: jsonObject.level,
+    };
   }
 }

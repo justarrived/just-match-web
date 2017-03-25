@@ -39,6 +39,6 @@ import {JARoutes} from '../../../routes/ja-routes';
   `
 })
 export class ApplicationStatusCardComponent {
-  @Input() public application: Application;
+  @Input() public application = null as Application;
   public JARoutes = JARoutes;
 }

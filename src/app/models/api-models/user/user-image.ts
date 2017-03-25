@@ -1,28 +1,37 @@
-export class UserImage {
-  // API fields
-  public category: string;
-  public categoryName: string;
-  public id: string;
-  public imageUrl: string;
-  public largeImageUrl: string;
-  public mediumImageUrl: string;
-  public oneTimeToken: string;
-  public oneTimeTokenExpiresAt: Date;
-  public smallImageUrl: string;
+// API attribute interfaces
+interface UserImageApiAttributes {
+  category: string;
+  categoryName: string;
+  id: string;
+  imageUrl: string;
+  largeImageUrl: string;
+  mediumImageUrl: string;
+  oneTimeToken: string;
+  oneTimeTokenExpiresAt: Date;
+  smallImageUrl: string;
+}
 
-  public constructor(jsonObject?: any) {
+// Client interfaces
+export interface UserImage extends UserImageApiAttributes {
+}
+
+// Factories
+export class UserImageFactory {
+  public static createUserImage(jsonObject?: any): UserImage {
     if (!jsonObject) {
       return;
     }
 
-    this.category = jsonObject.category;
-    this.categoryName = jsonObject.category_name;
-    this.id = jsonObject.id;
-    this.imageUrl = jsonObject.image_url;
-    this.largeImageUrl = jsonObject.image_url_large;
-    this.mediumImageUrl = jsonObject.image_url_medium;
-    this.oneTimeToken = jsonObject.one_time_token;
-    this.oneTimeTokenExpiresAt = new Date(jsonObject.one_time_token_expires_at);
-    this.smallImageUrl = jsonObject.image_url_small;
+    return {
+      category: jsonObject.category,
+      categoryName: jsonObject.category_name,
+      id: jsonObject.id,
+      imageUrl: jsonObject.image_url,
+      largeImageUrl: jsonObject.image_url_large,
+      mediumImageUrl: jsonObject.image_url_medium,
+      oneTimeToken: jsonObject.one_time_token,
+      oneTimeTokenExpiresAt: new Date(jsonObject.one_time_token_expires_at),
+      smallImageUrl: jsonObject.image_url_small,
+    };
   }
 }

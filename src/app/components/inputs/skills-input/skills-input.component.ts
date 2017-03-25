@@ -10,6 +10,7 @@ import {some} from 'lodash';
 import {SystemLanguageListener} from '../../../resolvers/system-languages/system-languages.resolver';
 import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
 import {UserSkill} from '../../../models/api-models/user/user-skill';
+import {UserSkillFactory} from '../../../models/api-models/user/user-skill';
 
 @Component({
   selector: 'skills-input',
@@ -75,7 +76,7 @@ export class SkillsInputComponent extends SystemLanguageListener implements OnIn
 
   public onAddSkill(skillId): void {
     if (skillId && !some(this.userSkillsControl.value, { skill: {id: skillId} })) {
-      const userSkill = new UserSkill({});
+      const userSkill = UserSkillFactory.createUserSkill({});
       this.loadingSkill = true;
       this.skillProxy.getSkill(skillId).then((skill) => {
         userSkill.skill = skill;

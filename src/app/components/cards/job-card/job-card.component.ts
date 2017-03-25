@@ -51,6 +51,6 @@ import {Job} from '../../../models/api-models/job/job';
   `
 })
 export class JobCardComponent {
-  @Input() public job: Job;
+  @Input() public job = null as Job;
   public JARoutes = JARoutes;
 }

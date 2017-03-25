@@ -1,33 +1,53 @@
-export class Gender {
-  // API fields
-  public id: string;
-  public name: string;
-  public languageId: string;
-  public translatedText: GenderTranslatedText;
+import {Language} from '../language/language';
+import {LanguageFactory} from '../language/language';
 
-  public constructor(jsonObject?: any) {
+// API attribute interfaces
+interface GenderApiAttributes {
+  id: string;
+  name: string;
+  language: Language;
+  languageId: string;
+  translatedText: GenderTranslatedText;
+}
+
+interface GenderTranslatedTextApiAttributes {
+  languageId: string;
+  name: string;
+}
+
+// Client interfaces
+export interface Gender extends GenderApiAttributes {
+}
+
+export interface GenderTranslatedText extends GenderTranslatedTextApiAttributes {
+}
+
+// Factories
+export class GenderFactory {
+  public static createGender(jsonObject?: any): Gender {
     if (!jsonObject) {
       return;
     }
 
-    this.id = jsonObject.id;
-    this.name = jsonObject.name;
-    this.languageId = jsonObject.language_id;
-    this.translatedText = new GenderTranslatedText(jsonObject.translated_text);
+    return {
+      id: jsonObject.id,
+      name: jsonObject.name,
+      language: LanguageFactory.createLanguage(jsonObject.language),
+      languageId: jsonObject.language_id,
+      translatedText: GenderTranslatedTextFactory.createGenderTranslatedText(jsonObject.translated_text),
+    };
   }
 }
 
-export class GenderTranslatedText {
-  // API fields
-  public name: string;
-  public languageId: string;
-
-  public constructor(jsonObject?: any) {
+class GenderTranslatedTextFactory {
+  public static createGenderTranslatedText(jsonObject?: any): GenderTranslatedText {
     if (!jsonObject) {
       return;
     }
 
-    this.name = jsonObject.name;
-    this.languageId = jsonObject.language_id;
+    return {
+      languageId: jsonObject.language_id,
+      name: jsonObject.name,
+    };
   }
 }

@@ -6,9 +6,9 @@ export function parseJsonapiResponse(response: Response): any {
   return deserializeBody(body);
 }
 
-export function parseJsonapiErrorResponse(response: Response): Object {
-  const errorDetails: Object = {};
-  const errors: Array<Object> = [];
+export function parseJsonapiErrorResponse(response: Response): any {
+  const errorDetails: any = {};
+  const errors: Array<any> = [];
 
   _.forEach(response.json().errors, error => {
     const aboutLink  = error.links && error.links.about;

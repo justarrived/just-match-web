@@ -1,14 +1,23 @@
-export class Category {
-  // API fields
-  public id: string;
-  public name: string;
+// API attribute interfaces
+interface CategoryApiAttributes {
+  id: string;
+  name: string;
+}
 
-  public constructor(jsonObject: any) {
+// Client interfaces
+export interface Category extends CategoryApiAttributes {
+}
+
+// Factories
+export class CategoryFactory {
+  public static createCategory(jsonObject?: any): Category {
     if (!jsonObject) {
       return;
     }
 
-    this.id = jsonObject.id;
-    this.name = jsonObject.name;
+    return {
+      id: jsonObject.id,
+      name: jsonObject.name,
+    };
   }
 }

@@ -10,7 +10,7 @@ import {NavigationService} from '../../services/navigation.service';
   styleUrls: ['./my-jobs-item.component.scss']
 })
 export class MyJobsItemComponent {
-  @Input() public application: Application;
+  @Input() public application = null as Application;
   @Input() public section: string;
 
   constructor(

@@ -1,12 +1,21 @@
-export class Invoice {
-  // API fields
-  public id: number;
+// API attribute interfaces
+interface InvoiceApiAttributes {
+  id: number;
+}
 
-  constructor(jsonObject: any) {
+// Client interfaces
+export interface Invoice extends InvoiceApiAttributes {
+}
+
+// Factories
+export class InvoiceFactory {
+  public static createInvoice(jsonObject?: any): Invoice {
     if (!jsonObject) {
       return;
     }
 
-    this.id = jsonObject.id;
+    return {
+      id: jsonObject.id,
+    };
   }
 }

@@ -1,172 +1,198 @@
 import {Company} from '../company/company';
+import {CompanyFactory} from '../company/company';
 import {Country} from '../country/country';
+import {Language} from '../language/language';
+import {LanguageFactory} from '../language/language';
 import {map} from 'lodash';
 import {UserDocument} from './user-document';
+import {UserDocumentFactory} from './user-document';
 import {UserImage} from './user-image';
+import {UserImageFactory} from './user-image';
 import {UserInterest} from './user-interest';
+import {UserInterestFactory} from './user-interest';
 import {UserLanguage} from './user-language';
+import {UserLanguageFactory} from './user-language';
 import {UserSkill} from './user-skill';
+import {UserSkillFactory} from './user-skill';
 
-export class User {
-  // API fields
-  public accountClearingNumber: string;
-  public accountNumber: string;
-  public admin: boolean;
-  public anonymized: boolean;
-  public arrivedAt: Date;
-  public atUnd: string;
-  public city: string;
-  public company: Company;
-  public competenceText: string;
-  public competenceTextHtml: string;
-  public countryOfOriginCode: string;
-  public createdAt: Date;
-  public currentStatus: string;
-  public description: string;
-  public descriptionHtml: string;
-  public education: string;
-  public educationHtml: string;
-  public email: string;
-  public firstName: string;
-  public frilansFinansPaymentDetails: boolean;
-  public fullStreetAddress: string;
-  public gender: string;
-  public id: string;
-  public ignoredNotifications: string[];
-  public jobExperience: string;
-  public jobExperienceHtml: string;
-  public justArrivedStaffing: boolean;
-  public languageId: string;
-  public lastName: string;
-  public latitude: number;
-  public longitude: number;
-  public name: string;
-  public phone: string;
-  public primaryRole: string;
-  public ssn: string;
-  public street: string;
-  public supportChatActivated: boolean;
-  public translatedText: UserTranslatedText;
-  public updatedAt: Date;
-  public userDocuments: UserDocument[];
-  public userImages: UserImage[];
-  public userInterests: UserInterest[];
-  public userLanguages: UserLanguage[];
-  public userSkills: UserSkill[];
-  public zip: string;
-  public zipLatitude: number;
-  public zipLongitude: number;
+// API attribute interfaces
+interface UserApiAttributes {
+  accountClearingNumber: string;
+  accountNumber: string;
+  admin: boolean;
+  anonymized: boolean;
+  arrivedAt: Date;
+  atUnd: string;
+  city: string;
+  company: Company;
+  competenceText: string;
+  competenceTextHtml: string;
+  countryOfOriginCode: string;
+  createdAt: Date;
+  currentStatus: string;
+  description: string;
+  descriptionHtml: string;
+  education: string;
+  educationHtml: string;
+  email: string;
+  firstName: string;
+  frilansFinansPaymentDetails: boolean;
+  fullStreetAddress: string;
+  gender: string;
+  id: string;
+  ignoredNotifications: string[];
+  jobExperience: string;
+  jobExperienceHtml: string;
+  justArrivedStaffing: boolean;
+  languageId: string;
+  language: Language;
+  lastName: string;
+  latitude: number;
+  longitude: number;
+  name: string;
+  phone: string;
+  primaryRole: string;
+  ssn: string;
+  street: string;
+  supportChatActivated: boolean;
+  translatedText: UserTranslatedText;
+  updatedAt: Date;
+  userDocuments: UserDocument[];
+  userImages: UserImage[];
+  userInterests: UserInterest[];
+  userLanguages: UserLanguage[];
+  userSkills: UserSkill[];
+  zip: string;
+  zipLatitude: number;
+  zipLongitude: number;
+}
 
-  // Client fields
-  public cvDocuments: UserDocument[];
-  public isBeingReloaded: boolean;
-  public lmaCardImage: UserImage;
-  public personalIdImage: UserImage;
-  public profileImage: UserImage;
-  public residencePermitBackImage: UserImage;
-  public residencePermitFrontImage: UserImage;
-  public skatteverketCertificateImage: UserImage;
-  public workPermitBackImage: UserImage;
-  public workPermitFrontImage: UserImage;
+interface UserTranslatedTextApiAttributes {
+  competenceText: string;
+  competenceTextHtml: string;
+  description: string;
+  descriptionHtml: string;
+  education: string;
+  educationHtml: string;
+  jobExperience: string;
+  jobExperienceHtml: string;
+  languageId: string;
+}
 
-  constructor(jsonObject?: any) {
+// Client interfaces
+export interface User extends UserApiAttributes {
+  cvDocuments: UserDocument[];
+  isBeingReloaded: boolean;
+  lmaCardImage: UserImage;
+  personalIdImage: UserImage;
+  profileImage: UserImage;
+  residencePermitBackImage: UserImage;
+  residencePermitFrontImage: UserImage;
+  skatteverketCertificateImage: UserImage;
+  workPermitBackImage: UserImage;
+  workPermitFrontImage: UserImage;
+}
+
+export interface UserTranslatedText extends UserTranslatedTextApiAttributes {
+}
+
+// Factories
+export class UserFactory {
+  public static createUser(jsonObject?: any): User {
     if (!jsonObject) {
       return;
     }
 
-    this.accountClearingNumber = jsonObject.account_clearing_number;
-    this.accountNumber = jsonObject.account_number;
-    this.admin = jsonObject.admin;
-    this.anonymized = jsonObject.anonymized;
-    this.arrivedAt = new Date(jsonObject.arrived_at);
-    this.atUnd = jsonObject.at_und;
-    this.city = jsonObject.city;
-    this.company = new Company(jsonObject.company);
-    this.competenceText = jsonObject.competence_text;
-    this.competenceTextHtml = jsonObject.competence_text_html;
-    this.countryOfOriginCode = jsonObject.country_of_origin;
-    this.createdAt = new Date(jsonObject.created_at);
-    this.currentStatus = jsonObject.current_status;
-    this.description = jsonObject.description;
-    this.descriptionHtml = jsonObject.description_html;
-    this.education = jsonObject.education;
-    this.educationHtml = jsonObject.education_html;
-    this.email = jsonObject.email;
-    this.firstName = jsonObject.first_name;
-    this.frilansFinansPaymentDetails = jsonObject.frilans_finans_payment_details;
-    this.fullStreetAddress = jsonObject.full_street_address;
-    this.gender = jsonObject.gender;
-    this.id = jsonObject.id;
-    this.ignoredNotifications = jsonObject.ignored_notifications;
-    this.jobExperience = jsonObject.job_experience;
-    this.jobExperienceHtml = jsonObject.job_experience_html;
-    this.justArrivedStaffing = jsonObject.just_arrived_staffing;
-    this.languageId = jsonObject.language_id;
-    this.lastName = jsonObject.last_name;
-    this.latitude = jsonObject.latitude;
-    this.longitude = jsonObject.longitude;
-    this.name = jsonObject.name;
-    this.phone = jsonObject.phone;
-    this.primaryRole = jsonObject.primary_role;
-    this.ssn = jsonObject.ssn;
-    this.street = jsonObject.street;
-    this.supportChatActivated = jsonObject.support_chat_activated;
-    this.translatedText = new UserTranslatedText(jsonObject.translated_text);
-    this.updatedAt = new Date(jsonObject.updated_at);
-    this.userDocuments = map(jsonObject.user_documents, userDocument => new UserDocument(userDocument));
-    this.userImages = map(jsonObject.user_images, userImage => new UserImage(userImage));
-    this.userInterests = map(jsonObject.user_interests, userInterest => new UserInterest(userInterest));
-    this.userLanguages = map(jsonObject.user_languages, userLanguage => new UserLanguage(userLanguage));
-    this.userSkills = map(jsonObject.user_skills, userSkill => new UserSkill(userSkill));
-    this.zip = jsonObject.zip;
-    this.zipLatitude = jsonObject.zip_latitude;
-    this.zipLongitude = jsonObject.zip_longitude;
+    const userDocuments = map(jsonObject.user_documents, userDocument => UserDocumentFactory.createUserDocument(userDocument));
+    const userImages = map(jsonObject.user_images, userImage => UserImageFactory.createUserImage(userImage));
 
-    this.cvDocuments = this.getUserDocumentByCategory('cv');
-    this.lmaCardImage = this.getUserImageByCategory('lma_card');
-    this.personalIdImage = this.getUserImageByCategory('personal_id');
-    this.profileImage = this.getUserImageByCategory('profile');
-    this.residencePermitBackImage = this.getUserImageByCategory('residence_permit_back');
-    this.residencePermitFrontImage = this.getUserImageByCategory('residence_permit_front');
-    this.skatteverketCertificateImage = this.getUserImageByCategory('skatteverket_certificate');
-    this.workPermitBackImage = this.getUserImageByCategory('work_permit_back');
-    this.workPermitFrontImage = this.getUserImageByCategory('work_permit_front');
+    return {
+      accountClearingNumber: jsonObject.account_clearing_number,
+      accountNumber: jsonObject.account_number,
+      admin: jsonObject.admin,
+      anonymized: jsonObject.anonymized,
+      arrivedAt: new Date(jsonObject.arrived_at),
+      atUnd: jsonObject.at_und,
+      city: jsonObject.city,
+      company: CompanyFactory.createCompany(jsonObject.company),
+      competenceText: jsonObject.competence_text,
+      competenceTextHtml: jsonObject.competence_text_html,
+      countryOfOriginCode: jsonObject.country_of_origin,
+      createdAt: new Date(jsonObject.created_at),
+      currentStatus: jsonObject.current_status,
+      cvDocuments: UserFactory.getUserDocumentsByCategory(userDocuments, 'cv'),
+      description: jsonObject.description,
+      descriptionHtml: jsonObject.description_html,
+      education: jsonObject.education,
+      educationHtml: jsonObject.education_html,
+      email: jsonObject.email,
+      firstName: jsonObject.first_name,
+      frilansFinansPaymentDetails: jsonObject.frilans_finans_payment_details,
+      fullStreetAddress: jsonObject.full_street_address,
+      gender: jsonObject.gender,
+      id: jsonObject.id,
+      ignoredNotifications: jsonObject.ignored_notifications,
+      isBeingReloaded: false,
+      jobExperience: jsonObject.job_experience,
+      jobExperienceHtml: jsonObject.job_experience_html,
+      justArrivedStaffing: jsonObject.just_arrived_staffing,
+      language: LanguageFactory.createLanguage(jsonObject.language),
+      languageId: jsonObject.language_id,
+      lastName: jsonObject.last_name,
+      latitude: jsonObject.latitude,
+      lmaCardImage: UserFactory.getUserImageByCategory(userImages, 'lma_card'),
+      longitude: jsonObject.longitude,
+      name: jsonObject.name,
+      personalIdImage: UserFactory.getUserImageByCategory(userImages, 'personal_id'),
+      phone: jsonObject.phone,
+      primaryRole: jsonObject.primary_role,
+      profileImage: UserFactory.getUserImageByCategory(userImages, 'profile'),
+      residencePermitBackImage: UserFactory.getUserImageByCategory(userImages, 'residence_permit_back'),
+      residencePermitFrontImage: UserFactory.getUserImageByCategory(userImages, 'residence_permit_front'),
+      skatteverketCertificateImage: UserFactory.getUserImageByCategory(userImages, 'skatteverket_certificate'),
+      ssn: jsonObject.ssn,
+      street: jsonObject.street,
+      supportChatActivated: jsonObject.support_chat_activated,
+      translatedText: UserTranslatedTextFactory.createUserTranslatedText(jsonObject.translated_text),
+      updatedAt: new Date(jsonObject.updated_at),
+      userDocuments: userDocuments,
+      userImages: userImages,
+      userInterests: map(jsonObject.user_interests, userInterest => UserInterestFactory.createUserInterest(userInterest)),
+      userLanguages: map(jsonObject.user_languages, userLanguage => UserLanguageFactory.createUserLanguage(userLanguage)),
+      userSkills: map(jsonObject.user_skills, userSkill => UserSkillFactory.createUserSkill(userSkill)),
+      workPermitBackImage: UserFactory.getUserImageByCategory(userImages, 'work_permit_back'),
+      workPermitFrontImage: UserFactory.getUserImageByCategory(userImages, 'work_permit_front'),
+      zip: jsonObject.zip,
+      zipLatitude: jsonObject.zip_latitude,
+      zipLongitude: jsonObject.zip_longitude,
+    };
   }
 
-  private getUserImageByCategory(category): UserImage {
-    return this.userImages.find(image => image.category === category);
+  private static getUserImageByCategory(userImages: UserImage[], category: string): UserImage {
+    return userImages.find(image => image.category === category);
   }
 
-  private getUserDocumentByCategory(category): UserDocument[] {
-    return this.userDocuments.filter(document => document.category === category);
+  private static getUserDocumentsByCategory(userDocuments: UserDocument[], category: string): UserDocument[] {
+    return userDocuments.filter(document => document.category === category);
   }
 }
 
-export class UserTranslatedText {
-  // API fields
-  public competenceText: string;
-  public competenceTextHtml: string;
-  public description: string;
-  public descriptionHtml: string;
-  public education: string;
-  public educationHtml: string;
-  public jobExperience: string;
-  public jobExperienceHtml: string;
-  public languageId: string;
-
-  public constructor(jsonObject?: any) {
+class UserTranslatedTextFactory {
+  public static createUserTranslatedText(jsonObject?: any): UserTranslatedText {
     if (!jsonObject) {
       return;
     }
 
-    this.competenceText = jsonObject.competence_text;
-    this.competenceTextHtml = jsonObject.competence_text_html;
-    this.description = jsonObject.description;
-    this.descriptionHtml = jsonObject.description_html;
-    this.education = jsonObject.education;
-    this.educationHtml = jsonObject.education_html;
-    this.jobExperience = jsonObject.job_experience;
-    this.jobExperienceHtml = jsonObject.job_experience_html;
-    this.languageId = jsonObject.language_id;
+    return {
+      competenceText: jsonObject.competence_text,
+      competenceTextHtml: jsonObject.competence_text_html,
+      description: jsonObject.description,
+      descriptionHtml: jsonObject.description_html,
+      education: jsonObject.education,
+      educationHtml: jsonObject.education_html,
+      jobExperience: jsonObject.job_experience,
+      jobExperienceHtml: jsonObject.job_experience_html,
+      languageId: jsonObject.language_id,
+    };
   }
 }
