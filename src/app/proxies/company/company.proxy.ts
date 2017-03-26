@@ -35,11 +35,11 @@ export class CompanyProxy {
     .then(response => response.data.map(company => CompanyFactory.createCompany(company)));
   }
 
-  public getCompaniesWithMeta(searchParameters?: any): Promise<{companys: Company[], meta: {total: number}}> {
+  public getCompaniesWithMeta(searchParameters?: any): Promise<{companies: Company[], meta: {total: number}}> {
     return this.apiCall.get('companies', searchParameters)
     .then(response => {
       return {
-        companys: response.data.map(company => CompanyFactory.createCompany(company)),
+        companies: response.data.map(company => CompanyFactory.createCompany(company)),
         meta: response.meta
       }
     });

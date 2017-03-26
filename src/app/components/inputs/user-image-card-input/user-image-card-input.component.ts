@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {getDataUrl} from '../../../utils/data-url.util';
 import {Input} from '@angular/core';
 import {OnDestroy} from '@angular/core';
 import {OnInit} from '@angular/core';
@@ -71,11 +72,18 @@ export class UserImageCardInputComponent implements OnInit, OnDestroy {
     this.imageSaveSuccess = false;
     this.uploadingImage = true;
 
-    this.userProxy.saveImage(this.user.id, file, this.imageType)
-    .then(userImage => {
-      this.user[this.imageField] = userImage;
-      this.imageSaveSuccess = true;
-      this.uploadingImage = false;
+    getDataUrl(file)
+    .then(dataUrl => {
+      this.userProxy.saveImage(this.user.id, dataUrl, this.imageType)
+      .then(userImage => {
+        this.user[this.imageField] = userImage;
+        this.imageSaveSuccess = true;
+        this.uploadingImage = false;
+      })
+      .catch(errors => {
+        this.imageSaveFail = true;
+        this.uploadingImage = false;
+      });
     })
     .catch(errors => {
       this.imageSaveFail = true;

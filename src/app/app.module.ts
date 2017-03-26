@@ -37,13 +37,14 @@ import {ContactProxy} from './proxies/contact/contact.proxy';
 import {CookieBarComponent} from './components/bars/cookie-bar/cookie-bar.component';
 import {CookiesAboutPageComponent} from './components/pages/cookies-about-page/cookies-about-page.component';
 import {CountryOfOriginInputComponent} from './components/inputs/country-of-origin-input/country-of-origin-input.component';
-import {CountryProxy} from './services/proxy/country-proxy.service';
+import {CountryProxy} from './proxies/country/country.proxy';
 import {CustomRadioButtonInputComponent} from './components/inputs/custom-radio-button-input/custom-radio-button-input.component';
 import {DataStore} from './services/data-store.service';
 import {DefaultFooterComponent} from './components/footers/default-footer/default-footer.component';
 import {DefaultLayoutComponent} from './components/layouts/default-layout/default-layout.component';
 import {DefaultNavigationComponent} from './components/navigations/default-navigation/default-navigation.component';
 import {DescriptionInputComponent} from './components/inputs/description-input/description-input.component';
+import {DocumentProxy} from './proxies/document/document.proxy';
 import {EducationInputComponent} from './components/inputs/education-input/education-input.component';
 import {EmailInputComponent} from './components/inputs/email-input/email-input.component';
 import {EmailOrPhoneInputComponent} from './components/inputs/email-or-phone-input/email-or-phone-input.component';
@@ -299,6 +300,7 @@ export class RavenErrorHandler implements ErrorHandler {
     ContactProxy,
     CountryProxy,
     DataStore,
+    DocumentProxy,
     FaqProxy,
     Geolocation,
     JobProxy,

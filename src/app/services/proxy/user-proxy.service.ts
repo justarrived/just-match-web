@@ -5,7 +5,7 @@ import {Document} from '../../models/api-models/document/document';
 import {DocumentFactory} from '../../models/api-models/document/document';
 import {Gender} from '../../models/api-models/gender/gender';
 import {GenderFactory} from '../../models/api-models/gender/gender';
-import {getDataUrl} from '../../utils/image-to-data-url.util';
+import {getDataUrl} from '../../utils/data-url.util';
 import {Injectable} from '@angular/core';
 import {map} from 'lodash';
 import {Status} from '../../models/api-models/status/status';
@@ -55,16 +55,9 @@ export class UserProxy {
       .then(response => map(response.data, data => GenderFactory.createGender(data)));
   }
 
-  public saveImage(userId, file: File, category: string): Promise<UserImage> {
-    return getDataUrl(file)
-      .then(dataUrl => this.apiCall.post('users/' + userId + '/images', {'image': dataUrl,'category': category})
-        .then(response => UserImageFactory.createUserImage(response.data)));
-  }
-
-  public saveDocument(file: File): Promise<Document> {
-    return getDataUrl(file)
-      .then(dataUrl => this.apiCall.post('documents/', {'document': dataUrl})
-        .then(response => DocumentFactory.createDocument(response.data)));
+  public saveImage(userId, dataUrl: string, category: string): Promise<UserImage> {
+    return this.apiCall.post('users/' + userId + '/images', {'image': dataUrl,'category': category})
+      .then(response => UserImageFactory.createUserImage(response.data));
   }
 
   public saveUserDocument(userId, document: Document, category: string): Promise<UserDocument> {

@@ -1,10 +1,12 @@
 import {Component} from '@angular/core';
+import {getDataUrl} from '../../../utils/data-url.util';
 import {Input} from '@angular/core';
 import {OnDestroy} from '@angular/core';
 import {OnInit} from '@angular/core';
 import {Output} from '@angular/core';
 import {Subscription} from 'rxjs/Subscription';
 import {User} from '../../../models/api-models/user/user';
+import {DocumentProxy} from '../../../proxies/document/document.proxy';
 import {UserProxy} from '../../../services/proxy/user-proxy.service';
 import {UserResolver} from '../../../resolvers/user/user.resolver';
 
@@ -45,6 +47,7 @@ export class UserDocumentCardInputComponent implements OnInit, OnDestroy {
   private userSubscription: Subscription;
 
   public constructor(
+    private documentProxy: DocumentProxy,
     private userProxy: UserProxy,
     private userResolver: UserResolver
   ) {
@@ -70,20 +73,29 @@ export class UserDocumentCardInputComponent implements OnInit, OnDestroy {
     this.documentSaveSuccess = false;
     this.uploadingDocument = true;
 
-    this.userProxy.saveDocument(file)
-    .then(document => {
+    getDataUrl(file)
+    .then(dataUrl => {
+      this.documentProxy.createDocument({
+        document: dataUrl
+      })
+      .then(document => {
 
-      this.userProxy.saveUserDocument(this.user.id, document, this.documentType)
-      .then(userDocument => {
-        this.user[this.documentsField].push(userDocument);
-        this.documentSaveSuccess = true;
-        this.uploadingDocument = false;
+        this.userProxy.saveUserDocument(this.user.id, document, this.documentType)
+        .then(userDocument => {
+          this.user[this.documentsField].push(userDocument);
+          this.documentSaveSuccess = true;
+          this.uploadingDocument = false;
+        })
+        .catch(errors => {
+          this.documentSaveFail = true;
+          this.uploadingDocument = false;
+        });
+
       })
       .catch(errors => {
         this.documentSaveFail = true;
         this.uploadingDocument = false;
       });
-
     })
     .catch(errors => {
       this.documentSaveFail = true;
