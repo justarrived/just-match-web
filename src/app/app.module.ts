@@ -55,7 +55,7 @@ import {ErrorMessageComponent} from './components/messages/error-message/error-m
 import {ErrorPageComponent} from './components/pages/error-page/error-page.component';
 import {FaqAccordionComponent} from './components/accordions/faq-accordion/faq-accordion.component';
 import {FaqPageComponent} from './components/pages/faq-page/faq-page.component';
-import {FaqProxy} from './services/proxy/faq-proxy.service';
+import {FaqProxy} from './proxies/faq/faq.proxy';
 import {FileInputButtonComponent} from './components/buttons/file-input-button/file-input-button.component';
 import {FirstNameInputComponent} from './components/inputs/first-name-input/first-name-input.component';
 import {ForgotPasswordFormComponent} from './components/forms/forgot-password-form/forgot-password-form.component';
