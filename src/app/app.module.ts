@@ -63,6 +63,7 @@ import {ForgotPasswordPageComponent} from './components/pages/forgot-password-pa
 import {FormsModule} from '@angular/forms';
 import {FormSubmitButtonComponent} from './components/buttons/form-submit-button/form-submit-button.component';
 import {GenderInputComponent} from './components/inputs/gender-input/gender-input.component';
+import {GenderProxy} from './proxies/gender/gender.proxy';
 import {Geolocation} from './services/geolocation.service';
 import {GotCoordinationNumberInputComponent} from './components/inputs/got-coordination-number-input/got-coordination-number-input.component';
 import {HomePageComponent} from './components/pages/home-page/home-page.component';
@@ -305,6 +306,7 @@ export class RavenErrorHandler implements ErrorHandler {
     DataStore,
     DocumentProxy,
     FaqProxy,
+    GenderProxy,
     Geolocation,
     JobProxy,
     LanguageProxy,

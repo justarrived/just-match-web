@@ -50,11 +50,6 @@ export class UserProxy {
       .then(response => map(response.data, data => StatusFactory.createStatus(data)));
   }
 
-  public getGenders(): Promise<Array<Gender>> {
-    return this.apiCall.get('users/genders')
-      .then(response => map(response.data, data => GenderFactory.createGender(data)));
-  }
-
   public saveImage(userId, dataUrl: string, category: string): Promise<UserImage> {
     return this.apiCall.post('users/' + userId + '/images', {'image': dataUrl,'category': category})
       .then(response => UserImageFactory.createUserImage(response.data));
