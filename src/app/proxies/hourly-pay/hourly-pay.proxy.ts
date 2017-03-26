@@ -3,7 +3,7 @@ import {HourlyPay} from '../../models/api-models/hourly-pay/hourly-pay';
 import {HourlyPayFactory} from '../../models/api-models/hourly-pay/hourly-pay';
 import {Injectable} from '@angular/core';
 
-// Get
+// GET
 interface CalculateHourlyPayBody {
   gross_salary: number;
 }

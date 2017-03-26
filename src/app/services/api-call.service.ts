@@ -46,26 +46,32 @@ export class ApiCall {
     });
   }
 
-  public post(url: string, attributes: any = {}, contentType?: string): Promise<any> {
+  public post(url: string, attributes: any = {}, body: any = {}, contentType?: string): Promise<any> {
+    if (body.data) {
+      body.data.attributes = attributes;
+    } else {
+      body.data = {
+        attributes: attributes
+      }
+    }
     return this.requestHelper({
-      body: {
-        data: {
-          attributes: attributes
-        }
-      },
+      body: body,
       headers: this.contentTypeHeaderBuilder(contentType),
       method: RequestMethod.Post,
       url: this.urlBuilder(url),
     });
   }
 
-  public patch(url: string, attributes: any = {}, contentType?: string): Promise<any> {
+  public patch(url: string, attributes: any = {}, body: any = {}, contentType?: string): Promise<any> {
+    if (body.data) {
+      body.data.attributes = attributes;
+    } else {
+      body.data = {
+        attributes: attributes
+      }
+    }
     return this.requestHelper({
-      body: {
-        data: {
-          attributes: attributes
-        }
-      },
+      body: body,
       headers: this.contentTypeHeaderBuilder(contentType),
       method: RequestMethod.Patch,
       url: this.urlBuilder(url),
