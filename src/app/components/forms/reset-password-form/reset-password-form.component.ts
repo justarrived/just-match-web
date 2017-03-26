@@ -61,14 +61,14 @@ export class ResetPasswordFormComponent implements OnInit {
     this.submitFail = false;
     this.submitSuccess = false;
     this.userProxy.changePasswordWithToken(value.password, value.one_time_token)
-      .then((result) => {
-        this.navigationService.navigate(JARoutes.confirmation, 'password-reset');
-        this.loadingSubmit = false;
-        this.submitSuccess = true;
-      })
-      .catch((errors) => {
-        this.handleServerErrors(errors);
-      });
+    .then(result => {
+      this.navigationService.navigate(JARoutes.confirmation, 'password-reset');
+      this.loadingSubmit = false;
+      this.submitSuccess = true;
+    })
+    .catch(errors => {
+      this.handleServerErrors(errors);
+    });
   }
 
   public onEnterKeyUp() {

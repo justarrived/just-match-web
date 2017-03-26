@@ -78,20 +78,20 @@ export class RegisterFormComponent implements OnInit {
       'street': this.registerForm.value.street,
       'zip': this.registerForm.value.zip,
     })
-      .then((response) => {
-        this.submitSuccess = true;
-        this.userResolver.login(this.registerForm.value.email, this.registerForm.value.password)
-          .then((response) => {
-            this.navigationService.navigate(JARoutes.home);
-            this.loadingSubmit = false;
-          })
-          .catch(errors => {
-            this.handleServerErrors(errors);
-            this.navigationService.navigate(JARoutes.login);
-          });
+    .then(response => {
+      this.submitSuccess = true;
+      this.userResolver.login(this.registerForm.value.email, this.registerForm.value.password)
+      .then(response => {
+        this.navigationService.navigate(JARoutes.home);
+        this.loadingSubmit = false;
       })
       .catch(errors => {
         this.handleServerErrors(errors);
+        this.navigationService.navigate(JARoutes.login);
       });
+    })
+    .catch(errors => {
+      this.handleServerErrors(errors);
+    });
   }
 }

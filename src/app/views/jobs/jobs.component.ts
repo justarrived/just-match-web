@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {Job} from '../../models/api-models/job/job';
-import {MapLocation} from '../../models/client-models/map-location';
+import {MapLocation} from '../../models/client-models/map-location/map-location';
 import {Geolocation} from '../../services/geolocation.service';
 import {JobProxy} from '../../services/proxy/job-proxy.service';
 import {Location} from '@angular/common';
@@ -55,24 +55,23 @@ export class JobsComponent extends SystemLanguageListener implements OnInit {
 
   loadData() {
     this.loadingJobs = true;
-    this.jobProxy.getJobsWithTotal(
-      {
-        'include': 'company,hourly_pay,company.company_images',
-        'filter[filled]': false,
-        'filter[job_date]': yyyymmdd(new Date()) + '..' + yyyymmdd(nbrOfMonthsFromDate(new Date(), 12)),
-        'sort': 'job_date',
-        'page[number]': this.page
-      })
-      .then(result => {
-        this.jobs = result.jobs;
-        this.totalJobs = result.total;
-        this.loadingJobs = false;
-        if (this.pageSize * (this.page - 1) > this.totalJobs) {
-          this.onPageChange(1);
-        } else if (this.totalJobs === 0) {
-          this.page = 0;
-        }
-      });
+    this.jobProxy.getJobsWithTotal({
+      'include': 'company,hourly_pay,company.company_images',
+      'filter[filled]': false,
+      'filter[job_date]': yyyymmdd(new Date()) + '..' + yyyymmdd(nbrOfMonthsFromDate(new Date(), 12)),
+      'sort': 'job_date',
+      'page[number]': this.page
+    })
+    .then(result => {
+      this.jobs = result.jobs;
+      this.totalJobs = result.total;
+      this.loadingJobs = false;
+      if (this.pageSize * (this.page - 1) > this.totalJobs) {
+        this.onPageChange(1);
+      } else if (this.totalJobs === 0) {
+        this.page = 0;
+      }
+    });
   }
 
   private initLocation() {

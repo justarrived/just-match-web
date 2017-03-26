@@ -53,14 +53,14 @@ export class LoginFormComponent implements OnInit  {
     this.submitSuccess = false;
     this.loadingSubmit = true;
     this.userResolver.login(value.email_or_phone, value.password)
-      .then(result => {
-        this.navigationService.navigate(JARoutes.home);
-        this.loadingSubmit = false;
-        this.submitSuccess = true;
-      })
-      .catch(errors => {
-        this.handleServerErrors(errors);
-      });
+    .then(result => {
+      this.navigationService.navigate(JARoutes.home);
+      this.loadingSubmit = false;
+      this.submitSuccess = true;
+    })
+    .catch(errors => {
+      this.handleServerErrors(errors);
+    });
   }
 
   public onEnterKeyUp() {

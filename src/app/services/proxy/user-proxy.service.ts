@@ -57,19 +57,19 @@ export class UserProxy {
 
   public saveImage(userId, file: File, category: string): Promise<UserImage> {
     return getDataUrl(file)
-      .then((dataUrl) => this.apiCall.post('users/' + userId + '/images', {'image': dataUrl,'category': category})
+      .then(dataUrl => this.apiCall.post('users/' + userId + '/images', {'image': dataUrl,'category': category})
         .then(response => UserImageFactory.createUserImage(response.data)));
   }
 
   public saveDocument(file: File): Promise<Document> {
     return getDataUrl(file)
-      .then((dataUrl) => this.apiCall.post('documents/', {'document': dataUrl})
+      .then(dataUrl => this.apiCall.post('documents/', {'document': dataUrl})
         .then(response => DocumentFactory.createDocument(response.data)));
   }
 
   public saveUserDocument(userId, document: Document, category: string): Promise<UserDocument> {
     return this.apiCall.post('users/' + userId + '/documents', {'document_one_time_token': document.oneTimeToken,'category': category})
-        .then((response) => {
+        .then(response => {
           const userDocument = UserDocumentFactory.createUserDocument(response.data);
           userDocument.document = document;
           return userDocument;

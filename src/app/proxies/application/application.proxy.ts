@@ -21,54 +21,54 @@ export class ApplicationProxy {
   // GET
   public getApplication(jobId: string, applicationId: string, searchParameters?: any): Promise<Application> {
     return this.apiCall.get('jobs/' + jobId + '/users/' + applicationId, searchParameters)
-      .then(response => ApplicationFactory.createApplication(response.data));
+    .then(response => ApplicationFactory.createApplication(response.data));
   }
 
   public getJobApplications(jobId: string, searchParameters?: any): Promise<Application[]> {
     return this.apiCall.get('jobs/' + jobId + '/users', searchParameters)
-      .then(response => response.data.map(application => ApplicationFactory.createApplication(application)));
+    .then(response => response.data.map(application => ApplicationFactory.createApplication(application)));
   }
 
   public getJobApplicationsWithMeta(jobId: string, searchParameters?: any): Promise<{applications: Application[], meta: {total: number}}> {
     return this.apiCall.get('jobs/' + jobId + '/users', searchParameters)
-      .then(response => {
-        return {
-          applications: response.data.map(application => ApplicationFactory.createApplication(application)),
-          meta: response.meta
-        }
-      });
+    .then(response => {
+      return {
+        applications: response.data.map(application => ApplicationFactory.createApplication(application)),
+        meta: response.meta
+      }
+    });
   }
 
   public getUserApplications(userId: string, searchParameters?: any): Promise<Application[]> {
     return this.apiCall.get('users/' + userId + '/jobs', searchParameters)
-      .then(response => response.data.map(application => ApplicationFactory.createApplication(application)));
+    .then(response => response.data.map(application => ApplicationFactory.createApplication(application)));
   }
 
   public getUserApplicationsWithMeta(userId: string, searchParameters?: any): Promise<{applications: Application[], meta: {total: number}}> {
     return this.apiCall.get('users/' + userId + '/jobs', searchParameters)
-      .then(response => {
-        return {
-          applications: response.data.map(application => ApplicationFactory.createApplication(application)),
-          meta: response.meta
-        }
-      });
+    .then(response => {
+      return {
+        applications: response.data.map(application => ApplicationFactory.createApplication(application)),
+        meta: response.meta
+      }
+    });
   }
 
   // CREATE
   public createApplication(jobId: string, applicationAttributes: CreateApplicationAttributes): Promise<Application> {
     return this.apiCall.post('jobs/' + jobId + '/users', applicationAttributes)
-      .then(response => ApplicationFactory.createApplication(response.data));
+    .then(response => ApplicationFactory.createApplication(response.data));
   }
 
   // UPDATE
   public acceptApplication(jobId: string, applicationId: string): Promise<Application> {
     return this.apiCall.post('jobs/' + jobId + '/users/' + applicationId + '/acceptances')
-      .then(response => ApplicationFactory.createApplication(response.data));
+    .then(response => ApplicationFactory.createApplication(response.data));
   }
 
   public confirmApplication(jobId: string, applicationId: string): Promise<Application> {
     return this.apiCall.post('jobs/' + jobId + '/users/' + applicationId + '/confirmations')
-      .then(response => ApplicationFactory.createApplication(response.data));
+    .then(response => ApplicationFactory.createApplication(response.data));
   }
 
   // REMOVE

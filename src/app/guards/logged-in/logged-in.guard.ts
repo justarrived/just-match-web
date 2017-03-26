@@ -15,7 +15,8 @@ export class LoggedInGuard implements CanActivate {
   }
 
   public canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<boolean> {
-    return this.userResolver.resolve().then(user => {
+    return this.userResolver.resolve()
+    .then(user => {
       let canNavigateStatus = true;
       if (!user) {
         canNavigateStatus = false;

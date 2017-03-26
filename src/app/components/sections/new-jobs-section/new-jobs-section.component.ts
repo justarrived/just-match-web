@@ -51,13 +51,12 @@ export class NewJobsSectionComponent extends SystemLanguageListener implements O
   }
 
   protected loadData(): void {
-    this.newJobs = this.jobProxy.getJobs(
-      {
-        'filter[filled]': false,
-        'filter[job_date]': yyyymmdd(new Date()) + '..' + yyyymmdd(nbrOfMonthsFromDate(new Date(), 12)),
-        'include': 'company,hourly_pay,company.company_images',
-        'page[size]': 4,
-        'sort': '-created_at',
-      });
+    this.newJobs = this.jobProxy.getJobs({
+      'filter[filled]': false,
+      'filter[job_date]': yyyymmdd(new Date()) + '..' + yyyymmdd(nbrOfMonthsFromDate(new Date(), 12)),
+      'include': 'company,hourly_pay,company.company_images',
+      'page[size]': 4,
+      'sort': '-created_at',
+    });
   }
 }

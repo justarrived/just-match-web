@@ -68,7 +68,8 @@ export class JobDetailsComponent extends SystemLanguageListener implements OnIni
   protected loadData(): void {
     this.jobProxy.getJob(this.currentJobId, {
       'include': 'owner,company,hourly_pay,company.company_images,comments'
-    }).then(result => {
+    })
+    .then(result => {
       this.job = result;
       this.getJobInfo();
     });
@@ -78,7 +79,8 @@ export class JobDetailsComponent extends SystemLanguageListener implements OnIni
     if (this.user) {
       this.applicationProxy.getUserApplications(this.user.id, {
         'filter[job_id]': this.job.id
-      }).then(response => {
+      })
+      .then(response => {
         this.application = response[0];
       });
     }
@@ -92,7 +94,8 @@ export class JobDetailsComponent extends SystemLanguageListener implements OnIni
   public onApplyForJobButtonClick(): void {
     this.applicationProxy.createApplication(this.job.id, {
       'user_id': this.user.id
-    }).then(response => {
+    })
+    .then(response => {
       this.navigationService.navigate(JARoutes.confirmation, 'user-applied-for-job');
     });
   }
@@ -110,7 +113,8 @@ export class JobDetailsComponent extends SystemLanguageListener implements OnIni
       .then(response => {
         this.application = response;
         this.applyForJobErrorMessageVisible = false;
-      }).catch(errors => {
+      })
+      .catch(errors => {
         this.applyForJobErrorMessageVisible = true;
       });
   }

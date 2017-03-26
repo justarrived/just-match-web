@@ -23,11 +23,11 @@ export class Geolocation {
 
       if (window.navigator && window.navigator.geolocation) {
         window.navigator.geolocation.getCurrentPosition(
-          (position) => {
+          position => {
             observer.next(position);
             observer.complete();
           },
-          (error) => {
+          error => {
             switch (error.code) {
               case 1:
                 observer.error('map.geolocation.error.permissionDenied');

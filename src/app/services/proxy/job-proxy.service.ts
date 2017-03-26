@@ -19,7 +19,8 @@ export class JobProxy {
   }
 
   public getJobsWithTotal(additionOptions?: any) {
-    return this.apiCall.get('jobs',  additionOptions).then(response => {
+    return this.apiCall.get('jobs',  additionOptions)
+    .then(response => {
       return {
         jobs: response.data.map(data => JobFactory.createJob(data)),
         total: response.meta.total
@@ -33,7 +34,8 @@ export class JobProxy {
   }
 
   public getHourlyPays(additionOptions?: any) {
-    return this.apiCall.get('hourly-pays', additionOptions).then(response => map(response.data, data => HourlyPayFactory.createHourlyPay(data)));
+    return this.apiCall.get('hourly-pays', additionOptions)
+    .then(response => map(response.data, data => HourlyPayFactory.createHourlyPay(data)));
   }
 
   public saveJob(job: any): Promise<any> {
@@ -41,7 +43,8 @@ export class JobProxy {
   }
 
   public getJob(jobId: number, additionOptions?: any): Promise<Job> {
-    return this.apiCall.get('jobs/' + jobId, additionOptions).then(response => {
+    return this.apiCall.get('jobs/' + jobId, additionOptions)
+    .then(response => {
       return JobFactory.createJob(response.data);
     });
   }
@@ -55,6 +58,7 @@ export class JobProxy {
   }
 
   public getOwnedJobs(userId: string, additionOptions?: any) {
-    return this.apiCall.get('users/' + userId + '/owned-jobs',  additionOptions).then(response => map(response.data, data => JobFactory.createJob(data)));
+    return this.apiCall.get('users/' + userId + '/owned-jobs',  additionOptions)
+    .then(response => map(response.data, data => JobFactory.createJob(data)));
   }
 }

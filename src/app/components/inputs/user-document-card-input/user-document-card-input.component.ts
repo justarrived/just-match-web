@@ -70,16 +70,22 @@ export class UserDocumentCardInputComponent implements OnInit, OnDestroy {
     this.documentSaveSuccess = false;
     this.uploadingDocument = true;
 
-    this.userProxy.saveDocument(file).then((document) => {
-      this.userProxy.saveUserDocument(this.user.id, document, this.documentType).then(userDocument => {
+    this.userProxy.saveDocument(file)
+    .then(document => {
+
+      this.userProxy.saveUserDocument(this.user.id, document, this.documentType)
+      .then(userDocument => {
         this.user[this.documentsField].push(userDocument);
         this.documentSaveSuccess = true;
         this.uploadingDocument = false;
-      }).catch(errors => {
+      })
+      .catch(errors => {
         this.documentSaveFail = true;
         this.uploadingDocument = false;
       });
-    }).catch(errors => {
+
+    })
+    .catch(errors => {
       this.documentSaveFail = true;
       this.uploadingDocument = false;
     });

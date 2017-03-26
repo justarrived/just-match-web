@@ -106,14 +106,15 @@ export class UserProfileFormComponent implements OnInit, OnDestroy {
       }),
       'ssn': this.profileForm.value.ssn,
     })
-      .then((response) => {
-        this.userResolver.reloadUser().then(() => {
-          this.submitSuccess = true;
-          this.loadingSubmit = false;
-        });
-      })
-      .catch(errors => {
-        this.handleServerErrors(errors);
+    .then(response => {
+      this.userResolver.reloadUser()
+      .then(() => {
+        this.submitSuccess = true;
+        this.loadingSubmit = false;
       });
+    })
+    .catch(errors => {
+      this.handleServerErrors(errors);
+    });
   }
 }

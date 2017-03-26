@@ -78,11 +78,14 @@ export class SkillsInputComponent extends SystemLanguageListener implements OnIn
     if (skillId && !some(this.userSkillsControl.value, { skill: {id: skillId} })) {
       const userSkill = UserSkillFactory.createUserSkill({});
       this.loadingSkill = true;
-      this.skillProxy.getSkill(skillId).then((skill) => {
+
+      this.skillProxy.getSkill(skillId)
+      .then(skill => {
         userSkill.skill = skill;
         this.userSkillsControl.value.push(userSkill);
         this.loadingSkill = false;
-      }).catch(errors => {
+      })
+      .catch(errors => {
         this.loadingSkill = false;
       });
     }

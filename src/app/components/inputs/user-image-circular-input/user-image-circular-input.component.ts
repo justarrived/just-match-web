@@ -60,11 +60,13 @@ export class UserImageCircularInputComponent implements OnInit, OnDestroy {
     this.imageSaveSuccess = false;
     this.uploadingImage = true;
 
-    this.userProxy.saveImage(this.user.id, file, this.imageType).then(userImage => {
+    this.userProxy.saveImage(this.user.id, file, this.imageType)
+    .then(userImage => {
       this.user[this.imageField] = userImage;
       this.imageSaveSuccess = true;
       this.uploadingImage = false;
-    }).catch(errors => {
+    })
+    .catch(errors => {
       this.imageSaveFail = true;
       this.uploadingImage = false;
     });

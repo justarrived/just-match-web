@@ -104,35 +104,41 @@ export class UserDetailsFormComponent implements OnInit, OnDestroy {
     this.apiErrors = new ApiErrors([]);
 
     this.userProxy.updateUser(this.user.id, this.settingsForm.value)
-      .then((response) => {
-        if (this.passwordsSupplied()) {
-          this.userProxy.changePassword(this.passwordForm.value.password, this.passwordForm.value.old_password)
-            .then((response) => {
-              // has to relogin to be authenticated now that password changed
-              this.userResolver.login(this.settingsForm.value.email, this.passwordForm.value.password)
-                .then(result => {
-                  this.userResolver.reloadUser().then(() => {
-                    this.submitSuccess = true;
-                    this.loadingSubmit = false;
-                  });
-                })
-                .catch(errors => {
-                  this.handleServerErrors(errors);
-                  this.navigationService.navigate(JARoutes.login);
-                });
-            })
-            .catch(errors => {
-              this.handleServerErrors(errors);
+    .then(response => {
+      if (this.passwordsSupplied()) {
+
+        this.userProxy.changePassword(this.passwordForm.value.password, this.passwordForm.value.old_password)
+        .then(response => {
+
+          // has to relogin to be authenticated now that password changed
+          this.userResolver.login(this.settingsForm.value.email, this.passwordForm.value.password)
+          .then(result => {
+            this.userResolver.reloadUser()
+            .then(() => {
+              this.submitSuccess = true;
+              this.loadingSubmit = false;
             });
-        } else {
-          this.userResolver.reloadUser().then(() => {
-            this.submitSuccess = true;
-            this.loadingSubmit = false;
+          })
+          .catch(errors => {
+            this.handleServerErrors(errors);
+            this.navigationService.navigate(JARoutes.login);
           });
-        }
-      })
-      .catch(errors => {
-        this.handleServerErrors(errors);
-      });
+
+        })
+        .catch(errors => {
+          this.handleServerErrors(errors);
+        });
+
+      } else {
+        this.userResolver.reloadUser()
+        .then(() => {
+          this.submitSuccess = true;
+          this.loadingSubmit = false;
+        });
+      }
+    })
+    .catch(errors => {
+      this.handleServerErrors(errors);
+    });
   }
 }

@@ -36,7 +36,8 @@ export class UserResolver implements Resolve<User> {
         return Promise.resolve(this.user);
       }
 
-      return this.userProxy.getUser(session.user_id, { include: this.defaultIncludeResourcesString }).then(user => {
+      return this.userProxy.getUser(session.user_id, { include: this.defaultIncludeResourcesString })
+      .then(user => {
         this.init(user);
         return user;
       });
@@ -58,7 +59,8 @@ export class UserResolver implements Resolve<User> {
       if (this.user) {
         this.user.isBeingReloaded = true;
       }
-      return this.userProxy.getUser(session.user_id, { include: this.defaultIncludeResourcesString }).then(user => {
+      return this.userProxy.getUser(session.user_id, { include: this.defaultIncludeResourcesString })
+      .then(user => {
         this.user = user;
         this.userChange.emit(this.user);
         return user;
@@ -81,7 +83,8 @@ export class UserResolver implements Resolve<User> {
   }
 
   public login(email: string, password: string): Promise<User> {
-    return this.userProxy.getUserSession(email, password).then(response => {
+    return this.userProxy.getUserSession(email, password)
+    .then(response => {
       this.dataStore.set(this.storageSessionKey, response.data);
       return this.reloadUser();
     });

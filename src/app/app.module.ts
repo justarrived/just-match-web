@@ -32,7 +32,7 @@ import {CompetenceInputComponent} from './components/inputs/competence-input/com
 import {ConfirmationComponent} from './views/confirmation/confirmation.component';
 import {ContactFormComponent} from './components/forms/contact-form/contact-form.component';
 import {ContactPageComponent} from './components/pages/contact-page/contact-page.component';
-import {ContactProxy} from './services/proxy/contact-proxy.service';
+import {ContactProxy} from './proxies/contact/contact.proxy';
 import {CookieBarComponent} from './components/bars/cookie-bar/cookie-bar.component';
 import {CookiesAboutPageComponent} from './components/pages/cookies-about-page/cookies-about-page.component';
 import {CountryOfOriginInputComponent} from './components/inputs/country-of-origin-input/country-of-origin-input.component';

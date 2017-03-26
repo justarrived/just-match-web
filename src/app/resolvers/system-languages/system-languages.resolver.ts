@@ -27,7 +27,8 @@ export class SystemLanguagesResolver implements Resolve<Language[]> {
       return Promise.resolve(this.systemLanguages);
     }
 
-    return this.languageProxy.getSystemLanguages().then(result => {
+    return this.languageProxy.getSystemLanguages()
+    .then(result => {
       this.init(result);
       return result;
     });

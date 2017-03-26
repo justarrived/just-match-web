@@ -53,13 +53,13 @@ export class ForgotPasswordFormComponent implements OnInit {
     this.loadingSubmit = true;
 
     this.userProxy.resetPassword(value.email_or_phone)
-      .then((result) => {
-        this.submitSuccess = true;
-        this.loadingSubmit = false;
-        this.navigationService.navigate(JARoutes.confirmation, 'password-reset-link-sent');
-      })
-      .catch((errors) => {
-        this.handleServerErrors(errors);
-      });
+    .then(result => {
+      this.submitSuccess = true;
+      this.loadingSubmit = false;
+      this.navigationService.navigate(JARoutes.confirmation, 'password-reset-link-sent');
+    })
+    .catch(errors => {
+      this.handleServerErrors(errors);
+    });
   }
 }
