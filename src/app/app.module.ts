@@ -23,6 +23,7 @@ import {BasicTabComponent} from './components/tabs/basic-tab/basic-tab.component
 import {BasicTabsComponent} from './components/tabs/basic-tabs/basic-tabs.component';
 import {BrowserModule} from '@angular/platform-browser';
 import {CategoryProxy} from './proxies/category/category.proxy';
+import {ChatProxy} from './proxies/chat/chat.proxy';
 import {CircularImageInputComponent} from './components/inputs/circular-image-input/circular-image-input.component';
 import {CityInputComponent} from './components/inputs/city-input/city-input.component';
 import {ClearingNumberInputComponent} from './components/inputs/clearing-number-input/clearing-number-input.component';
@@ -90,6 +91,7 @@ import {LoginFormComponent} from './components/forms/login-form/login-form.compo
 import {LoginPageComponent} from './components/pages/login-page/login-page.component';
 import {MaximizeChancessSectionComponent} from './components/sections/maximize-chances-section/maximize-chances-section.component';
 import {MessageInputComponent} from './components/inputs/message-input/message-input.component';
+import {MessageProxy} from './proxies/message/message.proxy';
 import {MyJobsComponent} from './views/my-jobs/my-jobs.component';
 import {MyJobsItemComponent} from './components/my-jobs-item/my-jobs-item.component';
 import {NameInputComponent} from './components/inputs/name-input/name-input.component';
@@ -295,6 +297,7 @@ export class RavenErrorHandler implements ErrorHandler {
     ApiCall,
     ApplicationProxy,
     CategoryProxy,
+    ChatProxy,
     CommentProxy,
     CompanyProxy,
     ContactProxy,
@@ -305,6 +308,7 @@ export class RavenErrorHandler implements ErrorHandler {
     Geolocation,
     JobProxy,
     LanguageProxy,
+    MessageProxy,
     NavigationService,
     SkillProxy,
     SystemLanguagesResolver,
