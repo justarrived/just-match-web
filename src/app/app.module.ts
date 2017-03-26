@@ -6,6 +6,7 @@ import {ApiCall} from './services/api-call.service';
 import {ApiErrorsComponent} from './components/form-errors/api-errors/api-errors.component';
 import {APP_BASE_HREF} from '@angular/common';
 import {AppComponent} from './app.component';
+import {ApplicationProxy} from './proxies/application/application.proxy';
 import {ApplicationsComponent} from './views/my-jobs/applications/applications.component';
 import {ApplicationsStatusSectionComponent} from './components/sections/applications-status-section/applications-status-section.component';
 import {ApplicationStatusCardComponent} from './components/cards/application-status-card/application-status-card.component';
@@ -21,11 +22,12 @@ import {BasicBorderHeaderComponent} from './components/headers/basic-border-head
 import {BasicTabComponent} from './components/tabs/basic-tab/basic-tab.component';
 import {BasicTabsComponent} from './components/tabs/basic-tabs/basic-tabs.component';
 import {BrowserModule} from '@angular/platform-browser';
+import {CategoryProxy} from './proxies/category/category.proxy';
 import {CircularImageInputComponent} from './components/inputs/circular-image-input/circular-image-input.component';
 import {CityInputComponent} from './components/inputs/city-input/city-input.component';
 import {ClearingNumberInputComponent} from './components/inputs/clearing-number-input/clearing-number-input.component';
+import {CommentProxy} from './proxies/comment/comment.proxy';
 import {CommentsComponent} from './components/comments/comments.component';
-import {CommentsProxy} from './services/proxy/comments-proxy.service';
 import {CompetenceInputComponent} from './components/inputs/competence-input/competence-input.component';
 import {ConfirmationComponent} from './views/confirmation/confirmation.component';
 import {ContactFormComponent} from './components/forms/contact-form/contact-form.component';
@@ -289,7 +291,9 @@ export class RavenErrorHandler implements ErrorHandler {
   providers: [
     ActsAsUser,
     ApiCall,
-    CommentsProxy,
+    ApplicationProxy,
+    CategoryProxy,
+    CommentProxy,
     ContactProxy,
     CountryProxy,
     DataStore,

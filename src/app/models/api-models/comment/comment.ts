@@ -10,7 +10,7 @@ interface CommentApiAttributes {
   commentableId: number;
   commentableType: string;
   createdAt: Date;
-  id: number;
+  id: string;
   language: Language;
   languageId: string;
   owner: User;

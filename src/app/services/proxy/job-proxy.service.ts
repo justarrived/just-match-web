@@ -22,7 +22,7 @@ export class JobProxy {
     return this.apiCall.get('jobs',  additionOptions).then(response => {
       return {
         jobs: response.data.map(data => JobFactory.createJob(data)),
-        total: response.total
+        total: response.meta.total
       };
     });
   }
@@ -36,10 +36,6 @@ export class JobProxy {
     return this.apiCall.get('hourly-pays', additionOptions).then(response => map(response.data, data => HourlyPayFactory.createHourlyPay(data)));
   }
 
-  public getCategories(additionOptions?: any) {
-    return this.apiCall.get('categories', additionOptions).then(response => map(response.data, data => CategoryFactory.createCategory(data)));
-  }
-
   public saveJob(job: any): Promise<any> {
     return this.apiCall.post('jobs', job);
   }
@@ -50,30 +46,8 @@ export class JobProxy {
     });
   }
 
-  public applyForJob(jobId) {
-    return this.apiCall.post('jobs/' + jobId + '/users', {});
-  }
-
-  public acceptForJob(jobId, applicationId) {
-    return this.apiCall.post('jobs/' + jobId + '/users/' + applicationId + '/acceptances ', {}).then(response => {
-      return ApplicationFactory.createApplication(response.data);
-    });
-  }
-
-  public confirmForJob(jobId, applicationId) {
-    return this.apiCall.post('jobs/' + jobId + '/users/' + applicationId + '/confirmations ', {}).then(response => {
-      return ApplicationFactory.createApplication(response.data);
-    });
-  }
-
   public createInvoice(jobId, applicationId) {
     return this.apiCall.post('jobs/' + jobId + '/users/' + applicationId + '/invoices ', {});
-  }
-
-  public getApplication(jobId, applicationId, additionOptions?: any) {
-    return this.apiCall.get('jobs/' + jobId + '/users/' + applicationId, additionOptions).then(response => {
-      return ApplicationFactory.createApplication(response.data);
-    });
   }
 
   public addRating(jobId, ratingData) {
@@ -83,9 +57,4 @@ export class JobProxy {
   public getOwnedJobs(userId: string, additionOptions?: any) {
     return this.apiCall.get('users/' + userId + '/owned-jobs',  additionOptions).then(response => map(response.data, data => JobFactory.createJob(data)));
   }
-
-  public getApplications(jobId, additionOptions?: any): Promise<Application[]> {
-    return this.apiCall.get('jobs/' + jobId + '/users',  additionOptions).then(response => map(response.data, data => ApplicationFactory.createApplication(data)));
-  }
-
 }

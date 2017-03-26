@@ -1,5 +1,5 @@
 import {Comment} from '../../models/api-models/comment/comment';
-import {CommentsProxy} from '../../services/proxy/comments-proxy.service';
+import {CommentProxy} from '../../proxies/comment/comment.proxy';
 import {Component} from '@angular/core';
 import {ElementRef} from '@angular/core';
 import {HostListener} from '@angular/core';
@@ -16,7 +16,7 @@ import {UserResolver} from '../../resolvers/user/user.resolver';
   styleUrls: ['./comments.component.scss']
 })
 export class CommentsComponent extends SystemLanguageListener implements OnInit {
-  @Input() public resourceId: number;
+  @Input() public resourceId: string;
   @Input() public resourceName: string;
   public newCommentContainer: any;
   public comments: Comment[];
@@ -29,7 +29,7 @@ export class CommentsComponent extends SystemLanguageListener implements OnInit 
   }
 
   public constructor(
-    private commentsProxy: CommentsProxy,
+    private commentProxy: CommentProxy,
     private elementRef: ElementRef,
     private userResolver: UserResolver,
     protected systemLanguagesResolver: SystemLanguagesResolver
@@ -45,14 +45,14 @@ export class CommentsComponent extends SystemLanguageListener implements OnInit 
   }
 
   public sendComment() {
-    this.commentsProxy.sendComment(
+    this.commentProxy.createComment(
       this.resourceName,
       this.resourceId,
       {
+        body: this.newCommentBody,
         commentable_id: this.resourceId,
         commentable_type: this.resourceName,
         language_id: this.systemLanguagesResolver.getSelectedSystemLanguage().id,
-        body: this.newCommentBody
       })
       .then(result => {
         this.newCommentContainer.textContent = '';
@@ -69,11 +69,11 @@ export class CommentsComponent extends SystemLanguageListener implements OnInit 
   }
 
   protected loadData() {
-    this.commentsProxy.getComments(this.resourceName, this.resourceId, {
+    this.commentProxy.getComments(this.resourceName, this.resourceId, {
       include: 'owner,owner.user_images,owner.company,owner.company.company_images',
       sort: '-created_at'
     }).then(result => {
-      this.comments = result.data.reverse();
+      this.comments = result.reverse();
       this.calculateFooterVisibility();
     });
   }

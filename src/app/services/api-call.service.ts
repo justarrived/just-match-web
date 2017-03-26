@@ -37,55 +37,47 @@ export class ApiCall {
   }
 
   public get(url: string, searchParameters?: any, contentType?: string): Promise<any> {
-    return this.requestHelper(
-      {
-        search: this.searchParametersBuilder(searchParameters),
-        method: RequestMethod.Get,
-        url: this.urlBuilder(url),
-        headers: this.contentTypeHeaderBuilder(contentType)
-      });
+    return this.requestHelper({
+      search: this.searchParametersBuilder(searchParameters),
+      method: RequestMethod.Get,
+      url: this.urlBuilder(url),
+      headers: this.contentTypeHeaderBuilder(contentType)
+    });
   }
 
-  public post(url: string, attributes: any, contentType?: string): Promise<any> {
-    return this.requestHelper(
-      {
-        body:
-        {
-          data:
-          {
-            attributes: attributes
-          }
-        },
-        method: RequestMethod.Post,
-        url: this.urlBuilder(url),
-        headers: this.contentTypeHeaderBuilder(contentType)
-      });
+  public post(url: string, attributes: any = {}, contentType?: string): Promise<any> {
+    return this.requestHelper({
+      body: {
+        data: {
+          attributes: attributes
+        }
+      },
+      method: RequestMethod.Post,
+      url: this.urlBuilder(url),
+      headers: this.contentTypeHeaderBuilder(contentType)
+    });
   }
 
-  public patch(url: string, attributes: any, contentType?: string): Promise<any> {
-    return this.requestHelper(
-      {
-        body:
-        {
-          data:
-          {
-            attributes: attributes
-          }
-        },
-        method: RequestMethod.Patch,
-        url: this.urlBuilder(url),
-        headers: this.contentTypeHeaderBuilder(contentType)
-      });
+  public patch(url: string, attributes: any = {}, contentType?: string): Promise<any> {
+    return this.requestHelper({
+      body: {
+        data: {
+          attributes: attributes
+        }
+      },
+      method: RequestMethod.Patch,
+      url: this.urlBuilder(url),
+      headers: this.contentTypeHeaderBuilder(contentType)
+    });
   }
 
   public delete(url: string, contentType?: string): Promise<any> {
-    return this.requestHelper(
-      {
-        body: '',
-        method: RequestMethod.Delete,
-        url: this.urlBuilder(url),
-        headers: this.contentTypeHeaderBuilder(contentType)
-      });
+    return this.requestHelper({
+      body: '',
+      method: RequestMethod.Delete,
+      url: this.urlBuilder(url),
+      headers: this.contentTypeHeaderBuilder(contentType)
+    });
   }
 
   private requestHelper(requestArgs: RequestOptionsArgs): Promise<any> {

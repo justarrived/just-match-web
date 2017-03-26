@@ -3,7 +3,7 @@ import {LanguageFactory} from '../language/language';
 
 // API attribute interfaces
 interface UserLanguageApiAttributes {
-  id: number;
+  id: string;
   language: Language;
   proficiency: number;
 }

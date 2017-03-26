@@ -1,6 +1,6 @@
 // API attribute interfaces
 interface InvoiceApiAttributes {
-  id: number;
+  id: string;
 }
 
 // Client interfaces
