@@ -67,6 +67,7 @@ import {GenderProxy} from './proxies/gender/gender.proxy';
 import {Geolocation} from './services/geolocation.service';
 import {GotCoordinationNumberInputComponent} from './components/inputs/got-coordination-number-input/got-coordination-number-input.component';
 import {HomePageComponent} from './components/pages/home-page/home-page.component';
+import {HourlyPayProxy} from './proxies/hourly-pay/hourly-pay.proxy';
 import {HowItWorksAndMaximizeChancesSectionComponent} from './components/sections/how-it-works-and-maximize-chances-section/how-it-works-and-maximize-chances-section.component';
 import {HowItWorksSectionComponent} from './components/sections/how-it-works-section/how-it-works-section.component';
 import {HttpModule} from '@angular/http';
@@ -308,6 +309,7 @@ export class RavenErrorHandler implements ErrorHandler {
     FaqProxy,
     GenderProxy,
     Geolocation,
+    HourlyPayProxy,
     JobProxy,
     LanguageProxy,
     MessageProxy,

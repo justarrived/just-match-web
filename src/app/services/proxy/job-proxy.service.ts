@@ -33,11 +33,6 @@ export class JobProxy {
       .then(response => response.data.map(data => JobFactory.createJob(data)));
   }
 
-  public getHourlyPays(additionOptions?: any) {
-    return this.apiCall.get('hourly-pays', additionOptions)
-    .then(response => map(response.data, data => HourlyPayFactory.createHourlyPay(data)));
-  }
-
   public saveJob(job: any): Promise<any> {
     return this.apiCall.post('jobs', job);
   }

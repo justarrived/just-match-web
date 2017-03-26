@@ -36,12 +36,13 @@ export class ApiCall {
   ) {
   }
 
-  public get(url: string, searchParameters?: any, contentType?: string): Promise<any> {
+  public get(url: string, searchParameters: any = {}, body: any = {}, contentType?: string): Promise<any> {
     return this.requestHelper({
-      search: this.searchParametersBuilder(searchParameters),
+      body: body,
+      headers: this.contentTypeHeaderBuilder(contentType),
       method: RequestMethod.Get,
+      search: this.searchParametersBuilder(searchParameters),
       url: this.urlBuilder(url),
-      headers: this.contentTypeHeaderBuilder(contentType)
     });
   }
 
@@ -52,9 +53,9 @@ export class ApiCall {
           attributes: attributes
         }
       },
+      headers: this.contentTypeHeaderBuilder(contentType),
       method: RequestMethod.Post,
       url: this.urlBuilder(url),
-      headers: this.contentTypeHeaderBuilder(contentType)
     });
   }
 
@@ -65,18 +66,18 @@ export class ApiCall {
           attributes: attributes
         }
       },
+      headers: this.contentTypeHeaderBuilder(contentType),
       method: RequestMethod.Patch,
       url: this.urlBuilder(url),
-      headers: this.contentTypeHeaderBuilder(contentType)
     });
   }
 
   public delete(url: string, contentType?: string): Promise<any> {
     return this.requestHelper({
       body: '',
+      headers: this.contentTypeHeaderBuilder(contentType),
       method: RequestMethod.Delete,
       url: this.urlBuilder(url),
-      headers: this.contentTypeHeaderBuilder(contentType)
     });
   }
 
