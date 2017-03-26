@@ -76,11 +76,6 @@ export class UserProxy {
         });
   }
 
-  public getApplications(userId, additionOptions?: any) {
-    return this.apiCall.get('users/' + userId + '/jobs', additionOptions)
-      .then(response => map(response.data, data => ApplicationFactory.createApplication(data)));
-  }
-
   public createFrilansFinans(userId, bankAccount) {
     return this.apiCall.post('users/' + userId + '/frilans-finans', bankAccount);
   }

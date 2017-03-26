@@ -1,11 +1,11 @@
 import {Application} from '../../../models/api-models/application/application';
+import {ApplicationProxy} from '../../../proxies/application/application.proxy';
 import {Component} from '@angular/core';
 import {Input} from '@angular/core';
 import {map} from 'lodash';
 import {OnInit} from '@angular/core';
 import {SystemLanguageListener} from '../../../resolvers/system-languages/system-languages.resolver';
 import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
-import {UserProxy} from '../../../services/proxy/user-proxy.service';
 import {UserResolver} from '../../../resolvers/user/user.resolver';
 
 @Component({
@@ -19,7 +19,7 @@ export class ApplicationsComponent extends SystemLanguageListener implements OnI
   public historyApplications: Application[] = []; // invoiced
 
   public constructor(
-    private userProxy: UserProxy,
+    private applicationProxy: ApplicationProxy,
     private userResolver: UserResolver,
     protected systemLanguagesResolver: SystemLanguagesResolver
   ) {
@@ -31,21 +31,18 @@ export class ApplicationsComponent extends SystemLanguageListener implements OnI
   }
 
   protected loadData() {
-    this.userProxy.getApplications(
-      this.userResolver.getUser().id,
-      {
-        'include': 'job, job.company',
-        'sort': '-created_at',
-        'page[size]': 14
-      })
-      .then((applications) => {
-        this.applications = applications;
-        this.generateJobSections();
+    this.applicationProxy.getUserApplications(this.userResolver.getUser().id, {
+      'include': 'job, job.company',
+      'sort': '-created_at',
+      'page[size]': 14
+    }).then((applications) => {
+      this.applications = applications;
+      this.generateJobSections();
     });
   }
 
   private generateJobSections() {
-    this.currentApplications = this.applications.filter(application => !application.invoice.id);
-    this.historyApplications = this.applications.filter(application => !!application.invoice.id);
+    this.currentApplications = this.applications.filter(application => !(application.willPerform && application.jobEnded));
+    this.historyApplications = this.applications.filter(application => application.willPerform && application.jobEnded);
   }
 }

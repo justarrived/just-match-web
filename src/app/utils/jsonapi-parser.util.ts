@@ -65,7 +65,7 @@ function deserializeBody(body: any): any {
   }
 
   if (body.meta) {
-    _.assignIn(result, body.meta);
+    result.meta = body.meta;
   }
 
   return result;

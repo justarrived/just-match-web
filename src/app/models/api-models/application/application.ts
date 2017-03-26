@@ -13,7 +13,7 @@ interface ApplicationApiAttributes {
   accepted: boolean;
   acceptedAt: string;
   applyMessage: string;
-  id: number;
+  id: string;
   invoice: Invoice;
   job: Job;
   jobEnded: boolean;

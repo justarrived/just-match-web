@@ -5,7 +5,7 @@ import {LanguageFactory} from '../language/language';
 interface FaqApiAttributes {
   answer: string;
   category: string;
-  id: number;
+  id: string;
   language: Language;
   languageId: string;
   question: string;

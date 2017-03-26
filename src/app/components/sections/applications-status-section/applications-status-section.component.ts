@@ -1,4 +1,5 @@
 import {Application} from '../../../models/api-models/application/application';
+import {ApplicationProxy} from '../../../proxies/application/application.proxy';
 import {Component} from '@angular/core';
 import {JARoutes} from '../../../routes/ja-routes';
 import {nbrOfMonthsFromDate} from '../../../utils/date-util';
@@ -8,7 +9,6 @@ import {Subscription} from 'rxjs/Subscription';
 import {SystemLanguageListener} from '../../../resolvers/system-languages/system-languages.resolver';
 import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
 import {User} from '../../../models/api-models/user/user';
-import {UserProxy} from '../../../services/proxy/user-proxy.service';
 import {UserResolver} from '../../../resolvers/user/user.resolver';
 import {yyyymmdd} from '../../../utils/date-util';
 
@@ -54,7 +54,7 @@ export class ApplicationsStatusSectionComponent extends SystemLanguageListener i
   private userSubscription: Subscription;
 
   public constructor(
-    private userProxy: UserProxy,
+    private applicationProxy: ApplicationProxy,
     private userResolver: UserResolver,
     protected systemLanguagesResolver: SystemLanguagesResolver,
   ) {
@@ -76,13 +76,11 @@ export class ApplicationsStatusSectionComponent extends SystemLanguageListener i
 
   protected loadData(): void {
     if (this.user) {
-      this.applications = this.userProxy.getApplications(
-        this.user.id,
-        {
-          'include': 'job',
-          'sort': '-created_at',
-          'page[size]': 14
-        });
+      this.applications = this.applicationProxy.getUserApplications(this.user.id, {
+        'include': 'job',
+        'sort': '-created_at',
+        'page[size]': 14
+      });
     }
   }
 

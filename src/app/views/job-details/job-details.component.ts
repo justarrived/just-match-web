@@ -1,5 +1,6 @@
 import {ActivatedRoute} from '@angular/router';
 import {Application} from '../../models/api-models/application/application';
+import {ApplicationProxy} from '../../proxies/application/application.proxy';
 import {Component} from '@angular/core';
 import {Input} from '@angular/core';
 import {JARoutes} from '../../routes/ja-routes';
@@ -20,9 +21,7 @@ import {UserResolver} from '../../resolvers/user/user.resolver';
   styleUrls: ['./job-details.component.scss']
 })
 export class JobDetailsComponent extends SystemLanguageListener implements OnInit, OnDestroy {
-  @Input() public isInUserView: boolean;
-  @Input() public applicationId: number;
-
+  public application: Application;
   public applyForJobErrorMessageVisible: boolean;
   public countOfApplicants: number = 0;
   public currentJobId: number;
@@ -31,12 +30,12 @@ export class JobDetailsComponent extends SystemLanguageListener implements OnIni
   public job: Job;
   public jobDetailsVisible: boolean = true;
   public user: User;
-  public application: Application;
 
   private userSubscription: Subscription;
   private routeParamsSubscription: Subscription;
 
   public constructor(
+    private applicationProxy: ApplicationProxy,
     private jobProxy: JobProxy,
     private navigationService: NavigationService,
     private route: ActivatedRoute,
@@ -67,27 +66,21 @@ export class JobDetailsComponent extends SystemLanguageListener implements OnIni
   }
 
   protected loadData(): void {
-    this.jobProxy.getJob(
-      this.currentJobId,
-      {
-        include: 'owner,company,hourly_pay,company.company_images,comments'
-      })
-      .then(result => {
-        this.job = result;
-        this.getJobInfo();
-      });
+    this.jobProxy.getJob(this.currentJobId, {
+      'include': 'owner,company,hourly_pay,company.company_images,comments'
+    }).then(result => {
+      this.job = result;
+      this.getJobInfo();
+    });
   }
 
   private getJobInfo(): void {
     if (this.user) {
-      this.userProxy.getApplications(
-        this.user.id,
-        {
-          'filter[job_id]': this.job.id.toString()
-        })
-        .then(response => {
-          this.application = response[0];
-        });
+      this.applicationProxy.getUserApplications(this.user.id, {
+        'filter[job_id]': this.job.id
+      }).then(response => {
+        this.application = response[0];
+      });
     }
   }
 
@@ -97,10 +90,11 @@ export class JobDetailsComponent extends SystemLanguageListener implements OnIni
   }
 
   public onApplyForJobButtonClick(): void {
-    this.jobProxy.applyForJob(this.job.id)
-      .then(response => {
-        this.navigationService.navigate(JARoutes.confirmation, 'user-applied-for-job');
-      });
+    this.applicationProxy.createApplication(this.job.id, {
+      'user_id': this.user.id
+    }).then(response => {
+      this.navigationService.navigate(JARoutes.confirmation, 'user-applied-for-job');
+    });
   }
 
   public switchJobDetailsVisibility(): void {
@@ -112,7 +106,7 @@ export class JobDetailsComponent extends SystemLanguageListener implements OnIni
   }
 
   public confirmJob(): Promise<any> {
-    return this.jobProxy.confirmForJob(this.job.id, this.application.id)
+    return this.applicationProxy.confirmApplication(this.job.id, this.application.id)
       .then(response => {
         this.application = response;
         this.applyForJobErrorMessageVisible = false;
