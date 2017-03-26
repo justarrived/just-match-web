@@ -44,10 +44,6 @@ export class JobProxy {
     });
   }
 
-  public createInvoice(jobId, applicationId) {
-    return this.apiCall.post('jobs/' + jobId + '/users/' + applicationId + '/invoices ', {});
-  }
-
   public addRating(jobId, ratingData) {
     return this.apiCall.post('jobs/' + jobId + '/ratings', ratingData);
   }

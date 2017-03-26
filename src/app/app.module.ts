@@ -75,6 +75,7 @@ import {InfoMessageComponent} from './components/messages/info-message/info-mess
 import {InputErrorComponent} from './components/form-errors/input-error/input-error.component';
 import {InputErrorsComponent} from './components/form-errors/input-errors/input-errors.component';
 import {InterestProxy} from './proxies/interest/interest.proxy';
+import {InvoiceProxy} from './proxies/invoice/invoice.proxy';
 import {JARoutes} from './routes/ja-routes';
 import {JobCardComponent} from './components/cards/job-card/job-card.component';
 import {JobDetailsComponent} from './views/job-details/job-details.component';
@@ -312,6 +313,7 @@ export class RavenErrorHandler implements ErrorHandler {
     Geolocation,
     HourlyPayProxy,
     InterestProxy,
+    InvoiceProxy,
     JobProxy,
     LanguageProxy,
     MessageProxy,
