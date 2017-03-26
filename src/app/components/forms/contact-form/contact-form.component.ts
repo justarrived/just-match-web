@@ -74,7 +74,7 @@ export class ContactFormComponent implements OnInit, OnDestroy {
     this.submitFail = false;
     this.submitSuccess = false;
 
-    this.contactProxy.saveContactNotification({
+    this.contactProxy.createContactNotification({
       body: value.message,
       email: value.email,
       name: value.name

@@ -17,7 +17,7 @@ export class ContactProxy {
   }
 
   // CREATE
-  public saveContactNotification(contactNotificationAttributes: CreateContactNotificationAttributes): Promise<any> {
+  public createContactNotification(contactNotificationAttributes: CreateContactNotificationAttributes): Promise<any> {
     return this.apiCall.post('contacts', contactNotificationAttributes);
   }
 }

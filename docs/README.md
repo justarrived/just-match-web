@@ -63,6 +63,23 @@ public constructor(
 
 ```
 
+Promise resolution syntax
+```
+
+/*
+With then and catch
+*/
+this.skillProxy.getSkill(skillId)
+.then(skill => {
+  userSkill.skill = skill;
+  this.userSkillsControl.value.push(userSkill);
+  this.loadingSkill = false;
+})
+.catch(errors => {
+  this.loadingSkill = false;
+});
+```
+
 
 * __HTML conventions__
 

@@ -28,6 +28,7 @@ import {CityInputComponent} from './components/inputs/city-input/city-input.comp
 import {ClearingNumberInputComponent} from './components/inputs/clearing-number-input/clearing-number-input.component';
 import {CommentProxy} from './proxies/comment/comment.proxy';
 import {CommentsComponent} from './components/comments/comments.component';
+import {CompanyProxy} from './proxies/company/company.proxy';
 import {CompetenceInputComponent} from './components/inputs/competence-input/competence-input.component';
 import {ConfirmationComponent} from './views/confirmation/confirmation.component';
 import {ContactFormComponent} from './components/forms/contact-form/contact-form.component';
@@ -294,6 +295,7 @@ export class RavenErrorHandler implements ErrorHandler {
     ApplicationProxy,
     CategoryProxy,
     CommentProxy,
+    CompanyProxy,
     ContactProxy,
     CountryProxy,
     DataStore,
