@@ -74,6 +74,7 @@ import {HttpModule} from '@angular/http';
 import {InfoMessageComponent} from './components/messages/info-message/info-message.component';
 import {InputErrorComponent} from './components/form-errors/input-error/input-error.component';
 import {InputErrorsComponent} from './components/form-errors/input-errors/input-errors.component';
+import {InterestProxy} from './proxies/interest/interest.proxy';
 import {JARoutes} from './routes/ja-routes';
 import {JobCardComponent} from './components/cards/job-card/job-card.component';
 import {JobDetailsComponent} from './views/job-details/job-details.component';
@@ -310,6 +311,7 @@ export class RavenErrorHandler implements ErrorHandler {
     GenderProxy,
     Geolocation,
     HourlyPayProxy,
+    InterestProxy,
     JobProxy,
     LanguageProxy,
     MessageProxy,
