@@ -127,7 +127,7 @@ import {ResumeInputComponent} from './components/inputs/resume-input/resume-inpu
 import {SelectDropdownInputComponent} from './components/inputs/select-dropdown-input/select-dropdown-input.component';
 import {SkatteverketCertificateInputComponent} from './components/inputs/skatteverket-certificate-input/skatteverket-certificate-input.component';
 import {SkillProficiencyInputComponent} from './components/inputs/skill-proficiency-input/skill-proficiency-input.component';
-import {SkillProxy} from './services/proxy/skill-proxy.service';
+import {SkillProxy} from './proxies/skill/skill.proxy';
 import {SkillsInputComponent} from './components/inputs/skills-input/skills-input.component';
 import {SSNInputComponent} from './components/inputs/ssn-input/ssn-input.component';
 import {StatusInputComponent} from './components/inputs/status-input/status-input.component';

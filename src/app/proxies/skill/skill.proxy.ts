@@ -1,0 +1,63 @@
+import {ApiCall} from '../../services/api-call.service';
+import {Skill} from '../../models/api-models/skill/skill';
+import {SkillFactory} from '../../models/api-models/skill/skill';
+import {Injectable} from '@angular/core';
+
+// CREATE
+interface CreateSkillAttributes {
+  name: string;
+  language_id: string;
+}
+
+// UPDATE
+interface UpdateSkillAttributes {
+  name?: string;
+  language_id?: string;
+}
+
+@Injectable()
+export class SkillProxy {
+
+  constructor(
+    private apiCall: ApiCall
+  ) {
+  }
+
+  // GET
+  public getSkill(skillId: string, searchParameters?: any): Promise<Skill> {
+    return this.apiCall.get('skills/' + skillId, searchParameters)
+    .then(response => SkillFactory.createSkill(response.data));
+  }
+
+  public getSkills(searchParameters?: any): Promise<Skill[]> {
+    return this.apiCall.get('skills', searchParameters)
+    .then(response => response.data.map(skill => SkillFactory.createSkill(skill)));
+  }
+
+  public getSkillsWithMeta(searchParameters?: any): Promise<{skills: Skill[], meta: {total: number}}> {
+    return this.apiCall.get('skills', searchParameters)
+    .then(response => {
+      return {
+        skills: response.data.map(skill => SkillFactory.createSkill(skill)),
+        meta: response.meta
+      }
+    });
+  }
+
+  // CREATE
+  public createSkill(skillAttributes: CreateSkillAttributes): Promise<Skill> {
+    return this.apiCall.post('skills', skillAttributes)
+    .then(response => SkillFactory.createSkill(response.data));
+  }
+
+  // UPDATE
+  public updateSkill(skillId: string, skillAttributes: UpdateSkillAttributes): Promise<Skill> {
+    return this.apiCall.patch('skills/' + skillId, skillAttributes)
+    .then(response => SkillFactory.createSkill(response.data));
+  }
+
+  // REMOVE
+  public removeSkill(skillId: string): Promise<any> {
+    return this.apiCall.delete('skills/' + skillId);
+  }
+}
