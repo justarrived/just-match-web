@@ -1,5 +1,7 @@
 import {Document} from '../document/document';
 import {DocumentFactory} from '../document/document';
+import {User} from '../user/user';
+import {UserFactory} from '../user/user';
 
 // API attribute interfaces
 interface UserDocumentApiAttributes {
@@ -8,6 +10,7 @@ interface UserDocumentApiAttributes {
   createdAt: Date;
   document: Document;
   id: string;
+  user: User;
 }
 
 // Client interfaces
@@ -27,6 +30,7 @@ export class UserDocumentFactory {
       createdAt: new Date(jsonObject.created_at),
       document: DocumentFactory.createDocument(jsonObject.document),
       id: jsonObject.id,
+      user: UserFactory.createUser(jsonObject.user),
     };
   }
 }

@@ -1,3 +1,6 @@
+import {User} from '../user/user';
+import {UserFactory} from '../user/user';
+
 // API attribute interfaces
 interface UserImageApiAttributes {
   category: string;
@@ -9,6 +12,7 @@ interface UserImageApiAttributes {
   oneTimeToken: string;
   oneTimeTokenExpiresAt: Date;
   smallImageUrl: string;
+  user: User;
 }
 
 // Client interfaces

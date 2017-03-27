@@ -3,7 +3,7 @@ import {Router} from '@angular/router';
 import {Job} from '../../models/api-models/job/job';
 import {MapLocation} from '../../models/client-models/map-location/map-location';
 import {Geolocation} from '../../services/geolocation.service';
-import {JobProxy} from '../../services/proxy/job-proxy.service';
+import {JobProxy} from '../../proxies/job/job.proxy';
 import {Location} from '@angular/common';
 import {ActivatedRoute} from '@angular/router';
 import {SystemLanguagesResolver} from '../../resolvers/system-languages/system-languages.resolver';
@@ -55,7 +55,7 @@ export class JobsComponent extends SystemLanguageListener implements OnInit {
 
   loadData() {
     this.loadingJobs = true;
-    this.jobProxy.getJobsWithTotal({
+    this.jobProxy.getJobsWithMeta({
       'include': 'company,hourly_pay,company.company_images',
       'filter[filled]': false,
       'filter[job_date]': yyyymmdd(new Date()) + '..' + yyyymmdd(nbrOfMonthsFromDate(new Date(), 12)),
@@ -64,7 +64,7 @@ export class JobsComponent extends SystemLanguageListener implements OnInit {
     })
     .then(result => {
       this.jobs = result.jobs;
-      this.totalJobs = result.total;
+      this.totalJobs = result.meta.total;
       this.loadingJobs = false;
       if (this.pageSize * (this.page - 1) > this.totalJobs) {
         this.onPageChange(1);

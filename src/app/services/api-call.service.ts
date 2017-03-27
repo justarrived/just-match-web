@@ -46,7 +46,7 @@ export class ApiCall {
     });
   }
 
-  public post(url: string, attributes: any = {}, body: any = {}, contentType?: string): Promise<any> {
+  public post(url: string, attributes: any = {}, searchParameters: any = {}, body: any = {}, contentType?: string): Promise<any> {
     if (body.data) {
       body.data.attributes = attributes;
     } else {
@@ -58,11 +58,12 @@ export class ApiCall {
       body: body,
       headers: this.contentTypeHeaderBuilder(contentType),
       method: RequestMethod.Post,
+      search: this.searchParametersBuilder(searchParameters),
       url: this.urlBuilder(url),
     });
   }
 
-  public patch(url: string, attributes: any = {}, body: any = {}, contentType?: string): Promise<any> {
+  public patch(url: string, attributes: any = {}, searchParameters: any = {}, body: any = {}, contentType?: string): Promise<any> {
     if (body.data) {
       body.data.attributes = attributes;
     } else {
@@ -74,6 +75,7 @@ export class ApiCall {
       body: body,
       headers: this.contentTypeHeaderBuilder(contentType),
       method: RequestMethod.Patch,
+      search: this.searchParametersBuilder(searchParameters),
       url: this.urlBuilder(url),
     });
   }

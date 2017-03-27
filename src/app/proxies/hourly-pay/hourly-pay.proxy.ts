@@ -37,7 +37,7 @@ export class HourlyPayProxy {
     });
   }
 
-  public calculateHourlyPayAttributes(hourlyPayBody: CalculateHourlyPayBody, searchParameters?: any): Promise<HourlyPay> {
+  public calculateHourlyPay(hourlyPayBody: CalculateHourlyPayBody, searchParameters?: any): Promise<HourlyPay> {
     return this.apiCall.get('hourly-pays/calculate', searchParameters, hourlyPayBody)
     .then(response => HourlyPayFactory.createHourlyPay(response.data));
   }

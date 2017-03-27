@@ -1,11 +1,14 @@
 import {Language} from '../language/language';
 import {LanguageFactory} from '../language/language';
+import {User} from '../user/user';
+import {UserFactory} from '../user/user';
 
 // API attribute interfaces
 interface UserLanguageApiAttributes {
   id: string;
   language: Language;
   proficiency: number;
+  user: User;
 }
 
 // Client interfaces
@@ -23,6 +26,7 @@ export class UserLanguageFactory {
       id: jsonObject.id,
       language: LanguageFactory.createLanguage(jsonObject.language),
       proficiency: jsonObject.proficiency,
+      user: UserFactory.createUser(jsonObject.user),
     };
   }
 }

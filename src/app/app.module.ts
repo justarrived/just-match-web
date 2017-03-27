@@ -82,7 +82,7 @@ import {JobDetailsComponent} from './views/job-details/job-details.component';
 import {JobExperienceInputComponent} from './components/inputs/job-experience-input/job-experience-input.component';
 import {JobListItemComponent} from './components/job-list-item/job-list-item.component';
 import {JobMapMarkerComponent} from './components/job-map-marker/job-map-marker.component';
-import {JobProxy} from './services/proxy/job-proxy.service';
+import {JobProxy} from './proxies/job/job.proxy';
 import {JobsComponent} from './views/jobs/jobs.component';
 import {LanguageMenuComponent} from './components/menus/language-menu/language-menu.component';
 import {LanguageProficiencyInputComponent} from './components/inputs/language-proficiency-input/language-proficiency-input.component';

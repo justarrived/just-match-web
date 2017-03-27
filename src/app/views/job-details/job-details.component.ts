@@ -5,7 +5,7 @@ import {Component} from '@angular/core';
 import {Input} from '@angular/core';
 import {JARoutes} from '../../routes/ja-routes';
 import {Job} from '../../models/api-models/job/job';
-import {JobProxy} from '../../services/proxy/job-proxy.service';
+import {JobProxy} from '../../proxies/job/job.proxy';
 import {NavigationService} from '../../services/navigation.service';
 import {OnDestroy} from '@angular/core';
 import {OnInit} from '@angular/core';
@@ -24,7 +24,7 @@ export class JobDetailsComponent extends SystemLanguageListener implements OnIni
   public application: Application;
   public applyForJobErrorMessageVisible: boolean;
   public countOfApplicants: number = 0;
-  public currentJobId: number;
+  public currentJobId: string;
   public errors: any = {};
   public JARoutes = JARoutes;
   public job: Job;
@@ -61,7 +61,7 @@ export class JobDetailsComponent extends SystemLanguageListener implements OnIni
 
   private initRouteParamsSubscription(): void {
     this.routeParamsSubscription = this.route.params.subscribe(params => {
-      this.currentJobId = parseInt(params['id']);
+      this.currentJobId = params['id'];
     });
   }
 
