@@ -4,7 +4,7 @@ import {deleteElementFromArray} from '../../../utils/array-util';
 import {FormControl} from '@angular/forms';
 import {Input} from '@angular/core';
 import {Language} from '../../../models/api-models/language/language';
-import {LanguageProxy} from '../../../services/proxy/language-proxy.service';
+import {LanguageProxy} from '../../../proxies/language/language.proxy';
 import {OnInit} from '@angular/core';
 import {some} from 'lodash';
 import {SystemLanguageListener} from '../../../resolvers/system-languages/system-languages.resolver';
@@ -63,7 +63,10 @@ export class LanguagesInputComponent extends SystemLanguageListener implements O
   }
 
   protected loadData(): void {
-    this.languages = this.languageProxy.getLanguages();
+    this.languages = this.languageProxy.getLanguages({
+      'page[size]': 300,
+      'sort': 'en_name',
+    });
   }
 
   public onRemoveUserLanguage(userLanguage): void {

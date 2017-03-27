@@ -86,7 +86,7 @@ import {JobProxy} from './proxies/job/job.proxy';
 import {JobsComponent} from './views/jobs/jobs.component';
 import {LanguageMenuComponent} from './components/menus/language-menu/language-menu.component';
 import {LanguageProficiencyInputComponent} from './components/inputs/language-proficiency-input/language-proficiency-input.component';
-import {LanguageProxy} from './services/proxy/language-proxy.service';
+import {LanguageProxy} from './proxies/language/language.proxy';
 import {LanguagesInputComponent} from './components/inputs/languages-input/languages-input.component';
 import {LastNameInputComponent} from './components/inputs/last-name-input/last-name-input.component';
 import {LMACardInputComponent} from './components/inputs/lma-card-input/lma-card-input.component';

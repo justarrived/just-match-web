@@ -2,7 +2,7 @@ import {DataStore} from '../../services/data-store.service';
 import {EventEmitter} from '@angular/core';
 import {Injectable} from '@angular/core';
 import {Language} from '../../models/api-models/language/language';
-import {LanguageProxy} from '../../services/proxy/language-proxy.service';
+import {LanguageProxy} from '../../proxies/language/language.proxy';
 import {Resolve} from '@angular/router';
 import {TranslateService} from 'ng2-translate/ng2-translate';
 
@@ -27,7 +27,9 @@ export class SystemLanguagesResolver implements Resolve<Language[]> {
       return Promise.resolve(this.systemLanguages);
     }
 
-    return this.languageProxy.getSystemLanguages()
+    return this.languageProxy.getLanguages({
+      'filter[system_language]': true
+    })
     .then(result => {
       this.init(result);
       return result;

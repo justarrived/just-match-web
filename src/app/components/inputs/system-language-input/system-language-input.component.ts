@@ -6,7 +6,7 @@ import {OnInit} from '@angular/core';
 import {SystemLanguageListener} from '../../../resolvers/system-languages/system-languages.resolver';
 import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
 import {Language} from '../../../models/api-models/language/language';
-import {LanguageProxy} from '../../../services/proxy/language-proxy.service';
+import {LanguageProxy} from '../../../proxies/language/language.proxy';
 
 @Component({
   selector: 'system-language-input',
@@ -52,6 +52,8 @@ export class SystemLanguageInputComponent extends SystemLanguageListener impleme
   }
 
   protected loadData() {
-    this.systemLanguages = this.languageProxy.getSystemLanguages();
+    this.systemLanguages = this.languageProxy.getLanguages({
+      'filter[system_language]': true
+    });
   }
 }
