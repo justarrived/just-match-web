@@ -45,11 +45,6 @@ export class UserProxy {
     return this.apiCall.patch('users/' + id, user);
   }
 
-  public getStatuses(): Promise<Array<Status>> {
-    return this.apiCall.get('users/statuses')
-      .then(response => map(response.data, data => StatusFactory.createStatus(data)));
-  }
-
   public saveImage(userId, dataUrl: string, category: string): Promise<UserImage> {
     return this.apiCall.post('users/' + userId + '/images', {'image': dataUrl,'category': category})
       .then(response => UserImageFactory.createUserImage(response.data));

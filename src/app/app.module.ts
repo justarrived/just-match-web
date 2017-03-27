@@ -131,6 +131,7 @@ import {SkillProxy} from './proxies/skill/skill.proxy';
 import {SkillsInputComponent} from './components/inputs/skills-input/skills-input.component';
 import {SSNInputComponent} from './components/inputs/ssn-input/ssn-input.component';
 import {StatusInputComponent} from './components/inputs/status-input/status-input.component';
+import {StatusProxy} from './proxies/status/status.proxy';
 import {StreetInputComponent} from './components/inputs/street-input/street-input.component';
 import {SuccessMessageComponent} from './components/messages/success-message/success-message.component';
 import {SystemLanguageInputComponent} from './components/inputs/system-language-input/system-language-input.component';
@@ -321,6 +322,7 @@ export class RavenErrorHandler implements ErrorHandler {
     NavigationService,
     RatingProxy,
     SkillProxy,
+    StatusProxy,
     SystemLanguagesResolver,
     UserProxy,
     UserResolver,
