@@ -115,6 +115,7 @@ import {PersonalIDInputComponent} from './components/inputs/personal-id-input/pe
 import {PhoneInputComponent} from './components/inputs/phone-input/phone-input.component';
 import {ProfileImageInputComponent} from './components/inputs/profile-image-input/profile-image-input.component';
 import {RatingInputComponent} from './components/inputs/rating-input/rating-input.component';
+import {RatingProxy} from './proxies/rating/rating.proxy';
 import {ReactiveFormsModule} from '@angular/forms';
 import {RegisterFormComponent} from './components/forms/register-form/register-form.component';
 import {RegisterPageComponent} from './components/pages/register-page/register-page.component';
@@ -318,6 +319,7 @@ export class RavenErrorHandler implements ErrorHandler {
     LanguageProxy,
     MessageProxy,
     NavigationService,
+    RatingProxy,
     SkillProxy,
     SystemLanguagesResolver,
     UserProxy,
