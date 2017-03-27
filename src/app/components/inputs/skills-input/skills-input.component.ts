@@ -9,8 +9,8 @@ import {OnInit} from '@angular/core';
 import {some} from 'lodash';
 import {SystemLanguageListener} from '../../../resolvers/system-languages/system-languages.resolver';
 import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
-import {UserSkill} from '../../../models/api-models/user/user-skill';
-import {UserSkillFactory} from '../../../models/api-models/user/user-skill';
+import {UserSkill} from '../../../models/api-models/user-skill/user-skill';
+import {UserSkillFactory} from '../../../models/api-models/user-skill/user-skill';
 
 @Component({
   selector: 'skills-input',

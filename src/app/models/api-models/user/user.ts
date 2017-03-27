@@ -4,16 +4,16 @@ import {Country} from '../country/country';
 import {Language} from '../language/language';
 import {LanguageFactory} from '../language/language';
 import {map} from 'lodash';
-import {UserDocument} from './user-document';
-import {UserDocumentFactory} from './user-document';
-import {UserImage} from './user-image';
-import {UserImageFactory} from './user-image';
-import {UserInterest} from './user-interest';
-import {UserInterestFactory} from './user-interest';
-import {UserLanguage} from './user-language';
-import {UserLanguageFactory} from './user-language';
-import {UserSkill} from './user-skill';
-import {UserSkillFactory} from './user-skill';
+import {UserDocument} from '../user-document/user-document';
+import {UserDocumentFactory} from '../user-document/user-document';
+import {UserImage} from '../user-image/user-image';
+import {UserImageFactory} from '../user-image/user-image';
+import {UserInterest} from '../user-interest/user-interest';
+import {UserInterestFactory} from '../user-interest/user-interest';
+import {UserLanguage} from '../user-language/user-language';
+import {UserLanguageFactory} from '../user-language/user-language';
+import {UserSkill} from '../user-skill/user-skill';
+import {UserSkillFactory} from '../user-skill/user-skill';
 
 // API attribute interfaces
 interface UserApiAttributes {

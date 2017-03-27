@@ -9,8 +9,8 @@ import {OnInit} from '@angular/core';
 import {some} from 'lodash';
 import {SystemLanguageListener} from '../../../resolvers/system-languages/system-languages.resolver';
 import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
-import {UserLanguage} from '../../../models/api-models/user/user-language';
-import {UserLanguageFactory} from '../../../models/api-models/user/user-language';
+import {UserLanguage} from '../../../models/api-models/user-language/user-language';
+import {UserLanguageFactory} from '../../../models/api-models/user-language/user-language';
 
 @Component({
   selector: 'languages-input',

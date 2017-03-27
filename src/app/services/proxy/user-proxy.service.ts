@@ -11,11 +11,11 @@ import {map} from 'lodash';
 import {Status} from '../../models/api-models/status/status';
 import {StatusFactory} from '../../models/api-models/status/status';
 import {User} from '../../models/api-models/user/user';
-import {UserDocument} from '../../models/api-models/user/user-document';
-import {UserDocumentFactory} from '../../models/api-models/user/user-document';
+import {UserDocument} from '../../models/api-models/user-document/user-document';
+import {UserDocumentFactory} from '../../models/api-models/user-document/user-document';
 import {UserFactory} from '../../models/api-models/user/user';
-import {UserImage} from '../../models/api-models/user/user-image';
-import {UserImageFactory} from '../../models/api-models/user/user-image';
+import {UserImage} from '../../models/api-models/user-image/user-image';
+import {UserImageFactory} from '../../models/api-models/user-image/user-image';
 
 @Injectable()
 export class UserProxy {

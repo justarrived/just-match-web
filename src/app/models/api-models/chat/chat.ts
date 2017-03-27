@@ -3,8 +3,8 @@ import {Message} from '../message/message';
 import {MessageFactory} from '../message/message';
 import {User} from '../user/user';
 import {UserFactory} from '../user/user';
-import {UserImage} from '../user/user-image';
-import {UserImageFactory} from '../user/user-image';
+import {UserImage} from '../user-image/user-image';
+import {UserImageFactory} from '../user-image/user-image';
 
 // API attribute interfaces
 interface ChatApiAttributes {
