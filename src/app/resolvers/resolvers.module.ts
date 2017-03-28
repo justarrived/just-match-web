@@ -8,4 +8,4 @@ import {UserResolver} from './user/user.resolver';
     UserResolver,
   ]
 })
-export class ResolversModule { }
+export class ResolversModule {}

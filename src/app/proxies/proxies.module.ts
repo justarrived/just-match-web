@@ -64,4 +64,4 @@ import {UserSkillProxy} from './user-skill/user-skill.proxy';
     UserSkillProxy,
   ]
 })
-export class ProxiesModule { }
+export class ProxiesModule {}

@@ -10,7 +10,7 @@ import {ApplicationsComponent} from './views/my-jobs/applications/applications.c
 import {ApplicationsStatusSectionComponent} from './components/sections/applications-status-section/applications-status-section.component';
 import {ApplicationStatusCardComponent} from './components/cards/application-status-card/application-status-card.component';
 import {AppNavbarComponent} from './components/navbars/app-navbar/app-navbar.component';
-import {AppRoutingModule} from './app.routing.module';
+import {RoutesModule} from './routes/routes.module';
 import {AppTranslateModule} from './app.translate.module';
 import {AtUndInputComponent} from './components/inputs/at-und-input/at-und-input.component';
 import {AutosizeDirective} from './directives/textarea-autosize/textarea-autosize.directive';
@@ -151,7 +151,7 @@ export class RavenErrorHandler implements ErrorHandler {
 
 @NgModule({
   imports: [
-    AppRoutingModule,
+    RoutesModule,
     AppTranslateModule,
     BrowserModule,
     FormsModule,
@@ -159,7 +159,6 @@ export class RavenErrorHandler implements ErrorHandler {
     NgSemanticModule,
     ProxiesModule,
     ReactiveFormsModule,
-    ResolversModule,
     AgmCoreModule.forRoot({
       apiKey: environment.googleMapsKey
     })
