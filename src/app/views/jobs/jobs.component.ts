@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {Job} from '../../models/api-models/job/job';
 import {MapLocation} from '../../models/client-models/map-location/map-location';
-import {Geolocation} from '../../services/geolocation.service';
+import {GeolocationService} from '../../services/geolocation.service';
 import {JobProxy} from '../../proxies/job/job.proxy';
 import {Location} from '@angular/common';
 import {ActivatedRoute} from '@angular/router';
@@ -30,7 +30,7 @@ export class JobsComponent extends SystemLanguageListener implements OnInit {
   public mapErrorShow: boolean = false;
 
   constructor(
-    private geolocationService: Geolocation,
+    private geolocationService: GeolocationService,
     private jobProxy: JobProxy,
     private location: Location,
     private route: ActivatedRoute,

@@ -1,4 +1,4 @@
-import {DataStore} from '../../services/data-store.service';
+import {DataStoreService} from '../../services/data-store.service';
 import {EventEmitter} from '@angular/core';
 import {Injectable} from '@angular/core';
 import {Language} from '../../models/api-models/language/language';
@@ -16,7 +16,7 @@ export class SystemLanguagesResolver implements Resolve<Language[]> {
   private systemLanguages: Language[];
 
   public constructor(
-    private dataStore: DataStore,
+    private dataStoreService: DataStoreService,
     private languageProxy: LanguageProxy,
     private translateService: TranslateService
   ) {
@@ -42,9 +42,9 @@ export class SystemLanguagesResolver implements Resolve<Language[]> {
 
     this.systemLanguages = languages;
 
-    let systemLanguageCode = this.dataStore.get(this.storageSystemLanguageCodeKey) || 'sv';
+    let systemLanguageCode = this.dataStoreService.get(this.storageSystemLanguageCodeKey) || 'sv';
     this.systemLanguage = this.systemLanguages.find(language => language.languageCode === systemLanguageCode);
-    this.dataStore.set(this.storageSystemLanguageCodeKey, systemLanguageCode);
+    this.dataStoreService.set(this.storageSystemLanguageCodeKey, systemLanguageCode);
     this.translateService.use(systemLanguageCode);
   }
 
@@ -58,7 +58,7 @@ export class SystemLanguagesResolver implements Resolve<Language[]> {
     }
 
     this.systemLanguage = language;
-    this.dataStore.set(this.storageSystemLanguageCodeKey, language.languageCode);
+    this.dataStoreService.set(this.storageSystemLanguageCodeKey, language.languageCode);
     this.translateService.use(language.languageCode);
     this.systemLanguageChange.emit(this.systemLanguage);
   }

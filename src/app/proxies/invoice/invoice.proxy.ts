@@ -1,4 +1,4 @@
-import {ApiCall} from '../../services/api-call.service';
+import {ApiCallService} from '../../services/api-call.service';
 import {Invoice} from '../../models/api-models/invoice/invoice';
 import {InvoiceFactory} from '../../models/api-models/invoice/invoice';
 import {Injectable} from '@angular/core';
@@ -7,13 +7,13 @@ import {Injectable} from '@angular/core';
 export class InvoiceProxy {
 
   constructor(
-    private apiCall: ApiCall
+    private apiCallService: ApiCallService
   ) {
   }
 
   // CREATE
   public createApplicationInvoice(jobId: string, applicationId: string): Promise<Invoice> {
-    return this.apiCall.post('jobs/' + jobId + '/users/' + applicationId + '/invoices')
+    return this.apiCallService.post('jobs/' + jobId + '/users/' + applicationId + '/invoices')
     .then(response => InvoiceFactory.createInvoice(response.data));
   }
 }

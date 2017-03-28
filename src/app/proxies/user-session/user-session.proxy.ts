@@ -1,4 +1,4 @@
-import {ApiCall} from '../../services/api-call.service';
+import {ApiCallService} from '../../services/api-call.service';
 import {Injectable} from '@angular/core';
 
 // CREATE
@@ -16,22 +16,22 @@ interface CreateUserSessionMagicLinkAttributes {
 export class UserSessionProxy {
 
   constructor(
-    private apiCall: ApiCall
+    private apiCallService: ApiCallService
   ) {
   }
 
   // CREATE
   public createUserSession(sessionAttributes: CreateUserSessionAttributes): Promise<any> {
-    return this.apiCall.post('users/sessions', sessionAttributes)
+    return this.apiCallService.post('users/sessions', sessionAttributes)
     .then(response => response.data);
   }
 
   public createUserSessionMagicLink(sessionAttributes: CreateUserSessionMagicLinkAttributes): Promise<any> {
-    return this.apiCall.post('users/sessions', sessionAttributes);
+    return this.apiCallService.post('users/sessions', sessionAttributes);
   }
 
   // REMOVE
   public removeUserSession(authToken: string): Promise<any> {
-    return this.apiCall.delete('users/sessions/' + authToken);
+    return this.apiCallService.delete('users/sessions/' + authToken);
   }
 }

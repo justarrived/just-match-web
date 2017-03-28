@@ -1,4 +1,4 @@
-import {DataStore} from '../../services/data-store.service';
+import {DataStoreService} from '../../services/data-store.service';
 import {EventEmitter} from '@angular/core';
 import {Injectable} from '@angular/core';
 import {JARoutes} from '../../routes/ja-routes';
@@ -22,7 +22,7 @@ export class UserResolver implements Resolve<User> {
   private userChange: EventEmitter<User> = new EventEmitter<User>();
 
   public constructor(
-    private dataStore: DataStore,
+    private dataStoreService: DataStoreService,
     private navigationService: NavigationService,
     private userSessionProxy: UserSessionProxy,
     private userProxy: UserProxy,
@@ -30,7 +30,7 @@ export class UserResolver implements Resolve<User> {
   }
 
   public resolve(): Promise<User> {
-    const session = this.dataStore.get(this.storageSessionKey);
+    const session = this.dataStoreService.get(this.storageSessionKey);
 
     if (this.validateSession(session)) {
 
@@ -47,7 +47,7 @@ export class UserResolver implements Resolve<User> {
       });
     }
 
-    this.dataStore.remove(this.storageSessionKey);
+    this.dataStoreService.remove(this.storageSessionKey);
     this.init(null);
     return Promise.resolve(null);
   }
@@ -57,7 +57,7 @@ export class UserResolver implements Resolve<User> {
   }
 
   public reloadUser(): Promise<User> {
-    const session = this.dataStore.get(this.storageSessionKey);
+    const session = this.dataStoreService.get(this.storageSessionKey);
 
     if (this.validateSession(session)) {
       if (this.user) {
@@ -84,7 +84,7 @@ export class UserResolver implements Resolve<User> {
 
   public logout(): void {
     this.user = null;
-    this.dataStore.remove(this.storageSessionKey);
+    this.dataStoreService.remove(this.storageSessionKey);
     this.userChange.emit(this.user);
   }
 
@@ -94,7 +94,7 @@ export class UserResolver implements Resolve<User> {
       'password': password,
     })
     .then(session => {
-      this.dataStore.set(this.storageSessionKey, session);
+      this.dataStoreService.set(this.storageSessionKey, session);
       return this.reloadUser();
     });
   }

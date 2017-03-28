@@ -1,4 +1,4 @@
-import {ApiCall} from '../../services/api-call.service';
+import {ApiCallService} from '../../services/api-call.service';
 import {User} from '../../models/api-models/user/user';
 import {UserFactory} from '../../models/api-models/user/user';
 import {Injectable} from '@angular/core';
@@ -78,23 +78,23 @@ interface UpdateUserAttributes {
 export class UserProxy {
 
   constructor(
-    private apiCall: ApiCall
+    private apiCallService: ApiCallService
   ) {
   }
 
   // GET
   public getUser(userId: string, searchParameters?: any): Promise<User> {
-    return this.apiCall.get('users/' + userId, searchParameters)
+    return this.apiCallService.get('users/' + userId, searchParameters)
     .then(response => UserFactory.createUser(response.data));
   }
 
   public getUsers(searchParameters?: any): Promise<User[]> {
-    return this.apiCall.get('users', searchParameters)
+    return this.apiCallService.get('users', searchParameters)
     .then(response => response.data.map(user => UserFactory.createUser(user)));
   }
 
   public getUsersWithMeta(searchParameters?: any): Promise<{users: User[], meta: {total: number}}> {
-    return this.apiCall.get('users', searchParameters)
+    return this.apiCallService.get('users', searchParameters)
     .then(response => {
       return {
         users: response.data.map(user => UserFactory.createUser(user)),
@@ -104,12 +104,12 @@ export class UserProxy {
   }
 
   public getUsersMatchingJob(jobId: string, searchParameters?: any): Promise<User[]> {
-    return this.apiCall.get('jobs/' + jobId + '/matching_users', searchParameters)
+    return this.apiCallService.get('jobs/' + jobId + '/matching_users', searchParameters)
     .then(response => response.data.map(user => UserFactory.createUser(user)));
   }
 
   public getUsersMatchingJobWithMeta(jobId: string, searchParameters?: any): Promise<{users: User[], meta: {total: number}}> {
-    return this.apiCall.get('jobs/' + jobId + '/matching_users', searchParameters)
+    return this.apiCallService.get('jobs/' + jobId + '/matching_users', searchParameters)
     .then(response => {
       return {
         users: response.data.map(user => UserFactory.createUser(user)),
@@ -120,18 +120,18 @@ export class UserProxy {
 
   // CREATE
   public createUser(userAttributes: CreateUserAttributes): Promise<User> {
-    return this.apiCall.post('users', userAttributes)
+    return this.apiCallService.post('users', userAttributes)
     .then(response => UserFactory.createUser(response.data));
   }
 
   // UPDATE
   public updateUser(userId: string, userAttributes: UpdateUserAttributes): Promise<User> {
-    return this.apiCall.patch('users/' + userId, userAttributes)
+    return this.apiCallService.patch('users/' + userId, userAttributes)
     .then(response => UserFactory.createUser(response.data));
   }
 
   // REMOVE
   public removeUser(userId: string): Promise<any> {
-    return this.apiCall.delete('users/' + userId);
+    return this.apiCallService.delete('users/' + userId);
   }
 }

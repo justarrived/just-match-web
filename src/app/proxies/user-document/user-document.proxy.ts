@@ -1,4 +1,4 @@
-import {ApiCall} from '../../services/api-call.service';
+import {ApiCallService} from '../../services/api-call.service';
 import {UserDocument} from '../../models/api-models/user-document/user-document';
 import {UserDocumentFactory} from '../../models/api-models/user-document/user-document';
 import {Injectable} from '@angular/core';
@@ -13,18 +13,18 @@ interface CreateUserDocumentAttributes {
 export class UserDocumentProxy {
 
   constructor(
-    private apiCall: ApiCall
+    private apiCallService: ApiCallService
   ) {
   }
 
   // GET
   public getUserDocuments(userId: string, searchParameters?: any): Promise<UserDocument[]> {
-    return this.apiCall.get('users/' + userId + '/documents', searchParameters)
+    return this.apiCallService.get('users/' + userId + '/documents', searchParameters)
     .then(response => response.data.map(userDocument => UserDocumentFactory.createUserDocument(userDocument)));
   }
 
   public getUserDocumentsWithMeta(userId: string, searchParameters?: any): Promise<{userDocuments: UserDocument[], meta: {total: number}}> {
-    return this.apiCall.get('users/' + userId + '/documents', searchParameters)
+    return this.apiCallService.get('users/' + userId + '/documents', searchParameters)
     .then(response => {
       return {
         userDocuments: response.data.map(userDocument => UserDocumentFactory.createUserDocument(userDocument)),
@@ -35,7 +35,7 @@ export class UserDocumentProxy {
 
   // CREATE
   public createUserDocument(userId: string, userDocumentAttributes: CreateUserDocumentAttributes): Promise<UserDocument> {
-    return this.apiCall.post('users/' + userId + '/documents', userDocumentAttributes)
+    return this.apiCallService.post('users/' + userId + '/documents', userDocumentAttributes)
     .then(response => UserDocumentFactory.createUserDocument(response.data));
   }
 }

@@ -1,4 +1,4 @@
-import {ApiCall} from '../../services/api-call.service';
+import {ApiCallService} from '../../services/api-call.service';
 import {Job} from '../../models/api-models/job/job';
 import {JobFactory} from '../../models/api-models/job/job';
 import {Injectable} from '@angular/core';
@@ -37,23 +37,23 @@ interface UpdateJobAttributes {
 export class JobProxy {
 
   constructor(
-    private apiCall: ApiCall
+    private apiCallService: ApiCallService
   ) {
   }
 
   // GET
   public getJob(jobId: string, searchParameters?: any): Promise<Job> {
-    return this.apiCall.get('jobs/' + jobId, searchParameters)
+    return this.apiCallService.get('jobs/' + jobId, searchParameters)
     .then(response => JobFactory.createJob(response.data));
   }
 
   public getJobs(searchParameters?: any): Promise<Job[]> {
-    return this.apiCall.get('jobs', searchParameters)
+    return this.apiCallService.get('jobs', searchParameters)
     .then(response => response.data.map(job => JobFactory.createJob(job)));
   }
 
   public getJobsWithMeta(searchParameters?: any): Promise<{jobs: Job[], meta: {total: number}}> {
-    return this.apiCall.get('jobs', searchParameters)
+    return this.apiCallService.get('jobs', searchParameters)
     .then(response => {
       return {
         jobs: response.data.map(job => JobFactory.createJob(job)),
@@ -63,12 +63,12 @@ export class JobProxy {
   }
 
   public getJobsMatchingUser(userId: string, searchParameters?: any): Promise<Job[]> {
-    return this.apiCall.get('users/' + userId + '/matching-jobs', searchParameters)
+    return this.apiCallService.get('users/' + userId + '/matching-jobs', searchParameters)
     .then(response => response.data.map(job => JobFactory.createJob(job)));
   }
 
   public getJobsMatchingUserWithMeta(userId: string, searchParameters?: any): Promise<{jobs: Job[], meta: {total: number}}> {
-    return this.apiCall.get('users/' + userId + '/matching-jobs', searchParameters)
+    return this.apiCallService.get('users/' + userId + '/matching-jobs', searchParameters)
     .then(response => {
       return {
         jobs: response.data.map(job => JobFactory.createJob(job)),
@@ -78,12 +78,12 @@ export class JobProxy {
   }
 
   public getJobsOwnedByUser(userId: string, searchParameters?: any): Promise<Job[]> {
-    return this.apiCall.get('users/' + userId + '/owned-jobs', searchParameters)
+    return this.apiCallService.get('users/' + userId + '/owned-jobs', searchParameters)
     .then(response => response.data.map(job => JobFactory.createJob(job)));
   }
 
   public getJobsOwnedByUserWithMeta(userId: string, searchParameters?: any): Promise<{jobs: Job[], meta: {total: number}}> {
-    return this.apiCall.get('users/' + userId + '/owned-jobs', searchParameters)
+    return this.apiCallService.get('users/' + userId + '/owned-jobs', searchParameters)
     .then(response => {
       return {
         jobs: response.data.map(job => JobFactory.createJob(job)),
@@ -94,13 +94,13 @@ export class JobProxy {
 
   // CREATE
   public createJob(jobAttributes: CreateJobAttributes): Promise<Job> {
-    return this.apiCall.post('jobs', jobAttributes)
+    return this.apiCallService.post('jobs', jobAttributes)
     .then(response => JobFactory.createJob(response.data));
   }
 
   // UPDATE
   public updateJob(jobId: string, jobAttributes: UpdateJobAttributes): Promise<Job> {
-    return this.apiCall.patch('jobs/' + jobId, jobAttributes)
+    return this.apiCallService.patch('jobs/' + jobId, jobAttributes)
     .then(response => JobFactory.createJob(response.data));
   }
 }

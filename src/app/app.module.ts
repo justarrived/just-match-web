@@ -1,8 +1,8 @@
 import {AccountNumberInputComponent} from './components/inputs/account-number-input/account-number-input.component';
-import {ActsAsUser} from './services/acts-as-user.service';
+import {ActsAsUserService} from './services/acts-as-user.service';
 import {AddressInputComponent} from './components/inputs/address-input/address-input.component';
 import {AgmCoreModule} from 'angular2-google-maps/core';
-import {ApiCall} from './services/api-call.service';
+import {ApiCallService} from './services/api-call.service';
 import {ApiErrorsComponent} from './components/form-errors/api-errors/api-errors.component';
 import {APP_BASE_HREF} from '@angular/common';
 import {AppComponent} from './app.component';
@@ -33,7 +33,7 @@ import {CookieBarComponent} from './components/bars/cookie-bar/cookie-bar.compon
 import {CookiesAboutPageComponent} from './components/pages/cookies-about-page/cookies-about-page.component';
 import {CountryOfOriginInputComponent} from './components/inputs/country-of-origin-input/country-of-origin-input.component';
 import {CustomRadioButtonInputComponent} from './components/inputs/custom-radio-button-input/custom-radio-button-input.component';
-import {DataStore} from './services/data-store.service';
+import {DataStoreService} from './services/data-store.service';
 import {DefaultFooterComponent} from './components/footers/default-footer/default-footer.component';
 import {DefaultLayoutComponent} from './components/layouts/default-layout/default-layout.component';
 import {DefaultNavigationComponent} from './components/navigations/default-navigation/default-navigation.component';
@@ -54,7 +54,7 @@ import {ForgotPasswordPageComponent} from './components/pages/forgot-password-pa
 import {FormsModule} from '@angular/forms';
 import {FormSubmitButtonComponent} from './components/buttons/form-submit-button/form-submit-button.component';
 import {GenderInputComponent} from './components/inputs/gender-input/gender-input.component';
-import {Geolocation} from './services/geolocation.service';
+import {GeolocationService} from './services/geolocation.service';
 import {GotCoordinationNumberInputComponent} from './components/inputs/got-coordination-number-input/got-coordination-number-input.component';
 import {HomePageComponent} from './components/pages/home-page/home-page.component';
 import {HowItWorksAndMaximizeChancesSectionComponent} from './components/sections/how-it-works-and-maximize-chances-section/how-it-works-and-maximize-chances-section.component';
@@ -151,7 +151,9 @@ export class RavenErrorHandler implements ErrorHandler {
 
 @NgModule({
   imports: [
-    RoutesModule,
+    AgmCoreModule.forRoot({
+      apiKey: environment.googleMapsKey
+    }),
     AppTranslateModule,
     BrowserModule,
     FormsModule,
@@ -159,9 +161,7 @@ export class RavenErrorHandler implements ErrorHandler {
     NgSemanticModule,
     ProxiesModule,
     ReactiveFormsModule,
-    AgmCoreModule.forRoot({
-      apiKey: environment.googleMapsKey
-    })
+    RoutesModule,
   ],
   declarations: [
     AccountNumberInputComponent,
@@ -282,10 +282,10 @@ export class RavenErrorHandler implements ErrorHandler {
     ZipInputComponent,
   ],
   providers: [
-    ActsAsUser,
-    ApiCall,
-    DataStore,
-    Geolocation,
+    ActsAsUserService,
+    ApiCallService,
+    DataStoreService,
+    GeolocationService,
     NavigationService,
     { provide: ErrorHandler, useClass: RavenErrorHandler },
     { provide: APP_BASE_HREF, useValue: '/' }

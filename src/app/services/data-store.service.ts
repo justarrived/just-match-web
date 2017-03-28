@@ -8,7 +8,7 @@ import {MemoryStorage} from '../utils/storage/memory-storage';
 import {SessionStorage} from '../utils/storage/session-storage';
 
 @Injectable()
-export class DataStore {
+export class DataStoreService {
   private store: StorageInterface;
 
   constructor(

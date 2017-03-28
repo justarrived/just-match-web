@@ -1,4 +1,4 @@
-import {ApiCall} from '../../services/api-call.service';
+import {ApiCallService} from '../../services/api-call.service';
 import {Injectable} from '@angular/core';
 
 // CREATE
@@ -17,17 +17,17 @@ interface UpdateUserPasswordAttributes {
 export class UserPasswordProxy {
 
   constructor(
-    private apiCall: ApiCall
+    private apiCallService: ApiCallService
   ) {
   }
 
   // CREATE
   public sendUserPasswordResetLink(sendUserPasswordResetLinkAttributes: SendUserPasswordResetLinkAttributes): Promise<any> {
-    return this.apiCall.post('users/reset-password ', sendUserPasswordResetLinkAttributes);
+    return this.apiCallService.post('users/reset-password ', sendUserPasswordResetLinkAttributes);
   }
 
   // UPDATE
   public updateUserPassword(updateUserPasswordAttributes: UpdateUserPasswordAttributes): Promise<any> {
-    return this.apiCall.post('users/change-password ', updateUserPasswordAttributes);
+    return this.apiCallService.post('users/change-password ', updateUserPasswordAttributes);
   }
 }

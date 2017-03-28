@@ -1,4 +1,4 @@
-import {ApiCall} from '../../services/api-call.service';
+import {ApiCallService} from '../../services/api-call.service';
 import {Injectable} from '@angular/core';
 
 // CREATE
@@ -12,12 +12,12 @@ interface CreateContactNotificationAttributes {
 export class ContactProxy {
 
   constructor(
-    private apiCall: ApiCall
+    private apiCallService: ApiCallService
   ) {
   }
 
   // CREATE
   public createContactNotification(contactNotificationAttributes: CreateContactNotificationAttributes): Promise<any> {
-    return this.apiCall.post('contacts', contactNotificationAttributes);
+    return this.apiCallService.post('contacts', contactNotificationAttributes);
   }
 }

@@ -1,4 +1,4 @@
-import {ApiCall} from '../../services/api-call.service';
+import {ApiCallService} from '../../services/api-call.service';
 import {Chat} from '../../models/api-models/chat/chat';
 import {ChatFactory} from '../../models/api-models/chat/chat';
 import {Injectable} from '@angular/core';
@@ -12,23 +12,23 @@ interface CreateChatAttributes {
 export class ChatProxy {
 
   constructor(
-    private apiCall: ApiCall
+    private apiCallService: ApiCallService
   ) {
   }
 
   // GET
   public getChat(chatId: string, searchParameters?: any): Promise<Chat> {
-    return this.apiCall.get('chats/' + chatId, searchParameters)
+    return this.apiCallService.get('chats/' + chatId, searchParameters)
     .then(response => ChatFactory.createChat(response.data));
   }
 
   public getChats(searchParameters?: any): Promise<Chat[]> {
-    return this.apiCall.get('chats', searchParameters)
+    return this.apiCallService.get('chats', searchParameters)
     .then(response => response.data.map(chat => ChatFactory.createChat(chat)));
   }
 
   public getChatsWithMeta(searchParameters?: any): Promise<{chats: Chat[], meta: {total: number}}> {
-    return this.apiCall.get('chats', searchParameters)
+    return this.apiCallService.get('chats', searchParameters)
     .then(response => {
       return {
         chats: response.data.map(chat => ChatFactory.createChat(chat)),
@@ -39,7 +39,7 @@ export class ChatProxy {
 
   // CREATE
   public createChat(chatAttributes: CreateChatAttributes): Promise<Chat> {
-    return this.apiCall.post('chats', chatAttributes)
+    return this.apiCallService.post('chats', chatAttributes)
     .then(response => ChatFactory.createChat(response.data));
   }
 }

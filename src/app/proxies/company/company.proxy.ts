@@ -1,4 +1,4 @@
-import {ApiCall} from '../../services/api-call.service';
+import {ApiCallService} from '../../services/api-call.service';
 import {Company} from '../../models/api-models/company/company';
 import {CompanyFactory} from '../../models/api-models/company/company';
 import {Injectable} from '@angular/core';
@@ -20,23 +20,23 @@ interface CreateCompanyAttributes {
 export class CompanyProxy {
 
   constructor(
-    private apiCall: ApiCall
+    private apiCallService: ApiCallService
   ) {
   }
 
   // GET
   public getCompany(companyId: string, searchParameters?: any): Promise<Company> {
-    return this.apiCall.get('companies/' + companyId, searchParameters)
+    return this.apiCallService.get('companies/' + companyId, searchParameters)
     .then(response => CompanyFactory.createCompany(response.data));
   }
 
   public getCompanies(searchParameters?: any): Promise<Company[]> {
-    return this.apiCall.get('companies', searchParameters)
+    return this.apiCallService.get('companies', searchParameters)
     .then(response => response.data.map(company => CompanyFactory.createCompany(company)));
   }
 
   public getCompaniesWithMeta(searchParameters?: any): Promise<{companies: Company[], meta: {total: number}}> {
-    return this.apiCall.get('companies', searchParameters)
+    return this.apiCallService.get('companies', searchParameters)
     .then(response => {
       return {
         companies: response.data.map(company => CompanyFactory.createCompany(company)),
@@ -47,7 +47,7 @@ export class CompanyProxy {
 
   // CREATE
   public createCompany(companyAttributes: CreateCompanyAttributes): Promise<Company> {
-    return this.apiCall.post('companies', companyAttributes)
+    return this.apiCallService.post('companies', companyAttributes)
     .then(response => CompanyFactory.createCompany(response.data));
   }
 }

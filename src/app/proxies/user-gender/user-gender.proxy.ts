@@ -1,4 +1,4 @@
-import {ApiCall} from '../../services/api-call.service';
+import {ApiCallService} from '../../services/api-call.service';
 import {UserGender} from '../../models/api-models/user-gender/user-gender';
 import {UserGenderFactory} from '../../models/api-models/user-gender/user-gender';
 import {Injectable} from '@angular/core';
@@ -7,18 +7,18 @@ import {Injectable} from '@angular/core';
 export class UserGenderProxy {
 
   constructor(
-    private apiCall: ApiCall
+    private apiCallService: ApiCallService
   ) {
   }
 
   // GET
   public getUserGenders(searchParameters?: any): Promise<UserGender[]> {
-    return this.apiCall.get('users/genders', searchParameters)
+    return this.apiCallService.get('users/genders', searchParameters)
     .then(response => response.data.map(userGender => UserGenderFactory.createUserGender(userGender)));
   }
 
   public getUserGendersWithMeta(searchParameters?: any): Promise<{userGenders: UserGender[], meta: {total: number}}> {
-    return this.apiCall.get('users/genders', searchParameters)
+    return this.apiCallService.get('users/genders', searchParameters)
     .then(response => {
       return {
         userGenders: response.data.map(userGender => UserGenderFactory.createUserGender(userGender)),

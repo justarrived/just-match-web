@@ -1,4 +1,4 @@
-import {ApiCall} from '../../services/api-call.service';
+import {ApiCallService} from '../../services/api-call.service';
 import {UserImage} from '../../models/api-models/user-image/user-image';
 import {UserImageFactory} from '../../models/api-models/user-image/user-image';
 import {Injectable} from '@angular/core';
@@ -13,19 +13,19 @@ interface CreateUserImageAttributes {
 export class UserImageProxy {
 
   constructor(
-    private apiCall: ApiCall
+    private apiCallService: ApiCallService
   ) {
   }
 
   // GET
   public getUserImage(userId: string, userImageId: string, searchParameters?: any): Promise<UserImage> {
-    return this.apiCall.get('users/' + userId + '/images/' + userImageId, searchParameters)
+    return this.apiCallService.get('users/' + userId + '/images/' + userImageId, searchParameters)
     .then(response => UserImageFactory.createUserImage(response.data));
   }
 
   // CREATE
   public createUserImage(userId: string, userImageAttributes: CreateUserImageAttributes): Promise<UserImage> {
-    return this.apiCall.post('users/' + userId + '/images', userImageAttributes)
+    return this.apiCallService.post('users/' + userId + '/images', userImageAttributes)
     .then(response => UserImageFactory.createUserImage(response.data));
   }
 

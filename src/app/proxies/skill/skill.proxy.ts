@@ -1,4 +1,4 @@
-import {ApiCall} from '../../services/api-call.service';
+import {ApiCallService} from '../../services/api-call.service';
 import {Skill} from '../../models/api-models/skill/skill';
 import {SkillFactory} from '../../models/api-models/skill/skill';
 import {Injectable} from '@angular/core';
@@ -19,23 +19,23 @@ interface UpdateSkillAttributes {
 export class SkillProxy {
 
   constructor(
-    private apiCall: ApiCall
+    private apiCallService: ApiCallService
   ) {
   }
 
   // GET
   public getSkill(skillId: string, searchParameters?: any): Promise<Skill> {
-    return this.apiCall.get('skills/' + skillId, searchParameters)
+    return this.apiCallService.get('skills/' + skillId, searchParameters)
     .then(response => SkillFactory.createSkill(response.data));
   }
 
   public getSkills(searchParameters?: any): Promise<Skill[]> {
-    return this.apiCall.get('skills', searchParameters)
+    return this.apiCallService.get('skills', searchParameters)
     .then(response => response.data.map(skill => SkillFactory.createSkill(skill)));
   }
 
   public getSkillsWithMeta(searchParameters?: any): Promise<{skills: Skill[], meta: {total: number}}> {
-    return this.apiCall.get('skills', searchParameters)
+    return this.apiCallService.get('skills', searchParameters)
     .then(response => {
       return {
         skills: response.data.map(skill => SkillFactory.createSkill(skill)),
@@ -46,18 +46,18 @@ export class SkillProxy {
 
   // CREATE
   public createSkill(skillAttributes: CreateSkillAttributes): Promise<Skill> {
-    return this.apiCall.post('skills', skillAttributes)
+    return this.apiCallService.post('skills', skillAttributes)
     .then(response => SkillFactory.createSkill(response.data));
   }
 
   // UPDATE
   public updateSkill(skillId: string, skillAttributes: UpdateSkillAttributes): Promise<Skill> {
-    return this.apiCall.patch('skills/' + skillId, skillAttributes)
+    return this.apiCallService.patch('skills/' + skillId, skillAttributes)
     .then(response => SkillFactory.createSkill(response.data));
   }
 
   // REMOVE
   public removeSkill(skillId: string): Promise<any> {
-    return this.apiCall.delete('skills/' + skillId);
+    return this.apiCallService.delete('skills/' + skillId);
   }
 }

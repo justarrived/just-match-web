@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 
 @Injectable()
-export class Geolocation {
+export class GeolocationService {
 
 	/**
 	 * Obtains the geographic position, in terms of latitude and longitude coordinates, of the device.
