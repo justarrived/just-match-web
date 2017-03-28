@@ -36,6 +36,7 @@ export class UserImageFactory {
       oneTimeToken: jsonObject.one_time_token,
       oneTimeTokenExpiresAt: new Date(jsonObject.one_time_token_expires_at),
       smallImageUrl: jsonObject.image_url_small,
+      user: UserFactory.createUser(jsonObject.user),
     };
   }
 }

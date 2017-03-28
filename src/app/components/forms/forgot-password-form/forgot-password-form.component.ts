@@ -6,7 +6,7 @@ import {FormGroup} from '@angular/forms';
 import {JARoutes} from '../../../routes/ja-routes';
 import {NavigationService} from '../../../services/navigation.service';
 import {OnInit} from '@angular/core';
-import {UserProxy} from '../../../services/proxy/user-proxy.service';
+import {UserPasswordProxy} from '../../../proxies/user-password/user-password.proxy';
 import {Validators} from '@angular/forms';
 
 @Component({
@@ -26,7 +26,7 @@ export class ForgotPasswordFormComponent implements OnInit {
     private changeDetector: ChangeDetectorRef,
     private formBuilder: FormBuilder,
     private navigationService: NavigationService,
-    private userProxy: UserProxy
+    private userPasswordProxy: UserPasswordProxy
   ) {
   }
 
@@ -52,7 +52,9 @@ export class ForgotPasswordFormComponent implements OnInit {
     this.submitSuccess = false;
     this.loadingSubmit = true;
 
-    this.userProxy.resetPassword(value.email_or_phone)
+    this.userPasswordProxy.sendUserPasswordResetLink({
+      'email_or_phone': value.email_or_phone
+    })
     .then(result => {
       this.submitSuccess = true;
       this.loadingSubmit = false;

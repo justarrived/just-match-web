@@ -5,8 +5,8 @@ import {Input} from '@angular/core';
 import {OnInit} from '@angular/core';
 import {SystemLanguageListener} from '../../../resolvers/system-languages/system-languages.resolver';
 import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
-import {Gender} from '../../../models/api-models/gender/gender';
-import {GenderProxy} from '../../../proxies/gender/gender.proxy';
+import {UserGender} from '../../../models/api-models/user-gender/user-gender';
+import {UserGenderProxy} from '../../../proxies/user-gender/user-gender.proxy';
 
 @Component({
   selector: 'gender-input',
@@ -33,10 +33,10 @@ export class GenderInputComponent extends SystemLanguageListener implements OnIn
   @Input() apiErrors: ApiErrors;
   @Input() control: FormControl;
 
-  public genders: Promise<Gender[]>;
+  public genders: Promise<UserGender[]>;
 
   constructor(
-    private genderProxy: GenderProxy,
+    private genderProxy: UserGenderProxy,
     protected systemLanguagesResolver: SystemLanguagesResolver
   ) {
     super(systemLanguagesResolver);
@@ -47,6 +47,6 @@ export class GenderInputComponent extends SystemLanguageListener implements OnIn
   }
 
   protected loadData() {
-    this.genders = this.genderProxy.getGenders();
+    this.genders = this.genderProxy.getUserGenders();
   }
 }

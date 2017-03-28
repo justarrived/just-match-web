@@ -2,6 +2,7 @@
 interface LanguageApiAttributes {
   direction: string;
   id: string;
+  language: Language; // TODO missing relation in docs?
   languageCode: string;
   languageId: string;
   localName: string;
@@ -32,6 +33,7 @@ export class LanguageFactory {
     return {
       direction: jsonObject.direction,
       id: jsonObject.id,
+      language: LanguageFactory.createLanguage(jsonObject.language),
       languageCode: jsonObject.lang_code,
       languageId: jsonObject.language_id,
       localName: jsonObject.local_name,

@@ -19,9 +19,25 @@ export class RatingProxy {
   ) {
   }
 
+  // GET
+  public getUserRatings(userId: string, searchParameters?: any): Promise<Rating[]> {
+    return this.apiCall.get('users/' + userId + '/ratings', searchParameters)
+    .then(response => response.data.map(rating => RatingFactory.createRating(rating)));
+  }
+
+  public getUserRatingsWithMeta(userId: string, searchParameters?: any): Promise<{ratings: Rating[], meta: {total: number}}> {
+    return this.apiCall.get('users/' + userId + '/ratings', searchParameters)
+    .then(response => {
+      return {
+        ratings: response.data.map(rating => RatingFactory.createRating(rating)),
+        meta: response.meta
+      }
+    });
+  }
+
   // CREATE
-  public createJobRating(ratingAttributes: CreateJobRatingAttributes): Promise<Rating> {
-    return this.apiCall.post('ratings', ratingAttributes)
+  public createJobRating(jobId: string, ratingAttributes: CreateJobRatingAttributes): Promise<Rating> {
+    return this.apiCall.post('jobs/' + jobId + '/ratings', ratingAttributes)
     .then(response => RatingFactory.createRating(response.data));
   }
 }

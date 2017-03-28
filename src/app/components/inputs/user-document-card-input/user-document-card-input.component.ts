@@ -7,7 +7,7 @@ import {Output} from '@angular/core';
 import {Subscription} from 'rxjs/Subscription';
 import {User} from '../../../models/api-models/user/user';
 import {DocumentProxy} from '../../../proxies/document/document.proxy';
-import {UserProxy} from '../../../services/proxy/user-proxy.service';
+import {UserDocumentProxy} from '../../../proxies/user-document/user-document.proxy';
 import {UserResolver} from '../../../resolvers/user/user.resolver';
 
 @Component({
@@ -48,7 +48,7 @@ export class UserDocumentCardInputComponent implements OnInit, OnDestroy {
 
   public constructor(
     private documentProxy: DocumentProxy,
-    private userProxy: UserProxy,
+    private userDocumentProxy: UserDocumentProxy,
     private userResolver: UserResolver
   ) {
   }
@@ -80,8 +80,12 @@ export class UserDocumentCardInputComponent implements OnInit, OnDestroy {
       })
       .then(document => {
 
-        this.userProxy.saveUserDocument(this.user.id, document, this.documentType)
+        this.userDocumentProxy.createUserDocument(this.user.id, {
+          'category': this.documentType,
+          'document_one_time_token': document.oneTimeToken,
+        })
         .then(userDocument => {
+          userDocument.document = document;
           this.user[this.documentsField].push(userDocument);
           this.documentSaveSuccess = true;
           this.uploadingDocument = false;

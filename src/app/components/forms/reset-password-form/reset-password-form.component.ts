@@ -7,7 +7,7 @@ import {FormGroup} from '@angular/forms';
 import {JARoutes} from '../../../routes/ja-routes';
 import {NavigationService} from '../../../services/navigation.service';
 import {OnInit} from '@angular/core';
-import {UserProxy} from '../../../services/proxy/user-proxy.service';
+import {UserPasswordProxy} from '../../../proxies/user-password/user-password.proxy';
 import {Validators} from '@angular/forms';
 
 @Component({
@@ -27,7 +27,7 @@ export class ResetPasswordFormComponent implements OnInit {
     private formBuilder: FormBuilder,
     private navigationService: NavigationService,
     private route: ActivatedRoute,
-    private userProxy: UserProxy
+    private userPasswordProxy: UserPasswordProxy
   ) {
   }
 
@@ -60,7 +60,10 @@ export class ResetPasswordFormComponent implements OnInit {
     this.loadingSubmit = true;
     this.submitFail = false;
     this.submitSuccess = false;
-    this.userProxy.changePasswordWithToken(value.password, value.one_time_token)
+    this.userPasswordProxy.updateUserPassword({
+      'one_time_token': value.one_time_token,
+      'password': value.password,
+    })
     .then(result => {
       this.navigationService.navigate(JARoutes.confirmation, 'password-reset');
       this.loadingSubmit = false;

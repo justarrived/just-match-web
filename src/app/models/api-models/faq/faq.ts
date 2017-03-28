@@ -6,7 +6,7 @@ interface FaqApiAttributes {
   answer: string;
   category: string;
   id: string;
-  language: Language;
+  language: Language; // TODO missing relation in docs?
   languageId: string;
   question: string;
   translatedText: FaqTranslatedText;

@@ -4,6 +4,8 @@ import {Country} from '../country/country';
 import {Language} from '../language/language';
 import {LanguageFactory} from '../language/language';
 import {map} from 'lodash';
+import {Skill} from '../skill/skill';
+import {SkillFactory} from '../skill/skill';
 import {UserDocument} from '../user-document/user-document';
 import {UserDocumentFactory} from '../user-document/user-document';
 import {UserImage} from '../user-image/user-image';
@@ -44,17 +46,20 @@ interface UserApiAttributes {
   jobExperience: string;
   jobExperienceHtml: string;
   justArrivedStaffing: boolean;
-  languageId: string;
   language: Language;
+  languageId: string;
+  languages: Language[];
   lastName: string;
   latitude: number;
   longitude: number;
   name: string;
   phone: string;
   primaryRole: string;
+  skills: Skill[];
   ssn: string;
   street: string;
   supportChatActivated: boolean;
+  systemLanguageId: string;
   translatedText: UserTranslatedText;
   updatedAt: Date;
   userDocuments: UserDocument[];
@@ -138,6 +143,7 @@ export class UserFactory {
       justArrivedStaffing: jsonObject.just_arrived_staffing,
       language: LanguageFactory.createLanguage(jsonObject.language),
       languageId: jsonObject.language_id,
+      languages: map(jsonObject.languages, language => LanguageFactory.createLanguage(language)),
       lastName: jsonObject.last_name,
       latitude: jsonObject.latitude,
       lmaCardImage: UserFactory.getUserImageByCategory(userImages, 'lma_card'),
@@ -150,8 +156,10 @@ export class UserFactory {
       residencePermitBackImage: UserFactory.getUserImageByCategory(userImages, 'residence_permit_back'),
       residencePermitFrontImage: UserFactory.getUserImageByCategory(userImages, 'residence_permit_front'),
       skatteverketCertificateImage: UserFactory.getUserImageByCategory(userImages, 'skatteverket_certificate'),
+      skills: map(jsonObject.skills, skill => SkillFactory.createSkill(skill)),
       ssn: jsonObject.ssn,
       street: jsonObject.street,
+      systemLanguageId: jsonObject.system_language_id,
       supportChatActivated: jsonObject.support_chat_activated,
       translatedText: UserTranslatedTextFactory.createUserTranslatedText(jsonObject.translated_text),
       updatedAt: new Date(jsonObject.updated_at),

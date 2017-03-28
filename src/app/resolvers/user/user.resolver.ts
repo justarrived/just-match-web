@@ -5,7 +5,8 @@ import {JARoutes} from '../../routes/ja-routes';
 import {NavigationService} from '../../services/navigation.service';
 import {Resolve} from '@angular/router';
 import {User} from '../../models/api-models/user/user';
-import {UserProxy} from '../../services/proxy/user-proxy.service';
+import {UserProxy} from '../../proxies/user/user.proxy';
+import {UserSessionProxy} from '../../proxies/user-session/user-session.proxy';
 
 @Injectable()
 export class UserResolver implements Resolve<User> {
@@ -23,7 +24,8 @@ export class UserResolver implements Resolve<User> {
   public constructor(
     private dataStore: DataStore,
     private navigationService: NavigationService,
-    private userProxy: UserProxy
+    private userSessionProxy: UserSessionProxy,
+    private userProxy: UserProxy,
   ) {
   }
 
@@ -36,7 +38,9 @@ export class UserResolver implements Resolve<User> {
         return Promise.resolve(this.user);
       }
 
-      return this.userProxy.getUser(session.user_id, { include: this.defaultIncludeResourcesString })
+      return this.userProxy.getUser(session.user_id, {
+        'include': this.defaultIncludeResourcesString
+      })
       .then(user => {
         this.init(user);
         return user;
@@ -59,7 +63,9 @@ export class UserResolver implements Resolve<User> {
       if (this.user) {
         this.user.isBeingReloaded = true;
       }
-      return this.userProxy.getUser(session.user_id, { include: this.defaultIncludeResourcesString })
+      return this.userProxy.getUser(session.user_id, {
+        'include': this.defaultIncludeResourcesString
+      })
       .then(user => {
         this.user = user;
         this.userChange.emit(this.user);
@@ -82,10 +88,13 @@ export class UserResolver implements Resolve<User> {
     this.userChange.emit(this.user);
   }
 
-  public login(email: string, password: string): Promise<User> {
-    return this.userProxy.getUserSession(email, password)
-    .then(response => {
-      this.dataStore.set(this.storageSessionKey, response.data);
+  public login(emailOrPhone: string, password: string): Promise<User> {
+    return this.userSessionProxy.createUserSession({
+      'email_or_phone': emailOrPhone,
+      'password': password,
+    })
+    .then(session => {
+      this.dataStore.set(this.storageSessionKey, session);
       return this.reloadUser();
     });
   }

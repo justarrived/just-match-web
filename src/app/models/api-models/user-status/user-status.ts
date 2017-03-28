@@ -2,31 +2,31 @@ import {Language} from '../language/language';
 import {LanguageFactory} from '../language/language';
 
 // API attribute interfaces
-interface StatusApiAttributes {
+interface UserStatusApiAttributes {
   description: string;
   id: string;
-  language: Language;
+  language: Language; // TODO missing relation in docs?
   languageId: string;
   name: string;
-  translatedText: StatusTranslatedText;
+  translatedText: UserStatusTranslatedText;
 }
 
-interface StatusTranslatedTextApiAttributes {
+interface UserStatusTranslatedTextApiAttributes {
   description: string;
   languageId: string;
   name: string;
 }
 
 // Client interfaces
-export interface Status extends StatusApiAttributes {
+export interface UserStatus extends UserStatusApiAttributes {
 }
 
-export interface StatusTranslatedText extends StatusTranslatedTextApiAttributes {
+export interface UserStatusTranslatedText extends UserStatusTranslatedTextApiAttributes {
 }
 
 // Factories
-export class StatusFactory {
-  public static createStatus(jsonObject?: any): Status {
+export class UserStatusFactory {
+  public static createUserStatus(jsonObject?: any): UserStatus {
     if (!jsonObject) {
       return;
     }
@@ -37,13 +37,13 @@ export class StatusFactory {
       languageId: jsonObject.language_id,
       id: jsonObject.id,
       name: jsonObject.name,
-      translatedText: StatusTranslatedTextFactory.createStatusTranslatedText(jsonObject.translated_text),
+      translatedText: UserStatusTranslatedTextFactory.createUserStatusTranslatedText(jsonObject.translated_text),
     };
   }
 }
 
-class StatusTranslatedTextFactory {
-  public static createStatusTranslatedText(jsonObject?: any): StatusTranslatedText {
+class UserStatusTranslatedTextFactory {
+  public static createUserStatusTranslatedText(jsonObject?: any): UserStatusTranslatedText {
     if (!jsonObject) {
       return;
     }

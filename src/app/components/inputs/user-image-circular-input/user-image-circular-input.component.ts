@@ -6,7 +6,7 @@ import {OnInit} from '@angular/core';
 import {Output} from '@angular/core';
 import {Subscription} from 'rxjs/Subscription';
 import {User} from '../../../models/api-models/user/user';
-import {UserProxy} from '../../../services/proxy/user-proxy.service';
+import {UserImageProxy} from '../../../proxies/user-image/user-image.proxy';
 import {UserResolver} from '../../../resolvers/user/user.resolver';
 
 @Component({
@@ -36,7 +36,7 @@ export class UserImageCircularInputComponent implements OnInit, OnDestroy {
   private userSubscription: Subscription;
 
   public constructor(
-    private userProxy: UserProxy,
+    private userImageProxy: UserImageProxy,
     private userResolver: UserResolver
   ) {
   }
@@ -63,7 +63,10 @@ export class UserImageCircularInputComponent implements OnInit, OnDestroy {
 
     getDataUrl(file)
     .then(dataUrl => {
-      this.userProxy.saveImage(this.user.id, dataUrl, this.imageType)
+      this.userImageProxy.createUserImage(this.user.id, {
+        'category': this.imageType,
+        'image': dataUrl,
+      })
       .then(userImage => {
         this.user[this.imageField] = userImage;
         this.imageSaveSuccess = true;

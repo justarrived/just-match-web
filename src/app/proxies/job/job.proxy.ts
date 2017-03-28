@@ -62,12 +62,27 @@ export class JobProxy {
     });
   }
 
-  public getUserOwnedJobs(userId: string, searchParameters?: any): Promise<Job[]> {
+  public getJobsMatchingUser(userId: string, searchParameters?: any): Promise<Job[]> {
+    return this.apiCall.get('users/' + userId + '/matching-jobs', searchParameters)
+    .then(response => response.data.map(job => JobFactory.createJob(job)));
+  }
+
+  public getJobsMatchingUserWithMeta(userId: string, searchParameters?: any): Promise<{jobs: Job[], meta: {total: number}}> {
+    return this.apiCall.get('users/' + userId + '/matching-jobs', searchParameters)
+    .then(response => {
+      return {
+        jobs: response.data.map(job => JobFactory.createJob(job)),
+        meta: response.meta
+      }
+    });
+  }
+
+  public getJobsOwnedByUser(userId: string, searchParameters?: any): Promise<Job[]> {
     return this.apiCall.get('users/' + userId + '/owned-jobs', searchParameters)
     .then(response => response.data.map(job => JobFactory.createJob(job)));
   }
 
-  public getUserOwnedJobsWithMeta(userId: string, searchParameters?: any): Promise<{jobs: Job[], meta: {total: number}}> {
+  public getJobsOwnedByUserWithMeta(userId: string, searchParameters?: any): Promise<{jobs: Job[], meta: {total: number}}> {
     return this.apiCall.get('users/' + userId + '/owned-jobs', searchParameters)
     .then(response => {
       return {

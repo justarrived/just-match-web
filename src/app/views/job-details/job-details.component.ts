@@ -13,7 +13,6 @@ import {Subscription} from 'rxjs/Subscription';
 import {SystemLanguageListener} from '../../resolvers/system-languages/system-languages.resolver';
 import {SystemLanguagesResolver} from '../../resolvers/system-languages/system-languages.resolver';
 import {User} from '../../models/api-models/user/user';
-import {UserProxy} from '../../services/proxy/user-proxy.service';
 import {UserResolver} from '../../resolvers/user/user.resolver';
 
 @Component({
@@ -39,7 +38,6 @@ export class JobDetailsComponent extends SystemLanguageListener implements OnIni
     private jobProxy: JobProxy,
     private navigationService: NavigationService,
     private route: ActivatedRoute,
-    private userProxy: UserProxy,
     private userResolver: UserResolver,
     protected systemLanguagesResolver: SystemLanguagesResolver
   ) {

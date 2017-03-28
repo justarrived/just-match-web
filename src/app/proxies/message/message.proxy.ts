@@ -33,6 +33,21 @@ export class MessageProxy {
     });
   }
 
+  public getUserMessages(userId: string, searchParameters?: any): Promise<Message[]> {
+    return this.apiCall.get('users/' + userId + '/messages', searchParameters)
+    .then(response => MessageFactory.createMessage(response.data));
+  }
+
+  public getUserMessagesWithMeta(userId: string, searchParameters?: any): Promise<{messages: Message[], meta: {total: number}}> {
+    return this.apiCall.get('users/' + userId + '/messages', searchParameters)
+    .then(response => {
+      return {
+        messages: response.data.map(message => MessageFactory.createMessage(message)),
+        meta: response.meta
+      }
+    });
+  }
+
   // CREATE
   public createChatMessage(chatId: string, messageAttributes: CreateChatMessageAttributes): Promise<Message> {
     return this.apiCall.post('chats/' + chatId + '/messages', messageAttributes)

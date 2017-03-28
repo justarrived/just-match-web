@@ -13,7 +13,7 @@ import {Subscription} from 'rxjs/Subscription';
 import {User} from '../../../models/api-models/user/user';
 import {UserDocument} from '../../../models/api-models/user-document/user-document';
 import {UserImage} from '../../../models/api-models/user-image/user-image';
-import {UserProxy} from '../../../services/proxy/user-proxy.service';
+import {UserProxy} from '../../../proxies/user/user.proxy';
 import {UserResolver} from '../../../resolvers/user/user.resolver';
 import {Validators} from '@angular/forms';
 

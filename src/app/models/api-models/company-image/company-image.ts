@@ -1,6 +1,10 @@
+import {Company} from '../company/company';
+import {CompanyFactory} from '../company/company';
+
 // API attribute interfaces
 interface CompanyImageApiAttributes {
   categoryName: string;
+  company: Company;
   id: string;
   imageUrl: string;
   imageUrlLarge: string;
@@ -23,6 +27,7 @@ export class CompanyImageFactory {
 
     return {
       categoryName: jsonObject.category_name,
+      company: CompanyFactory.createCompany(jsonObject.company),
       id: jsonObject.id,
       imageUrl: jsonObject.image_url,
       imageUrlLarge: jsonObject.image_url_large,

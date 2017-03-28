@@ -10,7 +10,8 @@ import {OnDestroy} from '@angular/core';
 import {OnInit} from '@angular/core';
 import {Subscription} from 'rxjs/Subscription';
 import {User} from '../../../models/api-models/user/user';
-import {UserProxy} from '../../../services/proxy/user-proxy.service';
+import {UserPasswordProxy} from '../../../proxies/user-password/user-password.proxy';
+import {UserProxy} from '../../../proxies/user/user.proxy';
 import {UserResolver} from '../../../resolvers/user/user.resolver';
 import {Validators} from '@angular/forms';
 
@@ -34,6 +35,7 @@ export class UserDetailsFormComponent implements OnInit, OnDestroy {
     private changeDetector: ChangeDetectorRef,
     private formBuilder: FormBuilder,
     private navigationService: NavigationService,
+    private userPasswordProxy: UserPasswordProxy,
     private userProxy: UserProxy,
     private userResolver: UserResolver,
   ) {
@@ -62,7 +64,7 @@ export class UserDetailsFormComponent implements OnInit, OnDestroy {
       'first_name': [this.user.firstName, Validators.compose([Validators.required, Validators.minLength(2)])],
       'last_name': [this.user.lastName, Validators.compose([Validators.required, Validators.minLength(2)])],
       'country_of_origin': [this.user.countryOfOriginCode],
-      'language_id': [this.user.languageId, Validators.compose([Validators.required])],
+      'system_language_id': [this.user.systemLanguageId, Validators.compose([Validators.required])],
       'email': [this.user.email, Validators.compose([Validators.required])],
       'gender': [this.user.gender],
       'phone': [this.user.phone, Validators.compose([Validators.required])],
@@ -107,7 +109,10 @@ export class UserDetailsFormComponent implements OnInit, OnDestroy {
     .then(response => {
       if (this.passwordsSupplied()) {
 
-        this.userProxy.changePassword(this.passwordForm.value.password, this.passwordForm.value.old_password)
+        this.userPasswordProxy.updateUserPassword({
+          'old_password': this.passwordForm.value.old_password,
+          'password': this.passwordForm.value.password,
+        })
         .then(response => {
 
           // has to relogin to be authenticated now that password changed
