@@ -29,7 +29,7 @@ interface UserApiAttributes {
   company: Company;
   competenceText: string;
   competenceTextHtml: string;
-  countryOfOriginCode: string;
+  countryOfOrigin: string;
   createdAt: Date;
   currentStatus: string;
   description: string;
@@ -122,7 +122,7 @@ export class UserFactory {
       company: CompanyFactory.createCompany(jsonObject.company),
       competenceText: jsonObject.competence_text,
       competenceTextHtml: jsonObject.competence_text_html,
-      countryOfOriginCode: jsonObject.country_of_origin,
+      countryOfOrigin: jsonObject.country_of_origin,
       createdAt: new Date(jsonObject.created_at),
       currentStatus: jsonObject.current_status,
       cvDocuments: UserFactory.getUserDocumentsByCategory(userDocuments, 'cv'),

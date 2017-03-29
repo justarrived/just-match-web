@@ -7,7 +7,9 @@ import {ViewChild} from '@angular/core';
   selector: 'confirmation-modal',
   styleUrls: ['./confirmation-modal.component.scss'],
   template: `
-    <sm-modal [icon]="icon" #confirmationModal>
+    <sm-modal
+      [icon]="icon"
+      #confirmationModal>
       <modal-content>
         <div class="ui center aligned basic segment">
           <h3>{{header}}</h3>

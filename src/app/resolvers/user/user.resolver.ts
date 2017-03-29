@@ -16,7 +16,7 @@ export class UserResolver implements Resolve<User> {
     'user_skills', 'user_skills.skill', 'user_documents', 'user_documents.document',
     'user_interests', 'user_interests.interest'
   ];
-  private readonly defaultIncludeResourcesString: String = this.defaultIncludeResources.join(',');
+  public readonly defaultIncludeResourcesString: String = this.defaultIncludeResources.join(',');
 
   private user: User;
   private userChange: EventEmitter<User> = new EventEmitter<User>();
@@ -80,6 +80,11 @@ export class UserResolver implements Resolve<User> {
 
   public getUser(): User {
     return this.user;
+  }
+
+  public setUser(user: User) {
+    this.user = user;
+    this.userChange.emit(this.user);
   }
 
   public logout(): void {

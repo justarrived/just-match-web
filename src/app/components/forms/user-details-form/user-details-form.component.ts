@@ -61,19 +61,19 @@ export class UserDetailsFormComponent implements OnInit, OnDestroy {
 
   private initSettingsForm(): void {
     this.settingsForm = this.formBuilder.group({
-      'first_name': [this.user.firstName, Validators.compose([Validators.required, Validators.minLength(2)])],
-      'last_name': [this.user.lastName, Validators.compose([Validators.required, Validators.minLength(2)])],
-      'country_of_origin': [this.user.countryOfOriginCode],
-      'system_language_id': [this.user.systemLanguage.id, Validators.compose([Validators.required])],
-      'email': [this.user.email, Validators.compose([Validators.required])],
-      'gender': [this.user.gender],
-      'phone': [this.user.phone, Validators.compose([Validators.required])],
-      'street': [this.user.street],
-      'ssn': [this.user.ssn],
-      'zip': [this.user.zip],
-      'city': [this.user.city],
       'account_clearing_number': [this.user.accountClearingNumber],
-      'account_number': [this.user.accountNumber]
+      'account_number': [this.user.accountNumber],
+      'city': [this.user.city],
+      'country_of_origin': [this.user.countryOfOrigin],
+      'email': [this.user.email, Validators.compose([Validators.required])],
+      'first_name': [this.user.firstName, Validators.compose([Validators.required, Validators.minLength(2)])],
+      'gender': [this.user.gender],
+      'last_name': [this.user.lastName, Validators.compose([Validators.required, Validators.minLength(2)])],
+      'phone': [this.user.phone, Validators.compose([Validators.required])],
+      'ssn': [this.user.ssn],
+      'street': [this.user.street],
+      'system_language_id': [this.user.systemLanguage.id, Validators.compose([Validators.required])],
+      'zip': [this.user.zip],
     });
   }
 
@@ -105,10 +105,11 @@ export class UserDetailsFormComponent implements OnInit, OnDestroy {
     this.loadingSubmit = true;
     this.apiErrors = new ApiErrors([]);
 
-    this.userProxy.updateUser(this.user.id, this.settingsForm.value)
-    .then(response => {
+    this.userProxy.updateUser(this.user.id, this.settingsForm.value, {
+      'include': this.userResolver.defaultIncludeResourcesString,
+    })
+    .then(user => {
       if (this.passwordsSupplied()) {
-
         this.userPasswordProxy.updateUserPassword({
           'old_password': this.passwordForm.value.old_password,
           'password': this.passwordForm.value.password,
@@ -117,12 +118,9 @@ export class UserDetailsFormComponent implements OnInit, OnDestroy {
 
           // has to relogin to be authenticated now that password changed
           this.userResolver.login(this.settingsForm.value.email, this.passwordForm.value.password)
-          .then(result => {
-            this.userResolver.reloadUser()
-            .then(() => {
-              this.submitSuccess = true;
-              this.loadingSubmit = false;
-            });
+          .then(user => {
+            this.submitSuccess = true;
+            this.loadingSubmit = false;
           })
           .catch(errors => {
             this.handleServerErrors(errors);
@@ -135,11 +133,9 @@ export class UserDetailsFormComponent implements OnInit, OnDestroy {
         });
 
       } else {
-        this.userResolver.reloadUser()
-        .then(() => {
-          this.submitSuccess = true;
-          this.loadingSubmit = false;
-        });
+        this.userResolver.setUser(user);
+        this.submitSuccess = true;
+        this.loadingSubmit = false;
       }
     })
     .catch(errors => {
