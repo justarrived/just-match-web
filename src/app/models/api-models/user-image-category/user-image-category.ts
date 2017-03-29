@@ -5,7 +5,7 @@ import {LanguageFactory} from '../language/language';
 interface UserImageCategoryApiAttributes {
   description: string;
   id: string;
-  language: Language; // TODO missing relation in docs?
+  language: Language;
   languageId: string;
   name: string;
   translatedText: UserImageCategoryTranslatedText;

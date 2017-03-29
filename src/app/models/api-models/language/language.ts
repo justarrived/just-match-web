@@ -2,7 +2,7 @@
 interface LanguageApiAttributes {
   direction: string;
   id: string;
-  language: Language; // TODO missing relation in docs?
+  language: Language;
   languageCode: string;
   languageId: string;
   localName: string;

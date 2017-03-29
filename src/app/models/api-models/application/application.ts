@@ -17,7 +17,7 @@ interface ApplicationApiAttributes {
   invoice: Invoice;
   job: Job;
   jobEnded: boolean;
-  language: Language; // TODO missing relation in docs?
+  language: Language;
   languageId: string;
   performed: boolean;
   ratingScore: number;

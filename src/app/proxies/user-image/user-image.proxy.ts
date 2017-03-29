@@ -28,6 +28,4 @@ export class UserImageProxy {
     return this.apiCallService.post('users/' + userId + '/images', userImageAttributes)
     .then(response => UserImageFactory.createUserImage(response.data));
   }
-
-  // TODO check why duplicate POST /api/v1/users/images and POST /api/v1/users/:user_id/images
 }

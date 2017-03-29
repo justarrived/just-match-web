@@ -25,7 +25,7 @@ interface CreateUserAttributes {
   interest_ids?: {id: string, proficiency: number}[];
   job_experience?: string;
   language_id?: string;
-  language_ids?: {id: string, proficiency: number}[]; // TODO check why required in docs.
+  language_ids?: {id: string, proficiency: number}[];
   last_name: string;
   next_of_kin_name?: string;
   next_of_kin_phone?: string;

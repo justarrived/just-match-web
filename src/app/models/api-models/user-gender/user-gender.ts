@@ -5,8 +5,8 @@ import {LanguageFactory} from '../language/language';
 interface UserGenderApiAttributes {
   id: string;
   name: string;
-  language: Language; // TODO missing relation in docs?
-  languageId: string; // TODO missing in docs?
+  language: Language;
+  languageId: string;
   translatedText: UserGenderTranslatedText;
 }
 

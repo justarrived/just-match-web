@@ -6,7 +6,7 @@ interface CountryApiAttributes {
   countryCode: string;
   id: string;
   languageId: string;
-  language: Language; // TODO missing relation in docs?
+  language: Language;
   localName: string;
   name: string;
   translatedText: CountryTranslatedText;
