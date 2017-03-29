@@ -59,7 +59,7 @@ interface UserApiAttributes {
   ssn: string;
   street: string;
   supportChatActivated: boolean;
-  systemLanguageId: string;
+  systemLanguage: Language;
   translatedText: UserTranslatedText;
   updatedAt: Date;
   userDocuments: UserDocument[];
@@ -159,7 +159,7 @@ export class UserFactory {
       skills: map(jsonObject.skills, skill => SkillFactory.createSkill(skill)),
       ssn: jsonObject.ssn,
       street: jsonObject.street,
-      systemLanguageId: jsonObject.system_language_id,
+      systemLanguage: LanguageFactory.createLanguage(jsonObject.system_language),
       supportChatActivated: jsonObject.support_chat_activated,
       translatedText: UserTranslatedTextFactory.createUserTranslatedText(jsonObject.translated_text),
       updatedAt: new Date(jsonObject.updated_at),

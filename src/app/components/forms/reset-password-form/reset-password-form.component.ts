@@ -7,14 +7,48 @@ import {FormGroup} from '@angular/forms';
 import {JARoutes} from '../../../routes/ja-routes/ja-routes';
 import {NavigationService} from '../../../services/navigation.service';
 import {OnInit} from '@angular/core';
+import {PasswordChangedModalComponent} from '../../modals/password-changed-modal/password-changed-modal.component';
 import {UserPasswordProxy} from '../../../proxies/user-password/user-password.proxy';
 import {Validators} from '@angular/forms';
+import {ViewChild} from '@angular/core';
 
 @Component({
   selector: 'reset-password-form',
-  templateUrl: './reset-password-form.component.html'
+  template: `
+    <form
+      (ngSubmit)="submitForm(resetPasswordForm.value)"
+      [formGroup]="resetPasswordForm"
+      class="ui form">
+      <sm-loader
+        [complete]="!loadingSubmit"
+        class="inverted"
+        text="{{'component.loading' | translate}}">
+      </sm-loader>
+
+      <password-changed-modal
+        #passwordChangedModalComponent>
+      </password-changed-modal>
+
+      <password-input
+        [control]="resetPasswordForm.controls['password']"
+        [apiErrors]="apiErrors">
+      </password-input>
+
+      <form-submit-button
+        [submitFail]="submitFail"
+        [submitSuccess]="submitSuccess"
+        [buttonText]="'reset.password.form.submit.button' | translate">
+        <input-errors
+          [apiErrors]="apiErrors"
+          [control]="resetPasswordForm.controls['one_time_token']"
+          apiAttribute="one_time_token">
+        </input-errors>
+      </form-submit-button>
+    </form>`
 })
 export class ResetPasswordFormComponent implements OnInit {
+  @ViewChild('passwordChangedModalComponent') public passwordChangedModalComponent: PasswordChangedModalComponent;
+
   public apiErrors: ApiErrors = new ApiErrors([]);
   public JARoutes = JARoutes;
   public loadingSubmit: boolean;
@@ -65,9 +99,9 @@ export class ResetPasswordFormComponent implements OnInit {
       'password': value.password,
     })
     .then(result => {
-      this.navigationService.navigate(JARoutes.confirmation, 'password-reset');
       this.loadingSubmit = false;
       this.submitSuccess = true;
+      this.passwordChangedModalComponent.show();
     })
     .catch(errors => {
       this.handleServerErrors(errors);

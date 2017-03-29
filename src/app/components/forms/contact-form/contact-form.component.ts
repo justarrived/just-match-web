@@ -1,6 +1,7 @@
 import {ApiErrors} from '../../../models/api-models/api-errors/api-errors';
 import {ChangeDetectorRef} from '@angular/core';
 import {Component} from '@angular/core';
+import {ContactMessageSentModalComponent} from '../../modals/contact-message-sent-modal/contact-message-sent-modal.component';
 import {ContactProxy} from '../../../proxies/contact/contact.proxy';
 import {FormBuilder} from '@angular/forms';
 import {FormGroup} from '@angular/forms';
@@ -12,12 +13,50 @@ import {Subscription} from 'rxjs/Subscription';
 import {User} from '../../../models/api-models/user/user';
 import {UserResolver} from '../../../resolvers/user/user.resolver';
 import {Validators} from '@angular/forms';
+import {ViewChild} from '@angular/core';
 
 @Component({
   selector: 'contact-form',
-  templateUrl: './contact-form.component.html'
+  template: `
+    <form
+      (ngSubmit)="submitForm(contactForm.value)"
+      [formGroup]="contactForm"
+      class="ui form">
+      <sm-loader
+        [complete]="!loadingSubmit"
+        class="inverted"
+        text="{{'component.loading' | translate}}">
+      </sm-loader>
+
+      <contact-message-sent-modal
+        #contactMessageSentModal>
+      </contact-message-sent-modal>
+
+      <name-input
+        [control]="contactForm.controls['name']"
+        [apiErrors]="apiErrors">
+      </name-input>
+
+      <email-input
+        [control]="contactForm.controls['email']"
+        [apiErrors]="apiErrors">
+      </email-input>
+
+      <message-input
+        [control]="contactForm.controls['message']"
+        [apiErrors]="apiErrors">
+      </message-input>
+
+      <form-submit-button
+        [submitFail]="submitFail"
+        [submitSuccess]="submitSuccess"
+        [buttonText]="'contact.form.submit.button' | translate">
+      </form-submit-button>
+    </form>`
 })
 export class ContactFormComponent implements OnInit, OnDestroy {
+  @ViewChild('contactMessageSentModal') public contactMessageSentModal: ContactMessageSentModalComponent;
+
   public apiErrors: ApiErrors = new ApiErrors([]);
   public contactForm: FormGroup;
   public loadingSubmit: boolean;
@@ -81,8 +120,8 @@ export class ContactFormComponent implements OnInit, OnDestroy {
     })
     .then(result => {
       this.submitSuccess = true;
-      this.navigationService.navigate(JARoutes.confirmation, 'contact-message-sent');
       this.loadingSubmit = false;
+      this.contactMessageSentModal.show();
     })
     .catch(errors => {
       this.handleServerErrors(errors);

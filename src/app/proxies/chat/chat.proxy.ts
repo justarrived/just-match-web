@@ -38,8 +38,8 @@ export class ChatProxy {
   }
 
   // CREATE
-  public createChat(chatAttributes: CreateChatAttributes): Promise<Chat> {
-    return this.apiCallService.post('chats', chatAttributes)
+  public createChat(chatAttributes: CreateChatAttributes, searchParameters?: any): Promise<Chat> {
+    return this.apiCallService.post('chats', chatAttributes, searchParameters)
     .then(response => ChatFactory.createChat(response.data));
   }
 }

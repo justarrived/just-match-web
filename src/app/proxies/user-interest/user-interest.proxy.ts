@@ -39,8 +39,8 @@ export class UserInterestProxy {
   }
 
   // CREATE
-  public createUserInterest(userId: string, userInterestAttributes: CreateUserInterestAttributes): Promise<UserInterest> {
-    return this.apiCallService.post('users/' + userId + '/interests', userInterestAttributes)
+  public createUserInterest(userId: string, userInterestAttributes: CreateUserInterestAttributes, searchParameters?: any): Promise<UserInterest> {
+    return this.apiCallService.post('users/' + userId + '/interests', userInterestAttributes, searchParameters)
     .then(response => UserInterestFactory.createUserInterest(response.data));
   }
 

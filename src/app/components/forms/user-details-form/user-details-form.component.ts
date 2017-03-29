@@ -64,7 +64,7 @@ export class UserDetailsFormComponent implements OnInit, OnDestroy {
       'first_name': [this.user.firstName, Validators.compose([Validators.required, Validators.minLength(2)])],
       'last_name': [this.user.lastName, Validators.compose([Validators.required, Validators.minLength(2)])],
       'country_of_origin': [this.user.countryOfOriginCode],
-      'system_language_id': [this.user.systemLanguageId, Validators.compose([Validators.required])],
+      'system_language_id': [this.user.systemLanguage.id, Validators.compose([Validators.required])],
       'email': [this.user.email, Validators.compose([Validators.required])],
       'gender': [this.user.gender],
       'phone': [this.user.phone, Validators.compose([Validators.required])],

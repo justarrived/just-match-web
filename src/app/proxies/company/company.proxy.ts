@@ -46,8 +46,8 @@ export class CompanyProxy {
   }
 
   // CREATE
-  public createCompany(companyAttributes: CreateCompanyAttributes): Promise<Company> {
-    return this.apiCallService.post('companies', companyAttributes)
+  public createCompany(companyAttributes: CreateCompanyAttributes, searchParameters?: any): Promise<Company> {
+    return this.apiCallService.post('companies', companyAttributes, searchParameters)
     .then(response => CompanyFactory.createCompany(response.data));
   }
 }

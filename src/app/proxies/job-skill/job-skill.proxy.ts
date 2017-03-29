@@ -38,8 +38,8 @@ export class JobSkillProxy {
   }
 
   // CREATE
-  public createJobSkill(jobId: string, jobSkillAttributes: CreateJobSkillAttributes): Promise<JobSkill> {
-    return this.apiCallService.post('jobs/' + jobId + 'skills', jobSkillAttributes)
+  public createJobSkill(jobId: string, jobSkillAttributes: CreateJobSkillAttributes, searchParameters?: any): Promise<JobSkill> {
+    return this.apiCallService.post('jobs/' + jobId + 'skills', jobSkillAttributes, searchParameters)
     .then(response => JobSkillFactory.createJobSkill(response.data));
   }
 

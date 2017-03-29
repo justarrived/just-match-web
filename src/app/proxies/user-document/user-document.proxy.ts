@@ -34,8 +34,8 @@ export class UserDocumentProxy {
   }
 
   // CREATE
-  public createUserDocument(userId: string, userDocumentAttributes: CreateUserDocumentAttributes): Promise<UserDocument> {
-    return this.apiCallService.post('users/' + userId + '/documents', userDocumentAttributes)
+  public createUserDocument(userId: string, userDocumentAttributes: CreateUserDocumentAttributes, searchParameters?: any): Promise<UserDocument> {
+    return this.apiCallService.post('users/' + userId + '/documents', userDocumentAttributes, searchParameters)
     .then(response => UserDocumentFactory.createUserDocument(response.data));
   }
 }

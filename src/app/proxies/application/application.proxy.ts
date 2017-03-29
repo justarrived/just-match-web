@@ -55,19 +55,19 @@ export class ApplicationProxy {
   }
 
   // CREATE
-  public createApplication(jobId: string, applicationAttributes: CreateApplicationAttributes): Promise<Application> {
-    return this.apiCallService.post('jobs/' + jobId + '/users', applicationAttributes)
+  public createApplication(jobId: string, applicationAttributes: CreateApplicationAttributes, searchParameters?: any): Promise<Application> {
+    return this.apiCallService.post('jobs/' + jobId + '/users', applicationAttributes, searchParameters)
     .then(response => ApplicationFactory.createApplication(response.data));
   }
 
   // UPDATE
-  public acceptApplication(jobId: string, applicationId: string): Promise<Application> {
-    return this.apiCallService.post('jobs/' + jobId + '/users/' + applicationId + '/acceptances')
+  public acceptApplication(jobId: string, applicationId: string, searchParameters?: any): Promise<Application> {
+    return this.apiCallService.post('jobs/' + jobId + '/users/' + applicationId + '/acceptances', {}, searchParameters)
     .then(response => ApplicationFactory.createApplication(response.data));
   }
 
-  public confirmApplication(jobId: string, applicationId: string): Promise<Application> {
-    return this.apiCallService.post('jobs/' + jobId + '/users/' + applicationId + '/confirmations')
+  public confirmApplication(jobId: string, applicationId: string, searchParameters?: any): Promise<Application> {
+    return this.apiCallService.post('jobs/' + jobId + '/users/' + applicationId + '/confirmations', {}, searchParameters)
     .then(response => ApplicationFactory.createApplication(response.data));
   }
 

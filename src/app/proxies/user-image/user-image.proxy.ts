@@ -24,8 +24,8 @@ export class UserImageProxy {
   }
 
   // CREATE
-  public createUserImage(userId: string, userImageAttributes: CreateUserImageAttributes): Promise<UserImage> {
-    return this.apiCallService.post('users/' + userId + '/images', userImageAttributes)
+  public createUserImage(userId: string, userImageAttributes: CreateUserImageAttributes, searchParameters?: any): Promise<UserImage> {
+    return this.apiCallService.post('users/' + userId + '/images', userImageAttributes, searchParameters)
     .then(response => UserImageFactory.createUserImage(response.data));
   }
 }

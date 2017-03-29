@@ -39,8 +39,8 @@ export class UserLanguageProxy {
   }
 
   // CREATE
-  public createUserLanguage(userId: string, userLanguageAttributes: CreateUserLanguageAttributes): Promise<UserLanguage> {
-    return this.apiCallService.post('users/' + userId + '/languages', userLanguageAttributes)
+  public createUserLanguage(userId: string, userLanguageAttributes: CreateUserLanguageAttributes, searchParameters?: any): Promise<UserLanguage> {
+    return this.apiCallService.post('users/' + userId + '/languages', userLanguageAttributes, searchParameters)
     .then(response => UserLanguageFactory.createUserLanguage(response.data));
   }
 

@@ -9,9 +9,8 @@ import {User} from '../../../models/api-models/user/user';
     [centered]="centered"
     [header]="'input.resume.header' | translate"
     [label]="'input.resume.label' | translate"
-    [maxNbrDocuments]="5"
+    [maxNbrDocuments]="1"
     [showLabel]="showLabel"
-    [subHeader]="'input.resume.subheader' | translate"
     documentsField="cvDocuments"
     documentType="cv">
   </user-document-card-input>

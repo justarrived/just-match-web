@@ -2,7 +2,6 @@ import {JARoute} from '../ja-route/ja-route';
 
 export class JARoutes {
   public static aboutCookies: JARoute = { url: () => '/cookies-about'};
-  public static confirmation: JARoute = { url: (args?: string[]) => '/confirmation/' + args[0]};
   public static contact: JARoute = { url: () => '/contact'};
   public static error: JARoute = { url: (args?: string[]) => '/error/' + args[0]};
   public static faq: JARoute = { url: () => '/faq'};

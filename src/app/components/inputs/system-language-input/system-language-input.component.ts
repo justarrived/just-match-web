@@ -23,7 +23,7 @@ import {LanguageProxy} from '../../../proxies/language/language.proxy';
         [control]="control"
         [label]="'input.system.language.label' | translate"
         [placeholder]="'input.system.language.placeholder' | translate"
-        apiAttribute="language"
+        apiAttribute="system_language"
         dataItemLabelProoerty="translatedText.name"
         dataItemValueProoerty="id">
         <div style="text-align: center">

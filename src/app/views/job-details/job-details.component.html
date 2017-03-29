@@ -1,6 +1,10 @@
 <div *ngIf="job">
   <div class="job-details-body">
 
+    <applied-for-job-modal
+      #appliedForJobModalComponent>
+    </applied-for-job-modal>
+
     <div class="job-status text-center">
       <div class="job-status-container">
         <h3 class="job-status-text">{{job.translatedText.name}}</h3>

@@ -39,8 +39,8 @@ export class UserSkillProxy {
   }
 
   // CREATE
-  public createUserSkill(userId: string, userSkillAttributes: CreateUserSkillAttributes): Promise<UserSkill> {
-    return this.apiCallService.post('users/' + userId + '/skills', userSkillAttributes)
+  public createUserSkill(userId: string, userSkillAttributes: CreateUserSkillAttributes, searchParameters?: any): Promise<UserSkill> {
+    return this.apiCallService.post('users/' + userId + '/skills', userSkillAttributes, searchParameters)
     .then(response => UserSkillFactory.createUserSkill(response.data));
   }
 

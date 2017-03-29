@@ -36,8 +36,8 @@ export class RatingProxy {
   }
 
   // CREATE
-  public createJobRating(jobId: string, ratingAttributes: CreateJobRatingAttributes): Promise<Rating> {
-    return this.apiCallService.post('jobs/' + jobId + '/ratings', ratingAttributes)
+  public createJobRating(jobId: string, ratingAttributes: CreateJobRatingAttributes, searchParameters?: any): Promise<Rating> {
+    return this.apiCallService.post('jobs/' + jobId + '/ratings', ratingAttributes, searchParameters)
     .then(response => RatingFactory.createRating(response.data));
   }
 }

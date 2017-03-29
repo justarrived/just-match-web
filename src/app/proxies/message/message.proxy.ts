@@ -49,8 +49,8 @@ export class MessageProxy {
   }
 
   // CREATE
-  public createChatMessage(chatId: string, messageAttributes: CreateChatMessageAttributes): Promise<Message> {
-    return this.apiCallService.post('chats/' + chatId + '/messages', messageAttributes)
+  public createChatMessage(chatId: string, messageAttributes: CreateChatMessageAttributes, searchParameters?: any): Promise<Message> {
+    return this.apiCallService.post('chats/' + chatId + '/messages', messageAttributes, searchParameters)
     .then(response => MessageFactory.createMessage(response.data));
   }
 }

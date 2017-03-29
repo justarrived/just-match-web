@@ -46,14 +46,14 @@ export class CommentProxy {
   }
 
   // CREATE
-  public createComment(resourceName: string, resourceId: string, commentAttributes: CreateCommentAttributes): Promise<Comment> {
-    return this.apiCallService.post(resourceName + '/' + resourceId + '/comments', commentAttributes)
+  public createComment(resourceName: string, resourceId: string, commentAttributes: CreateCommentAttributes, searchParameters?: any): Promise<Comment> {
+    return this.apiCallService.post(resourceName + '/' + resourceId + '/comments', commentAttributes, searchParameters)
     .then(response => CommentFactory.createComment(response.data));
   }
 
   // UPDATE
-  public updateComment(resourceName: string, resourceId: string, commentId: string, commentAttributes: UpdateCommentAttributes): Promise<Comment> {
-    return this.apiCallService.patch(resourceName + '/' + resourceId + '/comments/' + commentId, commentAttributes)
+  public updateComment(resourceName: string, resourceId: string, commentId: string, commentAttributes: UpdateCommentAttributes, searchParameters?: any): Promise<Comment> {
+    return this.apiCallService.patch(resourceName + '/' + resourceId + '/comments/' + commentId, commentAttributes, searchParameters)
     .then(response => CommentFactory.createComment(response.data));
   }
 

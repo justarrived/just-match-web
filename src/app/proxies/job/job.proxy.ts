@@ -93,14 +93,14 @@ export class JobProxy {
   }
 
   // CREATE
-  public createJob(jobAttributes: CreateJobAttributes): Promise<Job> {
-    return this.apiCallService.post('jobs', jobAttributes)
+  public createJob(jobAttributes: CreateJobAttributes, searchParameters?: any): Promise<Job> {
+    return this.apiCallService.post('jobs', jobAttributes, searchParameters)
     .then(response => JobFactory.createJob(response.data));
   }
 
   // UPDATE
-  public updateJob(jobId: string, jobAttributes: UpdateJobAttributes): Promise<Job> {
-    return this.apiCallService.patch('jobs/' + jobId, jobAttributes)
+  public updateJob(jobId: string, jobAttributes: UpdateJobAttributes, searchParameters?: any): Promise<Job> {
+    return this.apiCallService.patch('jobs/' + jobId, jobAttributes, searchParameters)
     .then(response => JobFactory.createJob(response.data));
   }
 }

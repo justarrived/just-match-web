@@ -1,6 +1,7 @@
 import {ApiErrors} from '../../../models/api-models/api-errors/api-errors';
 import {ChangeDetectorRef} from '@angular/core';
 import {Component} from '@angular/core';
+import {PasswordResetLinkSentModalComponent} from '../../modals/password-reset-link-sent-modal/password-reset-link-sent-modal.component';
 import {FormBuilder} from '@angular/forms';
 import {FormGroup} from '@angular/forms';
 import {JARoutes} from '../../../routes/ja-routes/ja-routes';
@@ -8,13 +9,48 @@ import {NavigationService} from '../../../services/navigation.service';
 import {OnInit} from '@angular/core';
 import {UserPasswordProxy} from '../../../proxies/user-password/user-password.proxy';
 import {Validators} from '@angular/forms';
+import {ViewChild} from '@angular/core';
 
 @Component({
   selector: 'forgot-password-form',
   styleUrls: ['./forgot-password-form.component.scss'],
-  templateUrl: './forgot-password-form.component.html'
+  template: `
+    <form
+      (ngSubmit)="submitForm(forgotPasswordForm.value)"
+      [formGroup]="forgotPasswordForm"
+      class="ui form">
+      <sm-loader
+        [complete]="!loadingSubmit"
+        class="inverted"
+        text="{{'component.loading' | translate}}">
+      </sm-loader>
+
+      <password-reset-link-sent-modal
+        #passwordResetLinkSentModalComponent>
+      </password-reset-link-sent-modal>
+
+      <email-or-phone-input
+        [control]="forgotPasswordForm.controls['email_or_phone']"
+        [apiErrors]="apiErrors">
+      </email-or-phone-input>
+
+      <form-submit-button
+        [submitFail]="submitFail"
+        [submitSuccess]="submitSuccess"
+        [buttonText]="'contact.form.submit.button' | translate">
+        <div>
+          <a
+            class="forgot-password-form-link"
+            routerLink="{{JARoutes.login.url()}}">
+            {{'forgot.password.login.link' | translate}}
+          </a>
+        </div>
+      </form-submit-button>
+    </form>`
 })
 export class ForgotPasswordFormComponent implements OnInit {
+  @ViewChild('passwordResetLinkSentModalComponent') public passwordResetLinkSentModalComponent: PasswordResetLinkSentModalComponent;
+
   public apiErrors: ApiErrors = new ApiErrors([]);
   public forgotPasswordForm: FormGroup;
   public JARoutes = JARoutes;
@@ -58,7 +94,7 @@ export class ForgotPasswordFormComponent implements OnInit {
     .then(result => {
       this.submitSuccess = true;
       this.loadingSubmit = false;
-      this.navigationService.navigate(JARoutes.confirmation, 'password-reset-link-sent');
+      this.passwordResetLinkSentModalComponent.show();
     })
     .catch(errors => {
       this.handleServerErrors(errors);

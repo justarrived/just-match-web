@@ -1,4 +1,3 @@
-import {ConfirmationComponent} from '../views/confirmation/confirmation.component';
 import {ContactPageComponent} from '../components/pages/contact-page/contact-page.component';
 import {CookiesAboutPageComponent} from '../components/pages/cookies-about-page/cookies-about-page.component';
 import {DefaultLayoutComponent} from '../components/layouts/default-layout/default-layout.component';
@@ -33,7 +32,6 @@ const routes: Routes = [
     children: [
     { path: '', pathMatch: 'full', component: HomePageComponent},
     { path: '404', component: NotFoundPageComponent },
-    { path: 'confirmation/:type', component: ConfirmationComponent },
     { path: 'contact', component: ContactPageComponent },
     { path: 'cookies-about', component: CookiesAboutPageComponent },
     { path: 'error/:statusCode', component: ErrorPageComponent },

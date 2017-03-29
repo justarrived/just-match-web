@@ -8,3 +8,31 @@
 .ui.form .fields:last-child .field {
   margin-bottom: 15px;
 }
+
+// Override padding changes on mobile.
+.ui.modal>.actions {
+  padding: 1rem 1rem !important;
+}
+
+// Force icon sizes if specified
+i.mini.icon, i.mini.icons {
+    font-size: .4em !important;
+}
+i.tiny.icon, i.tiny.icons {
+    font-size: .5em !important;
+}
+i.small.icon, i.small.icons {
+    font-size: .75em !important;
+}
+i.large.icon, i.large.icons {
+    font-size: 1.5em !important;
+}
+i.big.icon, i.big.icons {
+    font-size: 2em !important;
+}
+i.huge.icon, i.huge.icons {
+    font-size: 4em !important;
+}
+i.massive.icon, i.massive.icons {
+    font-size: 8em !important;
+}

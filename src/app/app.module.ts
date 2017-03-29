@@ -9,8 +9,8 @@ import {AppComponent} from './app.component';
 import {ApplicationsComponent} from './views/my-jobs/applications/applications.component';
 import {ApplicationsStatusSectionComponent} from './components/sections/applications-status-section/applications-status-section.component';
 import {ApplicationStatusCardComponent} from './components/cards/application-status-card/application-status-card.component';
+import {AppliedForJobModalComponent} from './components/modals/applied-for-job-modal/applied-for-job-modal.component';
 import {AppNavbarComponent} from './components/navbars/app-navbar/app-navbar.component';
-import {RoutesModule} from './routes/routes.module';
 import {AppTranslateModule} from './app.translate.module';
 import {AtUndInputComponent} from './components/inputs/at-und-input/at-und-input.component';
 import {AutosizeDirective} from './directives/textarea-autosize/textarea-autosize.directive';
@@ -26,8 +26,9 @@ import {CityInputComponent} from './components/inputs/city-input/city-input.comp
 import {ClearingNumberInputComponent} from './components/inputs/clearing-number-input/clearing-number-input.component';
 import {CommentsComponent} from './components/comments/comments.component';
 import {CompetenceInputComponent} from './components/inputs/competence-input/competence-input.component';
-import {ConfirmationComponent} from './views/confirmation/confirmation.component';
+import {ConfirmationModalComponent} from './components/modals/confirmation-modal/confirmation-modal.component';
 import {ContactFormComponent} from './components/forms/contact-form/contact-form.component';
+import {ContactMessageSentModalComponent} from './components/modals/contact-message-sent-modal/contact-message-sent-modal.component';
 import {ContactPageComponent} from './components/pages/contact-page/contact-page.component';
 import {CookieBarComponent} from './components/bars/cookie-bar/cookie-bar.component';
 import {CookiesAboutPageComponent} from './components/pages/cookies-about-page/cookies-about-page.component';
@@ -94,21 +95,24 @@ import {NotFoundPageComponent} from './components/pages/404-page/404-page.compon
 import {OldPasswordInputComponent} from './components/inputs/old-password-input/old-password-input.component';
 import {PagerComponent} from './components/pager/pager.component';
 import {PartnersSectionComponent} from './components/sections/partners-section/partners-section.component';
+import {PasswordChangedModalComponent} from './components/modals/password-changed-modal/password-changed-modal.component';
 import {PasswordInputComponent} from './components/inputs/password-input/password-input.component';
+import {PasswordResetLinkSentModalComponent} from './components/modals/password-reset-link-sent-modal/password-reset-link-sent-modal.component';
 import {PersonalIDInputComponent} from './components/inputs/personal-id-input/personal-id-input.component';
 import {PhoneInputComponent} from './components/inputs/phone-input/phone-input.component';
 import {ProfileImageInputComponent} from './components/inputs/profile-image-input/profile-image-input.component';
 import {ProxiesModule} from './proxies/proxies.module';
 import {RatingInputComponent} from './components/inputs/rating-input/rating-input.component';
 import {ReactiveFormsModule} from '@angular/forms';
-import {ResolversModule} from './resolvers/resolvers.module';
 import {RegisterFormComponent} from './components/forms/register-form/register-form.component';
 import {RegisterPageComponent} from './components/pages/register-page/register-page.component';
 import {ResetPasswordFormComponent} from './components/forms/reset-password-form/reset-password-form.component';
 import {ResetPasswordPageComponent} from './components/pages/reset-password-page/reset-password-page.component';
 import {ResidencePermitBackInputComponent} from './components/inputs/residence-permit-back-input/residence-permit-back-input.component';
 import {ResidencePermitFrontInputComponent} from './components/inputs/residence-permit-front-input/residence-permit-front-input.component';
+import {ResolversModule} from './resolvers/resolvers.module';
 import {ResumeInputComponent} from './components/inputs/resume-input/resume-input.component';
+import {RoutesModule} from './routes/routes.module';
 import {SelectDropdownInputComponent} from './components/inputs/select-dropdown-input/select-dropdown-input.component';
 import {SkatteverketCertificateInputComponent} from './components/inputs/skatteverket-certificate-input/skatteverket-certificate-input.component';
 import {SkillProficiencyInputComponent} from './components/inputs/skill-proficiency-input/skill-proficiency-input.component';
@@ -171,6 +175,7 @@ export class RavenErrorHandler implements ErrorHandler {
     ApplicationsComponent,
     ApplicationsStatusSectionComponent,
     ApplicationStatusCardComponent,
+    AppliedForJobModalComponent,
     AppNavbarComponent,
     AtUndInputComponent,
     AutosizeDirective,
@@ -185,8 +190,9 @@ export class RavenErrorHandler implements ErrorHandler {
     ClearingNumberInputComponent,
     CommentsComponent,
     CompetenceInputComponent,
-    ConfirmationComponent,
+    ConfirmationModalComponent,
     ContactFormComponent,
+    ContactMessageSentModalComponent,
     ContactPageComponent,
     CookieBarComponent,
     CookiesAboutPageComponent,
@@ -242,7 +248,9 @@ export class RavenErrorHandler implements ErrorHandler {
     OldPasswordInputComponent,
     PagerComponent,
     PartnersSectionComponent,
+    PasswordChangedModalComponent,
     PasswordInputComponent,
+    PasswordResetLinkSentModalComponent,
     PersonalIDInputComponent,
     PhoneInputComponent,
     ProfileImageInputComponent,

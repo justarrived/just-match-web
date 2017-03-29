@@ -12,8 +12,8 @@ export class InvoiceProxy {
   }
 
   // CREATE
-  public createApplicationInvoice(jobId: string, applicationId: string): Promise<Invoice> {
-    return this.apiCallService.post('jobs/' + jobId + '/users/' + applicationId + '/invoices')
+  public createApplicationInvoice(jobId: string, applicationId: string, searchParameters?: any): Promise<Invoice> {
+    return this.apiCallService.post('jobs/' + jobId + '/users/' + applicationId + '/invoices', {}, searchParameters)
     .then(response => InvoiceFactory.createInvoice(response.data));
   }
 }

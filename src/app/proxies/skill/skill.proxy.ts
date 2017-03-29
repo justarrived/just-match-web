@@ -45,14 +45,14 @@ export class SkillProxy {
   }
 
   // CREATE
-  public createSkill(skillAttributes: CreateSkillAttributes): Promise<Skill> {
-    return this.apiCallService.post('skills', skillAttributes)
+  public createSkill(skillAttributes: CreateSkillAttributes, searchParameters?: any): Promise<Skill> {
+    return this.apiCallService.post('skills', skillAttributes, searchParameters)
     .then(response => SkillFactory.createSkill(response.data));
   }
 
   // UPDATE
-  public updateSkill(skillId: string, skillAttributes: UpdateSkillAttributes): Promise<Skill> {
-    return this.apiCallService.patch('skills/' + skillId, skillAttributes)
+  public updateSkill(skillId: string, skillAttributes: UpdateSkillAttributes, searchParameters?: any): Promise<Skill> {
+    return this.apiCallService.patch('skills/' + skillId, skillAttributes, searchParameters)
     .then(response => SkillFactory.createSkill(response.data));
   }
 

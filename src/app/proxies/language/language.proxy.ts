@@ -43,14 +43,14 @@ export class LanguageProxy {
   }
 
   // CREATE
-  public createLanguage(languageAttributes: CreateLanguageAttributes): Promise<Language> {
-    return this.apiCallService.post('languages', languageAttributes)
+  public createLanguage(languageAttributes: CreateLanguageAttributes, searchParameters?: any): Promise<Language> {
+    return this.apiCallService.post('languages', languageAttributes, searchParameters)
     .then(response => LanguageFactory.createLanguage(response.data));
   }
 
   // UPDATE
-  public updateLanguage(languageId: string, languageAttributes: UpdateLanguageAttributes): Promise<Language> {
-    return this.apiCallService.patch('languages/' + languageId, languageAttributes)
+  public updateLanguage(languageId: string, languageAttributes: UpdateLanguageAttributes, searchParameters?: any): Promise<Language> {
+    return this.apiCallService.patch('languages/' + languageId, languageAttributes, searchParameters)
     .then(response => LanguageFactory.createLanguage(response.data));
   }
 

@@ -1,6 +1,7 @@
 import {ActivatedRoute} from '@angular/router';
 import {Application} from '../../models/api-models/application/application';
 import {ApplicationProxy} from '../../proxies/application/application.proxy';
+import {AppliedForJobModalComponent} from '../../components/modals/applied-for-job-modal/applied-for-job-modal.component';
 import {Component} from '@angular/core';
 import {Input} from '@angular/core';
 import {JARoutes} from '../../routes/ja-routes/ja-routes';
@@ -14,12 +15,15 @@ import {SystemLanguageListener} from '../../resolvers/system-languages/system-la
 import {SystemLanguagesResolver} from '../../resolvers/system-languages/system-languages.resolver';
 import {User} from '../../models/api-models/user/user';
 import {UserResolver} from '../../resolvers/user/user.resolver';
+import {ViewChild} from '@angular/core';
 
 @Component({
   templateUrl: './job-details.component.html',
   styleUrls: ['./job-details.component.scss']
 })
 export class JobDetailsComponent extends SystemLanguageListener implements OnInit, OnDestroy {
+  @ViewChild('appliedForJobModalComponent') public appliedForJobModalComponent: AppliedForJobModalComponent;
+
   public application: Application;
   public applyForJobErrorMessageVisible: boolean;
   public countOfApplicants: number = 0;
@@ -93,8 +97,9 @@ export class JobDetailsComponent extends SystemLanguageListener implements OnIni
     this.applicationProxy.createApplication(this.job.id, {
       'user_id': this.user.id
     })
-    .then(response => {
-      this.navigationService.navigate(JARoutes.confirmation, 'user-applied-for-job');
+    .then(application => {
+      this.appliedForJobModalComponent.show();
+      this.application = application;
     });
   }
 

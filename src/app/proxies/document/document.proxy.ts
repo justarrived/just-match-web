@@ -18,8 +18,8 @@ export class DocumentProxy {
 
 
   // CREATE
-  public createDocument(documentAttributes: CreateDocumentAttributes): Promise<Document> {
-    return this.apiCallService.post('documents', documentAttributes)
+  public createDocument(documentAttributes: CreateDocumentAttributes, searchParameters?: any): Promise<Document> {
+    return this.apiCallService.post('documents', documentAttributes, searchParameters)
     .then(response => DocumentFactory.createDocument(response.data));
   }
 }

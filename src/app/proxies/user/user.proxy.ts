@@ -119,14 +119,14 @@ export class UserProxy {
   }
 
   // CREATE
-  public createUser(userAttributes: CreateUserAttributes): Promise<User> {
-    return this.apiCallService.post('users', userAttributes)
+  public createUser(userAttributes: CreateUserAttributes, searchParameters?: any): Promise<User> {
+    return this.apiCallService.post('users', userAttributes, searchParameters)
     .then(response => UserFactory.createUser(response.data));
   }
 
   // UPDATE
-  public updateUser(userId: string, userAttributes: UpdateUserAttributes): Promise<User> {
-    return this.apiCallService.patch('users/' + userId, userAttributes)
+  public updateUser(userId: string, userAttributes: UpdateUserAttributes, searchParameters?: any): Promise<User> {
+    return this.apiCallService.patch('users/' + userId, userAttributes, searchParameters)
     .then(response => UserFactory.createUser(response.data));
   }
 
