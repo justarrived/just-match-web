@@ -54,10 +54,10 @@ export class CommentsComponent extends SystemLanguageListener implements OnInit 
         commentable_type: this.resourceName,
         language_id: this.systemLanguagesResolver.getSelectedSystemLanguage().id,
       })
-      .then(result => {
-        this.newCommentContainer.textContent = '';
-        this.newCommentBody = null;
-        this.loadData();
+    .then(result => {
+      this.newCommentContainer.textContent = '';
+      this.newCommentBody = null;
+      this.loadData();
     });
   }
 
@@ -72,7 +72,8 @@ export class CommentsComponent extends SystemLanguageListener implements OnInit 
     this.commentProxy.getComments(this.resourceName, this.resourceId, {
       include: 'owner,owner.user_images,owner.company,owner.company.company_images',
       sort: '-created_at'
-    }).then(result => {
+    })
+    .then(result => {
       this.comments = result.reverse();
       this.calculateFooterVisibility();
     });

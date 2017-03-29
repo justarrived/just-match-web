@@ -1,14 +1,14 @@
-import {ActsAsUser} from './acts-as-user.service';
+import {ActsAsUserService} from './acts-as-user.service';
 import {ApiErrors} from '../models/api-models/api-errors/api-errors';
-import {DataStore} from './data-store.service';
+import {DataStoreService} from './data-store.service';
 import {environment} from '../../environments/environment';
 import {Headers} from '@angular/http';
 import {Http} from '@angular/http';
 import {Injectable} from '@angular/core';
-import {JARoutes} from '../routes/ja-routes';
+import {JARoutes} from '../routes/ja-routes/ja-routes';
 import {NavigationService} from './navigation.service';
 import {Observable} from 'rxjs';
-import {parseJsonapiResponse} from '../utils/jsonapi-parser.util';
+import {parseJsonapiResponse} from '../utils/jsonapi-parser/jsonapi-parser.util';
 import {Request} from '@angular/http';
 import {RequestMethod} from '@angular/http';
 import {RequestOptions} from '@angular/http';
@@ -18,7 +18,7 @@ import {URLSearchParams} from '@angular/http';
 import * as  _ from 'lodash';
 
 @Injectable()
-export class ApiCall {
+export class ApiCallService {
   private readonly actAsUserHeaderName: string = 'X-API-ACT-AS-USER';
   private readonly sessionHeaderName: string = 'Authorization';
   private readonly sessionHeaderPrefix: string = 'Token token=';
@@ -30,53 +30,62 @@ export class ApiCall {
 
   constructor(
     private http: Http,
-    private dataStore: DataStore,
-    private actsAsUser: ActsAsUser,
+    private dataStoreService: DataStoreService,
+    private actsAsUserService: ActsAsUserService,
     private navigationService: NavigationService
   ) {
   }
 
-  public get(url: string, searchParameters?: any, contentType?: string): Promise<any> {
+  public get(url: string, searchParameters: any = {}, body: any = {}, contentType?: string): Promise<any> {
     return this.requestHelper({
-      search: this.searchParametersBuilder(searchParameters),
+      body: body,
+      headers: this.contentTypeHeaderBuilder(contentType),
       method: RequestMethod.Get,
+      search: this.searchParametersBuilder(searchParameters),
       url: this.urlBuilder(url),
-      headers: this.contentTypeHeaderBuilder(contentType)
     });
   }
 
-  public post(url: string, attributes: any = {}, contentType?: string): Promise<any> {
+  public post(url: string, attributes: any = {}, searchParameters: any = {}, body: any = {}, contentType?: string): Promise<any> {
+    if (body.data) {
+      body.data.attributes = attributes;
+    } else {
+      body.data = {
+        attributes: attributes
+      }
+    }
     return this.requestHelper({
-      body: {
-        data: {
-          attributes: attributes
-        }
-      },
+      body: body,
+      headers: this.contentTypeHeaderBuilder(contentType),
       method: RequestMethod.Post,
+      search: this.searchParametersBuilder(searchParameters),
       url: this.urlBuilder(url),
-      headers: this.contentTypeHeaderBuilder(contentType)
     });
   }
 
-  public patch(url: string, attributes: any = {}, contentType?: string): Promise<any> {
+  public patch(url: string, attributes: any = {}, searchParameters: any = {}, body: any = {}, contentType?: string): Promise<any> {
+    if (body.data) {
+      body.data.attributes = attributes;
+    } else {
+      body.data = {
+        attributes: attributes
+      }
+    }
     return this.requestHelper({
-      body: {
-        data: {
-          attributes: attributes
-        }
-      },
+      body: body,
+      headers: this.contentTypeHeaderBuilder(contentType),
       method: RequestMethod.Patch,
+      search: this.searchParametersBuilder(searchParameters),
       url: this.urlBuilder(url),
-      headers: this.contentTypeHeaderBuilder(contentType)
     });
   }
 
   public delete(url: string, contentType?: string): Promise<any> {
     return this.requestHelper({
       body: '',
+      headers: this.contentTypeHeaderBuilder(contentType),
       method: RequestMethod.Delete,
       url: this.urlBuilder(url),
-      headers: this.contentTypeHeaderBuilder(contentType)
     });
   }
 
@@ -84,15 +93,15 @@ export class ApiCall {
     let options = new RequestOptions(requestArgs);
 
     let req: Request = new Request(options);
-    let session = this.dataStore.get(this.storageSessionKey);
+    let session = this.dataStoreService.get(this.storageSessionKey);
     if (session && session.auth_token) {
       req.headers.set(this.sessionHeaderName, this.sessionHeaderPrefix + session['auth_token']);
     }
 
-    req.headers.set(this.languageHeaderName, this.dataStore.get(this.storageSystemLanguageCodeKey));
+    req.headers.set(this.languageHeaderName, this.dataStoreService.get(this.storageSystemLanguageCodeKey));
     req.headers.set(this.transformHeaderName, this.transformHeaderValue);
 
-    const actAsUserId = this.actsAsUser.getUserId();
+    const actAsUserId = this.actsAsUserService.getUserId();
     if (actAsUserId !== null) {
       req.headers.set(this.actAsUserHeaderName, actAsUserId);
     }
@@ -125,7 +134,7 @@ export class ApiCall {
       let tokenExpiredObject = _.find(response.json().errors, { code: 'token_expired' });
       let tokenInvalidObject = _.find(response.json().errors, { code: 'login_required' });
       if (tokenExpiredObject || tokenInvalidObject) {
-        this.dataStore.remove(this.storageSessionKey);
+        this.dataStoreService.remove(this.storageSessionKey);
         this.navigationService.navigate(JARoutes.login);
       }
     }

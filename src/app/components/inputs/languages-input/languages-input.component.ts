@@ -1,16 +1,16 @@
 import {ApiErrors} from '../../../models/api-models/api-errors/api-errors';
 import {Component} from '@angular/core';
-import {deleteElementFromArray} from '../../../utils/array-util';
+import {deleteElementFromArray} from '../../../utils/array/array.util';
 import {FormControl} from '@angular/forms';
 import {Input} from '@angular/core';
 import {Language} from '../../../models/api-models/language/language';
-import {LanguageProxy} from '../../../services/proxy/language-proxy.service';
+import {LanguageProxy} from '../../../proxies/language/language.proxy';
 import {OnInit} from '@angular/core';
 import {some} from 'lodash';
 import {SystemLanguageListener} from '../../../resolvers/system-languages/system-languages.resolver';
 import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
-import {UserLanguage} from '../../../models/api-models/user/user-language';
-import {UserLanguageFactory} from '../../../models/api-models/user/user-language';
+import {UserLanguage} from '../../../models/api-models/user-language/user-language';
+import {UserLanguageFactory} from '../../../models/api-models/user-language/user-language';
 
 @Component({
   selector: 'languages-input',
@@ -63,7 +63,10 @@ export class LanguagesInputComponent extends SystemLanguageListener implements O
   }
 
   protected loadData(): void {
-    this.languages = this.languageProxy.getLanguages();
+    this.languages = this.languageProxy.getLanguages({
+      'page[size]': 300,
+      'sort': 'en_name',
+    });
   }
 
   public onRemoveUserLanguage(userLanguage): void {
@@ -78,11 +81,13 @@ export class LanguagesInputComponent extends SystemLanguageListener implements O
     if (languageId && !some(this.userLanguagesControl.value, { language: {id: languageId} })) {
       const userLanguage = UserLanguageFactory.createUserLanguage({});
       this.loadingLanguage = true;
-      this.languageProxy.getLanguage(languageId).then((language) => {
+      this.languageProxy.getLanguage(languageId)
+      .then(language => {
         userLanguage.language = language;
         this.userLanguagesControl.value.push(userLanguage);
         this.loadingLanguage = false;
-      }).catch(errors => {
+      })
+      .catch(errors => {
         this.loadingLanguage = false;
       });
     }

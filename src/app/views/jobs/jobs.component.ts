@@ -1,15 +1,15 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {Job} from '../../models/api-models/job/job';
-import {MapLocation} from '../../models/client-models/map-location';
-import {Geolocation} from '../../services/geolocation.service';
-import {JobProxy} from '../../services/proxy/job-proxy.service';
+import {MapLocation} from '../../models/client-models/map-location/map-location';
+import {GeolocationService} from '../../services/geolocation.service';
+import {JobProxy} from '../../proxies/job/job.proxy';
 import {Location} from '@angular/common';
 import {ActivatedRoute} from '@angular/router';
 import {SystemLanguagesResolver} from '../../resolvers/system-languages/system-languages.resolver';
 import {SystemLanguageListener} from '../../resolvers/system-languages/system-languages.resolver';
 import {customMapStyle} from '../../styles/google-maps-styles';
-import {yyyymmdd, nbrOfMonthsFromDate} from '../../utils/date-util';
+import {yyyymmdd, nbrOfMonthsFromDate} from '../../utils/date/date.util';
 
 @Component({
   templateUrl: './jobs.component.html',
@@ -30,7 +30,7 @@ export class JobsComponent extends SystemLanguageListener implements OnInit {
   public mapErrorShow: boolean = false;
 
   constructor(
-    private geolocationService: Geolocation,
+    private geolocationService: GeolocationService,
     private jobProxy: JobProxy,
     private location: Location,
     private route: ActivatedRoute,
@@ -55,24 +55,23 @@ export class JobsComponent extends SystemLanguageListener implements OnInit {
 
   loadData() {
     this.loadingJobs = true;
-    this.jobProxy.getJobsWithTotal(
-      {
-        'include': 'company,hourly_pay,company.company_images',
-        'filter[filled]': false,
-        'filter[job_date]': yyyymmdd(new Date()) + '..' + yyyymmdd(nbrOfMonthsFromDate(new Date(), 12)),
-        'sort': 'job_date',
-        'page[number]': this.page
-      })
-      .then(result => {
-        this.jobs = result.jobs;
-        this.totalJobs = result.total;
-        this.loadingJobs = false;
-        if (this.pageSize * (this.page - 1) > this.totalJobs) {
-          this.onPageChange(1);
-        } else if (this.totalJobs === 0) {
-          this.page = 0;
-        }
-      });
+    this.jobProxy.getJobsWithMeta({
+      'include': 'company,hourly_pay,company.company_images',
+      'filter[filled]': false,
+      'filter[job_date]': yyyymmdd(new Date()) + '..' + yyyymmdd(nbrOfMonthsFromDate(new Date(), 12)),
+      'sort': 'job_date',
+      'page[number]': this.page
+    })
+    .then(result => {
+      this.jobs = result.jobs;
+      this.totalJobs = result.meta.total;
+      this.loadingJobs = false;
+      if (this.pageSize * (this.page - 1) > this.totalJobs) {
+        this.onPageChange(1);
+      } else if (this.totalJobs === 0) {
+        this.page = 0;
+      }
+    });
   }
 
   private initLocation() {

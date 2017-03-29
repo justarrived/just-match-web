@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {Faq} from '../../../models/api-models/faq/faq';
-import {FaqProxy} from '../../../services/proxy/faq-proxy.service';
+import {FaqProxy} from '../../../proxies/faq/faq.proxy';
 import {OnInit} from '@angular/core';
 import {SystemLanguageListener} from '../../../resolvers/system-languages/system-languages.resolver';
 import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';

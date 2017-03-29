@@ -1,5 +1,5 @@
-import {CompanyImage} from './company-image';
-import {CompanyImageFactory} from './company-image';
+import {CompanyImage} from '../company-image/company-image';
+import {CompanyImageFactory} from '../company-image/company-image';
 import {map} from 'lodash';
 import {User} from '../user/user';
 import {UserFactory} from '../user/user';

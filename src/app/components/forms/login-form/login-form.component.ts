@@ -3,7 +3,7 @@ import {ChangeDetectorRef} from '@angular/core';
 import {Component} from '@angular/core';
 import {FormBuilder} from '@angular/forms';
 import {FormGroup} from '@angular/forms';
-import {JARoutes} from '../../../routes/ja-routes';
+import {JARoutes} from '../../../routes/ja-routes/ja-routes';
 import {NavigationService} from '../../../services/navigation.service';
 import {OnInit} from '@angular/core';
 import {UserResolver} from '../../../resolvers/user/user.resolver';
@@ -53,14 +53,14 @@ export class LoginFormComponent implements OnInit  {
     this.submitSuccess = false;
     this.loadingSubmit = true;
     this.userResolver.login(value.email_or_phone, value.password)
-      .then(result => {
-        this.navigationService.navigate(JARoutes.home);
-        this.loadingSubmit = false;
-        this.submitSuccess = true;
-      })
-      .catch(errors => {
-        this.handleServerErrors(errors);
-      });
+    .then(result => {
+      this.navigationService.navigate(JARoutes.home);
+      this.loadingSubmit = false;
+      this.submitSuccess = true;
+    })
+    .catch(errors => {
+      this.handleServerErrors(errors);
+    });
   }
 
   public onEnterKeyUp() {

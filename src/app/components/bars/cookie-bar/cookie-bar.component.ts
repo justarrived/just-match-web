@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
-import {DataStore} from '../../../services/data-store.service';
-import {JARoutes} from '../../../routes/ja-routes';
+import {DataStoreService} from '../../../services/data-store.service';
+import {JARoutes} from '../../../routes/ja-routes/ja-routes';
 
 @Component({
   selector: 'cookie-bar',
@@ -35,15 +35,15 @@ export class CookieBarComponent {
   public JARoutes = JARoutes;
 
   public constructor(
-    private dataStore: DataStore
+    private dataStoreService: DataStoreService
   ) {
   }
 
   public checkCookiesConsent(): boolean {
-    return (this.dataStore.get(this.cookiesConsentData) !== true);
+    return (this.dataStoreService.get(this.cookiesConsentData) !== true);
   }
 
   public acceptCookiesConsent() {
-    this.dataStore.set(this.cookiesConsentData, true);
+    this.dataStoreService.set(this.cookiesConsentData, true);
   }
 }

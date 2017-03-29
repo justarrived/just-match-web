@@ -1,10 +1,10 @@
 import {ApiErrors} from '../../../models/api-models/api-errors/api-errors';
 import {Component} from '@angular/core';
-import {Status} from '../../../models/api-models/status/status';
-import {UserProxy} from '../../../services/proxy/user-proxy.service';
 import {FormControl} from '@angular/forms';
 import {Input} from '@angular/core';
 import {OnInit} from '@angular/core';
+import {UserStatus} from '../../../models/api-models/user-status/user-status';
+import {UserStatusProxy} from '../../../proxies/user-status/user-status.proxy';
 import {SystemLanguageListener} from '../../../resolvers/system-languages/system-languages.resolver';
 import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
 
@@ -33,10 +33,10 @@ export class StatusInputComponent extends SystemLanguageListener implements OnIn
   @Input() apiErrors: ApiErrors;
   @Input() control: FormControl;
 
-  public statuses: Promise<Status[]>;
+  public statuses: Promise<UserStatus[]>;
 
   constructor(
-    private userProxy: UserProxy,
+    private userStatusProxy: UserStatusProxy,
     protected systemLanguagesResolver: SystemLanguagesResolver
   ) {
     super(systemLanguagesResolver);
@@ -47,6 +47,6 @@ export class StatusInputComponent extends SystemLanguageListener implements OnIn
   }
 
   protected loadData() {
-    this.statuses = this.userProxy.getStatuses();
+    this.statuses = this.userStatusProxy.getUserStatuses();
   }
 }

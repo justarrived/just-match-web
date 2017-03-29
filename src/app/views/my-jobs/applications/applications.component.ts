@@ -35,7 +35,8 @@ export class ApplicationsComponent extends SystemLanguageListener implements OnI
       'include': 'job, job.company',
       'sort': '-created_at',
       'page[size]': 14
-    }).then((applications) => {
+    })
+    .then(applications => {
       this.applications = applications;
       this.generateJobSections();
     });

@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {JARoutes} from '../../../routes/ja-routes';
+import {JARoutes} from '../../../routes/ja-routes/ja-routes';
 import {OnDestroy} from '@angular/core';
 import {OnInit} from '@angular/core';
 import {Subscription} from 'rxjs/Subscription';

@@ -1,14 +1,13 @@
+import {CookieStorage} from '../storage/cookie-storage/cookie-storage';
 import {Injectable} from '@angular/core';
-import {storageTypeAvailable} from '../utils/storage-type-available';
-
-import {StorageInterface} from '../utils/storage/storage-interface';
-import {CookieStorage} from '../utils/storage/cookie-storage';
-import {LocalStorage} from '../utils/storage/local-storage';
-import {MemoryStorage} from '../utils/storage/memory-storage';
-import {SessionStorage} from '../utils/storage/session-storage';
+import {LocalStorage} from '../storage/local-storage/local-storage';
+import {MemoryStorage} from '../storage/memory-storage/memory-storage';
+import {SessionStorage} from '../storage/session-storage/session-storage';
+import {StorageInterface} from '../storage/storage-interface/storage-interface';
+import {storageTypeAvailable} from '../utils/storage-type-available/storage-type-available.util';
 
 @Injectable()
-export class DataStore {
+export class DataStoreService {
   private store: StorageInterface;
 
   constructor(

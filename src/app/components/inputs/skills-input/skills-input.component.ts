@@ -1,16 +1,16 @@
 import {ApiErrors} from '../../../models/api-models/api-errors/api-errors';
 import {Component} from '@angular/core';
-import {deleteElementFromArray} from '../../../utils/array-util';
+import {deleteElementFromArray} from '../../../utils/array/array.util';
 import {FormControl} from '@angular/forms';
 import {Input} from '@angular/core';
 import {Skill} from '../../../models/api-models/skill/skill';
-import {SkillProxy} from '../../../services/proxy/skill-proxy.service';
+import {SkillProxy} from '../../../proxies/skill/skill.proxy';
 import {OnInit} from '@angular/core';
 import {some} from 'lodash';
 import {SystemLanguageListener} from '../../../resolvers/system-languages/system-languages.resolver';
 import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
-import {UserSkill} from '../../../models/api-models/user/user-skill';
-import {UserSkillFactory} from '../../../models/api-models/user/user-skill';
+import {UserSkill} from '../../../models/api-models/user-skill/user-skill';
+import {UserSkillFactory} from '../../../models/api-models/user-skill/user-skill';
 
 @Component({
   selector: 'skills-input',
@@ -63,7 +63,9 @@ export class SkillsInputComponent extends SystemLanguageListener implements OnIn
   }
 
   protected loadData(): void {
-    this.skills = this.skillProxy.getSkills();
+    this.skills = this.skillProxy.getSkills({
+      'page[size]': 100
+    });
   }
 
   public onRemoveUserSkill(userSkill): void {
@@ -78,11 +80,14 @@ export class SkillsInputComponent extends SystemLanguageListener implements OnIn
     if (skillId && !some(this.userSkillsControl.value, { skill: {id: skillId} })) {
       const userSkill = UserSkillFactory.createUserSkill({});
       this.loadingSkill = true;
-      this.skillProxy.getSkill(skillId).then((skill) => {
+
+      this.skillProxy.getSkill(skillId)
+      .then(skill => {
         userSkill.skill = skill;
         this.userSkillsControl.value.push(userSkill);
         this.loadingSkill = false;
-      }).catch(errors => {
+      })
+      .catch(errors => {
         this.loadingSkill = false;
       });
     }

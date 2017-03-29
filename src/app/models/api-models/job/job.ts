@@ -2,10 +2,16 @@ import {Application} from '../application/application';
 import {ApplicationFactory} from '../application/application';
 import {Category} from '../category/category';
 import {CategoryFactory} from '../category/category';
+import {Comment} from '../comment/comment';
+import {CommentFactory} from '../comment/comment';
 import {Company} from '../company/company';
 import {CompanyFactory} from '../company/company';
 import {HourlyPay} from '../hourly-pay/hourly-pay';
 import {HourlyPayFactory} from '../hourly-pay/hourly-pay';
+import {JobLanguage} from '../job-language/job-language';
+import {JobLanguageFactory} from '../job-language/job-language';
+import {JobSkill} from '../job-skill/job-skill';
+import {JobSkillFactory} from '../job-skill/job-skill';
 import {Language} from '../language/language';
 import {LanguageFactory} from '../language/language';
 import {map} from 'lodash';
@@ -18,6 +24,7 @@ interface JobApiAttributes {
   category: Category;
   city: string;
   company: Company;
+  comments: Comment[];
   createdAt: Date;
   currency: string;
   description: string;
@@ -35,6 +42,8 @@ interface JobApiAttributes {
   invoiceAmount: number;
   jobDate: Date;
   jobEndDate: Date;
+  jobLanguages: JobLanguage[];
+  jobSkills: JobSkill[];
   language: Language;
   languageId: string;
   name: string;
@@ -80,6 +89,7 @@ export class JobFactory {
       applications: map(jsonObject.job_users, application => ApplicationFactory.createApplication(application)),
       category: CategoryFactory.createCategory(jsonObject.category),
       city: jsonObject.city,
+      comments: map(jsonObject.comments, comment => CommentFactory.createComment(comment)),
       company: CompanyFactory.createCompany(jsonObject.company),
       createdAt: new Date(jsonObject.created_at),
       currency: jsonObject.currency,
@@ -98,6 +108,8 @@ export class JobFactory {
       invoiceAmount: jsonObject.invoice_amount,
       jobDate: new Date(jsonObject.job_date),
       jobEndDate: new Date(jsonObject.job_end_date),
+      jobLanguages: map(jsonObject.job_languages, jobLanguage => JobLanguageFactory.createJobLanguage(jobLanguage)),
+      jobSkills:  map(jsonObject.job_skills, jobSkill => JobSkillFactory.createJobSkill(jobSkill)),
       language: LanguageFactory.createLanguage(jsonObject.language),
       languageId: jsonObject.language_id,
       name: jsonObject.name,

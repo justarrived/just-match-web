@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {Input} from '@angular/core';
-import {JARoutes} from '../../../routes/ja-routes';
+import {JARoutes} from '../../../routes/ja-routes/ja-routes';
 import {Job} from '../../../models/api-models/job/job';
 
 @Component({

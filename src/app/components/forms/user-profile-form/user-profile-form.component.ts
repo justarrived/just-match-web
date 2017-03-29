@@ -5,15 +5,15 @@ import {Document} from '../../../models/api-models/document/document';
 import {FormBuilder} from '@angular/forms';
 import {FormGroup} from '@angular/forms';
 import {Input} from '@angular/core';
-import {isValidSSNCharCode} from '../../../utils/is-valid-ssn-char-code';
+import {isValidSSNCharCode} from '../../../utils/string/string.util';
 import {map} from 'lodash';
 import {OnDestroy} from '@angular/core';
 import {OnInit} from '@angular/core';
 import {Subscription} from 'rxjs/Subscription';
 import {User} from '../../../models/api-models/user/user';
-import {UserDocument} from '../../../models/api-models/user/user-document';
-import {UserImage} from '../../../models/api-models/user/user-image';
-import {UserProxy} from '../../../services/proxy/user-proxy.service';
+import {UserDocument} from '../../../models/api-models/user-document/user-document';
+import {UserImage} from '../../../models/api-models/user-image/user-image';
+import {UserProxy} from '../../../proxies/user/user.proxy';
 import {UserResolver} from '../../../resolvers/user/user.resolver';
 import {Validators} from '@angular/forms';
 
@@ -106,14 +106,15 @@ export class UserProfileFormComponent implements OnInit, OnDestroy {
       }),
       'ssn': this.profileForm.value.ssn,
     })
-      .then((response) => {
-        this.userResolver.reloadUser().then(() => {
-          this.submitSuccess = true;
-          this.loadingSubmit = false;
-        });
-      })
-      .catch(errors => {
-        this.handleServerErrors(errors);
+    .then(response => {
+      this.userResolver.reloadUser()
+      .then(() => {
+        this.submitSuccess = true;
+        this.loadingSubmit = false;
       });
+    })
+    .catch(errors => {
+      this.handleServerErrors(errors);
+    });
   }
 }

@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {JARoutes} from '../../../routes/ja-routes';
+import {JARoutes} from '../../../routes/ja-routes/ja-routes';
 
 @Component({
   selector: 'how-it-works-section',

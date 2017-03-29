@@ -1,12 +1,12 @@
 import {Component} from '@angular/core';
-import {JARoutes} from '../../../routes/ja-routes';
+import {JARoutes} from '../../../routes/ja-routes/ja-routes';
 import {Job} from '../../../models/api-models/job/job';
-import {JobProxy} from '../../../services/proxy/job-proxy.service';
-import {nbrOfMonthsFromDate} from '../../../utils/date-util';
+import {JobProxy} from '../../../proxies/job/job.proxy';
+import {nbrOfMonthsFromDate} from '../../../utils/date/date.util';
 import {OnInit} from '@angular/core';
 import {SystemLanguageListener} from '../../../resolvers/system-languages/system-languages.resolver';
 import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
-import {yyyymmdd} from '../../../utils/date-util';
+import {yyyymmdd} from '../../../utils/date/date.util';
 
 @Component({
   selector: 'new-jobs-section',
@@ -51,13 +51,12 @@ export class NewJobsSectionComponent extends SystemLanguageListener implements O
   }
 
   protected loadData(): void {
-    this.newJobs = this.jobProxy.getJobs(
-      {
-        'filter[filled]': false,
-        'filter[job_date]': yyyymmdd(new Date()) + '..' + yyyymmdd(nbrOfMonthsFromDate(new Date(), 12)),
-        'include': 'company,hourly_pay,company.company_images',
-        'page[size]': 4,
-        'sort': '-created_at',
-      });
+    this.newJobs = this.jobProxy.getJobs({
+      'filter[filled]': false,
+      'filter[job_date]': yyyymmdd(new Date()) + '..' + yyyymmdd(nbrOfMonthsFromDate(new Date(), 12)),
+      'include': 'company,hourly_pay,company.company_images',
+      'page[size]': 4,
+      'sort': '-created_at',
+    });
   }
 }
