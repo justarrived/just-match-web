@@ -9,7 +9,7 @@ import {ActivatedRoute} from '@angular/router';
 import {SystemLanguagesResolver} from '../../resolvers/system-languages/system-languages.resolver';
 import {SystemLanguageListener} from '../../resolvers/system-languages/system-languages.resolver';
 import {customMapStyle} from '../../styles/google-maps-styles';
-import {yyyymmdd, nbrOfMonthsFromDate} from '../../utils/date-util';
+import {yyyymmdd, nbrOfMonthsFromDate} from '../../utils/date/date.util';
 
 @Component({
   templateUrl: './jobs.component.html',

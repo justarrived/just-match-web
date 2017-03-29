@@ -1,4 +1,4 @@
-import {JARoute} from './ja-route';
+import {JARoute} from '../ja-route/ja-route';
 
 export class JARoutes {
   public static aboutCookies: JARoute = { url: () => '/cookies-about'};

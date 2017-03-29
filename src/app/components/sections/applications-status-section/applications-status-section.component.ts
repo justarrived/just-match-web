@@ -1,8 +1,8 @@
 import {Application} from '../../../models/api-models/application/application';
 import {ApplicationProxy} from '../../../proxies/application/application.proxy';
 import {Component} from '@angular/core';
-import {JARoutes} from '../../../routes/ja-routes';
-import {nbrOfMonthsFromDate} from '../../../utils/date-util';
+import {JARoutes} from '../../../routes/ja-routes/ja-routes';
+import {nbrOfMonthsFromDate} from '../../../utils/date/date.util';
 import {OnDestroy} from '@angular/core';
 import {OnInit} from '@angular/core';
 import {Subscription} from 'rxjs/Subscription';
@@ -10,7 +10,7 @@ import {SystemLanguageListener} from '../../../resolvers/system-languages/system
 import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
 import {User} from '../../../models/api-models/user/user';
 import {UserResolver} from '../../../resolvers/user/user.resolver';
-import {yyyymmdd} from '../../../utils/date-util';
+import {yyyymmdd} from '../../../utils/date/date.util';
 
 @Component({
   selector: 'applications-status-section',

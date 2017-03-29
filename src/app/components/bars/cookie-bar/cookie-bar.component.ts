@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {DataStoreService} from '../../../services/data-store.service';
-import {JARoutes} from '../../../routes/ja-routes';
+import {JARoutes} from '../../../routes/ja-routes/ja-routes';
 
 @Component({
   selector: 'cookie-bar',

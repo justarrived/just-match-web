@@ -22,7 +22,7 @@ interface CreateUserAttributes {
   first_name: string;
   gender?: string;
   ignored_notifications?: string[];
-  interest_ids?: {id: string, proficiency: number}[]; // TODO check why required in docs.
+  interest_ids?: {id: string, proficiency: number}[];
   job_experience?: string;
   language_id?: string;
   language_ids?: {id: string, proficiency: number}[]; // TODO check why required in docs.
@@ -31,7 +31,7 @@ interface CreateUserAttributes {
   next_of_kin_phone?: string;
   password?: string;
   phone?: string;
-  skill_ids?: {id: string, proficiency: number}[]; // TODO check why required in docs.
+  skill_ids?: {id: string, proficiency: number}[];
   skype_username?: string;
   ssn?: string;
   street?: string;

@@ -3,7 +3,7 @@ import {Application} from '../../models/api-models/application/application';
 import {ApplicationProxy} from '../../proxies/application/application.proxy';
 import {Component} from '@angular/core';
 import {Input} from '@angular/core';
-import {JARoutes} from '../../routes/ja-routes';
+import {JARoutes} from '../../routes/ja-routes/ja-routes';
 import {Job} from '../../models/api-models/job/job';
 import {JobProxy} from '../../proxies/job/job.proxy';
 import {NavigationService} from '../../services/navigation.service';

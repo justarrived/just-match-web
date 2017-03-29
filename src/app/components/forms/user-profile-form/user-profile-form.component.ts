@@ -5,7 +5,7 @@ import {Document} from '../../../models/api-models/document/document';
 import {FormBuilder} from '@angular/forms';
 import {FormGroup} from '@angular/forms';
 import {Input} from '@angular/core';
-import {isValidSSNCharCode} from '../../../utils/is-valid-ssn-char-code';
+import {isValidSSNCharCode} from '../../../utils/string/string.util';
 import {map} from 'lodash';
 import {OnDestroy} from '@angular/core';
 import {OnInit} from '@angular/core';

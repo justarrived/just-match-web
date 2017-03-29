@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {getDataUrl} from '../../../utils/data-url.util';
+import {getDataUrl} from '../../../utils/data-url/data-url.util';
 import {Input} from '@angular/core';
 import {OnDestroy} from '@angular/core';
 import {OnInit} from '@angular/core';

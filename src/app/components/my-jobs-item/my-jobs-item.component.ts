@@ -1,7 +1,7 @@
 import {Application} from '../../models/api-models/application/application';
 import {Component} from '@angular/core';
 import {Input} from '@angular/core';
-import {JARoutes} from '../../routes/ja-routes';
+import {JARoutes} from '../../routes/ja-routes/ja-routes';
 import {NavigationService} from '../../services/navigation.service';
 
 @Component({

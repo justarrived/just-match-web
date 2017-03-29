@@ -3,8 +3,6 @@ import {JobFactory} from '../job/job';
 import {Language} from '../language/language';
 import {LanguageFactory} from '../language/language';
 
-// TODO verify that the spec looks like below
-
 // API attribute interfaces
 interface JobLanguageApiAttributes {
   id: string;

@@ -7,7 +7,7 @@ import {FaqPageComponent} from '../components/pages/faq-page/faq-page.component'
 import {ForgotPasswordPageComponent} from '../components/pages/forgot-password-page/forgot-password-page.component';
 import {GuardsModule} from '../guards/guards.module';
 import {HomePageComponent} from '../components/pages/home-page/home-page.component';
-import {JARoute} from '../routes/ja-route';
+import {JARoute} from './ja-route/ja-route';
 import {JobDetailsComponent} from '../views/job-details/job-details.component';
 import {JobsComponent} from '../views/jobs/jobs.component';
 import {LoginPageComponent} from '../components/pages/login-page/login-page.component';

@@ -1,4 +1,4 @@
-import {StorageInterface} from './storage-interface';
+import {StorageInterface} from '../storage-interface/storage-interface';
 
 export class CookieStorage implements StorageInterface {
   private data: any = {};

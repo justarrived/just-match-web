@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {JARoutes} from '../../routes/ja-routes';
+import {JARoutes} from '../../routes/ja-routes/ja-routes';
 
 @Component({
   templateUrl: './confirmation.component.html',

@@ -1,12 +1,12 @@
 import {Component} from '@angular/core';
-import {JARoutes} from '../../../routes/ja-routes';
+import {JARoutes} from '../../../routes/ja-routes/ja-routes';
 import {Job} from '../../../models/api-models/job/job';
 import {JobProxy} from '../../../proxies/job/job.proxy';
-import {nbrOfMonthsFromDate} from '../../../utils/date-util';
+import {nbrOfMonthsFromDate} from '../../../utils/date/date.util';
 import {OnInit} from '@angular/core';
 import {SystemLanguageListener} from '../../../resolvers/system-languages/system-languages.resolver';
 import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
-import {yyyymmdd} from '../../../utils/date-util';
+import {yyyymmdd} from '../../../utils/date/date.util';
 
 @Component({
   selector: 'new-jobs-section',
