@@ -27,8 +27,8 @@ export class InputErrorsComponent implements OnInit {
 
   @Input('apiErrors')
   public set apiErrors(errors: ApiErrors) {
-      this.showApiErrors = true;
-      this.apiErrorsActual = errors;
+    this.showApiErrors = true;
+    this.apiErrorsActual = errors;
   }
 
   // Client side

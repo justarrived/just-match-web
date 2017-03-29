@@ -23,7 +23,7 @@ import {ViewChild} from '@angular/core';
     <input
       #fileInput
       (change)="onDocumentFilenameChange($event)"
-      accept="image/jpeg,image/jpg,image/gif,image/png"
+      accept="image/jpeg,image/png"
       style="display: none"
       type="file"/>`
 })

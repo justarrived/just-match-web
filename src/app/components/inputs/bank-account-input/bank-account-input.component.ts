@@ -17,10 +17,12 @@ import {Input} from '@angular/core';
     </account-number-input>
 
     <!-- The API can return errors for account, which isn't bound to any instance of form control -->
-    <api-errors
-      attribute="account"
-      [errors]="apiErrors">
-    </api-errors>`
+    <div style="text-align: center">
+      <api-errors
+        attribute="account"
+        [errors]="apiErrors">
+      </api-errors>
+    </div>`
 })
 export class BankAccountInputComponent {
   @Input() apiErrors: ApiErrors;

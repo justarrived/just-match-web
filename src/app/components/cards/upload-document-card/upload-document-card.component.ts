@@ -49,6 +49,7 @@ import {UserDocument} from '../../../models/api-models/user-document/user-docume
       <file-input-button
         (onChange)="onDocumentFilenameChange($event)"
         [fluid]="true"
+        accept="application/pdf,application/msword,application/zip,application/x-ole-storage,application/vnd.oasis.opendocument.text,text/plain,application/rtf,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
         icon="upload"
         kind="primary"
         size="small">

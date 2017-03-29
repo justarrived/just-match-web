@@ -45,7 +45,7 @@ import {Output} from '@angular/core';
         <file-input-button
           (onChange)="onImageFilenameChange($event)"
           [fluid]="true"
-          accept="image/jpeg,image/jpg,image/gif,image/png"
+          accept="image/jpeg,image/png"
           icon="upload"
           kind="primary"
           size="small">
