@@ -36,6 +36,6 @@ export class ConfirmationModalComponent {
   @ViewChild('confirmationModal') public confirmationModal: any;
 
   public show() {
-    this.confirmationModal.show({inverted: true});
+    this.confirmationModal.show();
   }
 }
