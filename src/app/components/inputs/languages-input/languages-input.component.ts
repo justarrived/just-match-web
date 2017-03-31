@@ -27,6 +27,7 @@ import {UserLanguageFactory} from '../../../models/api-models/user-language/user
       [apiErrors]="apiErrors"
       [control]="languagesControl"
       [data]="languages | async"
+      [hint]="hint"
       [label]="'input.languages.label' | translate"
       [placeholder]="'input.languages.placeholder' | translate"
       apiAttribute="language_ids"
@@ -44,9 +45,11 @@ import {UserLanguageFactory} from '../../../models/api-models/user-language/user
   </div>`
 })
 export class LanguagesInputComponent extends SystemLanguageListener implements OnInit {
-  @Input() apiErrors: ApiErrors;
-  @Input() languagesControl: FormControl;
-  @Input() userLanguagesControl: FormControl;
+  @Input() public apiErrors: ApiErrors;
+  @Input() public hint: string;
+  @Input() public languagesControl: FormControl;
+  @Input() public languageIds: string[];
+  @Input() public userLanguagesControl: FormControl;
 
   public languages: Promise<Language[]>;
   public loadingLanguage: boolean;
@@ -66,6 +69,7 @@ export class LanguagesInputComponent extends SystemLanguageListener implements O
     this.languages = this.languageProxy.getLanguages({
       'page[size]': 300,
       'sort': 'en_name',
+      'filter[id]': (this.languageIds ? this.languageIds.join(',') : null),
     });
   }
 

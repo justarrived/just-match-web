@@ -1,9 +1,13 @@
 import {AccountNumberInputComponent} from './components/inputs/account-number-input/account-number-input.component';
 import {ActsAsUserService} from './services/acts-as-user.service';
-import {AddressInputComponent} from './components/inputs/address-input/address-input.component';
 import {AgmCoreModule} from 'angular2-google-maps/core';
 import {ApiCallService} from './services/api-call.service';
 import {ApiErrorsComponent} from './components/form-errors/api-errors/api-errors.component';
+import {JobAdditionalUserInfoModalComponent} from './components/modals/job-additional-user-info-modal/job-additional-user-info-modal.component';
+import {ApplyForJobModalComponent} from './components/modals/apply-for-job-modal/apply-for-job-modal.component';
+import {ApplyForJobFormComponent} from './components/forms/apply-for-job-form/apply-for-job-form.component';
+import {FrilansTermsInputComponent} from './components/inputs/frilans-terms-input/frilans-terms-input.component';
+import {ApplyMessageInputComponent} from './components/inputs/apply-message-input/apply-message-input.component';
 import {APP_BASE_HREF} from '@angular/common';
 import {AppComponent} from './app.component';
 import {ApplicationsComponent} from './views/my-jobs/applications/applications.component';
@@ -14,7 +18,6 @@ import {AppNavbarComponent} from './components/navbars/app-navbar/app-navbar.com
 import {AppTranslateModule} from './app.translate.module';
 import {AtUndInputComponent} from './components/inputs/at-und-input/at-und-input.component';
 import {AutosizeDirective} from './directives/textarea-autosize/textarea-autosize.directive';
-import {BankAccountInputComponent} from './components/inputs/bank-account-input/bank-account-input.component';
 import {BaseButtonComponent} from './components/buttons/base-button/base-button.component';
 import {BaseMessageComponent} from './components/messages/base-message.component';
 import {BasicBorderHeaderComponent} from './components/headers/basic-border-header/basic-border-header.component';
@@ -64,6 +67,7 @@ import {HttpModule} from '@angular/http';
 import {InfoMessageComponent} from './components/messages/info-message/info-message.component';
 import {InputErrorComponent} from './components/form-errors/input-error/input-error.component';
 import {InputErrorsComponent} from './components/form-errors/input-errors/input-errors.component';
+import {InputHintLabelComponent} from './components/labels/input-hint-label/input-hint-label.component';
 import {JARoutes} from './routes/ja-routes/ja-routes';
 import {JobCardComponent} from './components/cards/job-card/job-card.component';
 import {JobDetailsComponent} from './views/job-details/job-details.component';
@@ -135,6 +139,7 @@ import {UserImageCircularInputComponent} from './components/inputs/user-image-ci
 import {UserProfileFormComponent} from './components/forms/user-profile-form/user-profile-form.component';
 import {UserProfileHeaderComponent} from './components/headers/user-profile-header/user-profile-header.component';
 import {UserProfilePageComponent} from './components/pages/user-profile-page/user-profile-page.component';
+import {UserUpdateFormComponent} from './components/forms/user-update-form/user-update-form.component';
 import {UserResolver} from './resolvers/user/user.resolver';
 import {WelcomeHeaderComponent} from './components/headers/welcome-header/welcome-header.component';
 import {WorkPermitBackInputComponent} from './components/inputs/work-permit-back-input/work-permit-back-input.component';
@@ -169,24 +174,27 @@ export class RavenErrorHandler implements ErrorHandler {
   ],
   declarations: [
     AccountNumberInputComponent,
-    AddressInputComponent,
     ApiErrorsComponent,
+    ApplyMessageInputComponent,
     AppComponent,
     ApplicationsComponent,
     ApplicationsStatusSectionComponent,
     ApplicationStatusCardComponent,
     AppliedForJobModalComponent,
+    ApplyForJobModalComponent,
     AppNavbarComponent,
     AtUndInputComponent,
     AutosizeDirective,
-    BankAccountInputComponent,
     BaseButtonComponent,
     BaseMessageComponent,
     BasicBorderHeaderComponent,
     BasicTabComponent,
+    JobAdditionalUserInfoModalComponent,
     BasicTabsComponent,
     CircularImageInputComponent,
     CityInputComponent,
+    ApplyForJobFormComponent,
+    FrilansTermsInputComponent,
     ClearingNumberInputComponent,
     CommentsComponent,
     CompetenceInputComponent,
@@ -222,6 +230,7 @@ export class RavenErrorHandler implements ErrorHandler {
     InfoMessageComponent,
     InputErrorComponent,
     InputErrorsComponent,
+    InputHintLabelComponent,
     JobCardComponent,
     JobDetailsComponent,
     JobExperienceInputComponent,
@@ -283,6 +292,7 @@ export class RavenErrorHandler implements ErrorHandler {
     UserProfileFormComponent,
     UserProfileHeaderComponent,
     UserProfilePageComponent,
+    UserUpdateFormComponent,
     WelcomeHeaderComponent,
     WorkPermitBackInputComponent,
     WorkPermitFrontInputComponent,

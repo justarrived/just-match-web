@@ -9,6 +9,7 @@ import {Input} from '@angular/core';
     <text-input
       [apiErrors]="apiErrors"
       [control]="control"
+      [hint]="hint"
       [label]="'input.street.label' | translate"
       [placeholder]="'input.street.placeholder' | translate"
       apiAttribute="street"
@@ -19,4 +20,5 @@ import {Input} from '@angular/core';
 export class StreetInputComponent {
   @Input() public apiErrors: ApiErrors;
   @Input() public control: FormControl;
+  @Input() public hint: string;
 }

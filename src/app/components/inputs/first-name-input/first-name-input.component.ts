@@ -9,6 +9,7 @@ import {Input} from '@angular/core';
     <text-input
       [apiErrors]="apiErrors"
       [control]="control"
+      [hint]="hint"
       [label]="'input.first.name.label' | translate"
       [placeholder]="'input.first.name.placeholder' | translate"
       apiAttribute="first_name"
@@ -17,6 +18,7 @@ import {Input} from '@angular/core';
     </text-input>`
 })
 export class FirstNameInputComponent {
-  @Input() apiErrors: ApiErrors;
-  @Input() control: FormControl;
+  @Input() public apiErrors: ApiErrors;
+  @Input() public control: FormControl;
+  @Input() public hint: string;
 }

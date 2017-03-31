@@ -9,6 +9,7 @@ import {Input} from '@angular/core';
     <text-input
       [apiErrors]="apiErrors"
       [control]="control"
+      [hint]="hint"
       [label]="'input.account.number.label' | translate"
       [placeholder]="'input.account.number.placeholder' | translate"
       apiAttribute="account_number"
@@ -17,6 +18,7 @@ import {Input} from '@angular/core';
     </text-input>`
 })
 export class AccountNumberInputComponent {
-  @Input() apiErrors: ApiErrors;
-  @Input() control: FormControl;
+  @Input() public apiErrors: ApiErrors;
+  @Input() public control: FormControl;
+  @Input() public hint: string;
 }

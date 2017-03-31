@@ -4,6 +4,7 @@ import {Component} from '@angular/core';
 import {PasswordResetLinkSentModalComponent} from '../../modals/password-reset-link-sent-modal/password-reset-link-sent-modal.component';
 import {FormBuilder} from '@angular/forms';
 import {FormGroup} from '@angular/forms';
+import {Input} from '@angular/core';
 import {JARoutes} from '../../../routes/ja-routes/ja-routes';
 import {NavigationService} from '../../../services/navigation.service';
 import {OnInit} from '@angular/core';
@@ -35,6 +36,7 @@ import {ViewChild} from '@angular/core';
       </email-or-phone-input>
 
       <form-submit-button
+        [showButton]="showSubmitButton"
         [submitFail]="submitFail"
         [submitSuccess]="submitSuccess"
         [buttonText]="'contact.form.submit.button' | translate">
@@ -49,6 +51,7 @@ import {ViewChild} from '@angular/core';
     </form>`
 })
 export class ForgotPasswordFormComponent implements OnInit {
+  @Input() public showSubmitButton: boolean = true;
   @ViewChild('passwordResetLinkSentModalComponent') public passwordResetLinkSentModalComponent: PasswordResetLinkSentModalComponent;
 
   public apiErrors: ApiErrors = new ApiErrors([]);

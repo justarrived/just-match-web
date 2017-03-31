@@ -4,6 +4,7 @@ import {ChangeDetectorRef} from '@angular/core';
 import {Component} from '@angular/core';
 import {FormBuilder} from '@angular/forms';
 import {FormGroup} from '@angular/forms';
+import {Input} from '@angular/core';
 import {JARoutes} from '../../../routes/ja-routes/ja-routes';
 import {NavigationService} from '../../../services/navigation.service';
 import {OnInit} from '@angular/core';
@@ -35,6 +36,7 @@ import {ViewChild} from '@angular/core';
       </password-input>
 
       <form-submit-button
+        [showButton]="showSubmitButton"
         [submitFail]="submitFail"
         [submitSuccess]="submitSuccess"
         [buttonText]="'reset.password.form.submit.button' | translate">
@@ -47,6 +49,7 @@ import {ViewChild} from '@angular/core';
     </form>`
 })
 export class ResetPasswordFormComponent implements OnInit {
+  @Input() public showSubmitButton: boolean = true;
   @ViewChild('passwordChangedModalComponent') public passwordChangedModalComponent: PasswordChangedModalComponent;
 
   public apiErrors: ApiErrors = new ApiErrors([]);

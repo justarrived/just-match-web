@@ -6,7 +6,9 @@ import {Injectable} from '@angular/core';
 // CREATE
 interface CreateApplicationAttributes {
   apply_message?: string;
+  consent: boolean;
   language_id?: string;
+  terms_agreement_id: string;
   user_id: string;
 }
 

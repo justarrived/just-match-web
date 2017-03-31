@@ -9,12 +9,14 @@ import {Input} from '@angular/core';
     <yes-no-input
       [apiErrors]="apiErrors"
       [control]="control"
+      [hint]="hint"
       [label]="'input.got.coordination.number.label' | translate"
       apiAttribute="got_coordination_number"
       name="got_coordination_number">
     </yes-no-input>`
 })
 export class GotCoordinationNumberInputComponent {
-  @Input() apiErrors: ApiErrors;
-  @Input() control: FormControl;
+  @Input() public apiErrors: ApiErrors;
+  @Input() public control: FormControl;
+  @Input() public hint: string;
 }

@@ -36,6 +36,7 @@ import {ViewChild} from '@angular/core';
         [patternLabel]="patternLabel"
         [requiredLabel]="requiredLabel">
       </input-errors>
+      <input-hint-label [hint]="hint"></input-hint-label>
       <ng-content></ng-content>
     </div>`
 })
@@ -46,6 +47,7 @@ export class SelectDropdownInputComponent {
   @Input() public data: any[];
   @Input() public dataItemLabelProoerty: string;
   @Input() public dataItemValueProoerty: string;
+  @Input() public hint: string;
   @Input() public label: string;
   @Input() public maxLengthLabel: string;
   @Input() public minLengthLabel: string;

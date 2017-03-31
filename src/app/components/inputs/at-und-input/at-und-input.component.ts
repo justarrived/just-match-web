@@ -9,12 +9,14 @@ import {Input} from '@angular/core';
     <yes-no-input
       [apiErrors]="apiErrors"
       [control]="control"
+      [hint]="hint"
       [label]="'input.at.und.label' | translate"
       apiAttribute="at_und"
       name="at_und">
     </yes-no-input>`
 })
 export class AtUndInputComponent {
-  @Input() apiErrors: ApiErrors;
-  @Input() control: FormControl;
+  @Input() public apiErrors: ApiErrors;
+  @Input() public control: FormControl;
+  @Input() public hint: string;
 }

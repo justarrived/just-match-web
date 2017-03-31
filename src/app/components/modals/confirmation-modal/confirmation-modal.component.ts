@@ -35,7 +35,11 @@ export class ConfirmationModalComponent {
 
   @ViewChild('confirmationModal') public confirmationModal: any;
 
-  public show() {
-    this.confirmationModal.show();
+  public show(options?: any) {
+    this.confirmationModal.show(options);
+  }
+
+  public hide() {
+    this.confirmationModal.hide();
   }
 }

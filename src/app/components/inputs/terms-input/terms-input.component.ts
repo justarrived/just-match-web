@@ -37,7 +37,7 @@ import {ViewChild} from '@angular/core';
     </div>`
 })
 export class TermsInputComponent {
-  @Input() apiErrors: ApiErrors;
-  @Input() control: FormControl;
+  @Input() public apiErrors: ApiErrors;
+  @Input() public control: FormControl;
   @ViewChild(InputErrorsComponent) inputErrors: InputErrorsComponent;
 }

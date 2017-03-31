@@ -9,6 +9,7 @@ import {Input} from '@angular/core';
     <text-input
       [apiErrors]="apiErrors"
       [control]="control"
+      [hint]="hint"
       [label]="'input.last.name.label' | translate"
       [placeholder]="'input.last.name.placeholder' | translate"
       apiAttribute="last_name"
@@ -17,6 +18,7 @@ import {Input} from '@angular/core';
     </text-input>`
 })
 export class LastNameInputComponent {
-  @Input() apiErrors: ApiErrors;
-  @Input() control: FormControl;
+  @Input() public apiErrors: ApiErrors;
+  @Input() public control: FormControl;
+  @Input() public hint: string;
 }

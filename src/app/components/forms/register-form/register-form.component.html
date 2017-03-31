@@ -48,12 +48,20 @@
     {{'user.register.form.address.section.header' | translate}}
   </h3>
 
-  <address-input
-    [streetControl]="registerForm.controls['street']"
-    [zipControl]="registerForm.controls['zip']"
-    [cityControl]="registerForm.controls['city']"
-    [apiErrors]="apiErrors">
-  </address-input>
+  <street-input
+    [apiErrors]="apiErrors"
+    [control]="registerForm.controls['street']">
+  </street-input>
+
+  <zip-input
+    [apiErrors]="apiErrors"
+    [control]="registerForm.controls['zip']">
+  </zip-input>
+
+  <city-input
+    [apiErrors]="apiErrors"
+    [control]="registerForm.controls['city']">
+  </city-input>
 
   <h3 class="ui horizontal divider pink header">
     <i class="settings icon"></i>
@@ -86,6 +94,7 @@
   </terms-input>
 
   <form-submit-button
+    [showButton]="showSubmitButton"
     [submitFail]="submitFail"
     [submitSuccess]="submitSuccess"
     [buttonText]="'user.register.form.submit.button' | translate">

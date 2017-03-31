@@ -5,7 +5,6 @@ import {Document} from '../../../models/api-models/document/document';
 import {FormBuilder} from '@angular/forms';
 import {FormGroup} from '@angular/forms';
 import {Input} from '@angular/core';
-import {isValidSSNCharCode} from '../../../utils/string/string.util';
 import {map} from 'lodash';
 import {OnDestroy} from '@angular/core';
 import {OnInit} from '@angular/core';
@@ -22,6 +21,8 @@ import {Validators} from '@angular/forms';
   templateUrl: './user-profile-form.component.html'
 })
 export class UserProfileFormComponent implements OnInit, OnDestroy {
+  @Input() public showSubmitButton: boolean = true;
+
   public apiErrors: ApiErrors = new ApiErrors([]);
   public loadingSubmit: boolean;
   public profileForm: FormGroup;

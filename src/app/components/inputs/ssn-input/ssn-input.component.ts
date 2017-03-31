@@ -9,6 +9,7 @@ import {Input} from '@angular/core';
     <text-input
       [apiErrors]="apiErrors"
       [control]="control"
+      [hint]="hint"
       [label]="'input.ssn.label' | translate"
       [placeholder]="'input.ssn.placeholder' | translate"
       apiAttribute="ssn"
@@ -17,6 +18,7 @@ import {Input} from '@angular/core';
     </text-input>`
 })
 export class SSNInputComponent {
-  @Input() apiErrors: ApiErrors;
-  @Input() control: FormControl;
+  @Input() public apiErrors: ApiErrors;
+  @Input() public control: FormControl;
+  @Input() public hint: string;
 }

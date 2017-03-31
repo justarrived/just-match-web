@@ -20,6 +20,8 @@ import {Validators} from '@angular/forms';
   templateUrl: './user-details-form.component.html'
 })
 export class UserDetailsFormComponent implements OnInit, OnDestroy {
+  @Input() public showSubmitButton: boolean = true;
+
   public apiErrors: ApiErrors = new ApiErrors([]);
   public JARoutes = JARoutes;
   public loadingSubmit: boolean;
@@ -105,7 +107,21 @@ export class UserDetailsFormComponent implements OnInit, OnDestroy {
     this.loadingSubmit = true;
     this.apiErrors = new ApiErrors([]);
 
-    this.userProxy.updateUser(this.user.id, this.settingsForm.value, {
+    this.userProxy.updateUser(this.user.id, {
+      'account_clearing_number': this.settingsForm.value.account_clearing_number,
+      'account_number': this.settingsForm.value.account_number,
+      'city': this.settingsForm.value.city,
+      'country_of_origin': this.settingsForm.value.country_of_origin,
+      'email': this.settingsForm.value.email,
+      'first_name': this.settingsForm.value.first_name,
+      'gender': this.settingsForm.value.gender,
+      'last_name':this.settingsForm.value.last_name,
+      'phone': this.settingsForm.value.phone,
+      'ssn': this.settingsForm.value.ssn,
+      'street': this.settingsForm.value.street,
+      'system_language_id': this.settingsForm.value.system_language_id,
+      'zip': this.settingsForm.value.zip,
+    }, {
       'include': this.userResolver.defaultIncludeResourcesString,
     })
     .then(user => {

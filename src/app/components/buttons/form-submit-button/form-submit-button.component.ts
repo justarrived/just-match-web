@@ -13,7 +13,7 @@ import {Input} from '@angular/core';
     <success-message
       *ngIf="submitSuccess"
       [header]="'button.form.submit.success' | translate"
-      icon="hand spock">
+      icon="pink thumbs up">
     </success-message>
     <div
       [style.padding]="0"
@@ -22,6 +22,7 @@ import {Input} from '@angular/core';
         [buttonText]="buttonText"
         [fluid]="false"
         [icon]="icon"
+        *ngIf="showButton"
         buttonType="submit"
         kind="secondary"
         size="medium">
@@ -32,6 +33,7 @@ import {Input} from '@angular/core';
 export class FormSubmitButtonComponent {
   @Input() public buttonText: string;
   @Input() public icon: string;
+  @Input() public showButton: boolean = true;
   @Input() public submitFail: boolean;
   @Input() public submitSuccess: boolean;
 }

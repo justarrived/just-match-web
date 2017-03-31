@@ -4,7 +4,7 @@ import {UserFactory} from '../../models/api-models/user/user';
 import {Injectable} from '@angular/core';
 
 // CREATE
-interface CreateUserAttributes {
+export interface CreateUserAttributes {
   account_clearing_number?: string;
   account_number?: string;
   arbetsformedlingen_registered_at?: Date;
@@ -41,7 +41,7 @@ interface CreateUserAttributes {
 }
 
 // UPDATE
-interface UpdateUserAttributes {
+export interface UpdateUserAttributes {
   account_clearing_number?: string;
   account_number?: string;
   arbetsformedlingen_registered_at?: Date;

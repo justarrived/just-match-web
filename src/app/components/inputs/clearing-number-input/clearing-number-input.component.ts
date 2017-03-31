@@ -9,6 +9,7 @@ import {Input} from '@angular/core';
     <text-input
       [apiErrors]="apiErrors"
       [control]="control"
+      [hint]="hint"
       [label]="'input.clearing.number.label' | translate"
       [placeholder]="'input.clearing.number.placeholder' | translate"
       apiAttribute="clearing_number"
@@ -17,6 +18,7 @@ import {Input} from '@angular/core';
     </text-input>`
 })
 export class ClearingNumberInputComponent {
-  @Input() apiErrors: ApiErrors;
-  @Input() control: FormControl;
+  @Input() public apiErrors: ApiErrors;
+  @Input() public control: FormControl;
+  @Input() public hint: string;
 }

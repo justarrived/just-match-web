@@ -1,6 +1,18 @@
 <div *ngIf="job">
   <div class="job-details-body">
 
+    <job-additional-user-info-modal
+      [missingUserTraits]="missingUserTraits"
+      (onInformationSupplied)="requestedUserInformationSupplied($event)"
+      #jobAdditionalUserInfoModalComponent>
+    </job-additional-user-info-modal>
+
+    <apply-for-job-modal
+      (onAppliedForJob)="appliedForJob($event)"
+      [job]="job"
+      #applyForJobModalComponent>
+    </apply-for-job-modal>
+
     <applied-for-job-modal
       #appliedForJobModalComponent>
     </applied-for-job-modal>

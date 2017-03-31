@@ -141,8 +141,9 @@
   </job-experience-input>
 
   <form-submit-button
+    [buttonText]="'user.profile.form.submit.button' | translate"
+    [showButton]="showSubmitButton"
     [submitFail]="submitFail"
-    [submitSuccess]="submitSuccess"
-    [buttonText]="'user.profile.form.submit.button' | translate">
+    [submitSuccess]="submitSuccess">
   </form-submit-button>
 </form>

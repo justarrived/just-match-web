@@ -5,6 +5,7 @@ import {ContactMessageSentModalComponent} from '../../modals/contact-message-sen
 import {ContactProxy} from '../../../proxies/contact/contact.proxy';
 import {FormBuilder} from '@angular/forms';
 import {FormGroup} from '@angular/forms';
+import {Input} from '@angular/core';
 import {JARoutes} from '../../../routes/ja-routes/ja-routes';
 import {NavigationService} from '../../../services/navigation.service';
 import {OnDestroy} from '@angular/core';
@@ -48,6 +49,7 @@ import {ViewChild} from '@angular/core';
       </message-input>
 
       <form-submit-button
+        [showButton]="showSubmitButton"
         [submitFail]="submitFail"
         [submitSuccess]="submitSuccess"
         [buttonText]="'contact.form.submit.button' | translate">
@@ -55,6 +57,7 @@ import {ViewChild} from '@angular/core';
     </form>`
 })
 export class ContactFormComponent implements OnInit, OnDestroy {
+  @Input() public showSubmitButton: boolean = true;
   @ViewChild('contactMessageSentModal') public contactMessageSentModal: ContactMessageSentModalComponent;
 
   public apiErrors: ApiErrors = new ApiErrors([]);
