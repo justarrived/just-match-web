@@ -21,20 +21,20 @@ import {ViewChild} from '@angular/core';
           [promise]="termsAgreement"
           class="inverted">
         </sm-loader>
-        <sm-checkbox
-          [control]="control"
-          [label]="'input.frilans.terms.label' | translate">
-        </sm-checkbox>
         <div class="ui center aligned basic segment">
+          <sm-checkbox
+            [control]="control"
+            [label]="'input.frilans.terms.label' | translate">
+          </sm-checkbox>
           <img
             alt="Frilans Finans"
             class="ui centered small image"
             src="/assets/images/frilans_finans-logo.png">
-          <a
-            [href]="(termsAgreement | async)?.url"
-            target="_blank">
-             {{'input.frilans.terms.link' | translate}}
-          </a>
+            <a
+              [href]="(termsAgreement | async)?.url"
+              target="_blank">
+               {{'input.frilans.terms.link' | translate}}
+            </a>
          </div>
       </div>
       <input-errors
