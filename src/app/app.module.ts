@@ -3,17 +3,15 @@ import {ActsAsUserService} from './services/acts-as-user.service';
 import {AgmCoreModule} from 'angular2-google-maps/core';
 import {ApiCallService} from './services/api-call.service';
 import {ApiErrorsComponent} from './components/form-errors/api-errors/api-errors.component';
-import {JobAdditionalUserInfoModalComponent} from './components/modals/job-additional-user-info-modal/job-additional-user-info-modal.component';
-import {ApplyForJobModalComponent} from './components/modals/apply-for-job-modal/apply-for-job-modal.component';
-import {ApplyForJobFormComponent} from './components/forms/apply-for-job-form/apply-for-job-form.component';
-import {FrilansTermsInputComponent} from './components/inputs/frilans-terms-input/frilans-terms-input.component';
-import {ApplyMessageInputComponent} from './components/inputs/apply-message-input/apply-message-input.component';
 import {APP_BASE_HREF} from '@angular/common';
 import {AppComponent} from './app.component';
 import {ApplicationsComponent} from './views/my-jobs/applications/applications.component';
 import {ApplicationsStatusSectionComponent} from './components/sections/applications-status-section/applications-status-section.component';
 import {ApplicationStatusCardComponent} from './components/cards/application-status-card/application-status-card.component';
 import {AppliedForJobModalComponent} from './components/modals/applied-for-job-modal/applied-for-job-modal.component';
+import {ApplyForJobFormComponent} from './components/forms/apply-for-job-form/apply-for-job-form.component';
+import {ApplyForJobModalComponent} from './components/modals/apply-for-job-modal/apply-for-job-modal.component';
+import {ApplyMessageInputComponent} from './components/inputs/apply-message-input/apply-message-input.component';
 import {AppNavbarComponent} from './components/navbars/app-navbar/app-navbar.component';
 import {AppTranslateModule} from './app.translate.module';
 import {AtUndInputComponent} from './components/inputs/at-und-input/at-und-input.component';
@@ -57,6 +55,7 @@ import {ForgotPasswordFormComponent} from './components/forms/forgot-password-fo
 import {ForgotPasswordPageComponent} from './components/pages/forgot-password-page/forgot-password-page.component';
 import {FormsModule} from '@angular/forms';
 import {FormSubmitButtonComponent} from './components/buttons/form-submit-button/form-submit-button.component';
+import {FrilansTermsInputComponent} from './components/inputs/frilans-terms-input/frilans-terms-input.component';
 import {GenderInputComponent} from './components/inputs/gender-input/gender-input.component';
 import {GeolocationService} from './services/geolocation.service';
 import {GotCoordinationNumberInputComponent} from './components/inputs/got-coordination-number-input/got-coordination-number-input.component';
@@ -69,6 +68,7 @@ import {InputErrorComponent} from './components/form-errors/input-error/input-er
 import {InputErrorsComponent} from './components/form-errors/input-errors/input-errors.component';
 import {InputHintLabelComponent} from './components/labels/input-hint-label/input-hint-label.component';
 import {JARoutes} from './routes/ja-routes/ja-routes';
+import {JobAdditionalUserInfoModalComponent} from './components/modals/job-additional-user-info-modal/job-additional-user-info-modal.component';
 import {JobCardComponent} from './components/cards/job-card/job-card.component';
 import {JobDetailsComponent} from './views/job-details/job-details.component';
 import {JobExperienceInputComponent} from './components/inputs/job-experience-input/job-experience-input.component';
@@ -139,8 +139,8 @@ import {UserImageCircularInputComponent} from './components/inputs/user-image-ci
 import {UserProfileFormComponent} from './components/forms/user-profile-form/user-profile-form.component';
 import {UserProfileHeaderComponent} from './components/headers/user-profile-header/user-profile-header.component';
 import {UserProfilePageComponent} from './components/pages/user-profile-page/user-profile-page.component';
-import {UserUpdateFormComponent} from './components/forms/user-update-form/user-update-form.component';
 import {UserResolver} from './resolvers/user/user.resolver';
+import {UserUpdateFormComponent} from './components/forms/user-update-form/user-update-form.component';
 import {WelcomeHeaderComponent} from './components/headers/welcome-header/welcome-header.component';
 import {WorkPermitBackInputComponent} from './components/inputs/work-permit-back-input/work-permit-back-input.component';
 import {WorkPermitFrontInputComponent} from './components/inputs/work-permit-front-input/work-permit-front-input.component';
@@ -175,13 +175,14 @@ export class RavenErrorHandler implements ErrorHandler {
   declarations: [
     AccountNumberInputComponent,
     ApiErrorsComponent,
-    ApplyMessageInputComponent,
     AppComponent,
     ApplicationsComponent,
     ApplicationsStatusSectionComponent,
     ApplicationStatusCardComponent,
     AppliedForJobModalComponent,
+    ApplyForJobFormComponent,
     ApplyForJobModalComponent,
+    ApplyMessageInputComponent,
     AppNavbarComponent,
     AtUndInputComponent,
     AutosizeDirective,
@@ -189,12 +190,9 @@ export class RavenErrorHandler implements ErrorHandler {
     BaseMessageComponent,
     BasicBorderHeaderComponent,
     BasicTabComponent,
-    JobAdditionalUserInfoModalComponent,
     BasicTabsComponent,
     CircularImageInputComponent,
     CityInputComponent,
-    ApplyForJobFormComponent,
-    FrilansTermsInputComponent,
     ClearingNumberInputComponent,
     CommentsComponent,
     CompetenceInputComponent,
@@ -222,6 +220,7 @@ export class RavenErrorHandler implements ErrorHandler {
     ForgotPasswordFormComponent,
     ForgotPasswordPageComponent,
     FormSubmitButtonComponent,
+    FrilansTermsInputComponent,
     GenderInputComponent,
     GotCoordinationNumberInputComponent,
     HomePageComponent,
@@ -231,6 +230,7 @@ export class RavenErrorHandler implements ErrorHandler {
     InputErrorComponent,
     InputErrorsComponent,
     InputHintLabelComponent,
+    JobAdditionalUserInfoModalComponent,
     JobCardComponent,
     JobDetailsComponent,
     JobExperienceInputComponent,
