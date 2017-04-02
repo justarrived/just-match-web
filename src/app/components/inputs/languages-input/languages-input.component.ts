@@ -19,8 +19,7 @@ import {UserLanguageFactory} from '../../../models/api-models/user-language/user
     <sm-loader
       [complete]="!loadingLanguage"
       [promise]="languages"
-      class="inverted"
-      text="{{'component.loading' | translate}}">
+      class="inverted">
     </sm-loader>
     <select-dropdown-input
       (onChange)="onAddLanguage($event)"

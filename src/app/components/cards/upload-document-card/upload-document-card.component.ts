@@ -13,8 +13,7 @@ import {UserDocument} from '../../../models/api-models/user-document/user-docume
       [ngClass]="{'centered': centered}">
     <sm-loader
       [complete]="!uploadingDocument"
-      class="inverted"
-      text="{{'component.loading' | translate}}">
+      class="inverted">
     </sm-loader>
     <div class="content">
       <div

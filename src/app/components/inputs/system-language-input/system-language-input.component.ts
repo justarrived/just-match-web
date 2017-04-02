@@ -14,8 +14,7 @@ import {LanguageProxy} from '../../../proxies/language/language.proxy';
     <div class="ui form">
       <sm-loader
         [promise]="systemLanguages"
-        class="inverted"
-        text="{{'component.loading' | translate}}">
+        class="inverted">
       </sm-loader>
       <select-dropdown-input
         [apiErrors]="apiErrors"

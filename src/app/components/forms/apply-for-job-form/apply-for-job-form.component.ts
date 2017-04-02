@@ -27,8 +27,7 @@ import {Validators} from '@angular/forms';
       <sm-loader
         [complete]="!loadingSubmit"
         [promise]="termsAgreement"
-        class="inverted"
-        text="{{'component.loading' | translate}}">
+        class="inverted">
       </sm-loader>
 
       <apply-message-input

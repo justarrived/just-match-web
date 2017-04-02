@@ -19,8 +19,7 @@ import {UserSkillFactory} from '../../../models/api-models/user-skill/user-skill
     <sm-loader
       [complete]="!loadingSkill"
       [promise]="skills"
-      class="inverted"
-      text="{{'component.loading' | translate}}">
+      class="inverted">
     </sm-loader>
     <select-dropdown-input
       (onChange)="onAddSkill($event)"

@@ -19,14 +19,17 @@ import {ViewChild} from '@angular/core';
       <div class="ui segment">
         <sm-loader
           [promise]="termsAgreement"
-          class="inverted"
-          text="{{'component.loading' | translate}}">
+          class="inverted">
         </sm-loader>
         <sm-checkbox
           [control]="control"
           [label]="'input.frilans.terms.label' | translate">
         </sm-checkbox>
         <div class="ui center aligned basic segment">
+          <img
+            alt="Frilans Finans"
+            class="ui centered small image"
+            src="/assets/images/frilans_finans-logo.png">
           <a
             [href]="(termsAgreement | async)?.url"
             target="_blank">

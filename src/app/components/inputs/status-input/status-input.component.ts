@@ -14,8 +14,7 @@ import {SystemLanguagesResolver} from '../../../resolvers/system-languages/syste
     <div class="ui form">
       <sm-loader
         [promise]="statuses"
-        class="inverted"
-        text="{{'component.loading' | translate}}">
+        class="inverted">
       </sm-loader>
       <select-dropdown-input
         [apiErrors]="apiErrors"

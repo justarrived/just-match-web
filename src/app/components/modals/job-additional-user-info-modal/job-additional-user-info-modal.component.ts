@@ -27,6 +27,10 @@ import {ViewChild} from '@angular/core';
       </modal-content>
       <modal-actions>
         <div class="ui center aligned basic segment button-container">
+          <sm-loader
+            [complete]="!userUpdateForm.loadingSubmit"
+            class="inverted">
+          </sm-loader>
           <base-button
             (click)="buttonClicked()"
             [buttonText]="'job.additional.user.info.modal.button' | translate"

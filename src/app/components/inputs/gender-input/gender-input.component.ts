@@ -14,8 +14,7 @@ import {UserGenderProxy} from '../../../proxies/user-gender/user-gender.proxy';
     <div class="ui form">
       <sm-loader
         [promise]="genders"
-        class="inverted"
-        text="{{'component.loading' | translate}}">
+        class="inverted">
       </sm-loader>
       <select-dropdown-input
         [apiErrors]="apiErrors"

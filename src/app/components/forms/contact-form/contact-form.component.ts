@@ -25,8 +25,7 @@ import {ViewChild} from '@angular/core';
       class="ui form">
       <sm-loader
         [complete]="!loadingSubmit"
-        class="inverted"
-        text="{{'component.loading' | translate}}">
+        class="inverted">
       </sm-loader>
 
       <contact-message-sent-modal

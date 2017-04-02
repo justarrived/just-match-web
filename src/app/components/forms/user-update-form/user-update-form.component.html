@@ -4,12 +4,11 @@
   class="ui form">
   <sm-loader
     [complete]="!loadingSubmit"
-    class="inverted"
-    text="{{'component.loading' | translate}}">
+    class="inverted">
   </sm-loader>
 
   <h3
-    *ngIf="missingUserTraits['first_name'] || missingUserTraits['last_name'] || missingUserTraits['email'] || missingUserTraits['phone'] || missingUserTraits['ssn'] || missingUserTraits['gender'] || missingUserTraits['country_of_origin']"
+    *ngIf="missingUserTraits?.first_name || missingUserTraits?.last_name || missingUserTraits?.email || missingUserTraits?.phone || missingUserTraits?.ssn || missingUserTraits?.gender || missingUserTraits?.country_of_origin"
     class="ui horizontal divider pink header">
     <i class="user icon"></i>
     {{'user.update.form.personal.info.header' | translate}}
@@ -17,55 +16,55 @@
 
   <first-name-input
     [apiErrors]="apiErrors"
-    [control]="updateForm.controls['first_name']"
-    [hint]="missingUserTraits['first_name'].hint"
-    *ngIf="missingUserTraits['first_name']">
+    [control]="updateForm.controls.first_name"
+    [hint]="missingUserTraits?.first_name.hint"
+    *ngIf="missingUserTraits?.first_name">
   </first-name-input>
 
   <last-name-input
     [apiErrors]="apiErrors"
-    [control]="updateForm.controls['last_name']"
-    [hint]="missingUserTraits['last_name'].hint"
-    *ngIf="missingUserTraits['last_name']">
+    [control]="updateForm.controls.last_name"
+    [hint]="missingUserTraits?.last_name.hint"
+    *ngIf="missingUserTraits?.last_name">
   </last-name-input>
 
   <email-input
     [apiErrors]="apiErrors"
-    [control]="updateForm.controls['email']"
-    [hint]="missingUserTraits['email'].hint"
-    *ngIf="missingUserTraits['email']">
+    [control]="updateForm.controls.email"
+    [hint]="missingUserTraits?.email.hint"
+    *ngIf="missingUserTraits?.email">
   </email-input>
 
   <phone-input
     [apiErrors]="apiErrors"
-    [control]="updateForm.controls['phone']"
-    [hint]="missingUserTraits['phone'].hint"
-    *ngIf="missingUserTraits['phone']">
+    [control]="updateForm.controls.phone"
+    [hint]="missingUserTraits?.phone.hint"
+    *ngIf="missingUserTraits?.phone">
   </phone-input>
 
   <ssn-input
     [apiErrors]="apiErrors"
-    [control]="updateForm.controls['ssn']"
-    [hint]="missingUserTraits['ssn'].hint"
-    *ngIf="missingUserTraits['ssn']">
+    [control]="updateForm.controls.ssn"
+    [hint]="missingUserTraits?.ssn.hint"
+    *ngIf="missingUserTraits?.ssn">
   </ssn-input>
 
   <gender-input
     [apiErrors]="apiErrors"
-    [control]="updateForm.controls['gender']"
-    [hint]="missingUserTraits['gender'].hint"
-    *ngIf="missingUserTraits['gender']">
+    [control]="updateForm.controls.gender"
+    [hint]="missingUserTraits?.gender.hint"
+    *ngIf="missingUserTraits?.gender">
   </gender-input>
 
   <country-of-origin-input
     [apiErrors]="apiErrors"
-    [control]="updateForm.controls['country_of_origin']"
-    [hint]="missingUserTraits['country_of_origin'].hint"
-    *ngIf="missingUserTraits['country_of_origin']">
+    [control]="updateForm.controls.country_of_origin"
+    [hint]="missingUserTraits?.country_of_origin.hint"
+    *ngIf="missingUserTraits?.country_of_origin">
   </country-of-origin-input>
 
   <h3
-    *ngIf="missingUserTraits['street'] || missingUserTraits['zip'] || missingUserTraits['city']"
+    *ngIf="missingUserTraits?.street || missingUserTraits?.zip || missingUserTraits?.city"
     class="ui horizontal divider pink header">
     <i class="marker icon"></i>
     {{'user.update.form.address.header' | translate}}
@@ -73,27 +72,27 @@
 
   <street-input
     [apiErrors]="apiErrors"
-    [control]="updateForm.controls['street']"
-    [hint]="missingUserTraits['street'].hint"
-    *ngIf="missingUserTraits['street']">
+    [control]="updateForm.controls.street"
+    [hint]="missingUserTraits?.street.hint"
+    *ngIf="missingUserTraits?.street">
   </street-input>
 
   <zip-input
     [apiErrors]="apiErrors"
-    [control]="updateForm.controls['zip']"
-    [hint]="missingUserTraits['zip'].hint"
-    *ngIf="missingUserTraits['zip']">
+    [control]="updateForm.controls.zip"
+    [hint]="missingUserTraits?.zip.hint"
+    *ngIf="missingUserTraits?.zip">
   </zip-input>
 
   <city-input
     [apiErrors]="apiErrors"
-    [control]="updateForm.controls['city']"
-    [hint]="missingUserTraits['city'].hint"
-    *ngIf="missingUserTraits['city']">
+    [control]="updateForm.controls.city"
+    [hint]="missingUserTraits?.city.hint"
+    *ngIf="missingUserTraits?.city">
   </city-input>
 
   <h3
-    *ngIf="missingUserTraits['account_clearing_number'] || missingUserTraits['account_number']"
+    *ngIf="missingUserTraits?.account_clearing_number || missingUserTraits?.account_number"
     class="ui horizontal divider pink header">
     <i class="money icon"></i>
     {{'user.update.form.bank.details.header' | translate}}
@@ -101,16 +100,16 @@
 
   <clearing-number-input
     [apiErrors]="apiErrors"
-    [control]="updateForm.controls['account_clearing_number']"
-    [hint]="missingUserTraits['account_clearing_number'].hint"
-    *ngIf="missingUserTraits['account_clearing_number']">
+    [control]="updateForm.controls.account_clearing_number"
+    [hint]="missingUserTraits?.account_clearing_number.hint"
+    *ngIf="missingUserTraits?.account_clearing_number">
   </clearing-number-input>
 
   <account-number-input
     [apiErrors]="apiErrors"
-    [control]="updateForm.controls['account_number']"
-    [hint]="missingUserTraits['account_number'].hint"
-    *ngIf="missingUserTraits['account_number']">
+    [control]="updateForm.controls.account_number"
+    [hint]="missingUserTraits?.account_number.hint"
+    *ngIf="missingUserTraits?.account_number">
   </account-number-input>
 
   <!-- The API can return errors for account, which isn't bound to any instance of form control -->
@@ -122,7 +121,7 @@
   </div>
 
   <h3
-    *ngIf="missingUserTraits['system_language_id']"
+    *ngIf="missingUserTraits?.system_language_id"
     class="ui horizontal divider pink header">
     <i class="settings icon"></i>
     {{'user.update.form.settings.header' | translate}}
@@ -130,13 +129,13 @@
 
   <system-language-input
     [apiErrors]="apiErrors"
-    [control]="updateForm.controls['system_language_id']"
-    [hint]="missingUserTraits['system_language_id'].hint"
-    *ngIf="missingUserTraits['system_language_id']">
+    [control]="updateForm.controls.system_language_id"
+    [hint]="missingUserTraits?.system_language_id.hint"
+    *ngIf="missingUserTraits?.system_language_id">
   </system-language-input>
 
   <h3
-    *ngIf="missingUserTraits['description']"
+    *ngIf="missingUserTraits?.description"
     class="ui horizontal divider pink header">
     <i class="user icon"></i>
     {{'user.update.form.personal.presentation.section.header' | translate}}
@@ -144,13 +143,13 @@
 
   <description-input
     [apiErrors]="apiErrors"
-    [control]="updateForm.controls['description']"
-    [hint]="missingUserTraits['description'].hint"
-    *ngIf="missingUserTraits['description']">
+    [control]="updateForm.controls.description"
+    [hint]="missingUserTraits?.description.hint"
+    *ngIf="missingUserTraits?.description">
   </description-input>
 
   <h3
-    *ngIf="missingUserTraits['current_status'] || missingUserTraits['at_und']"
+    *ngIf="missingUserTraits?.current_status || missingUserTraits?.at_und"
     class="ui horizontal divider pink header">
     <i class="id card icon"></i>
     {{'user.update.form.status.section.header' | translate}}
@@ -158,59 +157,59 @@
 
   <status-input
     [apiErrors]="apiErrors"
-    [control]="updateForm.controls['current_status']"
-    [hint]="missingUserTraits['current_status'].hint"
-    *ngIf="missingUserTraits['current_status']">
+    [control]="updateForm.controls.current_status"
+    [hint]="missingUserTraits?.current_status.hint"
+    *ngIf="missingUserTraits?.current_status">
   </status-input>
 
   <at-und-input
     [apiErrors]="apiErrors"
-    [control]="updateForm.controls['at_und']"
-    [hint]="missingUserTraits['at_und'].hint"
-    *ngIf="missingUserTraits['at_und']">
+    [control]="updateForm.controls.at_und"
+    [hint]="missingUserTraits?.at_und.hint"
+    *ngIf="missingUserTraits?.at_und">
   </at-und-input>
 
   <h3
-    *ngIf="missingUserTraits['language_ids']"
+    *ngIf="missingUserTraits?.language_ids"
     class="ui horizontal divider pink header">
     <i class="world icon"></i>
     {{'user.update.form.language.skills.section.header' | translate}}
   </h3>
 
   <languages-input
-    [languagesControl]="updateForm.controls['languages']"
-    [userLanguagesControl]="updateForm.controls['user_languages']"
+    [languagesControl]="updateForm.controls.languages"
+    [userLanguagesControl]="updateForm.controls.user_languages"
     [apiErrors]="apiErrors"
-    [hint]="missingUserTraits['language_ids'].hint"
-    [languageIds]="missingUserTraits['language_ids'].ids"
-    *ngIf="missingUserTraits['language_ids']">
+    [hint]="missingUserTraits?.language_ids.hint"
+    [languageIds]="missingUserTraits?.language_ids.ids"
+    *ngIf="missingUserTraits?.language_ids">
   </languages-input>
 
   <h3
-    *ngIf="missingUserTraits['competence_text'] || missingUserTraits['skill_ids']"
+    *ngIf="missingUserTraits?.competence_text || missingUserTraits?.skill_ids"
     class="ui horizontal divider pink header">
     <i class="rocket icon"></i>
     {{'user.update.form.general.skills.section.header' | translate}}
   </h3>
 
   <competence-input
-    [control]="updateForm.controls['competence_text']"
+    [control]="updateForm.controls.competence_text"
     [apiErrors]="apiErrors"
-    [hint]="missingUserTraits['competence_text'].hint"
-    *ngIf="missingUserTraits['competence_text']">
+    [hint]="missingUserTraits?.competence_text.hint"
+    *ngIf="missingUserTraits?.competence_text">
   </competence-input>
 
   <skills-input
-    [skillsControl]="updateForm.controls['skills']"
-    [userSkillsControl]="updateForm.controls['user_skills']"
+    [skillsControl]="updateForm.controls.skills"
+    [userSkillsControl]="updateForm.controls.user_skills"
     [apiErrors]="apiErrors"
-    [hint]="missingUserTraits['skill_ids'].hint"
-    [skillIds]="missingUserTraits['skill_ids'].ids"
-    *ngIf="missingUserTraits['skill_ids']">
+    [hint]="missingUserTraits?.skill_ids.hint"
+    [skillIds]="missingUserTraits?.skill_ids.ids"
+    *ngIf="missingUserTraits?.skill_ids">
   </skills-input>
 
   <h3
-    *ngIf="missingUserTraits['education']"
+    *ngIf="missingUserTraits?.education"
     class="ui horizontal divider pink header">
     <i class="student icon"></i>
     {{'user.update.form.education.section.header' | translate}}
@@ -218,23 +217,23 @@
 
   <education-input
     [apiErrors]="apiErrors"
-    [control]="updateForm.controls['education']"
-    [hint]="missingUserTraits['education'].hint"
-    *ngIf="missingUserTraits['education']">
+    [control]="updateForm.controls.education"
+    [hint]="missingUserTraits?.education.hint"
+    *ngIf="missingUserTraits?.education">
   </education-input>
 
   <h3
-    *ngIf="missingUserTraits['job_experience']"
+    *ngIf="missingUserTraits?.job_experience"
     class="ui horizontal divider pink header">
     <i class="suitcase icon"></i>
     {{'user.update.form.work.experience.section.header' | translate}}
   </h3>
 
   <job-experience-input
-    [control]="updateForm.controls['job_experience']"
+    [control]="updateForm.controls.job_experience"
     [apiErrors]="apiErrors"
-    [hint]="missingUserTraits['job_experience'].hint"
-    *ngIf="missingUserTraits['job_experience']">
+    [hint]="missingUserTraits?.job_experience.hint"
+    *ngIf="missingUserTraits?.job_experience">
   </job-experience-input>
 
   <form-submit-button

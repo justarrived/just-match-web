@@ -30,6 +30,11 @@ import {ViewChild} from '@angular/core';
       </modal-content>
       <modal-actions>
         <div class="ui center aligned basic segment button-container">
+          <sm-loader
+            [complete]="!applyForJobForm.loadingSubmit"
+            [promise]="applyForJobForm.termsAgreement"
+            class="inverted">
+          </sm-loader>
           <base-button
             (click)="buttonClicked()"
             [buttonText]="'apply.for.job.modal.button' | translate"
