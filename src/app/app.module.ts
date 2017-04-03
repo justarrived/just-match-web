@@ -26,6 +26,7 @@ import {CircularImageInputComponent} from './components/inputs/circular-image-in
 import {CityInputComponent} from './components/inputs/city-input/city-input.component';
 import {ClearingNumberInputComponent} from './components/inputs/clearing-number-input/clearing-number-input.component';
 import {CommentsComponent} from './components/comments/comments.component';
+import {CompactJobCardComponent} from './components/cards/compact-job-card/compact-job-card.component';
 import {CompetenceInputComponent} from './components/inputs/competence-input/competence-input.component';
 import {ConfirmationModalComponent} from './components/modals/confirmation-modal/confirmation-modal.component';
 import {ContactFormComponent} from './components/forms/contact-form/contact-form.component';
@@ -195,6 +196,7 @@ export class RavenErrorHandler implements ErrorHandler {
     CityInputComponent,
     ClearingNumberInputComponent,
     CommentsComponent,
+    CompactJobCardComponent,
     CompetenceInputComponent,
     ConfirmationModalComponent,
     ContactFormComponent,

@@ -5,18 +5,27 @@ import {JARoutes} from '../../routes/ja-routes/ja-routes';
 
 @Component({
   selector: 'job-map-marker',
-  templateUrl: './job-map-marker.component.html',
-  styleUrls: ['./job-map-marker.component.scss']
+  template: `
+    <sebm-google-map-marker
+      (markerClick)="infoVisible = true"
+      [iconUrl]="'assets/images/map_job_icon.png'"
+      [latitude]="job.zipLatitude"
+      [longitude]="job.zipLongitude"
+      class="job-map-marker">
+      <sebm-google-map-info-window
+        (infoWindowClose)="infoVisible = false"
+        [disableAutoPan]="true"
+        [isOpen]="infoVisible">
+        <compact-job-card [job]="job"></compact-job-card>
+      </sebm-google-map-info-window>
+    </sebm-google-map-marker>`
 })
 export class JobMapMarkerComponent {
-  @Input() job = null as Job;
+  @Input() public job = null as Job;
+  public infoVisible: boolean = false;
 
   constructor(
     private navigationService: NavigationService
   ) {
-  }
-
-  private goToJob(): void {
-    this.navigationService.navigate(JARoutes.job, this.job.id);
   }
 }
