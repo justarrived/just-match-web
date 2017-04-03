@@ -10,8 +10,7 @@ import {ViewChild} from '@angular/core';
     <confirmation-modal
       [description]="'confirmation.applied.for.job.description' | translate"
       [header]="'confirmation.applied.for.job.title' | translate"
-      image="/assets/images/people_illustration.png"
-      imageClasses="centered large"
+      icon="massive pink check"
       #confirmationModal>
     </confirmation-modal>`
 })
