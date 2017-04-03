@@ -81,7 +81,6 @@ export class JobsComponent extends SystemLanguageListener implements OnInit {
         latitude: position.coords.latitude
       });
       this.mapLocation = this.mapUserLocation;
-      this.mapZoom = 12;
     },
       error => {
         this.mapError = error;
