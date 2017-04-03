@@ -52,6 +52,7 @@ import {FaqAccordionComponent} from './components/accordions/faq-accordion/faq-a
 import {FaqPageComponent} from './components/pages/faq-page/faq-page.component';
 import {FileInputButtonComponent} from './components/buttons/file-input-button/file-input-button.component';
 import {FirstNameInputComponent} from './components/inputs/first-name-input/first-name-input.component';
+import {ForbiddenPageComponent} from './components/pages/forbidden-page/forbidden-page.component';
 import {ForgotPasswordFormComponent} from './components/forms/forgot-password-form/forgot-password-form.component';
 import {ForgotPasswordPageComponent} from './components/pages/forgot-password-page/forgot-password-page.component';
 import {FormsModule} from '@angular/forms';
@@ -219,6 +220,7 @@ export class RavenErrorHandler implements ErrorHandler {
     FaqPageComponent,
     FileInputButtonComponent,
     FirstNameInputComponent,
+    ForbiddenPageComponent,
     ForgotPasswordFormComponent,
     ForgotPasswordPageComponent,
     FormSubmitButtonComponent,
