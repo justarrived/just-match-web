@@ -1,41 +1,44 @@
 import {ApiErrors} from '../../../models/api-models/api-errors/api-errors';
 import {Application} from '../../../models/api-models/application/application';
-import {ApplyForJobFormComponent} from '../../forms/apply-for-job-form/apply-for-job-form.component';
 import {Component} from '@angular/core';
 import {ElementRef} from '@angular/core';
 import {EventEmitter} from '@angular/core';
 import {Input} from '@angular/core';
 import {Job} from '../../../models/api-models/job/job';
 import {Output} from '@angular/core';
+import {SignForJobFormComponent} from '../../forms/sign-for-job-form/sign-for-job-form.component';
 import {UserUpdateFormComponent} from '../../forms/user-update-form/user-update-form.component';
 import {ViewChild} from '@angular/core';
 
 @Component({
-  selector: 'apply-for-job-modal',
+  selector: 'sign-for-job-modal',
   template: `
     <sm-modal
-      icon="massive pink talk"
-      #applyForJobModal>
+      #signForJobModal
+      [title]="'sign.for.job.modal.title' | translate"
+      icon="massive pink star">
       <modal-content>
         <div class="ui centered grid">
           <div class="sixteen wide phone twelve wide tablet twelve wide computer column">
-            <apply-for-job-form
+            <sign-for-job-form
+              [application]="application"
               [job]="job"
               [showSubmitButton]="false"
-              #applyForJobForm>
-            </apply-for-job-form>
+              #signForJobForm>
+            </sign-for-job-form>
           </div>
         </div>
       </modal-content>
       <modal-actions>
         <div class="ui center aligned basic segment button-container">
           <sm-loader
-            [complete]="!applyForJobForm.loadingSubmit"
+            [complete]="!signForJobForm.loadingSubmit"
+            [promise]="signForJobForm.termsAgreement"
             class="inverted">
           </sm-loader>
           <base-button
             (click)="buttonClicked()"
-            [buttonText]="'apply.for.job.modal.button' | translate"
+            [buttonText]="'sign.for.job.modal.button' | translate"
             buttonType="submit"
             kind="primary"
             size="medium">
@@ -44,26 +47,27 @@ import {ViewChild} from '@angular/core';
       </modal-actions>
     </sm-modal>`
 })
-export class ApplyForJobModalComponent {
+export class SignForJobModalComponent {
+  @Input() public application = null as Application;
   @Input() public job = null as Job;
-  @Output() public onAppliedForJob: EventEmitter<Application> = new EventEmitter<Application>();
-  @ViewChild('applyForJobForm') public applyForJobForm: ApplyForJobFormComponent;
-  @ViewChild('applyForJobModal') public applyForJobModal: any;
+  @Output() public onSignedForJob: EventEmitter<Application> = new EventEmitter<Application>();
+  @ViewChild('signForJobForm') public signForJobForm: SignForJobFormComponent;
+  @ViewChild('signForJobModal') public signForJobModal: any;
 
   public show(): void {
-    this.applyForJobModal.show({
+    this.signForJobModal.show({
       transition: 'horizontal flip'
     });
   }
 
   public hide(): void {
-    this.applyForJobModal.hide();
+    this.signForJobModal.hide();
   }
 
   public buttonClicked(): void {
-    this.applyForJobForm.submitForm()
+    this.signForJobForm.submitForm()
     .then(application => {
-      this.onAppliedForJob.emit(application)
+      this.onSignedForJob.emit(application)
     });
   }
 }

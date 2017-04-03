@@ -5,17 +5,17 @@ import {Input} from '@angular/core';
 import {ViewChild} from '@angular/core';
 
 @Component({
-  selector: 'applied-for-job-modal',
+  selector: 'signed-for-job-modal',
   template: `
     <confirmation-modal
-      [description]="'confirmation.applied.for.job.description' | translate"
-      [header]="'confirmation.applied.for.job.title' | translate"
+      [description]="'confirmation.signed.for.job.description' | translate"
+      [header]="'confirmation.signed.for.job.title' | translate"
       image="/assets/images/people_illustration.png"
       imageClasses="centered large"
       #confirmationModal>
     </confirmation-modal>`
 })
-export class AppliedForJobModalComponent {
+export class SignedForJobModalComponent {
   @ViewChild('confirmationModal') public confirmationModal: ConfirmationModalComponent;
 
   public show() {

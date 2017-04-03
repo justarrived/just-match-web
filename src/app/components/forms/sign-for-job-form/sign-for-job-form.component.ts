@@ -9,15 +9,18 @@ import {FormGroup} from '@angular/forms';
 import {Input} from '@angular/core';
 import {Job} from '../../../models/api-models/job/job';
 import {OnInit} from '@angular/core';
-import {UserResolver} from '../../../resolvers/user/user.resolver';
+import {SystemLanguageListener} from '../../../resolvers/system-languages/system-languages.resolver';
+import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
+import {TermsAgreement} from '../../../models/api-models/terms-agreement/terms-agreement';
+import {TermsAgreementProxy} from '../../../proxies/terms-agreement/terms-agreement.proxy';
 import {Validators} from '@angular/forms';
 
 @Component({
-  selector: 'apply-for-job-form',
+  selector: 'sign-for-job-form',
   template: `
     <form
-      (ngSubmit)="submitForm(applyForJobForm.value)"
-      [formGroup]="applyForJobForm"
+      (ngSubmit)="submitForm(signForJobForm.value)"
+      [formGroup]="signForJobForm"
       class="ui form">
       <sm-loader
         [complete]="!loadingSubmit"
@@ -27,48 +30,64 @@ import {Validators} from '@angular/forms';
 
       <h3
         class="ui horizontal divider pink header">
-        {{'Anything else you want us to know?' | translate}}
+        <i class="check icon"></i>
+        {{'sign.for.job.form.terms.section' | translate}}
       </h3>
 
-      <apply-message-input
-        [control]="applyForJobForm.controls['apply_message']"
+      <frilans-terms-input
+        [control]="signForJobForm.controls['consent']"
         [apiErrors]="apiErrors">
-      </apply-message-input>
+      </frilans-terms-input>
 
       <form-submit-button
         [showButton]="showSubmitButton"
         [submitFail]="submitFail"
         [submitSuccess]="submitSuccess"
-        [buttonText]="'apply.for.job.form.submit.button' | translate">
+        [buttonText]="'sign.for.job.form.submit.button' | translate">
       </form-submit-button>
     </form>`
 })
-export class ApplyForJobFormComponent implements OnInit {
+export class SignForJobFormComponent extends SystemLanguageListener implements OnInit {
   @Input() public job = null as Job;
+  @Input() public application = null as Application;
   @Input() public showSubmitButton: boolean = true;
 
   public apiErrors: ApiErrors = new ApiErrors([]);
-  public applyForJobForm: FormGroup;
+  public signForJobForm: FormGroup;
   public loadingSubmit: boolean;
   public submitFail: boolean;
   public submitSuccess: boolean;
+  public termsAgreement: Promise<TermsAgreement>;
+
+  private termsAgreementId: string;
 
   constructor(
     private applicationProxy: ApplicationProxy,
     private changeDetector: ChangeDetectorRef,
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
-    private userResolver: UserResolver
+    private termsAgreementProxy: TermsAgreementProxy,
+    protected systemLanguagesResolver: SystemLanguagesResolver,
   ) {
+    super(systemLanguagesResolver);
   }
 
   public ngOnInit(): void {
     this.initForm();
+    this.loadData();
   }
 
   private initForm() {
-    this.applyForJobForm = this.formBuilder.group({
-      'apply_message': [''],
+    this.signForJobForm = this.formBuilder.group({
+      'consent': ['', Validators.compose([Validators.required])]
+    });
+  }
+
+  protected loadData(): void {
+    this.termsAgreement = this.termsAgreementProxy.getTermsAgreement()
+    .then(termsAgreement => {
+      this.termsAgreementId = termsAgreement.id;
+      return termsAgreement;
     });
   }
 
@@ -84,9 +103,9 @@ export class ApplyForJobFormComponent implements OnInit {
     this.submitFail = false;
     this.submitSuccess = false;
 
-    return this.applicationProxy.createApplication(this.job.id, {
-      'apply_message': this.applyForJobForm.value.apply_message,
-      'user_id': this.userResolver.getUser().id,
+    return this.applicationProxy.confirmApplication(this.job.id, this.application.id, {
+      'consent': this.signForJobForm.value.consent !== '',
+      'terms_agreement_id': this.termsAgreementId
     })
     .then(application => {
       this.loadingSubmit = false;

@@ -17,6 +17,17 @@
       #appliedForJobModalComponent>
     </applied-for-job-modal>
 
+    <sign-for-job-modal
+      (onSignedForJob)="signedForJob($event)"
+      [application]="application"
+      [job]="job"
+      #signForJobModalComponent>
+    </sign-for-job-modal>
+
+    <signed-for-job-modal
+      #signedForJobModalComponent>
+    </signed-for-job-modal>
+
     <div class="job-status text-center">
       <div class="job-status-container">
         <h3 class="job-status-text">{{job.translatedText.name}}</h3>

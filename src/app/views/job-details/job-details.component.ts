@@ -3,18 +3,20 @@ import {Application} from '../../models/api-models/application/application';
 import {ApplicationProxy} from '../../proxies/application/application.proxy';
 import {AppliedForJobModalComponent} from '../../components/modals/applied-for-job-modal/applied-for-job-modal.component';
 import {ApplyForJobModalComponent} from '../../components/modals/apply-for-job-modal/apply-for-job-modal.component';
-import {JobAdditionalUserInfoModalComponent} from '../../components/modals/job-additional-user-info-modal/job-additional-user-info-modal.component';
 import {Component} from '@angular/core';
 import {Input} from '@angular/core';
 import {isEmpty} from 'lodash';
 import {JARoutes} from '../../routes/ja-routes/ja-routes';
 import {Job} from '../../models/api-models/job/job';
+import {JobAdditionalUserInfoModalComponent} from '../../components/modals/job-additional-user-info-modal/job-additional-user-info-modal.component';
 import {JobProxy} from '../../proxies/job/job.proxy';
 import {MissingUserTraits} from '../../models/api-models/missing-user-traits/missing-user-traits';
 import {MissingUserTraitsProxy} from '../../proxies/missing-user-traits/missing-user-traits.proxy';
 import {NavigationService} from '../../services/navigation.service';
 import {OnDestroy} from '@angular/core';
 import {OnInit} from '@angular/core';
+import {SignedForJobModalComponent} from '../../components/modals/signed-for-job-modal/signed-for-job-modal.component';
+import {SignForJobModalComponent} from '../../components/modals/sign-for-job-modal/sign-for-job-modal.component';
 import {Subscription} from 'rxjs/Subscription';
 import {SystemLanguageListener} from '../../resolvers/system-languages/system-languages.resolver';
 import {SystemLanguagesResolver} from '../../resolvers/system-languages/system-languages.resolver';
@@ -30,6 +32,8 @@ export class JobDetailsComponent extends SystemLanguageListener implements OnIni
   @ViewChild('appliedForJobModalComponent') public appliedForJobModalComponent: AppliedForJobModalComponent;
   @ViewChild('applyForJobModalComponent') public applyForJobModalComponent: ApplyForJobModalComponent;
   @ViewChild('jobAdditionalUserInfoModalComponent') public jobAdditionalUserInfoModalComponent: JobAdditionalUserInfoModalComponent;
+  @ViewChild('signedForJobModalComponent') public signedForJobModalComponent: SignedForJobModalComponent;
+  @ViewChild('signForJobModalComponent') public signForJobModalComponent: SignForJobModalComponent;
 
   public application: Application;
   public applyForJobErrorMessageVisible: boolean;
@@ -135,17 +139,14 @@ export class JobDetailsComponent extends SystemLanguageListener implements OnIni
   }
 
   public onConfirmJobButtonClick(): void {
-    this.confirmJob();
+    this.signForJobModalComponent.show();
   }
 
-  public confirmJob(): Promise<any> {
-    return this.applicationProxy.confirmApplication(this.job.id, this.application.id)
-      .then(response => {
-        this.application = response;
-        this.applyForJobErrorMessageVisible = false;
-      })
-      .catch(errors => {
-        this.applyForJobErrorMessageVisible = true;
-      });
+  public signedForJob(application: Application): void {
+    this.application = application;
+    this.signForJobModalComponent.hide();
+    setTimeout(() => {
+      this.signedForJobModalComponent.show();
+    }, 500);
   }
 }

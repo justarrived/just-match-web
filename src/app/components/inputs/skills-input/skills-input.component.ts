@@ -33,6 +33,11 @@ import {UserSkillFactory} from '../../../models/api-models/user-skill/user-skill
       dataItemLabelProoerty="translatedText.name"
       dataItemValueProoerty="id">
     </select-dropdown-input>
+    <p
+      *ngIf="userSkillsControl.value?.length > 0"
+      class="fs-m0">
+      {{'input.skills.hint' | translate}}
+    </p>
     <div *ngFor="let userSkill of userSkillsControl.value">
       <skill-proficiency-input
         (onDelete)="onRemoveUserSkill(userSkill)"

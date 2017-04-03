@@ -120,6 +120,9 @@ import {ResolversModule} from './resolvers/resolvers.module';
 import {ResumeInputComponent} from './components/inputs/resume-input/resume-input.component';
 import {RoutesModule} from './routes/routes.module';
 import {SelectDropdownInputComponent} from './components/inputs/select-dropdown-input/select-dropdown-input.component';
+import {SignedForJobModalComponent} from './components/modals/signed-for-job-modal/signed-for-job-modal.component';
+import {SignForJobFormComponent} from './components/forms/sign-for-job-form/sign-for-job-form.component';
+import {SignForJobModalComponent} from './components/modals/sign-for-job-modal/sign-for-job-modal.component';
 import {SkatteverketCertificateInputComponent} from './components/inputs/skatteverket-certificate-input/skatteverket-certificate-input.component';
 import {SkillProficiencyInputComponent} from './components/inputs/skill-proficiency-input/skill-proficiency-input.component';
 import {SkillsInputComponent} from './components/inputs/skills-input/skills-input.component';
@@ -276,6 +279,9 @@ export class RavenErrorHandler implements ErrorHandler {
     ResidencePermitFrontInputComponent,
     ResumeInputComponent,
     SelectDropdownInputComponent,
+    SignedForJobModalComponent,
+    SignForJobFormComponent,
+    SignForJobModalComponent,
     SkatteverketCertificateInputComponent,
     SkillProficiencyInputComponent,
     SkillsInputComponent,

@@ -11,7 +11,7 @@ import {Input} from '@angular/core';
       icon="warning">
     </error-message>
     <success-message
-      *ngIf="submitSuccess"
+      *ngIf="submitSuccess && showButton"
       [header]="'button.form.submit.success' | translate"
       icon="pink thumbs up">
     </success-message>
