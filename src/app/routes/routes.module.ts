@@ -12,6 +12,7 @@ import {JobDetailsComponent} from '../views/job-details/job-details.component';
 import {JobsComponent} from '../views/jobs/jobs.component';
 import {LoggedInGuard} from '../guards/logged-in/logged-in.guard';
 import {LoginPageComponent} from '../components/pages/login-page/login-page.component';
+import {LostConnectionPageComponent} from '../components/pages/lost-connection-page/lost-connection-page.component';
 import {MyJobsComponent} from '../views/my-jobs/my-jobs.component';
 import {NgModule} from '@angular/core';
 import {NotFoundPageComponent} from '../components/pages/404-page/404-page.component';
@@ -44,6 +45,7 @@ const routes: Routes = [
     { path: 'jobs', redirectTo: 'jobs/1', pathMatch: 'full' },
     { path: 'jobs/:page', component: JobsComponent },
     { path: 'login', component: LoginPageComponent, canActivate: [NotLoggedInGuard] },
+    { path: 'lost-connection', component: LostConnectionPageComponent },
     { path: 'register', component: RegisterPageComponent, canActivate: [NotLoggedInGuard] },
     { path: 'reset-password', redirectTo: '404', pathMatch: 'full', canActivate: [NotLoggedInGuard] },
     { path: 'reset-password/:token', component: ResetPasswordPageComponent, canActivate: [NotLoggedInGuard] },

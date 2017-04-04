@@ -107,9 +107,9 @@ export class ApiCallService {
     }
 
     return this.http.request(req)
-      .catch((response: Response) => this.handleResponseErrors(response))
       .toPromise()
-      .then(response => parseJsonapiResponse(response));
+      .then(response => parseJsonapiResponse(response))
+      .catch((response: Response) => this.handleResponseErrors(response));
   }
 
   private urlBuilder(url: string): string {
@@ -128,26 +128,34 @@ export class ApiCallService {
     return params;
   }
 
-  // TODO: Add typing.. currently returns ErrorObservable<ApiErrors> (though I can't seem to import that symbol from rxjs...)
-  private handleResponseErrors(response) {
+  private handleResponseErrors(response): void {
+    if (response.status === 0) {
+      this.navigationService.navigateNoLocationChange(JARoutes.lostConnection);
+      return;
+    }
+
+    if (response.status === 400 || response.status >= 500) {
+      this.navigationService.navigateNoLocationChange(JARoutes.error, response.status);
+      return;
+    }
+
     if (response.status === 401) {
       this.dataStoreService.remove(this.storageSessionKey);
       this.navigationService.navigate(JARoutes.login);
-    }
-
-    if (response.status === 0 || response.status === 400 || response.status >= 500) {
-      this.navigationService.navigateNoLocationChange(JARoutes.error, response.status);
+      return;
     }
 
     if (response.status === 403) {
       this.navigationService.navigateNoLocationChange(JARoutes.forbidden);
+      return;
     }
 
     if (response.status === 404) {
       this.navigationService.navigateNoLocationChange(JARoutes.notFound);
+      return;
     }
 
-    return Observable.throw(new ApiErrors(response.json().errors));
+    throw new ApiErrors(response.json().errors);
   }
 
 }
