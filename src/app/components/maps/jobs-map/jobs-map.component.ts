@@ -21,6 +21,7 @@ import {yyyymmdd} from '../../../utils/date/date.util';
         [disableDefaultUI]="true"
         [latitude]="mapLocation.latitude"
         [longitude]="mapLocation.longitude"
+        [scrollwheel]="false"
         [streetViewControl]="false"
         [styles]="mapStyles"
         [zoom]="mapZoom"
