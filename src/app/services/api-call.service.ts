@@ -136,15 +136,15 @@ export class ApiCallService {
     }
 
     if (response.status === 0 || response.status === 400 || response.status >= 500) {
-      this.navigationService.navigate(JARoutes.error, response.status);
+      this.navigationService.navigateNoLocationChange(JARoutes.error, response.status);
     }
 
     if (response.status === 403) {
-      this.navigationService.navigate(JARoutes.forbidden);
+      this.navigationService.navigateNoLocationChange(JARoutes.forbidden);
     }
 
     if (response.status === 404) {
-      this.navigationService.navigate(JARoutes.notFound);
+      this.navigationService.navigateNoLocationChange(JARoutes.notFound);
     }
 
     return Observable.throw(new ApiErrors(response.json().errors));
