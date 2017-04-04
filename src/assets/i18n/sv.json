@@ -210,6 +210,8 @@
   "login.form.register.link": "Skapa konto",
   "login.form.submit.button": "Logga in",
   "login.title": "Logga in",
+  "lost.connection.description": "\nTyvärr, men det verkar som att du förlorat anslutningen till servern. Det kan vara så att din internetuppkoppling är nere eller att servern är offline",
+  "lost.connection.title": "Anslutning förlorad",
   "map.geolocation.error.close": "Dölj.",
   "map.geolocation.error.permissionDenied": "du har stängt av möjligheten att bli positionerad på den här sidan.",
   "map.geolocation.error.positionUnavailable": "vi kan inte bestämma din position.",
