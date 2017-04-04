@@ -12,7 +12,7 @@
     "start-development": "ng serve",
     "start-prod": "ng serve -prod",
     "start-production": "ng serve -prod",
-    "extract-translations": "ng2-translate-extract --dir ./src --output ./used_i18n.json --format=json --clean",
+    "extract-translations": "ngx-translate-extract --dir ./src --output ./used_i18n.json --format=json --clean",
     "build": "ng build -${NODE_ENV-prod}",
     "build-aot": "ng build -${NODE_ENV-prod} --aot",
     "lint": "ng lint",
@@ -22,7 +22,7 @@
     "heroku-prebuild": "yarn global add @angular/cli",
     "heroku-postbuild": "ng build -prod --aot --env=${ENV_CONFIG-prod}"
   },
-  "private": false,
+  "private": true,
   "dependencies": {
     "@angular/cli": "^1.0.0-rc.2",
     "@angular/common": "^4.0.1",
@@ -48,7 +48,6 @@
     "jquery": "^3.1.1",
     "lodash": "^4.17.4",
     "moment": "^2.17.0",
-    "ng-semantic-ja": "https://github.com/justarrived/ngSemantic/tarball/ja#0c19e47a6c9fd45f9590d6041557491ff221674c",
     "node-sass": "^4.5.2",
     "postcss-loader": "^1.2.2",
     "raven-js": "^3.10.0",
@@ -61,7 +60,7 @@
     "zone.js": "^0.8.5"
   },
   "devDependencies": {
-    "@biesbjerg/ng2-translate-extract": "^0.6.0",
+    "@biesbjerg/ngx-translate-extract": "^2.2.1",
     "@types/jasmine": "^2.5.43",
     "@types/moment": "^2.13.0",
     "@types/node": "^7.0.5",
