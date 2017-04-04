@@ -16,12 +16,11 @@ import {Validators} from '@angular/forms';
   selector: 'apply-for-job-form',
   template: `
     <form
-      (ngSubmit)="submitForm(applyForJobForm.value)"
+      (ngSubmit)="submitForm()"
       [formGroup]="applyForJobForm"
       class="ui form">
       <sm-loader
         [complete]="!loadingSubmit"
-        [promise]="termsAgreement"
         class="inverted">
       </sm-loader>
 

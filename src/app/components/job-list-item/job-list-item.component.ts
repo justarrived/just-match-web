@@ -11,12 +11,12 @@ import {JARoutes} from '../../routes/ja-routes/ja-routes';
 export class JobListItemComponent {
   @Input() job = null as Job;
 
-  constructor(
+  public constructor(
     private navigationService: NavigationService
   ) {
   }
 
-  private onListItemClick(): void {
+  public onListItemClick(): void {
     this.navigationService.navigate(JARoutes.job, this.job.id);
   }
 }

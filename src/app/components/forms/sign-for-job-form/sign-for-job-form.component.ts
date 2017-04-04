@@ -19,7 +19,7 @@ import {Validators} from '@angular/forms';
   selector: 'sign-for-job-form',
   template: `
     <form
-      (ngSubmit)="submitForm(signForJobForm.value)"
+      (ngSubmit)="submitForm()"
       [formGroup]="signForJobForm"
       class="ui form">
       <sm-loader

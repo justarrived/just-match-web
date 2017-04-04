@@ -13,12 +13,12 @@ export class MyJobsItemComponent {
   @Input() public application = null as Application;
   @Input() public section: string;
 
-  constructor(
+  public constructor(
     private navigationService: NavigationService
   ) {
   }
 
-  private onListItemClick() {
+  public onListItemClick() {
     this.navigationService.navigate(JARoutes.job, this.application.job.id);
   }
 }

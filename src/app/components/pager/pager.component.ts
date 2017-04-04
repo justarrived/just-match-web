@@ -10,18 +10,17 @@ export class PagerComponent implements OnInit, OnChanges {
   @Input() public pageSize: number = 10;
   @Input() public currentPage: number;
   @Output() public pageChange = new EventEmitter();
+  public lastPage: number = 1;
 
-  private lastPage: number = 1;
-
-  constructor(
+  public constructor(
   ) {
   }
 
-  ngOnInit() {
+  public ngOnInit() {
     this.calculateLastPage();
   }
 
-  ngOnChanges(changes: any): void {
+  public ngOnChanges(changes: any): void {
     if (!changes.maxResults && !changes.pageSize) {
       return;
     }
@@ -29,7 +28,7 @@ export class PagerComponent implements OnInit, OnChanges {
     this.calculateLastPage();
   }
 
-  private onFirstPageButtonClick() {
+  public onFirstPageButtonClick() {
     if (this.currentPage <= 1) {
       return;
     }
@@ -38,7 +37,7 @@ export class PagerComponent implements OnInit, OnChanges {
     this.pageChange.emit(this.currentPage);
   }
 
-  private onPreviousPageButtonClick() {
+  public onPreviousPageButtonClick() {
     if (this.currentPage <= 1) {
       return;
     }
@@ -47,7 +46,7 @@ export class PagerComponent implements OnInit, OnChanges {
     this.pageChange.emit(this.currentPage);
   }
 
-  onNextPageButtonClick() {
+  public onNextPageButtonClick() {
     if (this.currentPage >= this.lastPage) {
       return;
     }
@@ -56,7 +55,7 @@ export class PagerComponent implements OnInit, OnChanges {
     this.pageChange.emit(this.currentPage);
   }
 
-  onLastPageButtonClick() {
+  public onLastPageButtonClick() {
     if (this.currentPage >= this.lastPage) {
       return;
     }
