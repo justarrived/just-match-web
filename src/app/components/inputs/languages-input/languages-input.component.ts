@@ -88,6 +88,8 @@ export class LanguagesInputComponent extends SystemLanguageListener implements O
   public onAddLanguage(languageId): void {
     if (languageId && !some(this.userLanguagesControl.value, { language: {id: languageId} })) {
       const userLanguage = UserLanguageFactory.createUserLanguage({});
+      userLanguage.proficiency = 1;
+
       this.loadingLanguage = true;
       this.languageProxy.getLanguage(languageId)
       .then(language => {
