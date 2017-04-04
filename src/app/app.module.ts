@@ -83,7 +83,6 @@ import {LanguageProficiencyInputComponent} from './components/inputs/language-pr
 import {LanguagesInputComponent} from './components/inputs/languages-input/languages-input.component';
 import {LastNameInputComponent} from './components/inputs/last-name-input/last-name-input.component';
 import {LMACardInputComponent} from './components/inputs/lma-card-input/lma-card-input.component';
-import {LoadingComponent} from './components/loading/loading.component';
 import {LoginFormComponent} from './components/forms/login-form/login-form.component';
 import {LoginPageComponent} from './components/pages/login-page/login-page.component';
 import {MaximizeChancessSectionComponent} from './components/sections/maximize-chances-section/maximize-chances-section.component';
@@ -251,7 +250,6 @@ export class RavenErrorHandler implements ErrorHandler {
     LanguagesInputComponent,
     LastNameInputComponent,
     LMACardInputComponent,
-    LoadingComponent,
     LoginFormComponent,
     LoginPageComponent,
     MaximizeChancessSectionComponent,
