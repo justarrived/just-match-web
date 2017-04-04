@@ -19,34 +19,14 @@ export class TermsAgreementProxy {
   }
 
   // GET
-  public getTermsAgreements(searchParameters?: any): Promise<TermsAgreement[]> {
+  public getTermsAgreement(searchParameters?: any): Promise<TermsAgreement> {
     return this.apiCallService.get('terms-agreements/current', searchParameters)
-    .then(response => response.data.map(termsAgreement => TermsAgreementFactory.createTermsAgreement(termsAgreement)));
+    .then(response => TermsAgreementFactory.createTermsAgreement(response.data));
   }
 
-  public getTermsAgreementsWithMeta(searchParameters?: any): Promise<{termsAgreements: TermsAgreement[], meta: {total: number}}> {
-    return this.apiCallService.get('terms-agreements/current', searchParameters)
-    .then(response => {
-      return {
-        termsAgreements: response.data.map(termsAgreement => TermsAgreementFactory.createTermsAgreement(termsAgreement)),
-        meta: response.meta
-      }
-    });
-  }
-
-  public getTermsAgreementsAsCompany(searchParameters?: any): Promise<TermsAgreement[]> {
-    return this.apiCallService.get('terms-agreements/current', searchParameters)
-    .then(response => response.data.map(termsAgreement => TermsAgreementFactory.createTermsAgreement(termsAgreement)));
-  }
-
-  public getTermsAgreementsAsCompanyWithMeta(searchParameters?: any): Promise<{termsAgreements: TermsAgreement[], meta: {total: number}}> {
+  public getTermsAgreementAsCompany(searchParameters?: any): Promise<TermsAgreement> {
     return this.apiCallService.get('terms-agreements/current-company', searchParameters)
-    .then(response => {
-      return {
-        termsAgreements: response.data.map(termsAgreement => TermsAgreementFactory.createTermsAgreement(termsAgreement)),
-        meta: response.meta
-      }
-    });
+    .then(response => TermsAgreementFactory.createTermsAgreement(response.data));
   }
 
   // CREATE

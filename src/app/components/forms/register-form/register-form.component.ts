@@ -3,6 +3,7 @@ import {ChangeDetectorRef} from '@angular/core';
 import {Component} from '@angular/core';
 import {FormBuilder} from '@angular/forms';
 import {FormGroup} from '@angular/forms';
+import {Input} from '@angular/core';
 import {JARoutes} from '../../../routes/ja-routes/ja-routes';
 import {NavigationService} from '../../../services/navigation.service';
 import {OnInit} from '@angular/core';
@@ -15,6 +16,8 @@ import {Validators} from '@angular/forms';
   templateUrl: './register-form.component.html'
 })
 export class RegisterFormComponent implements OnInit {
+  @Input() public showSubmitButton: boolean = true;
+
   public apiErrors: ApiErrors = new ApiErrors([]);
   public loadingSubmit: boolean = false;
   public registerForm: FormGroup;

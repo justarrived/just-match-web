@@ -1,19 +1,38 @@
-import {Component, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
+import {ActivatedRoute} from '@angular/router';
+import {Component} from '@angular/core';
 import {Job} from '../../models/api-models/job/job';
-import {MapLocation} from '../../models/client-models/map-location/map-location';
-import {GeolocationService} from '../../services/geolocation.service';
 import {JobProxy} from '../../proxies/job/job.proxy';
 import {Location} from '@angular/common';
-import {ActivatedRoute} from '@angular/router';
-import {SystemLanguagesResolver} from '../../resolvers/system-languages/system-languages.resolver';
+import {nbrOfMonthsFromDate} from '../../utils/date/date.util';
+import {OnInit} from '@angular/core';
+import {Router} from '@angular/router';
 import {SystemLanguageListener} from '../../resolvers/system-languages/system-languages.resolver';
-import {customMapStyle} from '../../styles/google-maps-styles';
-import {yyyymmdd, nbrOfMonthsFromDate} from '../../utils/date/date.util';
+import {SystemLanguagesResolver} from '../../resolvers/system-languages/system-languages.resolver';
+import {yyyymmdd} from '../../utils/date/date.util';
 
 @Component({
-  templateUrl: './jobs.component.html',
-  styleUrls: ['./jobs.component.scss']
+  styleUrls: ['./jobs.component.scss'],
+  template: `
+    <basic-border-header
+      [header]="'jobs.title' | translate: {nbrOfJobs: totalJobs}"
+      icon="search">
+    </basic-border-header>
+
+    <jobs-map></jobs-map>
+
+    <pager [maxResults]="totalJobs" [currentPage]="page" (pageChange)="onPageChange($event)"></pager>
+
+    <div class="jobs-list-container ui form">
+      <sm-loader
+        [complete]="!loadingJobs"
+        class="inverted">
+      </sm-loader>
+      <div class="jobs-list-item-container" *ngIf="!loadingJobs">
+        <job-list-item class="jobs-list-item" *ngFor="let job of jobs" [job]="job"></job-list-item>
+      </div>
+    </div>
+
+    <pager [maxResults]="totalJobs" [currentPage]="page" (pageChange)="onPageChange($event)"></pager>`
 })
 export class JobsComponent extends SystemLanguageListener implements OnInit {
   public jobs: Job[];
@@ -22,15 +41,7 @@ export class JobsComponent extends SystemLanguageListener implements OnInit {
   public pageSize: number = 10;
   public loadingJobs: boolean = true;
 
-  public mapZoom: number = 5;
-  public mapLocation: MapLocation = new MapLocation({ longitude: 18.0675109, latitude: 59.3349086 });
-  public mapUserLocation: MapLocation;
-  public mapStyles = customMapStyle;
-  public mapError: string;
-  public mapErrorShow: boolean = false;
-
   constructor(
-    private geolocationService: GeolocationService,
     private jobProxy: JobProxy,
     private location: Location,
     private route: ActivatedRoute,
@@ -38,7 +49,9 @@ export class JobsComponent extends SystemLanguageListener implements OnInit {
     protected systemLanguagesResolver: SystemLanguagesResolver
   ) {
     super(systemLanguagesResolver);
+  }
 
+  ngOnInit() {
     this.route.params.subscribe(params => {
       this.page = params['page'] && parseInt(params['page']);
       if (!this.page || this.page < 1) {
@@ -47,10 +60,6 @@ export class JobsComponent extends SystemLanguageListener implements OnInit {
       }
       this.loadData();
     });
-  }
-
-  ngOnInit() {
-    this.initLocation();
   }
 
   loadData() {
@@ -74,29 +83,9 @@ export class JobsComponent extends SystemLanguageListener implements OnInit {
     });
   }
 
-  private initLocation() {
-    this.geolocationService.getLocation().subscribe(position => {
-      this.mapUserLocation = new MapLocation({
-        longitude: position.coords.longitude,
-        latitude: position.coords.latitude
-      });
-      this.mapLocation = this.mapUserLocation;
-      this.mapZoom = 12;
-    },
-      error => {
-        this.mapError = error;
-        this.mapErrorShow = true;
-      }
-    );
-  }
-
   onPageChange(page) {
     this.location.replaceState('/jobs/' + page);
     this.page = page;
     this.loadData();
-  }
-
-  mapTooltipClicked() {
-    this.mapErrorShow = false;
   }
 }

@@ -34,12 +34,14 @@ import {ViewChild} from '@angular/core';
         [control]="control"
         [requiredLabel]="requiredLabel">
       </input-errors>
+      <input-hint-label [hint]="hint"></input-hint-label>
     </div>`
 })
 export class YesNoInputComponent {
   @Input() public apiAttribute: string;
   @Input() public apiErrors: ApiErrors;
   @Input() public control: FormControl;
+  @Input() public hint: string;
   @Input() public label: string;
   @Input() public name: string;
   @Input() public requiredLabel: string;

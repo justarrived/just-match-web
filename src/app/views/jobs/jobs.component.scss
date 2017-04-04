@@ -1,65 +1,16 @@
 @import '../../styles/colors';
-@import '../../styles/dimensions';
 
-.jobs-container {
-  .jobs-map-container {
-    display: flex;
-    flex-wrap: wrap;
+.jobs-list-container {
+  background-color: $default-bg-color;
+  min-height: 600px;
+  display: flex;
 
-    .jobs-map {
-      height: 400px;
-      width: 100%;
-      @media screen and (max-width: $xs-device-width) {
-        height: 200px;
-      }
-      @media screen and (max-width: $sm-device-width) {
-        height: 300px;
-      }
-    }
-
-    .jobs-map-tooltip {
-      width: 80%;
-      max-width: 400px;
-      height: 0;
-      margin: 0 auto;
-
-      .jobs-map-tooltip-content {
-        cursor: pointer;
-        min-width: 100%;
-
-        &:before {
-          border: none !important;
-        }
-
-        .jobs-map-tooltip-close-link {
-          width: 100%;
-          text-align: center !important;
-          color: $color-blue-200;
-        }
-
-        &:hover {
-          .jobs-map-tooltip-close-link {
-            color: white;
-          }
-        }
-      }
-    }
+  .jobs-list-loading-container {
+    width: 100%;
+    margin-top: 20px;
   }
 
-  .jobs-list-container {
-    background-color: $default-bg-color;
-    min-height: 600px;
-    display: flex;
-
-    .jobs-list-loading-container {
-      width: 100%;
-      margin-top: 20px;
-    }
-
-    .jobs-list-item-container {
-      width: 100%;
-      // cursor: pointer;
-      // cursor: hand;
-    }
+  .jobs-list-item-container {
+    width: 100%;
   }
 }

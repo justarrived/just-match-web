@@ -22,8 +22,7 @@ import {yyyymmdd} from '../../../utils/date/date.util';
       *ngIf="user && (applications | async)?.length > 0">
       <sm-loader
         [promise]="applications"
-        class="inverted"
-        text="{{'component.loading' | translate}}">
+        class="inverted">
       </sm-loader>
       <h2>
         {{'home.jobs.slider.user.jobs.title' | translate}}

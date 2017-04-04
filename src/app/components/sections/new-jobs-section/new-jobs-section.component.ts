@@ -14,8 +14,7 @@ import {yyyymmdd} from '../../../utils/date/date.util';
     <div class="ui basic padded center aligned segment">
       <sm-loader
         [promise]="newJobs"
-        class="inverted"
-        text="{{'component.loading' | translate}}">
+        class="inverted">
       </sm-loader>
       <h2>{{'home.jobs.slider.new.jobs.title' | translate}}</h2>
       <div class="ui centered grid">

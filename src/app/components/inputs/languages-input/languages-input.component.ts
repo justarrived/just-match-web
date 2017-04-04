@@ -19,20 +19,25 @@ import {UserLanguageFactory} from '../../../models/api-models/user-language/user
     <sm-loader
       [complete]="!loadingLanguage"
       [promise]="languages"
-      class="inverted"
-      text="{{'component.loading' | translate}}">
+      class="inverted">
     </sm-loader>
     <select-dropdown-input
       (onChange)="onAddLanguage($event)"
       [apiErrors]="apiErrors"
       [control]="languagesControl"
       [data]="languages | async"
+      [hint]="hint"
       [label]="'input.languages.label' | translate"
       [placeholder]="'input.languages.placeholder' | translate"
       apiAttribute="language_ids"
       dataItemLabelProoerty="translatedText.name"
       dataItemValueProoerty="id">
     </select-dropdown-input>
+    <p
+      *ngIf="userLanguagesControl.value?.length > 0"
+      class="fs-m0">
+      {{'input.languages.hint' | translate}}
+    </p>
     <div *ngFor="let userLanguage of userLanguagesControl.value">
       <language-proficiency-input
         (onDelete)="onRemoveUserLanguage(userLanguage)"
@@ -44,9 +49,11 @@ import {UserLanguageFactory} from '../../../models/api-models/user-language/user
   </div>`
 })
 export class LanguagesInputComponent extends SystemLanguageListener implements OnInit {
-  @Input() apiErrors: ApiErrors;
-  @Input() languagesControl: FormControl;
-  @Input() userLanguagesControl: FormControl;
+  @Input() public apiErrors: ApiErrors;
+  @Input() public hint: string;
+  @Input() public languagesControl: FormControl;
+  @Input() public languageIds: string[];
+  @Input() public userLanguagesControl: FormControl;
 
   public languages: Promise<Language[]>;
   public loadingLanguage: boolean;
@@ -66,6 +73,7 @@ export class LanguagesInputComponent extends SystemLanguageListener implements O
     this.languages = this.languageProxy.getLanguages({
       'page[size]': 300,
       'sort': 'en_name',
+      'filter[id]': (this.languageIds ? this.languageIds.join(',') : null),
     });
   }
 

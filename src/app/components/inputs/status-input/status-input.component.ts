@@ -14,13 +14,13 @@ import {SystemLanguagesResolver} from '../../../resolvers/system-languages/syste
     <div class="ui form">
       <sm-loader
         [promise]="statuses"
-        class="inverted"
-        text="{{'component.loading' | translate}}">
+        class="inverted">
       </sm-loader>
       <select-dropdown-input
         [apiErrors]="apiErrors"
         [control]="control"
         [data]="statuses | async"
+        [hint]="hint"
         [label]="'input.status.label' | translate"
         [placeholder]="'input.status.placeholder' | translate"
         apiAttribute="current_status"
@@ -30,8 +30,9 @@ import {SystemLanguagesResolver} from '../../../resolvers/system-languages/syste
     </div>`
 })
 export class StatusInputComponent extends SystemLanguageListener implements OnInit {
-  @Input() apiErrors: ApiErrors;
-  @Input() control: FormControl;
+  @Input() public apiErrors: ApiErrors;
+  @Input() public control: FormControl;
+  @Input() public hint: string;
 
   public statuses: Promise<UserStatus[]>;
 

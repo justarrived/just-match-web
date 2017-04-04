@@ -11,6 +11,10 @@ import {ViewChild} from '@angular/core';
       [icon]="icon"
       #confirmationModal>
       <modal-content>
+        <img
+          [src]="image"
+          *ngIf="image"
+          class="ui {{imageClasses}} image">
         <div class="ui center aligned basic segment">
           <h3>{{header}}</h3>
           <p>{{description}}</p>
@@ -32,10 +36,17 @@ export class ConfirmationModalComponent {
   @Input() public description: string;
   @Input() public header: string;
   @Input() public icon: string;
+  @Input() public image: string;
+  @Input() public imageClasses: string;
+
 
   @ViewChild('confirmationModal') public confirmationModal: any;
 
-  public show() {
-    this.confirmationModal.show();
+  public show(options?: any) {
+    this.confirmationModal.show(options);
+  }
+
+  public hide() {
+    this.confirmationModal.hide();
   }
 }

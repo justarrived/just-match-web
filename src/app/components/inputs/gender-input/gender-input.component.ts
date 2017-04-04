@@ -14,13 +14,13 @@ import {UserGenderProxy} from '../../../proxies/user-gender/user-gender.proxy';
     <div class="ui form">
       <sm-loader
         [promise]="genders"
-        class="inverted"
-        text="{{'component.loading' | translate}}">
+        class="inverted">
       </sm-loader>
       <select-dropdown-input
         [apiErrors]="apiErrors"
         [data]="genders | async"
         [control]="control"
+        [hint]="hint"
         [label]="'input.gender.label' | translate"
         [placeholder]="'input.gender.placeholder' | translate"
         apiAttribute="gender"
@@ -30,8 +30,9 @@ import {UserGenderProxy} from '../../../proxies/user-gender/user-gender.proxy';
     </div>`
 })
 export class GenderInputComponent extends SystemLanguageListener implements OnInit {
-  @Input() apiErrors: ApiErrors;
-  @Input() control: FormControl;
+  @Input() public apiErrors: ApiErrors;
+  @Input() public control: FormControl;
+  @Input() public hint: string;
 
   public genders: Promise<UserGender[]>;
 

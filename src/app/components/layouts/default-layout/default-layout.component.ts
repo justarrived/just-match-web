@@ -17,8 +17,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
           <div class="ui form">
             <sm-loader
               [complete]="!user || !user.isBeingReloaded"
-              class="inverted"
-              text="{{'component.loading' | translate}}">
+              class="inverted">
             </sm-loader>
             <cookie-bar></cookie-bar>
             <router-outlet></router-outlet>

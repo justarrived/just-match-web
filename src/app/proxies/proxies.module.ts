@@ -15,6 +15,7 @@ import {JobProxy} from './job/job.proxy';
 import {JobSkillProxy} from './job-skill/job-skill.proxy';
 import {LanguageProxy} from './language/language.proxy';
 import {MessageProxy} from './message/message.proxy';
+import {MissingUserTraitsProxy} from './missing-user-traits/missing-user-traits.proxy';
 import {NgModule} from '@angular/core';
 import {RatingProxy} from './rating/rating.proxy';
 import {SkillProxy} from './skill/skill.proxy';
@@ -49,6 +50,7 @@ import {UserSkillProxy} from './user-skill/user-skill.proxy';
     JobSkillProxy,
     LanguageProxy,
     MessageProxy,
+    MissingUserTraitsProxy,
     RatingProxy,
     SkillProxy,
     UserStatusProxy,

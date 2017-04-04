@@ -131,16 +131,20 @@ export class ApiCallService {
   // TODO: Add typing.. currently returns ErrorObservable<ApiErrors> (though I can't seem to import that symbol from rxjs...)
   private handleResponseErrors(response) {
     if (response.status === 401) {
-      let tokenExpiredObject = _.find(response.json().errors, { code: 'token_expired' });
-      let tokenInvalidObject = _.find(response.json().errors, { code: 'login_required' });
-      if (tokenExpiredObject || tokenInvalidObject) {
-        this.dataStoreService.remove(this.storageSessionKey);
-        this.navigationService.navigate(JARoutes.login);
-      }
+      this.dataStoreService.remove(this.storageSessionKey);
+      this.navigationService.navigate(JARoutes.login);
     }
 
     if (response.status === 0 || response.status === 400 || response.status >= 500) {
-      this.navigationService.navigateNoLocationChange(JARoutes.error, response.status);
+      this.navigationService.navigate(JARoutes.error, response.status);
+    }
+
+    if (response.status === 403) {
+      this.navigationService.navigate(JARoutes.forbidden);
+    }
+
+    if (response.status === 404) {
+      this.navigationService.navigate(JARoutes.notFound);
     }
 
     return Observable.throw(new ApiErrors(response.json().errors));

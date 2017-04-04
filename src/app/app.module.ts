@@ -1,6 +1,5 @@
 import {AccountNumberInputComponent} from './components/inputs/account-number-input/account-number-input.component';
 import {ActsAsUserService} from './services/acts-as-user.service';
-import {AddressInputComponent} from './components/inputs/address-input/address-input.component';
 import {AgmCoreModule} from 'angular2-google-maps/core';
 import {ApiCallService} from './services/api-call.service';
 import {ApiErrorsComponent} from './components/form-errors/api-errors/api-errors.component';
@@ -10,11 +9,13 @@ import {ApplicationsComponent} from './views/my-jobs/applications/applications.c
 import {ApplicationsStatusSectionComponent} from './components/sections/applications-status-section/applications-status-section.component';
 import {ApplicationStatusCardComponent} from './components/cards/application-status-card/application-status-card.component';
 import {AppliedForJobModalComponent} from './components/modals/applied-for-job-modal/applied-for-job-modal.component';
+import {ApplyForJobFormComponent} from './components/forms/apply-for-job-form/apply-for-job-form.component';
+import {ApplyForJobModalComponent} from './components/modals/apply-for-job-modal/apply-for-job-modal.component';
+import {ApplyMessageInputComponent} from './components/inputs/apply-message-input/apply-message-input.component';
 import {AppNavbarComponent} from './components/navbars/app-navbar/app-navbar.component';
 import {AppTranslateModule} from './app.translate.module';
 import {AtUndInputComponent} from './components/inputs/at-und-input/at-und-input.component';
 import {AutosizeDirective} from './directives/textarea-autosize/textarea-autosize.directive';
-import {BankAccountInputComponent} from './components/inputs/bank-account-input/bank-account-input.component';
 import {BaseButtonComponent} from './components/buttons/base-button/base-button.component';
 import {BaseMessageComponent} from './components/messages/base-message.component';
 import {BasicBorderHeaderComponent} from './components/headers/basic-border-header/basic-border-header.component';
@@ -25,6 +26,7 @@ import {CircularImageInputComponent} from './components/inputs/circular-image-in
 import {CityInputComponent} from './components/inputs/city-input/city-input.component';
 import {ClearingNumberInputComponent} from './components/inputs/clearing-number-input/clearing-number-input.component';
 import {CommentsComponent} from './components/comments/comments.component';
+import {CompactJobCardComponent} from './components/cards/compact-job-card/compact-job-card.component';
 import {CompetenceInputComponent} from './components/inputs/competence-input/competence-input.component';
 import {ConfirmationModalComponent} from './components/modals/confirmation-modal/confirmation-modal.component';
 import {ContactFormComponent} from './components/forms/contact-form/contact-form.component';
@@ -50,10 +52,12 @@ import {FaqAccordionComponent} from './components/accordions/faq-accordion/faq-a
 import {FaqPageComponent} from './components/pages/faq-page/faq-page.component';
 import {FileInputButtonComponent} from './components/buttons/file-input-button/file-input-button.component';
 import {FirstNameInputComponent} from './components/inputs/first-name-input/first-name-input.component';
+import {ForbiddenPageComponent} from './components/pages/forbidden-page/forbidden-page.component';
 import {ForgotPasswordFormComponent} from './components/forms/forgot-password-form/forgot-password-form.component';
 import {ForgotPasswordPageComponent} from './components/pages/forgot-password-page/forgot-password-page.component';
 import {FormsModule} from '@angular/forms';
 import {FormSubmitButtonComponent} from './components/buttons/form-submit-button/form-submit-button.component';
+import {FrilansTermsInputComponent} from './components/inputs/frilans-terms-input/frilans-terms-input.component';
 import {GenderInputComponent} from './components/inputs/gender-input/gender-input.component';
 import {GeolocationService} from './services/geolocation.service';
 import {GotCoordinationNumberInputComponent} from './components/inputs/got-coordination-number-input/got-coordination-number-input.component';
@@ -64,13 +68,16 @@ import {HttpModule} from '@angular/http';
 import {InfoMessageComponent} from './components/messages/info-message/info-message.component';
 import {InputErrorComponent} from './components/form-errors/input-error/input-error.component';
 import {InputErrorsComponent} from './components/form-errors/input-errors/input-errors.component';
+import {InputHintLabelComponent} from './components/labels/input-hint-label/input-hint-label.component';
 import {JARoutes} from './routes/ja-routes/ja-routes';
+import {JobAdditionalUserInfoModalComponent} from './components/modals/job-additional-user-info-modal/job-additional-user-info-modal.component';
 import {JobCardComponent} from './components/cards/job-card/job-card.component';
 import {JobDetailsComponent} from './views/job-details/job-details.component';
 import {JobExperienceInputComponent} from './components/inputs/job-experience-input/job-experience-input.component';
 import {JobListItemComponent} from './components/job-list-item/job-list-item.component';
-import {JobMapMarkerComponent} from './components/job-map-marker/job-map-marker.component';
+import {JobMapMarkerComponent} from './components/map-markers/job-map-marker/job-map-marker.component';
 import {JobsComponent} from './views/jobs/jobs.component';
+import {JobsMapComponent} from './components/maps/jobs-map/jobs-map.component';
 import {LanguageMenuComponent} from './components/menus/language-menu/language-menu.component';
 import {LanguageProficiencyInputComponent} from './components/inputs/language-proficiency-input/language-proficiency-input.component';
 import {LanguagesInputComponent} from './components/inputs/languages-input/languages-input.component';
@@ -114,6 +121,9 @@ import {ResolversModule} from './resolvers/resolvers.module';
 import {ResumeInputComponent} from './components/inputs/resume-input/resume-input.component';
 import {RoutesModule} from './routes/routes.module';
 import {SelectDropdownInputComponent} from './components/inputs/select-dropdown-input/select-dropdown-input.component';
+import {SignedForJobModalComponent} from './components/modals/signed-for-job-modal/signed-for-job-modal.component';
+import {SignForJobFormComponent} from './components/forms/sign-for-job-form/sign-for-job-form.component';
+import {SignForJobModalComponent} from './components/modals/sign-for-job-modal/sign-for-job-modal.component';
 import {SkatteverketCertificateInputComponent} from './components/inputs/skatteverket-certificate-input/skatteverket-certificate-input.component';
 import {SkillProficiencyInputComponent} from './components/inputs/skill-proficiency-input/skill-proficiency-input.component';
 import {SkillsInputComponent} from './components/inputs/skills-input/skills-input.component';
@@ -136,6 +146,7 @@ import {UserProfileFormComponent} from './components/forms/user-profile-form/use
 import {UserProfileHeaderComponent} from './components/headers/user-profile-header/user-profile-header.component';
 import {UserProfilePageComponent} from './components/pages/user-profile-page/user-profile-page.component';
 import {UserResolver} from './resolvers/user/user.resolver';
+import {UserUpdateFormComponent} from './components/forms/user-update-form/user-update-form.component';
 import {WelcomeHeaderComponent} from './components/headers/welcome-header/welcome-header.component';
 import {WorkPermitBackInputComponent} from './components/inputs/work-permit-back-input/work-permit-back-input.component';
 import {WorkPermitFrontInputComponent} from './components/inputs/work-permit-front-input/work-permit-front-input.component';
@@ -169,17 +180,18 @@ export class RavenErrorHandler implements ErrorHandler {
   ],
   declarations: [
     AccountNumberInputComponent,
-    AddressInputComponent,
     ApiErrorsComponent,
     AppComponent,
     ApplicationsComponent,
     ApplicationsStatusSectionComponent,
     ApplicationStatusCardComponent,
     AppliedForJobModalComponent,
+    ApplyForJobFormComponent,
+    ApplyForJobModalComponent,
+    ApplyMessageInputComponent,
     AppNavbarComponent,
     AtUndInputComponent,
     AutosizeDirective,
-    BankAccountInputComponent,
     BaseButtonComponent,
     BaseMessageComponent,
     BasicBorderHeaderComponent,
@@ -189,6 +201,7 @@ export class RavenErrorHandler implements ErrorHandler {
     CityInputComponent,
     ClearingNumberInputComponent,
     CommentsComponent,
+    CompactJobCardComponent,
     CompetenceInputComponent,
     ConfirmationModalComponent,
     ContactFormComponent,
@@ -211,9 +224,11 @@ export class RavenErrorHandler implements ErrorHandler {
     FaqPageComponent,
     FileInputButtonComponent,
     FirstNameInputComponent,
+    ForbiddenPageComponent,
     ForgotPasswordFormComponent,
     ForgotPasswordPageComponent,
     FormSubmitButtonComponent,
+    FrilansTermsInputComponent,
     GenderInputComponent,
     GotCoordinationNumberInputComponent,
     HomePageComponent,
@@ -222,12 +237,15 @@ export class RavenErrorHandler implements ErrorHandler {
     InfoMessageComponent,
     InputErrorComponent,
     InputErrorsComponent,
+    InputHintLabelComponent,
+    JobAdditionalUserInfoModalComponent,
     JobCardComponent,
     JobDetailsComponent,
     JobExperienceInputComponent,
     JobListItemComponent,
     JobMapMarkerComponent,
     JobsComponent,
+    JobsMapComponent,
     LanguageMenuComponent,
     LanguageProficiencyInputComponent,
     LanguagesInputComponent,
@@ -263,6 +281,9 @@ export class RavenErrorHandler implements ErrorHandler {
     ResidencePermitFrontInputComponent,
     ResumeInputComponent,
     SelectDropdownInputComponent,
+    SignedForJobModalComponent,
+    SignForJobFormComponent,
+    SignForJobModalComponent,
     SkatteverketCertificateInputComponent,
     SkillProficiencyInputComponent,
     SkillsInputComponent,
@@ -283,6 +304,7 @@ export class RavenErrorHandler implements ErrorHandler {
     UserProfileFormComponent,
     UserProfileHeaderComponent,
     UserProfilePageComponent,
+    UserUpdateFormComponent,
     WelcomeHeaderComponent,
     WorkPermitBackInputComponent,
     WorkPermitFrontInputComponent,

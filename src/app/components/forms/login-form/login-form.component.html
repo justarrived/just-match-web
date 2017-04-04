@@ -4,8 +4,7 @@
   class="ui form">
   <sm-loader
     [complete]="!loadingSubmit"
-    class="inverted"
-    text="{{'component.loading' | translate}}">
+    class="inverted">
   </sm-loader>
 
   <email-or-phone-input
@@ -20,6 +19,7 @@
 
   <form-submit-button
     [buttonText]="'login.form.submit.button' | translate"
+    [showButton]="showSubmitButton"
     [submitFail]="submitFail"
     [submitSuccess]="submitSuccess">
     <div>

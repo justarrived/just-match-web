@@ -4,8 +4,7 @@
   class="ui form">
   <sm-loader
     [complete]="!loadingSubmit"
-    class="inverted"
-    text="{{'component.loading' | translate}}">
+    class="inverted">
   </sm-loader>
 
   <h3 class="ui horizontal divider pink header">
@@ -141,8 +140,9 @@
   </job-experience-input>
 
   <form-submit-button
+    [buttonText]="'user.profile.form.submit.button' | translate"
+    [showButton]="showSubmitButton"
     [submitFail]="submitFail"
-    [submitSuccess]="submitSuccess"
-    [buttonText]="'user.profile.form.submit.button' | translate">
+    [submitSuccess]="submitSuccess">
   </form-submit-button>
 </form>

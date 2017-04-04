@@ -18,6 +18,12 @@ export class AppliedForJobModalComponent {
   @ViewChild('confirmationModal') public confirmationModal: ConfirmationModalComponent;
 
   public show() {
+    this.confirmationModal.show({
+      transition: 'horizontal flip'
+    });
+  }
+
+  public hide() {
     this.confirmationModal.show();
   }
 }

@@ -27,6 +27,7 @@ import {ViewChild} from '@angular/core';
         [patternLabel]="patternLabel"
         [requiredLabel]="requiredLabel">
       </input-errors>
+      <input-hint-label [hint]="hint"></input-hint-label>
       <ng-content></ng-content>
     </div>`
 })
@@ -34,6 +35,7 @@ export class TextInputComponent {
   @Input() public apiAttribute: string;
   @Input() public apiErrors: any;
   @Input() public control: any;
+  @Input() public hint: string;
   @Input() public icon: string;
   @Input() public label: string;
   @Input() public maxLengthLabel: string;

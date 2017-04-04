@@ -12,8 +12,7 @@ import {Output} from '@angular/core';
       [ngClass]="{'centered': centered}">
       <sm-loader
         [complete]="!uploadingImage"
-        class="inverted"
-        text="{{'component.loading' | translate}}">
+        class="inverted">
       </sm-loader>
       <div class="image">
         <img

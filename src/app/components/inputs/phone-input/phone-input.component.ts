@@ -9,6 +9,7 @@ import {Input} from '@angular/core';
     <text-input
       [apiErrors]="apiErrors"
       [control]="control"
+      [hint]="hint"
       [label]="'input.phone.label' | translate"
       [placeholder]="'input.phone.placeholder' | translate"
       apiAttribute="phone"
@@ -16,6 +17,7 @@ import {Input} from '@angular/core';
     </text-input>`
 })
 export class PhoneInputComponent {
-  @Input() apiErrors: ApiErrors;
-  @Input() control: FormControl;
+  @Input() public apiErrors: ApiErrors;
+  @Input() public control: FormControl;
+  @Input() public hint: string;
 }

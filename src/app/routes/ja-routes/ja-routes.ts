@@ -2,9 +2,11 @@ import {JARoute} from '../ja-route/ja-route';
 
 export class JARoutes {
   public static aboutCookies: JARoute = { url: () => '/cookies-about'};
+  public static applications: JARoute = { url: () => '/user/jobs'};
   public static contact: JARoute = { url: () => '/contact'};
   public static error: JARoute = { url: (args?: string[]) => '/error/' + args[0]};
   public static faq: JARoute = { url: () => '/faq'};
+  public static forbidden: JARoute = { url: () => '/forbidden'};
   public static forgotPassword: JARoute = { url: () => '/forgot-password'};
   public static home: JARoute = { url: () => '/home'};
   public static job: JARoute = { url: (args?: string[]) => '/job/' + args[0]};
@@ -14,5 +16,4 @@ export class JARoutes {
   public static registerUser: JARoute = { url: () => '/register'};
   public static resetPassword: JARoute = { url: (args?: string[]) => '/reset-password/' + args[0]};
   public static user: JARoute = { url: () => '/user'};
-  public static applications: JARoute = { url: () => '/user/jobs'};
 }

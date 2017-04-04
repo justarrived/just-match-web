@@ -10,6 +10,12 @@ interface CreateApplicationAttributes {
   user_id: string;
 }
 
+// UPDATE
+interface ConfirmApplicationAttributes {
+  consent: boolean;
+  terms_agreement_id: string;
+}
+
 @Injectable()
 export class ApplicationProxy {
 
@@ -66,8 +72,8 @@ export class ApplicationProxy {
     .then(response => ApplicationFactory.createApplication(response.data));
   }
 
-  public confirmApplication(jobId: string, applicationId: string, searchParameters?: any): Promise<Application> {
-    return this.apiCallService.post('jobs/' + jobId + '/users/' + applicationId + '/confirmations', {}, searchParameters)
+  public confirmApplication(jobId: string, applicationId: string, confirmApplicationAttributes: ConfirmApplicationAttributes, searchParameters?: any): Promise<Application> {
+    return this.apiCallService.post('jobs/' + jobId + '/users/' + applicationId + '/confirmations', confirmApplicationAttributes, searchParameters)
     .then(response => ApplicationFactory.createApplication(response.data));
   }
 

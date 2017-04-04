@@ -5,8 +5,7 @@
 
   <sm-loader
     [complete]="!loadingSubmit"
-    class="inverted"
-    text="{{'component.loading' | translate}}">
+    class="inverted">
   </sm-loader>
 
   <h3 class="ui horizontal divider pink header">
@@ -54,23 +53,43 @@
     {{'user.settings.form.address.header' | translate}}
   </h3>
 
-  <address-input
+  <street-input
     [apiErrors]="apiErrors"
-    [cityControl]="settingsForm.controls['city']"
-    [streetControl]="settingsForm.controls['street']"
-    [zipControl]="settingsForm.controls['zip']">
-  </address-input>
+    [control]="settingsForm.controls['street']">
+  </street-input>
+
+  <zip-input
+    [apiErrors]="apiErrors"
+    [control]="settingsForm.controls['zip']">
+  </zip-input>
+
+  <city-input
+    [apiErrors]="apiErrors"
+    [control]="settingsForm.controls['city']">
+  </city-input>
 
   <h3 class="ui horizontal divider pink header">
     <i class="money icon"></i>
     {{'user.settings.form.bank.details.header' | translate}}
   </h3>
 
-  <bank-account-input
-    [accountClearingNumberControl]="settingsForm.controls['account_clearing_number']"
-    [accountNumberControl]="settingsForm.controls['account_number']"
-    [apiErrors]="apiErrors">
-  </bank-account-input>
+  <clearing-number-input
+    [apiErrors]="apiErrors"
+    [control]="settingsForm.controls['account_clearing_number']">
+  </clearing-number-input>
+
+  <account-number-input
+    [apiErrors]="apiErrors"
+    [control]="settingsForm.controls['account_number']">
+  </account-number-input>
+
+  <!-- The API can return errors for account, which isn't bound to any instance of form control -->
+  <div style="text-align: center">
+    <api-errors
+      attribute="account"
+      [errors]="apiErrors">
+    </api-errors>
+  </div>
 
   <h3 class="ui horizontal divider pink header">
     <i class="settings icon"></i>
@@ -99,6 +118,7 @@
 
   <form-submit-button
     [buttonText]="'user.settings.form.submit.button' | translate"
+    [showButton]="showSubmitButton"
     [submitFail]="submitFail"
     [submitSuccess]="submitSuccess">
   </form-submit-button>

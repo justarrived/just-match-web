@@ -14,29 +14,24 @@ import {LanguageProxy} from '../../../proxies/language/language.proxy';
     <div class="ui form">
       <sm-loader
         [promise]="systemLanguages"
-        class="inverted"
-        text="{{'component.loading' | translate}}">
+        class="inverted">
       </sm-loader>
       <select-dropdown-input
         [apiErrors]="apiErrors"
         [data]="systemLanguages | async"
         [control]="control"
         [label]="'input.system.language.label' | translate"
+        [hint]="'input.system.language.description' | translate"
         [placeholder]="'input.system.language.placeholder' | translate"
         apiAttribute="system_language"
         dataItemLabelProoerty="translatedText.name"
         dataItemValueProoerty="id">
-        <div style="text-align: center">
-          <div class="ui pointing grey basic label">
-            {{'input.system.language.description' | translate}}
-          </div>
-        </div>
       </select-dropdown-input>
     </div>`
 })
 export class SystemLanguageInputComponent extends SystemLanguageListener implements OnInit {
-  @Input() apiErrors: ApiErrors;
-  @Input() control: FormControl;
+  @Input() public apiErrors: ApiErrors;
+  @Input() public control: FormControl;
 
   public systemLanguages: Promise<Language[]>;
 

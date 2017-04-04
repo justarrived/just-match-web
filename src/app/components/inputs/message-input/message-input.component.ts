@@ -9,6 +9,7 @@ import {Input} from '@angular/core';
   <textarea-input
     [apiErrors]="apiErrors"
     [control]="control"
+    [hint]="hint"
     [label]="'input.message.label' | translate"
     [placeholder]="'input.message.placeholder' | translate"
     [rows]="10"
@@ -17,6 +18,7 @@ import {Input} from '@angular/core';
   `
 })
 export class MessageInputComponent {
-  @Input() apiErrors: ApiErrors;
-  @Input() control: FormControl;
+  @Input() public apiErrors: ApiErrors;
+  @Input() public control: FormControl;
+  @Input() public hint: string;
 }

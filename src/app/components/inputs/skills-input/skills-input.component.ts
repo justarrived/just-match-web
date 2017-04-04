@@ -19,20 +19,25 @@ import {UserSkillFactory} from '../../../models/api-models/user-skill/user-skill
     <sm-loader
       [complete]="!loadingSkill"
       [promise]="skills"
-      class="inverted"
-      text="{{'component.loading' | translate}}">
+      class="inverted">
     </sm-loader>
     <select-dropdown-input
       (onChange)="onAddSkill($event)"
       [apiErrors]="apiErrors"
       [control]="skillsControl"
       [data]="skills | async"
+      [hint]="hint"
       [label]="'input.skills.label' | translate"
       [placeholder]="'input.skills.placeholder' | translate"
       apiAttribute="skill_ids"
       dataItemLabelProoerty="translatedText.name"
       dataItemValueProoerty="id">
     </select-dropdown-input>
+    <p
+      *ngIf="userSkillsControl.value?.length > 0"
+      class="fs-m0">
+      {{'input.skills.hint' | translate}}
+    </p>
     <div *ngFor="let userSkill of userSkillsControl.value">
       <skill-proficiency-input
         (onDelete)="onRemoveUserSkill(userSkill)"
@@ -44,9 +49,11 @@ import {UserSkillFactory} from '../../../models/api-models/user-skill/user-skill
   </div>`
 })
 export class SkillsInputComponent extends SystemLanguageListener implements OnInit {
-  @Input() apiErrors: ApiErrors;
-  @Input() skillsControl: FormControl;
-  @Input() userSkillsControl: FormControl;
+  @Input() public apiErrors: ApiErrors;
+  @Input() public hint: string;
+  @Input() public skillIds: string[];
+  @Input() public skillsControl: FormControl;
+  @Input() public userSkillsControl: FormControl;
 
   public skills: Promise<Skill[]>;
   public loadingSkill: boolean;
@@ -64,7 +71,8 @@ export class SkillsInputComponent extends SystemLanguageListener implements OnIn
 
   protected loadData(): void {
     this.skills = this.skillProxy.getSkills({
-      'page[size]': 100
+      'page[size]': 100,
+      'filter[id]': (this.skillIds ? this.skillIds.join(',') : null),
     });
   }
 
