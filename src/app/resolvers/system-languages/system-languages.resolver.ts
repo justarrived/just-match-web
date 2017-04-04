@@ -4,7 +4,7 @@ import {Injectable} from '@angular/core';
 import {Language} from '../../models/api-models/language/language';
 import {LanguageProxy} from '../../proxies/language/language.proxy';
 import {Resolve} from '@angular/router';
-import {TranslateService} from 'ng2-translate/ng2-translate';
+import {TranslateService} from '@ngx-translate/core';
 
 @Injectable()
 export class SystemLanguagesResolver implements Resolve<Language[]> {
