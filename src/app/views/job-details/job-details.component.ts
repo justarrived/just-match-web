@@ -81,10 +81,12 @@ export class JobDetailsComponent extends SystemLanguageListener implements OnIni
   }
 
   protected loadData(): void {
-    this.missingUserTraitsProxy.getMissingUserTraits(this.currentJobId, this.user.id)
-    .then(missingUserTraits => {
-      this.missingUserTraits = missingUserTraits}
-    );
+    if (this.user) {
+      this.missingUserTraitsProxy.getMissingUserTraits(this.currentJobId, this.user.id)
+      .then(missingUserTraits => {
+        this.missingUserTraits = missingUserTraits}
+      );
+    }
 
     this.jobProxy.getJob(this.currentJobId, {
       'include': 'owner,company,hourly_pay,company.company_images,comments'

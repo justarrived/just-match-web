@@ -4,24 +4,28 @@
     <job-additional-user-info-modal
       [missingUserTraits]="missingUserTraits"
       (onInformationSupplied)="requestedUserInformationSupplied($event)"
-      #jobAdditionalUserInfoModalComponent>
+      #jobAdditionalUserInfoModalComponent
+      *ngIf="user">
     </job-additional-user-info-modal>
 
     <apply-for-job-modal
       (onAppliedForJob)="appliedForJob($event)"
       [job]="job"
-      #applyForJobModalComponent>
+      #applyForJobModalComponent
+      *ngIf="user">
     </apply-for-job-modal>
 
     <applied-for-job-modal
-      #appliedForJobModalComponent>
+      #appliedForJobModalComponent
+      *ngIf="user">
     </applied-for-job-modal>
 
     <sign-for-job-modal
       (onSignedForJob)="signedForJob($event)"
       [application]="application"
       [job]="job"
-      #signForJobModalComponent>
+      #signForJobModalComponent
+      *ngIf="user">
     </sign-for-job-modal>
 
     <signed-for-job-modal
