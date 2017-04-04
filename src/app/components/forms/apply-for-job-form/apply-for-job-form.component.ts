@@ -26,7 +26,7 @@ import {Validators} from '@angular/forms';
 
       <h3
         class="ui horizontal divider pink header">
-        {{'Anything else you want us to know?' | translate}}
+        {{'apply.for.job.form.message.section' | translate}}
       </h3>
 
       <apply-message-input
