@@ -12,6 +12,7 @@ export class JARoutes {
   public static job: JARoute = { url: (args?: string[]) => '/job/' + args[0]};
   public static jobs: JARoute = { url: (args?: string[]) => '/jobs/' + args[0]};
   public static login: JARoute = { url: () => '/login'};
+  public static lostConnection: JARoute = { url: () => '/lost-connection'};
   public static notFound: JARoute = { url: () => '/404'};
   public static registerUser: JARoute = { url: () => '/register'};
   public static resetPassword: JARoute = { url: (args?: string[]) => '/reset-password/' + args[0]};

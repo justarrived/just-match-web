@@ -209,6 +209,8 @@
   "login.form.register.link": "Create account",
   "login.form.submit.button": "Sign in",
   "login.title": "Sign in",
+  "lost.connection.description": "Sorry, but it seems that you lost the connection to the server. Maybe your internet connection is down or the server may be offline",
+  "lost.connection.title": "Lost connection",
   "map.geolocation.error.close": "Click to hide.",
   "map.geolocation.error.permissionDenied": "you have disabled access to your location for this site.",
   "map.geolocation.error.positionUnavailable": "we are unable to determine your location.",
