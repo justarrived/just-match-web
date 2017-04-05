@@ -1,6 +1,6 @@
 import {
   Component, Input, ChangeDetectionStrategy, ViewChild, ElementRef, Directive, Output,
-  EventEmitter, OnDestroy
+  EventEmitter, OnDestroy, AfterViewInit
 } from "@angular/core";
 
 declare var jQuery: any;
@@ -27,7 +27,7 @@ declare var jQuery: any;
     </div>
 </div>`
 })
-export class SemanticModalComponent implements OnDestroy {
+export class SemanticModalComponent implements AfterViewInit, OnDestroy {
   @Input() class: string;
   @Input() title: string;
   @Input() icon: string;
@@ -35,7 +35,20 @@ export class SemanticModalComponent implements OnDestroy {
   @Output() onModalShow: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() onModalHide: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-  show(data?: {}) {
+  public ngAfterViewInit(): void {
+    jQuery(this.modal.nativeElement)
+      .modal("refresh");
+  }
+
+  public ngOnDestroy(): void {
+    jQuery(this.modal.nativeElement)
+      .modal("hide dimmer");
+
+    const parent = this.modal.nativeElement.parentElement;
+    parent.removeChild(this.modal.nativeElement);
+  }
+
+  public show(data?: {}) {
     jQuery(this.modal.nativeElement)
       .modal(data || {})
       .modal("toggle");
@@ -43,19 +56,11 @@ export class SemanticModalComponent implements OnDestroy {
     this.onModalShow.next(true);
   }
 
-  hide() {
+  public hide() {
     jQuery(this.modal.nativeElement)
       .modal("hide");
 
     this.onModalHide.emit(true);
-  }
-
-  ngOnDestroy(): void {
-    jQuery(this.modal.nativeElement)
-      .modal("hide dimmer");
-
-    const parent = this.modal.nativeElement.parentElement;
-    parent.removeChild(this.modal.nativeElement);
   }
 }
 

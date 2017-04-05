@@ -20,6 +20,6 @@ export class ContactMessageSentModalComponent {
   }
 
   public hide() {
-    this.confirmationModal.show();
+    this.confirmationModal.hide();
   }
 }

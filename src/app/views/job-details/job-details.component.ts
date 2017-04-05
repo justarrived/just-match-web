@@ -16,6 +16,8 @@ import {MissingUserTraitsProxy} from '../../proxies/missing-user-traits/missing-
 import {NavigationService} from '../../services/navigation.service';
 import {OnDestroy} from '@angular/core';
 import {OnInit} from '@angular/core';
+import {RegisteredModalComponent} from '../../components/modals/registered-modal/registered-modal.component';
+import {RegisterModalComponent} from '../../components/modals/register-modal/register-modal.component';
 import {SignedForJobModalComponent} from '../../components/modals/signed-for-job-modal/signed-for-job-modal.component';
 import {SignForJobModalComponent} from '../../components/modals/sign-for-job-modal/sign-for-job-modal.component';
 import {Subscription} from 'rxjs/Subscription';
@@ -34,6 +36,8 @@ export class JobDetailsComponent extends SystemLanguageListener implements OnIni
   @ViewChild('applyForJobModalComponent') public applyForJobModalComponent: ApplyForJobModalComponent;
   @ViewChild('jobAdditionalUserInfoModalComponent') public jobAdditionalUserInfoModalComponent: JobAdditionalUserInfoModalComponent;
   @ViewChild('loginModalComponent') public loginModalComponent: LoginModalComponent;
+  @ViewChild('registeredModalComponent') public registeredModalComponent: RegisteredModalComponent;
+  @ViewChild('registerModalComponent') public registerModalComponent: RegisterModalComponent;
   @ViewChild('signedForJobModalComponent') public signedForJobModalComponent: SignedForJobModalComponent;
   @ViewChild('signForJobModalComponent') public signForJobModalComponent: SignForJobModalComponent;
 
@@ -114,6 +118,17 @@ export class JobDetailsComponent extends SystemLanguageListener implements OnIni
   public ngOnDestroy(): void {
     this.userSubscription.unsubscribe();
     this.routeParamsSubscription.unsubscribe();
+  }
+
+  public onRegisterButtonClick(): void {
+    this.registerModalComponent.show();
+  }
+
+  public registered(user: User): void {
+    this.registerModalComponent.hide();
+    setTimeout(() => {
+      this.registeredModalComponent.show();
+    }, 500);
   }
 
   public onLoginButtonClick(): void {

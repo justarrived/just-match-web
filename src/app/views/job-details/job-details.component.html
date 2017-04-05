@@ -7,6 +7,17 @@
       *ngIf="!user">
     </login-modal>
 
+    <register-modal
+      (onRegistered)="registered($event)"
+      #registerModalComponent
+      *ngIf="!user">
+    </register-modal>
+
+    <registered-modal
+      #registeredModalComponent
+      *ngIf="user">
+    </registered-modal>
+
     <job-additional-user-info-modal
       [missingUserTraits]="missingUserTraits"
       (onInformationSupplied)="requestedUserInformationSupplied($event)"
@@ -74,7 +85,7 @@
         </base-button>
         <br/>
         <base-button
-          [routerLink]="JARoutes.registerUser.url()"
+          (click)="onRegisterButtonClick()"
           [buttonText]="'assignment.status.create_account' | translate"
           [fluid]="true"
           kind="primary-light"

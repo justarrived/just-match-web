@@ -79,7 +79,7 @@ export class SignForJobFormComponent extends SystemLanguageListener implements O
 
   private initForm() {
     this.signForJobForm = this.formBuilder.group({
-      'consent': ['', Validators.compose([Validators.required])]
+      'consent': [false, Validators.compose([Validators.required])]
     });
   }
 
@@ -104,7 +104,7 @@ export class SignForJobFormComponent extends SystemLanguageListener implements O
     this.submitSuccess = false;
 
     return this.applicationProxy.confirmApplication(this.job.id, this.application.id, {
-      'consent': this.signForJobForm.value.consent !== '',
+      'consent': this.signForJobForm.value.consent,
       'terms_agreement_id': this.termsAgreementId
     })
     .then(application => {
