@@ -1,15 +1,15 @@
-<div class="comments-container" [ngClass]="{'addition-padding': !isFooterVisible && userId, 'small-addition-padding': !userId}">
+<div class="comments-container" [ngClass]="{'addition-padding': !isFooterVisible && user, 'small-addition-padding': !user}">
   <div class="ui centered grid" *ngIf="comments && comments.length > 0">
     <div class="fourteen wide phone column">
       <h4 class="chat-title">{{'assignment.comments.title' | translate}}</h4>
     </div>
   </div>
   <div *ngFor="let comment of comments" class="comment-container">
-    <div class="comment-image-container" [ngClass]="{'float-left': comment.owner.id != userId, 'float-right': comment.owner.id == userId}">
+    <div class="comment-image-container" [ngClass]="{'float-left': comment.owner.id != user?.id, 'float-right': comment.owner.id == user?.id}">
       <img class="comment-image" *ngIf="comment.owner.company && comment.owner.company.id" [src]="(comment.owner.company.logoImage && comment.owner.company.logoImage.imageUrlSmall) || '/assets/images/placeholder-logo.png'">
       <img class="comment-image" *ngIf="!(comment.owner.company && comment.owner.company.id)" [src]="(comment.owner.profileImage && comment.owner.profileImage.smallImageUrl) || '/assets/images/placeholder-profile-image.png'">
     </div>
-    <div class="comment-content" [ngClass]="{'move-left': comment.owner.id != userId}">
+    <div class="comment-content" [ngClass]="{'move-left': comment.owner.id != user?.id}">
       <div class="comment-meta-data-container">
         <div class="comment-meta-data-user-name" *ngIf="!(comment.owner.company && comment.owner.company.id)">
           {{comment.owner.firstName}}
@@ -26,7 +26,7 @@
   </div>
 </div>
 
-<div class="new-comment-container" [ngClass]="{moving: !isFooterVisible}" *ngIf="userId">
+<div class="new-comment-container" [ngClass]="{moving: !isFooterVisible}" *ngIf="user">
   <div class="ui centered grid">
     <div class="twelve wide phone column">
       <div class="resizable-div-cell">

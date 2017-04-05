@@ -51,6 +51,9 @@ export class SemanticModalComponent implements OnDestroy {
   }
 
   ngOnDestroy(): void {
+    jQuery(this.modal.nativeElement)
+      .modal("hide dimmer");
+
     const parent = this.modal.nativeElement.parentElement;
     parent.removeChild(this.modal.nativeElement);
   }

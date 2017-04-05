@@ -1,4 +1,3 @@
-import {ApiErrors} from '../../../models/api-models/api-errors/api-errors';
 import {Component} from '@angular/core';
 import {Input} from '@angular/core';
 import {ViewChild} from '@angular/core';
@@ -38,7 +37,6 @@ export class ConfirmationModalComponent {
   @Input() public icon: string;
   @Input() public image: string;
   @Input() public imageClasses: string;
-
 
   @ViewChild('confirmationModal') public confirmationModal: any;
 
