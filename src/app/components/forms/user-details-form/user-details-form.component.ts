@@ -101,13 +101,13 @@ export class UserDetailsFormComponent implements OnInit, OnDestroy {
     this.changeDetector.detectChanges();
   }
 
-  public onSubmit(): void {
+  public submitForm(): Promise<User> {
     this.submitSuccess = false;
     this.submitFail = false;
     this.loadingSubmit = true;
     this.apiErrors = new ApiErrors([]);
 
-    this.userProxy.updateUser(this.user.id, {
+    return this.userProxy.updateUser(this.user.id, {
       'account_clearing_number': this.settingsForm.value.account_clearing_number,
       'account_number': this.settingsForm.value.account_number,
       'city': this.settingsForm.value.city,
@@ -126,36 +126,41 @@ export class UserDetailsFormComponent implements OnInit, OnDestroy {
     })
     .then(user => {
       if (this.passwordsSupplied()) {
-        this.userPasswordProxy.updateUserPassword({
+        return this.userPasswordProxy.updateUserPassword({
           'old_password': this.passwordForm.value.old_password,
           'password': this.passwordForm.value.password,
         })
         .then(response => {
 
           // has to relogin to be authenticated now that password changed
-          this.userResolver.login(this.settingsForm.value.email, this.passwordForm.value.password)
+          return this.userResolver.login(this.settingsForm.value.email, this.passwordForm.value.password)
           .then(user => {
             this.submitSuccess = true;
             this.loadingSubmit = false;
+            return user;
           })
           .catch(errors => {
             this.handleServerErrors(errors);
             this.navigationService.navigate(JARoutes.login);
+            throw errors;
           });
 
         })
         .catch(errors => {
           this.handleServerErrors(errors);
+          throw errors;
         });
 
       } else {
         this.userResolver.setUser(user);
         this.submitSuccess = true;
         this.loadingSubmit = false;
+        return user;
       }
     })
     .catch(errors => {
       this.handleServerErrors(errors);
+      throw errors;
     });
   }
 }

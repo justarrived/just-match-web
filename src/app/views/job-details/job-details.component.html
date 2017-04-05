@@ -3,46 +3,46 @@
 
     <login-modal
       (onLoggedIn)="loggedIn($event)"
-      #loginModalComponent
-      *ngIf="!user">
+      *ngIf="!user"
+      #loginModalComponent>
     </login-modal>
 
     <register-modal
       (onRegistered)="registered($event)"
-      #registerModalComponent
-      *ngIf="!user">
+      *ngIf="!user"
+      #registerModalComponent>
     </register-modal>
 
     <registered-modal
-      #registeredModalComponent
-      *ngIf="user">
+      *ngIf="user"
+      #registeredModalComponent>
     </registered-modal>
 
     <job-additional-user-info-modal
-      [missingUserTraits]="missingUserTraits"
       (onInformationSupplied)="requestedUserInformationSupplied($event)"
-      #jobAdditionalUserInfoModalComponent
-      *ngIf="user">
+      [missingUserTraits]="missingUserTraits"
+      *ngIf="user"
+      #jobAdditionalUserInfoModalComponent>
     </job-additional-user-info-modal>
 
     <apply-for-job-modal
       (onAppliedForJob)="appliedForJob($event)"
       [job]="job"
-      #applyForJobModalComponent
-      *ngIf="user">
+      *ngIf="user"
+      #applyForJobModalComponent>
     </apply-for-job-modal>
 
     <applied-for-job-modal
-      #appliedForJobModalComponent
-      *ngIf="user">
+      *ngIf="user"
+      #appliedForJobModalComponent>
     </applied-for-job-modal>
 
     <sign-for-job-modal
       (onSignedForJob)="signedForJob($event)"
       [application]="application"
       [job]="job"
-      #signForJobModalComponent
-      *ngIf="user">
+      *ngIf="user"
+      #signForJobModalComponent>
     </sign-for-job-modal>
 
     <signed-for-job-modal

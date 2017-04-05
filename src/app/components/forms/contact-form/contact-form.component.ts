@@ -20,7 +20,7 @@ import {ViewChild} from '@angular/core';
   selector: 'contact-form',
   template: `
     <form
-      (ngSubmit)="submitForm(contactForm.value)"
+      (ngSubmit)="submitForm()"
       [formGroup]="contactForm"
       class="ui form">
       <sm-loader
@@ -110,23 +110,25 @@ export class ContactFormComponent implements OnInit, OnDestroy {
     this.changeDetector.detectChanges();
   }
 
-  public submitForm(value: any): void {
+  public submitForm(): Promise<any> {
     this.loadingSubmit = true;
     this.submitFail = false;
     this.submitSuccess = false;
 
-    this.contactProxy.createContactNotification({
-      body: value.message,
-      email: value.email,
-      name: value.name
+    return this.contactProxy.createContactNotification({
+      body: this.contactForm.value.message,
+      email: this.contactForm.value.email,
+      name: this.contactForm.value.name
     })
     .then(result => {
       this.submitSuccess = true;
       this.loadingSubmit = false;
       this.contactMessageSentModal.show();
+      return result;
     })
     .catch(errors => {
       this.handleServerErrors(errors);
+      throw errors;
     });
   }
 }

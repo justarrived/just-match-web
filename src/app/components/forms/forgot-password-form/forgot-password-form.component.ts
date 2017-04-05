@@ -17,7 +17,7 @@ import {ViewChild} from '@angular/core';
   styleUrls: ['./forgot-password-form.component.scss'],
   template: `
     <form
-      (ngSubmit)="submitForm(forgotPasswordForm.value)"
+      (ngSubmit)="submitForm()"
       [formGroup]="forgotPasswordForm"
       class="ui form">
       <sm-loader
@@ -85,21 +85,23 @@ export class ForgotPasswordFormComponent implements OnInit {
     this.changeDetector.detectChanges();
   }
 
-  public submitForm(value: any) {
+  public submitForm(): Promise<any> {
     this.submitFail = false;
     this.submitSuccess = false;
     this.loadingSubmit = true;
 
-    this.userPasswordProxy.sendUserPasswordResetLink({
-      'email_or_phone': value.email_or_phone
+    return this.userPasswordProxy.sendUserPasswordResetLink({
+      'email_or_phone': this.forgotPasswordForm.value.email_or_phone
     })
     .then(result => {
       this.submitSuccess = true;
       this.loadingSubmit = false;
       this.passwordResetLinkSentModalComponent.show();
+      return result;
     })
     .catch(errors => {
       this.handleServerErrors(errors);
+      throw errors;
     });
   }
 }

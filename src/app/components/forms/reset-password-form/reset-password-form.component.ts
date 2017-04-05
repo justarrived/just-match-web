@@ -17,7 +17,7 @@ import {ViewChild} from '@angular/core';
   selector: 'reset-password-form',
   template: `
     <form
-      (ngSubmit)="submitForm(resetPasswordForm.value)"
+      (ngSubmit)="submitForm()"
       [formGroup]="resetPasswordForm"
       class="ui form">
       <sm-loader
@@ -92,27 +92,30 @@ export class ResetPasswordFormComponent implements OnInit {
     this.changeDetector.detectChanges();
   }
 
-  public submitForm(value: any) {
+  public submitForm(): Promise<any> {
     this.loadingSubmit = true;
     this.submitFail = false;
     this.submitSuccess = false;
-    this.userPasswordProxy.updateUserPassword({
-      'one_time_token': value.one_time_token,
-      'password': value.password,
+
+    return this.userPasswordProxy.updateUserPassword({
+      'one_time_token': this.resetPasswordForm.value.one_time_token,
+      'password': this.resetPasswordForm.value.password,
     })
     .then(result => {
       this.loadingSubmit = false;
       this.submitSuccess = true;
       this.passwordChangedModalComponent.show();
+      return result;
     })
     .catch(errors => {
       this.handleServerErrors(errors);
+      throw errors;
     });
   }
 
   public onEnterKeyUp() {
     if (this.resetPasswordForm.valid) {
-      this.submitForm(this.resetPasswordForm.value);
+      this.submitForm();
     }
   }
 }

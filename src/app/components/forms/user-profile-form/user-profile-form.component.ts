@@ -80,13 +80,13 @@ export class UserProfileFormComponent implements OnInit, OnDestroy {
     this.changeDetector.detectChanges();
   }
 
-  public onSubmit(): void {
+  public submitForm(): Promise<User> {
     this.submitSuccess = false;
     this.submitFail = false;
     this.loadingSubmit = true;
     this.apiErrors = new ApiErrors([]);
 
-    this.userProxy.updateUser(this.user.id, {
+    return this.userProxy.updateUser(this.user.id, {
       'at_und': this.profileForm.value.at_und,
       'competence_text': this.profileForm.value.competence_text,
       'current_status': this.profileForm.value.current_status,
@@ -113,9 +113,11 @@ export class UserProfileFormComponent implements OnInit, OnDestroy {
       this.userResolver.setUser(user)
       this.submitSuccess = true;
       this.loadingSubmit = false;
+      return user;
     })
     .catch(errors => {
       this.handleServerErrors(errors);
+      throw errors;
     });
   }
 }

@@ -104,7 +104,7 @@ export class UserUpdateFormComponent implements OnInit, OnDestroy {
     return requestedUpdateAttributes;
   }
 
-  public onSubmit(): Promise<User> {
+  public submitForm(): Promise<User> {
     this.submitSuccess = false;
     this.submitFail = false;
     this.loadingSubmit = true;

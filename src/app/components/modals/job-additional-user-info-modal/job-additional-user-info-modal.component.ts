@@ -60,7 +60,7 @@ export class JobAdditionalUserInfoModalComponent {
   }
 
   public buttonClicked(): void {
-    this.userUpdateForm.onSubmit()
+    this.userUpdateForm.submitForm()
     .then(() => this.onInformationSupplied.emit());
   }
 }
