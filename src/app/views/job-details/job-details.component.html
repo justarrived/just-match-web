@@ -1,6 +1,12 @@
 <div *ngIf="job">
   <div class="job-details-body">
 
+    <login-modal
+      (onLoggedIn)="loggedIn($event)"
+      #loginModalComponent
+      *ngIf="!user">
+    </login-modal>
+
     <job-additional-user-info-modal
       [missingUserTraits]="missingUserTraits"
       (onInformationSupplied)="requestedUserInformationSupplied($event)"
@@ -60,7 +66,7 @@
 
       <div *ngIf="!user" class="sign-in-or-create-container">
         <base-button
-          [routerLink]="JARoutes.login.url()"
+          (click)="onLoginButtonClick()"
           [buttonText]="'assignment.status.log_in' | translate"
           [fluid]="true"
           kind="secondary-light"

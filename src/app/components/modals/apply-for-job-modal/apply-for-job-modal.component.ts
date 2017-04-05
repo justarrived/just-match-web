@@ -1,13 +1,10 @@
-import {ApiErrors} from '../../../models/api-models/api-errors/api-errors';
 import {Application} from '../../../models/api-models/application/application';
 import {ApplyForJobFormComponent} from '../../forms/apply-for-job-form/apply-for-job-form.component';
 import {Component} from '@angular/core';
-import {ElementRef} from '@angular/core';
 import {EventEmitter} from '@angular/core';
 import {Input} from '@angular/core';
 import {Job} from '../../../models/api-models/job/job';
 import {Output} from '@angular/core';
-import {UserUpdateFormComponent} from '../../forms/user-update-form/user-update-form.component';
 import {ViewChild} from '@angular/core';
 
 @Component({

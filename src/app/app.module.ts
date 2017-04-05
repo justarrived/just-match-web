@@ -84,6 +84,7 @@ import {LanguagesInputComponent} from './components/inputs/languages-input/langu
 import {LastNameInputComponent} from './components/inputs/last-name-input/last-name-input.component';
 import {LMACardInputComponent} from './components/inputs/lma-card-input/lma-card-input.component';
 import {LoginFormComponent} from './components/forms/login-form/login-form.component';
+import {LoginModalComponent} from './components/modals/login-modal/login-modal.component';
 import {LoginPageComponent} from './components/pages/login-page/login-page.component';
 import {LostConnectionPageComponent} from './components/pages/lost-connection-page/lost-connection-page.component';
 import {MaximizeChancessSectionComponent} from './components/sections/maximize-chances-section/maximize-chances-section.component';
@@ -252,6 +253,7 @@ export class RavenErrorHandler implements ErrorHandler {
     LastNameInputComponent,
     LMACardInputComponent,
     LoginFormComponent,
+    LoginModalComponent,
     LoginPageComponent,
     LostConnectionPageComponent,
     MaximizeChancessSectionComponent,

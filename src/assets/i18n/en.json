@@ -209,6 +209,8 @@
   "login.form.forgot.password.link": "Forgotten your password?",
   "login.form.register.link": "Create account",
   "login.form.submit.button": "Sign in",
+  "login.modal.button": "Login",
+  "login.modal.title": "Login",
   "login.title": "Sign in",
   "lost.connection.description": "Sorry, but it seems that you lost the connection to the server. Maybe your internet connection is down or the server may be offline",
   "lost.connection.title": "Lost connection",

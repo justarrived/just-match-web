@@ -1,7 +1,5 @@
-import {ApiErrors} from '../../../models/api-models/api-errors/api-errors';
 import {Component} from '@angular/core';
 import {ConfirmationModalComponent} from '../confirmation-modal/confirmation-modal.component';
-import {Input} from '@angular/core';
 import {ViewChild} from '@angular/core';
 
 @Component({

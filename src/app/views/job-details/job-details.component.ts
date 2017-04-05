@@ -10,6 +10,7 @@ import {JARoutes} from '../../routes/ja-routes/ja-routes';
 import {Job} from '../../models/api-models/job/job';
 import {JobAdditionalUserInfoModalComponent} from '../../components/modals/job-additional-user-info-modal/job-additional-user-info-modal.component';
 import {JobProxy} from '../../proxies/job/job.proxy';
+import {LoginModalComponent} from '../../components/modals/login-modal/login-modal.component';
 import {MissingUserTraits} from '../../models/api-models/missing-user-traits/missing-user-traits';
 import {MissingUserTraitsProxy} from '../../proxies/missing-user-traits/missing-user-traits.proxy';
 import {NavigationService} from '../../services/navigation.service';
@@ -32,6 +33,7 @@ export class JobDetailsComponent extends SystemLanguageListener implements OnIni
   @ViewChild('appliedForJobModalComponent') public appliedForJobModalComponent: AppliedForJobModalComponent;
   @ViewChild('applyForJobModalComponent') public applyForJobModalComponent: ApplyForJobModalComponent;
   @ViewChild('jobAdditionalUserInfoModalComponent') public jobAdditionalUserInfoModalComponent: JobAdditionalUserInfoModalComponent;
+  @ViewChild('loginModalComponent') public loginModalComponent: LoginModalComponent;
   @ViewChild('signedForJobModalComponent') public signedForJobModalComponent: SignedForJobModalComponent;
   @ViewChild('signForJobModalComponent') public signForJobModalComponent: SignForJobModalComponent;
 
@@ -70,6 +72,7 @@ export class JobDetailsComponent extends SystemLanguageListener implements OnIni
     this.user = this.userResolver.getUser();
     this.userSubscription = this.userResolver.getUserChangeEmitter().subscribe(user => {
       this.user = user;
+      this.loadData();
     });
   }
 
@@ -111,6 +114,14 @@ export class JobDetailsComponent extends SystemLanguageListener implements OnIni
   public ngOnDestroy(): void {
     this.userSubscription.unsubscribe();
     this.routeParamsSubscription.unsubscribe();
+  }
+
+  public onLoginButtonClick(): void {
+    this.loginModalComponent.show();
+  }
+
+  public loggedIn(user: User): void {
+    this.loginModalComponent.hide();
   }
 
   public onApplyForJobButtonClick(): void {

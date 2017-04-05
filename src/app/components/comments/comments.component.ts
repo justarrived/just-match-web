@@ -4,10 +4,13 @@ import {Component} from '@angular/core';
 import {ElementRef} from '@angular/core';
 import {HostListener} from '@angular/core';
 import {Input} from '@angular/core';
+import {OnDestroy} from '@angular/core';
 import {OnInit} from '@angular/core';
 import {orderBy} from 'lodash';
+import {Subscription} from 'rxjs/Subscription';
 import {SystemLanguageListener} from '../../resolvers/system-languages/system-languages.resolver';
 import {SystemLanguagesResolver} from '../../resolvers/system-languages/system-languages.resolver';
+import {User} from '../../models/api-models/user/user';
 import {UserResolver} from '../../resolvers/user/user.resolver';
 
 @Component({
@@ -15,14 +18,17 @@ import {UserResolver} from '../../resolvers/user/user.resolver';
   templateUrl: './comments.component.html',
   styleUrls: ['./comments.component.scss']
 })
-export class CommentsComponent extends SystemLanguageListener implements OnInit {
+export class CommentsComponent extends SystemLanguageListener implements OnInit, OnDestroy {
   @Input() public resourceId: string;
   @Input() public resourceName: string;
-  public newCommentContainer: any;
+
   public comments: Comment[];
-  public userId: string;
-  public newCommentBody: string;
   public isFooterVisible: boolean;
+  public newCommentBody: string;
+  public newCommentContainer: any;
+  public user: User;
+
+  private userSubscription: Subscription;
 
   @HostListener('window:scroll', ['$event']) onDocumentScroll(event: any) {
     this.calculateFooterVisibility();
@@ -35,37 +41,19 @@ export class CommentsComponent extends SystemLanguageListener implements OnInit 
     protected systemLanguagesResolver: SystemLanguagesResolver
   ) {
     super(systemLanguagesResolver);
-    const user = this.userResolver.getUser();
-    this.userId = user && user.id;
   }
 
   public ngOnInit() {
+    this.initUser();
     this.loadData();
     this.calculateFooterVisibility();
   }
 
-  public sendComment() {
-    this.commentProxy.createComment(
-      this.resourceName,
-      this.resourceId,
-      {
-        body: this.newCommentBody,
-        commentable_id: this.resourceId,
-        commentable_type: this.resourceName,
-        language_id: this.systemLanguagesResolver.getSelectedSystemLanguage().id,
-      })
-    .then(result => {
-      this.newCommentContainer.textContent = '';
-      this.newCommentBody = null;
-      this.loadData();
+  private initUser(): void {
+    this.user = this.userResolver.getUser();
+    this.userSubscription = this.userResolver.getUserChangeEmitter().subscribe(user => {
+      this.user = user;
     });
-  }
-
-  public onNewCommentInput(event) {
-    if (!this.newCommentContainer) {
-      this.newCommentContainer = event.target;
-    }
-    this.newCommentBody = event.target.textContent;
   }
 
   protected loadData() {
@@ -79,14 +67,6 @@ export class CommentsComponent extends SystemLanguageListener implements OnInit 
     });
   }
 
-  private getDocumentHeight() {
-    return Math.max(
-      document.body.scrollHeight, document.documentElement.scrollHeight,
-      document.body.offsetHeight, document.documentElement.offsetHeight,
-      document.body.clientHeight, document.documentElement.clientHeight
-    );
-  }
-
   private calculateFooterVisibility() {
     let scrollHeight = document.body.scrollTop;
     let windowHeight = window.innerHeight;
@@ -96,5 +76,38 @@ export class CommentsComponent extends SystemLanguageListener implements OnInit 
     if (isFooterVisibleActual !== this.isFooterVisible) {
       this.isFooterVisible = isFooterVisibleActual;
     }
+  }
+
+  private getDocumentHeight() {
+    return Math.max(
+      document.body.scrollHeight, document.documentElement.scrollHeight,
+      document.body.offsetHeight, document.documentElement.offsetHeight,
+      document.body.clientHeight, document.documentElement.clientHeight
+    );
+  }
+
+  public ngOnDestroy(): void {
+    this.userSubscription.unsubscribe();
+  }
+
+  public sendComment() {
+    this.commentProxy.createComment(this.resourceName, this.resourceId, {
+      body: this.newCommentBody,
+      commentable_id: this.resourceId,
+      commentable_type: this.resourceName,
+      language_id: this.systemLanguagesResolver.getSelectedSystemLanguage().id,
+    })
+    .then(result => {
+      this.newCommentContainer.textContent = '';
+      this.newCommentBody = null;
+      this.loadData();
+    });
+  }
+
+  public onNewCommentInput(event) {
+    if (!this.newCommentContainer) {
+      this.newCommentContainer = event.target;
+    }
+    this.newCommentBody = event.target.textContent;
   }
 }
