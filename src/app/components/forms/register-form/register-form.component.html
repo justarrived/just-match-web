@@ -7,6 +7,21 @@
     class="inverted">
   </sm-loader>
 
+  <div class="ui basic center aligned segment">
+
+    <h3 class="ui horizontal divider pink header">
+      {{'Already got an account?' | translate}}
+    </h3>
+
+    <base-button
+      [routerLink]="JARoutes.login.url()"
+      [buttonText]="'Login now' | translate"
+      kind="primary"
+      size="small">
+    </base-button>
+
+  </div>
+
   <h3 class="ui horizontal divider pink header">
     <i class="user icon"></i>
     {{'user.register.form.general.information.section.header' | translate}}

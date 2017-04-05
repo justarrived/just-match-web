@@ -21,6 +21,7 @@ export class RegisterFormComponent implements OnInit {
   @Input() public showSubmitButton: boolean = true;
 
   public apiErrors: ApiErrors = new ApiErrors([]);
+  public JARoutes = JARoutes;
   public loadingSubmit: boolean = false;
   public registerForm: FormGroup;
   public submitFail: boolean;
