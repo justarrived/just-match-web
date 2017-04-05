@@ -96,7 +96,6 @@ import {NavigationService} from './services/navigation.service';
 import {NewJobsSectionComponent} from './components/sections/new-jobs-section/new-jobs-section.component';
 import {NewPasswordInputComponent} from './components/inputs/new-password-input/new-password-input.component';
 import {NgModule} from '@angular/core';
-import {NgSemanticModule} from 'ng-semantic-ja/ng-semantic';
 import {NO_ERRORS_SCHEMA} from '@angular/core';
 import {NotFoundPageComponent} from './components/pages/404-page/404-page.component';
 import {OldPasswordInputComponent} from './components/inputs/old-password-input/old-password-input.component';
@@ -121,6 +120,7 @@ import {ResolversModule} from './resolvers/resolvers.module';
 import {ResumeInputComponent} from './components/inputs/resume-input/resume-input.component';
 import {RoutesModule} from './routes/routes.module';
 import {SelectDropdownInputComponent} from './components/inputs/select-dropdown-input/select-dropdown-input.component';
+import {SemanticModule} from './semantic/semantic.module';
 import {SignedForJobModalComponent} from './components/modals/signed-for-job-modal/signed-for-job-modal.component';
 import {SignForJobFormComponent} from './components/forms/sign-for-job-form/sign-for-job-form.component';
 import {SignForJobModalComponent} from './components/modals/sign-for-job-modal/sign-for-job-modal.component';
@@ -173,10 +173,10 @@ export class RavenErrorHandler implements ErrorHandler {
     BrowserModule,
     FormsModule,
     HttpModule,
-    NgSemanticModule,
     ProxiesModule,
     ReactiveFormsModule,
     RoutesModule,
+    SemanticModule,
   ],
   declarations: [
     AccountNumberInputComponent,
