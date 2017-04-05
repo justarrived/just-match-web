@@ -61,12 +61,21 @@ export class LoginFormComponent implements OnInit  {
   @Input() public navigateToHomeOnLogin: boolean = true;
   @Input() public showSubmitButton: boolean = true;
 
+  @Input('emailOrPhone')
+  public set emailOrPhone(emailOrPhone: string) {
+    this.phoneOrEmail = emailOrPhone;
+    if (this.loginForm) {
+      this.loginForm.controls.email_or_phone.setValue(emailOrPhone);
+    }
+  }
+
   public apiErrors: ApiErrors = new ApiErrors([]);
   public JARoutes = JARoutes;
   public loadingSubmit: boolean;
   public loginForm: FormGroup;
   public submitFail: boolean;
   public submitSuccess: boolean;
+  public phoneOrEmail: string;
 
   constructor(
     private changeDetector: ChangeDetectorRef,
@@ -82,11 +91,11 @@ export class LoginFormComponent implements OnInit  {
 
   private initForm() {
     this.loginForm = this.formBuilder.group({
-      'email_or_phone': ['', Validators.compose([Validators.required])],
+      'email_or_phone': [this.phoneOrEmail, Validators.compose([Validators.required])],
       'password': ['', Validators.compose([Validators.required])]
     });
   }
-  
+
   private handleServerErrors(errors): void {
     this.submitFail = true;
     this.apiErrors = errors;

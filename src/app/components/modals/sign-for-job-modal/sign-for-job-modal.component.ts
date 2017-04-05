@@ -64,7 +64,8 @@ export class SignForJobModalComponent {
   public buttonClicked(): void {
     this.signForJobForm.submitForm()
     .then(application => {
-      this.onSignedForJob.emit(application)
+      this.onSignedForJob.emit(application);
+      this.hide();
     });
   }
 }

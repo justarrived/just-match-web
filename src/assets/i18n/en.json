@@ -1,4 +1,6 @@
 {
+  "register.form.login.section": "Already got an account?",
+  "register.form.login.button": "Login now",
   "applications.title": "Just Arrived",
   "apply.for.job.form.message.section": "Anything else you want us to know?",
   "apply.for.job.form.submit.button": "Apply",
@@ -82,6 +84,8 @@
   "home.header.logged.in.jobs.button": "Find jobs",
   "home.header.logged.in.profile.button": "Edit profile",
   "home.header.logged.in.title": "Welcome {{username}}!",
+  "already.registered.modal.title": "It seems that there already is an account using {{emailOrPhone}}, so we suggest that you login instead. If you forgot your password you can reset your password by clicking \"Forgot your password?\" below",
+  "already.registered.modal.button": "Login",
   "home.header.logged.out.description": "Just Arrived helps you get the credentials you need to enter the Swedish labor market by matching you with Swedish companies. Right now Just Arrived mediates jobs in Stockholm, Gothenburg and Malmö. Create an account to get started!",
   "home.header.logged.out.login.button": "Sign in",
   "home.header.logged.out.register.button": "Create account",

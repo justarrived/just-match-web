@@ -7,15 +7,21 @@
     class="inverted">
   </sm-loader>
 
+  <already-registered-modal
+    [emailOrPhone]="takenEmailOrPhone"
+    [navigateToHomeOnLogin]="true"
+    #alreadyRegisteredModalComponent>
+  </already-registered-modal>
+
   <div class="ui basic center aligned segment">
 
     <h3 class="ui horizontal divider pink header">
-      {{'Already got an account?' | translate}}
+      {{'register.form.login.section' | translate}}
     </h3>
 
     <base-button
       [routerLink]="JARoutes.login.url()"
-      [buttonText]="'Login now' | translate"
+      [buttonText]="'register.form.login.button' | translate"
       kind="primary"
       size="small">
     </base-button>

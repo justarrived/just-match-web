@@ -1,6 +1,7 @@
 import {AccountNumberInputComponent} from './components/inputs/account-number-input/account-number-input.component';
 import {ActsAsUserService} from './services/acts-as-user.service';
 import {AgmCoreModule} from 'angular2-google-maps/core';
+import {AlreadyRegisteredModalComponent} from './components/modals/already-registered-modal/already-registered-modal.component';
 import {ApiCallService} from './services/api-call.service';
 import {ApiErrorsComponent} from './components/form-errors/api-errors/api-errors.component';
 import {APP_BASE_HREF} from '@angular/common';
@@ -183,6 +184,7 @@ export class RavenErrorHandler implements ErrorHandler {
   ],
   declarations: [
     AccountNumberInputComponent,
+    AlreadyRegisteredModalComponent,
     ApiErrorsComponent,
     AppComponent,
     ApplicationsComponent,

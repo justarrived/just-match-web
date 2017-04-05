@@ -125,7 +125,6 @@ export class JobDetailsComponent extends SystemLanguageListener implements OnIni
   }
 
   public registered(user: User): void {
-    this.registerModalComponent.hide();
     setTimeout(() => {
       this.registeredModalComponent.show();
     }, 500);
@@ -133,10 +132,6 @@ export class JobDetailsComponent extends SystemLanguageListener implements OnIni
 
   public onLoginButtonClick(): void {
     this.loginModalComponent.show();
-  }
-
-  public loggedIn(user: User): void {
-    this.loginModalComponent.hide();
   }
 
   public onApplyForJobButtonClick(): void {
@@ -148,7 +143,6 @@ export class JobDetailsComponent extends SystemLanguageListener implements OnIni
   }
 
   public requestedUserInformationSupplied(): void {
-    this.jobAdditionalUserInfoModalComponent.hide();
     setTimeout(() => {
       this.applyForJobModalComponent.show();
     }, 500);
@@ -156,7 +150,6 @@ export class JobDetailsComponent extends SystemLanguageListener implements OnIni
 
   public appliedForJob(application: Application): void {
     this.application = application;
-    this.applyForJobModalComponent.hide();
     setTimeout(() => {
       this.appliedForJobModalComponent.show();
     }, 500);
@@ -172,7 +165,6 @@ export class JobDetailsComponent extends SystemLanguageListener implements OnIni
 
   public signedForJob(application: Application): void {
     this.application = application;
-    this.signForJobModalComponent.hide();
     setTimeout(() => {
       this.signedForJobModalComponent.show();
     }, 500);

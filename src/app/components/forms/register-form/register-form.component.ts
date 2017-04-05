@@ -1,3 +1,4 @@
+import {AlreadyRegisteredModalComponent} from '../../modals/already-registered-modal/already-registered-modal.component';
 import {ApiErrors} from '../../../models/api-models/api-errors/api-errors';
 import {ChangeDetectorRef} from '@angular/core';
 import {Component} from '@angular/core';
@@ -11,6 +12,7 @@ import {User} from '../../../models/api-models/user/user';
 import {UserProxy} from '../../../proxies/user/user.proxy';
 import {UserResolver} from '../../../resolvers/user/user.resolver';
 import {Validators} from '@angular/forms';
+import {ViewChild} from '@angular/core';
 
 @Component({
   selector: 'register-form',
@@ -20,12 +22,15 @@ export class RegisterFormComponent implements OnInit {
   @Input() public navigateToHomeOnRegister: boolean = true;
   @Input() public showSubmitButton: boolean = true;
 
+  @ViewChild('alreadyRegisteredModalComponent') public alreadyRegisteredModalComponent: AlreadyRegisteredModalComponent;
+
   public apiErrors: ApiErrors = new ApiErrors([]);
   public JARoutes = JARoutes;
   public loadingSubmit: boolean = false;
   public registerForm: FormGroup;
   public submitFail: boolean;
   public submitSuccess: boolean;
+  public takenEmailOrPhone: string;
 
   public constructor(
     private changeDetector: ChangeDetectorRef,
@@ -55,13 +60,6 @@ export class RegisterFormComponent implements OnInit {
       'street': [''],
       'zip': ['', Validators.compose([Validators.minLength(5)])]
     });
-  }
-
-  private handleServerErrors(errors): void {
-    this.submitFail = true;
-    this.apiErrors = errors;
-    this.loadingSubmit = false;
-    this.changeDetector.detectChanges();
   }
 
   public submitForm(): Promise<User> {
@@ -102,7 +100,25 @@ export class RegisterFormComponent implements OnInit {
     })
     .catch(errors => {
       this.handleServerErrors(errors);
+      this.showAccountAlreadyExistsModalIfEmailOrPhoneTaken(errors);
       throw errors;
     });
+  }
+
+  private handleServerErrors(errors: ApiErrors): void {
+    this.submitFail = true;
+    this.apiErrors = errors;
+    this.loadingSubmit = false;
+    this.changeDetector.detectChanges();
+  }
+
+  private showAccountAlreadyExistsModalIfEmailOrPhoneTaken(errors: ApiErrors): void {
+    if (errors.hasErrorWithType('email', 'taken')) {
+      this.takenEmailOrPhone = this.registerForm.value.email;
+      this.alreadyRegisteredModalComponent.show();
+    } else if (errors.hasErrorWithType('phone', 'taken')) {
+      this.takenEmailOrPhone = this.registerForm.value.phone;
+      this.alreadyRegisteredModalComponent.show();
+    }
   }
 }

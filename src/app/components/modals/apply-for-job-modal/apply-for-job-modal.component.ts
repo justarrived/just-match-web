@@ -60,7 +60,8 @@ export class ApplyForJobModalComponent {
   public buttonClicked(): void {
     this.applyForJobForm.submitForm()
     .then(application => {
-      this.onAppliedForJob.emit(application)
+      this.onAppliedForJob.emit(application);
+      this.hide();
     });
   }
 }

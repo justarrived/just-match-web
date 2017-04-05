@@ -59,7 +59,8 @@ export class RegisterModalComponent {
   public buttonClicked(): void {
     this.registerForm.submitForm()
     .then(user => {
-      this.onRegistered.emit(user)
+      this.onRegistered.emit(user);
+      this.hide();
     });
   }
 }

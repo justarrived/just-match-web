@@ -59,7 +59,8 @@ export class LoginModalComponent {
   public buttonClicked(): void {
     this.loginForm.submitForm()
     .then(user => {
-      this.onLoggedIn.emit(user)
+      this.onLoggedIn.emit(user);
+      this.hide();
     });
   }
 }
