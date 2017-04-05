@@ -1,12 +1,15 @@
 import {ApiErrors} from '../../../models/api-models/api-errors/api-errors';
 import {ChangeDetectorRef} from '@angular/core';
 import {Component} from '@angular/core';
+import {EventEmitter} from '@angular/core';
 import {FormBuilder} from '@angular/forms';
 import {FormGroup} from '@angular/forms';
 import {Input} from '@angular/core';
+import {JARoute} from '../../../routes/ja-route/ja-route';
 import {JARoutes} from '../../../routes/ja-routes/ja-routes';
 import {NavigationService} from '../../../services/navigation.service';
 import {OnInit} from '@angular/core';
+import {Output} from '@angular/core';
 import {User} from '../../../models/api-models/user/user';
 import {UserResolver} from '../../../resolvers/user/user.resolver';
 import {Validators} from '@angular/forms';
@@ -41,13 +44,15 @@ import {Validators} from '@angular/forms';
         [submitSuccess]="submitSuccess">
         <div>
           <a
-            class="login-form-link"
-            routerLink="{{JARoutes.forgotPassword.url()}}">
+            (click)="onNavigateFromForm.emit(JARoutes.forgotPassword)"
+            [routerLink]="JARoutes.forgotPassword.url()"
+            class="login-form-link">
             {{'login.form.forgot.password.link' | translate}}
           </a>
           <a
-            class="login-form-link"
-            routerLink="{{JARoutes.registerUser.url()}}">
+            (click)="onNavigateFromForm.emit(JARoutes.registerUser)"
+            [routerLink]="JARoutes.registerUser.url()"
+            class="login-form-link">
             {{'login.form.register.link' | translate}}
           </a>
         </div>
@@ -55,8 +60,9 @@ import {Validators} from '@angular/forms';
     </form>`
 })
 export class LoginFormComponent implements OnInit  {
-  @Input() public showSubmitButton: boolean = true;
   @Input() public navigateToHomeOnLogin: boolean = true;
+  @Input() public showSubmitButton: boolean = true;
+  @Output() public onNavigateFromForm: EventEmitter<JARoute> = new EventEmitter<JARoute>();
 
   public apiErrors: ApiErrors = new ApiErrors([]);
   public JARoutes = JARoutes;
@@ -84,6 +90,11 @@ export class LoginFormComponent implements OnInit  {
     });
   }
 
+  public navigateTo(route: JARoute, ...args: string[]) {
+    this.onNavigateFromForm.emit(route);
+    this.navigationService.navigate(route, ...args);
+  }
+
   private handleServerErrors(errors): void {
     this.submitFail = true;
     this.apiErrors = errors;
@@ -99,6 +110,7 @@ export class LoginFormComponent implements OnInit  {
     return this.userResolver.login(this.loginForm.value.email_or_phone, this.loginForm.value.password)
     .then(user => {
       if (this.navigateToHomeOnLogin) {
+        this.onNavigateFromForm.emit(JARoutes.home);
         this.navigationService.navigate(JARoutes.home);
       }
       this.loadingSubmit = false;
