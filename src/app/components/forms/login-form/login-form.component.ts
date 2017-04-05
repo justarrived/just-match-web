@@ -44,13 +44,11 @@ import {Validators} from '@angular/forms';
         [submitSuccess]="submitSuccess">
         <div>
           <a
-            (click)="onNavigateFromForm.emit(JARoutes.forgotPassword)"
             [routerLink]="JARoutes.forgotPassword.url()"
             class="login-form-link">
             {{'login.form.forgot.password.link' | translate}}
           </a>
           <a
-            (click)="onNavigateFromForm.emit(JARoutes.registerUser)"
             [routerLink]="JARoutes.registerUser.url()"
             class="login-form-link">
             {{'login.form.register.link' | translate}}
@@ -62,7 +60,6 @@ import {Validators} from '@angular/forms';
 export class LoginFormComponent implements OnInit  {
   @Input() public navigateToHomeOnLogin: boolean = true;
   @Input() public showSubmitButton: boolean = true;
-  @Output() public onNavigateFromForm: EventEmitter<JARoute> = new EventEmitter<JARoute>();
 
   public apiErrors: ApiErrors = new ApiErrors([]);
   public JARoutes = JARoutes;
@@ -89,12 +86,7 @@ export class LoginFormComponent implements OnInit  {
       'password': ['', Validators.compose([Validators.required])]
     });
   }
-
-  public navigateTo(route: JARoute, ...args: string[]) {
-    this.onNavigateFromForm.emit(route);
-    this.navigationService.navigate(route, ...args);
-  }
-
+  
   private handleServerErrors(errors): void {
     this.submitFail = true;
     this.apiErrors = errors;
@@ -110,7 +102,6 @@ export class LoginFormComponent implements OnInit  {
     return this.userResolver.login(this.loginForm.value.email_or_phone, this.loginForm.value.password)
     .then(user => {
       if (this.navigateToHomeOnLogin) {
-        this.onNavigateFromForm.emit(JARoutes.home);
         this.navigationService.navigate(JARoutes.home);
       }
       this.loadingSubmit = false;

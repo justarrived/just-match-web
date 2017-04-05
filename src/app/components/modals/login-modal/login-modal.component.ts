@@ -17,7 +17,6 @@ import {ViewChild} from '@angular/core';
         <div class="ui centered grid">
           <div class="sixteen wide phone twelve wide tablet twelve wide computer column">
             <login-form
-              (onNavigateFromForm)="hide()"
               [showSubmitButton]="false"
               [navigateToHomeOnLogin]="false"
               #loginForm>
