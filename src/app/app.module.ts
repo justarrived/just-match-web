@@ -111,7 +111,9 @@ import {ProfileImageInputComponent} from './components/inputs/profile-image-inpu
 import {ProxiesModule} from './proxies/proxies.module';
 import {RatingInputComponent} from './components/inputs/rating-input/rating-input.component';
 import {ReactiveFormsModule} from '@angular/forms';
+import {RegisteredModalComponent} from './components/modals/registered-modal/registered-modal.component';
 import {RegisterFormComponent} from './components/forms/register-form/register-form.component';
+import {RegisterModalComponent} from './components/modals/register-modal/register-modal.component';
 import {RegisterPageComponent} from './components/pages/register-page/register-page.component';
 import {ResetPasswordFormComponent} from './components/forms/reset-password-form/reset-password-form.component';
 import {ResetPasswordPageComponent} from './components/pages/reset-password-page/reset-password-page.component';
@@ -275,7 +277,9 @@ export class RavenErrorHandler implements ErrorHandler {
     PhoneInputComponent,
     ProfileImageInputComponent,
     RatingInputComponent,
+    RegisteredModalComponent,
     RegisterFormComponent,
+    RegisterModalComponent,
     RegisterPageComponent,
     ResetPasswordFormComponent,
     ResetPasswordPageComponent,

@@ -22,6 +22,6 @@ export class SignedForJobModalComponent {
   }
 
   public hide() {
-    this.confirmationModal.show();
+    this.confirmationModal.hide();
   }
 }

@@ -7,6 +7,7 @@ import {Input} from '@angular/core';
 import {JARoutes} from '../../../routes/ja-routes/ja-routes';
 import {NavigationService} from '../../../services/navigation.service';
 import {OnInit} from '@angular/core';
+import {User} from '../../../models/api-models/user/user';
 import {UserProxy} from '../../../proxies/user/user.proxy';
 import {UserResolver} from '../../../resolvers/user/user.resolver';
 import {Validators} from '@angular/forms';
@@ -16,6 +17,7 @@ import {Validators} from '@angular/forms';
   templateUrl: './register-form.component.html'
 })
 export class RegisterFormComponent implements OnInit {
+  @Input() public navigateToHomeOnRegister: boolean = true;
   @Input() public showSubmitButton: boolean = true;
 
   public apiErrors: ApiErrors = new ApiErrors([]);
@@ -39,7 +41,7 @@ export class RegisterFormComponent implements OnInit {
 
   private initForm() {
     this.registerForm = this.formBuilder.group({
-      'accepted_terms_and_conditions': ['', Validators.compose([Validators.required])],
+      'accepted_terms_and_conditions': [false, Validators.compose([Validators.required])],
       'city': [''],
       'country_of_origin': [''],
       'email': ['', Validators.compose([Validators.required])],
@@ -61,15 +63,15 @@ export class RegisterFormComponent implements OnInit {
     this.changeDetector.detectChanges();
   }
 
-  public onSubmit() {
+  public submitForm(): Promise<User> {
     this.apiErrors = new ApiErrors([]);
     this.loadingSubmit = true;
     this.submitFail = false;
     this.submitSuccess = false;
 
-    this.userProxy.createUser({
+    return this.userProxy.createUser({
       'city': this.registerForm.value.city,
-      'consent': this.registerForm.value.accepted_terms_and_conditions !== '',
+      'consent': this.registerForm.value.accepted_terms_and_conditions,
       'country_of_origin': this.registerForm.value.country_of_origin,
       'email': this.registerForm.value.email,
       'first_name': this.registerForm.value.first_name,
@@ -83,18 +85,23 @@ export class RegisterFormComponent implements OnInit {
     })
     .then(response => {
       this.submitSuccess = true;
-      this.userResolver.login(this.registerForm.value.email, this.registerForm.value.password)
-      .then(response => {
-        this.navigationService.navigate(JARoutes.home);
+      return this.userResolver.login(this.registerForm.value.email, this.registerForm.value.password)
+      .then(user => {
+        if (this.navigateToHomeOnRegister) {
+          this.navigationService.navigate(JARoutes.home);
+        }
         this.loadingSubmit = false;
+        return user;
       })
       .catch(errors => {
         this.handleServerErrors(errors);
         this.navigationService.navigate(JARoutes.login);
+        throw errors;
       });
     })
     .catch(errors => {
       this.handleServerErrors(errors);
+      throw errors;
     });
   }
 }
