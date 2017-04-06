@@ -1,3 +1,4 @@
+@import './colors';
 
 $museo: 'museo', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 $fs-s: 12px;
@@ -119,13 +120,28 @@ h6 {
   font-weight: 700;
 }
 
-p, div, span {
+p, div, span, a {
   font-family: $default-font-family;
 }
 
 p {
   font-size: 16px;
   line-height: 22px;
+}
+
+a {
+  color: $color-accent-main;
+  &:hover {
+    color: $color-cerise-300;
+    cursor: pointer;
+  }
+}
+
+a:not([href]):not([tabindex]) {
+  color: $color-accent-main;
+  &:hover {
+    color: $color-cerise-300;
+  }
 }
 
 .fs-s {

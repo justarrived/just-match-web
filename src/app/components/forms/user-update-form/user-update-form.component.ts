@@ -24,7 +24,7 @@ import {Validators} from '@angular/forms';
 })
 export class UserUpdateFormComponent implements OnInit, OnDestroy {
   @Input() public missingUserTraits = null as MissingUserTraits;
-  @Input() public showSubmitButton: boolean = true;
+  @Input() public isInModal: boolean = false;
 
   public apiErrors: ApiErrors = new ApiErrors([]);
   public loadingSubmit: boolean;

@@ -1,38 +1,37 @@
 import {Component} from '@angular/core';
 import {EventEmitter} from '@angular/core';
+import {ForgotPasswordFormComponent} from '../../forms/forgot-password-form/forgot-password-form.component';
 import {Input} from '@angular/core';
-import {LoginFormComponent} from '../../forms/login-form/login-form.component';
 import {Output} from '@angular/core';
 import {User} from '../../../models/api-models/user/user';
 import {ViewChild} from '@angular/core';
 
 @Component({
-  selector: 'login-modal',
+  selector: 'forgot-password-modal',
   template: `
     <sm-modal
-      icon="massive pink lock"
-      [title]="'login.modal.title' | translate"
-      #loginModal>
+      icon="massive pink unlock"
+      [title]="'forgot.password.modal.title' | translate"
+      #forgotPasswordModal>
       <modal-content>
         <div class="ui centered grid">
           <div class="sixteen wide phone twelve wide tablet twelve wide computer column">
-            <login-form
+            <forgot-password-form
               [isInModal]="true"
-              [navigateToHome]="navigateToHome"
-              #loginForm>
-            </login-form>
+              #forgotPasswordForm>
+            </forgot-password-form>
           </div>
         </div>
       </modal-content>
       <modal-actions>
         <div class="ui center aligned basic segment button-container">
           <sm-loader
-            [complete]="!loginForm.loadingSubmit"
+            [complete]="!forgotPasswordForm.loadingSubmit"
             class="inverted">
           </sm-loader>
           <base-button
             (click)="buttonClicked()"
-            [buttonText]="'login.modal.button' | translate"
+            [buttonText]="'forgot.password.modal.button' | translate"
             buttonType="submit"
             kind="primary"
             size="medium">
@@ -41,26 +40,25 @@ import {ViewChild} from '@angular/core';
       </modal-actions>
     </sm-modal>`
 })
-export class LoginModalComponent {
-  @Input() public navigateToHome: boolean = true;
-  @Output() public onLoggedIn: EventEmitter<User> = new EventEmitter<User>();
-  @ViewChild('loginForm') public loginForm: LoginFormComponent;
-  @ViewChild('loginModal') public loginModal: any;
+export class ForgotPasswordModalComponent {
+  @Output() public onPasswordLinkSent: EventEmitter<any> = new EventEmitter<any>();
+  @ViewChild('forgotPasswordForm') public forgotPasswordForm: ForgotPasswordFormComponent;
+  @ViewChild('forgotPasswordModal') public forgotPasswordModal: any;
 
   public show(): void {
-    this.loginModal.show({
+    this.forgotPasswordModal.show({
       transition: 'horizontal flip'
     });
   }
 
   public hide(): void {
-    this.loginModal.hide();
+    this.forgotPasswordModal.hide();
   }
 
   public buttonClicked(): void {
-    this.loginForm.submitForm()
+    this.forgotPasswordForm.submitForm()
     .then(user => {
-      this.onLoggedIn.emit(user);
+      this.onPasswordLinkSent.emit();
       this.hide();
     });
   }

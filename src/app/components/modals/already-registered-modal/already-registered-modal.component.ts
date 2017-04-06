@@ -18,8 +18,8 @@ import {ViewChild} from '@angular/core';
         <div class="sixteen wide phone twelve wide tablet twelve wide computer column">
           <login-form
             [emailOrPhone]="emailOrPhone"
-            [navigateToHomeOnLogin]="navigateToHomeOnLogin"
-            [showSubmitButton]="false"
+            [navigateToHome]="navigateToHome"
+            [isInModal]="true"
             #loginForm>
           </login-form>
         </div>
@@ -43,8 +43,9 @@ import {ViewChild} from '@angular/core';
   </sm-modal>`
 })
 export class AlreadyRegisteredModalComponent {
+@Input() public canBeShown: boolean;
 @Input() public emailOrPhone: string = '';
-@Input() public navigateToHomeOnLogin: boolean = true;
+@Input() public navigateToHome: boolean = true;
 @Output() public onLoggedIn: EventEmitter<User> = new EventEmitter<User>();
 @ViewChild('loginForm') public loginForm: LoginFormComponent;
 @ViewChild('alreadyRegisteredModal') public alreadyRegisteredModal: any;

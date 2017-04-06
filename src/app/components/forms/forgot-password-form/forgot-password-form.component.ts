@@ -1,16 +1,15 @@
 import {ApiErrors} from '../../../models/api-models/api-errors/api-errors';
 import {ChangeDetectorRef} from '@angular/core';
 import {Component} from '@angular/core';
-import {PasswordResetLinkSentModalComponent} from '../../modals/password-reset-link-sent-modal/password-reset-link-sent-modal.component';
 import {FormBuilder} from '@angular/forms';
 import {FormGroup} from '@angular/forms';
 import {Input} from '@angular/core';
 import {JARoutes} from '../../../routes/ja-routes/ja-routes';
+import {ModalService} from '../../../services/modal.service';
 import {NavigationService} from '../../../services/navigation.service';
 import {OnInit} from '@angular/core';
 import {UserPasswordProxy} from '../../../proxies/user-password/user-password.proxy';
 import {Validators} from '@angular/forms';
-import {ViewChild} from '@angular/core';
 
 @Component({
   selector: 'forgot-password-form',
@@ -25,24 +24,20 @@ import {ViewChild} from '@angular/core';
         class="inverted">
       </sm-loader>
 
-      <password-reset-link-sent-modal
-        #passwordResetLinkSentModalComponent>
-      </password-reset-link-sent-modal>
-
       <email-or-phone-input
         [control]="forgotPasswordForm.controls['email_or_phone']"
         [apiErrors]="apiErrors">
       </email-or-phone-input>
 
       <form-submit-button
-        [showButton]="showSubmitButton"
+        [showButton]="!isInModal"
         [submitFail]="submitFail"
         [submitSuccess]="submitSuccess"
         [buttonText]="'contact.form.submit.button' | translate">
         <div>
           <a
-            class="forgot-password-form-link"
-            routerLink="{{JARoutes.login.url()}}">
+            (click)="loginButonClicked()"
+            class="forgot-password-form-link">
             {{'forgot.password.login.link' | translate}}
           </a>
         </div>
@@ -50,8 +45,7 @@ import {ViewChild} from '@angular/core';
     </form>`
 })
 export class ForgotPasswordFormComponent implements OnInit {
-  @Input() public showSubmitButton: boolean = true;
-  @ViewChild('passwordResetLinkSentModalComponent') public passwordResetLinkSentModalComponent: PasswordResetLinkSentModalComponent;
+  @Input() public isInModal: boolean = false;
 
   public apiErrors: ApiErrors = new ApiErrors([]);
   public forgotPasswordForm: FormGroup;
@@ -63,6 +57,7 @@ export class ForgotPasswordFormComponent implements OnInit {
   constructor(
     private changeDetector: ChangeDetectorRef,
     private formBuilder: FormBuilder,
+    private modalService: ModalService,
     private navigationService: NavigationService,
     private userPasswordProxy: UserPasswordProxy
   ) {
@@ -76,6 +71,14 @@ export class ForgotPasswordFormComponent implements OnInit {
     this.forgotPasswordForm = this.formBuilder.group({
       'email_or_phone': ['']
     });
+  }
+
+  public loginButonClicked() {
+    if (this.isInModal) {
+      this.modalService.showModal('loginModalComponent', false, false, 400);
+    } else {
+      this.navigationService.navigate(JARoutes.login);
+    }
   }
 
   private handleServerErrors(errors): void {
@@ -96,7 +99,7 @@ export class ForgotPasswordFormComponent implements OnInit {
     .then(result => {
       this.submitSuccess = true;
       this.loadingSubmit = false;
-      this.passwordResetLinkSentModalComponent.show();
+      this.modalService.showModal('passwordResetLinkSentModalComponent', false, false, this.isInModal ? 400 : 1);
       return result;
     })
     .catch(errors => {

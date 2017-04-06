@@ -20,7 +20,7 @@ import {ViewChild} from '@angular/core';
             <sign-for-job-form
               [application]="application"
               [job]="job"
-              [showSubmitButton]="false"
+              [isInModal]="true"
               #signForJobForm>
             </sign-for-job-form>
           </div>

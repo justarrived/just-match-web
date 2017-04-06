@@ -17,8 +17,8 @@ import {ViewChild} from '@angular/core';
         <div class="ui centered grid">
           <div class="sixteen wide phone twelve wide tablet twelve wide computer column">
             <register-form
-              [showSubmitButton]="false"
-              [navigateToHomeOnRegister]="false"
+              [isInModal]="true"
+              [navigateToHome]="navigateToHome"
               #registerForm>
             </register-form>
           </div>
@@ -42,6 +42,7 @@ import {ViewChild} from '@angular/core';
     </sm-modal>`
 })
 export class RegisterModalComponent {
+  @Input() public navigateToHome: string;
   @Output() public onRegistered: EventEmitter<User> = new EventEmitter<User>();
   @ViewChild('registerForm') public registerForm: RegisterFormComponent;
   @ViewChild('registerModal') public registerModal: any;

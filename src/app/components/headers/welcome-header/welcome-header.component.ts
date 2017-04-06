@@ -89,5 +89,4 @@ export class WelcomeHeaderComponent implements OnInit, OnDestroy {
   public ngOnDestroy(): void {
     this.userSubscription.unsubscribe();
   }
-
 }

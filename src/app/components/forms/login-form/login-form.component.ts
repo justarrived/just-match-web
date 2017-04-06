@@ -7,6 +7,7 @@ import {FormGroup} from '@angular/forms';
 import {Input} from '@angular/core';
 import {JARoute} from '../../../routes/ja-route/ja-route';
 import {JARoutes} from '../../../routes/ja-routes/ja-routes';
+import {ModalService} from '../../../services/modal.service';
 import {NavigationService} from '../../../services/navigation.service';
 import {OnInit} from '@angular/core';
 import {Output} from '@angular/core';
@@ -39,17 +40,17 @@ import {Validators} from '@angular/forms';
 
       <form-submit-button
         [buttonText]="'login.form.submit.button' | translate"
-        [showButton]="showSubmitButton"
+        [showButton]="!isInModal"
         [submitFail]="submitFail"
         [submitSuccess]="submitSuccess">
         <div>
           <a
-            [routerLink]="JARoutes.forgotPassword.url()"
+            (click)="onForgotPasswordButtonClick()"
             class="login-form-link">
             {{'login.form.forgot.password.link' | translate}}
           </a>
           <a
-            [routerLink]="JARoutes.registerUser.url()"
+            (click)="onRegisterButtonClick()"
             class="login-form-link">
             {{'login.form.register.link' | translate}}
           </a>
@@ -58,9 +59,8 @@ import {Validators} from '@angular/forms';
     </form>`
 })
 export class LoginFormComponent implements OnInit  {
-  @Input() public navigateToHomeOnLogin: boolean = true;
-  @Input() public showSubmitButton: boolean = true;
-
+  @Input() public isInModal: boolean = false;
+  @Input() public navigateToHome: boolean = true;
   @Input('emailOrPhone')
   public set emailOrPhone(emailOrPhone: string) {
     this.phoneOrEmail = emailOrPhone;
@@ -80,8 +80,9 @@ export class LoginFormComponent implements OnInit  {
   constructor(
     private changeDetector: ChangeDetectorRef,
     private formBuilder: FormBuilder,
+    private modalService: ModalService,
     private navigationService: NavigationService,
-    private userResolver: UserResolver
+    private userResolver: UserResolver,
   ) {
   }
 
@@ -89,11 +90,27 @@ export class LoginFormComponent implements OnInit  {
     this.initForm();
   }
 
-  private initForm() {
+  private initForm(): void {
     this.loginForm = this.formBuilder.group({
       'email_or_phone': [this.phoneOrEmail, Validators.compose([Validators.required])],
       'password': ['', Validators.compose([Validators.required])]
     });
+  }
+
+  public onForgotPasswordButtonClick(): void {
+    if (this.isInModal) {
+      this.modalService.showModal('forgotPasswordModalComponent', false, false, 400);
+    } else {
+      this.navigationService.navigate(JARoutes.forgotPassword);
+    }
+  }
+
+  public onRegisterButtonClick(): void {
+    if (this.isInModal) {
+      this.modalService.showModal('registerModalComponent', this.navigateToHome, false, 400);
+    } else {
+      this.navigationService.navigate(JARoutes.registerUser);
+    }
   }
 
   private handleServerErrors(errors): void {
@@ -110,7 +127,7 @@ export class LoginFormComponent implements OnInit  {
 
     return this.userResolver.login(this.loginForm.value.email_or_phone, this.loginForm.value.password)
     .then(user => {
-      if (this.navigateToHomeOnLogin) {
+      if (this.navigateToHome) {
         this.navigationService.navigate(JARoutes.home);
       }
       this.loadingSubmit = false;

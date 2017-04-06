@@ -1,12 +1,12 @@
 import {ApiErrors} from '../../../models/api-models/api-errors/api-errors';
 import {ChangeDetectorRef} from '@angular/core';
 import {Component} from '@angular/core';
-import {ContactMessageSentModalComponent} from '../../modals/contact-message-sent-modal/contact-message-sent-modal.component';
 import {ContactProxy} from '../../../proxies/contact/contact.proxy';
 import {FormBuilder} from '@angular/forms';
 import {FormGroup} from '@angular/forms';
 import {Input} from '@angular/core';
 import {JARoutes} from '../../../routes/ja-routes/ja-routes';
+import {ModalService} from '../../../services/modal.service';
 import {NavigationService} from '../../../services/navigation.service';
 import {OnDestroy} from '@angular/core';
 import {OnInit} from '@angular/core';
@@ -14,7 +14,6 @@ import {Subscription} from 'rxjs/Subscription';
 import {User} from '../../../models/api-models/user/user';
 import {UserResolver} from '../../../resolvers/user/user.resolver';
 import {Validators} from '@angular/forms';
-import {ViewChild} from '@angular/core';
 
 @Component({
   selector: 'contact-form',
@@ -27,10 +26,6 @@ import {ViewChild} from '@angular/core';
         [complete]="!loadingSubmit"
         class="inverted">
       </sm-loader>
-
-      <contact-message-sent-modal
-        #contactMessageSentModal>
-      </contact-message-sent-modal>
 
       <name-input
         [control]="contactForm.controls['name']"
@@ -48,7 +43,7 @@ import {ViewChild} from '@angular/core';
       </message-input>
 
       <form-submit-button
-        [showButton]="showSubmitButton"
+        [showButton]="!isInModal"
         [submitFail]="submitFail"
         [submitSuccess]="submitSuccess"
         [buttonText]="'contact.form.submit.button' | translate">
@@ -56,8 +51,7 @@ import {ViewChild} from '@angular/core';
     </form>`
 })
 export class ContactFormComponent implements OnInit, OnDestroy {
-  @Input() public showSubmitButton: boolean = true;
-  @ViewChild('contactMessageSentModal') public contactMessageSentModal: ContactMessageSentModalComponent;
+  @Input() public isInModal: boolean = false;
 
   public apiErrors: ApiErrors = new ApiErrors([]);
   public contactForm: FormGroup;
@@ -71,6 +65,7 @@ export class ContactFormComponent implements OnInit, OnDestroy {
     private changeDetector: ChangeDetectorRef,
     private contactProxy: ContactProxy,
     private formBuilder: FormBuilder,
+    private modalService: ModalService,
     private navigationService: NavigationService,
     private userResolver: UserResolver
   ) {
@@ -123,7 +118,7 @@ export class ContactFormComponent implements OnInit, OnDestroy {
     .then(result => {
       this.submitSuccess = true;
       this.loadingSubmit = false;
-      this.contactMessageSentModal.show();
+      this.modalService.showModal('contactMessageSentModalComponent', false, false, this.isInModal ? 400 : 1);
       return result;
     })
     .catch(errors => {

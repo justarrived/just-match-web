@@ -24,7 +24,8 @@ import {ViewChild} from '@angular/core';
         <div class="ui center aligned basic segment">
           <sm-checkbox
             [control]="control"
-            [label]="'input.frilans.terms.label' | translate">
+            [label]="'input.frilans.terms.label' | translate"
+            uniqueId="frilans-terms-checkbox">
           </sm-checkbox>
           <img
             alt="Frilans Finans"

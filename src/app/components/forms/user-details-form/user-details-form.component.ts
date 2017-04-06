@@ -20,7 +20,7 @@ import {Validators} from '@angular/forms';
   templateUrl: './user-details-form.component.html'
 })
 export class UserDetailsFormComponent implements OnInit, OnDestroy {
-  @Input() public showSubmitButton: boolean = true;
+  @Input() public isInModal: boolean = false;
 
   public apiErrors: ApiErrors = new ApiErrors([]);
   public JARoutes = JARoutes;

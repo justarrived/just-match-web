@@ -18,7 +18,7 @@ import {ViewChild} from '@angular/core';
           <div class="sixteen wide phone twelve wide tablet twelve wide computer column">
             <apply-for-job-form
               [job]="job"
-              [showSubmitButton]="false"
+              [isInModal]="true"
               #applyForJobForm>
             </apply-for-job-form>
           </div>

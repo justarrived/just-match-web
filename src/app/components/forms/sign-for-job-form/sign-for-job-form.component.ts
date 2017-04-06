@@ -40,7 +40,7 @@ import {Validators} from '@angular/forms';
       </frilans-terms-input>
 
       <form-submit-button
-        [showButton]="showSubmitButton"
+        [showButton]="!isInModal"
         [submitFail]="submitFail"
         [submitSuccess]="submitSuccess"
         [buttonText]="'sign.for.job.form.submit.button' | translate">
@@ -50,7 +50,7 @@ import {Validators} from '@angular/forms';
 export class SignForJobFormComponent extends SystemLanguageListener implements OnInit {
   @Input() public job = null as Job;
   @Input() public application = null as Application;
-  @Input() public showSubmitButton: boolean = true;
+  @Input() public isInModal: boolean = false;
 
   public apiErrors: ApiErrors = new ApiErrors([]);
   public signForJobForm: FormGroup;
