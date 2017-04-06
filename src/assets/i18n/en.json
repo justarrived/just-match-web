@@ -246,6 +246,8 @@
   "register.modal.title": "Register",
   "registered.modal.description": "Your account was successfully created",
   "registered.modal.title": "Welcome {{username}}!",
+  "reset.password.form.forgot.password.link": "Forgot password",
+  "reset.password.form.login.link": "Log in",
   "reset.password.form.submit.button": "Change password",
   "reset.password.title": "Set your new password",
   "sign.for.job.form.submit.button": "Sign",

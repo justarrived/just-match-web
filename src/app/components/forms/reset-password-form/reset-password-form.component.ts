@@ -14,6 +14,7 @@ import {Validators} from '@angular/forms';
 
 @Component({
   selector: 'reset-password-form',
+  styleUrls: ['./reset-password-form.component.scss'],
   template: `
     <form
       (ngSubmit)="submitForm()"
@@ -39,12 +40,22 @@ import {Validators} from '@angular/forms';
           [control]="resetPasswordForm.controls['one_time_token']"
           apiAttribute="one_time_token">
         </input-errors>
+        <div>
+          <a
+            (click)="onForgotPasswordButtonClick()"
+            class="reset-password-form-link">
+            {{'reset.password.form.forgot.password.link' | translate}}
+          </a>
+          <a
+            (click)="onLoginButtonClick()"
+            class="reset-password-form-link">
+            {{'reset.password.form.login.link' | translate}}
+          </a>
+        </div>
       </form-submit-button>
     </form>`
 })
 export class ResetPasswordFormComponent implements OnInit {
-  @Input() public isInModal: boolean = false;
-
   public apiErrors: ApiErrors = new ApiErrors([]);
   public JARoutes = JARoutes;
   public loadingSubmit: boolean;
@@ -80,6 +91,14 @@ export class ResetPasswordFormComponent implements OnInit {
     });
   }
 
+  public onForgotPasswordButtonClick(): void {
+    this.navigationService.navigate(JARoutes.forgotPassword);
+  }
+
+  public onLoginButtonClick(): void {
+    this.navigationService.navigate(JARoutes.login);
+  }
+
   private handleServerErrors(errors): void {
     this.submitFail = true;
     this.apiErrors = errors;
@@ -99,7 +118,7 @@ export class ResetPasswordFormComponent implements OnInit {
     .then(result => {
       this.loadingSubmit = false;
       this.submitSuccess = true;
-      this.modalService.showModal('passwordChangedModalComponent', false, false, this.isInModal ? 400 : 1);
+      this.modalService.showModal('passwordChangedModalComponent', false, false, 1);
       return result;
     })
     .catch(errors => {
