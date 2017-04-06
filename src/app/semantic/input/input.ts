@@ -81,7 +81,8 @@ export class SemanticInputComponent implements OnInit {
         type="checkbox">
       <label
         [for]="uniqueId"
-        *ngIf="label">
+        *ngIf="label"
+        style="cursor: pointer">
         {{label}}
       </label>
     </div>
