@@ -29,6 +29,12 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
     <div class="navigation-menu-links-container">
 
       <a
+        class="navigation-menu-item"
+        [routerLink]="JARoutes.home.url()">
+        {{'menu.main.home' | translate}}
+      </a>
+
+      <a
         *ngIf="user"
         class="navigation-menu-item"
         [routerLink]="JARoutes.applications.url()">
