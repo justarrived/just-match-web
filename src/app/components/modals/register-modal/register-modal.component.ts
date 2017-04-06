@@ -49,6 +49,7 @@ export class RegisterModalComponent {
 
   public show(): void {
     this.registerModal.show({
+      autofocus: false,
       transition: 'horizontal flip'
     });
   }

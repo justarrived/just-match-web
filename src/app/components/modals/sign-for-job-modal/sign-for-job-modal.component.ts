@@ -53,6 +53,7 @@ export class SignForJobModalComponent {
 
   public show(): void {
     this.signForJobModal.show({
+      autofocus: false,
       transition: 'horizontal flip'
     });
   }

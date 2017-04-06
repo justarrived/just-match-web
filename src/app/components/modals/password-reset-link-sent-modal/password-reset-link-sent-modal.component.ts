@@ -17,6 +17,7 @@ export class PasswordResetLinkSentModalComponent {
 
   public show() {
     this.confirmationModal.show({
+      autofocus: false,
       transition: 'horizontal flip'
     });
   }

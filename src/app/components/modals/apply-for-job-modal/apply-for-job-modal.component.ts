@@ -49,6 +49,7 @@ export class ApplyForJobModalComponent {
 
   public show(): void {
     this.applyForJobModal.show({
+      autofocus: false,
       transition: 'horizontal flip'
     });
   }

@@ -52,6 +52,7 @@ export class AlreadyRegisteredModalComponent {
 
 public show(): void {
   this.alreadyRegisteredModal.show({
+    autofocus: false,
     transition: 'horizontal flip'
   });
 }

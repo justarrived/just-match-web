@@ -17,6 +17,7 @@ export class PasswordChangedModalComponent {
 
   public show() {
     this.confirmationModal.show({
+      autofocus: false,
       transition: 'horizontal flip'
     });
   }

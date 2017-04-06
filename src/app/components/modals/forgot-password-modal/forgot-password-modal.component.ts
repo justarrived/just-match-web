@@ -47,6 +47,7 @@ export class ForgotPasswordModalComponent {
 
   public show(): void {
     this.forgotPasswordModal.show({
+      autofocus: false,
       transition: 'horizontal flip'
     });
   }

@@ -49,6 +49,7 @@ export class LoginModalComponent {
 
   public show(): void {
     this.loginModal.show({
+      autofocus: false,
       transition: 'horizontal flip'
     });
   }
