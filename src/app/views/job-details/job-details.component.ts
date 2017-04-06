@@ -1,46 +1,29 @@
 import {ActivatedRoute} from '@angular/router';
 import {Application} from '../../models/api-models/application/application';
 import {ApplicationProxy} from '../../proxies/application/application.proxy';
-import {AppliedForJobModalComponent} from '../../components/modals/applied-for-job-modal/applied-for-job-modal.component';
-import {ApplyForJobModalComponent} from '../../components/modals/apply-for-job-modal/apply-for-job-modal.component';
 import {Component} from '@angular/core';
 import {Input} from '@angular/core';
 import {isEmpty} from 'lodash';
 import {JARoutes} from '../../routes/ja-routes/ja-routes';
 import {Job} from '../../models/api-models/job/job';
-import {JobAdditionalUserInfoModalComponent} from '../../components/modals/job-additional-user-info-modal/job-additional-user-info-modal.component';
 import {JobProxy} from '../../proxies/job/job.proxy';
-import {LoginModalComponent} from '../../components/modals/login-modal/login-modal.component';
 import {MissingUserTraits} from '../../models/api-models/missing-user-traits/missing-user-traits';
 import {MissingUserTraitsProxy} from '../../proxies/missing-user-traits/missing-user-traits.proxy';
+import {ModalService} from '../../services/modal.service';
 import {NavigationService} from '../../services/navigation.service';
 import {OnDestroy} from '@angular/core';
 import {OnInit} from '@angular/core';
-import {RegisteredModalComponent} from '../../components/modals/registered-modal/registered-modal.component';
-import {RegisterModalComponent} from '../../components/modals/register-modal/register-modal.component';
-import {SignedForJobModalComponent} from '../../components/modals/signed-for-job-modal/signed-for-job-modal.component';
-import {SignForJobModalComponent} from '../../components/modals/sign-for-job-modal/sign-for-job-modal.component';
 import {Subscription} from 'rxjs/Subscription';
 import {SystemLanguageListener} from '../../resolvers/system-languages/system-languages.resolver';
 import {SystemLanguagesResolver} from '../../resolvers/system-languages/system-languages.resolver';
 import {User} from '../../models/api-models/user/user';
 import {UserResolver} from '../../resolvers/user/user.resolver';
-import {ViewChild} from '@angular/core';
 
 @Component({
   templateUrl: './job-details.component.html',
   styleUrls: ['./job-details.component.scss']
 })
 export class JobDetailsComponent extends SystemLanguageListener implements OnInit, OnDestroy {
-  @ViewChild('appliedForJobModalComponent') public appliedForJobModalComponent: AppliedForJobModalComponent;
-  @ViewChild('applyForJobModalComponent') public applyForJobModalComponent: ApplyForJobModalComponent;
-  @ViewChild('jobAdditionalUserInfoModalComponent') public jobAdditionalUserInfoModalComponent: JobAdditionalUserInfoModalComponent;
-  @ViewChild('loginModalComponent') public loginModalComponent: LoginModalComponent;
-  @ViewChild('registeredModalComponent') public registeredModalComponent: RegisteredModalComponent;
-  @ViewChild('registerModalComponent') public registerModalComponent: RegisterModalComponent;
-  @ViewChild('signedForJobModalComponent') public signedForJobModalComponent: SignedForJobModalComponent;
-  @ViewChild('signForJobModalComponent') public signForJobModalComponent: SignForJobModalComponent;
-
   public application: Application;
   public applyForJobErrorMessageVisible: boolean;
   public countOfApplicants: number = 0;
@@ -62,6 +45,7 @@ export class JobDetailsComponent extends SystemLanguageListener implements OnIni
     private navigationService: NavigationService,
     private route: ActivatedRoute,
     private userResolver: UserResolver,
+    private modalService: ModalService,
     protected systemLanguagesResolver: SystemLanguagesResolver
   ) {
     super(systemLanguagesResolver);
@@ -121,45 +105,31 @@ export class JobDetailsComponent extends SystemLanguageListener implements OnIni
   }
 
   public onRegisterButtonClick(): void {
-    this.registerModalComponent.show();
-  }
-
-  public registered(user: User): void {
-    this.registerModalComponent.hide();
-    setTimeout(() => {
-      this.registeredModalComponent.show();
-    }, 500);
+    this.modalService.showModal('registerModalComponent', false, false, 1);
   }
 
   public onLoginButtonClick(): void {
-    this.loginModalComponent.show();
-  }
-
-  public loggedIn(user: User): void {
-    this.loginModalComponent.hide();
+    this.modalService.showModal('loginModalComponent', false, false, 1);
   }
 
   public onApplyForJobButtonClick(): void {
     if (Object.keys(this.missingUserTraits).length < 2) {
-      this.applyForJobModalComponent.show();
+      this.modalService.showModal('applyForJobModalComponent', false, true, 1, this.job)
+      .then(application => this.appliedForJob(application));
     } else {
-      this.jobAdditionalUserInfoModalComponent.show();
+      this.modalService.showModal('jobAdditionalUserInfoModalComponent', false, true, 1, this.missingUserTraits)
+      .then(() => this.requestedUserInformationSupplied());
     }
   }
 
-  public requestedUserInformationSupplied(): void {
-    this.jobAdditionalUserInfoModalComponent.hide();
-    setTimeout(() => {
-      this.applyForJobModalComponent.show();
-    }, 500);
+  private requestedUserInformationSupplied(): void {
+    this.modalService.showModal('applyForJobModalComponent', false, true, 400, this.job)
+    .then(application => this.appliedForJob(application));
   }
 
-  public appliedForJob(application: Application): void {
+  private appliedForJob(application: Application): void {
     this.application = application;
-    this.applyForJobModalComponent.hide();
-    setTimeout(() => {
-      this.appliedForJobModalComponent.show();
-    }, 500);
+    this.modalService.showModal('appliedForJobModalComponent', false, false, 400);
   }
 
   public switchJobDetailsVisibility(): void {
@@ -167,14 +137,12 @@ export class JobDetailsComponent extends SystemLanguageListener implements OnIni
   }
 
   public onConfirmJobButtonClick(): void {
-    this.signForJobModalComponent.show();
+    this.modalService.showModal('signForJobModalComponent', false, true, 1, this.application, this.job)
+    .then(application => this.signedForJob(application));
   }
 
   public signedForJob(application: Application): void {
     this.application = application;
-    this.signForJobModalComponent.hide();
-    setTimeout(() => {
-      this.signedForJobModalComponent.show();
-    }, 500);
+    this.modalService.showModal('signedForJobModalComponent', false, false, 400);
   }
 }

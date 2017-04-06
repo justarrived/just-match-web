@@ -1,6 +1,7 @@
 import {AccountNumberInputComponent} from './components/inputs/account-number-input/account-number-input.component';
 import {ActsAsUserService} from './services/acts-as-user.service';
 import {AgmCoreModule} from 'angular2-google-maps/core';
+import {AlreadyRegisteredModalComponent} from './components/modals/already-registered-modal/already-registered-modal.component';
 import {ApiCallService} from './services/api-call.service';
 import {ApiErrorsComponent} from './components/form-errors/api-errors/api-errors.component';
 import {APP_BASE_HREF} from '@angular/common';
@@ -54,12 +55,14 @@ import {FileInputButtonComponent} from './components/buttons/file-input-button/f
 import {FirstNameInputComponent} from './components/inputs/first-name-input/first-name-input.component';
 import {ForbiddenPageComponent} from './components/pages/forbidden-page/forbidden-page.component';
 import {ForgotPasswordFormComponent} from './components/forms/forgot-password-form/forgot-password-form.component';
+import {ForgotPasswordModalComponent} from './components/modals/forgot-password-modal/forgot-password-modal.component';
 import {ForgotPasswordPageComponent} from './components/pages/forgot-password-page/forgot-password-page.component';
 import {FormsModule} from '@angular/forms';
 import {FormSubmitButtonComponent} from './components/buttons/form-submit-button/form-submit-button.component';
 import {FrilansTermsInputComponent} from './components/inputs/frilans-terms-input/frilans-terms-input.component';
 import {GenderInputComponent} from './components/inputs/gender-input/gender-input.component';
 import {GeolocationService} from './services/geolocation.service';
+import {ModalService} from './services/modal.service';
 import {GotCoordinationNumberInputComponent} from './components/inputs/got-coordination-number-input/got-coordination-number-input.component';
 import {HomePageComponent} from './components/pages/home-page/home-page.component';
 import {HowItWorksAndMaximizeChancesSectionComponent} from './components/sections/how-it-works-and-maximize-chances-section/how-it-works-and-maximize-chances-section.component';
@@ -183,6 +186,7 @@ export class RavenErrorHandler implements ErrorHandler {
   ],
   declarations: [
     AccountNumberInputComponent,
+    AlreadyRegisteredModalComponent,
     ApiErrorsComponent,
     AppComponent,
     ApplicationsComponent,
@@ -229,6 +233,7 @@ export class RavenErrorHandler implements ErrorHandler {
     FirstNameInputComponent,
     ForbiddenPageComponent,
     ForgotPasswordFormComponent,
+    ForgotPasswordModalComponent,
     ForgotPasswordPageComponent,
     FormSubmitButtonComponent,
     FrilansTermsInputComponent,
@@ -322,6 +327,7 @@ export class RavenErrorHandler implements ErrorHandler {
     ApiCallService,
     DataStoreService,
     GeolocationService,
+    ModalService,
     NavigationService,
     { provide: ErrorHandler, useClass: RavenErrorHandler },
     { provide: APP_BASE_HREF, useValue: '/' }

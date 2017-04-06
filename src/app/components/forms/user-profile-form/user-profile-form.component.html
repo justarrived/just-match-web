@@ -141,7 +141,7 @@
 
   <form-submit-button
     [buttonText]="'user.profile.form.submit.button' | translate"
-    [showButton]="showSubmitButton"
+    [showButton]="!isInModal"
     [submitFail]="submitFail"
     [submitSuccess]="submitSuccess">
   </form-submit-button>

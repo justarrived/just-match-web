@@ -16,7 +16,10 @@ export class PasswordChangedModalComponent {
   @ViewChild('confirmationModal') public confirmationModal: ConfirmationModalComponent;
 
   public show() {
-    this.confirmationModal.show();
+    this.confirmationModal.show({
+      autofocus: false,
+      transition: 'horizontal flip'
+    });
   }
 
   public hide() {

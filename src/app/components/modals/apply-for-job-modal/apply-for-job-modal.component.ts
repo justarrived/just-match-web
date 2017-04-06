@@ -18,7 +18,7 @@ import {ViewChild} from '@angular/core';
           <div class="sixteen wide phone twelve wide tablet twelve wide computer column">
             <apply-for-job-form
               [job]="job"
-              [showSubmitButton]="false"
+              [isInModal]="true"
               #applyForJobForm>
             </apply-for-job-form>
           </div>
@@ -49,6 +49,7 @@ export class ApplyForJobModalComponent {
 
   public show(): void {
     this.applyForJobModal.show({
+      autofocus: false,
       transition: 'horizontal flip'
     });
   }
@@ -60,7 +61,8 @@ export class ApplyForJobModalComponent {
   public buttonClicked(): void {
     this.applyForJobForm.submitForm()
     .then(application => {
-      this.onAppliedForJob.emit(application)
+      this.onAppliedForJob.emit(application);
+      this.hide();
     });
   }
 }

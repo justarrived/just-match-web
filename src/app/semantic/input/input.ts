@@ -66,21 +66,34 @@ export class SemanticInputComponent implements OnInit {
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
   selector: "sm-checkbox",
-  template: `<div class="field" [ngClass]="{error: (!control.value && control?.validator) }">
+  template: `
+  <div
+    class="field"
+    [ngClass]="{error: (!control.value && control?.validator) }">
     <div class="ui {{classType}} checkbox">
-      <input type="checkbox"
-      [attr.value]="value"
-      [attr.type]="inputType" tabindex="0" [attr.name]="name" [formControl]="control" [attr.disabled]="disabled">
-      <label *ngIf="label">{{label}}</label>
+      <input
+        [formControl]="control"
+        [id]="uniqueId"
+        [name]="name"
+        [type]="inputType"
+        [value]="value"
+        tabindex="0"
+        type="checkbox">
+      <label
+        [for]="uniqueId"
+        *ngIf="label"
+        style="cursor: pointer">
+        {{label}}
+      </label>
     </div>
   </div>`
 })
 export class SemanticCheckboxComponent {
   @Input() control: FormControl = new FormControl();
   @Input() label: string;
-  @Input() disabled: boolean;
-  @Input() value: string | number;
   @Input() name: string;
+  @Input() uniqueId: string;
+  @Input() value: string | number;
 
   @Input("type")
   set type(data: string) {

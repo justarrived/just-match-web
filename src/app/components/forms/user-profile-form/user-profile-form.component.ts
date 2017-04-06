@@ -21,7 +21,7 @@ import {Validators} from '@angular/forms';
   templateUrl: './user-profile-form.component.html'
 })
 export class UserProfileFormComponent implements OnInit, OnDestroy {
-  @Input() public showSubmitButton: boolean = true;
+  @Input() public isInModal: boolean = false;
 
   public apiErrors: ApiErrors = new ApiErrors([]);
   public loadingSubmit: boolean;

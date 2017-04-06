@@ -46,6 +46,7 @@ export class RegisteredModalComponent implements OnInit, OnDestroy {
 
   public show() {
     this.confirmationModal.show({
+      autofocus: false,
       transition: 'horizontal flip'
     });
   }

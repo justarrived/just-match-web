@@ -238,7 +238,7 @@
 
   <form-submit-button
     [buttonText]="'user.update.form.submit.button' | translate"
-    [showButton]="showSubmitButton"
+    [showButton]="!isInModal"
     [submitFail]="submitFail"
     [submitSuccess]="submitSuccess">
   </form-submit-button>

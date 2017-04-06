@@ -59,7 +59,7 @@ export class ApiError {
   }
 
   public get attribute(): string {
-    return this.source.attribute;
+    return this.source && this.source.attribute;
   }
 
   public get httpStatus(): number {
@@ -79,10 +79,12 @@ export class ApiErrors {
   public constructor(private rawErrors: Array<any>) {
     const errors = rawErrors.map(error => new ApiError(error));
     for (let error of errors) {
-      if (Array.isArray(this[error.attribute])) {
-        this[error.attribute].push(error);
-      } else {
-        this[error.attribute] = [error];
+      if (error.attribute) {
+        if (Array.isArray(this[error.attribute])) {
+          this[error.attribute].push(error);
+        } else {
+          this[error.attribute] = [error];
+        }
       }
     }
   }
@@ -101,5 +103,14 @@ export class ApiErrors {
     } else {
       return false;
     }
+  }
+
+  public hasErrorWithType(fieldName: string, type: string): boolean {
+    for (let error of this.errorsFor(fieldName)) {
+      if (error.meta && error.meta.type === type) {
+        return true;
+      }
+    }
+    return false;
   }
 }

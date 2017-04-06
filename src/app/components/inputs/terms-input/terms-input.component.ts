@@ -12,11 +12,12 @@ import {ViewChild} from '@angular/core';
       [ngClass]="{'error': inputErrors.hasErrors()}"
       class="field">
       <div class="ui segment">
-        <sm-checkbox
-          [control]="control"
-          [label]="'input.terms.label' | translate">
-        </sm-checkbox>
         <div class="ui center aligned basic segment">
+          <sm-checkbox
+            [control]="control"
+            [label]="'input.terms.label' | translate"
+            uniqueId="terms-checkbox">
+          </sm-checkbox>
           <a
             href="/assets/terms/160523_2051-2_Terms_and_Conditions_(en).pdf"
             target="_blank">

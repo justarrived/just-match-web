@@ -1,38 +1,37 @@
 import {Component} from '@angular/core';
 import {EventEmitter} from '@angular/core';
+import {ForgotPasswordFormComponent} from '../../forms/forgot-password-form/forgot-password-form.component';
 import {Input} from '@angular/core';
-import {RegisterFormComponent} from '../../forms/register-form/register-form.component';
 import {Output} from '@angular/core';
 import {User} from '../../../models/api-models/user/user';
 import {ViewChild} from '@angular/core';
 
 @Component({
-  selector: 'register-modal',
+  selector: 'forgot-password-modal',
   template: `
     <sm-modal
-      icon="massive pink add user"
-      [title]="'register.modal.title' | translate"
-      #registerModal>
+      icon="massive pink unlock"
+      [title]="'forgot.password.modal.title' | translate"
+      #forgotPasswordModal>
       <modal-content>
         <div class="ui centered grid">
           <div class="sixteen wide phone twelve wide tablet twelve wide computer column">
-            <register-form
+            <forgot-password-form
               [isInModal]="true"
-              [navigateToHome]="navigateToHome"
-              #registerForm>
-            </register-form>
+              #forgotPasswordForm>
+            </forgot-password-form>
           </div>
         </div>
       </modal-content>
       <modal-actions>
         <div class="ui center aligned basic segment button-container">
           <sm-loader
-            [complete]="!registerForm.loadingSubmit"
+            [complete]="!forgotPasswordForm.loadingSubmit"
             class="inverted">
           </sm-loader>
           <base-button
             (click)="buttonClicked()"
-            [buttonText]="'register.modal.button' | translate"
+            [buttonText]="'forgot.password.modal.button' | translate"
             buttonType="submit"
             kind="primary"
             size="medium">
@@ -41,27 +40,26 @@ import {ViewChild} from '@angular/core';
       </modal-actions>
     </sm-modal>`
 })
-export class RegisterModalComponent {
-  @Input() public navigateToHome: string;
-  @Output() public onRegistered: EventEmitter<User> = new EventEmitter<User>();
-  @ViewChild('registerForm') public registerForm: RegisterFormComponent;
-  @ViewChild('registerModal') public registerModal: any;
+export class ForgotPasswordModalComponent {
+  @Output() public onPasswordLinkSent: EventEmitter<any> = new EventEmitter<any>();
+  @ViewChild('forgotPasswordForm') public forgotPasswordForm: ForgotPasswordFormComponent;
+  @ViewChild('forgotPasswordModal') public forgotPasswordModal: any;
 
   public show(): void {
-    this.registerModal.show({
+    this.forgotPasswordModal.show({
       autofocus: false,
       transition: 'horizontal flip'
     });
   }
 
   public hide(): void {
-    this.registerModal.hide();
+    this.forgotPasswordModal.hide();
   }
 
   public buttonClicked(): void {
-    this.registerForm.submitForm()
+    this.forgotPasswordForm.submitForm()
     .then(user => {
-      this.onRegistered.emit(user);
+      this.onPasswordLinkSent.emit();
       this.hide();
     });
   }

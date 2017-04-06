@@ -35,7 +35,7 @@ import {Validators} from '@angular/forms';
       </apply-message-input>
 
       <form-submit-button
-        [showButton]="showSubmitButton"
+        [showButton]="!isInModal"
         [submitFail]="submitFail"
         [submitSuccess]="submitSuccess"
         [buttonText]="'apply.for.job.form.submit.button' | translate">
@@ -44,7 +44,7 @@ import {Validators} from '@angular/forms';
 })
 export class ApplyForJobFormComponent implements OnInit {
   @Input() public job = null as Job;
-  @Input() public showSubmitButton: boolean = true;
+  @Input() public isInModal: boolean = false;
 
   public apiErrors: ApiErrors = new ApiErrors([]);
   public applyForJobForm: FormGroup;

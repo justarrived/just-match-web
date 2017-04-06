@@ -18,7 +18,7 @@ import {ViewChild} from '@angular/core';
           <div class="sixteen wide phone twelve wide tablet twelve wide computer column">
             <user-update-form
               #userUpdateForm
-              [showSubmitButton]="false"
+              [isInModal]="true"
               [missingUserTraits]="missingUserTraits">
             </user-update-form>
           </div>
@@ -43,7 +43,6 @@ import {ViewChild} from '@angular/core';
 })
 export class JobAdditionalUserInfoModalComponent {
   @Input() public missingUserTraits = null as MissingUserTraits;
-
   @Output() public onInformationSupplied = new EventEmitter();
   @ViewChild('jobAdditionalUserInfoModal') public jobAdditionalUserInfoModal: any;
   @ViewChild('userUpdateForm') public userUpdateForm: UserUpdateFormComponent;
@@ -61,6 +60,9 @@ export class JobAdditionalUserInfoModalComponent {
 
   public buttonClicked(): void {
     this.userUpdateForm.submitForm()
-    .then(() => this.onInformationSupplied.emit());
+    .then(() => {
+      this.onInformationSupplied.emit();
+      this.hide();
+    });
   }
 }

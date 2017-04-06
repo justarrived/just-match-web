@@ -20,7 +20,7 @@ import {ViewChild} from '@angular/core';
             <sign-for-job-form
               [application]="application"
               [job]="job"
-              [showSubmitButton]="false"
+              [isInModal]="true"
               #signForJobForm>
             </sign-for-job-form>
           </div>
@@ -53,6 +53,7 @@ export class SignForJobModalComponent {
 
   public show(): void {
     this.signForJobModal.show({
+      autofocus: false,
       transition: 'horizontal flip'
     });
   }
@@ -64,7 +65,8 @@ export class SignForJobModalComponent {
   public buttonClicked(): void {
     this.signForJobForm.submitForm()
     .then(application => {
-      this.onSignedForJob.emit(application)
+      this.onSignedForJob.emit(application);
+      this.hide();
     });
   }
 }

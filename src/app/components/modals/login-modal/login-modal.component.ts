@@ -17,8 +17,8 @@ import {ViewChild} from '@angular/core';
         <div class="ui centered grid">
           <div class="sixteen wide phone twelve wide tablet twelve wide computer column">
             <login-form
-              [showSubmitButton]="false"
-              [navigateToHomeOnLogin]="false"
+              [isInModal]="true"
+              [navigateToHome]="navigateToHome"
               #loginForm>
             </login-form>
           </div>
@@ -42,12 +42,14 @@ import {ViewChild} from '@angular/core';
     </sm-modal>`
 })
 export class LoginModalComponent {
+  @Input() public navigateToHome: boolean = true;
   @Output() public onLoggedIn: EventEmitter<User> = new EventEmitter<User>();
   @ViewChild('loginForm') public loginForm: LoginFormComponent;
   @ViewChild('loginModal') public loginModal: any;
 
   public show(): void {
     this.loginModal.show({
+      autofocus: false,
       transition: 'horizontal flip'
     });
   }
@@ -59,7 +61,8 @@ export class LoginModalComponent {
   public buttonClicked(): void {
     this.loginForm.submitForm()
     .then(user => {
-      this.onLoggedIn.emit(user)
+      this.onLoggedIn.emit(user);
+      this.hide();
     });
   }
 }

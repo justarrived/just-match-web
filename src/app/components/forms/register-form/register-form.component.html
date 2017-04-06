@@ -7,6 +7,21 @@
     class="inverted">
   </sm-loader>
 
+  <div class="ui basic center aligned segment">
+
+    <h3 class="ui horizontal divider pink header">
+      {{'register.form.login.section' | translate}}
+    </h3>
+
+    <base-button
+      (click)="loginButonClicked()"
+      [buttonText]="'register.form.login.button' | translate"
+      kind="primary"
+      size="small">
+    </base-button>
+
+  </div>
+
   <h3 class="ui horizontal divider pink header">
     <i class="user icon"></i>
     {{'user.register.form.general.information.section.header' | translate}}
@@ -93,7 +108,7 @@
   </terms-input>
 
   <form-submit-button
-    [showButton]="showSubmitButton"
+    [showButton]="!isInModal"
     [submitFail]="submitFail"
     [submitSuccess]="submitSuccess"
     [buttonText]="'user.register.form.submit.button' | translate">

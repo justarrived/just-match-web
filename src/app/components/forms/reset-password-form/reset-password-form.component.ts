@@ -6,15 +6,15 @@ import {FormBuilder} from '@angular/forms';
 import {FormGroup} from '@angular/forms';
 import {Input} from '@angular/core';
 import {JARoutes} from '../../../routes/ja-routes/ja-routes';
+import {ModalService} from '../../../services/modal.service';
 import {NavigationService} from '../../../services/navigation.service';
 import {OnInit} from '@angular/core';
-import {PasswordChangedModalComponent} from '../../modals/password-changed-modal/password-changed-modal.component';
 import {UserPasswordProxy} from '../../../proxies/user-password/user-password.proxy';
 import {Validators} from '@angular/forms';
-import {ViewChild} from '@angular/core';
 
 @Component({
   selector: 'reset-password-form',
+  styleUrls: ['./reset-password-form.component.scss'],
   template: `
     <form
       (ngSubmit)="submitForm()"
@@ -25,17 +25,13 @@ import {ViewChild} from '@angular/core';
         class="inverted">
       </sm-loader>
 
-      <password-changed-modal
-        #passwordChangedModalComponent>
-      </password-changed-modal>
-
       <password-input
         [control]="resetPasswordForm.controls['password']"
         [apiErrors]="apiErrors">
       </password-input>
 
       <form-submit-button
-        [showButton]="showSubmitButton"
+        [showButton]="!isInModal"
         [submitFail]="submitFail"
         [submitSuccess]="submitSuccess"
         [buttonText]="'reset.password.form.submit.button' | translate">
@@ -44,13 +40,22 @@ import {ViewChild} from '@angular/core';
           [control]="resetPasswordForm.controls['one_time_token']"
           apiAttribute="one_time_token">
         </input-errors>
+        <div>
+          <a
+            (click)="onForgotPasswordButtonClick()"
+            class="reset-password-form-link">
+            {{'reset.password.form.forgot.password.link' | translate}}
+          </a>
+          <a
+            (click)="onLoginButtonClick()"
+            class="reset-password-form-link">
+            {{'reset.password.form.login.link' | translate}}
+          </a>
+        </div>
       </form-submit-button>
     </form>`
 })
 export class ResetPasswordFormComponent implements OnInit {
-  @Input() public showSubmitButton: boolean = true;
-  @ViewChild('passwordChangedModalComponent') public passwordChangedModalComponent: PasswordChangedModalComponent;
-
   public apiErrors: ApiErrors = new ApiErrors([]);
   public JARoutes = JARoutes;
   public loadingSubmit: boolean;
@@ -61,6 +66,7 @@ export class ResetPasswordFormComponent implements OnInit {
   constructor(
     private changeDetector: ChangeDetectorRef,
     private formBuilder: FormBuilder,
+    private modalService: ModalService,
     private navigationService: NavigationService,
     private route: ActivatedRoute,
     private userPasswordProxy: UserPasswordProxy
@@ -85,6 +91,14 @@ export class ResetPasswordFormComponent implements OnInit {
     });
   }
 
+  public onForgotPasswordButtonClick(): void {
+    this.navigationService.navigate(JARoutes.forgotPassword);
+  }
+
+  public onLoginButtonClick(): void {
+    this.navigationService.navigate(JARoutes.login);
+  }
+
   private handleServerErrors(errors): void {
     this.submitFail = true;
     this.apiErrors = errors;
@@ -104,7 +118,7 @@ export class ResetPasswordFormComponent implements OnInit {
     .then(result => {
       this.loadingSubmit = false;
       this.submitSuccess = true;
-      this.passwordChangedModalComponent.show();
+      this.modalService.showModal('passwordChangedModalComponent', false, false, 1);
       return result;
     })
     .catch(errors => {

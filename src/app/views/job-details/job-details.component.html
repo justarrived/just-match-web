@@ -1,54 +1,6 @@
 <div *ngIf="job">
   <div class="job-details-body">
 
-    <login-modal
-      (onLoggedIn)="loggedIn($event)"
-      *ngIf="!user"
-      #loginModalComponent>
-    </login-modal>
-
-    <register-modal
-      (onRegistered)="registered($event)"
-      *ngIf="!user"
-      #registerModalComponent>
-    </register-modal>
-
-    <registered-modal
-      *ngIf="user"
-      #registeredModalComponent>
-    </registered-modal>
-
-    <job-additional-user-info-modal
-      (onInformationSupplied)="requestedUserInformationSupplied($event)"
-      [missingUserTraits]="missingUserTraits"
-      *ngIf="user"
-      #jobAdditionalUserInfoModalComponent>
-    </job-additional-user-info-modal>
-
-    <apply-for-job-modal
-      (onAppliedForJob)="appliedForJob($event)"
-      [job]="job"
-      *ngIf="user"
-      #applyForJobModalComponent>
-    </apply-for-job-modal>
-
-    <applied-for-job-modal
-      *ngIf="user"
-      #appliedForJobModalComponent>
-    </applied-for-job-modal>
-
-    <sign-for-job-modal
-      (onSignedForJob)="signedForJob($event)"
-      [application]="application"
-      [job]="job"
-      *ngIf="user"
-      #signForJobModalComponent>
-    </sign-for-job-modal>
-
-    <signed-for-job-modal
-      #signedForJobModalComponent>
-    </signed-for-job-modal>
-
     <div class="job-status text-center">
       <div class="job-status-container">
         <h3 class="job-status-text">{{job.translatedText.name}}</h3>

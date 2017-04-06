@@ -5,6 +5,7 @@ import {FormBuilder} from '@angular/forms';
 import {FormGroup} from '@angular/forms';
 import {Input} from '@angular/core';
 import {JARoutes} from '../../../routes/ja-routes/ja-routes';
+import {ModalService} from '../../../services/modal.service';
 import {NavigationService} from '../../../services/navigation.service';
 import {OnInit} from '@angular/core';
 import {User} from '../../../models/api-models/user/user';
@@ -17,10 +18,11 @@ import {Validators} from '@angular/forms';
   templateUrl: './register-form.component.html'
 })
 export class RegisterFormComponent implements OnInit {
-  @Input() public navigateToHomeOnRegister: boolean = true;
-  @Input() public showSubmitButton: boolean = true;
+  @Input() public navigateToHome: boolean = true;
+  @Input() public isInModal: boolean = false;
 
   public apiErrors: ApiErrors = new ApiErrors([]);
+  public JARoutes = JARoutes;
   public loadingSubmit: boolean = false;
   public registerForm: FormGroup;
   public submitFail: boolean;
@@ -29,6 +31,7 @@ export class RegisterFormComponent implements OnInit {
   public constructor(
     private changeDetector: ChangeDetectorRef,
     private formBuilder: FormBuilder,
+    private modalService: ModalService,
     private navigationService: NavigationService,
     private userProxy: UserProxy,
     private userResolver: UserResolver,
@@ -56,11 +59,12 @@ export class RegisterFormComponent implements OnInit {
     });
   }
 
-  private handleServerErrors(errors): void {
-    this.submitFail = true;
-    this.apiErrors = errors;
-    this.loadingSubmit = false;
-    this.changeDetector.detectChanges();
+  public loginButonClicked(): void {
+    if (this.isInModal) {
+      this.modalService.showModal('loginModalComponent', this.navigateToHome, false, 400);
+    } else {
+      this.navigationService.navigate(JARoutes.login);
+    }
   }
 
   public submitForm(): Promise<User> {
@@ -87,8 +91,10 @@ export class RegisterFormComponent implements OnInit {
       this.submitSuccess = true;
       return this.userResolver.login(this.registerForm.value.email, this.registerForm.value.password)
       .then(user => {
-        if (this.navigateToHomeOnRegister) {
+        if (this.navigateToHome) {
           this.navigationService.navigate(JARoutes.home);
+        } else {
+          this.modalService.showModal('registeredModalComponent', false, false, this.isInModal ? 400 : 1);
         }
         this.loadingSubmit = false;
         return user;
@@ -101,7 +107,25 @@ export class RegisterFormComponent implements OnInit {
     })
     .catch(errors => {
       this.handleServerErrors(errors);
+      this.showAccountAlreadyExistsModalIfEmailOrPhoneTaken(errors);
       throw errors;
     });
+  }
+
+  private handleServerErrors(errors: ApiErrors): void {
+    this.submitFail = true;
+    this.apiErrors = errors;
+    this.loadingSubmit = false;
+    this.changeDetector.detectChanges();
+  }
+
+  private showAccountAlreadyExistsModalIfEmailOrPhoneTaken(errors: ApiErrors): void {
+    if (errors.hasErrorWithType('email', 'taken')) {
+      let takenEmailOrPhone = this.registerForm.value.email;
+      this.modalService.showModal('alreadyRegisteredModalComponent', this.navigateToHome, false, this.isInModal ? 400 : 1, takenEmailOrPhone);
+    } else if (errors.hasErrorWithType('phone', 'taken')) {
+      let takenEmailOrPhone = this.registerForm.value.phone;
+      this.modalService.showModal('alreadyRegisteredModalComponent', this.navigateToHome, false, this.isInModal ? 400 : 1, takenEmailOrPhone);
+    }
   }
 }
