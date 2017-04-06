@@ -31,7 +31,6 @@ import {Validators} from '@angular/forms';
       </password-input>
 
       <form-submit-button
-        [showButton]="!isInModal"
         [submitFail]="submitFail"
         [submitSuccess]="submitSuccess"
         [buttonText]="'reset.password.form.submit.button' | translate">
