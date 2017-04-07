@@ -1,6 +1,7 @@
 {
   "already.registered.modal.button": "Log in",
-  "already.registered.modal.title": "It seems that there already is an account using {{emailOrPhone}}, so we suggest that you log in instead. If you forgot your password you can reset your password by clicking \"Forgotten your password?\" below",
+  "already.registered.modal.info": "It seems that there already is an account using {{emailOrPhone}}, so we suggest that you log in instead. If you forgot your password you can reset your password by clicking \"Forgotten your password?\" above",
+  "already.registered.modal.title": "{{emailOrPhone}} is already registered",
   "applications.title": "Just Arrived",
   "apply.for.job.form.message.section": "Anything else you want us to know?",
   "apply.for.job.form.submit.button": "Apply",

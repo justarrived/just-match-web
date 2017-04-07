@@ -10,7 +10,7 @@ import {ViewChild} from '@angular/core';
   selector: 'already-registered-modal',
   template: `
   <sm-modal
-    icon="massive pink lock"
+    icon="massive pink warning"
     [title]="'already.registered.modal.title' | translate: {emailOrPhone: emailOrPhone}"
     #alreadyRegisteredModal>
     <modal-content>
@@ -22,6 +22,10 @@ import {ViewChild} from '@angular/core';
             [isInModal]="true"
             #loginForm>
           </login-form>
+          <info-message
+            icon="warning"
+            [header]="'already.registered.modal.info' | translate: {emailOrPhone: emailOrPhone}">
+          </info-message>
         </div>
       </div>
     </modal-content>

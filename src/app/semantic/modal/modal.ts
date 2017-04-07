@@ -13,7 +13,8 @@ declare var jQuery: any;
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
   selector: "sm-modal",
-  template: `<div class="ui modal {{class}}" #modal>
+  template: `
+  <div class="ui modal {{class}}" #modal>
     <i class="close icon"></i>
     <div *ngIf="icon || title" [ngClass]="{'icon': icon}" class="ui header">
         <i *ngIf="icon" class="icon {{icon}}"></i>
