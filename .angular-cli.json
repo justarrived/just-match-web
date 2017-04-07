@@ -22,13 +22,13 @@
       "prefix": "app",
       "mobile": false,
       "styles": [
-        "../node_modules/font-awesome/scss/font-awesome.scss",
-        "../node_modules/bootstrap/scss/bootstrap-flex.scss",
+        "../node_modules/font-awesome/css/font-awesome.min.css",
+        "../node_modules/bootstrap/dist/css/bootstrap-flex.min.css",
         "../node_modules/semantic-ui-css/semantic.min.css",
         "styles.scss"
       ],
       "scripts": [
-        "../node_modules/hammerjs/hammer.js",
+        "../node_modules/hammerjs/hammer.min.js",
         "../node_modules/jquery/dist/jquery.min.js",
         "../node_modules/semantic-ui-css/semantic.min.js"
       ],
