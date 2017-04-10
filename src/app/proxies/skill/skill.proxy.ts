@@ -34,7 +34,7 @@ export class SkillProxy {
     .then(response => response.data.map(skill => SkillFactory.createSkill(skill)));
   }
 
-  public getSkillsWithMeta(searchParameters?: any): Promise<{skills: Skill[], meta: {total: number}}> {
+  public getSkillsWithMeta(searchParameters?: any): Promise<{skills: Skill[], meta: any}> {
     return this.apiCallService.get('skills', searchParameters)
     .then(response => {
       return {

@@ -23,7 +23,7 @@ export class UserDocumentProxy {
     .then(response => response.data.map(userDocument => UserDocumentFactory.createUserDocument(userDocument)));
   }
 
-  public getUserDocumentsWithMeta(userId: string, searchParameters?: any): Promise<{userDocuments: UserDocument[], meta: {total: number}}> {
+  public getUserDocumentsWithMeta(userId: string, searchParameters?: any): Promise<{userDocuments: UserDocument[], meta: any}> {
     return this.apiCallService.get('users/' + userId + '/documents', searchParameters)
     .then(response => {
       return {

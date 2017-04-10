@@ -35,7 +35,7 @@ export class ApplicationProxy {
     .then(response => response.data.map(application => ApplicationFactory.createApplication(application)));
   }
 
-  public getJobApplicationsWithMeta(jobId: string, searchParameters?: any): Promise<{applications: Application[], meta: {total: number}}> {
+  public getJobApplicationsWithMeta(jobId: string, searchParameters?: any): Promise<{applications: Application[], meta: any}> {
     return this.apiCallService.get('jobs/' + jobId + '/users', searchParameters)
     .then(response => {
       return {
@@ -50,7 +50,7 @@ export class ApplicationProxy {
     .then(response => response.data.map(application => ApplicationFactory.createApplication(application)));
   }
 
-  public getUserApplicationsWithMeta(userId: string, searchParameters?: any): Promise<{applications: Application[], meta: {total: number}}> {
+  public getUserApplicationsWithMeta(userId: string, searchParameters?: any): Promise<{applications: Application[], meta: any}> {
     return this.apiCallService.get('users/' + userId + '/jobs', searchParameters)
     .then(response => {
       return {

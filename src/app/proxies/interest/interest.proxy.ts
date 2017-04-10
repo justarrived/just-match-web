@@ -22,7 +22,7 @@ export class InterestProxy {
     .then(response => response.data.map(interest => InterestFactory.createInterest(interest)));
   }
 
-  public getInterestsWithMeta(searchParameters?: any): Promise<{interests: Interest[], meta: {total: number}}> {
+  public getInterestsWithMeta(searchParameters?: any): Promise<{interests: Interest[], meta: any}> {
     return this.apiCallService.get('interests', searchParameters)
     .then(response => {
       return {

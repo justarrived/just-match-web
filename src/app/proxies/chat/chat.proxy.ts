@@ -27,7 +27,7 @@ export class ChatProxy {
     .then(response => response.data.map(chat => ChatFactory.createChat(chat)));
   }
 
-  public getChatsWithMeta(searchParameters?: any): Promise<{chats: Chat[], meta: {total: number}}> {
+  public getChatsWithMeta(searchParameters?: any): Promise<{chats: Chat[], meta: any}> {
     return this.apiCallService.get('chats', searchParameters)
     .then(response => {
       return {

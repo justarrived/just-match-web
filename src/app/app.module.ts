@@ -1,6 +1,6 @@
 import {AccountNumberInputComponent} from './components/inputs/account-number-input/account-number-input.component';
 import {ActsAsUserService} from './services/acts-as-user.service';
-import {AgmCoreModule} from 'angular2-google-maps/core';
+import {AgmCoreModule} from '@agm/core';
 import {AlreadyRegisteredModalComponent} from './components/modals/already-registered-modal/already-registered-modal.component';
 import {ApiCallService} from './services/api-call.service';
 import {ApiErrorsComponent} from './components/form-errors/api-errors/api-errors.component';
@@ -20,8 +20,10 @@ import {AutosizeDirective} from './directives/textarea-autosize/textarea-autosiz
 import {BaseButtonComponent} from './components/buttons/base-button/base-button.component';
 import {BaseMessageComponent} from './components/messages/base-message.component';
 import {BasicBorderHeaderComponent} from './components/headers/basic-border-header/basic-border-header.component';
+import {BasicPagerComponent} from './components/pagers/basic-pager/basic-pager.component';
 import {BasicTabComponent} from './components/tabs/basic-tab/basic-tab.component';
 import {BasicTabsComponent} from './components/tabs/basic-tabs/basic-tabs.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {BrowserModule} from '@angular/platform-browser';
 import {CircularImageInputComponent} from './components/inputs/circular-image-input/circular-image-input.component';
 import {CityInputComponent} from './components/inputs/city-input/city-input.component';
@@ -62,7 +64,6 @@ import {FormSubmitButtonComponent} from './components/buttons/form-submit-button
 import {FrilansTermsInputComponent} from './components/inputs/frilans-terms-input/frilans-terms-input.component';
 import {GenderInputComponent} from './components/inputs/gender-input/gender-input.component';
 import {GeolocationService} from './services/geolocation.service';
-import {ModalService} from './services/modal.service';
 import {GotCoordinationNumberInputComponent} from './components/inputs/got-coordination-number-input/got-coordination-number-input.component';
 import {HomePageComponent} from './components/pages/home-page/home-page.component';
 import {HowItWorksAndMaximizeChancesSectionComponent} from './components/sections/how-it-works-and-maximize-chances-section/how-it-works-and-maximize-chances-section.component';
@@ -77,10 +78,10 @@ import {JobAdditionalUserInfoModalComponent} from './components/modals/job-addit
 import {JobCardComponent} from './components/cards/job-card/job-card.component';
 import {JobDetailsComponent} from './views/job-details/job-details.component';
 import {JobExperienceInputComponent} from './components/inputs/job-experience-input/job-experience-input.component';
-import {JobListItemComponent} from './components/job-list-item/job-list-item.component';
 import {JobMapMarkerComponent} from './components/map-markers/job-map-marker/job-map-marker.component';
-import {JobsComponent} from './views/jobs/jobs.component';
 import {JobsMapComponent} from './components/maps/jobs-map/jobs-map.component';
+import {JobsPageComponent} from './components/pages/jobs-page/jobs-page.component';
+import {JobsPagerSectionComponent} from './components/sections/jobs-pager-section/jobs-pager-section.component';
 import {LanguageMenuComponent} from './components/menus/language-menu/language-menu.component';
 import {LanguageProficiencyInputComponent} from './components/inputs/language-proficiency-input/language-proficiency-input.component';
 import {LanguagesInputComponent} from './components/inputs/languages-input/languages-input.component';
@@ -92,6 +93,7 @@ import {LoginPageComponent} from './components/pages/login-page/login-page.compo
 import {LostConnectionPageComponent} from './components/pages/lost-connection-page/lost-connection-page.component';
 import {MaximizeChancessSectionComponent} from './components/sections/maximize-chances-section/maximize-chances-section.component';
 import {MessageInputComponent} from './components/inputs/message-input/message-input.component';
+import {ModalService} from './services/modal.service';
 import {MyJobsComponent} from './views/my-jobs/my-jobs.component';
 import {MyJobsItemComponent} from './components/my-jobs-item/my-jobs-item.component';
 import {NameInputComponent} from './components/inputs/name-input/name-input.component';
@@ -103,7 +105,6 @@ import {NgModule} from '@angular/core';
 import {NO_ERRORS_SCHEMA} from '@angular/core';
 import {NotFoundPageComponent} from './components/pages/404-page/404-page.component';
 import {OldPasswordInputComponent} from './components/inputs/old-password-input/old-password-input.component';
-import {PagerComponent} from './components/pager/pager.component';
 import {PartnersSectionComponent} from './components/sections/partners-section/partners-section.component';
 import {PasswordChangedModalComponent} from './components/modals/password-changed-modal/password-changed-modal.component';
 import {PasswordInputComponent} from './components/inputs/password-input/password-input.component';
@@ -176,6 +177,7 @@ export class RavenErrorHandler implements ErrorHandler {
       apiKey: environment.googleMapsKey
     }),
     AppTranslateModule,
+    BrowserAnimationsModule,
     BrowserModule,
     FormsModule,
     HttpModule,
@@ -202,6 +204,7 @@ export class RavenErrorHandler implements ErrorHandler {
     BaseButtonComponent,
     BaseMessageComponent,
     BasicBorderHeaderComponent,
+    BasicPagerComponent,
     BasicTabComponent,
     BasicTabsComponent,
     CircularImageInputComponent,
@@ -250,10 +253,10 @@ export class RavenErrorHandler implements ErrorHandler {
     JobCardComponent,
     JobDetailsComponent,
     JobExperienceInputComponent,
-    JobListItemComponent,
     JobMapMarkerComponent,
-    JobsComponent,
     JobsMapComponent,
+    JobsPageComponent,
+    JobsPagerSectionComponent,
     LanguageMenuComponent,
     LanguageProficiencyInputComponent,
     LanguagesInputComponent,
@@ -273,7 +276,6 @@ export class RavenErrorHandler implements ErrorHandler {
     NewPasswordInputComponent,
     NotFoundPageComponent,
     OldPasswordInputComponent,
-    PagerComponent,
     PartnersSectionComponent,
     PasswordChangedModalComponent,
     PasswordInputComponent,

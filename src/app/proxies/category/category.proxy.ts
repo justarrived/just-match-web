@@ -22,7 +22,7 @@ export class CategoryProxy {
     .then(response => response.data.map(category => CategoryFactory.createCategory(category)));
   }
 
-  public getCategoriesWithMeta(searchParameters?: any): Promise<{categories: Category[], meta: {total: number}}> {
+  public getCategoriesWithMeta(searchParameters?: any): Promise<{categories: Category[], meta: any}> {
     return this.apiCallService.get('categories', searchParameters)
     .then(response => {
       return {

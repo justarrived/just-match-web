@@ -17,7 +17,7 @@ export class UserGenderProxy {
     .then(response => response.data.map(userGender => UserGenderFactory.createUserGender(userGender)));
   }
 
-  public getUserGendersWithMeta(searchParameters?: any): Promise<{userGenders: UserGender[], meta: {total: number}}> {
+  public getUserGendersWithMeta(searchParameters?: any): Promise<{userGenders: UserGender[], meta: any}> {
     return this.apiCallService.get('users/genders', searchParameters)
     .then(response => {
       return {

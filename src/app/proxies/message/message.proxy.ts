@@ -23,7 +23,7 @@ export class MessageProxy {
     .then(response => MessageFactory.createMessage(response.data));
   }
 
-  public getChatMessagesWithMeta(chatId: string, searchParameters?: any): Promise<{messages: Message[], meta: {total: number}}> {
+  public getChatMessagesWithMeta(chatId: string, searchParameters?: any): Promise<{messages: Message[], meta: any}> {
     return this.apiCallService.get('chats/' + chatId + '/messages', searchParameters)
     .then(response => {
       return {
@@ -38,7 +38,7 @@ export class MessageProxy {
     .then(response => MessageFactory.createMessage(response.data));
   }
 
-  public getUserMessagesWithMeta(userId: string, searchParameters?: any): Promise<{messages: Message[], meta: {total: number}}> {
+  public getUserMessagesWithMeta(userId: string, searchParameters?: any): Promise<{messages: Message[], meta: any}> {
     return this.apiCallService.get('users/' + userId + '/messages', searchParameters)
     .then(response => {
       return {

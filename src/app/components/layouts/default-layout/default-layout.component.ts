@@ -14,7 +14,9 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
       <div class="layout-inner-wrapper">
         <div class="layout-header-padder"></div>
         <section class="layout-content">
-          <div class="ui form">
+          <div
+            class="ui form"
+            style="height: 100%">
             <sm-loader
               [complete]="!user || !user.isBeingReloaded"
               class="inverted">

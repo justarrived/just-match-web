@@ -28,7 +28,7 @@ export class UserInterestProxy {
     .then(response => response.data.map(userInterest => UserInterestFactory.createUserInterest(userInterest)));
   }
 
-  public getUserInterestsWithMeta(userId: string, searchParameters?: any): Promise<{userInterests: UserInterest[], meta: {total: number}}> {
+  public getUserInterestsWithMeta(userId: string, searchParameters?: any): Promise<{userInterests: UserInterest[], meta: any}> {
     return this.apiCallService.get('users/' + userId + '/interests', searchParameters)
     .then(response => {
       return {

@@ -17,7 +17,7 @@ export class CountryProxy {
     .then(response => response.data.map(country => CountryFactory.createCountry(country)));
   }
 
-  public getCountriesWithMeta(searchParameters?: any): Promise<{countries: Country[], meta: {total: number}}> {
+  public getCountriesWithMeta(searchParameters?: any): Promise<{countries: Country[], meta: any}> {
     return this.apiCallService.get('countries', searchParameters)
     .then(response => {
       return {

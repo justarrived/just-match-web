@@ -93,7 +93,7 @@ export class UserProxy {
     .then(response => response.data.map(user => UserFactory.createUser(user)));
   }
 
-  public getUsersWithMeta(searchParameters?: any): Promise<{users: User[], meta: {total: number}}> {
+  public getUsersWithMeta(searchParameters?: any): Promise<{users: User[], meta: any}> {
     return this.apiCallService.get('users', searchParameters)
     .then(response => {
       return {
@@ -108,7 +108,7 @@ export class UserProxy {
     .then(response => response.data.map(user => UserFactory.createUser(user)));
   }
 
-  public getUsersMatchingJobWithMeta(jobId: string, searchParameters?: any): Promise<{users: User[], meta: {total: number}}> {
+  public getUsersMatchingJobWithMeta(jobId: string, searchParameters?: any): Promise<{users: User[], meta: any}> {
     return this.apiCallService.get('jobs/' + jobId + '/matching_users', searchParameters)
     .then(response => {
       return {

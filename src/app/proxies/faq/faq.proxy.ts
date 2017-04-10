@@ -17,7 +17,7 @@ export class FaqProxy {
     .then(response => response.data.map(faq => FaqFactory.createFaq(faq)));
   }
 
-  public getFaqsWithMeta(searchParameters?: any): Promise<{faqs: Faq[], meta: {total: number}}> {
+  public getFaqsWithMeta(searchParameters?: any): Promise<{faqs: Faq[], meta: any}> {
     return this.apiCallService.get('faqs', searchParameters)
     .then(response => {
       return {
