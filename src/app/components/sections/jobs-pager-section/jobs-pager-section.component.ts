@@ -24,16 +24,17 @@ import {yyyymmdd} from '../../../utils/date/date.util';
     </basic-pager>
 
     <div
-      class="ui basic padded center aligned segment"
-      style="min-height: 600px">
+      class="ui basic center aligned segment"
+      style="margin: 0; padding-bottom: 55px;">
       <sm-loader
         [promise]="jobsMetaPromise"
         class="inverted">
       </sm-loader>
       <div class="ui centered grid">
         <job-card
+          [animationDelay]="50 * i"
           [job]="job"
-          *ngFor="let job of (jobsMetaPromise | async)?.jobs"
+          *ngFor="let job of (jobsMetaPromise | async)?.jobs; let i = index;"
           class="ui basic left aligned segment"
           style="margin: 1rem 0">
         </job-card>
@@ -41,6 +42,7 @@ import {yyyymmdd} from '../../../utils/date/date.util';
     </div>
 
     <basic-pager
+      style="position:absolute; bottom: 0; width: 100%;"
       (pageChange)="onPageChange($event)"
       [currentPage]="page"
       [maxResults]="totalJobs"

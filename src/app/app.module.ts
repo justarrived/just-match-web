@@ -23,6 +23,7 @@ import {BasicBorderHeaderComponent} from './components/headers/basic-border-head
 import {BasicPagerComponent} from './components/pagers/basic-pager/basic-pager.component';
 import {BasicTabComponent} from './components/tabs/basic-tab/basic-tab.component';
 import {BasicTabsComponent} from './components/tabs/basic-tabs/basic-tabs.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {BrowserModule} from '@angular/platform-browser';
 import {CircularImageInputComponent} from './components/inputs/circular-image-input/circular-image-input.component';
 import {CityInputComponent} from './components/inputs/city-input/city-input.component';
@@ -176,6 +177,7 @@ export class RavenErrorHandler implements ErrorHandler {
       apiKey: environment.googleMapsKey
     }),
     AppTranslateModule,
+    BrowserAnimationsModule,
     BrowserModule,
     FormsModule,
     HttpModule,
