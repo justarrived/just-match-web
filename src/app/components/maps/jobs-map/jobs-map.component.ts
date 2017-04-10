@@ -17,7 +17,7 @@ import {yyyymmdd} from '../../../utils/date/date.util';
         [promise]="jobs"
         class="inverted">
       </sm-loader>
-      <sebm-google-map
+      <agm-map
         [disableDefaultUI]="true"
         [latitude]="mapLocation.latitude"
         [longitude]="mapLocation.longitude"
@@ -26,16 +26,16 @@ import {yyyymmdd} from '../../../utils/date/date.util';
         [styles]="mapStyles"
         [zoom]="mapZoom"
         class="jobs-map">
-        <sebm-google-map-marker
+        <agm-marker
           [latitude]="mapUserLocation.latitude"
           [longitude]="mapUserLocation.longitude"
           *ngIf="mapUserLocation">
-        </sebm-google-map-marker>
+        </agm-marker>
         <job-map-marker
           [job]="job"
           *ngFor="let job of jobs | async">
         </job-map-marker>
-      </sebm-google-map>
+      </agm-map>
       <div class="jobs-map-tooltip tooltip-top tooltip-color-blue">
         <span
           class="jobs-map-tooltip-content"
