@@ -13,3 +13,4 @@ dependencies:
 test:
   override:
     - yarn test
+    - yarn e2e
