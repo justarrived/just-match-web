@@ -35,7 +35,7 @@ export class CommentProxy {
     .then(response => response.data.map(comment => CommentFactory.createComment(comment)));
   }
 
-  public getCommentsWithMeta(resourceName: string, resourceId: string, searchParameters?: any): Promise<{comments: Comment[], meta: {total: number}}> {
+  public getCommentsWithMeta(resourceName: string, resourceId: string, searchParameters?: any): Promise<{comments: Comment[], meta: any}> {
     return this.apiCallService.get(resourceName + '/' + resourceId + '/comments', searchParameters)
     .then(response => {
       return {

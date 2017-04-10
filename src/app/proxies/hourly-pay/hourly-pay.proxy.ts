@@ -27,7 +27,7 @@ export class HourlyPayProxy {
     .then(response => response.data.map(hourlyPay => HourlyPayFactory.createHourlyPay(hourlyPay)));
   }
 
-  public getHourlyPaysWithMeta(searchParameters?: any): Promise<{hourlyPays: HourlyPay[], meta: {total: number}}> {
+  public getHourlyPaysWithMeta(searchParameters?: any): Promise<{hourlyPays: HourlyPay[], meta: any}> {
     return this.apiCallService.get('hourly-pays', searchParameters)
     .then(response => {
       return {

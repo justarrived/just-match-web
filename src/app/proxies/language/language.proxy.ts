@@ -32,7 +32,7 @@ export class LanguageProxy {
     .then(response => response.data.map(language => LanguageFactory.createLanguage(language)));
   }
 
-  public getLanguagesWithMeta(searchParameters?: any): Promise<{languages: Language[], meta: {total: number}}> {
+  public getLanguagesWithMeta(searchParameters?: any): Promise<{languages: Language[], meta: any}> {
     return this.apiCallService.get('languages', searchParameters)
     .then(response => {
       return {

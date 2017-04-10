@@ -35,7 +35,7 @@ export class CompanyProxy {
     .then(response => response.data.map(company => CompanyFactory.createCompany(company)));
   }
 
-  public getCompaniesWithMeta(searchParameters?: any): Promise<{companies: Company[], meta: {total: number}}> {
+  public getCompaniesWithMeta(searchParameters?: any): Promise<{companies: Company[], meta: any}> {
     return this.apiCallService.get('companies', searchParameters)
     .then(response => {
       return {

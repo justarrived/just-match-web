@@ -17,7 +17,7 @@ export class UserImageCategoryProxy {
     .then(response => response.data.map(userImageCategory => UserImageCategoryFactory.createUserImageCategory(userImageCategory)));
   }
 
-  public getUserImageCategoriesWithMeta(searchParameters?: any): Promise<{userImageCategories: UserImageCategory[], meta: {total: number}}> {
+  public getUserImageCategoriesWithMeta(searchParameters?: any): Promise<{userImageCategories: UserImageCategory[], meta: any}> {
     return this.apiCallService.get('users/images/categories', searchParameters)
     .then(response => {
       return {

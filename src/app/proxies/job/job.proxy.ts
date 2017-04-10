@@ -52,7 +52,7 @@ export class JobProxy {
     .then(response => response.data.map(job => JobFactory.createJob(job)));
   }
 
-  public getJobsWithMeta(searchParameters?: any): Promise<{jobs: Job[], meta: {total: number}}> {
+  public getJobsWithMeta(searchParameters?: any): Promise<{jobs: Job[], meta: any}> {
     return this.apiCallService.get('jobs', searchParameters)
     .then(response => {
       return {
@@ -67,7 +67,7 @@ export class JobProxy {
     .then(response => response.data.map(job => JobFactory.createJob(job)));
   }
 
-  public getJobsMatchingUserWithMeta(userId: string, searchParameters?: any): Promise<{jobs: Job[], meta: {total: number}}> {
+  public getJobsMatchingUserWithMeta(userId: string, searchParameters?: any): Promise<{jobs: Job[], meta: any}> {
     return this.apiCallService.get('users/' + userId + '/matching-jobs', searchParameters)
     .then(response => {
       return {
@@ -82,7 +82,7 @@ export class JobProxy {
     .then(response => response.data.map(job => JobFactory.createJob(job)));
   }
 
-  public getJobsOwnedByUserWithMeta(userId: string, searchParameters?: any): Promise<{jobs: Job[], meta: {total: number}}> {
+  public getJobsOwnedByUserWithMeta(userId: string, searchParameters?: any): Promise<{jobs: Job[], meta: any}> {
     return this.apiCallService.get('users/' + userId + '/owned-jobs', searchParameters)
     .then(response => {
       return {

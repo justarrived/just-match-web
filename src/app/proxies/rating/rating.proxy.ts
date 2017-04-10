@@ -25,7 +25,7 @@ export class RatingProxy {
     .then(response => response.data.map(rating => RatingFactory.createRating(rating)));
   }
 
-  public getUserRatingsWithMeta(userId: string, searchParameters?: any): Promise<{ratings: Rating[], meta: {total: number}}> {
+  public getUserRatingsWithMeta(userId: string, searchParameters?: any): Promise<{ratings: Rating[], meta: any}> {
     return this.apiCallService.get('users/' + userId + '/ratings', searchParameters)
     .then(response => {
       return {

@@ -1,0 +1,57 @@
+@import '../../../styles/colors';
+@import '../../../styles/typography';
+
+.pager-container {
+  font-size: $fs-m;
+  background-color: $color-gray-25;
+
+  .pager-inner-container {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+}
+
+.back-button {
+  text-align: left;
+  color: $color-primary-cerise;
+
+  > i {
+    cursor: pointer;
+  }
+  padding-top: 0;
+}
+
+.forward-button {
+  text-align: right;
+  color: $color-primary-cerise;
+
+  > i {
+    cursor: pointer;
+  }
+  padding-top: 0;
+}
+
+.pagination-text {
+  display: flex;
+  text-align: center;
+  align-items: center;
+}
+
+.pagination-button {
+  color: $color-primary-cerise;
+  cursor: pointer;
+}
+
+.pagination-button-right {
+  text-align: right;
+}
+
+.navigation-leftmost-arrow {
+  position: relative;
+  left: 7px;
+}
+
+.navigation-rightmost-arrow {
+  position: relative;
+  right: 7px;
+}

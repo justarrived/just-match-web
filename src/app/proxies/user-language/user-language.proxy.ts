@@ -28,7 +28,7 @@ export class UserLanguageProxy {
     .then(response => response.data.map(userLanguage => UserLanguageFactory.createUserLanguage(userLanguage)));
   }
 
-  public getUserLanguagesWithMeta(userId: string, searchParameters?: any): Promise<{userLanguages: UserLanguage[], meta: {total: number}}> {
+  public getUserLanguagesWithMeta(userId: string, searchParameters?: any): Promise<{userLanguages: UserLanguage[], meta: any}> {
     return this.apiCallService.get('users/' + userId + '/languages', searchParameters)
     .then(response => {
       return {

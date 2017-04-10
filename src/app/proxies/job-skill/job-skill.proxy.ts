@@ -27,7 +27,7 @@ export class JobSkillProxy {
     .then(response => response.data.map(jobSkill => JobSkillFactory.createJobSkill(jobSkill)));
   }
 
-  public getJobSkillsWithMeta(jobId: string, searchParameters?: any): Promise<{jobSkills: JobSkill[], meta: {total: number}}> {
+  public getJobSkillsWithMeta(jobId: string, searchParameters?: any): Promise<{jobSkills: JobSkill[], meta: any}> {
     return this.apiCallService.get('jobs/' + jobId + 'skills', searchParameters)
     .then(response => {
       return {

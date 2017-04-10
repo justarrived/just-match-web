@@ -65,6 +65,10 @@ export class NavigationService {
     this.router.navigate([this.routeCheckpoint]);
   }
 
+  public replaceRouteState(route: JARoute, ...args: string[]) {
+    this.location.replaceState(route.url(args));
+  }
+
   public navigate(route: JARoute, ...args: string[]): void {
     this.router.navigate([route.url(args)]);
   }

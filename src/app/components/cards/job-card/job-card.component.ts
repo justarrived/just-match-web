@@ -27,7 +27,7 @@ import {Job} from '../../../models/api-models/job/job';
       </div>
       <div class="job-description-container">
         <div class="description job-description">
-          {{job.translatedText.description}}
+          {{job.translatedText.shortDescription}}
         </div>
       </div>
     </div>

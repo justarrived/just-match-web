@@ -17,7 +17,7 @@ export class UserStatusProxy {
     .then(response => response.data.map(userStatus => UserStatusFactory.createUserStatus(userStatus)));
   }
 
-  public getUserStatusesWithMeta(searchParameters?: any): Promise<{userStatuses: UserStatus[], meta: {total: number}}> {
+  public getUserStatusesWithMeta(searchParameters?: any): Promise<{userStatuses: UserStatus[], meta: any}> {
     return this.apiCallService.get('users/statuses', searchParameters)
     .then(response => {
       return {
