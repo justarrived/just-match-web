@@ -1,8 +1,11 @@
 @import '../../../styles/colors';
+@import '../../../styles/dimensions';
 
 .language-menu-container {
-  text-align: center;
+  pointer-events: auto;
+  background-color: $color-gray-25 !important;
   height: 100%;
+  text-align: center;
 
   .language-menu-logo-container {
     padding-top: 10px;

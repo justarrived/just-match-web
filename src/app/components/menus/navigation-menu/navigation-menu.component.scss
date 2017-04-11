@@ -1,7 +1,12 @@
 @import '../../../styles/colors';
+@import '../../../styles/dimensions';
 
 .navigation-menu-container {
+  pointer-events: auto;
+  background-color: $color-gray-25 !important;
   height: 100%;
+  text-align: center;
+
   .navigation-menu-links-container {
     margin-top: 20px;
 

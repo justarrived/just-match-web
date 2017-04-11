@@ -4,6 +4,13 @@
   margin: 0;
 }
 
+.ui.left.sidebar, .ui.right.sidebar {
+  width: 375px;
+  @media screen and (max-width: $sm-device-width) {
+    width: 100%;
+  }
+}
+
 // We need add margin-bottom here, since we nest form-inputs under other elements
 // causing each form field to be the "last"
 .ui.form .field:last-child,
