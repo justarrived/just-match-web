@@ -15,7 +15,7 @@ declare var jQuery;
   selector: "sm-message",
   template: `
   <div
-    class="ui {{class}} message"
+    class="ui {{class}} visible message"
     [ngClass]="{'icon': icon}"
     #message>
     <i
