@@ -6,30 +6,27 @@
   right: 0;
   left: 0;
   z-index: 1001;
+  pointer-events: none;
+  height: 100%;
   @media screen and (min-width: $lg-device-width) {
     width: $lg-device-width;
     margin: 0 auto;
   }
   @media screen and (max-width: $lg-device-width) {
     width: 100%;
-    max-width: 100vw;
   }
 
-  .menu-overlay-container {
+  .menu-container {
     height: 100%;
-    background: rgba(255, 255, 255, .5);
-    text-align: right;
+    
+    .pusher {
+      position: absolute;
+      left: calc((100% - 100vw)/2);
+      width: 100vw;
 
-    .menu-container {
-      overflow-y: scroll;
-      background: $color-gray-25;
-      height: 100%;
-      width: 375px;
-      display: inline-block;
-      text-align: left;
-      color: white;
-      @media screen and (max-width: $sm-device-width) {
-        width: 100%;
+
+      &.dimmed {
+        pointer-events: auto;
       }
     }
   }

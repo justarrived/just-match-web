@@ -44,9 +44,8 @@ import {SystemLanguagesResolver} from '../../../resolvers/system-languages/syste
 })
 export class AppNavbarComponent {
   @Input() isLanguageMenuVisible: boolean;
-  @Input() isNavigationMenuVisible: boolean;
-  @Output() isLanguageMenuVisibleChange: EventEmitter<boolean> = new EventEmitter();
-  @Output() isNavigationMenuVisibleChange: EventEmitter<boolean> = new EventEmitter();
+  @Output() onToggleLanguageMenu: EventEmitter<any> = new EventEmitter();
+  @Output() onToggleNavigationMenu: EventEmitter<any> = new EventEmitter();
   public JARoutes = JARoutes;
 
   constructor (
@@ -59,16 +58,10 @@ export class AppNavbarComponent {
   }
 
   public onNavigationMenuButtonClick() {
-    this.isLanguageMenuVisible = false;
-    this.isNavigationMenuVisible = !this.isNavigationMenuVisible;
-    this.isLanguageMenuVisibleChange.emit(this.isLanguageMenuVisible);
-    this.isNavigationMenuVisibleChange.emit(this.isNavigationMenuVisible);
+    this.onToggleNavigationMenu.emit();
   }
 
   public onLanguageMenuButtonClick() {
-    this.isNavigationMenuVisible = false;
-    this.isLanguageMenuVisible = !this.isLanguageMenuVisible;
-    this.isLanguageMenuVisibleChange.emit(this.isLanguageMenuVisible);
-    this.isNavigationMenuVisibleChange.emit(this.isNavigationMenuVisible);
+    this.onToggleLanguageMenu.emit();
   }
 }

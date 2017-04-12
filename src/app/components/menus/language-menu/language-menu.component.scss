@@ -1,8 +1,10 @@
 @import '../../../styles/colors';
+@import '../../../styles/dimensions';
 
 .language-menu-container {
+  background-color: $color-gray-25 !important;
+  min-height: 100%;
   text-align: center;
-  height: 100%;
 
   .language-menu-logo-container {
     padding-top: 10px;
@@ -65,7 +67,6 @@
         padding-bottom: 6px;
       }
     }
-
 
     .language-menu-language-text-wrapper:last-of-type {
       border-bottom: 1px solid $color-gray-100;

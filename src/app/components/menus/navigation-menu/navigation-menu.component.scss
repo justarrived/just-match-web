@@ -1,7 +1,11 @@
 @import '../../../styles/colors';
+@import '../../../styles/dimensions';
 
 .navigation-menu-container {
-  height: 100%;
+  background-color: $color-gray-25 !important;
+  text-align: center;
+  min-height: 100%;
+
   .navigation-menu-links-container {
     margin-top: 20px;
 

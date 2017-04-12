@@ -3,42 +3,65 @@
 .ui.grid {
   margin: 0;
 }
-
+// Modify lef and right sidebar dimensions
+.ui.left.sidebar,
+.ui.right.sidebar {
+  width: 375px;
+  @media screen and (max-width: $sm-device-width) {
+    width: 100%;
+  }
+}
+// A sidebar should be clickable and scrollable
+.ui.sidebar {
+  pointer-events: auto;
+}
 // We need add margin-bottom here, since we nest form-inputs under other elements
 // causing each form field to be the "last"
+
 .ui.form .field:last-child,
 .ui.form .fields:last-child .field {
   margin-bottom: 15px;
 }
-
 // Override padding changes on mobile.
-.ui.modal>.actions {
-  padding: 1rem 1rem !important;
+.ui.modal > .actions {
+  padding: 1rem !important;
 }
 
 .modals.dimmer {
   z-index: 1002!important;
 }
-
 // Force icon sizes if specified
-i.mini.icon, i.mini.icons {
-    font-size: .4em !important;
+i.mini.icon,
+i.mini.icons {
+  font-size: 0.4em !important;
 }
-i.tiny.icon, i.tiny.icons {
-    font-size: .5em !important;
+
+i.tiny.icon,
+i.tiny.icons {
+  font-size: 0.5em !important;
 }
-i.small.icon, i.small.icons {
-    font-size: .75em !important;
+
+i.small.icon,
+i.small.icons {
+  font-size: 0.75em !important;
 }
-i.large.icon, i.large.icons {
-    font-size: 1.5em !important;
+
+i.large.icon,
+i.large.icons {
+  font-size: 1.5em !important;
 }
-i.big.icon, i.big.icons {
-    font-size: 2em !important;
+
+i.big.icon,
+i.big.icons {
+  font-size: 2em !important;
 }
-i.huge.icon, i.huge.icons {
-    font-size: 4em !important;
+
+i.huge.icon,
+i.huge.icons {
+  font-size: 4em !important;
 }
-i.massive.icon, i.massive.icons {
-    font-size: 8em !important;
+
+i.massive.icon,
+i.massive.icons {
+  font-size: 8em !important;
 }
