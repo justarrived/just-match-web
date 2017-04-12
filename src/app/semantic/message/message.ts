@@ -1,15 +1,12 @@
-import {
-  Component, Input, ChangeDetectionStrategy, ViewEncapsulation, ViewChild, ElementRef,
-  Renderer
-} from "@angular/core";
+import {ChangeDetectionStrategy} from "@angular/core";
+import {Component} from "@angular/core";
+import {ElementRef} from "@angular/core";
+import {Input} from "@angular/core";
+import {ViewChild} from "@angular/core";
+import {ViewEncapsulation} from "@angular/core";
 
 declare var jQuery;
 
-/**
- * Implementation of Message collection
- *
- * @link http://semantic-ui.com/collections/message.html
- */
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
   selector: "sm-message",
@@ -35,11 +32,6 @@ export class SemanticMessageComponent {
   @Input() public closeable: boolean;
   @Input() public icon: string;
   @ViewChild("message") public message: ElementRef;
-
-  public constructor(
-    private renderer: Renderer
-  ) {
-  }
 
   public close() {
     jQuery(this.message.nativeElement).transition('fade');

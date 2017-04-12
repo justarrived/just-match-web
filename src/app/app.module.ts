@@ -1,5 +1,6 @@
 import {AccountNumberInputComponent} from './components/inputs/account-number-input/account-number-input.component';
 import {ActsAsUserService} from './services/acts-as-user.service';
+import {AdditionalUserInfoMessageComponent} from './components/messages/additional-user-info-message/additional-user-info-message.component';
 import {AgmCoreModule} from '@agm/core';
 import {AlreadyRegisteredModalComponent} from './components/modals/already-registered-modal/already-registered-modal.component';
 import {ApiCallService} from './services/api-call.service';
@@ -189,6 +190,7 @@ export class RavenErrorHandler implements ErrorHandler {
   ],
   declarations: [
     AccountNumberInputComponent,
+    AdditionalUserInfoMessageComponent,
     AlreadyRegisteredModalComponent,
     ApiErrorsComponent,
     AppComponent,

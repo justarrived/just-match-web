@@ -6,7 +6,7 @@ import {Input} from '@angular/core';
   template: `
   <sm-message
     [class]="type"
-    [closeable]="true"
+    [closeable]="false"
     [icon]="icon">
     <div class="content">
       <div class="header">
