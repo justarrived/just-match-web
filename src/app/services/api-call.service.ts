@@ -154,7 +154,7 @@ export class ApiCallService {
       this.navigationService.navigateNoLocationChange(JARoutes.notFound);
       return;
     }
-
+    
     throw new ApiErrors(response.json().errors);
   }
 

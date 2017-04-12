@@ -52,10 +52,10 @@ export class SemanticAccordionComponent implements AfterViewInit {
   template: `
 <div class="{{class}} title">
     <i class="dropdown icon"></i>
-    <ng-content select="accordion-title"></ng-content>
+    <ng-content select="[accordion-title]"></ng-content>
 </div>
 <div class="{{class}} content">
-    <ng-content select="accordion-content"></ng-content>
+    <ng-content select="[accordion-content]"></ng-content>
 </div>
 `
 })

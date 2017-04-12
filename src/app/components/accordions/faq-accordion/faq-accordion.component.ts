@@ -10,13 +10,13 @@ import {SystemLanguagesResolver} from '../../../resolvers/system-languages/syste
   template: `
   <sm-accordion class="styled fluid" [options]="{ exclusive: true, on: 'mouseenter' }">
     <sm-accordion-item *ngFor="let faq of faqs | async">
-      <accordion-title>
+      <div accordion-title>
         {{faq.translatedText.question}}
-      </accordion-title>
-      <accordion-content >
+      </div>
+      <div accordion-content>
         <div class="ui padded raised segment" [innerHTML]="faq.translatedText.answer">
         </div>
-      </accordion-content>
+      </div>
     </sm-accordion-item>
   </sm-accordion>`
 })

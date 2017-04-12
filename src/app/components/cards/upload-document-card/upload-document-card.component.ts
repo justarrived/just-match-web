@@ -30,7 +30,7 @@ import {UserDocument} from '../../../models/api-models/user-document/user-docume
       <div class="ui center aligned padded basic segment">
         <div *ngFor="let document of documents">
           <a
-            [href]="document?.document.documentUrl"
+            [href]="document?.document?.documentUrl"
             target="_blank">
             <i class="fa fa-file-text"></i>
             {{document.createdAt | date: 'yyyy-MM-dd HH:mm'}}
