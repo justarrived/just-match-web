@@ -18,7 +18,6 @@ import {AppTranslateModule} from './app.translate.module';
 import {AtUndInputComponent} from './components/inputs/at-und-input/at-und-input.component';
 import {AutosizeDirective} from './directives/textarea-autosize/textarea-autosize.directive';
 import {BaseButtonComponent} from './components/buttons/base-button/base-button.component';
-import {BaseMessageComponent} from './components/messages/base-message.component';
 import {BasicBorderHeaderComponent} from './components/headers/basic-border-header/basic-border-header.component';
 import {BasicPagerComponent} from './components/pagers/basic-pager/basic-pager.component';
 import {BasicTabComponent} from './components/tabs/basic-tab/basic-tab.component';
@@ -132,6 +131,7 @@ import {SemanticModule} from './semantic/semantic.module';
 import {SignedForJobModalComponent} from './components/modals/signed-for-job-modal/signed-for-job-modal.component';
 import {SignForJobFormComponent} from './components/forms/sign-for-job-form/sign-for-job-form.component';
 import {SignForJobModalComponent} from './components/modals/sign-for-job-modal/sign-for-job-modal.component';
+import {SimpleMessageComponent} from './components/messages/simple-message/simple-message.component';
 import {SkatteverketCertificateInputComponent} from './components/inputs/skatteverket-certificate-input/skatteverket-certificate-input.component';
 import {SkillProficiencyInputComponent} from './components/inputs/skill-proficiency-input/skill-proficiency-input.component';
 import {SkillsInputComponent} from './components/inputs/skills-input/skills-input.component';
@@ -203,7 +203,6 @@ export class RavenErrorHandler implements ErrorHandler {
     AtUndInputComponent,
     AutosizeDirective,
     BaseButtonComponent,
-    BaseMessageComponent,
     BasicBorderHeaderComponent,
     BasicPagerComponent,
     BasicTabComponent,
@@ -299,6 +298,7 @@ export class RavenErrorHandler implements ErrorHandler {
     SignedForJobModalComponent,
     SignForJobFormComponent,
     SignForJobModalComponent,
+    SimpleMessageComponent,
     SkatteverketCertificateInputComponent,
     SkillProficiencyInputComponent,
     SkillsInputComponent,

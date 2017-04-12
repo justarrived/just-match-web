@@ -4,12 +4,12 @@ import {Input} from '@angular/core';
 @Component({
   selector: 'info-message',
   template: `
-  <base-message
+  <simple-message
     [description]="description"
     [header]="header"
     [icon]="icon"
     type="info">
-  </base-message>`
+  </simple-message>`
 })
 export class InfoMessageComponent {
   @Input() public description: string;

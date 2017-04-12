@@ -4,12 +4,12 @@ import {Input} from '@angular/core';
 @Component({
   selector: 'success-message',
   template: `
-  <base-message
+  <simple-message
     [description]="description"
     [header]="header"
     [icon]="icon"
     type="success">
-  </base-message>`
+  </simple-message>`
 })
 export class SuccessMessageComponent {
   @Input() public header: string;

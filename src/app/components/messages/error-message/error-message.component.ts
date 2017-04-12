@@ -4,12 +4,12 @@ import {Input} from '@angular/core';
 @Component({
   selector: 'error-message',
   template: `
-  <base-message
+  <simple-message
     [description]="description"
     [header]="header"
     [icon]="icon"
     type="error">
-  </base-message>`
+  </simple-message>`
 })
 export class ErrorMessageComponent {
   @Input() public description: string;

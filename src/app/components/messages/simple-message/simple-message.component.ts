@@ -2,15 +2,12 @@ import {Component} from '@angular/core';
 import {Input} from '@angular/core';
 
 @Component({
-  selector: 'base-message',
+  selector: 'simple-message',
   template: `
-  <div
-    [ngClass]="{'icon': icon}"
-    class="ui {{type}} visible message">
-    <i
-      [ngClass]="[icon, 'icon']"
-      *ngIf="icon">
-    </i>
+  <sm-message
+    [class]="type"
+    [closeable]="true"
+    [icon]="icon">
     <div class="content">
       <div class="header">
         {{header}}
@@ -19,9 +16,9 @@ import {Input} from '@angular/core';
         {{description}}
       </p>
     </div>
-  </div>`
+  </sm-message>`
 })
-export class BaseMessageComponent {
+export class SimpleMessageComponent {
   @Input() public description: string;
   @Input() public header: string;
   @Input() public icon: string;
