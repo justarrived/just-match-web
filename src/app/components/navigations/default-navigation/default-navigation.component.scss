@@ -8,25 +8,26 @@
   z-index: 1001;
   pointer-events: none;
   height: 100%;
-
   @media screen and (min-width: $lg-device-width) {
     width: $lg-device-width;
     margin: 0 auto;
   }
   @media screen and (max-width: $lg-device-width) {
     width: 100%;
-    max-width: 100vw;
   }
 
   .menu-container {
     height: 100%;
-  }
+    
+    .pusher {
+      position: absolute;
+      left: calc((100% - 100vw)/2);
+      width: 100vw;
 
-  .pusher {
-    position: absolute;
-    width: 100vw;
-    &.dimmed {
-      pointer-events: auto;
+
+      &.dimmed {
+        pointer-events: auto;
+      }
     }
   }
 }

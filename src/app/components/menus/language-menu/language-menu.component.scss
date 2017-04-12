@@ -2,9 +2,8 @@
 @import '../../../styles/dimensions';
 
 .language-menu-container {
-  pointer-events: auto;
   background-color: $color-gray-25 !important;
-  height: 100%;
+  min-height: 100%;
   text-align: center;
 
   .language-menu-logo-container {
@@ -68,7 +67,6 @@
         padding-bottom: 6px;
       }
     }
-
 
     .language-menu-language-text-wrapper:last-of-type {
       border-bottom: 1px solid $color-gray-100;
