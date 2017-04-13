@@ -1,0 +1,169 @@
+<form
+  [@slideInRightOutRight]="animationState"
+  (ngSubmit)="submitForm()"
+  #form="ngForm"
+  class="ui form">
+  <sm-loader
+    [complete]="!loadingSubmit"
+    class="inverted transparent">
+  </sm-loader>
+
+  <first-name-input
+    [apiErrors]="apiErrors"
+    [control]="updateForm.controls.first_name"
+    [hint]="missingUserTraits?.first_name?.hint"
+    *ngIf="missingUserTraitsKeys && missingUserTraitsKeys[currentMissingUserTraitIndex] === 'first_name'">
+  </first-name-input>
+
+  <last-name-input
+    [apiErrors]="apiErrors"
+    [control]="updateForm.controls.last_name"
+    [hint]="missingUserTraits?.last_name?.hint"
+    *ngIf="missingUserTraitsKeys && missingUserTraitsKeys[currentMissingUserTraitIndex] === 'last_name'">
+  </last-name-input>
+
+  <email-input
+    [apiErrors]="apiErrors"
+    [control]="updateForm.controls.email"
+    [hint]="missingUserTraits?.email?.hint"
+    *ngIf="missingUserTraitsKeys && missingUserTraitsKeys[currentMissingUserTraitIndex] === 'email'">
+  </email-input>
+
+  <phone-input
+    [apiErrors]="apiErrors"
+    [control]="updateForm.controls.phone"
+    [hint]="missingUserTraits?.phone?.hint"
+    *ngIf="missingUserTraitsKeys && missingUserTraitsKeys[currentMissingUserTraitIndex] === 'phone'">
+  </phone-input>
+
+  <ssn-input
+    [apiErrors]="apiErrors"
+    [control]="updateForm.controls.ssn"
+    [hint]="missingUserTraits?.ssn?.hint"
+    *ngIf="missingUserTraitsKeys && missingUserTraitsKeys[currentMissingUserTraitIndex] === 'ssn'">
+  </ssn-input>
+
+  <gender-input
+    [apiErrors]="apiErrors"
+    [control]="updateForm.controls.gender"
+    [hint]="missingUserTraits?.gender?.hint"
+    *ngIf="missingUserTraitsKeys && missingUserTraitsKeys[currentMissingUserTraitIndex] === 'gender'">
+  </gender-input>
+
+  <country-of-origin-input
+    [apiErrors]="apiErrors"
+    [control]="updateForm.controls.country_of_origin"
+    [hint]="missingUserTraits?.country_of_origin?.hint"
+    *ngIf="missingUserTraitsKeys && missingUserTraitsKeys[currentMissingUserTraitIndex] === 'country_of_origin'">
+  </country-of-origin-input>
+
+  <street-input
+    [apiErrors]="apiErrors"
+    [control]="updateForm.controls.street"
+    [hint]="missingUserTraits?.street?.hint"
+    *ngIf="missingUserTraitsKeys && missingUserTraitsKeys[currentMissingUserTraitIndex] === 'street'">
+  </street-input>
+
+  <zip-input
+    [apiErrors]="apiErrors"
+    [control]="updateForm.controls.zip"
+    [hint]="missingUserTraits?.zip?.hint"
+    *ngIf="missingUserTraitsKeys && missingUserTraitsKeys[currentMissingUserTraitIndex] === 'zip'">
+  </zip-input>
+
+  <city-input
+    [apiErrors]="apiErrors"
+    [control]="updateForm.controls.city"
+    [hint]="missingUserTraits?.city?.hint"
+    *ngIf="missingUserTraitsKeys && missingUserTraitsKeys[currentMissingUserTraitIndex] === 'city'">
+  </city-input>
+
+  <clearing-number-input
+    [apiErrors]="apiErrors"
+    [control]="updateForm.controls.account_clearing_number"
+    [hint]="missingUserTraits?.account_clearing_number?.hint"
+    *ngIf="missingUserTraitsKeys && missingUserTraitsKeys[currentMissingUserTraitIndex] === 'account_clearing_number'">
+  </clearing-number-input>
+
+  <account-number-input
+    [apiErrors]="apiErrors"
+    [control]="updateForm.controls.account_number"
+    [hint]="missingUserTraits?.account_number?.hint"
+    *ngIf="missingUserTraitsKeys && missingUserTraitsKeys[currentMissingUserTraitIndex] === 'account_number'">
+  </account-number-input>
+
+  <div style="text-align: center">
+    <api-errors
+      attribute="account"
+      [errors]="apiErrors">
+    </api-errors>
+  </div>
+
+  <description-input
+    [apiErrors]="apiErrors"
+    [control]="updateForm.controls.description"
+    [hint]="missingUserTraits?.description?.hint"
+    *ngIf="missingUserTraitsKeys && missingUserTraitsKeys[currentMissingUserTraitIndex] === 'description'">
+  </description-input>
+
+  <status-input
+    [apiErrors]="apiErrors"
+    [control]="updateForm.controls.current_status"
+    [hint]="missingUserTraits?.current_status?.hint"
+    *ngIf="missingUserTraitsKeys && missingUserTraitsKeys[currentMissingUserTraitIndex] === 'current_status'">
+  </status-input>
+
+  <at-und-input
+    [apiErrors]="apiErrors"
+    [control]="updateForm.controls.at_und"
+    [hint]="missingUserTraits?.at_und?.hint"
+    *ngIf="missingUserTraitsKeys && missingUserTraitsKeys[currentMissingUserTraitIndex] === 'at_und'">
+  </at-und-input>
+
+  <languages-input
+    [languagesControl]="updateForm.controls.languages"
+    [userLanguagesControl]="updateForm.controls.user_languages"
+    [apiErrors]="apiErrors"
+    [hint]="missingUserTraits?.language_ids?.hint"
+    [languageIds]="missingUserTraits?.language_ids.ids"
+    *ngIf="missingUserTraitsKeys && missingUserTraitsKeys[currentMissingUserTraitIndex] === 'language_ids'">
+  </languages-input>
+
+  <competence-input
+    [control]="updateForm.controls.competence_text"
+    [apiErrors]="apiErrors"
+    [hint]="missingUserTraits?.competence_text?.hint"
+    *ngIf="missingUserTraitsKeys && missingUserTraitsKeys[currentMissingUserTraitIndex] === 'competence_text'">
+  </competence-input>
+
+  <skills-input
+    [skillsControl]="updateForm.controls.skills"
+    [userSkillsControl]="updateForm.controls.user_skills"
+    [apiErrors]="apiErrors"
+    [hint]="missingUserTraits?.skill_ids?.hint"
+    [skillIds]="missingUserTraits?.skill_ids.ids"
+    *ngIf="missingUserTraitsKeys && missingUserTraitsKeys[currentMissingUserTraitIndex] === 'skill_ids'">
+  </skills-input>
+
+  <education-input
+    [apiErrors]="apiErrors"
+    [control]="updateForm.controls.education"
+    [hint]="missingUserTraits?.education?.hint"
+    *ngIf="missingUserTraitsKeys && missingUserTraitsKeys[currentMissingUserTraitIndex] === 'education'">
+  </education-input>
+
+  <job-experience-input
+    [apiErrors]="apiErrors"
+    [control]="updateForm.controls.job_experience"
+    [hint]="missingUserTraits?.job_experience?.hint"
+    *ngIf="missingUserTraitsKeys && missingUserTraitsKeys[currentMissingUserTraitIndex] === 'job_experience'">
+  </job-experience-input>
+
+  <form-submit-button
+    [buttonText]="'Next' | translate"
+    [showButton]="!isInModal"
+    [showSuccessMessage]="false"
+    [submitFail]="submitFail"
+    [submitSuccess]="submitSuccess">
+  </form-submit-button>
+</form>

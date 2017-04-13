@@ -94,7 +94,9 @@ export class ApplyForJobFormComponent implements OnInit {
     })
     .catch(errors => {
       this.handleServerErrors(errors);
-      throw errors;
+      if (this.isInModal) {
+        throw errors;
+      }
     });
   }
 }

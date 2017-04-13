@@ -63,6 +63,9 @@ export class ApplyForJobModalComponent {
     .then(application => {
       this.onAppliedForJob.emit(application);
       this.hide();
+    })
+    .catch(() => {
+      // Handling done in form.
     });
   }
 }

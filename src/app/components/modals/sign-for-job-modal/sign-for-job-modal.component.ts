@@ -67,6 +67,9 @@ export class SignForJobModalComponent {
     .then(application => {
       this.onSignedForJob.emit(application);
       this.hide();
+    })
+    .catch(() => {
+      // Handling done in form.
     });
   }
 }

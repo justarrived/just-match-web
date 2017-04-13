@@ -30,15 +30,15 @@ import {trigger} from '@angular/animations';
         [src]="job?.company?.logoImage?.imageUrlSmall || '/assets/images/placeholder-logo.png'"
         class="right floated mini ui image">
       <div class="job-header-container">
-        <div class="header job-header">
+        <h5 class="header job-header">
           {{job.translatedText.name}}
-        </div>
+        </h5>
       </div>
       <div class="meta job-company">
         {{job?.company?.name}}
       </div>
       <div class="meta job-city">
-        {{job.city}}
+        Stockholm
       </div>
       <div class="job-description-container">
         <div class="description job-description">

@@ -18,7 +18,7 @@ import {UserDocument} from '../../../models/api-models/user-document/user-docume
     <div class="content">
       <div
         class="ui pink header"
-        [style.margin-bottom]="0">
+        style="margin-bottom: 0; text-align: center;">
         {{header}}
       </div>
     </div>

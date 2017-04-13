@@ -123,7 +123,9 @@ export class ContactFormComponent implements OnInit, OnDestroy {
     })
     .catch(errors => {
       this.handleServerErrors(errors);
-      throw errors;
+      if (this.isInModal) {
+        throw errors;
+      }
     });
   }
 }

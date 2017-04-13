@@ -47,8 +47,10 @@ export class UserProfileFormComponent implements OnInit, OnDestroy {
   private initUser(): void {
     this.user = this.userResolver.getUser();
     this.userSubscription = this.userResolver.getUserChangeEmitter().subscribe(user => {
-      this.user = user;
-      this.initForm();
+      if (user) {
+        this.user = user;
+        this.initForm();
+      }
     });
   }
 
@@ -117,7 +119,9 @@ export class UserProfileFormComponent implements OnInit, OnDestroy {
     })
     .catch(errors => {
       this.handleServerErrors(errors);
-      throw errors;
+      if (this.isInModal) {
+        throw errors;
+      }
     });
   }
 }

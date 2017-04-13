@@ -11,6 +11,11 @@
     width: 100%;
   }
 }
+
+.ui.transparent.dimmer {
+  background-color: transparent;
+}
+
 // A sidebar should be clickable and scrollable
 .ui.sidebar {
   pointer-events: auto;
