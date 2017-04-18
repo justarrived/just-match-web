@@ -3,6 +3,7 @@ import {Component} from '@angular/core';
 @Component({
   template: `
     <welcome-header></welcome-header>
+
     <user-missing-traits-message></user-missing-traits-message>
 
     <new-jobs-section></new-jobs-section>

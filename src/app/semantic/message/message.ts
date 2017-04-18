@@ -8,7 +8,6 @@ import {ViewEncapsulation} from "@angular/core";
 declare var jQuery;
 
 @Component({
-  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: "sm-message",
   template: `
   <div

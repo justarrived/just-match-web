@@ -15,7 +15,6 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
   template: `
     <div class="ui field">
       <label
-        [ngStyle]="{'text-align': (centered && 'center') || 'left'}"
         *ngIf="showLabel">
         {{label}}
       </label>
