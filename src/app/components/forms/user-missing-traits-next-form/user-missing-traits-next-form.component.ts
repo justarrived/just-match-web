@@ -69,7 +69,6 @@ export class UserMissingTraitsNextFormComponent extends SystemLanguageListener i
       this.user = user;
       if (this.user) {
         this.initForm();
-        this.loadData();
       }
     });
   }
