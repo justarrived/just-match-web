@@ -2,6 +2,7 @@ import {ApiErrors} from '../../../models/api-models/api-errors/api-errors';
 import {ChangeDetectorRef} from '@angular/core';
 import {Component} from '@angular/core';
 import {Document} from '../../../models/api-models/document/document';
+import {EventEmitter} from '@angular/core';
 import {FormBuilder} from '@angular/forms';
 import {FormGroup} from '@angular/forms';
 import {Input} from '@angular/core';
@@ -10,7 +11,8 @@ import {MissingUserTraits} from '../../../models/api-models/missing-user-traits/
 import {OnChanges} from '@angular/core';
 import {OnDestroy} from '@angular/core';
 import {OnInit} from '@angular/core';
-import {slideInRightOutRight} from '../../../animations/slide-in-right-out-right/slide-in-right-out-right';
+import {Output} from '@angular/core';
+import {slideInLeftOutLeft} from '../../../animations/slide-in-left-out-left/slide-in-left-out-left';
 import {Subscription} from 'rxjs/Subscription';
 import {SystemLanguageListener} from '../../../resolvers/system-languages/system-languages.resolver';
 import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
@@ -23,16 +25,18 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
 import {Validators} from '@angular/forms';
 
 @Component({
-  animations: [slideInRightOutRight('200ms', '50%')],
+  animations: [slideInLeftOutLeft('200ms', '50%')],
   selector: 'user-missing-traits-next-form',
   templateUrl: './user-missing-traits-next-form.component.html'
 })
-export class UserMssingTraitsNextFormComponent extends SystemLanguageListener implements OnInit, OnDestroy {
+export class UserMissingTraitsNextFormComponent extends SystemLanguageListener implements OnInit, OnDestroy {
   @Input() public isInModal: boolean = false;
+  @Output() public onClose: EventEmitter<any> = new EventEmitter<any>();
 
   public apiErrors: ApiErrors = new ApiErrors([]);
   public animationState: string = 'begin';
   public currentMissingUserTraitIndex: number;
+  public informationProvided: boolean;
   public loadingSubmit: boolean;
   public missingUserTraits: MissingUserTraits;
   public missingUserTraitsKeys: string[];
@@ -116,6 +120,10 @@ export class UserMssingTraitsNextFormComponent extends SystemLanguageListener im
     this.userSubscription.unsubscribe();
   }
 
+  public onCloseButtonClicked(): void {
+    this.onClose.emit();
+  }
+
   private handleServerErrors(errors): void {
     this.submitFail = true;
     this.apiErrors = errors;
@@ -134,6 +142,17 @@ export class UserMssingTraitsNextFormComponent extends SystemLanguageListener im
     this.animationState = 'out';
     setTimeout(() => {
       this.currentMissingUserTraitIndex++;
+      this.animationState = 'begin';
+      setTimeout(() => {
+        this.animationState = 'in';
+      }, 200);
+    }, 200);
+  }
+
+  private infromationProvided(): void {
+    this.animationState = 'out';
+    setTimeout(() => {
+      this.informationProvided = true;
       this.animationState = 'begin';
       setTimeout(() => {
         this.animationState = 'in';
@@ -192,11 +211,10 @@ export class UserMssingTraitsNextFormComponent extends SystemLanguageListener im
       this.userResolver.setUser(user);
       this.submitSuccess = true;
       this.loadingSubmit = false;
-      console.log(this.missingUserTraitsKeys.length);
       if (this.hasNextMissingTrait()) {
         this.nextMissingTrait();
       } else {
-        console.log('no more missing');
+        this.infromationProvided();
       }
       return user;
     })

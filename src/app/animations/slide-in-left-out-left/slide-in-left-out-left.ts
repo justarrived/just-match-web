@@ -4,10 +4,10 @@ import {style} from '@angular/animations';
 import {transition} from '@angular/animations';
 import {trigger} from '@angular/animations';
 
-export function slideInRightOutRight(duration: string, translateDistance: string) {
-  return trigger('slideInRightOutRight', [
+export function slideInLeftOutLeft(duration: string, translateDistance: string) {
+  return trigger('slideInLeftOutLeft', [
       state('begin', style({
-        transform: 'translate3d(-' + translateDistance + ', 0, 0)',
+        transform: 'translate3d(' + translateDistance + ', 0, 0)',
         opacity: 0
       })),
       state('in', style({
@@ -15,7 +15,7 @@ export function slideInRightOutRight(duration: string, translateDistance: string
         opacity: 1
       })),
       state('out', style({
-        transform: 'translate3d(' + translateDistance + ', 0, 0)',
+        transform: 'translate3d(-' + translateDistance + ', 0, 0)',
         opacity: 0
       })),
       transition('begin => in', animate(duration + ' ease-in-out')),

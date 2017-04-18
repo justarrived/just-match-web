@@ -19,7 +19,6 @@ interface MissingUserTraitsApiAttributes {
   skill_ids?: { hint?: string, ids: string[]};
   ssn?: { hint?: string};
   street?: { hint?: string};
-  system_language_id?: { hint?: string};
   zip?: { hint?: string};
 }
 
