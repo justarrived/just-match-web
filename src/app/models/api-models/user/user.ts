@@ -19,12 +19,11 @@ import {UserSkillFactory} from '../user-skill/user-skill';
 
 // API attribute interfaces
 interface UserApiAttributes {
-  accountClearingNumber: string;
-  accountNumber: string;
   admin: boolean;
   anonymized: boolean;
   arrivedAt: Date;
   atUnd: string;
+  bankAccount: string;
   city: string;
   company: Company;
   competenceText: string;
@@ -112,12 +111,11 @@ export class UserFactory {
     const userImages = map(jsonObject.user_images, userImage => UserImageFactory.createUserImage(userImage));
 
     return {
-      accountClearingNumber: jsonObject.account_clearing_number,
-      accountNumber: jsonObject.account_number,
       admin: jsonObject.admin,
       anonymized: jsonObject.anonymized,
       arrivedAt: new Date(jsonObject.arrived_at),
       atUnd: jsonObject.at_und,
+      bankAccount: jsonObject.bank_account,
       city: jsonObject.city,
       company: CompanyFactory.createCompany(jsonObject.company),
       competenceText: jsonObject.competence_text,

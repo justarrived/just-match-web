@@ -65,8 +65,7 @@ export class UserDetailsFormComponent implements OnInit, OnDestroy {
 
   private initSettingsForm(): void {
     this.settingsForm = this.formBuilder.group({
-      'account_clearing_number': [this.user.accountClearingNumber],
-      'account_number': [this.user.accountNumber],
+      'bank_account': [this.user.bankAccount],
       'city': [this.user.city],
       'country_of_origin': [this.user.countryOfOrigin],
       'email': [this.user.email, Validators.compose([Validators.required])],
@@ -110,8 +109,7 @@ export class UserDetailsFormComponent implements OnInit, OnDestroy {
     this.apiErrors = new ApiErrors([]);
 
     return this.userProxy.updateUser(this.user.id, {
-      'account_clearing_number': this.settingsForm.value.account_clearing_number,
-      'account_number': this.settingsForm.value.account_number,
+      'bank_account': this.settingsForm.value.bank_account,
       'city': this.settingsForm.value.city,
       'country_of_origin': this.settingsForm.value.country_of_origin,
       'email': this.settingsForm.value.email,

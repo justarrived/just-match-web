@@ -85,26 +85,12 @@
     *ngIf="!informationProvided && missingUserTraitsKeys && missingUserTraitsKeys[currentMissingUserTraitIndex] === 'city'">
   </city-input>
 
-  <clearing-number-input
+  <bank-account-input
     [apiErrors]="apiErrors"
-    [control]="updateForm.controls.account_clearing_number"
-    [hint]="missingUserTraits?.account_clearing_number?.hint"
-    *ngIf="!informationProvided && missingUserTraitsKeys && missingUserTraitsKeys[currentMissingUserTraitIndex] === 'account_clearing_number'">
-  </clearing-number-input>
-
-  <account-number-input
-    [apiErrors]="apiErrors"
-    [control]="updateForm.controls.account_number"
-    [hint]="missingUserTraits?.account_number?.hint"
-    *ngIf="!informationProvided && missingUserTraitsKeys && missingUserTraitsKeys[currentMissingUserTraitIndex] === 'account_number'">
-  </account-number-input>
-
-  <div style="text-align: center">
-    <api-errors
-      attribute="account"
-      [errors]="apiErrors">
-    </api-errors>
-  </div>
+    [control]="updateForm.controls.bank_account"
+    [hint]="missingUserTraits?.bank_account?.hint"
+    *ngIf="!informationProvided && missingUserTraitsKeys && missingUserTraitsKeys[currentMissingUserTraitIndex] === 'bank_account'">
+  </bank-account-input>
 
   <description-input
     [apiErrors]="apiErrors"

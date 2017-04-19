@@ -75,9 +75,8 @@ export class UserMissingTraitsNextFormComponent extends SystemLanguageListener i
 
   private initForm(): void {
     this.updateForm = this.formBuilder.group({
-      'account_clearing_number': [this.user.accountClearingNumber],
-      'account_number': [this.user.accountNumber],
       'at_und': [this.user.atUnd ? this.user.atUnd : 'no'],
+      'bank_account': [this.user.bankAccount],
       'city': [this.user.city],
       'competence_text': [this.user.competenceText],
       'country_of_origin': [this.user.countryOfOrigin],
@@ -172,15 +171,14 @@ export class UserMissingTraitsNextFormComponent extends SystemLanguageListener i
 
     const updateAttributes = {
       'at_und': this.updateForm.value.at_und,
+      'bank_account': this.updateForm.value.bank_account,
+      'city': this.updateForm.value.city,
       'competence_text': this.updateForm.value.competence_text,
+      'country_of_origin': this.updateForm.value.country_of_origin,
       'current_status': this.updateForm.value.current_status,
+      'cv': null,
       'description': this.updateForm.value.description,
       'education': this.updateForm.value.education,
-      'account_clearing_number': this.updateForm.value.account_clearing_number,
-      'account_number': this.updateForm.value.account_number,
-      'city': this.updateForm.value.city,
-      'country_of_origin': this.updateForm.value.country_of_origin,
-      'cv': null,
       'email': this.updateForm.value.email,
       'first_name': this.updateForm.value.first_name,
       'gender': this.updateForm.value.gender,
