@@ -8,6 +8,7 @@ import {User} from '../../../models/api-models/user/user';
   <user-document-card-input
     [centered]="centered"
     [header]="'input.resume.header' | translate"
+    [hint]="hint"
     [label]="'input.resume.label' | translate"
     [maxNbrDocuments]="1"
     [showLabel]="showLabel"
@@ -17,6 +18,7 @@ import {User} from '../../../models/api-models/user/user';
   `
 })
 export class ResumeInputComponent {
-  @Input() centered: boolean;
-  @Input() showLabel: boolean;
+  @Input() public centered: boolean;
+  @Input() public hint: string;
+  @Input() public showLabel: boolean;
 }

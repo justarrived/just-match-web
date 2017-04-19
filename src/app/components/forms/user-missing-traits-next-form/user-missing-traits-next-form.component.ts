@@ -105,7 +105,7 @@ export class UserMissingTraitsNextFormComponent extends SystemLanguageListener i
   protected loadData(): void {
     if (this.user) {
       this.missingUserTraits = {
-        'first_name': {},
+        'cv': {},
         'last_name': {},
         'phone': {},
         'email': {}
@@ -134,7 +134,7 @@ export class UserMissingTraitsNextFormComponent extends SystemLanguageListener i
   private getRequestedUpdateAttributes(attributeObject: UpdateUserAttributes): UpdateUserAttributes {
     let requestedUpdateAttributes = {};
     let traitName = this.missingUserTraitsKeys[this.currentMissingUserTraitIndex];
-    requestedUpdateAttributes[traitName] = this.missingUserTraits[traitName];
+    requestedUpdateAttributes[traitName] = attributeObject[traitName];
     return requestedUpdateAttributes;
   }
 
@@ -180,6 +180,7 @@ export class UserMissingTraitsNextFormComponent extends SystemLanguageListener i
       'account_number': this.updateForm.value.account_number,
       'city': this.updateForm.value.city,
       'country_of_origin': this.updateForm.value.country_of_origin,
+      'cv': null,
       'email': this.updateForm.value.email,
       'first_name': this.updateForm.value.first_name,
       'gender': this.updateForm.value.gender,
@@ -200,7 +201,6 @@ export class UserMissingTraitsNextFormComponent extends SystemLanguageListener i
       }),
       'ssn': this.updateForm.value.ssn,
       'street': this.updateForm.value.street,
-      'system_language_id': this.updateForm.value.system_language_id,
       'zip': this.updateForm.value.zip,
     };
 

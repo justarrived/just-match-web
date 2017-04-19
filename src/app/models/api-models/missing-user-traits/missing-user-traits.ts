@@ -7,6 +7,7 @@ interface MissingUserTraitsApiAttributes {
   competence_text?: { hint?: string};
   country_of_origin?: { hint?: string};
   current_status?: { hint?: string};
+  cv?: { hint?: string};
   description?: { hint?: string};
   education?: { hint?: string};
   email?: { hint?: string};

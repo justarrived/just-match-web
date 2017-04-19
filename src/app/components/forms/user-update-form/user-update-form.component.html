@@ -222,6 +222,13 @@
     *ngIf="missingUserTraits?.job_experience">
   </job-experience-input>
 
+  <resume-input
+    [centered]="true"
+    [showLabel]="false"
+    [hint]="missingUserTraits?.cv?.hint"
+    *ngIf="missingUserTraits?.cv">
+  </resume-input>
+
   <form-submit-button
     [buttonText]="'user.update.form.submit.button' | translate"
     [showButton]="!isInModal"

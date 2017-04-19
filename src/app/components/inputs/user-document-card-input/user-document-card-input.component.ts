@@ -22,6 +22,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
         (onFileSelect)="onUploadDocument($event)"
         [centered]="centered"
         [header]="header"
+        [hint]="hint"
         [documentSaveFail]="documentSaveFail"
         [documentSaveSuccess]="documentSaveSuccess"
         [documents]="user && user[documentsField]?.slice(-maxNbrDocuments)"
@@ -35,14 +36,17 @@ export class UserDocumentCardInputComponent implements OnInit, OnDestroy {
   @Input() public documentsField: string;
   @Input() public documentType: string;
   @Input() public header: string;
+  @Input() public hint: string;
   @Input() public label: string;
   @Input() public maxNbrDocuments: number = 5;
   @Input() public showLabel: boolean;
   @Input() public subHeader: string;
+
   public documentSaveFail: boolean;
   public documentSaveSuccess: boolean;
   public uploadingDocument: boolean;
   public user: User;
+
   private userSubscription: Subscription;
 
   public constructor(

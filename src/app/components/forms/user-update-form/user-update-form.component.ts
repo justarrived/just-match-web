@@ -122,6 +122,7 @@ export class UserUpdateFormComponent implements OnInit, OnDestroy {
       'account_number': this.updateForm.value.account_number,
       'city': this.updateForm.value.city,
       'country_of_origin': this.updateForm.value.country_of_origin,
+      'cv': null,
       'email': this.updateForm.value.email,
       'first_name': this.updateForm.value.first_name,
       'gender': this.updateForm.value.gender,
@@ -142,7 +143,6 @@ export class UserUpdateFormComponent implements OnInit, OnDestroy {
       }),
       'ssn': this.updateForm.value.ssn,
       'street': this.updateForm.value.street,
-      'system_language_id': this.updateForm.value.system_language_id,
       'zip': this.updateForm.value.zip,
     };
 

@@ -33,7 +33,7 @@ export class FileInputButtonComponent {
   @Input() public icon: string;
   @Input() public kind: string = 'primary'; // One of ['primary', 'primary-light', 'secondary', 'secondary-light', 'inactive-light', 'inactive-dark']
   @Input() public size: string = 'medium'; // One of ['xsmall', 'small', 'medium', 'large']
-  @Output() public onChange: EventEmitter<any> = new EventEmitter();
+  @Output() public onChange: EventEmitter<any> = new EventEmitter<any>();
   @ViewChild('fileInput') public fileInput: ElementRef;
 
   constructor(

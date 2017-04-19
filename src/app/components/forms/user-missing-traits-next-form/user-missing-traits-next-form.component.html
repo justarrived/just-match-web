@@ -166,6 +166,13 @@
     *ngIf="!informationProvided && missingUserTraitsKeys && missingUserTraitsKeys[currentMissingUserTraitIndex] === 'job_experience'">
   </job-experience-input>
 
+  <resume-input
+    [centered]="true"
+    [showLabel]="false"
+    [hint]="missingUserTraits?.cv?.hint"
+    *ngIf="!informationProvided && missingUserTraitsKeys && missingUserTraitsKeys[currentMissingUserTraitIndex] === 'cv'">
+  </resume-input>
+
   <form-submit-button
     [buttonText]="'user.missing.traits.form.submit.button' | translate"
     [showButton]="!isInModal"
