@@ -1,7 +1,9 @@
 import {ChangeDetectionStrategy} from "@angular/core";
 import {Component} from "@angular/core";
 import {ElementRef} from "@angular/core";
+import {EventEmitter} from '@angular/core';
 import {Input} from "@angular/core";
+import {Output} from "@angular/core";
 import {ViewChild} from "@angular/core";
 import {ViewEncapsulation} from "@angular/core";
 
@@ -30,9 +32,11 @@ export class SemanticMessageComponent {
   @Input() public class: string;
   @Input() public closeable: boolean;
   @Input() public icon: string;
+  @Output() public onClosed: EventEmitter<any> = new EventEmitter<any>();
   @ViewChild("message") public message: ElementRef;
 
   public close() {
     jQuery(this.message.nativeElement).transition('fade');
+    this.onClosed.emit();
   }
 }

@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {DataStoreService} from '../../../services/data-store.service';
 import {Input} from '@angular/core';
 import {OnDestroy} from '@angular/core';
 import {OnInit} from '@angular/core';
@@ -13,9 +14,10 @@ import {ViewChild} from '@angular/core';
   selector: 'user-missing-traits-message',
   template: `
   <sm-message
+    (onClosed)="closed()"
     [closeable]="true"
     [style.display]="userMissingTraitsNextFormComponent?.missingUserTraitsKeys?.length > 0 ? 'block' : 'none'"
-    *ngIf="user">
+    *ngIf="user && !suspended">
     <div class="ui basic center aligned segment">
       <h2>
         {{'user.missing.traits.message.header' | translate}}
@@ -38,31 +40,49 @@ export class UserMissingTraitsMessageComponent implements OnInit, OnDestroy {
   @ViewChild(SemanticMessageComponent) public semanticMessageComponent: SemanticMessageComponent;
   @ViewChild(UserMissingTraitsNextFormComponent) public userMissingTraitsNextFormComponent: UserMissingTraitsNextFormComponent;
 
+  public suspended: boolean;
   public user: User;
 
   private userSubscription: Subscription;
+  private readonly userMissingTraitsMessageSuspendedUntilKey: string = 'userMissingTraitsMessageSuspendedUntilKey';
+  private readonly suspensionHours: number = 1;
 
   public constructor(
+    private dataStoreService: DataStoreService,
     private userResolver: UserResolver,
   ) {
   }
 
-  public ngOnInit() {
+  public ngOnInit(): void {
     this.initUser();
+    this.initSuspended();
   }
 
-  private initUser() {
+  private initUser(): void {
     this.user = this.userResolver.getUser();
     this.userSubscription = this.userResolver.getUserChangeEmitter().subscribe(user => {
       this.user = user;
     });
   }
 
-  public ngOnDestroy() {
+  private initSuspended(): void {
+    let suspendedUntil = new Date(this.dataStoreService.get(this.userMissingTraitsMessageSuspendedUntilKey));
+    if (suspendedUntil && new Date() < suspendedUntil) {
+      this.suspended = true;
+    }
+  }
+
+  public ngOnDestroy() : void{
     this.userSubscription.unsubscribe();
   }
 
-  public close() {
+  public close(): void {
     this.semanticMessageComponent.close();
+  }
+
+  public closed(): void {
+    let suspendedUntil = new Date();
+    suspendedUntil.setHours(suspendedUntil.getHours() + this.suspensionHours);
+    this.dataStoreService.set(this.userMissingTraitsMessageSuspendedUntilKey, suspendedUntil);
   }
 }
