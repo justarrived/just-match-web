@@ -10,10 +10,8 @@ dependencies:
     - sudo dpkg -i google-chrome.deb
     - sudo sed -i 's|HERE/chrome\"|HERE/chrome\" --disable-setuid-sandbox|g' /opt/google/chrome/google-chrome
     - rm google-chrome.deb
-  override:
-    - yarn
 
 test:
   override:
-    - yarn test
-    - yarn e2e
+    - npm run test
+    - npm run e2e
