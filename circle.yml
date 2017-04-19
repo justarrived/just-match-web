@@ -17,6 +17,6 @@ dependencies:
 
 test:
   override:
-    - yarn run build
-    - yarn run test
-    - yarn run e2e
+    - yarn run build --progress=false
+    - yarn run test --progress=false
+    - yarn run e2e --progress=false
