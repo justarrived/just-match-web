@@ -12,10 +12,11 @@ dependencies:
     - rm google-chrome.deb
   override:
     - yarn
-    - yarn global add @angular/cli
   cache_directories:
     - ~/.cache/yarn
 
 test:
   override:
     - yarn run build
+    - yarn run test
+    - yarn run e2e
