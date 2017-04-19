@@ -13,7 +13,7 @@ import {Input} from '@angular/core';
       [label]="'input.bank.account.label' | translate"
       [placeholder]="'input.bank.account.placeholder' | translate"
       apiAttribute="bank_account"
-      icon="credit card"
+      icon="pink credit card"
       type="text">
     </text-input>`
 })

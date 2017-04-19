@@ -13,7 +13,7 @@ import {Input} from '@angular/core';
       [label]="'input.phone.label' | translate"
       [placeholder]="'input.phone.placeholder' | translate"
       apiAttribute="phone"
-      icon="phone">
+      icon="pink phone">
     </text-input>`
 })
 export class PhoneInputComponent {

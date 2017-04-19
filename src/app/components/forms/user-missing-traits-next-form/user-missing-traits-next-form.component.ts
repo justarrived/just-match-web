@@ -84,12 +84,14 @@ export class UserMissingTraitsNextFormComponent extends SystemLanguageListener i
       'description': [this.user.description],
       'education': [this.user.education],
       'email': [this.user.email, Validators.compose([Validators.required])],
+      'facebook_url': [this.user.facebookUrl],
       'first_name': [this.user.firstName, Validators.compose([Validators.required, Validators.minLength(2)])],
       'gender': [this.user.gender],
       'got_coordination_number': [this.user.ssn ? 'yes' : 'no'],
       'job_experience': [this.user.jobExperience],
       'languages': [''],
       'last_name': [this.user.lastName, Validators.compose([Validators.required, Validators.minLength(2)])],
+      'linkedin_url': [this.user.linkedinUrl],
       'phone': [this.user.phone, Validators.compose([Validators.required])],
       'skills': [''],
       'ssn': [this.user.ssn],
@@ -105,8 +107,8 @@ export class UserMissingTraitsNextFormComponent extends SystemLanguageListener i
     if (this.user) {
       this.missingUserTraits = {
         'cv': {},
-        'last_name': {},
-        'phone': {},
+        'bank_account': {},
+        'facebook_url': {},
         'email': {}
       };
       this.missingUserTraitsKeys = Object.keys(this.missingUserTraits);
@@ -180,6 +182,7 @@ export class UserMissingTraitsNextFormComponent extends SystemLanguageListener i
       'description': this.updateForm.value.description,
       'education': this.updateForm.value.education,
       'email': this.updateForm.value.email,
+      'facebook_url': this.updateForm.value.facebook_url,
       'first_name': this.updateForm.value.first_name,
       'gender': this.updateForm.value.gender,
       'job_experience': this.updateForm.value.job_experience,
@@ -190,6 +193,7 @@ export class UserMissingTraitsNextFormComponent extends SystemLanguageListener i
         };
       }),
       'last_name':this.updateForm.value.last_name,
+      'linkedin_url': this.updateForm.value.linkedin_url,
       'phone': this.updateForm.value.phone,
       'skill_ids': map(this.updateForm.value.user_skills, userSkill => {
         return {

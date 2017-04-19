@@ -1,25 +1,27 @@
 // API attribute interfaces
 interface MissingUserTraitsApiAttributes {
-  at_und?: { hint?: string};
-  bank_account?: { hint?: string};
-  city?: { hint?: string};
-  competence_text?: { hint?: string};
-  country_of_origin?: { hint?: string};
-  current_status?: { hint?: string};
-  cv?: { hint?: string};
-  description?: { hint?: string};
-  education?: { hint?: string};
-  email?: { hint?: string};
-  first_name?: { hint?: string};
-  gender?: { hint?: string};
-  job_experience?: { hint?: string};
-  language_ids?: { hint?: string, ids: string[]};
-  last_name?: { hint?: string};
-  phone?: { hint?: string};
-  skill_ids?: { hint?: string, ids: string[]};
-  ssn?: { hint?: string};
-  street?: { hint?: string};
-  zip?: { hint?: string};
+  at_und?: {hint?: string};
+  bank_account?: {hint?: string};
+  city?: {hint?: string};
+  competence_text?: {hint?: string};
+  country_of_origin?: {hint?: string};
+  current_status?: {hint?: string};
+  cv?: {hint?: string};
+  description?: {hint?: string};
+  education?: {hint?: string};
+  email?: {hint?: string};
+  facebook_url?: {hint?: string};
+  first_name?: {hint?: string};
+  gender?: {hint?: string};
+  job_experience?: {hint?: string};
+  language_ids?: {hint?: string, ids: string[]};
+  last_name?: {hint?: string};
+  linkedin_url?: {hint?: string};
+  phone?: {hint?: string};
+  skill_ids?: {hint?: string, ids: string[]};
+  ssn?: {hint?: string};
+  street?: {hint?: string};
+  zip?: {hint?: string};
 }
 
 // Client interfaces

@@ -4,20 +4,20 @@ import {FormControl} from '@angular/forms';
 import {Input} from '@angular/core';
 
 @Component({
-  selector: 'name-input',
+  selector: 'linkedin-url-input',
   template: `
     <text-input
       [apiErrors]="apiErrors"
       [control]="control"
       [hint]="hint"
-      [label]="'input.name.label' | translate"
-      [placeholder]="'input.name.placeholder' | translate"
-      apiAttribute="name"
-      icon="pink user"
+      [label]="'input.linkedin.url.label' | translate"
+      [placeholder]="'input.linkedin.url.placeholder' | translate"
+      apiAttribute="linkedin_url"
+      icon="pink linkedin square"
       type="text">
     </text-input>`
 })
-export class NameInputComponent {
+export class LinkedinUrlInputComponent {
   @Input() public apiErrors: ApiErrors;
   @Input() public control: FormControl;
   @Input() public hint: string;

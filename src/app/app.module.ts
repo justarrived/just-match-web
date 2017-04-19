@@ -49,6 +49,7 @@ import {environment} from '../environments/environment';
 import {ErrorHandler } from '@angular/core';
 import {ErrorMessageComponent} from './components/messages/error-message/error-message.component';
 import {ErrorPageComponent} from './components/pages/error-page/error-page.component';
+import {FacebookUrlInputComponent} from './components/inputs/facebook-url-input/facebook-url-input.component';
 import {FaqAccordionComponent} from './components/accordions/faq-accordion/faq-accordion.component';
 import {FaqPageComponent} from './components/pages/faq-page/faq-page.component';
 import {FileInputButtonComponent} from './components/buttons/file-input-button/file-input-button.component';
@@ -85,6 +86,7 @@ import {LanguageMenuComponent} from './components/menus/language-menu/language-m
 import {LanguageProficiencyInputComponent} from './components/inputs/language-proficiency-input/language-proficiency-input.component';
 import {LanguagesInputComponent} from './components/inputs/languages-input/languages-input.component';
 import {LastNameInputComponent} from './components/inputs/last-name-input/last-name-input.component';
+import {LinkedinUrlInputComponent} from './components/inputs/linkedin-url-input/linkedin-url-input.component';
 import {LMACardInputComponent} from './components/inputs/lma-card-input/lma-card-input.component';
 import {LoginFormComponent} from './components/forms/login-form/login-form.component';
 import {LoginModalComponent} from './components/modals/login-modal/login-modal.component';
@@ -230,6 +232,7 @@ export class RavenErrorHandler implements ErrorHandler {
     EmailOrPhoneInputComponent,
     ErrorMessageComponent,
     ErrorPageComponent,
+    FacebookUrlInputComponent,
     FaqAccordionComponent,
     FaqPageComponent,
     FileInputButtonComponent,
@@ -262,6 +265,7 @@ export class RavenErrorHandler implements ErrorHandler {
     LanguageProficiencyInputComponent,
     LanguagesInputComponent,
     LastNameInputComponent,
+    LinkedinUrlInputComponent,
     LMACardInputComponent,
     LoginFormComponent,
     LoginModalComponent,

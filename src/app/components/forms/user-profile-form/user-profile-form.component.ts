@@ -61,7 +61,9 @@ export class UserProfileFormComponent implements OnInit, OnDestroy {
       'current_status': [this.user.currentStatus],
       'description': [this.user.description],
       'education': [this.user.education],
+      'facebook_url': [this.user.facebookUrl],
       'got_coordination_number': [this.user.ssn ? 'yes' : 'no'],
+      'linkedin_url': [this.user.linkedinUrl],
       'job_experience': [this.user.jobExperience],
       'languages': [''],
       'skills': [''],
@@ -94,12 +96,14 @@ export class UserProfileFormComponent implements OnInit, OnDestroy {
       'current_status': this.profileForm.value.current_status,
       'description': this.profileForm.value.description,
       'education': this.profileForm.value.education,
+      'facebook_url': this.profileForm.value.facebook_url,
       'language_ids': map(this.profileForm.value.user_languages, userLanguage => {
         return {
           id: userLanguage['language'].id,
           proficiency: userLanguage['proficiency']
         };
       }),
+      'linkedin_url': this.profileForm.value.linkedin_url,
       'job_experience': this.profileForm.value.job_experience,
       'skill_ids': map(this.profileForm.value.user_skills, userSkill => {
         return {
