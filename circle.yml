@@ -12,12 +12,11 @@ dependencies:
     - rm google-chrome.deb
   override:
     - yarn
-    - yarn config set no-progress
   cache_directories:
     - ~/.cache/yarn
 
 test:
   override:
-    - yarn run build
-    - yarn run test
-    - yarn run e2e
+    - yarn run build --disable-progress
+    - yarn run test --disable-progress
+    - yarn run e2e --disable-progress
