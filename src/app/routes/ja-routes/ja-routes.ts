@@ -10,6 +10,7 @@ export class JARoutes {
   public static forgotPassword: JARoute = { url: () => '/forgot-password'};
   public static home: JARoute = { url: () => '/home'};
   public static guide: JARoute = { url: () => '/guide'};
+  public static guideDetail: JARoute = { url: () => '/guide-detail'};
   public static job: JARoute = { url: (args?: string[]) => '/job/' + args[0]};
   public static jobs: JARoute = { url: (args?: string[]) => '/jobs/' + args[0]};
   public static login: JARoute = { url: () => '/login'};

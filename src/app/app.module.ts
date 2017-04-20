@@ -65,6 +65,7 @@ import {FrilansTermsInputComponent} from './components/inputs/frilans-terms-inpu
 import {GenderInputComponent} from './components/inputs/gender-input/gender-input.component';
 import {GeolocationService} from './services/geolocation.service';
 import {GotCoordinationNumberInputComponent} from './components/inputs/got-coordination-number-input/got-coordination-number-input.component';
+import {GuideDetailPageComponent} from './components/pages/guide-detail-page/guide-detail-page.component';
 import {GuidePageComponent} from './components/pages/guide/guide-page.component';
 import {HomePageComponent} from './components/pages/home-page/home-page.component';
 import {HowItWorksAndMaximizeChancesSectionComponent} from './components/sections/how-it-works-and-maximize-chances-section/how-it-works-and-maximize-chances-section.component';
@@ -243,6 +244,7 @@ export class RavenErrorHandler implements ErrorHandler {
     FrilansTermsInputComponent,
     GenderInputComponent,
     GotCoordinationNumberInputComponent,
+    GuideDetailPageComponent,
     GuidePageComponent,
     HomePageComponent,
     HowItWorksAndMaximizeChancesSectionComponent,
