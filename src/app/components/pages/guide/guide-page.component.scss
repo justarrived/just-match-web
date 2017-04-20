@@ -1,5 +1,10 @@
 @import '../../../styles/colors';
 
+.guide-header-img {
+  height: 80px;
+  width: 80px;
+}
+
 .guide-post-serepator {
   margin-top: 20px;
   margin-bottom: 20px;
@@ -24,8 +29,8 @@
 }
 
 .guide-image {
-  width: 200px;
-  height: 200px;
+  width: 100%;
+  height: 100%;
 }
 
 .guide-header {
@@ -43,9 +48,51 @@
 .guide-bottom-wrapper {
   margin-top: 8px;
   margin-bottom: 8px;
+  margin-bottom: 80px;
 }
 
 .guide-date-text {
   color: $color-gray-200;
   font-size: 18px;
+  text-align: right;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 70px;
+}
+
+.guide-paginator {
+
+  margin-bottom: 40px;
+
+  .guide-paginator-button {
+    width: 40px;
+    height: 40px;
+    color: $color-gray-100;
+    background-color: white;
+    border-radius: 20px;
+    margin-left: 8px;
+    margin-right: 8px;
+    border: 1px solid $color-gray-100;
+    cursor: pointer;
+
+    p {
+      font-size: 18px;
+      line-height: 40px;
+    }
+
+  }
+
+  .guide-paginator-button:hover {
+    background-color: $color-primary-cerise;
+    color: white;
+    border: 0px;
+  }
+
+  .guide-paginator-button-active {
+    background-color: $color-primary-cerise;
+    color: white;
+    border: 0px;
+  }
+
 }
