@@ -13,7 +13,7 @@ import {Input} from '@angular/core';
       [label]="'input.last.name.label' | translate"
       [placeholder]="'input.last.name.placeholder' | translate"
       apiAttribute="last_name"
-      icon="user"
+      icon="pink user"
       type="text">
     </text-input>`
 })

@@ -18,6 +18,21 @@
   </description-input>
 
   <h3 class="ui horizontal divider pink header">
+    <i class="users icon"></i>
+    {{'user.profile.form.social.network.section.header' | translate}}
+  </h3>
+
+  <facebook-url-input
+    [control]="profileForm.controls['facebook_url']"
+    [apiErrors]="apiErrors">
+  </facebook-url-input>
+
+  <linkedin-url-input
+    [control]="profileForm.controls['linkedin_url']"
+    [apiErrors]="apiErrors">
+  </linkedin-url-input>
+
+  <h3 class="ui horizontal divider pink header">
     <i class="id card icon"></i>
     {{'user.profile.form.status.section.header' | translate}}
   </h3>
@@ -131,7 +146,7 @@
 
   <resume-input
     [centered]="true"
-    [showLabel]="true">
+    [showLabel]="false">
   </resume-input>
 
   <job-experience-input

@@ -13,7 +13,7 @@ import {Input} from '@angular/core';
     [label]="'input.email.or.phone.label' | translate"
     [placeholder]="'input.email.or.phone.placeholder' | translate"
     apiAttribute="email_or_phone"
-    icon="mail">
+    icon="pink mail">
   </text-input>
   `
 })

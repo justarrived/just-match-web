@@ -13,7 +13,7 @@ import {Input} from '@angular/core';
       [label]="'input.ssn.label' | translate"
       [placeholder]="'input.ssn.placeholder' | translate"
       apiAttribute="ssn"
-      icon="legal"
+      icon="pink legal"
       type="text">
     </text-input>`
 })

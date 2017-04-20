@@ -13,7 +13,7 @@ import {Input} from '@angular/core';
       [label]="'input.street.label' | translate"
       [placeholder]="'input.street.placeholder' | translate"
       apiAttribute="street"
-      icon="map pin"
+      icon="pink map pin"
       type="text">
     </text-input>`
 })

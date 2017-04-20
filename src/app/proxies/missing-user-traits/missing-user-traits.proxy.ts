@@ -12,8 +12,13 @@ export class MissingUserTraitsProxy {
   }
 
   // GET
-  public getMissingUserTraits(jobId: string, userId: string, searchParameters?: any): Promise<MissingUserTraits> {
+  public getMissingUserTraitsForJob(jobId: string, userId: string, searchParameters?: any): Promise<MissingUserTraits> {
     return this.apiCallService.get('jobs/' + jobId + '/users/' + userId + '/missing-traits', searchParameters)
+    .then(response => MissingUserTraitsFactory.createMissingUserTraits(response.data));
+  }
+
+  public getMissingUserTraits(userId: string, searchParameters?: any): Promise<MissingUserTraits> {
+    return this.apiCallService.get('users/' + userId + '/missing-traits', searchParameters)
     .then(response => MissingUserTraitsFactory.createMissingUserTraits(response.data));
   }
 }

@@ -159,6 +159,20 @@
     *ngIf="!informationProvided && missingUserTraitsKeys && missingUserTraitsKeys[currentMissingUserTraitIndex] === 'cv'">
   </resume-input>
 
+  <facebook-url-input
+    [control]="updateForm.controls['facebook_url']"
+    [apiErrors]="apiErrors"
+    [hint]="missingUserTraits?.facebook_url?.hint"
+    *ngIf="!informationProvided && missingUserTraitsKeys && missingUserTraitsKeys[currentMissingUserTraitIndex] === 'facebook_url'">
+  </facebook-url-input>
+
+  <linkedin-url-input
+    [control]="updateForm.controls['linkedin_url']"
+    [apiErrors]="apiErrors"
+    [hint]="missingUserTraits?.linkedin_url?.hint"
+    *ngIf="!informationProvided && missingUserTraitsKeys && missingUserTraitsKeys[currentMissingUserTraitIndex] === 'linkedin_url'">
+  </linkedin-url-input>
+
   <form-submit-button
     [buttonText]="'user.missing.traits.form.submit.button' | translate"
     [showButton]="!isInModal"

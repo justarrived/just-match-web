@@ -36,6 +36,7 @@ interface UserApiAttributes {
   education: string;
   educationHtml: string;
   email: string;
+  facebookUrl: string;
   firstName: string;
   frilansFinansPaymentDetails: boolean;
   fullStreetAddress: string;
@@ -50,6 +51,7 @@ interface UserApiAttributes {
   languages: Language[];
   lastName: string;
   latitude: number;
+  linkedinUrl: string;
   longitude: number;
   name: string;
   phone: string;
@@ -129,6 +131,7 @@ export class UserFactory {
       education: jsonObject.education,
       educationHtml: jsonObject.education_html,
       email: jsonObject.email,
+      facebookUrl: jsonObject.facebook_url,
       firstName: jsonObject.first_name,
       frilansFinansPaymentDetails: jsonObject.frilans_finans_payment_details,
       fullStreetAddress: jsonObject.full_street_address,
@@ -144,6 +147,7 @@ export class UserFactory {
       languages: map(jsonObject.languages, language => LanguageFactory.createLanguage(language)),
       lastName: jsonObject.last_name,
       latitude: jsonObject.latitude,
+      linkedinUrl: jsonObject.linkedin_url,
       lmaCardImage: UserFactory.getUserImageByCategory(userImages, 'lma_card'),
       longitude: jsonObject.longitude,
       name: jsonObject.name,

@@ -8,6 +8,7 @@ import {FormGroup} from '@angular/forms';
 import {Input} from '@angular/core';
 import {map} from 'lodash';
 import {MissingUserTraits} from '../../../models/api-models/missing-user-traits/missing-user-traits';
+import {MissingUserTraitsProxy} from '../../../proxies/missing-user-traits/missing-user-traits.proxy';
 import {OnChanges} from '@angular/core';
 import {OnDestroy} from '@angular/core';
 import {OnInit} from '@angular/core';
@@ -50,6 +51,7 @@ export class UserMissingTraitsNextFormComponent extends SystemLanguageListener i
   constructor(
     private changeDetector: ChangeDetectorRef,
     private formBuilder: FormBuilder,
+    private missingUserTraitsProxy: MissingUserTraitsProxy,
     private userProxy: UserProxy,
     private userResolver: UserResolver,
     protected systemLanguagesResolver: SystemLanguagesResolver,
@@ -84,12 +86,14 @@ export class UserMissingTraitsNextFormComponent extends SystemLanguageListener i
       'description': [this.user.description],
       'education': [this.user.education],
       'email': [this.user.email, Validators.compose([Validators.required])],
+      'facebook_url': [this.user.facebookUrl],
       'first_name': [this.user.firstName, Validators.compose([Validators.required, Validators.minLength(2)])],
       'gender': [this.user.gender],
       'got_coordination_number': [this.user.ssn ? 'yes' : 'no'],
       'job_experience': [this.user.jobExperience],
       'languages': [''],
       'last_name': [this.user.lastName, Validators.compose([Validators.required, Validators.minLength(2)])],
+      'linkedin_url': [this.user.linkedinUrl],
       'phone': [this.user.phone, Validators.compose([Validators.required])],
       'skills': [''],
       'ssn': [this.user.ssn],
@@ -103,15 +107,14 @@ export class UserMissingTraitsNextFormComponent extends SystemLanguageListener i
 
   protected loadData(): void {
     if (this.user) {
-      this.missingUserTraits = {
-        'cv': {},
-        'last_name': {},
-        'phone': {},
-        'email': {}
-      };
-      this.missingUserTraitsKeys = Object.keys(this.missingUserTraits);
-      this.currentMissingUserTraitIndex = 0;
-      this.animationState = 'in';
+      this.missingUserTraitsProxy.getMissingUserTraits(this.user.id)
+      .then(missingUserTraits => {
+        this.missingUserTraits = missingUserTraits;
+        console.log(missingUserTraits);
+        this.missingUserTraitsKeys = Object.keys(this.missingUserTraits);
+        this.currentMissingUserTraitIndex = 0;
+        this.animationState = 'in';
+      });
     }
   }
 
@@ -180,6 +183,7 @@ export class UserMissingTraitsNextFormComponent extends SystemLanguageListener i
       'description': this.updateForm.value.description,
       'education': this.updateForm.value.education,
       'email': this.updateForm.value.email,
+      'facebook_url': this.updateForm.value.facebook_url,
       'first_name': this.updateForm.value.first_name,
       'gender': this.updateForm.value.gender,
       'job_experience': this.updateForm.value.job_experience,
@@ -190,6 +194,7 @@ export class UserMissingTraitsNextFormComponent extends SystemLanguageListener i
         };
       }),
       'last_name':this.updateForm.value.last_name,
+      'linkedin_url': this.updateForm.value.linkedin_url,
       'phone': this.updateForm.value.phone,
       'skill_ids': map(this.updateForm.value.user_skills, userSkill => {
         return {

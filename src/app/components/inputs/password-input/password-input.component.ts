@@ -13,7 +13,7 @@ import {Input} from '@angular/core';
       [label]="'input.password.label' | translate"
       [placeholder]="'input.password.placeholder' | translate"
       apiAttribute="password"
-      icon="lock"
+      icon="pink lock"
       type="password">
     </text-input>`
 })

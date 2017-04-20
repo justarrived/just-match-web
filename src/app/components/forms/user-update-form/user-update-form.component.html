@@ -120,6 +120,27 @@
   </description-input>
 
   <h3
+    *ngIf="missingUserTraits?.facebook_url || missingUserTraits?.linkedin_url"
+    class="ui horizontal divider pink header">
+    <i class="users icon"></i>
+    {{'user.update.form.social.network.section.header' | translate}}
+  </h3>
+
+  <facebook-url-input
+    [apiErrors]="apiErrors"
+    [control]="updateForm.controls['facebook_url']"
+    [hint]="missingUserTraits?.facebook_url?.hint"
+    *ngIf="missingUserTraits?.facebook_url">
+  </facebook-url-input>
+
+  <linkedin-url-input
+    [apiErrors]="apiErrors"
+    [control]="updateForm.controls['linkedin_url']"
+    [hint]="missingUserTraits?.linkedin_url?.hint"
+    *ngIf="missingUserTraits?.linkedin_url">
+  </linkedin-url-input>
+
+  <h3
     *ngIf="missingUserTraits?.current_status || missingUserTraits?.at_und"
     class="ui horizontal divider pink header">
     <i class="id card icon"></i>
@@ -152,7 +173,7 @@
     [userLanguagesControl]="updateForm.controls.user_languages"
     [apiErrors]="apiErrors"
     [hint]="missingUserTraits?.language_ids?.hint"
-    [languageIds]="missingUserTraits?.language_ids.ids"
+    [languageIds]="missingUserTraits?.language_ids?.ids"
     *ngIf="missingUserTraits?.language_ids">
   </languages-input>
 
@@ -175,7 +196,7 @@
     [userSkillsControl]="updateForm.controls.user_skills"
     [apiErrors]="apiErrors"
     [hint]="missingUserTraits?.skill_ids?.hint"
-    [skillIds]="missingUserTraits?.skill_ids.ids"
+    [skillIds]="missingUserTraits?.skill_ids?.ids"
     *ngIf="missingUserTraits?.skill_ids">
   </skills-input>
 

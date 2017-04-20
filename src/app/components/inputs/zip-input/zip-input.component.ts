@@ -13,7 +13,7 @@ import {Input} from '@angular/core';
       [label]="'input.zip.label' | translate"
       [placeholder]="'input.zip.placeholder' | translate"
       apiAttribute="zip"
-      icon="map"
+      icon="pink map"
       type="text">
     </text-input>`
 })
