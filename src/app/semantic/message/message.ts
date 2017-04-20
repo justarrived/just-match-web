@@ -1,39 +1,42 @@
-import {
-  Component, Input, ChangeDetectionStrategy, ViewEncapsulation, ViewChild, ElementRef,
-  Renderer
-} from "@angular/core";
+import {ChangeDetectionStrategy} from "@angular/core";
+import {Component} from "@angular/core";
+import {ElementRef} from "@angular/core";
+import {EventEmitter} from '@angular/core';
+import {Input} from "@angular/core";
+import {Output} from "@angular/core";
+import {ViewChild} from "@angular/core";
+import {ViewEncapsulation} from "@angular/core";
 
-/**
- * Implementation of Message collection
- *
- * @link http://semantic-ui.com/collections/message.html
- */
+declare var jQuery;
+
 @Component({
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
   selector: "sm-message",
-  styles: [`sm-message { display: block; margin: 1em 0; } message-header {display: block}`],
   template: `
-  <div class="ui message {{class}}" [ngClass]="{'icon': icon}" #message>
-    <i class="close icon" (click)="close()"></i>
-    <i *ngIf="icon" class="icon {{icon}}"></i>
-    <div class="content">
-      <div class="header">
-        <ng-content select="message-header"></ng-content>
-      </div>
-      <ng-content select="message-content"></ng-content>
-    </div>
+  <div
+    class="ui {{class}} visible message"
+    [ngClass]="{'icon': icon}"
+    #message>
+    <i
+      (click)="close()"
+      *ngIf="closeable"
+      class="close icon">
+    </i>
+    <i
+      [ngClass]="[icon, 'icon']"
+      *ngIf="icon">
+    </i>
+    <ng-content></ng-content>
   </div>`
 })
 export class SemanticMessageComponent {
-  @Input() icon: string;
-  @Input() class: string;
-  @ViewChild("message") message: ElementRef;
+  @Input() public class: string;
+  @Input() public closeable: boolean;
+  @Input() public icon: string;
+  @Output() public onClosed: EventEmitter<any> = new EventEmitter<any>();
+  @ViewChild("message") public message: ElementRef;
 
-  constructor(public renderer: Renderer) {
-  }
-
-  close() {
-    this.renderer.detachView([this.message.nativeElement]);
+  public close() {
+    jQuery(this.message.nativeElement).transition('fade');
+    this.onClosed.emit();
   }
 }

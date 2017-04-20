@@ -90,25 +90,26 @@ export class RegisterFormComponent implements OnInit {
     .then(response => {
       this.submitSuccess = true;
       return this.userResolver.login(this.registerForm.value.email, this.registerForm.value.password)
-      .then(user => {
-        if (this.navigateToHome) {
-          this.navigationService.navigate(JARoutes.home);
-        } else {
-          this.modalService.showModal('registeredModalComponent', false, false, this.isInModal ? 400 : 1);
-        }
-        this.loadingSubmit = false;
-        return user;
-      })
       .catch(errors => {
-        this.handleServerErrors(errors);
         this.navigationService.navigate(JARoutes.login);
         throw errors;
       });
     })
+    .then(user => {
+      if (this.navigateToHome) {
+        this.navigationService.navigate(JARoutes.home);
+      } else {
+        this.modalService.showModal('registeredModalComponent', false, false, this.isInModal ? 400 : 1);
+      }
+      this.loadingSubmit = false;
+      return user;
+    })
     .catch(errors => {
       this.handleServerErrors(errors);
       this.showAccountAlreadyExistsModalIfEmailOrPhoneTaken(errors);
-      throw errors;
+      if (this.isInModal) {
+        throw errors;
+      }
     });
   }
 
@@ -121,11 +122,9 @@ export class RegisterFormComponent implements OnInit {
 
   private showAccountAlreadyExistsModalIfEmailOrPhoneTaken(errors: ApiErrors): void {
     if (errors.hasErrorWithType('email', 'taken')) {
-      let takenEmailOrPhone = this.registerForm.value.email;
-      this.modalService.showModal('alreadyRegisteredModalComponent', this.navigateToHome, false, this.isInModal ? 400 : 1, takenEmailOrPhone);
+      this.modalService.showModal('alreadyRegisteredModalComponent', this.navigateToHome, false, this.isInModal ? 400 : 1, this.registerForm.value.email);
     } else if (errors.hasErrorWithType('phone', 'taken')) {
-      let takenEmailOrPhone = this.registerForm.value.phone;
-      this.modalService.showModal('alreadyRegisteredModalComponent', this.navigateToHome, false, this.isInModal ? 400 : 1, takenEmailOrPhone);
+      this.modalService.showModal('alreadyRegisteredModalComponent', this.navigateToHome, false, this.isInModal ? 400 : 1, this.registerForm.value.phone);
     }
   }
 }

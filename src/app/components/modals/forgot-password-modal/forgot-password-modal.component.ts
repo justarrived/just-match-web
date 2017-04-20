@@ -61,6 +61,9 @@ export class ForgotPasswordModalComponent {
     .then(user => {
       this.onPasswordLinkSent.emit();
       this.hide();
+    })
+    .catch(() => {
+      // Handling done in form.
     });
   }
 }

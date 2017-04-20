@@ -20,7 +20,7 @@ import {Job} from '../../../models/api-models/job/job';
         </div>
       </div>
       <div class="meta job-company">
-        {{job.company.name}}
+        {{job?.company?.name}}
       </div>
       <div class="meta job-city">
         {{job.city}}

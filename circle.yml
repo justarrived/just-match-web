@@ -17,5 +17,6 @@ dependencies:
 
 test:
   override:
-    - yarn test
-    - yarn e2e
+    - yarn run build
+    - yarn run test
+    - yarn run e2e

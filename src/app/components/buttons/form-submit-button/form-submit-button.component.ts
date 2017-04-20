@@ -6,12 +6,12 @@ import {Input} from '@angular/core';
   selector: 'form-submit-button',
   template: `
     <error-message
-      *ngIf="submitFail"
+      *ngIf="submitFail && showErrorMessage"
       [header]="'button.form.submit.fail' | translate"
       icon="warning">
     </error-message>
     <success-message
-      *ngIf="submitSuccess && showButton"
+      *ngIf="submitSuccess && showSuccessMessage"
       [header]="'button.form.submit.success' | translate"
       icon="pink thumbs up">
     </success-message>
@@ -34,6 +34,8 @@ export class FormSubmitButtonComponent {
   @Input() public buttonText: string;
   @Input() public icon: string;
   @Input() public showButton: boolean = true;
+  @Input() public showSuccessMessage: boolean = true;
+  @Input() public showErrorMessage: boolean = true;
   @Input() public submitFail: boolean;
   @Input() public submitSuccess: boolean;
 }

@@ -63,6 +63,9 @@ export class RegisterModalComponent {
     .then(user => {
       this.onRegistered.emit(user);
       this.hide();
+    })
+    .catch(() => {
+      // Handling done in form.
     });
   }
 }

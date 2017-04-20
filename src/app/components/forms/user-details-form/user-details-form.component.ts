@@ -51,8 +51,10 @@ export class UserDetailsFormComponent implements OnInit, OnDestroy {
   private initUser(): void {
     this.user = this.userResolver.getUser();
     this.userSubscription = this.userResolver.getUserChangeEmitter().subscribe(user => {
-      this.user = user;
-      this.initForm();
+      if (user) {
+        this.user = user;
+        this.initForm();
+      }
     });
   }
 
@@ -131,36 +133,27 @@ export class UserDetailsFormComponent implements OnInit, OnDestroy {
           'password': this.passwordForm.value.password,
         })
         .then(response => {
-
           // has to relogin to be authenticated now that password changed
-          return this.userResolver.login(this.settingsForm.value.email, this.passwordForm.value.password)
-          .then(user => {
-            this.submitSuccess = true;
-            this.loadingSubmit = false;
-            return user;
-          })
-          .catch(errors => {
-            this.handleServerErrors(errors);
-            this.navigationService.navigate(JARoutes.login);
-            throw errors;
-          });
-
-        })
-        .catch(errors => {
-          this.handleServerErrors(errors);
+          return this.userResolver.login(this.settingsForm.value.email, this.passwordForm.value.password);
+        }).catch(errors => {
+          this.navigationService.navigate(JARoutes.login);
           throw errors;
         });
-
       } else {
-        this.userResolver.setUser(user);
-        this.submitSuccess = true;
-        this.loadingSubmit = false;
         return user;
       }
     })
+    .then(user => {
+      this.userResolver.setUser(user);
+      this.submitSuccess = true;
+      this.loadingSubmit = false;
+      return user;
+    })
     .catch(errors => {
       this.handleServerErrors(errors);
-      throw errors;
+      if (this.isInModal) {
+        throw errors;
+      }
     });
   }
 }

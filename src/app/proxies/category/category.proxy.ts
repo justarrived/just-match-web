@@ -12,7 +12,7 @@ export class CategoryProxy {
   }
 
   // GET
-  public getCategory(categoryId: string, searchParameters?: any): Promise<Category[]> {
+  public getCategory(categoryId: string, searchParameters?: any): Promise<Category> {
     return this.apiCallService.get('categories/' + categoryId, searchParameters)
     .then(response => CategoryFactory.createCategory(response.data));
   }

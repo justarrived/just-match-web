@@ -114,7 +114,9 @@ export class SignForJobFormComponent extends SystemLanguageListener implements O
     })
     .catch(errors => {
       this.handleServerErrors(errors);
-      throw errors;
+      if (this.isInModal) {
+        throw errors;
+      }
     });
   }
 }

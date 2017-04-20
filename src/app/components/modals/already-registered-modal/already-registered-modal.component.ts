@@ -70,6 +70,9 @@ public buttonClicked(): void {
   .then(user => {
     this.onLoggedIn.emit(user);
     this.hide();
+  })
+  .catch(() => {
+    // Handling done in form.
   });
 }
 }

@@ -10,10 +10,9 @@ declare var jQuery: any;
   selector: "sm-accordion",
   styles: [`sm-accordion sm-accordion-item:first-child .title { border-top: none !important; }`],
   template: `
-<div class="ui accordion {{class}}" #accordion>
-    <ng-content></ng-content>
-</div>
-`
+    <div class="ui accordion {{class}}" #accordion>
+        <ng-content></ng-content>
+    </div>`
 })
 export class SemanticAccordionComponent implements AfterViewInit {
   @Input() class: string;
@@ -50,14 +49,13 @@ export class SemanticAccordionComponent implements AfterViewInit {
   changeDetection: ChangeDetectionStrategy.OnPush,
   selector: "sm-accordion-item",
   template: `
-<div class="{{class}} title">
-    <i class="dropdown icon"></i>
-    <ng-content select="accordion-title"></ng-content>
-</div>
-<div class="{{class}} content">
-    <ng-content select="accordion-content"></ng-content>
-</div>
-`
+    <div class="{{class}} title">
+        <i class="dropdown icon"></i>
+        <ng-content select="[accordion-title]"></ng-content>
+    </div>
+    <div class="{{class}} content">
+        <ng-content select="[accordion-content]"></ng-content>
+    </div>`
 })
 export class SemanticAccordionItemComponent {
   @Input() class: string;

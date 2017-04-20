@@ -2,14 +2,20 @@ import {ApiErrors} from '../../../models/api-models/api-errors/api-errors';
 import {ChangeDetectorRef} from '@angular/core';
 import {Component} from '@angular/core';
 import {Document} from '../../../models/api-models/document/document';
+import {EventEmitter} from '@angular/core';
 import {FormBuilder} from '@angular/forms';
 import {FormGroup} from '@angular/forms';
 import {Input} from '@angular/core';
 import {map} from 'lodash';
 import {MissingUserTraits} from '../../../models/api-models/missing-user-traits/missing-user-traits';
+import {OnChanges} from '@angular/core';
 import {OnDestroy} from '@angular/core';
 import {OnInit} from '@angular/core';
+import {Output} from '@angular/core';
+import {slideInLeftOutLeft} from '../../../animations/slide-in-left-out-left/slide-in-left-out-left';
 import {Subscription} from 'rxjs/Subscription';
+import {SystemLanguageListener} from '../../../resolvers/system-languages/system-languages.resolver';
+import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
 import {UpdateUserAttributes} from '../../../proxies/user/user.proxy';
 import {User} from '../../../models/api-models/user/user';
 import {UserDocument} from '../../../models/api-models/user-document/user-document';
@@ -19,15 +25,21 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
 import {Validators} from '@angular/forms';
 
 @Component({
-  selector: 'user-update-form',
-  templateUrl: './user-update-form.component.html'
+  animations: [slideInLeftOutLeft('200ms', '50%')],
+  selector: 'user-missing-traits-next-form',
+  templateUrl: './user-missing-traits-next-form.component.html'
 })
-export class UserUpdateFormComponent implements OnInit, OnDestroy {
-  @Input() public missingUserTraits = null as MissingUserTraits;
+export class UserMissingTraitsNextFormComponent extends SystemLanguageListener implements OnInit, OnDestroy {
   @Input() public isInModal: boolean = false;
+  @Output() public onClose: EventEmitter<any> = new EventEmitter<any>();
 
   public apiErrors: ApiErrors = new ApiErrors([]);
+  public animationState: string = 'begin';
+  public currentMissingUserTraitIndex: number;
+  public informationProvided: boolean;
   public loadingSubmit: boolean;
+  public missingUserTraits: MissingUserTraits;
+  public missingUserTraitsKeys: string[];
   public submitFail: boolean;
   public submitSuccess: boolean;
   public updateForm: FormGroup;
@@ -40,19 +52,22 @@ export class UserUpdateFormComponent implements OnInit, OnDestroy {
     private formBuilder: FormBuilder,
     private userProxy: UserProxy,
     private userResolver: UserResolver,
+    protected systemLanguagesResolver: SystemLanguagesResolver,
   ) {
+    super(systemLanguagesResolver);
   }
 
   public ngOnInit(): void {
     this.initUser();
     this.initForm();
+    this.loadData();
   }
 
   private initUser(): void {
     this.user = this.userResolver.getUser();
     this.userSubscription = this.userResolver.getUserChangeEmitter().subscribe(user => {
-      if (user) {
-        this.user = user;
+      this.user = user;
+      if (this.user) {
         this.initForm();
       }
     });
@@ -87,8 +102,26 @@ export class UserUpdateFormComponent implements OnInit, OnDestroy {
     });
   }
 
+  protected loadData(): void {
+    if (this.user) {
+      this.missingUserTraits = {
+        'cv': {},
+        'last_name': {},
+        'phone': {},
+        'email': {}
+      };
+      this.missingUserTraitsKeys = Object.keys(this.missingUserTraits);
+      this.currentMissingUserTraitIndex = 0;
+      this.animationState = 'in';
+    }
+  }
+
   public ngOnDestroy(): void {
     this.userSubscription.unsubscribe();
+  }
+
+  public onCloseButtonClicked(): void {
+    this.onClose.emit();
   }
 
   private handleServerErrors(errors): void {
@@ -100,10 +133,35 @@ export class UserUpdateFormComponent implements OnInit, OnDestroy {
 
   private getRequestedUpdateAttributes(attributeObject: UpdateUserAttributes): UpdateUserAttributes {
     let requestedUpdateAttributes = {};
-    for (let trait in this.missingUserTraits) {
-      requestedUpdateAttributes[trait] = attributeObject[trait];
-    }
+    let traitName = this.missingUserTraitsKeys[this.currentMissingUserTraitIndex];
+    requestedUpdateAttributes[traitName] = attributeObject[traitName];
     return requestedUpdateAttributes;
+  }
+
+  private nextMissingTrait(): void {
+    this.animationState = 'out';
+    setTimeout(() => {
+      this.currentMissingUserTraitIndex++;
+      this.animationState = 'begin';
+      setTimeout(() => {
+        this.animationState = 'in';
+      }, 200);
+    }, 200);
+  }
+
+  private infromationProvided(): void {
+    this.animationState = 'out';
+    setTimeout(() => {
+      this.informationProvided = true;
+      this.animationState = 'begin';
+      setTimeout(() => {
+        this.animationState = 'in';
+      }, 200);
+    }, 200);
+  }
+
+  private hasNextMissingTrait(): boolean {
+    return this.currentMissingUserTraitIndex < this.missingUserTraitsKeys.length - 1;
   }
 
   public submitForm(): Promise<User> {
@@ -153,6 +211,11 @@ export class UserUpdateFormComponent implements OnInit, OnDestroy {
       this.userResolver.setUser(user);
       this.submitSuccess = true;
       this.loadingSubmit = false;
+      if (this.hasNextMissingTrait()) {
+        this.nextMissingTrait();
+      } else {
+        this.infromationProvided();
+      }
       return user;
     })
     .catch(errors => {

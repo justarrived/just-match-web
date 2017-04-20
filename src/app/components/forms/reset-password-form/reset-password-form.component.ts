@@ -122,7 +122,6 @@ export class ResetPasswordFormComponent implements OnInit {
     })
     .catch(errors => {
       this.handleServerErrors(errors);
-      throw errors;
     });
   }
 

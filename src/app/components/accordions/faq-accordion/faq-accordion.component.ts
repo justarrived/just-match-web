@@ -8,17 +8,23 @@ import {SystemLanguagesResolver} from '../../../resolvers/system-languages/syste
 @Component({
   selector: 'faq-accordion',
   template: `
-  <sm-accordion class="styled fluid" [options]="{ exclusive: true, on: 'mouseenter' }">
-    <sm-accordion-item *ngFor="let faq of faqs | async">
-      <accordion-title>
-        {{faq.translatedText.question}}
-      </accordion-title>
-      <accordion-content >
-        <div class="ui padded raised segment" [innerHTML]="faq.translatedText.answer">
+    <sm-accordion
+      [options]="{ exclusive: true }"
+      class="styled fluid">
+      <sm-accordion-item *ngFor="let faq of faqs | async">
+        <h4
+          accordion-title
+          style="display: inline-block;">
+          {{faq.translatedText.question}}
+        </h4>
+        <div accordion-content>
+          <div
+            [innerHTML]="faq.translatedText.answer"
+            class="ui padded raised segment">
+          </div>
         </div>
-      </accordion-content>
-    </sm-accordion-item>
-  </sm-accordion>`
+      </sm-accordion-item>
+    </sm-accordion>`
 })
 export class FaqAccordionComponent extends SystemLanguageListener implements OnInit {
   public faqs: Promise<Faq[]>;

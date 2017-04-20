@@ -63,6 +63,9 @@ export class JobAdditionalUserInfoModalComponent {
     .then(() => {
       this.onInformationSupplied.emit();
       this.hide();
+    })
+    .catch(() => {
+      // Handling done in form.
     });
   }
 }

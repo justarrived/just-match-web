@@ -17,12 +17,13 @@
 
       .job-header {
         @include truncate-owerflowing-text-multiline($font-size: $fs-l, $line-height: 1.1, $lines-to-show: 3, $excerpt-bg: $white);
+        color: $color-gray-500;
       }
     }
 
     .job-company {
       color: $color-primary-cerise;
-      font-weight: bold;
+      font-weight: lighter;
       @include truncate-owerflowing-text;
     }
 

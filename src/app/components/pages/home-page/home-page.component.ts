@@ -4,6 +4,8 @@ import {Component} from '@angular/core';
   template: `
     <welcome-header></welcome-header>
 
+    <user-missing-traits-message></user-missing-traits-message>
+
     <new-jobs-section></new-jobs-section>
 
     <applications-status-section></applications-status-section>

@@ -1,8 +1,23 @@
 @import './dimensions';
+@import './colors';
 
 .ui.grid {
   margin: 0;
 }
+
+.ui.pink {
+  color: $color-primary-cerise !important;
+}
+
+.ui.pink.header {
+  color: $color-primary-cerise !important;
+}
+
+.ui.pink.label, .ui.pink.labels .label {
+  background-color: $color-primary-cerise !important;
+  border-color: $color-primary-cerise !important;
+}
+
 // Modify lef and right sidebar dimensions
 .ui.left.sidebar,
 .ui.right.sidebar {
@@ -11,6 +26,11 @@
     width: 100%;
   }
 }
+
+.ui.transparent.dimmer {
+  background-color: transparent;
+}
+
 // A sidebar should be clickable and scrollable
 .ui.sidebar {
   pointer-events: auto;
