@@ -8,6 +8,7 @@ import {FormGroup} from '@angular/forms';
 import {Input} from '@angular/core';
 import {map} from 'lodash';
 import {MissingUserTraits} from '../../../models/api-models/missing-user-traits/missing-user-traits';
+import {MissingUserTraitsProxy} from '../../../proxies/missing-user-traits/missing-user-traits.proxy';
 import {OnChanges} from '@angular/core';
 import {OnDestroy} from '@angular/core';
 import {OnInit} from '@angular/core';
@@ -50,6 +51,7 @@ export class UserMissingTraitsNextFormComponent extends SystemLanguageListener i
   constructor(
     private changeDetector: ChangeDetectorRef,
     private formBuilder: FormBuilder,
+    private missingUserTraitsProxy: MissingUserTraitsProxy,
     private userProxy: UserProxy,
     private userResolver: UserResolver,
     protected systemLanguagesResolver: SystemLanguagesResolver,
@@ -105,15 +107,14 @@ export class UserMissingTraitsNextFormComponent extends SystemLanguageListener i
 
   protected loadData(): void {
     if (this.user) {
-      this.missingUserTraits = {
-        'cv': {},
-        'bank_account': {},
-        'facebook_url': {},
-        'email': {}
-      };
-      this.missingUserTraitsKeys = Object.keys(this.missingUserTraits);
-      this.currentMissingUserTraitIndex = 0;
-      this.animationState = 'in';
+      this.missingUserTraitsProxy.getMissingUserTraits(this.user.id)
+      .then(missingUserTraits => {
+        this.missingUserTraits = missingUserTraits;
+        console.log(missingUserTraits);
+        this.missingUserTraitsKeys = Object.keys(this.missingUserTraits);
+        this.currentMissingUserTraitIndex = 0;
+        this.animationState = 'in';
+      });
     }
   }
 

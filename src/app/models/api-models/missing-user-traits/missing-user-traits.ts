@@ -14,11 +14,11 @@ interface MissingUserTraitsApiAttributes {
   first_name?: {hint?: string};
   gender?: {hint?: string};
   job_experience?: {hint?: string};
-  language_ids?: {hint?: string, ids: string[]};
+  language_ids?: {hint?: string, ids?: string[]};
   last_name?: {hint?: string};
   linkedin_url?: {hint?: string};
   phone?: {hint?: string};
-  skill_ids?: {hint?: string, ids: string[]};
+  skill_ids?: {hint?: string, ids?: string[]};
   ssn?: {hint?: string};
   street?: {hint?: string};
   zip?: {hint?: string};
@@ -35,6 +35,7 @@ export class MissingUserTraitsFactory {
       return;
     }
 
+    delete jsonObject.id;
     return jsonObject;
   }
 }

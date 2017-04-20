@@ -173,7 +173,7 @@
     [userLanguagesControl]="updateForm.controls.user_languages"
     [apiErrors]="apiErrors"
     [hint]="missingUserTraits?.language_ids?.hint"
-    [languageIds]="missingUserTraits?.language_ids.ids"
+    [languageIds]="missingUserTraits?.language_ids?.ids"
     *ngIf="missingUserTraits?.language_ids">
   </languages-input>
 
@@ -196,7 +196,7 @@
     [userSkillsControl]="updateForm.controls.user_skills"
     [apiErrors]="apiErrors"
     [hint]="missingUserTraits?.skill_ids?.hint"
-    [skillIds]="missingUserTraits?.skill_ids.ids"
+    [skillIds]="missingUserTraits?.skill_ids?.ids"
     *ngIf="missingUserTraits?.skill_ids">
   </skills-input>
 
