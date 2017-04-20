@@ -1,0 +1,53 @@
+@import '../../../styles/colors';
+
+.guide-header-img {
+  height: 80px;
+  width: 80px;
+}
+
+.guide-header-seperator {
+  width: 80px;
+  height: 1px;
+  background-color: $color-primary-cerise;
+}
+
+.guide-detail-wrapper {
+  padding-left: 20%;
+  padding-right: 20%;
+}
+
+.guide-detail-top-image-wrapper {
+  text-align: center !important;
+}
+
+.guide-detail-image {
+  width: 400px;
+  height: 400px;
+}
+
+.guide-detail-header {
+  color: $color-primary-cerise;
+}
+
+.guide-detail-text {
+  color: $color-gray-200;
+}
+
+.guide-detail-date-text {
+  color: $color-gray-200;
+  font-size: 18px;
+}
+
+.guide-detail-related-links-header {
+  color: $color-primary-cerise;
+  margin-bottom: 20px;
+}
+
+.guide-detail-related-links-link {
+  color: $color-primary-cerise;
+  text-decoration: underline;
+}
+
+.guide-detail-related-links-link-text {
+  color: $color-gray-200;
+}
