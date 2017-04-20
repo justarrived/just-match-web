@@ -1,7 +1,4 @@
-import {AccountNumberInputComponent} from './components/inputs/account-number-input/account-number-input.component';
-import {UserMissingTraitsNextFormComponent} from './components/forms/user-missing-traits-next-form/user-missing-traits-next-form.component';
 import {ActsAsUserService} from './services/acts-as-user.service';
-import {UserMissingTraitsMessageComponent} from './components/messages/user-missing-traits-message/user-missing-traits-message.component';
 import {AgmCoreModule} from '@agm/core';
 import {AlreadyRegisteredModalComponent} from './components/modals/already-registered-modal/already-registered-modal.component';
 import {ApiCallService} from './services/api-call.service';
@@ -19,6 +16,7 @@ import {AppNavbarComponent} from './components/navbars/app-navbar/app-navbar.com
 import {AppTranslateModule} from './app.translate.module';
 import {AtUndInputComponent} from './components/inputs/at-und-input/at-und-input.component';
 import {AutosizeDirective} from './directives/textarea-autosize/textarea-autosize.directive';
+import {BankAccountInputComponent} from './components/inputs/bank-account-input/bank-account-input.component';
 import {BaseButtonComponent} from './components/buttons/base-button/base-button.component';
 import {BasicBorderHeaderComponent} from './components/headers/basic-border-header/basic-border-header.component';
 import {BasicPagerComponent} from './components/pagers/basic-pager/basic-pager.component';
@@ -28,7 +26,6 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {BrowserModule} from '@angular/platform-browser';
 import {CircularImageInputComponent} from './components/inputs/circular-image-input/circular-image-input.component';
 import {CityInputComponent} from './components/inputs/city-input/city-input.component';
-import {ClearingNumberInputComponent} from './components/inputs/clearing-number-input/clearing-number-input.component';
 import {CommentsComponent} from './components/comments/comments.component';
 import {CompactJobCardComponent} from './components/cards/compact-job-card/compact-job-card.component';
 import {CompetenceInputComponent} from './components/inputs/competence-input/competence-input.component';
@@ -151,6 +148,8 @@ import {UserDetailsFormComponent} from './components/forms/user-details-form/use
 import {UserDocumentCardInputComponent} from './components/inputs/user-document-card-input/user-document-card-input.component';
 import {UserImageCardInputComponent} from './components/inputs/user-image-card-input/user-image-card-input.component';
 import {UserImageCircularInputComponent} from './components/inputs/user-image-circular-input/user-image-circular-input.component';
+import {UserMissingTraitsMessageComponent} from './components/messages/user-missing-traits-message/user-missing-traits-message.component';
+import {UserMissingTraitsNextFormComponent} from './components/forms/user-missing-traits-next-form/user-missing-traits-next-form.component';
 import {UserProfileFormComponent} from './components/forms/user-profile-form/user-profile-form.component';
 import {UserProfileHeaderComponent} from './components/headers/user-profile-header/user-profile-header.component';
 import {UserProfilePageComponent} from './components/pages/user-profile-page/user-profile-page.component';
@@ -190,8 +189,6 @@ export class RavenErrorHandler implements ErrorHandler {
     SemanticModule,
   ],
   declarations: [
-    AccountNumberInputComponent,
-    UserMissingTraitsMessageComponent,
     AlreadyRegisteredModalComponent,
     ApiErrorsComponent,
     AppComponent,
@@ -205,6 +202,7 @@ export class RavenErrorHandler implements ErrorHandler {
     AppNavbarComponent,
     AtUndInputComponent,
     AutosizeDirective,
+    BankAccountInputComponent,
     BaseButtonComponent,
     BasicBorderHeaderComponent,
     BasicPagerComponent,
@@ -212,7 +210,6 @@ export class RavenErrorHandler implements ErrorHandler {
     BasicTabsComponent,
     CircularImageInputComponent,
     CityInputComponent,
-    ClearingNumberInputComponent,
     CommentsComponent,
     CompactJobCardComponent,
     CompetenceInputComponent,
@@ -279,7 +276,6 @@ export class RavenErrorHandler implements ErrorHandler {
     NewJobsSectionComponent,
     NewPasswordInputComponent,
     NotFoundPageComponent,
-    UserMissingTraitsNextFormComponent,
     OldPasswordInputComponent,
     PartnersSectionComponent,
     PasswordChangedModalComponent,
@@ -320,6 +316,8 @@ export class RavenErrorHandler implements ErrorHandler {
     UserDocumentCardInputComponent,
     UserImageCardInputComponent,
     UserImageCircularInputComponent,
+    UserMissingTraitsMessageComponent,
+    UserMissingTraitsNextFormComponent,
     UserProfileFormComponent,
     UserProfileHeaderComponent,
     UserProfilePageComponent,

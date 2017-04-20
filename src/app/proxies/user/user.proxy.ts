@@ -5,11 +5,10 @@ import {Injectable} from '@angular/core';
 
 // CREATE
 export interface CreateUserAttributes {
-  account_clearing_number?: string;
-  account_number?: string;
   arbetsformedlingen_registered_at?: Date;
   arrived_at?: Date;
   at_und?: string;
+  bank_account?: string;
   city?: string;
   company_id?: string;
   competence_text?: string;
@@ -42,11 +41,10 @@ export interface CreateUserAttributes {
 
 // UPDATE
 export interface UpdateUserAttributes {
-  account_clearing_number?: string;
-  account_number?: string;
   arbetsformedlingen_registered_at?: Date;
   arrived_at?: Date;
   at_und?: string;
+  bank_account?: string;
   city?: string;
   company_id?: string;
   competence_text?: string;

@@ -1,8 +1,7 @@
 // API attribute interfaces
 interface MissingUserTraitsApiAttributes {
-  account_clearing_number?: { hint?: string};
-  account_number?: { hint?: string};
   at_und?: { hint?: string};
+  bank_account?: { hint?: string};
   city?: { hint?: string};
   competence_text?: { hint?: string};
   country_of_origin?: { hint?: string};

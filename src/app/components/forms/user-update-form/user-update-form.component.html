@@ -92,33 +92,18 @@
   </city-input>
 
   <h3
-    *ngIf="missingUserTraits?.account_clearing_number || missingUserTraits?.account_number"
+    *ngIf="missingUserTraits?.bank_account"
     class="ui horizontal divider pink header">
     <i class="money icon"></i>
     {{'user.update.form.bank.details.header' | translate}}
   </h3>
 
-  <clearing-number-input
+  <bank-account-input
     [apiErrors]="apiErrors"
-    [control]="updateForm.controls.account_clearing_number"
-    [hint]="missingUserTraits?.account_clearing_number?.hint"
-    *ngIf="missingUserTraits?.account_clearing_number">
-  </clearing-number-input>
-
-  <account-number-input
-    [apiErrors]="apiErrors"
-    [control]="updateForm.controls.account_number"
-    [hint]="missingUserTraits?.account_number?.hint"
-    *ngIf="missingUserTraits?.account_number">
-  </account-number-input>
-
-  <!-- The API can return errors for account, which isn't bound to any instance of form control -->
-  <div style="text-align: center">
-    <api-errors
-      attribute="account"
-      [errors]="apiErrors">
-    </api-errors>
-  </div>
+    [control]="updateForm.controls.bank_account"
+    [hint]="missingUserTraits?.bank_account?.hint"
+    *ngIf="missingUserTraits?.bank_account">
+  </bank-account-input>
 
   <h3
     *ngIf="missingUserTraits?.description"
