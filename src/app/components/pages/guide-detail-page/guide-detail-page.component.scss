@@ -12,8 +12,8 @@
 }
 
 .guide-detail-wrapper {
-  padding-left: 20%;
-  padding-right: 20%;
+  padding-left: 8%;
+  padding-right: 8%;
 }
 
 .guide-detail-top-image-wrapper {
@@ -21,8 +21,8 @@
 }
 
 .guide-detail-image {
-  width: 400px;
-  height: 400px;
+  max-width: 400px;
+  height: auto;
 }
 
 .guide-detail-header {
@@ -43,11 +43,26 @@
   margin-bottom: 20px;
 }
 
+.guide-detail-related-links-wrapper {
+  margin-bottom: 80px !important;
+}
+
+.guide-detail-related-links-img-wrapper {
+  text-align: right;
+}
+
+.guide-detail-related-links-img {
+  height:100px;
+  width: 100px
+}
+
 .guide-detail-related-links-link {
   color: $color-primary-cerise;
   text-decoration: underline;
+  text-align: left;
 }
 
 .guide-detail-related-links-link-text {
   color: $color-gray-200;
+  text-align: left;
 }
