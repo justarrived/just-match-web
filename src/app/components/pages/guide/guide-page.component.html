@@ -10,18 +10,16 @@
 
   <div *ngFor="let item of items" class="row stackable">
     <div class="six wide column guide-image-wrapper">
-      <img class="guide-image" src="http://sipxcom.org/wp-content/uploads/2017/03/programming_blog-400x400.jpg" />
+      <img class="guide-image" src="{{item.img}}" />
     </div>
 
     <div class="ten wide column">
       <div class="row">
-        <h2 class="guide-header">Hur man kan söka en lägenhet i Svergie</h2>
+        <h2 class="guide-header">{{item.headerTitle}}</h2>
       </div>
       <div class="row">
-        <p class="guide-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-          Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-          when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-          It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+        <p class="guide-text">
+          {{item.text}}
         </p>
       </div>
       <div class="ui grid row equal width guide-bottom-wrapper">
@@ -34,7 +32,9 @@
           </base-button>
         </div>
         <div class="column">
-          <p class="guide-date-text">23 April 2017</p>
+          <p class="guide-date-text">
+            {{item.date}}
+          </p>
         </div>
       </div>
     </div>

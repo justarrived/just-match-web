@@ -8,6 +8,26 @@ import {JARoutes} from '../../../routes/ja-routes/ja-routes';
 export class GuidePageComponent {
   public JARoutes = JARoutes;
 
-  public items = [1,2,3,4,5];
+  public items =
+    [
+      {
+        'headerTitle' : 'Test1',
+        'text' : 'This is the text This is the text This is the text This is the text This is the text',
+        'date' : '25 April 2017',
+        'img' : 'http://sipxcom.org/wp-content/uploads/2017/03/programming_blog-400x400.jpg'
+      },
+      {
+        'headerTitle' : 'Test2',
+        'text' : 'This is the text This is the text This is the text This is the text This is the text',
+        'date' : '25 April 2017',
+        'img' : 'http://sipxcom.org/wp-content/uploads/2017/03/programming_blog-400x400.jpg'
+      },
+      {
+        'headerTitle' : 'Test3',
+        'text' : 'This is the text This is the text This is the text This is the text This is the text',
+        'date' : '25 April 2017',
+        'img' : 'http://sipxcom.org/wp-content/uploads/2017/03/programming_blog-400x400.jpg'
+      }
+    ];
 
 }
