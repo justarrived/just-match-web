@@ -6,7 +6,9 @@ import {OnInit} from '@angular/core';
   selector: 'circle-pager',
   styleUrls: ['./circle-pager.component.scss'],
   template: `
-  <div class="row circle-pager">
+  <div
+    *ngIf="nbrOfPages != 1"
+    class="row circle-pager">
 
     <div
       *ngFor="let number of numbers"
