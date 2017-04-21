@@ -15,11 +15,13 @@ export class GuideDetailPageComponent {
         {
           'header' : 'Link1',
           'text' : 'Link 1 text Link 1 text Link 1 text Link 1 text Link 1 text Link 1 text Link 1 text Link 1 text',
+          'img' : 'http://sipxcom.org/wp-content/uploads/2017/03/programming_blog-400x400.jpg',
           'url' : 'https://google.se'
         },
         {
           'header' : 'Link2',
           'text' : 'Link 2 text Link 2 text Link 2 text Link 2 text Link 2 text Link 2 text Link 2 text Link 2 text',
+          'img' : 'http://sipxcom.org/wp-content/uploads/2017/03/programming_blog-400x400.jpg',
           'url' : 'https://gp.se'
         }
       ]

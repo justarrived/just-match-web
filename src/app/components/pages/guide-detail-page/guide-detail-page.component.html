@@ -35,7 +35,7 @@
   <div class="ui grid guide-detail-related-links-wrapper">
     <div *ngFor="let link of guideDetailPost.links" class="row">
       <div class="four wide computer only column guide-detail-related-links-img-wrapper">
-        <img class="guide-detail-related-links-img" src="http://sipxcom.org/wp-content/uploads/2017/03/programming_blog-400x400.jpg" />
+        <img class="guide-detail-related-links-img" src="{{link.img}}" />
       </div>
 
       <div class="twelve wide computer sixteen wide mobile column">
