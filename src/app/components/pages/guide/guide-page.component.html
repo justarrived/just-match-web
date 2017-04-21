@@ -5,7 +5,7 @@
   </div>
 
   <div class="row">
-    <h2>Din Guide</h2>
+    <h2>{{ 'guide.header' | translate }}</h2>
   </div>
 
   <div *ngFor="let item of items" class="row stackable">
@@ -27,7 +27,7 @@
       <div class="ui grid row equal width guide-bottom-wrapper">
         <div class="column">
           <base-button
-            [buttonText]="'Läs mer'"
+            [buttonText]="'guide.article.preview.read_more' | translate"
             [routerLink]="JARoutes.guideDetail.url()"
             kind="primary"
             size="small">
