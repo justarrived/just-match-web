@@ -43,24 +43,10 @@
   <!--<div class="guide-post-serepator">
   </div>-->
 
-  <div class="row guide-paginator">
-
-    <div class="guide-paginator-button guide-paginator-button-active">
-      <p>1</p>
-    </div>
-
-    <div class="guide-paginator-button">
-      <p>2</p>
-    </div>
-
-    <div class="guide-paginator-button">
-      <p>3</p>
-    </div>
-
-    <div class="guide-paginator-button">
-      <p>4</p>
-    </div>
-
-  </div>
+  <circle-pager
+    [activePage]="2"
+    [currentPage]="1"
+    [nbrOfPages]="5">
+  </circle-pager>
 
 </div>

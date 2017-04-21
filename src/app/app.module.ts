@@ -25,6 +25,7 @@ import {BasicTabComponent} from './components/tabs/basic-tab/basic-tab.component
 import {BasicTabsComponent} from './components/tabs/basic-tabs/basic-tabs.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {BrowserModule} from '@angular/platform-browser';
+import {CirclePagerComponent} from './components/pagers/circle-pager/circle-pager.component';
 import {CircularImageInputComponent} from './components/inputs/circular-image-input/circular-image-input.component';
 import {CityInputComponent} from './components/inputs/city-input/city-input.component';
 import {ClearingNumberInputComponent} from './components/inputs/clearing-number-input/clearing-number-input.component';
@@ -209,6 +210,7 @@ export class RavenErrorHandler implements ErrorHandler {
     BasicPagerComponent,
     BasicTabComponent,
     BasicTabsComponent,
+    CirclePagerComponent,
     CircularImageInputComponent,
     CityInputComponent,
     ClearingNumberInputComponent,
