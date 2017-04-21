@@ -1,5 +1,14 @@
 @import '../../../styles/colors';
 
+.guide-header-wrapper {
+  text-align: center;
+  background-color: $color-primary-cerise;
+  color: white;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  margin-bottom: 40px;
+}
+
 .guide-header-img {
   height: 80px;
   width: 80px;

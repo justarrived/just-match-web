@@ -1,13 +1,14 @@
-<div class="ui centered grid guide-wrapper">
-
-  <div class="row">
+<div class="guide-header-wrapper">
+  <div>
     <img class="guide-header-img" src="../../../../assets/images/guide-book.png" />
   </div>
 
-  <div class="row">
+  <div>
     <h2>{{ 'guide.header' | translate }}</h2>
   </div>
+</div>
 
+<div class="ui centered grid guide-wrapper">
   <div *ngFor="let guide of guides" class="row stackable">
     <div class="six wide column guide-image-wrapper">
       <img class="guide-image" src="{{guide.img}}" />
