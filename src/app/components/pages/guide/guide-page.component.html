@@ -9,7 +9,7 @@
 </div>
 
 <div class="ui centered grid guide-wrapper">
-  <div *ngFor="let guide of guides" class="row stackable">
+  <div *ngFor="let guide of guides; let isLastElement = last;" class="row stackable">
     <div class="six wide column guide-image-wrapper">
       <img class="guide-image" src="{{guide.img}}" />
     </div>
@@ -39,10 +39,10 @@
         </div>
       </div>
     </div>
-  </div>
 
-  <!--<div class="guide-post-serepator">
-  </div>-->
+    <div *ngIf="!isLastElement" class="guide-post-serepator"></div>
+
+  </div>
 
   <circle-pager
     [activePage]="2"
