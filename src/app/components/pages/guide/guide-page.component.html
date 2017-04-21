@@ -27,8 +27,8 @@
       <div class="ui grid row equal width guide-bottom-wrapper">
         <div class="column">
           <base-button
-            (click)="lol()"
             [buttonText]="'Läs mer'"
+            [routerLink]="JARoutes.guideDetail.url()"
             kind="primary"
             size="small">
           </base-button>
@@ -45,11 +45,11 @@
 
   <div class="row guide-paginator">
 
-    <div class="guide-paginator-button">
+    <div class="guide-paginator-button guide-paginator-button-active">
       <p>1</p>
     </div>
 
-    <div class="guide-paginator-button guide-paginator-button-active">
+    <div class="guide-paginator-button">
       <p>2</p>
     </div>
 
