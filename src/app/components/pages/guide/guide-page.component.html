@@ -8,18 +8,18 @@
     <h2>{{ 'guide.header' | translate }}</h2>
   </div>
 
-  <div *ngFor="let item of items" class="row stackable">
+  <div *ngFor="let guide of guides" class="row stackable">
     <div class="six wide column guide-image-wrapper">
-      <img class="guide-image" src="{{item.img}}" />
+      <img class="guide-image" src="{{guide.img}}" />
     </div>
 
     <div class="ten wide column">
       <div class="row">
-        <h2 class="guide-header">{{item.headerTitle}}</h2>
+        <h2 class="guide-header">{{guide.headerTitle}}</h2>
       </div>
       <div class="row">
         <p class="guide-text">
-          {{item.text}}
+          {{guide.text}}
         </p>
       </div>
       <div class="ui grid row equal width guide-bottom-wrapper">
@@ -33,7 +33,7 @@
         </div>
         <div class="column">
           <p class="guide-date-text">
-            {{item.date}}
+            {{guide.date}}
           </p>
         </div>
       </div>

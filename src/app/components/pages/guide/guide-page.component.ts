@@ -8,7 +8,7 @@ import {JARoutes} from '../../../routes/ja-routes/ja-routes';
 export class GuidePageComponent {
   public JARoutes = JARoutes;
 
-  public items =
+  public guides =
     [
       {
         'headerTitle' : 'Test1',
