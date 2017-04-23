@@ -9,7 +9,7 @@ import {GuardsModule} from '../guards/guards.module';
 import {GuidePageComponent} from '../components/pages/guide/guide-page.component';
 import {HomePageComponent} from '../components/pages/home-page/home-page.component';
 import {JARoute} from './ja-route/ja-route';
-import {JobDetailsComponent} from '../views/job-details/job-details.component';
+import {JobPageComponent} from '../components/pages/job-page/job-page.component';
 import {JobsPageComponent} from '../components/pages/jobs-page/jobs-page.component';
 import {LoggedInGuard} from '../guards/logged-in/logged-in.guard';
 import {LoginPageComponent} from '../components/pages/login-page/login-page.component';
@@ -43,7 +43,7 @@ const routes: Routes = [
     { path: 'forgot-password', component: ForgotPasswordPageComponent, canActivate: [NotLoggedInGuard] },
     { path: 'guide', component: GuidePageComponent, canActivate: [LoggedInGuard] },
     { path: 'home', redirectTo: '' },
-    { path: 'job/:id', component: JobDetailsComponent },
+    { path: 'job/:id', component: JobPageComponent },
     { path: 'jobs', redirectTo: 'jobs/1', pathMatch: 'full' },
     { path: 'jobs/:page', component: JobsPageComponent },
     { path: 'login', component: LoginPageComponent, canActivate: [NotLoggedInGuard] },

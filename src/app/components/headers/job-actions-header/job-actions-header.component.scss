@@ -1,0 +1,19 @@
+@import '../../../styles/colors';
+@import '../../../styles/dimensions';
+@import '../../../styles/typography';
+
+.job-actions-header {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  background-color: $color-cerise-500 !important;
+  color: white;
+  min-height: 300px;
+
+  .job-actions-header-title {
+    @media screen and (max-width: $sm-device-width) {
+      font-size: $fs-xxxl;
+    }
+  }
+}

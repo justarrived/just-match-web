@@ -25,7 +25,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
         [header]="header"
         [imageSaveFail]="imageSaveFail"
         [imageSaveSuccess]="imageSaveSuccess"
-        [imageUrl]="this.user && this.user[this.imageField]?.mediumImageUrl"
+        [imageUrl]="this.user && this.user[this.imageField]?.imageUrlMedium"
         [subHeader]="subHeader"
         [uploadingImage]="uploadingImage">
       </upload-image-card>

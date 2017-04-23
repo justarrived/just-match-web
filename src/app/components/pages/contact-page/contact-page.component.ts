@@ -10,7 +10,8 @@ import {Component} from '@angular/core';
     <div class="fourteen wide phone ten wide tablet eight wide computer column">
       <div class="contact-form-container">
         <div class="contact-form-description">
-          {{"contact.form.description" | translate}}<br>
+          {{"contact.form.description" | translate}}
+          <br>
           {{"contact.form.instruction" | translate}}
         </div>
 

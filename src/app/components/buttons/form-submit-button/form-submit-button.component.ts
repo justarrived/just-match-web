@@ -24,8 +24,8 @@ import {Input} from '@angular/core';
         [icon]="icon"
         *ngIf="showButton"
         buttonType="submit"
-        kind="secondary"
-        size="medium">
+        [kind]="kind"
+        [size]="size">
       </base-button>
       <ng-content></ng-content>
     </div>`
@@ -33,9 +33,11 @@ import {Input} from '@angular/core';
 export class FormSubmitButtonComponent {
   @Input() public buttonText: string;
   @Input() public icon: string;
+  @Input() public kind: string = 'secondary';
   @Input() public showButton: boolean = true;
-  @Input() public showSuccessMessage: boolean = true;
   @Input() public showErrorMessage: boolean = true;
+  @Input() public showSuccessMessage: boolean = true;
+  @Input() public size: string = 'medium';
   @Input() public submitFail: boolean;
   @Input() public submitSuccess: boolean;
 }

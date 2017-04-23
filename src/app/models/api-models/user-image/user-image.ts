@@ -7,11 +7,11 @@ interface UserImageApiAttributes {
   categoryName: string;
   id: string;
   imageUrl: string;
-  largeImageUrl: string;
-  mediumImageUrl: string;
+  imageUrlLarge: string;
+  imageUrlMedium: string;
   oneTimeToken: string;
   oneTimeTokenExpiresAt: Date;
-  smallImageUrl: string;
+  imageUrlSmall: string;
   user: User;
 }
 
@@ -31,11 +31,11 @@ export class UserImageFactory {
       categoryName: jsonObject.category_name,
       id: jsonObject.id,
       imageUrl: jsonObject.image_url,
-      largeImageUrl: jsonObject.image_url_large,
-      mediumImageUrl: jsonObject.image_url_medium,
+      imageUrlLarge: jsonObject.image_url_large,
+      imageUrlMedium: jsonObject.image_url_medium,
       oneTimeToken: jsonObject.one_time_token,
       oneTimeTokenExpiresAt: new Date(jsonObject.one_time_token_expires_at),
-      smallImageUrl: jsonObject.image_url_small,
+      imageUrlSmall: jsonObject.image_url_small,
       user: UserFactory.createUser(jsonObject.user),
     };
   }

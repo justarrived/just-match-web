@@ -8,7 +8,7 @@ interface CreateCommentAttributes {
   body: string;
   commentable_id: string;
   commentable_type: string;
-  language_id: string;
+  language_id?: string;
 }
 
 // UPDATE

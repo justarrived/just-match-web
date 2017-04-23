@@ -37,10 +37,10 @@ import {Validators} from '@angular/forms';
         [apiErrors]="apiErrors">
       </email-input>
 
-      <message-input
-        [control]="contactForm.controls['message']"
+      <contact-message-input
+        [control]="contactForm.controls['body']"
         [apiErrors]="apiErrors">
-      </message-input>
+      </contact-message-input>
 
       <form-submit-button
         [showButton]="!isInModal"
@@ -89,7 +89,7 @@ export class ContactFormComponent implements OnInit, OnDestroy {
     const email: string = this.user ? this.user.email : '';
     this.contactForm = this.formBuilder.group({
       'email': [email, Validators.compose([Validators.required, Validators.minLength(6)])],
-      'message': ['', Validators.compose([Validators.required, Validators.minLength(2)])],
+      'body': ['', Validators.compose([Validators.required, Validators.minLength(2)])],
       'name': [name, Validators.compose([Validators.required, Validators.minLength(2)])]
     });
   }
@@ -111,7 +111,7 @@ export class ContactFormComponent implements OnInit, OnDestroy {
     this.submitSuccess = false;
 
     return this.contactProxy.createContactNotification({
-      body: this.contactForm.value.message,
+      body: this.contactForm.value.body,
       email: this.contactForm.value.email,
       name: this.contactForm.value.name
     })

@@ -30,6 +30,11 @@ export class ApplicationProxy {
     .then(response => ApplicationFactory.createApplication(response.data));
   }
 
+  public getUserApplicationForJob(userId: string, jobId: string, searchParameters?: any): Promise<Application> {
+    return this.apiCallService.get('jobs/' + jobId + '/users/' + userId + '/job-user', searchParameters)
+    .then(response => ApplicationFactory.createApplication(response.data));
+  }
+
   public getJobApplications(jobId: string, searchParameters?: any): Promise<Application[]> {
     return this.apiCallService.get('jobs/' + jobId + '/users', searchParameters)
     .then(response => response.data.map(application => ApplicationFactory.createApplication(application)));

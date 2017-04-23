@@ -11,8 +11,13 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
   selector: 'welcome-header',
   template: `
     <div class="welcome-header-container">
-      <img class="welcome-header-map-image" src="/assets/images/startpagemap.png" alt="Map" />
-      <div class="welcome-header-info-container welcome-header-info-container-logged-in" *ngIf="user">
+      <img
+        alt="Map"
+        class="welcome-header-map-image"
+        src="/assets/images/startpagemap.png" />
+      <div
+        *ngIf="user"
+        class="welcome-header-info-container welcome-header-info-container-logged-in">
         <h2 class="welcome-header-info-title">
           {{'home.header.logged.in.title'| translate: {username: user.firstName} }}
         </h2>
@@ -34,7 +39,9 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
           </base-button>
         </div>
       </div>
-      <div class="welcome-header-info-container" *ngIf="!user">
+      <div
+        *ngIf="!user"
+        class="welcome-header-info-container">
         <h2 class="welcome-header-info-title">
           {{'home.header.logged.out.title' | translate }}
         </h2>
