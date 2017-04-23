@@ -64,6 +64,14 @@ $fs-xxxxl: 48px;
   }
 }
 
+.truncate-owerflowing-text {
+  @include truncate-owerflowing-text;
+}
+
+.wrap-long-words {
+  @include wrap-long-words;
+}
+
 @font-face {
   font-family: 'museo';
   src: url('/assets/fonts/museo/museo-300.otf') format('opentype');

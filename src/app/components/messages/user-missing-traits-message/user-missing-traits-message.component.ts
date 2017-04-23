@@ -45,7 +45,7 @@ export class UserMissingTraitsMessageComponent implements OnInit, OnDestroy {
 
   private userSubscription: Subscription;
   private readonly userMissingTraitsMessageSuspendedUntilKey: string = 'userMissingTraitsMessageSuspendedUntilKey';
-  private readonly suspensionHours: number = 1;
+  private readonly suspensionHours: number = 3;
 
   public constructor(
     private dataStoreService: DataStoreService,

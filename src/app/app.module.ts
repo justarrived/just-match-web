@@ -26,11 +26,13 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {BrowserModule} from '@angular/platform-browser';
 import {CircularImageInputComponent} from './components/inputs/circular-image-input/circular-image-input.component';
 import {CityInputComponent} from './components/inputs/city-input/city-input.component';
-import {CommentsComponent} from './components/comments/comments.component';
+import {CommentInputComponent} from './components/inputs/comment-input/comment-input.component';
+import {CommentsFormComponent} from './components/forms/comments-form/comments-form.component';
 import {CompactJobCardComponent} from './components/cards/compact-job-card/compact-job-card.component';
 import {CompetenceInputComponent} from './components/inputs/competence-input/competence-input.component';
 import {ConfirmationModalComponent} from './components/modals/confirmation-modal/confirmation-modal.component';
 import {ContactFormComponent} from './components/forms/contact-form/contact-form.component';
+import {ContactMessageInputComponent} from './components/inputs/contact-message-input/contact-message-input.component';
 import {ContactMessageSentModalComponent} from './components/modals/contact-message-sent-modal/contact-message-sent-modal.component';
 import {ContactPageComponent} from './components/pages/contact-page/contact-page.component';
 import {CookieBarComponent} from './components/bars/cookie-bar/cookie-bar.component';
@@ -74,11 +76,18 @@ import {InputErrorComponent} from './components/form-errors/input-error/input-er
 import {InputErrorsComponent} from './components/form-errors/input-errors/input-errors.component';
 import {InputHintLabelComponent} from './components/labels/input-hint-label/input-hint-label.component';
 import {JARoutes} from './routes/ja-routes/ja-routes';
+import {JobActionsHeaderComponent} from './components/headers/job-actions-header/job-actions-header.component';
+import {JobActionsSectionComponent} from './components/sections/job-actions-section/job-actions-section.component';
 import {JobAdditionalUserInfoModalComponent} from './components/modals/job-additional-user-info-modal/job-additional-user-info-modal.component';
 import {JobCardComponent} from './components/cards/job-card/job-card.component';
-import {JobDetailsComponent} from './views/job-details/job-details.component';
+import {JobCommentsSectionComponent} from './components/sections/job-comments-section/job-comments-section.component';
+import {JobDescriptionSectionComponent} from './components/sections/job-description-section/job-description-section.component';
 import {JobExperienceInputComponent} from './components/inputs/job-experience-input/job-experience-input.component';
+import {JobInformationSectionComponent} from './components/sections/job-information-section/job-information-section.component';
+import {JobLocationSectionComponent} from './components/sections/job-location-section/job-location-section.component';
 import {JobMapMarkerComponent} from './components/map-markers/job-map-marker/job-map-marker.component';
+import {JobPageComponent} from './components/pages/job-page/job-page.component';
+import {JobScopeSectionComponent} from './components/sections/job-scope-section/job-scope-section.component';
 import {JobsMapComponent} from './components/maps/jobs-map/jobs-map.component';
 import {JobsPageComponent} from './components/pages/jobs-page/jobs-page.component';
 import {JobsPagerSectionComponent} from './components/sections/jobs-pager-section/jobs-pager-section.component';
@@ -93,7 +102,6 @@ import {LoginModalComponent} from './components/modals/login-modal/login-modal.c
 import {LoginPageComponent} from './components/pages/login-page/login-page.component';
 import {LostConnectionPageComponent} from './components/pages/lost-connection-page/lost-connection-page.component';
 import {MaximizeChancessSectionComponent} from './components/sections/maximize-chances-section/maximize-chances-section.component';
-import {MessageInputComponent} from './components/inputs/message-input/message-input.component';
 import {ModalService} from './services/modal.service';
 import {MyJobsComponent} from './views/my-jobs/my-jobs.component';
 import {MyJobsItemComponent} from './components/my-jobs-item/my-jobs-item.component';
@@ -201,7 +209,10 @@ export class RavenErrorHandler implements ErrorHandler {
     ApplyForJobFormComponent,
     ApplyForJobModalComponent,
     ApplyMessageInputComponent,
+    CommentInputComponent,
     AppNavbarComponent,
+    JobCommentsSectionComponent,
+    JobScopeSectionComponent,
     AtUndInputComponent,
     AutosizeDirective,
     BankAccountInputComponent,
@@ -212,11 +223,13 @@ export class RavenErrorHandler implements ErrorHandler {
     BasicTabsComponent,
     CircularImageInputComponent,
     CityInputComponent,
-    CommentsComponent,
+    CommentsFormComponent,
     CompactJobCardComponent,
     CompetenceInputComponent,
     ConfirmationModalComponent,
     ContactFormComponent,
+    JobActionsHeaderComponent,
+    JobScopeSectionComponent,
     ContactMessageSentModalComponent,
     ContactPageComponent,
     CookieBarComponent,
@@ -232,11 +245,14 @@ export class RavenErrorHandler implements ErrorHandler {
     EmailOrPhoneInputComponent,
     ErrorMessageComponent,
     ErrorPageComponent,
+    JobActionsSectionComponent,
+    JobInformationSectionComponent,
     FacebookUrlInputComponent,
     FaqAccordionComponent,
     FaqPageComponent,
     FileInputButtonComponent,
     FirstNameInputComponent,
+    JobLocationSectionComponent,
     ForbiddenPageComponent,
     ForgotPasswordFormComponent,
     ForgotPasswordModalComponent,
@@ -255,9 +271,10 @@ export class RavenErrorHandler implements ErrorHandler {
     InputHintLabelComponent,
     JobAdditionalUserInfoModalComponent,
     JobCardComponent,
-    JobDetailsComponent,
+    JobDescriptionSectionComponent,
     JobExperienceInputComponent,
     JobMapMarkerComponent,
+    JobPageComponent,
     JobsMapComponent,
     JobsPageComponent,
     JobsPagerSectionComponent,
@@ -272,7 +289,7 @@ export class RavenErrorHandler implements ErrorHandler {
     LoginPageComponent,
     LostConnectionPageComponent,
     MaximizeChancessSectionComponent,
-    MessageInputComponent,
+    ContactMessageInputComponent,
     MyJobsComponent,
     MyJobsItemComponent,
     NameInputComponent,

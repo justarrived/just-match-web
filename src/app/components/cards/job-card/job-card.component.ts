@@ -38,7 +38,7 @@ import {trigger} from '@angular/animations';
         {{job?.company?.name}}
       </div>
       <div class="meta job-city">
-        Stockholm
+        {{job.city}}
       </div>
       <div class="job-description-container">
         <div class="description job-description">

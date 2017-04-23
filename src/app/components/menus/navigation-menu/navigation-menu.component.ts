@@ -101,7 +101,7 @@ import {ViewChild} from '@angular/core';
             [routerLink]="JARoutes.user.url()">
             <img
               class="ui centered tiny circular image"
-              [src]="this.user.profileImage?.mediumImageUrl || '/assets/images/placeholder-profile-image.png'">
+              [src]="this.user.profileImage?.imageUrlMedium || '/assets/images/placeholder-profile-image.png'">
             <h4>{{user.name}}</h4>
           </div>
 

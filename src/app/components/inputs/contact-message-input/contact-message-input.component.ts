@@ -4,20 +4,20 @@ import {FormControl} from '@angular/forms';
 import {Input} from '@angular/core';
 
 @Component({
-  selector: 'message-input',
+  selector: 'contact-message-input',
   template: `
   <textarea-input
     [apiErrors]="apiErrors"
     [control]="control"
     [hint]="hint"
-    [label]="'input.message.label' | translate"
-    [placeholder]="'input.message.placeholder' | translate"
+    [label]="'input.contact.message.label' | translate"
+    [placeholder]="'input.contact.message.placeholder' | translate"
     [rows]="10"
     apiAttribute="body">
   </textarea-input>
   `
 })
-export class MessageInputComponent {
+export class ContactMessageInputComponent {
   @Input() public apiErrors: ApiErrors;
   @Input() public control: FormControl;
   @Input() public hint: string;
