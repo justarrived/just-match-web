@@ -119,11 +119,9 @@ export class JobActionsSectionComponent extends SystemLanguageListener implement
         this.missingUserTraits = missingUserTraits
       }));
 
-      dataPromises.push(this.applicationProxy.getUserApplications(this.user.id, {
-        'filter[job_id]': this.job.id
-      })
-      .then(response => {
-        this.application = response[0];
+      dataPromises.push(this.applicationProxy.getUserApplicationForJob(this.user.id, this.job.id)
+      .then(application => {
+        this.application = application;
         this.applicationChange.emit(this.application);
       }));
     }
