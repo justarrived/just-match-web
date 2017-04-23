@@ -28,7 +28,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
         class="inverted">
       </sm-loader>
       <h1 class="job-actions-header-title wrap-long-words">
-        {{job.name}}
+        {{job.translatedText.name}}
       </h1>
       <base-button
         (click)="onApplyForJobButtonClick()"

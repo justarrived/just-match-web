@@ -26,7 +26,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
       </sm-loader>
       <i class="ui big circular inverted pink pointing down icon"></i>
       <h3 class="underline-border-below underline-border-below-centered underline-border-below-pink">
-        {{job.name}}
+        {{job.translatedText.name}}
       </h3>
       <base-button
         (click)="onApplyForJobButtonClick()"
