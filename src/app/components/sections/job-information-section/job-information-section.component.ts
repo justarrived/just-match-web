@@ -19,7 +19,7 @@ import {Job} from '../../../models/api-models/job/job'
           style="padding-left: 0; padding-right: 0">
           <i class="ui big circular inverted pink building outline icon"></i>
           <h5 class="wrap-long-words">
-            {{job.company.name}}
+            {{job?.company?.name}}
           </h5>
         </div>
         <div

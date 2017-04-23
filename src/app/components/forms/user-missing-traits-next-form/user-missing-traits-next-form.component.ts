@@ -110,7 +110,6 @@ export class UserMissingTraitsNextFormComponent extends SystemLanguageListener i
       this.missingUserTraitsProxy.getMissingUserTraits(this.user.id)
       .then(missingUserTraits => {
         this.missingUserTraits = missingUserTraits;
-        console.log(missingUserTraits);
         this.missingUserTraitsKeys = Object.keys(this.missingUserTraits);
         this.currentMissingUserTraitIndex = 0;
         this.animationState = 'in';

@@ -15,7 +15,7 @@
         <span *ngIf="application.willPerform && application.jobEnded">{{'assignment.status.performed' | translate}}</span>
       </p>
 
-      <p *ngIf="section == 'history'">{{application.job.company.name}}</p>
+      <p *ngIf="section == 'history'">{{application?.job?.company?.name}}</p>
     </section>
   </div>
 </div>
