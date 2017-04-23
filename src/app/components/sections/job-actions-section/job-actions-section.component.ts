@@ -36,7 +36,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
         size="medium">
       </base-button>
       <div
-        style="width: 300px; margin: 0 auto"
+        style="max-width: 300px; margin: 0 auto"
         *ngIf="!user">
         <base-button
           (click)="onRegisterButtonClick()"
