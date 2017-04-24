@@ -8,12 +8,13 @@ import {Output} from '@angular/core';
 @Component({
   selector: 'skill-proficiency-input',
   template: `
-    <div style="margin-bottom: 10px">
+    <div style="margin-bottom: 10px; display: flex; align-items: center; flex-wrap: wrap;">
       <rating-input
         (onRate)="onRating($event)"
         [initialRating]="initialRating"
         [maxRating]="5"
-        type="star">
+        type="star"
+        style="padding-top: 5px; padding-right: 5px;">
       </rating-input>
       <div class="ui tag pink label">
         {{label}}

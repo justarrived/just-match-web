@@ -6,14 +6,14 @@ import {Input} from '@angular/core';
 import {Output} from '@angular/core';
 
 @Component({
-  selector: 'language-proficiency-input',
+  selector: 'interest-level-input',
   template: `
     <div style="margin-bottom: 10px; display: flex; align-items: center; flex-wrap: wrap;">
       <rating-input
         (onRate)="onRating($event)"
         [initialRating]="initialRating"
         [maxRating]="5"
-        type="star"
+        type="heart"
         style="padding-top: 5px; padding-right: 5px;">
       </rating-input>
       <div class="ui tag pink label">
@@ -25,7 +25,7 @@ import {Output} from '@angular/core';
       </div>
     </div>`
 })
-export class LanguageProficiencyInputComponent {
+export class InterestLevelInputComponent {
   @Input() public initialRating: number;
   @Input() public label: string;
   @Output() public onDelete = new EventEmitter();
@@ -34,6 +34,7 @@ export class LanguageProficiencyInputComponent {
   public onRating(value) {
     this.onRate.emit(value);
   }
+
 
   public onDeleteIconClick() {
     this.onDelete.emit();
