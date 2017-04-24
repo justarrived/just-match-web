@@ -118,7 +118,7 @@
     [userLanguagesControl]="updateForm.controls.user_languages"
     [apiErrors]="apiErrors"
     [hint]="missingUserTraits?.language_ids?.hint"
-    [languageIds]="missingUserTraits?.language_ids.ids"
+    [languageIds]="missingUserTraits?.language_ids?.ids"
     *ngIf="!informationProvided && missingUserTraitsKeys && missingUserTraitsKeys[currentMissingUserTraitIndex] === 'language_ids'">
   </languages-input>
 
@@ -134,9 +134,18 @@
     [userSkillsControl]="updateForm.controls.user_skills"
     [apiErrors]="apiErrors"
     [hint]="missingUserTraits?.skill_ids?.hint"
-    [skillIds]="missingUserTraits?.skill_ids.ids"
+    [skillIds]="missingUserTraits?.skill_ids?.ids"
     *ngIf="!informationProvided && missingUserTraitsKeys && missingUserTraitsKeys[currentMissingUserTraitIndex] === 'skill_ids'">
   </skills-input>
+
+  <interests-input
+    [interestsControl]="updateForm.controls['interests']"
+    [userInterestsControl]="updateForm.controls['user_interests']"
+    [apiErrors]="apiErrors"
+    [hint]="missingUserTraits?.interest_ids?.hint"
+    [interestIds]="missingUserTraits?.interest_ids?.ids"
+    *ngIf="!informationProvided && missingUserTraitsKeys && missingUserTraitsKeys[currentMissingUserTraitIndex] === 'interest_ids'">
+  </interests-input>
 
   <education-input
     [apiErrors]="apiErrors"
