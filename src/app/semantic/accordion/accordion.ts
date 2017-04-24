@@ -49,7 +49,7 @@ export class SemanticAccordionComponent implements AfterViewInit {
   changeDetection: ChangeDetectionStrategy.OnPush,
   selector: "sm-accordion-item",
   template: `
-    <div class="{{class}} title">
+    <div class="{{class}} title" style="display: flex; flex-wrap: nowrap; align-items: center;">
         <i class="dropdown icon"></i>
         <ng-content select="[accordion-title]"></ng-content>
     </div>

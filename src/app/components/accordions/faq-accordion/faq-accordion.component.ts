@@ -14,7 +14,7 @@ import {SystemLanguagesResolver} from '../../../resolvers/system-languages/syste
       <sm-accordion-item *ngFor="let faq of faqs | async">
         <h4
           accordion-title
-          style="display: inline-block;">
+          style="margin: 0;">
           {{faq.translatedText.question}}
         </h4>
         <div accordion-content>

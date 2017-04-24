@@ -22,7 +22,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
   template: `
     <div
       class="ui basic center aligned segment job-actions-header"
-      style="padding: 0">
+      style="padding: 0; padding-bottom: 20px">
       <sm-loader
         [promise]="promises"
         class="inverted">
