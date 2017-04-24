@@ -26,7 +26,7 @@ import {ViewChild} from '@angular/core';
         {{'user.missing.traits.message.description' | translate}}
       </p>
       <div class="ui centered grid">
-        <div class="fourteen wide phone ten wide tablet eight wide computer column">
+        <div class="sixteen wide phone ten wide tablet eight wide computer column">
           <user-missing-traits-next-form
             [isInModal]="false"
             (onClose)="close()">
