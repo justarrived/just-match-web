@@ -63,13 +63,15 @@ export class UserProfileFormComponent implements OnInit, OnDestroy {
       'education': [this.user.education],
       'facebook_url': [this.user.facebookUrl],
       'got_coordination_number': [this.user.ssn ? 'yes' : 'no'],
-      'linkedin_url': [this.user.linkedinUrl],
+      'interests': [''],
       'job_experience': [this.user.jobExperience],
       'languages': [''],
+      'linkedin_url': [this.user.linkedinUrl],
       'skills': [''],
       'ssn': [this.user.ssn],
+      'user_interests': [this.user.userInterests.slice()],
       'user_languages': [this.user.userLanguages.slice()],
-      'user_skills': [this.user.userSkills.slice()]
+      'user_skills': [this.user.userSkills.slice()],
     });
   }
 
@@ -97,6 +99,12 @@ export class UserProfileFormComponent implements OnInit, OnDestroy {
       'description': this.profileForm.value.description,
       'education': this.profileForm.value.education,
       'facebook_url': this.profileForm.value.facebook_url,
+      'interest_ids': map(this.profileForm.value.user_interests, userInterest => {
+        return {
+          id: userInterest['interest'].id,
+          level: userInterest['level']
+        };
+      }),
       'language_ids': map(this.profileForm.value.user_languages, userLanguage => {
         return {
           id: userLanguage['language'].id,

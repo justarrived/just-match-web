@@ -130,6 +130,17 @@
   </skills-input>
 
   <h3 class="ui horizontal divider pink header">
+    <i class="heart icon"></i>
+    {{'user.profile.form.interests.section.header' | translate}}
+  </h3>
+
+  <interests-input
+    [interestsControl]="profileForm.controls['interests']"
+    [userInterestsControl]="profileForm.controls['user_interests']"
+    [apiErrors]="apiErrors">
+  </interests-input>
+
+  <h3 class="ui horizontal divider pink header">
     <i class="student icon"></i>
     {{'user.profile.form.education.section.header' | translate}}
   </h3>
