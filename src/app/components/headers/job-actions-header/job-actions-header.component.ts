@@ -44,7 +44,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
           (click)="onRegisterButtonClick()"
           [buttonText]="'job.actions.header.register' | translate"
           [fluid]="true"
-          kind="secondary-light"
+          kind="primary-light"
           size="medium">
         </base-button>
         <br/>

@@ -7,7 +7,8 @@
   align-items: center;
   justify-content: center;
   display: flex;
-  background-color: $color-cerise-500 !important;
+  background: $white url("/assets/images/job-header-background.jpg") no-repeat right top !important;
+  background-size: cover !important;
   color: white;
   min-height: 300px;
 
