@@ -1,9 +1,11 @@
+import {ActivatedRoute} from '@angular/router';
 import {DataStoreService} from '../../services/data-store.service';
 import {EventEmitter} from '@angular/core';
 import {Injectable} from '@angular/core';
 import {Language} from '../../models/api-models/language/language';
 import {LanguageProxy} from '../../proxies/language/language.proxy';
 import {Resolve} from '@angular/router';
+import {Router} from '@angular/router';
 import {TranslateService} from '@ngx-translate/core';
 
 @Injectable()
@@ -18,7 +20,9 @@ export class SystemLanguagesResolver implements Resolve<Language[]> {
   public constructor(
     private dataStoreService: DataStoreService,
     private languageProxy: LanguageProxy,
-    private translateService: TranslateService
+    private route: ActivatedRoute,
+    private router: Router,
+    private translateService: TranslateService,
   ) {
   }
 
@@ -46,6 +50,19 @@ export class SystemLanguagesResolver implements Resolve<Language[]> {
     this.systemLanguage = this.systemLanguages.find(language => language.languageCode === systemLanguageCode);
     this.dataStoreService.set(this.storageSystemLanguageCodeKey, systemLanguageCode);
     this.translateService.use(systemLanguageCode);
+
+    this.route.queryParams
+    .subscribe(params => {
+      let systemLanguageCode = params['locale'] || params['lang'];
+      if (systemLanguageCode) {
+        let language = this.systemLanguages.find(language => language.languageCode === systemLanguageCode);
+        if (language) {
+          this.systemLanguage = language;
+          this.dataStoreService.set(this.storageSystemLanguageCodeKey, systemLanguageCode);
+          this.translateService.use(systemLanguageCode);
+        }
+      }
+    });
   }
 
   public getSystemLanguages(): Language[] {
