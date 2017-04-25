@@ -5,6 +5,14 @@
   margin: 0;
 }
 
+.ui.comments .comment .avatar {
+  height: 2.5em;
+}
+
+.ui.comments .comment .avatar img, .ui.comments .comment img.avatar {
+  object-fit: cover;
+}
+
 .ui.pink {
   color: $color-primary-cerise !important;
 }
