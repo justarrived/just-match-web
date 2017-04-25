@@ -1,4 +1,3 @@
-@import './app/styles/bootstrap-modifications';
 @import './app/styles/borders';
 @import './app/styles/colors';
 @import './app/styles/dimensions';
@@ -13,65 +12,4 @@ html {
 
 body {
   background-color: $color-background !important;
-
-  .clickable {
-    cursor: pointer;
-
-    &.disabled {
-      box-shadow: none;
-      cursor: not-allowed;
-      opacity: .95;
-      pointer-events: none;
-    }
-  }
-
-  .float-left {
-    float: left;
-  }
-
-  .float-right {
-    float: right;
-  }
-
-  .block {
-    display: block;
-  }
-
-  .inline-block {
-    display: inline-block;
-  }
-
-  .text-left {
-    text-align: left;
-  }
-
-  .text-center {
-    text-align: center;
-  }
-
-  .text-right {
-    text-align: right;
-  }
-
-  .table {
-    display: table;
-
-    &.max-width {
-      width: 100%;
-    }
-  }
-
-  .table-row {
-    display: table-row;
-  }
-
-  .table-cell {
-    display: table-cell;
-    vertical-align: middle;
-
-    &.min-width-column {
-      white-space: nowrap;
-      width: 1px;
-    }
-  }
 }

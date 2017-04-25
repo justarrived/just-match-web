@@ -85,3 +85,12 @@ i.massive.icon,
 i.massive.icons {
   font-size: 8em !important;
 }
+
+// Default img center vertical and no border
+img {
+    vertical-align: middle;
+}
+
+img {
+    border-style: none;
+}
