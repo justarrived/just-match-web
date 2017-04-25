@@ -41,7 +41,7 @@ import {UserInterestFactory} from '../../../models/api-models/user-interest/user
     <div *ngFor="let userInterest of userInterestsControl.value">
       <interest-level-input
         (onDelete)="onRemoveUserInterest(userInterest)"
-        (onRate)="onLevelyChange($event, userInterest)"
+        (onRate)="onLevelChange($event, userInterest)"
         [initialRating]="userInterest.level"
         [label]="userInterest.interest.translatedText.name">
       </interest-level-input>
