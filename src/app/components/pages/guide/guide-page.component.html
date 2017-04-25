@@ -1,0 +1,53 @@
+<div class="guide-header-wrapper">
+  <div>
+    <img class="guide-header-img" src="../../../../assets/images/guide-book.png" />
+  </div>
+
+  <div>
+    <h2>{{ 'guide.header' | translate }}</h2>
+  </div>
+</div>
+
+<div class="ui centered grid guide-wrapper">
+  <div *ngFor="let guide of guides; let isLastElement = last;" class="row stackable">
+    <div class="six wide column guide-image-wrapper">
+      <img class="guide-image" src="{{guide.img}}" />
+    </div>
+
+    <div class="ten wide column">
+      <div class="row">
+        <h2 class="guide-header">{{guide.headerTitle}}</h2>
+      </div>
+      <div class="row">
+        <p class="guide-text">
+          {{guide.text}}
+        </p>
+      </div>
+      <div class="ui grid row equal width guide-bottom-wrapper">
+        <div class="column">
+          <base-button
+            [buttonText]="'guide.article.preview.read_more' | translate"
+            [routerLink]="JARoutes.guideDetail.url()"
+            kind="primary"
+            size="small">
+          </base-button>
+        </div>
+        <div class="column">
+          <p class="guide-date-text">
+            {{guide.date}}
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="!isLastElement" class="guide-post-serepator"></div>
+
+  </div>
+
+  <circle-pager
+    [activePage]="2"
+    [currentPage]="1"
+    [nbrOfPages]="5">
+  </circle-pager>
+
+</div>

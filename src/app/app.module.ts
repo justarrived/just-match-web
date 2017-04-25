@@ -24,6 +24,7 @@ import {BasicTabComponent} from './components/tabs/basic-tab/basic-tab.component
 import {BasicTabsComponent} from './components/tabs/basic-tabs/basic-tabs.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {BrowserModule} from '@angular/platform-browser';
+import {CirclePagerComponent} from './components/pagers/circle-pager/circle-pager.component';
 import {CircularImageInputComponent} from './components/inputs/circular-image-input/circular-image-input.component';
 import {CityInputComponent} from './components/inputs/city-input/city-input.component';
 import {CommentInputComponent} from './components/inputs/comment-input/comment-input.component';
@@ -66,6 +67,7 @@ import {FrilansTermsInputComponent} from './components/inputs/frilans-terms-inpu
 import {GenderInputComponent} from './components/inputs/gender-input/gender-input.component';
 import {GeolocationService} from './services/geolocation.service';
 import {GotCoordinationNumberInputComponent} from './components/inputs/got-coordination-number-input/got-coordination-number-input.component';
+import {GuideDetailPageComponent} from './components/pages/guide-detail-page/guide-detail-page.component';
 import {GuidePageComponent} from './components/pages/guide/guide-page.component';
 import {HomePageComponent} from './components/pages/home-page/home-page.component';
 import {HowItWorksAndMaximizeChancesSectionComponent} from './components/sections/how-it-works-and-maximize-chances-section/how-it-works-and-maximize-chances-section.component';
@@ -231,6 +233,7 @@ export class RavenErrorHandler implements ErrorHandler {
     BasicPagerComponent,
     BasicTabComponent,
     BasicTabsComponent,
+    CirclePagerComponent,
     CircularImageInputComponent,
     CityInputComponent,
     CommentInputComponent,
@@ -268,6 +271,7 @@ export class RavenErrorHandler implements ErrorHandler {
     FrilansTermsInputComponent,
     GenderInputComponent,
     GotCoordinationNumberInputComponent,
+    GuideDetailPageComponent,
     GuidePageComponent,
     HomePageComponent,
     HowItWorksAndMaximizeChancesSectionComponent,

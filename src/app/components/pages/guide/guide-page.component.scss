@@ -1,0 +1,65 @@
+@import '../../../styles/colors';
+
+.guide-header-wrapper {
+  text-align: center;
+  background-color: $color-primary-cerise;
+  color: white;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  margin-bottom: 40px;
+}
+
+.guide-header-img {
+  height: 80px;
+  width: 80px;
+}
+
+.guide-post-serepator {
+  margin-top: 50px;
+  margin-bottom: 20px;
+  width: 80%;
+  height: 1px;
+  background-color: $color-gray-100;
+}
+
+.guide-wrapper {
+  padding-left: 8%;
+  padding-right: 8%;
+}
+
+.guide-image-wrapper {
+  text-align: center !important;
+}
+
+.guide-image {
+  width: 100%;
+  height: 100%;
+}
+
+.guide-header {
+  color: $color-primary-cerise;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+.guide-text {
+  color: $color-gray-200;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+.guide-bottom-wrapper {
+  margin-top: 8px;
+  margin-bottom: 8px;
+  margin-bottom: 80px;
+}
+
+.guide-date-text {
+  color: $color-gray-200;
+  font-size: 18px;
+  text-align: right;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 70px;
+}
