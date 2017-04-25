@@ -40,7 +40,7 @@ export class SystemLanguagesResolver implements Resolve<Language[]> {
     });
   }
 
-  public init(languages: Language[]) {
+  private init(languages: Language[]): void {
     this.translateService.addLangs(languages.map(language => language.languageCode));
     this.translateService.setDefaultLang(this.fallbackLanguageCode);
 
@@ -51,6 +51,10 @@ export class SystemLanguagesResolver implements Resolve<Language[]> {
     this.dataStoreService.set(this.storageSystemLanguageCodeKey, systemLanguageCode);
     this.translateService.use(systemLanguageCode);
 
+    this.initRouteParamsSubscription();
+  }
+
+  private initRouteParamsSubscription(): void {
     this.route.queryParams
     .subscribe(params => {
       let systemLanguageCode = params['locale'] || params['lang'];
