@@ -24,7 +24,7 @@ import {yyyymmdd} from '../../../utils/date/date.util';
         [promise]="applications"
         class="inverted">
       </sm-loader>
-      <h2>
+      <h2 class="underline-border-below underline-border-below-centered underline-border-below-pink">
         {{'home.jobs.slider.user.jobs.title' | translate}}
       </h2>
       <div

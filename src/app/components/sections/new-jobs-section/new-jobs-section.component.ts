@@ -16,7 +16,9 @@ import {yyyymmdd} from '../../../utils/date/date.util';
         [promise]="newJobs"
         class="inverted">
       </sm-loader>
-      <h2>{{'home.jobs.slider.new.jobs.title' | translate}}</h2>
+      <h2 class="underline-border-below underline-border-below-centered underline-border-below-pink">
+        {{'home.jobs.slider.new.jobs.title' | translate}}
+      </h2>
       <div class="ui centered grid">
         <job-card
           [job]="job"

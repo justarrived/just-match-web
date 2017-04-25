@@ -5,7 +5,9 @@ import {Component} from '@angular/core';
   styleUrls: ['./partners-section.component.scss'],
   template: `
     <div class="ui basic very padded center aligned segment">
-      <h2>{{'home.partners.title' | translate}}</h2>
+      <h2 class="underline-border-below underline-border-below-centered underline-border-below-pink">
+        {{'home.partners.title' | translate}}
+      </h2>
       <p>{{'home.partners.description' | translate}}</p>
       <div class="ui centered grid">
         <a
