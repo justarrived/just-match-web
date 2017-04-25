@@ -180,8 +180,19 @@ Raven
 
 export class RavenErrorHandler implements ErrorHandler {
   handleError(error: any): void {
-    console.error(error);
-    Raven.captureException(error.originalError);
+    if (error !== 'handled') {
+      if (error.promise) {
+        error.promise.catch(promiseError => {
+          if (promiseError !== 'handled') {
+            console.error(error);
+            Raven.captureException(error);
+          }
+        });
+      } else {
+        console.error(error);
+        Raven.captureException(error);
+      }
+    }
   }
 }
 

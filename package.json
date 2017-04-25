@@ -60,7 +60,7 @@
     "typescript": "^2.2.2",
     "web-animations-js": "^2.2.4",
     "webpack": "^2.4.1",
-    "zone.js": "^0.8.5"
+    "zone.js": "0.8.7"
   },
   "devDependencies": {
     "@biesbjerg/ngx-translate-extract": "^2.2.2",

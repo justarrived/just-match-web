@@ -131,31 +131,30 @@ export class ApiCallService {
   private handleResponseErrors(response): void {
     if (response.status === 0) {
       this.navigationService.navigateNoLocationChange(JARoutes.lostConnection);
-      return;
+      throw 'handled';
     }
 
     if (response.status === 400 || response.status >= 500) {
       this.navigationService.navigateNoLocationChange(JARoutes.error, response.status);
-      return;
+      throw 'handled';
     }
 
     if (response.status === 401) {
       this.dataStoreService.remove(this.storageSessionKey);
       this.navigationService.navigate(JARoutes.login);
-      return;
+      throw 'handled';
     }
 
     if (response.status === 403) {
       this.navigationService.navigateNoLocationChange(JARoutes.forbidden);
-      return;
+      throw 'handled';
     }
 
     if (response.status === 404) {
       this.navigationService.navigateNoLocationChange(JARoutes.notFound);
-      return;
+      throw 'handled';
     }
-    
+
     throw new ApiErrors(response.json().errors);
   }
-
 }
