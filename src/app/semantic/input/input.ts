@@ -14,14 +14,33 @@ import { FormControl } from "@angular/forms";
  */
 @Component({
   selector: "sm-input",
-  template: `<div class="field" [ngClass]="{error: (!control.valid && control.dirty && isInsideForm) }">
-  <label *ngIf="label && isInsideForm">{{label}}</label>
-  <div class="ui input {{class}}" [ngClass]="{'icon': icon, 'error': (!control.valid && control.dirty &&!isInsideForm)}">
-  <label *ngIf="label && !isInsideForm" class="ui label">{{label}}</label>
-  <input [type]="type" [formControl]="control" (keyup)="modelChange.emit(input.value)" #input placeholder="{{placeholder}}">
-  <i *ngIf="icon" class="{{icon}} icon"></i>
-</div>
-</div>`
+  template: `
+  <div
+    class="field"
+    [ngClass]="{error: (!control.valid && control.dirty && isInsideForm) }">
+    <label
+      *ngIf="label && isInsideForm">
+      {{label}}
+    </label>
+    <div
+      class="ui input {{class}}"
+      [ngClass]="{'icon': icon, 'error': (!control.valid && control.dirty &&!isInsideForm)}">
+      <label
+        *ngIf="label && !isInsideForm"
+        class="ui label">
+        {{label}}
+      </label>
+      <input
+        (keyup.enter)="onEnterKeyUp.emit()"
+        [type]="type"
+        [formControl]="control"
+        #input placeholder="{{placeholder}}">
+      <i
+        *ngIf="icon"
+        class="{{icon}} icon">
+      </i>
+    </div>
+  </div>`
 })
 export class SemanticInputComponent implements OnInit {
   @Input() label: string;
@@ -31,7 +50,7 @@ export class SemanticInputComponent implements OnInit {
   @Input() placeholder: string;
   @Input() model: {};
   @Input() control: FormControl = new FormControl();
-  @Output() modelChange: EventEmitter<string | number> = new EventEmitter<string | number>();
+  @Output() onEnterKeyUp: EventEmitter<any> = new EventEmitter<any>();
 
   public isInsideForm: boolean = false;
 
@@ -117,14 +136,29 @@ export class SemanticCheckboxComponent {
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
   selector: "sm-textarea",
-  template: `<div class="field" [ngClass]="{error: (!control.valid && control.dirty) }">
-    <label *ngIf="label">{{label}}</label>
-    <textarea rows="{{rows}}" [formControl]="control" placeholder="{{placeholder}}"></textarea>
-  </div>`
+  template: `
+    <div
+      [ngClass]="{error: (!control.valid && control.dirty) }"
+      class="field">
+      <label
+        *ngIf="label">
+        {{label}}
+      </label>
+      <textarea
+        (keyup.enter)="onEnterKeyUp.emit()"
+        [formControl]="control"
+        [placeholder]="placeholder"
+        [rows]="rows"
+        autosize
+        style="resize: none;">
+      </textarea>
+    </div>`
 })
 export class SemanticTextareaComponent {
   @Input() control: FormControl = new FormControl();
   @Input() label: string;
   @Input() rows: string;
   @Input() placeholder: string;
+  @Input() autofocus: boolean;
+  @Output() onEnterKeyUp: EventEmitter<any> = new EventEmitter<any>();
 }

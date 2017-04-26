@@ -1,0 +1,9 @@
+@import '../../../styles/colors';
+
+.chat-header {
+  background-color: $color-gray-500 !important;
+
+  .header {
+    color: $white;
+  }
+}

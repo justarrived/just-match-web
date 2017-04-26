@@ -43,13 +43,7 @@
 .ui.sidebar {
   pointer-events: auto;
 }
-// We need add margin-bottom here, since we nest form-inputs under other elements
-// causing each form field to be the "last"
 
-.ui.form .field:last-child,
-.ui.form .fields:last-child .field {
-  margin-bottom: 15px;
-}
 // Override padding changes on mobile.
 .ui.modal > .actions {
   padding: 1rem !important;

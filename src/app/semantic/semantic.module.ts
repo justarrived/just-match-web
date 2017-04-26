@@ -31,6 +31,7 @@ import {SemanticTabComponent} from "./tab/tab";
 import {SemanticTabsComponent} from "./tab/tab";
 import {SemanticTextareaComponent} from "./input/input";
 import {SemanticTransitionComponent} from "./transition/transition";
+import {SMAutosizeDirective} from './autosize/autosize';
 import {SMDeviceVisibilityDirective} from "./visibility/visibility";
 import {SMModalTagsDirective} from "./modal/modal";
 import {SMTooltipDirective} from "./popup/tooltip";
@@ -69,8 +70,9 @@ export let SEMANTIC_COMPONENTS: Array<any> = [
 ];
 
 export let SEMANTIC_DIRECTIVES: Array<any> = [
+  SMAutosizeDirective,
   SMDeviceVisibilityDirective,
-  SMModalTagsDirective, // directives with no functionality, simply declare tags
+  SMModalTagsDirective,
   SMTooltipDirective,
   SMVisibilityDirective,
 ];
