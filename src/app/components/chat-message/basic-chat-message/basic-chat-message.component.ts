@@ -39,8 +39,9 @@ import {Message} from '../../../models/api-models/message/message';
             }}
           </span>
         </div>
-        <div class="text">
-          {{message.body}}
+        <div
+          [innerHTML]="message.bodyHtml"
+          class="text">
         </div>
       </div>
     </div>`
