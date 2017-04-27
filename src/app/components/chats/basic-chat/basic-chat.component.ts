@@ -16,6 +16,8 @@ import {User} from '../../../models/api-models/user/user';
 import {UserResolver} from '../../../resolvers/user/user.resolver';
 import {Validators} from '@angular/forms';
 import {ViewChild} from '@angular/core';
+import 'rxjs/Rx';
+import {Observable} from 'rxjs/Rx';
 
 @Component({
   selector: 'basic-chat',
@@ -78,14 +80,15 @@ export class BasicChatComponent extends SystemLanguageListener implements OnInit
 
   public apiErrors: ApiErrors = new ApiErrors([]);
   public chatForm: FormGroup;
-  public messagesPromise: Promise<Message[]>;
   public loadingSubmit: boolean;
+  public messagesPromise: Promise<Message[]>;
   public messages: Message[];
   public submitFail: boolean;
   public submitSuccess: boolean;
   public user: User;
 
   private userSubscription: Subscription;
+  private messagesSubscription: Subscription;
 
   public constructor(
     private changeDetector: ChangeDetectorRef,
@@ -117,18 +120,31 @@ export class BasicChatComponent extends SystemLanguageListener implements OnInit
   }
 
   protected loadData() {
-    this.messagesPromise = this.messageProxy.getChatMessages(this.chatId, {
-      'include': 'author,author.user_images,author.company,author.company.company_images',
-      'sort': '-created_at',
-      'page[size]': 50,
-    })
+    this.messagesPromise = this.getChatMessages()
     .then(messages => {
       this.messages = messages.reverse();
       setTimeout(() => {
         this.scrollToBottom();
       }, 1);
       return this.messages;
-    })
+    });
+
+    if (!this.messagesSubscription) {
+      this.messagesSubscription = Observable.interval(3000)
+      .switchMap(() => this.getChatMessages())
+      .subscribe(messages => {
+        this.messages = messages.reverse();
+        return this.messages;
+      });
+    }
+  }
+
+  private getChatMessages(): Promise<Message[]> {
+    return this.messageProxy.getChatMessages(this.chatId, {
+      'include': 'author,author.user_images,author.company,author.company.company_images',
+      'sort': '-created_at',
+      'page[size]': 50,
+    });
   }
 
   private scrollToBottom(): void {
@@ -139,6 +155,7 @@ export class BasicChatComponent extends SystemLanguageListener implements OnInit
 
   public ngOnDestroy(): void {
     this.userSubscription.unsubscribe();
+    this.messagesSubscription.unsubscribe();
   }
 
   private handleServerErrors(errors): void {
