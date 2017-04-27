@@ -11,7 +11,7 @@ import {Message} from '../../../models/api-models/message/message';
     <div
       [class.right-aligned]="rightAligned"
       class="ui comment"
-      style="min-height: 3em;">
+      style="min-height: 3em; margin-top: 1em; margin-bottom: 1em;">
       <a class="avatar">
         <img
           [src]="message?.author?.company?.logoImage?.imageUrlSmall || '/assets/images/placeholder-logo.png'"
@@ -41,8 +41,8 @@ import {Message} from '../../../models/api-models/message/message';
           </span>
         </div>
         <div
-          [innerHTML]="message.bodyHtml"
           class="text">
+          <div class="message"[innerHTML]="message.bodyHtml"></div>
         </div>
       </div>
     </div>`

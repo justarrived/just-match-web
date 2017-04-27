@@ -40,7 +40,7 @@ import {Observable} from 'rxjs/Rx';
       <div
         #chatMessagesContent
         class="content"
-        style="height: 200px; display: flex; flex-direction: column-reverse; overflow-y: scroll;">
+        style="height: 400px; display: flex; flex-direction: column-reverse; overflow-y: scroll;">
         <basic-chat-messages [messages]="messages"></basic-chat-messages>
       </div>
 
@@ -91,6 +91,7 @@ export class BasicChatComponent extends SystemLanguageListener implements OnInit
 
   private userSubscription: Subscription;
   private messagesSubscription: Subscription;
+  private readonly pollMessagesInterval: number = 1000;
 
   public constructor(
     private changeDetector: ChangeDetectorRef,
@@ -132,10 +133,16 @@ export class BasicChatComponent extends SystemLanguageListener implements OnInit
     });
 
     if (!this.messagesSubscription) {
-      this.messagesSubscription = Observable.interval(3000)
+      this.messagesSubscription = Observable.interval(this.pollMessagesInterval)
       .switchMap(() => this.getChatMessages())
       .subscribe(messages => {
-        this.messages = messages.reverse();
+        messages = messages.reverse();
+        if (messages[0] && this.messages[0] && messages[0].id !== this.messages[0].id) {
+          setTimeout(() => {
+            this.scrollToBottom();
+          }, 1);
+        }
+        this.messages = messages;
         return this.messages;
       });
     }

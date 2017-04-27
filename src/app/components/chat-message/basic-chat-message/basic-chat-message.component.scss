@@ -1,3 +1,6 @@
+@import '../../../styles/colors';
+@import '../../../styles/typography';
+
 .right-aligned {
   .avatar {
     float: right;
@@ -6,6 +9,47 @@
   .content {
     text-align: right;
     margin-left: 0 !important;
-    margin-right: 3.5em;
+    margin-right: 3.5em !important;
+  }
+
+  .message {
+    border-radius: 10px 0 10px 10px;
+    background: $color-blue-400;
+
+    &:after {
+      content: '';
+      right: 0;
+      margin: 0 -15px 0 0;
+      left: auto;
+      border-top: 17px solid $color-blue-400;
+    }
+  }
+}
+
+.message {
+  @include wrap-long-words();
+  display: inline-block;
+  font-weight: 600;
+  background: $color-cerise-400;
+  color: $white !important;
+  position: relative;
+  padding: 15px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  border-radius: 0px 10px 10px 10px;
+  max-width: 80%;
+
+  &:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    border-top: 17px solid $color-cerise-400;
+    border-left: 17px solid transparent;
+    border-right: 17px solid transparent;
+  }
+
+  &:after {
+    content: '';
+    left: 0;
+    margin: 0 0 0 -15px;
   }
 }
