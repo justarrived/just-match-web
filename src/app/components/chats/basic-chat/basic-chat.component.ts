@@ -25,9 +25,11 @@ import {Observable} from 'rxjs/Rx';
   template: `
     <div
       class="ui raised card"
-      style="width: 100%">
+      style="width: 100%; height: 100%;">
 
-      <div class="content chat-header">
+      <div
+        class="content chat-header"
+        style="flex-grow: 0;">
         <div
           class="header"
           style="flex: 0;">
@@ -38,7 +40,7 @@ import {Observable} from 'rxjs/Rx';
       <div
         #chatMessagesContent
         class="content"
-        style="height: 400px; display: flex; flex-direction: column-reverse; overflow-y: scroll;">
+        style="height: 200px; display: flex; flex-direction: column-reverse; overflow-y: scroll;">
         <basic-chat-messages [messages]="messages"></basic-chat-messages>
       </div>
 

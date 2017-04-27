@@ -1,5 +1,11 @@
 @import '../../../styles/colors';
+@import '../../../styles/dimensions';
 
 .basic-border-header-container {
   background-color: $color-primary-cerise !important;
+  height: $basic-border-header-height;
+  padding: 0 !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }

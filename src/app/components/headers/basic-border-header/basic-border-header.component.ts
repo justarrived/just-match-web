@@ -5,7 +5,7 @@ import {Input} from '@angular/core';
   selector: 'basic-border-header',
   styleUrls: ['./basic-border-header.component.scss'],
   template: `
-  <div class="ui padded basic center aligned segment basic-border-header-container">
+  <div class="ui basic center aligned segment basic-border-header-container">
     <h2 class="ui inverted header">
       <i *ngIf="icon" class="{{icon}} icon"></i>
       {{header}}

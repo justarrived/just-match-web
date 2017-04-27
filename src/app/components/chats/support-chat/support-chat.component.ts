@@ -46,7 +46,9 @@ export class SupportChatComponent extends SystemLanguageListener implements OnIn
     this.user = this.userResolver.getUser();
     this.userSubscription = this.userResolver.getUserChangeEmitter().subscribe(user => {
       this.user = user;
-      this.loadData();
+      if (user) {
+        this.loadData();
+      }
     });
   }
 
