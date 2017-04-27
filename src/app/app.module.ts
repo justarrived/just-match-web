@@ -8,7 +8,6 @@ import {AppComponent} from './app.component';
 import {ApplicationsComponent} from './views/my-jobs/applications/applications.component';
 import {ApplicationsStatusSectionComponent} from './components/sections/applications-status-section/applications-status-section.component';
 import {ApplicationStatusCardComponent} from './components/cards/application-status-card/application-status-card.component';
-import {CircularIconBaseButtonComponent} from './components/buttons/circular-icon-base-button/circular-icon-base-button.component';
 import {AppliedForJobModalComponent} from './components/modals/applied-for-job-modal/applied-for-job-modal.component';
 import {ApplyForJobFormComponent} from './components/forms/apply-for-job-form/apply-for-job-form.component';
 import {ApplyForJobModalComponent} from './components/modals/apply-for-job-modal/apply-for-job-modal.component';
@@ -19,6 +18,7 @@ import {AtUndInputComponent} from './components/inputs/at-und-input/at-und-input
 import {BankAccountInputComponent} from './components/inputs/bank-account-input/bank-account-input.component';
 import {BaseButtonComponent} from './components/buttons/base-button/base-button.component';
 import {BasicBorderHeaderComponent} from './components/headers/basic-border-header/basic-border-header.component';
+import {BasicChatComponent} from './components/chats/basic-chat/basic-chat.component';
 import {BasicChatMessageComponent} from './components/chat-message/basic-chat-message/basic-chat-message.component';
 import {BasicChatMessagesComponent} from './components/chat-messages/basic-chat-messages/basic-chat-messages.component';
 import {BasicCommentComponent} from './components/comment/basic-comment/basic-comment.component';
@@ -28,8 +28,8 @@ import {BasicTabComponent} from './components/tabs/basic-tab/basic-tab.component
 import {BasicTabsComponent} from './components/tabs/basic-tabs/basic-tabs.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {BrowserModule} from '@angular/platform-browser';
-import {BasicChatComponent} from './components/chats/basic-chat/basic-chat.component';
 import {ChatMessageInputComponent} from './components/inputs/chat-message-input/chat-message-input.component';
+import {CircularIconBaseButtonComponent} from './components/buttons/circular-icon-base-button/circular-icon-base-button.component';
 import {CircularImageInputComponent} from './components/inputs/circular-image-input/circular-image-input.component';
 import {CityInputComponent} from './components/inputs/city-input/city-input.component';
 import {CommentInputComponent} from './components/inputs/comment-input/comment-input.component';
@@ -155,6 +155,7 @@ import {SSNInputComponent} from './components/inputs/ssn-input/ssn-input.compone
 import {StatusInputComponent} from './components/inputs/status-input/status-input.component';
 import {StreetInputComponent} from './components/inputs/street-input/street-input.component';
 import {SuccessMessageComponent} from './components/messages/success-message/success-message.component';
+import {SupportChatComponent} from './components/chats/support-chat/support-chat.component';
 import {SupportChatPageComponent} from './components/pages/support-chat-page/support-chat-page.component';
 import {SystemLanguageInputComponent} from './components/inputs/system-language-input/system-language-input.component';
 import {SystemLanguagesResolver} from './resolvers/system-languages/system-languages.resolver';
@@ -234,6 +235,7 @@ export class RavenErrorHandler implements ErrorHandler {
     BankAccountInputComponent,
     BaseButtonComponent,
     BasicBorderHeaderComponent,
+    BasicChatComponent,
     BasicChatMessageComponent,
     BasicChatMessagesComponent,
     BasicCommentComponent,
@@ -241,8 +243,8 @@ export class RavenErrorHandler implements ErrorHandler {
     BasicPagerComponent,
     BasicTabComponent,
     BasicTabsComponent,
-    BasicChatComponent,
     ChatMessageInputComponent,
+    CircularIconBaseButtonComponent,
     CircularImageInputComponent,
     CityInputComponent,
     CommentInputComponent,
@@ -284,7 +286,6 @@ export class RavenErrorHandler implements ErrorHandler {
     HomePageComponent,
     HowItWorksAndMaximizeChancesSectionComponent,
     HowItWorksSectionComponent,
-    CircularIconBaseButtonComponent,
     InfoMessageComponent,
     InputErrorComponent,
     InputErrorsComponent,
@@ -355,6 +356,7 @@ export class RavenErrorHandler implements ErrorHandler {
     StatusInputComponent,
     StreetInputComponent,
     SuccessMessageComponent,
+    SupportChatComponent,
     SupportChatPageComponent,
     SystemLanguageInputComponent,
     TermsInputComponent,

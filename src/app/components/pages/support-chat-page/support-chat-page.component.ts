@@ -8,10 +8,7 @@ import {Component} from '@angular/core';
   </basic-border-header>
   <div class="ui centered grid">
     <div class="sixteen wide phone ten wide tablet eight wide computer column">
-      <basic-chat
-        [chatId]="'108'"
-        [chatTitle]="'support.chat.title' | translate">
-      </basic-chat>
+      <support-chat></support-chat>
     </div>
   </div>
   `

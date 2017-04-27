@@ -134,7 +134,6 @@ export class SemanticCheckboxComponent {
  * @link http://semantic-ui.com/collections/form.html#text-area
  */
 @Component({
-  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: "sm-textarea",
   template: `
     <div

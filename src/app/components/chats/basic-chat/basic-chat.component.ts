@@ -1,6 +1,7 @@
 import {ApiErrors} from '../../../models/api-models/api-errors/api-errors';
 import {ChangeDetectorRef} from '@angular/core';
 import {Component} from '@angular/core';
+import {ElementRef} from '@angular/core';
 import {FormBuilder} from '@angular/forms';
 import {FormGroup} from '@angular/forms';
 import {Input} from '@angular/core';
@@ -14,6 +15,7 @@ import {SystemLanguagesResolver} from '../../../resolvers/system-languages/syste
 import {User} from '../../../models/api-models/user/user';
 import {UserResolver} from '../../../resolvers/user/user.resolver';
 import {Validators} from '@angular/forms';
+import {ViewChild} from '@angular/core';
 
 @Component({
   selector: 'basic-chat',
@@ -32,8 +34,9 @@ import {Validators} from '@angular/forms';
       </div>
 
       <div
+        #chatMessagesContent
         class="content"
-        style="height: 400px; display: flex; align-items: bottom; justify-content: flex-end; flex-direction: column;">
+        style="height: 400px; display: flex; flex-direction: column-reverse; overflow-y: scroll;">
         <basic-chat-messages [messages]="messages"></basic-chat-messages>
       </div>
 
@@ -46,7 +49,7 @@ import {Validators} from '@angular/forms';
           style="display: flex; align-items: center;">
           <sm-loader
             [complete]="!loadingSubmit"
-            [promise]="messagePromise"
+            [promise]="messagesPromise"
             class="inverted">
           </sm-loader>
 
@@ -71,10 +74,11 @@ export class BasicChatComponent extends SystemLanguageListener implements OnInit
   @Input() public chatId: string;
   @Input() public chatTitle: string;
   @Input() public isInModal: boolean = false;
+  @ViewChild('chatMessagesContent') public chatMessagesContent: ElementRef;
 
   public apiErrors: ApiErrors = new ApiErrors([]);
   public chatForm: FormGroup;
-  public messagePromise: Promise<Message[]>;
+  public messagesPromise: Promise<Message[]>;
   public loadingSubmit: boolean;
   public messages: Message[];
   public submitFail: boolean;
@@ -113,15 +117,24 @@ export class BasicChatComponent extends SystemLanguageListener implements OnInit
   }
 
   protected loadData() {
-    this.messagePromise = this.messageProxy.getChatMessages(this.chatId, {
+    this.messagesPromise = this.messageProxy.getChatMessages(this.chatId, {
       'include': 'author,author.user_images,author.company,author.company.company_images',
       'sort': '-created_at',
       'page[size]': 50,
     })
     .then(messages => {
       this.messages = messages.reverse();
+      setTimeout(() => {
+        this.scrollToBottom();
+      }, 1);
       return this.messages;
     })
+  }
+
+  private scrollToBottom(): void {
+    try {
+      this.chatMessagesContent.nativeElement.scrollTop = this.chatMessagesContent.nativeElement.scrollHeight;
+    } catch(err) {}
   }
 
   public ngOnDestroy(): void {
