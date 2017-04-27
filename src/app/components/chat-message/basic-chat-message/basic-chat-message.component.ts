@@ -10,7 +10,8 @@ import {Message} from '../../../models/api-models/message/message';
   template: `
     <div
       [class.right-aligned]="rightAligned"
-      class="ui comment">
+      class="ui comment"
+      style="min-height: 3em;">
       <a class="avatar">
         <img
           [src]="message?.author?.company?.logoImage?.imageUrlSmall || '/assets/images/placeholder-logo.png'"
