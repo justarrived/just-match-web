@@ -153,6 +153,9 @@ export class BasicChatComponent extends SystemLanguageListener implements OnInit
       this.messages = messages.reverse();
       setTimeout(() => {
         this.scrollToBottom();
+        if (!this.queryParamsSubscription) {
+          this.initQueryParamsSubscription();
+        }
       }, 1);
       return this.messages;
     });
@@ -163,13 +166,10 @@ export class BasicChatComponent extends SystemLanguageListener implements OnInit
       .subscribe(messages => {
         messages = messages.reverse();
         if (messages[0] && this.messages[0] && messages[0].id !== this.messages[0].id) {
+          this.messages = messages;
           setTimeout(() => {
             this.scrollToBottom();
           }, 1);
-        }
-        this.messages = messages;
-        if (!this.queryParamsSubscription) {
-          this.initQueryParamsSubscription();
         }
         return this.messages;
       });
