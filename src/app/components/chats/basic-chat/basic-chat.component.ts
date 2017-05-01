@@ -1,3 +1,5 @@
+import {ActivatedRoute} from '@angular/router';
+import {Params} from '@angular/router';
 import {ApiErrors} from '../../../models/api-models/api-errors/api-errors';
 import {ChangeDetectorRef} from '@angular/core';
 import {Component} from '@angular/core';
@@ -33,7 +35,10 @@ import {Observable} from 'rxjs/Rx';
         <div
           class="header"
           style="flex: 0;">
-          {{chatTitle}}
+          <img
+            alt="Just Arrived"
+            class="ui small image"
+            src="/assets/images/logo.png"/>
         </div>
       </div>
 
@@ -76,7 +81,6 @@ import {Observable} from 'rxjs/Rx';
 })
 export class BasicChatComponent extends SystemLanguageListener implements OnInit, OnDestroy {
   @Input() public chatId: string;
-  @Input() public chatTitle: string;
   @Input() public isInModal: boolean = false;
   @ViewChild('chatMessagesContent') public chatMessagesContent: ElementRef;
 
@@ -89,6 +93,7 @@ export class BasicChatComponent extends SystemLanguageListener implements OnInit
   public submitSuccess: boolean;
   public user: User;
 
+  private queryParamsSubscription: Subscription;
   private userSubscription: Subscription;
   private messagesSubscription: Subscription;
   private readonly pollMessagesInterval: number = 1000;
@@ -97,6 +102,7 @@ export class BasicChatComponent extends SystemLanguageListener implements OnInit
     private changeDetector: ChangeDetectorRef,
     private formBuilder: FormBuilder,
     private messageProxy: MessageProxy,
+    private route: ActivatedRoute,
     private userResolver: UserResolver,
     protected systemLanguagesResolver: SystemLanguagesResolver
   ) {
@@ -107,6 +113,16 @@ export class BasicChatComponent extends SystemLanguageListener implements OnInit
     this.initUser();
     this.initForm();
     this.loadData();
+  }
+
+  private initQueryParamsSubscription(): void {
+    this.queryParamsSubscription = this.route.queryParams.subscribe(params => {
+      const messageId = params['message_id'];
+      const element = document.querySelector("#message" + messageId);
+      if (element) {
+        element.scrollIntoView(element);
+      }
+    });
   }
 
   private initUser(): void {
@@ -143,6 +159,9 @@ export class BasicChatComponent extends SystemLanguageListener implements OnInit
           }, 1);
         }
         this.messages = messages;
+        if (!this.queryParamsSubscription) {
+          this.initQueryParamsSubscription();
+        }
         return this.messages;
       });
     }
@@ -165,6 +184,7 @@ export class BasicChatComponent extends SystemLanguageListener implements OnInit
   public ngOnDestroy(): void {
     this.userSubscription.unsubscribe();
     this.messagesSubscription.unsubscribe();
+    this.queryParamsSubscription.unsubscribe();
   }
 
   private handleServerErrors(errors): void {

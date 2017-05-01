@@ -18,7 +18,6 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
     </sm-loader>
     <basic-chat
       [chatId]="chat.id"
-      [chatTitle]="'support.chat.title' | translate"
       *ngIf="chat">
     </basic-chat>`
 })

@@ -9,6 +9,7 @@ import {Message} from '../../../models/api-models/message/message';
   styleUrls: ['./basic-chat-message.component.scss'],
   template: `
     <div
+      [id]="'message' + message.id"
       [class.right-aligned]="rightAligned"
       class="ui comment"
       style="min-height: 3em; margin-top: 1em; margin-bottom: 1em;">
