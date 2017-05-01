@@ -5,6 +5,7 @@ import {Input} from '@angular/core';
   selector: 'error-message',
   template: `
   <simple-message
+    [closeable]="closeable"
     [description]="description"
     [header]="header"
     [icon]="icon"
@@ -12,6 +13,7 @@ import {Input} from '@angular/core';
   </simple-message>`
 })
 export class ErrorMessageComponent {
+  @Input() public closeable: boolean;
   @Input() public description: string;
   @Input() public header: string;
   @Input() public icon: string;

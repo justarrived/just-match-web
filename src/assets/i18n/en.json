@@ -284,6 +284,8 @@
   "skill.proficiency.expert": "Expert",
   "skill.proficiency.intermediate": "Intermediate knowledge",
   "skill.proficiency.professional": "Professional",
+  "support.chat.info.message.description": "Please be aware that it may take up to 72 hours to get a response",
+  "support.chat.info.message.header": "This is not an instant chat service",
   "support.chat.page.title": "Chat with Just Arrived",
   "support.chat.title": "Just Arrived",
   "terms.frilans_finans.accept": "I accept Frilans Finans",

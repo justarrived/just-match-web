@@ -6,7 +6,7 @@ import {Input} from '@angular/core';
   template: `
   <sm-message
     [class]="type"
-    [closeable]="false"
+    [closeable]="closeable"
     [icon]="icon">
     <div class="content">
       <div class="header">
@@ -19,6 +19,7 @@ import {Input} from '@angular/core';
   </sm-message>`
 })
 export class SimpleMessageComponent {
+  @Input() public closeable: boolean;
   @Input() public description: string;
   @Input() public header: string;
   @Input() public icon: string;

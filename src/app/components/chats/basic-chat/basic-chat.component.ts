@@ -31,15 +31,22 @@ import {Observable} from 'rxjs/Rx';
 
       <div
         class="content chat-header"
-        style="flex-grow: 0;">
+        style="flex-grow: 0; padding-top: 0; padding-bottom: 5px;">
         <div
           class="header"
-          style="flex: 0;">
+          style="flex: 0; margin-top: 10px; margin-bottom: 5px;">
           <img
             alt="Just Arrived"
             class="ui small image"
             src="/assets/images/logo.png"/>
         </div>
+        <info-message
+          [closeable]="true"
+          [header]="infoMessageHeader"
+          [description]="infoMessageDescription"
+          *ngIf="infoMessageHeader"
+          icon="warning">
+        </info-message>
       </div>
 
       <div
@@ -81,6 +88,8 @@ import {Observable} from 'rxjs/Rx';
 })
 export class BasicChatComponent extends SystemLanguageListener implements OnInit, OnDestroy {
   @Input() public chatId: string;
+  @Input() public infoMessageDescription: string;
+  @Input() public infoMessageHeader: string;
   @Input() public isInModal: boolean = false;
   @ViewChild('chatMessagesContent') public chatMessagesContent: ElementRef;
 
