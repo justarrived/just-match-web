@@ -15,15 +15,21 @@ import {ApplyMessageInputComponent} from './components/inputs/apply-message-inpu
 import {AppNavbarComponent} from './components/navbars/app-navbar/app-navbar.component';
 import {AppTranslateModule} from './app.translate.module';
 import {AtUndInputComponent} from './components/inputs/at-und-input/at-und-input.component';
-import {AutosizeDirective} from './directives/textarea-autosize/textarea-autosize.directive';
 import {BankAccountInputComponent} from './components/inputs/bank-account-input/bank-account-input.component';
 import {BaseButtonComponent} from './components/buttons/base-button/base-button.component';
 import {BasicBorderHeaderComponent} from './components/headers/basic-border-header/basic-border-header.component';
+import {BasicChatComponent} from './components/chats/basic-chat/basic-chat.component';
+import {BasicChatMessageComponent} from './components/chat-message/basic-chat-message/basic-chat-message.component';
+import {BasicChatMessagesComponent} from './components/chat-messages/basic-chat-messages/basic-chat-messages.component';
+import {BasicCommentComponent} from './components/comment/basic-comment/basic-comment.component';
+import {BasicCommentsComponent} from './components/comments/basic-comments/basic-comments.component';
 import {BasicPagerComponent} from './components/pagers/basic-pager/basic-pager.component';
 import {BasicTabComponent} from './components/tabs/basic-tab/basic-tab.component';
 import {BasicTabsComponent} from './components/tabs/basic-tabs/basic-tabs.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {BrowserModule} from '@angular/platform-browser';
+import {ChatMessageInputComponent} from './components/inputs/chat-message-input/chat-message-input.component';
+import {CircularIconBaseButtonComponent} from './components/buttons/circular-icon-base-button/circular-icon-base-button.component';
 import {CircularImageInputComponent} from './components/inputs/circular-image-input/circular-image-input.component';
 import {CityInputComponent} from './components/inputs/city-input/city-input.component';
 import {CommentInputComponent} from './components/inputs/comment-input/comment-input.component';
@@ -149,6 +155,8 @@ import {SSNInputComponent} from './components/inputs/ssn-input/ssn-input.compone
 import {StatusInputComponent} from './components/inputs/status-input/status-input.component';
 import {StreetInputComponent} from './components/inputs/street-input/street-input.component';
 import {SuccessMessageComponent} from './components/messages/success-message/success-message.component';
+import {SupportChatComponent} from './components/chats/support-chat/support-chat.component';
+import {SupportChatPageComponent} from './components/pages/support-chat-page/support-chat-page.component';
 import {SystemLanguageInputComponent} from './components/inputs/system-language-input/system-language-input.component';
 import {SystemLanguagesResolver} from './resolvers/system-languages/system-languages.resolver';
 import {TermsInputComponent} from './components/inputs/terms-input/terms-input.component';
@@ -224,13 +232,19 @@ export class RavenErrorHandler implements ErrorHandler {
     ApplyMessageInputComponent,
     AppNavbarComponent,
     AtUndInputComponent,
-    AutosizeDirective,
     BankAccountInputComponent,
     BaseButtonComponent,
     BasicBorderHeaderComponent,
+    BasicChatComponent,
+    BasicChatMessageComponent,
+    BasicChatMessagesComponent,
+    BasicCommentComponent,
+    BasicCommentsComponent,
     BasicPagerComponent,
     BasicTabComponent,
     BasicTabsComponent,
+    ChatMessageInputComponent,
+    CircularIconBaseButtonComponent,
     CircularImageInputComponent,
     CityInputComponent,
     CommentInputComponent,
@@ -342,6 +356,8 @@ export class RavenErrorHandler implements ErrorHandler {
     StatusInputComponent,
     StreetInputComponent,
     SuccessMessageComponent,
+    SupportChatComponent,
+    SupportChatPageComponent,
     SystemLanguageInputComponent,
     TermsInputComponent,
     TextareaInputComponent,

@@ -3,17 +3,23 @@ import {ElementRef, HostListener, Directive, AfterContentChecked} from '@angular
 @Directive({
   selector: 'textarea[autosize]'
 })
-export class AutosizeDirective implements AfterContentChecked {
+export class SMAutosizeDirective implements AfterContentChecked {
+
   @HostListener('input', ['$event.target'])
-  onInput(textArea: HTMLTextAreaElement): void {
+  public onInput(textArea: HTMLTextAreaElement): void {
     this.adjust();
   }
-  constructor(public element: ElementRef) {
+
+  public constructor(
+    public element: ElementRef)
+  {
   }
-  ngAfterContentChecked(): void {
+
+  public ngAfterContentChecked(): void {
     this.adjust();
   }
-  adjust(): void {
+
+  public adjust(): void {
     this.element.nativeElement.style.overflow = 'hidden';
     this.element.nativeElement.style.height = 'auto';
     this.element.nativeElement.style.height = this.element.nativeElement.scrollHeight + 'px';

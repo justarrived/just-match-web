@@ -73,6 +73,13 @@ import {ViewChild} from '@angular/core';
         </a>
 
         <a
+          [routerLink]="JARoutes.supportChat.url()"
+          *ngIf="user"
+          class="navigation-menu-item">
+          {{'menu.main.support.chat' | translate}}
+        </a>
+
+        <a
           *ngIf="!user"
           class="navigation-menu-item"
           [routerLink]="JARoutes.login.url()">

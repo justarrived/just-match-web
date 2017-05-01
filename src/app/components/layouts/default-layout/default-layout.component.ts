@@ -13,6 +13,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
       <default-navigation></default-navigation>
       <div class="layout-inner-wrapper">
         <div class="layout-header-padder"></div>
+        <cookie-bar></cookie-bar>
         <section class="layout-content">
           <div
             class="ui form"
@@ -21,7 +22,6 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
               [complete]="!user || !user.isBeingReloaded"
               class="inverted">
             </sm-loader>
-            <cookie-bar></cookie-bar>
             <router-outlet></router-outlet>
           </div>
         </section>

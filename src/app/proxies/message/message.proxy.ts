@@ -6,7 +6,7 @@ import {Injectable} from '@angular/core';
 // CREATE
 interface CreateChatMessageAttributes {
   body: string;
-  language_id: string;
+  language_id?: string;
 }
 
 @Injectable()

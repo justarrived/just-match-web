@@ -7,6 +7,7 @@ import {Input} from '@angular/core';
   styleUrls: ['./base-button.component.scss'],
   template: `
     <button
+      [disabled]="disabled"
       [class.fluid]="fluid"
       [ngClass]="[kind, size, 'btn']"
       [type]="buttonType">
@@ -16,6 +17,7 @@ import {Input} from '@angular/core';
 })
 export class BaseButtonComponent {
   @Input() public buttonText: string = '';
+  @Input() public disabled: boolean = false;
   @Input() public fluid: boolean;
   @Input() public kind: string = 'primary'; // One of ['primary', 'primary-light', 'secondary', 'secondary-light', 'inactive-light', 'inactive-dark']
   @Input() public icon: string;

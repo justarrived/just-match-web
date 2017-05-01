@@ -6,63 +6,30 @@ import {Component} from '@angular/core';
 import {FormBuilder} from '@angular/forms';
 import {FormGroup} from '@angular/forms';
 import {Input} from '@angular/core';
-import {isThisWeek} from '../../../utils/date/date.util';
-import {isToday} from '../../../utils/date/date.util';
+import {OnDestroy} from '@angular/core';
 import {OnInit} from '@angular/core';
 import {Subscription} from 'rxjs/Subscription';
 import {SystemLanguageListener} from '../../../resolvers/system-languages/system-languages.resolver';
 import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
+import {User} from '../../../models/api-models/user/user';
+import {UserResolver} from '../../../resolvers/user/user.resolver';
 import {Validators} from '@angular/forms';
 
 @Component({
   selector: 'comments-form',
   template: `
-    <div
-      class="ui comments"
-      style="margin: 0 auto; max-width: 500px; padding-bottom: 30px">
-      <div
-        *ngFor="let comment of comments"
-        class="comment">
-        <a class="avatar">
-          <img
-            [src]="comment?.owner?.company?.logoImage?.imageUrlSmall || '/assets/images/placeholder-logo.png'"
-            *ngIf="comment?.owner?.company">
-          <img
-            [src]="comment?.owner?.profileImage?.imageUrlSmall || '/assets/images/placeholder-profile-image.png'"
-            *ngIf="!comment?.owner?.company">
-        </a>
-        <div class="content">
-          <a
-            *ngIf="comment?.owner?.company"
-            class="author">
-            {{comment.owner.company.name}}
-          </a>
-          <a
-            *ngIf="!comment?.owner?.company"
-            class="author">
-            {{comment.owner.firstName}}
-          </a>
-          <div class="metadata">
-            <span class="date">
-              {{
-                (isToday(comment.createdAt) && (comment.createdAt | date:'HH:mm')) ||
-                (isThisWeek(comment.createdAt) && (comment.createdAt | date:'EEEE HH:mm')) ||
-                (comment.createdAt | date:'dd LLLL HH:mm')
-              }}
-            </span>
-          </div>
-          <div class="text">
-            {{comment.body}}
-          </div>
-        </div>
-      </div>
+    <div style="margin: 0 auto; max-width: 500px; padding-bottom: 30px">
+      <basic-comments [comments]="comments" ></basic-comments>
     </div>
+
     <form
       (ngSubmit)="submitForm()"
       [formGroup]="commentForm"
+      *ngIf="user"
       class="ui form">
       <sm-loader
         [complete]="!loadingSubmit"
+        [promise]="commentsPromise"
         class="inverted">
       </sm-loader>
 
@@ -82,34 +49,43 @@ import {Validators} from '@angular/forms';
       </form-submit-button>
     </form>`
 })
-export class CommentsFormComponent extends SystemLanguageListener implements OnInit {
+export class CommentsFormComponent extends SystemLanguageListener implements OnInit, OnDestroy {
   @Input() public isInModal: boolean = false;
   @Input() public resourceId: string;
   @Input() public resourceName: string;
 
   public apiErrors: ApiErrors = new ApiErrors([]);
   public commentForm: FormGroup;
+  public commentsPromise: Promise<Comment[]>;
   public comments: Comment[];
-  public isThisWeek = isThisWeek;
-  public isToday = isToday;
   public loadingSubmit: boolean;
   public submitFail: boolean;
   public submitSuccess: boolean;
+  public user: User;
+  private userSubscription: Subscription;
 
   public constructor(
     private changeDetector: ChangeDetectorRef,
     private commentProxy: CommentProxy,
     private formBuilder: FormBuilder,
+    private userResolver: UserResolver,
     protected systemLanguagesResolver: SystemLanguagesResolver
   ) {
     super(systemLanguagesResolver);
   }
 
   public ngOnInit() {
+    this.initUser();
     this.initForm();
     this.loadData();
   }
 
+  private initUser(): void {
+    this.user = this.userResolver.getUser();
+    this.userSubscription = this.userResolver.getUserChangeEmitter().subscribe(user => {
+      this.user = user;
+    });
+  }
 
   private initForm(): void {
     this.commentForm = this.formBuilder.group({
@@ -118,14 +94,19 @@ export class CommentsFormComponent extends SystemLanguageListener implements OnI
   }
 
   protected loadData() {
-    this.commentProxy.getComments(this.resourceName, this.resourceId, {
+    this.commentsPromise = this.commentProxy.getComments(this.resourceName, this.resourceId, {
       'include': 'owner,owner.user_images,owner.company,owner.company.company_images',
       'sort': '-created_at',
       'page[size]': 50
     })
     .then(comments => {
       this.comments = comments.reverse();
+      return this.comments;
     })
+  }
+
+  public ngOnDestroy(): void {
+    this.userSubscription.unsubscribe();
   }
 
   private handleServerErrors(errors): void {
