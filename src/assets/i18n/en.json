@@ -227,6 +227,7 @@
   "job.scope.section.header": "Scope",
   "job.scope.section.hours": "{{hours}} hours",
   "job.scope.section.netSalary": "{{netSalary}} net salary (after taxes)",
+  "job.scope.section.until.further.notice": "Until further notice",
   "jobs.title": "All jobs ({{nbrOfJobs}})",
   "language.proficiency.basic": "Basic knowledge",
   "language.proficiency.beginner": "Beginner",

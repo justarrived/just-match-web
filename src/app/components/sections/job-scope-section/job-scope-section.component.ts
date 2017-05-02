@@ -10,7 +10,12 @@ import {Job} from '../../../models/api-models/job/job'
       <h3 class="underline-border-below underline-border-below-centered underline-border-below-pink">
         {{'job.scope.section.header' | translate}}
       </h3>
-      <h5>{{'job.scope.section.hours' | translate: {hours: job.hours} }}</h5>
+      <h5 *ngIf="job.jobEndDate">
+        {{'job.scope.section.hours' | translate: {hours: job.hours} }}
+      </h5>
+      <h5 *ngIf="!job.jobEndDate">
+        {{'job.scope.section.until.further.notice' | translate }}
+      </h5>
       <h5>{{'job.scope.section.grossSalary' | translate: {grossSalary: job.grossAmountWithCurrency} }}</h5>
       <h5>{{'job.scope.section.netSalary' | translate: {netSalary: job.netAmountWithCurrency} }}</h5>
     </div>`

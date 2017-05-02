@@ -29,10 +29,14 @@ import {Job} from '../../../models/api-models/job/job'
           <h5 style="margin-bottom: 0">
             {{job.jobDate | date: 'MMM dd'}}
           </h5>
-          <h5 style="margin: 0">
+          <h5
+            *ngIf="job.jobEndDate"
+            style="margin: 0">
             -
           </h5>
-          <h5 style="margin: 0">
+          <h5
+            *ngIf="job.jobEndDate"
+            style="margin: 0">
             {{job.jobEndDate | date: 'MMM dd'}}
           </h5>
         </div>

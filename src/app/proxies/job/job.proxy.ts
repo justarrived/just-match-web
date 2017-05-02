@@ -10,7 +10,7 @@ interface CreateJobAttributes {
   hourly_pay_id: string;
   hours: number;
   job_date: Date;
-  job_end_date: Date;
+  job_end_date?: Date;
   language_id: string;
   name: string;
   short_description?: string;
