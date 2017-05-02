@@ -317,6 +317,7 @@
   "user.register.form.submit.button": "Register",
   "user.register.form.terms.section.header": "Terms and conditions",
   "user.register.title": "Register",
+  "user.card.no.address": "No address",
   "user.settings.form.address.header": "Address",
   "user.settings.form.bank.details.header": "Bank details",
   "user.settings.form.change.password.header": "Change password",

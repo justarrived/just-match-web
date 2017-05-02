@@ -8,6 +8,7 @@ import {AppComponent} from './app.component';
 import {ApplicationsComponent} from './views/my-jobs/applications/applications.component';
 import {ApplicationsStatusSectionComponent} from './components/sections/applications-status-section/applications-status-section.component';
 import {ApplicationStatusCardComponent} from './components/cards/application-status-card/application-status-card.component';
+import {UserCardComponent} from './components/cards/user-card/user-card.component';
 import {AppliedForJobModalComponent} from './components/modals/applied-for-job-modal/applied-for-job-modal.component';
 import {ApplyForJobFormComponent} from './components/forms/apply-for-job-form/apply-for-job-form.component';
 import {ApplyForJobModalComponent} from './components/modals/apply-for-job-modal/apply-for-job-modal.component';
@@ -377,6 +378,7 @@ export class RavenErrorHandler implements ErrorHandler {
     UserUpdateFormComponent,
     WelcomeHeaderComponent,
     WorkPermitBackInputComponent,
+    UserCardComponent,
     WorkPermitFrontInputComponent,
     YesNoInputComponent,
     ZipInputComponent,
