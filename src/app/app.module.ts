@@ -1,4 +1,3 @@
-import {ActsAsUserService} from './services/acts-as-user.service';
 import {AgmCoreModule} from '@agm/core';
 import {AlreadyRegisteredModalComponent} from './components/modals/already-registered-modal/already-registered-modal.component';
 import {ApiCallService} from './services/api-call.service';
@@ -384,7 +383,6 @@ export class RavenErrorHandler implements ErrorHandler {
     ZipInputComponent,
   ],
   providers: [
-    ActsAsUserService,
     ApiCallService,
     DataStoreService,
     GeolocationService,

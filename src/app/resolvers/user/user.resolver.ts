@@ -10,6 +10,7 @@ import {UserSessionProxy} from '../../proxies/user-session/user-session.proxy';
 
 @Injectable()
 export class UserResolver implements Resolve<User> {
+  private readonly storageActAsUserIdKey: string = 'actAsUserId';
   private readonly storageSessionKey: string = 'sessionData';
   private readonly defaultIncludeResources: String[] = [
     'company', 'user_images', 'user_languages', 'user_languages.language',
@@ -18,6 +19,7 @@ export class UserResolver implements Resolve<User> {
   ];
   public readonly defaultIncludeResourcesString: String = this.defaultIncludeResources.join(',');
 
+  private actingAsUser: User;
   private user: User;
   private userChange: EventEmitter<User> = new EventEmitter<User>();
 
@@ -31,6 +33,7 @@ export class UserResolver implements Resolve<User> {
 
   public resolve(): Promise<User> {
     const session = this.dataStoreService.get(this.storageSessionKey);
+    this.dataStoreService.remove(this.storageActAsUserIdKey);
 
     if (this.validateSession(session)) {
 
@@ -52,22 +55,49 @@ export class UserResolver implements Resolve<User> {
     return Promise.resolve(null);
   }
 
-  public init(user: User): void {
+  private init(user: User): void {
     this.user = user;
+  }
+
+  public activateGodMode(user: User): void {
+    this.actingAsUser = user;
+    this.dataStoreService.set(this.storageActAsUserIdKey, this.actingAsUser.id);
+    this.userChange.emit(this.actingAsUser);
+  }
+
+  public deactiveGodMode(): void {
+    this.actingAsUser = null;
+    this.dataStoreService.remove(this.storageActAsUserIdKey);
+    this.userChange.emit(this.user);
   }
 
   public reloadUser(): Promise<User> {
     const session = this.dataStoreService.get(this.storageSessionKey);
+    const actAsUserId = this.dataStoreService.get(this.storageActAsUserIdKey);
 
     if (this.validateSession(session)) {
       if (this.user) {
         this.user.isBeingReloaded = true;
+      }
+      if (this.actingAsUser) {
+        this.actingAsUser.isBeingReloaded = true;
       }
       return this.userProxy.getUser(session.user_id, {
         'include': this.defaultIncludeResourcesString
       })
       .then(user => {
         this.user = user;
+        if (actAsUserId && user.admin) {
+          return this.userProxy.getUser(actAsUserId, {
+            'include': this.defaultIncludeResourcesString
+          })
+          .then(user => {
+            this.actingAsUser = user;
+            this.userChange.emit(this.actingAsUser);
+            return user;
+          });
+        }
+
         this.userChange.emit(this.user);
         return user;
       });
@@ -79,21 +109,30 @@ export class UserResolver implements Resolve<User> {
   }
 
   public getUser(): User {
-    return this.user;
+    return this.actingAsUser || this.user;
   }
 
   public setUser(user: User) {
-    this.user = user;
-    this.userChange.emit(this.user);
+    if (this.actingAsUser) {
+      this.actingAsUser = user;
+      this.userChange.emit(this.actingAsUser);
+    } else {
+      this.user = user;
+      this.userChange.emit(this.user);
+    }
   }
 
   public logout(): void {
     this.user = null;
+    this.actingAsUser = null;
     this.dataStoreService.remove(this.storageSessionKey);
+    this.dataStoreService.remove(this.storageActAsUserIdKey);
     this.userChange.emit(this.user);
   }
 
   public login(emailOrPhone: string, password: string): Promise<User> {
+    this.dataStoreService.remove(this.storageActAsUserIdKey);
+
     return this.userSessionProxy.createUserSession({
       'email_or_phone': emailOrPhone,
       'password': password,
