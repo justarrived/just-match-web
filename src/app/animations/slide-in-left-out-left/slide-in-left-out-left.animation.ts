@@ -4,8 +4,8 @@ import {style} from '@angular/animations';
 import {transition} from '@angular/animations';
 import {trigger} from '@angular/animations';
 
-export function slideInLeftOutLeft(duration: string, translateDistance: string) {
-  return trigger('slideInLeftOutLeft', [
+export function slideInLeftOutLeftAnimation(duration: string, translateDistance: string) {
+  return trigger('slideInLeftOutLeftAnimation', [
       state('begin', style({
         transform: 'translate3d(' + translateDistance + ', 0, 0)',
         opacity: 0

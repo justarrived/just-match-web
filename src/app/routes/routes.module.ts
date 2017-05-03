@@ -13,6 +13,7 @@ import {JARoute} from './ja-route/ja-route';
 import {JobPageComponent} from '../components/pages/job-page/job-page.component';
 import {JobsPageComponent} from '../components/pages/jobs-page/jobs-page.component';
 import {LoggedInGuard} from '../guards/logged-in/logged-in.guard';
+import {LoggedInAdminGuard} from '../guards/logged-in-admin/logged-in-admin.guard';
 import {LoginPageComponent} from '../components/pages/login-page/login-page.component';
 import {LostConnectionPageComponent} from '../components/pages/lost-connection-page/lost-connection-page.component';
 import {MyJobsComponent} from '../views/my-jobs/my-jobs.component';
@@ -44,7 +45,7 @@ const routes: Routes = [
     { path: 'forbidden', component: ForbiddenPageComponent },
     { path: 'forgot-password', component: ForgotPasswordPageComponent, canActivate: [NotLoggedInGuard] },
     { path: 'guide', component: GuidePageComponent, canActivate: [LoggedInGuard] },
-    { path: 'god-mode/:page', component: GodModePageComponent },
+    { path: 'god-mode/:page', component: GodModePageComponent, canActivate: [LoggedInAdminGuard] },
     { path: 'home', redirectTo: '' },
     { path: 'job/:id', component: JobPageComponent },
     { path: 'jobs', redirectTo: 'jobs/1', pathMatch: 'full' },
