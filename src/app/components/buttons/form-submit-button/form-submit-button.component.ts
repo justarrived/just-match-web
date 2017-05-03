@@ -5,16 +5,22 @@ import {Input} from '@angular/core';
 @Component({
   selector: 'form-submit-button',
   template: `
-    <error-message
+    <div
       *ngIf="submitFail && showErrorMessage"
-      [header]="'button.form.submit.fail' | translate"
-      icon="warning">
-    </error-message>
-    <success-message
+      style="padding-top: 20px;">
+      <error-message
+        [header]="'button.form.submit.fail' | translate"
+        icon="warning">
+      </error-message>
+    </div>
+    <div
       *ngIf="submitSuccess && showSuccessMessage"
-      [header]="'button.form.submit.success' | translate"
-      icon="pink thumbs up">
-    </success-message>
+      style="padding-top: 20px;">
+      <success-message
+        [header]="'button.form.submit.success' | translate"
+        icon="pink thumbs up">
+      </success-message>
+    </div>
     <div
       [style.padding]="0"
       class="ui basic center aligned segment">
