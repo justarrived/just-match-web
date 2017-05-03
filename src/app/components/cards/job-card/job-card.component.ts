@@ -1,28 +1,17 @@
-import {animate} from '@angular/animations';
 import {Component} from '@angular/core';
+import {fadeInAnimation} from '../../../animations/fade-in/fade-in.animation';
 import {Input} from '@angular/core';
 import {JARoutes} from '../../../routes/ja-routes/ja-routes';
 import {Job} from '../../../models/api-models/job/job';
-import {state} from '@angular/animations';
-import {style} from '@angular/animations';
-import {transition} from '@angular/animations';
-import {trigger} from '@angular/animations';
+import {OnInit} from '@angular/core';
 
 @Component({
+  animations: [fadeInAnimation('200ms')],
   selector: 'job-card',
   styleUrls: ['./job-card.component.scss'],
-  animations: [
-    trigger('fadeIn', [
-      state('hidden', style({opacity: 0})),
-      state('visible', style({opacity: 1})),
-      transition('hidden => visible', [
-        animate('200ms ease-in')
-      ])
-    ])
-  ],
   template: `
   <div
-    [@fadeIn]="animationState"
+    [@fadeInAnimation]="animationState"
     class="ui raised card link job-card"
     routerLink="{{JARoutes.job.url([job.id])}}">
     <div class="content job-content-container">
@@ -65,7 +54,7 @@ import {trigger} from '@angular/animations';
   </div>`
 
 })
-export class JobCardComponent {
+export class JobCardComponent implements OnInit {
   @Input() public job = null as Job;
   @Input() public animationDelay: number = 1;
 
@@ -76,5 +65,5 @@ export class JobCardComponent {
     setTimeout(() => {
       this.animationState = 'visible';
     }, this.animationDelay);
-   }
+  }
 }

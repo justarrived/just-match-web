@@ -29,7 +29,7 @@ $fs-xxxxl: 48px;
 }
 
 
-@mixin truncate-owerflowing-text-multiline($font-size: $paragraph-font-size, $line-height: 1.4, $lines-to-show: 3, $excerpt-bg: transparent) {
+@mixin truncate-owerflowing-text-multiline($font-size: $fs-m, $line-height: 1.4, $lines-to-show: 3, $excerpt-bg: transparent) {
   background: $excerpt-bg;
   display: block; // Fallback for non-webkit
   display: -webkit-box;

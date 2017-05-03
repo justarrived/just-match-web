@@ -5,6 +5,7 @@ import {ErrorPageComponent} from '../components/pages/error-page/error-page.comp
 import {FaqPageComponent} from '../components/pages/faq-page/faq-page.component';
 import {ForbiddenPageComponent} from '../components/pages/forbidden-page/forbidden-page.component';
 import {ForgotPasswordPageComponent} from '../components/pages/forgot-password-page/forgot-password-page.component';
+import {GodModePageComponent} from '../components/pages/god-mode-page/god-mode-page.component';
 import {GuardsModule} from '../guards/guards.module';
 import {GuidePageComponent} from '../components/pages/guide/guide-page.component';
 import {HomePageComponent} from '../components/pages/home-page/home-page.component';
@@ -43,6 +44,7 @@ const routes: Routes = [
     { path: 'forbidden', component: ForbiddenPageComponent },
     { path: 'forgot-password', component: ForgotPasswordPageComponent, canActivate: [NotLoggedInGuard] },
     { path: 'guide', component: GuidePageComponent, canActivate: [LoggedInGuard] },
+    { path: 'god-mode/:page', component: GodModePageComponent },
     { path: 'home', redirectTo: '' },
     { path: 'job/:id', component: JobPageComponent },
     { path: 'jobs', redirectTo: 'jobs/1', pathMatch: 'full' },

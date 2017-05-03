@@ -1,0 +1,29 @@
+@import '../../../styles/colors';
+@import '../../../styles/dimensions';
+
+.god-mode-bar-container {
+  text-align: center;
+  background: $color-blue-500;
+  color: $white;
+  padding: 20px 32px;
+
+  .god-mode-bar-inner-container {
+    max-width: 784px;
+    margin: 0 auto;
+
+    .god-mode-bar-title {
+      text-align: center;
+    }
+
+    .god-mode-bar-description {
+      text-align: center;
+      margin: auto;
+    }
+
+    .god-mode-bar-button-container {
+      width: 200px;
+      margin: 0 auto;
+      margin-top: 30px;
+    }
+  }
+}

@@ -7,7 +7,6 @@ import {AppComponent} from './app.component';
 import {ApplicationsComponent} from './views/my-jobs/applications/applications.component';
 import {ApplicationsStatusSectionComponent} from './components/sections/applications-status-section/applications-status-section.component';
 import {ApplicationStatusCardComponent} from './components/cards/application-status-card/application-status-card.component';
-import {UserCardComponent} from './components/cards/user-card/user-card.component';
 import {AppliedForJobModalComponent} from './components/modals/applied-for-job-modal/applied-for-job-modal.component';
 import {ApplyForJobFormComponent} from './components/forms/apply-for-job-form/apply-for-job-form.component';
 import {ApplyForJobModalComponent} from './components/modals/apply-for-job-modal/apply-for-job-modal.component';
@@ -71,6 +70,9 @@ import {FormSubmitButtonComponent} from './components/buttons/form-submit-button
 import {FrilansTermsInputComponent} from './components/inputs/frilans-terms-input/frilans-terms-input.component';
 import {GenderInputComponent} from './components/inputs/gender-input/gender-input.component';
 import {GeolocationService} from './services/geolocation.service';
+import {GodModeBarComponent} from './components/bars/god-mode-bar/god-mode-bar.component';
+import {GodModePageComponent} from './components/pages/god-mode-page/god-mode-page.component';
+import {GodModeUsersSectionComponent} from './components/sections/god-mode-users-section/god-mode-users-section.component';
 import {GotCoordinationNumberInputComponent} from './components/inputs/got-coordination-number-input/got-coordination-number-input.component';
 import {GuidePageComponent} from './components/pages/guide/guide-page.component';
 import {HomePageComponent} from './components/pages/home-page/home-page.component';
@@ -165,6 +167,7 @@ import {TextareaInputComponent} from './components/inputs/textarea-input/textare
 import {TextInputComponent} from './components/inputs/text-input/text-input.component';
 import {UploadDocumentCardComponent} from './components/cards/upload-document-card/upload-document-card.component';
 import {UploadImageCardComponent} from './components/cards/upload-image-card/upload-image-card.component';
+import {UserCardComponent} from './components/cards/user-card/user-card.component';
 import {UserDetailsFormComponent} from './components/forms/user-details-form/user-details-form.component';
 import {UserDocumentCardInputComponent} from './components/inputs/user-document-card-input/user-document-card-input.component';
 import {UserImageCardInputComponent} from './components/inputs/user-image-card-input/user-image-card-input.component';
@@ -282,6 +285,9 @@ export class RavenErrorHandler implements ErrorHandler {
     FormSubmitButtonComponent,
     FrilansTermsInputComponent,
     GenderInputComponent,
+    GodModeBarComponent,
+    GodModePageComponent,
+    GodModeUsersSectionComponent,
     GotCoordinationNumberInputComponent,
     GuidePageComponent,
     HomePageComponent,
@@ -365,6 +371,7 @@ export class RavenErrorHandler implements ErrorHandler {
     TextInputComponent,
     UploadDocumentCardComponent,
     UploadImageCardComponent,
+    UserCardComponent,
     UserDetailsFormComponent,
     UserDocumentCardInputComponent,
     UserImageCardInputComponent,
@@ -377,7 +384,6 @@ export class RavenErrorHandler implements ErrorHandler {
     UserUpdateFormComponent,
     WelcomeHeaderComponent,
     WorkPermitBackInputComponent,
-    UserCardComponent,
     WorkPermitFrontInputComponent,
     YesNoInputComponent,
     ZipInputComponent,

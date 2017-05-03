@@ -2,11 +2,14 @@
 @import '../../../styles/typography';
 
 .ui.card {
+  width: 260px;
   text-align: left;
   margin-top: 1em;
   margin-bottom: 1em;
+
   .image {
     height: 290px;
+
     img {
       width: 100%;
       height: 100%;
@@ -27,13 +30,18 @@
   }
 
   .extra.content {
+    height: 60px;
     display: flex;
     flex-wrap: nowrap;
     align-items: center;
 
+    .icon {
+      flex-shrink: 0;
+    }
+
     .address {
       text-align: left;
-      @include wrap-long-words;
+      @include truncate-owerflowing-text-multiline($font-size: $fs-s, $lines-to-show: 2);
     }
 
     .no-address {

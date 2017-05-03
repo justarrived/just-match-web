@@ -59,16 +59,24 @@ export class UserResolver implements Resolve<User> {
     this.user = user;
   }
 
+  public isAdmin(): boolean {
+    return this.user && this.user.admin;
+  }
+
   public activateGodMode(user: User): void {
     this.actingAsUser = user;
     this.dataStoreService.set(this.storageActAsUserIdKey, this.actingAsUser.id);
     this.userChange.emit(this.actingAsUser);
   }
 
-  public deactiveGodMode(): void {
+  public deactivateGodMode(): void {
     this.actingAsUser = null;
     this.dataStoreService.remove(this.storageActAsUserIdKey);
     this.userChange.emit(this.user);
+  }
+
+  public godModeActive(): boolean {
+    return !!this.actingAsUser;
   }
 
   public reloadUser(): Promise<User> {

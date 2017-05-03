@@ -14,6 +14,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
       <div class="layout-inner-wrapper">
         <div class="layout-header-padder"></div>
         <cookie-bar></cookie-bar>
+        <god-mode-bar></god-mode-bar>
         <section class="layout-content">
           <div
             class="ui form"

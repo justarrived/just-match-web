@@ -1,15 +1,17 @@
 import {Component} from '@angular/core';
 import {EventEmitter} from '@angular/core';
+import {fadeInAnimation} from '../../../animations/fade-in/fade-in.animation';
 import {Input} from '@angular/core';
-import {Output} from '@angular/core';
+import {OnInit} from '@angular/core';
 import {User} from '../../../models/api-models/user/user';
 
 @Component({
+  animations: [fadeInAnimation('200ms')],
   selector: 'user-card',
   styleUrls: ['./user-card.component.scss'],
   template: `
     <div
-      class="ui raised card"
+      class="ui raised card link"
       [ngClass]="{'centered': centered}">
       <div class="image">
         <img
@@ -50,7 +52,16 @@ import {User} from '../../../models/api-models/user/user';
       </div>
     </div>`
 })
-export class UserCardComponent {
+export class UserCardComponent implements OnInit {
   @Input() public centered: boolean;
   @Input() public user = null as User;
+  @Input() public animationDelay: number = 1;
+
+  public animationState: string = 'hidden';
+
+  public ngOnInit() {
+    setTimeout(() => {
+      this.animationState = 'visible';
+    }, this.animationDelay);
+  }
 }

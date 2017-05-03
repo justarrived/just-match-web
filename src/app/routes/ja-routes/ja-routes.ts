@@ -8,8 +8,9 @@ export class JARoutes {
   public static faq: JARoute = { url: () => '/faq'};
   public static forbidden: JARoute = { url: () => '/forbidden'};
   public static forgotPassword: JARoute = { url: () => '/forgot-password'};
-  public static home: JARoute = { url: () => '/home'};
+  public static godMode: JARoute = { url: (args?: string[]) => '/god-mode/' + args[0]};
   public static guide: JARoute = { url: () => '/guide'};
+  public static home: JARoute = { url: () => '/home'};
   public static job: JARoute = { url: (args?: string[]) => '/job/' + args[0]};
   public static jobs: JARoute = { url: (args?: string[]) => '/jobs/' + args[0]};
   public static login: JARoute = { url: () => '/login'};
