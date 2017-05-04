@@ -11,6 +11,7 @@ import {User} from '../../../models/api-models/user/user';
   styleUrls: ['./user-card.component.scss'],
   template: `
     <div
+      [@fadeInAnimation]="animationState"
       class="ui raised card link"
       [ngClass]="{'centered': centered}">
       <div class="image">

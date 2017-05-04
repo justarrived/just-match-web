@@ -7,6 +7,7 @@ import {AppComponent} from './app.component';
 import {ApplicationsComponent} from './views/my-jobs/applications/applications.component';
 import {ApplicationsStatusSectionComponent} from './components/sections/applications-status-section/applications-status-section.component';
 import {ApplicationStatusCardComponent} from './components/cards/application-status-card/application-status-card.component';
+import {BasicSearchComponent} from './components/search/basic-search/basic-search.component';
 import {AppliedForJobModalComponent} from './components/modals/applied-for-job-modal/applied-for-job-modal.component';
 import {ApplyForJobFormComponent} from './components/forms/apply-for-job-form/apply-for-job-form.component';
 import {ApplyForJobModalComponent} from './components/modals/apply-for-job-modal/apply-for-job-modal.component';
@@ -32,6 +33,7 @@ import {CircularIconBaseButtonComponent} from './components/buttons/circular-ico
 import {CircularImageInputComponent} from './components/inputs/circular-image-input/circular-image-input.component';
 import {CityInputComponent} from './components/inputs/city-input/city-input.component';
 import {CommentInputComponent} from './components/inputs/comment-input/comment-input.component';
+import {UsersFilterComponent} from './components/filters/users-filter/users-filter.component';
 import {CommentsFormComponent} from './components/forms/comments-form/comments-form.component';
 import {CompactJobCardComponent} from './components/cards/compact-job-card/compact-job-card.component';
 import {CompetenceInputComponent} from './components/inputs/competence-input/competence-input.component';
@@ -52,6 +54,7 @@ import {DescriptionInputComponent} from './components/inputs/description-input/d
 import {EducationInputComponent} from './components/inputs/education-input/education-input.component';
 import {EmailInputComponent} from './components/inputs/email-input/email-input.component';
 import {EmailOrPhoneInputComponent} from './components/inputs/email-or-phone-input/email-or-phone-input.component';
+import {FilterUsersInputComponent} from './components/inputs/filter-users-input/filter-users-input.component';
 import {environment} from '../environments/environment';
 import {ErrorHandler } from '@angular/core';
 import {ErrorMessageComponent} from './components/messages/error-message/error-message.component';
@@ -68,11 +71,12 @@ import {ForgotPasswordPageComponent} from './components/pages/forgot-password-pa
 import {FormsModule} from '@angular/forms';
 import {FormSubmitButtonComponent} from './components/buttons/form-submit-button/form-submit-button.component';
 import {FrilansTermsInputComponent} from './components/inputs/frilans-terms-input/frilans-terms-input.component';
+import {SortUsersInputComponent} from './components/inputs/sort-users-input/sort-users-input.component';
 import {GenderInputComponent} from './components/inputs/gender-input/gender-input.component';
 import {GeolocationService} from './services/geolocation.service';
 import {GodModeBarComponent} from './components/bars/god-mode-bar/god-mode-bar.component';
 import {GodModePageComponent} from './components/pages/god-mode-page/god-mode-page.component';
-import {GodModeUsersSectionComponent} from './components/sections/god-mode-users-section/god-mode-users-section.component';
+import {GodModePagerSectionComponent} from './components/sections/god-mode-pager-section/god-mode-pager-section.component';
 import {GotCoordinationNumberInputComponent} from './components/inputs/got-coordination-number-input/got-coordination-number-input.component';
 import {GuidePageComponent} from './components/pages/guide/guide-page.component';
 import {HomePageComponent} from './components/pages/home-page/home-page.component';
@@ -287,7 +291,7 @@ export class RavenErrorHandler implements ErrorHandler {
     GenderInputComponent,
     GodModeBarComponent,
     GodModePageComponent,
-    GodModeUsersSectionComponent,
+    GodModePagerSectionComponent,
     GotCoordinationNumberInputComponent,
     GuidePageComponent,
     HomePageComponent,
@@ -295,6 +299,7 @@ export class RavenErrorHandler implements ErrorHandler {
     HowItWorksSectionComponent,
     InfoMessageComponent,
     InputErrorComponent,
+    SortUsersInputComponent,
     InputErrorsComponent,
     InputHintLabelComponent,
     InterestLevelInputComponent,
@@ -310,8 +315,10 @@ export class RavenErrorHandler implements ErrorHandler {
     JobLocationSectionComponent,
     JobMapMarkerComponent,
     JobPageComponent,
+    UsersFilterComponent,
     JobScopeSectionComponent,
     JobScopeSectionComponent,
+    FilterUsersInputComponent,
     JobsMapComponent,
     JobsPageComponent,
     JobsPagerSectionComponent,
@@ -323,6 +330,7 @@ export class RavenErrorHandler implements ErrorHandler {
     LMACardInputComponent,
     LoginFormComponent,
     LoginModalComponent,
+    BasicSearchComponent,
     LoginPageComponent,
     LostConnectionPageComponent,
     MaximizeChancessSectionComponent,

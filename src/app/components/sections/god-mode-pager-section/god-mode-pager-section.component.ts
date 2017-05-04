@@ -16,7 +16,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
 // Component requires a route with a :page param
 
 @Component({
-  selector: 'god-mode-users-section',
+  selector: 'god-mode-pager-section',
   template: `
     <sm-loader
       [promise]="actAsUser"
@@ -38,6 +38,10 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
         class="inverted">
       </sm-loader>
       <div class="ui centered grid">
+        <h3
+          *ngIf="(users| async)?.length == 0">
+          {{'god.mode.pager.section.no.users' | translate}}
+        </h3>
         <user-card
           (click)="activateGodmode(user)"
           [animationDelay]="50 * i"
@@ -58,16 +62,25 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
     </basic-pager>
     `
 })
-export class GodModeUsersSectionComponent extends SystemLanguageListener implements OnInit, OnDestroy {
+export class GodModePagerSectionComponent extends SystemLanguageListener implements OnInit {
   @Input() currentRoute: JARoute;
 
+  @Input("filters")
+  public set filters(filters: any) {
+    if (filters.sortOption && filters.filterOption && JSON.stringify(this.activeFilters) !== JSON.stringify(filters)) {
+      this.activeFilters = filters;
+      this.page = 1;
+      this.loadData()
+    }
+  }
+
+  public activeFilters: any;
   public page: number = 1;
   public pageSize: number = 20;
   public total: number = 0;
   public users: Promise<User[]>;
   public actAsUser: Promise<User>;
 
-  private routeParamsSubscription: Subscription;
 
   public constructor(
     private activatedRoute: ActivatedRoute,
@@ -81,44 +94,30 @@ export class GodModeUsersSectionComponent extends SystemLanguageListener impleme
 
   public ngOnInit(): void {
     this.userResolver.deactivateGodMode();
-    this.initRouteParamsSubscription();
-  }
-
-  private initRouteParamsSubscription(): void {
-    this.routeParamsSubscription = this.activatedRoute.params.subscribe(params => {
-      this.page = params['page'] && parseInt(params['page']);
-      if (!this.page || this.page < 1) {
-        this.navigationService.replaceRouteState(this.currentRoute, "1");
-        this.page = 1;
-      }
-      this.loadData();
-    });
   }
 
   protected loadData(): void {
-    this.users = this.userProxy.getUsersWithMeta({
+    let searchParameters = {
       'fields[users]': 'first_name, last_name, email, phone, full_street_address, user_images',
       'include': 'user_images',
+      'sort': this.activeFilters.sortOption,
       'page[number]': this.page,
       'page[size]': this.pageSize,
-    })
+    };
+
+    searchParameters[this.activeFilters.filterOption] = this.activeFilters.searchText;
+
+    this.users = this.userProxy.getUsersWithMeta(searchParameters)
     .then(result => {
       this.total = result.meta.total;
-      if (this.pageSize * (this.page - 1) > this.total) {
-        this.onPageChange(1);
-      } else if (this.total === 0) {
+      if (this.total === 0) {
         this.page = 0;
       }
       return result.users;
     });
   }
 
-  public ngOnDestroy(): void {
-    this.routeParamsSubscription.unsubscribe();
-  }
-
   public onPageChange(page: number): void {
-    this.navigationService.replaceRouteState(this.currentRoute, page.toString());
     this.page = page;
     this.loadData();
   }

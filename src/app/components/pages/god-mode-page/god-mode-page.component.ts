@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
+import {GodModePagerSectionComponent} from '../../sections/god-mode-pager-section/god-mode-pager-section.component';
 import {JARoutes} from '../../../routes/ja-routes/ja-routes';
-import {GodModeUsersSectionComponent} from '../../sections/god-mode-users-section/god-mode-users-section.component';
 import {ViewChild} from '@angular/core';
 
 @Component({
@@ -10,13 +10,21 @@ import {ViewChild} from '@angular/core';
       icon="search">
     </basic-border-header>
 
-    <god-mode-users-section
+    <users-filter (onFiltersChanged)="onFiltersChanged($event)"></users-filter>
+
+    <god-mode-pager-section
       [currentRoute]="JARoutes.godMode"
+      [filters]="activeFilters"
       #godModeUsersSectionComponent>
-    </god-mode-users-section>`
+    </god-mode-pager-section>`
 })
 export class GodModePageComponent {
-  @ViewChild('godModeUsersSectionComponent') public godModeUsersSectionComponent : GodModeUsersSectionComponent;
+  @ViewChild('godModeUsersSectionComponent') public godModeUsersSectionComponent : GodModePagerSectionComponent;
 
+  public activeFilters: any = {};
   public JARoutes = JARoutes;
+
+  public onFiltersChanged(filters: {searchText: string, sortOption: string, filterOption: string}): void {
+    this.activeFilters = filters;
+  }
 }

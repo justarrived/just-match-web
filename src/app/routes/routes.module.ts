@@ -45,7 +45,7 @@ const routes: Routes = [
     { path: 'forbidden', component: ForbiddenPageComponent },
     { path: 'forgot-password', component: ForgotPasswordPageComponent, canActivate: [NotLoggedInGuard] },
     { path: 'guide', component: GuidePageComponent, canActivate: [LoggedInGuard] },
-    { path: 'god-mode/:page', component: GodModePageComponent, canActivate: [LoggedInAdminGuard] },
+    { path: 'god-mode', component: GodModePageComponent, canActivate: [LoggedInAdminGuard] },
     { path: 'home', redirectTo: '' },
     { path: 'job/:id', component: JobPageComponent },
     { path: 'jobs', redirectTo: 'jobs/1', pathMatch: 'full' },

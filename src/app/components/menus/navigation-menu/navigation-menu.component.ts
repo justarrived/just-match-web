@@ -43,7 +43,7 @@ import {ViewChild} from '@angular/core';
         <a
           *ngIf="admin"
           class="navigation-menu-item"
-          [routerLink]="JARoutes.godMode.url(['1'])">
+          [routerLink]="JARoutes.godMode.url()">
           {{'menu.main.god.mode' | translate}}
         </a>
 

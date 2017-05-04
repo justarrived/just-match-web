@@ -21,6 +21,15 @@
   color: $color-primary-cerise !important;
 }
 
+.ui.inverted.pink.menu {
+  background-color: $color-primary-cerise !important;
+  color: $white !important;
+}
+
+.ui.inverted.pink .field>label {
+  color: $white !important;
+}
+
 .ui.pink.header {
   color: $color-primary-cerise !important;
 }

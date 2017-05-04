@@ -76,7 +76,7 @@ export class GodModeBarComponent implements OnInit, OnDestroy {
   }
 
   public changeUser(): void {
-    this.navigationService.navigate(JARoutes.godMode, '1');
+    this.navigationService.navigate(JARoutes.godMode);
   }
 
   public goToUserProfile(): void {

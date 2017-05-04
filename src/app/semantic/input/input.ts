@@ -17,19 +17,14 @@ import { FormControl } from "@angular/forms";
   template: `
   <div
     class="field"
-    [ngClass]="{error: (!control.valid && control.dirty && isInsideForm) }">
+    [ngClass]="{error: (!control.valid && control.dirty) }">
     <label
-      *ngIf="label && isInsideForm">
+      *ngIf="label">
       {{label}}
     </label>
     <div
       class="ui input {{class}}"
-      [ngClass]="{'icon': icon, 'error': (!control.valid && control.dirty &&!isInsideForm)}">
-      <label
-        *ngIf="label && !isInsideForm"
-        class="ui label">
-        {{label}}
-      </label>
+      [ngClass]="{'icon': icon}">
       <input
         (keyup.enter)="onEnterKeyUp.emit()"
         [type]="type"
@@ -42,39 +37,15 @@ import { FormControl } from "@angular/forms";
     </div>
   </div>`
 })
-export class SemanticInputComponent implements OnInit {
-  @Input() label: string;
+export class SemanticInputComponent {
   @Input() class: string;
-  @Input() icon: string;
-  @Input() type: string = "text";
-  @Input() placeholder: string;
-  @Input() model: {};
   @Input() control: FormControl = new FormControl();
+  @Input() icon: string;
+  @Input() label: string;
+  @Input() model: {};
+  @Input() placeholder: string;
+  @Input() type: string = "text";
   @Output() onEnterKeyUp: EventEmitter<any> = new EventEmitter<any>();
-
-  public isInsideForm: boolean = false;
-
-  constructor(public viewRef: ViewContainerRef) {
-  }
-
-  ngOnInit() {
-    // if input field is inside form
-    if (this.inForm(this.viewRef.element.nativeElement, "form")) {
-      this.isInsideForm = true;
-    }
-  }
-
-  inForm(el: Node, classname: string): boolean {
-    if (el.parentNode) {
-      if (el.parentNode.nodeName.toLowerCase() === classname.toLowerCase()) {
-        return !!el.parentNode;
-      } else {
-        return this.inForm(el.parentNode, classname);
-      }
-    } else {
-      return false;
-    }
-  }
 }
 
 /**
