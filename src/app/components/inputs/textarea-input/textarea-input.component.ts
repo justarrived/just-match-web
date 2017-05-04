@@ -11,7 +11,8 @@ import {ViewChild} from '@angular/core';
   template: `
     <div
       [ngClass]="{'error': inputErrors.hasErrors()}"
-      class="field">
+      class="field"
+      [style.padding-bottom]="paddingBottom">
       <sm-textarea
         (onEnterKeyUp)="onEnterKeyUp.emit()"
         [control]="control"
@@ -41,6 +42,7 @@ export class TextareaInputComponent {
   @Input() public rows: number = 10;
   @Input() public maxLengthLabel: string;
   @Input() public minLengthLabel: string;
+  @Input() public paddingBottom: string = '1em';
   @Input() public patternLabel: string;
   @Input() public placeholder: string;
   @Input() public requiredLabel: string;

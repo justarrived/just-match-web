@@ -12,6 +12,7 @@ import {ViewChild} from '@angular/core';
   template: `
     <div
       [ngClass]="{'error': inputErrors.hasErrors()}"
+      [style.padding-bottom]="paddingBottom"
       class="field">
       <sm-select
        [control]="control"
@@ -52,6 +53,7 @@ export class SelectDropdownInputComponent {
   @Input() public maxLengthLabel: string;
   @Input() public minLengthLabel: string;
   @Input() public options: any;
+  @Input() public paddingBottom: string = '1em';
   @Input() public patternLabel: string;
   @Input() public placeholder: string;
   @Input() public requiredLabel: string;
