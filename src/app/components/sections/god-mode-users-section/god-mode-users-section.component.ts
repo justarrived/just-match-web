@@ -97,6 +97,7 @@ export class GodModeUsersSectionComponent extends SystemLanguageListener impleme
 
   protected loadData(): void {
     this.users = this.userProxy.getUsersWithMeta({
+      'fields[users]': 'first_name, last_name, email, phone, full_street_address, user_images',
       'include': 'user_images',
       'page[number]': this.page,
       'page[size]': this.pageSize,
