@@ -1,5 +1,4 @@
 {
-  "god.mode.pager.section.no.users": "No users found",
   "already.registered.modal.button": "Log in",
   "already.registered.modal.info": "It seems that there already is an account using {{emailOrPhone}}, so we suggest that you log in instead. If you forgot your password you can reset your password by clicking \"Forgotten your password?\" above",
   "already.registered.modal.title": "{{emailOrPhone}} is already registered",
@@ -79,6 +78,7 @@
   "god.mode.bar.title": "You are acting as {{firstName}} {{lastName}} with id {{id}}!",
   "god.mode.change.user.button": "Change user",
   "god.mode.deactivate.button": "Deactivate",
+  "god.mode.pager.section.no.users": "No users found",
   "god.mode.title": "{{numberOfUsers}} Users",
   "home.header.logged.in.jobs.button": "Find jobs",
   "home.header.logged.in.profile.button": "Edit profile",
