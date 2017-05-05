@@ -9,6 +9,7 @@ import {ViewChild} from '@angular/core';
   template: `
     <div
       [ngClass]="{'error': inputErrors.hasErrors()}"
+      [style.padding-bottom]="paddingBottom"
       class="field">
       <sm-input
         [control]="control"
@@ -41,6 +42,7 @@ export class TextInputComponent {
   @Input() public maxLengthLabel: string;
   @Input() public minLengthLabel: string;
   @Input() public patternLabel: string;
+  @Input() public paddingBottom: string = '1em';
   @Input() public placeholder: string;
   @Input() public requiredLabel: string;
   @Input() public type: string = 'text';

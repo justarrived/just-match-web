@@ -12,6 +12,7 @@ import {ViewChild} from '@angular/core';
   template: `
     <div
       [ngClass]="{'error': inputErrors.hasErrors()}"
+      [style.padding-bottom]="paddingBottom"
       class="field">
       <sm-select
        [control]="control"
@@ -20,7 +21,8 @@ import {ViewChild} from '@angular/core';
        [options]="options"
        [placeholder]="placeholder"
        (onChange)="change($event)"
-       class="fluid search">
+       [class.fluid]="fluid"
+       class="search">
         <option
           [value]="getNestedProperty(item, dataItemValueProoerty)"
           *ngFor="let item of data">
@@ -47,11 +49,13 @@ export class SelectDropdownInputComponent {
   @Input() public data: any[];
   @Input() public dataItemLabelProoerty: string;
   @Input() public dataItemValueProoerty: string;
+  @Input() public fluid: boolean = true;
   @Input() public hint: string;
   @Input() public label: string;
   @Input() public maxLengthLabel: string;
   @Input() public minLengthLabel: string;
   @Input() public options: any;
+  @Input() public paddingBottom: string = '1em';
   @Input() public patternLabel: string;
   @Input() public placeholder: string;
   @Input() public requiredLabel: string;

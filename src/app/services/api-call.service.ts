@@ -1,4 +1,3 @@
-import {ActsAsUserService} from './acts-as-user.service';
 import {ApiErrors} from '../models/api-models/api-errors/api-errors';
 import {DataStoreService} from './data-store.service';
 import {environment} from '../../environments/environment';
@@ -20,9 +19,10 @@ import * as  _ from 'lodash';
 @Injectable()
 export class ApiCallService {
   private readonly actAsUserHeaderName: string = 'X-API-ACT-AS-USER';
+  private readonly languageHeaderName: string = 'X-API-LOCALE';
   private readonly sessionHeaderName: string = 'Authorization';
   private readonly sessionHeaderPrefix: string = 'Token token=';
-  private readonly languageHeaderName: string = 'X-API-LOCALE';
+  private readonly storageActAsUserIdKey: string = 'actAsUserId'; // MUST be same as key in user resolver
   private readonly storageSessionKey: string = 'sessionData'; // MUST be same as key in user resolver
   private readonly storageSystemLanguageCodeKey: string = 'systemLanguageCode'; // MUST be same as key in system languages resolver
   private readonly transformHeaderName: string = 'X-API-KEY-TRANSFORM';
@@ -31,7 +31,6 @@ export class ApiCallService {
   constructor(
     private http: Http,
     private dataStoreService: DataStoreService,
-    private actsAsUserService: ActsAsUserService,
     private navigationService: NavigationService
   ) {
   }
@@ -101,7 +100,7 @@ export class ApiCallService {
     req.headers.set(this.languageHeaderName, this.dataStoreService.get(this.storageSystemLanguageCodeKey));
     req.headers.set(this.transformHeaderName, this.transformHeaderValue);
 
-    const actAsUserId = this.actsAsUserService.getUserId();
+    const actAsUserId = this.dataStoreService.get(this.storageActAsUserIdKey);
     if (actAsUserId !== null) {
       req.headers.set(this.actAsUserHeaderName, actAsUserId);
     }

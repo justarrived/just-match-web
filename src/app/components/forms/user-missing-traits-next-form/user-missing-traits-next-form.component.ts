@@ -13,7 +13,7 @@ import {OnChanges} from '@angular/core';
 import {OnDestroy} from '@angular/core';
 import {OnInit} from '@angular/core';
 import {Output} from '@angular/core';
-import {slideInLeftOutLeft} from '../../../animations/slide-in-left-out-left/slide-in-left-out-left';
+import {slideInLeftOutLeftAnimation} from '../../../animations/slide-in-left-out-left/slide-in-left-out-left.animation';
 import {Subscription} from 'rxjs/Subscription';
 import {SystemLanguageListener} from '../../../resolvers/system-languages/system-languages.resolver';
 import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
@@ -26,7 +26,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
 import {Validators} from '@angular/forms';
 
 @Component({
-  animations: [slideInLeftOutLeft('200ms', '50%')],
+  animations: [slideInLeftOutLeftAnimation('200ms', '50%')],
   selector: 'user-missing-traits-next-form',
   templateUrl: './user-missing-traits-next-form.component.html'
 })

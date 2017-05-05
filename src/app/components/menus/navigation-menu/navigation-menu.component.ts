@@ -41,6 +41,13 @@ import {ViewChild} from '@angular/core';
         </a>
 
         <a
+          *ngIf="admin"
+          class="navigation-menu-item"
+          [routerLink]="JARoutes.godMode.url()">
+          {{'menu.main.god.mode' | translate}}
+        </a>
+
+        <a
           *ngIf="user"
           class="navigation-menu-item"
           [routerLink]="JARoutes.applications.url()">
@@ -87,8 +94,8 @@ import {ViewChild} from '@angular/core';
         </a>
 
         <a
-          (click)="onStaffingTimeReportButtonClick()"
-          *ngIf="canStaffingTimeReport"
+          (click)="onStaffingTimeReportLinkClick()"
+          *ngIf="user && (user.justArrivedStaffing || user.admin);"
           class="navigation-menu-item"
           href="#">
           {{'menu.main.staffing_time_report' | translate}}
@@ -136,6 +143,7 @@ export class NavigationMenuComponent implements OnInit, OnDestroy {
 
   public JARoutes = JARoutes;
   public user: User;
+  public admin: boolean;
 
   private routerEventSubscription: Subscription;
   private userSubscription: Subscription;
@@ -164,8 +172,10 @@ export class NavigationMenuComponent implements OnInit, OnDestroy {
 
   private initUser(): void {
     this.user = this.userResolver.getUser();
+    this.admin = this.userResolver.isAdmin();
     this.userSubscription = this.userResolver.getUserChangeEmitter().subscribe(user => {
       this.user = user;
+      this.admin = this.userResolver.isAdmin();
     });
   }
 
@@ -194,11 +204,7 @@ export class NavigationMenuComponent implements OnInit, OnDestroy {
     this.navigationSidebar.hide();
   }
 
-  public get canStaffingTimeReport(): boolean {
-    return this.user && (this.user.justArrivedStaffing || this.user.admin);
-  }
-
-  public onStaffingTimeReportButtonClick(): void {
+  public onStaffingTimeReportLinkClick(): void {
     window.location.href = 'https://justarrived-se.web.intelliplan.eu/croupier/login/';
     this.hide();
   }

@@ -7,7 +7,7 @@ import {RouterStateSnapshot} from '@angular/router';
 import {UserResolver} from '../../resolvers/user/user.resolver';
 
 @Injectable()
-export class LoggedInGuard implements CanActivate {
+export class LoggedInAdminGuard implements CanActivate {
   constructor(
     private navigationService: NavigationService,
     private userResolver: UserResolver
@@ -17,7 +17,7 @@ export class LoggedInGuard implements CanActivate {
   public canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<boolean> {
     return this.userResolver.resolve()
     .then(user => {
-      if (user) {
+      if (user && user.admin) {
         return true;
       } else {
         this.navigationService.navigate(JARoutes.home);

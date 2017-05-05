@@ -6,12 +6,14 @@ import {Job} from '../../../models/api-models/job/job';
 import {JobProxy} from '../../../proxies/job/job.proxy';
 import {NavigationService} from '../../../services/navigation.service';
 import {nbrOfMonthsFromDate} from '../../../utils/date/date.util';
+import {OnDestroy} from '@angular/core';
 import {OnInit} from '@angular/core';
+import {Subscription} from 'rxjs/Subscription';
 import {SystemLanguageListener} from '../../../resolvers/system-languages/system-languages.resolver';
 import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
 import {yyyymmdd} from '../../../utils/date/date.util';
 
-// Component requires a route with only a :page param
+// Component requires a route with a :page param
 
 @Component({
   selector: 'jobs-pager-section',
@@ -49,13 +51,15 @@ import {yyyymmdd} from '../../../utils/date/date.util';
       [pageSize]="pageSize">
     </basic-pager>`
 })
-export class JobsPagerSectionComponent extends SystemLanguageListener implements OnInit {
+export class JobsPagerSectionComponent extends SystemLanguageListener implements OnInit, OnDestroy {
   @Input() currentRoute: JARoute;
 
   public jobsMetaPromise: Promise<{jobs: Job[], meta: any}>;
   public totalJobs: number = 0;
   public page: number = 1;
   public pageSize: number = 12;
+
+  private routeParamsSubscription: Subscription;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -66,8 +70,12 @@ export class JobsPagerSectionComponent extends SystemLanguageListener implements
     super(systemLanguagesResolver);
   }
 
-  public ngOnInit() {
-    this.activatedRoute.params.subscribe(params => {
+  public ngOnInit(): void {
+    this.initRouteParamsSubscription();
+  }
+
+  private initRouteParamsSubscription(): void {
+    this.routeParamsSubscription = this.activatedRoute.params.subscribe(params => {
       this.page = params['page'] && parseInt(params['page']);
       if (!this.page || this.page < 1) {
         this.navigationService.replaceRouteState(this.currentRoute, "1");
@@ -77,7 +85,7 @@ export class JobsPagerSectionComponent extends SystemLanguageListener implements
     });
   }
 
-  protected loadData() {
+  protected loadData(): void {
     this.jobsMetaPromise = this.jobProxy.getJobsWithMeta({
       'include': 'company,hourly_pay,company.company_images',
       'filter[filled]': false,
@@ -97,7 +105,11 @@ export class JobsPagerSectionComponent extends SystemLanguageListener implements
     });
   }
 
-  public onPageChange(page) {
+  public ngOnDestroy(): void {
+    this.routeParamsSubscription.unsubscribe();
+  }
+
+  public onPageChange(page: number): void {
     this.navigationService.replaceRouteState(this.currentRoute, page.toString());
     this.page = page;
     this.loadData();

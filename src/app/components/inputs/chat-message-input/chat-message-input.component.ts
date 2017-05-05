@@ -13,6 +13,7 @@ import {Output} from '@angular/core';
     [apiErrors]="apiErrors"
     [control]="control"
     [hint]="hint"
+    [paddingBottom]="0"
     [placeholder]="'input.chat.message.placeholder' | translate"
     [rows]="1"
     apiAttribute="body">
