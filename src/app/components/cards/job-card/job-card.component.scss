@@ -1,67 +1,208 @@
-@import '../../../styles/colors';
-@import '../../../styles/typography';
+.truncate-owerflowing-text {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis; }
+
+.wrap-long-words {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  -ms-word-break: break-all;
+  word-break: break-word;
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto; }
+
+@font-face {
+  font-family: 'museo';
+  src: url("/assets/fonts/museo/museo-300.otf") format("opentype");
+  font-weight: 300; }
+
+@font-face {
+  font-family: 'museo';
+  src: url("/assets/fonts/museo/museo-500.otf") format("opentype");
+  font-weight: 500; }
+
+@font-face {
+  font-family: 'museo';
+  src: url("/assets/fonts/museo/museo-700.otf") format("opentype");
+  font-weight: 700; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "museo", "Helvetica Neue", Helvetica, Arial, sans-serif; }
+
+h1 {
+  font-size: 42px;
+  font-weight: 700; }
+
+h2 {
+  font-size: 36px;
+  font-weight: 700; }
+
+h3 {
+  font-size: 24px;
+  font-weight: 700; }
+
+h4 {
+  font-size: 18px;
+  font-weight: 700; }
+
+h5 {
+  font-size: 16px;
+  font-weight: 700; }
+
+h6 {
+  font-size: 14px;
+  font-weight: 700; }
+
+p, div, span, a {
+  font-family: "Open Sans", sans-serif; }
+
+p {
+  font-size: 16px;
+  line-height: 22px; }
+
+a {
+  color: #45E2FF; }
+  a:hover {
+    color: #ED4DA4;
+    cursor: pointer; }
+
+a:not([href]):not([tabindex]) {
+  color: #45E2FF; }
+  a:not([href]):not([tabindex]):hover {
+    color: #ED4DA4; }
+
+.fs-s {
+  font-size: 12px; }
+
+.fs-m0 {
+  font-size: 14px; }
+
+.fs-m {
+  font-size: 16px; }
+
+.fs-l {
+  font-size: 18px; }
+
+.fs-l0 {
+  font-size: 20px; }
+
+.fs-xl {
+  font-size: 22px; }
+
+.fs-xxl {
+  font-size: 24px; }
+
+.fs-xxxl {
+  font-size: 32px; }
 
 .job-card {
-  width: 260px;
-
-  .job-content-container {
-    height: 241px;
-
-    .job-header-container {
+  width: 260px; }
+  .job-card .job-content-container {
+    height: 241px; }
+    .job-card .job-content-container .job-header-container {
       min-height: 80px;
-      color: black;
+      color: black; }
+      .job-card .job-content-container .job-header-container .job-header {
+        background: #FFFFFF;
+        display: block;
+        display: -webkit-box;
+        max-height: 59.4px;
+        font-size: 18px;
+        line-height: 1.1;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        color: #383F4E; }
 
-      .job-header {
-        @include truncate-owerflowing-text-multiline($font-size: $fs-l, $line-height: 1.1, $lines-to-show: 3, $excerpt-bg: $white);
-        color: $color-gray-500;
-      }
-    }
-
-    .job-company {
-      color: $color-primary-cerise;
+@-moz-document url-prefix() {
+  .job-card .job-content-container .job-header-container .job-header {
+    overflow: hidden;
+    position: relative; }
+    .job-card .job-content-container .job-header-container .job-header:before {
+      background: #FFFFFF;
+      bottom: 0;
+      position: absolute;
+      right: 0;
+      float: right;
+      content: '\2026';
+      margin-left: -3rem;
+      width: 3rem; }
+    .job-card .job-content-container .job-header-container .job-header:after {
+      content: '';
+      background: #FFFFFF;
+      position: absolute;
+      height: 50px;
+      width: 100%;
+      z-index: 1; } }
+    .job-card .job-content-container .job-company {
+      color: #E5007D;
       font-weight: lighter;
-      @include truncate-owerflowing-text;
-    }
-
-    .job-city {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis; }
+    .job-card .job-content-container .job-city {
       margin-top: 5px;
       text-transform: uppercase;
-      @include truncate-owerflowing-text;
-    }
-
-    .job-description-container {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis; }
+    .job-card .job-content-container .job-description-container {
       margin-top: 10px;
-      min-height: 80px;
+      min-height: 80px; }
+      .job-card .job-content-container .job-description-container .job-description {
+        background: #FFFFFF;
+        display: block;
+        display: -webkit-box;
+        max-height: 72.8px;
+        font-size: 14px;
+        line-height: 1.3;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis; }
 
-      .job-description {
-        @include truncate-owerflowing-text-multiline($font-size: $fs-m0, $line-height: 1.3, $lines-to-show: 4, $excerpt-bg: $white);
-      }
-    }
-  }
-
-  .job-salary-container {
-    padding-top: 30px;
-
-    .job-salary {
-      font-size: $fs-xxxxl;
-      color: $color-primary-cerise;
-      @include truncate-owerflowing-text;
-    }
-
-    .job-salary-currency {
-      font-size: $fs-xxl;
-      @include truncate-owerflowing-text;
-    }
-
-    .job-salary-additional-info {
-      margin-top: 10px;
-
-      .job-hours,
-      .job-total-salary {
-        @include truncate-owerflowing-text;
+@-moz-document url-prefix() {
+  .job-card .job-content-container .job-description-container .job-description {
+    overflow: hidden;
+    position: relative; }
+    .job-card .job-content-container .job-description-container .job-description:before {
+      background: #FFFFFF;
+      bottom: 0;
+      position: absolute;
+      right: 0;
+      float: right;
+      content: '\2026';
+      margin-left: -3rem;
+      width: 3rem; }
+    .job-card .job-content-container .job-description-container .job-description:after {
+      content: '';
+      background: #FFFFFF;
+      position: absolute;
+      height: 50px;
+      width: 100%;
+      z-index: 1; } }
+  .job-card .job-salary-container {
+    padding-top: 30px; }
+    .job-card .job-salary-container .job-salary {
+      font-size: 48px;
+      color: #E5007D;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis; }
+    .job-card .job-salary-container .job-salary-currency {
+      font-size: 24px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis; }
+    .job-card .job-salary-container .job-salary-additional-info {
+      margin-top: 10px; }
+      .job-card .job-salary-container .job-salary-additional-info .job-hours,
+      .job-card .job-salary-container .job-salary-additional-info .job-total-salary {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
         font-weight: bold;
-        text-transform: uppercase;
-      }
-    }
-  }
-}
+        text-transform: uppercase; }

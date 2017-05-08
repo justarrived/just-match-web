@@ -1,45 +1,30 @@
-@import '../../../styles/colors';
-@import '../../../styles/dimensions';
-
 .cookie-message {
   text-align: center;
-  background: $color-blue-500;
-  color: $white;
-  padding: 20px 32px;
-  @media screen and (min-width: $sm-device-width) {
-    text-align: left;
-  }
-
-  .cookie-message-inner {
+  background: #0069D2;
+  color: #FFFFFF;
+  padding: 20px 32px; }
+  @media screen and (min-width: 767px) {
+    .cookie-message {
+      text-align: left; } }
+  .cookie-message .cookie-message-inner {
     max-width: 784px;
-    margin: 0 auto;
-    @media screen and (min-width: $sm-device-width) {
-      display: flex;
-    }
-
-    p {
-      margin: auto;
-
-      .read-more {
+    margin: 0 auto; }
+    @media screen and (min-width: 767px) {
+      .cookie-message .cookie-message-inner {
+        display: flex; } }
+    .cookie-message .cookie-message-inner p {
+      margin: auto; }
+      .cookie-message .cookie-message-inner p .read-more {
         display: block;
         margin: 15px 0;
         color: inherit;
-        text-decoration: underline;
-
-        &:hover {
-          text-decoration: none;
-        }
-        @media screen and (min-width: $sm-device-width) {
-          display: inline;
-          margin: 0;
-        }
-      }
-    }
-
-    .cookies-button {
-      @media screen and (min-width: $sm-device-width) {
-        margin: auto;
-      }
-    }
-  }
-}
+        text-decoration: underline; }
+        .cookie-message .cookie-message-inner p .read-more:hover {
+          text-decoration: none; }
+        @media screen and (min-width: 767px) {
+          .cookie-message .cookie-message-inner p .read-more {
+            display: inline;
+            margin: 0; } }
+    @media screen and (min-width: 767px) {
+      .cookie-message .cookie-message-inner .cookies-button {
+        margin: auto; } }

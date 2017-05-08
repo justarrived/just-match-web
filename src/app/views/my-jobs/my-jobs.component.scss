@@ -1,20 +1,13 @@
-@import '../../styles/colors';
-
-.my-jobs-header-tab {
+.my-jobs-header-tab, .my-jobs-header-tab-selected {
   padding: 8px;
   text-align: center;
-  background-color: $default-bg-color;
+  background-color: #FFFFFF;
   cursor: pointer;
-  h4 {
-    color: $color-gray-200;
-  }
-  border-bottom: 4px solid $color-gray-50;
-}
+  border-bottom: 4px solid #E7E8E9; }
+  .my-jobs-header-tab h4, .my-jobs-header-tab-selected h4 {
+    color: #9C9FA7; }
 
 .my-jobs-header-tab-selected {
-  @extend .my-jobs-header-tab;
-  h4 {
-    color: $color-gray-500;
-  }
-  border-bottom: 4px solid $color-primary-cerise;
-}
+  border-bottom: 4px solid #E5007D; }
+  .my-jobs-header-tab-selected h4 {
+    color: #383F4E; }

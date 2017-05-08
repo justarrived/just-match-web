@@ -1,9 +1,6 @@
 .partners-imgae-link {
   display: flex;
   align-items: center;
-  height: 80px;
-
-  .ui.image {
-    filter: grayscale(100%);
-  }
-}
+  height: 80px; }
+  .partners-imgae-link .ui.image {
+    filter: grayscale(100%); }

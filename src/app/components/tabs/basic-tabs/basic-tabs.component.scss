@@ -1,13 +1,8 @@
-@import '../../../styles/colors';
-
 .tab-container {
-  border-bottom: 4px solid $color-gray-50;
+  border-bottom: 4px solid #E7E8E9;
   cursor: pointer;
-  color: $color-gray-200;
-  padding: 0 !important;
-
-  &.active {
-    border-bottom: 4px solid $color-primary-cerise;
-    color: $color-gray-500;
-  }
-}
+  color: #9C9FA7;
+  padding: 0 !important; }
+  .tab-container.active {
+    border-bottom: 4px solid #E5007D;
+    color: #383F4E; }

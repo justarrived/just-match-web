@@ -1,41 +1,130 @@
-@import '../../../styles/colors';
-@import '../../../styles/typography';
+.truncate-owerflowing-text {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis; }
+
+.wrap-long-words {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  -ms-word-break: break-all;
+  word-break: break-word;
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto; }
+
+@font-face {
+  font-family: 'museo';
+  src: url("/assets/fonts/museo/museo-300.otf") format("opentype");
+  font-weight: 300; }
+
+@font-face {
+  font-family: 'museo';
+  src: url("/assets/fonts/museo/museo-500.otf") format("opentype");
+  font-weight: 500; }
+
+@font-face {
+  font-family: 'museo';
+  src: url("/assets/fonts/museo/museo-700.otf") format("opentype");
+  font-weight: 700; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "museo", "Helvetica Neue", Helvetica, Arial, sans-serif; }
+
+h1 {
+  font-size: 42px;
+  font-weight: 700; }
+
+h2 {
+  font-size: 36px;
+  font-weight: 700; }
+
+h3 {
+  font-size: 24px;
+  font-weight: 700; }
+
+h4 {
+  font-size: 18px;
+  font-weight: 700; }
+
+h5 {
+  font-size: 16px;
+  font-weight: 700; }
+
+h6 {
+  font-size: 14px;
+  font-weight: 700; }
+
+p, div, span, a {
+  font-family: "Open Sans", sans-serif; }
+
+p {
+  font-size: 16px;
+  line-height: 22px; }
+
+a {
+  color: #45E2FF; }
+  a:hover {
+    color: #ED4DA4;
+    cursor: pointer; }
+
+a:not([href]):not([tabindex]) {
+  color: #45E2FF; }
+  a:not([href]):not([tabindex]):hover {
+    color: #ED4DA4; }
+
+.fs-s {
+  font-size: 12px; }
+
+.fs-m0 {
+  font-size: 14px; }
+
+.fs-m {
+  font-size: 16px; }
+
+.fs-l {
+  font-size: 18px; }
+
+.fs-l0 {
+  font-size: 20px; }
+
+.fs-xl {
+  font-size: 22px; }
+
+.fs-xxl {
+  font-size: 24px; }
+
+.fs-xxxl {
+  font-size: 32px; }
 
 .custom-radio-button-container {
   display: inline-block;
   text-align: center;
-  width: 80px;
-
-  .custom-radio-button-label {
-    font-size: $fs-m0;
-    @include wrap-long-words;
-
-    .custom-radio-button-span {
-      display: block;
-    }
-
-    .custom-radio-button-input {
-      display: none;
-
-      + .custom-radio-button-span:before {
+  width: 80px; }
+  .custom-radio-button-container .custom-radio-button-label {
+    font-size: 14px;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    -ms-word-break: break-all;
+    word-break: break-word;
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto; }
+    .custom-radio-button-container .custom-radio-button-label .custom-radio-button-span {
+      display: block; }
+    .custom-radio-button-container .custom-radio-button-label .custom-radio-button-input {
+      display: none; }
+      .custom-radio-button-container .custom-radio-button-label .custom-radio-button-input + .custom-radio-button-span:before {
         content: '';
         display: inline-block;
         width: 2em;
         height: 2em;
         border-radius: 2em;
-        // hard border
-        border: .125em solid $color-primary-cerise;
-        box-shadow: 0 0 0 .1em $color-primary-cerise;
-        // light shadow
+        border: 0.125em solid #E5007D;
+        box-shadow: 0 0 0 0.1em #E5007D;
         margin: 0 auto;
-        transition: .5s ease all;
-        // animation here
-      }
-
-      &:checked + .custom-radio-button-span:before {
-        background: $color-primary-cerise;
-        box-shadow: 0 0 0 .1em $color-primary-cerise;
-      }
-    }
-  }
-}
+        transition: .5s ease all; }
+      .custom-radio-button-container .custom-radio-button-label .custom-radio-button-input:checked + .custom-radio-button-span:before {
+        background: #E5007D;
+        box-shadow: 0 0 0 0.1em #E5007D; }

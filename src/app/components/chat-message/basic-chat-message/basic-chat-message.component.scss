@@ -1,55 +1,146 @@
-@import '../../../styles/colors';
-@import '../../../styles/typography';
+.truncate-owerflowing-text {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis; }
 
-.right-aligned {
-  .avatar {
-    float: right;
-  }
+.wrap-long-words {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  -ms-word-break: break-all;
+  word-break: break-word;
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto; }
 
-  .content {
-    text-align: right;
-    margin-left: 0 !important;
-    margin-right: 3.5em !important;
-  }
+@font-face {
+  font-family: 'museo';
+  src: url("/assets/fonts/museo/museo-300.otf") format("opentype");
+  font-weight: 300; }
 
-  .message {
-    border-radius: 10px 0 10px 10px;
-    background: $color-blue-400;
+@font-face {
+  font-family: 'museo';
+  src: url("/assets/fonts/museo/museo-500.otf") format("opentype");
+  font-weight: 500; }
 
-    &:after {
-      content: '';
-      right: 0;
-      margin: 0 -15px 0 0;
-      left: auto;
-      border-top: 17px solid $color-blue-400;
-    }
-  }
-}
+@font-face {
+  font-family: 'museo';
+  src: url("/assets/fonts/museo/museo-700.otf") format("opentype");
+  font-weight: 700; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "museo", "Helvetica Neue", Helvetica, Arial, sans-serif; }
+
+h1 {
+  font-size: 42px;
+  font-weight: 700; }
+
+h2 {
+  font-size: 36px;
+  font-weight: 700; }
+
+h3 {
+  font-size: 24px;
+  font-weight: 700; }
+
+h4 {
+  font-size: 18px;
+  font-weight: 700; }
+
+h5 {
+  font-size: 16px;
+  font-weight: 700; }
+
+h6 {
+  font-size: 14px;
+  font-weight: 700; }
+
+p, div, span, a {
+  font-family: "Open Sans", sans-serif; }
+
+p {
+  font-size: 16px;
+  line-height: 22px; }
+
+a {
+  color: #45E2FF; }
+  a:hover {
+    color: #ED4DA4;
+    cursor: pointer; }
+
+a:not([href]):not([tabindex]) {
+  color: #45E2FF; }
+  a:not([href]):not([tabindex]):hover {
+    color: #ED4DA4; }
+
+.fs-s {
+  font-size: 12px; }
+
+.fs-m0 {
+  font-size: 14px; }
+
+.fs-m {
+  font-size: 16px; }
+
+.fs-l {
+  font-size: 18px; }
+
+.fs-l0 {
+  font-size: 20px; }
+
+.fs-xl {
+  font-size: 22px; }
+
+.fs-xxl {
+  font-size: 24px; }
+
+.fs-xxxl {
+  font-size: 32px; }
+
+.right-aligned .avatar {
+  float: right; }
+
+.right-aligned .content {
+  text-align: right;
+  margin-left: 0 !important;
+  margin-right: 3.5em !important; }
+
+.right-aligned .message {
+  border-radius: 10px 0 10px 10px;
+  background: #2C84DC; }
+  .right-aligned .message:after {
+    content: '';
+    right: 0;
+    margin: 0 -15px 0 0;
+    left: auto;
+    border-top: 17px solid #2C84DC; }
 
 .message {
-  @include wrap-long-words();
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  -ms-word-break: break-all;
+  word-break: break-word;
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
   display: inline-block;
   font-weight: 600;
-  background: $color-cerise-400;
-  color: $white !important;
+  background: #E92C93;
+  color: #FFFFFF !important;
   position: relative;
   padding: 15px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
   border-radius: 0px 10px 10px 10px;
-  max-width: 80%;
-
-  &:after {
+  max-width: 80%; }
+  .message:after {
     content: '';
     position: absolute;
     top: 0;
-    border-top: 17px solid $color-cerise-400;
+    border-top: 17px solid #E92C93;
     border-left: 17px solid transparent;
-    border-right: 17px solid transparent;
-  }
-
-  &:after {
+    border-right: 17px solid transparent; }
+  .message:after {
     content: '';
     left: 0;
-    margin: 0 0 0 -15px;
-  }
-}
+    margin: 0 0 0 -15px; }

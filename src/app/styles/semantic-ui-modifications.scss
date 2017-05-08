@@ -1,111 +1,82 @@
-@import './dimensions';
-@import './colors';
-
 .ui.grid {
-  margin: 0;
-}
+  margin: 0; }
 
 .ui.comments {
-  max-width: 100%;
-}
+  max-width: 100%; }
 
 .ui.comments .comment .avatar {
-  height: 2.5em;
-}
+  height: 2.5em; }
 
 .ui.comments .comment .avatar img, .ui.comments .comment img.avatar {
-  object-fit: cover;
-}
+  object-fit: cover; }
 
 .ui.pink {
-  color: $color-primary-cerise !important;
-}
+  color: #E5007D !important; }
 
 .ui.inverted.pink.menu {
-  background-color: $color-primary-cerise !important;
-  color: $white !important;
-}
+  background-color: #E5007D !important;
+  color: #FFFFFF !important; }
 
-.ui.inverted.pink .field>label {
-  color: $white !important;
-}
+.ui.inverted.pink .field > label {
+  color: #FFFFFF !important; }
 
 .ui.pink.header {
-  color: $color-primary-cerise !important;
-}
+  color: #E5007D !important; }
 
 .ui.pink.label, .ui.pink.labels .label {
-  background-color: $color-primary-cerise !important;
-  border-color: $color-primary-cerise !important;
-}
+  background-color: #E5007D !important;
+  border-color: #E5007D !important; }
 
-// Modify lef and right sidebar dimensions
 .ui.left.sidebar,
 .ui.right.sidebar {
-  width: 375px;
-  @media screen and (max-width: $sm-device-width) {
-    width: 100%;
-  }
-}
+  width: 375px; }
+  @media screen and (max-width: 767px) {
+    .ui.left.sidebar,
+    .ui.right.sidebar {
+      width: 100%; } }
 
 .ui.transparent.dimmer {
-  background-color: transparent;
-}
+  background-color: transparent; }
 
-// A sidebar should be clickable and scrollable
 .ui.sidebar {
-  pointer-events: auto;
-}
+  pointer-events: auto; }
 
-// Override padding changes on mobile.
 .ui.modal > .actions {
-  padding: 1rem !important;
-}
+  padding: 1rem !important; }
 
 .modals.dimmer {
-  z-index: 1002!important;
-}
-// Force icon sizes if specified
+  z-index: 1002 !important; }
+
 i.mini.icon,
 i.mini.icons {
-  font-size: 0.4em !important;
-}
+  font-size: 0.4em !important; }
 
 i.tiny.icon,
 i.tiny.icons {
-  font-size: 0.5em !important;
-}
+  font-size: 0.5em !important; }
 
 i.small.icon,
 i.small.icons {
-  font-size: 0.75em !important;
-}
+  font-size: 0.75em !important; }
 
 i.large.icon,
 i.large.icons {
-  font-size: 1.5em !important;
-}
+  font-size: 1.5em !important; }
 
 i.big.icon,
 i.big.icons {
-  font-size: 2em !important;
-}
+  font-size: 2em !important; }
 
 i.huge.icon,
 i.huge.icons {
-  font-size: 4em !important;
-}
+  font-size: 4em !important; }
 
 i.massive.icon,
 i.massive.icons {
-  font-size: 8em !important;
-}
-
-// Default img center vertical and no border
-img {
-    vertical-align: middle;
-}
+  font-size: 8em !important; }
 
 img {
-    border-style: none;
-}
+  vertical-align: middle; }
+
+img {
+  border-style: none; }

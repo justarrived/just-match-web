@@ -1,41 +1,22 @@
 .ui.image {
   object-fit: cover;
-  cursor: pointer;
-
-  &.uploading {
+  cursor: pointer; }
+  .ui.image.uploading {
     cursor: none;
-    opacity: 0.4;
-  }
-
-  &.mini {
-    height: 35px;
-  }
-
-  &.tiny {
-    height: 80px;
-  }
-
-  &.small {
-    height: 150px;
-  }
-
-  &.medium {
-    height: 300px;
-  }
-
-  &.large {
-    height: 450px;
-  }
-
-  &.big {
-    height: 600px;
-  }
-
-  &.huge {
-    height: 800px;
-  }
-
-  &.massive {
-    height: 960px;
-  }
-}
+    opacity: 0.4; }
+  .ui.image.mini {
+    height: 35px; }
+  .ui.image.tiny {
+    height: 80px; }
+  .ui.image.small {
+    height: 150px; }
+  .ui.image.medium {
+    height: 300px; }
+  .ui.image.large {
+    height: 450px; }
+  .ui.image.big {
+    height: 600px; }
+  .ui.image.huge {
+    height: 800px; }
+  .ui.image.massive {
+    height: 960px; }

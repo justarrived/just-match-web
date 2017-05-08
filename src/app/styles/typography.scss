@@ -1,17 +1,9 @@
-@import './colors';
+.truncate-owerflowing-text {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis; }
 
-$museo: 'museo', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-$fs-s: 12px;
-$fs-m0: 14px;
-$fs-m: 16px;
-$fs-l: 18px;
-$fs-l0: 20px;
-$fs-xl: 22px;
-$fs-xxl: 24px;
-$fs-xxxl: 32px;
-$fs-xxxxl: 48px;
-
-@mixin wrap-long-words() {
+.wrap-long-words {
   overflow-wrap: break-word;
   word-wrap: break-word;
   -ms-word-break: break-all;
@@ -19,167 +11,88 @@ $fs-xxxxl: 48px;
   -ms-hyphens: auto;
   -moz-hyphens: auto;
   -webkit-hyphens: auto;
-  hyphens: auto;
-}
-
-@mixin truncate-owerflowing-text() {
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
-
-
-@mixin truncate-owerflowing-text-multiline($font-size: $fs-m, $line-height: 1.4, $lines-to-show: 3, $excerpt-bg: transparent) {
-  background: $excerpt-bg;
-  display: block; // Fallback for non-webkit
-  display: -webkit-box;
-  max-height: $font-size*$line-height*$lines-to-show; // Fallback for non-webkit
-  font-size: $font-size;
-  line-height: $line-height;
-  -webkit-line-clamp: $lines-to-show;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  @-moz-document url-prefix() {
-    overflow: hidden;
-    position: relative;
-    &:before {
-      background: $excerpt-bg;
-      bottom: 0;
-      position: absolute;
-      right: 0;
-      float: right;
-      content: '\2026';
-      margin-left: -3rem;
-      width: 3rem;
-    }
-    &:after {
-      content: '';
-      background: $excerpt-bg;
-      position: absolute;
-      height: 50px;
-      width: 100%;
-      z-index: 1;
-    }
-  }
-}
-
-.truncate-owerflowing-text {
-  @include truncate-owerflowing-text;
-}
-
-.wrap-long-words {
-  @include wrap-long-words;
-}
+  hyphens: auto; }
 
 @font-face {
   font-family: 'museo';
-  src: url('/assets/fonts/museo/museo-300.otf') format('opentype');
-  font-weight: 300;
-}
+  src: url("/assets/fonts/museo/museo-300.otf") format("opentype");
+  font-weight: 300; }
 
 @font-face {
-    font-family: 'museo';
-    src: url('/assets/fonts/museo/museo-500.otf') format('opentype');
-    font-weight: 500;
-}
+  font-family: 'museo';
+  src: url("/assets/fonts/museo/museo-500.otf") format("opentype");
+  font-weight: 500; }
 
 @font-face {
-    font-family: 'museo';
-    src: url('/assets/fonts/museo/museo-700.otf') format('opentype');
-    font-weight: 700;
-}
-
-// font stacks
-$default-font-family:  'Open Sans', sans-serif;
-$header-font-family:   $museo;
+  font-family: 'museo';
+  src: url("/assets/fonts/museo/museo-700.otf") format("opentype");
+  font-weight: 700; }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: $header-font-family;
-}
+  font-family: "museo", "Helvetica Neue", Helvetica, Arial, sans-serif; }
 
 h1 {
   font-size: 42px;
-  font-weight: 700;
-}
+  font-weight: 700; }
 
 h2 {
   font-size: 36px;
-  font-weight: 700;
-}
+  font-weight: 700; }
 
 h3 {
   font-size: 24px;
-  font-weight: 700;
-}
+  font-weight: 700; }
 
 h4 {
   font-size: 18px;
-  font-weight: 700;
-}
+  font-weight: 700; }
 
 h5 {
   font-size: 16px;
-  font-weight: 700;
-}
+  font-weight: 700; }
 
 h6 {
   font-size: 14px;
-  font-weight: 700;
-}
+  font-weight: 700; }
 
 p, div, span, a {
-  font-family: $default-font-family;
-}
+  font-family: "Open Sans", sans-serif; }
 
 p {
   font-size: 16px;
-  line-height: 22px;
-}
+  line-height: 22px; }
 
 a {
-  color: $color-accent-main;
-  &:hover {
-    color: $color-cerise-300;
-    cursor: pointer;
-  }
-}
+  color: #45E2FF; }
+  a:hover {
+    color: #ED4DA4;
+    cursor: pointer; }
 
 a:not([href]):not([tabindex]) {
-  color: $color-accent-main;
-  &:hover {
-    color: $color-cerise-300;
-  }
-}
+  color: #45E2FF; }
+  a:not([href]):not([tabindex]):hover {
+    color: #ED4DA4; }
 
 .fs-s {
-  font-size: $fs-s;
-}
+  font-size: 12px; }
 
 .fs-m0 {
-  font-size: $fs-m0;
-}
+  font-size: 14px; }
 
 .fs-m {
-  font-size: $fs-m;
-}
+  font-size: 16px; }
 
 .fs-l {
-  font-size: $fs-l;
-}
+  font-size: 18px; }
 
 .fs-l0 {
-  font-size: $fs-l0;
-}
+  font-size: 20px; }
 
 .fs-xl {
-  font-size: $fs-xl;
-}
+  font-size: 22px; }
 
 .fs-xxl {
-  font-size: $fs-xxl;
-}
+  font-size: 24px; }
 
 .fs-xxxl {
-  font-size: $fs-xxxl;
-}
+  font-size: 32px; }

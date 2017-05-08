@@ -1,4 +1,7 @@
-import {ElementRef, HostListener, Directive, AfterContentChecked} from '@angular/core';
+import {AfterContentChecked} from '@angular/core';
+import {Directive} from '@angular/core';
+import {ElementRef} from '@angular/core';
+import {HostListener} from '@angular/core';
 
 @Directive({
   selector: 'textarea[autosize]'

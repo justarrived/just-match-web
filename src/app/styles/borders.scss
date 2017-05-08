@@ -1,103 +1,53 @@
-@import './colors';
+.underline-border-above:before {
+  content: "";
+  width: 30px;
+  height: 3px;
+  display: block; }
 
-.underline-border-above {
-  &:before {
-    content: "";
-    width: 30px;
-    height: 3px;
-    display: block;
-  }
+.underline-border-above.underline-border-above-centered:before {
+  margin: 0 auto 0.6em; }
 
-  &.underline-border-above-centered {
-    &:before {
-      margin: 0 auto 0.6em;
-    }
-  }
+.underline-border-above.underline-border-above-left:before {
+  margin: 0 0 0.6em; }
 
-  &.underline-border-above-left {
-    &:before {
-      margin: 0 0 0.6em;
-    }
-  }
+.underline-border-above.underline-border-above-pink:before {
+  background: #E5007D; }
 
-  &.underline-border-above-pink {
-    &:before {
-      background: $color-cerise-500;
-    }
-  }
+.underline-border-above.underline-border-above-blue:before {
+  background: #0069D2; }
 
-  &.underline-border-above-blue {
-    &:before {
-      background: $color-blue-500;
-    }
-  }
+.underline-border-above.underline-border-above-gray:before {
+  background: #383F4E; }
 
-  &.underline-border-above-gray {
-    &:before {
-      background: $color-gray-500;
-    }
-  }
+.underline-border-above.underline-border-above-black:before {
+  background: #000000; }
 
-  &.underline-border-above-black {
-    &:before {
-      background: $black;
-    }
-  }
+.underline-border-above.underline-border-above-white:before {
+  background: #FFFFFF; }
 
-  &.underline-border-above-white {
-    &:before {
-      background: $white;
-    }
-  }
-}
+.underline-border-below:after {
+  content: "";
+  width: 30px;
+  height: 3px;
+  display: block; }
 
-.underline-border-below {
-  &:after {
-    content: "";
-    width: 30px;
-    height: 3px;
-    display: block;
-  }
+.underline-border-below.underline-border-below-centered:after {
+  margin: 0.6em auto 0; }
 
-  &.underline-border-below-centered {
-    &:after {
-      margin: 0.6em auto 0;
-    }
-  }
+.underline-border-below.underline-border-below-left:after {
+  margin: 0.6em 0 0; }
 
-  &.underline-border-below-left {
-    &:after {
-      margin: 0.6em 0 0;
-    }
-  }
+.underline-border-below.underline-border-below-pink:after {
+  background: #E5007D; }
 
-  &.underline-border-below-pink {
-    &:after {
-      background: $color-cerise-500;
-    }
-  }
+.underline-border-below.underline-border-below-blue:after {
+  background: #0069D2; }
 
-  &.underline-border-below-blue {
-    &:after {
-      background: $color-blue-500;
-    }
-  }
+.underline-border-below.underline-border-below-gray:after {
+  background: #383F4E; }
 
-  &.underline-border-below-gray {
-    &:after {
-      background: $color-gray-500;
-    }
-  }
+.underline-border-below.underline-border-below-black:after {
+  background: #000000; }
 
-  &.underline-border-below-black {
-    &:after {
-      background: $black;
-    }
-  }
-
-  &.underline-border-below-white {
-    &:after {
-      background: $white;
-    }
-  }
-}
+.underline-border-below.underline-border-below-white:after {
+  background: #FFFFFF; }

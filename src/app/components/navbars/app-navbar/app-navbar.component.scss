@@ -1,46 +1,35 @@
-@import '../../../styles/colors';
-
 .app-navbar-container {
   pointer-events: auto;
   width: 100%;
   height: 54px;
   border-radius: 0;
-  color: $color-gray-200;
-  background-color: $color-gray-25;
-
-  .app-navbar-inner-container {
+  color: #9C9FA7;
+  background-color: #F6F6F6; }
+  .app-navbar-container .app-navbar-inner-container {
     display: flex;
     height: 100%;
-    flex-wrap: nowrap;
-
-    .app-navbar-home {
+    flex-wrap: nowrap; }
+    .app-navbar-container .app-navbar-inner-container .app-navbar-home {
       display: flex;
       flex-wrap: nowrap;
       align-items: center;
-      margin-left: 15px;
-
-      .app-navbar-logo-image {
-        max-width: 165px;
-      }
-    }
-
-    .app-navbar-menus {
+      margin-left: 15px; }
+      .app-navbar-container .app-navbar-inner-container .app-navbar-home .app-navbar-logo-image {
+        max-width: 165px; }
+    .app-navbar-container .app-navbar-inner-container .app-navbar-menus {
       align-items: center;
       display: flex;
       margin-left: auto;
       margin-right: 15px;
-      flex-wrap: nowrap;
-
-      .app-navbar-menu-icon, .app-navbar-language-icon{
-        cursor: pointer;
-      }
-
-      .app-navbar-language-icon {
+      flex-wrap: nowrap; }
+      .app-navbar-container .app-navbar-inner-container .app-navbar-menus .app-navbar-menu-icon, .app-navbar-container .app-navbar-inner-container .app-navbar-menus .app-navbar-language-icon {
+        cursor: pointer; }
+      .app-navbar-container .app-navbar-inner-container .app-navbar-menus .app-navbar-language-icon {
         font-size: 11px;
         border-radius: 23px;
         border-width: 2px;
         border-style: solid;
-        border-color: $color-gray-200;
+        border-color: #9C9FA7;
         padding: 0 .5em;
         text-align: center;
         vertical-align: center;
@@ -48,12 +37,6 @@
         margin: auto;
         margin-right: 12px;
         text-transform: uppercase;
-        user-select: none;
-
-        .app-navbar-language-icon-arrow {
-          margin-left: 5px;
-        }
-      }
-    }
-  }
-}
+        user-select: none; }
+        .app-navbar-container .app-navbar-inner-container .app-navbar-menus .app-navbar-language-icon .app-navbar-language-icon-arrow {
+          margin-left: 5px; }
