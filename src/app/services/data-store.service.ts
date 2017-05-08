@@ -1,7 +1,10 @@
 import {CookieStorage} from '../storage/cookie-storage/cookie-storage';
+import {Inject} from '@angular/core';
 import {Injectable} from '@angular/core';
+import {isPlatformBrowser} from '@angular/common';
 import {LocalStorage} from '../storage/local-storage/local-storage';
 import {MemoryStorage} from '../storage/memory-storage/memory-storage';
+import {PLATFORM_ID} from '@angular/core';
 import {SessionStorage} from '../storage/session-storage/session-storage';
 import {StorageInterface} from '../storage/storage-interface/storage-interface';
 import {storageTypeAvailable} from '../utils/storage-type-available/storage-type-available.util';
@@ -11,6 +14,7 @@ export class DataStoreService {
   private store: StorageInterface;
 
   constructor(
+    @Inject(PLATFORM_ID) private platformId: any,
   ) {
     this.store = this.storeFactory();
   }
@@ -64,7 +68,7 @@ export class DataStoreService {
       return new LocalStorage(localStorage);
     } else if (storageTypeAvailable('sessionStorage')) {
       return new SessionStorage(sessionStorage);
-    } else if (document) {
+    } else if (isPlatformBrowser(this.platformId) && document) {
       return new CookieStorage(document);
     } else {
       return new MemoryStorage();

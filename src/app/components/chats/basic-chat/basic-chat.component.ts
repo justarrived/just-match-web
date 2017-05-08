@@ -1,16 +1,21 @@
+import 'rxjs/Rx';
 import {ActivatedRoute} from '@angular/router';
-import {Params} from '@angular/router';
 import {ApiErrors} from '../../../models/api-models/api-errors/api-errors';
 import {ChangeDetectorRef} from '@angular/core';
 import {Component} from '@angular/core';
 import {ElementRef} from '@angular/core';
 import {FormBuilder} from '@angular/forms';
 import {FormGroup} from '@angular/forms';
+import {Inject} from '@angular/core';
 import {Input} from '@angular/core';
+import {isPlatformBrowser} from '@angular/common';
 import {Message} from '../../../models/api-models/message/message';
 import {MessageProxy} from '../../../proxies/message/message.proxy';
+import {Observable} from 'rxjs/Rx';
 import {OnDestroy} from '@angular/core';
 import {OnInit} from '@angular/core';
+import {Params} from '@angular/router';
+import {PLATFORM_ID} from '@angular/core';
 import {Subscription} from 'rxjs/Subscription';
 import {SystemLanguageListener} from '../../../resolvers/system-languages/system-languages.resolver';
 import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
@@ -18,8 +23,6 @@ import {User} from '../../../models/api-models/user/user';
 import {UserResolver} from '../../../resolvers/user/user.resolver';
 import {Validators} from '@angular/forms';
 import {ViewChild} from '@angular/core';
-import 'rxjs/Rx';
-import {Observable} from 'rxjs/Rx';
 
 @Component({
   selector: 'basic-chat',
@@ -108,6 +111,7 @@ export class BasicChatComponent extends SystemLanguageListener implements OnInit
   private readonly pollMessagesInterval: number = 1000;
 
   public constructor(
+    @Inject(PLATFORM_ID) private platformId: any,
     private changeDetector: ChangeDetectorRef,
     private formBuilder: FormBuilder,
     private messageProxy: MessageProxy,
@@ -127,9 +131,11 @@ export class BasicChatComponent extends SystemLanguageListener implements OnInit
   private initQueryParamsSubscription(): void {
     this.queryParamsSubscription = this.route.queryParams.subscribe(params => {
       const messageId = params['message_id'];
-      const element = document.querySelector("#message" + messageId);
-      if (element) {
-        element.scrollIntoView(element);
+      if (isPlatformBrowser(this.platformId)) {
+        const element = document.querySelector("#message" + messageId);
+        if (element) {
+          element.scrollIntoView(element);
+        }
       }
     });
   }
