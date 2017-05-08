@@ -6,7 +6,7 @@ import {ElementRef, HostListener, Directive, AfterContentChecked} from '@angular
 export class SMAutosizeDirective implements AfterContentChecked {
 
   @HostListener('input', ['$event.target'])
-  public onInput(textArea: HTMLTextAreaElement): void {
+  public onInput(textArea: any): void {
     this.adjust();
   }
 

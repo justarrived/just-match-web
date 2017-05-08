@@ -11,7 +11,8 @@ module.exports = {
   target: 'node',
    externals: [nodeExternals({
      whitelist: [
-       /^@agm\/core/
+       /^@agm\/core/,
+       /^@ngx-translate/,
      ]
    })],
   node: {

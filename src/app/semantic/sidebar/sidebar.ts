@@ -4,26 +4,6 @@ import {
 
 declare var jQuery: any;
 
-// because a of lot of shadow dom elements, we must create this fixSidebar
-// function, to move elements to proper location before sidebar run.
-jQuery.fn.fixSidebar = function(contextName: string = 'body') {
-  let allModules = jQuery(this);
-
-  allModules
-    .each(function() {
-      let
-        selector = { pusher: ".pusher" },
-        module = jQuery(this),
-        context = jQuery(contextName || 'body');
-
-      if (module.nextAll(selector.pusher).length === 0) {
-        module.detach().prependTo(context);
-      }
-    });
-
-  return this;
-};
-
 /**
  * Implementation of Sidebar module
  *
