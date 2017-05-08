@@ -1,22 +1,12 @@
 {
-  "_comment": "Update to angular-cli tsconfig.e2e.json when this fix is released: https://github.com/angular/angular-cli/issues/5082",
   "extends": "../tsconfig.json",
   "compilerOptions": {
-    "outDir": "../dist/out-tsc-e2e",
+    "outDir": "../out-tsc/e2e",
     "module": "commonjs",
     "target": "es5",
-    "types": [
+    "types":[
       "jasmine",
       "node"
-    ],
-    "typeRoots": [
-      "../node_modules/@types"
     ]
-  },
-  "exclude": [
-    "node_modules",
-    "script",
-    "test.ts",
-    "**/*.spec.ts"
-  ]
+  }
 }

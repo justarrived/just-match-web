@@ -219,7 +219,7 @@ export class RavenErrorHandler implements ErrorHandler {
     }),
     AppTranslateModule,
     BrowserAnimationsModule,
-    BrowserModule,
+    BrowserModule.withServerTransition({appId: 'just-arrived-app'}),
     FormsModule,
     HttpModule,
     ProxiesModule,
