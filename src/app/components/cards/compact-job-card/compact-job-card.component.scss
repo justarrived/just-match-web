@@ -64,14 +64,16 @@ p {
 
 a {
   color: #45E2FF; }
-  a:hover {
-    color: #ED4DA4;
-    cursor: pointer; }
+
+a:hover {
+  color: #ED4DA4;
+  cursor: pointer; }
 
 a:not([href]):not([tabindex]) {
   color: #45E2FF; }
-  a:not([href]):not([tabindex]):hover {
-    color: #ED4DA4; }
+
+a:not([href]):not([tabindex]):hover {
+  color: #ED4DA4; }
 
 .fs-s {
   font-size: 12px; }
@@ -99,103 +101,113 @@ a:not([href]):not([tabindex]) {
 
 .job-card {
   width: 260px; }
-  .job-card .job-content-container .job-header-container {
-    color: black; }
-    .job-card .job-content-container .job-header-container .job-header {
-      background: #FFFFFF;
-      display: block;
-      display: -webkit-box;
-      max-height: 59.4px;
-      font-size: 18px;
-      line-height: 1.1;
-      -webkit-line-clamp: 3;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-      text-overflow: ellipsis; }
+
+.job-card .job-content-container .job-header-container {
+  color: black; }
+
+.job-card .job-content-container .job-header-container .job-header {
+  background: #FFFFFF;
+  display: block;
+  display: -webkit-box;
+  max-height: 59.4px;
+  font-size: 18px;
+  line-height: 1.1;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis; }
 
 @-moz-document url-prefix() {
   .job-card .job-content-container .job-header-container .job-header {
     overflow: hidden;
     position: relative; }
-    .job-card .job-content-container .job-header-container .job-header:before {
-      background: #FFFFFF;
-      bottom: 0;
-      position: absolute;
-      right: 0;
-      float: right;
-      content: '\2026';
-      margin-left: -3rem;
-      width: 3rem; }
-    .job-card .job-content-container .job-header-container .job-header:after {
-      content: '';
-      background: #FFFFFF;
-      position: absolute;
-      height: 50px;
-      width: 100%;
-      z-index: 1; } }
-  .job-card .job-content-container .job-company {
-    color: #E5007D;
-    font-weight: bold;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis; }
-  .job-card .job-content-container .job-city {
-    margin-top: 5px;
-    text-transform: uppercase;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis; }
-  .job-card .job-content-container .job-description-container {
-    margin-top: 10px; }
-    .job-card .job-content-container .job-description-container .job-description {
-      background: #FFFFFF;
-      display: block;
-      display: -webkit-box;
-      max-height: 36.4px;
-      font-size: 14px;
-      line-height: 1.3;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-      text-overflow: ellipsis; }
+  .job-card .job-content-container .job-header-container .job-header:before {
+    background: #FFFFFF;
+    bottom: 0;
+    position: absolute;
+    right: 0;
+    float: right;
+    content: '\2026';
+    margin-left: -3rem;
+    width: 3rem; }
+  .job-card .job-content-container .job-header-container .job-header:after {
+    content: '';
+    background: #FFFFFF;
+    position: absolute;
+    height: 50px;
+    width: 100%;
+    z-index: 1; } }
+
+.job-card .job-content-container .job-company {
+  color: #E5007D;
+  font-weight: bold;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis; }
+
+.job-card .job-content-container .job-city {
+  margin-top: 5px;
+  text-transform: uppercase;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis; }
+
+.job-card .job-content-container .job-description-container {
+  margin-top: 10px; }
+
+.job-card .job-content-container .job-description-container .job-description {
+  background: #FFFFFF;
+  display: block;
+  display: -webkit-box;
+  max-height: 36.4px;
+  font-size: 14px;
+  line-height: 1.3;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis; }
 
 @-moz-document url-prefix() {
   .job-card .job-content-container .job-description-container .job-description {
     overflow: hidden;
     position: relative; }
-    .job-card .job-content-container .job-description-container .job-description:before {
-      background: #FFFFFF;
-      bottom: 0;
-      position: absolute;
-      right: 0;
-      float: right;
-      content: '\2026';
-      margin-left: -3rem;
-      width: 3rem; }
-    .job-card .job-content-container .job-description-container .job-description:after {
-      content: '';
-      background: #FFFFFF;
-      position: absolute;
-      height: 50px;
-      width: 100%;
-      z-index: 1; } }
-  .job-card .job-salary-container .job-salary {
-    font-size: 48px;
-    color: #E5007D;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis; }
-  .job-card .job-salary-container .job-salary-currency {
-    font-size: 24px;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis; }
-  .job-card .job-salary-container .job-salary-additional-info {
-    margin-top: 10px; }
-    .job-card .job-salary-container .job-salary-additional-info .job-hours,
-    .job-card .job-salary-container .job-salary-additional-info .job-total-salary {
-      overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
-      font-weight: bold;
-      text-transform: uppercase; }
+  .job-card .job-content-container .job-description-container .job-description:before {
+    background: #FFFFFF;
+    bottom: 0;
+    position: absolute;
+    right: 0;
+    float: right;
+    content: '\2026';
+    margin-left: -3rem;
+    width: 3rem; }
+  .job-card .job-content-container .job-description-container .job-description:after {
+    content: '';
+    background: #FFFFFF;
+    position: absolute;
+    height: 50px;
+    width: 100%;
+    z-index: 1; } }
+
+.job-card .job-salary-container .job-salary {
+  font-size: 48px;
+  color: #E5007D;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis; }
+
+.job-card .job-salary-container .job-salary-currency {
+  font-size: 24px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis; }
+
+.job-card .job-salary-container .job-salary-additional-info {
+  margin-top: 10px; }
+
+.job-card .job-salary-container .job-salary-additional-info .job-hours,
+.job-card .job-salary-container .job-salary-additional-info .job-total-salary {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-weight: bold;
+  text-transform: uppercase; }

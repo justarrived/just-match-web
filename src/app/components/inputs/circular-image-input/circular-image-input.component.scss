@@ -1,22 +1,31 @@
 .ui.image {
   object-fit: cover;
   cursor: pointer; }
-  .ui.image.uploading {
-    cursor: none;
-    opacity: 0.4; }
-  .ui.image.mini {
-    height: 35px; }
-  .ui.image.tiny {
-    height: 80px; }
-  .ui.image.small {
-    height: 150px; }
-  .ui.image.medium {
-    height: 300px; }
-  .ui.image.large {
-    height: 450px; }
-  .ui.image.big {
-    height: 600px; }
-  .ui.image.huge {
-    height: 800px; }
-  .ui.image.massive {
-    height: 960px; }
+
+.ui.image.uploading {
+  cursor: none;
+  opacity: 0.4; }
+
+.ui.image.mini {
+  height: 35px; }
+
+.ui.image.tiny {
+  height: 80px; }
+
+.ui.image.small {
+  height: 150px; }
+
+.ui.image.medium {
+  height: 300px; }
+
+.ui.image.large {
+  height: 450px; }
+
+.ui.image.big {
+  height: 600px; }
+
+.ui.image.huge {
+  height: 800px; }
+
+.ui.image.massive {
+  height: 960px; }

@@ -12,11 +12,19 @@ import {storageTypeAvailable} from '../utils/storage-type-available/storage-type
 @Injectable()
 export class DataStoreService {
   private store: StorageInterface;
+  private cookieStore: CookieStorage;
+  private memoryStore: MemoryStorage;
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: any,
   ) {
     this.store = this.storeFactory();
+
+    if (isPlatformBrowser(this.platformId) && document) {
+      this.cookieStore = new CookieStorage(document);
+    }
+
+    this.memoryStore = new MemoryStorage();
   }
 
   public clear(): void {
@@ -33,10 +41,8 @@ export class DataStoreService {
   }
 
   public remove(key: string): any {
-    const oldValue = this.get(key);
-    this.removeItem(key);
-
-    return oldValue;
+    const value = this.removeItem(key);
+    return value ? JSON.parse(value) : null;
   }
 
   public persistsRefresh(): boolean {
@@ -49,6 +55,51 @@ export class DataStoreService {
 
   public supportsCaching(): boolean {
     return this.store.supportsCaching();
+  }
+
+  public setCookie(cookieName: string, data: any, days: number = 365): void {
+    if (this.supportsCookies()) {
+      this.cookieStore.setCookieData(cookieName, data, days);
+    } else {
+      this.setInMemory(cookieName, data);
+    }
+  }
+
+  public getCookie(cookieName: string): any {
+    if (this.supportsCookies()) {
+      return this.cookieStore.getCookieData(cookieName);
+    } else {
+      return this.getFromMemory(cookieName);
+    }
+  }
+
+  public removeCookie(cookieName: string): any {
+    if (this.supportsCookies()) {
+      const oldValue = this.cookieStore.getCookieData(cookieName);
+      this.cookieStore.clearCookieData(cookieName);
+
+      return oldValue;
+    } else {
+      return this.removeFromMemory(cookieName);
+    }
+  }
+
+  public supportsCookies(): boolean {
+    return !!this.cookieStore;
+  }
+
+  public setInMemory(key: string, value: any): void {
+    this.memoryStore.setItem(key, JSON.stringify(value));
+  }
+
+  public getFromMemory(key: string): any {
+    const value = this.memoryStore.getItem(key);
+    return value ? JSON.parse(value) : null;
+  }
+
+  public removeFromMemory(key: string): any {
+    const value = this.memoryStore.removeItem(key);
+    return value ? JSON.parse(value) : null;
   }
 
   private setItem(key: string, value: string): void {

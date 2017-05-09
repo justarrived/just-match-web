@@ -64,14 +64,16 @@ p {
 
 a {
   color: #45E2FF; }
-  a:hover {
-    color: #ED4DA4;
-    cursor: pointer; }
+
+a:hover {
+  color: #ED4DA4;
+  cursor: pointer; }
 
 a:not([href]):not([tabindex]) {
   color: #45E2FF; }
-  a:not([href]):not([tabindex]):hover {
-    color: #ED4DA4; }
+
+a:not([href]):not([tabindex]):hover {
+  color: #ED4DA4; }
 
 .fs-s {
   font-size: 12px; }
@@ -106,6 +108,7 @@ a:not([href]):not([tabindex]) {
   background-size: cover !important;
   color: white;
   min-height: 300px; }
-  @media screen and (max-width: 767px) {
-    .job-actions-header .job-actions-header-title {
-      font-size: 32px; } }
+
+@media screen and (max-width: 767px) {
+  .job-actions-header .job-actions-header-title {
+    font-size: 32px; } }

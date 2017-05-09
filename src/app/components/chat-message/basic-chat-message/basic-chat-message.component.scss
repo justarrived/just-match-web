@@ -64,14 +64,16 @@ p {
 
 a {
   color: #45E2FF; }
-  a:hover {
-    color: #ED4DA4;
-    cursor: pointer; }
+
+a:hover {
+  color: #ED4DA4;
+  cursor: pointer; }
 
 a:not([href]):not([tabindex]) {
   color: #45E2FF; }
-  a:not([href]):not([tabindex]):hover {
-    color: #ED4DA4; }
+
+a:not([href]):not([tabindex]):hover {
+  color: #ED4DA4; }
 
 .fs-s {
   font-size: 12px; }
@@ -108,12 +110,13 @@ a:not([href]):not([tabindex]) {
 .right-aligned .message {
   border-radius: 10px 0 10px 10px;
   background: #2C84DC; }
-  .right-aligned .message:after {
-    content: '';
-    right: 0;
-    margin: 0 -15px 0 0;
-    left: auto;
-    border-top: 17px solid #2C84DC; }
+
+.right-aligned .message:after {
+  content: '';
+  right: 0;
+  margin: 0 -15px 0 0;
+  left: auto;
+  border-top: 17px solid #2C84DC; }
 
 .message {
   overflow-wrap: break-word;
@@ -133,14 +136,16 @@ a:not([href]):not([tabindex]) {
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
   border-radius: 0px 10px 10px 10px;
   max-width: 80%; }
-  .message:after {
-    content: '';
-    position: absolute;
-    top: 0;
-    border-top: 17px solid #E92C93;
-    border-left: 17px solid transparent;
-    border-right: 17px solid transparent; }
-  .message:after {
-    content: '';
-    left: 0;
-    margin: 0 0 0 -15px; }
+
+.message:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  border-top: 17px solid #E92C93;
+  border-left: 17px solid transparent;
+  border-right: 17px solid transparent; }
+
+.message:after {
+  content: '';
+  left: 0;
+  margin: 0 0 0 -15px; }

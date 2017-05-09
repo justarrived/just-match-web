@@ -64,14 +64,16 @@ p {
 
 a {
   color: #45E2FF; }
-  a:hover {
-    color: #ED4DA4;
-    cursor: pointer; }
+
+a:hover {
+  color: #ED4DA4;
+  cursor: pointer; }
 
 a:not([href]):not([tabindex]) {
   color: #45E2FF; }
-  a:not([href]):not([tabindex]):hover {
-    color: #ED4DA4; }
+
+a:not([href]):not([tabindex]):hover {
+  color: #ED4DA4; }
 
 .fs-s {
   font-size: 12px; }
@@ -101,30 +103,35 @@ a:not([href]):not([tabindex]) {
   display: inline-block;
   text-align: center;
   width: 80px; }
-  .custom-radio-button-container .custom-radio-button-label {
-    font-size: 14px;
-    overflow-wrap: break-word;
-    word-wrap: break-word;
-    -ms-word-break: break-all;
-    word-break: break-word;
-    -ms-hyphens: auto;
-    -moz-hyphens: auto;
-    -webkit-hyphens: auto;
-    hyphens: auto; }
-    .custom-radio-button-container .custom-radio-button-label .custom-radio-button-span {
-      display: block; }
-    .custom-radio-button-container .custom-radio-button-label .custom-radio-button-input {
-      display: none; }
-      .custom-radio-button-container .custom-radio-button-label .custom-radio-button-input + .custom-radio-button-span:before {
-        content: '';
-        display: inline-block;
-        width: 2em;
-        height: 2em;
-        border-radius: 2em;
-        border: 0.125em solid #E5007D;
-        box-shadow: 0 0 0 0.1em #E5007D;
-        margin: 0 auto;
-        transition: .5s ease all; }
-      .custom-radio-button-container .custom-radio-button-label .custom-radio-button-input:checked + .custom-radio-button-span:before {
-        background: #E5007D;
-        box-shadow: 0 0 0 0.1em #E5007D; }
+
+.custom-radio-button-container .custom-radio-button-label {
+  font-size: 14px;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  -ms-word-break: break-all;
+  word-break: break-word;
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto; }
+
+.custom-radio-button-container .custom-radio-button-label .custom-radio-button-span {
+  display: block; }
+
+.custom-radio-button-container .custom-radio-button-label .custom-radio-button-input {
+  display: none; }
+
+.custom-radio-button-container .custom-radio-button-label .custom-radio-button-input + .custom-radio-button-span:before {
+  content: '';
+  display: inline-block;
+  width: 2em;
+  height: 2em;
+  border-radius: 2em;
+  border: 0.125em solid #E5007D;
+  box-shadow: 0 0 0 0.1em #E5007D;
+  margin: 0 auto;
+  transition: .5s ease all; }
+
+.custom-radio-button-container .custom-radio-button-label .custom-radio-button-input:checked + .custom-radio-button-span:before {
+  background: #E5007D;
+  box-shadow: 0 0 0 0.1em #E5007D; }

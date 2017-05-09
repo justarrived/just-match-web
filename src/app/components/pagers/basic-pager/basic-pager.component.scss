@@ -64,14 +64,16 @@ p {
 
 a {
   color: #45E2FF; }
-  a:hover {
-    color: #ED4DA4;
-    cursor: pointer; }
+
+a:hover {
+  color: #ED4DA4;
+  cursor: pointer; }
 
 a:not([href]):not([tabindex]) {
   color: #45E2FF; }
-  a:not([href]):not([tabindex]):hover {
-    color: #ED4DA4; }
+
+a:not([href]):not([tabindex]):hover {
+  color: #ED4DA4; }
 
 .fs-s {
   font-size: 12px; }
@@ -100,23 +102,26 @@ a:not([href]):not([tabindex]) {
 .pager-container {
   font-size: 16px;
   background-color: #F6F6F6; }
-  .pager-container .pager-inner-container {
-    max-width: 600px;
-    margin: 0 auto; }
+
+.pager-container .pager-inner-container {
+  max-width: 600px;
+  margin: 0 auto; }
 
 .back-button {
   text-align: left;
   color: #E5007D;
   padding-top: 0; }
-  .back-button > i {
-    cursor: pointer; }
+
+.back-button > i {
+  cursor: pointer; }
 
 .forward-button {
   text-align: right;
   color: #E5007D;
   padding-top: 0; }
-  .forward-button > i {
-    cursor: pointer; }
+
+.forward-button > i {
+  cursor: pointer; }
 
 .pagination-text {
   display: flex;

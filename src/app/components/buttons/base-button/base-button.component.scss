@@ -64,14 +64,16 @@ p {
 
 a {
   color: #45E2FF; }
-  a:hover {
-    color: #ED4DA4;
-    cursor: pointer; }
+
+a:hover {
+  color: #ED4DA4;
+  cursor: pointer; }
 
 a:not([href]):not([tabindex]) {
   color: #45E2FF; }
-  a:not([href]):not([tabindex]):hover {
-    color: #ED4DA4; }
+
+a:not([href]):not([tabindex]):hover {
+  color: #ED4DA4; }
 
 .fs-s {
   font-size: 12px; }
@@ -111,8 +113,9 @@ a:not([href]):not([tabindex]) {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis; }
-  .btn:disabled {
-    opacity: 0.5; }
+
+.btn:disabled {
+  opacity: 0.5; }
 
 .btn.fluid {
   width: 100%; }

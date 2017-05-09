@@ -3,11 +3,14 @@
   height: 100%;
   display: flex;
   flex-direction: column; }
-  .maximize-chances-container .instruction {
-    display: flex;
-    align-items: center;
-    margin: 8px 0; }
-    .maximize-chances-container .instruction .instruction-text {
-      padding-left: 1em; }
-  .maximize-chances-container .maximize-chances-button {
-    margin-top: auto; }
+
+.maximize-chances-container .instruction {
+  display: flex;
+  align-items: center;
+  margin: 8px 0; }
+
+.maximize-chances-container .instruction .instruction-text {
+  padding-left: 1em; }
+
+.maximize-chances-container .maximize-chances-button {
+  margin-top: auto; }

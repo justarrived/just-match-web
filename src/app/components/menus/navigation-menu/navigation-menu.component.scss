@@ -2,32 +2,41 @@
   background-color: #F6F6F6 !important;
   text-align: center;
   min-height: 100%; }
-  .navigation-menu-container .navigation-menu-links-container {
-    margin-top: 20px; }
-    .navigation-menu-container .navigation-menu-links-container .navigation-menu-item {
-      border-top: 1px solid #E7E8E9;
-      color: #747983;
-      padding-top: 12px;
-      padding-bottom: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center; }
-    .navigation-menu-container .navigation-menu-links-container .navigation-menu-item:nth-last-of-type(1) {
-      border-bottom: 1px solid #E7E8E9; }
-    .navigation-menu-container .navigation-menu-links-container a {
-      display: block;
-      cursor: pointer;
-      font-size: 16px; }
-      .navigation-menu-container .navigation-menu-links-container a:hover {
-        color: #E5007D; }
-  .navigation-menu-container .navigation-menu-user-container .navigation-menu-user-logged-in-container {
-    text-align: center;
-    color: #747983; }
-    .navigation-menu-container .navigation-menu-user-container .navigation-menu-user-logged-in-container img {
-      border-radius: 50%;
-      border: 2px solid #E5007D; }
-    .navigation-menu-container .navigation-menu-user-container .navigation-menu-user-logged-in-container h4 {
-      margin-top: 10px; }
-  .navigation-menu-container .navigation-menu-create-user-button {
-    width: 60%;
-    margin: 40px auto 0; }
+
+.navigation-menu-container .navigation-menu-links-container {
+  margin-top: 20px; }
+
+.navigation-menu-container .navigation-menu-links-container .navigation-menu-item {
+  border-top: 1px solid #E7E8E9;
+  color: #747983;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+
+.navigation-menu-container .navigation-menu-links-container .navigation-menu-item:nth-last-of-type(1) {
+  border-bottom: 1px solid #E7E8E9; }
+
+.navigation-menu-container .navigation-menu-links-container a {
+  display: block;
+  cursor: pointer;
+  font-size: 16px; }
+
+.navigation-menu-container .navigation-menu-links-container a:hover {
+  color: #E5007D; }
+
+.navigation-menu-container .navigation-menu-user-container .navigation-menu-user-logged-in-container {
+  text-align: center;
+  color: #747983; }
+
+.navigation-menu-container .navigation-menu-user-container .navigation-menu-user-logged-in-container img {
+  border-radius: 50%;
+  border: 2px solid #E5007D; }
+
+.navigation-menu-container .navigation-menu-user-container .navigation-menu-user-logged-in-container h4 {
+  margin-top: 10px; }
+
+.navigation-menu-container .navigation-menu-create-user-button {
+  width: 60%;
+  margin: 40px auto 0; }

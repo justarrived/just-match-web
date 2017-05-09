@@ -46,9 +46,9 @@ export class SystemLanguagesResolver implements Resolve<Language[]> {
 
     this.systemLanguages = languages;
 
-    let systemLanguageCode = this.dataStoreService.get(this.storageSystemLanguageCodeKey) || 'sv';
+    let systemLanguageCode = this.dataStoreService.getCookie(this.storageSystemLanguageCodeKey) || 'sv';
     this.systemLanguage = this.systemLanguages.find(language => language.languageCode === systemLanguageCode);
-    this.dataStoreService.set(this.storageSystemLanguageCodeKey, systemLanguageCode);
+    this.dataStoreService.setCookie(this.storageSystemLanguageCodeKey, systemLanguageCode);
     this.translateService.use(systemLanguageCode);
 
     this.initRouteParamsSubscription();
@@ -62,7 +62,7 @@ export class SystemLanguagesResolver implements Resolve<Language[]> {
         let language = this.systemLanguages.find(language => language.languageCode === systemLanguageCode);
         if (language) {
           this.systemLanguage = language;
-          this.dataStoreService.set(this.storageSystemLanguageCodeKey, systemLanguageCode);
+          this.dataStoreService.setCookie(this.storageSystemLanguageCodeKey, systemLanguageCode);
           this.translateService.use(systemLanguageCode);
         }
       }
@@ -79,7 +79,7 @@ export class SystemLanguagesResolver implements Resolve<Language[]> {
     }
 
     this.systemLanguage = language;
-    this.dataStoreService.set(this.storageSystemLanguageCodeKey, language.languageCode);
+    this.dataStoreService.setCookie(this.storageSystemLanguageCodeKey, language.languageCode);
     this.translateService.use(language.languageCode);
     this.systemLanguageChange.emit(this.systemLanguage);
   }

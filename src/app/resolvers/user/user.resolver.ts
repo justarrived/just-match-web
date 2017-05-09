@@ -32,8 +32,8 @@ export class UserResolver implements Resolve<User> {
   }
 
   public resolve(): Promise<User> {
-    const session = this.dataStoreService.get(this.storageSessionKey);
-    this.dataStoreService.remove(this.storageActAsUserIdKey);
+    const session = this.dataStoreService.getCookie(this.storageSessionKey);
+    this.dataStoreService.removeCookie(this.storageActAsUserIdKey);
 
     if (this.validateSession(session)) {
 
@@ -50,7 +50,7 @@ export class UserResolver implements Resolve<User> {
       });
     }
 
-    this.dataStoreService.remove(this.storageSessionKey);
+    this.dataStoreService.removeCookie(this.storageSessionKey);
     this.init(null);
     return Promise.resolve(null);
   }
@@ -65,13 +65,13 @@ export class UserResolver implements Resolve<User> {
 
   public activateGodMode(user: User): void {
     this.actingAsUser = user;
-    this.dataStoreService.set(this.storageActAsUserIdKey, this.actingAsUser.id);
+    this.dataStoreService.setCookie(this.storageActAsUserIdKey, this.actingAsUser.id);
     this.userChange.emit(this.actingAsUser);
   }
 
   public deactivateGodMode(): void {
     this.actingAsUser = null;
-    this.dataStoreService.remove(this.storageActAsUserIdKey);
+    this.dataStoreService.removeCookie(this.storageActAsUserIdKey);
     this.userChange.emit(this.user);
   }
 
@@ -80,8 +80,8 @@ export class UserResolver implements Resolve<User> {
   }
 
   public reloadUser(): Promise<User> {
-    const session = this.dataStoreService.get(this.storageSessionKey);
-    const actAsUserId = this.dataStoreService.get(this.storageActAsUserIdKey);
+    const session = this.dataStoreService.getCookie(this.storageSessionKey);
+    const actAsUserId = this.dataStoreService.getCookie(this.storageActAsUserIdKey);
 
     if (this.validateSession(session)) {
       if (this.user) {
@@ -133,20 +133,20 @@ export class UserResolver implements Resolve<User> {
   public logout(): void {
     this.user = null;
     this.actingAsUser = null;
-    this.dataStoreService.remove(this.storageSessionKey);
-    this.dataStoreService.remove(this.storageActAsUserIdKey);
+    this.dataStoreService.removeCookie(this.storageSessionKey);
+    this.dataStoreService.removeCookie(this.storageActAsUserIdKey);
     this.userChange.emit(this.user);
   }
 
   public login(emailOrPhone: string, password: string): Promise<User> {
-    this.dataStoreService.remove(this.storageActAsUserIdKey);
+    this.dataStoreService.removeCookie(this.storageActAsUserIdKey);
 
     return this.userSessionProxy.createUserSession({
       'email_or_phone': emailOrPhone,
       'password': password,
     })
     .then(session => {
-      this.dataStoreService.set(this.storageSessionKey, session);
+      this.dataStoreService.setCookie(this.storageSessionKey, session);
       return this.reloadUser();
     });
   }

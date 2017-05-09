@@ -26,7 +26,6 @@ import {BasicCommentsComponent} from './components/comments/basic-comments/basic
 import {BasicPagerComponent} from './components/pagers/basic-pager/basic-pager.component';
 import {BasicTabComponent} from './components/tabs/basic-tab/basic-tab.component';
 import {BasicTabsComponent} from './components/tabs/basic-tabs/basic-tabs.component';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {BrowserModule} from '@angular/platform-browser';
 import {ChatMessageInputComponent} from './components/inputs/chat-message-input/chat-message-input.component';
 import {CircularIconBaseButtonComponent} from './components/buttons/circular-icon-base-button/circular-icon-base-button.component';
@@ -189,6 +188,7 @@ import {WorkPermitFrontInputComponent} from './components/inputs/work-permit-fro
 import {YesNoInputComponent} from './components/inputs/yes-no-input/yes-no-input.component';
 import {ZipInputComponent} from './components/inputs/zip-input/zip-input.component';
 import * as Raven from 'raven-js';
+import {CommonModule } from '@angular/common';
 
 Raven
   .config(environment.sentryURL)
@@ -218,8 +218,7 @@ export class RavenErrorHandler implements ErrorHandler {
       apiKey: environment.googleMapsKey
     }),
     AppTranslateModule,
-    BrowserAnimationsModule,
-    BrowserModule.withServerTransition({appId: 'just-arrived-app'}),
+    CommonModule,
     FormsModule,
     HttpModule,
     ProxiesModule,
@@ -406,6 +405,6 @@ export class RavenErrorHandler implements ErrorHandler {
     { provide: ErrorHandler, useClass: RavenErrorHandler },
     { provide: APP_BASE_HREF, useValue: '/' }
   ],
-  bootstrap: [AppComponent]
+  exports: [ AppComponent ]
 })
 export class AppModule { }

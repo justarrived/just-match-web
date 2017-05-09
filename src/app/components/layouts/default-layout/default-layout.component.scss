@@ -1,24 +1,30 @@
 .layout-wrapper {
   height: 100%; }
-  @media screen and (min-width: 1199px) {
-    .layout-wrapper {
-      width: 1199px;
-      margin: 0 auto; } }
-  @media screen and (max-width: 1199px) {
-    .layout-wrapper {
-      width: 100%;
-      max-width: 100vw; } }
-  .layout-wrapper .layout-inner-wrapper {
-    display: table;
-    table-layout: fixed;
-    height: 100%;
-    background: #FFFFFF;
-    width: 100%; }
-    .layout-wrapper .layout-inner-wrapper .layout-header-padder {
-      display: table-row;
-      height: 54px; }
-    .layout-wrapper .layout-inner-wrapper .layout-content {
-      display: table-row;
-      height: 100%; }
-    .layout-wrapper .layout-inner-wrapper .layout-footer {
-      display: table-row; }
+
+@media screen and (min-width: 1199px) {
+  .layout-wrapper {
+    width: 1199px;
+    margin: 0 auto; } }
+
+@media screen and (max-width: 1199px) {
+  .layout-wrapper {
+    width: 100%;
+    max-width: 100vw; } }
+
+.layout-wrapper .layout-inner-wrapper {
+  display: table;
+  table-layout: fixed;
+  height: 100%;
+  background: #FFFFFF;
+  width: 100%; }
+
+.layout-wrapper .layout-inner-wrapper .layout-header-padder {
+  display: table-row;
+  height: 54px; }
+
+.layout-wrapper .layout-inner-wrapper .layout-content {
+  display: table-row;
+  height: 100%; }
+
+.layout-wrapper .layout-inner-wrapper .layout-footer {
+  display: table-row; }

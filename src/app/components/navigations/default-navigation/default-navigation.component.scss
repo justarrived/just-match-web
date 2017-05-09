@@ -5,18 +5,23 @@
   z-index: 1001;
   pointer-events: none;
   height: 100%; }
-  @media screen and (min-width: 1199px) {
-    .navigation-container {
-      width: 1199px;
-      margin: 0 auto; } }
-  @media screen and (max-width: 1199px) {
-    .navigation-container {
-      width: 100%; } }
-  .navigation-container .menu-container {
-    height: 100%; }
-    .navigation-container .menu-container .pusher {
-      position: absolute;
-      left: calc((100% - 100vw)/2);
-      width: 100vw; }
-      .navigation-container .menu-container .pusher.dimmed {
-        pointer-events: auto; }
+
+@media screen and (min-width: 1199px) {
+  .navigation-container {
+    width: 1199px;
+    margin: 0 auto; } }
+
+@media screen and (max-width: 1199px) {
+  .navigation-container {
+    width: 100%; } }
+
+.navigation-container .menu-container {
+  height: 100%; }
+
+.navigation-container .menu-container .pusher {
+  position: absolute;
+  left: calc((100% - 100vw)/2);
+  width: 100vw; }
+
+.navigation-container .menu-container .pusher.dimmed {
+  pointer-events: auto; }

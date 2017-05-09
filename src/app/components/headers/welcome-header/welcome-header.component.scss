@@ -64,14 +64,16 @@ p {
 
 a {
   color: #45E2FF; }
-  a:hover {
-    color: #ED4DA4;
-    cursor: pointer; }
+
+a:hover {
+  color: #ED4DA4;
+  cursor: pointer; }
 
 a:not([href]):not([tabindex]) {
   color: #45E2FF; }
-  a:not([href]):not([tabindex]):hover {
-    color: #ED4DA4; }
+
+a:not([href]):not([tabindex]):hover {
+  color: #ED4DA4; }
 
 .fs-s {
   font-size: 12px; }
@@ -102,54 +104,66 @@ a:not([href]):not([tabindex]) {
   color: #FFFFFF;
   display: flex;
   flex-flow: row-reverse; }
-  @media screen and (max-width: 991px) {
-    .welcome-header-container {
-      flex-flow: column; } }
+
+@media screen and (max-width: 991px) {
+  .welcome-header-container {
+    flex-flow: column; } }
+
+.welcome-header-container .welcome-header-map-image {
+  width: 426px;
+  padding-right: 0; }
+
+@media screen and (max-width: 991px) {
   .welcome-header-container .welcome-header-map-image {
-    width: 426px;
-    padding-right: 0; }
-    @media screen and (max-width: 991px) {
-      .welcome-header-container .welcome-header-map-image {
-        margin: 0 auto; } }
-    @media screen and (max-width: 426px) {
-      .welcome-header-container .welcome-header-map-image {
-        width: 100%; } }
+    margin: 0 auto; } }
+
+@media screen and (max-width: 426px) {
+  .welcome-header-container .welcome-header-map-image {
+    width: 100%; } }
+
+.welcome-header-container .welcome-header-info-container {
+  width: calc(100% - 426px);
+  padding: 40px;
+  text-align: left; }
+
+@media screen and (max-width: 991px) {
   .welcome-header-container .welcome-header-info-container {
-    width: calc(100% - 426px);
-    padding: 40px;
-    text-align: left; }
-    @media screen and (max-width: 991px) {
-      .welcome-header-container .welcome-header-info-container {
-        margin: 0 auto;
-        max-width: 800px;
-        padding-left: 10px;
-        padding-right: 10px;
-        text-align: center;
-        width: auto; } }
-    .welcome-header-container .welcome-header-info-container .welcome-header-info-title {
-      overflow-wrap: break-word;
-      word-wrap: break-word;
-      -ms-word-break: break-all;
-      word-break: break-word;
-      -ms-hyphens: auto;
-      -moz-hyphens: auto;
-      -webkit-hyphens: auto;
-      hyphens: auto;
-      color: #FFFFFF;
-      text-shadow: 0 0 3px rgba(0, 0, 0, 0.75); }
-    .welcome-header-container .welcome-header-info-container .welcome-header-info-subtitle {
-      padding-top: 1em;
-      padding-bottom: .2em; }
-    .welcome-header-container .welcome-header-info-container .welcome-header-info-description-container {
-      margin: 0 auto;
-      font-size: 14px; }
-    .welcome-header-container .welcome-header-info-container .welcome-header-button-container {
-      display: inline-block;
-      margin-top: 20px; }
+    margin: 0 auto;
+    max-width: 800px;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: center;
+    width: auto; } }
+
+.welcome-header-container .welcome-header-info-container .welcome-header-info-title {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  -ms-word-break: break-all;
+  word-break: break-word;
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+  color: #FFFFFF;
+  text-shadow: 0 0 3px rgba(0, 0, 0, 0.75); }
+
+.welcome-header-container .welcome-header-info-container .welcome-header-info-subtitle {
+  padding-top: 1em;
+  padding-bottom: .2em; }
+
+.welcome-header-container .welcome-header-info-container .welcome-header-info-description-container {
+  margin: 0 auto;
+  font-size: 14px; }
+
+.welcome-header-container .welcome-header-info-container .welcome-header-button-container {
+  display: inline-block;
+  margin-top: 20px; }
+
+.welcome-header-container .welcome-header-info-container-logged-in {
+  padding-top: 100px;
+  padding-left: 150px; }
+
+@media screen and (max-width: 991px) {
   .welcome-header-container .welcome-header-info-container-logged-in {
-    padding-top: 100px;
-    padding-left: 150px; }
-    @media screen and (max-width: 991px) {
-      .welcome-header-container .welcome-header-info-container-logged-in {
-        padding-left: 0;
-        padding-top: 40px; } }
+    padding-left: 0;
+    padding-top: 40px; } }

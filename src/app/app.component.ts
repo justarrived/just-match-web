@@ -17,6 +17,7 @@ import {SignedForJobModalComponent} from './components/modals/signed-for-job-mod
 import {SignForJobModalComponent} from './components/modals/sign-for-job-modal/sign-for-job-modal.component';
 import {Subscription} from 'rxjs/Subscription';
 import {ViewChild} from '@angular/core';
+import { TransferState } from './transfer-state/transfer-state';
 
 @Component({
   selector: 'app',
@@ -127,11 +128,13 @@ export class AppComponent implements OnInit, OnDestroy  {
   private hideModalSubscription: Subscription;
 
   public constructor(
+    private cache: TransferState,
     private modalService: ModalService
   ) {
   }
 
   public ngOnInit(): void {
+    this.cache.set('cached', true);
     this.initShowModalSubscription();
     this.initHideModalSubscription();
   }

@@ -64,14 +64,16 @@ p {
 
 a {
   color: #45E2FF; }
-  a:hover {
-    color: #ED4DA4;
-    cursor: pointer; }
+
+a:hover {
+  color: #ED4DA4;
+  cursor: pointer; }
 
 a:not([href]):not([tabindex]) {
   color: #45E2FF; }
-  a:not([href]):not([tabindex]):hover {
-    color: #ED4DA4; }
+
+a:not([href]):not([tabindex]):hover {
+  color: #ED4DA4; }
 
 .fs-s {
   font-size: 12px; }
@@ -104,36 +106,44 @@ a:not([href]):not([tabindex]) {
   box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.4);
   cursor: pointer;
   padding: 0; }
-  .job-item-container:hover {
-    transform: scale(1.02); }
-  .job-item-container .job-item-name-container {
-    height: 90px;
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center; }
-    .job-item-container .job-item-name-container .job-item-name {
-      text-align: center;
-      white-space: normal;
-      overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis; }
-  .job-item-container .job-item-label-container {
-    color: #FFFFFF;
-    background: #E5007D;
-    padding: 10px;
-    font-weight: 500;
-    border-radius: 0 0 8px 8px;
-    text-align: center; }
-  .job-item-container .job-item-label-applied-container {
-    background: #E7E8E9;
-    color: #9C9FA7; }
-  .job-item-container .job-item-label-offered-container {
-    background: #0069D2;
-    color: #FFFFFF; }
-  .job-item-container .job-item-label-will-perform-container {
-    background: #E5007D;
-    color: #FFFFFF; }
-  .job-item-container .job-item-label-performed-container {
-    background: springgreen;
-    color: #FFFFFF; }
+
+.job-item-container:hover {
+  transform: scale(1.02); }
+
+.job-item-container .job-item-name-container {
+  height: 90px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; }
+
+.job-item-container .job-item-name-container .job-item-name {
+  text-align: center;
+  white-space: normal;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis; }
+
+.job-item-container .job-item-label-container {
+  color: #FFFFFF;
+  background: #E5007D;
+  padding: 10px;
+  font-weight: 500;
+  border-radius: 0 0 8px 8px;
+  text-align: center; }
+
+.job-item-container .job-item-label-applied-container {
+  background: #E7E8E9;
+  color: #9C9FA7; }
+
+.job-item-container .job-item-label-offered-container {
+  background: #0069D2;
+  color: #FFFFFF; }
+
+.job-item-container .job-item-label-will-perform-container {
+  background: #E5007D;
+  color: #FFFFFF; }
+
+.job-item-container .job-item-label-performed-container {
+  background: springgreen;
+  color: #FFFFFF; }

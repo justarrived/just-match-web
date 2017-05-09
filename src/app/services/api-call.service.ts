@@ -92,15 +92,15 @@ export class ApiCallService {
     let options = new RequestOptions(requestArgs);
 
     let req: Request = new Request(options);
-    let session = this.dataStoreService.get(this.storageSessionKey);
+    let session = this.dataStoreService.getCookie(this.storageSessionKey);
     if (session && session.auth_token) {
       req.headers.set(this.sessionHeaderName, this.sessionHeaderPrefix + session['auth_token']);
     }
 
-    req.headers.set(this.languageHeaderName, this.dataStoreService.get(this.storageSystemLanguageCodeKey));
+    req.headers.set(this.languageHeaderName, this.dataStoreService.getCookie(this.storageSystemLanguageCodeKey));
     req.headers.set(this.transformHeaderName, this.transformHeaderValue);
 
-    const actAsUserId = this.dataStoreService.get(this.storageActAsUserIdKey);
+    const actAsUserId = this.dataStoreService.getCookie(this.storageActAsUserIdKey);
     if (actAsUserId !== null) {
       req.headers.set(this.actAsUserHeaderName, actAsUserId);
     }
@@ -139,7 +139,7 @@ export class ApiCallService {
     }
 
     if (response.status === 401) {
-      this.dataStoreService.remove(this.storageSessionKey);
+      this.dataStoreService.removeCookie(this.storageSessionKey);
       this.navigationService.navigate(JARoutes.login);
       throw 'handled';
     }
