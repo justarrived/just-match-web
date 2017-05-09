@@ -1,6 +1,5 @@
 import 'reflect-metadata';
 import 'zone.js/dist/zone-node';
-import 'rxjs/Rx';
 import {AppServerModuleNgFactory} from '../dist/ngfactory/src/app/app.server.module.ngfactory'
 import {enableProdMode} from '@angular/core'
 import { ngExpressEngine } from '@nguniversal/express-engine';
