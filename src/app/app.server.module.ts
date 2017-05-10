@@ -1,4 +1,4 @@
-import { NgModule, APP_BOOTSTRAP_LISTENER, ApplicationRef } from '@angular/core';
+import { NgModule, APP_BOOTSTRAP_LISTENER, ApplicationRef, Inject } from '@angular/core';
 import { ServerModule } from '@angular/platform-server';
 import { ServerTransferStateModule } from './transfer-state/server-transfer-state.module';
 import { AppComponent } from './app.component';

@@ -8,6 +8,7 @@ import {PLATFORM_ID} from '@angular/core';
 import {SessionStorage} from '../storage/session-storage/session-storage';
 import {StorageInterface} from '../storage/storage-interface/storage-interface';
 import {storageTypeAvailable} from '../utils/storage-type-available/storage-type-available.util';
+import { REQUEST } from '../../express-engine';
 
 @Injectable()
 export class DataStoreService {
@@ -17,6 +18,7 @@ export class DataStoreService {
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: any,
+    @Inject(REQUEST) private request: any,
   ) {
     this.store = this.storeFactory();
 
@@ -25,6 +27,7 @@ export class DataStoreService {
     }
 
     this.memoryStore = new MemoryStorage();
+
   }
 
   public clear(): void {
