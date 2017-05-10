@@ -4,6 +4,7 @@ import {Injectable} from '@angular/core';
 import {JARoutes} from '../../routes/ja-routes/ja-routes';
 import {NavigationService} from '../../services/navigation.service';
 import {Resolve} from '@angular/router';
+import {TransferState} from '../../transfer-state/transfer-state';
 import {User} from '../../models/api-models/user/user';
 import {UserProxy} from '../../proxies/user/user.proxy';
 import {UserSessionProxy} from '../../proxies/user-session/user-session.proxy';
@@ -12,6 +13,7 @@ import {UserSessionProxy} from '../../proxies/user-session/user-session.proxy';
 export class UserResolver implements Resolve<User> {
   private readonly storageActAsUserIdKey: string = 'actAsUserId';
   private readonly storageSessionKey: string = 'sessionData';
+  private readonly userStateTransferKey: string = 'user';
   private readonly defaultIncludeResources: String[] = [
     'company', 'user_images', 'user_languages', 'user_languages.language',
     'user_skills', 'user_skills.skill', 'user_documents', 'user_documents.document',
@@ -26,8 +28,9 @@ export class UserResolver implements Resolve<User> {
   public constructor(
     private dataStoreService: DataStoreService,
     private navigationService: NavigationService,
-    private userSessionProxy: UserSessionProxy,
+    private transferState: TransferState,
     private userProxy: UserProxy,
+    private userSessionProxy: UserSessionProxy,
   ) {
   }
 
@@ -41,10 +44,18 @@ export class UserResolver implements Resolve<User> {
         return Promise.resolve(this.user);
       }
 
+      let user = this.transferState.get(this.userStateTransferKey);
+
+      if (user) {
+        this.init(user);
+        return Promise.resolve(this.user);
+      }
+
       return this.userProxy.getUser(session.user_id, {
         'include': this.defaultIncludeResourcesString
       })
       .then(user => {
+        this.transferState.set(this.userStateTransferKey, user);
         this.init(user);
         return user;
       });
@@ -94,6 +105,7 @@ export class UserResolver implements Resolve<User> {
         'include': this.defaultIncludeResourcesString
       })
       .then(user => {
+        this.transferState.set(this.userStateTransferKey, user);
         this.user = user;
         if (actAsUserId && user.admin) {
           return this.userProxy.getUser(actAsUserId, {

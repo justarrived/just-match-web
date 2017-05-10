@@ -28,6 +28,16 @@ export class DataStoreService {
 
     this.memoryStore = new MemoryStorage();
 
+    if (request) {
+      for (let cookieName in request.cookies) {
+        let cookie = request.cookies[cookieName];
+        try {
+          cookie = JSON.parse(request.cookies[cookieName]);
+        } catch (err) {}
+
+        this.setCookie(cookieName, cookie);
+      }
+    }
   }
 
   public clear(): void {

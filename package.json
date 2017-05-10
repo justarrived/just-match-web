@@ -7,11 +7,11 @@
     "npm": "3.10.8"
   },
   "scripts": {
-    "build": "ng build -${NODE_ENV-prod} --aot && gulp before:ngc && ngc && gulp after:ngc && webpack",
+    "build": "ng build -prod --aot && gulp before:ngc && ngc && gulp after:ngc && webpack",
     "pree2e": "webdriver-manager update",
     "e2e": "ng e2e",
     "heroku-prebuild": "yarn global add @angular/cli",
-    "heroku-postbuild": "ng build -prod --aot --env=${ENV_CONFIG-prod} && gulp before:ngc && ngc && gulp after:ngc && webpack",
+    "heroku-postbuild": "ng build -prod --env=${ENV_CONFIG-prod} && gulp before:ngc && ngc && gulp after:ngc && webpack",
     "lint": "ng lint",
     "start-dev": "ng serve",
     "prestart": "yarn run build",

@@ -2,6 +2,7 @@ import {AfterContentChecked} from '@angular/core';
 import {Directive} from '@angular/core';
 import {ElementRef} from '@angular/core';
 import {HostListener} from '@angular/core';
+import {Renderer2} from '@angular/core';
 
 @Directive({
   selector: 'textarea[autosize]'
@@ -14,8 +15,9 @@ export class SMAutosizeDirective implements AfterContentChecked {
   }
 
   public constructor(
-    public element: ElementRef)
-  {
+    private element: ElementRef,
+    private renderer: Renderer2,
+  ) {
   }
 
   public ngAfterContentChecked(): void {
@@ -23,8 +25,8 @@ export class SMAutosizeDirective implements AfterContentChecked {
   }
 
   public adjust(): void {
-    this.element.nativeElement.style.overflow = 'hidden';
-    this.element.nativeElement.style.height = 'auto';
-    this.element.nativeElement.style.height = this.element.nativeElement.scrollHeight + 'px';
+    this.renderer.setStyle(this.element, 'overflow', 'hidden');
+    this.renderer.setStyle(this.element, 'height', 'auto');
+    this.renderer.setStyle(this.element, 'height', this.element.nativeElement.scrollHeight + 'px';);
   }
 }
