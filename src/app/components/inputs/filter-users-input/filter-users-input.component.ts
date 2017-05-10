@@ -97,6 +97,6 @@ export class FilterUsersInputComponent extends SystemLanguageListener implements
   }
 
   public ngOnDestroy(): void {
-    this.controlValueChangesSubscription.unsubscribe();
+    if (this.controlValueChangesSubscription) { this.controlValueChangesSubscription.unsubscribe(); }
   }
 }

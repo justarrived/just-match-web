@@ -41,7 +41,7 @@ export class RegisteredModalComponent implements OnInit, OnDestroy {
   }
 
   public ngOnDestroy(): void {
-    this.userSubscription.unsubscribe();
+    if (this.userSubscription) { this.userSubscription.unsubscribe(); }
   }
 
   public show() {

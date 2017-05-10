@@ -19,7 +19,7 @@ export class NavigationService {
   private routeCheckpoint: string;
 
   public constructor(
-    @Inject(PLATFORM_ID) private platformId: any,
+    @Inject(PLATFORM_ID) private readonly platformId: any,
     private activatedRoute: ActivatedRoute,
     private location: Location,
     private router: Router,

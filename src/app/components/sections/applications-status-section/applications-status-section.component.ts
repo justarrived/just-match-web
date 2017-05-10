@@ -84,6 +84,6 @@ export class ApplicationsStatusSectionComponent extends SystemLanguageListener i
   }
 
   public ngOnDestroy() {
-    this.userSubscription.unsubscribe();
+    if (this.userSubscription) { this.userSubscription.unsubscribe(); }
   }
 }

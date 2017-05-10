@@ -1,12 +1,15 @@
 import {Component} from '@angular/core';
 import {EventEmitter} from '@angular/core';
+import {Inject} from '@angular/core';
 import {Input} from '@angular/core';
+import {isPlatformBrowser} from '@angular/common';
 import {JARoutes} from '../../../routes/ja-routes/ja-routes';
 import {NavigationService} from '../../../services/navigation.service';
 import {NavigationStart} from '@angular/router';
 import {OnDestroy} from '@angular/core';
 import {OnInit} from '@angular/core';
 import {Output} from '@angular/core';
+import {PLATFORM_ID} from '@angular/core';
 import {Router} from '@angular/router';
 import {Subscription} from 'rxjs/Subscription';
 import {User} from '../../../models/api-models/user/user';
@@ -149,9 +152,10 @@ export class NavigationMenuComponent implements OnInit, OnDestroy {
   private userSubscription: Subscription;
 
   public constructor(
+    @Inject(PLATFORM_ID) private readonly platformId: any,
     private navigationService: NavigationService,
     private router: Router,
-    private userResolver: UserResolver
+    private userResolver: UserResolver,
   ) {
   }
 
@@ -188,8 +192,8 @@ export class NavigationMenuComponent implements OnInit, OnDestroy {
   }
 
   public ngOnDestroy(): void {
-    this.routerEventSubscription.unsubscribe();
-    this.userSubscription.unsubscribe();
+    if (this.routerEventSubscription) { this.routerEventSubscription.unsubscribe(); }
+    if (this.userSubscription) { this.userSubscription.unsubscribe(); }
   }
 
   public show(options?: any): void {
@@ -205,7 +209,9 @@ export class NavigationMenuComponent implements OnInit, OnDestroy {
   }
 
   public onStaffingTimeReportLinkClick(): void {
-    window.location.href = 'https://justarrived-se.web.intelliplan.eu/croupier/login/';
+    if (isPlatformBrowser(this.platformId)) {
+      window.location.href = 'https://justarrived-se.web.intelliplan.eu/croupier/login/';
+    }
     this.hide();
   }
 

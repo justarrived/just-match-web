@@ -17,7 +17,7 @@ export class DataStoreService {
   private memoryStore: MemoryStorage;
 
   constructor(
-    @Inject(PLATFORM_ID) private platformId: any,
+    @Inject(PLATFORM_ID) private readonly platformId: any,
     @Inject(REQUEST) private request: any,
   ) {
     this.store = this.storeFactory();

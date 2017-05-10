@@ -47,7 +47,7 @@ export class SemanticSelectComponent implements AfterViewInit {
   @ViewChild("select") public select: ElementRef;
 
   public constructor(
-    @Inject(PLATFORM_ID) private platformId: any
+    @Inject(PLATFORM_ID) private readonly platformId: any
   ) {
   }
 

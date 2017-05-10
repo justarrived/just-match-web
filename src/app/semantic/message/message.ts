@@ -39,7 +39,7 @@ export class SemanticMessageComponent {
   @ViewChild("message") public message: ElementRef;
 
   public constructor(
-    @Inject(PLATFORM_ID) private platformId: any
+    @Inject(PLATFORM_ID) private readonly platformId: any
   ) {
   }
 

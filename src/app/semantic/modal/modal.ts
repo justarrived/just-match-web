@@ -10,6 +10,7 @@ import {isPlatformBrowser} from '@angular/common';
 import {OnDestroy} from "@angular/core";
 import {Output} from "@angular/core";
 import {PLATFORM_ID} from "@angular/core";
+import {Renderer2} from '@angular/core';
 import {ViewChild} from "@angular/core";
 
 declare var jQuery: any;
@@ -49,7 +50,8 @@ export class SemanticModalComponent implements AfterViewInit, OnDestroy {
   @Output() onModalHide: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   public constructor(
-    @Inject(PLATFORM_ID) private platformId: any
+    @Inject(PLATFORM_ID) private readonly platformId: any,
+    private renderer: Renderer2,
   ) {
   }
 
@@ -66,8 +68,7 @@ export class SemanticModalComponent implements AfterViewInit, OnDestroy {
         .modal("hide dimmer");
     }
 
-    const parent = this.modal.nativeElement.parentElement;
-    parent.removeChild(this.modal.nativeElement);
+    this.renderer.removeChild(this.renderer.parentNode(this.modal.nativeElement), this.modal.nativeElement);
   }
 
   public show(data: any = {}) {

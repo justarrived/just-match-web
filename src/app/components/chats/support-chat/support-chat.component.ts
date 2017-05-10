@@ -62,6 +62,6 @@ export class SupportChatComponent extends SystemLanguageListener implements OnIn
 
 
   public ngOnDestroy(): void {
-    this.userSubscription.unsubscribe();
+    if (this.userSubscription) { this.userSubscription.unsubscribe(); }
   }
 }

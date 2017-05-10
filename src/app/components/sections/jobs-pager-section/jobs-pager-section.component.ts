@@ -106,7 +106,7 @@ export class JobsPagerSectionComponent extends SystemLanguageListener implements
   }
 
   public ngOnDestroy(): void {
-    this.routeParamsSubscription.unsubscribe();
+    if (this.routeParamsSubscription) { this.routeParamsSubscription.unsubscribe(); }
   }
 
   public onPageChange(page: number): void {

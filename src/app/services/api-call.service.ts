@@ -34,7 +34,7 @@ export class ApiCallService {
   private readonly transformHeaderValue: string = 'underscore';
 
   constructor(
-    @Inject(PLATFORM_ID) private platformId: any,
+    @Inject(PLATFORM_ID) private readonly platformId: any,
     private dataStoreService: DataStoreService,
     private http: Http,
     private navigationService: NavigationService,

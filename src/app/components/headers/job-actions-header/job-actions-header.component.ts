@@ -132,7 +132,7 @@ export class JobActionsHeaderComponent extends SystemLanguageListener implements
   }
 
   public ngOnDestroy(): void {
-    this.userSubscription.unsubscribe();
+    if (this.userSubscription) { this.userSubscription.unsubscribe(); }
   }
 
   public onRegisterButtonClick(): void {

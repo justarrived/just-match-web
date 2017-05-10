@@ -1,8 +1,16 @@
+import {Inject} from '@angular/core';
 import {Injectable} from '@angular/core';
+import {isPlatformBrowser} from '@angular/common';
 import {Observable} from 'rxjs';
+import {PLATFORM_ID} from '@angular/core';
 
 @Injectable()
 export class GeolocationService {
+
+	public constructor(
+    @Inject(PLATFORM_ID) private readonly platformId: any
+  ) {
+  }
 
 	/**
 	 * Obtains the geographic position, in terms of latitude and longitude coordinates, of the device.
@@ -21,7 +29,7 @@ export class GeolocationService {
 
     return Observable.create(observer => {
 
-      if (window.navigator && window.navigator.geolocation) {
+      if (isPlatformBrowser(this.platformId) && window.navigator && window.navigator.geolocation) {
         window.navigator.geolocation.getCurrentPosition(
           position => {
             observer.next(position);

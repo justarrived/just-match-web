@@ -90,6 +90,8 @@ export class JobPageComponent extends SystemLanguageListener implements OnInit, 
   }
 
   public ngOnDestroy(): void {
-    this.routeParamsSubscription.unsubscribe();
+    if (this.routeParamsSubscription) {
+      this.routeParamsSubscription.unsubscribe();
+    }
   }
 }

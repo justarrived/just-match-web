@@ -28,7 +28,7 @@ export class SemanticAccordionComponent implements AfterViewInit {
   @ViewChild("accordion") accordion: ElementRef;
 
   public constructor(
-    @Inject(PLATFORM_ID) private platformId: any
+    @Inject(PLATFORM_ID) private readonly platformId: any
   ) {
   }
 

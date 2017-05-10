@@ -25,8 +25,8 @@ export class SMAutosizeDirective implements AfterContentChecked {
   }
 
   public adjust(): void {
-    this.renderer.setStyle(this.element, 'overflow', 'hidden');
-    this.renderer.setStyle(this.element, 'height', 'auto');
-    this.renderer.setStyle(this.element, 'height', this.element.nativeElement.scrollHeight + 'px';);
+    this.renderer.setStyle(this.element.nativeElement, 'overflow', 'hidden');
+    this.renderer.setStyle(this.element.nativeElement, 'height', 'auto');
+    this.renderer.setStyle(this.element.nativeElement, 'height', this.element.nativeElement.scrollHeight + 'px');
   }
 }

@@ -32,7 +32,7 @@ export class SemanticSidebarComponent implements AfterViewInit, OnDestroy {
   @ViewChild("sidebar") public sidebar: ElementRef;
 
   public constructor(
-    @Inject(PLATFORM_ID) private platformId: any,
+    @Inject(PLATFORM_ID) private readonly platformId: any,
     private renderer: Renderer,
   ) {
   }

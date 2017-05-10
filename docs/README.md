@@ -195,7 +195,7 @@ export class ContactFormComponent implements OnDestroy {
   }
 
   public ngOnDestroy() {
-    this.userChangeSubscription.unsubscribe();
+    if (this.userChangeSubscription) { this.userChangeSubscription.unsubscribe(); }
   }
 ```
 

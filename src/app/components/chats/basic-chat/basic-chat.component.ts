@@ -111,7 +111,7 @@ export class BasicChatComponent extends SystemLanguageListener implements OnInit
   private readonly pollMessagesInterval: number = 1000;
 
   public constructor(
-    @Inject(PLATFORM_ID) private platformId: any,
+    @Inject(PLATFORM_ID) private readonly platformId: any,
     private changeDetector: ChangeDetectorRef,
     private formBuilder: FormBuilder,
     private messageProxy: MessageProxy,
@@ -166,7 +166,7 @@ export class BasicChatComponent extends SystemLanguageListener implements OnInit
       return this.messages;
     });
 
-    if (!this.messagesSubscription) {
+    if (!this.messagesSubscription && isPlatformBrowser(this.platformId)) {
       this.messagesSubscription = Observable.interval(this.pollMessagesInterval)
       .switchMap(() => this.getChatMessages())
       .subscribe(messages => {
@@ -197,9 +197,9 @@ export class BasicChatComponent extends SystemLanguageListener implements OnInit
   }
 
   public ngOnDestroy(): void {
-    this.userSubscription.unsubscribe();
-    this.messagesSubscription.unsubscribe();
-    this.queryParamsSubscription.unsubscribe();
+    if (this.userSubscription) { this.userSubscription.unsubscribe(); }
+    if (this.messagesSubscription) { this.messagesSubscription.unsubscribe(); }
+    if (this.queryParamsSubscription) { this.queryParamsSubscription.unsubscribe(); }
   }
 
   private handleServerErrors(errors): void {
