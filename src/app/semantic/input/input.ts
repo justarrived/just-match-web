@@ -50,14 +50,10 @@ export class SemanticInputComponent {
     <div
       class="field"
       [ngClass]="{error: (!control.value && control?.validator) }">
-      <div class="ui {{classType}} checkbox">
+      <div class="ui checkbox">
         <input
           [formControl]="control"
           [id]="uniqueId"
-          [name]="name"
-          [type]="inputType"
-          [value]="value"
-          tabindex="0"
           type="checkbox">
         <label
           [for]="uniqueId"
@@ -71,22 +67,7 @@ export class SemanticInputComponent {
 export class SemanticCheckboxComponent {
   @Input() public control: FormControl = new FormControl();
   @Input() public label: string;
-  @Input() public name: string;
   @Input() public uniqueId: string;
-  @Input() public value: string | number;
-
-  @Input("type")
-  public set type(data: string) {
-    if (data && data !== "checkbox") {
-      this.classType = data;
-      if (data === "radio") {
-        this.inputType = data;
-      }
-    }
-  }
-
-  public inputType: string = "checkbox";
-  public classType = "checkbox";
 }
 
 @Component({

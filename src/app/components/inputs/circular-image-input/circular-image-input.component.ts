@@ -39,7 +39,7 @@ export class CircularImageInputComponent {
   @ViewChild('fileInput') public fileInput: ElementRef;
 
   constructor(
-    private rendered: Renderer
+    private renderer: Renderer
   ) {
   }
 
@@ -48,7 +48,7 @@ export class CircularImageInputComponent {
       return;
     }
 
-    this.rendered.invokeElementMethod(this.fileInput.nativeElement, 'click');
+    this.renderer.invokeElementMethod(this.fileInput.nativeElement, 'click');
   }
 
   public onDocumentFilenameChange(event) {
