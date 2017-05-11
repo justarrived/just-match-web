@@ -7,7 +7,6 @@ import {AppComponent} from './app.component';
 import {ApplicationsComponent} from './views/my-jobs/applications/applications.component';
 import {ApplicationsStatusSectionComponent} from './components/sections/applications-status-section/applications-status-section.component';
 import {ApplicationStatusCardComponent} from './components/cards/application-status-card/application-status-card.component';
-import {BasicSearchComponent} from './components/search/basic-search/basic-search.component';
 import {AppliedForJobModalComponent} from './components/modals/applied-for-job-modal/applied-for-job-modal.component';
 import {ApplyForJobFormComponent} from './components/forms/apply-for-job-form/apply-for-job-form.component';
 import {ApplyForJobModalComponent} from './components/modals/apply-for-job-modal/apply-for-job-modal.component';
@@ -24,6 +23,7 @@ import {BasicChatMessagesComponent} from './components/chat-messages/basic-chat-
 import {BasicCommentComponent} from './components/comment/basic-comment/basic-comment.component';
 import {BasicCommentsComponent} from './components/comments/basic-comments/basic-comments.component';
 import {BasicPagerComponent} from './components/pagers/basic-pager/basic-pager.component';
+import {BasicSearchComponent} from './components/search/basic-search/basic-search.component';
 import {BasicTabComponent} from './components/tabs/basic-tab/basic-tab.component';
 import {BasicTabsComponent} from './components/tabs/basic-tabs/basic-tabs.component';
 import {BrowserModule} from '@angular/platform-browser';
@@ -32,8 +32,8 @@ import {CircularIconBaseButtonComponent} from './components/buttons/circular-ico
 import {CircularImageInputComponent} from './components/inputs/circular-image-input/circular-image-input.component';
 import {CityInputComponent} from './components/inputs/city-input/city-input.component';
 import {CommentInputComponent} from './components/inputs/comment-input/comment-input.component';
-import {UsersFilterComponent} from './components/filters/users-filter/users-filter.component';
 import {CommentsFormComponent} from './components/forms/comments-form/comments-form.component';
+import {CommonModule } from '@angular/common';
 import {CompactJobCardComponent} from './components/cards/compact-job-card/compact-job-card.component';
 import {CompetenceInputComponent} from './components/inputs/competence-input/competence-input.component';
 import {ConfirmationModalComponent} from './components/modals/confirmation-modal/confirmation-modal.component';
@@ -53,7 +53,6 @@ import {DescriptionInputComponent} from './components/inputs/description-input/d
 import {EducationInputComponent} from './components/inputs/education-input/education-input.component';
 import {EmailInputComponent} from './components/inputs/email-input/email-input.component';
 import {EmailOrPhoneInputComponent} from './components/inputs/email-or-phone-input/email-or-phone-input.component';
-import {FilterUsersInputComponent} from './components/inputs/filter-users-input/filter-users-input.component';
 import {environment} from '../environments/environment';
 import {ErrorHandler } from '@angular/core';
 import {ErrorMessageComponent} from './components/messages/error-message/error-message.component';
@@ -62,6 +61,7 @@ import {FacebookUrlInputComponent} from './components/inputs/facebook-url-input/
 import {FaqAccordionComponent} from './components/accordions/faq-accordion/faq-accordion.component';
 import {FaqPageComponent} from './components/pages/faq-page/faq-page.component';
 import {FileInputButtonComponent} from './components/buttons/file-input-button/file-input-button.component';
+import {FilterUsersInputComponent} from './components/inputs/filter-users-input/filter-users-input.component';
 import {FirstNameInputComponent} from './components/inputs/first-name-input/first-name-input.component';
 import {ForbiddenPageComponent} from './components/pages/forbidden-page/forbidden-page.component';
 import {ForgotPasswordFormComponent} from './components/forms/forgot-password-form/forgot-password-form.component';
@@ -70,7 +70,6 @@ import {ForgotPasswordPageComponent} from './components/pages/forgot-password-pa
 import {FormsModule} from '@angular/forms';
 import {FormSubmitButtonComponent} from './components/buttons/form-submit-button/form-submit-button.component';
 import {FrilansTermsInputComponent} from './components/inputs/frilans-terms-input/frilans-terms-input.component';
-import {SortUsersInputComponent} from './components/inputs/sort-users-input/sort-users-input.component';
 import {GenderInputComponent} from './components/inputs/gender-input/gender-input.component';
 import {GeolocationService} from './services/geolocation.service';
 import {GodModeBarComponent} from './components/bars/god-mode-bar/god-mode-bar.component';
@@ -157,6 +156,7 @@ import {SimpleMessageComponent} from './components/messages/simple-message/simpl
 import {SkatteverketCertificateInputComponent} from './components/inputs/skatteverket-certificate-input/skatteverket-certificate-input.component';
 import {SkillProficiencyInputComponent} from './components/inputs/skill-proficiency-input/skill-proficiency-input.component';
 import {SkillsInputComponent} from './components/inputs/skills-input/skills-input.component';
+import {SortUsersInputComponent} from './components/inputs/sort-users-input/sort-users-input.component';
 import {SSNInputComponent} from './components/inputs/ssn-input/ssn-input.component';
 import {StatusInputComponent} from './components/inputs/status-input/status-input.component';
 import {StreetInputComponent} from './components/inputs/street-input/street-input.component';
@@ -181,6 +181,7 @@ import {UserProfileFormComponent} from './components/forms/user-profile-form/use
 import {UserProfileHeaderComponent} from './components/headers/user-profile-header/user-profile-header.component';
 import {UserProfilePageComponent} from './components/pages/user-profile-page/user-profile-page.component';
 import {UserResolver} from './resolvers/user/user.resolver';
+import {UsersFilterComponent} from './components/filters/users-filter/users-filter.component';
 import {UserUpdateFormComponent} from './components/forms/user-update-form/user-update-form.component';
 import {WelcomeHeaderComponent} from './components/headers/welcome-header/welcome-header.component';
 import {WorkPermitBackInputComponent} from './components/inputs/work-permit-back-input/work-permit-back-input.component';
@@ -188,7 +189,6 @@ import {WorkPermitFrontInputComponent} from './components/inputs/work-permit-fro
 import {YesNoInputComponent} from './components/inputs/yes-no-input/yes-no-input.component';
 import {ZipInputComponent} from './components/inputs/zip-input/zip-input.component';
 import * as Raven from 'raven-js';
-import {CommonModule } from '@angular/common';
 
 Raven
   .config(environment.sentryURL)

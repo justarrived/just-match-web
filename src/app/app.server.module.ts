@@ -1,11 +1,14 @@
-import { NgModule, APP_BOOTSTRAP_LISTENER, ApplicationRef, Inject } from '@angular/core';
-import { ServerModule } from '@angular/platform-server';
-import { ServerTransferStateModule } from './transfer-state/server-transfer-state.module';
-import { AppComponent } from './app.component';
-import { AppModule } from './app.module';
-import { TransferState } from './transfer-state/transfer-state';
-import { BrowserModule } from '@angular/platform-browser';
+import {APP_BOOTSTRAP_LISTENER} from '@angular/core';
+import {AppComponent} from './app.component';
+import {ApplicationRef} from '@angular/core';
+import {AppModule} from './app.module';
+import {BrowserModule} from '@angular/platform-browser';
+import {Injectimport} from '@angular/core';
+import {NgModule} from '@angular/core';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
+import {ServerModule} from '@angular/platform-server';
+import {ServerTransferStateModule} from './transfer-state/server-transfer-state.module';
+import {TransferState} from './transfer-state/transfer-state';
 
 export function onBootstrap(appRef: ApplicationRef, transferState: TransferState) {
   return () => {
@@ -32,13 +35,13 @@ export function onBootstrap(appRef: ApplicationRef, transferState: TransferState
     }
   ],
   imports: [
-    NoopAnimationsModule,
+    AppModule,
     BrowserModule.withServerTransition({
       appId: 'just-match-web'
     }),
+    NoopAnimationsModule,
     ServerModule,
     ServerTransferStateModule,
-    AppModule
   ]
 })
 export class AppServerModule {}

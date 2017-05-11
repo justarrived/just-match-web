@@ -16,8 +16,8 @@ import {RegisterModalComponent} from './components/modals/register-modal/registe
 import {SignedForJobModalComponent} from './components/modals/signed-for-job-modal/signed-for-job-modal.component';
 import {SignForJobModalComponent} from './components/modals/sign-for-job-modal/sign-for-job-modal.component';
 import {Subscription} from 'rxjs/Subscription';
+import {TransferState} from './transfer-state/transfer-state';
 import {ViewChild} from '@angular/core';
-import { TransferState } from './transfer-state/transfer-state';
 
 @Component({
   selector: 'app',

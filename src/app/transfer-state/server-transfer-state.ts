@@ -12,7 +12,7 @@ export class ServerTransferState extends TransferState {
     private state: PlatformState,
     private rendererFactory: RendererFactory2
   ) {
-      super();
+    super();
   }
 
   /**
