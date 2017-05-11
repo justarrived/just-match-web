@@ -6,7 +6,7 @@
   version "1.0.0-beta.0"
   resolved "https://registry.yarnpkg.com/@agm/core/-/core-1.0.0-beta.0.tgz#5ca53f0efa321e1e24c7ba3a6be72f96bccf82a4"
 
-"@angular/animations@^4.0.2":
+"@angular/animations@^4.1.2":
   version "4.1.2"
   resolved "https://registry.yarnpkg.com/@angular/animations/-/animations-4.1.2.tgz#3371596e736b7d240e200477d0dd8c5929352124"
 
@@ -74,11 +74,11 @@
   optionalDependencies:
     node-sass "^4.3.0"
 
-"@angular/common@^4.0.2":
+"@angular/common@^4.1.2":
   version "4.1.2"
   resolved "https://registry.yarnpkg.com/@angular/common/-/common-4.1.2.tgz#8f6d0496c204210bfe255feb437a72253f06984d"
 
-"@angular/compiler-cli@^4.0.2":
+"@angular/compiler-cli@^4.1.2":
   version "4.1.2"
   resolved "https://registry.yarnpkg.com/@angular/compiler-cli/-/compiler-cli-4.1.2.tgz#b65ba8980330c048702aed242a956daf0251f02a"
   dependencies:
@@ -90,15 +90,15 @@
   version "4.1.2"
   resolved "https://registry.yarnpkg.com/@angular/compiler/-/compiler-4.1.2.tgz#09542381162fd8dd962d84559498ce69a05071ea"
 
-"@angular/core@^4.0.2":
+"@angular/core@^4.1.2":
   version "4.1.2"
   resolved "https://registry.yarnpkg.com/@angular/core/-/core-4.1.2.tgz#37b5c040b9dd37003499aea04319d699e3870596"
 
-"@angular/forms@^4.0.2":
+"@angular/forms@^4.1.2":
   version "4.1.2"
   resolved "https://registry.yarnpkg.com/@angular/forms/-/forms-4.1.2.tgz#82983e9ec5d0833e7ae14beb8e47dd357c88f490"
 
-"@angular/http@^4.0.2":
+"@angular/http@^4.1.2":
   version "4.1.2"
   resolved "https://registry.yarnpkg.com/@angular/http/-/http-4.1.2.tgz#fc378c3330c0410e1fb8aac2546329a6887776e4"
 
@@ -106,18 +106,18 @@
   version "4.1.2"
   resolved "https://registry.yarnpkg.com/@angular/platform-browser-dynamic/-/platform-browser-dynamic-4.1.2.tgz#d241c61792c794bec627ab64b31a66bea22abb9f"
 
-"@angular/platform-browser@^4.0.2":
+"@angular/platform-browser@^4.1.2":
   version "4.1.2"
   resolved "https://registry.yarnpkg.com/@angular/platform-browser/-/platform-browser-4.1.2.tgz#16e50a8f75b4d675c9e2903e499e0fe4c6a125ac"
 
-"@angular/platform-server@^4.0.2":
+"@angular/platform-server@^4.1.2":
   version "4.1.2"
   resolved "https://registry.yarnpkg.com/@angular/platform-server/-/platform-server-4.1.2.tgz#3ef2206a59fd2d138d267aad101a50d3d806e39c"
   dependencies:
     parse5 "^3.0.1"
     xhr2 "^0.1.4"
 
-"@angular/router@^4.0.2":
+"@angular/router@^4.1.2":
   version "4.1.2"
   resolved "https://registry.yarnpkg.com/@angular/router/-/router-4.1.2.tgz#31b1b126fec2e1c32f4557ef8eb605536adccb27"
 
@@ -154,10 +154,6 @@
     magic-string "^0.19.0"
     source-map "^0.5.6"
 
-"@nguniversal/express-engine@^1.0.0-beta.1":
-  version "1.0.0-beta.1"
-  resolved "https://registry.yarnpkg.com/@nguniversal/express-engine/-/express-engine-1.0.0-beta.1.tgz#f8ece70affc80a08391abd93969cf6d7b680f2ae"
-
 "@ngx-cache/core@^0.4.0-beta.1":
   version "0.4.0-beta.1"
   resolved "https://registry.yarnpkg.com/@ngx-cache/core/-/core-0.4.0-beta.1.tgz#6acbccd2d52167dd6f6ab1785852e361bbc7650f"
@@ -178,6 +174,19 @@
   dependencies:
     tslib "^1.6.1"
 
+"@types/express-serve-static-core@*":
+  version "4.0.44"
+  resolved "https://registry.yarnpkg.com/@types/express-serve-static-core/-/express-serve-static-core-4.0.44.tgz#a1c3bd5d80e93c72fba91a03f5412c47f21d4ae7"
+  dependencies:
+    "@types/node" "*"
+
+"@types/express@^4.0.35":
+  version "4.0.35"
+  resolved "https://registry.yarnpkg.com/@types/express/-/express-4.0.35.tgz#6267c7b60a51fac473467b3c4a02cd1e441805fe"
+  dependencies:
+    "@types/express-serve-static-core" "*"
+    "@types/serve-static" "*"
+
 "@types/jasmine@^2.5.47":
   version "2.5.47"
   resolved "https://registry.yarnpkg.com/@types/jasmine/-/jasmine-2.5.47.tgz#bbba9bcf0e95e7890c6f4a47394e8bacaa960eb6"
@@ -186,19 +195,23 @@
   version "4.14.64"
   resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.64.tgz#979cf3a3d4a368670840bf9b3e448dc33ffe84ee"
 
+"@types/mime@*":
+  version "0.0.29"
+  resolved "https://registry.yarnpkg.com/@types/mime/-/mime-0.0.29.tgz#fbcfd330573b912ef59eeee14602bface630754b"
+
 "@types/moment@^2.13.0":
   version "2.13.0"
   resolved "https://registry.yarnpkg.com/@types/moment/-/moment-2.13.0.tgz#604ebd189bc3bc34a1548689404e61a2a4aac896"
   dependencies:
     moment "*"
 
+"@types/node@*", "@types/node@^7.0.13":
+  version "7.0.18"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-7.0.18.tgz#cd67f27d3dc0cfb746f0bdd5e086c4c5d55be173"
+
 "@types/node@^6.0.46":
   version "6.0.73"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-6.0.73.tgz#85dc4bb6f125377c75ddd2519a1eeb63f0a4ed70"
-
-"@types/node@^7.0.13":
-  version "7.0.18"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-7.0.18.tgz#cd67f27d3dc0cfb746f0bdd5e086c4c5d55be173"
 
 "@types/q@^0.0.32":
   version "0.0.32"
@@ -207,6 +220,13 @@
 "@types/selenium-webdriver@^2.53.35", "@types/selenium-webdriver@~2.53.39":
   version "2.53.42"
   resolved "https://registry.yarnpkg.com/@types/selenium-webdriver/-/selenium-webdriver-2.53.42.tgz#74cb77fb6052edaff2a8984ddafd88d419f25cac"
+
+"@types/serve-static@*":
+  version "1.7.31"
+  resolved "https://registry.yarnpkg.com/@types/serve-static/-/serve-static-1.7.31.tgz#15456de8d98d6b4cff31be6c6af7492ae63f521a"
+  dependencies:
+    "@types/express-serve-static-core" "*"
+    "@types/mime" "*"
 
 abbrev@1:
   version "1.1.0"
@@ -1199,8 +1219,8 @@ create-hash@^1.1.0, create-hash@^1.1.1, create-hash@^1.1.2:
     sha.js "^2.4.0"
 
 create-hmac@^1.1.0, create-hmac@^1.1.2, create-hmac@^1.1.4:
-  version "1.1.5"
-  resolved "https://registry.yarnpkg.com/create-hmac/-/create-hmac-1.1.5.tgz#b2c145f2e697d2b538fc686fd80a136aa6dadcad"
+  version "1.1.6"
+  resolved "https://registry.yarnpkg.com/create-hmac/-/create-hmac-1.1.6.tgz#acb9e221a4e17bdb076e90657c42b93e3726cf06"
   dependencies:
     cipher-base "^1.0.3"
     create-hash "^1.1.0"
@@ -1395,7 +1415,7 @@ dateformat@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/dateformat/-/dateformat-2.0.0.tgz#2743e3abb5c3fc2462e527dca445e04e9f4dee17"
 
-debug@*, debug@2, debug@2.6.4, debug@^2.1.3, debug@^2.2.0, debug@^2.6.3:
+debug@*, debug@2, debug@2.6.4, debug@^2.2.0, debug@^2.6.3:
   version "2.6.4"
   resolved "https://registry.yarnpkg.com/debug/-/debug-2.6.4.tgz#7586a9b3c39741c0282ae33445c4e8ac74734fe0"
   dependencies:
@@ -1413,7 +1433,7 @@ debug@2.3.3:
   dependencies:
     ms "0.7.2"
 
-debug@2.6.1:
+debug@2.6.1, debug@^2.1.3:
   version "2.6.1"
   resolved "https://registry.yarnpkg.com/debug/-/debug-2.6.1.tgz#79855090ba2c4e3115cc7d8769491d58f0491351"
   dependencies:
@@ -2724,8 +2744,8 @@ ieee754@^1.1.4:
   resolved "https://registry.yarnpkg.com/ieee754/-/ieee754-1.1.8.tgz#be33d40ac10ef1926701f6f08a2d86fbfd1ad3e4"
 
 image-size@~0.5.0:
-  version "0.5.2"
-  resolved "https://registry.yarnpkg.com/image-size/-/image-size-0.5.2.tgz#8e97cd0eb69ce04a2831a11a6095983100f8bda4"
+  version "0.5.3"
+  resolved "https://registry.yarnpkg.com/image-size/-/image-size-0.5.3.tgz#5cbe9fafc8436386ceb7e9e3a9d90c5b71b70ad9"
 
 img-stats@^0.5.2:
   version "0.5.2"
@@ -4447,8 +4467,8 @@ path@0.12.7:
     util "^0.10.3"
 
 pbkdf2@^3.0.3:
-  version "3.0.10"
-  resolved "https://registry.yarnpkg.com/pbkdf2/-/pbkdf2-3.0.10.tgz#24b5b4a97c86bfa50c6921c656c4182ce6d96ba5"
+  version "3.0.11"
+  resolved "https://registry.yarnpkg.com/pbkdf2/-/pbkdf2-3.0.11.tgz#791b7414e50c848438976e12ea2651003037ca6b"
   dependencies:
     create-hash "^1.1.2"
     create-hmac "^1.1.4"
@@ -4766,10 +4786,6 @@ postcss@^5.0.0, postcss@^5.0.10, postcss@^5.0.11, postcss@^5.0.12, postcss@^5.0.
     source-map "^0.5.6"
     supports-color "^3.2.3"
 
-preboot@^4.5.2:
-  version "4.5.2"
-  resolved "https://registry.yarnpkg.com/preboot/-/preboot-4.5.2.tgz#cb349209958c2b48d7f74137b3499bbbe5472a5e"
-
 prepend-http@^1.0.0, prepend-http@^1.0.1:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/prepend-http/-/prepend-http-1.0.4.tgz#d4f4562b0ce3696e41ac52d0e002e57a635dc6dc"
@@ -4906,7 +4922,7 @@ range-parser@^1.0.3, range-parser@^1.2.0, range-parser@~1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/range-parser/-/range-parser-1.2.0.tgz#f49be6b487894ddc40dcc94a322f611092e00d5e"
 
-raven-js@^3.14.2:
+raven-js@^3.15.0:
   version "3.15.0"
   resolved "https://registry.yarnpkg.com/raven-js/-/raven-js-3.15.0.tgz#ebf95466b7d40fbbc3d6a5085af7c1431607926c"
 
