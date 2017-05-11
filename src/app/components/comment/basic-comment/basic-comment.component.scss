@@ -1,7 +1,11 @@
-.right-aligned .avatar {
-  float: right; }
+.right-aligned {
+  .avatar {
+    float: right;
+  }
 
-.right-aligned .content {
-  text-align: right;
-  margin-left: 0;
-  margin-right: 3.5em; }
+  .content {
+    text-align: right;
+    margin-left: 0;
+    margin-right: 3.5em;
+  }
+}

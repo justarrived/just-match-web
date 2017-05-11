@@ -1,31 +1,41 @@
 .ui.image {
   object-fit: cover;
-  cursor: pointer; }
+  cursor: pointer;
 
-.ui.image.uploading {
-  cursor: none;
-  opacity: 0.4; }
+  &.uploading {
+    cursor: none;
+    opacity: 0.4;
+  }
 
-.ui.image.mini {
-  height: 35px; }
+  &.mini {
+    height: 35px;
+  }
 
-.ui.image.tiny {
-  height: 80px; }
+  &.tiny {
+    height: 80px;
+  }
 
-.ui.image.small {
-  height: 150px; }
+  &.small {
+    height: 150px;
+  }
 
-.ui.image.medium {
-  height: 300px; }
+  &.medium {
+    height: 300px;
+  }
 
-.ui.image.large {
-  height: 450px; }
+  &.large {
+    height: 450px;
+  }
 
-.ui.image.big {
-  height: 600px; }
+  &.big {
+    height: 600px;
+  }
 
-.ui.image.huge {
-  height: 800px; }
+  &.huge {
+    height: 800px;
+  }
 
-.ui.image.massive {
-  height: 960px; }
+  &.massive {
+    height: 960px;
+  }
+}

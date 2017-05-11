@@ -1,28 +1,40 @@
+@import '../../../styles/colors';
+@import '../../../styles/dimensions';
+
 .jobs-map-container {
   display: flex;
-  flex-wrap: wrap; }
+  flex-wrap: wrap;
 
-.jobs-map-container .jobs-map {
-  height: 400px;
-  width: 100%; }
+  .jobs-map {
+    height: 400px;
+    width: 100%;
+  }
 
-.jobs-map-container .jobs-map-tooltip {
-  width: 80%;
-  max-width: 400px;
-  height: 0;
-  margin: 0 auto; }
+  .jobs-map-tooltip {
+    width: 80%;
+    max-width: 400px;
+    height: 0;
+    margin: 0 auto;
 
-.jobs-map-container .jobs-map-tooltip .jobs-map-tooltip-content {
-  cursor: pointer;
-  min-width: 100%; }
+    .jobs-map-tooltip-content {
+      cursor: pointer;
+      min-width: 100%;
 
-.jobs-map-container .jobs-map-tooltip .jobs-map-tooltip-content:before {
-  border: none !important; }
+      &:before {
+        border: none !important;
+      }
 
-.jobs-map-container .jobs-map-tooltip .jobs-map-tooltip-content .jobs-map-tooltip-close-link {
-  width: 100%;
-  text-align: center !important;
-  color: #80B4E9; }
+      .jobs-map-tooltip-close-link {
+        width: 100%;
+        text-align: center !important;
+        color: $color-blue-200;
+      }
 
-.jobs-map-container .jobs-map-tooltip .jobs-map-tooltip-content:hover .jobs-map-tooltip-close-link {
-  color: white; }
+      &:hover {
+        .jobs-map-tooltip-close-link {
+          color: white;
+        }
+      }
+    }
+  }
+}

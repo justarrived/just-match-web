@@ -1,16 +1,24 @@
-.footer-container {
-  background-color: #383F4E;
-  color: #FFFFFF;
-  padding: 5px 0; }
+@import '../../../styles/colors';
+@import '../../../styles/dimensions';
 
-@media screen and (max-width: 767px) {
-  .footer-mail,
-  .footer-name {
-    text-align: center !important; } }
+.footer-container {
+  background-color: $color-secondary-gray;
+  color: $white;
+  padding: 5px 0;
+}
+
+.footer-mail,
+.footer-name {
+  @media screen and (max-width: $sm-device-width) {
+    text-align: center !important;
+  }
+}
 
 a {
-  color: #FFFFFF;
-  font-weight: bold; }
+  color: $white;
+  font-weight: bold;
 
-a:hover {
-  color: #ED4DA4; }
+  &:hover {
+    color: $color-cerise-300;
+  }
+}

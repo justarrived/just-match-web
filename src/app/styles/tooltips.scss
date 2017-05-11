@@ -1,10 +1,13 @@
+@import './colors';
+
 .tooltip-bottom,
 .tooltip-left,
 .tooltip-right,
 .tooltip-top {
   position: relative !important;
   display: inline-block !important;
-  text-decoration: none !important; }
+  text-decoration: none !important;
+}
 
 .tooltip-bottom span,
 .tooltip-diagonal-left span,
@@ -23,7 +26,8 @@
   position: absolute;
   z-index: 1000 !important;
   transition-duration: .25s;
-  transition-timing-function: cubic-bezier(0.35, 0, 0.35, 1); }
+  transition-timing-function: cubic-bezier(0.35, 0, .35, 1);
+}
 
 .tooltip-bottom span:before,
 .tooltip-diagonal-left span:before,
@@ -35,175 +39,212 @@
   display: block;
   width: 0;
   height: 0;
-  position: absolute; }
+  position: absolute;
+}
+// Tool tip Top
+.tooltip-top {
+  span {
+    bottom: 100%;
+    margin-bottom: 30px;
+    transition-property: opacity, margin-bottom, visibility;
 
-.tooltip-top span {
-  bottom: 100%;
-  margin-bottom: 30px;
-  transition-property: opacity, margin-bottom, visibility; }
+    &:before {
+      border-left: 8px solid transparent !important;
+      border-right: 8px solid transparent !important;
+      border-top: 8px solid #000;
+      border-bottom: 0 !important;
+      bottom: -8px;
+      left: 15px;
+    }
+  }
 
-.tooltip-top span:before {
-  border-left: 8px solid transparent !important;
-  border-right: 8px solid transparent !important;
-  border-top: 8px solid #000;
-  border-bottom: 0 !important;
-  bottom: -8px;
-  left: 15px; }
+  .tooltip-visible {
+    margin-bottom: 10px;
+    // End Position
+    visibility: visible;
+    opacity: 1;
+  }
+}
+// tooltip left
+.tooltip-left {
+  span {
+    right: 100%;
+    top: -7px;
+    margin-right: 35px;
+    transition-property: opacity, margin-right, visibility;
 
-.tooltip-top .tooltip-visible {
-  margin-bottom: 10px;
-  visibility: visible;
-  opacity: 1; }
+    &:before {
+      border-left: 8px solid #000;
+      border-right: 0 !important;
+      border-top: 8px solid transparent !important;
+      border-bottom: 8px solid transparent !important;
+      top: 11px;
+      right: -8px;
+    }
+  }
 
-.tooltip-left span {
-  right: 100%;
-  top: -7px;
-  margin-right: 35px;
-  transition-property: opacity, margin-right, visibility; }
+  .tooltip-visible {
+    margin-right: 15px;
+    visibility: visible;
+    opacity: 1;
+  }
+}
+// tooltip right
+.tooltip-right {
+  span {
+    left: 100%;
+    top: -7px;
+    margin-left: 35px;
+    transition-property: opacity, margin-left, visibility;
 
-.tooltip-left span:before {
-  border-left: 8px solid #000;
-  border-right: 0 !important;
-  border-top: 8px solid transparent !important;
-  border-bottom: 8px solid transparent !important;
-  top: 11px;
-  right: -8px; }
+    &:before {
+      border-left: 0 !important;
+      border-right: 8px solid #000;
+      border-top: 8px solid transparent !important;
+      border-bottom: 8px solid transparent !important;
+      top: 11px;
+      left: -8px;
+    }
+  }
 
-.tooltip-left .tooltip-visible {
-  margin-right: 15px;
-  visibility: visible;
-  opacity: 1; }
+  .tooltip-visible {
+    margin-left: 15px;
+    visibility: visible;
+    opacity: 1;
+  }
+}
+// tooltip bottom
+.tooltip-bottom {
+  span {
+    left: -10px;
+    top: 100%;
+    margin-top: 30px;
+    transition-property: opacity, margin-top, visibility;
 
-.tooltip-right span {
-  left: 100%;
-  top: -7px;
-  margin-left: 35px;
-  transition-property: opacity, margin-left, visibility; }
+    &:before {
+      border-left: 8px solid transparent !important;
+      border-right: 8px solid transparent !important;
+      border-top: 0 !important;
+      border-bottom: 8px solid #000;
+      top: -8px;
+      left: 15px;
+    }
+  }
 
-.tooltip-right span:before {
-  border-left: 0 !important;
-  border-right: 8px solid #000;
-  border-top: 8px solid transparent !important;
-  border-bottom: 8px solid transparent !important;
-  top: 11px;
-  left: -8px; }
-
-.tooltip-right .tooltip-visible {
-  margin-left: 15px;
-  visibility: visible;
-  opacity: 1; }
-
-.tooltip-bottom span {
-  left: -10px;
-  top: 100%;
-  margin-top: 30px;
-  transition-property: opacity, margin-top, visibility; }
-
-.tooltip-bottom span:before {
-  border-left: 8px solid transparent !important;
-  border-right: 8px solid transparent !important;
-  border-top: 0 !important;
-  border-bottom: 8px solid #000;
-  top: -8px;
-  left: 15px; }
-
-.tooltip-bottom .tooltip-visible {
-  margin-top: 10px;
-  visibility: visible;
-  opacity: 1; }
-
+  .tooltip-visible {
+    margin-top: 10px;
+    visibility: visible;
+    opacity: 1;
+  }
+}
+// Tooltip Color
 .tooltip-color-blue span {
   color: #ffffff !important;
-  background: #0069D2;
-  background: linear-gradient(to bottom, #2C84DC 0%, #0069D2 100%);
+  background: $color-blue-500;
+  background: linear-gradient(to bottom, $color-blue-400 0%, $color-blue-500 100%);
   border-radius: 4px;
-  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4); }
+  text-shadow: 0 1px 0 rgba(0, 0, 0, .4);
 
-.tooltip-color-blue span:before {
-  border-color: #0069D2; }
+  &:before {
+    border-color: $color-blue-500;
+  }
 
-.tooltip-color-blue span:after {
-  content: "";
-  display: block;
-  border-top: 1px solid #4D96E0;
-  position: absolute;
-  left: 0;
-  top: 1px;
-  width: 100%;
-  height: 10px;
-  border-radius: 4px; }
+  &:after {
+    content: "";
+    display: block;
+    border-top: 1px solid $color-blue-300;
+    position: absolute;
+    left: 0;
+    top: 1px;
+    width: 100%;
+    height: 10px;
+    border-radius: 4px;
+  }
+}
 
 .tooltip-color-green span {
   color: #ffffff !important;
   background: #206906;
   background: linear-gradient(to bottom, #37790c 0%, #206906 100%);
   border-radius: 4px;
-  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4); }
+  text-shadow: 0 1px 0 rgba(0, 0, 0, .4);
 
-.tooltip-color-green span:before {
-  border-color: #206906; }
+  &:before {
+    border-color: #206906;
+  }
 
-.tooltip-color-green span:after {
-  content: "";
-  display: block;
-  border-top: 1px solid #4f9c21;
-  position: absolute;
-  left: 0;
-  top: 1px;
-  width: 100%;
-  height: 10px;
-  border-radius: 4px; }
+  &:after {
+    content: "";
+    display: block;
+    border-top: 1px solid #4f9c21;
+    position: absolute;
+    left: 0;
+    top: 1px;
+    width: 100%;
+    height: 10px;
+    border-radius: 4px;
+  }
 
-.tooltip-color-green span strong {
-  background: #246407;
-  border-bottom: 1px solid #205a06; }
-
+  strong {
+    background: #246407;
+    border-bottom: 1px solid #205a06;
+  }
+}
+// orange
 .tooltip-color-orange span {
   color: #ffffff !important;
   background: #c34722;
   background: linear-gradient(to bottom, #cb581f 0%, #c34722 100%);
   border-radius: 4px;
-  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4); }
+  text-shadow: 0 1px 0 rgba(0, 0, 0, .4);
 
-.tooltip-color-orange span:before {
-  border-color: #c34722; }
+  &:before {
+    border-color: #c34722;
+  }
 
-.tooltip-color-orange span:after {
-  content: "";
-  display: block;
-  border-top: 1px solid #e28266;
-  position: absolute;
-  left: 0;
-  top: 1px;
-  width: 100%;
-  height: 10px;
-  border-radius: 4px; }
+  &:after {
+    content: "";
+    display: block;
+    border-top: 1px solid #e28266;
+    position: absolute;
+    left: 0;
+    top: 1px;
+    width: 100%;
+    height: 10px;
+    border-radius: 4px;
+  }
 
-.tooltip-color-orange span strong {
-  background: #bf461a;
-  border-bottom: 1px solid #ac3f17; }
-
+  strong {
+    background: #bf461a;
+    border-bottom: 1px solid #ac3f17;
+  }
+}
+// red
 .tooltip-color-red span {
   color: #ffffff !important;
   background: #b01c34;
   background: linear-gradient(to bottom, #c01e38 0%, #b01c34 100%);
   border-radius: 4px;
-  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4); }
+  text-shadow: 0 1px 0 rgba(0, 0, 0, .4);
 
-.tooltip-color-red span:before {
-  border-color: #b01c34; }
+  &:before {
+    border-color: #b01c34;
+  }
 
-.tooltip-color-red span:after {
-  content: "";
-  display: block;
-  border-top: 1px solid #e96e82;
-  position: absolute;
-  left: 0;
-  top: 1px;
-  width: 100%;
-  height: 10px;
-  border-radius: 4px; }
+  &:after {
+    content: "";
+    display: block;
+    border-top: 1px solid #e96e82;
+    position: absolute;
+    left: 0;
+    top: 1px;
+    width: 100%;
+    height: 10px;
+    border-radius: 4px;
+  }
 
-.tooltip-color-red span strong {
-  background: #b0182d;
-  border-bottom: 1px solid #9d1628; }
+  strong {
+    background: #b0182d;
+    border-bottom: 1px solid #9d1628;
+  }
+}

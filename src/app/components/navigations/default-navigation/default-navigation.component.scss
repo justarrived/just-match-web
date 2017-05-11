@@ -1,27 +1,33 @@
+@import '../../../styles/colors';
+@import '../../../styles/dimensions';
+
 .navigation-container {
   position: fixed;
   right: 0;
   left: 0;
   z-index: 1001;
   pointer-events: none;
-  height: 100%; }
+  height: 100%;
+  @media screen and (min-width: $lg-device-width) {
+    width: $lg-device-width;
+    margin: 0 auto;
+  }
+  @media screen and (max-width: $lg-device-width) {
+    width: 100%;
+  }
 
-@media screen and (min-width: 1199px) {
-  .navigation-container {
-    width: 1199px;
-    margin: 0 auto; } }
+  .menu-container {
+    height: 100%;
+    
+    .pusher {
+      position: absolute;
+      left: calc((100% - 100vw)/2);
+      width: 100vw;
 
-@media screen and (max-width: 1199px) {
-  .navigation-container {
-    width: 100%; } }
 
-.navigation-container .menu-container {
-  height: 100%; }
-
-.navigation-container .menu-container .pusher {
-  position: absolute;
-  left: calc((100% - 100vw)/2);
-  width: 100vw; }
-
-.navigation-container .menu-container .pusher.dimmed {
-  pointer-events: auto; }
+      &.dimmed {
+        pointer-events: auto;
+      }
+    }
+  }
+}

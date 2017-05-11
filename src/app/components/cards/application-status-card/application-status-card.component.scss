@@ -1,149 +1,59 @@
-.truncate-owerflowing-text {
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis; }
-
-.wrap-long-words {
-  overflow-wrap: break-word;
-  word-wrap: break-word;
-  -ms-word-break: break-all;
-  word-break: break-word;
-  -ms-hyphens: auto;
-  -moz-hyphens: auto;
-  -webkit-hyphens: auto;
-  hyphens: auto; }
-
-@font-face {
-  font-family: 'museo';
-  src: url("/assets/fonts/museo/museo-300.otf") format("opentype");
-  font-weight: 300; }
-
-@font-face {
-  font-family: 'museo';
-  src: url("/assets/fonts/museo/museo-500.otf") format("opentype");
-  font-weight: 500; }
-
-@font-face {
-  font-family: 'museo';
-  src: url("/assets/fonts/museo/museo-700.otf") format("opentype");
-  font-weight: 700; }
-
-h1, h2, h3, h4, h5, h6 {
-  font-family: "museo", "Helvetica Neue", Helvetica, Arial, sans-serif; }
-
-h1 {
-  font-size: 42px;
-  font-weight: 700; }
-
-h2 {
-  font-size: 36px;
-  font-weight: 700; }
-
-h3 {
-  font-size: 24px;
-  font-weight: 700; }
-
-h4 {
-  font-size: 18px;
-  font-weight: 700; }
-
-h5 {
-  font-size: 16px;
-  font-weight: 700; }
-
-h6 {
-  font-size: 14px;
-  font-weight: 700; }
-
-p, div, span, a {
-  font-family: "Open Sans", sans-serif; }
-
-p {
-  font-size: 16px;
-  line-height: 22px; }
-
-a {
-  color: #45E2FF; }
-
-a:hover {
-  color: #ED4DA4;
-  cursor: pointer; }
-
-a:not([href]):not([tabindex]) {
-  color: #45E2FF; }
-
-a:not([href]):not([tabindex]):hover {
-  color: #ED4DA4; }
-
-.fs-s {
-  font-size: 12px; }
-
-.fs-m0 {
-  font-size: 14px; }
-
-.fs-m {
-  font-size: 16px; }
-
-.fs-l {
-  font-size: 18px; }
-
-.fs-l0 {
-  font-size: 20px; }
-
-.fs-xl {
-  font-size: 22px; }
-
-.fs-xxl {
-  font-size: 24px; }
-
-.fs-xxxl {
-  font-size: 32px; }
+@import '../../../styles/colors';
+@import '../../../styles/typography';
 
 .job-item-container {
   width: 140px;
-  background-color: #FFFFFF;
+  background-color: $default-bg-color;
   border-radius: 8px;
-  box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.4);
+  box-shadow: 0 2px 6px 0 rgba(0,0,0,0.4);
   cursor: pointer;
-  padding: 0; }
+  padding: 0;
 
-.job-item-container:hover {
-  transform: scale(1.02); }
+  &:hover {
+    transform: scale(1.02);
+  }
 
-.job-item-container .job-item-name-container {
-  height: 90px;
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center; }
+  .job-item-name-container {
+    height: 90px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 
-.job-item-container .job-item-name-container .job-item-name {
-  text-align: center;
-  white-space: normal;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis; }
+    .job-item-name {
+      text-align: center;
+      white-space: normal;
+      @include truncate-owerflowing-text;
+    }
+  }
 
-.job-item-container .job-item-label-container {
-  color: #FFFFFF;
-  background: #E5007D;
-  padding: 10px;
-  font-weight: 500;
-  border-radius: 0 0 8px 8px;
-  text-align: center; }
+  .job-item-label-container {
+    color: $white;
+    background: $color-primary-cerise;
+    padding: 10px;
+    font-weight: 500;
+    border-radius: 0 0 8px 8px;
+    text-align: center;
+  }
 
-.job-item-container .job-item-label-applied-container {
-  background: #E7E8E9;
-  color: #9C9FA7; }
+  .job-item-label-applied-container {
+    background: $color-gray-50;
+    color: $color-gray-200;
+  }
 
-.job-item-container .job-item-label-offered-container {
-  background: #0069D2;
-  color: #FFFFFF; }
+  .job-item-label-offered-container {
+    background: $color-blue-500;
+    color: $white;
+  }
 
-.job-item-container .job-item-label-will-perform-container {
-  background: #E5007D;
-  color: #FFFFFF; }
+  .job-item-label-will-perform-container {
+    background: $color-primary-cerise;
+    color: $white;
+  }
 
-.job-item-container .job-item-label-performed-container {
-  background: springgreen;
-  color: #FFFFFF; }
+  .job-item-label-performed-container {
+    background: springgreen;
+    color: $white;
+  }
+
+}

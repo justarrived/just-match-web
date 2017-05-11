@@ -1,11 +1,14 @@
+@import '../../../styles/colors';
+
 .ui.card {
   margin-top: 1em;
-  margin-bottom: 1em; }
-
-.ui.card .image {
-  height: 240px; }
-
-.ui.card .image img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain; }
+  margin-bottom: 1em;
+  .image {
+    height: 240px;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+  }
+}

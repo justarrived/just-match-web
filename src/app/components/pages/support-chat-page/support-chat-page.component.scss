@@ -1,2 +1,5 @@
+@import '../../../styles/dimensions';
+
 .chat-container {
-  height: calc(100% - 74px); }
+  height: calc(100% - #{$basic-border-header-height});
+}

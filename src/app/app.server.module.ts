@@ -3,7 +3,7 @@ import {AppComponent} from './app.component';
 import {ApplicationRef} from '@angular/core';
 import {AppModule} from './app.module';
 import {BrowserModule} from '@angular/platform-browser';
-import {Injectimport} from '@angular/core';
+import {Inject} from '@angular/core';
 import {NgModule} from '@angular/core';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {ServerModule} from '@angular/platform-server';

@@ -1,40 +1,51 @@
+@import '../../styles/colors';
+
 .my-jobs-item {
   display: table;
   width: 100%;
-  cursor: pointer; }
+  cursor: pointer;
 
-.my-jobs-item div {
-  display: table-cell;
-  padding: 20px 30px;
-  border-bottom: 1px solid #E8EBEE;
-  vertical-align: middle;
-  cursor: pointer; }
+  div {
+    display: table-cell;
+    padding: 20px 30px;
+    border-bottom: 1px solid $color-background;
+    vertical-align: middle;
+    cursor: pointer;
 
-.my-jobs-item div:first-child {
-  text-align: center;
-  text-transform: uppercase;
-  line-height: 1.3em;
-  padding-right: 0;
-  width: 45px; }
+    &:first-child {
+      text-align: center;
+      text-transform: uppercase;
+      line-height: 1.3em;
+      padding-right: 0;
+      width: 45px;
 
-.my-jobs-item div:first-child span {
-  font-size: 1.3em; }
+      span {
+        font-size: 1.3em;
+      }
+    }
 
-.my-jobs-item div.user-image {
-  text-align: right;
-  padding-left: 0; }
+    &.user-image {
+      text-align: right;
+      padding-left: 0;
 
-.my-jobs-item div.user-image img {
-  height: 40px; }
+      img {
+        height: 40px;
+      }
+    }
 
-.my-jobs-item div h3 {
-  font-weight: 400;
-  font-size: 1em;
-  margin-top: 0; }
+    h3 {
+      font-weight: 400;
+      font-size: 1em;
+      margin-top: 0;
+    }
 
-.my-jobs-item div p {
-  font-size: .9em;
-  margin: 5px 0 0; }
+    p {
+      font-size: .9em;
+      margin: 5px 0 0;
+    }
+  }
 
-.my-jobs-item:last-child div {
-  border-bottom: 0; }
+  &:last-child div {
+    border-bottom: 0;
+  }
+}
