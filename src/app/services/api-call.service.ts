@@ -112,23 +112,26 @@ export class ApiCallService {
       req.headers.set(this.actAsUserHeaderName, actAsUserId);
     }
 
+    let transferStateKey = null;
 
-    const transferStateKey = JSON.stringify(req);
+    try {
+     transferStateKey = JSON.stringify(req);
 
-    if (isPlatformBrowser(this.platformId)) {
-      const transferedResponse = this.transferState.get(transferStateKey);
-      if (transferedResponse) {
-        console.log('consumed ' + requestArgs.url);
-        this.transferState.set(transferStateKey, null);
-        return Promise.resolve(transferedResponse);
+      if (isPlatformBrowser(this.platformId)) {
+        const transferedResponse = this.transferState.get(transferStateKey);
+        if (transferedResponse) {
+          console.log('consumed ' + requestArgs.url);
+          this.transferState.set(transferStateKey, null);
+          return Promise.resolve(transferedResponse);
+        }
       }
-    }
+    } catch (err) {}
 
     return this.http.request(req)
       .toPromise()
       .then(response => {
         response = parseJsonapiResponse(response);
-        if (isPlatformServer(this.platformId)) {
+        if (transferStateKey && isPlatformServer(this.platformId)) {
           this.transferState.set(transferStateKey, response);
         }
         return response;

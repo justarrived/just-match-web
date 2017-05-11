@@ -42,8 +42,8 @@ export class SemanticSelectComponent implements AfterViewInit {
   @Input() public label: string;
   @Input() public options: {} = {};
   @Input() public placeholder: string;
-  @Output() public modelChange: EventEmitter<string | number> = new EventEmitter<string | number>();
-  @Output() public onChange: EventEmitter<string | number> = new EventEmitter<string | number>();
+  @Output() public modelChange: EventEmitter<string> = new EventEmitter<string>();
+  @Output() public onChange: EventEmitter<string> = new EventEmitter<string>();
   @ViewChild("select") public select: ElementRef;
 
   public constructor(
@@ -76,7 +76,7 @@ export class SemanticSelectComponent implements AfterViewInit {
   }
 
   @Input("model")
-  public set model(data: string | number) {
+  public set model(data: string) {
     if (isPlatformBrowser(this.platformId)) {
       if (data) {
         setTimeout(() => {
@@ -95,7 +95,7 @@ export class SemanticSelectComponent implements AfterViewInit {
     }
 
     const options: {} = Object.assign({
-      onChange: (value: string | number) => {
+      onChange: (value: string) => {
         this.modelChange.emit(value);
         this.onChange.emit(value);
       },
