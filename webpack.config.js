@@ -15,8 +15,8 @@ module.exports = {
   target: 'node',
   externals: [nodeExternals({
     whitelist: [
-     /^@agm\/core/,
-     /^@ngx-translate/
+      /^@agm\/core/,
+      /^@ngx-translate/
     ]
   })],
   node: {
@@ -27,8 +27,9 @@ module.exports = {
     filename: '[name].js'
   },
   module: {
-    rules: [
-      { test: /\.ts$/, loader: 'ts-loader' }
-    ]
+    rules: [{
+      test: /\.ts$/,
+      loader: 'ts-loader'
+    }]
   }
 };
