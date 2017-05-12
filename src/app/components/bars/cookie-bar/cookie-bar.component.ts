@@ -40,10 +40,10 @@ export class CookieBarComponent {
   }
 
   public checkCookiesConsent(): boolean {
-    return (this.dataStoreService.get(this.cookiesConsentData) !== true);
+    return (this.dataStoreService.getCookie(this.cookiesConsentData) !== true);
   }
 
   public acceptCookiesConsent() {
-    this.dataStoreService.set(this.cookiesConsentData, true);
+    this.dataStoreService.setCookie(this.cookiesConsentData, true);
   }
 }

@@ -16,6 +16,7 @@ import {RegisterModalComponent} from './components/modals/register-modal/registe
 import {SignedForJobModalComponent} from './components/modals/signed-for-job-modal/signed-for-job-modal.component';
 import {SignForJobModalComponent} from './components/modals/sign-for-job-modal/sign-for-job-modal.component';
 import {Subscription} from 'rxjs/Subscription';
+import {TransferState} from './transfer-state/transfer-state';
 import {ViewChild} from '@angular/core';
 
 @Component({
@@ -127,11 +128,13 @@ export class AppComponent implements OnInit, OnDestroy  {
   private hideModalSubscription: Subscription;
 
   public constructor(
+    private cache: TransferState,
     private modalService: ModalService
   ) {
   }
 
   public ngOnInit(): void {
+    this.cache.set('cached', true);
     this.initShowModalSubscription();
     this.initHideModalSubscription();
   }
@@ -162,8 +165,8 @@ export class AppComponent implements OnInit, OnDestroy  {
   }
 
   public ngOnDestroy(): void {
-    this.hideModalSubscription.unsubscribe();
-    this.showModalSubscription.unsubscribe();
+    if (this.hideModalSubscription) { this.hideModalSubscription.unsubscribe(); }
+    if (this.showModalSubscription) { this.showModalSubscription.unsubscribe(); }
   }
 
   public modalResult(result: any): void {

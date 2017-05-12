@@ -1,5 +1,7 @@
 import {ActivatedRoute} from '@angular/router';
+import {Inject} from '@angular/core';
 import {Injectable} from '@angular/core';
+import {isPlatformBrowser} from '@angular/common';
 import {JARoute} from '../routes/ja-route/ja-route';
 import {JARoutes} from '../routes/ja-routes/ja-routes';
 import {Location} from '@angular/common';
@@ -7,6 +9,7 @@ import {NavigationCancel} from '@angular/router';
 import {NavigationEnd} from '@angular/router';
 import {NavigationError} from '@angular/router';
 import {NavigationStart} from '@angular/router';
+import {PLATFORM_ID} from '@angular/core';
 import {Router} from '@angular/router';
 import {RoutesRecognized} from '@angular/router';
 
@@ -16,6 +19,7 @@ export class NavigationService {
   private routeCheckpoint: string;
 
   public constructor(
+    @Inject(PLATFORM_ID) private readonly platformId: any,
     private activatedRoute: ActivatedRoute,
     private location: Location,
     private router: Router,
@@ -31,7 +35,9 @@ export class NavigationService {
 
       if (event instanceof NavigationEnd) {
         this.currentState = this.router.url;
-        document.body.scrollTop = 0;
+        if (isPlatformBrowser(this.platformId)) {
+          document.body.scrollTop = 0;
+        }
         console.log('Navigation ended at ' + this.currentState);
       }
 

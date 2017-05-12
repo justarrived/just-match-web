@@ -1,18 +1,43 @@
 import {CookieStorage} from '../storage/cookie-storage/cookie-storage';
+import {Inject} from '@angular/core';
 import {Injectable} from '@angular/core';
+import {isPlatformBrowser} from '@angular/common';
 import {LocalStorage} from '../storage/local-storage/local-storage';
 import {MemoryStorage} from '../storage/memory-storage/memory-storage';
+import {PLATFORM_ID} from '@angular/core';
 import {SessionStorage} from '../storage/session-storage/session-storage';
 import {StorageInterface} from '../storage/storage-interface/storage-interface';
 import {storageTypeAvailable} from '../utils/storage-type-available/storage-type-available.util';
+import { REQUEST } from '../../express-engine';
 
 @Injectable()
 export class DataStoreService {
   private store: StorageInterface;
+  private cookieStore: CookieStorage;
+  private memoryStore: MemoryStorage;
 
   constructor(
+    @Inject(PLATFORM_ID) private readonly platformId: any,
+    @Inject(REQUEST) private request: any,
   ) {
     this.store = this.storeFactory();
+
+    if (isPlatformBrowser(this.platformId) && document) {
+      this.cookieStore = new CookieStorage(document);
+    }
+
+    this.memoryStore = new MemoryStorage();
+
+    if (request) {
+      for (let cookieName in request.cookies) {
+        let cookie = request.cookies[cookieName];
+        try {
+          cookie = JSON.parse(request.cookies[cookieName]);
+        } catch (err) {}
+
+        this.setCookie(cookieName, cookie);
+      }
+    }
   }
 
   public clear(): void {
@@ -29,10 +54,8 @@ export class DataStoreService {
   }
 
   public remove(key: string): any {
-    const oldValue = this.get(key);
-    this.removeItem(key);
-
-    return oldValue;
+    const value = this.removeItem(key);
+    return value ? JSON.parse(value) : null;
   }
 
   public persistsRefresh(): boolean {
@@ -45,6 +68,51 @@ export class DataStoreService {
 
   public supportsCaching(): boolean {
     return this.store.supportsCaching();
+  }
+
+  public setCookie(cookieName: string, data: any, days: number = 365): void {
+    if (this.supportsCookies()) {
+      this.cookieStore.setCookieData(cookieName, data, days);
+    } else {
+      this.setInMemory(cookieName, data);
+    }
+  }
+
+  public getCookie(cookieName: string): any {
+    if (this.supportsCookies()) {
+      return this.cookieStore.getCookieData(cookieName);
+    } else {
+      return this.getFromMemory(cookieName);
+    }
+  }
+
+  public removeCookie(cookieName: string): any {
+    if (this.supportsCookies()) {
+      const oldValue = this.cookieStore.getCookieData(cookieName);
+      this.cookieStore.clearCookieData(cookieName);
+
+      return oldValue;
+    } else {
+      return this.removeFromMemory(cookieName);
+    }
+  }
+
+  public supportsCookies(): boolean {
+    return !!this.cookieStore;
+  }
+
+  public setInMemory(key: string, value: any): void {
+    this.memoryStore.setItem(key, JSON.stringify(value));
+  }
+
+  public getFromMemory(key: string): any {
+    const value = this.memoryStore.getItem(key);
+    return value ? JSON.parse(value) : null;
+  }
+
+  public removeFromMemory(key: string): any {
+    const value = this.memoryStore.removeItem(key);
+    return value ? JSON.parse(value) : null;
   }
 
   private setItem(key: string, value: string): void {
@@ -64,7 +132,7 @@ export class DataStoreService {
       return new LocalStorage(localStorage);
     } else if (storageTypeAvailable('sessionStorage')) {
       return new SessionStorage(sessionStorage);
-    } else if (document) {
+    } else if (isPlatformBrowser(this.platformId) && document) {
       return new CookieStorage(document);
     } else {
       return new MemoryStorage();

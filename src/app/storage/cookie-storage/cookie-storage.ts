@@ -10,12 +10,12 @@ export class CookieStorage implements StorageInterface {
     this.DOM = document;
 
     // initialise if there's already data
-    this.data = this.getData();
+    this.data = this.getCookieData('localStorage') || {};
   }
 
   public clear(): void {
     this.data = {};
-    this.clearData();
+    this.clearCookieData('localStorage');
   }
 
   public getItem(key: string): string {
@@ -26,14 +26,14 @@ export class CookieStorage implements StorageInterface {
     const oldValue = this.data[key];
     delete this.data[key];
 
-    this.setData(this.data);
+    this.setCookieData('localStorage', this.data);
 
     return oldValue;
   }
 
   public setItem(key: string, value: string): void {
     this.data[key] = value;
-    this.setData(this.data);
+    this.setCookieData('localStorage', this.data);
   }
 
   public persistsRefresh(): boolean {
@@ -81,18 +81,18 @@ export class CookieStorage implements StorageInterface {
     return data;
   }
 
-  private setData(data: any) {
+  public setCookieData(cookieName: string, data: any, days: number = 365) {
     data = JSON.stringify(data);
-    this.createCookie('localStorage', data, 365);
+    this.createCookie(cookieName, data, days);
   }
 
-  private clearData(): void {
-    this.createCookie('localStorage', '', 365);
+  public clearCookieData(cookieName: string, days: number = 365): void {
+    this.createCookie(cookieName, '', days);
   }
 
-  private getData(): any {
-    const data = this.readCookie('localStorage');
-    return data ? JSON.parse(data) : {};
+  public getCookieData(cookieName: string): any {
+    const data = this.readCookie(cookieName);
+    return data ? JSON.parse(data) : null;
   }
 
   private daysToMillis(days: number): number {

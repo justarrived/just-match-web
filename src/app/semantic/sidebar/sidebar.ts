@@ -1,34 +1,19 @@
-import {
-  Output, EventEmitter, Component, Input, ChangeDetectionStrategy, ViewChild, ElementRef, AfterViewInit , OnDestroy, Renderer
-} from "@angular/core";
+import {AfterViewInit} from "@angular/core";
+import {ChangeDetectionStrategy} from "@angular/core";
+import {Component} from "@angular/core";
+import {ElementRef} from "@angular/core";
+import {EventEmitter} from "@angular/core";
+import {Inject} from "@angular/core";
+import {Input} from "@angular/core";
+import {isPlatformBrowser} from '@angular/common';
+import {OnDestroy} from "@angular/core";
+import {Output} from "@angular/core";
+import {PLATFORM_ID} from "@angular/core";
+import {Renderer} from "@angular/core";
+import {ViewChild} from "@angular/core";
 
 declare var jQuery: any;
 
-// because a of lot of shadow dom elements, we must create this fixSidebar
-// function, to move elements to proper location before sidebar run.
-jQuery.fn.fixSidebar = function(contextName: string = 'body') {
-  let allModules = jQuery(this);
-
-  allModules
-    .each(function() {
-      let
-        selector = { pusher: ".pusher" },
-        module = jQuery(this),
-        context = jQuery(contextName || 'body');
-
-      if (module.nextAll(selector.pusher).length === 0) {
-        module.detach().prependTo(context);
-      }
-    });
-
-  return this;
-};
-
-/**
- * Implementation of Sidebar module
- *
- * @link semantic-ui.com/modules/sidebar.html
- */
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
   selector: "sm-sidebar",
@@ -46,17 +31,24 @@ export class SemanticSidebarComponent implements AfterViewInit, OnDestroy {
   @Output() public onHide: EventEmitter<any> = new EventEmitter<any>();
   @ViewChild("sidebar") public sidebar: ElementRef;
 
-  public constructor(public renderer: Renderer) {
+  public constructor(
+    @Inject(PLATFORM_ID) private readonly platformId: any,
+    private renderer: Renderer,
+  ) {
   }
 
   public show(): void {
-    jQuery(this.sidebar.nativeElement)
-      .sidebar("show");
+    if (isPlatformBrowser(this.platformId)) {
+      jQuery(this.sidebar.nativeElement)
+        .sidebar("show");
+    }
   }
 
   public hide(): void {
-    jQuery(this.sidebar.nativeElement)
-      .sidebar("hide");
+    if (isPlatformBrowser(this.platformId)) {
+      jQuery(this.sidebar.nativeElement)
+        .sidebar("hide");
+    }
   }
 
   public ngAfterViewInit(): void {
@@ -64,8 +56,10 @@ export class SemanticSidebarComponent implements AfterViewInit, OnDestroy {
     this.options.onHide = (() => this.onHide.emit());
     this.options.debug = false;
 
-    jQuery(this.sidebar.nativeElement)
-      .sidebar(this.options);
+    if (isPlatformBrowser(this.platformId)) {
+      jQuery(this.sidebar.nativeElement)
+        .sidebar(this.options);
+    }
   }
 
   public ngOnDestroy(): void {

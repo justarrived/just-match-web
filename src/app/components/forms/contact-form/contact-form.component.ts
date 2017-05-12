@@ -95,7 +95,7 @@ export class ContactFormComponent implements OnInit, OnDestroy {
   }
 
   public ngOnDestroy(): void {
-    this.userSubscription.unsubscribe();
+    if (this.userSubscription) { this.userSubscription.unsubscribe(); }
   }
 
   private handleServerErrors(errors): void {

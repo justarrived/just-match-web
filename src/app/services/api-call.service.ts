@@ -3,16 +3,21 @@ import {DataStoreService} from './data-store.service';
 import {environment} from '../../environments/environment';
 import {Headers} from '@angular/http';
 import {Http} from '@angular/http';
+import {Inject} from '@angular/core';
 import {Injectable} from '@angular/core';
+import {isPlatformBrowser} from '@angular/common';
+import {isPlatformServer} from '@angular/common';
 import {JARoutes} from '../routes/ja-routes/ja-routes';
 import {NavigationService} from './navigation.service';
 import {Observable} from 'rxjs';
 import {parseJsonapiResponse} from '../utils/jsonapi-parser/jsonapi-parser.util';
+import {PLATFORM_ID} from '@angular/core';
 import {Request} from '@angular/http';
 import {RequestMethod} from '@angular/http';
 import {RequestOptions} from '@angular/http';
 import {RequestOptionsArgs} from '@angular/http';
 import {Response} from '@angular/http';
+import {TransferState} from '../transfer-state/transfer-state';
 import {URLSearchParams} from '@angular/http';
 import * as  _ from 'lodash';
 
@@ -29,9 +34,11 @@ export class ApiCallService {
   private readonly transformHeaderValue: string = 'underscore';
 
   constructor(
-    private http: Http,
+    @Inject(PLATFORM_ID) private readonly platformId: any,
     private dataStoreService: DataStoreService,
-    private navigationService: NavigationService
+    private http: Http,
+    private navigationService: NavigationService,
+    private transferState: TransferState,
   ) {
   }
 
@@ -92,22 +99,43 @@ export class ApiCallService {
     let options = new RequestOptions(requestArgs);
 
     let req: Request = new Request(options);
-    let session = this.dataStoreService.get(this.storageSessionKey);
+    let session = this.dataStoreService.getCookie(this.storageSessionKey);
     if (session && session.auth_token) {
       req.headers.set(this.sessionHeaderName, this.sessionHeaderPrefix + session['auth_token']);
     }
 
-    req.headers.set(this.languageHeaderName, this.dataStoreService.get(this.storageSystemLanguageCodeKey));
+    req.headers.set(this.languageHeaderName, this.dataStoreService.getCookie(this.storageSystemLanguageCodeKey));
     req.headers.set(this.transformHeaderName, this.transformHeaderValue);
 
-    const actAsUserId = this.dataStoreService.get(this.storageActAsUserIdKey);
+    const actAsUserId = this.dataStoreService.getCookie(this.storageActAsUserIdKey);
     if (actAsUserId !== null) {
       req.headers.set(this.actAsUserHeaderName, actAsUserId);
     }
 
+    let transferStateKey = null;
+
+    try {
+     transferStateKey = JSON.stringify(req);
+
+      if (isPlatformBrowser(this.platformId)) {
+        const transferedResponse = this.transferState.get(transferStateKey);
+        if (transferedResponse) {
+          console.log('consumed ' + requestArgs.url);
+          this.transferState.set(transferStateKey, null);
+          return Promise.resolve(transferedResponse);
+        }
+      }
+    } catch (err) {}
+
     return this.http.request(req)
       .toPromise()
-      .then(response => parseJsonapiResponse(response))
+      .then(response => {
+        response = parseJsonapiResponse(response);
+        if (transferStateKey && isPlatformServer(this.platformId)) {
+          this.transferState.set(transferStateKey, response);
+        }
+        return response;
+      })
       .catch((response: Response) => this.handleResponseErrors(response));
   }
 
@@ -139,7 +167,7 @@ export class ApiCallService {
     }
 
     if (response.status === 401) {
-      this.dataStoreService.remove(this.storageSessionKey);
+      this.dataStoreService.removeCookie(this.storageSessionKey);
       this.navigationService.navigate(JARoutes.login);
       throw 'handled';
     }

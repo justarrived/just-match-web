@@ -77,6 +77,6 @@ export class MaximizeChancessSectionComponent implements OnInit, OnDestroy {
   }
 
   public ngOnDestroy() {
-    this.userSubscription.unsubscribe();
+    if (this.userSubscription) { this.userSubscription.unsubscribe(); }
   }
 }

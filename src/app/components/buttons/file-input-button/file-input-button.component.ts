@@ -37,12 +37,12 @@ export class FileInputButtonComponent {
   @ViewChild('fileInput') public fileInput: ElementRef;
 
   constructor(
-    private rendered: Renderer
+    private renderer: Renderer
   ) {
   }
 
   public onButtonClick() {
-    this.rendered.invokeElementMethod(this.fileInput.nativeElement, 'click');
+    this.renderer.invokeElementMethod(this.fileInput.nativeElement, 'click');
   }
 
   public onDocumentFilenameChange(event) {

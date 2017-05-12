@@ -44,7 +44,7 @@ export class RegisterFormComponent implements OnInit {
 
   private initForm() {
     this.registerForm = this.formBuilder.group({
-      'accepted_terms_and_conditions': [false, Validators.compose([Validators.required])],
+      'accepted_terms_and_conditions': ['', Validators.compose([Validators.required])],
       'city': [''],
       'country_of_origin': [''],
       'email': ['', Validators.compose([Validators.required])],

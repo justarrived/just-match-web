@@ -1,10 +1,14 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {customMapStyle} from '../../../styles/google-maps-styles';
 import {GeolocationService} from '../../../services/geolocation.service';
+import {Inject} from '@angular/core';
+import {isPlatformBrowser} from '@angular/common';
 import {Job} from '../../../models/api-models/job/job';
 import {JobProxy} from '../../../proxies/job/job.proxy';
 import {MapLocation} from '../../../models/client-models/map-location/map-location';
 import {nbrOfMonthsFromDate} from '../../../utils/date/date.util';
+import {OnInit} from '@angular/core';
+import {PLATFORM_ID} from '@angular/core';
 import {SystemLanguageListener} from '../../../resolvers/system-languages/system-languages.resolver';
 import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
 import {yyyymmdd} from '../../../utils/date/date.util';
@@ -25,6 +29,7 @@ import {yyyymmdd} from '../../../utils/date/date.util';
         [streetViewControl]="false"
         [styles]="mapStyles"
         [zoom]="mapZoom"
+        *ngIf="!isServer"
         class="jobs-map">
         <agm-marker
           [latitude]="mapUserLocation.latitude"
@@ -56,6 +61,7 @@ export class JobsMapComponent extends SystemLanguageListener implements OnInit {
   private readonly defaultMapZoom = 5;
   private readonly defaultMapStyle = customMapStyle;
 
+  public isServer: boolean = false;
   public jobs: Promise<Job[]>;
   public mapError: string;
   public mapErrorShow: boolean = false;
@@ -65,6 +71,7 @@ export class JobsMapComponent extends SystemLanguageListener implements OnInit {
   public mapZoom: number = this.defaultMapZoom;
 
   constructor(
+    @Inject(PLATFORM_ID) private readonly platformId: any,
     private geolocationService: GeolocationService,
     private jobProxy: JobProxy,
     protected systemLanguagesResolver: SystemLanguagesResolver
@@ -78,17 +85,21 @@ export class JobsMapComponent extends SystemLanguageListener implements OnInit {
   }
 
   private initLocation() {
-    this.geolocationService.getLocation().subscribe(position => {
-      this.mapUserLocation = new MapLocation({
-        longitude: position.coords.longitude,
-        latitude: position.coords.latitude
+    if (isPlatformBrowser(this.platformId)) {
+      this.geolocationService.getLocation().subscribe(position => {
+        this.mapUserLocation = new MapLocation({
+          longitude: position.coords.longitude,
+          latitude: position.coords.latitude
+        });
+        this.mapLocation = this.mapUserLocation;
+      },
+      error => {
+        this.mapError = error;
+        this.mapErrorShow = true;
       });
-      this.mapLocation = this.mapUserLocation;
-    },
-    error => {
-      this.mapError = error;
-      this.mapErrorShow = true;
-    });
+    } else {
+      this.isServer = true;
+    }
   }
 
   protected loadData() {

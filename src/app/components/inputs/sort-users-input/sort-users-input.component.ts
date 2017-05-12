@@ -111,6 +111,6 @@ export class SortUsersInputComponent extends SystemLanguageListener implements O
   }
 
   public ngOnDestroy(): void {
-    this.controlValueChangesSubscription.unsubscribe();
+    if (this.controlValueChangesSubscription) { this.controlValueChangesSubscription.unsubscribe(); }
   }
 }

@@ -13,11 +13,11 @@ export class SessionStorage implements StorageInterface {
     this.store.clear();
   }
 
-  public getItem(key: string) {
+  public getItem(key: string): string {
     return this.store.getItem(key);
   }
 
-  public setItem(key: string, value: string) {
+  public setItem(key: string, value: string): void {
     this.store.setItem(key, value);
   }
 

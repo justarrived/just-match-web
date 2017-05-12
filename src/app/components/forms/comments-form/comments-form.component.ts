@@ -106,7 +106,7 @@ export class CommentsFormComponent extends SystemLanguageListener implements OnI
   }
 
   public ngOnDestroy(): void {
-    this.userSubscription.unsubscribe();
+    if (this.userSubscription) { this.userSubscription.unsubscribe(); }
   }
 
   private handleServerErrors(errors): void {

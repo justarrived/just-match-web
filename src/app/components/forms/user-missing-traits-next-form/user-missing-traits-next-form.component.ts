@@ -120,7 +120,7 @@ export class UserMissingTraitsNextFormComponent extends SystemLanguageListener i
   }
 
   public ngOnDestroy(): void {
-    this.userSubscription.unsubscribe();
+    if (this.userSubscription) { this.userSubscription.unsubscribe(); }
   }
 
   public onCloseButtonClicked(): void {

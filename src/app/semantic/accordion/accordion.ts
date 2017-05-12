@@ -1,7 +1,13 @@
-import {
-  Component, ChangeDetectionStrategy, Input, Directive, ElementRef, OnInit,
-  AfterViewInit, ViewChild
-} from "@angular/core";
+import {AfterViewInit} from "@angular/core";
+import {ChangeDetectionStrategy} from "@angular/core";
+import {Component} from "@angular/core";
+import {ElementRef} from "@angular/core";
+import {Inject} from "@angular/core";
+import {Input} from "@angular/core";
+import {isPlatformBrowser} from '@angular/common';
+import {OnInit} from "@angular/core";
+import {PLATFORM_ID} from "@angular/core";
+import {ViewChild} from "@angular/core";
 
 declare var jQuery: any;
 
@@ -10,8 +16,10 @@ declare var jQuery: any;
   selector: "sm-accordion",
   styles: [`sm-accordion sm-accordion-item:first-child .title { border-top: none !important; }`],
   template: `
-    <div class="ui accordion {{class}}" #accordion>
-        <ng-content></ng-content>
+    <div
+      #accordion
+      class="ui accordion {{class}}">
+      <ng-content></ng-content>
     </div>`
 })
 export class SemanticAccordionComponent implements AfterViewInit {
@@ -19,28 +27,14 @@ export class SemanticAccordionComponent implements AfterViewInit {
   @Input() options: string;
   @ViewChild("accordion") accordion: ElementRef;
 
-  ngAfterViewInit() {
-
-    const inAccordion: HTMLElement | boolean = this.inAccordion(this.accordion.nativeElement, "accordion");
-
-    if (inAccordion) {
-      this.accordion.nativeElement.classList.remove("ui");
-      jQuery(inAccordion).accordion(this.options || {});
-    } else {
-      jQuery(this.accordion.nativeElement).accordion(this.options || {});
-    }
+  public constructor(
+    @Inject(PLATFORM_ID) private readonly platformId: any
+  ) {
   }
 
-  inAccordion(el: any, className: string): HTMLElement | boolean {
-
-    if (el.parentNode) {
-      if (el.parentNode.classList && el.parentNode.classList.contains(className)) {
-        return el.parentNode;
-      } else {
-        return this.inAccordion(el.parentNode, className);
-      }
-    } else {
-      return false;
+  public ngAfterViewInit(): void {
+    if (isPlatformBrowser(this.platformId)) {
+      jQuery(this.accordion.nativeElement).accordion(this.options || {});
     }
   }
 }
@@ -49,12 +43,14 @@ export class SemanticAccordionComponent implements AfterViewInit {
   changeDetection: ChangeDetectionStrategy.OnPush,
   selector: "sm-accordion-item",
   template: `
-    <div class="{{class}} title" style="display: flex; flex-wrap: nowrap; align-items: center;">
-        <i class="dropdown icon"></i>
-        <ng-content select="[accordion-title]"></ng-content>
+    <div
+      class="{{class}} title"
+      style="display: flex; flex-wrap: nowrap; align-items: center;">
+      <i class="dropdown icon"></i>
+      <ng-content select="[accordion-title]"></ng-content>
     </div>
     <div class="{{class}} content">
-        <ng-content select="[accordion-content]"></ng-content>
+      <ng-content select="[accordion-content]"></ng-content>
     </div>`
 })
 export class SemanticAccordionItemComponent {

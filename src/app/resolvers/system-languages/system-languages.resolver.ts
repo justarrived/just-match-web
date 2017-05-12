@@ -7,6 +7,7 @@ import {LanguageProxy} from '../../proxies/language/language.proxy';
 import {Resolve} from '@angular/router';
 import {Router} from '@angular/router';
 import {TranslateService} from '@ngx-translate/core';
+import {TransferState} from '../../transfer-state/transfer-state';
 
 @Injectable()
 export class SystemLanguagesResolver implements Resolve<Language[]> {
@@ -22,6 +23,7 @@ export class SystemLanguagesResolver implements Resolve<Language[]> {
     private languageProxy: LanguageProxy,
     private route: ActivatedRoute,
     private router: Router,
+    private transferState: TransferState,
     private translateService: TranslateService,
   ) {
   }
@@ -31,12 +33,20 @@ export class SystemLanguagesResolver implements Resolve<Language[]> {
       return Promise.resolve(this.systemLanguages);
     }
 
+    let systemLanguages = this.transferState.get('systemLanguages');
+
+    if (systemLanguages) {
+      this.init(systemLanguages);
+      return Promise.resolve(systemLanguages);
+    }
+
     return this.languageProxy.getLanguages({
       'filter[system_language]': true
     })
-    .then(result => {
-      this.init(result);
-      return result;
+    .then(systemLanguages => {
+      this.transferState.set('systemLanguages', systemLanguages);
+      this.init(systemLanguages);
+      return systemLanguages;
     });
   }
 
@@ -46,9 +56,9 @@ export class SystemLanguagesResolver implements Resolve<Language[]> {
 
     this.systemLanguages = languages;
 
-    let systemLanguageCode = this.dataStoreService.get(this.storageSystemLanguageCodeKey) || 'sv';
+    let systemLanguageCode = this.dataStoreService.getCookie(this.storageSystemLanguageCodeKey) || 'sv';
     this.systemLanguage = this.systemLanguages.find(language => language.languageCode === systemLanguageCode);
-    this.dataStoreService.set(this.storageSystemLanguageCodeKey, systemLanguageCode);
+    this.dataStoreService.setCookie(this.storageSystemLanguageCodeKey, systemLanguageCode);
     this.translateService.use(systemLanguageCode);
 
     this.initRouteParamsSubscription();
@@ -62,7 +72,7 @@ export class SystemLanguagesResolver implements Resolve<Language[]> {
         let language = this.systemLanguages.find(language => language.languageCode === systemLanguageCode);
         if (language) {
           this.systemLanguage = language;
-          this.dataStoreService.set(this.storageSystemLanguageCodeKey, systemLanguageCode);
+          this.dataStoreService.setCookie(this.storageSystemLanguageCodeKey, systemLanguageCode);
           this.translateService.use(systemLanguageCode);
         }
       }
@@ -79,7 +89,7 @@ export class SystemLanguagesResolver implements Resolve<Language[]> {
     }
 
     this.systemLanguage = language;
-    this.dataStoreService.set(this.storageSystemLanguageCodeKey, language.languageCode);
+    this.dataStoreService.setCookie(this.storageSystemLanguageCodeKey, language.languageCode);
     this.translateService.use(language.languageCode);
     this.systemLanguageChange.emit(this.systemLanguage);
   }

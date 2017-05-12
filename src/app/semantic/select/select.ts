@@ -1,7 +1,15 @@
-import {
-  Component, Input, AfterViewInit, ViewChild, ElementRef, Output, EventEmitter, ChangeDetectionStrategy
-} from "@angular/core";
-import { FormControl } from "@angular/forms";
+import {AfterViewInit} from "@angular/core";
+import {ChangeDetectionStrategy} from "@angular/core";
+import {Component} from "@angular/core";
+import {ElementRef} from "@angular/core";
+import {EventEmitter} from "@angular/core";
+import {FormControl} from "@angular/forms";
+import {Inject} from "@angular/core";
+import {Input} from "@angular/core";
+import {isPlatformBrowser} from '@angular/common';
+import {Output} from "@angular/core";
+import {PLATFORM_ID} from "@angular/core";
+import {ViewChild} from "@angular/core";
 
 declare var jQuery: any;
 
@@ -34,36 +42,47 @@ export class SemanticSelectComponent implements AfterViewInit {
   @Input() public label: string;
   @Input() public options: {} = {};
   @Input() public placeholder: string;
-  @Output() public modelChange: EventEmitter<string | number> = new EventEmitter<string | number>();
-  @Output() public onChange: EventEmitter<string | number> = new EventEmitter<string | number>();
+  @Output() public modelChange: EventEmitter<string> = new EventEmitter<string>();
+  @Output() public onChange: EventEmitter<string> = new EventEmitter<string>();
   @ViewChild("select") public select: ElementRef;
+
+  public constructor(
+    @Inject(PLATFORM_ID) private readonly platformId: any
+  ) {
+  }
 
   @Input("disabled")
   public set disabled(data: boolean) {
-    setTimeout(() => {
-      if (data) {
-        jQuery(this.select.nativeElement.parentNode).addClass("disabled");
-      } else {
-        jQuery(this.select.nativeElement.parentNode).removeClass("disabled");
-      }
-    }, 1);
+    if (isPlatformBrowser(this.platformId)) {
+      setTimeout(() => {
+        if (data) {
+          jQuery(this.select.nativeElement.parentNode).addClass("disabled");
+        } else {
+          jQuery(this.select.nativeElement.parentNode).removeClass("disabled");
+        }
+      }, 1);
+    }
   };
 
   @Input("data")
   public set data(data: any) {
-    if (data && this.control.value) {
-      setTimeout(() => {
-        jQuery(this.select.nativeElement).dropdown("set selected", this.control.value);
-      }, 1);
+    if (isPlatformBrowser(this.platformId)) {
+      if (data && this.control.value) {
+        setTimeout(() => {
+          jQuery(this.select.nativeElement).dropdown("set selected", this.control.value);
+        }, 1);
+      }
     }
   }
 
   @Input("model")
-  public set model(data: string | number) {
-    if (data) {
-      setTimeout(() => {
-        jQuery(this.select.nativeElement).dropdown("set selected", data);
-      }, 1);
+  public set model(data: string) {
+    if (isPlatformBrowser(this.platformId)) {
+      if (data) {
+        setTimeout(() => {
+          jQuery(this.select.nativeElement).dropdown("set selected", data);
+        }, 1);
+      }
     }
   }
 
@@ -76,14 +95,16 @@ export class SemanticSelectComponent implements AfterViewInit {
     }
 
     const options: {} = Object.assign({
-      onChange: (value: string | number) => {
+      onChange: (value: string) => {
         this.modelChange.emit(value);
         this.onChange.emit(value);
       },
       onHide: () => this.control.markAsTouched()
     }, this.options);
 
-    jQuery(this.select.nativeElement)
-      .dropdown(options);
+    if (isPlatformBrowser(this.platformId)) {
+      jQuery(this.select.nativeElement)
+        .dropdown(options);
+    }
   }
 }

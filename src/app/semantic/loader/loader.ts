@@ -1,20 +1,23 @@
-import { Component, Input } from "@angular/core";
+import {Component} from "@angular/core";
+import {Input} from "@angular/core";
 
-/**
- * Implementation of Loader element
- *
- * @link http://semantic-ui.com/elements/loader.html
- */
 @Component({
   selector: "sm-loader",
-  template: `<div *ngIf="!complete || !resolved" class="ui active dimmer {{class}}">
-    <div [ngClass]="{text: text}" class="ui loader">{{text}}</div>
-  </div>`
+  template: `
+    <div
+      *ngIf="!complete || !resolved"
+      class="ui active dimmer {{class}}">
+      <div
+        [ngClass]="{text: text}"
+        class="ui loader">
+        {{text}}
+      </div>
+    </div>`
 })
 export class SemanticLoaderComponent {
-  @Input("class") class: string;
-  @Input("text") text: string;
-  @Input("complete") complete: boolean = true;
+  @Input("class") public class: string;
+  @Input("text") public text: string;
+  @Input("complete") public complete: boolean = true;
   @Input("promise")
   public set promise(prom: Promise<any>) {
     if (prom) {
