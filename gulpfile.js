@@ -1,6 +1,8 @@
+/*global require */
+
 const gulp = require('gulp');
 const sass = require('gulp-sass');
-const rename = require("gulp-rename");
+const rename = require('gulp-rename');
 const clean = require('gulp-clean');
 const sequence = require('gulp-sequence');
 

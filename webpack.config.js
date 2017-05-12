@@ -1,3 +1,7 @@
+/*global require */
+/*global module */
+/*global __dirname */
+
 const path = require('path');
 const nodeExternals = require('webpack-node-externals');
 
@@ -9,12 +13,12 @@ module.exports = {
     extensions: ['.ts', '.js']
   },
   target: 'node',
-   externals: [nodeExternals({
-     whitelist: [
-       /^@agm\/core/,
-       /^@ngx-translate/,
-     ]
-   })],
+  externals: [nodeExternals({
+    whitelist: [
+     /^@agm\/core/,
+     /^@ngx-translate/
+    ]
+  })],
   node: {
     __dirname: true
   },
