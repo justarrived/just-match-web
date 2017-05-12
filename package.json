@@ -11,8 +11,6 @@
     "build-staging": "ng build -prod --aot --env=staging && gulp before:ngc && ngc && gulp after:ngc && webpack --progress",
     "build": "ng build -prod --aot --env=prod && gulp before:ngc && ngc && gulp after:ngc && webpack --progress",
     "e2e": "ng e2e",
-    "heroku-postbuild": "ng build -prod --env=${ENV_CONFIG-prod} && gulp before:ngc && ngc && gulp after:ngc && webpack --progress",
-    "heroku-prebuild": "yarn global add @angular/cli",
     "lint": "ng lint",
     "pree2e": "webdriver-manager update",
     "start-dev": "ng serve",
