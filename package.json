@@ -8,12 +8,9 @@
   },
   "scripts": {
     "tt": "gulp after:ngc",
-    "build-dev": "ng build -prod --aot --env=dev && gulp before:ngc && ngc && gulp after:ngc && webpack --define process.env.ENV_CONFIG='\"dev\"' --progress",
-    "build-staging": "ng build -prod --aot --env=staging && gulp before:ngc && ngc && gulp after:ngc && webpack --define process.env.ENV_CONFIG='\"staging\"' --progress",
-    "build": "ng build -prod --aot --env=prod && gulp before:ngc && ngc && gulp after:ngc && webpack --define process.env.ENV_CONFIG='\"prod\"' --progress",
+    "build-dev": "ng build -prod --aot --env=dev && gulp before:ngc && ngc && gulp after:ngc && webpack --progress",
     "e2e": "ng e2e",
     "heroku-postbuild": "ng build -prod --aot --env=prod && gulp before:ngc && ngc && gulp after:ngc && webpack --progress",
-    "heroku-prebuild": "yarn global add @angular/cli",
     "lint": "ng lint",
     "pree2e": "webdriver-manager update",
     "start-dev": "ng serve",
