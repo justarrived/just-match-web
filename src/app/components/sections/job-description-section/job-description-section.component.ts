@@ -9,6 +9,7 @@ import {Job} from '../../../models/api-models/job/job'
       <h3 class="underline-border-below underline-border-below-centered underline-border-below-pink">
         {{'job.description.section.header' | translate}}
       </h3>
+      <basic-title [text]="'job.description.section.header' | translate"></basic-title>
       <basic-text [text]="job.translatedText.descriptionHtml"></basic-text>
     </div>`
 })

@@ -9,17 +9,23 @@ import {SystemLanguagesResolver} from '../../../resolvers/system-languages/syste
 @Component({
   selector: 'basic-title',
   template: `
-    <div
+    <h3
       [style.direction]="systemLanguage.direction"
       [style.text-align]="systemLanguage.direction === 'rtl' ? rtlTextAlignment : ltrTextAlignment"
-      [innerHTML]="text">
-    </div>
-    `
+      [innerHTML]="text"
+      [class.underline-border-below]="underlineBelow'"
+      [class.underline-border-above]="underlineAbove'"
+      >
+    </h3>`
 })
 export class BasicTitleComponent implements OnInit, OnDestroy {
   @Input() public text: string = '';
   @Input() public ltrTextAlignment: string = 'left';
   @Input() public rtlTextAlignment: string = 'right';
+  @Input() public underlineBelow: boolean = false;
+  @Input() public underlineAbove: boolean = false;
+  @Input() public underlineBelowColor: string = 'pink';
+  @Input() public underlineAboveColor: string = 'pink';
 
   public systemLanguage: Language;
 
