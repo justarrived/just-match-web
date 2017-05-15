@@ -6,4 +6,6 @@ import {environment as prodEnv} from './environment.prod';
 import {environment as stagingEnv} from './environment.staging';
 import {environment as devEnv} from './environment.dev';
 
+
+console.log(process.env.ENV_CONFIG)
 export const environment = process.env.ENV_CONFIG === 'prod' ? prodEnv : process.env.ENV_CONFIG === 'staging' ? stagingEnv : devEnv;
