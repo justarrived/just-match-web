@@ -26,6 +26,8 @@ import {BasicPagerComponent} from './components/pagers/basic-pager/basic-pager.c
 import {BasicSearchComponent} from './components/search/basic-search/basic-search.component';
 import {BasicTabComponent} from './components/tabs/basic-tab/basic-tab.component';
 import {BasicTabsComponent} from './components/tabs/basic-tabs/basic-tabs.component';
+import {BasicTextComponent} from './components/text/basic-text/basic-text.component';
+import {BasicTitleComponent} from './components/text/basic-title/basic-title.component';
 import {BrowserModule} from '@angular/platform-browser';
 import {ChatMessageInputComponent} from './components/inputs/chat-message-input/chat-message-input.component';
 import {CircularIconBaseButtonComponent} from './components/buttons/circular-icon-base-button/circular-icon-base-button.component';
@@ -248,8 +250,12 @@ export class RavenErrorHandler implements ErrorHandler {
     BasicCommentComponent,
     BasicCommentsComponent,
     BasicPagerComponent,
+    BasicSearchComponent,
     BasicTabComponent,
     BasicTabsComponent,
+    BasicTextComponent,
+    BasicTitleComponent,
+    BasicTitleComponent,
     ChatMessageInputComponent,
     CircularIconBaseButtonComponent,
     CircularImageInputComponent,
@@ -280,6 +286,7 @@ export class RavenErrorHandler implements ErrorHandler {
     FaqAccordionComponent,
     FaqPageComponent,
     FileInputButtonComponent,
+    FilterUsersInputComponent,
     FirstNameInputComponent,
     ForbiddenPageComponent,
     ForgotPasswordFormComponent,
@@ -298,7 +305,6 @@ export class RavenErrorHandler implements ErrorHandler {
     HowItWorksSectionComponent,
     InfoMessageComponent,
     InputErrorComponent,
-    SortUsersInputComponent,
     InputErrorsComponent,
     InputHintLabelComponent,
     InterestLevelInputComponent,
@@ -314,10 +320,8 @@ export class RavenErrorHandler implements ErrorHandler {
     JobLocationSectionComponent,
     JobMapMarkerComponent,
     JobPageComponent,
-    UsersFilterComponent,
     JobScopeSectionComponent,
     JobScopeSectionComponent,
-    FilterUsersInputComponent,
     JobsMapComponent,
     JobsPageComponent,
     JobsPagerSectionComponent,
@@ -329,7 +333,6 @@ export class RavenErrorHandler implements ErrorHandler {
     LMACardInputComponent,
     LoginFormComponent,
     LoginModalComponent,
-    BasicSearchComponent,
     LoginPageComponent,
     LostConnectionPageComponent,
     MaximizeChancessSectionComponent,
@@ -366,6 +369,7 @@ export class RavenErrorHandler implements ErrorHandler {
     SkatteverketCertificateInputComponent,
     SkillProficiencyInputComponent,
     SkillsInputComponent,
+    SortUsersInputComponent,
     SSNInputComponent,
     StatusInputComponent,
     StreetInputComponent,
@@ -388,6 +392,7 @@ export class RavenErrorHandler implements ErrorHandler {
     UserProfileFormComponent,
     UserProfileHeaderComponent,
     UserProfilePageComponent,
+    UsersFilterComponent,
     UserUpdateFormComponent,
     WelcomeHeaderComponent,
     WorkPermitBackInputComponent,
