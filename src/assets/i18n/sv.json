@@ -4,7 +4,7 @@
   "already.registered.modal.info": "Det verkar som att det redan finns ett konto som använder {{emailOrPhone}}, så vi föreslår att du loggar in istället. Om du glömt ditt lösenord så kan du återställa det genom att klicka på \"Glömt ditt lösenord?\" ovan",
   "already.registered.modal.title": "{{emailOrPhone}} är redan registrerat",
   "applications.title": "Just Arrived",
-  "apply.for.job.form.message.section": "Någonting mer du vill att vi visa ska veta?",
+  "apply.for.job.form.message.section": "Någonting mer du vill att vi ska veta?",
   "apply.for.job.form.submit.button": "Ansök",
   "apply.for.job.modal.button": "Ansök",
   "apply.for.job.modal.title": "Någonting mer du vill att vi ska veta?",
