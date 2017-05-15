@@ -10,7 +10,7 @@
     "tt": "gulp after:ngc",
     "build-dev": "ng build -prod --aot --env=dev && gulp before:ngc && ngc && gulp after:ngc && webpack --progress",
     "e2e": "ng e2e",
-    "heroku-postbuild": "ng build -prod --aot --env=prod && gulp before:ngc && ngc && gulp after:ngc && webpack --progress",
+    "heroku-postbuild": "ng build -prod --aot --env=${ENV_CONFIG} && gulp before:ngc && ngc && gulp after:ngc && webpack --progress",
     "lint": "ng lint",
     "pree2e": "webdriver-manager update",
     "start-dev": "ng serve",
