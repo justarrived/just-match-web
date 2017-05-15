@@ -120,7 +120,6 @@ export class ApiCallService {
       if (isPlatformBrowser(this.platformId)) {
         const transferedResponse = this.transferState.get(transferStateKey);
         if (transferedResponse) {
-          console.log('consumed ' + requestArgs.url);
           this.transferState.set(transferStateKey, null);
           return Promise.resolve(transferedResponse);
         }
