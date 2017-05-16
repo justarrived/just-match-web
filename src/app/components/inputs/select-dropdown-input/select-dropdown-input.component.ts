@@ -21,9 +21,9 @@ import {ViewChild} from '@angular/core';
        [options]="options"
        [placeholder]="placeholder"
        (onChange)="change($event)"
-       [class.fluid]="fluid"
        class="search">
         <option
+          style="text-align: right; direction: rtl;"
           [value]="getNestedProperty(item, dataItemValueProoerty)"
           *ngFor="let item of data">
           {{getNestedProperty(item, dataItemLabelProoerty)}}

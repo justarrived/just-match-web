@@ -7,62 +7,53 @@ import {FormControl} from "@angular/forms";
 import {Inject} from "@angular/core";
 import {Input} from "@angular/core";
 import {isPlatformBrowser} from '@angular/common';
+import {Language} from '../../models/api-models/language/language';
+import {OnDestroy} from '@angular/core';
+import {OnInit} from '@angular/core';
 import {Output} from "@angular/core";
 import {PLATFORM_ID} from "@angular/core";
+import {Subscription} from 'rxjs/Subscription';
+import {SystemLanguagesResolver} from '../../resolvers/system-languages/system-languages.resolver';
 import {ViewChild} from "@angular/core";
 
 declare var jQuery: any;
 
 @Component({
-  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: "sm-select",
   template: `
     <div
       class="field"
-      [ngClass]="{error: (!control?.valid && control?.touched) }">
+      [ngClass]="{error: !control?.valid && control?.touched}">
       <label
+        [style.text-align]="systemLanguage.direction === 'ltr' ? 'left' : 'right'"
         *ngIf="label">
         {{label}}
       </label>
-      <select
-        [formControl]="control"
-        class="ui {{class}} dropdown"
-        #select>
-        <option
-          value="">
-          {{placeholder}}
-        </option>
-        <ng-content></ng-content>
-      </select>
+      <div
+        class="ui-select-wrapper"
+        style="width: 100%"
+        [ngClass]="{'direction-rtl': systemLanguage.direction === 'rtl'}">
+        <select
+          [formControl]="control"
+          class="ui {{class}} fluid dropdown"
+          #select>
+          <option
+            value="">
+            {{placeholder}}
+          </option>
+          <ng-content></ng-content>
+        </select>
+      </div>
     </div>`
 })
-export class SemanticSelectComponent implements AfterViewInit {
+export class SemanticSelectComponent implements OnInit, OnDestroy, AfterViewInit {
   @Input() public control: FormControl = new FormControl();
   @Input() public class: string;
   @Input() public label: string;
   @Input() public options: {} = {};
   @Input() public placeholder: string;
-  @Output() public modelChange: EventEmitter<string> = new EventEmitter<string>();
   @Output() public onChange: EventEmitter<string> = new EventEmitter<string>();
   @ViewChild("select") public select: ElementRef;
-
-  public constructor(
-    @Inject(PLATFORM_ID) private readonly platformId: any
-  ) {
-  }
-
-  @Input("disabled")
-  public set disabled(data: boolean) {
-    if (isPlatformBrowser(this.platformId)) {
-      setTimeout(() => {
-        if (data) {
-          jQuery(this.select.nativeElement.parentNode).addClass("disabled");
-        } else {
-          jQuery(this.select.nativeElement.parentNode).removeClass("disabled");
-        }
-      }, 1);
-    }
-  };
 
   @Input("data")
   public set data(data: any) {
@@ -75,28 +66,31 @@ export class SemanticSelectComponent implements AfterViewInit {
     }
   }
 
-  @Input("model")
-  public set model(data: string) {
-    if (isPlatformBrowser(this.platformId)) {
-      if (data) {
-        setTimeout(() => {
-          jQuery(this.select.nativeElement).dropdown("set selected", data);
-        }, 1);
-      }
-    }
+  public systemLanguage: Language;
+
+  private systemLanguageSubscription: Subscription;
+
+  public constructor(
+    @Inject(PLATFORM_ID) private readonly platformId: any,
+    private systemLanguagesResolver: SystemLanguagesResolver,
+  ) {
   }
 
-  private multiple: boolean = false;
+  public ngOnInit(): void {
+    this.initSystemLanguage()
+  }
+
+  private initSystemLanguage(): void {
+    this.systemLanguage = this.systemLanguagesResolver.getSelectedSystemLanguage();
+    this.systemLanguageSubscription = this.systemLanguagesResolver.getSystemLanguageChangeEmitter().subscribe(systemLanguage => {
+      this.systemLanguage = systemLanguage;
+    });
+  }
 
   public ngAfterViewInit(): void {
 
-    if (typeof this.class === "string" && this.class.search("multiple") >= 0) {
-      this.select.nativeElement.setAttribute("multiple", true);
-    }
-
     const options: {} = Object.assign({
       onChange: (value: string) => {
-        this.modelChange.emit(value);
         this.onChange.emit(value);
       },
       onHide: () => this.control.markAsTouched()
@@ -106,5 +100,9 @@ export class SemanticSelectComponent implements AfterViewInit {
       jQuery(this.select.nativeElement)
         .dropdown(options);
     }
+  }
+
+  public ngOnDestroy(): void {
+    if (this.systemLanguageSubscription) { this.systemLanguageSubscription.unsubscribe(); }
   }
 }

@@ -6,9 +6,15 @@ import {Job} from '../../../models/api-models/job/job'
   selector: 'job-information-section',
   template: `
     <div class="ui basic center aligned segment">
-      <h2 class="underline-border-below underline-border-below-centered underline-border-below-pink">
-        {{'job.information.section.header' | translate}}
-      </h2>
+      <basic-title
+        [text]="'job.information.section.header' | translate"
+        [underlineBelow]="true"
+        fontSize="large"
+        ltrTextAlignment="center"
+        marginTop="0"
+        rtlTextAlignment="center"
+        underlineBelowColor="pink">
+      </basic-title>
     </div>
     <div
       class="ui basic center aligned segment"
@@ -18,33 +24,53 @@ import {Job} from '../../../models/api-models/job/job'
           class="column"
           style="padding-left: 0; padding-right: 0">
           <i class="ui big circular inverted pink building outline icon"></i>
-          <h5 class="wrap-long-words">
-            {{job?.company?.name}}
-          </h5>
+          <basic-title
+            [text]="job?.company?.name"
+            fontSize="tiny"
+            ltrTextAlignment="center"
+            rtlTextAlignment="center">
+          </basic-title>
         </div>
         <div
           class="column"
           style="padding-left: 0; padding-right: 0">
           <i class="ui big circular inverted pink calendar icon"></i>
-          <h5 style="margin-bottom: 0">
-            {{job.jobDate | date: 'MMM dd'}}
-          </h5>
-          <h5
+          <basic-title
+            [text]="job.jobDate | date: 'MMM dd'"
+            fontSize="tiny"
+            ltrTextAlignment="center"
+            marginBottom="0"
+            rtlTextAlignment="center">
+          </basic-title>
+          <basic-title
+            [text]="'-'"
             *ngIf="job.jobEndDate"
-            style="margin: 0">
-            -
-          </h5>
-          <h5
+            fontSize="tiny"
+            ltrTextAlignment="center"
+            marginBottom="0"
+            marginTop="0"
+            rtlTextAlignment="center">
+          </basic-title>
+          <basic-title
+            [text]="job.jobEndDate | date: 'MMM dd'"
             *ngIf="job.jobEndDate"
-            style="margin: 0">
-            {{job.jobEndDate | date: 'MMM dd'}}
-          </h5>
+            fontSize="tiny"
+            ltrTextAlignment="center"
+            marginBottom="0"
+            marginTop="0"
+            rtlTextAlignment="center">
+          </basic-title>
         </div>
         <div
           class="column"
           style="padding-left: 0; padding-right: 0">
           <i class="ui big circular inverted pink money icon"></i>
-          <h5>{{job.hourlyPay.grossSalaryWithUnit}}</h5>
+          <basic-title
+            [text]="job.hourlyPay.grossSalaryWithUnit"
+            fontSize="tiny"
+            ltrTextAlignment="center"
+            rtlTextAlignment="center">
+          </basic-title>
         </div>
       </div>
     </div>`

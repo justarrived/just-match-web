@@ -2,6 +2,11 @@ import {ApiErrors} from '../../../models/api-models/api-errors/api-errors';
 import {Component} from '@angular/core';
 import {Input} from '@angular/core';
 import {InputErrorsComponent} from '../../form-errors/input-errors/input-errors.component';
+import {Language} from '../../../models/api-models/language/language';
+import {OnDestroy} from '@angular/core';
+import {OnInit} from '@angular/core';
+import {Subscription} from 'rxjs/Subscription';
+import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
 import {ViewChild} from '@angular/core';
 
 @Component({
@@ -17,7 +22,7 @@ import {ViewChild} from '@angular/core';
         [label]="label"
         [placeholder]="placeholder"
         [type]="type"
-        class="left">
+        [class]="systemLanguage.direction === 'ltr' ? 'left' : 'right'">
       </sm-input>
       <input-errors
         [apiAttribute]="apiAttribute"
@@ -32,7 +37,7 @@ import {ViewChild} from '@angular/core';
       <ng-content></ng-content>
     </div>`
 })
-export class TextInputComponent {
+export class TextInputComponent implements OnInit, OnDestroy {
   @Input() public apiAttribute: string;
   @Input() public apiErrors: any;
   @Input() public control: any;
@@ -47,4 +52,28 @@ export class TextInputComponent {
   @Input() public requiredLabel: string;
   @Input() public type: string = 'text';
   @ViewChild(InputErrorsComponent) inputErrors: InputErrorsComponent;
+
+  public systemLanguage: Language;
+
+  private systemLanguageSubscription: Subscription;
+
+  public constructor(
+    private systemLanguagesResolver: SystemLanguagesResolver
+  ) {
+  }
+
+  public ngOnInit(): void {
+    this.initSystemLanguage()
+  }
+
+  private initSystemLanguage(): void {
+    this.systemLanguage = this.systemLanguagesResolver.getSelectedSystemLanguage();
+    this.systemLanguageSubscription = this.systemLanguagesResolver.getSystemLanguageChangeEmitter().subscribe(systemLanguage => {
+      this.systemLanguage = systemLanguage;
+    });
+  }
+
+  public ngOnDestroy(): void {
+    if (this.systemLanguageSubscription) { this.systemLanguageSubscription.unsubscribe(); }
+  }
 }

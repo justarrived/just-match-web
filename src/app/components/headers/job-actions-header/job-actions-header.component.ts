@@ -27,9 +27,12 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
         [promise]="promises"
         class="inverted">
       </sm-loader>
-      <h1 class="job-actions-header-title wrap-long-words">
-        {{job.translatedText.name}}
-      </h1>
+      <basic-title
+        [text]="job.translatedText.name"
+        fontSize="huge"
+        ltrTextAlignment="center"
+        rtlTextAlignment="center">
+      </basic-title>
       <base-button
         (click)="onApplyForJobButtonClick()"
         [buttonText]="'job.actions.header.apply' | translate"

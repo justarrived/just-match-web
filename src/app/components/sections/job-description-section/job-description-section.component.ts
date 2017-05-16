@@ -6,10 +6,15 @@ import {Job} from '../../../models/api-models/job/job'
   selector: 'job-description-section',
   template: `
     <div class="ui basic center aligned segment">
-      <h3 class="underline-border-below underline-border-below-centered underline-border-below-pink">
-        {{'job.description.section.header' | translate}}
-      </h3>
-      <basic-title [text]="'job.description.section.header' | translate"></basic-title>
+      <basic-title
+        [text]="'job.description.section.header' | translate"
+        [underlineBelow]="true"
+        fontSize="medium"
+        ltrTextAlignment="center"
+        marginTop="0"
+        rtlTextAlignment="center"
+        underlineBelowColor="pink">
+      </basic-title>
       <basic-text [text]="job.translatedText.descriptionHtml"></basic-text>
     </div>`
 })

@@ -7,17 +7,40 @@ import {Job} from '../../../models/api-models/job/job'
   template: `
     <div class="ui basic center aligned segment">
       <i class="ui big circular inverted pink clock icon"></i>
-      <h3 class="underline-border-below underline-border-below-centered underline-border-below-pink">
-        {{'job.scope.section.header' | translate}}
-      </h3>
-      <h5 *ngIf="job.jobEndDate">
-        {{'job.scope.section.hours' | translate: {hours: job.hours} }}
-      </h5>
-      <h5 *ngIf="!job.jobEndDate">
-        {{'job.scope.section.until.further.notice' | translate }}
-      </h5>
-      <h5>{{'job.scope.section.grossSalary' | translate: {grossSalary: job.grossAmountWithCurrency} }}</h5>
-      <h5>{{'job.scope.section.netSalary' | translate: {netSalary: job.netAmountWithCurrency} }}</h5>
+      <basic-title
+        [text]="'job.scope.section.header' | translate"
+        [underlineBelow]="true"
+        fontSize="medium"
+        ltrTextAlignment="center"
+        rtlTextAlignment="center"
+        underlineBelowColor="pink">
+      </basic-title>
+      <basic-title
+        [text]="'job.scope.section.hours' | translate: {hours: job.hours}"
+        *ngIf="job.jobEndDate"
+        fontSize="tiny"
+        ltrTextAlignment="center"
+        rtlTextAlignment="center">
+      </basic-title>
+      <basic-title
+        [text]="'job.scope.section.until.further.notice' | translate"
+        *ngIf="!job.jobEndDate"
+        fontSize="tiny"
+        ltrTextAlignment="center"
+        rtlTextAlignment="center">
+      </basic-title>
+      <basic-title
+        [text]="'job.scope.section.grossSalary' | translate: {grossSalary: job.grossAmountWithCurrency}"
+        fontSize="tiny"
+        ltrTextAlignment="center"
+        rtlTextAlignment="center">
+      </basic-title>
+      <basic-title
+        [text]="'job.scope.section.netSalary' | translate: {netSalary: job.netAmountWithCurrency}"
+        fontSize="tiny"
+        ltrTextAlignment="center"
+        rtlTextAlignment="center">
+      </basic-title>
     </div>`
 })
 export class JobScopeSectionComponent {
