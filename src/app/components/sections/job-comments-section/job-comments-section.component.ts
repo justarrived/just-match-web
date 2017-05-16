@@ -10,6 +10,7 @@ import {Job} from '../../../models/api-models/job/job'
       <basic-title
         [text]="'job.comments.section.title' | translate"
         [underlineBelow]="true"
+        marginTop="0"
         fontSize="medium"
         ltrTextAlignment="center"
         rtlTextAlignment="center"
