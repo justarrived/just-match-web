@@ -25,14 +25,14 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
         class="inverted">
       </sm-loader>
       <i class="ui big circular inverted pink pointing down icon"></i>
-      <basic-title
+      <basic-title-text
         [text]="job.translatedText.name"
         [underlineBelow]="true"
         fontSize="medium"
         ltrTextAlignment="center"
         rtlTextAlignment="center"
         underlineBelowColor="pink">
-      </basic-title>
+      </basic-title-text>
       <base-button
         (click)="onApplyForJobButtonClick()"
         [buttonText]="'job.actions.section.apply' | translate"

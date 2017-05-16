@@ -7,8 +7,8 @@ import {Subscription} from 'rxjs/Subscription';
 import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
 
 @Component({
-  selector: 'basic-title',
-  styleUrls: ['./basic-title.component.scss'],
+  selector: 'basic-title-text',
+  styleUrls: ['./basic-title-text.component.scss'],
   template: `
     <div
       [class.bold]="fontWeight === 'bold'"
@@ -40,23 +40,25 @@ import {SystemLanguagesResolver} from '../../../resolvers/system-languages/syste
       [class.underline-border-below]="underlineBelow"
       [innerHTML]="text"
       [style.direction]="systemLanguage.direction"
+      [style.display]="display"
       [style.margin-top]="marginTop"
       [style.margin-bottom]="marginBottom"
       [style.text-align]="systemLanguage.direction === 'rtl' ? rtlTextAlignment : ltrTextAlignment">
     </div>`
 })
-export class BasicTitleComponent implements OnInit, OnDestroy {
+export class BasicTitleTextComponent implements OnInit, OnDestroy {
+  @Input() public display: string = 'block';
   @Input() public fontSize: string = 'medium'; // Should be one of 'tiny', 'small', 'medium', 'large', 'huge'.
   @Input() public fontWeight: string = 'bold'; // Should be one of 'light', 'normal', 'bold'.
   @Input() public ltrTextAlignment: string = 'left'; // Should be one of 'left', 'center', 'right'.
+  @Input() public marginBottom: string = '1rem';
+  @Input() public marginTop: string = '1.8rem';
   @Input() public rtlTextAlignment: string = 'right'; // Should be one of 'left', 'center', 'right'.
   @Input() public text: string = '';
   @Input() public underlineAbove: boolean = false;
   @Input() public underlineAboveColor: string = 'pink'; // Should be one of 'pink', 'blue', 'gray', 'black', 'white'.
   @Input() public underlineBelow: boolean = false;
   @Input() public underlineBelowColor: string = 'pink'; // Should be one of 'pink', 'blue', 'gray', 'black', 'white'.
-  @Input() public marginTop: string = '1.8rem';
-  @Input() public marginBottom: string = '1rem';
 
   public systemLanguage: Language;
 

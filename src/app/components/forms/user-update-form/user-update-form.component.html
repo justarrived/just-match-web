@@ -7,12 +7,11 @@
     class="inverted">
   </sm-loader>
 
-  <h3
+  <form-section-title-text
+    [text]="'user.update.form.personal.info.header' | translate"
     *ngIf="missingUserTraits?.first_name || missingUserTraits?.last_name || missingUserTraits?.email || missingUserTraits?.phone || missingUserTraits?.ssn || missingUserTraits?.gender || missingUserTraits?.country_of_origin"
-    class="ui horizontal divider pink header">
-    <i class="user icon"></i>
-    {{'user.update.form.personal.info.header' | translate}}
-  </h3>
+    icon="user">
+  </form-section-title-text>
 
   <first-name-input
     [apiErrors]="apiErrors"
@@ -63,12 +62,11 @@
     *ngIf="missingUserTraits?.country_of_origin">
   </country-of-origin-input>
 
-  <h3
+  <form-section-title-text
+    [text]="'user.update.form.address.header' | translate"
     *ngIf="missingUserTraits?.street || missingUserTraits?.zip || missingUserTraits?.city"
-    class="ui horizontal divider pink header">
-    <i class="marker icon"></i>
-    {{'user.update.form.address.header' | translate}}
-  </h3>
+    icon="marker">
+  </form-section-title-text>
 
   <street-input
     [apiErrors]="apiErrors"
@@ -91,12 +89,11 @@
     *ngIf="missingUserTraits?.city">
   </city-input>
 
-  <h3
+  <form-section-title-text
+    [text]="'user.update.form.bank.details.header' | translate"
     *ngIf="missingUserTraits?.bank_account"
-    class="ui horizontal divider pink header">
-    <i class="money icon"></i>
-    {{'user.update.form.bank.details.header' | translate}}
-  </h3>
+    icon="money">
+  </form-section-title-text>
 
   <bank-account-input
     [apiErrors]="apiErrors"
@@ -105,12 +102,11 @@
     *ngIf="missingUserTraits?.bank_account">
   </bank-account-input>
 
-  <h3
+  <form-section-title-text
+    [text]="'user.update.form.personal.presentation.section.header' | translate"
     *ngIf="missingUserTraits?.description"
-    class="ui horizontal divider pink header">
-    <i class="user icon"></i>
-    {{'user.update.form.personal.presentation.section.header' | translate}}
-  </h3>
+    icon="user">
+  </form-section-title-text>
 
   <description-input
     [apiErrors]="apiErrors"
@@ -119,12 +115,11 @@
     *ngIf="missingUserTraits?.description">
   </description-input>
 
-  <h3
+  <form-section-title-text
+    [text]="'user.update.form.social.network.section.header' | translate"
     *ngIf="missingUserTraits?.facebook_url || missingUserTraits?.linkedin_url"
-    class="ui horizontal divider pink header">
-    <i class="users icon"></i>
-    {{'user.update.form.social.network.section.header' | translate}}
-  </h3>
+    icon="users">
+  </form-section-title-text>
 
   <facebook-url-input
     [apiErrors]="apiErrors"
@@ -140,12 +135,11 @@
     *ngIf="missingUserTraits?.linkedin_url">
   </linkedin-url-input>
 
-  <h3
+  <form-section-title-text
+    [text]="'user.update.form.status.section.header' | translate"
     *ngIf="missingUserTraits?.current_status || missingUserTraits?.at_und"
-    class="ui horizontal divider pink header">
-    <i class="id card icon"></i>
-    {{'user.update.form.status.section.header' | translate}}
-  </h3>
+    icon="id card">
+  </form-section-title-text>
 
   <status-input
     [apiErrors]="apiErrors"
@@ -161,12 +155,11 @@
     *ngIf="missingUserTraits?.at_und">
   </at-und-input>
 
-  <h3
+  <form-section-title-text
+    [text]="'user.update.form.language.skills.section.header' | translate"
     *ngIf="missingUserTraits?.language_ids"
-    class="ui horizontal divider pink header">
-    <i class="world icon"></i>
-    {{'user.update.form.language.skills.section.header' | translate}}
-  </h3>
+    icon="world">
+  </form-section-title-text>
 
   <languages-input
     [languagesControl]="updateForm.controls.languages"
@@ -177,12 +170,11 @@
     *ngIf="missingUserTraits?.language_ids">
   </languages-input>
 
-  <h3
+  <form-section-title-text
+    [text]="'user.update.form.general.skills.section.header' | translate"
     *ngIf="missingUserTraits?.competence_text || missingUserTraits?.skill_ids"
-    class="ui horizontal divider pink header">
-    <i class="rocket icon"></i>
-    {{'user.update.form.general.skills.section.header' | translate}}
-  </h3>
+    icon="rocket">
+  </form-section-title-text>
 
   <competence-input
     [control]="updateForm.controls.competence_text"
@@ -200,12 +192,11 @@
     *ngIf="missingUserTraits?.skill_ids">
   </skills-input>
 
-  <h3
+  <form-section-title-text
+    [text]="'user.update.form.interests.section.header' | translate"
     *ngIf="missingUserTraits?.interest_ids"
-    class="ui horizontal divider pink header">
-    <i class="heart icon"></i>
-    {{'user.update.form.interests.section.header' | translate}}
-  </h3>
+    icon="heart">
+  </form-section-title-text>
 
   <interests-input
     [interestsControl]="updateForm.controls['interests']"
@@ -216,12 +207,11 @@
     *ngIf="missingUserTraits?.interest_ids">
   </interests-input>
 
-  <h3
+  <form-section-title-text
+    [text]="'user.update.form.education.section.header' | translate"
     *ngIf="missingUserTraits?.education"
-    class="ui horizontal divider pink header">
-    <i class="student icon"></i>
-    {{'user.update.form.education.section.header' | translate}}
-  </h3>
+    icon="student">
+  </form-section-title-text>
 
   <education-input
     [apiErrors]="apiErrors"
@@ -230,12 +220,11 @@
     *ngIf="missingUserTraits?.education">
   </education-input>
 
-  <h3
+  <form-section-title-text
+    [text]="'user.update.form.work.experience.section.header' | translate"
     *ngIf="missingUserTraits?.job_experience"
-    class="ui horizontal divider pink header">
-    <i class="suitcase icon"></i>
-    {{'user.update.form.work.experience.section.header' | translate}}
-  </h3>
+    icon="suitcase">
+  </form-section-title-text>
 
   <job-experience-input
     [apiErrors]="apiErrors"

@@ -7,20 +7,20 @@
     class="inverted">
   </sm-loader>
 
-  <h3 class="ui horizontal divider pink header">
-    <i class="user icon"></i>
-    {{'user.profile.form.personal.presentation.section.header' | translate}}
-  </h3>
+  <form-section-title-text
+    [text]="'user.profile.form.personal.presentation.section.header' | translate"
+    icon="user">
+  </form-section-title-text>
 
   <description-input
     [apiErrors]="apiErrors"
     [control]="profileForm.controls['description']">
   </description-input>
 
-  <h3 class="ui horizontal divider pink header">
-    <i class="users icon"></i>
-    {{'user.profile.form.social.network.section.header' | translate}}
-  </h3>
+  <form-section-title-text
+    [text]="'user.profile.form.social.network.section.header' | translate"
+    icon="users">
+  </form-section-title-text>
 
   <facebook-url-input
     [control]="profileForm.controls['facebook_url']"
@@ -32,10 +32,10 @@
     [apiErrors]="apiErrors">
   </linkedin-url-input>
 
-  <h3 class="ui horizontal divider pink header">
-    <i class="id card icon"></i>
-    {{'user.profile.form.status.section.header' | translate}}
-  </h3>
+  <form-section-title-text
+    [text]="'user.profile.form.status.section.header' | translate"
+    icon="id card">
+  </form-section-title-text>
 
   <status-input
     [apiErrors]="apiErrors"
@@ -102,10 +102,10 @@
     *ngIf="profileForm.value.current_status === 'eu_citizen' || profileForm.value.current_status === 'asylum_seeker' && profileForm.value.at_und === 'yes' && profileForm.value.got_coordination_number === 'yes'">
   </skatteverket-certificate-input>
 
-  <h3 class="ui horizontal divider pink header">
-    <i class="world icon"></i>
-    {{'user.profile.form.language.skills.section.header' | translate}}
-  </h3>
+  <form-section-title-text
+    [text]="'user.profile.form.language.skills.section.header' | translate"
+    icon="world">
+  </form-section-title-text>
 
   <languages-input
     [languagesControl]="profileForm.controls['languages']"
@@ -113,10 +113,10 @@
     [apiErrors]="apiErrors">
   </languages-input>
 
-  <h3 class="ui horizontal divider pink header">
-    <i class="rocket icon"></i>
-    {{'user.profile.form.general.skills.section.header' | translate}}
-  </h3>
+  <form-section-title-text
+    [text]="'user.profile.form.general.skills.section.header' | translate"
+    icon="rocket">
+  </form-section-title-text>
 
   <competence-input
     [control]="profileForm.controls['competence_text']"
@@ -129,10 +129,10 @@
     [apiErrors]="apiErrors">
   </skills-input>
 
-  <h3 class="ui horizontal divider pink header">
-    <i class="heart icon"></i>
-    {{'user.profile.form.interests.section.header' | translate}}
-  </h3>
+  <form-section-title-text
+    [text]="'user.profile.form.interests.section.header' | translate"
+    icon="heart">
+  </form-section-title-text>
 
   <interests-input
     [interestsControl]="profileForm.controls['interests']"
@@ -140,20 +140,20 @@
     [apiErrors]="apiErrors">
   </interests-input>
 
-  <h3 class="ui horizontal divider pink header">
-    <i class="student icon"></i>
-    {{'user.profile.form.education.section.header' | translate}}
-  </h3>
+  <form-section-title-text
+    [text]="'user.profile.form.education.section.header' | translate"
+    icon="student">
+  </form-section-title-text>
 
   <education-input
     [apiErrors]="apiErrors"
     [control]="profileForm.controls['education']">
   </education-input>
 
-  <h3 class="ui horizontal divider pink header">
-    <i class="suitcase icon"></i>
-    {{'user.profile.form.work.experience.section.header' | translate}}
-  </h3>
+  <form-section-title-text
+    [text]="'user.profile.form.work.experience.section.header' | translate"
+    icon="suitcase">
+  </form-section-title-text>
 
   <resume-input
     [centered]="true"

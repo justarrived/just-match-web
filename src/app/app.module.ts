@@ -27,7 +27,7 @@ import {BasicSearchComponent} from './components/search/basic-search/basic-searc
 import {BasicTabComponent} from './components/tabs/basic-tab/basic-tab.component';
 import {BasicTabsComponent} from './components/tabs/basic-tabs/basic-tabs.component';
 import {BasicTextComponent} from './components/text/basic-text/basic-text.component';
-import {BasicTitleComponent} from './components/text/basic-title/basic-title.component';
+import {BasicTitleTextComponent} from './components/text/basic-title-text/basic-title-text.component';
 import {BrowserModule} from '@angular/platform-browser';
 import {ChatMessageInputComponent} from './components/inputs/chat-message-input/chat-message-input.component';
 import {CircularIconBaseButtonComponent} from './components/buttons/circular-icon-base-button/circular-icon-base-button.component';
@@ -69,6 +69,7 @@ import {ForbiddenPageComponent} from './components/pages/forbidden-page/forbidde
 import {ForgotPasswordFormComponent} from './components/forms/forgot-password-form/forgot-password-form.component';
 import {ForgotPasswordModalComponent} from './components/modals/forgot-password-modal/forgot-password-modal.component';
 import {ForgotPasswordPageComponent} from './components/pages/forgot-password-page/forgot-password-page.component';
+import {FormSectionTitleTextComponent} from './components/text/form-section-title-text/form-section-title-text.component';
 import {FormsModule} from '@angular/forms';
 import {FormSubmitButtonComponent} from './components/buttons/form-submit-button/form-submit-button.component';
 import {FrilansTermsInputComponent} from './components/inputs/frilans-terms-input/frilans-terms-input.component';
@@ -254,8 +255,7 @@ export class RavenErrorHandler implements ErrorHandler {
     BasicTabComponent,
     BasicTabsComponent,
     BasicTextComponent,
-    BasicTitleComponent,
-    BasicTitleComponent,
+    BasicTitleTextComponent,
     ChatMessageInputComponent,
     CircularIconBaseButtonComponent,
     CircularImageInputComponent,
@@ -292,6 +292,7 @@ export class RavenErrorHandler implements ErrorHandler {
     ForgotPasswordFormComponent,
     ForgotPasswordModalComponent,
     ForgotPasswordPageComponent,
+    FormSectionTitleTextComponent,
     FormSubmitButtonComponent,
     FrilansTermsInputComponent,
     GenderInputComponent,

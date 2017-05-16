@@ -7,7 +7,7 @@ import {Job} from '../../../models/api-models/job/job'
   template: `
     <div class="ui basic center aligned segment">
       <i class="ui big circular inverted pink comments icon"></i>
-      <basic-title
+      <basic-title-text
         [text]="'job.comments.section.title' | translate"
         [underlineBelow]="true"
         marginTop="0"
@@ -15,7 +15,7 @@ import {Job} from '../../../models/api-models/job/job'
         ltrTextAlignment="center"
         rtlTextAlignment="center"
         underlineBelowColor="pink">
-      </basic-title>
+      </basic-title-text>
     </div>
     <comments-form
       [resourceId]="job.id"

@@ -9,9 +9,9 @@
 
   <div class="ui basic center aligned segment">
 
-    <h3 class="ui horizontal divider pink header">
-      {{'register.form.login.section' | translate}}
-    </h3>
+    <form-section-title-text
+      [text]="'register.form.login.section' | translate">
+    </form-section-title-text>
 
     <base-button
       (click)="loginButonClicked()"
@@ -22,10 +22,10 @@
 
   </div>
 
-  <h3 class="ui horizontal divider pink header">
-    <i class="user icon"></i>
-    {{'user.register.form.general.information.section.header' | translate}}
-  </h3>
+  <form-section-title-text
+    [text]="'user.register.form.general.information.section.header' | translate"
+    icon="user">
+  </form-section-title-text>
 
   <first-name-input
      [control]="registerForm.controls['first_name']"
@@ -57,10 +57,10 @@
     [apiErrors]="apiErrors">
   </country-of-origin-input>
 
-  <h3 class="ui horizontal divider pink header">
-    <i class="marker icon"></i>
-    {{'user.register.form.address.section.header' | translate}}
-  </h3>
+  <form-section-title-text
+    [text]="'user.register.form.address.section.header' | translate"
+    icon="marker">
+  </form-section-title-text>
 
   <street-input
     [apiErrors]="apiErrors"
@@ -77,30 +77,30 @@
     [control]="registerForm.controls['city']">
   </city-input>
 
-  <h3 class="ui horizontal divider pink header">
-    <i class="settings icon"></i>
-    {{'user.register.form.settings.section.header' | translate}}
-  </h3>
+  <form-section-title-text
+    [text]="'user.register.form.settings.section.header' | translate"
+    icon="settings">
+  </form-section-title-text>
 
   <system-language-input
     [control]="registerForm.controls['system_language_id']"
     [apiErrors]="apiErrors">
   </system-language-input>
 
-  <h3 class="ui horizontal divider pink header">
-    <i class="lock icon"></i>
-    {{'user.register.form.password.section.header' | translate}}
-  </h3>
+  <form-section-title-text
+    [text]="'user.register.form.password.section.header' | translate"
+    icon="lock">
+  </form-section-title-text>
 
   <password-input
      [control]="registerForm.controls['password']"
      [apiErrors]="apiErrors">
   </password-input>
 
-  <h3 class="ui horizontal divider pink header">
-    <i class="info icon"></i>
-    {{'user.register.form.terms.section.header' | translate}}
-  </h3>
+  <form-section-title-text
+    [text]="'user.register.form.terms.section.header' | translate"
+    icon="info">
+  </form-section-title-text>
 
   <terms-input
     [control]="registerForm.controls['accepted_terms_and_conditions']"

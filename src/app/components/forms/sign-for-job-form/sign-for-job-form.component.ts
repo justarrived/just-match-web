@@ -28,11 +28,10 @@ import {Validators} from '@angular/forms';
         class="inverted">
       </sm-loader>
 
-      <h3
-        class="ui horizontal divider pink header">
-        <i class="check icon"></i>
-        {{'sign.for.job.form.terms.section' | translate}}
-      </h3>
+      <form-section-title-text
+        [text]="'sign.for.job.form.terms.section' | translate"
+        icon="check">
+      </form-section-title-text>
 
       <frilans-terms-input
         [control]="signForJobForm.controls['consent']"

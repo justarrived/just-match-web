@@ -8,10 +8,10 @@
     class="inverted">
   </sm-loader>
 
-  <h3 class="ui horizontal divider pink header">
-    <i class="user icon"></i>
-    {{'user.settings.form.personal.info.header' | translate}}
-  </h3>
+  <form-section-title-text
+    [text]="'user.settings.form.personal.info.header' | translate"
+    icon="user">
+  </form-section-title-text>
 
   <first-name-input
     [apiErrors]="apiErrors"
@@ -48,10 +48,10 @@
     [control]="settingsForm.controls['country_of_origin']">
   </country-of-origin-input>
 
-  <h3 class="ui horizontal divider pink header">
-    <i class="marker icon"></i>
-    {{'user.settings.form.address.header' | translate}}
-  </h3>
+  <form-section-title-text
+    [text]="'user.settings.form.address.header' | translate"
+    icon="marker">
+  </form-section-title-text>
 
   <street-input
     [apiErrors]="apiErrors"
@@ -68,30 +68,30 @@
     [control]="settingsForm.controls['city']">
   </city-input>
 
-  <h3 class="ui horizontal divider pink header">
-    <i class="money icon"></i>
-    {{'user.settings.form.bank.details.header' | translate}}
-  </h3>
+  <form-section-title-text
+    [text]="'user.settings.form.bank.details.header' | translate"
+    icon="money">
+  </form-section-title-text>
 
   <bank-account-input
     [apiErrors]="apiErrors"
     [control]="settingsForm.controls['bank_account']">
   </bank-account-input>
 
-  <h3 class="ui horizontal divider pink header">
-    <i class="settings icon"></i>
-    {{'user.settings.form.settings.header' | translate}}
-  </h3>
+  <form-section-title-text
+    [text]="'user.settings.form.settings.header' | translate"
+    icon="settings">
+  </form-section-title-text>
 
   <system-language-input
     [apiErrors]="apiErrors"
     [control]="settingsForm.controls['system_language_id']">
   </system-language-input>
 
-  <h3 class="ui horizontal divider pink header">
-    <i class="lock icon"></i>
-    {{'user.settings.form.change.password.header' | translate}}
-  </h3>
+  <form-section-title-text
+    [text]="'user.settings.form.change.password.header' | translate"
+    icon="lock">
+  </form-section-title-text>
 
   <old-password-input
     [apiErrors]="apiErrors"
