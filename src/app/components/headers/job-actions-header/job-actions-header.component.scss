@@ -11,10 +11,4 @@
   background-size: cover !important;
   color: white;
   min-height: 300px;
-
-  .job-actions-header-title {
-    @media screen and (max-width: $sm-device-width) {
-      font-size: $fs-xxxl;
-    }
-  }
 }

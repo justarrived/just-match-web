@@ -3,8 +3,12 @@ import {Component} from "@angular/core";
 import {EventEmitter} from "@angular/core";
 import {FormControl} from "@angular/forms";
 import {Input} from "@angular/core";
+import {Language} from '../../models/api-models/language/language';
+import {OnDestroy} from '@angular/core';
 import {OnInit} from "@angular/core";
 import {Output} from "@angular/core";
+import {Subscription} from 'rxjs/Subscription';
+import {SystemLanguagesResolver} from '../../resolvers/system-languages/system-languages.resolver';
 import {ViewContainerRef} from "@angular/core";
 
 @Component({
@@ -14,6 +18,7 @@ import {ViewContainerRef} from "@angular/core";
       class="field"
       [ngClass]="{error: (!control.valid && control.dirty) }">
       <label
+        [style.text-align]="systemLanguage.direction === 'ltr' ? 'left' : 'right'"
         *ngIf="label">
         {{label}}
       </label>
@@ -22,9 +27,12 @@ import {ViewContainerRef} from "@angular/core";
         [ngClass]="{'icon': icon}">
         <input
           (keyup.enter)="onEnterKeyUp.emit()"
-          [type]="type"
           [formControl]="control"
-          #input placeholder="{{placeholder}}">
+          [style.direction]="systemLanguage.direction"
+          [style.text-align]="systemLanguage.direction === 'ltr' ? 'left' : 'right'"
+          [type]="type"
+          #input
+          placeholder="{{placeholder}}">
         <i
           *ngIf="icon"
           class="{{icon}} icon">
@@ -32,7 +40,7 @@ import {ViewContainerRef} from "@angular/core";
       </div>
     </div>`
 })
-export class SemanticInputComponent {
+export class SemanticInputComponent implements OnInit, OnDestroy {
   @Input() public class: string;
   @Input() public control: FormControl = new FormControl();
   @Input() public icon: string;
@@ -41,6 +49,30 @@ export class SemanticInputComponent {
   @Input() public placeholder: string;
   @Input() public type: string = "text";
   @Output() public onEnterKeyUp: EventEmitter<any> = new EventEmitter<any>();
+
+  public systemLanguage: Language;
+
+  private systemLanguageSubscription: Subscription;
+
+  public constructor(
+    private systemLanguagesResolver: SystemLanguagesResolver
+  ) {
+  }
+
+  public ngOnInit(): void {
+    this.initSystemLanguage()
+  }
+
+  private initSystemLanguage(): void {
+    this.systemLanguage = this.systemLanguagesResolver.getSelectedSystemLanguage();
+    this.systemLanguageSubscription = this.systemLanguagesResolver.getSystemLanguageChangeEmitter().subscribe(systemLanguage => {
+      this.systemLanguage = systemLanguage;
+    });
+  }
+
+  public ngOnDestroy(): void {
+    if (this.systemLanguageSubscription) { this.systemLanguageSubscription.unsubscribe(); }
+  }
 }
 
 @Component({
@@ -77,6 +109,7 @@ export class SemanticCheckboxComponent {
       [ngClass]="{error: (!control.valid && control.dirty) }"
       class="field">
       <label
+        [style.text-align]="systemLanguage.direction === 'ltr' ? 'left' : 'right'"
         *ngIf="label">
         {{label}}
       </label>
@@ -84,17 +117,43 @@ export class SemanticCheckboxComponent {
         (keyup.enter)="onEnterKeyUp.emit()"
         [formControl]="control"
         [placeholder]="placeholder"
+        [style.direction]="systemLanguage.direction"
+        [style.text-align]="systemLanguage.direction === 'ltr' ? 'left' : 'right'"
         [rows]="rows"
         autosize
         style="resize: none;">
       </textarea>
     </div>`
 })
-export class SemanticTextareaComponent {
+export class SemanticTextareaComponent implements OnInit, OnDestroy {
   @Input() public autofocus: boolean;
   @Input() public control: FormControl = new FormControl();
   @Input() public label: string;
   @Input() public placeholder: string;
   @Input() public rows: string;
   @Output() public onEnterKeyUp: EventEmitter<any> = new EventEmitter<any>();
+
+  public systemLanguage: Language;
+
+  private systemLanguageSubscription: Subscription;
+
+  public constructor(
+    private systemLanguagesResolver: SystemLanguagesResolver
+  ) {
+  }
+
+  public ngOnInit(): void {
+    this.initSystemLanguage()
+  }
+
+  private initSystemLanguage(): void {
+    this.systemLanguage = this.systemLanguagesResolver.getSelectedSystemLanguage();
+    this.systemLanguageSubscription = this.systemLanguagesResolver.getSystemLanguageChangeEmitter().subscribe(systemLanguage => {
+      this.systemLanguage = systemLanguage;
+    });
+  }
+
+  public ngOnDestroy(): void {
+    if (this.systemLanguageSubscription) { this.systemLanguageSubscription.unsubscribe(); }
+  }
 }

@@ -1,4 +1,3 @@
-import {ApiErrors} from '../../../models/api-models/api-errors/api-errors';
 import {Component} from '@angular/core';
 import {Input} from '@angular/core';
 import {Language} from '../../../models/api-models/language/language';
@@ -8,27 +7,19 @@ import {Subscription} from 'rxjs/Subscription';
 import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
 
 @Component({
-  selector: 'base-button',
-  styleUrls: ['./base-button.component.scss'],
+  selector: 'basic-text',
   template: `
-    <button
-      [disabled]="disabled"
-      [class.fluid]="fluid"
-      [ngClass]="[kind, size, 'btn']"
+    <div
       [style.direction]="systemLanguage.direction"
-      [type]="buttonType">
-      <i *ngIf="icon" class="icon {{icon}}"></i>
-      {{buttonText}}
-    </button>`
+      [style.text-align]="systemLanguage.direction === 'rtl' ? rtlTextAlignment : ltrTextAlignment"
+      [innerHTML]="text">
+    </div>
+    `
 })
-export class BaseButtonComponent implements OnInit, OnDestroy {
-  @Input() public buttonText: string = '';
-  @Input() public disabled: boolean = false;
-  @Input() public fluid: boolean;
-  @Input() public kind: string = 'primary'; // One of ['primary', 'primary-light', 'secondary', 'secondary-light', 'inactive-light', 'inactive-dark']
-  @Input() public icon: string;
-  @Input() public size: string = 'medium'; // One of ['xsmall', 'small', 'medium', 'large']
-  @Input() public buttonType: string = 'button'; // One of ['button', 'submit', 'reset']
+export class BasicTextComponent implements OnInit, OnDestroy {
+  @Input() public text: string = '';
+  @Input() public ltrTextAlignment: string = 'left';
+  @Input() public rtlTextAlignment: string = 'right';
 
   public systemLanguage: Language;
 
