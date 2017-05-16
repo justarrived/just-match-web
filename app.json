@@ -7,6 +7,10 @@
       "required": true,
       "value": "staging"
     },
+    "ENV_CONFIG": {
+      "required": true,
+      "value": "staging"
+    },
     "NPM_CONFIG_PRODUCTION": {
       "required": true,
       "value": "false"
