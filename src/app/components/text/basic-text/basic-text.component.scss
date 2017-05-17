@@ -1,0 +1,40 @@
+
+$text-font: 'Open Sans', sans-serif;
+
+.text {
+  font-family: $text-font;
+  line-height: 1.3em;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  -ms-word-break: break-all;
+  word-break: break-word;
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}
+
+
+.small {
+  font-size: 12px;
+}
+
+.medium {
+  font-size: 16px;
+}
+
+.large {
+  font-size: 20px;
+}
+
+.light {
+  font-weight: 300;
+}
+
+.normal {
+  font-weight: 500;
+}
+
+.bold {
+  font-weight: 700;
+}

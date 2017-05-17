@@ -9,12 +9,13 @@ import {Input} from '@angular/core';
     [closeable]="closeable"
     [icon]="icon">
     <div class="content">
-      <div class="header">
-        {{header}}
-      </div>
-      <p>
-        {{description}}
-      </p>
+      <basic-title-text
+        [text]="header"
+        fontSize="small"
+        marginTop="0"
+        marginBottom="0">
+      </basic-title-text>
+      <basic-text [text]="description"></basic-text>
     </div>
   </sm-message>`
 })

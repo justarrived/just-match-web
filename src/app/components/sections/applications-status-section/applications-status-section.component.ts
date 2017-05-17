@@ -24,9 +24,14 @@ import {yyyymmdd} from '../../../utils/date/date.util';
         [promise]="applications"
         class="inverted">
       </sm-loader>
-      <h2 class="underline-border-below underline-border-below-centered underline-border-below-pink">
-        {{'home.jobs.slider.user.jobs.title' | translate}}
-      </h2>
+      <basic-title-text
+        [text]="'home.jobs.slider.user.jobs.title' | translate"
+        [underlineBelow]="true"
+        fontSize="large"
+        ltrTextAlignment="center"
+        rtlTextAlignment="center"
+        underlineBelowColor="pink">
+      </basic-title-text>
       <div
         class="ui centered grid"
         style="margin: 20px 0">

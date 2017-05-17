@@ -3,7 +3,6 @@ import {Input} from '@angular/core';
 
 @Component({
   selector: 'form-section-title-text',
-  styleUrls: ['./form-section-title-text.component.scss'],
   template: `
     <div
       class="ui horizontal divider pink header"
