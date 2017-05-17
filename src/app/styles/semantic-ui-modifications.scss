@@ -76,7 +76,7 @@
 .ui.left.sidebar,
 .ui.right.sidebar {
   width: 375px;
-  @media screen and (max-width: $sm-device-width) {
+  @media screen and (max-width: $mobile-max-width) {
     width: 100%;
   }
 }
@@ -99,38 +99,43 @@
   z-index: 1002!important;
 }
 // Force icon sizes if specified
-i.mini.icon,
-i.mini.icons {
+.ui.mini.icon,
+.ui.mini.icons {
   font-size: 0.4em !important;
 }
 
-i.tiny.icon,
-i.tiny.icons {
+.ui.tiny.icon,
+.ui.tiny.icons {
   font-size: 0.5em !important;
 }
 
-i.small.icon,
-i.small.icons {
+.ui.small.icon,
+.ui.small.icons {
   font-size: 0.75em !important;
 }
 
-i.large.icon,
-i.large.icons {
+.ui.icon,
+.ui.icons {
+  font-size: 1em !important;
+}
+
+.ui.large.icon,
+.ui.large.icons {
   font-size: 1.5em !important;
 }
 
-i.big.icon,
-i.big.icons {
+.ui.big.icon,
+.ui.big.icons {
   font-size: 2em !important;
 }
 
-i.huge.icon,
-i.huge.icons {
+.ui.huge.icon,
+.ui.huge.icons {
   font-size: 4em !important;
 }
 
-i.massive.icon,
-i.massive.icons {
+.ui.massive.icon,
+.ui.massive.icons {
   font-size: 8em !important;
 }
 

@@ -10,9 +10,16 @@ import {Component} from '@angular/core';
     <div class="fourteen wide phone ten wide tablet eight wide computer column">
       <div class="contact-form-container">
         <div class="contact-form-description">
-          {{"contact.form.description" | translate}}
-          <br>
-          {{"contact.form.instruction" | translate}}
+          <basic-text
+            [text]="'contact.form.description'| translate"
+            textAlignmentLtr="center"
+            textAlignmentRtl="center">
+          </basic-text>
+          <basic-text
+            [text]="'contact.form.instruction'| translate"
+            textAlignmentLtr="center"
+            textAlignmentRtl="center">
+          </basic-text>
         </div>
 
         <div class="contact-form-icon-container">

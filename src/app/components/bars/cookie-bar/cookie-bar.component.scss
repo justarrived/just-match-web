@@ -6,14 +6,14 @@
   background: $color-blue-500;
   color: $white;
   padding: 20px 32px;
-  @media screen and (min-width: $sm-device-width) {
+  @media screen and (min-width: $mobile-max-width) {
     text-align: left;
   }
 
   .cookie-message-inner {
     max-width: 784px;
     margin: 0 auto;
-    @media screen and (min-width: $sm-device-width) {
+    @media screen and (min-width: $mobile-max-width) {
       display: flex;
     }
 
@@ -29,7 +29,7 @@
         &:hover {
           text-decoration: none;
         }
-        @media screen and (min-width: $sm-device-width) {
+        @media screen and (min-width: $mobile-max-width) {
           display: inline;
           margin: 0;
         }
@@ -37,7 +37,7 @@
     }
 
     .cookies-button {
-      @media screen and (min-width: $sm-device-width) {
+      @media screen and (min-width: $mobile-max-width) {
         margin: auto;
       }
     }

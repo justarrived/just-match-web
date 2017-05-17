@@ -12,9 +12,11 @@ import {Job} from '../../../models/api-models/job/job'
         [underlineBelow]="true"
         marginTop="0"
         fontSize="medium"
-        ltrTextAlignment="center"
-        rtlTextAlignment="center"
-        underlineBelowColor="pink">
+        textAlignmentLtr="center"
+        textAlignmentRtl="center"
+        underlineBelowColor="pink"
+        underlineBelowLtrAlignment="center"
+        underlineBelowRtlAlignment="center">
       </basic-title-text>
     </div>
     <comments-form

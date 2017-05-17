@@ -11,21 +11,23 @@ import {Job} from '../../../models/api-models/job/job'
         [text]="'job.location.section.header' | translate"
         [underlineBelow]="true"
         fontSize="medium"
-        ltrTextAlignment="center"
-        rtlTextAlignment="center"
-        underlineBelowColor="pink">
+        textAlignmentLtr="center"
+        textAlignmentRtl="center"
+        underlineBelowColor="pink"
+        underlineBelowLtrAlignment="center"
+        underlineBelowRtlAlignment="center">
       </basic-title-text>
       <basic-title-text
         [text]="job.fullStreetAddress"
         fontSize="tiny"
-        ltrTextAlignment="center"
-        rtlTextAlignment="center">
+        textAlignmentLtr="center"
+        textAlignmentRtl="center">
       </basic-title-text>
       <basic-title-text
         [text]="job.city"
         fontSize="tiny"
-        ltrTextAlignment="center"
-        rtlTextAlignment="center">
+        textAlignmentLtr="center"
+        textAlignmentRtl="center">
       </basic-title-text>
     </div>`
 })

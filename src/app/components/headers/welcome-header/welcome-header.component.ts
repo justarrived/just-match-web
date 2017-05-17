@@ -18,9 +18,14 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
       <div
         *ngIf="user"
         class="welcome-header-info-container welcome-header-info-container-logged-in">
-        <h2 class="welcome-header-info-title">
-          {{'home.header.logged.in.title'| translate: {username: user.firstName} }}
-        </h2>
+        <basic-title-text
+          [text]="'home.header.logged.in.title'| translate: {username: user.firstName}"
+          fontSize="large"
+          textAlignmentLtr="left"
+          textAlignmentLtrTablet="center"
+          textAlignmentRtl="left"
+          textAlignmentRtlTablet="center">
+        </basic-title-text>
         <div class="welcome-header-button-container">
           <base-button
             [buttonText]="'home.header.logged.in.profile.button' | translate"

@@ -9,14 +9,16 @@ import {Component} from '@angular/core';
         [text]="'home.partners.title' | translate"
         [underlineBelow]="true"
         fontSize="large"
-        ltrTextAlignment="center"
-        rtlTextAlignment="center"
-        underlineBelowColor="pink">
+        textAlignmentLtr="center"
+        textAlignmentRtl="center"
+        underlineBelowColor="pink"
+        underlineBelowLtrAlignment="center"
+        underlineBelowRtlAlignment="center">
       </basic-title-text>
       <basic-text
         [text]="'home.partners.description' | translate"
-        ltrTextAlignment="center"
-        rtlTextAlignment="center">
+        textAlignmentLtr="center"
+        textAlignmentRtl="center">
       </basic-text>
       <div class="ui centered grid">
         <a

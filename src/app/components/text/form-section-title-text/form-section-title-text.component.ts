@@ -7,18 +7,14 @@ import {Input} from '@angular/core';
     <div
       class="ui horizontal divider pink header"
       style="margin-top: 1rem">
-      <i
-        *ngIf="icon"
-        class="{{icon}} icon"
-        style="display: inline-block; padding: 0; margin-right: .75rem;">
-      </i>
       <basic-title-text
+        [iconLeft]="icon"
         [text]="text"
         display="inline-block"
         fontSize="small"
-        ltrTextAlignment="center"
+        textAlignmentLtr="center"
         marginTop="1rem"
-        rtlTextAlignment="center">
+        textAlignmentRtl="center">
       </basic-title-text>
     </div>`
 })

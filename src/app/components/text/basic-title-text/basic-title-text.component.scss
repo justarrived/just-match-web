@@ -1,4 +1,5 @@
 @import '../../../styles/colors';
+@import '../../../styles/dimensions';
 
 $title-font: 'museo', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 
@@ -34,23 +35,23 @@ $title-font: 'museo', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 .tiny {
-  font-size: 16px;
+  font-size: 16px !important;
 }
 
 .small {
-  font-size: 18px;
+  font-size: 18px !important;
 }
 
 .medium {
-  font-size: 24px;
+  font-size: 24px !important;
 }
 
 .large {
-  font-size: 36px;
+  font-size: 36px !important;
 }
 
 .huge {
-  font-size: 42px;
+  font-size: 42px !important;
 }
 
 .light {
@@ -65,6 +66,54 @@ $title-font: 'museo', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: 700;
 }
 
+.center {
+  text-align: center;
+}
+
+.left {
+  text-align: left;
+}
+
+.right {
+  text-align: right;
+}
+
+.tablet-center {
+  @media screen and (max-width: $tablet-max-width) {
+    text-align: center;
+  }
+}
+
+.tablet-left {
+  @media screen and (max-width: $tablet-max-width) {
+    text-align: left;
+  }
+}
+
+.tablet-right {
+  @media screen and (max-width: $tablet-max-width) {
+    text-align: right;
+  }
+}
+
+.mobile-center {
+  @media screen and (max-width: $mobile-max-width) {
+    text-align: center;
+  }
+}
+
+.mobile-left {
+  @media screen and (max-width: $mobile-max-width) {
+    text-align: left;
+  }
+}
+
+.mobile-right {
+  @media screen and (max-width: $mobile-max-width) {
+    text-align: right;
+  }
+}
+
 .underline-border-above {
   &:before {
     content: "";
@@ -73,21 +122,21 @@ $title-font: 'museo', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     display: block;
   }
 
-  &.underline-border-above-centered {
+  &.underline-border-above-center {
     &:before {
-      margin: 0 auto 0.6em;
+      margin: 0 auto .6em;
     }
   }
 
   &.underline-border-above-left {
     &:before {
-      margin: 0 0 0.6em;
+      margin: 0 auto .6em 0;
     }
   }
 
   &.underline-border-above-right {
     &:before {
-      margin: 0 0 0.6em auto;
+      margin: 0 0 .6em auto;
     }
   }
 
@@ -130,21 +179,21 @@ $title-font: 'museo', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     display: block;
   }
 
-  &.underline-border-below-centered {
+  &.underline-border-below-center {
     &:after {
-      margin: 0.6em auto 0;
+      margin: .6em auto 0;
     }
   }
 
   &.underline-border-below-left {
     &:after {
-      margin: 0.6em 0 0;
+      margin: .6em auto 0 0;
     }
   }
 
   &.underline-border-below-right {
     &:after {
-      margin: 0.6em 0 0 auto;
+      margin: .6em 0 0 auto;
     }
   }
 
@@ -175,6 +224,102 @@ $title-font: 'museo', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   &.underline-border-below-white {
     &:after {
       background: $white;
+    }
+  }
+
+  &.underline-border-below-tablet-center {
+    &:after {
+      @media screen and (max-width: $tablet-max-width) {
+        margin: .6em auto 0;
+      }
+    }
+  }
+
+  &.underline-border-below-tablet-left {
+    &:after {
+      @media screen and (max-width: $tablet-max-width) {
+        margin: .6em auto 0 0;
+      }
+    }
+  }
+
+  &.underline-border-below-tablet-right {
+    &:after {
+      @media screen and (max-width: $tablet-max-width) {
+        margin: .6em 0 0 auto;
+      }
+    }
+  }
+
+  &.underline-border-above-tablet-center {
+    &:after {
+      @media screen and (max-width: $tablet-max-width) {
+        margin: 0 auto .6em;
+      }
+    }
+  }
+
+  &.underline-border-above-tablet-left {
+    &:after {
+      @media screen and (max-width: $tablet-max-width) {
+        margin: 0 auto .6em 0;
+      }
+    }
+  }
+
+  &.underline-border-above-tablet-right {
+    &:after {
+      @media screen and (max-width: $tablet-max-width) {
+        margin: 0 0 .6em auto;
+      }
+    }
+  }
+
+  &.underline-border-below-mobile-center {
+    &:after {
+      @media screen and (max-width: $mobile-max-width) {
+        margin: .6em auto 0;
+      }
+    }
+  }
+
+  &.underline-border-below-mobile-left {
+    &:after {
+      @media screen and (max-width: $mobile-max-width) {
+        margin: .6em auto 0 0;
+      }
+    }
+  }
+
+  &.underline-border-below-mobile-right {
+    &:after {
+      @media screen and (max-width: $mobile-max-width) {
+        margin: .6em 0 0 auto;
+      }
+    }
+  }
+
+  &.underline-border-above-mobile-center {
+    &:after {
+      @media screen and (max-width: $mobile-max-width) {
+        margin: 0 auto .6em;
+      }
+    }
+  }
+
+  &.underline-border-above-mobile-left {
+    &:after {
+      @media screen and (max-width: $mobile-max-width) {
+        margin: 0 auto .6em 0;
+      }
+    }
+  }
+
+  &.underline-border-above-mobile-right {
+    &:after {
+      @media screen and (max-width: $mobile-max-width) {
+        margin: 0 0 .6em auto;
+      }
     }
   }
 }

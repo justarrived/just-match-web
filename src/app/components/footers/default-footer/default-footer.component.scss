@@ -9,7 +9,7 @@
 
 .footer-mail,
 .footer-name {
-  @media screen and (max-width: $sm-device-width) {
+  @media screen and (max-width: $mobile-max-width) {
     text-align: center !important;
   }
 }

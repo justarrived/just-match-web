@@ -7,8 +7,14 @@ import {Input} from '@angular/core';
   template: `
   <div class="ui basic center aligned segment basic-border-header-container">
     <h2 class="ui inverted header">
-      <i *ngIf="icon" class="{{icon}} icon"></i>
-      {{header}}
+      <basic-title-text
+        [iconLeft]="icon"
+        [text]="header"
+        fontSize="large"
+        marginTop="1rem"
+        textAlignmentLtr="center"
+        textAlignmentRtl="center">
+      </basic-title-text>
     </h2>
   </div>`
 })

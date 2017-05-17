@@ -10,10 +10,12 @@ import {Job} from '../../../models/api-models/job/job'
         [text]="'job.information.section.header' | translate"
         [underlineBelow]="true"
         fontSize="large"
-        ltrTextAlignment="center"
+        textAlignmentLtr="center"
         marginTop="0"
-        rtlTextAlignment="center"
-        underlineBelowColor="pink">
+        textAlignmentRtl="center"
+        underlineBelowColor="pink"
+        underlineBelowLtrAlignment="center"
+        underlineBelowRtlAlignment="center">
       </basic-title-text>
     </div>
     <div
@@ -27,8 +29,8 @@ import {Job} from '../../../models/api-models/job/job'
           <basic-title-text
             [text]="job?.company?.name"
             fontSize="tiny"
-            ltrTextAlignment="center"
-            rtlTextAlignment="center">
+            textAlignmentLtr="center"
+            textAlignmentRtl="center">
           </basic-title-text>
         </div>
         <div
@@ -38,27 +40,27 @@ import {Job} from '../../../models/api-models/job/job'
           <basic-title-text
             [text]="job.jobDate | date: 'MMM dd'"
             fontSize="tiny"
-            ltrTextAlignment="center"
+            textAlignmentLtr="center"
             marginBottom="0"
-            rtlTextAlignment="center">
+            textAlignmentRtl="center">
           </basic-title-text>
           <basic-title-text
             [text]="'-'"
             *ngIf="job.jobEndDate"
             fontSize="tiny"
-            ltrTextAlignment="center"
+            textAlignmentLtr="center"
             marginBottom="0"
             marginTop="0"
-            rtlTextAlignment="center">
+            textAlignmentRtl="center">
           </basic-title-text>
           <basic-title-text
             [text]="job.jobEndDate | date: 'MMM dd'"
             *ngIf="job.jobEndDate"
             fontSize="tiny"
-            ltrTextAlignment="center"
+            textAlignmentLtr="center"
             marginBottom="0"
             marginTop="0"
-            rtlTextAlignment="center">
+            textAlignmentRtl="center">
           </basic-title-text>
         </div>
         <div
@@ -68,8 +70,8 @@ import {Job} from '../../../models/api-models/job/job'
           <basic-title-text
             [text]="job.hourlyPay.grossSalaryWithUnit"
             fontSize="tiny"
-            ltrTextAlignment="center"
-            rtlTextAlignment="center">
+            textAlignmentLtr="center"
+            textAlignmentRtl="center">
           </basic-title-text>
         </div>
       </div>

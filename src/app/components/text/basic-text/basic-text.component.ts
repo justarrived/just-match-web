@@ -21,7 +21,9 @@ import {SystemLanguagesResolver} from '../../../resolvers/system-languages/syste
       [innerHTML]="text"
       [style.direction]="systemLanguage.direction"
       [style.display]="display"
-      [style.text-align]="systemLanguage.direction === 'rtl' ? rtlTextAlignment : ltrTextAlignment">
+      [style.margin-bottom]="marginBottom"
+      [style.margin-top]="marginTop"
+      [style.text-align]="systemLanguage.direction === 'rtl' ? textAlignmentRtl : textAlignmentLtr">
     </div>
     `
 })
@@ -29,9 +31,11 @@ export class BasicTextComponent implements OnInit, OnDestroy {
   @Input() public display: string = 'block';
   @Input() public fontSize: string = 'medium'; // Should be one of 'small', 'medium', 'large'.
   @Input() public fontWeight: string = 'normal'; // Should be one of 'light', 'normal', 'bold'.
-  @Input() public ltrTextAlignment: string = 'left';
-  @Input() public rtlTextAlignment: string = 'right';
+  @Input() public marginBottom: string = '1rem';
+  @Input() public marginTop: string = '0';
   @Input() public text: string = '';
+  @Input() public textAlignmentLtr: string = 'left';
+  @Input() public textAlignmentRtl: string = 'right';
 
   public systemLanguage: Language;
 

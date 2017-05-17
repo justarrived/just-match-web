@@ -23,8 +23,8 @@ import {ViewContainerRef} from "@angular/core";
         {{label}}
       </label>
       <div
-        class="ui input {{class}}"
-        [ngClass]="{'icon': icon}">
+        class="ui input"
+        [ngClass]="{'left': icon && systemLanguage.direction === 'ltr', 'right': icon && systemLanguage.direction === 'rtl', 'icon': icon}">
         <input
           (keyup.enter)="onEnterKeyUp.emit()"
           [formControl]="control"
@@ -41,7 +41,6 @@ import {ViewContainerRef} from "@angular/core";
     </div>`
 })
 export class SemanticInputComponent implements OnInit, OnDestroy {
-  @Input() public class: string;
   @Input() public control: FormControl = new FormControl();
   @Input() public icon: string;
   @Input() public label: string;

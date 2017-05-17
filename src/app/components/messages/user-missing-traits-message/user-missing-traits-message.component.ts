@@ -19,12 +19,17 @@ import {ViewChild} from '@angular/core';
     [style.display]="userMissingTraitsNextFormComponent?.missingUserTraitsKeys?.length > 0 ? 'block' : 'none'"
     *ngIf="user && !suspended">
     <div class="ui basic center aligned segment">
-      <h2>
-        {{'user.missing.traits.message.header' | translate}}
-      </h2>
-      <p>
-        {{'user.missing.traits.message.description' | translate}}
-      </p>
+      <basic-title-text
+        [text]="'user.missing.traits.message.header' | translate"
+        fontSize="large"
+        textAlignmentLtr="center"
+        textAlignmentRtl="center">
+      </basic-title-text>
+      <basic-text
+        [text]="'user.missing.traits.message.description' | translate"
+        textAlignmentLtr="center"
+        textAlignmentRtl="center">
+      </basic-text>
       <div class="ui centered grid">
         <div class="sixteen wide phone ten wide tablet eight wide computer column">
           <user-missing-traits-next-form

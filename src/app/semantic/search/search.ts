@@ -7,14 +7,19 @@ import {EventEmitter} from "@angular/core";
 import {FormControl} from "@angular/forms";
 import {Input} from "@angular/core";
 import {Output} from "@angular/core";
+import {Language} from '../../models/api-models/language/language';
+import {OnDestroy} from '@angular/core';
+import {OnInit} from "@angular/core";
+import {Subscription} from 'rxjs/Subscription';
+import {SystemLanguagesResolver} from '../../resolvers/system-languages/system-languages.resolver';
 
 @Component({
-  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: "sm-search",
   template: `
     <div
       class="field">
       <label
+        [style.text-align]="systemLanguage.direction === 'ltr' ? 'left' : 'right'"
         *ngIf="label">
         {{label}}
       </label>
@@ -22,10 +27,13 @@ import {Output} from "@angular/core";
         [ngClass]="{'loading': loading}"
         class="ui search">
         <div
-          class="ui icon input {{class}} ">
+          class="ui input "
+          [ngClass]="{'left': icon && systemLanguage.direction === 'ltr', 'right': icon && systemLanguage.direction === 'rtl', 'icon': icon}">
           <input
             [attr.placeholder]="placeholder"
             [formControl]="searchControl"
+            [style.direction]="systemLanguage.direction"
+            [style.text-align]="systemLanguage.direction === 'ltr' ? 'left' : 'right'"
             class="prompt"
             type="text">
           <i
@@ -37,8 +45,7 @@ import {Output} from "@angular/core";
       </div>
     </div>`
 })
-export class SemanticSearchComponent implements AfterViewInit {
-  @Input() public class: string;
+export class SemanticSearchComponent implements OnInit, OnDestroy, AfterViewInit {
   @Input() public icon: boolean;
   @Input() public label: string;
   @Input() public loading: boolean;
@@ -48,11 +55,35 @@ export class SemanticSearchComponent implements AfterViewInit {
 
   public searchControl: FormControl = new FormControl();
 
+  public systemLanguage: Language;
+
+  private systemLanguageSubscription: Subscription;
+
+  public constructor(
+    private systemLanguagesResolver: SystemLanguagesResolver
+  ) {
+  }
+
+  public ngOnInit(): void {
+    this.initSystemLanguage()
+  }
+
+  private initSystemLanguage(): void {
+    this.systemLanguage = this.systemLanguagesResolver.getSelectedSystemLanguage();
+    this.systemLanguageSubscription = this.systemLanguagesResolver.getSystemLanguageChangeEmitter().subscribe(systemLanguage => {
+      this.systemLanguage = systemLanguage;
+    });
+  }
+
   public ngAfterViewInit(): void {
     this.searchControl
       .valueChanges
       .distinctUntilChanged()
       .debounceTime(this.searchFrequency)
       .subscribe((data: string) => this.onSearch.emit(data));
+  }
+
+  public ngOnDestroy(): void {
+    if (this.systemLanguageSubscription) { this.systemLanguageSubscription.unsubscribe(); }
   }
 }

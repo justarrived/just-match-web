@@ -30,8 +30,8 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
       <basic-title-text
         [text]="job.translatedText.name"
         fontSize="huge"
-        ltrTextAlignment="center"
-        rtlTextAlignment="center">
+        textAlignmentLtr="center"
+        textAlignmentRtl="center">
       </basic-title-text>
       <base-button
         (click)="onApplyForJobButtonClick()"

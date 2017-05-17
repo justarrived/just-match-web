@@ -28,9 +28,11 @@ import {yyyymmdd} from '../../../utils/date/date.util';
         [text]="'home.jobs.slider.user.jobs.title' | translate"
         [underlineBelow]="true"
         fontSize="large"
-        ltrTextAlignment="center"
-        rtlTextAlignment="center"
-        underlineBelowColor="pink">
+        textAlignmentLtr="center"
+        textAlignmentRtl="center"
+        underlineBelowColor="pink"
+        underlineBelowLtrAlignment="center"
+        underlineBelowRtlAlignment="center">
       </basic-title-text>
       <div
         class="ui centered grid"

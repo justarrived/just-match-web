@@ -29,9 +29,11 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
         [text]="job.translatedText.name"
         [underlineBelow]="true"
         fontSize="medium"
-        ltrTextAlignment="center"
-        rtlTextAlignment="center"
-        underlineBelowColor="pink">
+        textAlignmentLtr="center"
+        textAlignmentRtl="center"
+        underlineBelowColor="pink"
+        underlineBelowLtrAlignment="center"
+        underlineBelowRtlAlignment="center">
       </basic-title-text>
       <base-button
         (click)="onApplyForJobButtonClick()"
