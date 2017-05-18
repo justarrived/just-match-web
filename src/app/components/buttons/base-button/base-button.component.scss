@@ -1,12 +1,14 @@
 @import '../../../styles/colors';
 @import '../../../styles/typography';
 
+$button-font: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;
+
 // GENERAL
 .btn {
   border-radius: 30px;
   border: 2px solid;
-  font-family: $default-font-family;
-  font-weight: 700;
+  font-family: $button-font;
+  font-weight: 500;
   line-height: 2.3;
   margin: 15px 0;
   outline:none !important;
@@ -24,7 +26,7 @@
   width: 100%;
 }
 // SIZE
-.btn.xsmall {
+.btn.tiny {
   font-size: $fs-s;
   padding: 0 10px;
   min-width: 100px;
@@ -44,6 +46,12 @@
 }
 
 .btn.large {
+  font-size: $fs-l0;
+  padding: 8px 35px;
+  min-width: 180px;
+}
+
+.btn.huge {
   font-size: $fs-l0;
   padding: 8px 35px;
   min-width: 180px;

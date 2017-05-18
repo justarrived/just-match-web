@@ -20,14 +20,19 @@ import {ViewChild} from '@angular/core';
     class="right vertical inverted">
     <div class="language-menu-container">
       <div class="ui grid language-menu-logo-container">
-          <div class="eight wide column language-menu-logo-container-logo">
-              <img
-                alt="Just Arrived"
-                src="apple-touch-icon.ico"/>
-          </div>
-          <div class="eight wide column language-menu-logo-container-text">
-              <h4>{{'menu.language.title' | translate}}</h4>
-          </div>
+        <div class="eight wide column language-menu-logo-container-logo">
+          <img
+            alt="Just Arrived"
+            src="apple-touch-icon.ico"/>
+        </div>
+        <div class="eight wide column language-menu-logo-container-text">
+          <basic-title-text
+            [text]="'menu.language.title' | translate"
+            fontSize="small"
+            textAlignmentLtr="center"
+            textAlignmentRtl="center">
+          </basic-title-text>
+        </div>
       </div>
 
       <div class="language-menu-languages-container">
@@ -38,7 +43,15 @@ import {ViewChild} from '@angular/core';
           <div
             [ngClass]="{'language-menu-language-name-active':isActiveSystemLanguage(language)}"
             class="thirteen wide column language-menu-language-name">
-            {{language.localName}}
+            <basic-link
+              [text]="language.localName"
+              [color]="isActiveSystemLanguage(language) ? 'pink' : 'gray'"
+              hoverColor="pink"
+              marginBottom="0"
+              marginTop="0"
+              textAlignmentLtr="left"
+              textAlignmentRtl="left">
+            </basic-link>
           </div>
           <div class="three wide column language-menu-language-checkmark">
             <i
@@ -51,28 +64,31 @@ import {ViewChild} from '@angular/core';
       </div>
 
       <div class="language-menu-information-container">
-        <p>{{'menu.language.text_1' | translate}}</p>
-        <p>{{'menu.language.text_2' | translate}}</p>
+        <basic-text
+          [text]="'menu.language.text_1' | translate"
+          fontSize="small"
+          textAlignmentLtr="center"
+          textAlignmentRtl="center">
+        </basic-text>
+        <basic-text
+          [text]="'menu.language.text_2' | translate"
+          fontSize="small"
+          textAlignmentLtr="center"
+          textAlignmentRtl="center">
+        </basic-text>
       </div>
 
       <div class="language-menu-credentials-container">
-        <p>{{'menu.language.translation_by_probono' | translate}}:</p>
+        <basic-text
+          [text]="'menu.language.translation_by_probono' | translate"
+          fontSize="small"
+          textAlignmentLtr="center"
+          textAlignmentRtl="center">
+        </basic-text>
         <img
           alt="Semantix"
           class="language-menu-credentials-container-image"
           src="/assets/images/semantix.png"/>
-      </div>
-
-      <div class="language-menu-contributers-wrapper ui equal width grid">
-          <div class="column language-menu-contributers-text">
-            Farshid Fadaee
-          </div>
-          <div class="column language-menu-contributers-text">
-            Nick Chipperfield
-          </div>
-          <div class="column language-menu-contributers-text">
-            Hans-Erik Täpp
-          </div>
       </div>
     </div>
   </sm-sidebar>

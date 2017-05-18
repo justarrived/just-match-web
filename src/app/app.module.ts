@@ -27,6 +27,7 @@ import {BasicSearchComponent} from './components/search/basic-search/basic-searc
 import {BasicTabComponent} from './components/tabs/basic-tab/basic-tab.component';
 import {BasicTabsComponent} from './components/tabs/basic-tabs/basic-tabs.component';
 import {BasicTextComponent} from './components/text/basic-text/basic-text.component';
+import {BasicLinkComponent} from './components/links/basic-link/basic-link.component';
 import {BasicTitleTextComponent} from './components/text/basic-title-text/basic-title-text.component';
 import {BrowserModule} from '@angular/platform-browser';
 import {ChatMessageInputComponent} from './components/inputs/chat-message-input/chat-message-input.component';
@@ -255,6 +256,7 @@ export class RavenErrorHandler implements ErrorHandler {
     BasicTabComponent,
     BasicTabsComponent,
     BasicTextComponent,
+    BasicLinkComponent,
     BasicTitleTextComponent,
     ChatMessageInputComponent,
     CircularIconBaseButtonComponent,

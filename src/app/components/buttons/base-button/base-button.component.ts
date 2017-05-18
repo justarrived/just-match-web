@@ -27,7 +27,7 @@ export class BaseButtonComponent implements OnInit, OnDestroy {
   @Input() public fluid: boolean;
   @Input() public kind: string = 'primary'; // One of ['primary', 'primary-light', 'secondary', 'secondary-light', 'inactive-light', 'inactive-dark']
   @Input() public icon: string;
-  @Input() public size: string = 'medium'; // One of ['xsmall', 'small', 'medium', 'large']
+  @Input() public size: string = 'medium'; // One of ['tiny', 'small', 'medium', 'large']
   @Input() public buttonType: string = 'button'; // One of ['button', 'submit', 'reset']
 
   public systemLanguage: Language;

@@ -7,21 +7,27 @@ import {Subscription} from 'rxjs/Subscription';
 import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
 
 @Component({
-  selector: 'basic-text',
-  styleUrls: ['./basic-text.component.scss'],
+  selector: 'basic-link',
+  styleUrls: ['./basic-link.component.scss'],
   template: `
-    <div
-      [class.bold]="fontWeight === 'bold'"
-      [class.large]="fontSize === 'large'"
-      [class.light]="fontWeight === 'light'"
-      [class.medium]="fontSize === 'medium'"
-      [class.normal]="fontWeight === 'normal'"
-      [class.small]="fontSize === 'small'"
-      [class.text]="true"
+    <a
+      [attr.data-hover]="text"
+      [href]="href"
+      [class.pink]="fontSize === 'small'"
+      [innerHTML]="text"
+      [class.hover-black]="hoverColor === 'black'"
+      [class.hover-gray]="hoverColor === 'gray'"
+      [class.hover-white]="hoverColor === 'white'"
+      [class.hover-pink]="hoverColor === 'pink'"
+      [class.cl-effect-1]="'true'"
       [class.gray]="color === 'gray'"
       [class.black]="color === 'black'"
       [class.white]="color === 'white'"
       [class.pink]="color === 'pink'"
+      [class.bold]="fontWeight === 'bold'"
+      [class.large]="fontSize === 'large'"
+      [class.light]="fontWeight === 'light'"
+      [class.medium]="fontSize === 'medium'"
       [class.mobile-center]="systemLanguage.direction === 'rtl' && textAlignmentRtlMobile === 'center' || systemLanguage.direction === 'ltr' && textAlignmentLtrMobile === 'center'"
       [class.mobile-left]="systemLanguage.direction === 'rtl' && textAlignmentRtlMobile === 'left' || systemLanguage.direction === 'ltr' && textAlignmentLtrMobile === 'left'"
       [class.mobile-right]="systemLanguage.direction === 'rtl' && textAlignmentRtlMobile === 'right' || systemLanguage.direction === 'ltr' && textAlignmentLtrMobile === 'right'"
@@ -31,21 +37,29 @@ import {SystemLanguagesResolver} from '../../../resolvers/system-languages/syste
       [class.tablet-center]="systemLanguage.direction === 'rtl' && textAlignmentRtlTablet === 'center' || systemLanguage.direction === 'ltr' && textAlignmentLtrTablet === 'center'"
       [class.tablet-left]="systemLanguage.direction === 'rtl' && textAlignmentRtlTablet === 'left' || systemLanguage.direction === 'ltr' && textAlignmentLtrTablet === 'left'"
       [class.tablet-right]="systemLanguage.direction === 'rtl' && textAlignmentRtlTablet === 'right' || systemLanguage.direction === 'ltr' && textAlignmentLtrTablet === 'right'"
-      [innerHTML]="text"
+      [class.normal]="fontWeight === 'normal'"
+      [class.small]="fontSize === 'small'"
+      [class.link]="true"
+      [routerLink]="routerLink"
       [style.direction]="systemLanguage.direction"
       [style.display]="display"
       [style.margin-bottom]="marginBottom"
-      [style.margin-top]="marginTop">
-    </div>
+      [style.margin-top]="marginTop"
+      [style.text-decoration]="underline ? 'underline' : 'none'">
+    </a>
     `
 })
-export class BasicTextComponent implements OnInit, OnDestroy {
-  @Input() public color: string;
+export class BasicLinkComponent implements OnInit, OnDestroy {
+  @Input() public routerLink: string;
+  @Input() public href: string;
+  @Input() public underline: boolean = false;
+  @Input() public hoverColor: string = 'pink';
+  @Input() public color: string = 'black';
   @Input() public display: string = 'block';
   @Input() public fontSize: string = 'medium'; // Should be one of 'small', 'medium', 'large'.
   @Input() public fontWeight: string = 'normal'; // Should be one of 'light', 'normal', 'bold'.
   @Input() public marginBottom: string = '1rem';
-  @Input() public marginTop: string = '0';
+  @Input() public marginTop: string = '1rem';
   @Input() public text: string = '';
   @Input() public textAlignmentLtr: string = 'left'; // Should be one of 'left', 'center', 'right'.
   @Input() public textAlignmentLtrMobile: string; // Should be one of undefined, 'left', 'center', 'right'.

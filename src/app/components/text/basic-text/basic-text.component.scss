@@ -1,9 +1,11 @@
+@import '../../../styles/colors';
+@import '../../../styles/dimensions';
 
-$text-font: 'Open Sans', sans-serif;
+$text-font: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;
 
 .text {
   font-family: $text-font;
-  line-height: 1.3em;
+  line-height: 1.5;
   overflow-wrap: break-word;
   word-wrap: break-word;
   -ms-word-break: break-all;
@@ -12,6 +14,8 @@ $text-font: 'Open Sans', sans-serif;
   -moz-hyphens: auto;
   -webkit-hyphens: auto;
   hyphens: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 
@@ -37,4 +41,68 @@ $text-font: 'Open Sans', sans-serif;
 
 .bold {
   font-weight: 700;
+}
+
+.white {
+  color: $white;
+}
+
+.black {
+  color: $black;
+}
+
+.pink {
+  color: $color-cerise-500;
+}
+
+.gray {
+  color: $color-gray-300;
+}
+
+.center {
+  text-align: center;
+}
+
+.left {
+  text-align: left;
+}
+
+.right {
+  text-align: right;
+}
+
+.tablet-center {
+  @media screen and (max-width: $tablet-max-width) {
+    text-align: center;
+  }
+}
+
+.tablet-left {
+  @media screen and (max-width: $tablet-max-width) {
+    text-align: left;
+  }
+}
+
+.tablet-right {
+  @media screen and (max-width: $tablet-max-width) {
+    text-align: right;
+  }
+}
+
+.mobile-center {
+  @media screen and (max-width: $mobile-max-width) {
+    text-align: center;
+  }
+}
+
+.mobile-left {
+  @media screen and (max-width: $mobile-max-width) {
+    text-align: left;
+  }
+}
+
+.mobile-right {
+  @media screen and (max-width: $mobile-max-width) {
+    text-align: right;
+  }
 }

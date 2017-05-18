@@ -37,79 +37,144 @@ import {ViewChild} from '@angular/core';
 
       <div class="navigation-menu-links-container">
 
-        <a
+        <basic-link
+          [text]="'menu.main.home' | translate"
+          [color]="'gray'"
+          [routerLink]="JARoutes.home.url()"
           class="navigation-menu-item"
-          [routerLink]="JARoutes.home.url()">
-          {{'menu.main.home' | translate}}
-        </a>
+          hoverColor="pink"
+          marginBottom="0"
+          marginTop="0"
+          textAlignmentLtr="center"
+          textAlignmentRtl="center">
+        </basic-link>
 
-        <a
+        <basic-link
+          [text]="'menu.main.god.mode' | translate"
+          [color]="'gray'"
+          [routerLink]="JARoutes.godMode.url()"
           *ngIf="admin"
           class="navigation-menu-item"
-          [routerLink]="JARoutes.godMode.url()">
-          {{'menu.main.god.mode' | translate}}
-        </a>
+          hoverColor="pink"
+          marginBottom="0"
+          marginTop="0"
+          textAlignmentLtr="center"
+          textAlignmentRtl="center">
+        </basic-link>
 
-        <a
+        <basic-link
+          [text]="'menu.main.my_assignment' | translate"
+          [color]="'gray'"
+          [routerLink]="JARoutes.applications.url()"
           *ngIf="user"
           class="navigation-menu-item"
-          [routerLink]="JARoutes.applications.url()">
-          {{'menu.main.my_assignment' | translate}}
-        </a>
+          hoverColor="pink"
+          marginBottom="0"
+          marginTop="0"
+          textAlignmentLtr="center"
+          textAlignmentRtl="center">
+        </basic-link>
 
-        <a
+        <basic-link
+          [text]="'menu.main.find_assignment' | translate"
+          [color]="'gray'"
+          [routerLink]="JARoutes.jobs.url(['1'])"
           class="navigation-menu-item"
-          [routerLink]="JARoutes.jobs.url(['1'])">
-          {{'menu.main.find_assignment' | translate}}
-        </a>
+          hoverColor="pink"
+          marginBottom="0"
+          marginTop="0"
+          textAlignmentLtr="center"
+          textAlignmentRtl="center">
+        </basic-link>
 
-        <a
+        <basic-link
+          [text]="'menu.main.profile' | translate"
+          [color]="'gray'"
+          [routerLink]="JARoutes.user.url()"
           *ngIf="user"
           class="navigation-menu-item"
-          [routerLink]="JARoutes.user.url()">
-          {{'menu.main.profile' | translate}}
-        </a>
+          hoverColor="pink"
+          marginBottom="0"
+          marginTop="0"
+          textAlignmentLtr="center"
+          textAlignmentRtl="center">
+        </basic-link>
 
-        <a
+        <basic-link
+          [text]="'menu.main.faq' | translate"
+          [color]="'gray'"
+          [routerLink]="JARoutes.faq.url()"
           class="navigation-menu-item"
-          [routerLink]="JARoutes.faq.url()">
-          {{'menu.main.faq' | translate}}
-        </a>
+          hoverColor="pink"
+          marginBottom="0"
+          marginTop="0"
+          textAlignmentLtr="center"
+          textAlignmentRtl="center">
+        </basic-link>
 
-        <a
+        <basic-link
+          [text]="'menu.main.contact' | translate"
+          [color]="'gray'"
+          [routerLink]="JARoutes.contact.url()"
           class="navigation-menu-item"
-          [routerLink]="JARoutes.contact.url()">
-          {{'menu.main.contact' | translate}}
-        </a>
+          hoverColor="pink"
+          marginBottom="0"
+          marginTop="0"
+          textAlignmentLtr="center"
+          textAlignmentRtl="center">
+        </basic-link>
 
-        <a
+        <basic-link
+          [text]="'menu.main.support.chat' | translate"
+          [color]="'gray'"
           [routerLink]="JARoutes.supportChat.url()"
           *ngIf="user"
-          class="navigation-menu-item">
-          {{'menu.main.support.chat' | translate}}
-        </a>
+          class="navigation-menu-item"
+          hoverColor="pink"
+          marginBottom="0"
+          marginTop="0"
+          textAlignmentLtr="center"
+          textAlignmentRtl="center">
+        </basic-link>
 
-        <a
+        <basic-link
+          [text]="'menu.main.login' | translate"
+          [color]="'gray'"
+          [routerLink]="JARoutes.login.url()"
           *ngIf="!user"
           class="navigation-menu-item"
-          [routerLink]="JARoutes.login.url()">
-          {{'menu.main.login' | translate}}
-        </a>
+          hoverColor="pink"
+          marginBottom="0"
+          marginTop="0"
+          textAlignmentLtr="center"
+          textAlignmentRtl="center">
+        </basic-link>
 
-        <a
+        <basic-link
           (click)="onStaffingTimeReportLinkClick()"
-          *ngIf="user && (user.justArrivedStaffing || user.admin);"
+          [text]="'menu.main.staffing_time_report' | translate"
+          [color]="'gray'"
+          *ngIf="user && (user.justArrivedStaffing || user.admin)"
           class="navigation-menu-item"
-          href="#">
-          {{'menu.main.staffing_time_report' | translate}}
-        </a>
+          hoverColor="pink"
+          marginBottom="0"
+          marginTop="0"
+          textAlignmentLtr="center"
+          textAlignmentRtl="center">
+        </basic-link>
 
-        <a
+        <basic-link
           (click)="onLogoutButtonClick()"
+          [text]="'menu.main.logout' | translate"
+          [color]="'gray'"
           *ngIf="user"
-          class="navigation-menu-item">
-          {{'menu.main.logout' | translate}}
-        </a>
+          class="navigation-menu-item"
+          hoverColor="pink"
+          marginBottom="0"
+          marginTop="0"
+          textAlignmentLtr="center"
+          textAlignmentRtl="center">
+        </basic-link>
 
         <div class="navigation-menu-user-container ui basic segment">
           <div
@@ -119,7 +184,12 @@ import {ViewChild} from '@angular/core';
             <img
               class="ui centered tiny circular image"
               [src]="this.user.profileImage?.imageUrlMedium || '/assets/images/placeholder-profile-image.png'">
-            <h4>{{user.name}}</h4>
+              <basic-title-text
+                [text]="user.name"
+                fontSize="small"
+                textAlignmentLtr="center"
+                textAlignmentRtl="center">
+              </basic-title-text>
           </div>
 
           <div

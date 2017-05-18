@@ -1,0 +1,168 @@
+@import '../../../styles/colors';
+@import '../../../styles/dimensions';
+
+$link-font: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;
+
+.link {
+  position: relative;
+  font-family: $link-font;
+  line-height: 1.5;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  -ms-word-break: break-all;
+  word-break: break-word;
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.small {
+  font-size: 12px;
+}
+
+.medium {
+  font-size: 16px;
+}
+
+.large {
+  font-size: 20px;
+}
+
+.light {
+  font-weight: 300;
+}
+
+.normal {
+  font-weight: 500;
+}
+
+.bold {
+  font-weight: 700;
+}
+
+center {
+  text-align: center;
+}
+
+.left {
+  text-align: left;
+}
+
+.right {
+  text-align: right;
+}
+
+.tablet-center {
+  @media screen and (max-width: $tablet-max-width) {
+    text-align: center;
+  }
+}
+
+.tablet-left {
+  @media screen and (max-width: $tablet-max-width) {
+    text-align: left;
+  }
+}
+
+.tablet-right {
+  @media screen and (max-width: $tablet-max-width) {
+    text-align: right;
+  }
+}
+
+.mobile-center {
+  @media screen and (max-width: $mobile-max-width) {
+    text-align: center;
+  }
+}
+
+.mobile-left {
+  @media screen and (max-width: $mobile-max-width) {
+    text-align: left;
+  }
+}
+
+.mobile-right {
+  @media screen and (max-width: $mobile-max-width) {
+    text-align: right;
+  }
+}
+
+.white {
+  color: $white;
+}
+
+.black {
+  color: $black;
+}
+
+.pink {
+  color: $color-cerise-500;
+}
+
+.gray {
+  color: $color-gray-300;
+}
+
+.hover-white {
+  &:hover {
+    color: $white;
+  }
+}
+
+.hover-black {
+  &:hover {
+    color: $black;
+  }
+}
+
+.hover-pink {
+  &:hover {
+    color: $color-cerise-500;
+  }
+}
+
+.hover-gray {
+  &:hover {
+    color: $color-gray-300;
+  }
+}
+
+/* Effect: Brackets */
+.link::before,
+.link::after {
+	display: inline-block;
+	opacity: 0;
+	-webkit-transition: -webkit-transform 0.3s, opacity 0.2s;
+	-moz-transition: -moz-transform 0.3s, opacity 0.2s;
+	transition: transform 0.3s, opacity 0.2s;
+}
+
+.link::before {
+	margin-right: 10px;
+	content: '-';
+	-webkit-transform: translateX(20px);
+	-moz-transform: translateX(20px);
+	transform: translateX(20px);
+}
+
+.link::after {
+	margin-left: 10px;
+	content: '-';
+	-webkit-transform: translateX(-20px);
+	-moz-transform: translateX(-20px);
+	transform: translateX(-20px);
+}
+
+.link:hover::before,
+.link:hover::after,
+.link:focus::before,
+.link:focus::after {
+	opacity: 1;
+	-webkit-transform: translateX(0px);
+	-moz-transform: translateX(0px);
+	transform: translateX(0px);
+}

@@ -28,6 +28,10 @@ import {SystemLanguagesResolver} from '../../../resolvers/system-languages/syste
       [class.tablet-left]="systemLanguage.direction === 'rtl' && textAlignmentRtlTablet === 'left' || systemLanguage.direction === 'ltr' && textAlignmentLtrTablet === 'left'"
       [class.tablet-right]="systemLanguage.direction === 'rtl' && textAlignmentRtlTablet === 'right' || systemLanguage.direction === 'ltr' && textAlignmentLtrTablet === 'right'"
       [class.tiny]="fontSize === 'tiny'"
+      [class.gray]="color === 'gray'"
+      [class.black]="color === 'black'"
+      [class.white]="color === 'white'"
+      [class.pink]="color === 'pink'"
       [class.title]="true"
       [class.underline-border-above-black]="underlineAbove && underlineAboveColor === 'black'"
       [class.underline-border-above-blue]="underlineAbove && underlineAboveColor === 'blue'"
@@ -78,6 +82,7 @@ import {SystemLanguagesResolver} from '../../../resolvers/system-languages/syste
     </div>`
 })
 export class BasicTitleTextComponent implements OnInit, OnDestroy {
+  @Input() public color: string;
   @Input() public display: string = 'block';
   @Input() public fontSize: string = 'medium'; // Should be one of 'tiny', 'small', 'medium', 'large', 'huge'.
   @Input() public fontWeight: string = 'bold'; // Should be one of 'light', 'normal', 'bold'.

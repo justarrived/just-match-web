@@ -1,7 +1,8 @@
 @import '../../../styles/colors';
 @import '../../../styles/dimensions';
 
-$title-font: 'museo', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$title-font: 'museo','Helvetica Neue',Helvetica,Arial,sans-serif;
+
 
 @font-face {
   font-family: 'museo';
@@ -23,7 +24,7 @@ $title-font: 'museo', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 
 .title {
   font-family: $title-font;
-  line-height: 1.3em;
+  line-height: 1.333;
   overflow-wrap: break-word;
   word-wrap: break-word;
   -ms-word-break: break-all;
@@ -32,6 +33,10 @@ $title-font: 'museo', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   -moz-hyphens: auto;
   -webkit-hyphens: auto;
   hyphens: auto;
+  text-rendering: optimizelegibility;
+  letter-spacing: -0.4px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .tiny {
@@ -64,6 +69,22 @@ $title-font: 'museo', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 
 .bold {
   font-weight: 700;
+}
+
+.white {
+  color: $white;
+}
+
+.black {
+  color: $black;
+}
+
+.pink {
+  color: $color-cerise-500;
+}
+
+.gray {
+  color: $color-gray-300;
 }
 
 .center {
@@ -116,7 +137,7 @@ $title-font: 'museo', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 
 .underline-border-above {
   &:before {
-    content: "";
+    content: '';
     width: 30px;
     height: 3px;
     display: block;
@@ -154,7 +175,7 @@ $title-font: 'museo', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 
   &.underline-border-above-gray {
     &:before {
-      background: $color-gray-500;
+      background: $color-gray-300;
     }
   }
 
@@ -173,7 +194,7 @@ $title-font: 'museo', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 
 .underline-border-below {
   &:after {
-    content: "";
+    content: '';
     width: 30px;
     height: 3px;
     display: block;

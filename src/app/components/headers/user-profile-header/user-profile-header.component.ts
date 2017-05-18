@@ -18,15 +18,24 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
           size="small">
         </profile-image-input>
       </div>
-      <h1 class="ui center aligned inverted header">
-        <div class="content">
-          {{user.name || ('user.profile.header.title' | translate)}}
-          <div
-            class="sub header">
-            {{'user.profile.header.information' | translate}}
-          </div>
-        </div>
-      </h1>
+      <basic-title-text
+        [text]="user.name"
+        [underlineBelow]="true"
+        color="white"
+        fontSize="large"
+        textAlignmentLtr="center"
+        textAlignmentRtl="center"
+        underlineBelowColor="white"
+        underlineBelowLtrAlignment="center"
+        underlineBelowRtlAlignment="center">
+      </basic-title-text>
+      <basic-text
+        [text]="'user.profile.header.information' | translate"
+        color="white"
+        fontSize="large"
+        textAlignmentLtr="center"
+        textAlignmentRtl="center">
+      </basic-text>
     </div>
   </div>`
 })
