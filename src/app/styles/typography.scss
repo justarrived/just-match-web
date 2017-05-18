@@ -29,12 +29,10 @@ $fs-xxxxl: 48px;
 }
 
 
-@mixin truncate-owerflowing-text-multiline($font-size: $fs-m, $line-height: 1.4, $lines-to-show: 3, $excerpt-bg: transparent) {
-  background: $excerpt-bg;
-  display: block; // Fallback for non-webkit
-  display: -webkit-box;
-  max-height: $font-size*$line-height*$lines-to-show; // Fallback for non-webkit
-  font-size: $font-size;
+@mixin truncate-owerflowing-text-multiline($line-height: 1.4, $lines-to-show: 3) {
+  display: block !important; // Fallback for non-webkit
+  display: -webkit-box !important;
+  max-height: 1em*$line-height*$lines-to-show; // Fallback for non-webkit
   line-height: $line-height;
   -webkit-line-clamp: $lines-to-show;
   -webkit-box-orient: vertical;
@@ -44,7 +42,7 @@ $fs-xxxxl: 48px;
     overflow: hidden;
     position: relative;
     &:before {
-      background: $excerpt-bg;
+      background: transparent;
       bottom: 0;
       position: absolute;
       right: 0;
@@ -55,7 +53,7 @@ $fs-xxxxl: 48px;
     }
     &:after {
       content: '';
-      background: $excerpt-bg;
+      background: transparent;
       position: absolute;
       height: 50px;
       width: 100%;

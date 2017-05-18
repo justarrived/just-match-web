@@ -1,23 +1,29 @@
 @import '../../../styles/colors';
 @import '../../../styles/dimensions';
+@import '../../../styles/typography';
 
 $text-font: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;
+$text-line-height: 1.5;
 
 .text {
   font-family: $text-font;
-  line-height: 1.5;
-  overflow-wrap: break-word;
-  word-wrap: break-word;
-  -ms-word-break: break-all;
-  word-break: break-word;
-  -ms-hyphens: auto;
-  -moz-hyphens: auto;
-  -webkit-hyphens: auto;
-  hyphens: auto;
+  line-height: $text-line-height;
+  text-rendering: optimizelegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  @include wrap-long-words();
 }
 
+.one-line-ellipsis {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
 
 .small {
   font-size: 12px;
@@ -105,4 +111,40 @@ $text-font: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;
   @media screen and (max-width: $mobile-max-width) {
     text-align: right;
   }
+}
+
+.maximum-2-lines-ellipsis {
+  @include truncate-owerflowing-text-multiline($line-height: $text-line-height, $lines-to-show: 2);
+}
+
+.maximum-3-lines-ellipsis {
+  @include truncate-owerflowing-text-multiline($line-height: $text-line-height, $lines-to-show: 3);
+}
+
+.maximum-4-lines-ellipsis {
+  @include truncate-owerflowing-text-multiline($line-height: $text-line-height, $lines-to-show: 4);
+}
+
+.maximum-5-lines-ellipsis {
+  @include truncate-owerflowing-text-multiline($line-height: $text-line-height, $lines-to-show: 5);
+}
+
+.maximum-6-lines-ellipsis {
+  @include truncate-owerflowing-text-multiline($line-height: $text-line-height, $lines-to-show: 6);
+}
+
+.maximum-7-lines-ellipsis {
+  @include truncate-owerflowing-text-multiline($line-height: $text-line-height, $lines-to-show: 7);
+}
+
+.maximum-8-lines-ellipsis {
+  @include truncate-owerflowing-text-multiline($line-height: $text-line-height, $lines-to-show: 8);
+}
+
+.maximum-9-lines-ellipsis {
+  @include truncate-owerflowing-text-multiline($line-height: $text-line-height, $lines-to-show: 9);
+}
+
+.maximum-10-lines-ellipsis {
+  @include truncate-owerflowing-text-multiline($line-height: $text-line-height, $lines-to-show: 10);
 }

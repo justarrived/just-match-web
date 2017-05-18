@@ -33,6 +33,7 @@ import {SystemLanguagesResolver} from '../../../resolvers/system-languages/syste
       [class.white]="color === 'white'"
       [class.pink]="color === 'pink'"
       [class.title]="true"
+      [class.uppercase]="uppercase"
       [class.underline-border-above-black]="underlineAbove && underlineAboveColor === 'black'"
       [class.underline-border-above-blue]="underlineAbove && underlineAboveColor === 'blue'"
       [class.underline-border-above-center]="underlineAbove && (systemLanguage.direction === 'rtl' && underlineAboveRtlAlignment === 'center' || systemLanguage.direction === 'ltr' && underlineAboveLtrAlignment === 'center')"
@@ -73,6 +74,16 @@ import {SystemLanguagesResolver} from '../../../resolvers/system-languages/syste
       </i>
       <div
         [innerHTML]="text"
+        [class.one-line-ellipsis]="oneLineEllipsis"
+        [class.maximum-2-lines-ellipsis]="maxiumLinesEllipsis === 2"
+        [class.maximum-3-lines-ellipsis]="maxiumLinesEllipsis === 3"
+        [class.maximum-4-lines-ellipsis]="maxiumLinesEllipsis === 4"
+        [class.maximum-5-lines-ellipsis]="maxiumLinesEllipsis === 5"
+        [class.maximum-6-lines-ellipsis]="maxiumLinesEllipsis === 6"
+        [class.maximum-7-lines-ellipsis]="maxiumLinesEllipsis === 7"
+        [class.maximum-8-lines-ellipsis]="maxiumLinesEllipsis === 8"
+        [class.maximum-9-lines-ellipsis]="maxiumLinesEllipsis === 9"
+        [class.maximum-10-lines-ellipsis]="maxiumLinesEllipsis === 10"
         [style.display]="'inline-block'">
       </div>
       <i
@@ -82,8 +93,10 @@ import {SystemLanguagesResolver} from '../../../resolvers/system-languages/syste
     </div>`
 })
 export class BasicTitleTextComponent implements OnInit, OnDestroy {
-  @Input() public color: string;
+  @Input() public color: string; // Should be one of 'pink', 'black', 'gray', 'white'.
   @Input() public display: string = 'block';
+  @Input() public oneLineEllipsis: boolean = false;
+  @Input() public maxiumLinesEllipsis: number; // Should be one of undefined or 2-10
   @Input() public fontSize: string = 'medium'; // Should be one of 'tiny', 'small', 'medium', 'large', 'huge'.
   @Input() public fontWeight: string = 'bold'; // Should be one of 'light', 'normal', 'bold'.
   @Input() public iconLeft: string;
@@ -91,6 +104,7 @@ export class BasicTitleTextComponent implements OnInit, OnDestroy {
   @Input() public marginBottom: string = '1rem';
   @Input() public marginTop: string = '1.8rem';
   @Input() public text: string = '';
+  @Input() public uppercase: boolean = false;
   @Input() public textAlignmentLtr: string = 'left'; // Should be one of 'left', 'center', 'right'.
   @Input() public textAlignmentLtrMobile: string; // Should be one of undefined, 'left', 'center', 'right'.
   @Input() public textAlignmentLtrTablet: string; // Should be one of undefined, 'left', 'center', 'right'.

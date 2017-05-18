@@ -41,7 +41,8 @@
 
     .address {
       text-align: left;
-      @include truncate-owerflowing-text-multiline($font-size: $fs-s, $lines-to-show: 2);
+      font-size: $fs-s;
+      @include truncate-owerflowing-text-multiline($lines-to-show: 2);
     }
 
     .no-address {

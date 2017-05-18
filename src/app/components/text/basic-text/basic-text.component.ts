@@ -22,6 +22,17 @@ import {SystemLanguagesResolver} from '../../../resolvers/system-languages/syste
       [class.black]="color === 'black'"
       [class.white]="color === 'white'"
       [class.pink]="color === 'pink'"
+      [class.one-line-ellipsis]="oneLineEllipsis"
+      [class.uppercase]="uppercase"
+      [class.maximum-2-lines-ellipsis]="maxiumLinesEllipsis === 2"
+      [class.maximum-3-lines-ellipsis]="maxiumLinesEllipsis === 3"
+      [class.maximum-4-lines-ellipsis]="maxiumLinesEllipsis === 4"
+      [class.maximum-5-lines-ellipsis]="maxiumLinesEllipsis === 5"
+      [class.maximum-6-lines-ellipsis]="maxiumLinesEllipsis === 6"
+      [class.maximum-7-lines-ellipsis]="maxiumLinesEllipsis === 7"
+      [class.maximum-8-lines-ellipsis]="maxiumLinesEllipsis === 8"
+      [class.maximum-9-lines-ellipsis]="maxiumLinesEllipsis === 9"
+      [class.maximum-10-lines-ellipsis]="maxiumLinesEllipsis === 10"
       [class.mobile-center]="systemLanguage.direction === 'rtl' && textAlignmentRtlMobile === 'center' || systemLanguage.direction === 'ltr' && textAlignmentLtrMobile === 'center'"
       [class.mobile-left]="systemLanguage.direction === 'rtl' && textAlignmentRtlMobile === 'left' || systemLanguage.direction === 'ltr' && textAlignmentLtrMobile === 'left'"
       [class.mobile-right]="systemLanguage.direction === 'rtl' && textAlignmentRtlMobile === 'right' || systemLanguage.direction === 'ltr' && textAlignmentLtrMobile === 'right'"
@@ -40,13 +51,16 @@ import {SystemLanguagesResolver} from '../../../resolvers/system-languages/syste
     `
 })
 export class BasicTextComponent implements OnInit, OnDestroy {
-  @Input() public color: string;
+  @Input() public color: string; // Should be one of 'pink', 'black', 'gray', 'white'.
+  @Input() public oneLineEllipsis: boolean = false;
+  @Input() public maxiumLinesEllipsis: number; // Should be one of undefined or 2-10
   @Input() public display: string = 'block';
   @Input() public fontSize: string = 'medium'; // Should be one of 'small', 'medium', 'large'.
   @Input() public fontWeight: string = 'normal'; // Should be one of 'light', 'normal', 'bold'.
   @Input() public marginBottom: string = '1rem';
   @Input() public marginTop: string = '0';
   @Input() public text: string = '';
+  @Input() public uppercase: boolean = false;
   @Input() public textAlignmentLtr: string = 'left'; // Should be one of 'left', 'center', 'right'.
   @Input() public textAlignmentLtrMobile: string; // Should be one of undefined, 'left', 'center', 'right'.
   @Input() public textAlignmentLtrTablet: string; // Should be one of undefined, 'left', 'center', 'right'.
