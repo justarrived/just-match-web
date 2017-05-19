@@ -75,7 +75,7 @@ import {SystemLanguagesResolver} from '../../../resolvers/system-languages/syste
         class="{{iconLeft}} icon">
       </i>
       <div
-        [innerHTML]="text"
+        [innerHTML]="text || ''"
         [class.maximum-2-lines-ellipsis]="maxiumLinesEllipsis === 2"
         [class.maximum-3-lines-ellipsis]="maxiumLinesEllipsis === 3"
         [class.maximum-4-lines-ellipsis]="maxiumLinesEllipsis === 4"

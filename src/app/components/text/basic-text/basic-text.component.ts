@@ -43,11 +43,7 @@ import {SystemLanguagesResolver} from '../../../resolvers/system-languages/syste
       [class.tablet-center]="systemLanguage.direction === 'rtl' && textAlignmentRtlTablet === 'center' || systemLanguage.direction === 'ltr' && textAlignmentLtrTablet === 'center'"
       [class.tablet-left]="systemLanguage.direction === 'rtl' && textAlignmentRtlTablet === 'left' || systemLanguage.direction === 'ltr' && textAlignmentLtrTablet === 'left'"
       [class.tablet-right]="systemLanguage.direction === 'rtl' && textAlignmentRtlTablet === 'right' || systemLanguage.direction === 'ltr' && textAlignmentLtrTablet === 'right'"
-      [innerHTML]="text"
-      [style.direction]="alwaysLtrText ? 'ltr' : alwaysRtlText ? 'rtl' : systemLanguage.direction"
-      [style.display]="display"
-      [style.margin-bottom]="marginBottom"
-      [style.margin-top]="marginTop">
+      [innerHTML]="text || ''">
     </div>
     `
 })
