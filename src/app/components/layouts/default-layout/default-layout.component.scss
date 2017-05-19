@@ -9,7 +9,7 @@
   }
   @media screen and (max-width: $computer-large-min-width) {
     width: 100%;
-    max-width: 100vw;
+    max-width: 100%;
   }
 
   .layout-inner-wrapper {
@@ -17,7 +17,7 @@
     table-layout: fixed;
     height: 100%;
     background: $white;
-    width: 100%;
+    width: inherit;
 
     .layout-header-padder {
       display: table-row;
