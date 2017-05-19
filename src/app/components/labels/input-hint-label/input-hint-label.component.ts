@@ -9,7 +9,13 @@ import {Input} from '@angular/core';
       *ngIf="hint"
       style="text-align: center">
       <div class="ui pointing blue {{pointingDirection}} label">
-        {{hint}}
+      <basic-text
+        [text]="hint"
+        fontSize="small"
+        fontWeight="bold"
+        marginBottom="0"
+        marginTop="0">
+      </basic-text>
       </div>
     </div>`
 })

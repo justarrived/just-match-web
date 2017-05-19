@@ -15,14 +15,19 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
       *ngIf="godModeActive"
       class="god-mode-bar-container">
       <div class="god-mode-bar-inner-container">
-        <div>
-          <h3 class="god-mode-bar-title">
-            {{'god.mode.bar.title'| translate: {firstName: user.firstName, lastName: user.lastName, id: user.id} }}
-          </h3>
-          <p class="god-mode-bar-description">
-            {{'god.mode.bar.description' | translate}}
-          </p>
-        </div>
+        <basic-title-text
+          [text]="'god.mode.bar.title'| translate: {firstName: user.firstName, lastName: user.lastName, id: user.id}"
+          color="white"
+          fontSize="medium"
+          textAlignmentLtr="center"
+          textAlignmentRtl="center">
+        </basic-title-text>
+        <basic-text
+          [text]="'god.mode.bar.description' | translate"
+          color="white"
+          textAlignmentLtr="center"
+          textAlignmentRtl="center">
+        </basic-text>
         <div class="god-mode-bar-button-container">
           <base-button
             (click)="deactivateGodMode()"

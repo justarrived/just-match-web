@@ -39,18 +39,22 @@ import {Validators} from '@angular/forms';
           [control]="resetPasswordForm.controls['one_time_token']"
           apiAttribute="one_time_token">
         </input-errors>
-        <div>
-          <a
-            (click)="onForgotPasswordButtonClick()"
-            class="reset-password-form-link">
-            {{'reset.password.form.forgot.password.link' | translate}}
-          </a>
-          <a
-            (click)="onLoginButtonClick()"
-            class="reset-password-form-link">
-            {{'reset.password.form.login.link' | translate}}
-          </a>
-        </div>
+        <basic-link
+          [text]="'reset.password.form.forgot.password.link' | translate"
+          (click)="onForgotPasswordButtonClick()"
+          color="gray"
+          hoverColor="pink"
+          textAlignmentLtr="center"
+          textAlignmentRtl="center">
+        </basic-link>
+        <basic-link
+          [text]="'reset.password.form.login.link' | translate"
+          (click)="onLoginButtonClick()"
+          color="gray"
+          hoverColor="pink"
+          textAlignmentLtr="center"
+          textAlignmentRtl="center">
+        </basic-link>
       </form-submit-button>
     </form>`
 })

@@ -27,12 +27,12 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
         [promise]="promises"
         class="inverted">
       </sm-loader>
-      <basic-title
+      <basic-title-text
         [text]="job.translatedText.name"
         fontSize="huge"
-        ltrTextAlignment="center"
-        rtlTextAlignment="center">
-      </basic-title>
+        textAlignmentLtr="center"
+        textAlignmentRtl="center">
+      </basic-title-text>
       <base-button
         (click)="onApplyForJobButtonClick()"
         [buttonText]="'job.actions.header.apply' | translate"
@@ -59,13 +59,21 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
           size="medium">
         </base-button>
       </div>
-      <h3 *ngIf="application && !application.accepted  && !application.willPerform">
-        {{'job.actions.header.applied' | translate}}
-      </h3>
+      <basic-title-text
+        [text]="'job.actions.header.applied' | translate"
+        *ngIf="application && !application.accepted  && !application.willPerform"
+        color="white"
+        fontSize="medium"
+        textAlignmentLtr="center"
+        textAlignmentRtl="center">
+      </basic-title-text>
       <div *ngIf="application && application.accepted && !application.willPerform">
-        <h5 class="time-left-text">
-          {{'job.actions.header.offer' | translate: {hours: application.remainsConfirmationHours, minutes: application.remainsConfirmationMinutes} }}
-        </h5>
+        <basic-text
+          [text]="'job.actions.header.offer' | translate: {hours: application.remainsConfirmationHours, minutes: application.remainsConfirmationMinutes}"
+          color="white"
+          textAlignmentLtr="center"
+          textAlignmentRtl="center">
+        </basic-text>
         <base-button
           (click)="onConfirmJobButtonClick()"
           [buttonText]="'job.actions.header.confirm' | translate"
@@ -73,12 +81,22 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
           size="large">
         </base-button>
       </div>
-      <h3 *ngIf="application && application.willPerform && !application.jobEnded">
-        {{'job.actions.header.hired' | translate}}
-      </h3>
-      <h3 *ngIf="application && application.willPerform && application.jobEnded">
-        {{'job.actions.header.performed' | translate}}
-      </h3>
+      <basic-title-text
+        [text]="'job.actions.header.hired' | translate"
+        *ngIf="application && application.willPerform && !application.jobEnded"
+        color="white"
+        fontSize="medium"
+        textAlignmentLtr="center"
+        textAlignmentRtl="center">
+      </basic-title-text>
+      <basic-title-text
+        [text]="'job.actions.header.performed' | translate"
+        *ngIf="application && application.willPerform && application.jobEnded"
+        color="white"
+        fontSize="medium"
+        textAlignmentLtr="center"
+        textAlignmentRtl="center">
+      </basic-title-text>
     </div>`
 })
 export class JobActionsHeaderComponent extends SystemLanguageListener implements OnInit, OnDestroy {

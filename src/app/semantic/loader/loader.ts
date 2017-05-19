@@ -9,8 +9,19 @@ import {Input} from "@angular/core";
       class="ui active dimmer {{class}}">
       <div
         [ngClass]="{text: text}"
-        class="ui loader">
-        {{text}}
+        class="ui text loader">
+        <basic-title-text
+          [text]="text"
+          [uppercase]="true"
+          *ngIf="text"
+          color="gray"
+          fontSize="small"
+          fontWeight="light"
+          textAlignmentRtl="center"
+          textAlignmentLtr="center"
+          marginBottom="0"
+          marginTop="0">
+        </basic-title-text>
       </div>
     </div>`
 })

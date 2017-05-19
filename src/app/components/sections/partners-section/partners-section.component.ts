@@ -5,10 +5,21 @@ import {Component} from '@angular/core';
   styleUrls: ['./partners-section.component.scss'],
   template: `
     <div class="ui basic very padded center aligned segment">
-      <h2 class="underline-border-below underline-border-below-centered underline-border-below-pink">
-        {{'home.partners.title' | translate}}
-      </h2>
-      <p>{{'home.partners.description' | translate}}</p>
+      <basic-title-text
+        [text]="'home.partners.title' | translate"
+        [underlineBelow]="true"
+        fontSize="large"
+        textAlignmentLtr="center"
+        textAlignmentRtl="center"
+        underlineBelowColor="pink"
+        underlineBelowLtrAlignment="center"
+        underlineBelowRtlAlignment="center">
+      </basic-title-text>
+      <basic-text
+        [text]="'home.partners.description' | translate"
+        textAlignmentLtr="center"
+        textAlignmentRtl="center">
+      </basic-text>
       <div class="ui centered grid">
         <a
           class="partners-imgae-link"

@@ -33,11 +33,11 @@ import {UserInterestFactory} from '../../../models/api-models/user-interest/user
       dataItemLabelProoerty="translatedText.name"
       dataItemValueProoerty="id">
     </select-dropdown-input>
-    <p
+    <basic-text
+      [text]="'input.interests.hint' | translate"
       *ngIf="userInterestsControl.value?.length > 0"
-      class="fs-m0">
-      {{'input.interests.hint' | translate}}
-    </p>
+      color="black">
+    </basic-text>
     <div *ngFor="let userInterest of userInterestsControl.value">
       <interest-level-input
         (onDelete)="onRemoveUserInterest(userInterest)"

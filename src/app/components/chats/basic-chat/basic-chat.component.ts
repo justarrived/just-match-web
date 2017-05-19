@@ -184,7 +184,7 @@ export class BasicChatComponent extends SystemLanguageListener implements OnInit
 
   private getChatMessages(): Promise<Message[]> {
     return this.messageProxy.getChatMessages(this.chatId, {
-      'include': 'author,author.user_images,author.company,author.company.company_images',
+      'include': 'author,author.user_images,author.company,author.company.company_images,language',
       'sort': '-created_at',
       'page[size]': 50,
     });

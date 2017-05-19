@@ -34,13 +34,14 @@ import {Validators} from '@angular/forms';
         [submitFail]="submitFail"
         [submitSuccess]="submitSuccess"
         [buttonText]="'contact.form.submit.button' | translate">
-        <div>
-          <a
-            (click)="loginButonClicked()"
-            class="forgot-password-form-link">
-            {{'forgot.password.login.link' | translate}}
-          </a>
-        </div>
+        <basic-link
+          [text]="'forgot.password.login.link' | translate"
+          (click)="loginButonClicked()"
+          color="gray"
+          hoverColor="pink"
+          textAlignmentLtr="center"
+          textAlignmentRtl="center">
+        </basic-link>
       </form-submit-button>
     </form>`
 })

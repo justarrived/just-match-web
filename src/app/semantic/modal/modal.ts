@@ -1,5 +1,4 @@
 import {AfterViewInit} from "@angular/core";
-import {ChangeDetectionStrategy} from "@angular/core";
 import {Component} from "@angular/core";
 import {Directive} from "@angular/core";
 import {ElementRef} from "@angular/core";
@@ -7,16 +6,19 @@ import {EventEmitter} from "@angular/core";
 import {Inject} from "@angular/core";
 import {Input} from "@angular/core";
 import {isPlatformBrowser} from '@angular/common';
-import {OnDestroy} from "@angular/core";
+import {Language} from '../../models/api-models/language/language';
+import {OnDestroy} from '@angular/core';
+import {OnInit} from "@angular/core";
 import {Output} from "@angular/core";
 import {PLATFORM_ID} from "@angular/core";
 import {Renderer2} from '@angular/core';
+import {Subscription} from 'rxjs/Subscription';
+import {SystemLanguagesResolver} from '../../resolvers/system-languages/system-languages.resolver';
 import {ViewChild} from "@angular/core";
 
 declare var jQuery: any;
 
 @Component({
-  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: "sm-modal",
   template: `
   <div
@@ -31,7 +33,20 @@ declare var jQuery: any;
         *ngIf="icon"
         class="icon {{icon}}">
       </i>
-      {{title}}
+      <basic-title-text
+        [text]="title"
+        [underlineBelow]="true"
+        *ngIf="title"
+        color="black"
+        fontSize="medium"
+        marginBottom="0"
+        marginTop="0"
+        textAlignmentLtr="center"
+        textAlignmentRtl="center"
+        underlineBelowColor="pink"
+        underlineBelowLtrAlignment="center"
+        underlineBelowRtlAlignment="center">
+      </basic-title-text>
     </div>
     <div class="content">
         <ng-content select="modal-content"></ng-content>
@@ -41,7 +56,7 @@ declare var jQuery: any;
     </div>
 </div>`
 })
-export class SemanticModalComponent implements AfterViewInit, OnDestroy {
+export class SemanticModalComponent implements OnInit, AfterViewInit, OnDestroy {
   @Input() class: string;
   @Input() title: string;
   @Input() icon: string;
@@ -49,10 +64,26 @@ export class SemanticModalComponent implements AfterViewInit, OnDestroy {
   @Output() onModalShow: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() onModalHide: EventEmitter<boolean> = new EventEmitter<boolean>();
 
+  public systemLanguage: Language;
+
+  private systemLanguageSubscription: Subscription;
+
   public constructor(
     @Inject(PLATFORM_ID) private readonly platformId: any,
+    private systemLanguagesResolver: SystemLanguagesResolver,
     private renderer: Renderer2,
   ) {
+  }
+
+  public ngOnInit(): void {
+    this.initSystemLanguage()
+  }
+
+  private initSystemLanguage(): void {
+    this.systemLanguage = this.systemLanguagesResolver.getSelectedSystemLanguage();
+    this.systemLanguageSubscription = this.systemLanguagesResolver.getSystemLanguageChangeEmitter().subscribe(systemLanguage => {
+      this.systemLanguage = systemLanguage;
+    });
   }
 
   public ngAfterViewInit(): void {
@@ -69,6 +100,8 @@ export class SemanticModalComponent implements AfterViewInit, OnDestroy {
     }
 
     this.renderer.removeChild(this.renderer.parentNode(this.modal.nativeElement), this.modal.nativeElement);
+
+    if (this.systemLanguageSubscription) { this.systemLanguageSubscription.unsubscribe(); }
   }
 
   public show(data: any = {}) {

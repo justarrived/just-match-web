@@ -31,11 +31,14 @@ import {ViewChild} from '@angular/core';
             alt="Frilans Finans"
             class="ui centered small image"
             src="/assets/images/frilans_finans-logo.png">
-            <a
-              [href]="(termsAgreement | async)?.url"
-              target="_blank">
-               {{'input.frilans.terms.link' | translate}}
-            </a>
+          <basic-link
+            [text]="'input.frilans.terms.link' | translate"
+            [href]="(termsAgreement | async)?.url"
+            color="gray"
+            hoverColor="pink"
+            textAlignmentLtr="center"
+            textAlignmentRtl="center">
+          </basic-link>
          </div>
       </div>
       <input-errors

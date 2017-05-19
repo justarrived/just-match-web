@@ -21,8 +21,7 @@ import {ViewChild} from '@angular/core';
         [icon]="icon"
         [label]="label"
         [placeholder]="placeholder"
-        [type]="type"
-        [class]="systemLanguage.direction === 'ltr' ? 'left' : 'right'">
+        [type]="type">
       </sm-input>
       <input-errors
         [apiAttribute]="apiAttribute"

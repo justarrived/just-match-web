@@ -15,7 +15,7 @@ import {RoutesRecognized} from '@angular/router';
 
 @Injectable()
 export class NavigationService {
-  private currentState: string;
+  private currentUrl: string;
   private routeCheckpoint: string;
 
   public constructor(
@@ -34,11 +34,11 @@ export class NavigationService {
       }
 
       if (event instanceof NavigationEnd) {
-        this.currentState = this.router.url;
+        this.currentUrl = this.router.url;
         if (isPlatformBrowser(this.platformId)) {
           document.body.scrollTop = 0;
         }
-        console.log('Navigation ended at ' + this.currentState);
+        console.log('Navigation ended at ' + this.currentUrl);
       }
 
       if (event instanceof NavigationCancel) {
@@ -81,5 +81,9 @@ export class NavigationService {
 
   public navigateNoLocationChange(route: JARoute, ...args: string[]): void {
     this.router.navigateByUrl(route.url(args), { skipLocationChange: true });
+  }
+
+  public getCurrentUrl(): string {
+    return this.currentUrl;
   }
 }

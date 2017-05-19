@@ -3,22 +3,5 @@
 
 .footer-container {
   background-color: $color-secondary-gray;
-  color: $white;
   padding: 5px 0;
-}
-
-.footer-mail,
-.footer-name {
-  @media screen and (max-width: $sm-device-width) {
-    text-align: center !important;
-  }
-}
-
-a {
-  color: $white;
-  font-weight: bold;
-
-  &:hover {
-    color: $color-cerise-300;
-  }
 }

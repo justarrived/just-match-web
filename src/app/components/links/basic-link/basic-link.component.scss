@@ -1,0 +1,220 @@
+@import '../../../styles/colors';
+@import '../../../styles/dimensions';
+@import '../../../styles/typography';
+
+$link-font: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;
+$link-line-height: 1.5;
+
+.link {
+  position: relative;
+  font-family: $link-font;
+  line-height: $link-line-height;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-decoration: none;
+  font-style: normal;
+  font-weight: normal;
+  text-align: left;
+  text-shadow: none;
+
+  @include wrap-long-words();
+}
+
+.one-line-ellipsis {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.italic {
+  font-style: italic;
+}
+
+.small {
+  font-size: 12px;
+}
+
+.medium {
+  font-size: 16px;
+}
+
+.large {
+  font-size: 20px;
+}
+
+.light {
+  font-weight: 300;
+}
+
+.normal {
+  font-weight: 500;
+}
+
+.bold {
+  font-weight: 700;
+}
+
+.center {
+  text-align: center;
+}
+
+.left {
+  text-align: left;
+}
+
+.right {
+  text-align: right;
+}
+
+.tablet-center {
+  @media screen and (max-width: $tablet-max-width) {
+    text-align: center;
+  }
+}
+
+.tablet-left {
+  @media screen and (max-width: $tablet-max-width) {
+    text-align: left;
+  }
+}
+
+.tablet-right {
+  @media screen and (max-width: $tablet-max-width) {
+    text-align: right;
+  }
+}
+
+.mobile-center {
+  @media screen and (max-width: $mobile-max-width) {
+    text-align: center;
+  }
+}
+
+.mobile-left {
+  @media screen and (max-width: $mobile-max-width) {
+    text-align: left;
+  }
+}
+
+.mobile-right {
+  @media screen and (max-width: $mobile-max-width) {
+    text-align: right;
+  }
+}
+
+.white {
+  color: $white !important;
+}
+
+.black {
+  color: $black !important;
+}
+
+.pink {
+  color: $color-cerise-500 !important;
+}
+
+.gray {
+  color: $color-gray-300 !important;
+}
+
+.hover-white {
+  &:hover {
+    color: $white !important;
+  }
+}
+
+.hover-black {
+  &:hover {
+    color: $black !important;
+  }
+}
+
+.hover-pink {
+  &:hover {
+    color: $color-cerise-500 !important;
+  }
+}
+
+.hover-gray {
+  &:hover {
+    color: $color-gray-300 !important;
+  }
+}
+
+/* Effect: Brackets */
+.link::before,
+.link::after {
+	display: inline-block;
+	opacity: 0;
+	-webkit-transition: -webkit-transform 0.3s, opacity 0.2s;
+	-moz-transition: -moz-transform 0.3s, opacity 0.2s;
+	transition: transform 0.3s, opacity 0.2s;
+}
+
+.link::before {
+	margin-right: 10px;
+	content: '-';
+	-webkit-transform: translateX(20px);
+	-moz-transform: translateX(20px);
+	transform: translateX(20px);
+}
+
+.link::after {
+	margin-left: 10px;
+	content: '-';
+	-webkit-transform: translateX(-20px);
+	-moz-transform: translateX(-20px);
+	transform: translateX(-20px);
+}
+
+.link:hover::before,
+.link:hover::after,
+.link:focus::before,
+.link:focus::after {
+	opacity: 1;
+	-webkit-transform: translateX(0px);
+	-moz-transform: translateX(0px);
+	transform: translateX(0px);
+}
+
+.maximum-2-lines-ellipsis {
+  @include truncate-owerflowing-text-multiline($line-height: $link-line-height, $lines-to-show: 2);
+}
+
+.maximum-3-lines-ellipsis {
+  @include truncate-owerflowing-text-multiline($line-height: $link-line-height, $lines-to-show: 3);
+}
+
+.maximum-4-lines-ellipsis {
+  @include truncate-owerflowing-text-multiline($line-height: $link-line-height, $lines-to-show: 4);
+}
+
+.maximum-5-lines-ellipsis {
+  @include truncate-owerflowing-text-multiline($line-height: $link-line-height, $lines-to-show: 5);
+}
+
+.maximum-6-lines-ellipsis {
+  @include truncate-owerflowing-text-multiline($line-height: $link-line-height, $lines-to-show: 6);
+}
+
+.maximum-7-lines-ellipsis {
+  @include truncate-owerflowing-text-multiline($line-height: $link-line-height, $lines-to-show: 7);
+}
+
+.maximum-8-lines-ellipsis {
+  @include truncate-owerflowing-text-multiline($line-height: $link-line-height, $lines-to-show: 8);
+}
+
+.maximum-9-lines-ellipsis {
+  @include truncate-owerflowing-text-multiline($line-height: $link-line-height, $lines-to-show: 9);
+}
+
+.maximum-10-lines-ellipsis {
+  @include truncate-owerflowing-text-multiline($line-height: $link-line-height, $lines-to-show: 10);
+}

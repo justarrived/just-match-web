@@ -8,11 +8,11 @@
   z-index: 1001;
   pointer-events: none;
   height: 100%;
-  @media screen and (min-width: $lg-device-width) {
-    width: $lg-device-width;
+  @media screen and (min-width: $computer-large-min-width) {
+    width: $computer-large-min-width;
     margin: 0 auto;
   }
-  @media screen and (max-width: $lg-device-width) {
+  @media screen and (max-width: $computer-large-min-width) {
     width: 100%;
   }
 

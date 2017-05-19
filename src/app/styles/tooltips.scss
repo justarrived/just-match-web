@@ -35,7 +35,7 @@
 .tooltip-left span:before,
 .tooltip-right span:before,
 .tooltip-top span:before {
-  content: "";
+  content: '';
   display: block;
   width: 0;
   height: 0;
@@ -150,7 +150,7 @@
   }
 
   &:after {
-    content: "";
+    content: '';
     display: block;
     border-top: 1px solid $color-blue-300;
     position: absolute;
@@ -174,7 +174,7 @@
   }
 
   &:after {
-    content: "";
+    content: '';
     display: block;
     border-top: 1px solid #4f9c21;
     position: absolute;
@@ -203,7 +203,7 @@
   }
 
   &:after {
-    content: "";
+    content: '';
     display: block;
     border-top: 1px solid #e28266;
     position: absolute;
@@ -232,7 +232,7 @@
   }
 
   &:after {
-    content: "";
+    content: '';
     display: block;
     border-top: 1px solid #e96e82;
     position: absolute;

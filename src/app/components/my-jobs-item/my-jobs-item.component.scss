@@ -1,51 +1,15 @@
 @import '../../styles/colors';
 
 .my-jobs-item {
-  display: table;
+  display: flex;
+  flex-wrap: nowrap;
   width: 100%;
   cursor: pointer;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  align-items: center;
 
-  div {
-    display: table-cell;
-    padding: 20px 30px;
-    border-bottom: 1px solid $color-background;
-    vertical-align: middle;
-    cursor: pointer;
-
-    &:first-child {
-      text-align: center;
-      text-transform: uppercase;
-      line-height: 1.3em;
-      padding-right: 0;
-      width: 45px;
-
-      span {
-        font-size: 1.3em;
-      }
-    }
-
-    &.user-image {
-      text-align: right;
-      padding-left: 0;
-
-      img {
-        height: 40px;
-      }
-    }
-
-    h3 {
-      font-weight: 400;
-      font-size: 1em;
-      margin-top: 0;
-    }
-
-    p {
-      font-size: .9em;
-      margin: 5px 0 0;
-    }
-  }
-
-  &:last-child div {
-    border-bottom: 0;
+  .date-container {
+    width: 150px;
   }
 }

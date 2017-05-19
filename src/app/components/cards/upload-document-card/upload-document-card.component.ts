@@ -16,29 +16,51 @@ import {UserDocument} from '../../../models/api-models/user-document/user-docume
         class="inverted">
       </sm-loader>
       <div class="content">
-        <div
-          class="ui pink header"
-          style="margin-bottom: 0; text-align: center;">
-          {{header}}
-        </div>
+        <basic-title-text
+          [text]="header"
+          [maxiumLinesEllipsis]="2"
+          color="pink"
+          fontSize="small"
+          marginTop="0"
+          marginBottom="0"
+          textAlignmentLtr="center"
+          textAlignmentRtl="center">
+        </basic-title-text>
+        <basic-text
+          [text]="description"
+          [maxiumLinesEllipsis]="2"
+          color="gray"
+          marginTop="0"
+          marginBottom="0">
+        </basic-text>
       </div>
       <div class="content">
-        <h4
-          class="ui sub header">
-          {{subHeader}}
-        </h4>
         <div class="ui center aligned padded basic segment">
           <div *ngFor="let document of documents">
-            <a
+            <basic-link
+              [alwaysLtrText]="true"
               [href]="document?.document?.documentUrl"
-              target="_blank">
-              <i class="fa fa-file-text"></i>
-              {{document.createdAt | date: 'yyyy-MM-dd HH:mm'}}
-            </a>
+              [text]="document.createdAt | date: 'yyyy-MM-dd HH:mm'"
+              color="gray"
+              fontWeight="bold"
+              hoverColor="pink"
+              marginBottom="0"
+              marginTop="0"
+              textAlignmentLtr="center"
+              textAlignmentRtl="center">
+            </basic-link>
           </div>
-          <div *ngIf="documents.length < 1">
-            {{'card.document.upload.empty.documents' | translate}}
-          </div>
+          <basic-text
+            [text]="'card.document.upload.empty.documents' | translate"
+            *ngIf="documents.length < 1"
+            color="gray"
+            fontWeight="bold"
+            hoverColor="pink"
+            marginBottom="0"
+            marginTop="0"
+            textAlignmentLtr="center"
+            textAlignmentRtl="center">
+          </basic-text>
         </div>
       </div>
       <div
@@ -64,7 +86,7 @@ export class UploadDocumentCardComponent {
   @Input() public documentSaveSuccess: boolean;
   @Input() public header: string;
   @Input() public hint: string;
-  @Input() public subHeader: string;
+  @Input() public description: string;
   @Input() public uploadingDocument: boolean;
   @Output() public onFileSelect: EventEmitter<any> = new EventEmitter();
 

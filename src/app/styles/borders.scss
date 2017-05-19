@@ -2,7 +2,7 @@
 
 .underline-border-above {
   &:before {
-    content: "";
+    content: '';
     width: 30px;
     height: 3px;
     display: block;
@@ -59,7 +59,7 @@
 
 .underline-border-below {
   &:after {
-    content: "";
+    content: '';
     width: 30px;
     height: 3px;
     display: block;

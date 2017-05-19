@@ -4,11 +4,10 @@
 
 .welcome-header-container {
   background: linear-gradient($color-cerise-600, $color-primary-cerise);
-  color: $white;
   display: flex;
   flex-flow: row-reverse;
 
-  @media screen and (max-width: $md-device-width) {
+  @media screen and (max-width: $tablet-max-width) {
     flex-flow: column;
   }
 
@@ -16,7 +15,7 @@
     width: 426px;
     padding-right: 0;
 
-    @media screen and (max-width: $md-device-width) {
+    @media screen and (max-width: $tablet-max-width) {
       margin: 0 auto;
     }
 
@@ -30,7 +29,7 @@
     padding: 40px;
     text-align: left;
 
-    @media screen and (max-width: $md-device-width) {
+    @media screen and (max-width: $tablet-max-width) {
       margin: 0 auto;
       max-width: 800px;
       padding-left: 10px;
@@ -39,25 +38,15 @@
       width: auto;
     }
 
-    .welcome-header-info-title {
-      @include wrap-long-words;
-      color: $white;
-      text-shadow: 0 0 3px rgba(0, 0, 0, .75);
-    }
-
-    .welcome-header-info-subtitle {
-      padding-top: 1em;
-      padding-bottom: .2em;
-    }
-
-    .welcome-header-info-description-container {
-      margin: 0 auto;
-      font-size: 14px;
-    }
-
     .welcome-header-button-container {
       display: inline-block;
       margin-top: 20px;
+    }
+
+    .welcome-header-button-outer-container {
+      @media screen and (max-width: $tablet-max-width) {
+        justify-content: center;
+      }
     }
   }
 
@@ -65,7 +54,7 @@
     padding-top: 100px;
     padding-left: 150px;
 
-    @media screen and (max-width: $md-device-width) {
+    @media screen and (max-width: $tablet-max-width) {
       padding-left: 0;
       padding-top: 40px;
     }

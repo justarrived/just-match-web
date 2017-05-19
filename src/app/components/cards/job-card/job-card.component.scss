@@ -1,6 +1,3 @@
-@import '../../../styles/colors';
-@import '../../../styles/typography';
-
 .job-card {
   width: 260px;
 
@@ -8,60 +5,23 @@
     height: 241px;
 
     .job-header-container {
-      min-height: 80px;
-      color: black;
-
-      .job-header {
-        @include truncate-owerflowing-text-multiline($font-size: $fs-l, $line-height: 1.1, $lines-to-show: 3, $excerpt-bg: $white);
-        color: $color-gray-500;
-      }
-    }
-
-    .job-company {
-      color: $color-primary-cerise;
-      font-weight: lighter;
-      @include truncate-owerflowing-text;
-    }
-
-    .job-city {
-      margin-top: 5px;
-      text-transform: uppercase;
-      @include truncate-owerflowing-text;
+      min-height: 72px;
     }
 
     .job-description-container {
       margin-top: 10px;
-      min-height: 80px;
-
-      .job-description {
-        @include truncate-owerflowing-text-multiline($font-size: $fs-m0, $line-height: 1.3, $lines-to-show: 4, $excerpt-bg: $white);
-      }
+      min-height: 72px;
     }
   }
 
   .job-salary-container {
-    padding-top: 30px;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+  }
 
-    .job-salary {
-      font-size: $fs-xxxxl;
-      color: $color-primary-cerise;
-      @include truncate-owerflowing-text;
-    }
-
-    .job-salary-currency {
-      font-size: $fs-xxl;
-      @include truncate-owerflowing-text;
-    }
-
-    .job-salary-additional-info {
-      margin-top: 10px;
-
-      .job-hours,
-      .job-total-salary {
-        @include truncate-owerflowing-text;
-        font-weight: bold;
-        text-transform: uppercase;
-      }
-    }
+  .job-salary-additional-info {
+    display: flex;
+    flex-wrap: nowrap;
   }
 }

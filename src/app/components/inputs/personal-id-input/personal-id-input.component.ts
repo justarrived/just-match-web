@@ -10,7 +10,7 @@ import {User} from '../../../models/api-models/user/user';
     [header]="'input.personal.id.header' | translate"
     [label]="'input.personal.id.label' | translate"
     [showLabel]="showLabel"
-    [subHeader]="'input.personal.id.description' | translate"
+    [description]="'input.personal.id.description' | translate"
     imageField="personalIdImage"
     imageType="personal_id">
   </user-image-card-input>

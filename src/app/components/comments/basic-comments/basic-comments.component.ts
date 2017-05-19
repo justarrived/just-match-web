@@ -11,11 +11,13 @@ import {Input} from '@angular/core';
         [comment]="comment"
         *ngFor="let comment of comments">
       </basic-comment>
-      <p
+      <basic-text
+        [text]="'basic.comments.empty' | translate"
         *ngIf="comments?.length === 0"
-        style="text-align: center">
-        {{'basic.comments.empty' | translate}}
-      </p>
+        color="black"
+        textAlignmentLtr="center"
+        textAlignmentRtl="center">
+      </basic-text>
     </div>
     `
 })

@@ -13,37 +13,71 @@ import {Message} from '../../../models/api-models/message/message';
       [class.right-aligned]="rightAligned"
       class="ui comment"
       style="min-height: 3em; margin-top: 1em; margin-bottom: 1em;">
-      <a class="avatar">
+      <div class="avatar">
         <img
           [src]="message?.author?.company?.logoImage?.imageUrlSmall || '/assets/images/placeholder-logo.png'"
           *ngIf="message?.author?.company">
         <img
           [src]="message?.author?.profileImage?.imageUrlSmall || '/assets/images/placeholder-profile-image.png'"
           *ngIf="!message?.author?.company">
-      </a>
+      </div>
       <div class="content">
-        <a
+        <div
           *ngIf="message?.author?.company"
           class="author">
-          {{message.author.company.name}}
-        </a>
-        <a
-          *ngIf="!message?.author?.company"
-          class="author">
-          {{message.author.firstName}}
-        </a>
-        <div class="metadata">
-          <span class="date">
-            {{
-              (isToday(message.createdAt) && (message.createdAt | date:'HH:mm')) ||
-              (isThisWeek(message.createdAt) && (message.createdAt | date:'EEEE HH:mm')) ||
-              (message.createdAt | date:'dd LLLL HH:mm')
-            }}
-          </span>
+          <basic-text
+            [text]="message.author.company.name"
+            [oneLineEllipsis]="true"
+            fontWeight="bold"
+            color="black"
+            fontSize="medium"
+            marginTop="0"
+            marginBottom="0"
+            [textAlignmentLtr]="rightAligned ? 'right' : ' left'"
+            [textAlignmentRtl]="rightAligned ? 'right' : ' left'">
+          </basic-text>
         </div>
         <div
+          *ngIf="!message?.author?.company"
+          class="author">
+          <basic-text
+            [text]="message.author.firstName"
+            [oneLineEllipsis]="true"
+            fontWeight="bold"
+            color="black"
+            fontSize="medium"
+            marginTop="0"
+            marginBottom="0"
+            [textAlignmentLtr]="rightAligned ? 'right' : ' left'"
+            [textAlignmentRtl]="rightAligned ? 'right' : ' left'">
+          </basic-text>
+        </div>
+        <basic-text
+          [alwaysLtrText]="true"
+          [text]="(isToday(message.createdAt) && (message.createdAt | date:'HH:mm')) || (isThisWeek(message.createdAt) && (message.createdAt | date:'EEEE HH:mm')) || (message.createdAt | date:'dd LLLL HH:mm')"
+          [oneLineEllipsis]="true"
+          color="gray"
+          fontSize="small"
+          marginTop="0"
+          marginBottom="0"
+          [textAlignmentLtr]="rightAligned ? 'right' : ' left'"
+          [textAlignmentRtl]="rightAligned ? 'right' : ' left'">
+        </basic-text>
+        <div
           class="text">
-          <div class="message"[innerHTML]="message.bodyHtml"></div>
+          <basic-text
+            [alwaysLtrText]="message?.language?.direction === 'ltr'"
+            [alwaysRtlText]="message?.language?.direction === 'rtl'"
+            [text]="message.bodyHtml"
+            fontWeight="bold"
+            class="message"
+            color="white"
+            fontSize="medium"
+            marginTop="0"
+            marginBottom="0"
+            [textAlignmentLtr]="message?.language?.direction === 'rtl' ? 'right' : ' left'"
+            [textAlignmentRtl]="message?.language?.direction === 'rtl' ? 'right' : ' left'">
+          </basic-text>
         </div>
       </div>
     </div>`

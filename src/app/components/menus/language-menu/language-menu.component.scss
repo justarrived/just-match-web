@@ -5,6 +5,7 @@
   background-color: $color-gray-25 !important;
   min-height: 100%;
   text-align: center;
+  margin-bottom: $header-height !important;
 
   .language-menu-logo-container {
     padding-top: 10px;
@@ -12,7 +13,6 @@
     .language-menu-logo {
       display: block;
       height: 60px;
-      font-size: 0;
       margin: 40px 0;
       text-align: center;
     }
@@ -65,6 +65,14 @@
         color: $color-primary-cerise;
         padding-top: 6px;
         padding-bottom: 6px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        text-align: right;
+
+        i {
+          margin-right: 10px;
+        }
       }
     }
 
@@ -76,12 +84,6 @@
   .language-menu-information-container {
     color: $color-gray-200;
     padding: 6px 20px;
-
-    p {
-      font-size: 12px;
-      padding: 0;
-      margin: 0;
-    }
   }
 
   .language-menu-credentials-container {
@@ -89,27 +91,10 @@
     margin-top: 10px;
     text-align: center;
     position: relative;
-    transform: scale(0.75);
 
     .language-menu-credentials-container-image {
       max-width: 300px;
       margin: 0 auto;
-    }
-  }
-
-  .language-menu-contributers-wrapper {
-    font-size: 10px;
-
-    .language-menu-contributers-text {
-      color: $color-gray-200;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-right: 1px solid $color-gray-100;
-    }
-
-    .language-menu-contributers-text:last-of-type {
-      border-right: none;
     }
   }
 }

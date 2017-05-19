@@ -33,11 +33,11 @@ import {UserLanguageFactory} from '../../../models/api-models/user-language/user
       dataItemLabelProoerty="translatedText.name"
       dataItemValueProoerty="id">
     </select-dropdown-input>
-    <p
+    <basic-text
+      [text]="'input.languages.hint' | translate"
       *ngIf="userLanguagesControl.value?.length > 0"
-      class="fs-m0">
-      {{'input.languages.hint' | translate}}
-    </p>
+      color="black">
+    </basic-text>
     <div *ngFor="let userLanguage of userLanguagesControl.value">
       <language-proficiency-input
         (onDelete)="onRemoveUserLanguage(userLanguage)"

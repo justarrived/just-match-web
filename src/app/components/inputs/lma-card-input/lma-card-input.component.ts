@@ -10,7 +10,7 @@ import {User} from '../../../models/api-models/user/user';
     [header]="'input.lma.card.header' | translate"
     [label]="'input.lma.card.label' | translate"
     [showLabel]="showLabel"
-    [subHeader]="'input.lma.card.description' | translate"
+    [description]="'input.lma.card.description' | translate"
     imageField="lmaCardImage"
     imageType="lma_card">
   </user-image-card-input>

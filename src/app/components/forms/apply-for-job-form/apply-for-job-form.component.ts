@@ -24,10 +24,7 @@ import {Validators} from '@angular/forms';
         class="inverted">
       </sm-loader>
 
-      <h3
-        class="ui horizontal divider pink header">
-        {{'apply.for.job.form.message.section' | translate}}
-      </h3>
+      <form-section-title-text [text]="'apply.for.job.form.message.section' | translate"></form-section-title-text>
 
       <apply-message-input
         [control]="applyForJobForm.controls['apply_message']"

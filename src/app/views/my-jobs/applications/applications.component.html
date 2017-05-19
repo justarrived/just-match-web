@@ -1,10 +1,7 @@
 <div class="applications">
-  <div class="my-job-content" *ngIf="selectedState == 'active'">
-    <div *ngIf="currentApplications.length > 0">
-      <my-jobs-item *ngFor="let application of currentApplications" [application]="application" [section]="'current'"></my-jobs-item>
+  <div class="my-job-content">
+    <div *ngIf="applications && applications.length > 0">
+      <my-jobs-item *ngFor="let application of applications" [application]="application"></my-jobs-item>
     </div>
-  </div>
-  <div class="my-job-content" *ngIf="selectedState == 'history'">
-    <my-jobs-item *ngFor="let application of historyApplications" [application]="application" [section]="'history'"></my-jobs-item>
   </div>
 </div>

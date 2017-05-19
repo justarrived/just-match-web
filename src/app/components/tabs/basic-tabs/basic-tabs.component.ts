@@ -12,7 +12,14 @@ import {Component} from '@angular/core';
         *ngFor="let tab of tabs"
         class="column tab-container">
         <div class="ui basic center aligned segment">
-          <h4>{{tab.tabTitle}}</h4>
+          <basic-title-text
+            [text]="tab.tabTitle"
+            fontSize="small"
+            marginBottom="0"
+            marginTop="0"
+            textAlignmentLtr="center"
+            textAlignmentRtl="center">
+          </basic-title-text>
         </div>
       </div>
     </div>
