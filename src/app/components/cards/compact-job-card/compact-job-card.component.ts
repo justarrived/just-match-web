@@ -63,7 +63,7 @@ import {SystemLanguagesResolver} from '../../../resolvers/system-languages/syste
     </div>
     <div class="extra content">
       <div
-        [style.flex-direction]="systemLanguage.direction === 'rtl' ? 'row-reverse' : 'row'"
+        [style.justify-content]="systemLanguage.direction === 'rtl' ? 'flex-end' : 'flex-start'"
         class="job-salary-container">
         <basic-title-text
           [text]="job.hourlyPay.grossSalary"
@@ -75,7 +75,7 @@ import {SystemLanguagesResolver} from '../../../resolvers/system-languages/syste
           marginBottom="0">
         </basic-title-text>
         <basic-title-text
-          style="margin-left: 1em; margin-right: 1em;"
+          style="margin-left: 1em;"
           [text]="'job.card.currency.per.hour' | translate: {currency: job.currency}"
           [oneLineEllipsis]="true"
           fontWeight="light"

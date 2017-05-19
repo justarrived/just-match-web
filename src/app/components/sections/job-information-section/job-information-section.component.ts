@@ -38,6 +38,7 @@ import {Job} from '../../../models/api-models/job/job'
           style="padding-left: 0; padding-right: 0">
           <i class="ui big circular inverted pink calendar icon"></i>
           <basic-title-text
+            [alwaysLtrText]="true"
             [text]="job.jobDate | date: 'MMM dd'"
             fontSize="tiny"
             textAlignmentLtr="center"
@@ -54,6 +55,7 @@ import {Job} from '../../../models/api-models/job/job'
             textAlignmentRtl="center">
           </basic-title-text>
           <basic-title-text
+            [alwaysLtrText]="true"
             [text]="job.jobEndDate | date: 'MMM dd'"
             *ngIf="job.jobEndDate"
             fontSize="tiny"

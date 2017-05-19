@@ -13,7 +13,6 @@ import {ViewChild} from '@angular/core';
     <div
       *ngIf="uploadingImage"
       class="ui large inverted active text loader">
-      {{'component.loading' | translate}}
     </div>
     <img
       (click)="onImageClick()"

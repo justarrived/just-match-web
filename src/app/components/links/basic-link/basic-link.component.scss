@@ -125,25 +125,25 @@ $link-line-height: 1.5;
 
 .hover-white {
   &:hover {
-    color: $white;
+    color: $white !important;
   }
 }
 
 .hover-black {
   &:hover {
-    color: $black;
+    color: $black !important;
   }
 }
 
 .hover-pink {
   &:hover {
-    color: $color-cerise-500;
+    color: $color-cerise-500 !important;
   }
 }
 
 .hover-gray {
   &:hover {
-    color: $color-gray-300;
+    color: $color-gray-300 !important;
   }
 }
 

@@ -16,11 +16,13 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
         [rightAligned]="user?.id === message?.author?.id"
         *ngFor="let message of messages">
       </basic-chat-message>
-      <p
+      <basic-text
+        [text]="'basic.chat.messages.empty' | translate"
         *ngIf="messages?.length === 0"
-        style="text-align: center">
-        {{'basic.chat.messages.empty' | translate}}
-      </p>
+        color="black"
+        textAlignmentLtr="center"
+        textAlignmentRtl="center">
+      </basic-text>
     </div>
     `
 })

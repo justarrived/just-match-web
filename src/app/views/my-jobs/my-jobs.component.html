@@ -4,20 +4,7 @@
     icon="briefcase">
   </basic-border-header>
 
-  <div class="ui equal width grid">
-    <div class="column my-jobs-header-tab" [ngClass]="{'my-jobs-header-tab-selected': selectedState == 'active'}" (click)="setState('active')" >
-      <h4>
-        {{"company.assignments.filter_1" | translate}}
-      </h4>
-    </div>
-    <div class="column my-jobs-header-tab" [ngClass]="{'my-jobs-header-tab-selected': selectedState == 'history'}" (click)="setState('history')">
-      <h4>
-        {{"company.assignments.filter_2" | translate}}
-      </h4>
-    </div>
-  </div>
-
   <div class="row" style="background-color: white;">
-    <applications [selectedState]="selectedState"></applications>
+    <applications></applications>
   </div>
 </div>

@@ -39,7 +39,7 @@ import {ViewChild} from '@angular/core';
 
         <basic-link
           [text]="'menu.main.home' | translate"
-          [color]="'gray'"
+          color="gray"
           [routerLink]="JARoutes.home.url()"
           class="navigation-menu-item"
           hoverColor="pink"
@@ -51,7 +51,7 @@ import {ViewChild} from '@angular/core';
 
         <basic-link
           [text]="'menu.main.god.mode' | translate"
-          [color]="'gray'"
+          color="gray"
           [routerLink]="JARoutes.godMode.url()"
           *ngIf="admin"
           class="navigation-menu-item"
@@ -64,7 +64,7 @@ import {ViewChild} from '@angular/core';
 
         <basic-link
           [text]="'menu.main.my_assignment' | translate"
-          [color]="'gray'"
+          color="gray"
           [routerLink]="JARoutes.applications.url()"
           *ngIf="user"
           class="navigation-menu-item"
@@ -77,7 +77,7 @@ import {ViewChild} from '@angular/core';
 
         <basic-link
           [text]="'menu.main.find_assignment' | translate"
-          [color]="'gray'"
+          color="gray"
           [routerLink]="JARoutes.jobs.url(['1'])"
           class="navigation-menu-item"
           hoverColor="pink"
@@ -89,7 +89,7 @@ import {ViewChild} from '@angular/core';
 
         <basic-link
           [text]="'menu.main.profile' | translate"
-          [color]="'gray'"
+          color="gray"
           [routerLink]="JARoutes.user.url()"
           *ngIf="user"
           class="navigation-menu-item"
@@ -102,7 +102,7 @@ import {ViewChild} from '@angular/core';
 
         <basic-link
           [text]="'menu.main.faq' | translate"
-          [color]="'gray'"
+          color="gray"
           [routerLink]="JARoutes.faq.url()"
           class="navigation-menu-item"
           hoverColor="pink"
@@ -114,7 +114,7 @@ import {ViewChild} from '@angular/core';
 
         <basic-link
           [text]="'menu.main.contact' | translate"
-          [color]="'gray'"
+          color="gray"
           [routerLink]="JARoutes.contact.url()"
           class="navigation-menu-item"
           hoverColor="pink"
@@ -126,7 +126,7 @@ import {ViewChild} from '@angular/core';
 
         <basic-link
           [text]="'menu.main.support.chat' | translate"
-          [color]="'gray'"
+          color="gray"
           [routerLink]="JARoutes.supportChat.url()"
           *ngIf="user"
           class="navigation-menu-item"
@@ -139,7 +139,7 @@ import {ViewChild} from '@angular/core';
 
         <basic-link
           [text]="'menu.main.login' | translate"
-          [color]="'gray'"
+          color="gray"
           [routerLink]="JARoutes.login.url()"
           *ngIf="!user"
           class="navigation-menu-item"
@@ -151,11 +151,11 @@ import {ViewChild} from '@angular/core';
         </basic-link>
 
         <basic-link
-          (click)="onStaffingTimeReportLinkClick()"
           [text]="'menu.main.staffing_time_report' | translate"
-          [color]="'gray'"
+          color="gray"
           *ngIf="user && (user.justArrivedStaffing || user.admin)"
           class="navigation-menu-item"
+          href="https://justarrived-se.web.intelliplan.eu/croupier/login/"
           hoverColor="pink"
           marginBottom="0"
           marginTop="0"
@@ -166,7 +166,7 @@ import {ViewChild} from '@angular/core';
         <basic-link
           (click)="onLogoutButtonClick()"
           [text]="'menu.main.logout' | translate"
-          [color]="'gray'"
+          color="gray"
           *ngIf="user"
           class="navigation-menu-item"
           hoverColor="pink"
@@ -276,13 +276,6 @@ export class NavigationMenuComponent implements OnInit, OnDestroy {
     this.isNavigationMenuVisible = false;
     this.isNavigationMenuVisibleChange.emit(this.isNavigationMenuVisible);
     this.navigationSidebar.hide();
-  }
-
-  public onStaffingTimeReportLinkClick(): void {
-    if (isPlatformBrowser(this.platformId)) {
-      window.location.href = 'https://justarrived-se.web.intelliplan.eu/croupier/login/';
-    }
-    this.hide();
   }
 
   public onLogoutButtonClick(): void {

@@ -85,7 +85,7 @@ import {SystemLanguagesResolver} from '../../../resolvers/system-languages/syste
         [class.maximum-8-lines-ellipsis]="maxiumLinesEllipsis === 8"
         [class.maximum-9-lines-ellipsis]="maxiumLinesEllipsis === 9"
         [class.maximum-10-lines-ellipsis]="maxiumLinesEllipsis === 10"
-        [style.display]="'inline-block'">
+        [style.display]="'inline'">
       </div>
       <i
         *ngIf="iconRight"

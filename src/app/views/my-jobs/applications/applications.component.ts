@@ -13,10 +13,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
   templateUrl: './applications.component.html'
 })
 export class ApplicationsComponent extends SystemLanguageListener implements OnInit {
-  @Input() public selectedState: string;
   public applications: Application[];
-  public currentApplications: Application[] = []; // not invoiced
-  public historyApplications: Application[] = []; // invoiced
 
   public constructor(
     private applicationProxy: ApplicationProxy,
@@ -34,16 +31,10 @@ export class ApplicationsComponent extends SystemLanguageListener implements OnI
     this.applicationProxy.getUserApplications(this.userResolver.getUser().id, {
       'include': 'job, job.company',
       'sort': '-created_at',
-      'page[size]': 14
+      'page[size]': 50
     })
     .then(applications => {
       this.applications = applications;
-      this.generateJobSections();
     });
-  }
-
-  private generateJobSections() {
-    this.currentApplications = this.applications.filter(application => !(application.willPerform && application.jobEnded));
-    this.historyApplications = this.applications.filter(application => application.willPerform && application.jobEnded);
   }
 }

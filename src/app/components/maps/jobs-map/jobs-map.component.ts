@@ -46,11 +46,23 @@ import {yyyymmdd} from '../../../utils/date/date.util';
           class="jobs-map-tooltip-content"
           [class.tooltip-visible]="mapErrorShow"
           (click)="mapTooltipClicked()">
-          {{'map.geolocation.error.prefix' | translate: {mapError: mapError | translate} }}
-          <div
-            class="jobs-map-tooltip-close-link">
-            {{'map.geolocation.error.close' | translate}}
-          </div>
+          <basic-text
+            [text]="'map.geolocation.error.prefix' | translate: {mapError: mapError | translate}"
+            color="white"
+            fontSize="small"
+            textAlignmentLtr="center"
+            textAlignmentRtl="center">
+          </basic-text>
+          <basic-link
+            [text]="'map.geolocation.error.close' | translate"
+            class="jobs-map-tooltip-close-link"
+            color="white"
+            hoverColor="white"
+            fontSize="small"
+            textAlignmentLtr="center"
+            textAlignmentRtl="center"
+            marginBottom="0">
+          </basic-link>
         </span>
       </div>
     </div>`,

@@ -10,23 +10,26 @@ import {JARoutes} from '../../../routes/ja-routes/ja-routes';
       *ngIf="checkCookiesConsent()"
       class="cookie-message">
       <div class="cookie-message-inner">
-        <p
-          class="fs-m0">
-          {{'cookies.description' | translate}}
-          <a
-            [routerLink]="JARoutes.aboutCookies.url()"
-            class="read-more fs-m0">
-            {{'cookies.read_more' | translate}}
-          </a>
-        </p>
-        <div class="cookies-button">
-          <base-button
-            (click)="acceptCookiesConsent()"
-            [buttonText]="'cookies.accept.button' | translate"
-            kind="secondary-light"
-            size="small">
-          </base-button>
-        </div>
+        <basic-text
+          [text]="'cookies.description' | translate"
+          color="white"
+          textAlignmentLtr="center"
+          textAlignmentRtl="center">
+        </basic-text>
+        <base-button
+          [routerLink]="JARoutes.aboutCookies.url()"
+          [buttonText]="'cookies.read_more' | translate"
+          style="margin-left: 10px; margin-right: 10px;"
+          kind="secondary-light"
+          size="small">
+        </base-button>
+        <base-button
+          (click)="acceptCookiesConsent()"
+          [buttonText]="'cookies.accept.button' | translate"
+          style="margin-left: 10px; margin-right: 10px;"
+          kind="secondary-light"
+          size="small">
+        </base-button>
       </div>
     </div>`
 })

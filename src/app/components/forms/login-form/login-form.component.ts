@@ -43,18 +43,22 @@ import {Validators} from '@angular/forms';
         [showButton]="!isInModal"
         [submitFail]="submitFail"
         [submitSuccess]="submitSuccess">
-        <div>
-          <a
-            (click)="onForgotPasswordButtonClick()"
-            class="login-form-link">
-            {{'login.form.forgot.password.link' | translate}}
-          </a>
-          <a
-            (click)="onRegisterButtonClick()"
-            class="login-form-link">
-            {{'login.form.register.link' | translate}}
-          </a>
-        </div>
+        <basic-link
+          [text]="'login.form.forgot.password.link' | translate"
+          (click)="onForgotPasswordButtonClick()"
+          color="gray"
+          hoverColor="pink"
+          textAlignmentLtr="center"
+          textAlignmentRtl="center">
+        </basic-link>
+        <basic-link
+          [text]="'login.form.register.link' | translate"
+          (click)="onRegisterButtonClick()"
+          color="gray"
+          hoverColor="pink"
+          textAlignmentLtr="center"
+          textAlignmentRtl="center">
+        </basic-link>
       </form-submit-button>
     </form>`
 })

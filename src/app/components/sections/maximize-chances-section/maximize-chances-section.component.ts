@@ -12,28 +12,40 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
   template: `
     <div
       class="ui basic very padded segment maximize-chances-container">
-      <div class="ui basic center aligned segment">
-        <h3>{{'home.instructions.second.section.title' | translate}}</h3>
-        <p>{{'home.instructions.second.section.description' | translate}}</p>
-      </div>
-      <div class="instruction">
-        <i class="fa fa-check-circle-o fa-2x"></i>
-        <div class="instruction-text">
-          {{'home.instructions.second.section.instruction1' | translate}}
-        </div>
-      </div>
-      <div class="instruction">
-        <i class="fa fa-check-circle-o fa-2x"></i>
-        <div class="instruction-text">
-          {{'home.instructions.second.section.instruction2' | translate}}
-        </div>
-      </div>
-      <div class="instruction">
-        <i class="fa fa-check-circle-o fa-2x"></i>
-        <div class="instruction-text">
-          {{'home.instructions.second.section.instruction3' | translate}}
-        </div>
-      </div>
+      <basic-title-text
+        [text]="'home.instructions.second.section.title' | translate"
+        [underlineBelow]="true"
+        color="white"
+        fontSize="large"
+        textAlignmentLtr="center"
+        textAlignmentRtl="center"
+        underlineBelowColor="white"
+        underlineBelowLtrAlignment="center"
+        underlineBelowRtlAlignment="center"
+        marginTop="0"
+        marginBottom="2rem">
+      </basic-title-text>
+      <basic-title-text
+        [text]="'home.instructions.second.section.instruction1' | translate"
+        iconLeft="check circle outline"
+        color="white"
+        fontSize="small"
+        marginTop="0">
+      </basic-title-text>
+      <basic-title-text
+        [text]="'home.instructions.second.section.instruction2' | translate"
+        iconLeft="check circle outline"
+        color="white"
+        fontSize="small"
+        marginTop="0">
+      </basic-title-text>
+      <basic-title-text
+        [text]="'home.instructions.second.section.instruction3' | translate"
+        iconLeft="check circle outline"
+        color="white"
+        fontSize="small"
+        marginTop="0">
+      </basic-title-text>
       <div class="maximize-chances-button">
         <base-button
           [buttonText]="'common.start_here' | translate"

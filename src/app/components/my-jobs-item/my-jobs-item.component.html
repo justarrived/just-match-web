@@ -4,6 +4,7 @@
   class="my-jobs-item ui raised segment">
   <div class="date-container">
     <basic-title-text
+      [alwaysLtrText]="true"
       [uppercase]="true"
       [text]="application.job.jobDate | date: 'MMM'"
       fontWeight="light"
@@ -15,6 +16,7 @@
       textAlignmentRtl="center">
     </basic-title-text>
     <basic-title-text
+      [alwaysLtrText]="true"
       [uppercase]="true"
       [text]="application.job.jobDate | date: 'dd'"
       fontWeight="light"

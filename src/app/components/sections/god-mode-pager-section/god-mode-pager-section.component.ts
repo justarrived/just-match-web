@@ -38,10 +38,14 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
         class="inverted">
       </sm-loader>
       <div class="ui centered grid">
-        <h3
-          *ngIf="(users| async)?.length == 0">
-          {{'god.mode.pager.section.no.users' | translate}}
-        </h3>
+        <basic-text
+          [text]="'god.mode.pager.section.no.users' | translate"
+          *ngIf="(users| async)?.length == 0"
+          color="black"
+          fontSize="large"
+          textAlignmentLtr="center"
+          textAlignmentRtl="center">
+        </basic-text>
         <user-card
           (click)="activateGodmode(user)"
           [animationDelay]="50 * i"
