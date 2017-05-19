@@ -62,7 +62,7 @@ export abstract class BaseComponent implements OnChanges, OnInit, DoCheck, After
     });
   }
 
-  public systemLanguageChanged(systemLanguage: SystemLanguage): void {
+  public systemLanguageChanged(systemLanguage: Language): void {
     // Override to act on system language changes.
   }
 
