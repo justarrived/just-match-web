@@ -39,7 +39,7 @@ import {ViewChild} from '@angular/core';
 
         <basic-link
           [text]="'menu.main.home' | translate"
-          color="gray"
+          [color]="getCurrentUrl() === '/' ? 'pink' : 'gray'"
           [routerLink]="JARoutes.home.url()"
           class="navigation-menu-item"
           hoverColor="pink"
@@ -51,7 +51,7 @@ import {ViewChild} from '@angular/core';
 
         <basic-link
           [text]="'menu.main.god.mode' | translate"
-          color="gray"
+          [color]="getCurrentUrl() === JARoutes.godMode.url() ? 'pink' : 'gray'"
           [routerLink]="JARoutes.godMode.url()"
           *ngIf="admin"
           class="navigation-menu-item"
@@ -64,7 +64,7 @@ import {ViewChild} from '@angular/core';
 
         <basic-link
           [text]="'menu.main.my_assignment' | translate"
-          color="gray"
+          [color]="getCurrentUrl() === JARoutes.applications.url() ? 'pink' : 'gray'"
           [routerLink]="JARoutes.applications.url()"
           *ngIf="user"
           class="navigation-menu-item"
@@ -77,7 +77,7 @@ import {ViewChild} from '@angular/core';
 
         <basic-link
           [text]="'menu.main.find_assignment' | translate"
-          color="gray"
+          [color]="getCurrentUrl() === JARoutes.jobs.url(['1']) ? 'pink' : 'gray'"
           [routerLink]="JARoutes.jobs.url(['1'])"
           class="navigation-menu-item"
           hoverColor="pink"
@@ -89,7 +89,7 @@ import {ViewChild} from '@angular/core';
 
         <basic-link
           [text]="'menu.main.profile' | translate"
-          color="gray"
+          [color]="getCurrentUrl() === JARoutes.user.url() ? 'pink' : 'gray'"
           [routerLink]="JARoutes.user.url()"
           *ngIf="user"
           class="navigation-menu-item"
@@ -102,7 +102,7 @@ import {ViewChild} from '@angular/core';
 
         <basic-link
           [text]="'menu.main.faq' | translate"
-          color="gray"
+          [color]="getCurrentUrl() === JARoutes.faq.url() ? 'pink' : 'gray'"
           [routerLink]="JARoutes.faq.url()"
           class="navigation-menu-item"
           hoverColor="pink"
@@ -114,7 +114,7 @@ import {ViewChild} from '@angular/core';
 
         <basic-link
           [text]="'menu.main.contact' | translate"
-          color="gray"
+          [color]="getCurrentUrl() === JARoutes.contact.url() ? 'pink' : 'gray'"
           [routerLink]="JARoutes.contact.url()"
           class="navigation-menu-item"
           hoverColor="pink"
@@ -126,7 +126,7 @@ import {ViewChild} from '@angular/core';
 
         <basic-link
           [text]="'menu.main.support.chat' | translate"
-          color="gray"
+          [color]="getCurrentUrl() === JARoutes.supportChat.url() ? 'pink' : 'gray'"
           [routerLink]="JARoutes.supportChat.url()"
           *ngIf="user"
           class="navigation-menu-item"
@@ -139,7 +139,7 @@ import {ViewChild} from '@angular/core';
 
         <basic-link
           [text]="'menu.main.login' | translate"
-          color="gray"
+          [color]="getCurrentUrl() === JARoutes.login.url() ? 'pink' : 'gray'"
           [routerLink]="JARoutes.login.url()"
           *ngIf="!user"
           class="navigation-menu-item"
@@ -282,5 +282,9 @@ export class NavigationMenuComponent implements OnInit, OnDestroy {
     this.navigationService.navigate(JARoutes.home);
     this.userResolver.logout();
     this.hide();
+  }
+
+  public getCurrentUrl(): string {
+    return this.navigationService.getCurrentUrl();
   }
 }
