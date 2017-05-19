@@ -31,7 +31,7 @@ import {yyyymmdd} from '../../../utils/date/date.util';
       </basic-title-text>
       <div
         class="ui centered grid"
-        [style.direction]="systemLanguage.direction">
+        [style.flex-direction]="systemLanguage.direction === 'rtl' ? 'row-reverse': 'row'">
         <job-card
           [job]="job"
           *ngFor="let job of newJobs | async"

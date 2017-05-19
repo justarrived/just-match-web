@@ -37,7 +37,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
         class="inverted">
       </sm-loader>
       <div
-        [style.direction]="systemLanguage.direction"
+        [style.flex-direction]="systemLanguage.direction === 'rtl' ? 'row-reverse': 'row'"
         class="ui centered grid">
         <basic-text
           [text]="'god.mode.pager.section.no.users' | translate"

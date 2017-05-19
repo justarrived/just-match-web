@@ -34,7 +34,7 @@ import {yyyymmdd} from '../../../utils/date/date.util';
         class="inverted">
       </sm-loader>
       <div
-        [style.direction]="systemLanguage.direction"
+        [style.flex-direction]="systemLanguage.direction === 'rtl' ? 'row-reverse': 'row'"
         class="ui centered grid">
         <job-card
           [animationDelay]="50 * i"
