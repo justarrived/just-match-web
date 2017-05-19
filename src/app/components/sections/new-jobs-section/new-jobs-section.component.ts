@@ -2,8 +2,11 @@ import {Component} from '@angular/core';
 import {JARoutes} from '../../../routes/ja-routes/ja-routes';
 import {Job} from '../../../models/api-models/job/job';
 import {JobProxy} from '../../../proxies/job/job.proxy';
+import {Language} from '../../../models/api-models/language/language';
 import {nbrOfMonthsFromDate} from '../../../utils/date/date.util';
+import {OnDestroy} from '@angular/core';
 import {OnInit} from '@angular/core';
+import {Subscription} from 'rxjs/Subscription';
 import {SystemLanguageListener} from '../../../resolvers/system-languages/system-languages.resolver';
 import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
 import {yyyymmdd} from '../../../utils/date/date.util';
@@ -26,7 +29,9 @@ import {yyyymmdd} from '../../../utils/date/date.util';
         underlineBelowLtrAlignment="center"
         underlineBelowRtlAlignment="center">
       </basic-title-text>
-      <div class="ui centered grid">
+      <div
+        class="ui centered grid"
+        [style.direction]="systemLanguage.direction">
         <job-card
           [job]="job"
           *ngFor="let job of newJobs | async"
@@ -43,18 +48,23 @@ import {yyyymmdd} from '../../../utils/date/date.util';
     </div>
     `
 })
-export class NewJobsSectionComponent extends SystemLanguageListener implements OnInit {
+export class NewJobsSectionComponent extends SystemLanguageListener implements OnInit, OnDestroy {
   public JARoutes = JARoutes;
   public newJobs: Promise<Job[]>;
 
+  public systemLanguage: Language;
+
+  private systemLanguageSubscription: Subscription;
+
   public constructor(
     private jobProxy: JobProxy,
-    protected systemLanguagesResolver: SystemLanguagesResolver,
+    protected systemLanguagesResolver: SystemLanguagesResolver
   ) {
     super(systemLanguagesResolver);
   }
 
-  public ngOnInit() {
+  public ngOnInit(): void {
+    this.initSystemLanguage();
     this.loadData();
   }
 
@@ -66,5 +76,16 @@ export class NewJobsSectionComponent extends SystemLanguageListener implements O
       'page[size]': 4,
       'sort': '-created_at',
     });
+  }
+
+  private initSystemLanguage(): void {
+    this.systemLanguage = this.systemLanguagesResolver.getSelectedSystemLanguage();
+    this.systemLanguageSubscription = this.systemLanguagesResolver.getSystemLanguageChangeEmitter().subscribe(systemLanguage => {
+      this.systemLanguage = systemLanguage;
+    });
+  }
+
+  public ngOnDestroy(): void {
+    if (this.systemLanguageSubscription) { this.systemLanguageSubscription.unsubscribe(); }
   }
 }

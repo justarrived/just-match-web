@@ -2,6 +2,7 @@ import {Application} from '../../../models/api-models/application/application';
 import {ApplicationProxy} from '../../../proxies/application/application.proxy';
 import {Component} from '@angular/core';
 import {JARoutes} from '../../../routes/ja-routes/ja-routes';
+import {Language} from '../../../models/api-models/language/language';
 import {nbrOfMonthsFromDate} from '../../../utils/date/date.util';
 import {OnDestroy} from '@angular/core';
 import {OnInit} from '@angular/core';
@@ -35,6 +36,7 @@ import {yyyymmdd} from '../../../utils/date/date.util';
         underlineBelowRtlAlignment="center">
       </basic-title-text>
       <div
+        [style.direction]="systemLanguage.direction"
         class="ui centered grid"
         style="margin: 20px 0">
         <application-status-card
@@ -56,7 +58,9 @@ export class ApplicationsStatusSectionComponent extends SystemLanguageListener i
   public JARoutes = JARoutes;
   public user: User;
   public applications: Promise<Application[]> = Promise.resolve([]);
+  public systemLanguage: Language;
 
+  private systemLanguageSubscription: Subscription;
   private userSubscription: Subscription;
 
   public constructor(
@@ -68,8 +72,16 @@ export class ApplicationsStatusSectionComponent extends SystemLanguageListener i
   }
 
   public ngOnInit() {
+    this.initSystemLanguage();
     this.initUser();
     this.loadData();
+  }
+
+  private initSystemLanguage(): void {
+    this.systemLanguage = this.systemLanguagesResolver.getSelectedSystemLanguage();
+    this.systemLanguageSubscription = this.systemLanguagesResolver.getSystemLanguageChangeEmitter().subscribe(systemLanguage => {
+      this.systemLanguage = systemLanguage;
+    });
   }
 
   private initUser() {
@@ -92,5 +104,6 @@ export class ApplicationsStatusSectionComponent extends SystemLanguageListener i
 
   public ngOnDestroy() {
     if (this.userSubscription) { this.userSubscription.unsubscribe(); }
+    if (this.systemLanguageSubscription) { this.systemLanguageSubscription.unsubscribe(); }
   }
 }

@@ -1,6 +1,11 @@
 import {Component} from '@angular/core';
 import {DataStoreService} from '../../../services/data-store.service';
 import {JARoutes} from '../../../routes/ja-routes/ja-routes';
+import {Language} from '../../../models/api-models/language/language';
+import {OnDestroy} from '@angular/core';
+import {OnInit} from '@angular/core';
+import {Subscription} from 'rxjs/Subscription';
+import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
 
 @Component({
   selector: 'cookie-bar',
@@ -8,6 +13,7 @@ import {JARoutes} from '../../../routes/ja-routes/ja-routes';
   template: `
     <div
       *ngIf="checkCookiesConsent()"
+      [style.direction]="systemLanguage.direction"
       class="cookie-message">
       <div class="cookie-message-inner">
         <basic-text
@@ -33,13 +39,33 @@ import {JARoutes} from '../../../routes/ja-routes/ja-routes';
       </div>
     </div>`
 })
-export class CookieBarComponent {
+export class CookieBarComponent implements OnInit, OnDestroy {
   private readonly cookiesConsentData: string = 'cookiesConsentData';
   public JARoutes = JARoutes;
 
+  public systemLanguage: Language;
+
+  private systemLanguageSubscription: Subscription;
+
   public constructor(
-    private dataStoreService: DataStoreService
+    private dataStoreService: DataStoreService,
+    private systemLanguagesResolver: SystemLanguagesResolver
   ) {
+  }
+
+  public ngOnInit(): void {
+    this.initSystemLanguage()
+  }
+
+  private initSystemLanguage(): void {
+    this.systemLanguage = this.systemLanguagesResolver.getSelectedSystemLanguage();
+    this.systemLanguageSubscription = this.systemLanguagesResolver.getSystemLanguageChangeEmitter().subscribe(systemLanguage => {
+      this.systemLanguage = systemLanguage;
+    });
+  }
+
+  public ngOnDestroy(): void {
+    if (this.systemLanguageSubscription) { this.systemLanguageSubscription.unsubscribe(); }
   }
 
   public checkCookiesConsent(): boolean {

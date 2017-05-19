@@ -4,6 +4,7 @@ import {Input} from '@angular/core';
 import {JARoute} from '../../../routes/ja-route/ja-route';
 import {Job} from '../../../models/api-models/job/job';
 import {JobProxy} from '../../../proxies/job/job.proxy';
+import {Language} from '../../../models/api-models/language/language';
 import {NavigationService} from '../../../services/navigation.service';
 import {nbrOfMonthsFromDate} from '../../../utils/date/date.util';
 import {OnDestroy} from '@angular/core';
@@ -32,7 +33,9 @@ import {yyyymmdd} from '../../../utils/date/date.util';
         [promise]="jobsMetaPromise"
         class="inverted">
       </sm-loader>
-      <div class="ui centered grid">
+      <div
+        [style.direction]="systemLanguage.direction"
+        class="ui centered grid">
         <job-card
           [animationDelay]="50 * i"
           [job]="job"
@@ -58,7 +61,9 @@ export class JobsPagerSectionComponent extends SystemLanguageListener implements
   public totalJobs: number = 0;
   public page: number = 1;
   public pageSize: number = 12;
+  public systemLanguage: Language;
 
+  private systemLanguageSubscription: Subscription;
   private routeParamsSubscription: Subscription;
 
   constructor(
@@ -71,7 +76,15 @@ export class JobsPagerSectionComponent extends SystemLanguageListener implements
   }
 
   public ngOnInit(): void {
+    this.initSystemLanguage();
     this.initRouteParamsSubscription();
+  }
+
+  private initSystemLanguage(): void {
+    this.systemLanguage = this.systemLanguagesResolver.getSelectedSystemLanguage();
+    this.systemLanguageSubscription = this.systemLanguagesResolver.getSystemLanguageChangeEmitter().subscribe(systemLanguage => {
+      this.systemLanguage = systemLanguage;
+    });
   }
 
   private initRouteParamsSubscription(): void {
@@ -107,6 +120,7 @@ export class JobsPagerSectionComponent extends SystemLanguageListener implements
 
   public ngOnDestroy(): void {
     if (this.routeParamsSubscription) { this.routeParamsSubscription.unsubscribe(); }
+    if (this.systemLanguageSubscription) { this.systemLanguageSubscription.unsubscribe(); }
   }
 
   public onPageChange(page: number): void {
