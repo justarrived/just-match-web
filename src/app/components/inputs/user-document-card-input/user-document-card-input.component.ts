@@ -26,7 +26,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
         [documentSaveFail]="documentSaveFail"
         [documentSaveSuccess]="documentSaveSuccess"
         [documents]="user && user[documentsField]?.slice(0, maxNbrDocuments)"
-        [subHeader]="subHeader"
+        [description]="description"
         [uploadingDocument]="uploadingDocument">
       </upload-document-card>
     </div>`
