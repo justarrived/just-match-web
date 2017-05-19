@@ -12,6 +12,11 @@ $title-line-height: 1.333;
   letter-spacing: -0.4px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-decoration: none;
+  font-style: normal;
+  font-weight: normal;
+  text-align: left;
+  text-shadow: none;
 
   @include wrap-long-words();
 }
@@ -24,6 +29,10 @@ $title-line-height: 1.333;
 
 .uppercase {
   text-transform: uppercase;
+}
+
+.italic {
+  font-style: italic;
 }
 
 .tiny {
@@ -59,19 +68,19 @@ $title-line-height: 1.333;
 }
 
 .white {
-  color: $white;
+  color: $white !important;
 }
 
 .black {
-  color: $black;
+  color: $black !important;
 }
 
 .pink {
-  color: $color-cerise-500;
+  color: $color-cerise-500 !important;
 }
 
 .gray {
-  color: $color-gray-300;
+  color: $color-gray-300 !important;
 }
 
 .center {

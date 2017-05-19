@@ -10,7 +10,7 @@ import {User} from '../../../models/api-models/user/user';
     [header]="'input.work.permit.front.header' | translate"
     [label]="'input.work.permit.front.label' | translate"
     [showLabel]="showLabel"
-    [subHeader]="'input.work.permit.front.description' | translate"
+    [description]="'input.work.permit.front.description' | translate"
     imageField="workPermitFrontImage"
     imageType="work_permit_front">
   </user-image-card-input>

@@ -32,8 +32,10 @@ import {SystemLanguagesResolver} from '../../../resolvers/system-languages/syste
       [class.black]="color === 'black'"
       [class.white]="color === 'white'"
       [class.pink]="color === 'pink'"
+      [class.one-line-ellipsis]="oneLineEllipsis"
       [class.title]="true"
       [class.uppercase]="uppercase"
+      [class.italic]="italic"
       [class.underline-border-above-black]="underlineAbove && underlineAboveColor === 'black'"
       [class.underline-border-above-blue]="underlineAbove && underlineAboveColor === 'blue'"
       [class.underline-border-above-center]="underlineAbove && (systemLanguage.direction === 'rtl' && underlineAboveRtlAlignment === 'center' || systemLanguage.direction === 'ltr' && underlineAboveLtrAlignment === 'center')"
@@ -64,7 +66,7 @@ import {SystemLanguagesResolver} from '../../../resolvers/system-languages/syste
       [class.underline-border-below-tablet-right]="underlineBelow && (systemLanguage.direction === 'rtl' && underlineBelowRtlAlignmentTablet === 'right' || systemLanguage.direction === 'ltr' && underlineBelowLtrAlignmentTablet === 'right')"
       [class.underline-border-below-white]="underlineBelow && underlineBelowColor === 'white'"
       [class.underline-border-below]="underlineBelow"
-      [style.direction]="systemLanguage.direction"
+      [style.direction]="alwaysLtrText ? 'ltr' : alwaysRtlText ? 'rtl' : systemLanguage.direction"
       [style.display]="display"
       [style.margin-bottom]="marginBottom"
       [style.margin-top]="marginTop">
@@ -74,7 +76,6 @@ import {SystemLanguagesResolver} from '../../../resolvers/system-languages/syste
       </i>
       <div
         [innerHTML]="text"
-        [class.one-line-ellipsis]="oneLineEllipsis"
         [class.maximum-2-lines-ellipsis]="maxiumLinesEllipsis === 2"
         [class.maximum-3-lines-ellipsis]="maxiumLinesEllipsis === 3"
         [class.maximum-4-lines-ellipsis]="maxiumLinesEllipsis === 4"
@@ -93,9 +94,12 @@ import {SystemLanguagesResolver} from '../../../resolvers/system-languages/syste
     </div>`
 })
 export class BasicTitleTextComponent implements OnInit, OnDestroy {
+  @Input() public alwaysLtrText: boolean = false;
+  @Input() public alwaysRtlText: boolean = false;
   @Input() public color: string; // Should be one of 'pink', 'black', 'gray', 'white'.
   @Input() public display: string = 'block';
   @Input() public oneLineEllipsis: boolean = false;
+  @Input() public italic: boolean = false;
   @Input() public maxiumLinesEllipsis: number; // Should be one of undefined or 2-10
   @Input() public fontSize: string = 'medium'; // Should be one of 'tiny', 'small', 'medium', 'large', 'huge'.
   @Input() public fontWeight: string = 'bold'; // Should be one of 'light', 'normal', 'bold'.

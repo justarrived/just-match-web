@@ -15,7 +15,11 @@ import {Input} from '@angular/core';
         marginTop="0"
         marginBottom="0">
       </basic-title-text>
-      <basic-text [text]="description"></basic-text>
+      <basic-text
+        [text]="description"
+        marginTop="0"
+        marginBottom="0">
+      </basic-text>
     </div>
   </sm-message>`
 })

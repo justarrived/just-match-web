@@ -23,19 +23,21 @@ import {Output} from '@angular/core';
           src="/assets/images/image.png">
       </div>
       <div class="content">
-        <div
-          class="ui pink header"
-          [style.margin-bottom]="0">
-          {{header}}
-        </div>
-        <div class="meta">
-          <span class="date">
-            {{subHeader}}
-          </span>
-        </div>
-        <div class="description">
-          {{description}}
-        </div>
+        <basic-title-text
+          [text]="header"
+          [maxiumLinesEllipsis]="2"
+          color="pink"
+          fontSize="small"
+          marginTop="0"
+          marginBottom="0">
+        </basic-title-text>
+        <basic-text
+          [text]="description"
+          [maxiumLinesEllipsis]="2"
+          color="gray"
+          marginTop="0"
+          marginBottom="0">
+        </basic-text>
       </div>
       <div
         [style.padding-bottom]="0"
@@ -59,7 +61,6 @@ export class UploadImageCardComponent {
   @Input() public imageSaveFail: boolean;
   @Input() public imageSaveSuccess: boolean;
   @Input() public imageUrl: string;
-  @Input() public subHeader: string;
   @Input() public uploadingImage: boolean;
   @Output() public onFileSelect: EventEmitter<any> = new EventEmitter();
 

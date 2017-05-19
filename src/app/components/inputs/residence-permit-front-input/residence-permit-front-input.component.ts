@@ -10,7 +10,7 @@ import {User} from '../../../models/api-models/user/user';
     [header]="'input.residence.permit.front.header' | translate"
     [label]="'input.residence.permit.front.label' | translate"
     [showLabel]="showLabel"
-    [subHeader]="'input.residence.permit.front.description' | translate"
+    [description]="'input.residence.permit.front.description' | translate"
     imageField="residencePermitFrontImage"
     imageType="residence_permit_front">
   </user-image-card-input>

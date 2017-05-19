@@ -19,41 +19,27 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-
-    .job-item-name {
-      text-align: center;
-      white-space: normal;
-      @include truncate-owerflowing-text;
-    }
   }
 
   .job-item-label-container {
-    color: $white;
-    background: $color-primary-cerise;
     padding: 10px;
-    font-weight: 500;
     border-radius: 0 0 8px 8px;
-    text-align: center;
   }
 
   .job-item-label-applied-container {
     background: $color-gray-50;
-    color: $color-gray-200;
   }
 
   .job-item-label-offered-container {
     background: $color-blue-500;
-    color: $white;
   }
 
   .job-item-label-will-perform-container {
     background: $color-primary-cerise;
-    color: $white;
   }
 
   .job-item-label-performed-container {
     background: springgreen;
-    color: $white;
   }
 
 }

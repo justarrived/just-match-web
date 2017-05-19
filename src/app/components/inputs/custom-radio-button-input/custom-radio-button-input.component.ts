@@ -15,7 +15,14 @@ import {Input} from '@angular/core';
           class="custom-radio-button-input"
           type="radio"/>
         <span class="custom-radio-button-span"></span>
-        {{label}}
+        <basic-text
+          [text]="label"
+          fontWeight="light"
+          textAlignmentLtr="center"
+          textAlignmentRtl="center"
+          marginBottom="0"
+          marginTop="0">
+        </basic-text>
       </label>
     </div>`
 })

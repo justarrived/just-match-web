@@ -13,7 +13,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
   selector: 'support-chat',
   template: `
     <sm-loader
-      [complete]="chatPromise"
+      [promise]="chatPromise"
       class="inverted">
     </sm-loader>
     <basic-chat

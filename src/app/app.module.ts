@@ -128,6 +128,20 @@ import {NavigationService} from './services/navigation.service';
 import {NewJobsSectionComponent} from './components/sections/new-jobs-section/new-jobs-section.component';
 import {NewPasswordInputComponent} from './components/inputs/new-password-input/new-password-input.component';
 import {NgModule} from '@angular/core';
+import {SemanticAccordionComponent} from "./semantic/accordion/accordion";
+import {SemanticAccordionItemComponent} from "./semantic/accordion/accordion";
+import {SemanticCheckboxComponent} from "./semantic/input/input";
+import {SemanticInputComponent} from "./semantic/input/input";
+import {SemanticLoaderComponent} from "./semantic/loader/loader";
+import {SemanticMessageComponent} from "./semantic/message/message";
+import {SemanticModalComponent} from "./semantic/modal/modal";
+import {SemanticRatingComponent} from "./semantic/rating/rating";
+import {SemanticSearchComponent} from "./semantic/search/search";
+import {SemanticSelectComponent} from "./semantic/select/select";
+import {SemanticSidebarComponent} from "./semantic/sidebar/sidebar";
+import {SemanticTextareaComponent} from "./semantic/input/input";
+import {SMAutosizeDirective} from './semantic/autosize/autosize';
+import {SMModalTagsDirective} from "./semantic/modal/modal";
 import {NotFoundPageComponent} from './components/pages/404-page/404-page.component';
 import {OldPasswordInputComponent} from './components/inputs/old-password-input/old-password-input.component';
 import {PartnersSectionComponent} from './components/sections/partners-section/partners-section.component';
@@ -152,7 +166,6 @@ import {ResolversModule} from './resolvers/resolvers.module';
 import {ResumeInputComponent} from './components/inputs/resume-input/resume-input.component';
 import {RoutesModule} from './routes/routes.module';
 import {SelectDropdownInputComponent} from './components/inputs/select-dropdown-input/select-dropdown-input.component';
-import {SemanticModule} from './semantic/semantic.module';
 import {SignedForJobModalComponent} from './components/modals/signed-for-job-modal/signed-for-job-modal.component';
 import {SignForJobFormComponent} from './components/forms/sign-for-job-form/sign-for-job-form.component';
 import {SignForJobModalComponent} from './components/modals/sign-for-job-modal/sign-for-job-modal.component';
@@ -228,12 +241,13 @@ export class RavenErrorHandler implements ErrorHandler {
     ProxiesModule,
     ReactiveFormsModule,
     RoutesModule,
-    SemanticModule,
   ],
   declarations: [
     AlreadyRegisteredModalComponent,
     ApiErrorsComponent,
     AppComponent,
+    SMAutosizeDirective,
+    SMModalTagsDirective,
     ApplicationsComponent,
     ApplicationsStatusSectionComponent,
     ApplicationStatusCardComponent,
@@ -290,6 +304,18 @@ export class RavenErrorHandler implements ErrorHandler {
     FileInputButtonComponent,
     FilterUsersInputComponent,
     FirstNameInputComponent,
+    SemanticAccordionComponent,
+    SemanticAccordionItemComponent,
+    SemanticCheckboxComponent,
+    SemanticInputComponent,
+    SemanticLoaderComponent,
+    SemanticMessageComponent,
+    SemanticModalComponent,
+    SemanticRatingComponent,
+    SemanticSearchComponent,
+    SemanticSelectComponent,
+    SemanticSidebarComponent,
+    SemanticTextareaComponent,
     ForbiddenPageComponent,
     ForgotPasswordFormComponent,
     ForgotPasswordModalComponent,

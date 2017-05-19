@@ -24,11 +24,14 @@ declare var jQuery: any;
     <div
       class="field"
       [ngClass]="{error: !control?.valid && control?.touched}">
-      <label
-        [style.text-align]="systemLanguage.direction === 'ltr' ? 'left' : 'right'"
-        *ngIf="label">
-        {{label}}
-      </label>
+      <basic-text
+        [text]="label"
+        *ngIf="label"
+        fontSize="small"
+        fontWeight="bold"
+        marginBottom="0"
+        marginTop="0">
+      </basic-text>
       <div
         class="ui-select-wrapper"
         style="width: 100%"

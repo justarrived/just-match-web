@@ -17,11 +17,14 @@ import {ViewContainerRef} from "@angular/core";
     <div
       class="field"
       [ngClass]="{error: (!control.valid && control.dirty) }">
-      <label
-        [style.text-align]="systemLanguage.direction === 'ltr' ? 'left' : 'right'"
-        *ngIf="label">
-        {{label}}
-      </label>
+      <basic-text
+        [text]="label"
+        *ngIf="label"
+        fontSize="small"
+        fontWeight="bold"
+        marginBottom="0"
+        marginTop="0">
+      </basic-text>
       <div
         class="ui input"
         [ngClass]="{'left': icon && systemLanguage.direction === 'ltr', 'right': icon && systemLanguage.direction === 'rtl', 'icon': icon}">
@@ -75,7 +78,6 @@ export class SemanticInputComponent implements OnInit, OnDestroy {
 }
 
 @Component({
-  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: "sm-checkbox",
   template: `
     <div
@@ -89,8 +91,13 @@ export class SemanticInputComponent implements OnInit, OnDestroy {
         <label
           [for]="uniqueId"
           *ngIf="label"
-          style="cursor: pointer">
-          {{label}}
+          style="cursor: pointer;">
+          <basic-text
+            [text]="label"
+            *ngIf="label"
+            marginBottom="0"
+            marginTop="0">
+          </basic-text>
         </label>
       </div>
     </div>`
@@ -107,11 +114,14 @@ export class SemanticCheckboxComponent {
     <div
       [ngClass]="{error: (!control.valid && control.dirty) }"
       class="field">
-      <label
-        [style.text-align]="systemLanguage.direction === 'ltr' ? 'left' : 'right'"
-        *ngIf="label">
-        {{label}}
-      </label>
+      <basic-text
+        [text]="label"
+        *ngIf="label"
+        fontSize="small"
+        fontWeight="bold"
+        marginBottom="0"
+        marginTop="0">
+      </basic-text>
       <textarea
         (keyup.enter)="onEnterKeyUp.emit()"
         [formControl]="control"

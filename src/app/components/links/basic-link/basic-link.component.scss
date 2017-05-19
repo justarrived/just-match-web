@@ -12,6 +12,11 @@ $link-line-height: 1.5;
   text-rendering: optimizelegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-decoration: none;
+  font-style: normal;
+  font-weight: normal;
+  text-align: left;
+  text-shadow: none;
 
   @include wrap-long-words();
 }
@@ -24,6 +29,10 @@ $link-line-height: 1.5;
 
 .uppercase {
   text-transform: uppercase;
+}
+
+.italic {
+  font-style: italic;
 }
 
 .small {
@@ -50,7 +59,7 @@ $link-line-height: 1.5;
   font-weight: 700;
 }
 
-center {
+.center {
   text-align: center;
 }
 
@@ -99,19 +108,19 @@ center {
 }
 
 .white {
-  color: $white;
+  color: $white !important;
 }
 
 .black {
-  color: $black;
+  color: $black !important;
 }
 
 .pink {
-  color: $color-cerise-500;
+  color: $color-cerise-500 !important;
 }
 
 .gray {
-  color: $color-gray-300;
+  color: $color-gray-300 !important;
 }
 
 .hover-white {

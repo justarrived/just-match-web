@@ -13,11 +13,16 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
   selector: 'user-image-card-input',
   template: `
     <div class="ui field">
-      <label
-        [ngStyle]="{'text-align': (centered && 'center') || 'left'}"
-        *ngIf="showLabel">
-        {{label}}
-      </label>
+      <basic-text
+        [text]="label"
+        *ngIf="showLabel"
+        fontSize="small"
+        fontWeight="bold"
+        [textAlignmentLtr]="centered ? 'center' : 'left'"
+        [textAlignmentRtl]="centered ? 'center' : 'right'"
+        marginBottom="0"
+        marginTop="0">
+      </basic-text>
       <upload-image-card
         (onFileSelect)="onUploadImage($event)"
         [centered]="centered"
@@ -26,7 +31,6 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
         [imageSaveFail]="imageSaveFail"
         [imageSaveSuccess]="imageSaveSuccess"
         [imageUrl]="this.user && this.user[this.imageField]?.imageUrlMedium"
-        [subHeader]="subHeader"
         [uploadingImage]="uploadingImage">
       </upload-image-card>
     </div>`
@@ -39,7 +43,6 @@ export class UserImageCardInputComponent implements OnInit, OnDestroy {
   @Input() public imageType: string;
   @Input() public label: string;
   @Input() public showLabel: boolean;
-  @Input() public subHeader: string;
   public imageSaveFail: boolean;
   public imageSaveSuccess: boolean;
   public uploadingImage: boolean;

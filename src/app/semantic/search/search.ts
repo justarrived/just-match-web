@@ -18,11 +18,14 @@ import {SystemLanguagesResolver} from '../../resolvers/system-languages/system-l
   template: `
     <div
       class="field">
-      <label
-        [style.text-align]="systemLanguage.direction === 'ltr' ? 'left' : 'right'"
-        *ngIf="label">
-        {{label}}
-      </label>
+      <basic-text
+        [text]="label"
+        *ngIf="label"
+        fontSize="small"
+        fontWeight="bold"
+        marginBottom="0"
+        marginTop="0">
+      </basic-text>
       <div
         [ngClass]="{'loading': loading}"
         class="ui search">

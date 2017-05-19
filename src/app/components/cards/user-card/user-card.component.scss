@@ -17,14 +17,6 @@
     }
   }
 
-  .header {
-    @include truncate-owerflowing-text;
-  }
-
-  .description {
-    @include truncate-owerflowing-text;
-  }
-
   .base.content {
     height: 94px;
   }
@@ -37,16 +29,6 @@
 
     .icon {
       flex-shrink: 0;
-    }
-
-    .address {
-      text-align: left;
-      font-size: $fs-s;
-      @include truncate-owerflowing-text-multiline($lines-to-show: 2);
-    }
-
-    .no-address {
-      font-style: italic;
     }
   }
 }

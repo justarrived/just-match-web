@@ -10,7 +10,7 @@ import {User} from '../../../models/api-models/user/user';
     [header]="'input.skatteverket.certificate.header' | translate"
     [label]="'input.skatteverket.certificate.label' | translate"
     [showLabel]="showLabel"
-    [subHeader]="'input.skatteverket.certificate.description' | translate"
+    [description]="'input.skatteverket.certificate.description' | translate"
     imageField="skatteverketCertificateImage"
     imageType="skatteverket_certificate">
   </user-image-card-input>
