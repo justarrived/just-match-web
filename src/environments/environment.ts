@@ -5,5 +5,11 @@
 import {environment as prodEnv} from './environment.prod';
 import {environment as stagingEnv} from './environment.staging';
 import {environment as devEnv} from './environment.dev';
+import {environment as p2pEnv} from './environment.p2p';
 
-export const environment = process.env.ENV_CONFIG === 'prod' ? prodEnv : process.env.ENV_CONFIG === 'staging' ? stagingEnv : devEnv;
+export const environment = {
+  'production': prodEnv,
+  'prod': prodEnv,
+  'staging': stagingEnv,
+  'p2p': p2pEnv
+}[process.env.ENV_CONFIG] || devEnv;

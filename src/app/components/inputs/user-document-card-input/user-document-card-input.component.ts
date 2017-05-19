@@ -25,8 +25,8 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
         [hint]="hint"
         [documentSaveFail]="documentSaveFail"
         [documentSaveSuccess]="documentSaveSuccess"
-        [documents]="user && user[documentsField]?.slice(-maxNbrDocuments)"
-        [description]="description"
+        [documents]="user && user[documentsField]?.slice(0, maxNbrDocuments)"
+        [subHeader]="subHeader"
         [uploadingDocument]="uploadingDocument">
       </upload-document-card>
     </div>`
@@ -89,7 +89,7 @@ export class UserDocumentCardInputComponent implements OnInit, OnDestroy {
         })
         .then(userDocument => {
           userDocument.document = document;
-          this.user[this.documentsField].push(userDocument);
+          this.user[this.documentsField].unshift(userDocument);
           this.documentSaveSuccess = true;
           this.uploadingDocument = false;
         })
