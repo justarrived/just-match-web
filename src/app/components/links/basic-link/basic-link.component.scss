@@ -147,7 +147,7 @@ $link-line-height: 1.5;
   }
 }
 
-/* Effect: Brackets */
+/* Effect: - */
 .link::before,
 .link::after {
 	display: inline-block;
@@ -157,7 +157,8 @@ $link-line-height: 1.5;
 	transition: transform 0.3s, opacity 0.2s;
 }
 
-.link::before {
+.direction-ltr::before,
+.direction-rtl::after {
 	margin-right: 10px;
 	content: '-';
 	-webkit-transform: translateX(20px);
@@ -165,7 +166,8 @@ $link-line-height: 1.5;
 	transform: translateX(20px);
 }
 
-.link::after {
+.direction-ltr::after,
+.direction-rtl::before {
 	margin-left: 10px;
 	content: '-';
 	-webkit-transform: translateX(-20px);
