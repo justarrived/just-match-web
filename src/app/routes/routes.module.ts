@@ -7,7 +7,6 @@ import {ForbiddenPageComponent} from '../components/pages/forbidden-page/forbidd
 import {ForgotPasswordPageComponent} from '../components/pages/forgot-password-page/forgot-password-page.component';
 import {GodModePageComponent} from '../components/pages/god-mode-page/god-mode-page.component';
 import {GuardsModule} from '../guards/guards.module';
-import {GuidePageComponent} from '../components/pages/guide/guide-page.component';
 import {HomePageComponent} from '../components/pages/home-page/home-page.component';
 import {JARoute} from './ja-route/ja-route';
 import {JobPageComponent} from '../components/pages/job-page/job-page.component';
@@ -44,7 +43,6 @@ const routes: Routes = [
     { path: 'faq', component: FaqPageComponent },
     { path: 'forbidden', component: ForbiddenPageComponent },
     { path: 'forgot-password', component: ForgotPasswordPageComponent, canActivate: [NotLoggedInGuard] },
-    { path: 'guide', component: GuidePageComponent, canActivate: [LoggedInGuard] },
     { path: 'god-mode', component: GodModePageComponent, canActivate: [LoggedInAdminGuard] },
     { path: 'home', redirectTo: '' },
     { path: 'job/:id', component: JobPageComponent },

@@ -67,7 +67,7 @@ export class SystemLanguagesResolver implements Resolve<Language[]> {
   private initRouteParamsSubscription(): void {
     this.route.queryParams
     .subscribe(params => {
-      let systemLanguageCode = params['locale'] || params['lang'];
+      let systemLanguageCode = params['locale'] || params['lang'] || this.mapFromOpenGraphLocale(params['fb_locale']);
       if (systemLanguageCode) {
         let language = this.systemLanguages.find(language => language.languageCode === systemLanguageCode);
         if (language) {
@@ -77,6 +77,19 @@ export class SystemLanguagesResolver implements Resolve<Language[]> {
         }
       }
     });
+  }
+
+  private mapFromOpenGraphLocale(openGraphLocale: string): string {
+    const openGraphLocaleMap = {
+      'ar_AR': 'ar',
+      'en_US': 'en',
+      'fa_IR': 'fa',
+      'ku_TR': 'ku',
+      'ps_AF': 'ps',
+      'sv_SE': 'sv',
+    }
+
+    return openGraphLocaleMap[openGraphLocale];
   }
 
   public getSystemLanguages(): Language[] {

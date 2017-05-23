@@ -35,8 +35,8 @@ export abstract class BaseComponent implements OnChanges, OnInit, DoCheck, After
   private userSubscription: Subscription;
 
   public constructor (
-    private systemLanguagesResolver: SystemLanguagesResolver,
-    private userResolver: UserResolver,
+    protected systemLanguagesResolver: SystemLanguagesResolver,
+    protected userResolver: UserResolver,
   ) {
   }
 
