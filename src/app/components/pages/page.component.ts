@@ -35,6 +35,7 @@ export abstract class PageComponent extends BaseComponent implements OnInit, OnD
     private pageMeta: PageMeta,
     protected document: any,
     protected meta: Meta,
+    protected request: any,
     protected systemLanguagesResolver: SystemLanguagesResolver,
     protected translateService: TranslateService,
     protected userResolver: UserResolver,
@@ -43,7 +44,6 @@ export abstract class PageComponent extends BaseComponent implements OnInit, OnD
   }
 
   public ngOnInit(): void {
-
     this.updatePageMeta(this.pageMeta);
 
     super.ngOnInit();
@@ -101,26 +101,65 @@ export abstract class PageComponent extends BaseComponent implements OnInit, OnD
           this.meta.updateTag({
             content: this.pageMeta.image.content
           },
-            'property=og:image'
+            'property="og:image"'
+          );
+        } else {
+          this.meta.updateTag({
+            content: this.getBaseUrl() + '/assets/images/open-graph-base.jpg'
+          },
+            'property="og:image"'
           );
         }
 
         this.meta.updateTag({
-          content: this.document.location.href
+          content: this.getUrl()
         },
           'property="og:url"'
         );
 
         this.meta.updateTag({
-          content: this.systemLanguagesResolver.getSelectedSystemLanguageCode()
+          content: this.mapToOpenGraphLocale(this.systemLanguagesResolver.getSelectedSystemLanguageCode())
         },
           'property="og:locale"'
         );
 
         for (let language of this.systemLanguagesResolver.getSystemLanguages()) {
-          this.meta.addTag({ property: 'og:locale:alternate', content: language.languageCode });
+          this.meta.addTag({ property: 'og:locale:alternate', content: this.mapToOpenGraphLocale(language.languageCode) });
         }
       });
+  }
+
+  private getUrl(): string {
+    // If server side get url from request otherwise document.location.href
+    if (this.request) {
+      return this.request.protocol + '://' + this.request.headers.host + this.request.url.split("?").shift();
+    } else {
+      return window.location.origin + window.location.pathname;
+    }
+  }
+
+  private getBaseUrl(): string {
+    // If server side get url from request otherwise document.location.href
+    if (this.request) {
+      return this.request.protocol + '://' + this.request.headers.host;
+    } else {
+      return window.location.origin;
+    }
+  }
+
+  private mapToOpenGraphLocale(languageCode: string): string {
+    const openGraphLocaleMap = {
+      'ar': 'ar_AR',
+      'en': 'en_US',
+      'fa_AF': 'fa_IR',
+      'fa': 'fa_IR',
+      'ku': 'ku_TR',
+      'ps': 'ps_AF',
+      'sv': 'sv_SE',
+      'ti': 'en_US',
+    }
+
+    return openGraphLocaleMap[languageCode];
   }
 
   public ngOnDestroy(): void {

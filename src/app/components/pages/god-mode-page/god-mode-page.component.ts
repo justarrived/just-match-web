@@ -5,6 +5,7 @@ import {Inject} from '@angular/core';
 import {JARoutes} from '../../../routes/ja-routes/ja-routes';
 import {Meta} from '@angular/platform-browser';
 import {PageComponent} from '../page.component';
+import {REQUEST} from '../../../../express-engine';
 import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
 import {TranslateService} from '@ngx-translate/core';
 import {UserResolver} from '../../../resolvers/user/user.resolver';
@@ -34,6 +35,7 @@ export class GodModePageComponent extends PageComponent {
 
   public constructor (
     @Inject(DOCUMENT) protected document: any,
+    @Inject(REQUEST) protected request: any,
     protected meta: Meta,
     protected systemLanguagesResolver: SystemLanguagesResolver,
     protected translateService: TranslateService,
@@ -52,6 +54,7 @@ export class GodModePageComponent extends PageComponent {
       },
       document,
       meta,
+      request,
       systemLanguagesResolver,
       translateService,
       userResolver

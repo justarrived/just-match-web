@@ -2,6 +2,7 @@ import {BaseComponent} from '../../base.component';
 import {Component} from '@angular/core';
 import {DOCUMENT} from '@angular/platform-browser';
 import {Inject} from '@angular/core';
+import {REQUEST} from '../../../../express-engine';
 import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
 import {UserResolver} from '../../../resolvers/user/user.resolver';
 
@@ -31,6 +32,7 @@ export class ShareSectionComponent extends BaseComponent {
 
   public constructor (
     @Inject(DOCUMENT) private document: any,
+    @Inject(REQUEST) private request: any,
     protected systemLanguagesResolver: SystemLanguagesResolver,
     protected userResolver: UserResolver,
   ) {
@@ -38,6 +40,10 @@ export class ShareSectionComponent extends BaseComponent {
   }
 
   public onInit(): void {
-    this.url = this.document.location.href;
+    if (this.request) {
+      this.url = this.request.protocol + '://' + this.request.headers.host + this.request.url;
+    } else {
+      this.url = this.document.location.href;
+    }
   }
 }

@@ -8,6 +8,7 @@ import {JobProxy} from '../../../proxies/job/job.proxy';
 import {Language} from '../../../models/api-models/language/language';
 import {Meta} from '@angular/platform-browser';
 import {PageComponent} from '../page.component';
+import {REQUEST} from '../../../../express-engine';
 import {Subscription} from 'rxjs/Subscription';
 import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
 import {TranslateService} from '@ngx-translate/core';
@@ -34,6 +35,8 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
 
           <job-description-section [job]="job"></job-description-section>
 
+          <share-section></share-section>
+
           <div class="ui divider"></div>
 
           <job-scope-section [job]="job"></job-scope-section>
@@ -48,8 +51,6 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
             [(application)]="application"
             [job]="job">
           </job-actions-section>
-
-          <share-section></share-section>
 
           <div class="ui divider"></div>
 
@@ -69,6 +70,7 @@ export class JobPageComponent extends PageComponent {
 
   public constructor (
     @Inject(DOCUMENT) protected document: any,
+    @Inject(REQUEST) protected request: any,
     private jobProxy: JobProxy,
     private route: ActivatedRoute,
     protected meta: Meta,
@@ -92,6 +94,7 @@ export class JobPageComponent extends PageComponent {
       },
       document,
       meta,
+      request,
       systemLanguagesResolver,
       translateService,
       userResolver
