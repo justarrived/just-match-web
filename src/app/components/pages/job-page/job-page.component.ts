@@ -1,13 +1,17 @@
 import {ActivatedRoute} from '@angular/router';
 import {Application} from '../../../models/api-models/application/application';
 import {Component} from '@angular/core';
+import {DOCUMENT} from '@angular/platform-browser';
+import {Inject} from '@angular/core';
 import {Job} from '../../../models/api-models/job/job';
 import {JobProxy} from '../../../proxies/job/job.proxy';
-import {OnDestroy} from '@angular/core';
-import {OnInit} from '@angular/core';
+import {Language} from '../../../models/api-models/language/language';
+import {Meta} from '@angular/platform-browser';
+import {PageComponent} from '../page.component';
 import {Subscription} from 'rxjs/Subscription';
-import {SystemLanguageListener} from '../../../resolvers/system-languages/system-languages.resolver';
 import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
+import {TranslateService} from '@ngx-translate/core';
+import {UserResolver} from '../../../resolvers/user/user.resolver';
 
 @Component({
   template: `
@@ -52,7 +56,7 @@ import {SystemLanguagesResolver} from '../../../resolvers/system-languages/syste
       </div>
     </div>`
 })
-export class JobPageComponent extends SystemLanguageListener implements OnInit, OnDestroy {
+export class JobPageComponent extends PageComponent {
   public application: Application;
   public job: Job;
   public jobId: string;
@@ -60,15 +64,39 @@ export class JobPageComponent extends SystemLanguageListener implements OnInit, 
 
   private routeParamsSubscription: Subscription;
 
-  public constructor(
+  public constructor (
+    @Inject(DOCUMENT) protected document: any,
     private jobProxy: JobProxy,
     private route: ActivatedRoute,
-    protected systemLanguagesResolver: SystemLanguagesResolver
+    protected meta: Meta,
+    protected systemLanguagesResolver: SystemLanguagesResolver,
+    protected translateService: TranslateService,
+    protected userResolver: UserResolver,
   ) {
-    super(systemLanguagesResolver);
+    super(
+      {
+        title: {
+          translate: true,
+          content: 'meta.job.title'
+        },
+        description: {
+          translate: true,
+          content: 'meta.job.description'
+        },
+        image: {
+          content: '/assets/images/job-header-background.jpg'
+        }
+      },
+      document,
+      meta,
+      systemLanguagesResolver,
+      translateService,
+      userResolver
+    );
   }
 
-  public ngOnInit(): void {
+
+  public onInit(): void {
     this.initRouteParamsSubscription();
   }
 
@@ -79,19 +107,31 @@ export class JobPageComponent extends SystemLanguageListener implements OnInit, 
     });
   }
 
-  protected loadData(): void {
+  private loadData(): void {
     this.jobPromise = this.jobProxy.getJob(this.jobId, {
       'include': 'owner,company,hourly_pay,company.company_images,comments'
     })
     .then(job => {
       this.job = job;
+      this.updatePageMeta({
+        title: {
+          translate: false,
+          content: job.translatedText.name
+        },
+        description: {
+          translate: false,
+          content: job.translatedText.shortDescription
+        }
+      });
       return job;
     })
   }
 
-  public ngOnDestroy(): void {
-    if (this.routeParamsSubscription) {
-      this.routeParamsSubscription.unsubscribe();
-    }
+  public systemLanguageChanged(systemLanguage: Language) {
+    this.loadData();
+  }
+
+  public onDestroy(): void {
+    if (this.routeParamsSubscription) { this.routeParamsSubscription.unsubscribe(); }
   }
 }

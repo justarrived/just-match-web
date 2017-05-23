@@ -43,6 +43,16 @@ export abstract class PageComponent extends BaseComponent implements OnInit, OnD
 
   public ngOnInit(): void {
 
+    this.updatePageMeta(this.pageMeta);
+
+    super.ngOnInit();
+  }
+
+  protected updatePageMeta(pageMeta: PageMeta) {
+    if (this.metaTranslationsSubscription) { this.metaTranslationsSubscription.unsubscribe(); }
+
+    this.pageMeta = pageMeta;
+
     this.metaTranslationsSubscription = this.translateService.get([this.pageMeta.title.content, this.pageMeta.description.content], this.pageMeta.translateParams)
       .concat(this.translateService.onLangChange.map(event => event.translations))
       .subscribe(translations => {
@@ -110,11 +120,7 @@ export abstract class PageComponent extends BaseComponent implements OnInit, OnD
           this.meta.addTag({ property: 'og:locale:alternate', content: language.languageCode });
         }
       });
-
-    super.ngOnInit();
   }
-
-
 
   public ngOnDestroy(): void {
     if (this.metaTranslationsSubscription) { this.metaTranslationsSubscription.unsubscribe(); }
