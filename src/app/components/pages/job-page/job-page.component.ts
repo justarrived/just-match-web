@@ -49,9 +49,12 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
             [job]="job">
           </job-actions-section>
 
+          <share-section></share-section>
+
           <div class="ui divider"></div>
 
           <job-comments-section [job]="job"></job-comments-section>
+
         </div>
       </div>
     </div>`

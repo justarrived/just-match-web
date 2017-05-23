@@ -53,6 +53,7 @@ import {DefaultFooterComponent} from './components/footers/default-footer/defaul
 import {DefaultLayoutComponent} from './components/layouts/default-layout/default-layout.component';
 import {DefaultNavigationComponent} from './components/navigations/default-navigation/default-navigation.component';
 import {DescriptionInputComponent} from './components/inputs/description-input/description-input.component';
+import {ShareSectionComponent} from './components/sections/share-section/share-section.component';
 import {EducationInputComponent} from './components/inputs/education-input/education-input.component';
 import {EmailInputComponent} from './components/inputs/email-input/email-input.component';
 import {EmailOrPhoneInputComponent} from './components/inputs/email-or-phone-input/email-or-phone-input.component';
@@ -322,6 +323,7 @@ export class RavenErrorHandler implements ErrorHandler {
     FormSectionTitleTextComponent,
     FormSubmitButtonComponent,
     FrilansTermsInputComponent,
+    ShareSectionComponent,
     GenderInputComponent,
     GodModeBarComponent,
     GodModePageComponent,
