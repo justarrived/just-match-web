@@ -57,6 +57,12 @@ export abstract class PageComponent extends BaseComponent implements OnInit, OnD
     this.metaTranslationsSubscription = this.translateService.get([this.pageMeta.title.content, this.pageMeta.description.content], this.pageMeta.translateParams)
       .concat(this.translateService.onLangChange.map(event => event.translations))
       .subscribe(translations => {
+        for (let language of this.systemLanguagesResolver.getSystemLanguages()) {
+          this.meta.removeTag("property='og:locale:alternate'");
+        }
+        this.meta.removeTag("property='og:image:width'");
+        this.meta.removeTag("property='og:image:height'");
+
         if (this.pageMeta.title.translate) {
           this.meta.updateTag({
             content: translations[this.pageMeta.title.content]
@@ -109,6 +115,8 @@ export abstract class PageComponent extends BaseComponent implements OnInit, OnD
           },
             'property="og:image"'
           );
+          this.meta.addTag({ property: 'og:image:width', content: '2346' });
+          this.meta.addTag({ property: 'og:image:height', content: '1314' });
         }
 
         this.meta.updateTag({
