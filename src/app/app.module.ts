@@ -22,12 +22,12 @@ import {BasicChatMessageComponent} from './components/chat-message/basic-chat-me
 import {BasicChatMessagesComponent} from './components/chat-messages/basic-chat-messages/basic-chat-messages.component';
 import {BasicCommentComponent} from './components/comment/basic-comment/basic-comment.component';
 import {BasicCommentsComponent} from './components/comments/basic-comments/basic-comments.component';
+import {BasicLinkComponent} from './components/links/basic-link/basic-link.component';
 import {BasicPagerComponent} from './components/pagers/basic-pager/basic-pager.component';
 import {BasicSearchComponent} from './components/search/basic-search/basic-search.component';
 import {BasicTabComponent} from './components/tabs/basic-tab/basic-tab.component';
 import {BasicTabsComponent} from './components/tabs/basic-tabs/basic-tabs.component';
 import {BasicTextComponent} from './components/text/basic-text/basic-text.component';
-import {BasicLinkComponent} from './components/links/basic-link/basic-link.component';
 import {BasicTitleTextComponent} from './components/text/basic-title-text/basic-title-text.component';
 import {BrowserModule} from '@angular/platform-browser';
 import {ChatMessageInputComponent} from './components/inputs/chat-message-input/chat-message-input.component';
@@ -53,7 +53,6 @@ import {DefaultFooterComponent} from './components/footers/default-footer/defaul
 import {DefaultLayoutComponent} from './components/layouts/default-layout/default-layout.component';
 import {DefaultNavigationComponent} from './components/navigations/default-navigation/default-navigation.component';
 import {DescriptionInputComponent} from './components/inputs/description-input/description-input.component';
-import {ShareSectionComponent} from './components/sections/share-section/share-section.component';
 import {EducationInputComponent} from './components/inputs/education-input/education-input.component';
 import {EmailInputComponent} from './components/inputs/email-input/email-input.component';
 import {EmailOrPhoneInputComponent} from './components/inputs/email-or-phone-input/email-or-phone-input.component';
@@ -128,20 +127,6 @@ import {NavigationService} from './services/navigation.service';
 import {NewJobsSectionComponent} from './components/sections/new-jobs-section/new-jobs-section.component';
 import {NewPasswordInputComponent} from './components/inputs/new-password-input/new-password-input.component';
 import {NgModule} from '@angular/core';
-import {SemanticAccordionComponent} from "./semantic/accordion/accordion";
-import {SemanticAccordionItemComponent} from "./semantic/accordion/accordion";
-import {SemanticCheckboxComponent} from "./semantic/input/input";
-import {SemanticInputComponent} from "./semantic/input/input";
-import {SemanticLoaderComponent} from "./semantic/loader/loader";
-import {SemanticMessageComponent} from "./semantic/message/message";
-import {SemanticModalComponent} from "./semantic/modal/modal";
-import {SemanticRatingComponent} from "./semantic/rating/rating";
-import {SemanticSearchComponent} from "./semantic/search/search";
-import {SemanticSelectComponent} from "./semantic/select/select";
-import {SemanticSidebarComponent} from "./semantic/sidebar/sidebar";
-import {SemanticTextareaComponent} from "./semantic/input/input";
-import {SMAutosizeDirective} from './semantic/autosize/autosize';
-import {SMModalTagsDirective} from "./semantic/modal/modal";
 import {NotFoundPageComponent} from './components/pages/404-page/404-page.component';
 import {OldPasswordInputComponent} from './components/inputs/old-password-input/old-password-input.component';
 import {PartnersSectionComponent} from './components/sections/partners-section/partners-section.component';
@@ -166,6 +151,19 @@ import {ResolversModule} from './resolvers/resolvers.module';
 import {ResumeInputComponent} from './components/inputs/resume-input/resume-input.component';
 import {RoutesModule} from './routes/routes.module';
 import {SelectDropdownInputComponent} from './components/inputs/select-dropdown-input/select-dropdown-input.component';
+import {SemanticAccordionComponent} from "./semantic/accordion/accordion";
+import {SemanticAccordionItemComponent} from "./semantic/accordion/accordion";
+import {SemanticCheckboxComponent} from "./semantic/input/input";
+import {SemanticInputComponent} from "./semantic/input/input";
+import {SemanticLoaderComponent} from "./semantic/loader/loader";
+import {SemanticMessageComponent} from "./semantic/message/message";
+import {SemanticModalComponent} from "./semantic/modal/modal";
+import {SemanticRatingComponent} from "./semantic/rating/rating";
+import {SemanticSearchComponent} from "./semantic/search/search";
+import {SemanticSelectComponent} from "./semantic/select/select";
+import {SemanticSidebarComponent} from "./semantic/sidebar/sidebar";
+import {SemanticTextareaComponent} from "./semantic/input/input";
+import {ShareSectionComponent} from './components/sections/share-section/share-section.component';
 import {SignedForJobModalComponent} from './components/modals/signed-for-job-modal/signed-for-job-modal.component';
 import {SignForJobFormComponent} from './components/forms/sign-for-job-form/sign-for-job-form.component';
 import {SignForJobModalComponent} from './components/modals/sign-for-job-modal/sign-for-job-modal.component';
@@ -173,6 +171,8 @@ import {SimpleMessageComponent} from './components/messages/simple-message/simpl
 import {SkatteverketCertificateInputComponent} from './components/inputs/skatteverket-certificate-input/skatteverket-certificate-input.component';
 import {SkillProficiencyInputComponent} from './components/inputs/skill-proficiency-input/skill-proficiency-input.component';
 import {SkillsInputComponent} from './components/inputs/skills-input/skills-input.component';
+import {SMAutosizeDirective} from './semantic/autosize/autosize';
+import {SMModalTagsDirective} from "./semantic/modal/modal";
 import {SortUsersInputComponent} from './components/inputs/sort-users-input/sort-users-input.component';
 import {SSNInputComponent} from './components/inputs/ssn-input/ssn-input.component';
 import {StatusInputComponent} from './components/inputs/status-input/status-input.component';
@@ -246,8 +246,6 @@ export class RavenErrorHandler implements ErrorHandler {
     AlreadyRegisteredModalComponent,
     ApiErrorsComponent,
     AppComponent,
-    SMAutosizeDirective,
-    SMModalTagsDirective,
     ApplicationsComponent,
     ApplicationsStatusSectionComponent,
     ApplicationStatusCardComponent,
@@ -265,12 +263,12 @@ export class RavenErrorHandler implements ErrorHandler {
     BasicChatMessagesComponent,
     BasicCommentComponent,
     BasicCommentsComponent,
+    BasicLinkComponent,
     BasicPagerComponent,
     BasicSearchComponent,
     BasicTabComponent,
     BasicTabsComponent,
     BasicTextComponent,
-    BasicLinkComponent,
     BasicTitleTextComponent,
     ChatMessageInputComponent,
     CircularIconBaseButtonComponent,
@@ -304,18 +302,6 @@ export class RavenErrorHandler implements ErrorHandler {
     FileInputButtonComponent,
     FilterUsersInputComponent,
     FirstNameInputComponent,
-    SemanticAccordionComponent,
-    SemanticAccordionItemComponent,
-    SemanticCheckboxComponent,
-    SemanticInputComponent,
-    SemanticLoaderComponent,
-    SemanticMessageComponent,
-    SemanticModalComponent,
-    SemanticRatingComponent,
-    SemanticSearchComponent,
-    SemanticSelectComponent,
-    SemanticSidebarComponent,
-    SemanticTextareaComponent,
     ForbiddenPageComponent,
     ForgotPasswordFormComponent,
     ForgotPasswordModalComponent,
@@ -323,7 +309,6 @@ export class RavenErrorHandler implements ErrorHandler {
     FormSectionTitleTextComponent,
     FormSubmitButtonComponent,
     FrilansTermsInputComponent,
-    ShareSectionComponent,
     GenderInputComponent,
     GodModeBarComponent,
     GodModePageComponent,
@@ -391,6 +376,19 @@ export class RavenErrorHandler implements ErrorHandler {
     ResidencePermitFrontInputComponent,
     ResumeInputComponent,
     SelectDropdownInputComponent,
+    SemanticAccordionComponent,
+    SemanticAccordionItemComponent,
+    SemanticCheckboxComponent,
+    SemanticInputComponent,
+    SemanticLoaderComponent,
+    SemanticMessageComponent,
+    SemanticModalComponent,
+    SemanticRatingComponent,
+    SemanticSearchComponent,
+    SemanticSelectComponent,
+    SemanticSidebarComponent,
+    SemanticTextareaComponent,
+    ShareSectionComponent,
     SignedForJobModalComponent,
     SignForJobFormComponent,
     SignForJobModalComponent,
@@ -398,6 +396,8 @@ export class RavenErrorHandler implements ErrorHandler {
     SkatteverketCertificateInputComponent,
     SkillProficiencyInputComponent,
     SkillsInputComponent,
+    SMAutosizeDirective,
+    SMModalTagsDirective,
     SortUsersInputComponent,
     SSNInputComponent,
     StatusInputComponent,

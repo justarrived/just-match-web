@@ -27,7 +27,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
     </div>`
 })
 export class ShareSectionComponent extends BaseComponent {
-  private url: string;
+  public url: string;
 
   public constructor (
     @Inject(DOCUMENT) private document: any,
