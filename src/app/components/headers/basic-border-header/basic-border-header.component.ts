@@ -6,16 +6,15 @@ import {Input} from '@angular/core';
   styleUrls: ['./basic-border-header.component.scss'],
   template: `
   <div class="ui basic center aligned segment basic-border-header-container">
-    <h2 class="ui inverted header">
-      <basic-title-text
-        [iconLeft]="icon"
-        [text]="header"
-        fontSize="large"
-        marginTop="1rem"
-        textAlignmentLtr="center"
-        textAlignmentRtl="center">
-      </basic-title-text>
-    </h2>
+    <basic-title-text
+      [iconLeft]="icon"
+      [text]="header"
+      color="white"
+      fontSize="large"
+      marginTop="1rem"
+      textAlignmentLtr="center"
+      textAlignmentRtl="center">
+    </basic-title-text>
   </div>`
 })
 export class BasicBorderHeaderComponent {

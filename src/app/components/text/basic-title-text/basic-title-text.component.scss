@@ -2,23 +2,8 @@
 @import '../../../styles/dimensions';
 @import '../../../styles/typography';
 
-$title-font: 'museo','Helvetica Neue',Helvetica,Arial,sans-serif;
-$title-line-height: 1.333;
-
 .title {
-  font-family: $title-font;
-  line-height: $title-line-height;
-  text-rendering: optimizelegibility;
-  letter-spacing: -0.4px;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-decoration: none;
-  font-style: normal;
-  font-weight: normal;
-  text-align: left;
-  text-shadow: none;
-
-  @include wrap-long-words();
+  @include title-text();
 }
 
 .one-line-ellipsis {

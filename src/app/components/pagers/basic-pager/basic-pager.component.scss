@@ -2,10 +2,11 @@
 @import '../../../styles/typography';
 
 .pager-container {
-  font-size: $fs-m;
+  font-size: 16px;
   background-color: $color-gray-25;
 
   .pager-inner-container {
+    align-items: center;
     max-width: 600px;
     margin: 0 auto;
   }

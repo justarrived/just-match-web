@@ -25,7 +25,16 @@ import {Output} from '@angular/core';
       </div>
 
       <div class="column pagination-text">
-        {{currentPage}} / {{lastPage}}
+        <basic-title-text
+          [alwaysLtrText]="true"
+          [text]="currentPage + ' / ' + lastPage"
+          color="gray"
+          fontSize="tiny"
+          marginBottom="0"
+          marginTop="0"
+          textAlignmentLtr="center"
+          textAlignmentRtl="center">
+        </basic-title-text>
       </div>
 
       <div class="column pagination-button pagination-button-right">

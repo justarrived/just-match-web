@@ -30,6 +30,7 @@ import {ViewContainerRef} from "@angular/core";
         [ngClass]="{'left': icon && systemLanguage.direction === 'ltr', 'right': icon && systemLanguage.direction === 'rtl', 'icon': icon}">
         <input
           (keyup.enter)="onEnterKeyUp.emit()"
+          [class.arabic-font]="systemLanguage.direction === 'rtl'"
           [formControl]="control"
           [style.direction]="systemLanguage.direction"
           [style.text-align]="systemLanguage.direction === 'ltr' ? 'left' : 'right'"
@@ -124,6 +125,7 @@ export class SemanticCheckboxComponent {
       </basic-text>
       <textarea
         (keyup.enter)="onEnterKeyUp.emit()"
+        [class.arabic-font]="systemLanguage.direction === 'rtl'"
         [formControl]="control"
         [placeholder]="placeholder"
         [style.direction]="systemLanguage.direction"

@@ -2,23 +2,10 @@
 @import '../../../styles/dimensions';
 @import '../../../styles/typography';
 
-$link-font: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;
-$link-line-height: 1.5;
-
 .link {
-  position: relative;
-  font-family: $link-font;
-  line-height: $link-line-height;
-  text-rendering: optimizelegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-decoration: none;
-  font-style: normal;
-  font-weight: normal;
-  text-align: left;
-  text-shadow: none;
+  @include link();
 
-  @include wrap-long-words();
+  position: relative;
 }
 
 .one-line-ellipsis {
@@ -186,37 +173,37 @@ $link-line-height: 1.5;
 }
 
 .maximum-2-lines-ellipsis {
-  @include truncate-owerflowing-text-multiline($line-height: $link-line-height, $lines-to-show: 2);
+  @include truncate-owerflowing-text-multiline($line-height: $text-line-height, $lines-to-show: 2);
 }
 
 .maximum-3-lines-ellipsis {
-  @include truncate-owerflowing-text-multiline($line-height: $link-line-height, $lines-to-show: 3);
+  @include truncate-owerflowing-text-multiline($line-height: $text-line-height, $lines-to-show: 3);
 }
 
 .maximum-4-lines-ellipsis {
-  @include truncate-owerflowing-text-multiline($line-height: $link-line-height, $lines-to-show: 4);
+  @include truncate-owerflowing-text-multiline($line-height: $text-line-height, $lines-to-show: 4);
 }
 
 .maximum-5-lines-ellipsis {
-  @include truncate-owerflowing-text-multiline($line-height: $link-line-height, $lines-to-show: 5);
+  @include truncate-owerflowing-text-multiline($line-height: $text-line-height, $lines-to-show: 5);
 }
 
 .maximum-6-lines-ellipsis {
-  @include truncate-owerflowing-text-multiline($line-height: $link-line-height, $lines-to-show: 6);
+  @include truncate-owerflowing-text-multiline($line-height: $text-line-height, $lines-to-show: 6);
 }
 
 .maximum-7-lines-ellipsis {
-  @include truncate-owerflowing-text-multiline($line-height: $link-line-height, $lines-to-show: 7);
+  @include truncate-owerflowing-text-multiline($line-height: $text-line-height, $lines-to-show: 7);
 }
 
 .maximum-8-lines-ellipsis {
-  @include truncate-owerflowing-text-multiline($line-height: $link-line-height, $lines-to-show: 8);
+  @include truncate-owerflowing-text-multiline($line-height: $text-line-height, $lines-to-show: 8);
 }
 
 .maximum-9-lines-ellipsis {
-  @include truncate-owerflowing-text-multiline($line-height: $link-line-height, $lines-to-show: 9);
+  @include truncate-owerflowing-text-multiline($line-height: $text-line-height, $lines-to-show: 9);
 }
 
 .maximum-10-lines-ellipsis {
-  @include truncate-owerflowing-text-multiline($line-height: $link-line-height, $lines-to-show: 10);
+  @include truncate-owerflowing-text-multiline($line-height: $text-line-height, $lines-to-show: 10);
 }

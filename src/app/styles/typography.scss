@@ -1,16 +1,5 @@
 @import './colors';
 
-$museo: 'museo', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-$fs-s: 12px;
-$fs-m0: 14px;
-$fs-m: 16px;
-$fs-l: 18px;
-$fs-l0: 20px;
-$fs-xl: 22px;
-$fs-xxl: 24px;
-$fs-xxxl: 32px;
-$fs-xxxxl: 48px;
-
 @mixin wrap-long-words() {
   overflow-wrap: break-word;
   word-wrap: break-word;
@@ -28,11 +17,10 @@ $fs-xxxxl: 48px;
   text-overflow: ellipsis;
 }
 
-
 @mixin truncate-owerflowing-text-multiline($line-height: 1.4, $lines-to-show: 3) {
   display: block !important; // Fallback for non-webkit
   display: -webkit-box !important;
-  max-height: 1em*$line-height*$lines-to-show; // Fallback for non-webkit
+  max-height: 1em * $line-height * $lines-to-show; // Fallback for non-webkit
   line-height: $line-height;
   -webkit-line-clamp: $lines-to-show;
   -webkit-box-orient: vertical;
@@ -62,6 +50,49 @@ $fs-xxxxl: 48px;
   }
 }
 
+@mixin title-text() {
+  font-family: $title-font-family;
+  line-height: $title-line-height;
+  text-rendering: optimizelegibility;
+  letter-spacing: -0.4px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-decoration: none;
+  font-style: normal;
+  font-weight: normal;
+  text-shadow: none;
+  font-size: 24px;
+  font-weight: 700;
+
+  @include wrap-long-words();
+}
+
+@mixin text() {
+  font-family: $text-font-family;
+  line-height: $text-line-height;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-decoration: none;
+  font-style: normal;
+  font-weight: normal;
+  text-shadow: none;
+  font-size: 16px;
+  font-weight: 500;
+
+  @include wrap-long-words();
+}
+
+@mixin link() {
+  @include text();
+
+  color: $color-gray-300;
+  &:hover {
+    cursor: pointer;
+    color: $color-cerise-500 !important;
+  }
+}
+
 .truncate-owerflowing-text {
   @include truncate-owerflowing-text;
 }
@@ -88,9 +119,43 @@ $fs-xxxxl: 48px;
     font-weight: 700;
 }
 
+@font-face {
+  font-family: 'ge-ss-two';
+  src: url('/assets/fonts/ge-ss-two/ge-ss-two-300.otf') format('opentype');
+  font-weight: 300;
+}
+
+@font-face {
+    font-family: 'ge-ss-two';
+    src: url('/assets/fonts/ge-ss-two/ge-ss-two-500.otf') format('opentype');
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: 'ge-ss-two';
+    src: url('/assets/fonts/ge-ss-two/ge-ss-two-700.otf') format('opentype');
+    font-weight: 700;
+}
+
 // font stacks
-$default-font-family: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;
-$header-font-family: 'museo','Helvetica Neue',Helvetica,Arial,sans-serif;
+$text-font-family: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;
+$title-font-family: 'museo','Helvetica Neue',Helvetica,Arial,sans-serif;
+
+$title-line-height: 1.333;
+$text-line-height: 1.5;
+
+$text-font-family-arabic: 'ge-ss-two','Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;
+$title-font-family-arabic: 'ge-ss-two','museo','Helvetica Neue',Helvetica,Arial,sans-serif;
+
+h1, h2, h3, h4, h5, h6 {
+  @include title-text();
+  color: $black;
+}
+
+body, p {
+  @include text();
+  color: $black;
+}
 
 h1 {
   font-size: 42px;
@@ -122,54 +187,10 @@ h6 {
   font-weight: 700;
 }
 
-p {
-  font-size: 16px;
-  line-height: 22px;
-}
-
 a {
-  color: $color-accent-main;
-  &:hover {
-    color: $color-cerise-300;
-    cursor: pointer;
-  }
+  @include link();
 }
 
-a:not([href]):not([tabindex]) {
-  color: $color-accent-main;
-  &:hover {
-    color: $color-cerise-300;
-  }
-}
-
-.fs-s {
-  font-size: $fs-s;
-}
-
-.fs-m0 {
-  font-size: $fs-m0;
-}
-
-.fs-m {
-  font-size: $fs-m;
-}
-
-.fs-l {
-  font-size: $fs-l;
-}
-
-.fs-l0 {
-  font-size: $fs-l0;
-}
-
-.fs-xl {
-  font-size: $fs-xl;
-}
-
-.fs-xxl {
-  font-size: $fs-xxl;
-}
-
-.fs-xxxl {
-  font-size: $fs-xxxl;
+.arabic-font {
+  font-family: $title-font-family-arabic !important;
 }

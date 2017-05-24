@@ -11,6 +11,7 @@ import {SystemLanguagesResolver} from '../../../resolvers/system-languages/syste
   styleUrls: ['./basic-title-text.component.scss'],
   template: `
     <div
+      [class.arabic-font]="systemLanguage.direction === 'rtl'"
       [class.bold]="fontWeight === 'bold'"
       [class.center]="systemLanguage.direction === 'rtl' && textAlignmentRtl === 'center' || systemLanguage.direction === 'ltr' && textAlignmentLtr === 'center'"
       [class.huge]="fontSize === 'huge'"
