@@ -3,26 +3,11 @@
 @import '../../../styles/typography';
 
 .welcome-header-container {
-  background: linear-gradient($color-cerise-600, $color-primary-cerise);
-  display: flex;
-  flex-flow: row-reverse;
-
-  @media screen and (max-width: $tablet-max-width) {
-    flex-flow: column;
-  }
-
-  .welcome-header-map-image {
-    width: 426px;
-    padding-right: 0;
-
-    @media screen and (max-width: $tablet-max-width) {
-      margin: 0 auto;
-    }
-
-    @media screen and (max-width: 426px) {
-      width: 100%;
-    }
-  }
+  background-color: linear-gradient($color-cerise-600, $color-primary-cerise);
+  background: url('/assets/images/home-header-background.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
 
   .welcome-header-info-container {
     width: calc(100% - 426px);

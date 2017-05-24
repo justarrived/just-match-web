@@ -13,10 +13,6 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
   selector: 'welcome-header',
   template: `
     <div class="welcome-header-container">
-      <img
-        alt="Map"
-        class="welcome-header-map-image"
-        src="/assets/images/startpagemap.png" />
       <div
         *ngIf="user"
         class="welcome-header-info-container welcome-header-info-container-logged-in">
