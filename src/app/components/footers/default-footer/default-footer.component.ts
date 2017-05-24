@@ -21,7 +21,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
         class="ui basic very padded segment"
         style="padding-top: 0;">
         <div
-          class="ui centered grid"
+          class="ui centered grid sections-container"
           [style.direction]="systemLanguage.direction">
           <div class="sixteen wide phone sixteen wide tablet four wide computer column">
             <basic-title-text

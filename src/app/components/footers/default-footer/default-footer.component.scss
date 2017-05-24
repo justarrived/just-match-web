@@ -6,6 +6,11 @@
   background: url('/assets/images/footer-background.jpg') no-repeat;
   background-size: cover;
 
+  .sections-container {
+    max-width: 1040px;
+    margin: 0 auto;
+  }
+
   .social-media-container {
     display: flex;
     @media screen and (max-width: $tablet-max-width) {
