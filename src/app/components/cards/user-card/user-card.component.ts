@@ -38,6 +38,7 @@ import {User} from '../../../models/api-models/user/user';
           marginBottom="0">
         </basic-title-text>
         <basic-text
+          [alwaysLtrText]="true"
           [text]="user.email"
           [oneLineEllipsis]="true"
           color="gray"
@@ -55,9 +56,9 @@ import {User} from '../../../models/api-models/user/user';
         </basic-text>
       </div>
       <div
-        class="extra content">
+        class="extra content"
+        [style.direction]="systemLanguage.direction">
         <i
-          *ngIf="systemLanguage.direction === 'ltr'"
           class="ui big icon marker">
         </i>
         <basic-text
@@ -77,10 +78,6 @@ import {User} from '../../../models/api-models/user/user';
           marginTop="0"
           marginBottom="0">
         </basic-text>
-        <i
-          *ngIf="systemLanguage.direction === 'rtl'"
-          class="ui big icon marker">
-        </i>
       </div>
     </div>`
 })
