@@ -15,8 +15,20 @@ import {ViewChild} from '@angular/core';
           *ngIf="image"
           class="ui {{imageClasses}} image">
         <div class="ui center aligned basic segment">
-          <h3>{{header}}</h3>
-          <p>{{description}}</p>
+          <basic-title-text
+            [text]="header"
+            color="black"
+            fontSize="large"
+            marginTop="0"
+            textAlignmentLtr="center"
+            textAlignmentRtl="center">
+          </basic-title-text>
+          <basic-text
+            [text]="description"
+            color="black"
+            textAlignmentLtr="center"
+            textAlignmentRtl="center">
+          </basic-text>
         </div>
       </modal-content>
       <modal-actions>

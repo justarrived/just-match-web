@@ -2,22 +2,8 @@
 @import '../../../styles/dimensions';
 @import '../../../styles/typography';
 
-$text-font: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;
-$text-line-height: 1.5;
-
 .text {
-  font-family: $text-font;
-  line-height: $text-line-height;
-  text-rendering: optimizelegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-decoration: none;
-  font-style: normal;
-  font-weight: normal;
-  text-align: left;
-  text-shadow: none;
-
-  @include wrap-long-words();
+  @include text();
 }
 
 .one-line-ellipsis {

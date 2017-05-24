@@ -12,8 +12,9 @@ import {SystemLanguagesResolver} from '../../../resolvers/system-languages/syste
   styleUrls: ['./base-button.component.scss'],
   template: `
     <button
-      [disabled]="disabled"
+      [class.arabic-font]="systemLanguage.direction === 'rtl'"
       [class.fluid]="fluid"
+      [disabled]="disabled"
       [ngClass]="[kind, size, 'btn']"
       [style.direction]="systemLanguage.direction"
       [type]="buttonType">

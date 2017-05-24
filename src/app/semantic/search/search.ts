@@ -34,6 +34,7 @@ import {SystemLanguagesResolver} from '../../resolvers/system-languages/system-l
           [ngClass]="{'left': icon && systemLanguage.direction === 'ltr', 'right': icon && systemLanguage.direction === 'rtl', 'icon': icon}">
           <input
             [attr.placeholder]="placeholder"
+            [class.arabic-font]="systemLanguage.direction === 'rtl'"
             [formControl]="searchControl"
             [style.direction]="systemLanguage.direction"
             [style.text-align]="systemLanguage.direction === 'ltr' ? 'left' : 'right'"

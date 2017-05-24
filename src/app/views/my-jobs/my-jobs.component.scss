@@ -5,16 +5,10 @@
   text-align: center;
   background-color: $default-bg-color;
   cursor: pointer;
-  h4 {
-    color: $color-gray-200;
-  }
   border-bottom: 4px solid $color-gray-50;
 }
 
 .my-jobs-header-tab-selected {
   @extend .my-jobs-header-tab;
-  h4 {
-    color: $color-gray-500;
-  }
   border-bottom: 4px solid $color-primary-cerise;
 }
