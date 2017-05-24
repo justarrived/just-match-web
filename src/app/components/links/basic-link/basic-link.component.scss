@@ -134,44 +134,6 @@
   }
 }
 
-/* Effect: - */
-.link::before,
-.link::after {
-	display: inline-block;
-	opacity: 0;
-	-webkit-transition: -webkit-transform 0.3s, opacity 0.2s;
-	-moz-transition: -moz-transform 0.3s, opacity 0.2s;
-	transition: transform 0.3s, opacity 0.2s;
-}
-
-.direction-ltr::before,
-.direction-rtl::after {
-	margin-right: 10px;
-	content: '-';
-	-webkit-transform: translateX(20px);
-	-moz-transform: translateX(20px);
-	transform: translateX(20px);
-}
-
-.direction-ltr::after,
-.direction-rtl::before {
-	margin-left: 10px;
-	content: '-';
-	-webkit-transform: translateX(-20px);
-	-moz-transform: translateX(-20px);
-	transform: translateX(-20px);
-}
-
-.link:hover::before,
-.link:hover::after,
-.link:focus::before,
-.link:focus::after {
-	opacity: 1;
-	-webkit-transform: translateX(0px);
-	-moz-transform: translateX(0px);
-	transform: translateX(0px);
-}
-
 .maximum-2-lines-ellipsis {
   @include truncate-owerflowing-text-multiline($line-height: $text-line-height, $lines-to-show: 2);
 }
