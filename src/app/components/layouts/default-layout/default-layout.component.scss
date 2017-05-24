@@ -3,11 +3,11 @@
 
 .layout-wrapper {
   height: 100%;
-  @media screen and (min-width: $computer-large-min-width) {
-    width: $computer-large-min-width;
+  @media screen and (min-width: $app-max-width) {
+    width: $app-max-width;
     margin: 0 auto;
   }
-  @media screen and (max-width: $computer-large-min-width) {
+  @media screen and (max-width: $app-max-width) {
     width: 100%;
     max-width: 100%;
   }
