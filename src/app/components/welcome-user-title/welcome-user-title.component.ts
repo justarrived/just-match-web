@@ -11,7 +11,7 @@ import {Input} from '@angular/core';
     fontSize="large"
     textAlignmentLtr="left"
     textAlignmentLtrTablet="center"
-    textAlignmentRtl="left"
+    textAlignmentRtl="right"
     textAlignmentRtlTablet="center">
   </basic-title-text>
 
