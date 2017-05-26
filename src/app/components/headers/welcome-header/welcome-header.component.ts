@@ -13,52 +13,10 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
   selector: 'welcome-header',
   template: `
     <div class="welcome-header-container">
-      <img
-        alt="Map"
-        class="welcome-header-map-image"
-        src="/assets/images/startpagemap.png" />
       <div
-        *ngIf="user"
-        class="welcome-header-info-container welcome-header-info-container-logged-in">
-        <basic-title-text
-          [text]="'home.header.logged.in.title'| translate: {username: user.firstName}"
-          color="white"
-          fontSize="large"
-          textAlignmentLtr="left"
-          textAlignmentLtrTablet="center"
-          textAlignmentRtl="left"
-          textAlignmentRtlTablet="center">
-        </basic-title-text>
-        <div class="welcome-header-button-container">
-          <base-button
-            [buttonText]="'home.header.logged.in.profile.button' | translate"
-            [fluid]="true"
-            [routerLink]="JARoutes.user.url()"
-            kind="secondary-light"
-            size="small">
-          </base-button>
-          <br>
-          <base-button
-            [buttonText]="'home.header.logged.in.jobs.button' | translate"
-            [fluid]="true"
-            [routerLink]="JARoutes.jobs.url(['1'])"
-            kind="primary-light"
-            size="small">
-          </base-button>
-        </div>
-      </div>
-      <div
-        *ngIf="!user"
         class="welcome-header-info-container">
-        <basic-title-text
-          [text]="'home.header.logged.out.title' | translate"
-          color="white"
-          fontSize="large"
-          textAlignmentLtr="left"
-          textAlignmentLtrTablet="center"
-          textAlignmentRtl="right"
-          textAlignmentRtlTablet="center">
-        </basic-title-text>
+        <welcome-user-title [name]="userFirstName"></welcome-user-title>
+
         <basic-title-text
           [text]="'home.header.logged.out.sub.title' | translate"
           color="white"
@@ -68,6 +26,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
           textAlignmentRtl="right"
           textAlignmentRtlTablet="center">
         </basic-title-text>
+
         <basic-text
           [text]="'home.header.logged.out.description' | translate"
           color="white"
@@ -76,27 +35,14 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
           textAlignmentRtl="right"
           textAlignmentRtlTablet="center">
         </basic-text>
+
         <div
           [style.display]="'flex'"
           [style.direction]="systemLanguage.direction"
           class="welcome-header-button-outer-container">
           <div
             class="welcome-header-button-container">
-            <base-button
-              [buttonText]="'home.header.logged.out.register.button' | translate"
-              [fluid]="true"
-              [routerLink]="JARoutes.registerUser.url()"
-              kind="secondary-light"
-              size="small">
-            </base-button>
-            <br>
-            <base-button
-              [buttonText]="'home.header.logged.out.login.button' | translate"
-              [fluid]="true"
-              [routerLink]="JARoutes.login.url()"
-              kind="primary-light"
-              size="small">
-            </base-button>
+            <welcome-user-cta [isLoggedIn]="isLoggedIn"></welcome-user-cta>
           </div>
         </div>
       </div>
@@ -139,5 +85,19 @@ export class WelcomeHeaderComponent implements OnInit, OnDestroy {
   public ngOnDestroy(): void {
     if (this.userSubscription) { this.userSubscription.unsubscribe(); }
     if (this.systemLanguageSubscription) { this.systemLanguageSubscription.unsubscribe(); }
+  }
+
+  get isLoggedIn(): boolean {
+    if (this.user) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  get userFirstName(): string {
+    if (!this.user) return null;
+
+    return this.user.firstName;
   }
 }

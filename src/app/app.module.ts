@@ -201,6 +201,8 @@ import {UserResolver} from './resolvers/user/user.resolver';
 import {UsersFilterComponent} from './components/filters/users-filter/users-filter.component';
 import {UserUpdateFormComponent} from './components/forms/user-update-form/user-update-form.component';
 import {WelcomeHeaderComponent} from './components/headers/welcome-header/welcome-header.component';
+import {WelcomeUserCtaComponent,} from './components/welcome-user-cta/welcome-user-cta.component';
+import {WelcomeUserTitleComponent} from './components/welcome-user-title/welcome-user-title.component';
 import {WorkPermitBackInputComponent} from './components/inputs/work-permit-back-input/work-permit-back-input.component';
 import {WorkPermitFrontInputComponent} from './components/inputs/work-permit-front-input/work-permit-front-input.component';
 import {YesNoInputComponent} from './components/inputs/yes-no-input/yes-no-input.component';
@@ -424,6 +426,8 @@ export class RavenErrorHandler implements ErrorHandler {
     UsersFilterComponent,
     UserUpdateFormComponent,
     WelcomeHeaderComponent,
+    WelcomeUserCtaComponent,
+    WelcomeUserTitleComponent,
     WorkPermitBackInputComponent,
     WorkPermitFrontInputComponent,
     YesNoInputComponent,
