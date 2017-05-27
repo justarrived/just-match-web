@@ -4,59 +4,37 @@
 
 .welcome-header-container {
   background: linear-gradient($color-cerise-600, $color-primary-cerise);
+  background-image: url('/assets/images/top-banner-bg.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+
   display: flex;
-  flex-flow: row-reverse;
-
-  @media screen and (max-width: $tablet-max-width) {
-    flex-flow: column;
-  }
-
-  .welcome-header-map-image {
-    width: 426px;
-    padding-right: 0;
-
-    @media screen and (max-width: $tablet-max-width) {
-      margin: 0 auto;
-    }
-
-    @media screen and (max-width: 426px) {
-      width: 100%;
-    }
-  }
+  flex-flow: column;
 
   .welcome-header-info-container {
-    width: calc(100% - 426px);
-    padding: 40px;
-    text-align: left;
-
-    @media screen and (max-width: $tablet-max-width) {
-      margin: 0 auto;
-      max-width: 800px;
-      padding-left: 10px;
-      padding-right: 10px;
-      text-align: center;
-      width: auto;
-    }
+    margin: 40px auto;
+    max-width: 800px;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: center;
+    width: auto;
 
     .welcome-header-button-container {
-      display: inline-block;
-      margin-top: 20px;
+      button {
+        margin-left: 10px;
+        &:first-child {
+          margin-left: 0;
+        }
+      }
     }
 
     .welcome-header-button-outer-container {
-      @media screen and (max-width: $tablet-max-width) {
-        justify-content: center;
+      justify-content: center;
+
+      @media screen and (min-width: $tablet-max-width) {
+        justify-content: left;
       }
-    }
-  }
-
-  .welcome-header-info-container-logged-in {
-    padding-top: 100px;
-    padding-left: 150px;
-
-    @media screen and (max-width: $tablet-max-width) {
-      padding-left: 0;
-      padding-top: 40px;
     }
   }
 }
