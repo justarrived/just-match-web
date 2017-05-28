@@ -81,7 +81,6 @@ import {GodModePageComponent} from './components/pages/god-mode-page/god-mode-pa
 import {GodModePagerSectionComponent} from './components/sections/god-mode-pager-section/god-mode-pager-section.component';
 import {GotCoordinationNumberInputComponent} from './components/inputs/got-coordination-number-input/got-coordination-number-input.component';
 import {HomePageComponent} from './components/pages/home-page/home-page.component';
-import {HowItWorksAndMaximizeChancesSectionComponent} from './components/sections/how-it-works-and-maximize-chances-section/how-it-works-and-maximize-chances-section.component';
 import {HowItWorksSectionComponent} from './components/sections/how-it-works-section/how-it-works-section.component';
 import {HttpModule} from '@angular/http';
 import {InfoMessageComponent} from './components/messages/info-message/info-message.component';
@@ -117,7 +116,6 @@ import {LoginFormComponent} from './components/forms/login-form/login-form.compo
 import {LoginModalComponent} from './components/modals/login-modal/login-modal.component';
 import {LoginPageComponent} from './components/pages/login-page/login-page.component';
 import {LostConnectionPageComponent} from './components/pages/lost-connection-page/lost-connection-page.component';
-import {MaximizeChancessSectionComponent} from './components/sections/maximize-chances-section/maximize-chances-section.component';
 import {ModalService} from './services/modal.service';
 import {MyJobsComponent} from './views/my-jobs/my-jobs.component';
 import {MyJobsItemComponent} from './components/my-jobs-item/my-jobs-item.component';
@@ -315,7 +313,6 @@ export class RavenErrorHandler implements ErrorHandler {
     GodModePagerSectionComponent,
     GotCoordinationNumberInputComponent,
     HomePageComponent,
-    HowItWorksAndMaximizeChancesSectionComponent,
     HowItWorksSectionComponent,
     InfoMessageComponent,
     InputErrorComponent,
@@ -349,7 +346,6 @@ export class RavenErrorHandler implements ErrorHandler {
     LoginModalComponent,
     LoginPageComponent,
     LostConnectionPageComponent,
-    MaximizeChancessSectionComponent,
     MyJobsComponent,
     MyJobsItemComponent,
     NameInputComponent,
