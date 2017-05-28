@@ -9,51 +9,108 @@ import {JARoutes} from '../../../routes/ja-routes/ja-routes';
       <basic-title-text
         [text]="'home.instructions.first.section.title' | translate"
         [underlineBelow]="true"
-        color="white"
+        color="black"
         fontSize="large"
         textAlignmentLtr="center"
         textAlignmentRtl="center"
-        underlineBelowColor="white"
+        underlineBelowColor="pink"
         underlineBelowLtrAlignment="center"
         underlineBelowRtlAlignment="center"
         marginTop="0"
         marginBottom="2rem">
       </basic-title-text>
-      <basic-title-text
-        [text]="'home.instructions.first.section.instruction0' | translate"
-        iconLeft="check circle outline"
-        fontSize="small"
-        color="white"
-        marginTop="0">
-      </basic-title-text>
-      <basic-title-text
-        [text]="'home.instructions.first.section.instruction1' | translate"
-        iconLeft="check circle outline"
-        fontSize="small"
-        color="white"
-        marginTop="0">
-      </basic-title-text>
-      <basic-title-text
-        [text]="'home.instructions.first.section.instruction2' | translate"
-        iconLeft="check circle outline"
-        fontSize="small"
-        color="white"
-        marginTop="0">
-      </basic-title-text>
-      <basic-title-text
-        [text]="'home.instructions.first.section.instruction3' | translate"
-        iconLeft="check circle outline"
-        fontSize="small"
-        color="white"
-        marginTop="0">
-      </basic-title-text>
-      <div class="how-it-works-button">
+      <div class="ui centered grid">
+        <div class="sixteen wide phone twelve wide tablet four wide computer column">
+          <img
+            class="ui centered small image"
+            src="/assets/images/how-it-works-icon-1.png"
+            style="padding-left: 20px;">
+          <basic-title-text
+            [text]="'how.it.works.section.register.description.title' | translate"
+            color="black"
+            fontSize="medium"
+            textAlignmentRtlTablet="center"
+            textAlignmentLtrTablet="center">
+          </basic-title-text>
+          <basic-text
+            [text]="'how.it.works.section.register.description.paragraph.1' | translate"
+            color="black"
+            textAlignmentRtlTablet="center"
+            textAlignmentLtrTablet="center">
+          </basic-text>
+          <basic-text
+            [text]="'how.it.works.section.register.description.paragraph.2' | translate"
+            color="black"
+            textAlignmentRtlTablet="center"
+            textAlignmentLtrTablet="center">
+          </basic-text>
+        </div>
+        <div class="sixteen wide phone twelve wide tablet four wide computer column">
+          <img
+            class="ui centered small image"
+            src="/assets/images/how-it-works-icon-2.png"
+            style="padding-left: 20px;">
+          <basic-title-text
+            [text]="'how.it.works.section.update.profile.description.title' | translate"
+            color="black"
+            fontSize="medium"
+            textAlignmentRtlTablet="center"
+            textAlignmentLtrTablet="center">
+          </basic-title-text>
+          <basic-text
+            [text]="'how.it.works.section.update.profile.description.paragraph.1' | translate"
+            color="black"
+            textAlignmentRtlTablet="center"
+            textAlignmentLtrTablet="center">
+          </basic-text>
+          <basic-text
+            [text]="'how.it.works.section.update.profile.description.paragraph.2' | translate"
+            color="black"
+            textAlignmentRtlTablet="center"
+            textAlignmentLtrTablet="center">
+          </basic-text>
+        </div>
+        <div class="sixteen wide phone twelve wide tablet four wide computer column">
+          <img
+            class="ui centered small image"
+            src="/assets/images/how-it-works-icon-3.png"
+            style="padding-left: 20px;">
+          <basic-title-text
+            [text]="'how.it.works.section.find.jobs.description.title' | translate"
+            color="black"
+            fontSize="medium"
+            textAlignmentRtlTablet="center"
+            textAlignmentLtrTablet="center">
+          </basic-title-text>
+          <basic-text
+            [text]="'how.it.works.section.find.jobs.description.paragraph.1' | translate"
+            color="black"
+            textAlignmentRtlTablet="center"
+            textAlignmentLtrTablet="center">
+          </basic-text>
+          <basic-text
+            [text]="'how.it.works.section.find.jobs.description.paragraph.2' | translate"
+            color="black"
+            textAlignmentRtlTablet="center"
+            textAlignmentLtrTablet="center">
+          </basic-text>
+        </div>
+      </div>
+      <div style="margin: 0 auto; width: 200px;">
         <base-button
-          [buttonText]="'common.find_assignment' | translate"
-          [fluid]="true"
           [routerLink]="JARoutes.jobs.url(['1'])"
-          kind="secondary-light"
-          size="medium">
+          [buttonText]="'how.it.works.section.jobs.button' | translate"
+          [fluid]="true"
+          kind="primary"
+          size="small">
+        </base-button>
+        <br>
+        <base-button
+          [routerLink]="JARoutes.registerUser.url()"
+          [buttonText]="'how.it.works.section.create.accont.button' | translate"
+          [fluid]="true"
+          kind="primary"
+          size="small">
         </base-button>
       </div>
     </div>`

@@ -1,9 +1,13 @@
-.partners-imgae-link {
-  display: flex;
-  align-items: center;
-  height: 80px;
+.partners-section-container {
 
-  .ui.image {
-    filter: grayscale(100%);
+  .partners-image-link {
+    display: flex;
+    align-items: center;
+    height: 150px;
+
+    .ui.image {
+      filter: grayscale(100%);
+    }
   }
+
 }

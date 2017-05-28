@@ -2,4 +2,8 @@
 
 .applications-container {
   background: $color-gray-25 !important;
+  background: url('/assets/images/sitting-background.jpg') !important;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+  background-position: center center !important;
 }

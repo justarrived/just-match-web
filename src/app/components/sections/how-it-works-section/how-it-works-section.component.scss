@@ -1,22 +1,8 @@
 @import '../../../styles/colors';
 
 .how-it-works-container {
-  color: $white;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-
-  .instruction {
-    display: flex;
-    align-items: center;
-    margin: 8px 0;
-
-    .instruction-text {
-      padding-left: 1em;
-    }
-  }
-
-  .how-it-works-button {
-    margin-top: auto;
-  }
+  background: url('/assets/images/sitting-background.jpg') !important;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+  background-position: center center !important;
 }
