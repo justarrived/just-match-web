@@ -18,7 +18,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
 
     <applications-status-section></applications-status-section>
 
-    <how-it-works-and-maximize-chances-section></how-it-works-and-maximize-chances-section>
+    <how-it-works-section *ngIf="!user"></how-it-works-section>
 
     <partners-section></partners-section>
   `

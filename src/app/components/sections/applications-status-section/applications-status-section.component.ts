@@ -28,6 +28,7 @@ import {yyyymmdd} from '../../../utils/date/date.util';
       <basic-title-text
         [text]="'home.jobs.slider.user.jobs.title' | translate"
         [underlineBelow]="true"
+        color="black"
         fontSize="large"
         textAlignmentLtr="center"
         textAlignmentRtl="center"

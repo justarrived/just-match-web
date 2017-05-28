@@ -3,5 +3,19 @@
 
 .footer-container {
   background-color: $color-secondary-gray;
-  padding: 5px 0;
+  background: url('/assets/images/footer-background.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  .sections-container {
+    max-width: 1040px;
+    margin: 0 auto;
+  }
+
+  .social-media-container {
+    display: flex;
+    @media screen and (max-width: $tablet-max-width) {
+      justify-content: center;
+    }
+  }
 }
