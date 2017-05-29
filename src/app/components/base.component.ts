@@ -6,6 +6,8 @@
  ** for all components. And notifications by overriding systemLanguageChanged
  ** or userChanged.
  **
+ ** Also provides access to the JARoutes object.
+ **
  ** All angular lifecycle hooks are setup here and one just needs to Override
  ** the application version of that hook. (example: ngOnInit -> onInit).
  **
@@ -17,6 +19,7 @@ import {AfterContentInit} from '@angular/core';
 import {AfterViewChecked} from '@angular/core';
 import {AfterViewInit} from '@angular/core';
 import {DoCheck} from '@angular/core';
+import {JARoutes} from '../routes/ja-routes/ja-routes';
 import {Language} from '../models/api-models/language/language';
 import {OnChanges} from '@angular/core';
 import {OnDestroy} from '@angular/core';
@@ -28,6 +31,7 @@ import {User} from '../models/api-models/user/user';
 import {UserResolver} from '../resolvers/user/user.resolver';
 
 export abstract class BaseComponent implements OnChanges, OnInit, DoCheck, AfterContentInit, AfterContentChecked, AfterViewInit, AfterViewChecked, OnDestroy {
+  public JARoutes = JARoutes;
   public systemLanguage: Language;
   public user: User;
 

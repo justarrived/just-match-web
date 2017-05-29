@@ -141,6 +141,7 @@ import {RegisteredModalComponent} from './components/modals/registered-modal/reg
 import {RegisterFormComponent} from './components/forms/register-form/register-form.component';
 import {RegisterModalComponent} from './components/modals/register-modal/register-modal.component';
 import {RegisterPageComponent} from './components/pages/register-page/register-page.component';
+import {RequirementsSectionComponent} from './components/sections/requirements-section/requirements-section.component';
 import {ResetPasswordFormComponent} from './components/forms/reset-password-form/reset-password-form.component';
 import {ResetPasswordPageComponent} from './components/pages/reset-password-page/reset-password-page.component';
 import {ResidencePermitBackInputComponent} from './components/inputs/residence-permit-back-input/residence-permit-back-input.component';
@@ -366,6 +367,7 @@ export class RavenErrorHandler implements ErrorHandler {
     RegisterFormComponent,
     RegisterModalComponent,
     RegisterPageComponent,
+    RequirementsSectionComponent,
     ResetPasswordFormComponent,
     ResetPasswordPageComponent,
     ResidencePermitBackInputComponent,
