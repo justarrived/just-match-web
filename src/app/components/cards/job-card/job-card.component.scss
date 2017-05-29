@@ -43,36 +43,4 @@
     height: 71px;
     max-height: 71px;
   }
-
-  .meta-container {
-    align-items: baseline;
-
-    .image {
-      height: 35px;
-    }
-  }
-
-  .job-content-container {
-    height: 241px;
-
-    .job-header-container {
-      min-height: 72px;
-    }
-
-    .job-description-container {
-      margin-top: 10px;
-      min-height: 72px;
-    }
-  }
-
-  .job-salary-container {
-    display: flex;
-    flex-wrap: nowrap;
-    align-items: center;
-  }
-
-  .job-salary-additional-info {
-    display: flex;
-    flex-wrap: nowrap;
-  }
 }
