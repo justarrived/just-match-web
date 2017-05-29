@@ -1,6 +1,10 @@
 @import '../../../styles/colors';
 
 .user-profile-header-container {
-  background-color: $color-primary-cerise;
+  background-color: $color-gray-800;
+  background: url('/assets/images/dark-pattern-background.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
   padding-bottom: 20px;
 }
