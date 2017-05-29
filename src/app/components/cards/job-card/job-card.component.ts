@@ -43,7 +43,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
             *ngIf="!job?.company?.logoImage"
             [text]="job?.company?.name"
             [oneLineEllipsis]="true"
-            fontSize="large"
+            fontSize="medium"
             fontWeight="light"
             color="black"
             marginTop="0"
