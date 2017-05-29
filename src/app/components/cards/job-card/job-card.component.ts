@@ -65,7 +65,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
         </div>
         <div class="column">
           <basic-title-text
-            [text]="(job.fulltime ? 'job.card.full.time' : 'job.card.part.time') | translate"
+            [text]="(job.fullTime ? 'job.card.full.time' : 'job.card.part.time') | translate"
             [oneLineEllipsis]="true"
             fontSize="tiny"
             fontWeight="light"
