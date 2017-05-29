@@ -33,6 +33,7 @@ interface JobApiAttributes {
   featured: boolean;
   filled: boolean;
   fullStreetAddress: string;
+  fullTime: boolean;
   grossAmount: number;
   grossAmountDelimited: string;
   grossAmountWithCurrency: string;
@@ -99,6 +100,7 @@ export class JobFactory {
       featured: jsonObject.featured,
       filled: jsonObject.filled,
       fullStreetAddress: jsonObject.full_street_address,
+      fullTime: jsonObject.full_time,
       grossAmount: jsonObject.gross_amount,
       grossAmountDelimited: jsonObject.gross_amount_delimited,
       grossAmountWithCurrency: jsonObject.gross_amount_with_currency,

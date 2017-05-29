@@ -1,13 +1,11 @@
+import {BaseComponent} from '../../base.component';
 import {Component} from '@angular/core';
 import {fadeInAnimation} from '../../../animations/fade-in/fade-in.animation';
 import {Input} from '@angular/core';
 import {JARoutes} from '../../../routes/ja-routes/ja-routes';
 import {Job} from '../../../models/api-models/job/job';
-import {Language} from '../../../models/api-models/language/language';
-import {OnDestroy} from '@angular/core';
-import {OnInit} from '@angular/core';
-import {Subscription} from 'rxjs/Subscription';
 import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
+import {UserResolver} from '../../../resolvers/user/user.resolver';
 
 @Component({
   animations: [fadeInAnimation('200ms')],
@@ -16,143 +14,150 @@ import {SystemLanguagesResolver} from '../../../resolvers/system-languages/syste
   template: `
   <div
     [@fadeInAnimation]="animationState"
+    (mouseover)='hovered = true'
+    (mouseout)='hovered = false'
     class="ui raised card link job-card"
     routerLink="{{JARoutes.job.url([job.id])}}">
-    <div class="content job-content-container">
-      <img
-        [src]="job?.company?.logoImage?.imageUrlSmall || '/assets/images/placeholder-logo.png'"
-        [ngClass]="{'right': systemLanguage.direction === 'ltr', 'left': systemLanguage.direction === 'rtl'}"
-        class="floated mini ui image">
-      <div class="job-header-container">
+    <div class="ui basic segment">
+      <div class="title-container">
         <basic-title-text
           [text]="job.translatedText.name"
-          [maxiumLinesEllipsis]="3"
+          [maxiumLinesEllipsis]="2"
           color="black"
           fontSize="small"
           marginTop="0"
-          marginBottom="0">
+          marginBottom="0"
+          textAlignmentLtr="center"
+          textAlignmentRtl="center">
         </basic-title-text>
       </div>
-      <basic-title-text
-        [text]="job?.company?.name"
-        [oneLineEllipsis]="true"
-        fontWeight="light"
-        color="pink"
-        fontSize="tiny"
-        marginTop="0"
-        marginBottom="0">
-      </basic-title-text>
-      <basic-title-text
-        [text]="job.city"
-        [oneLineEllipsis]="true"
-        [uppercase]="true"
-        fontWeight="light"
-        color="gray"
-        fontSize="tiny"
-        marginTop="0"
-        marginBottom="0">
-      </basic-title-text>
-      <div class="job-description-container">
+      <div class="company-image-container">
+        <img
+          *ngIf="job?.company?.logoImage"
+          [src]="job.company.logoImage.imageUrlSmall"
+          class="ui centered small image">
+        <basic-title-text
+          *ngIf="!job?.company?.logoImage"
+          [text]="job?.company?.name"
+          [oneLineEllipsis]="true"
+          fontSize="large"
+          fontWeight="light"
+          color="black"
+          marginTop="0"
+          marginBottom="0"
+          textAlignmentLtr="center"
+          textAlignmentRtl="center">
+        </basic-title-text>
+      </div>
+      <div class="ui equal width grid scope-container">
+        <div class="column">
+          <basic-title-text
+            [text]="(job.jobEndDate ? 'job.card.temporary' : 'job.card.until.further.notice') | translate"
+            [oneLineEllipsis]="true"
+            fontSize="tiny"
+            fontWeight="light"
+            color="white"
+            marginTop="0"
+            marginBottom="0"
+            textAlignmentLtr="center"
+            textAlignmentRtl="center">
+          </basic-title-text>
+        </div>
+        <div class="column">
+          <basic-title-text
+            [text]="(job.fulltime ? 'job.card.full.time' : 'job.card.part.time') | translate"
+            [oneLineEllipsis]="true"
+            fontSize="tiny"
+            fontWeight="light"
+            color="white"
+            marginTop="0"
+            marginBottom="0"
+            textAlignmentLtr="center"
+            textAlignmentRtl="center">
+          </basic-title-text>
+        </div>
+      </div>
+      <div class="description-container">
         <basic-text
           [text]="job.translatedText.shortDescription"
           [maxiumLinesEllipsis]="4"
           fontSize="small"
-          color="black"
+          color="gray"
           marginTop="0"
-          marginBottom="0">
+          marginBottom="0"
+          textAlignmentLtr="center"
+          textAlignmentRtl="center">
         </basic-text>
       </div>
     </div>
-    <div class="extra content">
-      <div
-        [style.justify-content]="systemLanguage.direction === 'rtl' ? 'flex-end' : 'flex-start'"
-        class="job-salary-container">
+    <div class="ui equal width grid meta-container">
+      <div class="column">
+        <img
+          class="ui centered mini image"
+          src="/assets/icons/marker.svg">
         <basic-title-text
-          [text]="job.hourlyPay.grossSalary"
+          [alwaysLtrText]="true"
+          [text]="job.city"
           [oneLineEllipsis]="true"
-          fontWeight="light"
+          fontSize="tiny"
           color="pink"
-          fontSize="huge"
-          marginTop="0"
-          marginBottom="0">
-        </basic-title-text>
-        <basic-title-text
-          style="margin-left: 1em"
-          [text]="'job.card.currency.per.hour' | translate: {currency: job.currency}"
-          [oneLineEllipsis]="true"
-          fontWeight="light"
-          color="gray"
-          fontSize="medium"
-          marginTop="0"
-          marginBottom="0">
+          marginTop="0.5rem"
+          marginBottom="0"
+          textAlignmentLtr="center"
+          textAlignmentRtl="center">
         </basic-title-text>
       </div>
-
-      <div
-        [style.flex-direction]="systemLanguage.direction === 'rtl' ? 'row-reverse' : 'row'"
-        class="job-salary-additional-info">
+      <div class="column">
+        <img
+          class="ui centered mini image"
+          src="/assets/icons/calendar.svg">
         <basic-title-text
-          style="flex: 1;"
-          [text]="'job.card.hours' | translate: {hours: job.hours} "
+          [alwaysLtrText]="true"
+          [text]="(job.jobDate | date: 'MMM dd') + (job.jobEndDate ? (' - ' + (job.jobEndDate | date: 'MMM dd')) : '')"
           [oneLineEllipsis]="true"
-          [uppercase]="true"
-          textAlignmentLtr="left"
-          textAlignmentRtl="right"
-          fontWeight="bold"
-          color="gray"
           fontSize="tiny"
-          marginTop="0"
-          marginBottom="0">
-        </basic-title-text>
-        <basic-title-text
-          style="flex: 1;"
-          [text]="job.grossAmountWithCurrency"
-          [oneLineEllipsis]="true"
-          [uppercase]="true"
-          textAlignmentLtr="right"
-          textAlignmentRtl="left"
-          fontWeight="bold"
-          color="gray"
-          fontSize="tiny"
-          marginTop="0"
-          marginBottom="0">
+          color="pink"
+          marginTop="0.5rem"
+          marginBottom="0"
+          textAlignmentLtr="center"
+          textAlignmentRtl="center">
         </basic-title-text>
       </div>
+    </div>
+    <div class="read-more-container">
+      <basic-link
+        [text]="'job.card.read.more' | translate"
+        [color]="hovered ? 'pink' : 'white'"
+        fontWeight="bold"
+        paddingTop="1rem"
+        paddingBottom="1rem"
+        marginTop="0"
+        marginBottom="0"
+        textAlignmentLtr="center"
+        textAlignmentRtl="center">
+      </basic-link>
     </div>
   </div>`
 
 })
-export class JobCardComponent implements OnInit, OnDestroy  {
+export class JobCardComponent extends BaseComponent {
   @Input() public job = null as Job;
   @Input() public animationDelay: number = 1;
+  public hovered: boolean = false;
 
   public JARoutes = JARoutes;
   public animationState: string = 'hidden';
 
-  public systemLanguage: Language;
-
-  private systemLanguageSubscription: Subscription;
-
-  public constructor(
-    private systemLanguagesResolver: SystemLanguagesResolver
+  public constructor (
+    protected systemLanguagesResolver: SystemLanguagesResolver,
+    protected userResolver: UserResolver,
   ) {
+    super(systemLanguagesResolver, userResolver);
   }
 
-  public ngOnInit(): void {
-    this.initSystemLanguage()
+  public onInit(): void {
     setTimeout(() => {
       this.animationState = 'visible';
     }, this.animationDelay);
-  }
-
-  private initSystemLanguage(): void {
-    this.systemLanguage = this.systemLanguagesResolver.getSelectedSystemLanguage();
-    this.systemLanguageSubscription = this.systemLanguagesResolver.getSystemLanguageChangeEmitter().subscribe(systemLanguage => {
-      this.systemLanguage = systemLanguage;
-    });
-  }
-
-  public ngOnDestroy(): void {
-    if (this.systemLanguageSubscription) { this.systemLanguageSubscription.unsubscribe(); }
   }
 }

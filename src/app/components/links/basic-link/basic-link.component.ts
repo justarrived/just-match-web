@@ -57,6 +57,8 @@ import {SystemLanguagesResolver} from '../../../resolvers/system-languages/syste
       [style.display]="display"
       [style.margin-bottom]="marginBottom"
       [style.margin-top]="marginTop"
+      [style.padding-bottom]="paddingBottom"
+      [style.padding-top]="paddingTop"
       [style.text-decoration]="underline ? 'underline' : 'none'"
       [target]="hrefTarget"
       *ngIf="href">
@@ -109,6 +111,8 @@ import {SystemLanguagesResolver} from '../../../resolvers/system-languages/syste
       [style.display]="display"
       [style.margin-bottom]="marginBottom"
       [style.margin-top]="marginTop"
+      [style.padding-bottom]="paddingBottom"
+      [style.padding-top]="paddingTop"
       [style.text-decoration]="underline ? 'underline' : 'none'"
       *ngIf="!href">
       {{text}}
@@ -124,12 +128,14 @@ export class BasicLinkComponent implements OnInit, OnDestroy {
   @Input() public fontWeight: string = 'normal'; // Should be one of 'light', 'normal', 'bold'.
   @Input() public hoverColor: string = 'pink'; // Should be one of 'pink', 'black', 'gray', 'white'.
   @Input() public href: string;
-  @Input() public italic: boolean = false;
   @Input() public hrefTarget: string = '_blank';
+  @Input() public italic: boolean = false;
   @Input() public marginBottom: string = '1rem';
   @Input() public marginTop: string = '1rem';
   @Input() public maxiumLinesEllipsis: number = 0; // Should be one of undefined or 2-10
   @Input() public oneLineEllipsis: boolean = false;
+  @Input() public paddingBottom: string = '0';
+  @Input() public paddingTop: string = '0';
   @Input() public routerLink: string;
   @Input() public text: string = '';
   @Input() public textAlignmentLtr: string = 'left'; // Should be one of 'left', 'center', 'right'.
