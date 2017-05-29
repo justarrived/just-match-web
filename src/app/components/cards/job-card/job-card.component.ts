@@ -35,19 +35,23 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
         <img
           *ngIf="job?.company?.logoImage"
           [src]="job.company.logoImage.imageUrlSmall"
-          class="ui centered small image">
-        <basic-title-text
+          class="ui centered image">
+        <div
           *ngIf="!job?.company?.logoImage"
-          [text]="job?.company?.name"
-          [oneLineEllipsis]="true"
-          fontSize="large"
-          fontWeight="light"
-          color="black"
-          marginTop="0"
-          marginBottom="0"
-          textAlignmentLtr="center"
-          textAlignmentRtl="center">
-        </basic-title-text>
+          style="width: 100%">
+          <basic-title-text
+            *ngIf="!job?.company?.logoImage"
+            [text]="job?.company?.name"
+            [oneLineEllipsis]="true"
+            fontSize="large"
+            fontWeight="light"
+            color="black"
+            marginTop="0"
+            marginBottom="0"
+            textAlignmentLtr="center"
+            textAlignmentRtl="center">
+          </basic-title-text>
+        </div>
       </div>
       <div class="ui equal width grid scope-container">
         <div class="column">

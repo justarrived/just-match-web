@@ -18,6 +18,11 @@
     justify-content: center;
     height: 100px;
     max-height: 100px;
+
+    .image {
+      max-height: 80px;
+      max-width: 100%;
+    }
   }
 
   .read-more-container {
@@ -42,5 +47,13 @@
   .description-container {
     height: 71px;
     max-height: 71px;
+  }
+
+  .meta-container {
+    align-items: baseline;
+
+    .image {
+      height: 35px;
+    }
   }
 }
