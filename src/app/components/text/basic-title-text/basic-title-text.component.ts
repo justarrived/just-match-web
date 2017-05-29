@@ -76,7 +76,6 @@ import {SystemLanguagesResolver} from '../../../resolvers/system-languages/syste
         class="{{iconLeft}} icon">
       </i>
       <div
-        [innerHTML]="text || ''"
         [class.maximum-2-lines-ellipsis]="maxiumLinesEllipsis === 2"
         [class.maximum-3-lines-ellipsis]="maxiumLinesEllipsis === 3"
         [class.maximum-4-lines-ellipsis]="maxiumLinesEllipsis === 4"
@@ -87,6 +86,7 @@ import {SystemLanguagesResolver} from '../../../resolvers/system-languages/syste
         [class.maximum-9-lines-ellipsis]="maxiumLinesEllipsis === 9"
         [class.maximum-10-lines-ellipsis]="maxiumLinesEllipsis === 10"
         [style.display]="'inline'">
+        {{text}}
       </div>
       <i
         *ngIf="iconRight"
@@ -108,7 +108,7 @@ export class BasicTitleTextComponent implements OnInit, OnDestroy {
   @Input() public iconRight: string;
   @Input() public marginBottom: string = '1rem';
   @Input() public marginTop: string = '1.8rem';
-  @Input() public text: string = '';
+  @Input() public text: string;
   @Input() public uppercase: boolean = false;
   @Input() public textAlignmentLtr: string = 'left'; // Should be one of 'left', 'center', 'right'.
   @Input() public textAlignmentLtrMobile: string; // Should be one of undefined, 'left', 'center', 'right'.

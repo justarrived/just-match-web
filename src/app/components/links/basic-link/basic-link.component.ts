@@ -45,7 +45,6 @@ import {SystemLanguagesResolver} from '../../../resolvers/system-languages/syste
       [class.normal]="fontWeight === 'normal'"
       [class.one-line-ellipsis]="oneLineEllipsis"
       [class.pink]="color === 'pink'"
-      [class.pink]="fontSize === 'small'"
       [class.right]="systemLanguage.direction === 'rtl' && textAlignmentRtl === 'right' || systemLanguage.direction === 'ltr' && textAlignmentLtr === 'right'"
       [class.small]="fontSize === 'small'"
       [class.tablet-center]="systemLanguage.direction === 'rtl' && textAlignmentRtlTablet === 'center' || systemLanguage.direction === 'ltr' && textAlignmentLtrTablet === 'center'"
@@ -54,7 +53,6 @@ import {SystemLanguagesResolver} from '../../../resolvers/system-languages/syste
       [class.uppercase]="uppercase"
       [class.white]="color === 'white'"
       [href]="href"
-      [innerHTML]="text || ''"
       [style.direction]="alwaysLtrText ? 'ltr' : alwaysRtlText ? 'rtl' : systemLanguage.direction"
       [style.display]="display"
       [style.margin-bottom]="marginBottom"
@@ -62,6 +60,7 @@ import {SystemLanguagesResolver} from '../../../resolvers/system-languages/syste
       [style.text-decoration]="underline ? 'underline' : 'none'"
       [target]="hrefTarget"
       *ngIf="href">
+      {{text}}
     </a>
     <a
       [attr.data-hover]="text"
@@ -98,7 +97,6 @@ import {SystemLanguagesResolver} from '../../../resolvers/system-languages/syste
       [class.normal]="fontWeight === 'normal'"
       [class.one-line-ellipsis]="oneLineEllipsis"
       [class.pink]="color === 'pink'"
-      [class.pink]="fontSize === 'small'"
       [class.right]="systemLanguage.direction === 'rtl' && textAlignmentRtl === 'right' || systemLanguage.direction === 'ltr' && textAlignmentLtr === 'right'"
       [class.small]="fontSize === 'small'"
       [class.tablet-center]="systemLanguage.direction === 'rtl' && textAlignmentRtlTablet === 'center' || systemLanguage.direction === 'ltr' && textAlignmentLtrTablet === 'center'"
@@ -106,7 +104,6 @@ import {SystemLanguagesResolver} from '../../../resolvers/system-languages/syste
       [class.tablet-right]="systemLanguage.direction === 'rtl' && textAlignmentRtlTablet === 'right' || systemLanguage.direction === 'ltr' && textAlignmentLtrTablet === 'right'"
       [class.uppercase]="uppercase"
       [class.white]="color === 'white'"
-      [innerHTML]="text || ''"
       [routerLink]="routerLink"
       [style.direction]="alwaysLtrText ? 'ltr' : alwaysRtlText ? 'rtl' : systemLanguage.direction"
       [style.display]="display"
@@ -114,6 +111,7 @@ import {SystemLanguagesResolver} from '../../../resolvers/system-languages/syste
       [style.margin-top]="marginTop"
       [style.text-decoration]="underline ? 'underline' : 'none'"
       *ngIf="!href">
+      {{text}}
     </a>
     `
 })

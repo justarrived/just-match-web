@@ -27,7 +27,7 @@ import {Subscription} from 'rxjs/Subscription';
         <div accordion-content>
           <div class="ui padded raised segment">
             <basic-text
-              [text]="faq.translatedText.answer"
+              [unsafeHtml]="faq.translatedText.answer"
               color="black"
               marginTop="0"
               marginBottom="0">

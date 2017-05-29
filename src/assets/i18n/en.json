@@ -223,7 +223,7 @@
   "input.system.language.description": "This is the language we will use to communicate with you",
   "input.system.language.label": "Default language",
   "input.system.language.placeholder": "Default language",
-  "input.terms.label": "I accept Just Arrived's terms, conditions and employment contract",
+  "input.terms.label": "I accept Just Arrived's terms and conditions.",
   "input.work.permit.back.description": "Back photo of my work permit",
   "input.work.permit.back.header": "Work permit",
   "input.work.permit.back.label": "Work permit (back photo)",

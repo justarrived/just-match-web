@@ -186,6 +186,7 @@ import {ViewChild} from '@angular/core';
               [src]="this.user.profileImage?.imageUrlMedium || '/assets/images/placeholder-profile-image.png'">
               <basic-title-text
                 [text]="user.name"
+                color="gray"
                 fontSize="small"
                 textAlignmentLtr="center"
                 textAlignmentRtl="center">

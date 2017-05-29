@@ -68,7 +68,7 @@ import {Message} from '../../../models/api-models/message/message';
           <basic-text
             [alwaysLtrText]="message?.language?.direction === 'ltr'"
             [alwaysRtlText]="message?.language?.direction === 'rtl'"
-            [text]="message.bodyHtml"
+            [unsafeHtml]="message.bodyHtml"
             fontWeight="bold"
             class="message"
             color="white"

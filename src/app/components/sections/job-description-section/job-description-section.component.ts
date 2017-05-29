@@ -17,7 +17,7 @@ import {Job} from '../../../models/api-models/job/job'
         underlineBelowLtrAlignment="center"
         underlineBelowRtlAlignment="center">
       </basic-title-text>
-      <basic-text [text]="job.translatedText.descriptionHtml"></basic-text>
+      <basic-text [unsafeHtml]="job.translatedText.descriptionHtml"></basic-text>
     </div>`
 })
 export class JobDescriptionSectionComponent {
