@@ -41,6 +41,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
           style="width: 100%">
           <basic-title-text
             *ngIf="!job?.company?.logoImage"
+            [alwaysLtrText]="text"
             [text]="job?.company?.name"
             [oneLineEllipsis]="true"
             fontSize="medium"
