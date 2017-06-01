@@ -160,7 +160,6 @@ import {SemanticModalComponent} from "./semantic/modal/modal";
 import {SemanticRatingComponent} from "./semantic/rating/rating";
 import {SemanticSearchComponent} from "./semantic/search/search";
 import {SemanticSelectComponent} from "./semantic/select/select";
-import {SemanticSidebarComponent} from "./semantic/sidebar/sidebar";
 import {SemanticTextareaComponent} from "./semantic/input/input";
 import {ShareSectionComponent} from './components/sections/share-section/share-section.component';
 import {SignedForJobModalComponent} from './components/modals/signed-for-job-modal/signed-for-job-modal.component';
@@ -384,7 +383,6 @@ export class RavenErrorHandler implements ErrorHandler {
     SemanticRatingComponent,
     SemanticSearchComponent,
     SemanticSelectComponent,
-    SemanticSidebarComponent,
     SemanticTextareaComponent,
     ShareSectionComponent,
     SignedForJobModalComponent,

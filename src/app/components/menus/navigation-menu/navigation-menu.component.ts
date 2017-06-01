@@ -1,3 +1,4 @@
+import {BaseComponent} from '../../base.component';
 import {Component} from '@angular/core';
 import {EventEmitter} from '@angular/core';
 import {Inject} from '@angular/core';
@@ -6,27 +7,21 @@ import {isPlatformBrowser} from '@angular/common';
 import {JARoutes} from '../../../routes/ja-routes/ja-routes';
 import {NavigationService} from '../../../services/navigation.service';
 import {NavigationStart} from '@angular/router';
-import {OnDestroy} from '@angular/core';
-import {OnInit} from '@angular/core';
 import {Output} from '@angular/core';
 import {PLATFORM_ID} from '@angular/core';
 import {Router} from '@angular/router';
 import {Subscription} from 'rxjs/Subscription';
 import {User} from '../../../models/api-models/user/user';
 import {UserResolver} from '../../../resolvers/user/user.resolver';
+import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
 import {ViewChild} from '@angular/core';
 
 @Component({
   selector: 'navigation-menu',
   styleUrls: ['./navigation-menu.component.scss'],
   template: `
-  <sm-sidebar
-    [options]="options"
-    (onHide)="onHide()"
-    (onShow)="onShow()"
-    #navigationSidebar
-    class="right vertical inverted">
     <div
+      *ngIf="isNavigationMenuVisible"
       class="navigation-menu-container ui basic segment"
       [class.loading]="user && user.isBeingReloaded">
 
@@ -206,83 +201,59 @@ import {ViewChild} from '@angular/core';
         </div>
       </div>
     </div>
-  </sm-sidebar>
   `
 })
-export class NavigationMenuComponent implements OnInit, OnDestroy {
-  @Input() public options: any;
+export class NavigationMenuComponent extends BaseComponent {
   @Input() public isNavigationMenuVisible: boolean;
   @Output() public isNavigationMenuVisibleChange: EventEmitter<boolean> = new EventEmitter<boolean>();
   @ViewChild('navigationSidebar') public navigationSidebar;
 
   public JARoutes = JARoutes;
-  public user: User;
   public admin: boolean;
 
   private routerEventSubscription: Subscription;
-  private userSubscription: Subscription;
 
   public constructor(
     @Inject(PLATFORM_ID) private readonly platformId: any,
     private navigationService: NavigationService,
     private router: Router,
-    private userResolver: UserResolver,
+    protected systemLanguagesResolver: SystemLanguagesResolver,
+    protected userResolver: UserResolver,
   ) {
+    super(systemLanguagesResolver, userResolver);
   }
 
-  public ngOnInit(): void {
-    this.initUser();
+  public onInit(): void {
+    this.initAdmin();
     this.initRouterEventSubscription();
   }
 
-  public onShow(): void {
-    this.isNavigationMenuVisible = true;
-    this.isNavigationMenuVisibleChange.emit(this.isNavigationMenuVisible);
-  }
-
-  public onHide(): void {
-    this.isNavigationMenuVisible = false;
-    this.isNavigationMenuVisibleChange.emit(this.isNavigationMenuVisible);
-  }
-
-  private initUser(): void {
-    this.user = this.userResolver.getUser();
+  private initAdmin(): void {
     this.admin = this.userResolver.isAdmin();
-    this.userSubscription = this.userResolver.getUserChangeEmitter().subscribe(user => {
-      this.user = user;
-      this.admin = this.userResolver.isAdmin();
-    });
+  }
+
+  public userChanged(user: User): void {
+    this.admin = this.userResolver.isAdmin();
   }
 
   private initRouterEventSubscription(): void {
     this.routerEventSubscription = this.router.events.subscribe(event => {
       if (event instanceof NavigationStart) {
-        this.hide();
+        this.isNavigationMenuVisible = false;
+        this.isNavigationMenuVisibleChange.emit(this.isNavigationMenuVisible);
       }
     });
   }
 
-  public ngOnDestroy(): void {
+  public onDestroy(): void {
     if (this.routerEventSubscription) { this.routerEventSubscription.unsubscribe(); }
-    if (this.userSubscription) { this.userSubscription.unsubscribe(); }
-  }
-
-  public show(options?: any): void {
-    this.isNavigationMenuVisible = true;
-    this.isNavigationMenuVisibleChange.emit(this.isNavigationMenuVisible);
-    this.navigationSidebar.show(options);
-  }
-
-  public hide(): void {
-    this.isNavigationMenuVisible = false;
-    this.isNavigationMenuVisibleChange.emit(this.isNavigationMenuVisible);
-    this.navigationSidebar.hide();
   }
 
   public onLogoutButtonClick(): void {
     this.navigationService.navigate(JARoutes.home);
     this.userResolver.logout();
-    this.hide();
+    this.isNavigationMenuVisible = false;
+    this.isNavigationMenuVisibleChange.emit(this.isNavigationMenuVisible);
   }
 
   public getCurrentUrl(): string {

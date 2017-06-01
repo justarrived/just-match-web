@@ -3,8 +3,12 @@ import {Input} from '@angular/core';
 import {LanguageMenuComponent} from '../../menus/language-menu/language-menu.component';
 import {NavigationMenuComponent} from '../../menus/navigation-menu/navigation-menu.component';
 import {ViewChild} from '@angular/core';
+import {slideInLeftOutRightAnimation} from '../../../animations/slide-in-left-out-right/slide-in-left-out-right.animation';
+
+const menuAnimationDuration = 400;
 
 @Component({
+  animations: [slideInLeftOutRightAnimation(menuAnimationDuration + 'ms', '100%')],
   selector: 'default-navigation',
   styleUrls: ['./default-navigation.component.scss'],
   template: `
@@ -15,18 +19,21 @@ import {ViewChild} from '@angular/core';
         (onToggleLanguageMenu)="toggleLanguageMenu()"
         (onToggleNavigationMenu)="toggleNavigationMenu()">
       </app-navbar>
-      <div class="menu-container" id="menu-container">
-        <navigation-menu
-          #navigationMenuComponent
-          [options]="{context: '#menu-container', transition: 'overlay', mobileTransition: 'overlay'}"
-          [(isNavigationMenuVisible)]=isNavigationMenuVisible>
-        </navigation-menu>
-        <language-menu
-          #languageMenuComponent
-          [options]="{context: '#menu-container', transition: 'overlay', mobileTransition: 'overlay'}"
-          [(isLanguageMenuVisible)]=isLanguageMenuVisible>
-        </language-menu>
-        <div class="pusher">
+      <div
+        class="menu-container"
+        [class.visible]="isNavigationMenuVisible || isLanguageMenuVisible"
+        (click)="hideMenus()">
+        <div
+          class="menu-inner-container"
+          [@slideInLeftOutRightAnimation]="animationState">
+          <navigation-menu
+            #navigationMenuComponent
+            [(isNavigationMenuVisible)]=isNavigationMenuVisible>
+          </navigation-menu>
+          <language-menu
+            #languageMenuComponent
+            [(isLanguageMenuVisible)]=isLanguageMenuVisible>
+          </language-menu>
         </div>
       </div>
     </div>`
@@ -35,24 +42,50 @@ export class DefaultNavigationComponent {
   @ViewChild('languageMenuComponent') public languageMenuComponent: LanguageMenuComponent;
   @ViewChild('navigationMenuComponent') public navigationMenuComponent: NavigationMenuComponent;
 
+  public animationState: string = 'out';
+
   public isLanguageMenuVisible: boolean = false;
   public isNavigationMenuVisible: boolean = false;
 
   public toggleLanguageMenu(): void {
     if (this.isLanguageMenuVisible) {
-      this.languageMenuComponent.hide();
+      setTimeout(() => {
+        this.isLanguageMenuVisible = false;
+      }, menuAnimationDuration);
+      this.animationState = 'out';
     } else {
-      this.languageMenuComponent.show();
-      this.navigationMenuComponent.hide();
+      this.isLanguageMenuVisible = true;
+      this.isNavigationMenuVisible = false;
+      this.animationState = 'in';
     }
   }
 
   public toggleNavigationMenu(): void {
     if (this.isNavigationMenuVisible) {
-      this.navigationMenuComponent.hide();
+      setTimeout(() => {
+        this.isNavigationMenuVisible = false;
+      }, menuAnimationDuration);
+      this.animationState = 'out';
     } else {
-      this.navigationMenuComponent.show();
-      this.languageMenuComponent.hide();
+      this.isLanguageMenuVisible = false;
+      this.isNavigationMenuVisible = true;
+      this.animationState = 'in';
     }
+  }
+
+  public hideMenus(): void {
+    if (this.isNavigationMenuVisible) {
+      setTimeout(() => {
+        this.isNavigationMenuVisible = false;
+      }, menuAnimationDuration);
+    }
+
+    if (this.isLanguageMenuVisible) {
+      setTimeout(() => {
+        this.isLanguageMenuVisible = false;
+      }, menuAnimationDuration);
+    }
+
+    this.animationState = 'out';
   }
 }
