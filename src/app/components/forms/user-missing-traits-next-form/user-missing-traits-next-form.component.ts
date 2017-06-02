@@ -85,7 +85,7 @@ export class UserMissingTraitsNextFormComponent extends SystemLanguageListener i
       'current_status': [this.user.currentStatus],
       'description': [this.user.description],
       'education': [this.user.education],
-      'email': [this.user.email, Validators.compose([Validators.required])],
+      'email': [this.user.email, Validators.compose([Validators.required, Validators.email])],
       'facebook_url': [this.user.facebookUrl],
       'first_name': [this.user.firstName, Validators.compose([Validators.required, Validators.minLength(2)])],
       'gender': [this.user.gender],

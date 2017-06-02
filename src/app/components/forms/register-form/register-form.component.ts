@@ -47,7 +47,7 @@ export class RegisterFormComponent implements OnInit {
       'accepted_terms_and_conditions': ['', Validators.compose([Validators.required])],
       'city': [''],
       'country_of_origin': [''],
-      'email': ['', Validators.compose([Validators.required])],
+      'email': ['', Validators.compose([Validators.required, Validators.email])],
       'first_name': ['', Validators.compose([Validators.required, Validators.minLength(1)])],
       'gender': [''],
       'system_language_id': ['', Validators.compose([Validators.required])],
