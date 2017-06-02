@@ -68,7 +68,7 @@ export class UserDetailsFormComponent implements OnInit, OnDestroy {
       'bank_account': [this.user.bankAccount],
       'city': [this.user.city],
       'country_of_origin': [this.user.countryOfOrigin],
-      'email': [this.user.email, Validators.compose([Validators.required])],
+      'email': [this.user.email, Validators.compose([Validators.required, Validators.email])],
       'first_name': [this.user.firstName, Validators.compose([Validators.required, Validators.minLength(2)])],
       'gender': [this.user.gender],
       'last_name': [this.user.lastName, Validators.compose([Validators.required, Validators.minLength(2)])],

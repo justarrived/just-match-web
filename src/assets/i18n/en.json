@@ -426,6 +426,7 @@
   "users.filter.search.label": "Search users",
   "users.filter.search.placeholder": "Search users",
   "validations.email_pattern": "must look like an email address",
+  "validations.email": "must be a valid email address",
   "validations.maxlength": "is too long (maximum {{maxLength}} characters)",
   "validations.minlength": "is too short (minimum {{minLength}} characters)",
   "validations.pattern": "does not conform to the required pattern",

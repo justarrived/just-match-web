@@ -36,6 +36,7 @@ export class InputErrorsComponent implements OnInit {
   @Input() public minLengthLabel: string = null;
   @Input() public patternLabel: string = null;
   @Input() public requiredLabel: string = null;
+  @Input() public emailLabel: string = null;
 
   public formControlErrors: Array<string> = [];
   public apiErrorsActual: ApiErrors = new ApiErrors([]);
@@ -52,7 +53,8 @@ export class InputErrorsComponent implements OnInit {
       maxlength: this.maxLengthLabel,
       minlength: this.minLengthLabel,
       pattern: this.patternLabel,
-      required: this.requiredLabel
+      required: this.requiredLabel,
+      email: this.emailLabel
     };
     this.control.valueChanges.subscribe(() => {
       this.setErrors();
@@ -85,6 +87,9 @@ export class InputErrorsComponent implements OnInit {
     }
     if (controlErrors.maxlength) {
       errors.push(this.labelFor('maxlength', { maxLength: controlErrors.maxlength.requiredLength }));
+    }
+    if (controlErrors.email) {
+      errors.push(this.labelFor('email', {}));
     }
 
     this.setControlErrors(errors);

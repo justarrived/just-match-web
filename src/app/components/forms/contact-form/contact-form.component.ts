@@ -88,7 +88,7 @@ export class ContactFormComponent implements OnInit, OnDestroy {
     const name: string = this.user ? this.user.name : '';
     const email: string = this.user ? this.user.email : '';
     this.contactForm = this.formBuilder.group({
-      'email': [email, Validators.compose([Validators.required, Validators.minLength(6)])],
+      'email': [email, Validators.compose([Validators.required, , Validators.email])],
       'body': ['', Validators.compose([Validators.required, Validators.minLength(2)])],
       'name': [name, Validators.compose([Validators.required, Validators.minLength(2)])]
     });
