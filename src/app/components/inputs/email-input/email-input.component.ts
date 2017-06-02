@@ -12,7 +12,6 @@ import {Input} from '@angular/core';
     [hint]="hint"
     [label]="'input.email.label' | translate"
     [placeholder]="'input.email.placeholder' | translate"
-    [patternLabel]="'validations.email_pattern' | translate"
     apiAttribute="email"
     icon="pink mail">
   </text-input>
