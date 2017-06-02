@@ -1,3 +1,4 @@
+import {ApplicationsPageComponent} from '../components/pages/applications-page/applications-page.component';
 import {ContactPageComponent} from '../components/pages/contact-page/contact-page.component';
 import {CookiesAboutPageComponent} from '../components/pages/cookies-about-page/cookies-about-page.component';
 import {DefaultLayoutComponent} from '../components/layouts/default-layout/default-layout.component';
@@ -11,11 +12,10 @@ import {HomePageComponent} from '../components/pages/home-page/home-page.compone
 import {JARoute} from './ja-route/ja-route';
 import {JobPageComponent} from '../components/pages/job-page/job-page.component';
 import {JobsPageComponent} from '../components/pages/jobs-page/jobs-page.component';
-import {LoggedInGuard} from '../guards/logged-in/logged-in.guard';
 import {LoggedInAdminGuard} from '../guards/logged-in-admin/logged-in-admin.guard';
+import {LoggedInGuard} from '../guards/logged-in/logged-in.guard';
 import {LoginPageComponent} from '../components/pages/login-page/login-page.component';
 import {LostConnectionPageComponent} from '../components/pages/lost-connection-page/lost-connection-page.component';
-import {MyJobsComponent} from '../views/my-jobs/my-jobs.component';
 import {NgModule} from '@angular/core';
 import {NotFoundPageComponent} from '../components/pages/404-page/404-page.component';
 import {NotLoggedInGuard} from '../guards/not-logged-in/not-logged-in.guard';
@@ -37,6 +37,7 @@ const routes: Routes = [
     children: [
     { path: '', pathMatch: 'full', component: HomePageComponent},
     { path: '404', component: NotFoundPageComponent },
+    { path: 'applications', component: ApplicationsPageComponent, canActivate: [LoggedInGuard] },
     { path: 'contact', component: ContactPageComponent },
     { path: 'cookies-about', component: CookiesAboutPageComponent },
     { path: 'error/:statusCode', component: ErrorPageComponent },
@@ -55,7 +56,6 @@ const routes: Routes = [
     { path: 'reset-password/:token', component: ResetPasswordPageComponent, canActivate: [NotLoggedInGuard] },
     { path: 'support-chat', component: SupportChatPageComponent, canActivate: [LoggedInGuard] },
     { path: 'user', component: UserProfilePageComponent, canActivate: [LoggedInGuard] },
-    { path: 'user/jobs', component: MyJobsComponent, canActivate: [LoggedInGuard] },
     { path: '**', redirectTo: '404' },
   ]}
 ];

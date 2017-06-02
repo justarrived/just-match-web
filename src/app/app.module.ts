@@ -4,7 +4,9 @@ import {ApiCallService} from './services/api-call.service';
 import {ApiErrorsComponent} from './components/form-errors/api-errors/api-errors.component';
 import {APP_BASE_HREF} from '@angular/common';
 import {AppComponent} from './app.component';
-import {ApplicationsComponent} from './views/my-jobs/applications/applications.component';
+import {ApplicationItemComponent} from './components/items/application-item/application-item.component';
+import {ApplicationsPageComponent} from './components/pages/applications-page/applications-page.component';
+import {ApplicationsSectionComponent} from './components/sections/applications-section/applications-section.component';
 import {ApplicationsStatusSectionComponent} from './components/sections/applications-status-section/applications-status-section.component';
 import {ApplicationStatusCardComponent} from './components/cards/application-status-card/application-status-card.component';
 import {AppliedForJobModalComponent} from './components/modals/applied-for-job-modal/applied-for-job-modal.component';
@@ -117,8 +119,6 @@ import {LoginModalComponent} from './components/modals/login-modal/login-modal.c
 import {LoginPageComponent} from './components/pages/login-page/login-page.component';
 import {LostConnectionPageComponent} from './components/pages/lost-connection-page/lost-connection-page.component';
 import {ModalService} from './services/modal.service';
-import {MyJobsComponent} from './views/my-jobs/my-jobs.component';
-import {MyJobsItemComponent} from './components/my-jobs-item/my-jobs-item.component';
 import {NameInputComponent} from './components/inputs/name-input/name-input.component';
 import {NavigationMenuComponent} from './components/menus/navigation-menu/navigation-menu.component';
 import {NavigationService} from './services/navigation.service';
@@ -244,7 +244,7 @@ export class RavenErrorHandler implements ErrorHandler {
     AlreadyRegisteredModalComponent,
     ApiErrorsComponent,
     AppComponent,
-    ApplicationsComponent,
+    ApplicationsSectionComponent,
     ApplicationsStatusSectionComponent,
     ApplicationStatusCardComponent,
     AppliedForJobModalComponent,
@@ -346,8 +346,8 @@ export class RavenErrorHandler implements ErrorHandler {
     LoginModalComponent,
     LoginPageComponent,
     LostConnectionPageComponent,
-    MyJobsComponent,
-    MyJobsItemComponent,
+    ApplicationsPageComponent,
+    ApplicationItemComponent,
     NameInputComponent,
     NavigationMenuComponent,
     NewJobsSectionComponent,
