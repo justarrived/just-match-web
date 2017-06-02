@@ -30,8 +30,6 @@ export class ApiCallService {
   private readonly storageActAsUserIdKey: string = 'actAsUserId'; // MUST be same as key in user resolver
   private readonly storageSessionKey: string = 'sessionData'; // MUST be same as key in user resolver
   private readonly storageSystemLanguageCodeKey: string = 'systemLanguageCode'; // MUST be same as key in system languages resolver
-  private readonly transformHeaderName: string = 'X-API-KEY-TRANSFORM';
-  private readonly transformHeaderValue: string = 'underscore';
 
   constructor(
     @Inject(PLATFORM_ID) private readonly platformId: any,
@@ -105,7 +103,6 @@ export class ApiCallService {
     }
 
     req.headers.set(this.languageHeaderName, this.dataStoreService.getCookie(this.storageSystemLanguageCodeKey));
-    req.headers.set(this.transformHeaderName, this.transformHeaderValue);
 
     const actAsUserId = this.dataStoreService.getCookie(this.storageActAsUserIdKey);
     if (actAsUserId !== null) {
