@@ -10,7 +10,7 @@ import {JARoutes} from '../../../routes/ja-routes/ja-routes';
         [text]="'home.instructions.first.section.title' | translate"
         [underlineBelow]="true"
         color="black"
-        fontSize="large"
+        fontSize="huge"
         textAlignmentLtr="center"
         textAlignmentRtl="center"
         underlineBelowColor="pink"
@@ -22,9 +22,9 @@ import {JARoutes} from '../../../routes/ja-routes/ja-routes';
       <div class="ui centered grid">
         <div class="sixteen wide mobile twelve wide tablet four wide computer column">
           <img
-            class="ui centered small image"
+            class="ui centered tiny image"
             src="/assets/images/how-it-works-icon-1.png"
-            style="padding-left: 20px;">
+            style="padding-left: 15px;">
           <basic-title-text
             [text]="'how.it.works.section.register.description.title' | translate"
             color="black"
@@ -47,9 +47,9 @@ import {JARoutes} from '../../../routes/ja-routes/ja-routes';
         </div>
         <div class="sixteen wide mobile twelve wide tablet four wide computer column">
           <img
-            class="ui centered small image"
+            class="ui centered tiny image"
             src="/assets/images/how-it-works-icon-2.png"
-            style="padding-left: 20px;">
+            style="padding-left: 15px;">
           <basic-title-text
             [text]="'how.it.works.section.update.profile.description.title' | translate"
             color="black"
@@ -72,9 +72,9 @@ import {JARoutes} from '../../../routes/ja-routes/ja-routes';
         </div>
         <div class="sixteen wide mobile twelve wide tablet four wide computer column">
           <img
-            class="ui centered small image"
+            class="ui centered tiny image"
             src="/assets/images/how-it-works-icon-3.png"
-            style="padding-left: 20px;">
+            style="padding-left: 15px;">
           <basic-title-text
             [text]="'how.it.works.section.find.jobs.description.title' | translate"
             color="black"

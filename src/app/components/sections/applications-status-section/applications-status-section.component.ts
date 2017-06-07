@@ -29,7 +29,7 @@ import {yyyymmdd} from '../../../utils/date/date.util';
         [text]="'home.jobs.slider.user.jobs.title' | translate"
         [underlineBelow]="true"
         color="black"
-        fontSize="large"
+        fontSize="huge"
         textAlignmentLtr="center"
         textAlignmentRtl="center"
         underlineBelowColor="pink"

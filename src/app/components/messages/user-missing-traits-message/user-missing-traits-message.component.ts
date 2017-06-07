@@ -21,7 +21,7 @@ import {ViewChild} from '@angular/core';
     <div class="ui basic center aligned segment">
       <basic-title-text
         [text]="'user.missing.traits.message.header' | translate"
-        fontSize="large"
+        fontSize="huge"
         textAlignmentLtr="center"
         textAlignmentRtl="center">
       </basic-title-text>

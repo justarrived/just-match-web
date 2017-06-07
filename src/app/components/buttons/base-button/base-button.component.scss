@@ -32,28 +32,24 @@ $button-font-arabic: $text-font-family-arabic;
 }
 // SIZE
 .btn.tiny {
-  font-size: 12px;
+  font-size: 10px;
   padding: 0 10px;
-  min-width: 100px;
 }
 
 .btn.small {
-  font-size: 14px;
-  padding: 6px 25px;
-  min-width: 100px;
+  font-size: 12px;
+  padding: 6px 20px;
   padding: 2px 25px;
 }
 
 .btn.medium {
-  font-size: 16px;
-  padding: 8px 30px;
-  min-width: 150px;
+  font-size: 12px;
+  padding: 5px 20px;
 }
 
 .btn.large {
-  font-size: 20px;
+  font-size: 14px;
   padding: 8px 35px;
-  min-width: 180px;
 }
 
 // PRIMARY

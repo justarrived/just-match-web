@@ -43,7 +43,7 @@ export class FormSubmitButtonComponent {
   @Input() public showButton: boolean = true;
   @Input() public showErrorMessage: boolean = true;
   @Input() public showSuccessMessage: boolean = true;
-  @Input() public size: string = 'medium';
+  @Input() public size: string = 'large';
   @Input() public submitFail: boolean;
   @Input() public submitSuccess: boolean;
 }
