@@ -29,21 +29,6 @@
     background-color: $color-gray-800;
   }
 
-  .scope-container {
-    background-color: $color-gray-800;
-    border-radius: 10px;
-    margin-bottom: 20px;
-
-    .column{
-      padding: 0;
-      margin: 5px 0;
-      border-right: 1px solid $color-primary-cerise;
-      &:last-child{
-          border: 0;
-      }
-    }
-  }
-
   .description-container {
     height: 71px;
     max-height: 71px;

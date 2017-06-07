@@ -54,34 +54,6 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
           </basic-title-text>
         </div>
       </div>
-      <div class="ui equal width grid scope-container">
-        <div class="column">
-          <basic-title-text
-            [text]="(job.jobEndDate ? 'job.card.temporary' : 'job.card.until.further.notice') | translate"
-            [oneLineEllipsis]="true"
-            fontSize="tiny"
-            fontWeight="light"
-            color="white"
-            marginTop="0"
-            marginBottom="0"
-            textAlignmentLtr="center"
-            textAlignmentRtl="center">
-          </basic-title-text>
-        </div>
-        <div class="column">
-          <basic-title-text
-            [text]="(job.fullTime ? 'job.card.full.time' : 'job.card.part.time') | translate"
-            [oneLineEllipsis]="true"
-            fontSize="tiny"
-            fontWeight="light"
-            color="white"
-            marginTop="0"
-            marginBottom="0"
-            textAlignmentLtr="center"
-            textAlignmentRtl="center">
-          </basic-title-text>
-        </div>
-      </div>
       <div class="description-container">
         <basic-text
           [text]="job.translatedText.shortDescription"
@@ -119,6 +91,21 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
         <basic-title-text
           [alwaysLtrText]="true"
           [text]="(job.jobDate | date: 'MMM dd') + (job.jobEndDate ? (' - ' + (job.jobEndDate | date: 'MMM dd')) : '')"
+          [oneLineEllipsis]="true"
+          fontSize="tiny"
+          color="pink"
+          marginTop="0.5rem"
+          marginBottom="0"
+          textAlignmentLtr="center"
+          textAlignmentRtl="center">
+        </basic-title-text>
+      </div>
+      <div class="column">
+        <img
+          class="ui centered mini image"
+          src="/assets/icons/stopwatch.svg">
+        <basic-title-text
+          [text]="(job.fullTime ? 'job.card.full.time' : 'job.card.part.time') | translate"
           [oneLineEllipsis]="true"
           fontSize="tiny"
           color="pink"
