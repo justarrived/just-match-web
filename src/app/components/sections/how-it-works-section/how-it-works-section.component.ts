@@ -10,7 +10,7 @@ import {JARoutes} from '../../../routes/ja-routes/ja-routes';
         [text]="'home.instructions.first.section.title' | translate"
         [underlineBelow]="true"
         color="black"
-        fontSize="large"
+        fontSize="huge"
         textAlignmentLtr="center"
         textAlignmentRtl="center"
         underlineBelowColor="pink"

@@ -4,11 +4,11 @@ import {Component} from '@angular/core';
   selector: 'partners-section',
   styleUrls: ['./partners-section.component.scss'],
   template: `
-    <div class="ui basic very padded center aligned segment partners-section-container">
+    <div class="ui basic padded center aligned segment partners-section-container">
       <basic-title-text
         [text]="'home.partners.title' | translate"
         [underlineBelow]="true"
-        fontSize="large"
+        fontSize="huge"
         textAlignmentLtr="center"
         textAlignmentRtl="center"
         underlineBelowColor="pink"
