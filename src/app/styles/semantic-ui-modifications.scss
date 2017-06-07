@@ -21,6 +21,10 @@
   font-family: $text-font-family;
 }
 
+.ui.form {
+  @include text();
+}
+
 .ui.grid {
   margin: 0;
 }

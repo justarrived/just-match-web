@@ -10,7 +10,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
   template: `
     <basic-title-text
       [text]="job.translatedText.name"
-      fontSize="large"
+      fontSize="huge"
       marginTop="0"
       marginBottom="0"
       color="pink">

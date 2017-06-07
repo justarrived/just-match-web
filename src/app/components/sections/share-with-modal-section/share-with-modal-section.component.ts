@@ -14,7 +14,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
       <img
         class="ui image"
         src="/assets/icons/social-media-share.svg"
-        style="padding-left: 10px; padding-right: 10px; width: 50px; height: 50px;">
+        style="padding-left: 10px; padding-right: 10px; height: 42px;">
       <basic-title-text
         [text]="'Share' | translate"
         [oneLineEllipsis]="true"

@@ -27,13 +27,13 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
             [text]="'job.important.information.section.hours' | translate: {hours: job.hours}"
             marginTop="0"
             marginBottom="0"
-            fontSize="small"
+            fontSize="tiny"
             fontWeight="light"
             color="black">
           </basic-title-text>
           <basic-title-text
             [text]="'job.important.information.section.salary.per.hour' | translate: {grossSalaryPerHour: job.hourlyPay.grossSalaryWithUnit}"
-            fontSize="small"
+            fontSize="tiny"
             fontWeight="light"
             marginTop="0"
             marginBottom="0"
@@ -41,7 +41,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
           </basic-title-text>
           <basic-title-text
             [text]="'job.important.information.section.total.salary' | translate: {totalGrossSalary: job.grossAmountWithCurrency, totalNetSalary: job.netAmountWithCurrency}"
-            fontSize="small"
+            fontSize="tiny"
             fontWeight="light"
             marginBottom="0"
             marginTop="0"
@@ -59,7 +59,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
         <basic-title-text
           [alwaysLtrText]="true"
           [text]="job.fullStreetAddress"
-          fontSize="small"
+          fontSize="tiny"
           fontWeight="light"
           marginBottom="0"
           marginTop="0"
@@ -77,7 +77,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
         <basic-title-text
           [alwaysLtrText]="true"
           [text]="(job.jobDate | date: 'MMM dd') + (job.jobEndDate ? (' - ' + (job.jobEndDate | date: 'MMM dd')) : '')"
-          fontSize="small"
+          fontSize="tiny"
           fontWeight="light"
           marginBottom="0"
           marginTop="0"

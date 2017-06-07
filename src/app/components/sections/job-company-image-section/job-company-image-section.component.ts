@@ -18,7 +18,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
       [alwaysLtrText]="true"
       [text]="job?.company?.name"
       [oneLineEllipsis]="true"
-      fontSize="large"
+      fontSize="huge"
       fontWeight="light"
       color="black"
       marginTop="0"
