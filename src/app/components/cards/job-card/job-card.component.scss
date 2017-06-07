@@ -4,15 +4,15 @@
   width: 300px;
 
   .title-container {
-    margin: 0 30px;
-    border-bottom: 2px solid $color-gray-100;
-    height: 47px;
+    height: 100px;
     display: flex;
     justify-content: center;
-    align-items: flex-end;
+    align-items: center;
   }
 
   .company-image-container {
+    border-bottom: 2px solid $color-gray-100;
+    margin: 0 30px;
     display: flex;
     align-items: center;
     justify-content: center;
