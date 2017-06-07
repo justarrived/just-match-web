@@ -30,7 +30,8 @@ export class ShareModalComponent {
   public show(): void {
     this.modal.show({
       autofocus: false,
-      transition: 'horizontal flip'
+      transition: 'horizontal flip',
+      closeable: false
     });
   }
 
