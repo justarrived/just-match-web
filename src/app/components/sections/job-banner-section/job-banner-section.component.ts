@@ -6,10 +6,10 @@ import {SystemLanguagesResolver} from '../../../resolvers/system-languages/syste
 import {UserResolver} from '../../../resolvers/user/user.resolver';
 
 @Component({
-  selector: 'job-header',
-  styleUrls: ['./job-header.component.scss'],
+  selector: 'job-banner-section',
+  styleUrls: ['./job-banner-section.component.scss'],
   template: `
-    <div class="header-container">
+    <div class="banner-container">
       <div
         class="ui grid grid-container"
         [style.direction]="systemLanguage.direction">
@@ -22,12 +22,12 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
         <div
           class="two wide tablet only two wide computer only column"
           style="display: flex; justify-content: flex-end;">
-          <share-section2></share-section2>
+          <share-with-modal-section></share-with-modal-section>
         </div>
       </div>
     </div>`
 })
-export class JobHeaderComponent extends BaseComponent {
+export class JobBannerSectionComponent extends BaseComponent {
   @Input() job = null as Job;
 
   public constructor (

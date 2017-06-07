@@ -24,42 +24,30 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
         [promise]="promises"
         class="inverted">
       </sm-loader>
-      <i class="ui big circular inverted pink pointing down icon"></i>
-      <basic-title-text
-        [text]="job.translatedText.name"
-        [underlineBelow]="true"
-        color="black"
-        fontSize="large"
-        textAlignmentLtr="center"
-        textAlignmentRtl="center"
-        underlineBelowColor="pink"
-        underlineBelowLtrAlignment="center"
-        underlineBelowRtlAlignment="center">
-      </basic-title-text>
       <base-button
         (click)="onApplyForJobButtonClick()"
         [buttonText]="'job.actions.section.apply' | translate"
         *ngIf="(user && !application)"
-        kind="secondary"
-        size="medium">
+        kind="primary"
+        size="small">
       </base-button>
       <div
-        style="max-width: 300px; margin: 0 auto"
+        style="max-width: 200px; margin: 0 auto"
         *ngIf="!user">
         <base-button
           (click)="onRegisterButtonClick()"
           [buttonText]="'job.actions.section.register' | translate"
           [fluid]="true"
-          kind="secondary"
-          size="medium">
+          kind="primary"
+          size="small">
         </base-button>
         <br/>
         <base-button
           (click)="onLoginButtonClick()"
           [buttonText]="'job.actions.section.login' | translate"
           [fluid]="true"
-          kind="secondary"
-          size="medium">
+          kind="primary"
+          size="small">
         </base-button>
       </div>
       <basic-title-text
@@ -81,7 +69,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
           (click)="onConfirmJobButtonClick()"
           [buttonText]="'job.actions.section.confirm' | translate"
           kind="primary"
-          size="large">
+          size="small">
         </base-button>
       </div>
       <basic-title-text
@@ -100,9 +88,24 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
         textAlignmentLtr="center"
         textAlignmentRtl="center">
       </basic-title-text>
+      <a href="https://justarrived.se/" target="_blank">
+        <div
+          style="display: flex; align-items: center; margin: 0 auto; justify-content: center; margin-top: 20px;">
+          <basic-title-text
+            [text]="'job.actions.section.read.more' | translate"
+            color="pink"
+            display="inline"
+            fontSize="tiny"
+            style="margin-right: 5px; margin-left: 5px;">
+          </basic-title-text>
+          <img
+            src="/assets/images/logo.png"
+            class="ui tiny image">
+        </div>
+      </a>
     </div>`
 })
-export class JobActionsSectionComponent extends SystemLanguageListener implements OnInit, OnDestroy {
+export class JobActionsSection2Component extends SystemLanguageListener implements OnInit, OnDestroy {
   @Input() public application = null as Application;
   @Input() public job = null as Job;
   @Output() public applicationChange: EventEmitter<Application> = new EventEmitter<Application>();

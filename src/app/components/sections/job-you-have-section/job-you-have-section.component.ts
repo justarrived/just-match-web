@@ -6,21 +6,21 @@ import {SystemLanguagesResolver} from '../../../resolvers/system-languages/syste
 import {UserResolver} from '../../../resolvers/user/user.resolver';
 
 @Component({
-  selector: 'job-interests-section',
+  selector: 'job-you-have-section',
   template: `
     <basic-title-text
-      [text]="'job.interests.section.title' | translate "
+      [text]="'job.you.have.section.title' | translate "
       [uppercase]="true"
       color="pink"
       fontSize="medium">
     </basic-title-text>
     <ul [style.direction]=systemLanguage.direction>
-      <li>interested in stuff</li>
-      <li>happy happy</li>
-      <li>a shining star</li>
+      <li>a driving license</li>
+      <li>experience in in blah blah</li>
+      <li>Milk</li>
     </ul>`
 })
-export class JobInterestsSectionComponent extends BaseComponent {
+export class JobYouHaveSectionComponent extends BaseComponent {
   @Input() job = null as Job;
 
   public constructor (

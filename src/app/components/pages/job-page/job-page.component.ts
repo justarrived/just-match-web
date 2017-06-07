@@ -15,6 +15,7 @@ import {TranslateService} from '@ngx-translate/core';
 import {UserResolver} from '../../../resolvers/user/user.resolver';
 
 @Component({
+  styleUrls: ['./job-page.component.scss'],
   template: `
     <sm-loader
       [promise]="jobPromise"
@@ -22,40 +23,56 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
     </sm-loader>
 
     <div *ngIf="job">
-      <job-actions-header
-        [(application)]="application"
+      <job-banner-section
         [job]="job">
-      </job-actions-header>
+      </job-banner-section>
 
-      <div class="ui centered grid">
-        <div class="sixteen wide mobile twelve wide tablet ten wide computer column">
-          <job-information-section [job]="job"></job-information-section>
+      <div
+        class="ui grid job-page-grid"
+        [style.direction]="systemLanguage.direction">
+        <div class="sixteen wide mobile only column">
+          <share-with-modal-section></share-with-modal-section>
+        </div>
 
-          <div class="ui divider"></div>
+        <div class="sixteen wide mobile ten wide tablet ten wide computer column">
+          <job-short-description-section [job]="job"></job-short-description-section>
+          <job-company-short-description-section [job]="job"></job-company-short-description-section>
+          <div class="ui mobile only grid">
+            <job-company-image-section
+              [job]="job"
+              style="padding: 0">
+            </job-company-image-section>
+          </div>
+        </div>
 
+        <div class="sixteen wide mobile six wide tablet six wide computer column">
+          <job-important-information-section [job]="job"></job-important-information-section>
+        </div>
+
+        <div class="ten wide tablet ten wide computer only column">
           <job-description-section [job]="job"></job-description-section>
+          <job-recruiter-section [job]="job"></job-recruiter-section>
+        </div>
 
-          <share-section></share-section>
+        <div class="sixteen wide mobile only column">
+          <job-description-section [job]="job"></job-description-section>
+        </div>
 
-          <div class="ui divider"></div>
+        <div class="sixteen wide mobile six wide tablet six wide computer column">
+          <job-tasks-section [job]="job"></job-tasks-section>
+          <job-you-are-section [job]="job"></job-you-are-section>
+          <job-you-have-section [job]="job"></job-you-have-section>
+        </div>
 
-          <job-scope-section [job]="job"></job-scope-section>
+        <div class="sixteen wide mobile only column">
+          <job-recruiter-section [job]="job"></job-recruiter-section>
+        </div>
 
-          <div class="ui divider"></div>
-
-          <job-location-section [job]="job"></job-location-section>
-
-          <div class="ui divider"></div>
-
+        <div class="sixteen wide mobile sixteen wide tablet sixteen wide computer column">
           <job-actions-section
             [(application)]="application"
             [job]="job">
           </job-actions-section>
-
-          <div class="ui divider"></div>
-
-          <job-comments-section [job]="job"></job-comments-section>
-
         </div>
       </div>
     </div>`
@@ -89,7 +106,7 @@ export class JobPageComponent extends PageComponent {
           content: 'meta.job.description'
         },
         image: {
-          content: '/assets/images/job-header-background.jpg'
+          content: '/assets/images/job-banner-section-background.jpg'
         }
       },
       document,

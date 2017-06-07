@@ -5,7 +5,7 @@ import {SystemLanguagesResolver} from '../../../resolvers/system-languages/syste
 import {UserResolver} from '../../../resolvers/user/user.resolver';
 
 @Component({
-  selector: 'share-section2',
+  selector: 'share-with-modal-section',
   template: `
     <div
       style="display: flex; align-items: center; cursor: pointer;"
@@ -27,7 +27,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
       </basic-title-text>
     </div>`
 })
-export class ShareSection2Component extends BaseComponent {
+export class ShareWithModalSectionComponent extends BaseComponent {
 
   public constructor (
     private modalService: ModalService,

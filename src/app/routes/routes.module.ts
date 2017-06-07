@@ -11,7 +11,6 @@ import {GuardsModule} from '../guards/guards.module';
 import {HomePageComponent} from '../components/pages/home-page/home-page.component';
 import {JARoute} from './ja-route/ja-route';
 import {JobPageComponent} from '../components/pages/job-page/job-page.component';
-import {JobPage2Component} from '../components/pages/job-page2/job-page2.component';
 import {JobsPageComponent} from '../components/pages/jobs-page/jobs-page.component';
 import {LoggedInAdminGuard} from '../guards/logged-in-admin/logged-in-admin.guard';
 import {LoggedInGuard} from '../guards/logged-in/logged-in.guard';
@@ -48,7 +47,6 @@ const routes: Routes = [
     { path: 'god-mode', component: GodModePageComponent, canActivate: [LoggedInAdminGuard] },
     { path: 'home', redirectTo: '' },
     { path: 'job/:id', component: JobPageComponent },
-    { path: 'job2/:id', component: JobPage2Component },
     { path: 'jobs', redirectTo: 'jobs/1', pathMatch: 'full' },
     { path: 'jobs/:page', component: JobsPageComponent },
     { path: 'login', component: LoginPageComponent, canActivate: [NotLoggedInGuard] },
