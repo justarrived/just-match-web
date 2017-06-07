@@ -13,8 +13,9 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
         class="ui basic very padded segment"
         style="padding-bottom: 0;">
         <img
-          class="ui centered small image"
-          src="/assets/images/just-arrived-vertical-white-logo.png">
+          class="ui centered image"
+          src="/assets/images/just-arrived-vertical-white-logo.png"
+          style="width: 200px; height: auto;">
       </div>
       <div
         class="ui basic very padded segment"
