@@ -19,18 +19,6 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
     class="ui raised card link job-card"
     routerLink="{{JARoutes.job.url([job.id])}}">
     <div class="ui basic segment">
-      <div class="title-container">
-        <basic-title-text
-          [text]="job.translatedText.name"
-          [maxiumLinesEllipsis]="2"
-          color="black"
-          fontSize="medium"
-          marginTop="0"
-          marginBottom="0"
-          textAlignmentLtr="center"
-          textAlignmentRtl="center">
-        </basic-title-text>
-      </div>
       <div class="company-image-container">
         <img
           *ngIf="job?.company?.logoImage"
@@ -44,7 +32,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
             [alwaysLtrText]="text"
             [text]="job?.company?.name"
             [oneLineEllipsis]="true"
-            fontSize="medium"
+            fontSize="large"
             fontWeight="light"
             color="black"
             marginTop="0"
@@ -54,33 +42,17 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
           </basic-title-text>
         </div>
       </div>
-      <div class="ui equal width grid scope-container">
-        <div class="column">
-          <basic-title-text
-            [text]="(job.jobEndDate ? 'job.card.temporary' : 'job.card.until.further.notice') | translate"
-            [oneLineEllipsis]="true"
-            fontSize="tiny"
-            fontWeight="light"
-            color="white"
-            marginTop="0"
-            marginBottom="0"
-            textAlignmentLtr="center"
-            textAlignmentRtl="center">
-          </basic-title-text>
-        </div>
-        <div class="column">
-          <basic-title-text
-            [text]="(job.fullTime ? 'job.card.full.time' : 'job.card.part.time') | translate"
-            [oneLineEllipsis]="true"
-            fontSize="tiny"
-            fontWeight="light"
-            color="white"
-            marginTop="0"
-            marginBottom="0"
-            textAlignmentLtr="center"
-            textAlignmentRtl="center">
-          </basic-title-text>
-        </div>
+      <div class="title-container">
+        <basic-title-text
+          [text]="job.translatedText.name"
+          [maxiumLinesEllipsis]="2"
+          color="black"
+          fontSize="medium"
+          marginTop="0"
+          marginBottom="0"
+          textAlignmentLtr="center"
+          textAlignmentRtl="center">
+        </basic-title-text>
       </div>
       <div class="description-container">
         <basic-text
@@ -96,7 +68,9 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
       </div>
     </div>
     <div class="ui equal width grid meta-container">
-      <div class="column">
+      <div
+        class="column"
+        style="padding-left: 0; padding-right: 0;">
         <img
           class="ui centered mini image"
           src="/assets/icons/marker.svg">
@@ -112,13 +86,32 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
           textAlignmentRtl="center">
         </basic-title-text>
       </div>
-      <div class="column">
+      <div
+        class="column"
+        style="padding-left: 0; padding-right: 0;">
         <img
           class="ui centered mini image"
           src="/assets/icons/calendar.svg">
         <basic-title-text
           [alwaysLtrText]="true"
           [text]="(job.jobDate | date: 'MMM dd') + (job.jobEndDate ? (' - ' + (job.jobEndDate | date: 'MMM dd')) : '')"
+          [oneLineEllipsis]="true"
+          fontSize="tiny"
+          color="pink"
+          marginTop="0.5rem"
+          marginBottom="0"
+          textAlignmentLtr="center"
+          textAlignmentRtl="center">
+        </basic-title-text>
+      </div>
+      <div
+        class="column"
+        style="padding-left: 0; padding-right: 0;">
+        <img
+          class="ui centered mini image"
+          src="/assets/icons/stopwatch.svg">
+        <basic-title-text
+          [text]="(job.fullTime ? 'job.card.full.time' : 'job.card.part.time') | translate"
           [oneLineEllipsis]="true"
           fontSize="tiny"
           color="pink"
