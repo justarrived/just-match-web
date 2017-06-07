@@ -24,7 +24,7 @@ import {JARoutes} from '../../../routes/ja-routes/ja-routes';
           <img
             class="ui centered tiny image"
             src="/assets/images/how-it-works-icon-1.png"
-            style="padding-left: 20px;">
+            style="padding-left: 15px;">
           <basic-title-text
             [text]="'how.it.works.section.register.description.title' | translate"
             color="black"
@@ -49,7 +49,7 @@ import {JARoutes} from '../../../routes/ja-routes/ja-routes';
           <img
             class="ui centered tiny image"
             src="/assets/images/how-it-works-icon-2.png"
-            style="padding-left: 20px;">
+            style="padding-left: 15px;">
           <basic-title-text
             [text]="'how.it.works.section.update.profile.description.title' | translate"
             color="black"
@@ -74,7 +74,7 @@ import {JARoutes} from '../../../routes/ja-routes/ja-routes';
           <img
             class="ui centered tiny image"
             src="/assets/images/how-it-works-icon-3.png"
-            style="padding-left: 20px;">
+            style="padding-left: 15px;">
           <basic-title-text
             [text]="'how.it.works.section.find.jobs.description.title' | translate"
             color="black"
