@@ -1,0 +1,18 @@
+.share-container {
+  .icon {
+    background: url('/assets/icons/social-media-share.svg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    margin-left: 10px;
+    margin-right: 10px;
+    height: 42px;
+    width: 42px;
+  }
+
+  &:hover {
+    .icon {
+      background: url('/assets/icons/social-media-share-hover.svg');
+    }
+  }
+}

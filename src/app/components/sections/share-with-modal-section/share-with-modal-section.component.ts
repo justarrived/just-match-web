@@ -6,17 +6,16 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
 
 @Component({
   selector: 'share-with-modal-section',
+  styleUrls: ['./share-with-modal-section.component.scss'],
   template: `
     <div
+      class="share-container"
       style="display: flex; align-items: center; cursor: pointer;"
       [style.direction]="systemLanguage.direction"
       (click)="showShareModal()">
-      <img
-        class="ui image"
-        src="/assets/icons/social-media-share.svg"
-        style="padding-left: 10px; padding-right: 10px; height: 42px;">
+      <div class="icon"></div>
       <basic-title-text
-        [text]="'Share' | translate"
+        [text]="'share.with.modal.section.title' | translate"
         [oneLineEllipsis]="true"
         fontSize="small"
         color="pink"
