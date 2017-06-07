@@ -30,7 +30,7 @@ import {Component} from '@angular/core';
           href="http://antrop.se/">
           <img
             alt="Antrop"
-            class="ui small image"
+            class="ui tiny image"
             src="/assets/images/antrop-logo2.png">
         </a>
         <a
@@ -38,7 +38,7 @@ import {Component} from '@angular/core';
           href="http://universumglobal.com/">
           <img
             alt="Universum"
-            class="ui small image"
+            class="ui tiny image"
             src="/assets/images/logo-universum.png">
         </a>
         <a
@@ -46,7 +46,7 @@ import {Component} from '@angular/core';
           href="https://www.frilansfinans.se/">
           <img
             alt="Frilans Finans"
-            class="ui small image"
+            class="ui tiny image"
             src="/assets/images/frilans_finans-logo.png">
         </a>
         <a
@@ -54,7 +54,7 @@ import {Component} from '@angular/core';
           href="https://janssonnorin.se/">
           <img
             alt="Jansson Norin"
-            class="ui small image"
+            class="ui tiny image"
             src="/assets/images/jansson_norin-logo.png">
         </a>
         <a
@@ -62,7 +62,7 @@ import {Component} from '@angular/core';
           href="http://novasverige.se/">
           <img
             alt="Nova"
-            class="ui small image"
+            class="ui tiny image"
             src="/assets/images/nova-logo.png">
         </a>
         <a
@@ -70,7 +70,7 @@ import {Component} from '@angular/core';
           href="http://bondstreet.se/">
           <img
             alt="Bond Street Film"
-            class="ui small image"
+            class="ui tiny image"
             src="/assets/images/bond_street_film_sthlm.png">
         </a>
         <a
@@ -78,7 +78,7 @@ import {Component} from '@angular/core';
           href="http://halvarsson.se/">
           <img
             alt="Hallvarsson Halvarsson"
-            class="ui small image"
+            class="ui tiny image"
             src="/assets/images/hallvarsson.jpg">
         </a>
       </div>
