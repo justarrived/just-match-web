@@ -11,10 +11,11 @@ import {SystemLanguagesResolver} from '../../../resolvers/system-languages/syste
 
 @Component({
   selector: 'users-filter',
+  styleUrls: ['./users-filter.component.scss'],
   template: `
     <div
       [style.direction]="systemLanguage.direction"
-      class="ui stackable fluid three item menu inverted pink"
+      class="ui stackable fluid three item menu inverted"
       style="border-radius: initial; margin: 0; justify-content: center; align-items: center; padding-bottom: 10px;">
       <div
         class="ui item"

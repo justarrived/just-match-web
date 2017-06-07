@@ -24,7 +24,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
           [text]="job.translatedText.name"
           [maxiumLinesEllipsis]="2"
           color="black"
-          fontSize="small"
+          fontSize="medium"
           marginTop="0"
           marginBottom="0"
           textAlignmentLtr="center"
@@ -58,7 +58,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
         <basic-text
           [text]="job.translatedText.shortDescription"
           [maxiumLinesEllipsis]="4"
-          fontSize="small"
+          fontSize="medium"
           color="gray"
           marginTop="0"
           marginBottom="0"

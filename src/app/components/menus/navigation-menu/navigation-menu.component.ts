@@ -150,7 +150,7 @@ import {ViewChild} from '@angular/core';
           color="gray"
           *ngIf="user && (user.justArrivedStaffing || user.admin)"
           class="navigation-menu-item"
-          href="https://justarrived-se.web.intelliplan.eu/croupier/login/"
+          href="https://justarrived-se.web.intelliplan.eu/"
           hoverColor="pink"
           marginBottom="0"
           marginTop="0"
