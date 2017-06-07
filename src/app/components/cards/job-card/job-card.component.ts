@@ -68,7 +68,9 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
       </div>
     </div>
     <div class="ui equal width grid meta-container">
-      <div class="column">
+      <div
+        class="column"
+        style="padding-left: 0; padding-right: 0;">
         <img
           class="ui centered mini image"
           src="/assets/icons/marker.svg">
@@ -84,7 +86,9 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
           textAlignmentRtl="center">
         </basic-title-text>
       </div>
-      <div class="column">
+      <div
+        class="column"
+        style="padding-left: 0; padding-right: 0;">
         <img
           class="ui centered mini image"
           src="/assets/icons/calendar.svg">
@@ -100,7 +104,9 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
           textAlignmentRtl="center">
         </basic-title-text>
       </div>
-      <div class="column">
+      <div
+        class="column"
+        style="padding-left: 0; padding-right: 0;">
         <img
           class="ui centered mini image"
           src="/assets/icons/stopwatch.svg">
