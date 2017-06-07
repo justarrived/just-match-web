@@ -69,6 +69,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
     </div>
     <div class="ui equal width grid meta-container">
       <div
+        *ngIf="job.city"
         class="column"
         style="padding-left: 0; padding-right: 0;">
         <img
