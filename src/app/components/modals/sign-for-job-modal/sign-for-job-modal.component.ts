@@ -16,7 +16,7 @@ import {ViewChild} from '@angular/core';
       icon="massive pink star">
       <modal-content>
         <div class="ui centered grid">
-          <div class="sixteen wide phone twelve wide tablet twelve wide computer column">
+          <div class="sixteen wide mobile twelve wide tablet twelve wide computer column">
             <sign-for-job-form
               [application]="application"
               [job]="job"

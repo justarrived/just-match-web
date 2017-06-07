@@ -194,3 +194,20 @@ a {
 .arabic-font {
   font-family: $title-font-family-arabic !important;
 }
+
+ul {
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
+li:before {
+  content: "\25CE";
+  font-weight: bold;
+  font-size: 2.4em;
+  vertical-align: middle;
+  line-height: $text-line-height;
+  padding: 0 5px;
+}

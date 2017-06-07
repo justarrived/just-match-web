@@ -11,7 +11,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
   styleUrls: ['./user-profile-header.component.scss'],
   template: `
   <div class="ui centered grid user-profile-header-container">
-    <div class="fourteen wide phone ten wide tablet eight wide computer column">
+    <div class="fourteen wide mobile ten wide tablet eight wide computer column">
       <div class="ui basic segment">
         <profile-image-input
           [centered]="true"

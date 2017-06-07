@@ -13,6 +13,7 @@ import {PasswordChangedModalComponent} from './components/modals/password-change
 import {PasswordResetLinkSentModalComponent} from './components/modals/password-reset-link-sent-modal/password-reset-link-sent-modal.component';
 import {RegisteredModalComponent} from './components/modals/registered-modal/registered-modal.component';
 import {RegisterModalComponent} from './components/modals/register-modal/register-modal.component';
+import {ShareModalComponent} from './components/modals/share-modal/share-modal.component';
 import {SignedForJobModalComponent} from './components/modals/signed-for-job-modal/signed-for-job-modal.component';
 import {SignForJobModalComponent} from './components/modals/sign-for-job-modal/sign-for-job-modal.component';
 import {Subscription} from 'rxjs/Subscription';
@@ -91,6 +92,11 @@ import {ViewChild} from '@angular/core';
       #registeredModalComponent>
     </registered-modal>
 
+    <share-modal
+      *ngIf="shownModal === 'shareModalComponent'"
+      #shareModalComponent>
+    </share-modal>
+
     <sign-for-job-modal
       (onSignedForJob)="modalResult($event)"
       [application]="args[0]"
@@ -117,6 +123,7 @@ export class AppComponent implements OnInit, OnDestroy  {
   @ViewChild('passwordResetLinkSentModalComponent') public passwordResetLinkSentModalComponent: PasswordResetLinkSentModalComponent;
   @ViewChild('registeredModalComponent') public registeredModalComponent: RegisteredModalComponent;
   @ViewChild('registerModalComponent') public registerModalComponent: RegisterModalComponent;
+  @ViewChild('shareModalComponent') public shareModalComponent: ShareModalComponent;
   @ViewChild('signedForJobModalComponent') public signedForJobModalComponent: SignedForJobModalComponent;
   @ViewChild('signForJobModalComponent') public signForJobModalComponent: SignForJobModalComponent;
 

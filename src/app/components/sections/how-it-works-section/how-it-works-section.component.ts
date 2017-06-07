@@ -20,7 +20,7 @@ import {JARoutes} from '../../../routes/ja-routes/ja-routes';
         marginBottom="2rem">
       </basic-title-text>
       <div class="ui centered grid">
-        <div class="sixteen wide phone twelve wide tablet four wide computer column">
+        <div class="sixteen wide mobile twelve wide tablet four wide computer column">
           <img
             class="ui centered small image"
             src="/assets/images/how-it-works-icon-1.png"
@@ -45,7 +45,7 @@ import {JARoutes} from '../../../routes/ja-routes/ja-routes';
             textAlignmentLtrTablet="center">
           </basic-text>
         </div>
-        <div class="sixteen wide phone twelve wide tablet four wide computer column">
+        <div class="sixteen wide mobile twelve wide tablet four wide computer column">
           <img
             class="ui centered small image"
             src="/assets/images/how-it-works-icon-2.png"
@@ -70,7 +70,7 @@ import {JARoutes} from '../../../routes/ja-routes/ja-routes';
             textAlignmentLtrTablet="center">
           </basic-text>
         </div>
-        <div class="sixteen wide phone twelve wide tablet four wide computer column">
+        <div class="sixteen wide mobile twelve wide tablet four wide computer column">
           <img
             class="ui centered small image"
             src="/assets/images/how-it-works-icon-3.png"

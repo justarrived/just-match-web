@@ -28,7 +28,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
       </job-actions-header>
 
       <div class="ui centered grid">
-        <div class="sixteen wide phone twelve wide tablet ten wide computer column">
+        <div class="sixteen wide mobile twelve wide tablet ten wide computer column">
           <job-information-section [job]="job"></job-information-section>
 
           <div class="ui divider"></div>
