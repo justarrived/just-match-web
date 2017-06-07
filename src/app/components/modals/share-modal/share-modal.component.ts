@@ -7,7 +7,7 @@ import {ViewChild} from '@angular/core';
     <sm-modal
       class="basic"
       #modal>
-      <modal-content>
+      <modal-content (click)="hide()">
         <basic-title-text
           [text]="'share.section.title' | translate"
           [underlineBelow]="true"
