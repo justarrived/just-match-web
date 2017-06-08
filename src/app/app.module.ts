@@ -75,6 +75,7 @@ import {ForgotPasswordPageComponent} from './components/pages/forgot-password-pa
 import {FormSectionTitleTextComponent} from './components/text/form-section-title-text/form-section-title-text.component';
 import {FormsModule} from '@angular/forms';
 import {FormSubmitButtonComponent} from './components/buttons/form-submit-button/form-submit-button.component';
+import {HexagonImageComponent} from './components/images/hexagon-image/hexagon-image.component';
 import {FrilansTermsInputComponent} from './components/inputs/frilans-terms-input/frilans-terms-input.component';
 import {GenderInputComponent} from './components/inputs/gender-input/gender-input.component';
 import {GeolocationService} from './services/geolocation.service';
@@ -312,6 +313,7 @@ export class RavenErrorHandler implements ErrorHandler {
     GodModePageComponent,
     GodModePagerSectionComponent,
     GotCoordinationNumberInputComponent,
+    HexagonImageComponent,
     HomePageComponent,
     HowItWorksSectionComponent,
     InfoMessageComponent,

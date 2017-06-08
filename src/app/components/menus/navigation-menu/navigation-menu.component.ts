@@ -176,16 +176,17 @@ import {ViewChild} from '@angular/core';
             *ngIf="user"
             class="navigation-menu-user-logged-in-container"
             [routerLink]="JARoutes.user.url()">
+
             <img
               class="ui centered tiny circular image"
               [src]="this.user.profileImage?.imageUrlMedium || '/assets/images/placeholder-profile-image.png'">
-              <basic-title-text
-                [text]="user.name"
-                color="gray"
-                fontSize="small"
-                textAlignmentLtr="center"
-                textAlignmentRtl="center">
-              </basic-title-text>
+            <basic-title-text
+              [text]="user.name"
+              color="gray"
+              fontSize="small"
+              textAlignmentLtr="center"
+              textAlignmentRtl="center">
+            </basic-title-text>
           </div>
 
           <div

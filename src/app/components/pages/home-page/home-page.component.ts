@@ -14,6 +14,10 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
 
     <user-missing-traits-message></user-missing-traits-message>
 
+    <div class="ui basic very padded segment">
+    <hexagon-image [imageUrl]="'/assets/images/placeholder-profile-image.png'"></hexagon-image>
+    </div>
+    
     <new-jobs-section></new-jobs-section>
 
     <applications-status-section *ngIf="user"></applications-status-section>

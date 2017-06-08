@@ -1,0 +1,108 @@
+@import '../../../styles/colors';
+
+.hexagon-outer {
+  position: relative;
+  width: 300px;
+  height: 173.21px;
+  background-color: #ffffff;
+  margin: 86.60px 0;
+  border-left: solid 2px $color-cerise-300;
+  border-right: solid 2px $color-cerise-300;
+
+  .hexagon {
+    position: relative;
+    width: 290px;
+    height: 167.43px;
+    margin-top: 2.8284px;
+    background-size: auto 323.3162px;
+    background-position: center;
+    border-left: solid 5px $white;
+    border-right: solid 5px $white;
+  }
+
+  .hexTop,
+  .hexBottom {
+    position: absolute;
+    z-index: 1;
+    width: 205.06px;
+    height: 205.06px;
+    overflow: hidden;
+    -webkit-transform: scaleY(0.5774) rotate(-45deg);
+    -ms-transform: scaleY(0.5774) rotate(-45deg);
+    transform: scaleY(0.5774) rotate(-45deg);
+    background: inherit;
+    left: 37.47px;
+  }
+
+  /*counter transform the bg image on the caps*/
+  .hexTop:after,
+  .hexBottom:after {
+    content: "";
+    position: absolute;
+    width: 280.0000px;
+    height: 161.65807537309522px;
+    -webkit-transform:  rotate(45deg) scaleY(1.7321) translateY(-80.8290px);
+    -ms-transform:      rotate(45deg) scaleY(1.7321) translateY(-80.8290px);
+    transform:          rotate(45deg) scaleY(1.7321) translateY(-80.8290px);
+    -webkit-transform-origin: 0 0;
+    -ms-transform-origin: 0 0;
+    transform-origin: 0 0;
+    background: inherit;
+  }
+
+  .hexTop {
+    top: -102.5305px;
+    border-top: solid 7.0711px $white;
+    border-right: solid 7.0711px $white;
+  }
+
+  .hexTop:after {
+    background-position: center top;
+  }
+
+  .hexBottom {
+    bottom: -102.5305px;
+    border-bottom: solid 7.0711px $white;
+    border-left: solid 7.0711px $white;
+  }
+
+  .hexBottom:after {
+    background-position: center bottom;
+  }
+
+  .hexagon:after {
+    content: "";
+    position: absolute;
+    top: 2.8868px;
+    left: 0;
+    width: 280.0000px;
+    height: 161.6581px;
+    z-index: 2;
+    background: inherit;
+  }
+}
+
+.hexagon-outer:before,
+.hexagon-outer:after {
+  content: "";
+  position: absolute;
+  width: 212.13px;
+  height: 212.13px;
+  -webkit-transform: scaleY(0.5774) rotate(-45deg);
+  -ms-transform: scaleY(0.5774) rotate(-45deg);
+  transform: scaleY(0.5774) rotate(-45deg);
+  background-color: inherit;
+  left: 41.9340px;
+}
+
+.hexagon-outer:before {
+  top: -106.0660px;
+  border-top: solid 2.8284px $color-cerise-300;
+  border-right: solid 2.8284px $color-cerise-300;
+}
+
+.hexagon-outer:after {
+  bottom: -106.0660px;
+  border-bottom: solid 2.8284px $color-cerise-300;
+  border-left: solid 2.8284px $color-cerise-300;
+}
