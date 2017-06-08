@@ -13,15 +13,26 @@ interface CompanyApiAttributes {
   id: string;
   name: string;
   phone: string;
+  shortDescription: string;
+  shortDescriptionHtml: string;
   street: string;
+  translatedText: CompanyTranslatedText;
   users: User[];
   website: string;
   zip: string;
 }
 
+interface CompanyTranslatedTextApiAttributes {
+  shortDescription: string;
+  shortDescriptionHtml: string;
+}
+
 // Client interfaces
 export interface Company extends CompanyApiAttributes {
   logoImage: CompanyImage;
+}
+
+export interface CompanyTranslatedText extends CompanyTranslatedTextApiAttributes {
 }
 
 // Factories
@@ -42,7 +53,10 @@ export class CompanyFactory {
       logoImage: CompanyFactory.getCompanyImageByCategory(companyImages, 'logo'),
       name: jsonObject.name,
       phone: jsonObject.phone,
+      shortDescription: jsonObject.short_description,
+      shortDescriptionHtml: jsonObject.short_description_html,
       street: jsonObject.street,
+      translatedText: CompanyTranslatedTextFactory.createCompanyTranslatedText(jsonObject.translated_text),
       users: map(jsonObject.users, user => UserFactory.createUser(user)),
       website: jsonObject.website,
       zip: jsonObject.zip,
@@ -51,5 +65,18 @@ export class CompanyFactory {
 
   private static getCompanyImageByCategory(companyImages: CompanyImage[], category: string): CompanyImage {
     return companyImages.find(image => image.categoryName === category);
+  }
+}
+
+class CompanyTranslatedTextFactory {
+  public static createCompanyTranslatedText(jsonObject?: any): CompanyTranslatedText {
+    if (!jsonObject) {
+      return;
+    }
+
+    return {
+      shortDescription: jsonObject.short_description,
+      shortDescriptionHtml: jsonObject.short_description_html,
+    };
   }
 }

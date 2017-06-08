@@ -20,6 +20,8 @@ import {UserFactory} from '../user/user';
 
 // API attribute interfaces
 interface JobApiAttributes {
+  aboutYouDescription: string;
+  aboutYouDescriptionHtml: string;
   applications: Application[];
   category: Category;
   city: string;
@@ -55,21 +57,31 @@ interface JobApiAttributes {
   shortDescription: string;
   staffingJob: boolean;
   street: string;
+  tasksDescription: string;
+  tasksDescriptionHtml: string;
   translatedText: JobTranslatedText;
   upcoming: boolean;
   updatedAt: Date;
   verified: boolean;
+  youHaveDescription: string;
+  youHaveDescriptionHtml: string;
   zip: string;
   zipLatitude: number;
   zipLongitude: number;
 }
 
 interface JobTranslatedTextApiAttributes {
+  aboutYouDescription: string;
+  aboutYouDescriptionHtml: string;
   description: string;
   descriptionHtml: string;
   languageId: string;
   name: string;
   shortDescription: string;
+  tasksDescription: string;
+  tasksDescriptionHtml: string;
+  youHaveDescription: string;
+  youHaveDescriptionHtml: string;
 }
 
 // Client interfaces
@@ -87,6 +99,8 @@ export class JobFactory {
     }
 
     return {
+      aboutYouDescription: jsonObject.about_you_description,
+      aboutYouDescriptionHtml: jsonObject.about_you_description_html,
       applications: map(jsonObject.job_users, application => ApplicationFactory.createApplication(application)),
       category: CategoryFactory.createCategory(jsonObject.category),
       city: jsonObject.city,
@@ -122,10 +136,14 @@ export class JobFactory {
       shortDescription: jsonObject.short_description,
       staffingJob: jsonObject.staffingJob,
       street: jsonObject.street,
+      tasksDescription: jsonObject.tasks_description,
+      tasksDescriptionHtml: jsonObject.tasks_description_html,
       translatedText: JobTranslatedTextFactory.createJobTranslatedText(jsonObject.translated_text),
       upcoming: jsonObject.upcoming,
       updatedAt: new Date(jsonObject.updated_at),
       verified: jsonObject.verified,
+      youHaveDescription: jsonObject.you_have_description,
+      youHaveDescriptionHtml: jsonObject.you_have_description_html,
       zip: jsonObject.zip,
       zipLatitude: jsonObject.zip_latitude,
       zipLongitude: jsonObject.zip_longitude,
@@ -140,11 +158,17 @@ class JobTranslatedTextFactory {
     }
 
     return {
+      aboutYouDescription: jsonObject.about_you_description,
+      aboutYouDescriptionHtml: jsonObject.about_you_description_html,
       description: jsonObject.description,
       descriptionHtml: jsonObject.description_html,
       languageId: jsonObject.language_id,
       name: jsonObject.name,
       shortDescription: jsonObject.short_description,
+      tasksDescription: jsonObject.tasks_description,
+      tasksDescriptionHtml: jsonObject.tasks_description_html,
+      youHaveDescription: jsonObject.you_have_description,
+      youHaveDescriptionHtml: jsonObject.you_have_description_html,
     };
   }
 }
