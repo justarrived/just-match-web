@@ -23,15 +23,18 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
       [promise]="promises"
       class="inverted">
     </sm-loader>
-    <base-button
-      (click)="onApplyForJobButtonClick()"
-      [buttonText]="'job.actions.section.apply' | translate"
+    <div
       *ngIf="!application"
-      kind="primary"
-      marginTop="0"
-      marginBottom="0"
-      size="small">
-    </base-button>
+      [style.text-align]="center ? 'center' : 'initial'">
+      <base-button
+        (click)="onApplyForJobButtonClick()"
+        [buttonText]="'job.actions.section.apply' | translate"
+        kind="primary"
+        marginTop="0"
+        marginBottom="0"
+        size="small">
+      </base-button>
+    </div>
     <basic-title-text
       [text]="'job.actions.section.applied' | translate"
       *ngIf="application && !application.accepted  && !application.willPerform"
@@ -49,12 +52,15 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
         [textAlignmentLtr]="center ? 'center' : 'left'"
         [textAlignmentRtl]="center ? 'center' : 'right'">
       </basic-text>
-      <base-button
-        (click)="onConfirmJobButtonClick()"
-        [buttonText]="'job.actions.section.confirm' | translate"
-        kind="primary"
-        size="small">
-      </base-button>
+      <div
+        [style.text-align]="center ? 'center' : 'initial'">
+        <base-button
+          (click)="onConfirmJobButtonClick()"
+          [buttonText]="'job.actions.section.confirm' | translate"
+          kind="primary"
+          size="small">
+        </base-button>
+      </div>
     </div>
     <basic-title-text
       [text]="'job.actions.section.hired' | translate"
