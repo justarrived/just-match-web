@@ -22,7 +22,8 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
         marginTop="0"
         marginBottom="0"
         textAlignmentLtr="left"
-        textAlignmentRtl="left">
+        textAlignmentRtl="left"
+        style="margin-left: 10px; margin-right: 10px;">
       </basic-title-text>
     </div>`
 })

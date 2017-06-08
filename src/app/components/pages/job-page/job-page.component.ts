@@ -24,12 +24,30 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
 
     <div *ngIf="job">
       <job-banner-section
+        [(application)]="application"
         [job]="job">
       </job-banner-section>
 
       <div
         class="ui grid job-page-grid"
         [style.direction]="systemLanguage.direction">
+
+        <div class="sixteen wide mobile only column">
+          <job-actions-section
+            [(application)]="application"
+            [job]="job"
+            [hideReadMore]="true"
+            [center]="false">
+          </job-actions-section>
+        </div>
+
+        <div class="sixteen wide column">
+          <job-company-image-section
+            [job]="job"
+            style="padding: 0">
+          </job-company-image-section>
+        </div>
+
         <div class="sixteen wide mobile only column">
           <share-with-modal-section></share-with-modal-section>
         </div>
@@ -37,12 +55,6 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
         <div class="sixteen wide mobile ten wide tablet ten wide computer column">
           <job-short-description-section [job]="job"></job-short-description-section>
           <job-company-short-description-section [job]="job"></job-company-short-description-section>
-          <div class="ui mobile only grid">
-            <job-company-image-section
-              [job]="job"
-              style="padding: 0">
-            </job-company-image-section>
-          </div>
         </div>
 
         <div class="sixteen wide mobile six wide tablet six wide computer column">
@@ -71,7 +83,8 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
         <div class="sixteen wide mobile sixteen wide tablet sixteen wide computer column">
           <job-actions-section
             [(application)]="application"
-            [job]="job">
+            [job]="job"
+            [center]="true">
           </job-actions-section>
         </div>
       </div>
