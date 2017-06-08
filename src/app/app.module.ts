@@ -71,6 +71,7 @@ import {FirstNameInputComponent} from './components/inputs/first-name-input/firs
 import {ForbiddenPageComponent} from './components/pages/forbidden-page/forbidden-page.component';
 import {ForgotPasswordFormComponent} from './components/forms/forgot-password-form/forgot-password-form.component';
 import {ForgotPasswordModalComponent} from './components/modals/forgot-password-modal/forgot-password-modal.component';
+import {LoginOrRegisterModalComponent} from './components/modals/login-or-register-modal/login-or-register-modal.component';
 import {ForgotPasswordPageComponent} from './components/pages/forgot-password-page/forgot-password-page.component';
 import {FormSectionTitleTextComponent} from './components/text/form-section-title-text/form-section-title-text.component';
 import {FormsModule} from '@angular/forms';
@@ -92,7 +93,7 @@ import {InputHintLabelComponent} from './components/labels/input-hint-label/inpu
 import {InterestLevelInputComponent} from './components/inputs/interest-level-input/interest-level-input.component';
 import {InterestsInputComponent} from './components/inputs/interests-input/interests-input.component';
 import {JARoutes} from './routes/ja-routes/ja-routes';
-import {JobActionsSection2Component} from './components/sections/job-actions-section/job-actions-section.component';
+import {JobActionsSectionComponent} from './components/sections/job-actions-section/job-actions-section.component';
 import {JobAdditionalUserInfoModalComponent} from './components/modals/job-additional-user-info-modal/job-additional-user-info-modal.component';
 import {JobBannerSectionComponent} from './components/sections/job-banner-section/job-banner-section.component';
 import {JobCardComponent} from './components/cards/job-card/job-card.component';
@@ -272,6 +273,7 @@ export class RavenErrorHandler implements ErrorHandler {
     BasicCommentComponent,
     BasicCommentsComponent,
     BasicLinkComponent,
+    LoginOrRegisterModalComponent,
     BasicPagerComponent,
     BasicSearchComponent,
     BasicTabComponent,
@@ -330,7 +332,7 @@ export class RavenErrorHandler implements ErrorHandler {
     InputHintLabelComponent,
     InterestLevelInputComponent,
     InterestsInputComponent,
-    JobActionsSection2Component,
+    JobActionsSectionComponent,
     JobAdditionalUserInfoModalComponent,
     JobCardComponent,
     JobCommentsSectionComponent,

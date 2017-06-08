@@ -26,40 +26,19 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
     <base-button
       (click)="onApplyForJobButtonClick()"
       [buttonText]="'job.actions.section.apply' | translate"
-      *ngIf="(user && !application)"
+      *ngIf="!application"
       kind="primary"
       marginTop="0"
       marginBottom="0"
       size="small">
     </base-button>
-    <div
-      style="max-width: 200px;"
-      [style.margin]="center ? '0 auto' : '0'"
-      *ngIf="!user">
-      <base-button
-        (click)="onRegisterButtonClick()"
-        [buttonText]="'job.actions.section.register' | translate"
-        [fluid]="true"
-        kind="primary"
-        marginTop="0"
-        size="small">
-      </base-button>
-      <br/>
-      <base-button
-        (click)="onLoginButtonClick()"
-        [buttonText]="'job.actions.section.login' | translate"
-        [fluid]="true"
-        kind="primary"
-        size="small">
-      </base-button>
-    </div>
     <basic-title-text
       [text]="'job.actions.section.applied' | translate"
       *ngIf="application && !application.accepted  && !application.willPerform"
       color="black"
       fontSize="medium"
-      textAlignmentLtr="center"
-      textAlignmentRtl="center"
+      [textAlignmentLtr]="center ? 'center' : 'left'"
+      [textAlignmentRtl]="center ? 'center' : 'right'"
       marginTop="0"
       marginBottom="0">
     </basic-title-text>
@@ -67,8 +46,8 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
       <basic-text
         [text]="'job.actions.section.offer' | translate: {hours: application.remainsConfirmationHours, minutes: application.remainsConfirmationMinutes}"
         color="black"
-        textAlignmentLtr="center"
-        textAlignmentRtl="center">
+        [textAlignmentLtr]="center ? 'center' : 'left'"
+        [textAlignmentRtl]="center ? 'center' : 'right'">
       </basic-text>
       <base-button
         (click)="onConfirmJobButtonClick()"
@@ -82,8 +61,8 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
       *ngIf="application && application.willPerform && !application.jobEnded"
       color="black"
       fontSize="medium"
-      textAlignmentLtr="center"
-      textAlignmentRtl="center"
+      [textAlignmentLtr]="center ? 'center' : 'left'"
+      [textAlignmentRtl]="center ? 'center' : 'right'"
       marginTop="0"
       marginBottom="0">
     </basic-title-text>
@@ -92,8 +71,8 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
       *ngIf="application && application.willPerform && application.jobEnded"
       color="black"
       fontSize="medium"
-      textAlignmentLtr="center"
-      textAlignmentRtl="center"
+      [textAlignmentLtr]="center ? 'center' : 'left'"
+      [textAlignmentRtl]="center ? 'center' : 'right'"
       marginTop="0"
       marginBottom="0">
     </basic-title-text>
@@ -103,7 +82,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
       target="_blank">
       <div
         style="display: flex; align-items: center; justify-content: center; margin-top: 20px;"
-        [style.margin]="center ? '0 auto' : '0'">
+        [style.margin]="center ? '20px auto' : '20px 0'">
         <basic-title-text
           [text]="'job.actions.section.read.more' | translate"
           color="pink"
@@ -117,7 +96,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
       </div>
     </a>`
 })
-export class JobActionsSection2Component extends SystemLanguageListener implements OnInit, OnDestroy {
+export class JobActionsSectionComponent extends SystemLanguageListener implements OnInit, OnDestroy {
   @Input() public application = null as Application;
   @Input() public job = null as Job;
   @Input() public hideReadMore: boolean = false;
@@ -176,16 +155,10 @@ export class JobActionsSection2Component extends SystemLanguageListener implemen
     if (this.userSubscription) { this.userSubscription.unsubscribe(); }
   }
 
-  public onRegisterButtonClick(): void {
-    this.modalService.showModal('registerModalComponent', false, false, 1);
-  }
-
-  public onLoginButtonClick(): void {
-    this.modalService.showModal('loginModalComponent', false, false, 1);
-  }
-
   public onApplyForJobButtonClick(): void {
-    if (Object.keys(this.missingUserTraits).length < 2) {
+    if (!this.user) {
+      this.modalService.showModal('loginOrRegisterModalComponent', false, false, 1);
+    } else if (Object.keys(this.missingUserTraits).length < 2) {
       this.modalService.showModal('applyForJobModalComponent', false, true, 1, this.job)
       .then(application => this.appliedForJob(application));
     } else {
