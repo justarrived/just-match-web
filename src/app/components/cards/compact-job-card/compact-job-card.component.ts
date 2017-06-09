@@ -21,7 +21,7 @@ import {SystemLanguagesResolver} from '../../../resolvers/system-languages/syste
         [src]="job?.company?.logoImage?.imageUrlSmall || '/assets/images/placeholder-logo.png'"
         [ngClass]="{'right': systemLanguage.direction === 'ltr', 'left': systemLanguage.direction === 'rtl'}"
         class="floated mini ui image">
-      <div class="job-header-container">
+      <div class="job-banner-section-container">
         <basic-title-text
           [text]="job.translatedText.name"
           [maxiumLinesEllipsis]="3"

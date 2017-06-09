@@ -6,6 +6,7 @@ import {ContactMessageSentModalComponent} from './components/modals/contact-mess
 import {ForgotPasswordModalComponent} from './components/modals/forgot-password-modal/forgot-password-modal.component';
 import {JobAdditionalUserInfoModalComponent} from './components/modals/job-additional-user-info-modal/job-additional-user-info-modal.component';
 import {LoginModalComponent} from './components/modals/login-modal/login-modal.component';
+import {LoginOrRegisterModalComponent} from './components/modals/login-or-register-modal/login-or-register-modal.component';
 import {ModalService} from './services/modal.service';
 import {OnDestroy} from '@angular/core';
 import {OnInit} from '@angular/core';
@@ -13,6 +14,7 @@ import {PasswordChangedModalComponent} from './components/modals/password-change
 import {PasswordResetLinkSentModalComponent} from './components/modals/password-reset-link-sent-modal/password-reset-link-sent-modal.component';
 import {RegisteredModalComponent} from './components/modals/registered-modal/registered-modal.component';
 import {RegisterModalComponent} from './components/modals/register-modal/register-modal.component';
+import {ShareModalComponent} from './components/modals/share-modal/share-modal.component';
 import {SignedForJobModalComponent} from './components/modals/signed-for-job-modal/signed-for-job-modal.component';
 import {SignForJobModalComponent} from './components/modals/sign-for-job-modal/sign-for-job-modal.component';
 import {Subscription} from 'rxjs/Subscription';
@@ -69,6 +71,12 @@ import {ViewChild} from '@angular/core';
       #loginModalComponent>
     </login-modal>
 
+    <login-or-register-modal
+      (onLoggedInOrRegistered)="modalResult($event)"
+      *ngIf="shownModal === 'loginOrRegisterModalComponent'"
+      #loginOrRegisterModalComponent>
+    </login-or-register-modal>
+
     <password-changed-modal
       *ngIf="shownModal === 'passwordChangedModalComponent'"
       #passwordChangedModalComponent>
@@ -90,6 +98,11 @@ import {ViewChild} from '@angular/core';
       *ngIf="shownModal === 'registeredModalComponent'"
       #registeredModalComponent>
     </registered-modal>
+
+    <share-modal
+      *ngIf="shownModal === 'shareModalComponent'"
+      #shareModalComponent>
+    </share-modal>
 
     <sign-for-job-modal
       (onSignedForJob)="modalResult($event)"
@@ -113,10 +126,12 @@ export class AppComponent implements OnInit, OnDestroy  {
   @ViewChild('forgotPasswordModalComponent') public forgotPasswordModalComponent: ForgotPasswordModalComponent;
   @ViewChild('jobAdditionalUserInfoModalComponent') public jobAdditionalUserInfoModalComponent: JobAdditionalUserInfoModalComponent;
   @ViewChild('loginModalComponent') public loginModalComponent: LoginModalComponent;
+  @ViewChild('loginOrRegisterModalComponent') public loginOrRegisterModalComponent: LoginOrRegisterModalComponent;
   @ViewChild('passwordChangedModalComponent') public passwordChangedModalComponent: PasswordChangedModalComponent;
   @ViewChild('passwordResetLinkSentModalComponent') public passwordResetLinkSentModalComponent: PasswordResetLinkSentModalComponent;
   @ViewChild('registeredModalComponent') public registeredModalComponent: RegisteredModalComponent;
   @ViewChild('registerModalComponent') public registerModalComponent: RegisterModalComponent;
+  @ViewChild('shareModalComponent') public shareModalComponent: ShareModalComponent;
   @ViewChild('signedForJobModalComponent') public signedForJobModalComponent: SignedForJobModalComponent;
   @ViewChild('signForJobModalComponent') public signForJobModalComponent: SignForJobModalComponent;
 

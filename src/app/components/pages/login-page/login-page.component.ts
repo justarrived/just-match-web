@@ -16,7 +16,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
   </basic-border-header>
 
   <div class="ui centered grid">
-    <div class="fourteen wide phone ten wide tablet eight wide computer column login-form-container">
+    <div class="fourteen wide mobile ten wide tablet eight wide computer column login-form-container">
       <login-form></login-form>
     </div>
   </div>`,

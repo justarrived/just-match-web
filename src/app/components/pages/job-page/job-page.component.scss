@@ -1,0 +1,8 @@
+@import '../../../styles/colors';
+@import '../../../styles/dimensions';
+
+.job-page-grid {
+  @media screen and (min-width: $tablet-min-width) {
+    padding: 0 50px 50px 50px;
+  }
+}

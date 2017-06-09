@@ -10,7 +10,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
     <div
       class="ui grid requirements-section-container"
       [style.direction]="systemLanguage.direction">
-      <div class="sixteen wide phone eight wide tablet eight wide computer column">
+      <div class="sixteen wide mobile eight wide tablet eight wide computer column">
         <div class="ui basic very padded segment">
           <basic-title-text
             [text]="'requirements.section.title' | translate"

@@ -31,7 +31,7 @@ import {ViewChild} from '@angular/core';
         textAlignmentRtl="center">
       </basic-text>
       <div class="ui centered grid">
-        <div class="sixteen wide phone ten wide tablet eight wide computer column">
+        <div class="sixteen wide mobile ten wide tablet eight wide computer column">
           <user-missing-traits-next-form
             [isInModal]="false"
             (onClose)="close()">

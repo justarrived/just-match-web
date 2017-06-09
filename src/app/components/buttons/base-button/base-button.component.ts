@@ -17,6 +17,8 @@ import {SystemLanguagesResolver} from '../../../resolvers/system-languages/syste
       [disabled]="disabled"
       [ngClass]="[kind, size, 'btn']"
       [style.direction]="systemLanguage.direction"
+      [style.margin-top]="marginTop"
+      [style.margin-bottom]="marginBottom"
       [type]="buttonType">
       <i *ngIf="icon" class="icon {{icon}}"></i>
       {{buttonText}}
@@ -24,12 +26,14 @@ import {SystemLanguagesResolver} from '../../../resolvers/system-languages/syste
 })
 export class BaseButtonComponent implements OnInit, OnDestroy {
   @Input() public buttonText: string = '';
+  @Input() public buttonType: string = 'button'; // One of ['button', 'submit', 'reset']
   @Input() public disabled: boolean = false;
   @Input() public fluid: boolean;
-  @Input() public kind: string = 'primary'; // One of ['primary', 'primary-light', 'secondary', 'secondary-light', 'inactive-light', 'inactive-dark']
   @Input() public icon: string;
+  @Input() public kind: string = 'primary'; // One of ['primary', 'primary-light', 'secondary', 'secondary-light', 'inactive-light', 'inactive-dark']
+  @Input() public marginBottom: string = '15px';
+  @Input() public marginTop: string = '15px';
   @Input() public size: string = 'medium'; // One of ['tiny', 'small', 'medium', 'large']
-  @Input() public buttonType: string = 'button'; // One of ['button', 'submit', 'reset']
 
   public systemLanguage: Language;
 

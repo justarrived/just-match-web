@@ -61,7 +61,7 @@
   font-style: normal;
   font-weight: normal;
   text-shadow: none;
-  font-size: 18px;
+  font-size: 18px !important;
   font-weight: 700;
 
   @include wrap-long-words();
@@ -77,7 +77,7 @@
   font-style: normal;
   font-weight: normal;
   text-shadow: none;
-  font-size: 12px;
+  font-size: 12px !important;
   font-weight: 500;
 
   @include wrap-long-words();
@@ -193,4 +193,21 @@ a {
 
 .arabic-font {
   font-family: $title-font-family-arabic !important;
+}
+
+ul {
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
+li:before {
+  content: "\25CE";
+  font-weight: bold;
+  font-size: 2.4em;
+  vertical-align: middle;
+  line-height: $text-line-height;
+  padding: 0 5px;
 }

@@ -6,12 +6,11 @@ $button-font-arabic: $text-font-family-arabic;
 
 // GENERAL
 .btn {
-  border-radius: 30px;
+  border-radius: 8px;
   border: 2px solid;
   font-family: $button-font;
   font-weight: 700;
   line-height: 2.3;
-  margin: 15px 0;
   outline:none !important;
   text-align: center;
   text-decoration: none;
@@ -30,33 +29,37 @@ $button-font-arabic: $text-font-family-arabic;
 .btn.fluid {
   width: 100%;
 }
+
 // SIZE
 .btn.tiny {
   font-size: 10px;
   padding: 0 10px;
+  min-width: 100px;
 }
 
 .btn.small {
   font-size: 12px;
-  padding: 6px 20px;
   padding: 2px 25px;
+  min-width: 100px;
 }
 
 .btn.medium {
   font-size: 12px;
-  padding: 5px 20px;
+  padding: 4px 30px;
+  min-width: 150px;
 }
 
 .btn.large {
   font-size: 14px;
-  padding: 8px 35px;
+  padding: 6px 35px;
+  min-width: 180px;
 }
 
 // PRIMARY
 .btn.primary {
   color: $white;
   background-color: $color-cerise-500;
-  border-color: $color-cerise-400;
+  border-color: $color-cerise-500;
 }
 
 .btn.primary:hover {

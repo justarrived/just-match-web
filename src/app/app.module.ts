@@ -71,6 +71,7 @@ import {FirstNameInputComponent} from './components/inputs/first-name-input/firs
 import {ForbiddenPageComponent} from './components/pages/forbidden-page/forbidden-page.component';
 import {ForgotPasswordFormComponent} from './components/forms/forgot-password-form/forgot-password-form.component';
 import {ForgotPasswordModalComponent} from './components/modals/forgot-password-modal/forgot-password-modal.component';
+import {LoginOrRegisterModalComponent} from './components/modals/login-or-register-modal/login-or-register-modal.component';
 import {ForgotPasswordPageComponent} from './components/pages/forgot-password-page/forgot-password-page.component';
 import {FormSectionTitleTextComponent} from './components/text/form-section-title-text/form-section-title-text.component';
 import {FormsModule} from '@angular/forms';
@@ -92,21 +93,27 @@ import {InputHintLabelComponent} from './components/labels/input-hint-label/inpu
 import {InterestLevelInputComponent} from './components/inputs/interest-level-input/interest-level-input.component';
 import {InterestsInputComponent} from './components/inputs/interests-input/interests-input.component';
 import {JARoutes} from './routes/ja-routes/ja-routes';
-import {JobActionsHeaderComponent} from './components/headers/job-actions-header/job-actions-header.component';
 import {JobActionsSectionComponent} from './components/sections/job-actions-section/job-actions-section.component';
 import {JobAdditionalUserInfoModalComponent} from './components/modals/job-additional-user-info-modal/job-additional-user-info-modal.component';
+import {JobBannerSectionComponent} from './components/sections/job-banner-section/job-banner-section.component';
 import {JobCardComponent} from './components/cards/job-card/job-card.component';
 import {JobCommentsSectionComponent} from './components/sections/job-comments-section/job-comments-section.component';
-import {JobDescriptionSectionComponent} from './components/sections/job-description-section/job-description-section.component';
+import {JobCompanyImageSectionComponent} from './components/sections/job-company-image-section/job-company-image-section.component';
+import {JobCompanyShortDescriptionSectionComponent} from './components/sections/job-company-short-description-section/job-company-short-description-section.component';
+import {JobDescriptionSection2Component} from './components/sections/job-description-section/job-description-section.component';
 import {JobExperienceInputComponent} from './components/inputs/job-experience-input/job-experience-input.component';
-import {JobInformationSectionComponent} from './components/sections/job-information-section/job-information-section.component';
-import {JobLocationSectionComponent} from './components/sections/job-location-section/job-location-section.component';
+import {JobImportantInformationSectionComponent} from './components/sections/job-important-information-section/job-important-information-section.component';
 import {JobMapMarkerComponent} from './components/map-markers/job-map-marker/job-map-marker.component';
 import {JobPageComponent} from './components/pages/job-page/job-page.component';
-import {JobScopeSectionComponent} from './components/sections/job-scope-section/job-scope-section.component';
+import {JobRecruiterSectionComponent} from './components/sections/job-recruiter-section/job-recruiter-section.component';
+import {JobShortDescriptionSectionComponent} from './components/sections/job-short-description-section/job-short-description-section.component';
 import {JobsMapComponent} from './components/maps/jobs-map/jobs-map.component';
 import {JobsPageComponent} from './components/pages/jobs-page/jobs-page.component';
 import {JobsPagerSectionComponent} from './components/sections/jobs-pager-section/jobs-pager-section.component';
+import {JobTasksSectionComponent} from './components/sections/job-tasks-section/job-tasks-section.component';
+import {JobTitleSectionComponent} from './components/sections/job-title-section/job-title-section.component';
+import {JobYouAreSectionComponent} from './components/sections/job-you-are-section/job-you-are-section.component';
+import {JobYouHaveSectionComponent} from './components/sections/job-you-have-section/job-you-have-section.component';
 import {LanguageMenuComponent} from './components/menus/language-menu/language-menu.component';
 import {LanguageProficiencyInputComponent} from './components/inputs/language-proficiency-input/language-proficiency-input.component';
 import {LanguagesInputComponent} from './components/inputs/languages-input/languages-input.component';
@@ -162,7 +169,9 @@ import {SemanticRatingComponent} from "./semantic/rating/rating";
 import {SemanticSearchComponent} from "./semantic/search/search";
 import {SemanticSelectComponent} from "./semantic/select/select";
 import {SemanticTextareaComponent} from "./semantic/input/input";
+import {ShareModalComponent} from './components/modals/share-modal/share-modal.component';
 import {ShareSectionComponent} from './components/sections/share-section/share-section.component';
+import {ShareWithModalSectionComponent} from './components/sections/share-with-modal-section/share-with-modal-section.component';
 import {SignedForJobModalComponent} from './components/modals/signed-for-job-modal/signed-for-job-modal.component';
 import {SignForJobFormComponent} from './components/forms/sign-for-job-form/sign-for-job-form.component';
 import {SignForJobModalComponent} from './components/modals/sign-for-job-modal/sign-for-job-modal.component';
@@ -265,6 +274,7 @@ export class RavenErrorHandler implements ErrorHandler {
     BasicCommentComponent,
     BasicCommentsComponent,
     BasicLinkComponent,
+    LoginOrRegisterModalComponent,
     BasicPagerComponent,
     BasicSearchComponent,
     BasicTabComponent,
@@ -323,22 +333,27 @@ export class RavenErrorHandler implements ErrorHandler {
     InputHintLabelComponent,
     InterestLevelInputComponent,
     InterestsInputComponent,
-    JobActionsHeaderComponent,
     JobActionsSectionComponent,
     JobAdditionalUserInfoModalComponent,
     JobCardComponent,
     JobCommentsSectionComponent,
-    JobDescriptionSectionComponent,
+    JobCompanyImageSectionComponent,
+    JobCompanyShortDescriptionSectionComponent,
+    JobDescriptionSection2Component,
     JobExperienceInputComponent,
-    JobInformationSectionComponent,
-    JobLocationSectionComponent,
+    JobBannerSectionComponent,
+    JobImportantInformationSectionComponent,
     JobMapMarkerComponent,
     JobPageComponent,
-    JobScopeSectionComponent,
-    JobScopeSectionComponent,
+    JobRecruiterSectionComponent,
+    JobShortDescriptionSectionComponent,
     JobsMapComponent,
     JobsPageComponent,
     JobsPagerSectionComponent,
+    JobTasksSectionComponent,
+    JobTitleSectionComponent,
+    JobYouAreSectionComponent,
+    JobYouHaveSectionComponent,
     LanguageMenuComponent,
     LanguageProficiencyInputComponent,
     LanguagesInputComponent,
@@ -386,7 +401,9 @@ export class RavenErrorHandler implements ErrorHandler {
     SemanticSearchComponent,
     SemanticSelectComponent,
     SemanticTextareaComponent,
+    ShareModalComponent,
     ShareSectionComponent,
+    ShareWithModalSectionComponent,
     SignedForJobModalComponent,
     SignForJobFormComponent,
     SignForJobModalComponent,

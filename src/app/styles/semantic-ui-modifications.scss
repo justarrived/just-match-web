@@ -21,6 +21,16 @@
   font-family: $text-font-family;
 }
 
+.ui.modal.basic {
+  .close.icon {
+    display: none;
+  }
+}
+
+.ui.form {
+  @include text();
+}
+
 .ui.grid {
   margin: 0;
 }

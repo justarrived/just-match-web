@@ -13,8 +13,9 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
         class="ui basic very padded segment"
         style="padding-bottom: 0;">
         <img
-          class="ui centered medium image"
-          src="/assets/images/just-arrived-vertical-white-logo.png">
+          class="ui centered image"
+          src="/assets/images/just-arrived-vertical-white-logo.png"
+          style="width: 200px; height: auto;">
       </div>
       <div
         class="ui basic very padded segment"
@@ -22,7 +23,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
         <div
           class="ui centered grid sections-container"
           [style.direction]="systemLanguage.direction">
-          <div class="sixteen wide phone sixteen wide tablet four wide computer column">
+          <div class="sixteen wide mobile sixteen wide tablet four wide computer column">
             <basic-title-text
               [text]="'footer.get.started.section.title' | translate"
               color="pink"
@@ -71,7 +72,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
               textAlignmentRtlTablet="center">
             </basic-link>
           </div>
-          <div class="sixteen wide phone sixteen wide tablet four wide computer column">
+          <div class="sixteen wide mobile sixteen wide tablet four wide computer column">
             <basic-title-text
               [text]="'footer.about.us.section.title' | translate"
               color="pink"
@@ -116,7 +117,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
               textAlignmentRtlTablet="center">
             </basic-link>
           </div>
-          <div class="sixteen wide phone sixteen wide tablet four wide computer column">
+          <div class="sixteen wide mobile sixteen wide tablet four wide computer column">
             <basic-title-text
               [text]="'footer.contact.us.section.title' | translate"
               color="pink"
@@ -155,7 +156,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
               textAlignmentRtlTablet="center">
             </basic-link>
           </div>
-          <div class="sixteen wide phone sixteen wide tablet four wide computer column">
+          <div class="sixteen wide mobile sixteen wide tablet four wide computer column">
             <basic-title-text
               [text]="'footer.follow.us.section.title' | translate"
               color="pink"

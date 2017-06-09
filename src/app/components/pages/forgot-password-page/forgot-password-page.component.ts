@@ -16,7 +16,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
   </basic-border-header>
 
   <div class="ui centered grid forgot-password-form-container">
-    <div class="fourteen wide phone ten wide tablet eight wide computer column">
+    <div class="fourteen wide mobile ten wide tablet eight wide computer column">
       <forgot-password-form></forgot-password-form>
     </div>
   </div>`,
