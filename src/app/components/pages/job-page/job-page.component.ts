@@ -145,7 +145,7 @@ export class JobPageComponent extends PageComponent {
 
   private loadData(): void {
     this.jobPromise = this.jobProxy.getJob(this.jobId, {
-      'include': 'owner,company,hourly_pay,company.company_images,comments'
+      'include': 'owner,company,hourly_pay,company.company_images,comments,responsible_recruiter,responsible_recruiter.user_images'
     })
     .then(job => {
       this.job = job;

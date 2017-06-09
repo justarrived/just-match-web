@@ -47,7 +47,6 @@ interface JobApiAttributes {
   jobEndDate: Date;
   jobLanguages: JobLanguage[];
   jobSkills: JobSkill[];
-  justarrivedContact: User;
   language: Language;
   languageId: string;
   name: string;
@@ -57,6 +56,7 @@ interface JobApiAttributes {
   owner: User;
   requirementsDescription: string;
   requirementsDescriptionHtml: string;
+  responsibleRecruiter: User;
   shortDescription: string;
   staffingJob: boolean;
   street: string;
@@ -129,7 +129,6 @@ export class JobFactory {
       jobEndDate: new Date(jsonObject.job_end_date),
       jobLanguages: map(jsonObject.job_languages, jobLanguage => JobLanguageFactory.createJobLanguage(jobLanguage)),
       jobSkills:  map(jsonObject.job_skills, jobSkill => JobSkillFactory.createJobSkill(jobSkill)),
-      justarrivedContact: UserFactory.createUser(jsonObject.justarrived_contact),
       language: LanguageFactory.createLanguage(jsonObject.language),
       languageId: jsonObject.language_id,
       name: jsonObject.name,
@@ -139,6 +138,7 @@ export class JobFactory {
       owner: UserFactory.createUser(jsonObject.owner),
       requirementsDescription: jsonObject.requirements_description,
       requirementsDescriptionHtml: jsonObject.requirements_description_html,
+      responsibleRecruiter: UserFactory.createUser(jsonObject.responsible_recruiter),
       shortDescription: jsonObject.short_description,
       staffingJob: jsonObject.staffingJob,
       street: jsonObject.street,
