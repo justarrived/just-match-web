@@ -27,7 +27,7 @@ import {Output} from '@angular/core';
         </basic-title-text>
       </modal-content>
       <modal-actions>
-        <div style="display: flex; align-items: center; justify-content: center;">
+        <div style="display: flex; align-items: center; justify-content: center; flex-wrap: wrap;">
           <div style="width: 200px; padding: 0 10px;">
             <base-button
               (click)="onLoginButtonClick()"
