@@ -339,6 +339,8 @@
   "meta.support.chat.title": "Chat with us",
   "meta.user.profile.description": "This is the most important thing to increase your chances of getting any job through Just Arrived! Make sure to fill in every relevant piece of information and all your skills. If your profile is empty you won’t be matched with any jobs.",
   "meta.user.profile.title": "Your profile",
+  "missing.payment.information.modal.button": "Continue",
+  "missing.payment.information.modal.title": "There are some missing information that you need to supply in order to get payed",
   "page.not.found.error.description": "Sorry, the page or resource you are looking for does not exist.",
   "page.not.found.error.title": "404 - Page Not Found",
   "register.form.login.button": "Log in now",
