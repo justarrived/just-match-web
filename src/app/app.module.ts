@@ -112,8 +112,8 @@ import {JobsPageComponent} from './components/pages/jobs-page/jobs-page.componen
 import {JobsPagerSectionComponent} from './components/sections/jobs-pager-section/jobs-pager-section.component';
 import {JobTasksSectionComponent} from './components/sections/job-tasks-section/job-tasks-section.component';
 import {JobTitleSectionComponent} from './components/sections/job-title-section/job-title-section.component';
-import {JobYouAreSectionComponent} from './components/sections/job-you-are-section/job-you-are-section.component';
-import {JobYouHaveSectionComponent} from './components/sections/job-you-have-section/job-you-have-section.component';
+import {JobApplicantSectionComponent} from './components/sections/job-applicant-section/job-applicant-section.component';
+import {JobRequirementsSectionComponent} from './components/sections/job-requirements-section/job-requirements-section.component';
 import {LanguageMenuComponent} from './components/menus/language-menu/language-menu.component';
 import {LanguageProficiencyInputComponent} from './components/inputs/language-proficiency-input/language-proficiency-input.component';
 import {LanguagesInputComponent} from './components/inputs/languages-input/languages-input.component';
@@ -351,8 +351,8 @@ export class RavenErrorHandler implements ErrorHandler {
     JobsPagerSectionComponent,
     JobTasksSectionComponent,
     JobTitleSectionComponent,
-    JobYouAreSectionComponent,
-    JobYouHaveSectionComponent,
+    JobApplicantSectionComponent,
+    JobRequirementsSectionComponent,
     LanguageMenuComponent,
     LanguageProficiencyInputComponent,
     LanguagesInputComponent,

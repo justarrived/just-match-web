@@ -72,8 +72,8 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
 
         <div class="sixteen wide mobile six wide tablet six wide computer column">
           <job-tasks-section [job]="job"></job-tasks-section>
-          <job-you-are-section [job]="job"></job-you-are-section>
-          <job-you-have-section [job]="job"></job-you-have-section>
+          <job-applicant-section [job]="job"></job-applicant-section>
+          <job-requirements-section [job]="job"></job-requirements-section>
         </div>
 
         <div class="sixteen wide mobile only column">

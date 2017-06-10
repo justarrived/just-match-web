@@ -6,21 +6,21 @@ import {SystemLanguagesResolver} from '../../../resolvers/system-languages/syste
 import {UserResolver} from '../../../resolvers/user/user.resolver';
 
 @Component({
-  selector: 'job-you-have-section',
+  selector: 'job-requirements-section',
   template: `
     <basic-title-text
-      [text]="'job.you.have.section.title' | translate "
+      [text]="'job.requirements.section.title' | translate "
       [uppercase]="true"
+      *ngIf="job.translatedText.requirementsDescriptionHtml"
       color="pink"
       fontSize="medium">
     </basic-title-text>
-    <ul [style.direction]=systemLanguage.direction>
-      <li>a driving license</li>
-      <li>experience in in blah blah</li>
-      <li>Milk</li>
-    </ul>`
+    <basic-text
+      [unsafeHtml]="job.translatedText.requirementsDescriptionHtml"
+      color="black">
+    </basic-text>`
 })
-export class JobYouHaveSectionComponent extends BaseComponent {
+export class JobRequirementsSectionComponent extends BaseComponent {
   @Input() job = null as Job;
 
   public constructor (

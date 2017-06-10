@@ -11,23 +11,14 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
     <basic-title-text
       [text]="'job.tasks.section.title' | translate "
       [uppercase]="true"
+      *ngIf="job.translatedText.tasksDescriptionHtml"
       color="pink"
       fontSize="medium">
     </basic-title-text>
-    <div
-      class="ui grid"
-      [style.direction]=systemLanguage.direction>
-      <div
-        class="sixteen wide column"
-        style="padding:0">
-        <ul>
-          <li>dig ditches</li>
-          <li>code all day</li>
-          <li>hack 4 life</li>
-          <li>all night long</li>
-        </ul>
-      </div>
-    </div>`
+    <basic-text
+      [unsafeHtml]="job.translatedText.tasksDescriptionHtml"
+      color="black">
+    </basic-text>`
 })
 export class JobTasksSectionComponent extends BaseComponent {
   @Input() job = null as Job;

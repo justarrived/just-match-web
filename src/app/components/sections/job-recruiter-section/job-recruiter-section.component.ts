@@ -9,10 +9,11 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
   selector: 'job-recruiter-section',
   template: `
     <div
+      *ngIf="job.responsibleRecruiter"
       style="display: flex; align-items: center"
       [style.direction]="systemLanguage.direction">
       <img
-        src="/assets/images/anna-hornmark.png"
+        [src]="job?.responsibleRecruiter?.recruiterProfileImage?.imageUrlMedium || job?.responsibleRecruiter?.profileImage?.imageUrlMedium || '/assets/images/placeholder-profile-image.png'"
         class="ui tiny image">
       <div style="padding-left: 10px; padding-right: 10px;">
         <basic-title-text
@@ -24,7 +25,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
           fontSize="medium">
         </basic-title-text>
         <basic-title-text
-          [text]="'Anna Hornmark'"
+          [text]="job?.responsibleRecruiter?.firstName + ' ' + job?.responsibleRecruiter?.lastName"
           fontSize="small"
           marginTop="0"
           marginBottom="0">
