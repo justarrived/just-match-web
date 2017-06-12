@@ -46,12 +46,15 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
       marginBottom="0">
     </basic-title-text>
     <div *ngIf="application && application.accepted && !application.willPerform">
-      <basic-text
+      <basic-title-text
         [text]="'job.actions.section.offer' | translate: {hours: application.remainsConfirmationHours, minutes: application.remainsConfirmationMinutes}"
         color="black"
+        fontSize="medium"
+        marginTop="0"
+        marginBottom="0"
         [textAlignmentLtr]="center ? 'center' : 'left'"
         [textAlignmentRtl]="center ? 'center' : 'right'">
-      </basic-text>
+      </basic-title-text>
       <div
         [style.text-align]="center ? 'center' : 'initial'">
         <base-button
@@ -192,6 +195,11 @@ export class JobActionsSectionComponent extends SystemLanguageListener implement
   public signedForJob(application: Application): void {
     this.application = application;
     this.applicationChange.emit(this.application);
-    this.modalService.showModal('signedForJobModalComponent', false, false, 400);
+    if (Object.keys(this.user.missingPaymentInformation).length > 0) {
+      this.modalService.showModal('missingPaymentInformationModalComponent', false, true, 400, this.user.missingPaymentInformation)
+      .then(_ => this.modalService.showModal('signedForJobModalComponent', false, false, 400));
+    } else {
+      this.modalService.showModal('signedForJobModalComponent', false, false, 400);
+    }
   }
 }

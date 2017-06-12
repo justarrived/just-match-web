@@ -4,6 +4,7 @@ import {Country} from '../country/country';
 import {Language} from '../language/language';
 import {LanguageFactory} from '../language/language';
 import {map} from 'lodash';
+import {MissingUserTraits} from '../missing-user-traits/missing-user-traits';
 import {Skill} from '../skill/skill';
 import {SkillFactory} from '../skill/skill';
 import {UserDocument} from '../user-document/user-document';
@@ -90,6 +91,7 @@ export interface User extends UserApiAttributes {
   cvDocuments: UserDocument[];
   isBeingReloaded: boolean;
   lmaCardImage: UserImage;
+  missingPaymentInformation: MissingUserTraits;
   personalIdImage: UserImage;
   profileImage: UserImage;
   recruiterProfileImage: UserImage;
@@ -112,6 +114,7 @@ export class UserFactory {
 
     const userDocuments = map(jsonObject.user_documents, userDocument => UserDocumentFactory.createUserDocument(userDocument));
     const userImages = map(jsonObject.user_images, userImage => UserImageFactory.createUserImage(userImage));
+    const missingPaymentInformation = UserFactory.getMissingPaymentInformation(jsonObject);
 
     return {
       admin: jsonObject.admin,
@@ -151,6 +154,7 @@ export class UserFactory {
       linkedinUrl: jsonObject.linkedin_url,
       lmaCardImage: UserFactory.getUserImageByCategory(userImages, 'lma_card'),
       longitude: jsonObject.longitude,
+      missingPaymentInformation: missingPaymentInformation,
       name: jsonObject.name,
       personalIdImage: UserFactory.getUserImageByCategory(userImages, 'personal_id'),
       phone: jsonObject.phone,
@@ -186,6 +190,23 @@ export class UserFactory {
 
   private static getUserDocumentsByCategory(userDocuments: UserDocument[], category: string): UserDocument[] {
     return userDocuments.filter(document => document.category === category);
+  }
+
+  private static getMissingPaymentInformation(jsonObject: any): MissingUserTraits {
+    let missingPaymentInformation = {};
+    if (!jsonObject.bank_account) {
+      missingPaymentInformation['bank_account'] = {};
+    }
+    if (!jsonObject.city) {
+      missingPaymentInformation['city'] = {};
+    }
+    if (!jsonObject.street) {
+      missingPaymentInformation['street'] = {};
+    }
+    if (!jsonObject.zip) {
+      missingPaymentInformation['zip'] = {};
+    }
+    return missingPaymentInformation;
   }
 }
 

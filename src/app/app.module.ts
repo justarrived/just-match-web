@@ -125,6 +125,7 @@ import {LoginFormComponent} from './components/forms/login-form/login-form.compo
 import {LoginModalComponent} from './components/modals/login-modal/login-modal.component';
 import {LoginPageComponent} from './components/pages/login-page/login-page.component';
 import {LostConnectionPageComponent} from './components/pages/lost-connection-page/lost-connection-page.component';
+import {MissingPaymentInformationModalComponent} from './components/modals/missing-payment-information-modal/missing-payment-information-modal.component';
 import {ModalService} from './services/modal.service';
 import {NameInputComponent} from './components/inputs/name-input/name-input.component';
 import {NavigationMenuComponent} from './components/menus/navigation-menu/navigation-menu.component';
@@ -363,6 +364,7 @@ export class RavenErrorHandler implements ErrorHandler {
     LoginModalComponent,
     LoginPageComponent,
     LostConnectionPageComponent,
+    MissingPaymentInformationModalComponent,
     NameInputComponent,
     NavigationMenuComponent,
     NewJobsSectionComponent,

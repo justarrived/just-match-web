@@ -7,6 +7,7 @@ import {ForgotPasswordModalComponent} from './components/modals/forgot-password-
 import {JobAdditionalUserInfoModalComponent} from './components/modals/job-additional-user-info-modal/job-additional-user-info-modal.component';
 import {LoginModalComponent} from './components/modals/login-modal/login-modal.component';
 import {LoginOrRegisterModalComponent} from './components/modals/login-or-register-modal/login-or-register-modal.component';
+import {MissingPaymentInformationModalComponent} from './components/modals/missing-payment-information-modal/missing-payment-information-modal.component';
 import {ModalService} from './services/modal.service';
 import {OnDestroy} from '@angular/core';
 import {OnInit} from '@angular/core';
@@ -77,6 +78,13 @@ import {ViewChild} from '@angular/core';
       #loginOrRegisterModalComponent>
     </login-or-register-modal>
 
+    <missing-payment-information-modal
+      (onInformationSupplied)="modalResult($event)"
+      [missingUserTraits]="args[0]"
+      *ngIf="shownModal === 'missingPaymentInformationModalComponent'"
+      #missingPaymentInformationModalComponent>
+    </missing-payment-information-modal>
+
     <password-changed-modal
       *ngIf="shownModal === 'passwordChangedModalComponent'"
       #passwordChangedModalComponent>
@@ -127,6 +135,7 @@ export class AppComponent implements OnInit, OnDestroy  {
   @ViewChild('jobAdditionalUserInfoModalComponent') public jobAdditionalUserInfoModalComponent: JobAdditionalUserInfoModalComponent;
   @ViewChild('loginModalComponent') public loginModalComponent: LoginModalComponent;
   @ViewChild('loginOrRegisterModalComponent') public loginOrRegisterModalComponent: LoginOrRegisterModalComponent;
+  @ViewChild('missingPaymentInformationModalComponent') public missingPaymentInformationModalComponent: MissingPaymentInformationModalComponent;
   @ViewChild('passwordChangedModalComponent') public passwordChangedModalComponent: PasswordChangedModalComponent;
   @ViewChild('passwordResetLinkSentModalComponent') public passwordResetLinkSentModalComponent: PasswordResetLinkSentModalComponent;
   @ViewChild('registeredModalComponent') public registeredModalComponent: RegisteredModalComponent;
