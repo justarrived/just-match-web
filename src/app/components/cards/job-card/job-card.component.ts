@@ -16,7 +16,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
     [@fadeInAnimation]="animationState"
     (mouseover)='hovered = true'
     (mouseout)='hovered = false'
-    class="ui raised card link job-card"
+    class="ui card link job-card"
     routerLink="{{JARoutes.job.url([job.id])}}">
     <div class="ui basic segment">
       <div class="company-image-container">
