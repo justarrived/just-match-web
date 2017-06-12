@@ -23,24 +23,15 @@
 }
 
 .small {
-  font-size: 10px;
-  @media screen and (max-width: $mobile-max-width) {
-    font-size: 10px;
-  }
+  font-size: 12px;
 }
 
 .medium {
-  font-size: 12px;
-  @media screen and (max-width: $mobile-max-width) {
-    font-size: 12px;
-  }
+  font-size: 14px;
 }
 
 .large {
-  font-size: 14px;
-  @media screen and (max-width: $mobile-max-width) {
-    font-size: 14px;
-  }
+  font-size: 16px;
 }
 
 .light {
