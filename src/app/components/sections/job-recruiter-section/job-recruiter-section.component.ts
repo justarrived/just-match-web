@@ -25,7 +25,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
           fontSize="medium">
         </basic-title-text>
         <basic-title-text
-          [text]="job?.responsibleRecruiter?.firstName + ' ' + job?.responsibleRecruiter?.lastName"
+          [text]="job?.responsibleRecruiter?.firstName"
           fontSize="small"
           marginTop="0"
           marginBottom="0">
