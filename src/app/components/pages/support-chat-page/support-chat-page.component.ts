@@ -16,7 +16,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
     icon="comments">
   </basic-border-header>
   <div class="ui centered grid chat-container">
-    <div class="sixteen wide phone twelve wide tablet ten wide computer column">
+    <div class="sixteen wide mobile twelve wide tablet ten wide computer column">
       <support-chat></support-chat>
     </div>
   </div>

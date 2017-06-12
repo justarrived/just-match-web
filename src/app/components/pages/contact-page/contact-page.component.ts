@@ -15,7 +15,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
     icon="comments">
   </basic-border-header>
   <div class="ui centered grid">
-    <div class="fourteen wide phone ten wide tablet eight wide computer column">
+    <div class="fourteen wide mobile ten wide tablet eight wide computer column">
       <div class="contact-form-container">
         <div class="contact-form-description">
           <basic-text

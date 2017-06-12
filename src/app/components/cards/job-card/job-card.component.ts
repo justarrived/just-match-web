@@ -29,7 +29,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
           style="width: 100%">
           <basic-title-text
             *ngIf="!job?.company?.logoImage"
-            [alwaysLtrText]="text"
+            [alwaysLtrText]="true"
             [text]="job?.company?.name"
             [oneLineEllipsis]="true"
             fontSize="large"
@@ -69,6 +69,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
     </div>
     <div class="ui equal width grid meta-container">
       <div
+        *ngIf="job.city"
         class="column"
         style="padding-left: 0; padding-right: 0;">
         <img

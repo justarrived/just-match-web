@@ -15,7 +15,7 @@
   .social-media-container {
     display: flex;
     @media screen and (max-width: $tablet-max-width) {
-      justify-content: center;
+      justify-content: center !important;
     }
   }
 }

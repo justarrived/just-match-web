@@ -92,7 +92,7 @@ One attribute.
 Whole HTML element on one line.
 Examples:
 -->
-<div class="fourteen wide phone ten wide tablet eight wide computer column">
+<div class="fourteen wide mobile ten wide tablet eight wide computer column">
 
 <h3 class="ui dividing header">
   {{'user.register.form.address.section.header' | translate}}

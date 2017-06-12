@@ -15,7 +15,7 @@ import {ViewChild} from '@angular/core';
       #registerModal>
       <modal-content>
         <div class="ui centered grid">
-          <div class="sixteen wide phone twelve wide tablet twelve wide computer column">
+          <div class="sixteen wide mobile twelve wide tablet twelve wide computer column">
             <register-form
               [isInModal]="true"
               [navigateToHome]="navigateToHome"

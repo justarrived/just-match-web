@@ -8,7 +8,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
   template: `
     <div class="ui basic segment welcome-header-container">
       <div class="ui centered grid">
-        <div class="sixteen wide phone twelve wide tablet ten wide computer column">
+        <div class="sixteen wide mobile twelve wide tablet ten wide computer column">
         <basic-title-text
           [text]="'home.header.logged.out.title' | translate "
           *ngIf="!user"

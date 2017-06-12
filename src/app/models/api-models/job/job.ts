@@ -20,11 +20,13 @@ import {UserFactory} from '../user/user';
 
 // API attribute interfaces
 interface JobApiAttributes {
+  applicantDescription: string;
+  applicantDescriptionHtml: string;
   applications: Application[];
   category: Category;
   city: string;
-  company: Company;
   comments: Comment[];
+  company: Company;
   createdAt: Date;
   currency: string;
   description: string;
@@ -52,9 +54,14 @@ interface JobApiAttributes {
   netAmountDelimited: string;
   netAmountWithCurrency: string;
   owner: User;
+  requirementsDescription: string;
+  requirementsDescriptionHtml: string;
+  responsibleRecruiter: User;
   shortDescription: string;
   staffingJob: boolean;
   street: string;
+  tasksDescription: string;
+  tasksDescriptionHtml: string;
   translatedText: JobTranslatedText;
   upcoming: boolean;
   updatedAt: Date;
@@ -65,11 +72,17 @@ interface JobApiAttributes {
 }
 
 interface JobTranslatedTextApiAttributes {
+  applicantDescription: string;
+  applicantDescriptionHtml: string;
   description: string;
   descriptionHtml: string;
   languageId: string;
   name: string;
+  requirementsDescription: string;
+  requirementsDescriptionHtml: string;
   shortDescription: string;
+  tasksDescription: string;
+  tasksDescriptionHtml: string;
 }
 
 // Client interfaces
@@ -86,7 +99,11 @@ export class JobFactory {
       return;
     }
 
+    console.log(jsonObject);
+
     return {
+      applicantDescription: jsonObject.applicant_description,
+      applicantDescriptionHtml: jsonObject.applicant_description_html,
       applications: map(jsonObject.job_users, application => ApplicationFactory.createApplication(application)),
       category: CategoryFactory.createCategory(jsonObject.category),
       city: jsonObject.city,
@@ -119,9 +136,14 @@ export class JobFactory {
       netAmountDelimited: jsonObject.net_amount_delimited,
       netAmountWithCurrency: jsonObject.net_amount_with_currency,
       owner: UserFactory.createUser(jsonObject.owner),
+      requirementsDescription: jsonObject.requirements_description,
+      requirementsDescriptionHtml: jsonObject.requirements_description_html,
+      responsibleRecruiter: UserFactory.createUser(jsonObject.responsible_recruiter),
       shortDescription: jsonObject.short_description,
       staffingJob: jsonObject.staffingJob,
       street: jsonObject.street,
+      tasksDescription: jsonObject.tasks_description,
+      tasksDescriptionHtml: jsonObject.tasks_description_html,
       translatedText: JobTranslatedTextFactory.createJobTranslatedText(jsonObject.translated_text),
       upcoming: jsonObject.upcoming,
       updatedAt: new Date(jsonObject.updated_at),
@@ -140,11 +162,17 @@ class JobTranslatedTextFactory {
     }
 
     return {
+      applicantDescription: jsonObject.applicant_description,
+      applicantDescriptionHtml: jsonObject.applicant_description_html,
       description: jsonObject.description,
       descriptionHtml: jsonObject.description_html,
       languageId: jsonObject.language_id,
       name: jsonObject.name,
+      requirementsDescription: jsonObject.requirements_description,
+      requirementsDescriptionHtml: jsonObject.requirements_description_html,
       shortDescription: jsonObject.short_description,
+      tasksDescription: jsonObject.tasks_description,
+      tasksDescriptionHtml: jsonObject.tasks_description_html,
     };
   }
 }

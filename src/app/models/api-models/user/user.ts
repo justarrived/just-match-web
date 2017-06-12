@@ -92,6 +92,7 @@ export interface User extends UserApiAttributes {
   lmaCardImage: UserImage;
   personalIdImage: UserImage;
   profileImage: UserImage;
+  recruiterProfileImage: UserImage;
   residencePermitBackImage: UserImage;
   residencePermitFrontImage: UserImage;
   skatteverketCertificateImage: UserImage;
@@ -155,6 +156,7 @@ export class UserFactory {
       phone: jsonObject.phone,
       primaryRole: jsonObject.primary_role,
       profileImage: UserFactory.getUserImageByCategory(userImages, 'profile'),
+      recruiterProfileImage: UserFactory.getUserImageByCategory(userImages, 'recruiter_profile'),
       residencePermitBackImage: UserFactory.getUserImageByCategory(userImages, 'residence_permit_back'),
       residencePermitFrontImage: UserFactory.getUserImageByCategory(userImages, 'residence_permit_front'),
       skatteverketCertificateImage: UserFactory.getUserImageByCategory(userImages, 'skatteverket_certificate'),

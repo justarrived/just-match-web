@@ -1,25 +1,31 @@
 import {Component} from '@angular/core';
 import {Input} from '@angular/core';
 import {Job} from '../../../models/api-models/job/job'
+import {BaseComponent} from '../../base.component';
+import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
+import {UserResolver} from '../../../resolvers/user/user.resolver';
 
 @Component({
   selector: 'job-description-section',
   template: `
-    <div class="ui basic center aligned segment">
-      <basic-title-text
-        [text]="'job.description.section.header' | translate"
-        [underlineBelow]="true"
-        fontSize="medium"
-        textAlignmentLtr="center"
-        marginTop="0"
-        textAlignmentRtl="center"
-        underlineBelowColor="pink"
-        underlineBelowLtrAlignment="center"
-        underlineBelowRtlAlignment="center">
-      </basic-title-text>
-      <basic-text [unsafeHtml]="job.translatedText.descriptionHtml"></basic-text>
-    </div>`
+    <basic-title-text
+      [text]="'job.description.section.title' | translate "
+      [uppercase]="true"
+      color="pink"
+      fontSize="medium">
+    </basic-title-text>
+    <basic-text
+      [unsafeHtml]="job.translatedText.descriptionHtml"
+      color="gray">
+    </basic-text>`
 })
-export class JobDescriptionSectionComponent {
+export class JobDescriptionSection2Component extends BaseComponent {
   @Input() job = null as Job;
+
+  public constructor (
+    protected systemLanguagesResolver: SystemLanguagesResolver,
+    protected userResolver: UserResolver,
+  ) {
+    super(systemLanguagesResolver, userResolver);
+  }
 }
