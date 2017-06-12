@@ -354,6 +354,8 @@
   "meta.support.chat.title": "Chatta med oss",
   "meta.user.profile.description": "Din profil är det allra viktigaste för att öka dina chanser att få jobb genom Just Arrived! Var noga med att fylla i alla relevanta uppgifter och alla dina färdigheter. Om din profil är tom blir du inte matchad med några jobb.",
   "meta.user.profile.title": "Din profil",
+  "missing.payment.information.modal.button": "Fortsätt",
+  "missing.payment.information.modal.title": "För att kunna få betalt så måste du ange följande information",
   "page.not.found.error.description": "Vi ber om ursäkt, sidan eller resursen du letar efter finns inte.",
   "page.not.found.error.title": "404 - Sidan kan inte hittas",
   "register.form.login.button": "Logga in nu",
