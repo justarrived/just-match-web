@@ -22,7 +22,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
       <div class="company-image-container">
         <img
           *ngIf="job?.company?.logoImage"
-          [src]="job.company.logoImage.imageUrlSmall"
+          [src]="job.company.logoImage.imageUrlMedium"
           class="ui centered image">
         <div
           *ngIf="!job?.company?.logoImage"
