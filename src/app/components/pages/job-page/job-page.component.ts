@@ -61,12 +61,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
           <job-important-information-section [job]="job"></job-important-information-section>
         </div>
 
-        <div class="ten wide tablet ten wide computer only column">
-          <job-description-section [job]="job"></job-description-section>
-          <job-recruiter-section [job]="job"></job-recruiter-section>
-        </div>
-
-        <div class="sixteen wide mobile only column">
+        <div class="sixteen wide mobile ten wide tablet ten wide computer column">
           <job-description-section [job]="job"></job-description-section>
         </div>
 
@@ -80,12 +75,16 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
           <job-recruiter-section [job]="job"></job-recruiter-section>
         </div>
 
-        <div class="sixteen wide mobile sixteen wide tablet sixteen wide computer column">
+        <div class="sixteen wide mobile ten wide tablet ten wide computer column">
           <job-actions-section
             [(application)]="application"
             [job]="job"
             [center]="true">
           </job-actions-section>
+        </div>
+
+        <div class="six wide tablet six wide computer only column">
+          <job-recruiter-section [job]="job"></job-recruiter-section>
         </div>
       </div>
     </div>`
