@@ -16,10 +16,10 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
       <div
         class="ui grid grid-container"
         [style.direction]="systemLanguage.direction">
-        <div class="sixteen wide mobile eight wide tablet eight wide computer column">
+        <div class="sixteen wide mobile ten wide tablet ten wide computer column">
           <job-title-section [job]="job"></job-title-section>
         </div>
-        <div class="five wide tablet only five wide computer only column">
+        <div class="three wide tablet only three wide computer only column">
           <job-actions-section
             (applicationChange)="applicationChange.emit($event)"
             [hideReadMore]="true"

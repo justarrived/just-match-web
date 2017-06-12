@@ -79,8 +79,6 @@
   text-shadow: none;
   font-size: 14px !important;
   font-weight: 500;
-
-  @include wrap-long-words();
 }
 
 @mixin link() {
