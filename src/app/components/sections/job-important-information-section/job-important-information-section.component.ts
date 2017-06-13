@@ -29,7 +29,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
             marginBottom="0"
             fontSize="tiny"
             fontWeight="light"
-            color="black">
+            color="gray">
           </basic-title-text>
           <basic-title-text
             [text]="'job.important.information.section.salary.per.hour' | translate: {grossSalaryPerHour: job.hourlyPay.grossSalaryWithUnit}"
@@ -37,7 +37,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
             fontWeight="light"
             marginTop="0"
             marginBottom="0"
-            color="black">
+            color="gray">
           </basic-title-text>
           <basic-title-text
             [text]="'job.important.information.section.total.salary' | translate: {totalGrossSalary: job.grossAmountWithCurrency, totalNetSalary: job.netAmountWithCurrency}"
@@ -45,7 +45,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
             fontWeight="light"
             marginBottom="0"
             marginTop="0"
-            color="black">
+            color="gray">
           </basic-title-text>
         </div>
       </div>
@@ -63,7 +63,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
           fontWeight="light"
           marginBottom="0"
           marginTop="0"
-          color="black"
+          color="gray"
           style="margin-left: 10px; margin-right: 10px;">
         </basic-title-text>
       </div>
@@ -81,7 +81,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
           fontWeight="light"
           marginBottom="0"
           marginTop="0"
-          color="black"
+          color="gray"
           style="margin-left: 10px; margin-right: 10px;">
         </basic-title-text>
       </div>

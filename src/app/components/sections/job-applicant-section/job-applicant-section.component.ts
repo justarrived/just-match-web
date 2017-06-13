@@ -17,7 +17,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
     </basic-title-text>
     <basic-text
       [unsafeHtml]="job.translatedText.applicantDescriptionHtml"
-      color="black">
+      color="gray">
     </basic-text>`
 })
 export class JobApplicantSectionComponent extends BaseComponent {
