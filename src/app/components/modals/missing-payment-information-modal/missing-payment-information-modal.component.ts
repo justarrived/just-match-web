@@ -1,8 +1,11 @@
+import {BaseComponent} from '../../base.component';
 import {Component} from '@angular/core';
 import {EventEmitter} from '@angular/core';
 import {Input} from '@angular/core';
 import {MissingUserTraits} from '../../../models/api-models/missing-user-traits/missing-user-traits';
 import {Output} from '@angular/core';
+import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
+import {UserResolver} from '../../../resolvers/user/user.resolver';
 import {UserUpdateFormComponent} from '../../forms/user-update-form/user-update-form.component';
 import {ViewChild} from '@angular/core';
 
@@ -41,11 +44,18 @@ import {ViewChild} from '@angular/core';
       </modal-actions>
     </sm-modal>`
 })
-export class MissingPaymentInformationModalComponent {
+export class MissingPaymentInformationModalComponent extends BaseComponent {
   @Input() public missingUserTraits = null as MissingUserTraits;
   @Output() public onInformationSupplied = new EventEmitter();
   @ViewChild('modal') public modal: any;
   @ViewChild('userUpdateForm') public userUpdateForm: UserUpdateFormComponent;
+
+  public constructor(
+    protected systemLanguagesResolver: SystemLanguagesResolver,
+    protected userResolver: UserResolver,
+  ) {
+    super(systemLanguagesResolver, userResolver);
+  }
 
   public show(): void {
     this.modal.show({

@@ -1,9 +1,11 @@
+import {BaseComponent} from '../../base.component';
 import {Component} from '@angular/core';
 import {EventEmitter} from '@angular/core';
 import {Input} from '@angular/core';
-import {OnChanges} from '@angular/core';
-import {OnInit} from '@angular/core';
 import {Output} from '@angular/core';
+import {SimpleChanges} from '@angular/core';
+import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
+import {UserResolver} from '../../../resolvers/user/user.resolver';
 
 @Component({
   selector: 'basic-pager',
@@ -52,18 +54,25 @@ import {Output} from '@angular/core';
     </div>
   </div>`
 })
-export class BasicPagerComponent implements OnInit, OnChanges {
+export class BasicPagerComponent extends BaseComponent {
   @Input() public maxResults: number;
   @Input() public pageSize: number = 10;
   @Input() public currentPage: number;
   @Output() public pageChange = new EventEmitter();
   public lastPage: number = 1;
 
-  public ngOnInit() {
+  public constructor(
+    protected systemLanguagesResolver: SystemLanguagesResolver,
+    protected userResolver: UserResolver,
+  ) {
+    super(systemLanguagesResolver, userResolver);
+  }
+
+  public onInit() {
     this.calculateLastPage();
   }
 
-  public ngOnChanges(changes: any): void {
+  public onChanges(changes: SimpleChanges): void {
     if (!changes.maxResults && !changes.pageSize) {
       return;
     }

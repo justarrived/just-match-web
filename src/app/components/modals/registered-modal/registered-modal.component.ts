@@ -1,9 +1,7 @@
+import {BaseComponent} from '../../base.component';
 import {Component} from '@angular/core';
 import {ConfirmationModalComponent} from '../confirmation-modal/confirmation-modal.component';
-import {OnDestroy} from '@angular/core';
-import {OnInit} from '@angular/core';
-import {Subscription} from 'rxjs/Subscription';
-import {User} from '../../../models/api-models/user/user';
+import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
 import {UserResolver} from '../../../resolvers/user/user.resolver';
 import {ViewChild} from '@angular/core';
 
@@ -17,31 +15,14 @@ import {ViewChild} from '@angular/core';
       #confirmationModal>
     </confirmation-modal>`
 })
-export class RegisteredModalComponent implements OnInit, OnDestroy {
+export class RegisteredModalComponent extends BaseComponent {
   @ViewChild('confirmationModal') public confirmationModal: ConfirmationModalComponent;
 
-  public user: User;
-
-  private userSubscription: Subscription;
-
   public constructor(
-    private userResolver: UserResolver
+    protected systemLanguagesResolver: SystemLanguagesResolver,
+    protected userResolver: UserResolver,
   ) {
-  }
-
-  public ngOnInit(): void {
-    this.initUser();
-  }
-
-  private initUser(): void {
-    this.user = this.userResolver.getUser();
-    this.userSubscription = this.userResolver.getUserChangeEmitter().subscribe(user => {
-      this.user = user;
-    });
-  }
-
-  public ngOnDestroy(): void {
-    if (this.userSubscription) { this.userSubscription.unsubscribe(); }
+    super(systemLanguagesResolver, userResolver);
   }
 
   public show() {

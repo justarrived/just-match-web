@@ -1,9 +1,12 @@
+import {BaseComponent} from '../../base.component';
 import {Component} from '@angular/core';
 import {EventEmitter} from '@angular/core';
 import {Input} from '@angular/core';
 import {LoginFormComponent} from '../../forms/login-form/login-form.component';
 import {Output} from '@angular/core';
+import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
 import {User} from '../../../models/api-models/user/user';
+import {UserResolver} from '../../../resolvers/user/user.resolver';
 import {ViewChild} from '@angular/core';
 
 @Component({
@@ -46,13 +49,20 @@ import {ViewChild} from '@angular/core';
     </modal-actions>
   </sm-modal>`
 })
-export class AlreadyRegisteredModalComponent {
+export class AlreadyRegisteredModalComponent extends BaseComponent {
 @Input() public canBeShown: boolean;
 @Input() public emailOrPhone: string = '';
 @Input() public navigateToHome: boolean = true;
 @Output() public onLoggedIn: EventEmitter<User> = new EventEmitter<User>();
 @ViewChild('loginForm') public loginForm: LoginFormComponent;
 @ViewChild('alreadyRegisteredModal') public alreadyRegisteredModal: any;
+
+public constructor(
+  protected systemLanguagesResolver: SystemLanguagesResolver,
+  protected userResolver: UserResolver,
+) {
+  super(systemLanguagesResolver, userResolver);
+}
 
 public show(): void {
   this.alreadyRegisteredModal.show({

@@ -1,9 +1,12 @@
+import {BaseComponent} from '../../base.component';
 import {Component} from '@angular/core';
 import {EventEmitter} from '@angular/core';
 import {Input} from '@angular/core';
-import {RegisterFormComponent} from '../../forms/register-form/register-form.component';
 import {Output} from '@angular/core';
+import {RegisterFormComponent} from '../../forms/register-form/register-form.component';
+import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
 import {User} from '../../../models/api-models/user/user';
+import {UserResolver} from '../../../resolvers/user/user.resolver';
 import {ViewChild} from '@angular/core';
 
 @Component({
@@ -41,11 +44,18 @@ import {ViewChild} from '@angular/core';
       </modal-actions>
     </sm-modal>`
 })
-export class RegisterModalComponent {
+export class RegisterModalComponent extends BaseComponent {
   @Input() public navigateToHome: string;
   @Output() public onRegistered: EventEmitter<User> = new EventEmitter<User>();
   @ViewChild('registerForm') public registerForm: RegisterFormComponent;
   @ViewChild('registerModal') public registerModal: any;
+
+  public constructor(
+    protected systemLanguagesResolver: SystemLanguagesResolver,
+    protected userResolver: UserResolver,
+  ) {
+    super(systemLanguagesResolver, userResolver);
+  }
 
   public show(): void {
     this.registerModal.show({

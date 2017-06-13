@@ -93,7 +93,7 @@ export class LanguageMenuComponent extends BaseComponent {
 
   public systemLanguages: Language[];
 
-  constructor (
+  public constructor (
     protected systemLanguagesResolver: SystemLanguagesResolver,
     protected userResolver: UserResolver,
   ) {
@@ -105,14 +105,14 @@ export class LanguageMenuComponent extends BaseComponent {
   }
 
   public isActiveSystemLanguage(language: Language): boolean {
-    return this.systemLanguagesResolver.getSelectedSystemLanguageCode() === language.languageCode;
+    return this.systemLanguage.languageCode === language.languageCode;
   }
 
   public onSelectLanguage(language: Language) {
     this.isLanguageMenuVisible = false;
     this.isLanguageMenuVisibleChange.emit(this.isLanguageMenuVisible);
     this.systemLanguagesResolver.setSystemLanguage(language);
-    if (this.userResolver.getUser()) {
+    if (this.user) {
       this.userResolver.reloadUser();
     }
   }

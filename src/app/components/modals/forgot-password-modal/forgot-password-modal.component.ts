@@ -1,9 +1,12 @@
+import {BaseComponent} from '../../base.component';
 import {Component} from '@angular/core';
 import {EventEmitter} from '@angular/core';
 import {ForgotPasswordFormComponent} from '../../forms/forgot-password-form/forgot-password-form.component';
 import {Input} from '@angular/core';
 import {Output} from '@angular/core';
+import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
 import {User} from '../../../models/api-models/user/user';
+import {UserResolver} from '../../../resolvers/user/user.resolver';
 import {ViewChild} from '@angular/core';
 
 @Component({
@@ -40,10 +43,17 @@ import {ViewChild} from '@angular/core';
       </modal-actions>
     </sm-modal>`
 })
-export class ForgotPasswordModalComponent {
+export class ForgotPasswordModalComponent extends BaseComponent {
   @Output() public onPasswordLinkSent: EventEmitter<any> = new EventEmitter<any>();
   @ViewChild('forgotPasswordForm') public forgotPasswordForm: ForgotPasswordFormComponent;
   @ViewChild('forgotPasswordModal') public forgotPasswordModal: any;
+
+  public constructor(
+    protected systemLanguagesResolver: SystemLanguagesResolver,
+    protected userResolver: UserResolver,
+  ) {
+    super(systemLanguagesResolver, userResolver);
+  }
 
   public show(): void {
     this.forgotPasswordModal.show({

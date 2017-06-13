@@ -1,10 +1,11 @@
+import {BaseComponent} from '../../base.component';
 import {Component} from '@angular/core';
-import {Input} from '@angular/core';
 import {EventEmitter} from '@angular/core';
-import {Output} from '@angular/core';
+import {Input} from '@angular/core';
 import {JARoutes} from '../../../routes/ja-routes/ja-routes';
-import {Language} from '../../../models/api-models/language/language';
+import {Output} from '@angular/core';
 import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
+import {UserResolver} from '../../../resolvers/user/user.resolver';
 
 @Component({
   selector: 'app-navbar',
@@ -25,7 +26,7 @@ import {SystemLanguagesResolver} from '../../../resolvers/system-languages/syste
           (click)="onLanguageMenuButtonClick()"
           class="app-navbar-button-container">
           <div class="app-navbar-language-icon">
-            {{getSelectedSystemLanguageCode()}}
+            {{systemLanguage.languageCode}}
             <div
               [ngClass]="[isLanguageMenuVisible ? 'fa-caret-up' : 'fa-caret-down']"
               class="fa app-navbar-language-icon-arrow">
@@ -42,19 +43,16 @@ import {SystemLanguagesResolver} from '../../../resolvers/system-languages/syste
   </nav>
   `
 })
-export class AppNavbarComponent {
+export class AppNavbarComponent extends BaseComponent {
   @Input() isLanguageMenuVisible: boolean;
   @Output() onToggleLanguageMenu: EventEmitter<any> = new EventEmitter();
   @Output() onToggleNavigationMenu: EventEmitter<any> = new EventEmitter();
-  public JARoutes = JARoutes;
 
-  constructor (
-    private systemLanguagesResolver: SystemLanguagesResolver
+  public constructor(
+    protected systemLanguagesResolver: SystemLanguagesResolver,
+    protected userResolver: UserResolver,
   ) {
-  }
-
-  public getSelectedSystemLanguageCode() {
-    return this.systemLanguagesResolver.getSelectedSystemLanguage().languageCode;
+    super(systemLanguagesResolver, userResolver);
   }
 
   public onNavigationMenuButtonClick() {

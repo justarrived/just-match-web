@@ -1,9 +1,13 @@
+import {BaseComponent} from '../../base.component';
 import {Component} from '@angular/core';
 import {Input} from '@angular/core';
 import {LanguageMenuComponent} from '../../menus/language-menu/language-menu.component';
 import {NavigationMenuComponent} from '../../menus/navigation-menu/navigation-menu.component';
-import {ViewChild} from '@angular/core';
 import {slideInLeftOutRightAnimation} from '../../../animations/slide-in-left-out-right/slide-in-left-out-right.animation';
+import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
+import {UserResolver} from '../../../resolvers/user/user.resolver';
+import {ViewChild} from '@angular/core';
+
 
 const menuAnimationDuration = 400;
 
@@ -38,7 +42,7 @@ const menuAnimationDuration = 400;
       </div>
     </div>`
 })
-export class DefaultNavigationComponent {
+export class DefaultNavigationComponent extends BaseComponent {
   @ViewChild('languageMenuComponent') public languageMenuComponent: LanguageMenuComponent;
   @ViewChild('navigationMenuComponent') public navigationMenuComponent: NavigationMenuComponent;
 
@@ -46,6 +50,13 @@ export class DefaultNavigationComponent {
 
   public isLanguageMenuVisible: boolean = false;
   public isNavigationMenuVisible: boolean = false;
+
+  public constructor(
+    protected systemLanguagesResolver: SystemLanguagesResolver,
+    protected userResolver: UserResolver,
+  ) {
+    super(systemLanguagesResolver, userResolver);
+  }
 
   public toggleLanguageMenu(): void {
     if (this.isLanguageMenuVisible) {

@@ -1,11 +1,9 @@
+import {BaseComponent} from '../../base.component';
 import {Component} from '@angular/core';
 import {DataStoreService} from '../../../services/data-store.service';
 import {Input} from '@angular/core';
-import {OnDestroy} from '@angular/core';
-import {OnInit} from '@angular/core';
 import {SemanticMessageComponent} from '../../../semantic/message/message'
-import {Subscription} from 'rxjs/Subscription';
-import {User} from '../../../models/api-models/user/user';
+import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
 import {UserMissingTraitsNextFormComponent} from '../../forms/user-missing-traits-next-form/user-missing-traits-next-form.component'
 import {UserResolver} from '../../../resolvers/user/user.resolver';
 import {ViewChild} from '@angular/core';
@@ -41,33 +39,25 @@ import {ViewChild} from '@angular/core';
     </div>
   </sm-message>`
 })
-export class UserMissingTraitsMessageComponent implements OnInit, OnDestroy {
+export class UserMissingTraitsMessageComponent extends BaseComponent {
   @ViewChild(SemanticMessageComponent) public semanticMessageComponent: SemanticMessageComponent;
   @ViewChild(UserMissingTraitsNextFormComponent) public userMissingTraitsNextFormComponent: UserMissingTraitsNextFormComponent;
 
   public suspended: boolean;
-  public user: User;
 
-  private userSubscription: Subscription;
   private readonly userMissingTraitsMessageSuspendedUntilKey: string = 'userMissingTraitsMessageSuspendedUntilKey';
   private readonly suspensionHours: number = 3;
 
   public constructor(
     private dataStoreService: DataStoreService,
-    private userResolver: UserResolver,
+    protected systemLanguagesResolver: SystemLanguagesResolver,
+    protected userResolver: UserResolver,
   ) {
+    super(systemLanguagesResolver, userResolver);
   }
 
-  public ngOnInit(): void {
-    this.initUser();
+  public onInit(): void {
     this.initSuspended();
-  }
-
-  private initUser(): void {
-    this.user = this.userResolver.getUser();
-    this.userSubscription = this.userResolver.getUserChangeEmitter().subscribe(user => {
-      this.user = user;
-    });
   }
 
   private initSuspended(): void {
@@ -75,10 +65,6 @@ export class UserMissingTraitsMessageComponent implements OnInit, OnDestroy {
     if (suspendedUntil && new Date() < suspendedUntil) {
       this.suspended = true;
     }
-  }
-
-  public ngOnDestroy() : void{
-    if (this.userSubscription) { this.userSubscription.unsubscribe(); }
   }
 
   public close(): void {

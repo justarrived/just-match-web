@@ -1,10 +1,13 @@
 import {Application} from '../../../models/api-models/application/application';
+import {BaseComponent} from '../../base.component';
 import {Component} from '@angular/core';
 import {EventEmitter} from '@angular/core';
 import {Input} from '@angular/core';
 import {Job} from '../../../models/api-models/job/job';
 import {Output} from '@angular/core';
 import {SignForJobFormComponent} from '../../forms/sign-for-job-form/sign-for-job-form.component';
+import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
+import {UserResolver} from '../../../resolvers/user/user.resolver';
 import {ViewChild} from '@angular/core';
 
 @Component({
@@ -44,12 +47,19 @@ import {ViewChild} from '@angular/core';
       </modal-actions>
     </sm-modal>`
 })
-export class SignForJobModalComponent {
+export class SignForJobModalComponent extends BaseComponent {
   @Input() public application = null as Application;
   @Input() public job = null as Job;
   @Output() public onSignedForJob: EventEmitter<Application> = new EventEmitter<Application>();
   @ViewChild('signForJobForm') public signForJobForm: SignForJobFormComponent;
   @ViewChild('signForJobModal') public signForJobModal: any;
+
+  public constructor(
+    protected systemLanguagesResolver: SystemLanguagesResolver,
+    protected userResolver: UserResolver,
+  ) {
+    super(systemLanguagesResolver, userResolver);
+  }
 
   public show(): void {
     this.signForJobModal.show({

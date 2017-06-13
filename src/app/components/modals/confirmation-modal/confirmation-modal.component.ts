@@ -1,5 +1,8 @@
+import {BaseComponent} from '../../base.component';
 import {Component} from '@angular/core';
 import {Input} from '@angular/core';
+import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
+import {UserResolver} from '../../../resolvers/user/user.resolver';
 import {ViewChild} from '@angular/core';
 
 @Component({
@@ -43,7 +46,7 @@ import {ViewChild} from '@angular/core';
       </modal-actions>
     </sm-modal>`
 })
-export class ConfirmationModalComponent {
+export class ConfirmationModalComponent extends BaseComponent {
   @Input() public description: string;
   @Input() public header: string;
   @Input() public icon: string;
@@ -51,6 +54,13 @@ export class ConfirmationModalComponent {
   @Input() public imageClasses: string;
 
   @ViewChild('confirmationModal') public confirmationModal: any;
+
+  public constructor(
+    protected systemLanguagesResolver: SystemLanguagesResolver,
+    protected userResolver: UserResolver,
+  ) {
+    super(systemLanguagesResolver, userResolver);
+  }
 
   public show(options?: any) {
     this.confirmationModal.show(options);
