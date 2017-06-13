@@ -1,3 +1,4 @@
+import {BaseComponent} from '../../base.component';
 import {Component} from '@angular/core';
 import {customMapStyle} from '../../../styles/google-maps-styles';
 import {GeolocationService} from '../../../services/geolocation.service';
@@ -5,12 +6,12 @@ import {Inject} from '@angular/core';
 import {isPlatformBrowser} from '@angular/common';
 import {Job} from '../../../models/api-models/job/job';
 import {JobProxy} from '../../../proxies/job/job.proxy';
+import {Language} from '../../../models/api-models/language/language';
 import {MapLocation} from '../../../models/client-models/map-location/map-location';
 import {nbrOfMonthsFromDate} from '../../../utils/date/date.util';
-import {OnInit} from '@angular/core';
 import {PLATFORM_ID} from '@angular/core';
-import {SystemLanguageListener} from '../../../resolvers/system-languages/system-languages.resolver';
 import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
+import {UserResolver} from '../../../resolvers/user/user.resolver';
 import {yyyymmdd} from '../../../utils/date/date.util';
 
 @Component({
@@ -68,7 +69,7 @@ import {yyyymmdd} from '../../../utils/date/date.util';
     </div>`,
   styleUrls: ['./jobs-map.component.scss']
 })
-export class JobsMapComponent extends SystemLanguageListener implements OnInit {
+export class JobsMapComponent extends BaseComponent {
   private readonly defaultMapLocation = new MapLocation({ longitude: 18.0675109, latitude: 59.3349086 });
   private readonly defaultMapZoom = 5;
   private readonly defaultMapStyle = customMapStyle;
@@ -86,13 +87,18 @@ export class JobsMapComponent extends SystemLanguageListener implements OnInit {
     @Inject(PLATFORM_ID) private readonly platformId: any,
     private geolocationService: GeolocationService,
     private jobProxy: JobProxy,
-    protected systemLanguagesResolver: SystemLanguagesResolver
+    protected systemLanguagesResolver: SystemLanguagesResolver,
+    protected userResolver: UserResolver,
   ) {
-    super(systemLanguagesResolver);
+    super(systemLanguagesResolver, userResolver);
   }
 
-  public ngOnInit() {
+  public onInit() {
     this.initLocation();
+    this.loadData();
+  }
+
+  public systemLanguageChanged(systemLanguage: Language): void {
     this.loadData();
   }
 
@@ -114,7 +120,7 @@ export class JobsMapComponent extends SystemLanguageListener implements OnInit {
     }
   }
 
-  protected loadData() {
+  private loadData() {
     this.jobs = this.jobProxy.getJobs({
       'include': 'company,hourly_pay,company.company_images',
       'filter[filled]': false,

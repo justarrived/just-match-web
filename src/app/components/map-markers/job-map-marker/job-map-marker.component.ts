@@ -1,7 +1,9 @@
-import {Component, Input} from '@angular/core';
+import {BaseComponent} from '../../base.component';
+import {Component} from '@angular/core';
+import {Input} from '@angular/core';
 import {Job} from '../../../models/api-models/job/job';
-import {NavigationService} from '../../../services/navigation.service';
-import {JARoutes} from '../../../routes/ja-routes/ja-routes';
+import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
+import {UserResolver} from '../../../resolvers/user/user.resolver';
 
 @Component({
   selector: 'job-map-marker',
@@ -20,12 +22,14 @@ import {JARoutes} from '../../../routes/ja-routes/ja-routes';
       </agm-info-window>
     </agm-marker>`
 })
-export class JobMapMarkerComponent {
+export class JobMapMarkerComponent extends BaseComponent {
   @Input() public job = null as Job;
   public infoVisible: boolean = false;
 
-  constructor(
-    private navigationService: NavigationService
+  public constructor(
+    protected systemLanguagesResolver: SystemLanguagesResolver,
+    protected userResolver: UserResolver,
   ) {
+    super(systemLanguagesResolver, userResolver);
   }
 }

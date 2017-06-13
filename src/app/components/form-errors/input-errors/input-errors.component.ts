@@ -1,9 +1,12 @@
 import {ApiErrors} from '../../../models/api-models/api-errors/api-errors';
+import {BaseComponent} from '../../base.component';
 import {Component} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {Input} from '@angular/core';
 import {OnInit} from '@angular/core';
+import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
 import {TranslateService} from '@ngx-translate/core';
+import {UserResolver} from '../../../resolvers/user/user.resolver';
 
 @Component({
   selector: 'input-errors',
@@ -21,7 +24,7 @@ import {TranslateService} from '@ngx-translate/core';
       </input-error>
     </div>`
 })
-export class InputErrorsComponent implements OnInit {
+export class InputErrorsComponent extends BaseComponent {
   @Input() public apiAttribute: string = null;
   @Input() public control: FormControl;
 
@@ -44,11 +47,15 @@ export class InputErrorsComponent implements OnInit {
 
   private errorLabels: any = {};
 
-  constructor(
-    private translateService: TranslateService
-  ) {}
+  public constructor(
+    private translateService: TranslateService,
+    protected systemLanguagesResolver: SystemLanguagesResolver,
+    protected userResolver: UserResolver,
+  ) {
+    super(systemLanguagesResolver, userResolver);
+  }
 
-  public ngOnInit(): void {
+  public onInit(): void {
     this.errorLabels = {
       maxlength: this.maxLengthLabel,
       minlength: this.minLengthLabel,

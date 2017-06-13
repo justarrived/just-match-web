@@ -1,8 +1,6 @@
+import {BaseComponent} from '../../base.component';
 import {Component} from '@angular/core';
-import {OnDestroy} from '@angular/core';
-import {OnInit} from '@angular/core';
-import {Subscription} from 'rxjs/Subscription';
-import {User} from '../../../models/api-models/user/user';
+import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
 import {UserResolver} from '../../../resolvers/user/user.resolver';
 
 @Component({
@@ -30,28 +28,12 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
       </div>
     </div>`
 })
-export class DefaultLayoutComponent implements OnInit, OnDestroy {
-  public user: User;
-
-  private userSubscription: Subscription;
+export class DefaultLayoutComponent extends BaseComponent {
 
   public constructor(
-    private userResolver: UserResolver
+    protected systemLanguagesResolver: SystemLanguagesResolver,
+    protected userResolver: UserResolver,
   ) {
-  }
-
-  public ngOnInit(): void {
-    this.initUser();
-  }
-
-  private initUser(): void {
-    this.user = this.userResolver.getUser();
-    this.userSubscription = this.userResolver.getUserChangeEmitter().subscribe(user => {
-      this.user = user;
-    });
-  }
-
-  public ngOnDestroy(): void {
-    if (this.userSubscription) { this.userSubscription.unsubscribe(); }
+    super(systemLanguagesResolver, userResolver);
   }
 }
