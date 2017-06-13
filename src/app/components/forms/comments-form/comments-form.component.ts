@@ -1,4 +1,5 @@
 import {ApiErrors} from '../../../models/api-models/api-errors/api-errors';
+import {BaseComponent} from '../../base.component';
 import {ChangeDetectorRef} from '@angular/core';
 import {Comment} from '../../../models/api-models/comment/comment';
 import {CommentProxy} from '../../../proxies/comment/comment.proxy';
@@ -6,9 +7,7 @@ import {Component} from '@angular/core';
 import {FormBuilder} from '@angular/forms';
 import {FormGroup} from '@angular/forms';
 import {Input} from '@angular/core';
-import {OnDestroy} from '@angular/core';
-import {OnInit} from '@angular/core';
-import {Subscription} from 'rxjs/Subscription';
+import {Language} from '../../../models/api-models/language/language';
 import {SystemLanguageListener} from '../../../resolvers/system-languages/system-languages.resolver';
 import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
 import {User} from '../../../models/api-models/user/user';
@@ -49,7 +48,7 @@ import {Validators} from '@angular/forms';
       </form-submit-button>
     </form>`
 })
-export class CommentsFormComponent extends SystemLanguageListener implements OnInit, OnDestroy {
+export class CommentsFormComponent extends BaseComponent {
   @Input() public isInModal: boolean = false;
   @Input() public resourceId: string;
   @Input() public resourceName: string;
@@ -61,30 +60,24 @@ export class CommentsFormComponent extends SystemLanguageListener implements OnI
   public loadingSubmit: boolean;
   public submitFail: boolean;
   public submitSuccess: boolean;
-  public user: User;
-  private userSubscription: Subscription;
 
   public constructor(
     private changeDetector: ChangeDetectorRef,
     private commentProxy: CommentProxy,
     private formBuilder: FormBuilder,
-    private userResolver: UserResolver,
-    protected systemLanguagesResolver: SystemLanguagesResolver
+    protected systemLanguagesResolver: SystemLanguagesResolver,
+    protected userResolver: UserResolver,
   ) {
-    super(systemLanguagesResolver);
+    super(systemLanguagesResolver, userResolver);
   }
 
-  public ngOnInit() {
-    this.initUser();
+  public onInit() {
     this.initForm();
     this.loadData();
   }
 
-  private initUser(): void {
-    this.user = this.userResolver.getUser();
-    this.userSubscription = this.userResolver.getUserChangeEmitter().subscribe(user => {
-      this.user = user;
-    });
+  public systemLanguageChanged(systemLanguage: Language): void {
+    this.loadData();
   }
 
   private initForm(): void {
@@ -93,7 +86,7 @@ export class CommentsFormComponent extends SystemLanguageListener implements OnI
     });
   }
 
-  protected loadData() {
+  private loadData() {
     this.commentsPromise = this.commentProxy.getComments(this.resourceName, this.resourceId, {
       'include': 'owner,owner.user_images,owner.company,owner.company.company_images',
       'sort': '-created_at',
@@ -103,10 +96,6 @@ export class CommentsFormComponent extends SystemLanguageListener implements OnI
       this.comments = comments.reverse();
       return this.comments;
     })
-  }
-
-  public ngOnDestroy(): void {
-    if (this.userSubscription) { this.userSubscription.unsubscribe(); }
   }
 
   private handleServerErrors(errors): void {

@@ -2,13 +2,14 @@ import {ActivatedRoute} from '@angular/router';
 import {ApiErrors} from '../../../models/api-models/api-errors/api-errors';
 import {Application} from '../../../models/api-models/application/application';
 import {ApplicationProxy} from '../../../proxies/application/application.proxy';
+import {BaseComponent} from '../../base.component';
 import {ChangeDetectorRef} from '@angular/core';
 import {Component} from '@angular/core';
 import {FormBuilder} from '@angular/forms';
 import {FormGroup} from '@angular/forms';
 import {Input} from '@angular/core';
 import {Job} from '../../../models/api-models/job/job';
-import {OnInit} from '@angular/core';
+import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
 import {UserResolver} from '../../../resolvers/user/user.resolver';
 import {Validators} from '@angular/forms';
 
@@ -39,7 +40,7 @@ import {Validators} from '@angular/forms';
       </form-submit-button>
     </form>`
 })
-export class ApplyForJobFormComponent implements OnInit {
+export class ApplyForJobFormComponent extends BaseComponent {
   @Input() public job = null as Job;
   @Input() public isInModal: boolean = false;
 
@@ -54,11 +55,13 @@ export class ApplyForJobFormComponent implements OnInit {
     private changeDetector: ChangeDetectorRef,
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
-    private userResolver: UserResolver
+    protected systemLanguagesResolver: SystemLanguagesResolver,
+    protected userResolver: UserResolver,
   ) {
+    super(systemLanguagesResolver, userResolver);
   }
 
-  public ngOnInit(): void {
+  public onInit(): void {
     this.initForm();
   }
 
