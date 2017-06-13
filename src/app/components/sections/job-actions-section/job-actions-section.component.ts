@@ -1,17 +1,15 @@
 import {Application} from '../../../models/api-models/application/application';
 import {ApplicationProxy} from '../../../proxies/application/application.proxy';
+import {BaseComponent} from '../../base.component';
 import {Component} from '@angular/core';
 import {EventEmitter} from '@angular/core';
 import {Input} from '@angular/core';
 import {Job} from '../../../models/api-models/job/job';
+import {Language} from '../../../models/api-models/language/language';
 import {MissingUserTraits} from '../../../models/api-models/missing-user-traits/missing-user-traits';
 import {MissingUserTraitsProxy} from '../../../proxies/missing-user-traits/missing-user-traits.proxy';
 import {ModalService} from '../../../services/modal.service';
-import {OnDestroy} from '@angular/core';
-import {OnInit} from '@angular/core';
 import {Output} from '@angular/core';
-import {Subscription} from 'rxjs/Subscription';
-import {SystemLanguageListener} from '../../../resolvers/system-languages/system-languages.resolver';
 import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
 import {User} from '../../../models/api-models/user/user';
 import {UserResolver} from '../../../resolvers/user/user.resolver';
@@ -105,7 +103,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
       </div>
     </a>`
 })
-export class JobActionsSectionComponent extends SystemLanguageListener implements OnInit, OnDestroy {
+export class JobActionsSectionComponent extends BaseComponent {
   @Input() public application = null as Application;
   @Input() public job = null as Job;
   @Input() public hideReadMore: boolean = false;
@@ -114,31 +112,27 @@ export class JobActionsSectionComponent extends SystemLanguageListener implement
 
   public missingUserTraits: MissingUserTraits;
   public promises: Promise<any>;
-  public user: User;
-
-  private userSubscription: Subscription;
 
   public constructor(
     private applicationProxy: ApplicationProxy,
     private missingUserTraitsProxy: MissingUserTraitsProxy,
-    private userResolver: UserResolver,
     private modalService: ModalService,
-    protected systemLanguagesResolver: SystemLanguagesResolver
+    protected systemLanguagesResolver: SystemLanguagesResolver,
+    protected userResolver: UserResolver,
   ) {
-    super(systemLanguagesResolver);
+    super(systemLanguagesResolver, userResolver);
   }
 
-  public ngOnInit(): void {
-    this.initUser();
+  public onInit(): void {
     this.loadData();
   }
 
-  private initUser(): void {
-    this.user = this.userResolver.getUser();
-    this.userSubscription = this.userResolver.getUserChangeEmitter().subscribe(user => {
-      this.user = user;
-      this.loadData();
-    });
+  public systemLanguageChanged(systemLanguage: Language): void {
+    this.loadData();
+  }
+
+  public userChanged(user: User): void {
+    this.loadData();
   }
 
   protected loadData(): void {
@@ -158,10 +152,6 @@ export class JobActionsSectionComponent extends SystemLanguageListener implement
     }
 
     this.promises = Promise.all(dataPromises);
-  }
-
-  public ngOnDestroy(): void {
-    if (this.userSubscription) { this.userSubscription.unsubscribe(); }
   }
 
   public onApplyForJobButtonClick(): void {

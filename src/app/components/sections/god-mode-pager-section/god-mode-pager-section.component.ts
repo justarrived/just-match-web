@@ -1,14 +1,10 @@
 import {ActivatedRoute} from '@angular/router';
+import {BaseComponent} from '../../base.component';
 import {Component} from '@angular/core';
 import {Input} from '@angular/core';
 import {JARoute} from '../../../routes/ja-route/ja-route';
-import {JARoutes} from '../../../routes/ja-routes/ja-routes';
 import {Language} from '../../../models/api-models/language/language';
 import {NavigationService} from '../../../services/navigation.service';
-import {OnDestroy} from '@angular/core';
-import {OnInit} from '@angular/core';
-import {Subscription} from 'rxjs/Subscription';
-import {SystemLanguageListener} from '../../../resolvers/system-languages/system-languages.resolver';
 import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
 import {User} from '../../../models/api-models/user/user';
 import {UserProxy} from '../../../proxies/user/user.proxy';
@@ -67,7 +63,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
     </basic-pager>
     `
 })
-export class GodModePagerSectionComponent extends SystemLanguageListener implements OnInit, OnDestroy {
+export class GodModePagerSectionComponent extends BaseComponent {
   @Input() currentRoute: JARoute;
 
   @Input("filters")
@@ -85,30 +81,24 @@ export class GodModePagerSectionComponent extends SystemLanguageListener impleme
   public total: number = 0;
   public users: Promise<User[]>;
   public actAsUser: Promise<User>;
-  public systemLanguage: Language;
 
-  private systemLanguageSubscription: Subscription;
 
   public constructor(
     private activatedRoute: ActivatedRoute,
     private userProxy: UserProxy,
-    private userResolver: UserResolver,
     private navigationService: NavigationService,
     protected systemLanguagesResolver: SystemLanguagesResolver,
+    protected userResolver: UserResolver,
   ) {
-    super(systemLanguagesResolver);
+    super(systemLanguagesResolver, userResolver);
   }
 
-  public ngOnInit(): void {
-    this.initSystemLanguage();
+  public onInit(): void {
     this.userResolver.deactivateGodMode();
   }
 
-  private initSystemLanguage(): void {
-    this.systemLanguage = this.systemLanguagesResolver.getSelectedSystemLanguage();
-    this.systemLanguageSubscription = this.systemLanguagesResolver.getSystemLanguageChangeEmitter().subscribe(systemLanguage => {
-      this.systemLanguage = systemLanguage;
-    });
+  public systemLanguageChanged(systemLanguage: Language): void {
+    this.loadData();
   }
 
   protected loadData(): void {
@@ -132,10 +122,6 @@ export class GodModePagerSectionComponent extends SystemLanguageListener impleme
     });
   }
 
-  public ngOnDestroy() {
-    if (this.systemLanguageSubscription) { this.systemLanguageSubscription.unsubscribe(); }
-  }
-
   public onPageChange(page: number): void {
     this.page = page;
     this.loadData();
@@ -147,7 +133,7 @@ export class GodModePagerSectionComponent extends SystemLanguageListener impleme
     })
     .then(user => {
       this.userResolver.activateGodMode(user);
-      this.navigationService.navigate(JARoutes.home);
+      this.navigationService.navigate(this.JARoutes.home);
       return user;
     });
   }

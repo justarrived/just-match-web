@@ -1,4 +1,7 @@
+import {BaseComponent} from '../../base.component';
 import {Component} from '@angular/core';
+import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
+import {UserResolver} from '../../../resolvers/user/user.resolver';
 
 @Component({
   selector: 'partners-section',
@@ -84,4 +87,12 @@ import {Component} from '@angular/core';
       </div>
     </div>`
 })
-export class PartnersSectionComponent {}
+export class PartnersSectionComponent extends BaseComponent {
+
+  public constructor(
+    protected systemLanguagesResolver: SystemLanguagesResolver,
+    protected userResolver: UserResolver,
+  ) {
+    super(systemLanguagesResolver, userResolver);
+  }
+}

@@ -1,5 +1,7 @@
+import {BaseComponent} from '../../base.component';
 import {Component} from '@angular/core';
-import {JARoutes} from '../../../routes/ja-routes/ja-routes';
+import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
+import {UserResolver} from '../../../resolvers/user/user.resolver';
 
 @Component({
   selector: 'how-it-works-section',
@@ -115,6 +117,12 @@ import {JARoutes} from '../../../routes/ja-routes/ja-routes';
       </div>
     </div>`
 })
-export class HowItWorksSectionComponent {
-  public JARoutes = JARoutes;
+export class HowItWorksSectionComponent extends BaseComponent {
+
+  public constructor(
+    protected systemLanguagesResolver: SystemLanguagesResolver,
+    protected userResolver: UserResolver,
+  ) {
+    super(systemLanguagesResolver, userResolver);
+  }
 }

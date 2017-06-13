@@ -99,8 +99,6 @@ export class JobFactory {
       return;
     }
 
-    console.log(jsonObject);
-
     return {
       applicantDescription: jsonObject.applicant_description,
       applicantDescriptionHtml: jsonObject.applicant_description_html,

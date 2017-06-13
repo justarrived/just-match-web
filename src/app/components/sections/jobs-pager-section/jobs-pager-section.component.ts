@@ -1,4 +1,5 @@
 import {ActivatedRoute} from '@angular/router';
+import {BaseComponent} from '../../base.component';
 import {Component} from '@angular/core';
 import {Input} from '@angular/core';
 import {JARoute} from '../../../routes/ja-route/ja-route';
@@ -7,11 +8,9 @@ import {JobProxy} from '../../../proxies/job/job.proxy';
 import {Language} from '../../../models/api-models/language/language';
 import {NavigationService} from '../../../services/navigation.service';
 import {nbrOfMonthsFromDate} from '../../../utils/date/date.util';
-import {OnDestroy} from '@angular/core';
-import {OnInit} from '@angular/core';
 import {Subscription} from 'rxjs/Subscription';
-import {SystemLanguageListener} from '../../../resolvers/system-languages/system-languages.resolver';
 import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
+import {UserResolver} from '../../../resolvers/user/user.resolver';
 import {yyyymmdd} from '../../../utils/date/date.util';
 
 // Component requires a route with a :page param
@@ -54,37 +53,32 @@ import {yyyymmdd} from '../../../utils/date/date.util';
       [pageSize]="pageSize">
     </basic-pager>`
 })
-export class JobsPagerSectionComponent extends SystemLanguageListener implements OnInit, OnDestroy {
+export class JobsPagerSectionComponent extends BaseComponent {
   @Input() currentRoute: JARoute;
 
   public jobsMetaPromise: Promise<{jobs: Job[], meta: any}>;
   public totalJobs: number = 0;
   public page: number = 1;
   public pageSize: number = 12;
-  public systemLanguage: Language;
 
-  private systemLanguageSubscription: Subscription;
   private routeParamsSubscription: Subscription;
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private jobProxy: JobProxy,
     private navigationService: NavigationService,
-    protected systemLanguagesResolver: SystemLanguagesResolver
+    protected systemLanguagesResolver: SystemLanguagesResolver,
+    protected userResolver: UserResolver,
   ) {
-    super(systemLanguagesResolver);
+    super(systemLanguagesResolver, userResolver);
   }
 
-  public ngOnInit(): void {
-    this.initSystemLanguage();
+  public onInit(): void {
     this.initRouteParamsSubscription();
   }
 
-  private initSystemLanguage(): void {
-    this.systemLanguage = this.systemLanguagesResolver.getSelectedSystemLanguage();
-    this.systemLanguageSubscription = this.systemLanguagesResolver.getSystemLanguageChangeEmitter().subscribe(systemLanguage => {
-      this.systemLanguage = systemLanguage;
-    });
+  public systemLanguageChanged(systemLanguage: Language): void {
+    this.loadData();
   }
 
   private initRouteParamsSubscription(): void {
@@ -98,7 +92,7 @@ export class JobsPagerSectionComponent extends SystemLanguageListener implements
     });
   }
 
-  protected loadData(): void {
+  private loadData(): void {
     this.jobsMetaPromise = this.jobProxy.getJobsWithMeta({
       'include': 'company,hourly_pay,company.company_images',
       'filter[filled]': false,
@@ -118,9 +112,8 @@ export class JobsPagerSectionComponent extends SystemLanguageListener implements
     });
   }
 
-  public ngOnDestroy(): void {
+  public onDestroy(): void {
     if (this.routeParamsSubscription) { this.routeParamsSubscription.unsubscribe(); }
-    if (this.systemLanguageSubscription) { this.systemLanguageSubscription.unsubscribe(); }
   }
 
   public onPageChange(page: number): void {

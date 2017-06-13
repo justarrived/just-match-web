@@ -1,13 +1,9 @@
 import {Application} from '../../../models/api-models/application/application';
 import {ApplicationProxy} from '../../../proxies/application/application.proxy';
+import {BaseComponent} from '../../base.component';
 import {Component} from '@angular/core';
-import {JARoutes} from '../../../routes/ja-routes/ja-routes';
 import {Language} from '../../../models/api-models/language/language';
 import {nbrOfMonthsFromDate} from '../../../utils/date/date.util';
-import {OnDestroy} from '@angular/core';
-import {OnInit} from '@angular/core';
-import {Subscription} from 'rxjs/Subscription';
-import {SystemLanguageListener} from '../../../resolvers/system-languages/system-languages.resolver';
 import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
 import {User} from '../../../models/api-models/user/user';
 import {UserResolver} from '../../../resolvers/user/user.resolver';
@@ -55,45 +51,30 @@ import {yyyymmdd} from '../../../utils/date/date.util';
     </div>
     `
 })
-export class ApplicationsStatusSectionComponent extends SystemLanguageListener implements OnInit, OnDestroy  {
-  public JARoutes = JARoutes;
-  public user: User;
+export class ApplicationsStatusSectionComponent extends BaseComponent {
   public applications: Promise<Application[]> = Promise.resolve([]);
-  public systemLanguage: Language;
-
-  private systemLanguageSubscription: Subscription;
-  private userSubscription: Subscription;
 
   public constructor(
     private applicationProxy: ApplicationProxy,
-    private userResolver: UserResolver,
     protected systemLanguagesResolver: SystemLanguagesResolver,
+    protected userResolver: UserResolver,
   ) {
-    super(systemLanguagesResolver);
+    super(systemLanguagesResolver, userResolver);
   }
 
-  public ngOnInit() {
-    this.initSystemLanguage();
-    this.initUser();
+  public onInit() {
     this.loadData();
   }
 
-  private initSystemLanguage(): void {
-    this.systemLanguage = this.systemLanguagesResolver.getSelectedSystemLanguage();
-    this.systemLanguageSubscription = this.systemLanguagesResolver.getSystemLanguageChangeEmitter().subscribe(systemLanguage => {
-      this.systemLanguage = systemLanguage;
-    });
+  public systemLanguageChanged(systemLanguage: Language): void {
+    this.loadData();
   }
 
-  private initUser() {
-    this.user = this.userResolver.getUser();
-    this.userSubscription = this.userResolver.getUserChangeEmitter().subscribe(user => {
-      this.user = user;
-      this.loadData();
-    });
+  public userChanged(user: User): void {
+    this.loadData();
   }
 
-  protected loadData(): void {
+  private loadData(): void {
     if (this.user) {
       this.applications = this.applicationProxy.getUserApplications(this.user.id, {
         'include': 'job',
@@ -101,10 +82,5 @@ export class ApplicationsStatusSectionComponent extends SystemLanguageListener i
         'page[size]': 14
       });
     }
-  }
-
-  public ngOnDestroy() {
-    if (this.userSubscription) { this.userSubscription.unsubscribe(); }
-    if (this.systemLanguageSubscription) { this.systemLanguageSubscription.unsubscribe(); }
   }
 }

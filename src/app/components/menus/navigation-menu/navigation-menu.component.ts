@@ -208,7 +208,6 @@ export class NavigationMenuComponent extends BaseComponent {
   @Output() public isNavigationMenuVisibleChange: EventEmitter<boolean> = new EventEmitter<boolean>();
   @ViewChild('navigationSidebar') public navigationSidebar;
 
-  public JARoutes = JARoutes;
   public admin: boolean;
 
   private routerEventSubscription: Subscription;

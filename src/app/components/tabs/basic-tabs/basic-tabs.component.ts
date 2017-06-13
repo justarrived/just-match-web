@@ -1,5 +1,9 @@
+import {BaseComponent} from '../../base.component';
 import {BasicTabComponent} from '../basic-tab/basic-tab.component';
 import {Component} from '@angular/core';
+import {Input} from '@angular/core';
+import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
+import {UserResolver} from '../../../resolvers/user/user.resolver';
 
 @Component({
   selector: 'basic-tabs',
@@ -27,8 +31,15 @@ import {Component} from '@angular/core';
     <ng-content></ng-content>
     `
 })
-export class BasicTabsComponent {
+export class BasicTabsComponent extends BaseComponent {
   public tabs: BasicTabComponent[] = [];
+
+  public constructor(
+    protected systemLanguagesResolver: SystemLanguagesResolver,
+    protected userResolver: UserResolver,
+  ) {
+    super(systemLanguagesResolver, userResolver);
+  }
 
   public selectTab(tab: BasicTabComponent): void {
     for (let tab of this.tabs) {

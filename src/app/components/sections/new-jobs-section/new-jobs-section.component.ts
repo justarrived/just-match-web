@@ -1,14 +1,11 @@
+import {BaseComponent} from '../../base.component';
 import {Component} from '@angular/core';
-import {JARoutes} from '../../../routes/ja-routes/ja-routes';
 import {Job} from '../../../models/api-models/job/job';
 import {JobProxy} from '../../../proxies/job/job.proxy';
 import {Language} from '../../../models/api-models/language/language';
 import {nbrOfMonthsFromDate} from '../../../utils/date/date.util';
-import {OnDestroy} from '@angular/core';
-import {OnInit} from '@angular/core';
-import {Subscription} from 'rxjs/Subscription';
-import {SystemLanguageListener} from '../../../resolvers/system-languages/system-languages.resolver';
 import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
+import {UserResolver} from '../../../resolvers/user/user.resolver';
 import {yyyymmdd} from '../../../utils/date/date.util';
 
 @Component({
@@ -48,23 +45,22 @@ import {yyyymmdd} from '../../../utils/date/date.util';
     </div>
     `
 })
-export class NewJobsSectionComponent extends SystemLanguageListener implements OnInit, OnDestroy {
-  public JARoutes = JARoutes;
+export class NewJobsSectionComponent extends BaseComponent {
   public newJobs: Promise<Job[]>;
-
-  public systemLanguage: Language;
-
-  private systemLanguageSubscription: Subscription;
 
   public constructor(
     private jobProxy: JobProxy,
-    protected systemLanguagesResolver: SystemLanguagesResolver
+    protected systemLanguagesResolver: SystemLanguagesResolver,
+    protected userResolver: UserResolver,
   ) {
-    super(systemLanguagesResolver);
+    super(systemLanguagesResolver, userResolver);
   }
 
-  public ngOnInit(): void {
-    this.initSystemLanguage();
+  public onInit(): void {
+    this.loadData();
+  }
+
+  public systemLanguageChanged(systemLanguage: Language): void {
     this.loadData();
   }
 
@@ -76,16 +72,5 @@ export class NewJobsSectionComponent extends SystemLanguageListener implements O
       'page[size]': 4,
       'sort': '-created_at',
     });
-  }
-
-  private initSystemLanguage(): void {
-    this.systemLanguage = this.systemLanguagesResolver.getSelectedSystemLanguage();
-    this.systemLanguageSubscription = this.systemLanguagesResolver.getSystemLanguageChangeEmitter().subscribe(systemLanguage => {
-      this.systemLanguage = systemLanguage;
-    });
-  }
-
-  public ngOnDestroy(): void {
-    if (this.systemLanguageSubscription) { this.systemLanguageSubscription.unsubscribe(); }
   }
 }
