@@ -27,6 +27,10 @@ textarea {
   border-radius: 1rem !important;
 }
 
+.ui.upward.selection.dropdown.visible {
+  border-radius: 0 0 1rem 1rem !important;
+}
+
 .ui.selection.dropdown .menu {
   border-radius: 0 0 1rem 1rem !important;
 }
