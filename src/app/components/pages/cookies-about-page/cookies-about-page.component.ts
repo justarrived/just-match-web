@@ -10,10 +10,10 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
 
 @Component({
   template: `
-  <basic-border-header
+  <basic-border-section
     [header]="'cookies.info.title' | translate"
     icon="exclamation">
-  </basic-border-header>
+  </basic-border-section>
   <div class="ui basic very padded segment">
     <info-message
       [header]="'cookies.info.description' | translate"

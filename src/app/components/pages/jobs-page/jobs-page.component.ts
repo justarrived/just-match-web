@@ -13,10 +13,10 @@ import {ViewChild} from '@angular/core';
 
 @Component({
   template: `
-    <basic-border-header
+    <basic-border-section
       [header]="'jobs.title' | translate: {nbrOfJobs: jobsPagerSectionComponent.totalJobs}"
       icon="search">
-    </basic-border-header>
+    </basic-border-section>
 
     <jobs-map></jobs-map>
 

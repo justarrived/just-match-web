@@ -12,10 +12,10 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
   template:
   `
   <div class="reset-password-container">
-    <basic-border-header
+    <basic-border-section
       [header]="'reset.password.title' | translate"
       icon="key">
-    </basic-border-header>
+    </basic-border-section>
 
     <div class="ui centered grid reset-password-form-container">
       <div class="fourteen wide mobile ten wide tablet eight wide computer column">

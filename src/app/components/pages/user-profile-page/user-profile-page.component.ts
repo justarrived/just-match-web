@@ -11,7 +11,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
 @Component({
   selector: 'user-profile-page',
   template: `
-    <user-profile-header></user-profile-header>
+    <user-profile-banner-section></user-profile-banner-section>
 
     <basic-tabs>
       <basic-tab [tabTitle]="'user.profile.tab.profile.details.title' | translate">

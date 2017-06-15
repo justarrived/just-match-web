@@ -1,9 +1,9 @@
 @import '../../../styles/colors';
 @import '../../../styles/dimensions';
 
-.basic-border-header-container {
+.basic-border-section-container {
   background-color: $color-gray-800 !important;
-  height: $basic-border-header-height;
+  height: $basic-border-section-height;
   padding: 0 !important;
   display: flex;
   flex-direction: column;

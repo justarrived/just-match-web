@@ -5,10 +5,10 @@ import {SystemLanguagesResolver} from '../../../resolvers/system-languages/syste
 import {UserResolver} from '../../../resolvers/user/user.resolver';
 
 @Component({
-  selector: 'basic-border-header',
-  styleUrls: ['./basic-border-header.component.scss'],
+  selector: 'basic-border-section',
+  styleUrls: ['./basic-border-section.component.scss'],
   template: `
-  <div class="ui basic center aligned segment basic-border-header-container">
+  <div class="ui basic center aligned segment basic-border-section-container">
     <basic-title-text
       [iconLeft]="icon"
       [text]="header"
@@ -20,7 +20,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
     </basic-title-text>
   </div>`
 })
-export class BasicBorderHeaderComponent extends BaseComponent {
+export class BasicBorderSectionComponent extends BaseComponent {
   @Input() header: string;
   @Input() icon: string;
 

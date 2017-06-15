@@ -10,10 +10,10 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
 
 @Component({
   template: `
-  <basic-border-header
+  <basic-border-section
     [header]="'faq.title' | translate"
     icon="info circle">
-  </basic-border-header>
+  </basic-border-section>
   <faq-accordion></faq-accordion>
   `
 })

@@ -23,7 +23,7 @@ import {BaseMessageComponent} from './components/messages/base-message/base-mess
 import {BaseModalComponent} from './components/modals/base-modal/base-modal.component';
 import {BasicAccordionComponent} from './components/accordions/basic-accordion/basic-accordion.component';
 import {BasicAccordionItemComponent} from './components/items/basic-accordion-item/basic-accordion-item.component';
-import {BasicBorderHeaderComponent} from './components/headers/basic-border-header/basic-border-header.component';
+import {BasicBorderSectionComponent} from './components/sections/basic-border-section/basic-border-section.component';
 import {BasicChatComponent} from './components/chats/basic-chat/basic-chat.component';
 import {BasicChatMessageComponent} from './components/chat-message/basic-chat-message/basic-chat-message.component';
 import {BasicChatMessagesComponent} from './components/chat-messages/basic-chat-messages/basic-chat-messages.component';
@@ -200,12 +200,12 @@ import {UserImageCircularInputComponent} from './components/inputs/user-image-ci
 import {UserMissingTraitsMessageComponent} from './components/messages/user-missing-traits-message/user-missing-traits-message.component';
 import {UserMissingTraitsNextFormComponent} from './components/forms/user-missing-traits-next-form/user-missing-traits-next-form.component';
 import {UserProfileFormComponent} from './components/forms/user-profile-form/user-profile-form.component';
-import {UserProfileHeaderComponent} from './components/headers/user-profile-header/user-profile-header.component';
+import {UserProfileBannerSectionComponent} from './components/sections/user-profile-banner-section/user-profile-banner-section.component';
 import {UserProfilePageComponent} from './components/pages/user-profile-page/user-profile-page.component';
 import {UserResolver} from './resolvers/user/user.resolver';
 import {UsersFilterComponent} from './components/filters/users-filter/users-filter.component';
 import {UserUpdateFormComponent} from './components/forms/user-update-form/user-update-form.component';
-import {WelcomeHeaderComponent} from './components/headers/welcome-header/welcome-header.component';
+import {WelcomeBannerSectionComponent} from './components/sections/welcome-banner-section/welcome-banner-section.component';
 import {WorkPermitBackInputComponent} from './components/inputs/work-permit-back-input/work-permit-back-input.component';
 import {WorkPermitFrontInputComponent} from './components/inputs/work-permit-front-input/work-permit-front-input.component';
 import {YesNoInputComponent} from './components/inputs/yes-no-input/yes-no-input.component';
@@ -269,7 +269,7 @@ export class RavenErrorHandler implements ErrorHandler {
     BaseModalComponent,
     BasicAccordionComponent,
     BasicAccordionItemComponent,
-    BasicBorderHeaderComponent,
+    BasicBorderSectionComponent,
     BasicChatComponent,
     BasicChatMessageComponent,
     BasicChatMessagesComponent,
@@ -428,11 +428,11 @@ export class RavenErrorHandler implements ErrorHandler {
     UserMissingTraitsMessageComponent,
     UserMissingTraitsNextFormComponent,
     UserProfileFormComponent,
-    UserProfileHeaderComponent,
+    UserProfileBannerSectionComponent,
     UserProfilePageComponent,
     UsersFilterComponent,
     UserUpdateFormComponent,
-    WelcomeHeaderComponent,
+    WelcomeBannerSectionComponent,
     WorkPermitBackInputComponent,
     WorkPermitFrontInputComponent,
     YesNoInputComponent,

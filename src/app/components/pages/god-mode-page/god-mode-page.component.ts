@@ -13,10 +13,10 @@ import {ViewChild} from '@angular/core';
 
 @Component({
   template: `
-    <basic-border-header
+    <basic-border-section
       [header]="'god.mode.title' | translate: {numberOfUsers: godModeUsersSectionComponent.total}"
       icon="search">
-    </basic-border-header>
+    </basic-border-section>
 
     <users-filter (onFiltersChanged)="onFiltersChanged($event)"></users-filter>
 

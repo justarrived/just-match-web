@@ -2,14 +2,14 @@
 @import '../../../styles/dimensions';
 @import '../../../styles/typography';
 
-.welcome-header-container {
+.welcome-banner-section-container {
   background-color: linear-gradient($color-cerise-600, $color-primary-cerise) !important;
   background: url('/assets/images/home-header-background.jpg') !important;
   background-size: cover !important;
   background-repeat: no-repeat !important;
   background-position: center center !important;
 
-  .welcome-header-button-outer-container {
+  .welcome-banner-section-button-outer-container {
     @media screen and (max-width: $tablet-max-width) {
       justify-content: center;
     }

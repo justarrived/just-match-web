@@ -10,10 +10,10 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
 
 @Component({
   template: `
-  <basic-border-header
+  <basic-border-section
     [header]="'contact.title' | translate"
     icon="comments">
-  </basic-border-header>
+  </basic-border-section>
   <div class="ui centered grid">
     <div class="fourteen wide mobile ten wide tablet eight wide computer column">
       <div class="contact-form-container">

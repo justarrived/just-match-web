@@ -11,10 +11,10 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
 @Component({
   styleUrls: ['./support-chat-page.component.scss'],
   template: `
-  <basic-border-header
+  <basic-border-section
     [header]="'support.chat.page.title' | translate"
     icon="comments">
-  </basic-border-header>
+  </basic-border-section>
   <div class="ui centered grid chat-container">
     <div class="sixteen wide mobile twelve wide tablet ten wide computer column">
       <support-chat></support-chat>

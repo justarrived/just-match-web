@@ -4,10 +4,10 @@ import {SystemLanguagesResolver} from '../../../resolvers/system-languages/syste
 import {UserResolver} from '../../../resolvers/user/user.resolver';
 
 @Component({
-  selector: 'user-profile-header',
-  styleUrls: ['./user-profile-header.component.scss'],
+  selector: 'user-profile-banner-section',
+  styleUrls: ['./user-profile-banner-section.component.scss'],
   template: `
-  <div class="ui centered grid user-profile-header-container">
+  <div class="ui centered grid user-profile-banner-section-container">
     <div class="fourteen wide mobile ten wide tablet eight wide computer column">
       <div class="ui basic segment">
         <profile-image-input
@@ -36,7 +36,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
     </div>
   </div>`
 })
-export class UserProfileHeaderComponent extends BaseComponent {
+export class UserProfileBannerSectionComponent extends BaseComponent {
 
   public constructor(
     protected systemLanguagesResolver: SystemLanguagesResolver,

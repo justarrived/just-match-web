@@ -10,9 +10,9 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
 
 @Component({
   template: `
-  <basic-border-header
+  <basic-border-section
     [header]="'lost.connection.title' | translate">
-  </basic-border-header>
+  </basic-border-section>
   <div class="ui basic very padded segment">
     <error-message
       header="{{'lost.connection.description' | translate}} 😞">

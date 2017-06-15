@@ -4,9 +4,9 @@ import {SystemLanguagesResolver} from '../../../resolvers/system-languages/syste
 import {UserResolver} from '../../../resolvers/user/user.resolver';
 
 @Component({
-  selector: 'welcome-header',
+  selector: 'welcome-banner-section',
   template: `
-    <div class="ui basic segment welcome-header-container">
+    <div class="ui basic segment welcome-banner-section-container">
       <div class="ui centered grid">
         <div class="sixteen wide mobile twelve wide tablet ten wide computer column">
         <basic-title-text
@@ -53,9 +53,9 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
         <div
           [style.display]="'flex'"
           [style.direction]="systemLanguage.direction"
-          class="welcome-header-button-outer-container">
+          class="welcome-banner-section-button-outer-container">
           <div
-            class="welcome-header-button-container">
+            class="welcome-banner-section-button-container">
             <div *ngIf="!user">
               <base-button
                 [buttonText]="'home.header.logged.out.register.button' | translate"
@@ -96,9 +96,9 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
       </div>
       </div>
     </div>`,
-  styleUrls: ['./welcome-header.component.scss']
+  styleUrls: ['./welcome-banner-section.component.scss']
 })
-export class WelcomeHeaderComponent extends BaseComponent {
+export class WelcomeBannerSectionComponent extends BaseComponent {
 
   public constructor (
     protected systemLanguagesResolver: SystemLanguagesResolver,

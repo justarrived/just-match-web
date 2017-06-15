@@ -10,7 +10,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
 
 @Component({
   template: `
-    <welcome-header></welcome-header>
+    <welcome-banner-section></welcome-banner-section>
 
     <user-missing-traits-message></user-missing-traits-message>
 
