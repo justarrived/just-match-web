@@ -89,6 +89,8 @@ export class SemanticSelectComponent implements OnInit, OnDestroy, AfterViewInit
   public ngAfterViewInit(): void {
 
     const options: {} = Object.assign({
+      sortSelect: true,
+      forceSelection: false,
       onChange: (value: string) => {
         this.onChange.emit(value);
       },
