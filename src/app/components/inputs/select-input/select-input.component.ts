@@ -1,5 +1,4 @@
-import {AfterViewInit} from "@angular/core";
-import {ChangeDetectionStrategy} from "@angular/core";
+import {BaseComponent} from '../../base.component';
 import {Component} from "@angular/core";
 import {ElementRef} from "@angular/core";
 import {EventEmitter} from "@angular/core";
@@ -7,19 +6,16 @@ import {FormControl} from "@angular/forms";
 import {Inject} from "@angular/core";
 import {Input} from "@angular/core";
 import {isPlatformBrowser} from '@angular/common';
-import {Language} from '../../models/api-models/language/language';
-import {OnDestroy} from '@angular/core';
-import {OnInit} from '@angular/core';
 import {Output} from "@angular/core";
 import {PLATFORM_ID} from "@angular/core";
-import {Subscription} from 'rxjs/Subscription';
-import {SystemLanguagesResolver} from '../../resolvers/system-languages/system-languages.resolver';
+import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
+import {UserResolver} from '../../../resolvers/user/user.resolver';
 import {ViewChild} from "@angular/core";
 
 declare var jQuery: any;
 
 @Component({
-  selector: "sm-select",
+  selector: "select-input",
   template: `
     <basic-text
       [text]="label"
@@ -45,7 +41,7 @@ declare var jQuery: any;
       </select>
     </div>`
 })
-export class SemanticSelectComponent implements OnInit, OnDestroy, AfterViewInit {
+export class SelectInputComponent extends BaseComponent {
   @Input() public control: FormControl = new FormControl();
   @Input() public class: string;
   @Input() public label: string;
@@ -65,29 +61,15 @@ export class SemanticSelectComponent implements OnInit, OnDestroy, AfterViewInit
     }
   }
 
-  public systemLanguage: Language;
-
-  private systemLanguageSubscription: Subscription;
-
   public constructor(
     @Inject(PLATFORM_ID) private readonly platformId: any,
-    private systemLanguagesResolver: SystemLanguagesResolver,
+    protected systemLanguagesResolver: SystemLanguagesResolver,
+    protected userResolver: UserResolver,
   ) {
+    super(systemLanguagesResolver, userResolver);
   }
 
-  public ngOnInit(): void {
-    this.initSystemLanguage()
-  }
-
-  private initSystemLanguage(): void {
-    this.systemLanguage = this.systemLanguagesResolver.getSelectedSystemLanguage();
-    this.systemLanguageSubscription = this.systemLanguagesResolver.getSystemLanguageChangeEmitter().subscribe(systemLanguage => {
-      this.systemLanguage = systemLanguage;
-    });
-  }
-
-  public ngAfterViewInit(): void {
-
+  public afterViewInit(): void {
     const options: {} = Object.assign({
       sortSelect: true,
       forceSelection: false,
@@ -101,9 +83,5 @@ export class SemanticSelectComponent implements OnInit, OnDestroy, AfterViewInit
       jQuery(this.select.nativeElement)
         .dropdown(options);
     }
-  }
-
-  public ngOnDestroy(): void {
-    if (this.systemLanguageSubscription) { this.systemLanguageSubscription.unsubscribe(); }
   }
 }

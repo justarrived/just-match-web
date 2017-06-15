@@ -11,10 +11,10 @@ import {Subscription} from 'rxjs/Subscription';
 @Component({
   selector: 'faq-accordion',
   template: `
-    <sm-accordion
+    <basic-accordion
       [options]="{ exclusive: true }"
       class="styled fluid">
-      <sm-accordion-item *ngFor="let faq of faqs | async">
+      <basic-accordion-item *ngFor="let faq of faqs | async">
         <basic-title-text
           accordion-title
           [text]="faq.translatedText.question"
@@ -34,8 +34,8 @@ import {Subscription} from 'rxjs/Subscription';
             </basic-text>
           </div>
         </div>
-      </sm-accordion-item>
-    </sm-accordion>`
+      </basic-accordion-item>
+    </basic-accordion>`
 })
 export class FaqAccordionComponent extends SystemLanguageListener implements OnInit, OnDestroy {
   public faqs: Promise<Faq[]>;

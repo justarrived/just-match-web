@@ -12,7 +12,7 @@ import {ViewChild} from '@angular/core';
 @Component({
   selector: 'job-additional-user-info-modal',
   template: `
-    <sm-modal
+    <base-modal
       #jobAdditionalUserInfoModal
       [title]="'job.additional.user.info.modal.title' | translate"
       icon="massive pink user">
@@ -42,7 +42,7 @@ import {ViewChild} from '@angular/core';
           </base-button>
         </div>
       </modal-actions>
-    </sm-modal>`
+    </base-modal>`
 })
 export class JobAdditionalUserInfoModalComponent extends BaseComponent {
   @Input() public missingUserTraits = null as MissingUserTraits;

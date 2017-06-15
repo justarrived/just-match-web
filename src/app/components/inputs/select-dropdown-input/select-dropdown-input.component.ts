@@ -14,7 +14,7 @@ import {ViewChild} from '@angular/core';
       [ngClass]="{'error': inputErrors.hasErrors()}"
       [style.padding-bottom]="paddingBottom"
       class="field">
-      <sm-select
+      <select-input
        [control]="control"
        [data]="data"
        [label]="label"
@@ -28,7 +28,7 @@ import {ViewChild} from '@angular/core';
           *ngFor="let item of data">
           {{getNestedProperty(item, dataItemLabelProoerty)}}
         </option>
-      </sm-select>
+      </select-input>
       <input-errors
         [apiAttribute]="apiAttribute"
         [apiErrors]="apiErrors"

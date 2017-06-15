@@ -7,7 +7,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
 @Component({
   selector: 'simple-message',
   template: `
-  <sm-message
+  <base-message
     [class]="type"
     [closeable]="closeable"
     [icon]="icon">
@@ -24,7 +24,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
         marginBottom="0">
       </basic-text>
     </div>
-  </sm-message>`
+  </base-message>`
 })
 export class SimpleMessageComponent extends BaseComponent {
   @Input() public closeable: boolean;

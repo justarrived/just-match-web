@@ -13,7 +13,7 @@ import {ViewChild} from '@angular/core';
 @Component({
   selector: 'apply-for-job-modal',
   template: `
-    <sm-modal
+    <base-modal
       icon="massive pink talk"
       #applyForJobModal>
       <modal-content>
@@ -42,7 +42,7 @@ import {ViewChild} from '@angular/core';
           </base-button>
         </div>
       </modal-actions>
-    </sm-modal>`
+    </base-modal>`
 })
 export class ApplyForJobModalComponent extends BaseComponent {
   @Input() public job = null as Job;

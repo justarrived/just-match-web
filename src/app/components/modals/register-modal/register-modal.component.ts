@@ -12,7 +12,7 @@ import {ViewChild} from '@angular/core';
 @Component({
   selector: 'register-modal',
   template: `
-    <sm-modal
+    <base-modal
       icon="massive pink add user"
       [title]="'register.modal.title' | translate"
       #registerModal>
@@ -42,7 +42,7 @@ import {ViewChild} from '@angular/core';
           </base-button>
         </div>
       </modal-actions>
-    </sm-modal>`
+    </base-modal>`
 })
 export class RegisterModalComponent extends BaseComponent {
   @Input() public navigateToHome: string;

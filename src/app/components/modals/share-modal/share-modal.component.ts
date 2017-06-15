@@ -7,7 +7,7 @@ import {ViewChild} from '@angular/core';
 @Component({
   selector: 'share-modal',
   template: `
-    <sm-modal
+    <base-modal
       class="basic"
       #modal>
       <modal-content (click)="hide()">
@@ -25,7 +25,7 @@ import {ViewChild} from '@angular/core';
         </basic-title-text>
         <share-section></share-section>
       </modal-content>
-    </sm-modal>`
+    </base-modal>`
 })
 export class ShareModalComponent extends BaseComponent {
   @ViewChild('modal') public modal: any;

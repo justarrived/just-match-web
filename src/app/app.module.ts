@@ -16,8 +16,13 @@ import {ApplyMessageInputComponent} from './components/inputs/apply-message-inpu
 import {AppNavbarComponent} from './components/navbars/app-navbar/app-navbar.component';
 import {AppTranslateModule} from './app.translate.module';
 import {AtUndInputComponent} from './components/inputs/at-und-input/at-und-input.component';
+import {AutosizeDirective} from './directives/autosize/autosize.directive';
 import {BankAccountInputComponent} from './components/inputs/bank-account-input/bank-account-input.component';
 import {BaseButtonComponent} from './components/buttons/base-button/base-button.component';
+import {BaseMessageComponent} from './components/messages/base-message/base-message.component';
+import {BaseModalComponent} from './components/modals/base-modal/base-modal.component';
+import {BasicAccordionComponent} from './components/accordions/basic-accordion/basic-accordion.component';
+import {BasicAccordionItemComponent} from './components/items/basic-accordion-item/basic-accordion-item.component';
 import {BasicBorderHeaderComponent} from './components/headers/basic-border-header/basic-border-header.component';
 import {BasicChatComponent} from './components/chats/basic-chat/basic-chat.component';
 import {BasicChatMessageComponent} from './components/chat-message/basic-chat-message/basic-chat-message.component';
@@ -25,6 +30,7 @@ import {BasicChatMessagesComponent} from './components/chat-messages/basic-chat-
 import {BasicCommentComponent} from './components/comment/basic-comment/basic-comment.component';
 import {BasicCommentsComponent} from './components/comments/basic-comments/basic-comments.component';
 import {BasicLinkComponent} from './components/links/basic-link/basic-link.component';
+import {BasicLoaderComponent} from './components/loaders/basic-loader/basic-loader.component';
 import {BasicPagerComponent} from './components/pagers/basic-pager/basic-pager.component';
 import {BasicSearchComponent} from './components/search/basic-search/basic-search.component';
 import {BasicTabComponent} from './components/tabs/basic-tab/basic-tab.component';
@@ -33,6 +39,7 @@ import {BasicTextComponent} from './components/text/basic-text/basic-text.compon
 import {BasicTitleTextComponent} from './components/text/basic-title-text/basic-title-text.component';
 import {BrowserModule} from '@angular/platform-browser';
 import {ChatMessageInputComponent} from './components/inputs/chat-message-input/chat-message-input.component';
+import {CheckboxInputComponent} from './components/inputs/checkbox-input/checkbox-input.component';
 import {CircularIconBaseButtonComponent} from './components/buttons/circular-icon-base-button/circular-icon-base-button.component';
 import {CircularImageInputComponent} from './components/inputs/circular-image-input/circular-image-input.component';
 import {CityInputComponent} from './components/inputs/city-input/city-input.component';
@@ -71,7 +78,6 @@ import {FirstNameInputComponent} from './components/inputs/first-name-input/firs
 import {ForbiddenPageComponent} from './components/pages/forbidden-page/forbidden-page.component';
 import {ForgotPasswordFormComponent} from './components/forms/forgot-password-form/forgot-password-form.component';
 import {ForgotPasswordModalComponent} from './components/modals/forgot-password-modal/forgot-password-modal.component';
-import {LoginOrRegisterModalComponent} from './components/modals/login-or-register-modal/login-or-register-modal.component';
 import {ForgotPasswordPageComponent} from './components/pages/forgot-password-page/forgot-password-page.component';
 import {FormSectionTitleTextComponent} from './components/text/form-section-title-text/form-section-title-text.component';
 import {FormsModule} from '@angular/forms';
@@ -95,6 +101,7 @@ import {InterestsInputComponent} from './components/inputs/interests-input/inter
 import {JARoutes} from './routes/ja-routes/ja-routes';
 import {JobActionsSectionComponent} from './components/sections/job-actions-section/job-actions-section.component';
 import {JobAdditionalUserInfoModalComponent} from './components/modals/job-additional-user-info-modal/job-additional-user-info-modal.component';
+import {JobApplicantSectionComponent} from './components/sections/job-applicant-section/job-applicant-section.component';
 import {JobBannerSectionComponent} from './components/sections/job-banner-section/job-banner-section.component';
 import {JobCardComponent} from './components/cards/job-card/job-card.component';
 import {JobCommentsSectionComponent} from './components/sections/job-comments-section/job-comments-section.component';
@@ -106,14 +113,13 @@ import {JobImportantInformationSectionComponent} from './components/sections/job
 import {JobMapMarkerComponent} from './components/map-markers/job-map-marker/job-map-marker.component';
 import {JobPageComponent} from './components/pages/job-page/job-page.component';
 import {JobRecruiterSectionComponent} from './components/sections/job-recruiter-section/job-recruiter-section.component';
+import {JobRequirementsSectionComponent} from './components/sections/job-requirements-section/job-requirements-section.component';
 import {JobShortDescriptionSectionComponent} from './components/sections/job-short-description-section/job-short-description-section.component';
 import {JobsMapComponent} from './components/maps/jobs-map/jobs-map.component';
 import {JobsPageComponent} from './components/pages/jobs-page/jobs-page.component';
 import {JobsPagerSectionComponent} from './components/sections/jobs-pager-section/jobs-pager-section.component';
 import {JobTasksSectionComponent} from './components/sections/job-tasks-section/job-tasks-section.component';
 import {JobTitleSectionComponent} from './components/sections/job-title-section/job-title-section.component';
-import {JobApplicantSectionComponent} from './components/sections/job-applicant-section/job-applicant-section.component';
-import {JobRequirementsSectionComponent} from './components/sections/job-requirements-section/job-requirements-section.component';
 import {LanguageMenuComponent} from './components/menus/language-menu/language-menu.component';
 import {LanguageProficiencyInputComponent} from './components/inputs/language-proficiency-input/language-proficiency-input.component';
 import {LanguagesInputComponent} from './components/inputs/languages-input/languages-input.component';
@@ -123,10 +129,12 @@ import {LMACardInputComponent} from './components/inputs/lma-card-input/lma-card
 import {LOCALE_ID} from '@angular/core';
 import {LoginFormComponent} from './components/forms/login-form/login-form.component';
 import {LoginModalComponent} from './components/modals/login-modal/login-modal.component';
+import {LoginOrRegisterModalComponent} from './components/modals/login-or-register-modal/login-or-register-modal.component';
 import {LoginPageComponent} from './components/pages/login-page/login-page.component';
 import {LostConnectionPageComponent} from './components/pages/lost-connection-page/lost-connection-page.component';
 import {MissingPaymentInformationModalComponent} from './components/modals/missing-payment-information-modal/missing-payment-information-modal.component';
 import {ModalService} from './services/modal.service';
+import {ModalTagsDirective} from './directives/modal-tags/modal-tags.directive';
 import {NameInputComponent} from './components/inputs/name-input/name-input.component';
 import {NavigationMenuComponent} from './components/menus/navigation-menu/navigation-menu.component';
 import {NavigationService} from './services/navigation.service';
@@ -157,15 +165,9 @@ import {ResidencePermitFrontInputComponent} from './components/inputs/residence-
 import {ResolversModule} from './resolvers/resolvers.module';
 import {ResumeInputComponent} from './components/inputs/resume-input/resume-input.component';
 import {RoutesModule} from './routes/routes.module';
+import {SearchInputComponent} from './components/inputs/search-input/search-input.component';
 import {SelectDropdownInputComponent} from './components/inputs/select-dropdown-input/select-dropdown-input.component';
-import {SemanticAccordionComponent} from "./semantic/accordion/accordion";
-import {SemanticAccordionItemComponent} from "./semantic/accordion/accordion";
-import {CheckboxInputComponent} from "./components/inputs/checkbox-input/checkbox-input.component";
-import {BasicLoaderComponent} from "./components/loaders/basic-loader/basic-loader.component";
-import {SemanticMessageComponent} from "./semantic/message/message";
-import {SemanticModalComponent} from "./semantic/modal/modal";
-import {SemanticSearchComponent} from "./semantic/search/search";
-import {SemanticSelectComponent} from "./semantic/select/select";
+import {SelectInputComponent} from './components/inputs/select-input/select-input.component';
 import {ShareModalComponent} from './components/modals/share-modal/share-modal.component';
 import {ShareSectionComponent} from './components/sections/share-section/share-section.component';
 import {ShareWithModalSectionComponent} from './components/sections/share-with-modal-section/share-with-modal-section.component';
@@ -176,8 +178,6 @@ import {SimpleMessageComponent} from './components/messages/simple-message/simpl
 import {SkatteverketCertificateInputComponent} from './components/inputs/skatteverket-certificate-input/skatteverket-certificate-input.component';
 import {SkillProficiencyInputComponent} from './components/inputs/skill-proficiency-input/skill-proficiency-input.component';
 import {SkillsInputComponent} from './components/inputs/skills-input/skills-input.component';
-import {AutosizeDirective} from './directives/autosize/autosize.directive';
-import {SMModalTagsDirective} from "./semantic/modal/modal";
 import {SortUsersInputComponent} from './components/inputs/sort-users-input/sort-users-input.component';
 import {SSNInputComponent} from './components/inputs/ssn-input/ssn-input.component';
 import {StatusInputComponent} from './components/inputs/status-input/status-input.component';
@@ -262,8 +262,13 @@ export class RavenErrorHandler implements ErrorHandler {
     ApplyMessageInputComponent,
     AppNavbarComponent,
     AtUndInputComponent,
+    AutosizeDirective,
     BankAccountInputComponent,
     BaseButtonComponent,
+    BaseMessageComponent,
+    BaseModalComponent,
+    BasicAccordionComponent,
+    BasicAccordionItemComponent,
     BasicBorderHeaderComponent,
     BasicChatComponent,
     BasicChatMessageComponent,
@@ -271,7 +276,7 @@ export class RavenErrorHandler implements ErrorHandler {
     BasicCommentComponent,
     BasicCommentsComponent,
     BasicLinkComponent,
-    LoginOrRegisterModalComponent,
+    BasicLoaderComponent,
     BasicPagerComponent,
     BasicSearchComponent,
     BasicTabComponent,
@@ -279,6 +284,7 @@ export class RavenErrorHandler implements ErrorHandler {
     BasicTextComponent,
     BasicTitleTextComponent,
     ChatMessageInputComponent,
+    CheckboxInputComponent,
     CircularIconBaseButtonComponent,
     CircularImageInputComponent,
     CityInputComponent,
@@ -332,25 +338,25 @@ export class RavenErrorHandler implements ErrorHandler {
     InterestsInputComponent,
     JobActionsSectionComponent,
     JobAdditionalUserInfoModalComponent,
+    JobApplicantSectionComponent,
+    JobBannerSectionComponent,
     JobCardComponent,
     JobCommentsSectionComponent,
     JobCompanyImageSectionComponent,
     JobCompanyShortDescriptionSectionComponent,
     JobDescriptionSection2Component,
     JobExperienceInputComponent,
-    JobBannerSectionComponent,
     JobImportantInformationSectionComponent,
     JobMapMarkerComponent,
     JobPageComponent,
     JobRecruiterSectionComponent,
+    JobRequirementsSectionComponent,
     JobShortDescriptionSectionComponent,
     JobsMapComponent,
     JobsPageComponent,
     JobsPagerSectionComponent,
     JobTasksSectionComponent,
     JobTitleSectionComponent,
-    JobApplicantSectionComponent,
-    JobRequirementsSectionComponent,
     LanguageMenuComponent,
     LanguageProficiencyInputComponent,
     LanguagesInputComponent,
@@ -359,9 +365,11 @@ export class RavenErrorHandler implements ErrorHandler {
     LMACardInputComponent,
     LoginFormComponent,
     LoginModalComponent,
+    LoginOrRegisterModalComponent,
     LoginPageComponent,
     LostConnectionPageComponent,
     MissingPaymentInformationModalComponent,
+    ModalTagsDirective,
     NameInputComponent,
     NavigationMenuComponent,
     NewJobsSectionComponent,
@@ -386,15 +394,9 @@ export class RavenErrorHandler implements ErrorHandler {
     ResidencePermitBackInputComponent,
     ResidencePermitFrontInputComponent,
     ResumeInputComponent,
+    SearchInputComponent,
     SelectDropdownInputComponent,
-    SemanticAccordionComponent,
-    SemanticAccordionItemComponent,
-    CheckboxInputComponent,
-    BasicLoaderComponent,
-    SemanticMessageComponent,
-    SemanticModalComponent,
-    SemanticSearchComponent,
-    SemanticSelectComponent,
+    SelectInputComponent,
     ShareModalComponent,
     ShareSectionComponent,
     ShareWithModalSectionComponent,
@@ -405,8 +407,6 @@ export class RavenErrorHandler implements ErrorHandler {
     SkatteverketCertificateInputComponent,
     SkillProficiencyInputComponent,
     SkillsInputComponent,
-    AutosizeDirective,
-    SMModalTagsDirective,
     SortUsersInputComponent,
     SSNInputComponent,
     StatusInputComponent,
@@ -444,7 +444,7 @@ export class RavenErrorHandler implements ErrorHandler {
     GeolocationService,
     ModalService,
     NavigationService,
-    { provide: LOCALE_ID, useValue: "en" },
+    { provide: LOCALE_ID, useValue: 'en' },
     { provide: ErrorHandler, useClass: RavenErrorHandler },
     { provide: APP_BASE_HREF, useValue: '/' }
   ],

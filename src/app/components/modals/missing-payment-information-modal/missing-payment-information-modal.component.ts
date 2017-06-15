@@ -12,7 +12,7 @@ import {ViewChild} from '@angular/core';
 @Component({
   selector: 'missing-payment-information-modal',
   template: `
-    <sm-modal
+    <base-modal
       #modal
       [title]="'missing.payment.information.modal.title' | translate"
       icon="massive pink money">
@@ -42,7 +42,7 @@ import {ViewChild} from '@angular/core';
           </base-button>
         </div>
       </modal-actions>
-    </sm-modal>`
+    </base-modal>`
 })
 export class MissingPaymentInformationModalComponent extends BaseComponent {
   @Input() public missingUserTraits = null as MissingUserTraits;

@@ -1,23 +1,20 @@
+import {BaseComponent} from '../../base.component';
 import {Component} from "@angular/core";
 import {ElementRef} from "@angular/core";
 import {EventEmitter} from '@angular/core';
 import {Inject} from "@angular/core";
 import {Input} from "@angular/core";
 import {isPlatformBrowser} from '@angular/common';
-import {Language} from '../../models/api-models/language/language';
-import {OnDestroy} from '@angular/core';
-import {OnInit} from "@angular/core";
 import {Output} from "@angular/core";
 import {PLATFORM_ID} from "@angular/core";
-import {Subscription} from 'rxjs/Subscription';
-import {SystemLanguagesResolver} from '../../resolvers/system-languages/system-languages.resolver';
+import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
+import {UserResolver} from '../../../resolvers/user/user.resolver';
 import {ViewChild} from "@angular/core";
-import {ViewEncapsulation} from "@angular/core";
 
 declare var jQuery;
 
 @Component({
-  selector: "sm-message",
+  selector: "base-message",
   template: `
   <div
     class="ui {{class}} visible message"
@@ -40,36 +37,19 @@ declare var jQuery;
     <ng-content></ng-content>
   </div>`
 })
-export class SemanticMessageComponent implements OnInit, OnDestroy {
+export class BaseMessageComponent extends BaseComponent {
   @Input() public class: string;
   @Input() public closeable: boolean;
   @Input() public icon: string;
   @Output() public onClosed: EventEmitter<any> = new EventEmitter<any>();
   @ViewChild("message") public message: ElementRef;
 
-  public systemLanguage: Language;
-
-  private systemLanguageSubscription: Subscription;
-
   public constructor(
     @Inject(PLATFORM_ID) private readonly platformId: any,
-    private systemLanguagesResolver: SystemLanguagesResolver,
+    protected systemLanguagesResolver: SystemLanguagesResolver,
+    protected userResolver: UserResolver,
   ) {
-  }
-
-  public ngOnInit(): void {
-    this.initSystemLanguage()
-  }
-
-  private initSystemLanguage(): void {
-    this.systemLanguage = this.systemLanguagesResolver.getSelectedSystemLanguage();
-    this.systemLanguageSubscription = this.systemLanguagesResolver.getSystemLanguageChangeEmitter().subscribe(systemLanguage => {
-      this.systemLanguage = systemLanguage;
-    });
-  }
-
-  public ngOnDestroy(): void {
-    if (this.systemLanguageSubscription) { this.systemLanguageSubscription.unsubscribe(); }
+    super(systemLanguagesResolver, userResolver);
   }
 
   public close() {

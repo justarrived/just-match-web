@@ -1,8 +1,8 @@
 import {BaseComponent} from '../../base.component';
+import {BaseMessageComponent} from '../../../components/messages/base-message/base-message.component';
 import {Component} from '@angular/core';
 import {DataStoreService} from '../../../services/data-store.service';
 import {Input} from '@angular/core';
-import {SemanticMessageComponent} from '../../../semantic/message/message'
 import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
 import {UserMissingTraitsNextFormComponent} from '../../forms/user-missing-traits-next-form/user-missing-traits-next-form.component'
 import {UserResolver} from '../../../resolvers/user/user.resolver';
@@ -11,7 +11,7 @@ import {ViewChild} from '@angular/core';
 @Component({
   selector: 'user-missing-traits-message',
   template: `
-  <sm-message
+  <base-message
     (onClosed)="closed()"
     [closeable]="true"
     [style.display]="userMissingTraitsNextFormComponent?.missingUserTraitsKeys?.length > 0 ? 'block' : 'none'"
@@ -37,10 +37,10 @@ import {ViewChild} from '@angular/core';
         </div>
       </div>
     </div>
-  </sm-message>`
+  </base-message>`
 })
 export class UserMissingTraitsMessageComponent extends BaseComponent {
-  @ViewChild(SemanticMessageComponent) public semanticMessageComponent: SemanticMessageComponent;
+  @ViewChild(BaseMessageComponent) public baseMessageComponent: BaseMessageComponent;
   @ViewChild(UserMissingTraitsNextFormComponent) public userMissingTraitsNextFormComponent: UserMissingTraitsNextFormComponent;
 
   public suspended: boolean;
@@ -68,7 +68,7 @@ export class UserMissingTraitsMessageComponent extends BaseComponent {
   }
 
   public close(): void {
-    this.semanticMessageComponent.close();
+    this.baseMessageComponent.close();
   }
 
   public closed(): void {

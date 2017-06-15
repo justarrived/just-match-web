@@ -13,7 +13,7 @@ import {ViewChild} from '@angular/core';
 @Component({
   selector: 'sign-for-job-modal',
   template: `
-    <sm-modal
+    <base-modal
       #signForJobModal
       [title]="'sign.for.job.modal.title' | translate"
       icon="massive pink star">
@@ -45,7 +45,7 @@ import {ViewChild} from '@angular/core';
           </base-button>
         </div>
       </modal-actions>
-    </sm-modal>`
+    </base-modal>`
 })
 export class SignForJobModalComponent extends BaseComponent {
   @Input() public application = null as Application;

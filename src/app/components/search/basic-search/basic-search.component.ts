@@ -9,14 +9,14 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
 @Component({
   selector: 'basic-search',
   template: `
-    <sm-search
+    <search-input
       (onSearch)="onSearch.emit($event)"
       [icon]="true"
       [label]="label"
       [loading]="loading"
       [placeholder]="placeholder"
       [searchFrequency]=searchFrequency>
-    </sm-search>`
+    </search-input>`
 })
 export class BasicSearchComponent extends BaseComponent {
   @Input() label: string;

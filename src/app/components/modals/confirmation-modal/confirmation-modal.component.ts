@@ -9,7 +9,7 @@ import {ViewChild} from '@angular/core';
   selector: 'confirmation-modal',
   styleUrls: ['./confirmation-modal.component.scss'],
   template: `
-    <sm-modal
+    <base-modal
       [icon]="icon"
       #confirmationModal>
       <modal-content>
@@ -44,7 +44,7 @@ import {ViewChild} from '@angular/core';
           </base-button>
         </div>
       </modal-actions>
-    </sm-modal>`
+    </base-modal>`
 })
 export class ConfirmationModalComponent extends BaseComponent {
   @Input() public description: string;

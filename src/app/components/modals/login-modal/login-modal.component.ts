@@ -12,7 +12,7 @@ import {ViewChild} from '@angular/core';
 @Component({
   selector: 'login-modal',
   template: `
-    <sm-modal
+    <base-modal
       icon="massive pink lock"
       [title]="'login.modal.title' | translate"
       #loginModal>
@@ -42,7 +42,7 @@ import {ViewChild} from '@angular/core';
           </base-button>
         </div>
       </modal-actions>
-    </sm-modal>`
+    </base-modal>`
 })
 export class LoginModalComponent extends BaseComponent {
   @Input() public navigateToHome: boolean = true;
