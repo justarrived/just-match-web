@@ -46,7 +46,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
         <user-card
           (click)="activateGodmode(user)"
           [animationDelay]="50 * i"
-          [user]="user"
+          [shownUser]="user"
           *ngFor="let user of users| async; let i = index;"
           class="ui basic left aligned segment"
           style="margin: 1rem 0">

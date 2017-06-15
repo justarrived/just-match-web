@@ -4,7 +4,6 @@ import {EventEmitter} from '@angular/core';
 import {Inject} from '@angular/core';
 import {Input} from '@angular/core';
 import {isPlatformBrowser} from '@angular/common';
-import {JARoutes} from '../../../routes/ja-routes/ja-routes';
 import {NavigationService} from '../../../services/navigation.service';
 import {NavigationStart} from '@angular/router';
 import {Output} from '@angular/core';
@@ -249,7 +248,7 @@ export class NavigationMenuComponent extends BaseComponent {
   }
 
   public onLogoutButtonClick(): void {
-    this.navigationService.navigate(JARoutes.home);
+    this.navigationService.navigate(this.JARoutes.home);
     this.userResolver.logout();
     this.isNavigationMenuVisible = false;
     this.isNavigationMenuVisibleChange.emit(this.isNavigationMenuVisible);

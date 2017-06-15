@@ -1,6 +1,8 @@
-import {ApiErrors} from '../../../models/api-models/api-errors/api-errors';
+import {BaseComponent} from '../../base.component';
 import {Component} from '@angular/core';
 import {Input} from '@angular/core';
+import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
+import {UserResolver} from '../../../resolvers/user/user.resolver';
 
 @Component({
   selector: 'form-submit-button',
@@ -36,7 +38,7 @@ import {Input} from '@angular/core';
       <ng-content></ng-content>
     </div>`
 })
-export class FormSubmitButtonComponent {
+export class FormSubmitButtonComponent extends BaseComponent {
   @Input() public buttonText: string;
   @Input() public icon: string;
   @Input() public kind: string = 'secondary';
@@ -46,4 +48,11 @@ export class FormSubmitButtonComponent {
   @Input() public size: string = 'large';
   @Input() public submitFail: boolean;
   @Input() public submitSuccess: boolean;
+
+  public constructor(
+    protected systemLanguagesResolver: SystemLanguagesResolver,
+    protected userResolver: UserResolver,
+  ) {
+    super(systemLanguagesResolver, userResolver);
+  }
 }

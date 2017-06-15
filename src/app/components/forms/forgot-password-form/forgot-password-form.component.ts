@@ -78,7 +78,7 @@ export class ForgotPasswordFormComponent implements OnInit {
     if (this.isInModal) {
       this.modalService.showModal('loginModalComponent', false, false, 400);
     } else {
-      this.navigationService.navigate(JARoutes.login);
+      this.navigationService.navigate(this.JARoutes.login);
     }
   }
 

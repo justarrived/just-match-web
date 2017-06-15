@@ -1,13 +1,11 @@
+import {BaseComponent} from '../../base.component';
 import {Component} from '@angular/core';
 import {EventEmitter} from '@angular/core';
 import {fadeInAnimation} from '../../../animations/fade-in/fade-in.animation';
 import {Input} from '@angular/core';
-import {Language} from '../../../models/api-models/language/language';
-import {OnDestroy} from '@angular/core';
-import {OnInit} from '@angular/core';
-import {Subscription} from 'rxjs/Subscription';
 import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
 import {User} from '../../../models/api-models/user/user';
+import {UserResolver} from '../../../resolvers/user/user.resolver';
 
 @Component({
   animations: [fadeInAnimation('200ms')],
@@ -20,16 +18,16 @@ import {User} from '../../../models/api-models/user/user';
       [ngClass]="{'centered': centered}">
       <div class="image">
         <img
-          [src]="user.profileImage.imageUrlMedium"
-          *ngIf="user.profileImage">
+          [src]="shownUser.profileImage.imageUrlMedium"
+          *ngIf="shownUser.profileImage">
         <img
-          *ngIf="!user.profileImage"
+          *ngIf="!shownUser.profileImage"
           src="/assets/images/placeholder-profile-image.png">
       </div>
       <div class="base content">
         <basic-title-text
           [uppercase]="true"
-          [text]="user.firstName + ' ' + user.lastName"
+          [text]="shownUser.firstName + ' ' + shownUser.lastName"
           [oneLineEllipsis]="true"
           fontWeight="bold"
           color="pink"
@@ -39,16 +37,16 @@ import {User} from '../../../models/api-models/user/user';
         </basic-title-text>
         <basic-text
           [alwaysLtrText]="true"
-          [text]="user.email"
+          [text]="shownUser.email"
           [oneLineEllipsis]="true"
           color="gray"
           marginTop="0"
           marginBottom="0">
         </basic-text>
         <basic-text
-          *ngIf="user.phone"
+          *ngIf="shownUser.phone"
           [alwaysLtrText]="true"
-          [text]="user.phone"
+          [text]="shownUser.phone"
           [oneLineEllipsis]="true"
           color="gray"
           marginTop="0"
@@ -62,7 +60,7 @@ import {User} from '../../../models/api-models/user/user';
           class="ui big icon marker">
         </i>
         <basic-text
-          [text]="user.fullStreetAddress"
+          [text]="shownUser.fullStreetAddress"
           [maxiumLinesEllipsis]="2"
           fontSize="small"
           color="gray"
@@ -70,8 +68,8 @@ import {User} from '../../../models/api-models/user/user';
           marginBottom="0">
         </basic-text>
         <basic-text
-          *ngIf="!user.fullStreetAddress"
-          [text]="'user.card.no.address' | translate"
+          *ngIf="!shownUser.fullStreetAddress"
+          [text]="'shownUser.card.no.address' | translate"
           [maxiumLinesEllipsis]="2"
           fontSize="small"
           color="gray"
@@ -81,37 +79,23 @@ import {User} from '../../../models/api-models/user/user';
       </div>
     </div>`
 })
-export class UserCardComponent implements OnInit, OnDestroy {
+export class UserCardComponent extends BaseComponent {
   @Input() public centered: boolean;
-  @Input() public user = null as User;
+  @Input() public shownUser = null as User;
   @Input() public animationDelay: number = 1;
 
   public animationState: string = 'hidden';
 
-  public systemLanguage: Language;
-
-  private systemLanguageSubscription: Subscription;
-
   public constructor(
-    private systemLanguagesResolver: SystemLanguagesResolver
+    protected systemLanguagesResolver: SystemLanguagesResolver,
+    protected userResolver: UserResolver,
   ) {
+    super(systemLanguagesResolver, userResolver);
   }
 
-  public ngOnInit(): void {
-    this.initSystemLanguage()
+  public onInit(): void {
     setTimeout(() => {
       this.animationState = 'visible';
     }, this.animationDelay);
-  }
-
-  private initSystemLanguage(): void {
-    this.systemLanguage = this.systemLanguagesResolver.getSelectedSystemLanguage();
-    this.systemLanguageSubscription = this.systemLanguagesResolver.getSystemLanguageChangeEmitter().subscribe(systemLanguage => {
-      this.systemLanguage = systemLanguage;
-    });
-  }
-
-  public ngOnDestroy(): void {
-    if (this.systemLanguageSubscription) { this.systemLanguageSubscription.unsubscribe(); }
   }
 }

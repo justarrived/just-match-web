@@ -1,11 +1,8 @@
+import {BaseComponent} from '../../base.component';
 import {Component} from '@angular/core';
 import {DataStoreService} from '../../../services/data-store.service';
-import {JARoutes} from '../../../routes/ja-routes/ja-routes';
-import {Language} from '../../../models/api-models/language/language';
-import {OnDestroy} from '@angular/core';
-import {OnInit} from '@angular/core';
-import {Subscription} from 'rxjs/Subscription';
 import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
+import {UserResolver} from '../../../resolvers/user/user.resolver';
 
 @Component({
   selector: 'cookie-bar',
@@ -39,33 +36,15 @@ import {SystemLanguagesResolver} from '../../../resolvers/system-languages/syste
       </div>
     </div>`
 })
-export class CookieBarComponent implements OnInit, OnDestroy {
+export class CookieBarComponent extends BaseComponent {
   private readonly cookiesConsentData: string = 'cookiesConsentData';
-  public JARoutes = JARoutes;
-
-  public systemLanguage: Language;
-
-  private systemLanguageSubscription: Subscription;
 
   public constructor(
     private dataStoreService: DataStoreService,
-    private systemLanguagesResolver: SystemLanguagesResolver
+    protected systemLanguagesResolver: SystemLanguagesResolver,
+    protected userResolver: UserResolver,
   ) {
-  }
-
-  public ngOnInit(): void {
-    this.initSystemLanguage()
-  }
-
-  private initSystemLanguage(): void {
-    this.systemLanguage = this.systemLanguagesResolver.getSelectedSystemLanguage();
-    this.systemLanguageSubscription = this.systemLanguagesResolver.getSystemLanguageChangeEmitter().subscribe(systemLanguage => {
-      this.systemLanguage = systemLanguage;
-    });
-  }
-
-  public ngOnDestroy(): void {
-    if (this.systemLanguageSubscription) { this.systemLanguageSubscription.unsubscribe(); }
+    super(systemLanguagesResolver, userResolver);
   }
 
   public checkCookiesConsent(): boolean {

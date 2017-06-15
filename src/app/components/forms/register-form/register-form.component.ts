@@ -63,7 +63,7 @@ export class RegisterFormComponent implements OnInit {
     if (this.isInModal) {
       this.modalService.showModal('loginModalComponent', this.navigateToHome, false, 400);
     } else {
-      this.navigationService.navigate(JARoutes.login);
+      this.navigationService.navigate(this.JARoutes.login);
     }
   }
 
@@ -91,13 +91,13 @@ export class RegisterFormComponent implements OnInit {
       this.submitSuccess = true;
       return this.userResolver.login(this.registerForm.value.email, this.registerForm.value.password)
       .catch(errors => {
-        this.navigationService.navigate(JARoutes.login);
+        this.navigationService.navigate(this.JARoutes.login);
         throw errors;
       });
     })
     .then(user => {
       if (this.navigateToHome) {
-        this.navigationService.navigate(JARoutes.home);
+        this.navigationService.navigate(this.JARoutes.home);
       } else {
         this.modalService.showModal('registeredModalComponent', false, false, this.isInModal ? 400 : 1);
       }

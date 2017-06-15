@@ -1,9 +1,7 @@
+import {BaseComponent} from '../../base.component';
 import {Component} from '@angular/core';
-import {JARoutes} from '../../../routes/ja-routes/ja-routes';
 import {NavigationService} from '../../../services/navigation.service';
-import {OnDestroy} from '@angular/core';
-import {OnInit} from '@angular/core';
-import {Subscription} from 'rxjs/Subscription';
+import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
 import {User} from '../../../models/api-models/user/user';
 import {UserResolver} from '../../../resolvers/user/user.resolver';
 
@@ -47,33 +45,23 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
       </div>
     </div>`
 })
-export class GodModeBarComponent implements OnInit, OnDestroy {
-  public user: User;
+export class GodModeBarComponent extends BaseComponent {
   public godModeActive: boolean;
-
-  private userSubscription: Subscription;
 
   public constructor(
     private navigationService: NavigationService,
-    private userResolver: UserResolver
+    protected systemLanguagesResolver: SystemLanguagesResolver,
+    protected userResolver: UserResolver,
   ) {
+    super(systemLanguagesResolver, userResolver);
   }
 
-  public ngOnInit() {
-    this.initUser();
-  }
-
-  private initUser(): void {
-    this.user = this.userResolver.getUser();
+  public onInit() {
     this.godModeActive = this.userResolver.godModeActive();
-    this.userSubscription = this.userResolver.getUserChangeEmitter().subscribe(user => {
-      this.user = user;
-      this.godModeActive = this.userResolver.godModeActive();
-    });
   }
 
-  public ngOnDestroy(): void {
-    if (this.userSubscription) { this.userSubscription.unsubscribe(); }
+  public userChanged(user: User): void {
+    this.godModeActive = this.userResolver.godModeActive();
   }
 
   public deactivateGodMode(): void {
@@ -81,10 +69,10 @@ export class GodModeBarComponent implements OnInit, OnDestroy {
   }
 
   public changeUser(): void {
-    this.navigationService.navigate(JARoutes.godMode);
+    this.navigationService.navigate(this.JARoutes.godMode);
   }
 
   public goToUserProfile(): void {
-    this.navigationService.navigate(JARoutes.user);
+    this.navigationService.navigate(this.JARoutes.user);
   }
 }

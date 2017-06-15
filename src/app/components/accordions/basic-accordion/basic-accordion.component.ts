@@ -1,13 +1,13 @@
+import {BaseComponent} from '../../base.component';
 import {Component} from "@angular/core";
 import {ElementRef} from "@angular/core";
 import {Inject} from "@angular/core";
 import {Input} from "@angular/core";
 import {isPlatformBrowser} from '@angular/common';
 import {PLATFORM_ID} from "@angular/core";
-import {ViewChild} from "@angular/core";
-import {BaseComponent} from '../../base.component';
 import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
 import {UserResolver} from '../../../resolvers/user/user.resolver';
+import {ViewChild} from "@angular/core";
 
 declare var jQuery: any;
 

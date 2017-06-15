@@ -1,8 +1,11 @@
+import {BaseComponent} from '../../base.component';
 import {Component} from '@angular/core';
 import {EventEmitter} from '@angular/core';
 import {Input} from '@angular/core';
 import {Output} from '@angular/core';
+import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
 import {UserDocument} from '../../../models/api-models/user-document/user-document';
+import {UserResolver} from '../../../resolvers/user/user.resolver';
 
 @Component({
   selector: 'upload-document-card',
@@ -79,7 +82,7 @@ import {UserDocument} from '../../../models/api-models/user-document/user-docume
     </div>
     <input-hint-label [hint]="hint"></input-hint-label>`
 })
-export class UploadDocumentCardComponent {
+export class UploadDocumentCardComponent extends BaseComponent {
   @Input() public centered: boolean;
   @Input() public documents: UserDocument[];
   @Input() public documentSaveFail: boolean;
@@ -89,6 +92,13 @@ export class UploadDocumentCardComponent {
   @Input() public description: string;
   @Input() public uploadingDocument: boolean;
   @Output() public onFileSelect: EventEmitter<any> = new EventEmitter();
+
+  public constructor(
+    protected systemLanguagesResolver: SystemLanguagesResolver,
+    protected userResolver: UserResolver,
+  ) {
+    super(systemLanguagesResolver, userResolver);
+  }
 
   public onDocumentFilenameChange(event) {
     const file = event.srcElement.files[0];

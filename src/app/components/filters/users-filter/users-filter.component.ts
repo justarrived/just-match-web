@@ -1,13 +1,10 @@
+import {BaseComponent} from '../../base.component';
 import {Component} from '@angular/core';
 import {EventEmitter} from '@angular/core';
 import {Input} from '@angular/core';
-import {JARoute} from '../../../routes/ja-route/ja-route';
-import {Language} from '../../../models/api-models/language/language';
-import {OnDestroy} from '@angular/core';
-import {OnInit} from '@angular/core';
 import {Output} from '@angular/core';
-import {Subscription} from 'rxjs/Subscription';
 import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
+import {UserResolver} from '../../../resolvers/user/user.resolver';
 
 @Component({
   selector: 'users-filter',
@@ -46,33 +43,17 @@ import {SystemLanguagesResolver} from '../../../resolvers/system-languages/syste
       </div>
     </div>`
 })
-export class UsersFilterComponent implements OnInit, OnDestroy {
+export class UsersFilterComponent extends BaseComponent {
   @Output() onFiltersChanged: EventEmitter<any> = new EventEmitter<any>();
   public searchText: string;
   public sortOption: string;
   public filterOption: string;
-  public systemLanguage: Language;
-
-  private systemLanguageSubscription: Subscription;
 
   public constructor(
-    private systemLanguagesResolver: SystemLanguagesResolver
+    protected systemLanguagesResolver: SystemLanguagesResolver,
+    protected userResolver: UserResolver,
   ) {
-  }
-
-  public ngOnInit(): void {
-    this.initSystemLanguage();
-  }
-
-  private initSystemLanguage(): void {
-    this.systemLanguage = this.systemLanguagesResolver.getSelectedSystemLanguage();
-    this.systemLanguageSubscription = this.systemLanguagesResolver.getSystemLanguageChangeEmitter().subscribe(systemLanguage => {
-      this.systemLanguage = systemLanguage;
-    });
-  }
-
-  public ngOnDestroy() {
-    if (this.systemLanguageSubscription) { this.systemLanguageSubscription.unsubscribe(); }
+    super(systemLanguagesResolver, userResolver);
   }
 
   public onSearch(searchText: string) {

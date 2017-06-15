@@ -1,7 +1,9 @@
 import {Application} from '../../../models/api-models/application/application';
+import {BaseComponent} from '../../base.component';
 import {Component} from '@angular/core';
 import {Input} from '@angular/core';
-import {JARoutes} from '../../../routes/ja-routes/ja-routes';
+import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
+import {UserResolver} from '../../../resolvers/user/user.resolver';
 
 @Component({
   selector: 'application-status-card',
@@ -90,7 +92,13 @@ import {JARoutes} from '../../../routes/ja-routes/ja-routes';
     </div>
   `
 })
-export class ApplicationStatusCardComponent {
+export class ApplicationStatusCardComponent extends BaseComponent {
   @Input() public application = null as Application;
-  public JARoutes = JARoutes;
+
+  public constructor(
+    protected systemLanguagesResolver: SystemLanguagesResolver,
+    protected userResolver: UserResolver,
+  ) {
+    super(systemLanguagesResolver, userResolver);
+  }
 }

@@ -95,11 +95,11 @@ export class ResetPasswordFormComponent implements OnInit {
   }
 
   public onForgotPasswordButtonClick(): void {
-    this.navigationService.navigate(JARoutes.forgotPassword);
+    this.navigationService.navigate(this.JARoutes.forgotPassword);
   }
 
   public onLoginButtonClick(): void {
-    this.navigationService.navigate(JARoutes.login);
+    this.navigationService.navigate(this.JARoutes.login);
   }
 
   private handleServerErrors(errors): void {

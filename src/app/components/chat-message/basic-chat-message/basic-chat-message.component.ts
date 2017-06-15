@@ -1,8 +1,11 @@
+import {BaseComponent} from '../../base.component';
 import {Component} from '@angular/core';
 import {Input} from '@angular/core';
 import {isThisWeek} from '../../../utils/date/date.util';
 import {isToday} from '../../../utils/date/date.util';
 import {Message} from '../../../models/api-models/message/message';
+import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
+import {UserResolver} from '../../../resolvers/user/user.resolver';
 
 @Component({
   selector: 'basic-chat-message',
@@ -82,10 +85,17 @@ import {Message} from '../../../models/api-models/message/message';
       </div>
     </div>`
 })
-export class BasicChatMessageComponent {
+export class BasicChatMessageComponent extends BaseComponent {
   @Input() public message = null as Message;
   @Input() public rightAligned: boolean = false;
 
   public isThisWeek = isThisWeek;
   public isToday = isToday;
+
+  public constructor(
+    protected systemLanguagesResolver: SystemLanguagesResolver,
+    protected userResolver: UserResolver,
+  ) {
+    super(systemLanguagesResolver, userResolver);
+  }
 }

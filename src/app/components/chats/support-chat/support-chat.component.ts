@@ -1,10 +1,8 @@
-import {Component} from '@angular/core';
+import {BaseComponent} from '../../base.component';
 import {Chat} from '../../../models/api-models/chat/chat';
 import {ChatProxy} from '../../../proxies/chat/chat.proxy';
-import {OnDestroy} from '@angular/core';
-import {OnInit} from '@angular/core';
-import {Subscription} from 'rxjs/Subscription';
-import {SystemLanguageListener} from '../../../resolvers/system-languages/system-languages.resolver';
+import {Component} from '@angular/core';
+import {Language} from '../../../models/api-models/language/language';
 import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
 import {User} from '../../../models/api-models/user/user';
 import {UserResolver} from '../../../resolvers/user/user.resolver';
@@ -23,45 +21,36 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
       *ngIf="chat">
     </basic-chat>`
 })
-export class SupportChatComponent extends SystemLanguageListener implements OnInit, OnDestroy {
+export class SupportChatComponent extends BaseComponent {
   public chat: Chat;
   public chatPromise: Promise<Chat>;
-  public user: User;
-
-  private userSubscription: Subscription;
 
   public constructor(
     private chatProxy: ChatProxy,
-    private userResolver: UserResolver,
-    protected systemLanguagesResolver: SystemLanguagesResolver
+    protected systemLanguagesResolver: SystemLanguagesResolver,
+    protected userResolver: UserResolver,
   ) {
-    super(systemLanguagesResolver);
+    super(systemLanguagesResolver, userResolver);
   }
 
-  public ngOnInit() {
-    this.initUser();
+  public onInit() {
     this.loadData();
   }
 
-  private initUser(): void {
-    this.user = this.userResolver.getUser();
-    this.userSubscription = this.userResolver.getUserChangeEmitter().subscribe(user => {
-      this.user = user;
-      if (user) {
-        this.loadData();
-      }
-    });
+  public systemLanguageChanged(systemLanguage: Language): void {
+    this.loadData();
   }
 
-  protected loadData() {
-    this.chatPromise = this.chatProxy.getUserSupportChat(this.user.id)
-    .then(chat =>  {
-      return this.chat = chat;
-    })
+  public userChanged(user: User): void {
+    this.loadData();
   }
 
-
-  public ngOnDestroy(): void {
-    if (this.userSubscription) { this.userSubscription.unsubscribe(); }
+  private loadData() {
+    if (this.user) {
+      this.chatPromise = this.chatProxy.getUserSupportChat(this.user.id)
+      .then(chat =>  {
+        return this.chat = chat;
+      });
+    }
   }
 }

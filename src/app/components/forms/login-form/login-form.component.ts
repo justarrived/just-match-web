@@ -105,7 +105,7 @@ export class LoginFormComponent implements OnInit  {
     if (this.isInModal) {
       this.modalService.showModal('forgotPasswordModalComponent', false, false, 400);
     } else {
-      this.navigationService.navigate(JARoutes.forgotPassword);
+      this.navigationService.navigate(this.JARoutes.forgotPassword);
     }
   }
 
@@ -113,7 +113,7 @@ export class LoginFormComponent implements OnInit  {
     if (this.isInModal) {
       this.modalService.showModal('registerModalComponent', this.navigateToHome, false, 400);
     } else {
-      this.navigationService.navigate(JARoutes.registerUser);
+      this.navigationService.navigate(this.JARoutes.registerUser);
     }
   }
 
@@ -132,7 +132,7 @@ export class LoginFormComponent implements OnInit  {
     return this.userResolver.login(this.loginForm.value.email_or_phone, this.loginForm.value.password)
     .then(user => {
       if (this.navigateToHome) {
-        this.navigationService.navigate(JARoutes.home);
+        this.navigationService.navigate(this.JARoutes.home);
       }
       this.loadingSubmit = false;
       this.submitSuccess = true;

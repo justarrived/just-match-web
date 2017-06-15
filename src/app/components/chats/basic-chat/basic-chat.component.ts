@@ -1,6 +1,7 @@
 import 'rxjs/Rx';
 import {ActivatedRoute} from '@angular/router';
 import {ApiErrors} from '../../../models/api-models/api-errors/api-errors';
+import {BaseComponent} from '../../base.component';
 import {ChangeDetectorRef} from '@angular/core';
 import {Component} from '@angular/core';
 import {ElementRef} from '@angular/core';
@@ -9,17 +10,14 @@ import {FormGroup} from '@angular/forms';
 import {Inject} from '@angular/core';
 import {Input} from '@angular/core';
 import {isPlatformBrowser} from '@angular/common';
+import {Language} from '../../../models/api-models/language/language';
 import {Message} from '../../../models/api-models/message/message';
 import {MessageProxy} from '../../../proxies/message/message.proxy';
 import {Observable} from 'rxjs/Rx';
-import {OnDestroy} from '@angular/core';
-import {OnInit} from '@angular/core';
 import {Params} from '@angular/router';
 import {PLATFORM_ID} from '@angular/core';
 import {Subscription} from 'rxjs/Subscription';
-import {SystemLanguageListener} from '../../../resolvers/system-languages/system-languages.resolver';
 import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
-import {User} from '../../../models/api-models/user/user';
 import {UserResolver} from '../../../resolvers/user/user.resolver';
 import {Validators} from '@angular/forms';
 import {ViewChild} from '@angular/core';
@@ -89,7 +87,7 @@ import {ViewChild} from '@angular/core';
       </div>
     </div>`
 })
-export class BasicChatComponent extends SystemLanguageListener implements OnInit, OnDestroy {
+export class BasicChatComponent extends BaseComponent {
   @Input() public chatId: string;
   @Input() public infoMessageDescription: string;
   @Input() public infoMessageHeader: string;
@@ -103,10 +101,8 @@ export class BasicChatComponent extends SystemLanguageListener implements OnInit
   public messages: Message[];
   public submitFail: boolean;
   public submitSuccess: boolean;
-  public user: User;
 
   private queryParamsSubscription: Subscription;
-  private userSubscription: Subscription;
   private messagesSubscription: Subscription;
   private readonly pollMessagesInterval: number = 1000;
 
@@ -116,14 +112,13 @@ export class BasicChatComponent extends SystemLanguageListener implements OnInit
     private formBuilder: FormBuilder,
     private messageProxy: MessageProxy,
     private route: ActivatedRoute,
-    private userResolver: UserResolver,
-    protected systemLanguagesResolver: SystemLanguagesResolver
+    protected systemLanguagesResolver: SystemLanguagesResolver,
+    protected userResolver: UserResolver,
   ) {
-    super(systemLanguagesResolver);
+    super(systemLanguagesResolver, userResolver);
   }
 
-  public ngOnInit() {
-    this.initUser();
+  public onInit() {
     this.initForm();
     this.loadData();
   }
@@ -140,20 +135,17 @@ export class BasicChatComponent extends SystemLanguageListener implements OnInit
     });
   }
 
-  private initUser(): void {
-    this.user = this.userResolver.getUser();
-    this.userSubscription = this.userResolver.getUserChangeEmitter().subscribe(user => {
-      this.user = user;
-    });
-  }
-
   private initForm(): void {
     this.chatForm = this.formBuilder.group({
       'body': ['']
     });
   }
 
-  protected loadData() {
+  public systemLanguageChanged(systemLanguage: Language): void {
+    this.loadData();
+  }
+
+  private loadData() {
     this.messagesPromise = this.getChatMessages()
     .then(messages => {
       this.messages = messages.reverse();
@@ -196,8 +188,7 @@ export class BasicChatComponent extends SystemLanguageListener implements OnInit
     } catch(err) {}
   }
 
-  public ngOnDestroy(): void {
-    if (this.userSubscription) { this.userSubscription.unsubscribe(); }
+  public onDestroy(): void {
     if (this.messagesSubscription) { this.messagesSubscription.unsubscribe(); }
     if (this.queryParamsSubscription) { this.queryParamsSubscription.unsubscribe(); }
   }

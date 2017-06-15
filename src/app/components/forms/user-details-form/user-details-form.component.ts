@@ -134,7 +134,7 @@ export class UserDetailsFormComponent implements OnInit, OnDestroy {
           // has to relogin to be authenticated now that password changed
           return this.userResolver.login(this.settingsForm.value.email, this.passwordForm.value.password);
         }).catch(errors => {
-          this.navigationService.navigate(JARoutes.login);
+          this.navigationService.navigate(this.JARoutes.login);
           throw errors;
         });
       } else {

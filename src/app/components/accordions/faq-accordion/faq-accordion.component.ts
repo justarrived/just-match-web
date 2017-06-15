@@ -1,12 +1,10 @@
+import {BaseComponent} from '../../base.component';
 import {Component} from '@angular/core';
 import {Faq} from '../../../models/api-models/faq/faq';
 import {FaqProxy} from '../../../proxies/faq/faq.proxy';
-import {OnInit} from '@angular/core';
-import {SystemLanguageListener} from '../../../resolvers/system-languages/system-languages.resolver';
-import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
 import {Language} from '../../../models/api-models/language/language';
-import {OnDestroy} from '@angular/core';
-import {Subscription} from 'rxjs/Subscription';
+import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
+import {UserResolver} from '../../../resolvers/user/user.resolver';
 
 @Component({
   selector: 'faq-accordion',
@@ -37,37 +35,26 @@ import {Subscription} from 'rxjs/Subscription';
       </basic-accordion-item>
     </basic-accordion>`
 })
-export class FaqAccordionComponent extends SystemLanguageListener implements OnInit, OnDestroy {
+export class FaqAccordionComponent extends BaseComponent {
   public faqs: Promise<Faq[]>;
 
-  constructor(
+  public constructor(
     private faqProxy: FaqProxy,
-    protected systemLanguagesResolver: SystemLanguagesResolver
+    protected systemLanguagesResolver: SystemLanguagesResolver,
+    protected userResolver: UserResolver,
   ) {
-    super(systemLanguagesResolver);
+    super(systemLanguagesResolver, userResolver);
   }
 
-  public systemLanguage: Language;
-
-  private systemLanguageSubscription: Subscription;
-
-  public ngOnInit(): void {
-    this.initSystemLanguage()
+  public onInit(): void {
     this.loadData();
   }
 
-  private initSystemLanguage(): void {
-    this.systemLanguage = this.systemLanguagesResolver.getSelectedSystemLanguage();
-    this.systemLanguageSubscription = this.systemLanguagesResolver.getSystemLanguageChangeEmitter().subscribe(systemLanguage => {
-      this.systemLanguage = systemLanguage;
-    });
+  public systemLanguageChanged(systemLanguage: Language): void {
+    this.loadData();
   }
 
   protected loadData() {
     this.faqs = this.faqProxy.getFaqs();
-  }
-
-  public ngOnDestroy(): void {
-    if (this.systemLanguageSubscription) { this.systemLanguageSubscription.unsubscribe(); }
   }
 }

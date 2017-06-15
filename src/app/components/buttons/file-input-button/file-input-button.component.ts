@@ -1,10 +1,12 @@
-import {ApiErrors} from '../../../models/api-models/api-errors/api-errors';
+import {BaseComponent} from '../../base.component';
 import {Component} from '@angular/core';
 import {ElementRef} from '@angular/core';
 import {EventEmitter} from '@angular/core';
 import {Input} from '@angular/core';
 import {Output} from '@angular/core';
 import {Renderer} from '@angular/core';
+import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
+import {UserResolver} from '../../../resolvers/user/user.resolver';
 import {ViewChild} from '@angular/core';
 
 @Component({
@@ -26,7 +28,7 @@ import {ViewChild} from '@angular/core';
       style="display: none"
       type="file"/>`
 })
-export class FileInputButtonComponent {
+export class FileInputButtonComponent extends BaseComponent {
   @Input() public accept: string;
   @Input() public buttonText: string;
   @Input() public fluid: boolean;
@@ -36,9 +38,12 @@ export class FileInputButtonComponent {
   @Output() public onChange: EventEmitter<any> = new EventEmitter<any>();
   @ViewChild('fileInput') public fileInput: ElementRef;
 
-  constructor(
-    private renderer: Renderer
+  public constructor(
+    private renderer: Renderer,
+    protected systemLanguagesResolver: SystemLanguagesResolver,
+    protected userResolver: UserResolver,
   ) {
+    super(systemLanguagesResolver, userResolver);
   }
 
   public onButtonClick() {

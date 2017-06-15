@@ -1,6 +1,9 @@
+import {BaseComponent} from '../../base.component';
 import {Comment} from '../../../models/api-models/comment/comment';
 import {Component} from '@angular/core';
 import {Input} from '@angular/core';
+import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
+import {UserResolver} from '../../../resolvers/user/user.resolver';
 
 @Component({
   selector: 'basic-comments',
@@ -21,7 +24,13 @@ import {Input} from '@angular/core';
     </div>
     `
 })
-export class BasicCommentsComponent {
+export class BasicCommentsComponent extends BaseComponent  {
   @Input() public comments = null as Comment[];
 
+  public constructor(
+    protected systemLanguagesResolver: SystemLanguagesResolver,
+    protected userResolver: UserResolver,
+  ) {
+    super(systemLanguagesResolver, userResolver);
+  }
 }

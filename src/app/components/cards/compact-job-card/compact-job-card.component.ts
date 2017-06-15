@@ -1,13 +1,10 @@
+import {BaseComponent} from '../../base.component';
 import {Component} from '@angular/core';
 import {fadeInAnimation} from '../../../animations/fade-in/fade-in.animation';
 import {Input} from '@angular/core';
-import {JARoutes} from '../../../routes/ja-routes/ja-routes';
 import {Job} from '../../../models/api-models/job/job';
-import {OnInit} from '@angular/core';
-import {Language} from '../../../models/api-models/language/language';
-import {OnDestroy} from '@angular/core';
-import {Subscription} from 'rxjs/Subscription';
 import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
+import {UserResolver} from '../../../resolvers/user/user.resolver';
 
 @Component({
   selector: 'compact-job-card',
@@ -120,33 +117,15 @@ import {SystemLanguagesResolver} from '../../../resolvers/system-languages/syste
   </div>`
 
 })
-export class CompactJobCardComponent implements OnInit, OnDestroy  {
+export class CompactJobCardComponent extends BaseComponent {
   @Input() public job = null as Job;
 
-  public JARoutes = JARoutes;
   public animationState: string = 'hidden';
 
-  public systemLanguage: Language;
-
-  private systemLanguageSubscription: Subscription;
-
   public constructor(
-    private systemLanguagesResolver: SystemLanguagesResolver
+    protected systemLanguagesResolver: SystemLanguagesResolver,
+    protected userResolver: UserResolver,
   ) {
-  }
-
-  public ngOnInit(): void {
-    this.initSystemLanguage()
-  }
-
-  private initSystemLanguage(): void {
-    this.systemLanguage = this.systemLanguagesResolver.getSelectedSystemLanguage();
-    this.systemLanguageSubscription = this.systemLanguagesResolver.getSystemLanguageChangeEmitter().subscribe(systemLanguage => {
-      this.systemLanguage = systemLanguage;
-    });
-  }
-
-  public ngOnDestroy(): void {
-    if (this.systemLanguageSubscription) { this.systemLanguageSubscription.unsubscribe(); }
+    super(systemLanguagesResolver, userResolver);
   }
 }
