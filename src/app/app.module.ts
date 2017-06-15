@@ -160,15 +160,12 @@ import {RoutesModule} from './routes/routes.module';
 import {SelectDropdownInputComponent} from './components/inputs/select-dropdown-input/select-dropdown-input.component';
 import {SemanticAccordionComponent} from "./semantic/accordion/accordion";
 import {SemanticAccordionItemComponent} from "./semantic/accordion/accordion";
-import {SemanticCheckboxComponent} from "./semantic/input/input";
-import {SemanticInputComponent} from "./semantic/input/input";
-import {SemanticLoaderComponent} from "./semantic/loader/loader";
+import {CheckboxInputComponent} from "./components/inputs/checkbox-input/checkbox-input.component";
+import {BasicLoaderComponent} from "./components/loaders/basic-loader/basic-loader.component";
 import {SemanticMessageComponent} from "./semantic/message/message";
 import {SemanticModalComponent} from "./semantic/modal/modal";
-import {SemanticRatingComponent} from "./semantic/rating/rating";
 import {SemanticSearchComponent} from "./semantic/search/search";
 import {SemanticSelectComponent} from "./semantic/select/select";
-import {SemanticTextareaComponent} from "./semantic/input/input";
 import {ShareModalComponent} from './components/modals/share-modal/share-modal.component';
 import {ShareSectionComponent} from './components/sections/share-section/share-section.component';
 import {ShareWithModalSectionComponent} from './components/sections/share-with-modal-section/share-with-modal-section.component';
@@ -179,7 +176,7 @@ import {SimpleMessageComponent} from './components/messages/simple-message/simpl
 import {SkatteverketCertificateInputComponent} from './components/inputs/skatteverket-certificate-input/skatteverket-certificate-input.component';
 import {SkillProficiencyInputComponent} from './components/inputs/skill-proficiency-input/skill-proficiency-input.component';
 import {SkillsInputComponent} from './components/inputs/skills-input/skills-input.component';
-import {SMAutosizeDirective} from './semantic/autosize/autosize';
+import {AutosizeDirective} from './directives/autosize/autosize.directive';
 import {SMModalTagsDirective} from "./semantic/modal/modal";
 import {SortUsersInputComponent} from './components/inputs/sort-users-input/sort-users-input.component';
 import {SSNInputComponent} from './components/inputs/ssn-input/ssn-input.component';
@@ -392,15 +389,12 @@ export class RavenErrorHandler implements ErrorHandler {
     SelectDropdownInputComponent,
     SemanticAccordionComponent,
     SemanticAccordionItemComponent,
-    SemanticCheckboxComponent,
-    SemanticInputComponent,
-    SemanticLoaderComponent,
+    CheckboxInputComponent,
+    BasicLoaderComponent,
     SemanticMessageComponent,
     SemanticModalComponent,
-    SemanticRatingComponent,
     SemanticSearchComponent,
     SemanticSelectComponent,
-    SemanticTextareaComponent,
     ShareModalComponent,
     ShareSectionComponent,
     ShareWithModalSectionComponent,
@@ -411,7 +405,7 @@ export class RavenErrorHandler implements ErrorHandler {
     SkatteverketCertificateInputComponent,
     SkillProficiencyInputComponent,
     SkillsInputComponent,
-    SMAutosizeDirective,
+    AutosizeDirective,
     SMModalTagsDirective,
     SortUsersInputComponent,
     SSNInputComponent,

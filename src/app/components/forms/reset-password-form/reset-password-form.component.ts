@@ -20,10 +20,10 @@ import {Validators} from '@angular/forms';
       (ngSubmit)="submitForm()"
       [formGroup]="resetPasswordForm"
       class="ui form">
-      <sm-loader
+      <basic-loader
         [complete]="!loadingSubmit"
         class="inverted">
-      </sm-loader>
+      </basic-loader>
 
       <password-input
         [control]="resetPasswordForm.controls['password']"

@@ -19,10 +19,10 @@ import {Validators} from '@angular/forms';
       (ngSubmit)="submitForm()"
       [formGroup]="forgotPasswordForm"
       class="ui form">
-      <sm-loader
+      <basic-loader
         [complete]="!loadingSubmit"
         class="inverted">
-      </sm-loader>
+      </basic-loader>
 
       <email-or-phone-input
         [control]="forgotPasswordForm.controls['email_or_phone']"

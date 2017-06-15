@@ -2,7 +2,7 @@ import {Component} from "@angular/core";
 import {Input} from "@angular/core";
 
 @Component({
-  selector: "sm-loader",
+  selector: "basic-loader",
   template: `
     <div
       *ngIf="!complete || !resolved"
@@ -25,7 +25,7 @@ import {Input} from "@angular/core";
       </div>
     </div>`
 })
-export class SemanticLoaderComponent {
+export class BasicLoaderComponent {
   @Input("class") public class: string;
   @Input("text") public text: string;
   @Input("complete") public complete: boolean = true;

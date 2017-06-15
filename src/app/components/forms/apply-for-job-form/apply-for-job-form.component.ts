@@ -20,10 +20,10 @@ import {Validators} from '@angular/forms';
       (ngSubmit)="submitForm()"
       [formGroup]="applyForJobForm"
       class="ui form">
-      <sm-loader
+      <basic-loader
         [complete]="!loadingSubmit"
         class="inverted">
-      </sm-loader>
+      </basic-loader>
 
       <form-section-title-text [text]="'apply.for.job.form.message.section' | translate"></form-section-title-text>
 
@@ -50,7 +50,7 @@ export class ApplyForJobFormComponent extends BaseComponent {
   public submitFail: boolean;
   public submitSuccess: boolean;
 
-  constructor(
+  public constructor(
     private applicationProxy: ApplicationProxy,
     private changeDetector: ChangeDetectorRef,
     private formBuilder: FormBuilder,

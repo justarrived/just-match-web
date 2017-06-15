@@ -12,10 +12,10 @@ import {SystemLanguagesResolver} from '../../../resolvers/system-languages/syste
   selector: 'status-input',
   template: `
     <div class="ui form">
-      <sm-loader
+      <basic-loader
         [promise]="statuses"
         class="inverted">
-      </sm-loader>
+      </basic-loader>
       <select-dropdown-input
         [apiErrors]="apiErrors"
         [control]="control"

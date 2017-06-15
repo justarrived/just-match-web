@@ -1,9 +1,12 @@
 import {ApiErrors} from '../../../models/api-models/api-errors/api-errors';
+import {BaseComponent} from '../../base.component';
 import {Component} from '@angular/core';
 import {EventEmitter} from '@angular/core';
 import {Input} from '@angular/core';
 import {InputErrorsComponent} from '../../form-errors/input-errors/input-errors.component';
 import {Output} from '@angular/core';
+import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
+import {UserResolver} from '../../../resolvers/user/user.resolver';
 import {ViewChild} from '@angular/core';
 
 @Component({
@@ -13,13 +16,25 @@ import {ViewChild} from '@angular/core';
       [ngClass]="{'error': inputErrors.hasErrors()}"
       class="field"
       [style.padding-bottom]="paddingBottom">
-      <sm-textarea
-        (onEnterKeyUp)="onEnterKeyUp.emit()"
-        [control]="control"
-        [label]="label"
+      <basic-text
+        [text]="label"
+        *ngIf="label"
+        fontSize="small"
+        fontWeight="bold"
+        marginBottom="0"
+        marginTop="0">
+      </basic-text>
+      <textarea
+        (keyup.enter)="onEnterKeyUp.emit()"
+        [class.arabic-font]="systemLanguage.direction === 'rtl'"
+        [formControl]="control"
         [placeholder]="placeholder"
-        [rows]=rows>
-      </sm-textarea>
+        [style.direction]="systemLanguage.direction"
+        [style.text-align]="systemLanguage.direction === 'ltr' ? 'left' : 'right'"
+        [rows]="rows"
+        autosize
+        style="resize: none;">
+      </textarea>
       <input-errors
         [apiAttribute]="apiAttribute"
         [apiErrors]="apiErrors"
@@ -33,7 +48,7 @@ import {ViewChild} from '@angular/core';
       <ng-content></ng-content>
     </div>`
 })
-export class TextareaInputComponent {
+export class TextareaInputComponent extends BaseComponent {
   @Input() public apiAttribute: string;
   @Input() public apiErrors: any;
   @Input() public control: any;
@@ -48,4 +63,11 @@ export class TextareaInputComponent {
   @Input() public requiredLabel: string;
   @Output() onEnterKeyUp: EventEmitter<any> = new EventEmitter<any>();
   @ViewChild(InputErrorsComponent) inputErrors: InputErrorsComponent;
+
+  public constructor(
+    protected systemLanguagesResolver: SystemLanguagesResolver,
+    protected userResolver: UserResolver,
+  ) {
+    super(systemLanguagesResolver, userResolver);
+  }
 }

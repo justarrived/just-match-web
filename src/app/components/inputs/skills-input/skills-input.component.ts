@@ -16,11 +16,11 @@ import {UserSkillFactory} from '../../../models/api-models/user-skill/user-skill
   selector: 'skills-input',
   template: `
   <div class="ui form">
-    <sm-loader
+    <basic-loader
       [complete]="!loadingSkill"
       [promise]="skills"
       class="inverted">
-    </sm-loader>
+    </basic-loader>
     <select-dropdown-input
       (onChange)="onAddSkill($event)"
       [apiErrors]="apiErrors"

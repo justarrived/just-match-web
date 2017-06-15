@@ -14,10 +14,10 @@ import {SystemLanguagesResolver} from '../../../resolvers/system-languages/syste
   selector: 'filter-users-input',
   template: `
     <div class="ui form">
-      <sm-loader
+      <basic-loader
         [promise]="filterUsersOptions"
         class="inverted">
-      </sm-loader>
+      </basic-loader>
       <select-dropdown-input
         [apiErrors]="apiErrors"
         [data]="filterUsersOptions | async"

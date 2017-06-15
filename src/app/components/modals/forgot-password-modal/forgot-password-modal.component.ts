@@ -28,10 +28,10 @@ import {ViewChild} from '@angular/core';
       </modal-content>
       <modal-actions>
         <div class="ui center aligned basic segment button-container">
-          <sm-loader
+          <basic-loader
             [complete]="!forgotPasswordForm.loadingSubmit"
             class="inverted">
-          </sm-loader>
+          </basic-loader>
           <base-button
             (click)="buttonClicked()"
             [buttonText]="'forgot.password.modal.button' | translate"

@@ -28,10 +28,10 @@ import {yyyymmdd} from '../../../utils/date/date.util';
     <div
       class="ui basic center aligned segment"
       style="margin: 0; padding-bottom: 55px;">
-      <sm-loader
+      <basic-loader
         [promise]="jobsMetaPromise"
         class="inverted">
-      </sm-loader>
+      </basic-loader>
       <div
         [style.flex-direction]="systemLanguage.direction === 'rtl' ? 'row-reverse': 'row'"
         class="ui centered grid">

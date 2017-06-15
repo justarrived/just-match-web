@@ -12,10 +12,10 @@ import {LanguageProxy} from '../../../proxies/language/language.proxy';
   selector: 'system-language-input',
   template: `
     <div class="ui form">
-      <sm-loader
+      <basic-loader
         [promise]="systemLanguages"
         class="inverted">
-      </sm-loader>
+      </basic-loader>
       <select-dropdown-input
         [apiErrors]="apiErrors"
         [data]="systemLanguages | async"

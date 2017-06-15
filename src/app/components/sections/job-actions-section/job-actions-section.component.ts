@@ -17,10 +17,10 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
 @Component({
   selector: 'job-actions-section',
   template: `
-    <sm-loader
+    <basic-loader
       [promise]="promises"
       class="inverted">
-    </sm-loader>
+    </basic-loader>
     <div
       *ngIf="!application"
       [style.text-align]="center ? 'center' : 'initial'">

@@ -11,10 +11,10 @@ import {UserDocument} from '../../../models/api-models/user-document/user-docume
     <div
       class="ui raised card"
       [ngClass]="{'centered': centered}">
-      <sm-loader
+      <basic-loader
         [complete]="!uploadingDocument"
         class="inverted">
-      </sm-loader>
+      </basic-loader>
       <div class="content">
         <basic-title-text
           [text]="header"

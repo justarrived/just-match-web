@@ -17,10 +17,10 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
 @Component({
   styleUrls: ['./job-page.component.scss'],
   template: `
-    <sm-loader
+    <basic-loader
       [promise]="jobPromise"
       class="inverted">
-    </sm-loader>
+    </basic-loader>
 
     <div *ngIf="job">
       <job-banner-section

@@ -16,11 +16,11 @@ import {UserInterestFactory} from '../../../models/api-models/user-interest/user
   selector: 'interests-input',
   template: `
   <div class="ui form">
-    <sm-loader
+    <basic-loader
       [complete]="!loadingInterest"
       [promise]="interests"
       class="inverted">
-    </sm-loader>
+    </basic-loader>
     <select-dropdown-input
       (onChange)="onAddInterest($event)"
       [apiErrors]="apiErrors"

@@ -22,11 +22,11 @@ import {Validators} from '@angular/forms';
       (ngSubmit)="submitForm()"
       [formGroup]="signForJobForm"
       class="ui form">
-      <sm-loader
+      <basic-loader
         [complete]="!loadingSubmit"
         [promise]="termsAgreement"
         class="inverted">
-      </sm-loader>
+      </basic-loader>
 
       <form-section-title-text
         [text]="'sign.for.job.form.terms.section' | translate"

@@ -16,11 +16,11 @@ import {UserLanguageFactory} from '../../../models/api-models/user-language/user
   selector: 'languages-input',
   template: `
   <div class="ui form">
-    <sm-loader
+    <basic-loader
       [complete]="!loadingLanguage"
       [promise]="languages"
       class="inverted">
-    </sm-loader>
+    </basic-loader>
     <select-dropdown-input
       (onChange)="onAddLanguage($event)"
       [apiErrors]="apiErrors"

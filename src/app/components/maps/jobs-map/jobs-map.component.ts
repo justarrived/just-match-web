@@ -18,10 +18,10 @@ import {yyyymmdd} from '../../../utils/date/date.util';
   selector: 'jobs-map',
   template: `
     <div class="ui form jobs-map-container">
-      <sm-loader
+      <basic-loader
         [promise]="jobs"
         class="inverted">
-      </sm-loader>
+      </basic-loader>
       <agm-map
         [disableDefaultUI]="true"
         [latitude]="mapLocation.latitude"

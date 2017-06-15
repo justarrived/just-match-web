@@ -29,10 +29,10 @@ import {ViewChild} from '@angular/core';
       </modal-content>
       <modal-actions>
         <div class="ui center aligned basic segment button-container">
-          <sm-loader
+          <basic-loader
             [complete]="!userUpdateForm.loadingSubmit"
             class="inverted">
-          </sm-loader>
+          </basic-loader>
           <base-button
             (click)="buttonClicked()"
             [buttonText]="'missing.payment.information.modal.button' | translate"

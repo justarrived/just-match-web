@@ -26,11 +26,11 @@ import {Validators} from '@angular/forms';
       [formGroup]="commentForm"
       *ngIf="user"
       class="ui form">
-      <sm-loader
+      <basic-loader
         [complete]="!loadingSubmit"
         [promise]="commentsPromise"
         class="inverted">
-      </sm-loader>
+      </basic-loader>
 
       <comment-input
         [control]="commentForm.controls['body']"

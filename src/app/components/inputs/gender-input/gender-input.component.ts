@@ -12,10 +12,10 @@ import {UserGenderProxy} from '../../../proxies/user-gender/user-gender.proxy';
   selector: 'gender-input',
   template: `
     <div class="ui form">
-      <sm-loader
+      <basic-loader
         [promise]="genders"
         class="inverted">
-      </sm-loader>
+      </basic-loader>
       <select-dropdown-input
         [apiErrors]="apiErrors"
         [data]="genders | async"

@@ -12,10 +12,10 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
 @Component({
   selector: 'support-chat',
   template: `
-    <sm-loader
+    <basic-loader
       [promise]="chatPromise"
       class="inverted">
-    </sm-loader>
+    </basic-loader>
     <basic-chat
       [chatId]="chat.id"
       [infoMessageDescription]="'support.chat.info.message.description' | translate"

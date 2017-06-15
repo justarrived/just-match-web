@@ -22,10 +22,10 @@ import {Validators} from '@angular/forms';
       (ngSubmit)="submitForm()"
       [formGroup]="contactForm"
       class="ui form">
-      <sm-loader
+      <basic-loader
         [complete]="!loadingSubmit"
         class="inverted">
-      </sm-loader>
+      </basic-loader>
 
       <name-input
         [control]="contactForm.controls['name']"

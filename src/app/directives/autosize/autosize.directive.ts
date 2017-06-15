@@ -7,7 +7,7 @@ import {Renderer2} from '@angular/core';
 @Directive({
   selector: 'textarea[autosize]'
 })
-export class SMAutosizeDirective implements AfterContentChecked {
+export class AutosizeDirective implements AfterContentChecked {
 
   @HostListener('input', ['$event.target'])
   public onInput(textArea: any): void {

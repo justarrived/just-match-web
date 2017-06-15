@@ -23,10 +23,10 @@ import {Validators} from '@angular/forms';
       (ngSubmit)="submitForm()"
       [formGroup]="loginForm"
       class="ui form">
-      <sm-loader
+      <basic-loader
         [complete]="!loadingSubmit"
         class="inverted">
-      </sm-loader>
+      </basic-loader>
 
       <email-or-phone-input
         [control]="loginForm.controls['email_or_phone']"

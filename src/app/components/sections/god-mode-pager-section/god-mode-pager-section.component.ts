@@ -13,10 +13,10 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
 @Component({
   selector: 'god-mode-pager-section',
   template: `
-    <sm-loader
+    <basic-loader
       [promise]="actAsUser"
       class="inverted">
-    </sm-loader>
+    </basic-loader>
 
     <basic-pager
       (pageChange)="onPageChange($event)"
@@ -28,10 +28,10 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
     <div
       class="ui basic padded center aligned segment"
       style="margin: 0; padding-bottom: 55px;">
-      <sm-loader
+      <basic-loader
         [promise]="users"
         class="inverted">
-      </sm-loader>
+      </basic-loader>
       <div
         [style.flex-direction]="systemLanguage.direction === 'rtl' ? 'row-reverse': 'row'"
         class="ui centered grid">

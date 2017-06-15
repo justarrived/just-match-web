@@ -17,10 +17,10 @@ import {yyyymmdd} from '../../../utils/date/date.util';
       class="applications-container ui basic center aligned segment"
       style="margin: 0; padding: 30px 0"
       *ngIf="(applications | async)?.length > 0">
-      <sm-loader
+      <basic-loader
         [promise]="applications"
         class="inverted">
-      </sm-loader>
+      </basic-loader>
       <basic-title-text
         [text]="'home.jobs.slider.user.jobs.title' | translate"
         [underlineBelow]="true"

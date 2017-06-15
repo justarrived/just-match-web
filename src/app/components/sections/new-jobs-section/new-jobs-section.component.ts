@@ -12,10 +12,10 @@ import {yyyymmdd} from '../../../utils/date/date.util';
   selector: 'new-jobs-section',
   template: `
     <div class="ui basic padded center aligned segment">
-      <sm-loader
+      <basic-loader
         [promise]="newJobs"
         class="inverted">
-      </sm-loader>
+      </basic-loader>
       <basic-title-text
         [text]="'home.jobs.slider.new.jobs.title' | translate"
         [underlineBelow]="true"

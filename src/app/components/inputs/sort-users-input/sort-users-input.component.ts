@@ -14,10 +14,10 @@ import {SystemLanguagesResolver} from '../../../resolvers/system-languages/syste
   selector: 'sort-users-input',
   template: `
     <div class="ui form">
-      <sm-loader
+      <basic-loader
         [promise]="sortUsersOptions"
         class="inverted">
-      </sm-loader>
+      </basic-loader>
       <select-dropdown-input
         [apiErrors]="apiErrors"
         [data]="sortUsersOptions | async"

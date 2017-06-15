@@ -16,13 +16,31 @@ import {ViewChild} from '@angular/core';
       [ngClass]="{'error': inputErrors.hasErrors()}"
       [style.padding-bottom]="paddingBottom"
       class="field">
-      <sm-input
-        [control]="control"
-        [icon]="icon"
-        [label]="label"
-        [placeholder]="placeholder"
-        [type]="type">
-      </sm-input>
+      <basic-text
+        [text]="label"
+        *ngIf="label"
+        fontSize="small"
+        fontWeight="bold"
+        marginBottom="0"
+        marginTop="0">
+      </basic-text>
+      <div
+        class="ui input"
+        [ngClass]="{'left': icon && systemLanguage.direction === 'ltr', 'right': icon && systemLanguage.direction === 'rtl', 'icon': icon}">
+        <input
+          (keyup.enter)="onEnterKeyUp.emit()"
+          [class.arabic-font]="systemLanguage.direction === 'rtl'"
+          [formControl]="control"
+          [style.direction]="systemLanguage.direction"
+          [style.text-align]="systemLanguage.direction === 'ltr' ? 'left' : 'right'"
+          [type]="type"
+          #input
+          placeholder="{{placeholder}}">
+        <i
+          *ngIf="icon"
+          class="{{icon}} icon">
+        </i>
+      </div>
       <input-errors
         [apiAttribute]="apiAttribute"
         [apiErrors]="apiErrors"

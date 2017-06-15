@@ -12,10 +12,10 @@ import {SystemLanguagesResolver} from '../../../resolvers/system-languages/syste
   selector: 'country-of-origin-input',
   template: `
   <div class="ui form">
-    <sm-loader
+    <basic-loader
       [promise]="countries"
       class="inverted">
-    </sm-loader>
+    </basic-loader>
     <select-dropdown-input
       [apiErrors]="apiErrors"
       [control]="control"

@@ -10,10 +10,10 @@ import {Output} from '@angular/core';
     <div
       class="ui raised card"
       [ngClass]="{'centered': centered}">
-      <sm-loader
+      <basic-loader
         [complete]="!uploadingImage"
         class="inverted">
-      </sm-loader>
+      </basic-loader>
       <div class="image">
         <img
           [src]="imageUrl"

@@ -17,10 +17,10 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
           <div
             class="ui form"
             style="height: 100%">
-            <sm-loader
+            <basic-loader
               [complete]="!user || !user.isBeingReloaded"
               class="inverted">
-            </sm-loader>
+            </basic-loader>
             <router-outlet></router-outlet>
           </div>
         </section>

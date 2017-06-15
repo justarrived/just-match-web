@@ -66,11 +66,11 @@ import {ViewChild} from '@angular/core';
           [formGroup]="chatForm"
           class="ui form"
           style="display: flex; align-items: center;">
-          <sm-loader
+          <basic-loader
             [complete]="!loadingSubmit"
             [promise]="messagesPromise"
             class="inverted">
-          </sm-loader>
+          </basic-loader>
 
           <chat-message-input
             (onEnterKeyUp)="chatForm.value.body && submitForm()"
