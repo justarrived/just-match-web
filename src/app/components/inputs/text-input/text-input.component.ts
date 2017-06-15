@@ -28,7 +28,6 @@ import {ViewChild} from '@angular/core';
         class="ui input"
         [ngClass]="{'left': icon && systemLanguage.direction === 'ltr', 'right': icon && systemLanguage.direction === 'rtl', 'icon': icon}">
         <input
-          (keyup.enter)="onEnterKeyUp.emit()"
           [class.arabic-font]="systemLanguage.direction === 'rtl'"
           [formControl]="control"
           [style.direction]="systemLanguage.direction"
