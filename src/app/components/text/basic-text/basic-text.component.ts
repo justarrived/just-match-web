@@ -46,7 +46,9 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
       [style.direction]="alwaysLtrText ? 'ltr' : alwaysRtlText ? 'rtl' : systemLanguage.direction"
       [style.display]="display"
       [style.margin-bottom]="marginBottom"
-      [style.margin-top]="marginTop">
+      [style.margin-top]="marginTop"
+      [style.margin-left]="marginLeft"
+      [style.margin-right]="marginRight">
       {{text}}
     </div>
     <div
@@ -88,7 +90,9 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
       [style.direction]="alwaysLtrText ? 'ltr' : alwaysRtlText ? 'rtl' : systemLanguage.direction"
       [style.display]="display"
       [style.margin-bottom]="marginBottom"
-      [style.margin-top]="marginTop">
+      [style.margin-top]="marginTop"
+      [style.margin-left]="marginLeft"
+      [style.margin-right]="marginRight">
     </div>
     `
 })
@@ -96,23 +100,25 @@ export class BasicTextComponent extends BaseComponent {
   @Input() public alwaysLtrText: boolean = false;
   @Input() public alwaysRtlText: boolean = false;
   @Input() public color: string; // Should be one of 'pink', 'black', 'gray', 'white'.
-  @Input() public oneLineEllipsis: boolean = false;
-  @Input() public maxiumLinesEllipsis: number; // Should be one of undefined or 2-10
   @Input() public display: string = 'block';
   @Input() public fontSize: string = 'medium'; // Should be one of 'small', 'medium', 'large'.
   @Input() public fontWeight: string = 'normal'; // Should be one of 'light', 'normal', 'bold'.
   @Input() public italic: boolean = false;
   @Input() public marginBottom: string = '1rem';
+  @Input() public marginLeft: string = '0';
+  @Input() public marginRight: string = '0';
   @Input() public marginTop: string = '0';
+  @Input() public maxiumLinesEllipsis: number; // Should be one of undefined or 2-10
+  @Input() public oneLineEllipsis: boolean = false;
   @Input() public text: string;
-  @Input() public unsafeHtml: string;
-  @Input() public uppercase: boolean = false;
   @Input() public textAlignmentLtr: string = 'left'; // Should be one of 'left', 'center', 'right'.
   @Input() public textAlignmentLtrMobile: string; // Should be one of undefined, 'left', 'center', 'right'.
   @Input() public textAlignmentLtrTablet: string; // Should be one of undefined, 'left', 'center', 'right'.
   @Input() public textAlignmentRtl: string = 'right'; // Should be one of 'left', 'center', 'right'.
   @Input() public textAlignmentRtlMobile: string; // Should be one of undefined, 'left', 'center', 'right'.
   @Input() public textAlignmentRtlTablet: string; // Should be one of undefined, 'left', 'center', 'right'.
+  @Input() public unsafeHtml: string;
+  @Input() public uppercase: boolean = false;
 
   public constructor(
     protected systemLanguagesResolver: SystemLanguagesResolver,

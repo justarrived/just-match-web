@@ -55,6 +55,9 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
       [style.display]="display"
       [style.margin-bottom]="marginBottom"
       [style.margin-top]="marginTop"
+      [style.margin-top]="marginTop"
+      [style.margin-left]="marginLeft"
+      [style.margin-right]="marginRight"
       [style.padding-bottom]="paddingBottom"
       [style.padding-top]="paddingTop"
       [style.text-decoration]="underline ? 'underline' : 'none'"
@@ -109,6 +112,9 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
       [style.display]="display"
       [style.margin-bottom]="marginBottom"
       [style.margin-top]="marginTop"
+      [style.margin-top]="marginTop"
+      [style.margin-left]="marginLeft"
+      [style.margin-right]="marginRight"
       [style.padding-bottom]="paddingBottom"
       [style.padding-top]="paddingTop"
       [style.text-decoration]="underline ? 'underline' : 'none'"
@@ -129,6 +135,8 @@ export class BasicLinkComponent extends BaseComponent {
   @Input() public hrefTarget: string = '_blank';
   @Input() public italic: boolean = false;
   @Input() public marginBottom: string = '1rem';
+  @Input() public marginLeft: string = '0';
+  @Input() public marginRight: string = '0';
   @Input() public marginTop: string = '1rem';
   @Input() public maxiumLinesEllipsis: number = 0; // Should be one of undefined or 2-10
   @Input() public oneLineEllipsis: boolean = false;

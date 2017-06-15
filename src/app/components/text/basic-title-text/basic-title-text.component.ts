@@ -68,7 +68,10 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
       [style.direction]="alwaysLtrText ? 'ltr' : alwaysRtlText ? 'rtl' : systemLanguage.direction"
       [style.display]="display"
       [style.margin-bottom]="marginBottom"
-      [style.margin-top]="marginTop">
+      [style.margin-top]="marginTop"
+      [style.margin-top]="marginTop"
+      [style.margin-left]="marginLeft"
+      [style.margin-right]="marginRight">
       <i
         *ngIf="iconLeft"
         class="{{iconLeft}} icon">
@@ -105,6 +108,8 @@ export class BasicTitleTextComponent extends BaseComponent {
   @Input() public iconLeft: string;
   @Input() public iconRight: string;
   @Input() public marginBottom: string = '1rem';
+  @Input() public marginLeft: string = '0';
+  @Input() public marginRight: string = '0';
   @Input() public marginTop: string = '1.8rem';
   @Input() public text: string;
   @Input() public uppercase: boolean = false;

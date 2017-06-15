@@ -14,34 +14,30 @@ import {ViewContainerRef} from "@angular/core";
 @Component({
   selector: "sm-input",
   template: `
+    <basic-text
+      [text]="label"
+      *ngIf="label"
+      fontSize="small"
+      fontWeight="bold"
+      marginBottom="0"
+      marginTop="0">
+    </basic-text>
     <div
-      class="field"
-      [ngClass]="{error: (!control.valid && control.dirty) }">
-      <basic-text
-        [text]="label"
-        *ngIf="label"
-        fontSize="small"
-        fontWeight="bold"
-        marginBottom="0"
-        marginTop="0">
-      </basic-text>
-      <div
-        class="ui input"
-        [ngClass]="{'left': icon && systemLanguage.direction === 'ltr', 'right': icon && systemLanguage.direction === 'rtl', 'icon': icon}">
-        <input
-          (keyup.enter)="onEnterKeyUp.emit()"
-          [class.arabic-font]="systemLanguage.direction === 'rtl'"
-          [formControl]="control"
-          [style.direction]="systemLanguage.direction"
-          [style.text-align]="systemLanguage.direction === 'ltr' ? 'left' : 'right'"
-          [type]="type"
-          #input
-          placeholder="{{placeholder}}">
-        <i
-          *ngIf="icon"
-          class="{{icon}} icon">
-        </i>
-      </div>
+      class="ui input"
+      [ngClass]="{'left': icon && systemLanguage.direction === 'ltr', 'right': icon && systemLanguage.direction === 'rtl', 'icon': icon}">
+      <input
+        (keyup.enter)="onEnterKeyUp.emit()"
+        [class.arabic-font]="systemLanguage.direction === 'rtl'"
+        [formControl]="control"
+        [style.direction]="systemLanguage.direction"
+        [style.text-align]="systemLanguage.direction === 'ltr' ? 'left' : 'right'"
+        [type]="type"
+        #input
+        placeholder="{{placeholder}}">
+      <i
+        *ngIf="icon"
+        class="{{icon}} icon">
+      </i>
     </div>`
 })
 export class SemanticInputComponent implements OnInit, OnDestroy {
@@ -81,26 +77,22 @@ export class SemanticInputComponent implements OnInit, OnDestroy {
 @Component({
   selector: "sm-checkbox",
   template: `
-    <div
-      class="field"
-      [ngClass]="{error: (!control.value && control?.validator) }">
-      <div class="ui checkbox">
-        <input
-          [formControl]="control"
-          [id]="uniqueId"
-          type="checkbox">
-        <label
-          [for]="uniqueId"
+    <div class="ui checkbox">
+      <input
+        [formControl]="control"
+        [id]="uniqueId"
+        type="checkbox">
+      <label
+        [for]="uniqueId"
+        *ngIf="label"
+        style="cursor: pointer;">
+        <basic-text
+          [text]="label"
           *ngIf="label"
-          style="cursor: pointer;">
-          <basic-text
-            [text]="label"
-            *ngIf="label"
-            marginBottom="0"
-            marginTop="0">
-          </basic-text>
-        </label>
-      </div>
+          marginBottom="0"
+          marginTop="0">
+        </basic-text>
+      </label>
     </div>`
 })
 export class SemanticCheckboxComponent {
@@ -112,29 +104,25 @@ export class SemanticCheckboxComponent {
 @Component({
   selector: "sm-textarea",
   template: `
-    <div
-      [ngClass]="{error: (!control.valid && control.dirty) }"
-      class="field">
-      <basic-text
-        [text]="label"
-        *ngIf="label"
-        fontSize="small"
-        fontWeight="bold"
-        marginBottom="0"
-        marginTop="0">
-      </basic-text>
-      <textarea
-        (keyup.enter)="onEnterKeyUp.emit()"
-        [class.arabic-font]="systemLanguage.direction === 'rtl'"
-        [formControl]="control"
-        [placeholder]="placeholder"
-        [style.direction]="systemLanguage.direction"
-        [style.text-align]="systemLanguage.direction === 'ltr' ? 'left' : 'right'"
-        [rows]="rows"
-        autosize
-        style="resize: none;">
-      </textarea>
-    </div>`
+    <basic-text
+      [text]="label"
+      *ngIf="label"
+      fontSize="small"
+      fontWeight="bold"
+      marginBottom="0"
+      marginTop="0">
+    </basic-text>
+    <textarea
+      (keyup.enter)="onEnterKeyUp.emit()"
+      [class.arabic-font]="systemLanguage.direction === 'rtl'"
+      [formControl]="control"
+      [placeholder]="placeholder"
+      [style.direction]="systemLanguage.direction"
+      [style.text-align]="systemLanguage.direction === 'ltr' ? 'left' : 'right'"
+      [rows]="rows"
+      autosize
+      style="resize: none;">
+    </textarea>`
 })
 export class SemanticTextareaComponent implements OnInit, OnDestroy {
   @Input() public autofocus: boolean;

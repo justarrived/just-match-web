@@ -16,37 +16,34 @@ import {SystemLanguagesResolver} from '../../resolvers/system-languages/system-l
 @Component({
   selector: "sm-search",
   template: `
+    <basic-text
+      [text]="label"
+      *ngIf="label"
+      fontSize="small"
+      fontWeight="bold"
+      marginBottom="0"
+      marginTop="0">
+    </basic-text>
     <div
-      class="field">
-      <basic-text
-        [text]="label"
-        *ngIf="label"
-        fontSize="small"
-        fontWeight="bold"
-        marginBottom="0"
-        marginTop="0">
-      </basic-text>
+      [ngClass]="{'loading': loading}"
+      class="ui search">
       <div
-        [ngClass]="{'loading': loading}"
-        class="ui search">
-        <div
-          class="ui input "
-          [ngClass]="{'left': icon && systemLanguage.direction === 'ltr', 'right': icon && systemLanguage.direction === 'rtl', 'icon': icon}">
-          <input
-            [attr.placeholder]="placeholder"
-            [class.arabic-font]="systemLanguage.direction === 'rtl'"
-            [formControl]="searchControl"
-            [style.direction]="systemLanguage.direction"
-            [style.text-align]="systemLanguage.direction === 'ltr' ? 'left' : 'right'"
-            class="prompt"
-            type="text">
-          <i
-            *ngIf="icon"
-            class="search icon">
-          </i>
-        </div>
-        <div class="results"></div>
+        class="ui input "
+        [ngClass]="{'left': icon && systemLanguage.direction === 'ltr', 'right': icon && systemLanguage.direction === 'rtl', 'icon': icon}">
+        <input
+          [attr.placeholder]="placeholder"
+          [class.arabic-font]="systemLanguage.direction === 'rtl'"
+          [formControl]="searchControl"
+          [style.direction]="systemLanguage.direction"
+          [style.text-align]="systemLanguage.direction === 'ltr' ? 'left' : 'right'"
+          class="prompt"
+          type="text">
+        <i
+          *ngIf="icon"
+          class="search icon">
+        </i>
       </div>
+      <div class="results"></div>
     </div>`
 })
 export class SemanticSearchComponent implements OnInit, OnDestroy, AfterViewInit {

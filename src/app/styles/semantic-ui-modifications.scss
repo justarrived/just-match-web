@@ -6,19 +6,33 @@
   border-top: none;
 }
 
-.ui.form input:not([type]),
-.ui.form input[type=text],
-.ui.form input[type=email],
-.ui.form input[type=search],
-.ui.form input[type=password],
-.ui.form input[type=date],
-.ui.form input[type=datetime-local],
-.ui.form input[type=tel],
-.ui.form input[type=time],
-.ui.form input[type=file],
-.ui.form input[type=url],
-.ui.form input[type=number] {
-  font-family: $text-font-family;
+input:not([type]),
+input[type=text],
+input[type=email],
+input[type=search],
+input[type=password],
+input[type=date],
+input[type=datetime-local],
+input[type=tel],
+input[type=time],
+input[type=file],
+input[type=url],
+input[type=number],
+textarea {
+  @include text();
+  border-radius: 1rem !important;
+}
+
+.ui.dropdown {
+  border-radius: 1rem !important;
+}
+
+.ui.selection.dropdown .menu {
+  border-radius: 0 0 1rem 1rem !important;
+}
+
+.ui.upward.selection.dropdown .menu {
+  border-radius: 1rem 1rem 0 0 !important;
 }
 
 .ui.modal.basic {

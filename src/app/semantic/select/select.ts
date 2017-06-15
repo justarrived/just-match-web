@@ -21,32 +21,28 @@ declare var jQuery: any;
 @Component({
   selector: "sm-select",
   template: `
+    <basic-text
+      [text]="label"
+      *ngIf="label"
+      fontSize="small"
+      fontWeight="bold"
+      marginBottom="0"
+      marginTop="0">
+    </basic-text>
     <div
-      class="field"
-      [ngClass]="{error: !control?.valid && control?.touched}">
-      <basic-text
-        [text]="label"
-        *ngIf="label"
-        fontSize="small"
-        fontWeight="bold"
-        marginBottom="0"
-        marginTop="0">
-      </basic-text>
-      <div
-        class="ui-select-wrapper"
-        style="width: 100%"
-        [ngClass]="{'direction-rtl': systemLanguage.direction === 'rtl'}">
-        <select
-          [formControl]="control"
-          class="ui {{class}} fluid dropdown"
-          #select>
-          <option
-            value="">
-            {{placeholder}}
-          </option>
-          <ng-content></ng-content>
-        </select>
-      </div>
+      class="ui-select-wrapper"
+      style="width: 100%"
+      [ngClass]="{'direction-rtl': systemLanguage.direction === 'rtl'}">
+      <select
+        [formControl]="control"
+        class="ui {{class}} fluid dropdown"
+        #select>
+        <option
+          value="">
+          {{placeholder}}
+        </option>
+        <ng-content></ng-content>
+      </select>
     </div>`
 })
 export class SemanticSelectComponent implements OnInit, OnDestroy, AfterViewInit {
