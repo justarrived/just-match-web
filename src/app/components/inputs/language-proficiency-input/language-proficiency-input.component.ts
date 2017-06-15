@@ -17,7 +17,13 @@ import {Output} from '@angular/core';
         style="padding-top: 5px; padding-right: 5px;">
       </rating-input>
       <div class="ui tag pink label">
-        {{label}}
+        <basic-text
+          [text]="label"
+          color="white"
+          display="inline"
+          fontSize="small"
+          fontWeight="bold">
+        </basic-text>
         <i
           class="delete icon"
           (click)="onDeleteIconClick()">
