@@ -49,10 +49,12 @@ interface JobApiAttributes {
   jobSkills: JobSkill[];
   language: Language;
   languageId: string;
+  lastApplicationAt: Date;
   name: string;
   netAmount: number;
   netAmountDelimited: string;
   netAmountWithCurrency: string;
+  openForApplications: boolean;
   owner: User;
   requirementsDescription: string;
   requirementsDescriptionHtml: string;
@@ -129,10 +131,12 @@ export class JobFactory {
       jobSkills:  map(jsonObject.job_skills, jobSkill => JobSkillFactory.createJobSkill(jobSkill)),
       language: LanguageFactory.createLanguage(jsonObject.language),
       languageId: jsonObject.language_id,
+      lastApplicationAt: jsonObject.last_application_at,
       name: jsonObject.name,
       netAmount: jsonObject.net_amount,
       netAmountDelimited: jsonObject.net_amount_delimited,
       netAmountWithCurrency: jsonObject.net_amount_with_currency,
+      openForApplications: jsonObject.open_for_applications,
       owner: UserFactory.createUser(jsonObject.owner),
       requirementsDescription: jsonObject.requirements_description,
       requirementsDescriptionHtml: jsonObject.requirements_description_html,

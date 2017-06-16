@@ -1,0 +1,16 @@
+.back-to-jobs-container {
+  .icon {
+    background: url('/assets/icons/back.svg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    height: 42px;
+    width: 42px;
+  }
+
+  &:hover {
+    .icon {
+      background: url('/assets/icons/back-hover.svg');
+    }
+  }
+}

@@ -22,7 +22,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
       class="inverted">
     </basic-loader>
     <div
-      *ngIf="!application"
+      *ngIf="!application && job.openForApplications"
       [style.text-align]="center ? 'center' : 'initial'">
       <base-button
         (click)="onApplyForJobButtonClick()"
@@ -34,8 +34,8 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
       </base-button>
     </div>
     <basic-title-text
-      [text]="'job.actions.section.applied' | translate"
-      *ngIf="application && !application.accepted  && !application.willPerform"
+      [text]="'job.actions.section.closed.for.applications' | translate"
+      *ngIf="!application && !job.openForApplications"
       color="black"
       fontSize="medium"
       [textAlignmentLtr]="center ? 'center' : 'left'"
@@ -43,7 +43,37 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
       marginTop="0"
       marginBottom="0">
     </basic-title-text>
-    <div *ngIf="application && application.accepted && !application.willPerform">
+    <basic-title-text
+      [text]="'job.actions.section.rejected' | translate"
+      *ngIf="application && application.applicationStatus === 'rejected'"
+      color="black"
+      fontSize="medium"
+      [textAlignmentLtr]="center ? 'center' : 'left'"
+      [textAlignmentRtl]="center ? 'center' : 'right'"
+      marginTop="0"
+      marginBottom="0">
+    </basic-title-text>
+    <basic-title-text
+      [text]="'job.actions.section.withdrawn' | translate"
+      *ngIf="application && application.applicationStatus === 'withdrawn'"
+      color="black"
+      fontSize="medium"
+      [textAlignmentLtr]="center ? 'center' : 'left'"
+      [textAlignmentRtl]="center ? 'center' : 'right'"
+      marginTop="0"
+      marginBottom="0">
+    </basic-title-text>
+    <basic-title-text
+      [text]="'job.actions.section.applied' | translate"
+      *ngIf="application && application.applicationStatus === 'applied'"
+      color="black"
+      fontSize="medium"
+      [textAlignmentLtr]="center ? 'center' : 'left'"
+      [textAlignmentRtl]="center ? 'center' : 'right'"
+      marginTop="0"
+      marginBottom="0">
+    </basic-title-text>
+    <div *ngIf="application && application.applicationStatus === 'offered'">
       <basic-title-text
         [text]="'job.actions.section.offer' | translate: {hours: application.remainsConfirmationHours, minutes: application.remainsConfirmationMinutes}"
         color="black"
@@ -65,17 +95,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
     </div>
     <basic-title-text
       [text]="'job.actions.section.hired' | translate"
-      *ngIf="application && application.willPerform && !application.jobEnded"
-      color="black"
-      fontSize="medium"
-      [textAlignmentLtr]="center ? 'center' : 'left'"
-      [textAlignmentRtl]="center ? 'center' : 'right'"
-      marginTop="0"
-      marginBottom="0">
-    </basic-title-text>
-    <basic-title-text
-      [text]="'job.actions.section.performed' | translate"
-      *ngIf="application && application.willPerform && application.jobEnded"
+      *ngIf="application && application.applicationStatus === 'hired'"
       color="black"
       fontSize="medium"
       [textAlignmentLtr]="center ? 'center' : 'left'"
@@ -89,7 +109,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
       target="_blank">
       <div
         style="display: flex; align-items: center; justify-content: center; margin-top: 20px;"
-        [style.margin]="center ? '20px auto' : '20px 0'">
+        [style.margin]="center ? '20px auto 0 auto' : '20px 0 0 0'">
         <basic-title-text
           [text]="'job.actions.section.read.more' | translate"
           color="pink"

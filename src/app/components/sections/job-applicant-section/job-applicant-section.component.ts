@@ -13,6 +13,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
       [uppercase]="true"
       *ngIf="job.translatedText.applicantDescriptionHtml"
       color="pink"
+      marginTop="0"
       fontSize="medium">
     </basic-title-text>
     <basic-text

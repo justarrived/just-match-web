@@ -17,7 +17,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
       <basic-title-text
         [text]="'share.with.modal.section.title' | translate"
         [oneLineEllipsis]="true"
-        fontSize="small"
+        fontSize="medium"
         color="pink"
         marginTop="0"
         marginBottom="0"

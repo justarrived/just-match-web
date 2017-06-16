@@ -38,8 +38,12 @@
     background: $color-primary-cerise;
   }
 
-  .job-item-label-performed-container {
-    background: springgreen;
+  .job-item-label-rejected-container {
+    background: $color-gray-50;
+  }
+
+  .job-item-label-withdrawn-container {
+    background: $color-gray-50;
   }
 
 }

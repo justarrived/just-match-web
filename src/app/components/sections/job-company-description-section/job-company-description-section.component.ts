@@ -6,22 +6,22 @@ import {SystemLanguagesResolver} from '../../../resolvers/system-languages/syste
 import {UserResolver} from '../../../resolvers/user/user.resolver';
 
 @Component({
-  selector: 'job-company-short-description-section',
+  selector: 'job-company-description-section',
   template: `
     <basic-title-text
-      [text]="'job.company.short.description.section.title' | translate: {company: job?.company?.name}"
+      [text]="'job.company.description.section.title' | translate: {company: job?.company?.name}"
       [uppercase]="true"
-      *ngIf="job?.company?.translatedText?.shortDescription"
+      *ngIf="job?.company?.translatedText?.descriptionHtml"
       color="pink"
       fontSize="medium">
     </basic-title-text>
     <basic-text
-      [text]="job.company.translatedText.shortDescription"
-      *ngIf="job?.company?.translatedText?.shortDescription"
+      [unsafeHtml]="job.company.translatedText.descriptionHtml"
+      *ngIf="job?.company?.translatedText?.descriptionHtml"
       color="gray">
     </basic-text>`
 })
-export class JobCompanyShortDescriptionSectionComponent extends BaseComponent {
+export class JobCompanyDescriptionSectionComponent extends BaseComponent {
   @Input() job = null as Job;
 
   public constructor (

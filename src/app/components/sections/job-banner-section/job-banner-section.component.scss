@@ -5,19 +5,11 @@
 .banner-container {
   background: $white url('/assets/images/job-background-computer.jpg') no-repeat center bottom !important;
   background-size: cover !important;
-  min-height: 300px;
-  align-items: flex-end;
-  display: flex;
+  height: 300px;
 
   @media screen and (max-width: $mobile-max-width) {
+    height: 200px;
     background: $white url('/assets/images/job-background-mobile.jpg') no-repeat center bottom !important;
     background-size: cover !important;
-  }
-
-  .grid-container {
-    width: 100%;
-    @media screen and (min-width: $tablet-min-width) {
-      padding: 0 50px 0 50px;
-    }
   }
 }

@@ -8,12 +8,6 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
 @Component({
   selector: 'job-important-information-section',
   template: `
-    <basic-title-text
-      [text]="'job.important.information.section.title' | translate "
-      [uppercase]="true"
-      color="pink"
-      fontSize="medium">
-    </basic-title-text>
     <div class="ui grid">
       <div
         class="sixteen wide column"
@@ -23,6 +17,13 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
           src="/assets/icons/clock-pink-underline.svg"
           class="ui mini image">
         <div style="margin-left: 10px; margin-right: 10px;">
+          <basic-title-text
+            [text]="'job.important.information.section.salary.title' | translate"
+            fontSize="tiny"
+            marginBottom="0"
+            marginTop="0"
+            color="black">
+          </basic-title-text>
           <basic-title-text
             [text]="'job.important.information.section.hours' | translate: {hours: job.hours}"
             marginTop="0"
@@ -56,16 +57,24 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
         <img
           src="/assets/icons/marker-pink-underline.svg"
           class="ui mini image">
-        <basic-title-text
-          [alwaysLtrText]="true"
-          [text]="job.fullStreetAddress"
-          fontSize="tiny"
-          fontWeight="light"
-          marginBottom="0"
-          marginTop="0"
-          color="gray"
-          style="margin-left: 10px; margin-right: 10px;">
-        </basic-title-text>
+        <div style="margin-left: 10px; margin-right: 10px;">
+          <basic-title-text
+            [text]="'job.important.information.section.address.title' | translate"
+            fontSize="tiny"
+            marginBottom="0"
+            marginTop="0"
+            color="black">
+          </basic-title-text>
+          <basic-title-text
+            [alwaysLtrText]="true"
+            [text]="job.fullStreetAddress"
+            fontSize="tiny"
+            fontWeight="light"
+            marginBottom="0"
+            marginTop="0"
+            color="gray">
+          </basic-title-text>
+        </div>
       </div>
       <div
         class="sixteen wide column"
@@ -74,16 +83,77 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
         <img
           src="/assets/icons/calendar-pink-underline.svg"
           class="ui mini image">
-        <basic-title-text
-          [alwaysLtrText]="true"
-          [text]="(job.jobDate | date: 'MMM dd') + (job.jobEndDate ? (' - ' + (job.jobEndDate | date: 'MMM dd')) : '')"
-          fontSize="tiny"
-          fontWeight="light"
-          marginBottom="0"
-          marginTop="0"
-          color="gray"
-          style="margin-left: 10px; margin-right: 10px;">
-        </basic-title-text>
+        <div style="margin-left: 10px; margin-right: 10px;">
+          <basic-title-text
+            [text]="'job.important.information.section.period.title' | translate"
+            fontSize="tiny"
+            marginBottom="0"
+            marginTop="0"
+            color="black">
+          </basic-title-text>
+          <basic-title-text
+            [alwaysLtrText]="true"
+            [text]="(job.jobDate | date: 'MMM dd') + (job.jobEndDate ? (' - ' + (job.jobEndDate | date: 'MMM dd')) : '')"
+            fontSize="tiny"
+            fontWeight="light"
+            marginBottom="0"
+            marginTop="0"
+            color="gray">
+          </basic-title-text>
+        </div>
+      </div>
+      <div
+        class="sixteen wide column"
+        style="display: flex; align-items: center; padding-right: 0; padding-left: 0;"
+        [style.direction]="systemLanguage.direction">
+        <img
+          src="/assets/icons/building.svg"
+          class="ui mini image">
+        <div style="margin-left: 10px; margin-right: 10px;">
+          <basic-title-text
+            [text]="'job.important.information.section.employer.title' | translate"
+            fontSize="tiny"
+            marginBottom="0"
+            marginTop="0"
+            color="black">
+          </basic-title-text>
+          <basic-title-text
+            [alwaysLtrText]="true"
+            [text]="job?.company?.name"
+            fontSize="tiny"
+            fontWeight="light"
+            marginBottom="0"
+            marginTop="0"
+            color="gray">
+          </basic-title-text>
+        </div>
+      </div>
+      <div
+        *ngIf="job.lastApplicationAt"
+        class="sixteen wide column"
+        style="display: flex; align-items: center; padding-right: 0; padding-left: 0;"
+        [style.direction]="systemLanguage.direction">
+        <img
+          src="/assets/icons/date.svg"
+          class="ui mini image">
+        <div style="margin-left: 10px; margin-right: 10px;">
+          <basic-title-text
+            [text]="'job.important.information.section.last.application.date.title' | translate"
+            fontSize="tiny"
+            marginBottom="0"
+            marginTop="0"
+            color="black">
+          </basic-title-text>
+          <basic-title-text
+            [alwaysLtrText]="true"
+            [text]="job.lastApplicationAt | date: 'MMM dd'"
+            fontSize="tiny"
+            fontWeight="light"
+            marginBottom="0"
+            marginTop="0"
+            color="gray">
+          </basic-title-text>
+        </div>
       </div>
     </div>`
 })

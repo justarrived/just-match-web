@@ -12,7 +12,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
       *ngIf="job?.company?.logoImage"
       [src]="job.company.logoImage.imageUrlMedium"
       class="ui image"
-      style="max-height: 100px; max-width: 50%;">
+      style="max-height: 100px; max-width: 100%;">
     <basic-title-text
       *ngIf="!job?.company?.logoImage"
       [alwaysLtrText]="true"
