@@ -2,7 +2,7 @@
 @import '../../../styles/dimensions';
 
 .job-page-grid {
-  background-color: $color-gray-25;
+  background: $color-gray-25 url('/assets/images/light-pattern-background.jpg') repeat !important;
 
   @media screen and (min-width: $tablet-min-width) {
     padding: 0 20px 20px 20px;

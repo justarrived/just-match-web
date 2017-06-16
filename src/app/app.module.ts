@@ -17,6 +17,7 @@ import {AppNavbarComponent} from './components/navbars/app-navbar/app-navbar.com
 import {AppTranslateModule} from './app.translate.module';
 import {AtUndInputComponent} from './components/inputs/at-und-input/at-und-input.component';
 import {AutosizeDirective} from './directives/autosize/autosize.directive';
+import {BackToJobsSectionComponent} from './components/sections/back-to-jobs-section/back-to-jobs-section.component';
 import {BankAccountInputComponent} from './components/inputs/bank-account-input/bank-account-input.component';
 import {BaseButtonComponent} from './components/buttons/base-button/base-button.component';
 import {BaseMessageComponent} from './components/messages/base-message/base-message.component';
@@ -199,8 +200,8 @@ import {UserImageCardInputComponent} from './components/inputs/user-image-card-i
 import {UserImageCircularInputComponent} from './components/inputs/user-image-circular-input/user-image-circular-input.component';
 import {UserMissingTraitsMessageComponent} from './components/messages/user-missing-traits-message/user-missing-traits-message.component';
 import {UserMissingTraitsNextFormComponent} from './components/forms/user-missing-traits-next-form/user-missing-traits-next-form.component';
-import {UserProfileFormComponent} from './components/forms/user-profile-form/user-profile-form.component';
 import {UserProfileBannerSectionComponent} from './components/sections/user-profile-banner-section/user-profile-banner-section.component';
+import {UserProfileFormComponent} from './components/forms/user-profile-form/user-profile-form.component';
 import {UserProfilePageComponent} from './components/pages/user-profile-page/user-profile-page.component';
 import {UserResolver} from './resolvers/user/user.resolver';
 import {UsersFilterComponent} from './components/filters/users-filter/users-filter.component';
@@ -263,6 +264,7 @@ export class RavenErrorHandler implements ErrorHandler {
     AppNavbarComponent,
     AtUndInputComponent,
     AutosizeDirective,
+    BackToJobsSectionComponent,
     BankAccountInputComponent,
     BaseButtonComponent,
     BaseMessageComponent,
@@ -427,8 +429,8 @@ export class RavenErrorHandler implements ErrorHandler {
     UserImageCircularInputComponent,
     UserMissingTraitsMessageComponent,
     UserMissingTraitsNextFormComponent,
-    UserProfileFormComponent,
     UserProfileBannerSectionComponent,
+    UserProfileFormComponent,
     UserProfilePageComponent,
     UsersFilterComponent,
     UserUpdateFormComponent,

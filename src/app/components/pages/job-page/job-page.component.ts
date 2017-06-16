@@ -143,6 +143,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
           class="sixteen wide column"
           style="padding-top: 0;">
           <div class="job-section">
+           <back-to-jobs-section></back-to-jobs-section>
           </div>
         </div>
 
