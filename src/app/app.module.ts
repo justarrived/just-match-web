@@ -107,7 +107,7 @@ import {JobBannerSectionComponent} from './components/sections/job-banner-sectio
 import {JobCardComponent} from './components/cards/job-card/job-card.component';
 import {JobCommentsSectionComponent} from './components/sections/job-comments-section/job-comments-section.component';
 import {JobCompanyImageSectionComponent} from './components/sections/job-company-image-section/job-company-image-section.component';
-import {JobCompanyShortDescriptionSectionComponent} from './components/sections/job-company-short-description-section/job-company-short-description-section.component';
+import {JobCompanyDescriptionSectionComponent} from './components/sections/job-company-description-section/job-company-description-section.component';
 import {JobDescriptionSection2Component} from './components/sections/job-description-section/job-description-section.component';
 import {JobExperienceInputComponent} from './components/inputs/job-experience-input/job-experience-input.component';
 import {JobImportantInformationSectionComponent} from './components/sections/job-important-information-section/job-important-information-section.component';
@@ -345,7 +345,7 @@ export class RavenErrorHandler implements ErrorHandler {
     JobCardComponent,
     JobCommentsSectionComponent,
     JobCompanyImageSectionComponent,
-    JobCompanyShortDescriptionSectionComponent,
+    JobCompanyDescriptionSectionComponent,
     JobDescriptionSection2Component,
     JobExperienceInputComponent,
     JobImportantInformationSectionComponent,

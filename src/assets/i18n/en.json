@@ -267,7 +267,7 @@
   "job.card.temporary": "Temporary",
   "job.card.until.further.notice": "Indefinite duration",
   "job.comments.section.title": "Comments",
-  "job.company.short.description.section.title": "Short about {{company}}",
+  "job.company.description.section.title": "Short about {{company}}",
   "job.description.section.header": "Description",
   "job.description.section.title": "About the job",
   "job.important.information.section.address.title": "Address",

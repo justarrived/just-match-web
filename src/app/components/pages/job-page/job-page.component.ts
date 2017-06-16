@@ -47,7 +47,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
           <div
             class="job-section"
             style="flex: 1">
-            <job-company-short-description-section [job]="job"></job-company-short-description-section>
+            <job-company-description-section [job]="job"></job-company-description-section>
             <job-description-section [job]="job"></job-description-section>
             <div style="margin-top: 40px;">
               <job-recruiter-section [job]="job"></job-recruiter-section>
@@ -113,7 +113,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
             </div>
           </div>
           <div class="job-section">
-            <job-company-short-description-section [job]="job"></job-company-short-description-section>
+            <job-company-description-section [job]="job"></job-company-description-section>
             <job-description-section [job]="job"></job-description-section>
           </div>
           <div
@@ -172,7 +172,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
 
         <div class="sixteen wide mobile ten wide tablet ten wide computer column">
           <job-short-description-section [job]="job"></job-short-description-section>
-          <job-company-short-description-section [job]="job"></job-company-short-description-section>
+          <job-company-description-section [job]="job"></job-company-description-section>
         </div>
 
         <div class="sixteen wide mobile six wide tablet six wide computer column">

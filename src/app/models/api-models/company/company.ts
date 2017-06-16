@@ -9,12 +9,13 @@ interface CompanyApiAttributes {
   cin: string;
   city: string;
   companyImages: CompanyImage[];
+  description: string;
+  descriptionHtml: string;
   email: string;
   id: string;
   name: string;
   phone: string;
   shortDescription: string;
-  shortDescriptionHtml: string;
   street: string;
   translatedText: CompanyTranslatedText;
   users: User[];
@@ -23,8 +24,9 @@ interface CompanyApiAttributes {
 }
 
 interface CompanyTranslatedTextApiAttributes {
+  description: string;
+  descriptionHtml: string;
   shortDescription: string;
-  shortDescriptionHtml: string;
 }
 
 // Client interfaces
@@ -48,13 +50,14 @@ export class CompanyFactory {
       cin: jsonObject.cin,
       city: jsonObject.city,
       companyImages: companyImages,
+      description: jsonObject.description,
+      descriptionHtml: jsonObject.description_html,
       email: jsonObject.email,
       id: jsonObject.id,
       logoImage: CompanyFactory.getCompanyImageByCategory(companyImages, 'logo'),
       name: jsonObject.name,
       phone: jsonObject.phone,
       shortDescription: jsonObject.short_description,
-      shortDescriptionHtml: jsonObject.short_description_html,
       street: jsonObject.street,
       translatedText: CompanyTranslatedTextFactory.createCompanyTranslatedText(jsonObject.translated_text),
       users: map(jsonObject.users, user => UserFactory.createUser(user)),
@@ -75,8 +78,9 @@ class CompanyTranslatedTextFactory {
     }
 
     return {
-      shortDescription: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-      shortDescriptionHtml: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+      description: jsonObject.description,
+      descriptionHtml: jsonObject.description_html,
+      shortDescription: jsonObject.short_description,
     };
   }
 }

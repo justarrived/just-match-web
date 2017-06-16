@@ -267,7 +267,7 @@
   "job.card.temporary": "Tillfälligt",
   "job.card.until.further.notice": "Tillsvidare",
   "job.comments.section.title": "Kommentarer",
-  "job.company.short.description.section.title": "Kort om {{company}}",
+  "job.company.description.section.title": "Kort om {{company}}",
   "job.description.section.header": "Beskrivning",
   "job.description.section.title": "Om jobbet",
   "job.important.information.section.address.title": "Adress",
