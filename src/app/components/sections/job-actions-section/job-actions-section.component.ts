@@ -89,7 +89,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
       target="_blank">
       <div
         style="display: flex; align-items: center; justify-content: center; margin-top: 20px;"
-        [style.margin]="center ? '20px auto' : '20px 0'">
+        [style.margin]="center ? '20px auto 0 auto' : '20px 0 0 0'">
         <basic-title-text
           [text]="'job.actions.section.read.more' | translate"
           color="pink"

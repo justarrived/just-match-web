@@ -1,6 +1,6 @@
 .share-container {
   .icon {
-    background: url('/assets/icons/social-media-share.svg');
+    background: url('/assets/icons/social-media-share-hover.svg');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
@@ -10,7 +10,7 @@
 
   &:hover {
     .icon {
-      background: url('/assets/icons/social-media-share-hover.svg');
+      background: url('/assets/icons/social-media-share.svg');
     }
   }
 }

@@ -1,4 +1,9 @@
 {
+  "job.important.information.section.last.application.date.title": "Last day of application",
+  "job.important.information.section.employer.title": "Employer",
+  "job.important.information.section.period.title": "Period",
+  "job.important.information.section.address.title": "Address",
+  "job.important.information.section.salary.title": "Salary",
   "already.registered.modal.button": "Log in",
   "already.registered.modal.info": "It seems that there already is an account using {{emailOrPhone}}, so we suggest that you log in instead. If you forgot your password you can reset your password by clicking \"Forgotten your password?\" above",
   "already.registered.modal.title": "{{emailOrPhone}} is already registered",

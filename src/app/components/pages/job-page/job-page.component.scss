@@ -2,7 +2,22 @@
 @import '../../../styles/dimensions';
 
 .job-page-grid {
+  background-color: $color-gray-25;
+
   @media screen and (min-width: $tablet-min-width) {
-    padding: 0 50px 50px 50px;
+    padding: 0 20px 20px 20px;
+  }
+
+  .job-section {
+    border-radius: 1rem;
+    background-color: $white;
+    padding: 40px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+
+    @media screen and (max-width: $mobile-max-width) {
+      padding-left: 15px;
+      padding-right: 15px;
+    }
   }
 }

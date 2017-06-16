@@ -23,14 +23,127 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
     </basic-loader>
 
     <div *ngIf="job">
-      <job-banner-section
-        [(application)]="application"
-        [job]="job">
-      </job-banner-section>
+      <job-banner-section></job-banner-section>
 
       <div
         class="ui grid job-page-grid"
         [style.direction]="systemLanguage.direction">
+
+        <div
+          class="nine wide computer eight wide tablet only column"
+          style="padding-right: 5px; padding-bottom: 0; display: flex; flex-direction: column;">
+          <div class="job-section">
+            <job-title-section [job]="job"></job-title-section>
+            <div style="display: flex; align-items: center; margin-top: 50px;">
+              <job-actions-section
+                [(application)]="application"
+                [job]="job"
+                [hideReadMore]="true"
+                [center]="false">
+              </job-actions-section>
+              <share-with-modal-section style="margin-left: 30px; margin-right: 30px;"></share-with-modal-section>
+            </div>
+          </div>
+          <div
+            class="job-section"
+            style="flex: 1">
+            <job-company-short-description-section [job]="job"></job-company-short-description-section>
+            <job-description-section [job]="job"></job-description-section>
+            <job-recruiter-section [job]="job"></job-recruiter-section>
+          </div>
+          <div class="job-section">
+            <job-actions-section
+              [(application)]="application"
+              [job]="job"
+              [center]="true">
+            </job-actions-section>
+          </div>
+        </div>
+
+        <div
+          class="seven wide computer eight wide tablet only column"
+          style="padding-left: 5px; padding-bottom: 0; display: flex; flex-direction: column;">
+          <div
+            class="job-section"
+            style="flex: 1">
+            <job-company-image-section
+              [job]="job">
+            </job-company-image-section>
+            <div style="margin-top: 30px;">
+              <job-important-information-section [job]="job"></job-important-information-section>
+            </div>
+          </div>
+          <div
+            *ngIf="job.translatedText.tasksDescriptionHtml"
+            class="job-section">
+            <job-tasks-section [job]="job"></job-tasks-section>
+          </div>
+          <div
+            *ngIf="job.translatedText.applicantDescriptionHtml || job.translatedText.requirementsDescriptionHtml"
+            class="job-section">
+            <job-applicant-section [job]="job"></job-applicant-section>
+            <job-requirements-section [job]="job"></job-requirements-section>
+          </div>
+        </div>
+
+        <div
+          class="sixteen wide mobile only column"
+          style="padding-bottom: 0; display: flex; flex-direction: column;">
+          <div class="job-section">
+            <job-title-section [job]="job"></job-title-section>
+            <div style="display: flex; align-items: center; margin-top: 50px;">
+              <job-actions-section
+                [(application)]="application"
+                [job]="job"
+                [hideReadMore]="true"
+                [center]="false">
+              </job-actions-section>
+              <share-with-modal-section style="margin-left: 30px; margin-right: 30px;"></share-with-modal-section>
+            </div>
+          </div>
+          <div class="job-section">
+            <job-company-image-section
+              [job]="job"
+              style="padding: 0">
+            </job-company-image-section>
+            <div style="margin-top: 30px;">
+              <job-important-information-section [job]="job"></job-important-information-section>
+            </div>
+          </div>
+          <div class="job-section">
+            <job-company-short-description-section [job]="job"></job-company-short-description-section>
+            <job-description-section [job]="job"></job-description-section>
+          </div>
+          <div
+            *ngIf="job.translatedText.tasksDescriptionHtml"
+            class="job-section">
+            <job-tasks-section [job]="job"></job-tasks-section>
+          </div>
+          <div
+            *ngIf="job.translatedText.applicantDescriptionHtml || job.translatedText.requirementsDescriptionHtml || job.responsibleRecruiter"
+            class="job-section">
+            <job-applicant-section [job]="job"></job-applicant-section>
+            <job-requirements-section [job]="job"></job-requirements-section>
+            <job-recruiter-section [job]="job"></job-recruiter-section>
+          </div>
+          <div class="job-section">
+            <job-actions-section
+              [(application)]="application"
+              [job]="job"
+              [center]="true">
+            </job-actions-section>
+          </div>
+        </div>
+
+        <div
+          class="sixteen wide column"
+          style="padding-top: 0;">
+          <div class="job-section">
+          </div>
+        </div>
+
+
+        <!--
 
         <div class="sixteen wide mobile only column">
           <job-actions-section
@@ -86,6 +199,8 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
         <div class="six wide tablet six wide computer only column">
           <job-recruiter-section [job]="job"></job-recruiter-section>
         </div>
+        -->
+
       </div>
     </div>`
 })

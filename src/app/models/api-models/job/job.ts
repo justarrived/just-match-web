@@ -49,6 +49,7 @@ interface JobApiAttributes {
   jobSkills: JobSkill[];
   language: Language;
   languageId: string;
+  lastApplicationAt: Date;
   name: string;
   netAmount: number;
   netAmountDelimited: string;
@@ -98,6 +99,7 @@ export class JobFactory {
     if (!jsonObject) {
       return;
     }
+    console.log(jsonObject);
 
     return {
       applicantDescription: jsonObject.applicant_description,
@@ -129,6 +131,7 @@ export class JobFactory {
       jobSkills:  map(jsonObject.job_skills, jobSkill => JobSkillFactory.createJobSkill(jobSkill)),
       language: LanguageFactory.createLanguage(jsonObject.language),
       languageId: jsonObject.language_id,
+      lastApplicationAt: jsonObject.last_application_at,
       name: jsonObject.name,
       netAmount: jsonObject.net_amount,
       netAmountDelimited: jsonObject.net_amount_delimited,
@@ -161,16 +164,16 @@ class JobTranslatedTextFactory {
 
     return {
       applicantDescription: jsonObject.applicant_description,
-      applicantDescriptionHtml: jsonObject.applicant_description_html,
+      applicantDescriptionHtml: '<ul><li>hasjhsah</li><li>asdasdd</li><li>asdasdasd</li></ul>',
       description: jsonObject.description,
-      descriptionHtml: jsonObject.description_html,
+      descriptionHtml: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<br><br>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<br><br>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
       languageId: jsonObject.language_id,
       name: jsonObject.name,
       requirementsDescription: jsonObject.requirements_description,
-      requirementsDescriptionHtml: jsonObject.requirements_description_html,
+      requirementsDescriptionHtml: '<ul><li>hasjhsah</li><li>asdasdd</li><li>asdasdasd</li></ul>',
       shortDescription: jsonObject.short_description,
       tasksDescription: jsonObject.tasks_description,
-      tasksDescriptionHtml: jsonObject.tasks_description_html,
+      tasksDescriptionHtml: '<ul><li>hasjhsah</li><li>asdasdd</li><li>asdasdasd</li></ul>',
     };
   }
 }
