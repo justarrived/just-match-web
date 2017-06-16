@@ -26,7 +26,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
         </basic-title-text>
       </div>
       <div
-        *ngIf="!application.accepted && !application.willPerform"
+        *ngIf="application.applicationStatus === 'applied'"
         class="job-item-label-container job-item-label-applied-container">
         <basic-title-text
           [oneLineEllipsis]="true"
@@ -42,7 +42,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
         </basic-title-text>
       </div>
       <div
-        *ngIf="application.accepted && !application.willPerform"
+        *ngIf="application.applicationStatus === 'offered'"
         class="job-item-label-container job-item-label-offered-container">
         <basic-title-text
           [oneLineEllipsis]="true"
@@ -58,7 +58,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
         </basic-title-text>
       </div>
       <div
-        *ngIf="application.willPerform && !application.jobEnded"
+        *ngIf="application.applicationStatus === 'hired'"
         class="job-item-label-container job-item-label-will-perform-container">
         <basic-title-text
           [oneLineEllipsis]="true"
@@ -74,13 +74,29 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
         </basic-title-text>
       </div>
       <div
-        *ngIf="application.willPerform && application.jobEnded"
-        class="job-item-label-container job-item-label-performed-container">
+        *ngIf="application.applicationStatus === 'rejected'"
+        class="job-item-label-container job-item-label-rejected-container">
         <basic-title-text
           [oneLineEllipsis]="true"
-          [text]="'home.jobs.slider.user.jobs.job.ended.label' | translate"
+          [text]="'home.jobs.slider.user.jobs.job.rejected.label' | translate"
           [uppercase]="true"
-          color="white"
+          color="gray"
+          fontSize="small"
+          fontWeight="light"
+          marginBottom="0"
+          marginTop="0"
+          textAlignmentLtr="center"
+          textAlignmentRtl="center">
+        </basic-title-text>
+      </div>
+      <div
+        *ngIf="application.applicationStatus === 'withdrawn'"
+        class="job-item-label-container job-item-label-withdrawn-container">
+        <basic-title-text
+          [oneLineEllipsis]="true"
+          [text]="'home.jobs.slider.user.jobs.job.withdrawn.label' | translate"
+          [uppercase]="true"
+          color="gray"
           fontSize="small"
           fontWeight="light"
           marginBottom="0"

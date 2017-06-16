@@ -12,32 +12,6 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
       [routerLink]="JARoutes.job.url([application.job.id])"
       [style.flex-direction]="systemLanguage.direction === 'rtl' ? 'row-reverse' : 'row'"
       class="application-item ui raised segment">
-      <div class="date-container">
-        <basic-title-text
-          [alwaysLtrText]="true"
-          [uppercase]="true"
-          [text]="application.job.jobDate | date: 'MMM'"
-          fontWeight="light"
-          color="gray"
-          fontSize="medium"
-          marginTop="0"
-          marginBottom="0"
-          textAlignmentLtr="center"
-          textAlignmentRtl="center">
-        </basic-title-text>
-        <basic-title-text
-          [alwaysLtrText]="true"
-          [uppercase]="true"
-          [text]="application.job.jobDate | date: 'dd'"
-          fontWeight="light"
-          color="gray"
-          fontSize="medium"
-          marginTop="0"
-          marginBottom="0"
-          textAlignmentLtr="center"
-          textAlignmentRtl="center">
-        </basic-title-text>
-      </div>
       <div>
         <basic-title-text
           [text]="application.job.translatedText.name"
@@ -53,31 +27,42 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
           marginBottom="0">
         </basic-text>
         <basic-text
-          *ngIf="!application.accepted && !application.willPerform"
+          *ngIf="application.applicationStatus === 'applied'"
           [uppercase]="true"
-          [text]="'confirmation.applied.for.job.title' | translate"
+          [text]="'application.item.applied' | translate"
           fontWeight="bold"
           color="pink"
           marginBottom="0">
         </basic-text>
         <basic-text
-          *ngIf="application.accepted && !application.willPerform"
+          *ngIf="application.applicationStatus === 'offered'"
           [uppercase]="true"
-          [text]="'assignment.status.user_company_hire' | translate"
+          [text]="'application.item.offered' | translate"
+          fontWeight="bold"
           color="pink"
           marginBottom="0">
         </basic-text>
         <basic-text
-          *ngIf="application.willPerform && !application.jobEnded"
+          *ngIf="application.applicationStatus === 'hired'"
           [uppercase]="true"
-          [text]="'assignment.status.you_hired' | translate"
+          [text]="'application.item.hired' | translate"
+          fontWeight="bold"
           color="pink"
           marginBottom="0">
         </basic-text>
         <basic-text
-          *ngIf="application.willPerform && application.jobEnded"
+          *ngIf="application.applicationStatus === 'rejected'"
           [uppercase]="true"
-          [text]="'assignment.status.performed' | translate"
+          [text]="'application.item.rejected' | translate"
+          fontWeight="bold"
+          color="pink"
+          marginBottom="0">
+        </basic-text>
+        <basic-text
+          *ngIf="application.applicationStatus === 'withdrawn'"
+          [uppercase]="true"
+          [text]="'application.item.withdrawn' | translate"
+          fontWeight="bold"
           color="pink"
           marginBottom="0">
         </basic-text>

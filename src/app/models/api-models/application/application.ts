@@ -12,6 +12,7 @@ import * as moment from 'moment';
 interface ApplicationApiAttributes {
   accepted: boolean;
   acceptedAt: string;
+  applicationStatus: string;
   applyMessage: string;
   id: string;
   invoice: Invoice;
@@ -48,6 +49,8 @@ export class ApplicationFactory {
       return;
     }
 
+    console.log(jsonObject);
+
     const minutesPerHour = 60;
 
     let willPerformConfirmationBy = new Date(jsonObject.will_perform_confirmation_by);
@@ -62,6 +65,7 @@ export class ApplicationFactory {
     return {
       accepted: jsonObject.accepted,
       acceptedAt: jsonObject.accepted_at,
+      applicationStatus: jsonObject.application_status,
       applyMessage: jsonObject.apply_message,
       id: jsonObject.id,
       invoice: InvoiceFactory.createInvoice(jsonObject.invoice),
