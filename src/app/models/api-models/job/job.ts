@@ -54,6 +54,7 @@ interface JobApiAttributes {
   netAmount: number;
   netAmountDelimited: string;
   netAmountWithCurrency: string;
+  openForApplications: boolean;
   owner: User;
   requirementsDescription: string;
   requirementsDescriptionHtml: string;
@@ -99,7 +100,6 @@ export class JobFactory {
     if (!jsonObject) {
       return;
     }
-    console.log(jsonObject);
 
     return {
       applicantDescription: jsonObject.applicant_description,
@@ -136,6 +136,7 @@ export class JobFactory {
       netAmount: jsonObject.net_amount,
       netAmountDelimited: jsonObject.net_amount_delimited,
       netAmountWithCurrency: jsonObject.net_amount_with_currency,
+      openForApplications: jsonObject.open_for_applications,
       owner: UserFactory.createUser(jsonObject.owner),
       requirementsDescription: jsonObject.requirements_description,
       requirementsDescriptionHtml: jsonObject.requirements_description_html,
@@ -164,16 +165,16 @@ class JobTranslatedTextFactory {
 
     return {
       applicantDescription: jsonObject.applicant_description,
-      applicantDescriptionHtml: '<ul><li>hasjhsah</li><li>asdasdd</li><li>asdasdasd</li></ul>',
+      applicantDescriptionHtml: jsonObject.applicant_description_html,
       description: jsonObject.description,
-      descriptionHtml: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+      descriptionHtml: jsonObject.description_html,
       languageId: jsonObject.language_id,
       name: jsonObject.name,
       requirementsDescription: jsonObject.requirements_description,
-      requirementsDescriptionHtml: '<ul><li>hasjhsah</li><li>asdasdd</li><li>asdasdasd</li></ul>',
+      requirementsDescriptionHtml: jsonObject.requirements_description_html,
       shortDescription: jsonObject.short_description,
       tasksDescription: jsonObject.tasks_description,
-      tasksDescriptionHtml: '<ul><li>hasjhsah</li><li>asdasdd</li><li>asdasdasd</li></ul>',
+      tasksDescriptionHtml: jsonObject.tasks_description_html,
     };
   }
 }

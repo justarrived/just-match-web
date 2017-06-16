@@ -243,6 +243,7 @@
   "job.actions.header.register": "Create an account",
   "job.actions.section.applied": "You have applied for this job",
   "job.actions.section.apply": "Apply",
+  "job.actions.section.closed.for.applications": "Closed for applications",
   "job.actions.section.confirm": "Accept offer",
   "job.actions.section.hired": "Hired",
   "job.actions.section.login": "Log in to apply",

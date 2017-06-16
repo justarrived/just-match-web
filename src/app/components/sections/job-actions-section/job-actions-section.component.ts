@@ -22,7 +22,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
       class="inverted">
     </basic-loader>
     <div
-      *ngIf="!application"
+      *ngIf="!application && job.openForApplications"
       [style.text-align]="center ? 'center' : 'initial'">
       <base-button
         (click)="onApplyForJobButtonClick()"
@@ -33,6 +33,16 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
         size="small">
       </base-button>
     </div>
+    <basic-title-text
+      [text]="'job.actions.section.closed.for.applications' | translate"
+      *ngIf="!application && !job.openForApplications"
+      color="black"
+      fontSize="medium"
+      [textAlignmentLtr]="center ? 'center' : 'left'"
+      [textAlignmentRtl]="center ? 'center' : 'right'"
+      marginTop="0"
+      marginBottom="0">
+    </basic-title-text>
     <basic-title-text
       [text]="'job.actions.section.applied' | translate"
       *ngIf="application && !application.accepted  && !application.willPerform"
