@@ -1,7 +1,6 @@
 import {Component} from '@angular/core';
 import {DOCUMENT} from '@angular/platform-browser';
 import {Inject} from '@angular/core';
-import {JARoutes} from '../../../routes/ja-routes/ja-routes';
 import {JobsPagerSectionComponent} from '../../sections/jobs-pager-section/jobs-pager-section.component';
 import {Meta} from '@angular/platform-browser';
 import {PageComponent} from '../page.component';
@@ -28,8 +27,6 @@ import {ViewChild} from '@angular/core';
 export class JobsPageComponent extends PageComponent {
 
   @ViewChild('jobsPagerSectionComponent') public jobsPagerSectionComponent : JobsPagerSectionComponent;
-
-  public JARoutes = JARoutes;
 
   public constructor (
     @Inject(DOCUMENT) protected document: any,

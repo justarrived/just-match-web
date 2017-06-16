@@ -49,7 +49,9 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
             style="flex: 1">
             <job-company-short-description-section [job]="job"></job-company-short-description-section>
             <job-description-section [job]="job"></job-description-section>
-            <job-recruiter-section [job]="job"></job-recruiter-section>
+            <div style="margin-top: 40px;">
+              <job-recruiter-section [job]="job"></job-recruiter-section>
+            </div>
           </div>
           <div class="job-section">
             <job-actions-section
@@ -124,7 +126,9 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
             class="job-section">
             <job-applicant-section [job]="job"></job-applicant-section>
             <job-requirements-section [job]="job"></job-requirements-section>
-            <job-recruiter-section [job]="job"></job-recruiter-section>
+            <div style="margin-top: 40px;">
+              <job-recruiter-section [job]="job"></job-recruiter-section>
+            </div>
           </div>
           <div class="job-section">
             <job-actions-section
