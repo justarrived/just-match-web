@@ -13,8 +13,11 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
   template: `
   <div
     class="pager-container"
-    [ngClass]="{'dark': type === 'dark', 'light': type === 'light'}">
-    <div class="pager-segment-container">
+    [ngClass]="{'dark': type === 'dark', 'light': type === 'light'}"
+    [style.direction]="systemLanguage.direction">
+    <div
+      [style.direction]="systemLanguage.direction"
+      class="pager-segment-container">
       <div
         *ngFor="let page of firstPages"
         (click)="goToPage(page)"
@@ -34,6 +37,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
       </basic-text>
     </div>
     <div
+      [style.direction]="systemLanguage.direction"
       *ngIf="currentPage > 3 && currentPage < lastPage - 2"
       class="pager-segment-container">
       <div
@@ -54,6 +58,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
       </basic-text>
     </div>
     <div
+      [style.direction]="systemLanguage.direction"
       *ngIf="lastPage > 3"
       class="pager-segment-container">
       <div
