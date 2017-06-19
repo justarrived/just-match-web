@@ -13,6 +13,11 @@ import {ViewChild} from '@angular/core';
 @Component({
   template: `
     <div style="height: 100%; display: flex; flex-direction: column;">
+      <basic-border-section
+        [header]="'jobs.title' | translate: {nbrOfJobs: jobsPagerSectionComponent.totalJobs}"
+        icon="search">
+      </basic-border-section>
+
       <div style="flex: 1;">
         <jobs-pager-section
           [currentRoute]="JARoutes.jobs"
