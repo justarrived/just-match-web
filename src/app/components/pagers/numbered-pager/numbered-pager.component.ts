@@ -113,8 +113,6 @@ export class NumberedPagerComponent extends BaseComponent {
       this.lastPage = this.lastPage + 1;
     }
 
-      this.lastPage = 7;
-
     if (this.lastPage < 2) {
       this.firstPages = [1];
     } else {
