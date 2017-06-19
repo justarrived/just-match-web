@@ -113,16 +113,24 @@ export class NumberedPagerComponent extends BaseComponent {
       this.lastPage = this.lastPage + 1;
     }
 
+      this.lastPage = 7;
+
     if (this.lastPage < 2) {
       this.firstPages = [1];
     } else {
       this.firstPages = [1,2];
       this.middlePages = [];
       this.lastPages = [this.lastPage - 1, this.lastPage];
-      if (this.lastPage === 3 || this.currentPage === 3 && this.lastPage !== 4) {
+      if (this.lastPage === 3 || (this.currentPage === 3 || this.currentPage === 2) && this.lastPage !== 4 && this.lastPage > 2) {
         this.firstPages.push(3);
-      } else if (this.currentPage === this.lastPage - 2 && this.lastPage !== 4) {
-        this.lastPages.unshift(this.currentPage);
+        if (this.currentPage === 3 && this.lastPage !== 5 && this.lastPage > 3) {
+          this.firstPages.push(4);
+        }
+      } else if ((this.currentPage === this.lastPage - 2 ||  this.currentPage === this.lastPage - 1) && this.lastPage !== 4) {
+        this.lastPages.unshift(this.lastPage - 2);
+        if (this.currentPage === this.lastPage - 2) {
+          this.lastPages.unshift(this.lastPage - 3);
+        }
       } else {
         this.middlePages = [this.currentPage - 1, this.currentPage, this.currentPage + 1];
       }
