@@ -1,5 +1,6 @@
 @import '../../../styles/colors';
 @import '../../../styles/typography';
+@import '../../../styles/dimensions';
 
 .pager-container {
   background-color: $white;
@@ -26,6 +27,11 @@
       margin-left: 5px;
       margin-right: 5px;
       width: 35px;
+
+      @media screen and (max-width: $mobile-max-width) {
+        width: 25px;
+        height: 25px;
+      }
 
       &:hover {
         border: 1px solid $color-cerise-500 !important;
