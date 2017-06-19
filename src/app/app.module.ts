@@ -106,8 +106,8 @@ import {JobApplicantSectionComponent} from './components/sections/job-applicant-
 import {JobBannerSectionComponent} from './components/sections/job-banner-section/job-banner-section.component';
 import {JobCardComponent} from './components/cards/job-card/job-card.component';
 import {JobCommentsSectionComponent} from './components/sections/job-comments-section/job-comments-section.component';
-import {JobCompanyImageSectionComponent} from './components/sections/job-company-image-section/job-company-image-section.component';
 import {JobCompanyDescriptionSectionComponent} from './components/sections/job-company-description-section/job-company-description-section.component';
+import {JobCompanyImageSectionComponent} from './components/sections/job-company-image-section/job-company-image-section.component';
 import {JobDescriptionSection2Component} from './components/sections/job-description-section/job-description-section.component';
 import {JobExperienceInputComponent} from './components/inputs/job-experience-input/job-experience-input.component';
 import {JobImportantInformationSectionComponent} from './components/sections/job-important-information-section/job-important-information-section.component';
@@ -143,6 +143,7 @@ import {NewJobsSectionComponent} from './components/sections/new-jobs-section/ne
 import {NewPasswordInputComponent} from './components/inputs/new-password-input/new-password-input.component';
 import {NgModule} from '@angular/core';
 import {NotFoundPageComponent} from './components/pages/404-page/404-page.component';
+import {NumberedPagerComponent} from './components/pagers/numbered-pager/numbered-pager.component';
 import {OldPasswordInputComponent} from './components/inputs/old-password-input/old-password-input.component';
 import {PartnersSectionComponent} from './components/sections/partners-section/partners-section.component';
 import {PasswordChangedModalComponent} from './components/modals/password-changed-modal/password-changed-modal.component';
@@ -344,8 +345,8 @@ export class RavenErrorHandler implements ErrorHandler {
     JobBannerSectionComponent,
     JobCardComponent,
     JobCommentsSectionComponent,
-    JobCompanyImageSectionComponent,
     JobCompanyDescriptionSectionComponent,
+    JobCompanyImageSectionComponent,
     JobDescriptionSection2Component,
     JobExperienceInputComponent,
     JobImportantInformationSectionComponent,
@@ -377,6 +378,7 @@ export class RavenErrorHandler implements ErrorHandler {
     NewJobsSectionComponent,
     NewPasswordInputComponent,
     NotFoundPageComponent,
+    NumberedPagerComponent,
     OldPasswordInputComponent,
     PartnersSectionComponent,
     PasswordChangedModalComponent,

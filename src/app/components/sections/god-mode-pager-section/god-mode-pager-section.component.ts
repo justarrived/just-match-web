@@ -18,50 +18,50 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
       class="inverted">
     </basic-loader>
 
-    <basic-pager
-      (pageChange)="onPageChange($event)"
-      [currentPage]="page"
-      [maxResults]="total"
-      [pageSize]="pageSize">
-    </basic-pager>
+    <div style="height: 100%; display: flex; flex-direction: column;">
+      <numbered-pager
+        (pageChange)="onPageChange($event)"
+        [currentPage]="page"
+        [maxResults]="total"
+        [pageSize]="pageSize">
+      </numbered-pager>
 
-    <div
-      class="ui basic padded center aligned segment"
-      style="margin: 0; padding-bottom: 55px;">
-      <basic-loader
-        [promise]="users"
-        class="inverted">
-      </basic-loader>
       <div
-        [style.flex-direction]="systemLanguage.direction === 'rtl' ? 'row-reverse': 'row'"
-        class="ui centered grid">
-        <basic-text
-          [text]="'god.mode.pager.section.no.users' | translate"
-          *ngIf="(users| async)?.length == 0"
-          color="black"
-          fontSize="large"
-          textAlignmentLtr="center"
-          textAlignmentRtl="center">
-        </basic-text>
-        <user-card
-          (click)="activateGodmode(user)"
-          [animationDelay]="50 * i"
-          [shownUser]="user"
-          *ngFor="let user of users| async; let i = index;"
-          class="ui basic left aligned segment"
-          style="margin: 1rem 0">
-        </user-card>
+        class="ui basic padded center aligned segment"
+        style="flex: 1; margin: 0;">
+        <basic-loader
+          [promise]="users"
+          class="inverted">
+        </basic-loader>
+        <div
+          [style.flex-direction]="systemLanguage.direction === 'rtl' ? 'row-reverse': 'row'"
+          class="ui centered grid">
+          <basic-text
+            [text]="'god.mode.pager.section.no.users' | translate"
+            *ngIf="(users| async)?.length == 0"
+            color="black"
+            fontSize="large"
+            textAlignmentLtr="center"
+            textAlignmentRtl="center">
+          </basic-text>
+          <user-card
+            (click)="activateGodmode(user)"
+            [animationDelay]="50 * i"
+            [shownUser]="user"
+            *ngFor="let user of users| async; let i = index;"
+            class="ui basic left aligned segment"
+            style="margin: 1rem 0">
+          </user-card>
+        </div>
       </div>
-    </div>
 
-    <basic-pager
-      style="position:absolute; bottom: 0; width: 100%;"
-      (pageChange)="onPageChange($event)"
-      [currentPage]="page"
-      [maxResults]="total"
-      [pageSize]="pageSize">
-    </basic-pager>
-    `
+      <numbered-pager
+        (pageChange)="onPageChange($event)"
+        [currentPage]="page"
+        [maxResults]="total"
+        [pageSize]="pageSize">
+      </numbered-pager>
+    </div>`
 })
 export class GodModePagerSectionComponent extends BaseComponent {
   @Input() currentRoute: JARoute;
@@ -116,7 +116,7 @@ export class GodModePagerSectionComponent extends BaseComponent {
     .then(result => {
       this.total = result.meta.total;
       if (this.total === 0) {
-        this.page = 0;
+        this.page = 1;
       }
       return result.users;
     });

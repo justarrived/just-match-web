@@ -18,40 +18,41 @@ import {yyyymmdd} from '../../../utils/date/date.util';
 @Component({
   selector: 'jobs-pager-section',
   template: `
-    <basic-pager
-      (pageChange)="onPageChange($event)"
-      [currentPage]="page"
-      [maxResults]="totalJobs"
-      [pageSize]="pageSize">
-    </basic-pager>
+    <div style="height: 100%; display: flex; flex-direction: column;">
+      <numbered-pager
+        (pageChange)="onPageChange($event)"
+        [currentPage]="page"
+        [maxResults]="totalJobs"
+        [pageSize]="pageSize">
+      </numbered-pager>
 
-    <div
-      class="ui basic center aligned segment"
-      style="margin: 0; padding-bottom: 55px;">
-      <basic-loader
-        [promise]="jobsMetaPromise"
-        class="inverted">
-      </basic-loader>
       <div
-        [style.flex-direction]="systemLanguage.direction === 'rtl' ? 'row-reverse': 'row'"
-        class="ui centered grid">
-        <job-card
-          [animationDelay]="50 * i"
-          [job]="job"
-          *ngFor="let job of (jobsMetaPromise | async)?.jobs; let i = index;"
-          class="ui basic left aligned segment"
-          style="margin: 1rem 0">
-        </job-card>
+        class="ui basic center aligned segment"
+        style="flex: 1; margin: 0;">
+        <basic-loader
+          [promise]="jobsMetaPromise"
+          class="inverted">
+        </basic-loader>
+        <div
+          [style.flex-direction]="systemLanguage.direction === 'rtl' ? 'row-reverse': 'row'"
+          class="ui centered grid">
+          <job-card
+            [animationDelay]="50 * i"
+            [job]="job"
+            *ngFor="let job of (jobsMetaPromise | async)?.jobs; let i = index;"
+            class="ui basic left aligned segment"
+            style="margin: 1rem 0">
+          </job-card>
+        </div>
       </div>
-    </div>
 
-    <basic-pager
-      style="position:absolute; bottom: 0; width: 100%;"
-      (pageChange)="onPageChange($event)"
-      [currentPage]="page"
-      [maxResults]="totalJobs"
-      [pageSize]="pageSize">
-    </basic-pager>`
+      <numbered-pager
+        (pageChange)="onPageChange($event)"
+        [currentPage]="page"
+        [maxResults]="totalJobs"
+        [pageSize]="pageSize">
+      </numbered-pager>
+    </div>`
 })
 export class JobsPagerSectionComponent extends BaseComponent {
   @Input() currentRoute: JARoute;
@@ -106,7 +107,7 @@ export class JobsPagerSectionComponent extends BaseComponent {
       if (this.pageSize * (this.page - 1) > this.totalJobs) {
         this.onPageChange(1);
       } else if (this.totalJobs === 0) {
-        this.page = 0;
+        this.page = 1;
       }
       return result;
     });

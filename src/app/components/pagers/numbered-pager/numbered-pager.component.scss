@@ -1,0 +1,67 @@
+@import '../../../styles/colors';
+@import '../../../styles/typography';
+
+.pager-container {
+  background-color: $white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100px;
+  width: 100%;
+
+  .pager-segment-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $color-gray-300;
+
+    .pager-link {
+      align-items: center;
+      border-radius: 50%;
+      border: 1px solid $color-gray-300;
+      cursor: pointer;
+      display: flex;
+      height: 35px;
+      justify-content: center;
+      margin-left: 5px;
+      margin-right: 5px;
+      width: 35px;
+
+      &:hover {
+        border: 1px solid $color-cerise-500 !important;
+        background-color: $color-cerise-500;
+        color: $white;
+      }
+
+      &.active {
+        border: 1px solid $color-cerise-500 !important;
+        background-color: $color-cerise-500;
+        color: $white;
+      }
+    }
+  }
+
+  &.light {
+    background-color: $white;
+
+    .pager-segment-container {
+      color: $color-gray-300;
+
+      .pager-link {
+        border: 1px solid $color-gray-300;
+      }
+    }
+  }
+
+  &.dark {
+    background-color: $color-gray-800;
+
+    .pager-segment-container {
+      color: $white;
+
+      .pager-link {
+        border: 1px solid $white;
+      }
+    }
+  }
+}

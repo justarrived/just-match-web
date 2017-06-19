@@ -13,18 +13,22 @@ import {ViewChild} from '@angular/core';
 
 @Component({
   template: `
-    <basic-border-section
-      [header]="'god.mode.title' | translate: {numberOfUsers: godModeUsersSectionComponent.total}"
-      icon="search">
-    </basic-border-section>
+    <div style="height: 100%; display: flex; flex-direction: column;">
+      <basic-border-section
+        [header]="'god.mode.title' | translate: {numberOfUsers: godModeUsersSectionComponent.total}"
+        icon="search">
+      </basic-border-section>
 
-    <users-filter (onFiltersChanged)="onFiltersChanged($event)"></users-filter>
+      <users-filter (onFiltersChanged)="onFiltersChanged($event)"></users-filter>
 
-    <god-mode-pager-section
-      [currentRoute]="JARoutes.godMode"
-      [filters]="activeFilters"
-      #godModeUsersSectionComponent>
-    </god-mode-pager-section>`
+      <div style="flex: 1;">
+        <god-mode-pager-section
+          [currentRoute]="JARoutes.godMode"
+          [filters]="activeFilters"
+          #godModeUsersSectionComponent>
+        </god-mode-pager-section>
+      </div>
+    </div>`
 })
 export class GodModePageComponent extends PageComponent {
 

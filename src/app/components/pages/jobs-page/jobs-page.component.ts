@@ -12,17 +12,16 @@ import {ViewChild} from '@angular/core';
 
 @Component({
   template: `
-    <basic-border-section
-      [header]="'jobs.title' | translate: {nbrOfJobs: jobsPagerSectionComponent.totalJobs}"
-      icon="search">
-    </basic-border-section>
+    <div style="height: 100%; display: flex; flex-direction: column;">
+      <div style="flex: 1;">
+        <jobs-pager-section
+          [currentRoute]="JARoutes.jobs"
+          #jobsPagerSectionComponent>
+        </jobs-pager-section>
+      </div>
 
-    <jobs-map></jobs-map>
-
-    <jobs-pager-section
-      [currentRoute]="JARoutes.jobs"
-      #jobsPagerSectionComponent>
-    </jobs-pager-section>`
+      <jobs-map></jobs-map>
+    </div>`
 })
 export class JobsPageComponent extends PageComponent {
 
