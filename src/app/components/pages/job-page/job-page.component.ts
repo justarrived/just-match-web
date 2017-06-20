@@ -7,6 +7,7 @@ import {Job} from '../../../models/api-models/job/job';
 import {JobProxy} from '../../../proxies/job/job.proxy';
 import {Language} from '../../../models/api-models/language/language';
 import {Meta} from '@angular/platform-browser';
+import {PageOptionsService} from '../../../services/page-options.service';
 import {PageComponent} from '../page.component';
 import {REQUEST} from '../../../../express-engine';
 import {Subscription} from 'rxjs/Subscription';
@@ -163,6 +164,7 @@ export class JobPageComponent extends PageComponent {
     private jobProxy: JobProxy,
     private route: ActivatedRoute,
     protected meta: Meta,
+    protected pageOptionsService: PageOptionsService,
     protected systemLanguagesResolver: SystemLanguagesResolver,
     protected translateService: TranslateService,
     protected userResolver: UserResolver,
@@ -183,6 +185,7 @@ export class JobPageComponent extends PageComponent {
       },
       document,
       meta,
+      pageOptionsService,
       request,
       systemLanguagesResolver,
       translateService,

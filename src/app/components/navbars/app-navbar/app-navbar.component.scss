@@ -11,6 +11,10 @@
   background-repeat: no-repeat;
   background-position: center center;
 
+  &.transparent {
+    background: transparent;
+  }
+
   @media screen and (min-width: $app-max-width) {
     width: $app-max-width;
     margin: 0 auto;

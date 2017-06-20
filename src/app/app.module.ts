@@ -1,6 +1,7 @@
 import {AgmCoreModule} from '@agm/core';
 import {AlreadyRegisteredModalComponent} from './components/modals/already-registered-modal/already-registered-modal.component';
 import {ApiCallService} from './services/api-call.service';
+import {PageOptionsService} from './services/page-options.service';
 import {ApiErrorsComponent} from './components/form-errors/api-errors/api-errors.component';
 import {APP_BASE_HREF} from '@angular/common';
 import {AppComponent} from './app.component';
@@ -449,6 +450,7 @@ export class RavenErrorHandler implements ErrorHandler {
     DataStoreService,
     GeolocationService,
     ModalService,
+    PageOptionsService,
     NavigationService,
     { provide: LOCALE_ID, useValue: 'en' },
     { provide: ErrorHandler, useClass: RavenErrorHandler },

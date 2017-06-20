@@ -1,9 +1,14 @@
 import {BaseComponent} from '../../base.component';
 import {Component} from '@angular/core';
+import {DOCUMENT} from '@angular/platform-browser';
 import {EventEmitter} from '@angular/core';
+import {HostListener} from '@angular/core';
+import {Inject} from "@angular/core";
 import {Input} from '@angular/core';
 import {JARoutes} from '../../../routes/ja-routes/ja-routes';
 import {Output} from '@angular/core';
+import {PageOptionsService} from '../../../services/page-options.service';
+import {Subscription} from 'rxjs/Subscription';
 import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
 import {UserResolver} from '../../../resolvers/user/user.resolver';
 
@@ -11,7 +16,9 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
   selector: 'app-navbar',
   styleUrls: ['./app-navbar.component.scss'],
   template: `
-  <nav class="app-navbar-container">
+  <nav
+    class="app-navbar-container"
+    [ngClass]="{'transparent': transparentNavbar}">
     <div class="app-navbar-inner-container">
       <div class="logo">
         <a routerLink="{{JARoutes.home.url()}}">
@@ -52,15 +59,39 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
   `
 })
 export class AppNavbarComponent extends BaseComponent {
-  @Input() isLanguageMenuVisible: boolean;
-  @Output() onToggleLanguageMenu: EventEmitter<any> = new EventEmitter();
-  @Output() onToggleNavigationMenu: EventEmitter<any> = new EventEmitter();
+  @Input() public isLanguageMenuVisible: boolean;
+  @Output() public onToggleLanguageMenu: EventEmitter<any> = new EventEmitter();
+  @Output() public onToggleNavigationMenu: EventEmitter<any> = new EventEmitter();
+
+  @HostListener('window:scroll', ['$event']) onScrollEvent($event){
+    this.updateNavbarBackground();
+  }
+
+  public transparentNavbarWhenTopScrolledSubscription: Subscription;
+
+  public transparentNavbar: boolean;
 
   public constructor(
+    @Inject(DOCUMENT) private document: Document,
+    private pageOptionsService: PageOptionsService,
     protected systemLanguagesResolver: SystemLanguagesResolver,
     protected userResolver: UserResolver,
   ) {
     super(systemLanguagesResolver, userResolver);
+  }
+
+  public onInit() {
+    if (this.pageOptionsService.transparentNavbarWhenTopScrolled()) {
+      this.transparentNavbar = true;
+    }
+
+    this.transparentNavbarWhenTopScrolledSubscription = this.pageOptionsService.getTransparentNavbarWhenTopScrolledChangeEmitter().subscribe(transparentNavbarWhenTopScrolled => {
+      this.updateNavbarBackground();
+    });
+  }
+
+  public onDestroy() {
+    if (this.transparentNavbarWhenTopScrolledSubscription) { this.transparentNavbarWhenTopScrolledSubscription.unsubscribe(); }
   }
 
   public onNavigationMenuButtonClick() {
@@ -69,5 +100,17 @@ export class AppNavbarComponent extends BaseComponent {
 
   public onLanguageMenuButtonClick() {
     this.onToggleLanguageMenu.emit();
+  }
+
+  private updateNavbarBackground(): void {
+    if (this.isNavbarTransparent()) {
+      this.transparentNavbar = true;
+    } else {
+      this.transparentNavbar = false;
+    }
+  }
+
+  private isNavbarTransparent(): boolean {
+    return this.pageOptionsService.transparentNavbarWhenTopScrolled() && this.document && this.document.body && this.document.body.scrollTop < 1;
   }
 }
