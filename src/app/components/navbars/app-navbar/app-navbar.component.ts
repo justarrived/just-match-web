@@ -72,7 +72,7 @@ export class AppNavbarComponent extends BaseComponent {
   public transparentNavbar: boolean;
 
   public constructor(
-    @Inject(DOCUMENT) private document: Document,
+    @Inject(DOCUMENT) private document: any,
     private pageOptionsService: PageOptionsService,
     protected systemLanguagesResolver: SystemLanguagesResolver,
     protected userResolver: UserResolver,
