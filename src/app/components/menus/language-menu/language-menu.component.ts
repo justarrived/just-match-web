@@ -21,11 +21,11 @@ import {ViewChild} from '@angular/core';
         </div>
         <div class="language-menu-logo-container-text">
           <basic-title-text
-            [text]="'menu.language.title' | translate"
+            [text]="'menu.language.image.title' | translate"
             color="white"
             marginTop="0"
             marginBottom="0"
-            fontSize="small"
+            fontSize="medium"
             textAlignmentLtr="center"
             textAlignmentRtl="center">
           </basic-title-text>

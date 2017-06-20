@@ -18,30 +18,33 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
           <img
             alt="Just Arrived"
             class="logo-image"
-            src="/assets/images/justarrived-light-logo.png"/>
+            src="/assets/images/light-logo.png"/>
         </a>
       </div>
       <div class="menu-items-container">
         <div
-          (click)="onNavigationMenuButtonClick()"
-          class="navigation-menu-item">
-        </div>
-        <hr class="seperator">
-        <div
           (click)="onLanguageMenuButtonClick()">
           <div class="language-menu-item">
+            <div
+              [ngClass]="[isLanguageMenuVisible ? 'fa-caret-up' : 'fa-caret-down']"
+              class="fa arrow-icon">
+            </div>
             <basic-text
               [text]="systemLanguage.languageCode"
+              [alwaysLtrText]="true"
               marginTop="0"
               marginBottom="0"
               [uppercase]="true"
               color="white">
             </basic-text>
-            <div
-              [ngClass]="[isLanguageMenuVisible ? 'fa-caret-up' : 'fa-caret-down']"
-              class="fa arrow-icon">
-            </div>
           </div>
+        </div>
+
+        <hr class="seperator">
+
+        <div
+          (click)="onNavigationMenuButtonClick()"
+          class="navigation-menu-item">
         </div>
       </div>
     </div>

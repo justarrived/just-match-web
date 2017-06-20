@@ -51,7 +51,8 @@ export class HomePageComponent extends PageComponent {
       request,
       systemLanguagesResolver,
       translateService,
-      userResolver
+      userResolver,
+      true,
     );
   }
 }

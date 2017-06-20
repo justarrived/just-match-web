@@ -20,6 +20,8 @@ import {SystemLanguagesResolver} from '../../resolvers/system-languages/system-l
 import {TranslateService} from '@ngx-translate/core';
 import {UserResolver} from '../../resolvers/user/user.resolver';
 
+declare var jQuery: any;
+
 export interface PageMeta {
   title: {translate: boolean, content: string},
   description: {translate: boolean, content: string},
@@ -39,12 +41,35 @@ export abstract class PageComponent extends BaseComponent implements OnInit, OnD
     protected systemLanguagesResolver: SystemLanguagesResolver,
     protected translateService: TranslateService,
     protected userResolver: UserResolver,
+    protected transparentNavbarWhenTopScrolled: boolean = false,
   ) {
     super(systemLanguagesResolver, userResolver);
   }
 
   public ngOnInit(): void {
     this.updatePageMeta(this.pageMeta);
+
+    if (jQuery) {
+      jQuery(this.document).unbind('scroll');
+      jQuery('.layout-header-padder').css({'display':'block'});
+      jQuery('.app-navbar-container').css({'background':'url("/assets/images/navbar-background.jpg") no-repeat center center'});
+      jQuery('.app-navbar-container').css({'background-size':'cover'});
+
+      if (this.transparentNavbarWhenTopScrolled && !this.request) {
+
+        jQuery('.layout-header-padder').css({'display':'none'});
+        jQuery('.app-navbar-container').css({"background":"transparent"});
+        jQuery(this.document).scroll(function(){
+          if(jQuery(this).scrollTop() > 0)
+          {
+             jQuery('.app-navbar-container').css({'background':'url("/assets/images/navbar-background.jpg") no-repeat center center'});
+             jQuery('.app-navbar-container').css({'background-size':'cover'});
+          } else {
+             jQuery('.app-navbar-container').css({"background":"transparent"});
+          }
+        });
+      }
+    }
 
     super.ngOnInit();
   }

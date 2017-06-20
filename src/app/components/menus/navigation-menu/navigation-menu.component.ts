@@ -26,8 +26,8 @@ import {ViewChild} from '@angular/core';
 
       <img
         alt="Just Arrived"
-        class="ui centered tiny image"
-        src="apple-touch-icon.ico">
+        class="ui centered small image"
+        src="/assets/images/light-vertical-logo.png">
 
       <hr class="seperator">
 
