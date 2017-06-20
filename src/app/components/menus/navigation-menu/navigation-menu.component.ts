@@ -26,181 +26,179 @@ import {ViewChild} from '@angular/core';
 
       <img
         alt="Just Arrived"
-        class="ui centered tiny image"
-        src="apple-touch-icon.ico">
+        class="ui centered small image"
+        src="/assets/images/light-vertical-logo.png">
 
-      <div class="navigation-menu-links-container">
+      <hr class="seperator">
 
-        <basic-link
-          [text]="'menu.main.home' | translate"
-          [color]="getCurrentUrl() === '/' ? 'pink' : 'gray'"
-          [routerLink]="JARoutes.home.url()"
-          class="navigation-menu-item"
-          hoverColor="pink"
-          marginBottom="0"
-          marginTop="0"
-          textAlignmentLtr="center"
-          textAlignmentRtl="center">
-        </basic-link>
+      <basic-link
+        [text]="'menu.main.home' | translate"
+        [color]="getCurrentUrl() === '/' ? 'pink' : 'white'"
+        [routerLink]="JARoutes.home.url()"
+        class="navigation-menu-item"
+        hoverColor="pink"
+        fontSize="large"
+        marginBottom="0"
+        marginTop="20px"
+        textAlignmentLtr="center"
+        textAlignmentRtl="center">
+      </basic-link>
 
-        <basic-link
-          [text]="'menu.main.god.mode' | translate"
-          [color]="getCurrentUrl() === JARoutes.godMode.url() ? 'pink' : 'gray'"
-          [routerLink]="JARoutes.godMode.url()"
-          *ngIf="admin"
-          class="navigation-menu-item"
-          hoverColor="pink"
-          marginBottom="0"
-          marginTop="0"
-          textAlignmentLtr="center"
-          textAlignmentRtl="center">
-        </basic-link>
+      <basic-link
+        [text]="'menu.main.god.mode' | translate"
+        [color]="getCurrentUrl() === JARoutes.godMode.url() ? 'pink' : 'white'"
+        [routerLink]="JARoutes.godMode.url()"
+        *ngIf="admin"
+        class="navigation-menu-item"
+        hoverColor="pink"
+        fontSize="large"
+        marginBottom="0"
+        marginTop="20px"
+        textAlignmentLtr="center"
+        textAlignmentRtl="center">
+      </basic-link>
 
-        <basic-link
-          [text]="'menu.main.my_assignment' | translate"
-          [color]="getCurrentUrl() === JARoutes.applications.url() ? 'pink' : 'gray'"
-          [routerLink]="JARoutes.applications.url()"
-          *ngIf="user"
-          class="navigation-menu-item"
-          hoverColor="pink"
-          marginBottom="0"
-          marginTop="0"
-          textAlignmentLtr="center"
-          textAlignmentRtl="center">
-        </basic-link>
+      <basic-link
+        [text]="'menu.main.my_assignment' | translate"
+        [color]="getCurrentUrl() === JARoutes.applications.url() ? 'pink' : 'white'"
+        [routerLink]="JARoutes.applications.url()"
+        *ngIf="user"
+        class="navigation-menu-item"
+        hoverColor="pink"
+        fontSize="large"
+        marginBottom="0"
+        marginTop="20px"
+        textAlignmentLtr="center"
+        textAlignmentRtl="center">
+      </basic-link>
 
-        <basic-link
-          [text]="'menu.main.find_assignment' | translate"
-          [color]="getCurrentUrl() === JARoutes.jobs.url(['1']) ? 'pink' : 'gray'"
-          [routerLink]="JARoutes.jobs.url(['1'])"
-          class="navigation-menu-item"
-          hoverColor="pink"
-          marginBottom="0"
-          marginTop="0"
-          textAlignmentLtr="center"
-          textAlignmentRtl="center">
-        </basic-link>
+      <basic-link
+        [text]="'menu.main.find_assignment' | translate"
+        [color]="getCurrentUrl() === JARoutes.jobs.url(['1']) ? 'pink' : 'white'"
+        [routerLink]="JARoutes.jobs.url(['1'])"
+        class="navigation-menu-item"
+        hoverColor="pink"
+        fontSize="large"
+        marginBottom="0"
+        marginTop="20px"
+        textAlignmentLtr="center"
+        textAlignmentRtl="center">
+      </basic-link>
 
-        <basic-link
-          [text]="'menu.main.profile' | translate"
-          [color]="getCurrentUrl() === JARoutes.user.url() ? 'pink' : 'gray'"
-          [routerLink]="JARoutes.user.url()"
-          *ngIf="user"
-          class="navigation-menu-item"
-          hoverColor="pink"
-          marginBottom="0"
-          marginTop="0"
-          textAlignmentLtr="center"
-          textAlignmentRtl="center">
-        </basic-link>
+      <basic-link
+        [text]="'menu.main.profile' | translate"
+        [color]="getCurrentUrl() === JARoutes.user.url() ? 'pink' : 'white'"
+        [routerLink]="JARoutes.user.url()"
+        *ngIf="user"
+        class="navigation-menu-item"
+        hoverColor="pink"
+        fontSize="large"
+        marginBottom="0"
+        marginTop="20px"
+        textAlignmentLtr="center"
+        textAlignmentRtl="center">
+      </basic-link>
 
-        <basic-link
-          [text]="'menu.main.faq' | translate"
-          [color]="getCurrentUrl() === JARoutes.faq.url() ? 'pink' : 'gray'"
-          [routerLink]="JARoutes.faq.url()"
-          class="navigation-menu-item"
-          hoverColor="pink"
-          marginBottom="0"
-          marginTop="0"
-          textAlignmentLtr="center"
-          textAlignmentRtl="center">
-        </basic-link>
+      <basic-link
+        [text]="'menu.main.faq' | translate"
+        [color]="getCurrentUrl() === JARoutes.faq.url() ? 'pink' : 'white'"
+        [routerLink]="JARoutes.faq.url()"
+        class="navigation-menu-item"
+        hoverColor="pink"
+        fontSize="large"
+        marginBottom="0"
+        marginTop="20px"
+        textAlignmentLtr="center"
+        textAlignmentRtl="center">
+      </basic-link>
 
-        <basic-link
-          [text]="'menu.main.contact' | translate"
-          [color]="getCurrentUrl() === JARoutes.contact.url() ? 'pink' : 'gray'"
-          [routerLink]="JARoutes.contact.url()"
-          class="navigation-menu-item"
-          hoverColor="pink"
-          marginBottom="0"
-          marginTop="0"
-          textAlignmentLtr="center"
-          textAlignmentRtl="center">
-        </basic-link>
+      <basic-link
+        [text]="'menu.main.contact' | translate"
+        [color]="getCurrentUrl() === JARoutes.contact.url() ? 'pink' : 'white'"
+        [routerLink]="JARoutes.contact.url()"
+        class="navigation-menu-item"
+        hoverColor="pink"
+        fontSize="large"
+        marginBottom="0"
+        marginTop="20px"
+        textAlignmentLtr="center"
+        textAlignmentRtl="center">
+      </basic-link>
 
-        <basic-link
-          [text]="'menu.main.support.chat' | translate"
-          [color]="getCurrentUrl() === JARoutes.supportChat.url() ? 'pink' : 'gray'"
-          [routerLink]="JARoutes.supportChat.url()"
-          *ngIf="user"
-          class="navigation-menu-item"
-          hoverColor="pink"
-          marginBottom="0"
-          marginTop="0"
-          textAlignmentLtr="center"
-          textAlignmentRtl="center">
-        </basic-link>
+      <basic-link
+        [text]="'menu.main.support.chat' | translate"
+        [color]="getCurrentUrl() === JARoutes.supportChat.url() ? 'pink' : 'white'"
+        [routerLink]="JARoutes.supportChat.url()"
+        *ngIf="user"
+        class="navigation-menu-item"
+        hoverColor="pink"
+        fontSize="large"
+        marginBottom="0"
+        marginTop="20px"
+        textAlignmentLtr="center"
+        textAlignmentRtl="center">
+      </basic-link>
 
-        <basic-link
-          [text]="'menu.main.login' | translate"
-          [color]="getCurrentUrl() === JARoutes.login.url() ? 'pink' : 'gray'"
-          [routerLink]="JARoutes.login.url()"
-          *ngIf="!user"
-          class="navigation-menu-item"
-          hoverColor="pink"
-          marginBottom="0"
-          marginTop="0"
-          textAlignmentLtr="center"
-          textAlignmentRtl="center">
-        </basic-link>
+      <basic-link
+        [text]="'menu.main.login' | translate"
+        [color]="getCurrentUrl() === JARoutes.login.url() ? 'pink' : 'white'"
+        [routerLink]="JARoutes.login.url()"
+        *ngIf="!user"
+        class="navigation-menu-item"
+        hoverColor="pink"
+        fontSize="large"
+        marginBottom="0"
+        marginTop="20px"
+        textAlignmentLtr="center"
+        textAlignmentRtl="center">
+      </basic-link>
 
-        <basic-link
-          [text]="'menu.main.staffing_time_report' | translate"
-          color="gray"
-          *ngIf="user && (user.justArrivedStaffing || user.admin)"
-          class="navigation-menu-item"
-          href="https://justarrived-se.web.intelliplan.eu/"
-          hoverColor="pink"
-          marginBottom="0"
-          marginTop="0"
-          textAlignmentLtr="center"
-          textAlignmentRtl="center">
-        </basic-link>
+      <basic-link
+        [text]="'menu.main.staffing_time_report' | translate"
+        color="white"
+        *ngIf="user && (user.justArrivedStaffing || user.admin)"
+        class="navigation-menu-item"
+        href="https://justarrived-se.web.intelliplan.eu/"
+        hoverColor="pink"
+        fontSize="large"
+        marginBottom="0"
+        marginTop="20px"
+        textAlignmentLtr="center"
+        textAlignmentRtl="center">
+      </basic-link>
 
-        <basic-link
-          (click)="onLogoutButtonClick()"
-          [text]="'menu.main.logout' | translate"
-          color="gray"
-          *ngIf="user"
-          class="navigation-menu-item"
-          hoverColor="pink"
-          marginBottom="0"
-          marginTop="0"
-          textAlignmentLtr="center"
-          textAlignmentRtl="center">
-        </basic-link>
+      <basic-link
+        (click)="onLogoutButtonClick()"
+        [text]="'menu.main.logout' | translate"
+        color="white"
+        *ngIf="user"
+        class="navigation-menu-item"
+        hoverColor="pink"
+        fontSize="large"
+        marginBottom="20px"
+        marginTop="20px"
+        textAlignmentLtr="center"
+        textAlignmentRtl="center">
+      </basic-link>
 
-        <div class="navigation-menu-user-container ui basic segment">
-          <div
-            *ngIf="user"
-            class="navigation-menu-user-logged-in-container"
-            [routerLink]="JARoutes.user.url()">
-            <img
-              class="ui centered tiny circular image"
-              [src]="this.user.profileImage?.imageUrlMedium || '/assets/images/placeholder-profile-image.png'">
-              <basic-title-text
-                [text]="user.name"
-                color="gray"
-                fontSize="small"
-                textAlignmentLtr="center"
-                textAlignmentRtl="center">
-              </basic-title-text>
-          </div>
+      <basic-link
+        [text]="'menu.main.register' | translate"
+        [color]="getCurrentUrl() === JARoutes.registerUser.url() ? 'pink' : 'white'"
+        [routerLink]="JARoutes.registerUser.url()"
+        *ngIf="!user"
+        class="navigation-menu-item"
+        hoverColor="pink"
+        fontSize="large"
+        marginBottom="20px"
+        marginTop="20px"
+        textAlignmentLtr="center"
+        textAlignmentRtl="center">
+      </basic-link>
 
-          <div
-            *ngIf="!user"
-            class="ui basic center aligned segment">
-            <base-button
-              [buttonText]="'menu.main.register' | translate"
-              [routerLink]="JARoutes.registerUser.url()"
-              kind="secondary"
-              size="small">
-            </base-button>
-          </div>
-        </div>
-      </div>
-    </div>
-  `
+      <hr class="seperator">
+
+      <social-media-section></social-media-section>
+    </div>`
 })
 export class NavigationMenuComponent extends BaseComponent {
   @Input() public isNavigationMenuVisible: boolean;

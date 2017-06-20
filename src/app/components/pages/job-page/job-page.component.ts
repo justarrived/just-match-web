@@ -7,6 +7,7 @@ import {Job} from '../../../models/api-models/job/job';
 import {JobProxy} from '../../../proxies/job/job.proxy';
 import {Language} from '../../../models/api-models/language/language';
 import {Meta} from '@angular/platform-browser';
+import {PageOptionsService} from '../../../services/page-options.service';
 import {PageComponent} from '../page.component';
 import {REQUEST} from '../../../../express-engine';
 import {Subscription} from 'rxjs/Subscription';
@@ -146,66 +147,6 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
            <back-to-jobs-section></back-to-jobs-section>
           </div>
         </div>
-
-
-        <!--
-
-        <div class="sixteen wide mobile only column">
-          <job-actions-section
-            [(application)]="application"
-            [job]="job"
-            [hideReadMore]="true"
-            [center]="false">
-          </job-actions-section>
-        </div>
-
-        <div class="sixteen wide column">
-          <job-company-image-section
-            [job]="job"
-            style="padding: 0">
-          </job-company-image-section>
-        </div>
-
-        <div class="sixteen wide mobile only column">
-          <share-with-modal-section></share-with-modal-section>
-        </div>
-
-        <div class="sixteen wide mobile ten wide tablet ten wide computer column">
-          <job-short-description-section [job]="job"></job-short-description-section>
-          <job-company-description-section [job]="job"></job-company-description-section>
-        </div>
-
-        <div class="sixteen wide mobile six wide tablet six wide computer column">
-          <job-important-information-section [job]="job"></job-important-information-section>
-        </div>
-
-        <div class="sixteen wide mobile ten wide tablet ten wide computer column">
-          <job-description-section [job]="job"></job-description-section>
-        </div>
-
-        <div class="sixteen wide mobile six wide tablet six wide computer column">
-          <job-tasks-section [job]="job"></job-tasks-section>
-          <job-applicant-section [job]="job"></job-applicant-section>
-          <job-requirements-section [job]="job"></job-requirements-section>
-        </div>
-
-        <div class="sixteen wide mobile only column">
-          <job-recruiter-section [job]="job"></job-recruiter-section>
-        </div>
-
-        <div class="sixteen wide mobile ten wide tablet ten wide computer column">
-          <job-actions-section
-            [(application)]="application"
-            [job]="job"
-            [center]="true">
-          </job-actions-section>
-        </div>
-
-        <div class="six wide tablet six wide computer only column">
-          <job-recruiter-section [job]="job"></job-recruiter-section>
-        </div>
-        -->
-
       </div>
     </div>`
 })
@@ -223,6 +164,7 @@ export class JobPageComponent extends PageComponent {
     private jobProxy: JobProxy,
     private route: ActivatedRoute,
     protected meta: Meta,
+    protected pageOptionsService: PageOptionsService,
     protected systemLanguagesResolver: SystemLanguagesResolver,
     protected translateService: TranslateService,
     protected userResolver: UserResolver,
@@ -243,10 +185,12 @@ export class JobPageComponent extends PageComponent {
       },
       document,
       meta,
+      pageOptionsService,
       request,
       systemLanguagesResolver,
       translateService,
-      userResolver
+      userResolver,
+      true,
     );
   }
 

@@ -156,7 +156,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
               textAlignmentRtlTablet="center">
             </basic-link>
           </div>
-          <div class="sixteen wide mobile sixteen wide tablet four wide computer column">
+          <div class="sixteen wide mobile sixteen wide tablet four wide computer column social-media-column">
             <basic-title-text
               [text]="'footer.follow.us.section.title' | translate"
               color="pink"
@@ -164,33 +164,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
               textAlignmentLtrTablet="center"
               textAlignmentRtlTablet="center">
             </basic-title-text>
-            <div class="social-media-container">
-              <a
-                target="_blank"
-                href="https://www.facebook.com/JustArrivedSE">
-                <img src="/assets/images/facebook-white.png" class="social-media-icon">
-              </a>
-              <a
-                target="_blank"
-                href="https://twitter.com/justarrivedse">
-                <img src="/assets/images/twitter-white.png" class="social-media-icon">
-              </a>
-              <a
-                target="_blank"
-                href="https://www.instagram.com/justarrivedse/">
-                <img src="/assets/images/instagram-white.png" class="social-media-icon">
-              </a>
-              <a
-                target="_blank"
-                href="https://www.linkedin.com/company/just-arrived-sweden">
-                <img src="/assets/images/linkedin-white.png" class="social-media-icon">
-              </a>
-              <a
-                target="_blank"
-                href="https://github.com/justarrived">
-                <img src="/assets/images/github-white.png" class="social-media-icon">
-              </a>
-            </div>
+            <social-media-section></social-media-section>
           </div>
         </div>
         <basic-text

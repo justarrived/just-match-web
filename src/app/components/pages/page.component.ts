@@ -13,6 +13,7 @@
 
 import {BaseComponent} from '../base.component';
 import {Meta} from '@angular/platform-browser';
+import {PageOptionsService} from '../../services/page-options.service';
 import {OnDestroy} from '@angular/core';
 import {OnInit} from '@angular/core';
 import {Subscription} from 'rxjs/Subscription';
@@ -35,16 +36,20 @@ export abstract class PageComponent extends BaseComponent implements OnInit, OnD
     private pageMeta: PageMeta,
     protected document: any,
     protected meta: Meta,
+    protected pageOptionsService: PageOptionsService = null,
     protected request: any,
     protected systemLanguagesResolver: SystemLanguagesResolver,
     protected translateService: TranslateService,
     protected userResolver: UserResolver,
+    protected transparentNavbarWhenTopScrolled: boolean = false,
   ) {
     super(systemLanguagesResolver, userResolver);
   }
 
   public ngOnInit(): void {
     this.updatePageMeta(this.pageMeta);
+
+    this.pageOptionsService.setTransparentNavbarWhenTopScrolled(this.transparentNavbarWhenTopScrolled);
 
     super.ngOnInit();
   }

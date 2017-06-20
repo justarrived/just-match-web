@@ -3,10 +3,17 @@
 
 .app-navbar-container {
   pointer-events: auto;
-  height: 54px;
+  height: $navbar-height;
   border-radius: 0;
-  color: $color-gray-200;
-  background-color: $color-gray-25;
+  background-color: black;
+  background: url('/assets/images/navbar-background.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+
+  &.transparent {
+    background: transparent;
+  }
 
   @media screen and (min-width: $app-max-width) {
     width: $app-max-width;
@@ -22,45 +29,53 @@
     height: 100%;
     flex-wrap: nowrap;
 
-    .app-navbar-home {
+    .logo {
       display: flex;
       flex-wrap: nowrap;
       align-items: center;
       margin-left: 15px;
 
-      .app-navbar-logo-image {
-        max-width: 165px;
+      .logo-image {
+        max-width: 130px;
       }
     }
 
-    .app-navbar-menus {
+    .menu-items-container {
       align-items: center;
       display: flex;
       margin-left: auto;
-      margin-right: 15px;
+      margin-right: 18px;
       flex-wrap: nowrap;
 
-      .app-navbar-menu-icon, .app-navbar-language-icon{
-        cursor: pointer;
+      .seperator {
+        width: 1px;
+        height: 15px;
+        color: $white;
+        background-color: $white;
+        border: none;
+        margin-left: 15px;
+        margin-right: 15px;
+        opacity: 0.5;
       }
 
-      .app-navbar-language-icon {
-        font-size: 11px;
-        border-radius: 23px;
-        border-width: 2px;
-        border-style: solid;
-        border-color: $color-gray-200;
-        padding: 0 .5em;
-        text-align: center;
-        vertical-align: center;
-        line-height: 22px;
-        margin: auto;
-        margin-right: 12px;
-        text-transform: uppercase;
-        user-select: none;
+      .navigation-menu-item {
+        cursor: pointer;
+        background: url('/assets/icons/menu.svg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+        height: 30px;
+        width: 30px;
+      }
 
-        .app-navbar-language-icon-arrow {
-          margin-left: 5px;
+      .language-menu-item {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+
+        .arrow-icon {
+          color: $white;
+          margin-right: 5px;
         }
       }
     }

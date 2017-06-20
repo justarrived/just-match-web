@@ -145,6 +145,7 @@ import {NgModule} from '@angular/core';
 import {NotFoundPageComponent} from './components/pages/404-page/404-page.component';
 import {NumberedPagerComponent} from './components/pagers/numbered-pager/numbered-pager.component';
 import {OldPasswordInputComponent} from './components/inputs/old-password-input/old-password-input.component';
+import {PageOptionsService} from './services/page-options.service';
 import {PartnersSectionComponent} from './components/sections/partners-section/partners-section.component';
 import {PasswordChangedModalComponent} from './components/modals/password-changed-modal/password-changed-modal.component';
 import {PasswordInputComponent} from './components/inputs/password-input/password-input.component';
@@ -180,6 +181,7 @@ import {SimpleMessageComponent} from './components/messages/simple-message/simpl
 import {SkatteverketCertificateInputComponent} from './components/inputs/skatteverket-certificate-input/skatteverket-certificate-input.component';
 import {SkillProficiencyInputComponent} from './components/inputs/skill-proficiency-input/skill-proficiency-input.component';
 import {SkillsInputComponent} from './components/inputs/skills-input/skills-input.component';
+import {SocialMediaSectionComponent} from './components/sections/social-media-section/social-media-section.component';
 import {SortUsersInputComponent} from './components/inputs/sort-users-input/sort-users-input.component';
 import {SSNInputComponent} from './components/inputs/ssn-input/ssn-input.component';
 import {StatusInputComponent} from './components/inputs/status-input/status-input.component';
@@ -435,6 +437,7 @@ export class RavenErrorHandler implements ErrorHandler {
     UserProfileFormComponent,
     UserProfilePageComponent,
     UsersFilterComponent,
+    SocialMediaSectionComponent,
     UserUpdateFormComponent,
     WelcomeBannerSectionComponent,
     WorkPermitBackInputComponent,
@@ -448,6 +451,7 @@ export class RavenErrorHandler implements ErrorHandler {
     GeolocationService,
     ModalService,
     NavigationService,
+    PageOptionsService,
     { provide: LOCALE_ID, useValue: 'en' },
     { provide: ErrorHandler, useClass: RavenErrorHandler },
     { provide: APP_BASE_HREF, useValue: '/' }

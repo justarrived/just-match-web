@@ -2,7 +2,7 @@
 @import '../../../styles/dimensions';
 
 .footer-container {
-  background-color: $color-secondary-gray;
+  background-color: $color-gray-500;
   background: url('/assets/images/footer-background.jpg');
   background-size: cover;
   background-repeat: no-repeat;
@@ -12,10 +12,11 @@
     margin: 0 auto;
   }
 
-  .social-media-container {
+  .social-media-column {
     display: flex;
+    flex-direction: column;
     @media screen and (max-width: $tablet-max-width) {
-      justify-content: center !important;
+      align-items: center;
     }
   }
 }

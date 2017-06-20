@@ -4,6 +4,7 @@ import {GodModePagerSectionComponent} from '../../sections/god-mode-pager-sectio
 import {Inject} from '@angular/core';
 import {JARoutes} from '../../../routes/ja-routes/ja-routes';
 import {Meta} from '@angular/platform-browser';
+import {PageOptionsService} from '../../../services/page-options.service';
 import {PageComponent} from '../page.component';
 import {REQUEST} from '../../../../express-engine';
 import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
@@ -41,6 +42,7 @@ export class GodModePageComponent extends PageComponent {
     @Inject(DOCUMENT) protected document: any,
     @Inject(REQUEST) protected request: any,
     protected meta: Meta,
+    protected pageOptionsService: PageOptionsService,
     protected systemLanguagesResolver: SystemLanguagesResolver,
     protected translateService: TranslateService,
     protected userResolver: UserResolver,
@@ -58,6 +60,7 @@ export class GodModePageComponent extends PageComponent {
       },
       document,
       meta,
+      pageOptionsService,
       request,
       systemLanguagesResolver,
       translateService,

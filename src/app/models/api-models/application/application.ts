@@ -49,8 +49,6 @@ export class ApplicationFactory {
       return;
     }
 
-    console.log(jsonObject);
-
     const minutesPerHour = 60;
 
     let willPerformConfirmationBy = new Date(jsonObject.will_perform_confirmation_by);

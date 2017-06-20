@@ -2,53 +2,26 @@
 @import '../../../styles/dimensions';
 
 .navigation-menu-container {
-  margin-bottom: $header-height !important;
+  padding-top: 50px;
+  padding-bottom: 50px;
   background-color: $color-gray-25 !important;
   text-align: center;
   min-height: 100%;
+  background: url('/assets/images/menu-background.jpg') !important;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+  background-position: center center !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
-  .navigation-menu-links-container {
+  .seperator {
+    width: 30px;
+    height: 1px;
+    color: $color-cerise-500;
+    background-color: $color-cerise-500;
+    border: none;
     margin-top: 20px;
-
-    .navigation-menu-item {
-      border-top: 1px solid $color-gray-50;
-      color: $color-gray-300;
-      padding-top: 12px;
-      padding-bottom: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .navigation-menu-item:nth-last-of-type(1) {
-      border-bottom: 1px solid $color-gray-50;
-    }
-
-    a {
-      display: block;
-      cursor: pointer;
-      font-size: 16px;
-
-      &:hover {
-        color: $color-primary-cerise;
-      }
-    }
-  }
-
-  .navigation-menu-user-container {
-    .navigation-menu-user-logged-in-container {
-      text-align: center;
-      color: $color-gray-300;
-
-      img {
-        border-radius: 50%;
-        border: 2px solid $color-primary-cerise;
-      }
-    }
-  }
-
-  .navigation-menu-create-user-button {
-    width: 60%;
-    margin: 40px auto 0;
+    margin-bottom: 20px;
   }
 }
