@@ -13,30 +13,35 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
   template: `
   <nav class="app-navbar-container">
     <div class="app-navbar-inner-container">
-      <div class="app-navbar-home">
+      <div class="logo">
         <a routerLink="{{JARoutes.home.url()}}">
           <img
             alt="Just Arrived"
-            class="app-navbar-logo-image"
-            src="/assets/images/logo.png"/>
+            class="logo-image"
+            src="/assets/images/justarrived-light-logo.png"/>
         </a>
       </div>
-      <div class="app-navbar-menus">
-        <div
-          (click)="onLanguageMenuButtonClick()"
-          class="app-navbar-button-container">
-          <div class="app-navbar-language-icon">
-            {{systemLanguage.languageCode}}
-            <div
-              [ngClass]="[isLanguageMenuVisible ? 'fa-caret-up' : 'fa-caret-down']"
-              class="fa app-navbar-language-icon-arrow">
-            </div>
-          </div>
-        </div>
+      <div class="menu-items-container">
         <div
           (click)="onNavigationMenuButtonClick()"
-          class="app-navbar-button-container">
-          <span class="fa fa-bars fa-2x app-navbar-menu-icon"></span>
+          class="navigation-menu-item">
+        </div>
+        <hr class="seperator">
+        <div
+          (click)="onLanguageMenuButtonClick()">
+          <div class="language-menu-item">
+            <basic-text
+              [text]="systemLanguage.languageCode"
+              marginTop="0"
+              marginBottom="0"
+              [uppercase]="true"
+              color="white">
+            </basic-text>
+            <div
+              [ngClass]="[isLanguageMenuVisible ? 'fa-caret-up' : 'fa-caret-down']"
+              class="fa arrow-icon">
+            </div>
+          </div>
         </div>
       </div>
     </div>

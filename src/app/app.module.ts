@@ -154,6 +154,7 @@ import {PhoneInputComponent} from './components/inputs/phone-input/phone-input.c
 import {ProfileImageInputComponent} from './components/inputs/profile-image-input/profile-image-input.component';
 import {ProxiesModule} from './proxies/proxies.module';
 import {RatingInputComponent} from './components/inputs/rating-input/rating-input.component';
+import {SocialMediaSectionComponent} from './components/sections/social-media-section/social-media-section.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {RegisteredModalComponent} from './components/modals/registered-modal/registered-modal.component';
 import {RegisterFormComponent} from './components/forms/register-form/register-form.component';
@@ -435,6 +436,7 @@ export class RavenErrorHandler implements ErrorHandler {
     UserProfileFormComponent,
     UserProfilePageComponent,
     UsersFilterComponent,
+    SocialMediaSectionComponent,
     UserUpdateFormComponent,
     WelcomeBannerSectionComponent,
     WorkPermitBackInputComponent,

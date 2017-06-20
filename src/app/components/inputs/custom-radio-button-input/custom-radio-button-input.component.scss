@@ -22,8 +22,8 @@
         height: 2em;
         border-radius: 2em;
         // hard border
-        border: .125em solid $color-primary-cerise;
-        box-shadow: 0 0 0 .1em $color-primary-cerise;
+        border: .125em solid $color-cerise-500;
+        box-shadow: 0 0 0 .1em $color-cerise-500;
         // light shadow
         margin: 0 auto;
         transition: .5s ease all;
@@ -31,8 +31,8 @@
       }
 
       &:checked + .custom-radio-button-span:before {
-        background: $color-primary-cerise;
-        box-shadow: 0 0 0 .1em $color-primary-cerise;
+        background: $color-cerise-500;
+        box-shadow: 0 0 0 .1em $color-cerise-500;
       }
     }
   }

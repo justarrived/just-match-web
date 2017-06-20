@@ -3,7 +3,7 @@ import {Component} from '@angular/core';
 import {Input} from '@angular/core';
 import {LanguageMenuComponent} from '../../menus/language-menu/language-menu.component';
 import {NavigationMenuComponent} from '../../menus/navigation-menu/navigation-menu.component';
-import {slideInLeftOutRightAnimation} from '../../../animations/slide-in-left-out-right/slide-in-left-out-right.animation';
+import {slideInDownOutTopAnimation} from '../../../animations/slide-in-down-out-top/slide-in-down-out-top.animation';
 import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
 import {UserResolver} from '../../../resolvers/user/user.resolver';
 import {ViewChild} from '@angular/core';
@@ -12,7 +12,7 @@ import {ViewChild} from '@angular/core';
 const menuAnimationDuration = 400;
 
 @Component({
-  animations: [slideInLeftOutRightAnimation(menuAnimationDuration + 'ms', '100%')],
+  animations: [slideInDownOutTopAnimation(menuAnimationDuration + 'ms', '100%')],
   selector: 'default-navigation',
   styleUrls: ['./default-navigation.component.scss'],
   template: `
@@ -23,13 +23,15 @@ const menuAnimationDuration = 400;
         (onToggleLanguageMenu)="toggleLanguageMenu()"
         (onToggleNavigationMenu)="toggleNavigationMenu()">
       </app-navbar>
+    </div>
+    <div class="navigation-container">
       <div
         class="menu-container"
         [class.visible]="isNavigationMenuVisible || isLanguageMenuVisible"
         (click)="hideMenus()">
         <div
           class="menu-inner-container"
-          [@slideInLeftOutRightAnimation]="animationState">
+          [@slideInDownOutTopAnimation]="animationState">
           <navigation-menu
             #navigationMenuComponent
             [(isNavigationMenuVisible)]=isNavigationMenuVisible>

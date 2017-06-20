@@ -13,15 +13,18 @@ import {ViewChild} from '@angular/core';
   styleUrls: ['./language-menu.component.scss'],
   template: `
     <div class="language-menu-container" *ngIf="isLanguageMenuVisible">
-      <div class="ui grid language-menu-logo-container">
-        <div class="eight wide column language-menu-logo-container-logo">
+      <div class="language-menu-logo-container">
+        <div class="language-menu-logo-container-logo">
           <img
             alt="Just Arrived"
             src="apple-touch-icon.ico"/>
         </div>
-        <div class="eight wide column language-menu-logo-container-text">
+        <div class="language-menu-logo-container-text">
           <basic-title-text
             [text]="'menu.language.title' | translate"
+            color="white"
+            marginTop="0"
+            marginBottom="0"
             fontSize="small"
             textAlignmentLtr="center"
             textAlignmentRtl="center">
@@ -29,61 +32,18 @@ import {ViewChild} from '@angular/core';
         </div>
       </div>
 
-      <div class="language-menu-languages-container">
-        <div
-          (click)="onSelectLanguage(language)"
-          *ngFor="let language of systemLanguages"
-          class="ui grid language-menu-language-text-wrapper">
-          <div
-            [ngClass]="{'language-menu-language-name-active':isActiveSystemLanguage(language)}"
-            class="thirteen wide column language-menu-language-name">
-            <basic-link
-              [text]="language.localName"
-              [color]="isActiveSystemLanguage(language) ? 'pink' : 'gray'"
-              hoverColor="pink"
-              marginBottom="0"
-              marginTop="0"
-              textAlignmentLtr="left"
-              textAlignmentRtl="left">
-            </basic-link>
-          </div>
-          <div class="three wide column language-menu-language-checkmark">
-            <i
-              *ngIf="isActiveSystemLanguage(language)"
-              aria-hidden="true"
-              class="fa fa-check">
-            </i>
-          </div>
-        </div>
-      </div>
-
-      <div class="language-menu-information-container">
-        <basic-text
-          [text]="'menu.language.text_1' | translate"
-          fontSize="small"
-          textAlignmentLtr="center"
-          textAlignmentRtl="center">
-        </basic-text>
-        <basic-text
-          [text]="'menu.language.text_2' | translate"
-          fontSize="small"
-          textAlignmentLtr="center"
-          textAlignmentRtl="center">
-        </basic-text>
-      </div>
-
-      <div class="language-menu-credentials-container">
-        <basic-text
-          [text]="'menu.language.translation_by_probono' | translate"
-          fontSize="small"
-          textAlignmentLtr="center"
-          textAlignmentRtl="center">
-        </basic-text>
-        <img
-          alt="Semantix"
-          class="language-menu-credentials-container-image"
-          src="/assets/images/semantix.png"/>
-      </div>
+      <basic-link
+        *ngFor="let language of systemLanguages"
+        (click)="onSelectLanguage(language)"
+        [text]="language.localName"
+        [color]="isActiveSystemLanguage(language) ? 'pink' : 'white'"
+        fontSize="large"
+        hoverColor="pink"
+        marginBottom="0"
+        marginTop="20px"
+        textAlignmentLtr="left"
+        textAlignmentRtl="left">
+      </basic-link>
     </div>
   `
 })
