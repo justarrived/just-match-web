@@ -81,10 +81,7 @@ export class AppNavbarComponent extends BaseComponent {
   }
 
   public onInit() {
-    if (this.pageOptionsService.transparentNavbarWhenTopScrolled()) {
-      this.transparentNavbar = true;
-    }
-
+    this.updateNavbarBackground();
     this.transparentNavbarWhenTopScrolledSubscription = this.pageOptionsService.getTransparentNavbarWhenTopScrolledChangeEmitter().subscribe(transparentNavbarWhenTopScrolled => {
       this.updateNavbarBackground();
     });
