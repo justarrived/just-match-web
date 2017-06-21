@@ -119,15 +119,3 @@ export class SystemLanguagesResolver implements Resolve<Language[]> {
     return this.systemLanguageChange;
   }
 }
-
-export abstract class SystemLanguageListener {
-  constructor(
-    protected systemLanguagesResolver: SystemLanguagesResolver
-  ) {
-    this.systemLanguagesResolver.getSystemLanguageChangeEmitter().subscribe(() => {
-      this.loadData();
-    });
-  }
-
-  protected abstract loadData(): void;
-}
