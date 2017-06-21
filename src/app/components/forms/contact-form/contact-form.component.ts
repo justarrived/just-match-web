@@ -1,16 +1,14 @@
 import {ApiErrors} from '../../../models/api-models/api-errors/api-errors';
+import {BaseComponent} from '../../base.component';
 import {ChangeDetectorRef} from '@angular/core';
 import {Component} from '@angular/core';
 import {ContactProxy} from '../../../proxies/contact/contact.proxy';
 import {FormBuilder} from '@angular/forms';
 import {FormGroup} from '@angular/forms';
 import {Input} from '@angular/core';
-import {JARoutes} from '../../../routes/ja-routes/ja-routes';
 import {ModalService} from '../../../services/modal.service';
 import {NavigationService} from '../../../services/navigation.service';
-import {OnDestroy} from '@angular/core';
-import {OnInit} from '@angular/core';
-import {Subscription} from 'rxjs/Subscription';
+import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
 import {User} from '../../../models/api-models/user/user';
 import {UserResolver} from '../../../resolvers/user/user.resolver';
 import {Validators} from '@angular/forms';
@@ -50,7 +48,7 @@ import {Validators} from '@angular/forms';
       </form-submit-button>
     </form>`
 })
-export class ContactFormComponent implements OnInit, OnDestroy {
+export class ContactFormComponent extends BaseComponent {
   @Input() public isInModal: boolean = false;
 
   public apiErrors: ApiErrors = new ApiErrors([]);
@@ -58,8 +56,6 @@ export class ContactFormComponent implements OnInit, OnDestroy {
   public loadingSubmit: boolean;
   public submitFail: boolean;
   public submitSuccess: boolean;
-  public user: User;
-  private userSubscription: Subscription;
 
   public constructor(
     private changeDetector: ChangeDetectorRef,
@@ -67,21 +63,18 @@ export class ContactFormComponent implements OnInit, OnDestroy {
     private formBuilder: FormBuilder,
     private modalService: ModalService,
     private navigationService: NavigationService,
-    private userResolver: UserResolver
+    protected systemLanguagesResolver: SystemLanguagesResolver,
+    protected userResolver: UserResolver,
   ) {
+    super(systemLanguagesResolver, userResolver);
   }
 
-  public ngOnInit(): void {
-    this.initUser();
+  public onInit(): void {
     this.initForm();
   }
 
-  private initUser(): void {
-    this.user = this.userResolver.getUser();
-    this.userSubscription = this.userResolver.getUserChangeEmitter().subscribe(user => {
-      this.user = user;
-      this.initForm();
-    });
+  public userChanged(user: User): void {
+    this.initForm();
   }
 
   private initForm(): void {
@@ -92,10 +85,6 @@ export class ContactFormComponent implements OnInit, OnDestroy {
       'body': ['', Validators.compose([Validators.required, Validators.minLength(2)])],
       'name': [name, Validators.compose([Validators.required, Validators.minLength(2)])]
     });
-  }
-
-  public ngOnDestroy(): void {
-    if (this.userSubscription) { this.userSubscription.unsubscribe(); }
   }
 
   private handleServerErrors(errors): void {
