@@ -1,13 +1,13 @@
 import {ApiErrors} from '../../../models/api-models/api-errors/api-errors';
+import {BaseComponent} from '../../base.component';
 import {ChangeDetectorRef} from '@angular/core';
 import {Component} from '@angular/core';
 import {FormBuilder} from '@angular/forms';
 import {FormGroup} from '@angular/forms';
 import {Input} from '@angular/core';
-import {JARoutes} from '../../../routes/ja-routes/ja-routes';
 import {ModalService} from '../../../services/modal.service';
 import {NavigationService} from '../../../services/navigation.service';
-import {OnInit} from '@angular/core';
+import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
 import {User} from '../../../models/api-models/user/user';
 import {UserProxy} from '../../../proxies/user/user.proxy';
 import {UserResolver} from '../../../resolvers/user/user.resolver';
@@ -17,12 +17,11 @@ import {Validators} from '@angular/forms';
   selector: 'register-form',
   templateUrl: './register-form.component.html'
 })
-export class RegisterFormComponent implements OnInit {
+export class RegisterFormComponent extends BaseComponent {
   @Input() public navigateToHome: boolean = true;
   @Input() public isInModal: boolean = false;
 
   public apiErrors: ApiErrors = new ApiErrors([]);
-  public JARoutes = JARoutes;
   public loadingSubmit: boolean = false;
   public registerForm: FormGroup;
   public submitFail: boolean;
@@ -34,11 +33,13 @@ export class RegisterFormComponent implements OnInit {
     private modalService: ModalService,
     private navigationService: NavigationService,
     private userProxy: UserProxy,
-    private userResolver: UserResolver,
+    protected systemLanguagesResolver: SystemLanguagesResolver,
+    protected userResolver: UserResolver,
   ) {
+    super(systemLanguagesResolver, userResolver);
   }
 
-  public ngOnInit(): void {
+  public onInit(): void {
     this.initForm();
   }
 
