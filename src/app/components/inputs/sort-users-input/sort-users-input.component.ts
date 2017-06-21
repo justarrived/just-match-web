@@ -1,14 +1,14 @@
 import {ApiErrors} from '../../../models/api-models/api-errors/api-errors';
+import {BaseComponent} from '../../base.component';
 import {Component} from '@angular/core';
 import {EventEmitter} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {Input} from '@angular/core';
-import {OnDestroy} from '@angular/core';
-import {OnInit} from '@angular/core';
+import {Language} from '../../../models/api-models/language/language';
 import {Output} from '@angular/core';
 import {Subscription} from 'rxjs/Subscription';
-import {SystemLanguageListener} from '../../../resolvers/system-languages/system-languages.resolver';
 import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
+import {UserResolver} from '../../../resolvers/user/user.resolver';
 
 @Component({
   selector: 'sort-users-input',
@@ -31,7 +31,7 @@ import {SystemLanguagesResolver} from '../../../resolvers/system-languages/syste
       </select-dropdown-input>
     </div>`
 })
-export class SortUsersInputComponent extends SystemLanguageListener implements OnInit, OnDestroy {
+export class SortUsersInputComponent extends BaseComponent {
   @Output() onSortChanged: EventEmitter<string> = new EventEmitter<string>();
 
   public apiErrors: ApiErrors = new ApiErrors([]);
@@ -40,13 +40,14 @@ export class SortUsersInputComponent extends SystemLanguageListener implements O
 
   private controlValueChangesSubscription: Subscription;
 
-  constructor(
-    protected systemLanguagesResolver: SystemLanguagesResolver
+  public constructor(
+    protected systemLanguagesResolver: SystemLanguagesResolver,
+    protected userResolver: UserResolver,
   ) {
-    super(systemLanguagesResolver);
+    super(systemLanguagesResolver, userResolver);
   }
 
-  public ngOnInit(): void {
+  public onInit(): void {
     this.initControlValueChangesSubscription();
     this.loadData();
   }
@@ -55,6 +56,10 @@ export class SortUsersInputComponent extends SystemLanguageListener implements O
     this.controlValueChangesSubscription = this.control.valueChanges.subscribe(() => {
       this.onSortChanged.emit(this.control.value);
     });
+  }
+
+  public systemLanguageChanged(systemLanguage: Language): void {
+    this.loadData();
   }
 
   protected loadData() {
@@ -110,7 +115,7 @@ export class SortUsersInputComponent extends SystemLanguageListener implements O
     });
   }
 
-  public ngOnDestroy(): void {
+  public onDestroy(): void {
     if (this.controlValueChangesSubscription) { this.controlValueChangesSubscription.unsubscribe(); }
   }
 }

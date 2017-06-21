@@ -1,16 +1,17 @@
 import {ApiErrors} from '../../../models/api-models/api-errors/api-errors';
+import {BaseComponent} from '../../base.component';
 import {Component} from '@angular/core';
 import {deleteElementFromArray} from '../../../utils/array/array.util';
 import {FormControl} from '@angular/forms';
 import {Input} from '@angular/core';
 import {Interest} from '../../../models/api-models/interest/interest';
 import {InterestProxy} from '../../../proxies/interest/interest.proxy';
-import {OnInit} from '@angular/core';
+import {Language} from '../../../models/api-models/language/language';
 import {some} from 'lodash';
-import {SystemLanguageListener} from '../../../resolvers/system-languages/system-languages.resolver';
 import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
 import {UserInterest} from '../../../models/api-models/user-interest/user-interest';
 import {UserInterestFactory} from '../../../models/api-models/user-interest/user-interest';
+import {UserResolver} from '../../../resolvers/user/user.resolver';
 
 @Component({
   selector: 'interests-input',
@@ -48,7 +49,7 @@ import {UserInterestFactory} from '../../../models/api-models/user-interest/user
     </div>
   </div>`
 })
-export class InterestsInputComponent extends SystemLanguageListener implements OnInit {
+export class InterestsInputComponent extends BaseComponent {
   @Input() public apiErrors: ApiErrors;
   @Input() public hint: string;
   @Input() public interestIds: string[];
@@ -58,14 +59,20 @@ export class InterestsInputComponent extends SystemLanguageListener implements O
   public interests: Promise<Interest[]>;
   public loadingInterest: boolean;
 
-  constructor(
+  public constructor(
     private interestProxy: InterestProxy,
-    protected systemLanguagesResolver: SystemLanguagesResolver
+    protected systemLanguagesResolver: SystemLanguagesResolver,
+    protected userResolver: UserResolver,
   ) {
-    super(systemLanguagesResolver);
+    super(systemLanguagesResolver, userResolver);
   }
 
-  public ngOnInit(): void {
+
+  public onInit(): void {
+    this.loadData();
+  }
+
+  public systemLanguageChanged(systemLanguage: Language): void {
     this.loadData();
   }
 

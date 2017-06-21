@@ -1,9 +1,12 @@
 import {ApiErrors} from '../../../models/api-models/api-errors/api-errors';
+import {BaseComponent} from '../../base.component';
 import {Component} from '@angular/core';
 import {EventEmitter} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {Input} from '@angular/core';
 import {Output} from '@angular/core';
+import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
+import {UserResolver} from '../../../resolvers/user/user.resolver';
 
 @Component({
   selector: 'chat-message-input',
@@ -20,9 +23,16 @@ import {Output} from '@angular/core';
   </textarea-input>
   `
 })
-export class ChatMessageInputComponent {
+export class ChatMessageInputComponent extends BaseComponent {
   @Input() public apiErrors: ApiErrors;
   @Input() public control: FormControl;
   @Input() public hint: string;
   @Output() onEnterKeyUp: EventEmitter<any> = new EventEmitter<any>();
+
+  public constructor(
+    protected systemLanguagesResolver: SystemLanguagesResolver,
+    protected userResolver: UserResolver,
+  ) {
+    super(systemLanguagesResolver, userResolver);
+  }
 }

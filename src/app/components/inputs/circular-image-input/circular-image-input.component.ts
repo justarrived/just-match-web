@@ -1,9 +1,12 @@
+import {BaseComponent} from '../../base.component';
 import {Component} from '@angular/core';
 import {ElementRef} from '@angular/core';
 import {EventEmitter} from '@angular/core';
 import {Input} from '@angular/core';
 import {Output} from '@angular/core';
 import {Renderer} from '@angular/core';
+import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
+import {UserResolver} from '../../../resolvers/user/user.resolver';
 import {ViewChild} from '@angular/core';
 
 @Component({
@@ -26,7 +29,7 @@ import {ViewChild} from '@angular/core';
       style="display: none"
       type="file"/>`
 })
-export class CircularImageInputComponent {
+export class CircularImageInputComponent extends BaseComponent {
   @Input() public centered: boolean;
   @Input() public imageUrl: string;
   @Input() public placeholderImageUrl: string;
@@ -37,9 +40,12 @@ export class CircularImageInputComponent {
   @Output() public onFileSelect: EventEmitter<any> = new EventEmitter();
   @ViewChild('fileInput') public fileInput: ElementRef;
 
-  constructor(
-    private renderer: Renderer
+  public constructor(
+    private renderer: Renderer,
+    protected systemLanguagesResolver: SystemLanguagesResolver,
+    protected userResolver: UserResolver,
   ) {
+    super(systemLanguagesResolver, userResolver);
   }
 
   public onImageClick() {

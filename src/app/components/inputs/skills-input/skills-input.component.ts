@@ -1,14 +1,15 @@
 import {ApiErrors} from '../../../models/api-models/api-errors/api-errors';
+import {BaseComponent} from '../../base.component';
 import {Component} from '@angular/core';
 import {deleteElementFromArray} from '../../../utils/array/array.util';
 import {FormControl} from '@angular/forms';
 import {Input} from '@angular/core';
+import {Language} from '../../../models/api-models/language/language';
 import {Skill} from '../../../models/api-models/skill/skill';
 import {SkillProxy} from '../../../proxies/skill/skill.proxy';
-import {OnInit} from '@angular/core';
 import {some} from 'lodash';
-import {SystemLanguageListener} from '../../../resolvers/system-languages/system-languages.resolver';
 import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
+import {UserResolver} from '../../../resolvers/user/user.resolver';
 import {UserSkill} from '../../../models/api-models/user-skill/user-skill';
 import {UserSkillFactory} from '../../../models/api-models/user-skill/user-skill';
 
@@ -48,7 +49,7 @@ import {UserSkillFactory} from '../../../models/api-models/user-skill/user-skill
     </div>
   </div>`
 })
-export class SkillsInputComponent extends SystemLanguageListener implements OnInit {
+export class SkillsInputComponent extends BaseComponent {
   @Input() public apiErrors: ApiErrors;
   @Input() public hint: string;
   @Input() public skillIds: string[];
@@ -60,12 +61,17 @@ export class SkillsInputComponent extends SystemLanguageListener implements OnIn
 
   constructor(
     private skillProxy: SkillProxy,
-    protected systemLanguagesResolver: SystemLanguagesResolver
+    protected systemLanguagesResolver: SystemLanguagesResolver,
+    protected userResolver: UserResolver,
   ) {
-    super(systemLanguagesResolver);
+    super(systemLanguagesResolver, userResolver);
   }
 
-  public ngOnInit(): void {
+  public onInit(): void {
+    this.loadData();
+  }
+
+  public systemLanguageChanged(systemLanguage: Language): void {
     this.loadData();
   }
 

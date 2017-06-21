@@ -1,16 +1,16 @@
 import {ApiErrors} from '../../../models/api-models/api-errors/api-errors';
+import {BaseComponent} from '../../base.component';
 import {Component} from '@angular/core';
 import {deleteElementFromArray} from '../../../utils/array/array.util';
 import {FormControl} from '@angular/forms';
 import {Input} from '@angular/core';
 import {Language} from '../../../models/api-models/language/language';
 import {LanguageProxy} from '../../../proxies/language/language.proxy';
-import {OnInit} from '@angular/core';
 import {some} from 'lodash';
-import {SystemLanguageListener} from '../../../resolvers/system-languages/system-languages.resolver';
 import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
 import {UserLanguage} from '../../../models/api-models/user-language/user-language';
 import {UserLanguageFactory} from '../../../models/api-models/user-language/user-language';
+import {UserResolver} from '../../../resolvers/user/user.resolver';
 
 @Component({
   selector: 'languages-input',
@@ -48,7 +48,7 @@ import {UserLanguageFactory} from '../../../models/api-models/user-language/user
     </div>
   </div>`
 })
-export class LanguagesInputComponent extends SystemLanguageListener implements OnInit {
+export class LanguagesInputComponent extends BaseComponent  {
   @Input() public apiErrors: ApiErrors;
   @Input() public hint: string;
   @Input() public languagesControl: FormControl;
@@ -60,12 +60,17 @@ export class LanguagesInputComponent extends SystemLanguageListener implements O
 
   constructor(
     private languageProxy: LanguageProxy,
-    protected systemLanguagesResolver: SystemLanguagesResolver
+    protected systemLanguagesResolver: SystemLanguagesResolver,
+    protected userResolver: UserResolver,
   ) {
-    super(systemLanguagesResolver);
+    super(systemLanguagesResolver, userResolver);
   }
 
-  public ngOnInit(): void {
+  public onInit(): void {
+    this.loadData();
+  }
+
+  public systemLanguageChanged(systemLanguage: Language): void {
     this.loadData();
   }
 

@@ -1,10 +1,13 @@
 import {ApiErrors} from '../../../models/api-models/api-errors/api-errors';
+import {BaseComponent} from '../../base.component';
 import {Component} from '@angular/core';
 import {EventEmitter} from '@angular/core';
 import {getNestedProperty} from '../../../utils/object/object.util';
 import {Input} from '@angular/core';
 import {InputErrorsComponent} from '../../form-errors/input-errors/input-errors.component';
 import {Output} from '@angular/core';
+import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
+import {UserResolver} from '../../../resolvers/user/user.resolver';
 import {ViewChild} from '@angular/core';
 
 @Component({
@@ -42,7 +45,7 @@ import {ViewChild} from '@angular/core';
       <ng-content></ng-content>
     </div>`
 })
-export class SelectDropdownInputComponent {
+export class SelectDropdownInputComponent extends BaseComponent {
   @Input() public apiAttribute: string;
   @Input() public apiErrors: any;
   @Input() public control: any;
@@ -63,7 +66,14 @@ export class SelectDropdownInputComponent {
   @ViewChild(InputErrorsComponent) inputErrors: InputErrorsComponent;
   public getNestedProperty = getNestedProperty;
 
-  change(value) {
+  public constructor(
+    protected systemLanguagesResolver: SystemLanguagesResolver,
+    protected userResolver: UserResolver,
+  ) {
+    super(systemLanguagesResolver, userResolver);
+  }
+
+  public change(value): void {
     this.onChange.emit(value);
   }
 }

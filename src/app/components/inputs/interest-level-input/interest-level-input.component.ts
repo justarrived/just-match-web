@@ -1,9 +1,12 @@
 import {ApiErrors} from '../../../models/api-models/api-errors/api-errors';
+import {BaseComponent} from '../../base.component';
 import {Component} from '@angular/core';
 import {EventEmitter} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {Input} from '@angular/core';
 import {Output} from '@angular/core';
+import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
+import {UserResolver} from '../../../resolvers/user/user.resolver';
 
 @Component({
   selector: 'interest-level-input',
@@ -25,16 +28,22 @@ import {Output} from '@angular/core';
       </div>
     </div>`
 })
-export class InterestLevelInputComponent {
+export class InterestLevelInputComponent extends BaseComponent {
   @Input() public initialRating: number;
   @Input() public label: string;
   @Output() public onDelete = new EventEmitter();
   @Output() public onRate = new EventEmitter();
 
+  public constructor(
+    protected systemLanguagesResolver: SystemLanguagesResolver,
+    protected userResolver: UserResolver,
+  ) {
+    super(systemLanguagesResolver, userResolver);
+  }
+
   public onRating(value) {
     this.onRate.emit(value);
   }
-
 
   public onDeleteIconClick() {
     this.onDelete.emit();

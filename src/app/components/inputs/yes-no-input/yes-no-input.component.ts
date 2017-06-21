@@ -1,14 +1,12 @@
 import {ApiErrors} from '../../../models/api-models/api-errors/api-errors';
+import {BaseComponent} from '../../base.component';
 import {Component} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {Input} from '@angular/core';
 import {InputErrorsComponent} from '../../form-errors/input-errors/input-errors.component';
-import {ViewChild} from '@angular/core';
-import {Language} from '../../../models/api-models/language/language';
-import {OnDestroy} from '@angular/core';
-import {OnInit} from "@angular/core";
-import {Subscription} from 'rxjs/Subscription';
 import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
+import {UserResolver} from '../../../resolvers/user/user.resolver';
+import {ViewChild} from '@angular/core';
 
 @Component({
   selector: 'yes-no-input',
@@ -46,7 +44,7 @@ import {SystemLanguagesResolver} from '../../../resolvers/system-languages/syste
       <input-hint-label [hint]="hint"></input-hint-label>
     </div>`
 })
-export class YesNoInputComponent implements OnInit, OnDestroy {
+export class YesNoInputComponent extends BaseComponent {
   @Input() public apiAttribute: string;
   @Input() public apiErrors: ApiErrors;
   @Input() public control: FormControl;
@@ -56,27 +54,10 @@ export class YesNoInputComponent implements OnInit, OnDestroy {
   @Input() public requiredLabel: string;
   @ViewChild(InputErrorsComponent) inputErrors: InputErrorsComponent;
 
-  public systemLanguage: Language;
-
-  private systemLanguageSubscription: Subscription;
-
   public constructor(
-    private systemLanguagesResolver: SystemLanguagesResolver
+    protected systemLanguagesResolver: SystemLanguagesResolver,
+    protected userResolver: UserResolver,
   ) {
-  }
-
-  public ngOnInit(): void {
-    this.initSystemLanguage()
-  }
-
-  private initSystemLanguage(): void {
-    this.systemLanguage = this.systemLanguagesResolver.getSelectedSystemLanguage();
-    this.systemLanguageSubscription = this.systemLanguagesResolver.getSystemLanguageChangeEmitter().subscribe(systemLanguage => {
-      this.systemLanguage = systemLanguage;
-    });
-  }
-
-  public ngOnDestroy(): void {
-    if (this.systemLanguageSubscription) { this.systemLanguageSubscription.unsubscribe(); }
+    super(systemLanguagesResolver, userResolver);
   }
 }

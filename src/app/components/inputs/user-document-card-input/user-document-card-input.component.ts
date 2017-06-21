@@ -1,12 +1,10 @@
+import {BaseComponent} from '../../base.component';
 import {Component} from '@angular/core';
+import {DocumentProxy} from '../../../proxies/document/document.proxy';
 import {getDataUrl} from '../../../utils/data-url/data-url.util';
 import {Input} from '@angular/core';
-import {OnDestroy} from '@angular/core';
-import {OnInit} from '@angular/core';
 import {Output} from '@angular/core';
-import {Subscription} from 'rxjs/Subscription';
-import {User} from '../../../models/api-models/user/user';
-import {DocumentProxy} from '../../../proxies/document/document.proxy';
+import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
 import {UserDocumentProxy} from '../../../proxies/user-document/user-document.proxy';
 import {UserResolver} from '../../../resolvers/user/user.resolver';
 
@@ -31,7 +29,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
       </upload-document-card>
     </div>`
 })
-export class UserDocumentCardInputComponent implements OnInit, OnDestroy {
+export class UserDocumentCardInputComponent extends BaseComponent {
   @Input() public centered: boolean;
   @Input() public documentsField: string;
   @Input() public documentType: string;
@@ -45,30 +43,14 @@ export class UserDocumentCardInputComponent implements OnInit, OnDestroy {
   public documentSaveFail: boolean;
   public documentSaveSuccess: boolean;
   public uploadingDocument: boolean;
-  public user: User;
-
-  private userSubscription: Subscription;
 
   public constructor(
     private documentProxy: DocumentProxy,
     private userDocumentProxy: UserDocumentProxy,
-    private userResolver: UserResolver
+    protected systemLanguagesResolver: SystemLanguagesResolver,
+    protected userResolver: UserResolver,
   ) {
-  }
-
-  public ngOnInit(): void {
-    this.initUser();
-  }
-
-  private initUser(): void {
-    this.user = this.userResolver.getUser();
-    this.userSubscription = this.userResolver.getUserChangeEmitter().subscribe(user => {
-      this.user = user;
-    });
-  }
-
-  public ngOnDestroy(): void {
-    if (this.userSubscription) { this.userSubscription.unsubscribe(); }
+    super(systemLanguagesResolver, userResolver);
   }
 
   public onUploadDocument(file) {

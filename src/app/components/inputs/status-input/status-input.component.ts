@@ -1,12 +1,13 @@
 import {ApiErrors} from '../../../models/api-models/api-errors/api-errors';
+import {BaseComponent} from '../../base.component';
 import {Component} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {Input} from '@angular/core';
-import {OnInit} from '@angular/core';
+import {Language} from '../../../models/api-models/language/language';
+import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
+import {UserResolver} from '../../../resolvers/user/user.resolver';
 import {UserStatus} from '../../../models/api-models/user-status/user-status';
 import {UserStatusProxy} from '../../../proxies/user-status/user-status.proxy';
-import {SystemLanguageListener} from '../../../resolvers/system-languages/system-languages.resolver';
-import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
 
 @Component({
   selector: 'status-input',
@@ -29,21 +30,26 @@ import {SystemLanguagesResolver} from '../../../resolvers/system-languages/syste
       </select-dropdown-input>
     </div>`
 })
-export class StatusInputComponent extends SystemLanguageListener implements OnInit {
+export class StatusInputComponent extends BaseComponent {
   @Input() public apiErrors: ApiErrors;
   @Input() public control: FormControl;
   @Input() public hint: string;
 
   public statuses: Promise<UserStatus[]>;
 
-  constructor(
+  public constructor(
     private userStatusProxy: UserStatusProxy,
-    protected systemLanguagesResolver: SystemLanguagesResolver
+    protected systemLanguagesResolver: SystemLanguagesResolver,
+    protected userResolver: UserResolver,
   ) {
-    super(systemLanguagesResolver);
+    super(systemLanguagesResolver, userResolver);
   }
 
-  public ngOnInit(): void {
+  public onInit(): void {
+    this.loadData();
+  }
+
+  public systemLanguageChanged(systemLanguage: Language): void {
     this.loadData();
   }
 

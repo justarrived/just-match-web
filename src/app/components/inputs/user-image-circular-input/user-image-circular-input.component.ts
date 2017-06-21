@@ -1,11 +1,9 @@
+import {BaseComponent} from '../../base.component';
 import {Component} from '@angular/core';
 import {getDataUrl} from '../../../utils/data-url/data-url.util';
 import {Input} from '@angular/core';
-import {OnDestroy} from '@angular/core';
-import {OnInit} from '@angular/core';
 import {Output} from '@angular/core';
-import {Subscription} from 'rxjs/Subscription';
-import {User} from '../../../models/api-models/user/user';
+import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
 import {UserImageProxy} from '../../../proxies/user-image/user-image.proxy';
 import {UserResolver} from '../../../resolvers/user/user.resolver';
 
@@ -23,7 +21,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
         [uploadingImage]="uploadingImage">
       </circular-image-input>`
 })
-export class UserImageCircularInputComponent implements OnInit, OnDestroy {
+export class UserImageCircularInputComponent extends BaseComponent {
   @Input() public centered: boolean;
   @Input() public imageField: string;
   @Input() public imageType: string;
@@ -32,28 +30,13 @@ export class UserImageCircularInputComponent implements OnInit, OnDestroy {
   public imageSaveFail: boolean;
   public imageSaveSuccess: boolean;
   public uploadingImage: boolean;
-  public user: User;
-  private userSubscription: Subscription;
 
   public constructor(
     private userImageProxy: UserImageProxy,
-    private userResolver: UserResolver
+    protected systemLanguagesResolver: SystemLanguagesResolver,
+    protected userResolver: UserResolver,
   ) {
-  }
-
-  public ngOnInit(): void {
-    this.initUser();
-  }
-
-  private initUser(): void {
-    this.user = this.userResolver.getUser();
-    this.userSubscription = this.userResolver.getUserChangeEmitter().subscribe(user => {
-      this.user = user;
-    });
-  }
-
-  public ngOnDestroy(): void {
-    if (this.userSubscription) { this.userSubscription.unsubscribe(); }
+    super(systemLanguagesResolver, userResolver);
   }
 
   public onUploadImage(file) {

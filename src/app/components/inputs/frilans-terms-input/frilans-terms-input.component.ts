@@ -1,13 +1,13 @@
 import {ApiErrors} from '../../../models/api-models/api-errors/api-errors';
+import {BaseComponent} from '../../base.component';
 import {Component} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {Input} from '@angular/core';
-import {OnInit} from '@angular/core';
-import {SystemLanguageListener} from '../../../resolvers/system-languages/system-languages.resolver';
+import {Language} from '../../../models/api-models/language/language';
 import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
 import {TermsAgreement} from '../../../models/api-models/terms-agreement/terms-agreement';
 import {TermsAgreementProxy} from '../../../proxies/terms-agreement/terms-agreement.proxy';
-import {ViewChild} from '@angular/core';
+import {UserResolver} from '../../../resolvers/user/user.resolver';
 
 @Component({
   selector: 'frilans-terms-input',
@@ -40,7 +40,7 @@ import {ViewChild} from '@angular/core';
        </div>
     </div>`
 })
-export class FrilansTermsInputComponent extends SystemLanguageListener implements OnInit {
+export class FrilansTermsInputComponent extends BaseComponent {
   @Input() public apiErrors: ApiErrors;
   @Input() public control: FormControl;
 
@@ -49,11 +49,16 @@ export class FrilansTermsInputComponent extends SystemLanguageListener implement
   public constructor(
     private termsAgreementProxy: TermsAgreementProxy,
     protected systemLanguagesResolver: SystemLanguagesResolver,
+    protected userResolver: UserResolver,
   ) {
-    super(systemLanguagesResolver);
+    super(systemLanguagesResolver, userResolver);
   }
 
-  public ngOnInit(): void {
+  public onInit(): void {
+    this.loadData();
+  }
+  
+  public systemLanguageChanged(systemLanguage: Language): void {
     this.loadData();
   }
 

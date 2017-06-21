@@ -1,12 +1,12 @@
 import {ApiErrors} from '../../../models/api-models/api-errors/api-errors';
+import {BaseComponent} from '../../base.component';
 import {Component} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {Input} from '@angular/core';
-import {OnInit} from '@angular/core';
-import {SystemLanguageListener} from '../../../resolvers/system-languages/system-languages.resolver';
-import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
 import {Language} from '../../../models/api-models/language/language';
 import {LanguageProxy} from '../../../proxies/language/language.proxy';
+import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
+import {UserResolver} from '../../../resolvers/user/user.resolver';
 
 @Component({
   selector: 'system-language-input',
@@ -29,20 +29,25 @@ import {LanguageProxy} from '../../../proxies/language/language.proxy';
       </select-dropdown-input>
     </div>`
 })
-export class SystemLanguageInputComponent extends SystemLanguageListener implements OnInit {
+export class SystemLanguageInputComponent extends BaseComponent {
   @Input() public apiErrors: ApiErrors;
   @Input() public control: FormControl;
 
   public systemLanguages: Promise<Language[]>;
 
-  constructor(
+  public constructor(
     private languageProxy: LanguageProxy,
-    protected systemLanguagesResolver: SystemLanguagesResolver
+    protected systemLanguagesResolver: SystemLanguagesResolver,
+    protected userResolver: UserResolver,
   ) {
-    super(systemLanguagesResolver);
+    super(systemLanguagesResolver, userResolver);
   }
 
-  public ngOnInit(): void {
+  public onInit(): void {
+    this.loadData();
+  }
+
+  public systemLanguageChanged(systemLanguage: Language): void {
     this.loadData();
   }
 
