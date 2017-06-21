@@ -26,8 +26,8 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
         [fluid]="false"
         [label]="'input.filter.users.label' | translate"
         [placeholder]="'input.filter.users.placeholder' | translate"
-        dataItemLabelProoerty="translatedText.name"
-        dataItemValueProoerty="value">
+        dataItemLabelProperty="translatedText.name"
+        dataItemValueProperty="value">
       </select-dropdown-input>
     </div>`
 })
@@ -68,28 +68,28 @@ export class FilterUsersInputComponent extends BaseComponent {
         name: 'First Name',
         value: 'filter[first_name]',
         translatedText: {
-          name: 'First Name'
+          name: 'filter.users.input.option.first.name'
         }
       },
       {
         name: 'Last Name',
         value: 'filter[last_name]',
         translatedText: {
-          name: 'Last Name'
+          name: 'filter.users.input.option.last.name'
         }
       },
       {
         name: 'Id',
         value: 'filter[id]',
         translatedText: {
-          name: 'Id'
+          name: 'filter.users.input.option.id'
         }
       },
       {
         name: 'Email',
         value: 'filter[email]',
         translatedText: {
-          name: 'Email'
+          name: 'filter.users.input.option.email'
         }
       },
     ])

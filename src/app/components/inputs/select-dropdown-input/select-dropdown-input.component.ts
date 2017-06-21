@@ -27,9 +27,9 @@ import {ViewChild} from '@angular/core';
        class="search">
         <option
           style="text-align: right; direction: rtl;"
-          [value]="getNestedProperty(item, dataItemValueProoerty)"
+          [value]="getNestedProperty(item, dataItemValueProperty)"
           *ngFor="let item of data">
-          {{getNestedProperty(item, dataItemLabelProoerty)}}
+          {{getNestedProperty(item, dataItemLabelProperty) | translate}}
         </option>
       </select-input>
       <input-errors
@@ -50,8 +50,8 @@ export class SelectDropdownInputComponent extends BaseComponent {
   @Input() public apiErrors: any;
   @Input() public control: any;
   @Input() public data: any[];
-  @Input() public dataItemLabelProoerty: string;
-  @Input() public dataItemValueProoerty: string;
+  @Input() public dataItemLabelProperty: string;
+  @Input() public dataItemValueProperty: string;
   @Input() public fluid: boolean = true;
   @Input() public hint: string;
   @Input() public label: string;

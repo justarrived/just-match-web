@@ -25,8 +25,8 @@ import {UserStatusProxy} from '../../../proxies/user-status/user-status.proxy';
         [label]="'input.status.label' | translate"
         [placeholder]="'input.status.placeholder' | translate"
         apiAttribute="current_status"
-        dataItemLabelProoerty="translatedText.name"
-        dataItemValueProoerty="id">
+        dataItemLabelProperty="translatedText.name"
+        dataItemValueProperty="id">
       </select-dropdown-input>
     </div>`
 })

@@ -26,8 +26,8 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
         [fluid]="false"
         [label]="'input.sort.users.label' | translate"
         [placeholder]="'input.sort.users.placeholder' | translate"
-        dataItemLabelProoerty="translatedText.name"
-        dataItemValueProoerty="value">
+        dataItemLabelProperty="translatedText.name"
+        dataItemValueProperty="value">
       </select-dropdown-input>
     </div>`
 })
@@ -68,42 +68,42 @@ export class SortUsersInputComponent extends BaseComponent {
         name: 'First Name (A-Z)',
         value: 'first_name',
         translatedText: {
-          name: 'First Name (A-Z)'
+          name: 'sort.users.input.option.first.name'
         }
       },
       {
         name: 'Last Name (A-Z)',
         value: 'last_name',
         translatedText: {
-          name: 'Last Name (A-Z)'
+          name: 'sort.users.input.option.last.name'
         }
       },
       {
         name: 'First Name (Z-A)',
         value: '-first_name',
         translatedText: {
-          name: 'First Name (Z-A)'
+          name: 'sort.users.input.option.first.name.reverse'
         }
       },
       {
         name: 'Last Name (Z-A)',
         value: '-last_name',
         translatedText: {
-          name: 'Last Name (Z-A)'
+          name: 'sort.users.input.option.last.name.reverse'
         }
       },
       {
         name: 'Oldest',
         value: 'created_at',
         translatedText: {
-          name: 'Oldest'
+          name: 'sort.users.input.option.oldest'
         }
       },
       {
         name: 'Newest',
         value: '-created_at',
         translatedText: {
-          name: 'Newest'
+          name: 'sort.users.input.option.newest'
         }
       },
     ])

@@ -36,7 +36,6 @@ export class GodModePageComponent extends PageComponent {
   @ViewChild('godModeUsersSectionComponent') public godModeUsersSectionComponent : GodModePagerSectionComponent;
 
   public activeFilters: any = {};
-  public JARoutes = JARoutes;
 
   public constructor (
     @Inject(DOCUMENT) protected document: any,
