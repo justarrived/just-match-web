@@ -1,4 +1,5 @@
 import {ApiErrors} from '../../../models/api-models/api-errors/api-errors';
+import {BaseComponent} from '../../base.component';
 import {ChangeDetectorRef} from '@angular/core';
 import {Component} from '@angular/core';
 import {Document} from '../../../models/api-models/document/document';
@@ -7,9 +8,7 @@ import {FormGroup} from '@angular/forms';
 import {Input} from '@angular/core';
 import {map} from 'lodash';
 import {MissingUserTraits} from '../../../models/api-models/missing-user-traits/missing-user-traits';
-import {OnDestroy} from '@angular/core';
-import {OnInit} from '@angular/core';
-import {Subscription} from 'rxjs/Subscription';
+import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
 import {UpdateUserAttributes} from '../../../proxies/user/user.proxy';
 import {User} from '../../../models/api-models/user/user';
 import {UserDocument} from '../../../models/api-models/user-document/user-document';
@@ -22,7 +21,7 @@ import {Validators} from '@angular/forms';
   selector: 'user-update-form',
   templateUrl: './user-update-form.component.html'
 })
-export class UserUpdateFormComponent implements OnInit, OnDestroy {
+export class UserUpdateFormComponent extends BaseComponent {
   @Input() public missingUserTraits = null as MissingUserTraits;
   @Input() public isInModal: boolean = false;
 
@@ -31,31 +30,25 @@ export class UserUpdateFormComponent implements OnInit, OnDestroy {
   public submitFail: boolean;
   public submitSuccess: boolean;
   public updateForm: FormGroup;
-  public user: User;
-
-  private userSubscription: Subscription;
 
   constructor(
     private changeDetector: ChangeDetectorRef,
     private formBuilder: FormBuilder,
     private userProxy: UserProxy,
-    private userResolver: UserResolver,
+    protected systemLanguagesResolver: SystemLanguagesResolver,
+    protected userResolver: UserResolver,
   ) {
+    super(systemLanguagesResolver, userResolver);
   }
 
-  public ngOnInit(): void {
-    this.initUser();
+  public onInit(): void {
     this.initForm();
   }
 
-  private initUser(): void {
-    this.user = this.userResolver.getUser();
-    this.userSubscription = this.userResolver.getUserChangeEmitter().subscribe(user => {
-      if (user) {
-        this.user = user;
-        this.initForm();
-      }
-    });
+  public userChanged(user: User): void {
+    if (user) {
+      this.initForm();
+    }
   }
 
   private initForm(): void {
@@ -88,10 +81,6 @@ export class UserUpdateFormComponent implements OnInit, OnDestroy {
       'user_skills': [this.user.userSkills.slice()],
       'zip': [this.user.zip],
     });
-  }
-
-  public ngOnDestroy(): void {
-    if (this.userSubscription) { this.userSubscription.unsubscribe(); }
   }
 
   private handleServerErrors(errors): void {
