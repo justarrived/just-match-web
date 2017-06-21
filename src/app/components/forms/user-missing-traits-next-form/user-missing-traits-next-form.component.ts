@@ -1,21 +1,17 @@
 import {ApiErrors} from '../../../models/api-models/api-errors/api-errors';
+import {BaseComponent} from '../../base.component';
 import {ChangeDetectorRef} from '@angular/core';
 import {Component} from '@angular/core';
-import {Document} from '../../../models/api-models/document/document';
 import {EventEmitter} from '@angular/core';
 import {FormBuilder} from '@angular/forms';
 import {FormGroup} from '@angular/forms';
 import {Input} from '@angular/core';
+import {Language} from '../../../models/api-models/language/language';
 import {map} from 'lodash';
 import {MissingUserTraits} from '../../../models/api-models/missing-user-traits/missing-user-traits';
 import {MissingUserTraitsProxy} from '../../../proxies/missing-user-traits/missing-user-traits.proxy';
-import {OnChanges} from '@angular/core';
-import {OnDestroy} from '@angular/core';
-import {OnInit} from '@angular/core';
 import {Output} from '@angular/core';
 import {slideInLeftOutLeftAnimation} from '../../../animations/slide-in-left-out-left/slide-in-left-out-left.animation';
-import {Subscription} from 'rxjs/Subscription';
-import {SystemLanguageListener} from '../../../resolvers/system-languages/system-languages.resolver';
 import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
 import {UpdateUserAttributes} from '../../../proxies/user/user.proxy';
 import {User} from '../../../models/api-models/user/user';
@@ -30,7 +26,7 @@ import {Validators} from '@angular/forms';
   selector: 'user-missing-traits-next-form',
   templateUrl: './user-missing-traits-next-form.component.html'
 })
-export class UserMissingTraitsNextFormComponent extends SystemLanguageListener implements OnInit, OnDestroy {
+export class UserMissingTraitsNextFormComponent extends BaseComponent {
   @Input() public isInModal: boolean = false;
   @Output() public onClose: EventEmitter<any> = new EventEmitter<any>();
 
@@ -44,35 +40,31 @@ export class UserMissingTraitsNextFormComponent extends SystemLanguageListener i
   public submitFail: boolean;
   public submitSuccess: boolean;
   public updateForm: FormGroup;
-  public user: User;
 
-  private userSubscription: Subscription;
-
-  constructor(
+  public constructor(
     private changeDetector: ChangeDetectorRef,
     private formBuilder: FormBuilder,
     private missingUserTraitsProxy: MissingUserTraitsProxy,
     private userProxy: UserProxy,
-    private userResolver: UserResolver,
     protected systemLanguagesResolver: SystemLanguagesResolver,
+    protected userResolver: UserResolver,
   ) {
-    super(systemLanguagesResolver);
+    super(systemLanguagesResolver, userResolver);
   }
 
-  public ngOnInit(): void {
-    this.initUser();
+  public onInit(): void {
     this.initForm();
     this.loadData();
   }
 
-  private initUser(): void {
-    this.user = this.userResolver.getUser();
-    this.userSubscription = this.userResolver.getUserChangeEmitter().subscribe(user => {
-      this.user = user;
-      if (this.user) {
-        this.initForm();
-      }
-    });
+  public systemLanguageChanged(systemLanguage: Language): void {
+    this.loadData();
+  }
+
+  public userChanged(user: User): void {
+    if (user) {
+      this.initForm();
+    }
   }
 
   private initForm(): void {
@@ -117,10 +109,6 @@ export class UserMissingTraitsNextFormComponent extends SystemLanguageListener i
         this.animationState = 'in';
       });
     }
-  }
-
-  public ngOnDestroy(): void {
-    if (this.userSubscription) { this.userSubscription.unsubscribe(); }
   }
 
   public onCloseButtonClicked(): void {
