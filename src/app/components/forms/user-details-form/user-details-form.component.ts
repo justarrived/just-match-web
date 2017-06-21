@@ -4,58 +4,49 @@ import {Component} from '@angular/core';
 import {FormBuilder} from '@angular/forms';
 import {FormGroup} from '@angular/forms';
 import {Input} from '@angular/core';
-import {JARoutes} from '../../../routes/ja-routes/ja-routes';
 import {NavigationService} from '../../../services/navigation.service';
-import {OnDestroy} from '@angular/core';
-import {OnInit} from '@angular/core';
-import {Subscription} from 'rxjs/Subscription';
 import {User} from '../../../models/api-models/user/user';
 import {UserPasswordProxy} from '../../../proxies/user-password/user-password.proxy';
 import {UserProxy} from '../../../proxies/user/user.proxy';
 import {UserResolver} from '../../../resolvers/user/user.resolver';
 import {Validators} from '@angular/forms';
+import {BaseComponent} from '../../base.component';
+import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
 
 @Component({
   selector: 'user-details-form',
   templateUrl: './user-details-form.component.html'
 })
-export class UserDetailsFormComponent implements OnInit, OnDestroy {
+export class UserDetailsFormComponent extends BaseComponent {
   @Input() public isInModal: boolean = false;
 
   public apiErrors: ApiErrors = new ApiErrors([]);
-  public JARoutes = JARoutes;
   public loadingSubmit: boolean;
   public passwordForm: FormGroup;
   public settingsForm: FormGroup;
   public submitFail: boolean;
   public submitSuccess: boolean;
-  public user: User;
 
-  private userSubscription: Subscription;
-
-  constructor(
+  public constructor(
     private changeDetector: ChangeDetectorRef,
     private formBuilder: FormBuilder,
     private navigationService: NavigationService,
     private userPasswordProxy: UserPasswordProxy,
     private userProxy: UserProxy,
-    private userResolver: UserResolver,
+    protected systemLanguagesResolver: SystemLanguagesResolver,
+    protected userResolver: UserResolver,
   ) {
+    super(systemLanguagesResolver, userResolver);
   }
 
-  public ngOnInit(): void {
-    this.initUser();
+  public onInit(): void {
     this.initForm();
   }
 
-  private initUser(): void {
-    this.user = this.userResolver.getUser();
-    this.userSubscription = this.userResolver.getUserChangeEmitter().subscribe(user => {
-      if (user) {
-        this.user = user;
-        this.initForm();
-      }
-    });
+  public userChanged(user: User): void {
+    if (user) {
+      this.initForm();
+    }
   }
 
   private initForm(): void {
@@ -85,10 +76,6 @@ export class UserDetailsFormComponent implements OnInit, OnDestroy {
       'password': ['', Validators.compose([Validators.minLength(6)])],
       'old_password': ['']
     });
-  }
-
-  public ngOnDestroy(): void {
-    if (this.userSubscription) { this.userSubscription.unsubscribe(); }
   }
 
   public passwordsSupplied(): boolean {
