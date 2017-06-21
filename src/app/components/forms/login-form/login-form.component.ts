@@ -1,4 +1,5 @@
 import {ApiErrors} from '../../../models/api-models/api-errors/api-errors';
+import {BaseComponent} from '../../base.component';
 import {ChangeDetectorRef} from '@angular/core';
 import {Component} from '@angular/core';
 import {EventEmitter} from '@angular/core';
@@ -6,11 +7,9 @@ import {FormBuilder} from '@angular/forms';
 import {FormGroup} from '@angular/forms';
 import {Input} from '@angular/core';
 import {JARoute} from '../../../routes/ja-route/ja-route';
-import {JARoutes} from '../../../routes/ja-routes/ja-routes';
 import {ModalService} from '../../../services/modal.service';
 import {NavigationService} from '../../../services/navigation.service';
-import {OnInit} from '@angular/core';
-import {Output} from '@angular/core';
+import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
 import {User} from '../../../models/api-models/user/user';
 import {UserResolver} from '../../../resolvers/user/user.resolver';
 import {Validators} from '@angular/forms';
@@ -62,7 +61,7 @@ import {Validators} from '@angular/forms';
       </form-submit-button>
     </form>`
 })
-export class LoginFormComponent implements OnInit  {
+export class LoginFormComponent extends BaseComponent {
   @Input() public isInModal: boolean = false;
   @Input() public navigateToHome: boolean = true;
   @Input('emailOrPhone')
@@ -74,7 +73,6 @@ export class LoginFormComponent implements OnInit  {
   }
 
   public apiErrors: ApiErrors = new ApiErrors([]);
-  public JARoutes = JARoutes;
   public loadingSubmit: boolean;
   public loginForm: FormGroup;
   public submitFail: boolean;
@@ -86,11 +84,13 @@ export class LoginFormComponent implements OnInit  {
     private formBuilder: FormBuilder,
     private modalService: ModalService,
     private navigationService: NavigationService,
-    private userResolver: UserResolver,
+    protected systemLanguagesResolver: SystemLanguagesResolver,
+    protected userResolver: UserResolver,
   ) {
+    super(systemLanguagesResolver, userResolver);
   }
 
-  public ngOnInit(): void {
+  public onInit(): void {
     this.initForm();
   }
 
