@@ -1,6 +1,7 @@
 import {AlreadyRegisteredModalComponent} from './components/modals/already-registered-modal/already-registered-modal.component';
 import {AppliedForJobModalComponent} from './components/modals/applied-for-job-modal/applied-for-job-modal.component';
 import {ApplyForJobModalComponent} from './components/modals/apply-for-job-modal/apply-for-job-modal.component';
+import {BaseComponent} from './components/base.component';
 import {Component} from '@angular/core';
 import {ContactMessageSentModalComponent} from './components/modals/contact-message-sent-modal/contact-message-sent-modal.component';
 import {ForgotPasswordModalComponent} from './components/modals/forgot-password-modal/forgot-password-modal.component';
@@ -9,8 +10,6 @@ import {LoginModalComponent} from './components/modals/login-modal/login-modal.c
 import {LoginOrRegisterModalComponent} from './components/modals/login-or-register-modal/login-or-register-modal.component';
 import {MissingPaymentInformationModalComponent} from './components/modals/missing-payment-information-modal/missing-payment-information-modal.component';
 import {ModalService} from './services/modal.service';
-import {OnDestroy} from '@angular/core';
-import {OnInit} from '@angular/core';
 import {PasswordChangedModalComponent} from './components/modals/password-changed-modal/password-changed-modal.component';
 import {PasswordResetLinkSentModalComponent} from './components/modals/password-reset-link-sent-modal/password-reset-link-sent-modal.component';
 import {RegisteredModalComponent} from './components/modals/registered-modal/registered-modal.component';
@@ -19,7 +18,9 @@ import {ShareModalComponent} from './components/modals/share-modal/share-modal.c
 import {SignedForJobModalComponent} from './components/modals/signed-for-job-modal/signed-for-job-modal.component';
 import {SignForJobModalComponent} from './components/modals/sign-for-job-modal/sign-for-job-modal.component';
 import {Subscription} from 'rxjs/Subscription';
+import {SystemLanguagesResolver} from './resolvers/system-languages/system-languages.resolver';
 import {TransferState} from './transfer-state/transfer-state';
+import {UserResolver} from './resolvers/user/user.resolver';
 import {ViewChild} from '@angular/core';
 
 @Component({
@@ -126,7 +127,7 @@ import {ViewChild} from '@angular/core';
     </signed-for-job-modal>
 `
 })
-export class AppComponent implements OnInit, OnDestroy  {
+export class AppComponent extends BaseComponent {
   @ViewChild('alreadyRegisteredModalComponent') public alreadyRegisteredModalComponent: AlreadyRegisteredModalComponent;
   @ViewChild('appliedForJobModalComponent') public appliedForJobModalComponent: AppliedForJobModalComponent;
   @ViewChild('applyForJobModalComponent') public applyForJobModalComponent: ApplyForJobModalComponent;
@@ -153,11 +154,15 @@ export class AppComponent implements OnInit, OnDestroy  {
 
   public constructor(
     private cache: TransferState,
-    private modalService: ModalService
+    private modalService: ModalService,
+    protected systemLanguagesResolver: SystemLanguagesResolver,
+    protected userResolver: UserResolver,
   ) {
+    super(systemLanguagesResolver, userResolver);
   }
 
-  public ngOnInit(): void {
+
+  public onInit(): void {
     this.cache.set('cached', true);
     this.initShowModalSubscription();
     this.initHideModalSubscription();
@@ -188,7 +193,7 @@ export class AppComponent implements OnInit, OnDestroy  {
     });
   }
 
-  public ngOnDestroy(): void {
+  public onDestroy(): void {
     if (this.hideModalSubscription) { this.hideModalSubscription.unsubscribe(); }
     if (this.showModalSubscription) { this.showModalSubscription.unsubscribe(); }
   }

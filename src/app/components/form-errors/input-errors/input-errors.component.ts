@@ -3,7 +3,6 @@ import {BaseComponent} from '../../base.component';
 import {Component} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {Input} from '@angular/core';
-import {OnInit} from '@angular/core';
 import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
 import {TranslateService} from '@ngx-translate/core';
 import {UserResolver} from '../../../resolvers/user/user.resolver';

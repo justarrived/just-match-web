@@ -5,16 +5,14 @@ Developer guide for Just Match Web.
 ## High level
 
 * __Technology__
-  - Angular 2.4
-  - Typescript 2.2
+  - Angular 4
+  - Typescript 2
   - SCSS
   - HTML5
 
 * __Scripts__
 
 * __Typescript conventions__
-
-Line length 120 characters
 
 Imports
 ```
@@ -83,8 +81,6 @@ this.skillProxy.getSkill(skillId)
 
 * __HTML conventions__
 
-Line length 120 characters
-
 Attribute alignment
 ```
 <!--
@@ -135,67 +131,38 @@ Initialization
 
 ```
 /*
-All components with Initialization needs should implement OnInit.
+All components with Initialization needs should override onInit.
 No Initialization is allowed in the constructor and should instead be performed
-in ngOnInit.
+in onInit.
 */
 ...
-export class ContactFormComponent implements OnInit {
+export class ContactFormComponent extends BaseComponent {
 ...
   public constructor(
     ...
   ) {
   }
 
-  public ngOnInit(): void {
+  public onInit(): void {
     this.initForm();
   }
-```
-
-```
-/*
-If the component depend on proxy data the component should extend SystemLanguageListener
-and hence implement the function loadData.
-loadData is called whenever user language changes.
-*/
-...
-export class UserRegisterComponent extends SystemLanguageListener implements OnInit {
-  ...
-  public constructor(
-    ...
-  ) {
-  }
-
-  public ngOnInit(): void {
-    this.loadData();
-    this.initForm();
-  }
-
-  protected loadData() {
-    this.countries = this.countryProxy.getCountries();
-    this.genders = this.userProxy.getGenders();
-    this.languages = this.languageProxy.getLanguages();
-    this.systemLanguages = this.languageProxy.getSystemLanguages();
-  }
-
 ```
 
 Teardown
 ```
 /*
-All components with Observable or EventEmitter subscriptions should implement OnDestroy and unsubscribe to avoid
-memory leaks.
+All components with Observable or EventEmitter subscriptions should override onDestroy and unsubscribe to avoid memory leaks.
 */
 ...
-export class ContactFormComponent implements OnDestroy {
+export class ContactFormComponent extends BaseComponent {
 ...
   public constructor(
     ...
   ) {
   }
 
-  public ngOnDestroy() {
-    if (this.userChangeSubscription) { this.userChangeSubscription.unsubscribe(); }
+  public onDestroy() {
+    if (thissomeSubscription) { this.someSubscription.unsubscribe(); }
   }
 ```
 
@@ -203,7 +170,7 @@ export class ContactFormComponent implements OnDestroy {
 Inline template vs seperate html file.
 ```
 /*
-50 or less lines of html -> inline the html:
+100 or less lines of html -> inline the html:
 */
 ...
 @Component({
@@ -219,7 +186,7 @@ export class ApiErrorsComponent implements OnInit {
   ...
 
 /*
-More than 50 lines of html -> seprate template file
+More than 100 lines of html -> seprate template file
 */
 ...
 @Component({
