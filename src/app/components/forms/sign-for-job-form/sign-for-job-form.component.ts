@@ -2,17 +2,18 @@ import {ActivatedRoute} from '@angular/router';
 import {ApiErrors} from '../../../models/api-models/api-errors/api-errors';
 import {Application} from '../../../models/api-models/application/application';
 import {ApplicationProxy} from '../../../proxies/application/application.proxy';
+import {BaseComponent} from '../../base.component';
 import {ChangeDetectorRef} from '@angular/core';
 import {Component} from '@angular/core';
 import {FormBuilder} from '@angular/forms';
 import {FormGroup} from '@angular/forms';
 import {Input} from '@angular/core';
 import {Job} from '../../../models/api-models/job/job';
-import {OnInit} from '@angular/core';
-import {SystemLanguageListener} from '../../../resolvers/system-languages/system-languages.resolver';
+import {Language} from '../../../models/api-models/language/language';
 import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
 import {TermsAgreement} from '../../../models/api-models/terms-agreement/terms-agreement';
 import {TermsAgreementProxy} from '../../../proxies/terms-agreement/terms-agreement.proxy';
+import {UserResolver} from '../../../resolvers/user/user.resolver';
 import {Validators} from '@angular/forms';
 
 @Component({
@@ -46,7 +47,7 @@ import {Validators} from '@angular/forms';
       </form-submit-button>
     </form>`
 })
-export class SignForJobFormComponent extends SystemLanguageListener implements OnInit {
+export class SignForJobFormComponent extends BaseComponent {
   @Input() public job = null as Job;
   @Input() public application = null as Application;
   @Input() public isInModal: boolean = false;
@@ -67,11 +68,12 @@ export class SignForJobFormComponent extends SystemLanguageListener implements O
     private route: ActivatedRoute,
     private termsAgreementProxy: TermsAgreementProxy,
     protected systemLanguagesResolver: SystemLanguagesResolver,
+    protected userResolver: UserResolver,
   ) {
-    super(systemLanguagesResolver);
+    super(systemLanguagesResolver, userResolver);
   }
 
-  public ngOnInit(): void {
+  public onInit(): void {
     this.initForm();
     this.loadData();
   }
@@ -82,7 +84,11 @@ export class SignForJobFormComponent extends SystemLanguageListener implements O
     });
   }
 
-  protected loadData(): void {
+  public systemLanguageChanged(systemLanguage: Language): void {
+    this.loadData();
+  }
+
+  private loadData(): void {
     this.termsAgreement = this.termsAgreementProxy.getTermsAgreement()
     .then(termsAgreement => {
       this.termsAgreementId = termsAgreement.id;
