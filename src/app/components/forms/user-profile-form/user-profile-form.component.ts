@@ -42,30 +42,30 @@ export class UserProfileFormComponent extends BaseComponent {
   }
 
   public userChanged(user: User): void {
-    if (user) {
-      this.initForm();
-    }
+    this.initForm();
   }
 
   private initForm(): void {
-    this.profileForm = this.formBuilder.group({
-      'at_und': [this.user.atUnd ? this.user.atUnd : 'no'],
-      'competence_text': [this.user.competenceText],
-      'current_status': [this.user.currentStatus],
-      'description': [this.user.description],
-      'education': [this.user.education],
-      'facebook_url': [this.user.facebookUrl],
-      'got_coordination_number': [this.user.ssn ? 'yes' : 'no'],
-      'interests': [''],
-      'job_experience': [this.user.jobExperience],
-      'languages': [''],
-      'linkedin_url': [this.user.linkedinUrl],
-      'skills': [''],
-      'ssn': [this.user.ssn],
-      'user_interests': [this.user.userInterests.slice()],
-      'user_languages': [this.user.userLanguages.slice()],
-      'user_skills': [this.user.userSkills.slice()],
-    });
+    if (this.user) {
+      this.profileForm = this.formBuilder.group({
+        'at_und': [this.user.atUnd ? this.user.atUnd : 'no'],
+        'competence_text': [this.user.competenceText],
+        'current_status': [this.user.currentStatus],
+        'description': [this.user.description],
+        'education': [this.user.education],
+        'facebook_url': [this.user.facebookUrl],
+        'got_coordination_number': [this.user.ssn ? 'yes' : 'no'],
+        'interests': [''],
+        'job_experience': [this.user.jobExperience],
+        'languages': [''],
+        'linkedin_url': [this.user.linkedinUrl],
+        'skills': [''],
+        'ssn': [this.user.ssn],
+        'user_interests': [this.user.userInterests.slice()],
+        'user_languages': [this.user.userLanguages.slice()],
+        'user_skills': [this.user.userSkills.slice()],
+      });
+    }
   }
 
   private handleServerErrors(errors): void {

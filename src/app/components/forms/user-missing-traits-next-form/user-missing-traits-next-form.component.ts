@@ -62,41 +62,41 @@ export class UserMissingTraitsNextFormComponent extends BaseComponent {
   }
 
   public userChanged(user: User): void {
-    if (user) {
-      this.initForm();
-    }
+    this.initForm();
   }
 
   private initForm(): void {
-    this.updateForm = this.formBuilder.group({
-      'at_und': [this.user.atUnd ? this.user.atUnd : 'no'],
-      'bank_account': [this.user.bankAccount],
-      'city': [this.user.city],
-      'competence_text': [this.user.competenceText],
-      'country_of_origin': [this.user.countryOfOrigin],
-      'current_status': [this.user.currentStatus],
-      'description': [this.user.description],
-      'education': [this.user.education],
-      'email': [this.user.email, Validators.compose([Validators.required, Validators.email])],
-      'facebook_url': [this.user.facebookUrl],
-      'first_name': [this.user.firstName, Validators.compose([Validators.required, Validators.minLength(2)])],
-      'gender': [this.user.gender],
-      'got_coordination_number': [this.user.ssn ? 'yes' : 'no'],
-      'interests': [''],
-      'job_experience': [this.user.jobExperience],
-      'languages': [''],
-      'last_name': [this.user.lastName, Validators.compose([Validators.required, Validators.minLength(2)])],
-      'linkedin_url': [this.user.linkedinUrl],
-      'phone': [this.user.phone, Validators.compose([Validators.required])],
-      'skills': [''],
-      'ssn': [this.user.ssn],
-      'street': [this.user.street],
-      'system_language_id': [this.user.systemLanguage.id, Validators.compose([Validators.required])],
-      'user_interests': [this.user.userInterests.slice()],
-      'user_languages': [this.user.userLanguages.slice()],
-      'user_skills': [this.user.userSkills.slice()],
-      'zip': [this.user.zip],
-    });
+    if (this.user) {
+      this.updateForm = this.formBuilder.group({
+        'at_und': [this.user.atUnd ? this.user.atUnd : 'no'],
+        'bank_account': [this.user.bankAccount],
+        'city': [this.user.city],
+        'competence_text': [this.user.competenceText],
+        'country_of_origin': [this.user.countryOfOrigin],
+        'current_status': [this.user.currentStatus],
+        'description': [this.user.description],
+        'education': [this.user.education],
+        'email': [this.user.email, Validators.compose([Validators.required, Validators.email])],
+        'facebook_url': [this.user.facebookUrl],
+        'first_name': [this.user.firstName, Validators.compose([Validators.required, Validators.minLength(2)])],
+        'gender': [this.user.gender],
+        'got_coordination_number': [this.user.ssn ? 'yes' : 'no'],
+        'interests': [''],
+        'job_experience': [this.user.jobExperience],
+        'languages': [''],
+        'last_name': [this.user.lastName, Validators.compose([Validators.required, Validators.minLength(2)])],
+        'linkedin_url': [this.user.linkedinUrl],
+        'phone': [this.user.phone, Validators.compose([Validators.required])],
+        'skills': [''],
+        'ssn': [this.user.ssn],
+        'street': [this.user.street],
+        'system_language_id': [this.user.systemLanguage.id, Validators.compose([Validators.required])],
+        'user_interests': [this.user.userInterests.slice()],
+        'user_languages': [this.user.userLanguages.slice()],
+        'user_skills': [this.user.userSkills.slice()],
+        'zip': [this.user.zip],
+      });
+    }
   }
 
   protected loadData(): void {

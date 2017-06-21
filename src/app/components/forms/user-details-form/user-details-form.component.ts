@@ -44,9 +44,7 @@ export class UserDetailsFormComponent extends BaseComponent {
   }
 
   public userChanged(user: User): void {
-    if (user) {
-      this.initForm();
-    }
+    this.initForm();
   }
 
   private initForm(): void {
@@ -55,27 +53,31 @@ export class UserDetailsFormComponent extends BaseComponent {
   }
 
   private initSettingsForm(): void {
-    this.settingsForm = this.formBuilder.group({
-      'bank_account': [this.user.bankAccount],
-      'city': [this.user.city],
-      'country_of_origin': [this.user.countryOfOrigin],
-      'email': [this.user.email, Validators.compose([Validators.required, Validators.email])],
-      'first_name': [this.user.firstName, Validators.compose([Validators.required, Validators.minLength(2)])],
-      'gender': [this.user.gender],
-      'last_name': [this.user.lastName, Validators.compose([Validators.required, Validators.minLength(2)])],
-      'phone': [this.user.phone, Validators.compose([Validators.required])],
-      'ssn': [this.user.ssn],
-      'street': [this.user.street],
-      'system_language_id': [this.user.systemLanguage.id, Validators.compose([Validators.required])],
-      'zip': [this.user.zip],
-    });
+    if (this.user) {
+      this.settingsForm = this.formBuilder.group({
+        'bank_account': [this.user.bankAccount],
+        'city': [this.user.city],
+        'country_of_origin': [this.user.countryOfOrigin],
+        'email': [this.user.email, Validators.compose([Validators.required, Validators.email])],
+        'first_name': [this.user.firstName, Validators.compose([Validators.required, Validators.minLength(2)])],
+        'gender': [this.user.gender],
+        'last_name': [this.user.lastName, Validators.compose([Validators.required, Validators.minLength(2)])],
+        'phone': [this.user.phone, Validators.compose([Validators.required])],
+        'ssn': [this.user.ssn],
+        'street': [this.user.street],
+        'system_language_id': [this.user.systemLanguage.id, Validators.compose([Validators.required])],
+        'zip': [this.user.zip],
+      });
+    }
   }
 
   private initPasswordForm(): void {
-    this.passwordForm = this.formBuilder.group({
-      'password': ['', Validators.compose([Validators.minLength(6)])],
-      'old_password': ['']
-    });
+    if (this.user) {
+      this.passwordForm = this.formBuilder.group({
+        'password': ['', Validators.compose([Validators.minLength(6)])],
+        'old_password': ['']
+      });
+    }
   }
 
   public passwordsSupplied(): boolean {
