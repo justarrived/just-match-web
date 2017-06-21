@@ -1,15 +1,16 @@
 import {ActivatedRoute} from '@angular/router';
 import {ApiErrors} from '../../../models/api-models/api-errors/api-errors';
+import {BaseComponent} from '../../base.component';
 import {ChangeDetectorRef} from '@angular/core';
 import {Component} from '@angular/core';
 import {FormBuilder} from '@angular/forms';
 import {FormGroup} from '@angular/forms';
 import {Input} from '@angular/core';
-import {JARoutes} from '../../../routes/ja-routes/ja-routes';
 import {ModalService} from '../../../services/modal.service';
 import {NavigationService} from '../../../services/navigation.service';
-import {OnInit} from '@angular/core';
+import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
 import {UserPasswordProxy} from '../../../proxies/user-password/user-password.proxy';
+import {UserResolver} from '../../../resolvers/user/user.resolver';
 import {Validators} from '@angular/forms';
 
 @Component({
@@ -58,9 +59,8 @@ import {Validators} from '@angular/forms';
       </form-submit-button>
     </form>`
 })
-export class ResetPasswordFormComponent implements OnInit {
+export class ResetPasswordFormComponent extends BaseComponent {
   public apiErrors: ApiErrors = new ApiErrors([]);
-  public JARoutes = JARoutes;
   public loadingSubmit: boolean;
   public submitFail: boolean;
   public submitSuccess: boolean;
@@ -72,11 +72,14 @@ export class ResetPasswordFormComponent implements OnInit {
     private modalService: ModalService,
     private navigationService: NavigationService,
     private route: ActivatedRoute,
-    private userPasswordProxy: UserPasswordProxy
+    private userPasswordProxy: UserPasswordProxy,
+    protected systemLanguagesResolver: SystemLanguagesResolver,
+    protected userResolver: UserResolver,
   ) {
+    super(systemLanguagesResolver, userResolver);
   }
 
-  public ngOnInit(): void {
+  public onInit(): void {
     this.initForm();
     this.initToken();
   }
