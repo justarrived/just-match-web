@@ -38,7 +38,7 @@ import {yyyymmdd} from '../../../utils/date/date.util';
       </div>
       <base-button
         [buttonText]="'home.jobs.slider.show.all.link' | translate"
-        [routerLink]="JARoutes.jobs.url(['1'])"
+        [routerLink]="JARoutes.jobs.url()"
         kind="primary"
         size="medium">
       </base-button>
@@ -66,8 +66,7 @@ export class NewJobsSectionComponent extends BaseComponent {
 
   protected loadData(): void {
     this.newJobs = this.jobProxy.getJobs({
-      'filter[filled]': false,
-      'filter[job_date]': yyyymmdd(new Date()) + '..' + yyyymmdd(nbrOfMonthsFromDate(new Date(), 12)),
+      'filter[open_for_applications]': true,
       'include': 'company,hourly_pay,company.company_images',
       'page[size]': 4,
       'sort': '-created_at',

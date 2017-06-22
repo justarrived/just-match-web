@@ -2,18 +2,12 @@ import {ActivatedRoute} from '@angular/router';
 import {BaseComponent} from '../../base.component';
 import {Component} from '@angular/core';
 import {Input} from '@angular/core';
-import {JARoute} from '../../../routes/ja-route/ja-route';
 import {Job} from '../../../models/api-models/job/job';
 import {JobProxy} from '../../../proxies/job/job.proxy';
 import {Language} from '../../../models/api-models/language/language';
 import {NavigationService} from '../../../services/navigation.service';
-import {nbrOfMonthsFromDate} from '../../../utils/date/date.util';
-import {Subscription} from 'rxjs/Subscription';
 import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
 import {UserResolver} from '../../../resolvers/user/user.resolver';
-import {yyyymmdd} from '../../../utils/date/date.util';
-
-// Component requires a route with a :page param
 
 @Component({
   selector: 'jobs-pager-section',
@@ -55,14 +49,21 @@ import {yyyymmdd} from '../../../utils/date/date.util';
     </div>`
 })
 export class JobsPagerSectionComponent extends BaseComponent {
-  @Input() currentRoute: JARoute;
 
+  @Input("filters")
+  public set filters(filters: any) {
+    if (JSON.stringify(this.activeFilters) !== JSON.stringify(filters)) {
+      this.activeFilters = filters;
+      this.page = 1;
+      this.loadData()
+    }
+  }
+
+  public activeFilters: any;
   public jobsMetaPromise: Promise<{jobs: Job[], meta: any}>;
-  public totalJobs: number = 0;
   public page: number = 1;
   public pageSize: number = 12;
-
-  private routeParamsSubscription: Subscription;
+  public totalJobs: number = 0;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -74,51 +75,32 @@ export class JobsPagerSectionComponent extends BaseComponent {
     super(systemLanguagesResolver, userResolver);
   }
 
-  public onInit(): void {
-    this.initRouteParamsSubscription();
-  }
-
   public systemLanguageChanged(systemLanguage: Language): void {
     this.loadData();
   }
 
-  private initRouteParamsSubscription(): void {
-    this.routeParamsSubscription = this.activatedRoute.params.subscribe(params => {
-      this.page = params['page'] && parseInt(params['page']);
-      if (!this.page || this.page < 1) {
-        this.navigationService.replaceRouteState(this.currentRoute, "1");
-        this.page = 1;
-      }
-      this.loadData();
-    });
-  }
-
   private loadData(): void {
-    this.jobsMetaPromise = this.jobProxy.getJobsWithMeta({
+    let searchParameters = {
       'include': 'company,hourly_pay,company.company_images',
-      'filter[filled]': false,
-      'filter[job_date]': yyyymmdd(new Date()) + '..' + yyyymmdd(nbrOfMonthsFromDate(new Date(), 12)),
-      'sort': 'job_date',
       'page[number]': this.page,
       'page[size]': this.pageSize
-    })
+    };
+
+    for (let filter in this.activeFilters.filterOption) {
+      searchParameters[filter] = this.activeFilters.filterOption[filter];
+    }
+
+    this.jobsMetaPromise = this.jobProxy.getJobsWithMeta(searchParameters)
     .then(result => {
       this.totalJobs = result.meta.total;
-      if (this.pageSize * (this.page - 1) > this.totalJobs) {
-        this.onPageChange(1);
-      } else if (this.totalJobs === 0) {
+      if (this.totalJobs === 0) {
         this.page = 1;
       }
       return result;
     });
   }
 
-  public onDestroy(): void {
-    if (this.routeParamsSubscription) { this.routeParamsSubscription.unsubscribe(); }
-  }
-
   public onPageChange(page: number): void {
-    this.navigationService.replaceRouteState(this.currentRoute, page.toString());
     this.page = page;
     this.loadData();
   }

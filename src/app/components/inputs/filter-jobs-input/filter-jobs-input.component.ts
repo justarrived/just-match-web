@@ -6,37 +6,39 @@ import {FormControl} from '@angular/forms';
 import {Input} from '@angular/core';
 import {Language} from '../../../models/api-models/language/language';
 import {Output} from '@angular/core';
+import {nbrOfMonthsFromDate} from '../../../utils/date/date.util';
 import {Subscription} from 'rxjs/Subscription';
 import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
 import {UserResolver} from '../../../resolvers/user/user.resolver';
+import {yyyymmdd} from '../../../utils/date/date.util';
 
 @Component({
-  selector: 'filter-users-input',
+  selector: 'filter-jobs-input',
   template: `
     <div class="ui form">
       <basic-loader
-        [promise]="filterUsersOptions"
+        [promise]="filterJobsOptions"
         class="inverted">
       </basic-loader>
       <select-dropdown-input
         [apiErrors]="apiErrors"
-        [data]="filterUsersOptions | async"
+        [data]="filterJobsOptions | async"
         [control]="control"
         [paddingBottom]="0"
         [fluid]="false"
-        [label]="'input.filter.users.label' | translate"
-        [placeholder]="'input.filter.users.placeholder' | translate"
+        [label]="'input.filter.jobs.label' | translate"
+        [placeholder]="'input.filter.jobs.placeholder' | translate"
         dataItemLabelProperty="translatedText.name"
         dataItemValueProperty="value">
       </select-dropdown-input>
     </div>`
 })
-export class FilterUsersInputComponent extends BaseComponent {
-  @Output() onFilterChanged: EventEmitter<string> = new EventEmitter<string>();
+export class FilterJobsInputComponent extends BaseComponent {
+  @Output() onFilterChanged: EventEmitter<any> = new EventEmitter<any>();
 
   public apiErrors: ApiErrors = new ApiErrors([]);
   public control: FormControl = new FormControl();
-  public filterUsersOptions: Promise<any[]>;
+  public filterJobsOptions: Promise<any[]>;
 
   private controlValueChangesSubscription: Subscription;
 
@@ -58,40 +60,53 @@ export class FilterUsersInputComponent extends BaseComponent {
 
   private initControlValueChangesSubscription(): void {
     this.controlValueChangesSubscription = this.control.valueChanges.subscribe(() => {
-      this.onFilterChanged.emit(this.control.value);
+      this.onFilterChanged.emit(JSON.parse(this.control.value.replace(/'/g, '"')));
     });
   }
 
   protected loadData() {
-    this.filterUsersOptions = Promise.resolve([
+    this.filterJobsOptions = Promise.resolve([
       {
-        name: 'First Name',
-        value: 'filter[first_name]',
+        name: 'All jobs',
+        value: JSON.stringify({
+          'filter[all]': true,
+          'sort': 'open_for_applications,filled,-created_at',
+        }).replace(/"/g, "'"),
         translatedText: {
-          name: 'input.filter.users.option.first.name'
+          name: 'input.filter.jobs.option.all',
         }
       },
       {
-        name: 'Last Name',
-        value: 'filter[last_name]',
+        name: 'Open for applications',
+        value: JSON.stringify({
+          'filter[open_for_applications]': true,
+          'sort': '-created_at',
+        }).replace(/"/g, "'"),
         translatedText: {
-          name: 'input.filter.users.option.last.name'
+          name: 'input.filter.jobs.option.open'
         }
       },
       {
-        name: 'Id',
-        value: 'filter[id]',
+        name: 'Filled jobs',
+        value: JSON.stringify({
+          'filter[filled]': true,
+          'sort': '-created_at',
+        }).replace(/"/g, "'"),
         translatedText: {
-          name: 'input.filter.users.option.id'
+          name: 'input.filter.jobs.option.filled'
         }
       },
       {
-        name: 'Email',
-        value: 'filter[email]',
+        name: 'Unfilled jobs',
+        value: JSON.stringify({
+          'filter[filled]': false,
+          'filter[job_date]': yyyymmdd(new Date()) + '..' + yyyymmdd(nbrOfMonthsFromDate(new Date(), 12)),
+          'sort': 'open_for_applications,-created_at'
+        }).replace(/"/g, "'"),
         translatedText: {
-          name: 'input.filter.users.option.email'
+          name: 'input.filter.jobs.option.unfilled'
         }
-      },
+      }
     ])
     .then(options => {
       if (options.length > 0) {

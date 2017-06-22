@@ -24,7 +24,6 @@ import {ViewChild} from '@angular/core';
 
       <div style="flex: 1;">
         <god-mode-pager-section
-          [currentRoute]="JARoutes.godMode"
           [filters]="activeFilters"
           #godModeUsersSectionComponent>
         </god-mode-pager-section>

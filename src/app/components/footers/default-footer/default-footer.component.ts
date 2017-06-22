@@ -53,7 +53,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
             </basic-link>
             <basic-link
               *ngIf="user"
-              [routerLink]="JARoutes.jobs.url(['1'])"
+              [routerLink]="JARoutes.jobs.url()"
               [text]="'footer.get.started.section.jobs' | translate"
               color="white"
               marginBottom="0.4rem"

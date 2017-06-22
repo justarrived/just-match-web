@@ -2,7 +2,6 @@ import {ActivatedRoute} from '@angular/router';
 import {BaseComponent} from '../../base.component';
 import {Component} from '@angular/core';
 import {Input} from '@angular/core';
-import {JARoute} from '../../../routes/ja-route/ja-route';
 import {Language} from '../../../models/api-models/language/language';
 import {NavigationService} from '../../../services/navigation.service';
 import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
@@ -64,7 +63,6 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
     </div>`
 })
 export class GodModePagerSectionComponent extends BaseComponent {
-  @Input() currentRoute: JARoute;
 
   @Input("filters")
   public set filters(filters: any) {
@@ -81,7 +79,6 @@ export class GodModePagerSectionComponent extends BaseComponent {
   public total: number = 0;
   public users: Promise<User[]>;
   public actAsUser: Promise<User>;
-
 
   public constructor(
     private activatedRoute: ActivatedRoute,

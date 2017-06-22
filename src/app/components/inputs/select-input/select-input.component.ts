@@ -73,7 +73,9 @@ export class SelectInputComponent extends BaseComponent {
     const options: {} = Object.assign({
       sortSelect: true,
       forceSelection: false,
-      onChange: (value: string) => {
+      allowReselection: true,
+      onChange: (value, text, $selectedItem) => {
+        console.log(value);
         this.onChange.emit(value);
       },
       onHide: () => this.control.markAsTouched()

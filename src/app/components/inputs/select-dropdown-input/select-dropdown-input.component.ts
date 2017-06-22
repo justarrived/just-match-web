@@ -27,7 +27,7 @@ import {ViewChild} from '@angular/core';
        class="search">
         <option
           style="text-align: right; direction: rtl;"
-          [value]="getNestedProperty(item, dataItemValueProperty)"
+          [value]='getNestedProperty(item, dataItemValueProperty)'
           *ngFor="let item of data">
           {{getNestedProperty(item, dataItemLabelProperty) | translate}}
         </option>

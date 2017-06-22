@@ -18,22 +18,6 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
     (mouseout)='hovered = false'
     class="ui card link job-card"
     routerLink="{{JARoutes.job.url([job.id])}}">
-    <div
-      *ngIf="job.filled"
-      class="filled-job-container">
-      <div class="filled-job-stamp">
-        <basic-title-text
-          [text]="'job.card.filled' | translate"
-          [uppercase]="true"
-          fontSize="huge"
-          color="pink"
-          marginTop="0"
-          marginBottom="0"
-          textAlignmentLtr="center"
-          textAlignmentRtl="center">
-        </basic-title-text>
-      </div>
-    </div>
     <div class="ui basic segment">
       <div class="company-image-container">
         <img
@@ -151,6 +135,38 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
         textAlignmentLtr="center"
         textAlignmentRtl="center">
       </basic-link>
+    </div>
+    <div
+      *ngIf="job.filled"
+      class="filled-job-container">
+      <div class="filled-job-stamp">
+        <basic-title-text
+          [text]="'job.card.filled' | translate"
+          [uppercase]="true"
+          fontSize="huge"
+          color="pink"
+          marginTop="0"
+          marginBottom="0"
+          textAlignmentLtr="center"
+          textAlignmentRtl="center">
+        </basic-title-text>
+      </div>
+    </div>
+    <div
+      *ngIf="!job.filled && !job.openForApplications"
+      class="filled-job-container">
+      <div class="filled-job-stamp">
+        <basic-title-text
+          [text]="'job.card.closed.for.applications' | translate"
+          [uppercase]="true"
+          fontSize="huge"
+          color="pink"
+          marginTop="0"
+          marginBottom="0"
+          textAlignmentLtr="center"
+          textAlignmentRtl="center">
+        </basic-title-text>
+      </div>
     </div>
   </div>`
 

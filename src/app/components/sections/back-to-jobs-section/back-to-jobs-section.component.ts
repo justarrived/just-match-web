@@ -10,7 +10,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
     <div
       class="back-to-jobs-container"
       style="display: flex; flex-direction: column; align-items: center; cursor: pointer;"
-      [routerLink]="JARoutes.jobs.url(['1'])">
+      [routerLink]="JARoutes.jobs.url()">
       <div class="icon"></div>
       <basic-title-text
         [text]="'back.to.jobs.section.link' | translate"
