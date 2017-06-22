@@ -9,6 +9,7 @@ import {Output} from '@angular/core';
 import {Subscription} from 'rxjs/Subscription';
 import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
 import {UserResolver} from '../../../resolvers/user/user.resolver';
+import {TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'filter-users-input',
@@ -41,6 +42,7 @@ export class FilterUsersInputComponent extends BaseComponent {
   private controlValueChangesSubscription: Subscription;
 
   public constructor(
+    private translateService: TranslateService,
     protected systemLanguagesResolver: SystemLanguagesResolver,
     protected userResolver: UserResolver,
   ) {
@@ -63,41 +65,43 @@ export class FilterUsersInputComponent extends BaseComponent {
   }
 
   protected loadData() {
-    this.filterUsersOptions = Promise.resolve([
-      {
-        name: 'First Name',
-        value: 'filter[first_name]',
-        translatedText: {
-          name: 'input.filter.users.option.first.name'
+    this.translateService.get(['input.filter.users.option.first.name', 'input.filter.users.option.last.name', 'input.filter.users.option.id', 'input.filter.users.option.email']).subscribe((translations: any) => {
+      this.filterUsersOptions = Promise.resolve([
+        {
+          name: 'First Name',
+          value: 'filter[first_name]',
+          translatedText: {
+            name: translations['input.filter.users.option.first.name']
+          }
+        },
+        {
+          name: 'Last Name',
+          value: 'filter[last_name]',
+          translatedText: {
+            name: translations['input.filter.users.option.last.name']
+          }
+        },
+        {
+          name: 'Id',
+          value: 'filter[id]',
+          translatedText: {
+            name: translations['input.filter.users.option.id']
+          }
+        },
+        {
+          name: 'Email',
+          value: 'filter[email]',
+          translatedText: {
+            name: translations['input.filter.users.option.email']
+          }
+        },
+      ])
+      .then(options => {
+        if (options.length > 0) {
+          this.control.setValue(options[0].value);
         }
-      },
-      {
-        name: 'Last Name',
-        value: 'filter[last_name]',
-        translatedText: {
-          name: 'input.filter.users.option.last.name'
-        }
-      },
-      {
-        name: 'Id',
-        value: 'filter[id]',
-        translatedText: {
-          name: 'input.filter.users.option.id'
-        }
-      },
-      {
-        name: 'Email',
-        value: 'filter[email]',
-        translatedText: {
-          name: 'input.filter.users.option.email'
-        }
-      },
-    ])
-    .then(options => {
-      if (options.length > 0) {
-        this.control.setValue(options[0].value);
-      }
-      return options;
+        return options;
+      });
     });
   }
 

@@ -9,6 +9,7 @@ import {Output} from '@angular/core';
 import {Subscription} from 'rxjs/Subscription';
 import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
 import {UserResolver} from '../../../resolvers/user/user.resolver';
+import {TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'sort-users-input',
@@ -41,6 +42,7 @@ export class SortUsersInputComponent extends BaseComponent {
   private controlValueChangesSubscription: Subscription;
 
   public constructor(
+    private translateService: TranslateService,
     protected systemLanguagesResolver: SystemLanguagesResolver,
     protected userResolver: UserResolver,
   ) {
@@ -63,55 +65,57 @@ export class SortUsersInputComponent extends BaseComponent {
   }
 
   protected loadData() {
-    this.sortUsersOptions = Promise.resolve([
-      {
-        name: 'First Name (A-Z)',
-        value: 'first_name',
-        translatedText: {
-          name: 'sort.users.input.option.first.name'
+    this.translateService.get(['sort.users.input.option.first.name', 'sort.users.input.option.last.name', 'sort.users.input.option.first.name.reverse', 'sort.users.input.option.last.name.reverse', 'sort.users.input.option.oldest', 'sort.users.input.option.newest']).subscribe((translations: any) => {
+      this.sortUsersOptions = Promise.resolve([
+        {
+          name: 'First Name (A-Z)',
+          value: 'first_name',
+          translatedText: {
+            name: translations['sort.users.input.option.first.name']
+          }
+        },
+        {
+          name: 'Last Name (A-Z)',
+          value: 'last_name',
+          translatedText: {
+            name: translations['sort.users.input.option.last.name']
+          }
+        },
+        {
+          name: 'First Name (Z-A)',
+          value: '-first_name',
+          translatedText: {
+            name: translations['sort.users.input.option.first.name.reverse']
+          }
+        },
+        {
+          name: 'Last Name (Z-A)',
+          value: '-last_name',
+          translatedText: {
+            name: translations['sort.users.input.option.last.name.reverse']
+          }
+        },
+        {
+          name: 'Oldest',
+          value: 'created_at',
+          translatedText: {
+            name: translations['sort.users.input.option.oldest']
+          }
+        },
+        {
+          name: 'Newest',
+          value: '-created_at',
+          translatedText: {
+            name: translations['sort.users.input.option.newest']
+          }
+        },
+      ])
+      .then(options => {
+        if (options.length > 0) {
+          this.control.setValue(options[0].value);
         }
-      },
-      {
-        name: 'Last Name (A-Z)',
-        value: 'last_name',
-        translatedText: {
-          name: 'sort.users.input.option.last.name'
-        }
-      },
-      {
-        name: 'First Name (Z-A)',
-        value: '-first_name',
-        translatedText: {
-          name: 'sort.users.input.option.first.name.reverse'
-        }
-      },
-      {
-        name: 'Last Name (Z-A)',
-        value: '-last_name',
-        translatedText: {
-          name: 'sort.users.input.option.last.name.reverse'
-        }
-      },
-      {
-        name: 'Oldest',
-        value: 'created_at',
-        translatedText: {
-          name: 'sort.users.input.option.oldest'
-        }
-      },
-      {
-        name: 'Newest',
-        value: '-created_at',
-        translatedText: {
-          name: 'sort.users.input.option.newest'
-        }
-      },
-    ])
-    .then(options => {
-      if (options.length > 0) {
-        this.control.setValue(options[0].value);
-      }
-      return options;
+        return options;
+      });
     });
   }
 

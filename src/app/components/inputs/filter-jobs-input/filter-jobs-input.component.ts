@@ -11,6 +11,7 @@ import {Subscription} from 'rxjs/Subscription';
 import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
 import {UserResolver} from '../../../resolvers/user/user.resolver';
 import {yyyymmdd} from '../../../utils/date/date.util';
+import {TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'filter-jobs-input',
@@ -43,6 +44,7 @@ export class FilterJobsInputComponent extends BaseComponent {
   private controlValueChangesSubscription: Subscription;
 
   public constructor(
+    private translateService: TranslateService,
     protected systemLanguagesResolver: SystemLanguagesResolver,
     protected userResolver: UserResolver,
   ) {
@@ -65,54 +67,56 @@ export class FilterJobsInputComponent extends BaseComponent {
   }
 
   protected loadData() {
-    this.filterJobsOptions = Promise.resolve([
-      {
-        name: 'All jobs',
-        value: JSON.stringify({
-          'filter[all]': true,
-          'sort': 'open_for_applications,filled,-created_at',
-        }).replace(/"/g, "'"),
-        translatedText: {
-          name: 'input.filter.jobs.option.all',
+    this.translateService.get(['input.filter.jobs.option.all', 'input.filter.jobs.option.open', 'input.filter.jobs.option.filled', 'input.filter.jobs.option.unfilled']).subscribe((translations: any) => {
+      this.filterJobsOptions = Promise.resolve([
+        {
+          name: 'All jobs',
+          value: JSON.stringify({
+            'filter[all]': true,
+            'sort': 'open_for_applications,filled,-created_at',
+          }).replace(/"/g, "'"),
+          translatedText: {
+            name: translations['input.filter.jobs.option.all']
+          }
+        },
+        {
+          name: 'Open for applications',
+          value: JSON.stringify({
+            'filter[open_for_applications]': true,
+            'sort': '-created_at',
+          }).replace(/"/g, "'"),
+          translatedText: {
+            name: translations['input.filter.jobs.option.open']
+          }
+        },
+        {
+          name: 'Filled jobs',
+          value: JSON.stringify({
+            'filter[filled]': true,
+            'sort': '-created_at',
+          }).replace(/"/g, "'"),
+          translatedText: {
+            name: translations['input.filter.jobs.option.filled']
+          }
+        },
+        {
+          name: 'Unfilled jobs',
+          value: JSON.stringify({
+            'filter[filled]': false,
+            'filter[job_date]': yyyymmdd(new Date()) + '..' + yyyymmdd(nbrOfMonthsFromDate(new Date(), 12)),
+            'sort': 'open_for_applications,-created_at'
+          }).replace(/"/g, "'"),
+          translatedText: {
+            name: translations['input.filter.jobs.option.unfilled']
+          }
         }
-      },
-      {
-        name: 'Open for applications',
-        value: JSON.stringify({
-          'filter[open_for_applications]': true,
-          'sort': '-created_at',
-        }).replace(/"/g, "'"),
-        translatedText: {
-          name: 'input.filter.jobs.option.open'
+      ])
+      .then(options => {
+        if (options.length > 0) {
+          this.control.setValue(options[0].value);
         }
-      },
-      {
-        name: 'Filled jobs',
-        value: JSON.stringify({
-          'filter[filled]': true,
-          'sort': '-created_at',
-        }).replace(/"/g, "'"),
-        translatedText: {
-          name: 'input.filter.jobs.option.filled'
-        }
-      },
-      {
-        name: 'Unfilled jobs',
-        value: JSON.stringify({
-          'filter[filled]': false,
-          'filter[job_date]': yyyymmdd(new Date()) + '..' + yyyymmdd(nbrOfMonthsFromDate(new Date(), 12)),
-          'sort': 'open_for_applications,-created_at'
-        }).replace(/"/g, "'"),
-        translatedText: {
-          name: 'input.filter.jobs.option.unfilled'
-        }
-      }
-    ])
-    .then(options => {
-      if (options.length > 0) {
-        this.control.setValue(options[0].value);
-      }
-      return options;
+        return options;
+      });
     });
   }
 

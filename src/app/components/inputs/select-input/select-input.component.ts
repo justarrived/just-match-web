@@ -50,8 +50,11 @@ export class SelectInputComponent extends BaseComponent {
   @Output() public onChange: EventEmitter<string> = new EventEmitter<string>();
   @ViewChild("select") public select: ElementRef;
 
+  public _data: any;
+
   @Input("data")
   public set data(data: any) {
+    this._data = data;
     if (isPlatformBrowser(this.platformId)) {
       if (data && this.control.value) {
         setTimeout(() => {
@@ -74,8 +77,7 @@ export class SelectInputComponent extends BaseComponent {
       sortSelect: true,
       forceSelection: false,
       allowReselection: true,
-      onChange: (value, text, $selectedItem) => {
-        console.log(value);
+      onChange: (value) => {
         this.onChange.emit(value);
       },
       onHide: () => this.control.markAsTouched()
@@ -84,6 +86,14 @@ export class SelectInputComponent extends BaseComponent {
     if (isPlatformBrowser(this.platformId)) {
       jQuery(this.select.nativeElement)
         .dropdown(options);
+    }
+
+    if (isPlatformBrowser(this.platformId)) {
+      if (this._data && this.control.value) {
+        setTimeout(() => {
+          jQuery(this.select.nativeElement).dropdown("set selected", this.control.value);
+        }, 1);
+      }
     }
   }
 }

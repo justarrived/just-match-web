@@ -29,7 +29,8 @@ import {ViewChild} from '@angular/core';
           style="text-align: right; direction: rtl;"
           [value]='getNestedProperty(item, dataItemValueProperty)'
           *ngFor="let item of data">
-          {{getNestedProperty(item, dataItemLabelProperty) | translate}}
+          <!-- Has to be pre translated in API or via TranslateService. Pipe wont work properly here.-->
+          {{getNestedProperty(item, dataItemLabelProperty)}}
         </option>
       </select-input>
       <input-errors
