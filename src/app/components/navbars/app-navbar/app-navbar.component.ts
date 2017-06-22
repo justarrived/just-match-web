@@ -5,9 +5,11 @@ import {EventEmitter} from '@angular/core';
 import {HostListener} from '@angular/core';
 import {Inject} from "@angular/core";
 import {Input} from '@angular/core';
+import {isPlatformServer} from '@angular/common';
 import {JARoutes} from '../../../routes/ja-routes/ja-routes';
 import {Output} from '@angular/core';
 import {PageOptionsService} from '../../../services/page-options.service';
+import {PLATFORM_ID} from '@angular/core';
 import {Subscription} from 'rxjs/Subscription';
 import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
 import {UserResolver} from '../../../resolvers/user/user.resolver';
@@ -73,6 +75,7 @@ export class AppNavbarComponent extends BaseComponent {
 
   public constructor(
     @Inject(DOCUMENT) private document: any,
+    @Inject(PLATFORM_ID) private platformId: any,
     private pageOptionsService: PageOptionsService,
     protected systemLanguagesResolver: SystemLanguagesResolver,
     protected userResolver: UserResolver,
@@ -108,6 +111,7 @@ export class AppNavbarComponent extends BaseComponent {
   }
 
   private isNavbarTransparent(): boolean {
-    return this.pageOptionsService.transparentNavbarWhenTopScrolled() && this.document && this.document.body && this.document.body.scrollTop < 1;
+    return this.pageOptionsService.transparentNavbarWhenTopScrolled() && isPlatformServer(this.platformId) ||
+           this.pageOptionsService.transparentNavbarWhenTopScrolled() && this.document && this.document.body && this.document.body.scrollTop < 1;
   }
 }
