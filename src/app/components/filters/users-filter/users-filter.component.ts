@@ -38,6 +38,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
           [loading]="false"
           [label]="'users.filter.search.label' | translate"
           [placeholder]="'users.filter.search.placeholder' | translate"
+          searchMemoryKey="searchUsersKey"
           style="width: 80%">
         </basic-search>
       </div>

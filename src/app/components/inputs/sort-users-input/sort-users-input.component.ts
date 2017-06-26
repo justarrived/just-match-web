@@ -28,7 +28,8 @@ import {TranslateService} from '@ngx-translate/core';
         [label]="'input.sort.users.label' | translate"
         [placeholder]="'input.sort.users.placeholder' | translate"
         dataItemLabelProperty="translatedText.name"
-        dataItemValueProperty="value">
+        dataItemValueProperty="value"
+        selectedMemoryKey="sortUsersKey">
       </select-dropdown-input>
     </div>`
 })
@@ -111,7 +112,7 @@ export class SortUsersInputComponent extends BaseComponent {
         },
       ])
       .then(options => {
-        if (options.length > 0) {
+        if (!this.control.value && options.length > 0) {
           this.control.setValue(options[0].value);
         }
         return options;

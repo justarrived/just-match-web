@@ -28,7 +28,8 @@ import {TranslateService} from '@ngx-translate/core';
         [label]="'input.filter.users.label' | translate"
         [placeholder]="'input.filter.users.placeholder' | translate"
         dataItemLabelProperty="translatedText.name"
-        dataItemValueProperty="value">
+        dataItemValueProperty="value"
+        selectedMemoryKey="filterUsersKey">
       </select-dropdown-input>
     </div>`
 })
@@ -97,7 +98,7 @@ export class FilterUsersInputComponent extends BaseComponent {
         },
       ])
       .then(options => {
-        if (options.length > 0) {
+        if (!this.control.value && options.length > 0) {
           this.control.setValue(options[0].value);
         }
         return options;

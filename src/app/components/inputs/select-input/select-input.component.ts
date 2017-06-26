@@ -81,7 +81,7 @@ export class SelectInputComponent extends BaseComponent {
     if (this.selectedMemoryKey) {
       value = this.dataStoreService.getFromMemory(this.selectedMemoryKey);
     } else if (this.selectedPersistKey) {
-      value = this.dataStoreService.getCookie(this.selectedMemoryKey);
+      value = this.dataStoreService.getCookie(this.selectedPersistKey);
     }
 
     if (value) {

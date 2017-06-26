@@ -1,6 +1,7 @@
 import {ActivatedRoute} from '@angular/router';
 import {BaseComponent} from '../../base.component';
 import {Component} from '@angular/core';
+import {DataStoreService} from '../../../services/data-store.service';
 import {Input} from '@angular/core';
 import {Language} from '../../../models/api-models/language/language';
 import {NavigationService} from '../../../services/navigation.service';
@@ -67,9 +68,9 @@ export class GodModePagerSectionComponent extends BaseComponent {
   @Input("filters")
   public set filters(filters: any) {
     if (filters.sortOption && filters.filterOption && JSON.stringify(this.activeFilters) !== JSON.stringify(filters)) {
+      this.page = !this.activeFilters && this.dataStoreService.getFromMemory(this.godModePageKey) || 1;
       this.activeFilters = filters;
-      this.page = 1;
-      this.loadData()
+      this.loadData();
     }
   }
 
@@ -79,11 +80,13 @@ export class GodModePagerSectionComponent extends BaseComponent {
   public total: number = 0;
   public users: Promise<User[]>;
   public actAsUser: Promise<User>;
+  private readonly godModePageKey: string = 'godModePageKey';
 
   public constructor(
     private activatedRoute: ActivatedRoute,
-    private userProxy: UserProxy,
+    private dataStoreService: DataStoreService,
     private navigationService: NavigationService,
+    private userProxy: UserProxy,
     protected systemLanguagesResolver: SystemLanguagesResolver,
     protected userResolver: UserResolver,
   ) {
@@ -112,15 +115,13 @@ export class GodModePagerSectionComponent extends BaseComponent {
     this.users = this.userProxy.getUsersWithMeta(searchParameters)
     .then(result => {
       this.total = result.meta.total;
-      if (this.total === 0) {
-        this.page = 1;
-      }
       return result.users;
     });
   }
 
   public onPageChange(page: number): void {
     this.page = page;
+    this.dataStoreService.setInMemory(this.godModePageKey, this.page);
     this.loadData();
   }
 
