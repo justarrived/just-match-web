@@ -3,6 +3,7 @@ import {Application} from '../../../models/api-models/application/application';
 import {ApplicationProxy} from '../../../proxies/application/application.proxy';
 import {BaseComponent} from '../../base.component';
 import {Component} from '@angular/core';
+import {DataStoreService} from '../../../services/data-store.service';
 import {Input} from '@angular/core';
 import {Language} from '../../../models/api-models/language/language';
 import {NavigationService} from '../../../services/navigation.service';
@@ -53,12 +54,14 @@ export class ApplicationsPagerSectionComponent extends BaseComponent {
 
   public applicationsMetaPromise: Promise<{applications: Application[], meta: any}>;
   public page: number = 1;
-  public pageSize: number = 12;
   public totalApplications: number = 0;
+  public readonly pageSize: number = 3;
+  private readonly applicationsPageKey: string = 'applicationsPageKey';
 
   public constructor(
     private activatedRoute: ActivatedRoute,
     private applicationProxy: ApplicationProxy,
+    private dataStoreService: DataStoreService,
     private navigationService: NavigationService,
     protected systemLanguagesResolver: SystemLanguagesResolver,
     protected userResolver: UserResolver,
@@ -67,6 +70,7 @@ export class ApplicationsPagerSectionComponent extends BaseComponent {
   }
 
   public onInit() {
+    this.page = this.dataStoreService.getFromMemory(this.applicationsPageKey) || 1;
     this.loadData();
   }
 
@@ -85,16 +89,13 @@ export class ApplicationsPagerSectionComponent extends BaseComponent {
     this.applicationsMetaPromise = this.applicationProxy.getUserApplicationsWithMeta(this.user.id, searchParameters)
     .then(result => {
       this.totalApplications = result.meta.total;
-      if (this.totalApplications === 0) {
-        this.page = 1;
-      }
-      console.log(result);
       return result;
     });
   }
 
   public onPageChange(page: number): void {
     this.page = page;
+    this.dataStoreService.setInMemory(this.applicationsPageKey, this.page);
     this.loadData();
   }
 }

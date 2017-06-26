@@ -65,8 +65,8 @@ export class JobsPagerSectionComponent extends BaseComponent {
   public activeFilters: any;
   public jobsMetaPromise: Promise<{jobs: Job[], meta: any}>;
   public page: number = 1;
-  public pageSize: number = 12;
   public totalJobs: number = 0;
+  public readonly pageSize: number = 12;
   private readonly jobsPageKey: string = 'jobsPageKey';
 
   public constructor(
