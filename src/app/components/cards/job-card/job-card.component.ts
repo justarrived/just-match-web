@@ -126,7 +126,68 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
     </div>
     <div class="read-more-container">
       <basic-link
+        *ngIf="!application"
         [text]="'job.card.read.more' | translate"
+        [color]="hovered ? 'pink' : 'white'"
+        fontWeight="bold"
+        paddingTop="1rem"
+        paddingBottom="1rem"
+        marginTop="0"
+        marginBottom="0"
+        textAlignmentLtr="center"
+        textAlignmentRtl="center">
+      </basic-link>
+      <basic-link
+        *ngIf="application && application.applicationStatus === 'applied'"
+        [text]="'job.card.applied' | translate"
+        [color]="hovered ? 'pink' : 'white'"
+        fontWeight="bold"
+        paddingTop="1rem"
+        paddingBottom="1rem"
+        marginTop="0"
+        marginBottom="0"
+        textAlignmentLtr="center"
+        textAlignmentRtl="center">
+      </basic-link>
+      <basic-link
+        *ngIf="application && application.applicationStatus === 'offered'"
+        [text]="'job.card.offered' | translate"
+        [color]="hovered ? 'pink' : 'white'"
+        fontWeight="bold"
+        paddingTop="1rem"
+        paddingBottom="1rem"
+        marginTop="0"
+        marginBottom="0"
+        textAlignmentLtr="center"
+        textAlignmentRtl="center">
+      </basic-link>
+      <basic-link
+        *ngIf="application && application.applicationStatus === 'hired'"
+        [text]="'job.card.hired' | translate"
+        [color]="hovered ? 'pink' : 'white'"
+        fontWeight="bold"
+        paddingTop="1rem"
+        paddingBottom="1rem"
+        marginTop="0"
+        marginBottom="0"
+        textAlignmentLtr="center"
+        textAlignmentRtl="center">
+      </basic-link>
+      <basic-link
+        *ngIf="application && application.applicationStatus === 'rejected'"
+        [text]="'job.card.rejected' | translate"
+        [color]="hovered ? 'pink' : 'white'"
+        fontWeight="bold"
+        paddingTop="1rem"
+        paddingBottom="1rem"
+        marginTop="0"
+        marginBottom="0"
+        textAlignmentLtr="center"
+        textAlignmentRtl="center">
+      </basic-link>
+      <basic-link
+        *ngIf="application && application.applicationStatus === 'withdrawn'"
+        [text]="'job.card.withdrawn' | translate"
         [color]="hovered ? 'pink' : 'white'"
         fontWeight="bold"
         paddingTop="1rem"
@@ -140,7 +201,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
     <div
       class="filled-job-container">
       <div
-        *ngIf="!application && job.filled"
+        *ngIf="job.filled"
         class="filled-job-stamp">
         <basic-title-text
           [text]="'job.card.filled' | translate"
@@ -154,80 +215,10 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
         </basic-title-text>
       </div>
       <div
-        *ngIf="!application && !job.filled && !job.openForApplications"
+        *ngIf="!job.filled && !job.openForApplications"
         class="filled-job-stamp">
         <basic-title-text
           [text]="'job.card.closed.for.applications' | translate"
-          [uppercase]="true"
-          fontSize="huge"
-          color="pink"
-          marginTop="0"
-          marginBottom="0"
-          textAlignmentLtr="center"
-          textAlignmentRtl="center">
-        </basic-title-text>
-      </div>
-      <div
-        *ngIf="application && application.applicationStatus === 'applied'"
-        class="filled-job-stamp">
-        <basic-title-text
-          [text]="'job.card.applied' | translate"
-          [uppercase]="true"
-          fontSize="huge"
-          color="pink"
-          marginTop="0"
-          marginBottom="0"
-          textAlignmentLtr="center"
-          textAlignmentRtl="center">
-        </basic-title-text>
-      </div>
-      <div
-        *ngIf="application && application.applicationStatus === 'offered'"
-        class="filled-job-stamp">
-        <basic-title-text
-          [text]="'job.card.offered' | translate"
-          [uppercase]="true"
-          fontSize="huge"
-          color="pink"
-          marginTop="0"
-          marginBottom="0"
-          textAlignmentLtr="center"
-          textAlignmentRtl="center">
-        </basic-title-text>
-      </div>
-      <div
-        *ngIf="application && application.applicationStatus === 'rejected'"
-        class="filled-job-stamp">
-        <basic-title-text
-          [text]="'job.card.rejected' | translate"
-          [uppercase]="true"
-          fontSize="huge"
-          color="pink"
-          marginTop="0"
-          marginBottom="0"
-          textAlignmentLtr="center"
-          textAlignmentRtl="center">
-        </basic-title-text>
-      </div>
-      <div
-        *ngIf="application && application.applicationStatus === 'hired'"
-        class="filled-job-stamp">
-        <basic-title-text
-          [text]="'job.card.hired' | translate"
-          [uppercase]="true"
-          fontSize="huge"
-          color="pink"
-          marginTop="0"
-          marginBottom="0"
-          textAlignmentLtr="center"
-          textAlignmentRtl="center">
-        </basic-title-text>
-      </div>
-      <div
-        *ngIf="application && application.applicationStatus === 'withdrawn'"
-        class="filled-job-stamp">
-        <basic-title-text
-          [text]="'job.card.withdrawn' | translate"
           [uppercase]="true"
           fontSize="huge"
           color="pink"

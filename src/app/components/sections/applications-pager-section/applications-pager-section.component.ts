@@ -88,6 +88,7 @@ export class ApplicationsPagerSectionComponent extends BaseComponent {
       if (this.totalApplications === 0) {
         this.page = 1;
       }
+      console.log(result);
       return result;
     });
   }
