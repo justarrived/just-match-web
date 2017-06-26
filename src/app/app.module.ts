@@ -6,7 +6,7 @@ import {APP_BASE_HREF} from '@angular/common';
 import {AppComponent} from './app.component';
 import {ApplicationItemComponent} from './components/items/application-item/application-item.component';
 import {ApplicationsPageComponent} from './components/pages/applications-page/applications-page.component';
-import {ApplicationsSectionComponent} from './components/sections/applications-section/applications-section.component';
+import {ApplicationsPagerSectionComponent} from './components/sections/applications-pager-section/applications-pager-section.component';
 import {ApplicationsStatusSectionComponent} from './components/sections/applications-status-section/applications-status-section.component';
 import {ApplicationStatusCardComponent} from './components/cards/application-status-card/application-status-card.component';
 import {AppliedForJobModalComponent} from './components/modals/applied-for-job-modal/applied-for-job-modal.component';
@@ -259,7 +259,7 @@ export class RavenErrorHandler implements ErrorHandler {
     AppComponent,
     ApplicationItemComponent,
     ApplicationsPageComponent,
-    ApplicationsSectionComponent,
+    ApplicationsPagerSectionComponent,
     ApplicationsStatusSectionComponent,
     ApplicationStatusCardComponent,
     AppliedForJobModalComponent,

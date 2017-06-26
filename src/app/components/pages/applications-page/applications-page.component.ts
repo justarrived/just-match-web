@@ -16,7 +16,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
       icon="briefcase">
     </basic-border-section>
 
-    <applications-section></applications-section>`
+    <applications-pager-section></applications-pager-section>`
 })
 
 export class ApplicationsPageComponent extends PageComponent {

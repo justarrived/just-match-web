@@ -1,3 +1,4 @@
+import {Application} from '../../../models/api-models/application/application';
 import {BaseComponent} from '../../base.component';
 import {Component} from '@angular/core';
 import {fadeInAnimation} from '../../../animations/fade-in/fade-in.animation';
@@ -137,9 +138,10 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
       </basic-link>
     </div>
     <div
-      *ngIf="job.filled"
       class="filled-job-container">
-      <div class="filled-job-stamp">
+      <div
+        *ngIf="!application && job.filled"
+        class="filled-job-stamp">
         <basic-title-text
           [text]="'job.card.filled' | translate"
           [uppercase]="true"
@@ -151,13 +153,81 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
           textAlignmentRtl="center">
         </basic-title-text>
       </div>
-    </div>
-    <div
-      *ngIf="!job.filled && !job.openForApplications"
-      class="filled-job-container">
-      <div class="filled-job-stamp">
+      <div
+        *ngIf="!application && !job.filled && !job.openForApplications"
+        class="filled-job-stamp">
         <basic-title-text
           [text]="'job.card.closed.for.applications' | translate"
+          [uppercase]="true"
+          fontSize="huge"
+          color="pink"
+          marginTop="0"
+          marginBottom="0"
+          textAlignmentLtr="center"
+          textAlignmentRtl="center">
+        </basic-title-text>
+      </div>
+      <div
+        *ngIf="application && application.applicationStatus === 'applied'"
+        class="filled-job-stamp">
+        <basic-title-text
+          [text]="'job.card.applied' | translate"
+          [uppercase]="true"
+          fontSize="huge"
+          color="pink"
+          marginTop="0"
+          marginBottom="0"
+          textAlignmentLtr="center"
+          textAlignmentRtl="center">
+        </basic-title-text>
+      </div>
+      <div
+        *ngIf="application && application.applicationStatus === 'offered'"
+        class="filled-job-stamp">
+        <basic-title-text
+          [text]="'job.card.offered' | translate"
+          [uppercase]="true"
+          fontSize="huge"
+          color="pink"
+          marginTop="0"
+          marginBottom="0"
+          textAlignmentLtr="center"
+          textAlignmentRtl="center">
+        </basic-title-text>
+      </div>
+      <div
+        *ngIf="application && application.applicationStatus === 'rejected'"
+        class="filled-job-stamp">
+        <basic-title-text
+          [text]="'job.card.rejected' | translate"
+          [uppercase]="true"
+          fontSize="huge"
+          color="pink"
+          marginTop="0"
+          marginBottom="0"
+          textAlignmentLtr="center"
+          textAlignmentRtl="center">
+        </basic-title-text>
+      </div>
+      <div
+        *ngIf="application && application.applicationStatus === 'hired'"
+        class="filled-job-stamp">
+        <basic-title-text
+          [text]="'job.card.hired' | translate"
+          [uppercase]="true"
+          fontSize="huge"
+          color="pink"
+          marginTop="0"
+          marginBottom="0"
+          textAlignmentLtr="center"
+          textAlignmentRtl="center">
+        </basic-title-text>
+      </div>
+      <div
+        *ngIf="application && application.applicationStatus === 'withdrawn'"
+        class="filled-job-stamp">
+        <basic-title-text
+          [text]="'job.card.withdrawn' | translate"
           [uppercase]="true"
           fontSize="huge"
           color="pink"
@@ -173,10 +243,10 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
 })
 export class JobCardComponent extends BaseComponent {
   @Input() public job = null as Job;
+  @Input() public application = null as Application;
   @Input() public animationDelay: number = 1;
   public hovered: boolean = false;
 
-  public JARoutes = JARoutes;
   public animationState: string = 'hidden';
 
   public constructor (

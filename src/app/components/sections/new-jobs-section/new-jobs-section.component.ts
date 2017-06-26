@@ -67,7 +67,7 @@ export class NewJobsSectionComponent extends BaseComponent {
   protected loadData(): void {
     this.newJobs = this.jobProxy.getJobs({
       'filter[open_for_applications]': true,
-      'include': 'company,hourly_pay,company.company_images',
+      'include': 'company,company.company_images',
       'page[size]': 4,
       'sort': '-created_at',
     });
