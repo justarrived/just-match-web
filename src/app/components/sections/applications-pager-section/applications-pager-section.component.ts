@@ -55,7 +55,7 @@ export class ApplicationsPagerSectionComponent extends BaseComponent {
   public applicationsMetaPromise: Promise<{applications: Application[], meta: any}>;
   public page: number = 1;
   public totalApplications: number = 0;
-  public readonly pageSize: number = 3;
+  public readonly pageSize: number = 12;
   private readonly applicationsPageKey: string = 'applicationsPageKey';
 
   public constructor(
