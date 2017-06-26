@@ -23,6 +23,8 @@ import {ViewChild} from '@angular/core';
        [label]="label"
        [options]="options"
        [placeholder]="placeholder"
+       [selectedMemoryKey]="selectedMemoryKey"
+       [selectedPersistKey]="selectedPersistKey"
        (onChange)="change($event)"
        class="search">
         <option
@@ -63,6 +65,8 @@ export class SelectDropdownInputComponent extends BaseComponent {
   @Input() public patternLabel: string;
   @Input() public placeholder: string;
   @Input() public requiredLabel: string;
+  @Input() public selectedMemoryKey: string;
+  @Input() public selectedPersistKey: string;
   @Output() public onChange = new EventEmitter();
   @ViewChild(InputErrorsComponent) inputErrors: InputErrorsComponent;
   public getNestedProperty = getNestedProperty;

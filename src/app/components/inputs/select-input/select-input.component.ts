@@ -1,5 +1,6 @@
 import {BaseComponent} from '../../base.component';
 import {Component} from "@angular/core";
+import {DataStoreService} from '../../../services/data-store.service';
 import {ElementRef} from "@angular/core";
 import {EventEmitter} from "@angular/core";
 import {FormControl} from "@angular/forms";
@@ -42,11 +43,13 @@ declare var jQuery: any;
     </div>`
 })
 export class SelectInputComponent extends BaseComponent {
-  @Input() public control: FormControl = new FormControl();
   @Input() public class: string;
+  @Input() public control: FormControl = new FormControl();
   @Input() public label: string;
   @Input() public options: {} = {};
   @Input() public placeholder: string;
+  @Input() public selectedMemoryKey: string;
+  @Input() public selectedPersistKey: string;
   @Output() public onChange: EventEmitter<string> = new EventEmitter<string>();
   @ViewChild("select") public select: ElementRef;
 
@@ -66,10 +69,24 @@ export class SelectInputComponent extends BaseComponent {
 
   public constructor(
     @Inject(PLATFORM_ID) private readonly platformId: any,
+    private dataStoreService: DataStoreService,
     protected systemLanguagesResolver: SystemLanguagesResolver,
     protected userResolver: UserResolver,
   ) {
     super(systemLanguagesResolver, userResolver);
+  }
+
+  public onInit() {
+    let value = null;
+    if (this.selectedMemoryKey) {
+      value = this.dataStoreService.getFromMemory(this.selectedMemoryKey);
+    } else if (this.selectedPersistKey) {
+      value = this.dataStoreService.getCookie(this.selectedMemoryKey);
+    }
+
+    if (value) {
+      this.control.setValue(value);
+    }
   }
 
   public afterViewInit(): void {
@@ -78,6 +95,12 @@ export class SelectInputComponent extends BaseComponent {
       forceSelection: false,
       allowReselection: true,
       onChange: (value) => {
+        if (this.selectedMemoryKey) {
+          this.dataStoreService.setInMemory(this.selectedMemoryKey, this.control.value);
+        } else if (this.selectedPersistKey) {
+          this.dataStoreService.setCookie(this.selectedPersistKey, this.control.value);
+        }
+
         this.onChange.emit(value);
       },
       onHide: () => this.control.markAsTouched()

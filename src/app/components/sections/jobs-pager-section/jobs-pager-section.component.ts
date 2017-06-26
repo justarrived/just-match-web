@@ -1,7 +1,9 @@
 import {ActivatedRoute} from '@angular/router';
 import {BaseComponent} from '../../base.component';
 import {Component} from '@angular/core';
+import {DataStoreService} from '../../../services/data-store.service';
 import {Input} from '@angular/core';
+import {isEmpty} from 'lodash';
 import {Job} from '../../../models/api-models/job/job';
 import {JobProxy} from '../../../proxies/job/job.proxy';
 import {Language} from '../../../models/api-models/language/language';
@@ -52,10 +54,11 @@ export class JobsPagerSectionComponent extends BaseComponent {
 
   @Input("filters")
   public set filters(filters: any) {
-    if (JSON.stringify(this.activeFilters) !== JSON.stringify(filters)) {
+    if (!isEmpty(filters) && JSON.stringify(this.activeFilters) !== JSON.stringify(filters)) {
+      this.page = !this.activeFilters && this.dataStoreService.getFromMemory(this.jobsPageKey) || 1;
+      this.dataStoreService.setInMemory(this.jobsPageKey, this.page);
       this.activeFilters = filters;
-      this.page = 1;
-      this.loadData()
+      this.loadData();
     }
   }
 
@@ -64,9 +67,11 @@ export class JobsPagerSectionComponent extends BaseComponent {
   public page: number = 1;
   public pageSize: number = 12;
   public totalJobs: number = 0;
+  private readonly jobsPageKey: string = 'jobsPageKey';
 
   public constructor(
     private activatedRoute: ActivatedRoute,
+    private dataStoreService: DataStoreService,
     private jobProxy: JobProxy,
     private navigationService: NavigationService,
     protected systemLanguagesResolver: SystemLanguagesResolver,
@@ -93,15 +98,13 @@ export class JobsPagerSectionComponent extends BaseComponent {
     this.jobsMetaPromise = this.jobProxy.getJobsWithMeta(searchParameters)
     .then(result => {
       this.totalJobs = result.meta.total;
-      if (this.totalJobs === 0) {
-        this.page = 1;
-      }
       return result;
     });
   }
 
   public onPageChange(page: number): void {
     this.page = page;
+    this.dataStoreService.setInMemory(this.jobsPageKey, this.page);
     this.loadData();
   }
 }
