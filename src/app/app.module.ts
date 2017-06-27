@@ -5,6 +5,7 @@ import {ApiErrorsComponent} from './components/form-errors/api-errors/api-errors
 import {APP_BASE_HREF} from '@angular/common';
 import {AppComponent} from './app.component';
 import {ApplicationItemComponent} from './components/items/application-item/application-item.component';
+import {ApplicationsBannerSectionComponent} from './components/sections/applications-banner-section/applications-banner-section.component';
 import {ApplicationsPageComponent} from './components/pages/applications-page/applications-page.component';
 import {ApplicationsPagerSectionComponent} from './components/sections/applications-pager-section/applications-pager-section.component';
 import {ApplicationsStatusSectionComponent} from './components/sections/applications-status-section/applications-status-section.component';
@@ -258,6 +259,7 @@ export class RavenErrorHandler implements ErrorHandler {
     ApiErrorsComponent,
     AppComponent,
     ApplicationItemComponent,
+    ApplicationsBannerSectionComponent,
     ApplicationsPageComponent,
     ApplicationsPagerSectionComponent,
     ApplicationsStatusSectionComponent,

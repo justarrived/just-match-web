@@ -18,8 +18,27 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
         (pageChange)="onPageChange($event)"
         [currentPage]="page"
         [maxResults]="totalApplications"
-        [pageSize]="pageSize">
+        [pageSize]="pageSize"
+        type="light">
       </numbered-pager>
+
+      <div
+        class="ui basic center aligned segment"
+        style="margin: 0; padding: 0;">
+        <basic-title-text
+          [iconLeft]="icon"
+          [text]="'menu.main.my_assignment' | translate"
+          color="black"
+          fontSize="large"
+          marginBottom="0"
+          marginTop="0"
+          textAlignmentLtr="center"
+          textAlignmentRtl="center"
+          underlineBelow="true"
+          underlineBelowLtrAlignment="center"
+          underlineBelowRtlAlignment="center">
+        </basic-title-text>
+      </div>
 
       <div
         class="ui basic center aligned segment"
@@ -46,7 +65,8 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
         (pageChange)="onPageChange($event)"
         [currentPage]="page"
         [maxResults]="totalApplications"
-        [pageSize]="pageSize">
+        [pageSize]="pageSize"
+        type="light">
       </numbered-pager>
     </div>`
 })

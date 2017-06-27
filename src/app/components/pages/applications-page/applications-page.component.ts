@@ -11,10 +11,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
 
 @Component({
   template: `
-    <basic-border-section
-      [header]="'menu.main.my_assignment' | translate"
-      icon="briefcase">
-    </basic-border-section>
+    <applications-banner-section></applications-banner-section>
 
     <applications-pager-section></applications-pager-section>`
 })
@@ -47,7 +44,8 @@ export class ApplicationsPageComponent extends PageComponent {
       request,
       systemLanguagesResolver,
       translateService,
-      userResolver
+      userResolver,
+      true,
     );
   }
 }
