@@ -6,6 +6,9 @@
   background: $white url('/assets/images/job-background-computer.jpg') no-repeat center bottom !important;
   background-size: cover !important;
   height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 
   @media screen and (max-width: $mobile-max-width) {
     height: 200px;

@@ -11,15 +11,10 @@ import {UserSessionProxy} from '../../proxies/user-session/user-session.proxy';
 
 @Injectable()
 export class UserResolver implements Resolve<User> {
-  private readonly storageActAsUserIdKey: string = 'actAsUserId';
-  private readonly storageSessionKey: string = 'sessionData';
-  private readonly userStateTransferKey: string = 'user';
-  private readonly defaultIncludeResources: String[] = [
-    'company', 'user_images', 'user_languages', 'user_languages.language',
-    'user_skills', 'user_skills.skill', 'user_documents', 'user_documents.document',
-    'user_interests', 'user_interests.interest'
-  ];
-  public readonly defaultIncludeResourcesString: String = this.defaultIncludeResources.join(',');
+  private static readonly includes: string = 'company,user_images,user_languages,user_languages.language,user_skills,user_skills.skill,user_documents,user_documents.document,user_interests,user_interests.interest';
+  private static readonly storageActAsUserIdKey: string = 'actAsUserId';
+  private static readonly storageSessionKey: string = 'sessionData';
+  private static readonly userStateTransferKey: string = 'user';
 
   private actingAsUser: User;
   private user: User;
@@ -35,8 +30,8 @@ export class UserResolver implements Resolve<User> {
   }
 
   public resolve(): Promise<User> {
-    const session = this.dataStoreService.getCookie(this.storageSessionKey);
-    this.dataStoreService.removeCookie(this.storageActAsUserIdKey);
+    const session = this.dataStoreService.getCookie(UserResolver.storageSessionKey);
+    this.dataStoreService.removeCookie(UserResolver.storageActAsUserIdKey);
 
     if (this.validateSession(session)) {
 
@@ -44,7 +39,7 @@ export class UserResolver implements Resolve<User> {
         return Promise.resolve(this.user);
       }
 
-      let user = this.transferState.get(this.userStateTransferKey);
+      let user = this.transferState.get(UserResolver.userStateTransferKey);
 
       if (user) {
         this.init(user);
@@ -52,16 +47,16 @@ export class UserResolver implements Resolve<User> {
       }
 
       return this.userProxy.getUser(session.user_id, {
-        'include': this.defaultIncludeResourcesString
+        'include': UserResolver.includes
       })
       .then(user => {
-        this.transferState.set(this.userStateTransferKey, user);
+        this.transferState.set(UserResolver.userStateTransferKey, user);
         this.init(user);
         return user;
       });
     }
 
-    this.dataStoreService.removeCookie(this.storageSessionKey);
+    this.dataStoreService.removeCookie(UserResolver.storageSessionKey);
     this.init(null);
     return Promise.resolve(null);
   }
@@ -76,13 +71,13 @@ export class UserResolver implements Resolve<User> {
 
   public activateGodMode(user: User): void {
     this.actingAsUser = user;
-    this.dataStoreService.setCookie(this.storageActAsUserIdKey, this.actingAsUser.id);
+    this.dataStoreService.setCookie(UserResolver.storageActAsUserIdKey, this.actingAsUser.id);
     this.userChange.emit(this.actingAsUser);
   }
 
   public deactivateGodMode(): void {
     this.actingAsUser = null;
-    this.dataStoreService.removeCookie(this.storageActAsUserIdKey);
+    this.dataStoreService.removeCookie(UserResolver.storageActAsUserIdKey);
     this.userChange.emit(this.user);
   }
 
@@ -91,8 +86,8 @@ export class UserResolver implements Resolve<User> {
   }
 
   public reloadUser(): Promise<User> {
-    const session = this.dataStoreService.getCookie(this.storageSessionKey);
-    const actAsUserId = this.dataStoreService.getCookie(this.storageActAsUserIdKey);
+    const session = this.dataStoreService.getCookie(UserResolver.storageSessionKey);
+    const actAsUserId = this.dataStoreService.getCookie(UserResolver.storageActAsUserIdKey);
 
     if (this.validateSession(session)) {
       if (this.user) {
@@ -102,14 +97,14 @@ export class UserResolver implements Resolve<User> {
         this.actingAsUser.isBeingReloaded = true;
       }
       return this.userProxy.getUser(session.user_id, {
-        'include': this.defaultIncludeResourcesString
+        'include': UserResolver.includes
       })
       .then(user => {
-        this.transferState.set(this.userStateTransferKey, user);
+        this.transferState.set(UserResolver.userStateTransferKey, user);
         this.user = user;
         if (actAsUserId && user.admin) {
           return this.userProxy.getUser(actAsUserId, {
-            'include': this.defaultIncludeResourcesString
+            'include': UserResolver.includes
           })
           .then(user => {
             this.actingAsUser = user;
@@ -145,20 +140,20 @@ export class UserResolver implements Resolve<User> {
   public logout(): void {
     this.user = null;
     this.actingAsUser = null;
-    this.dataStoreService.removeCookie(this.storageSessionKey);
-    this.dataStoreService.removeCookie(this.storageActAsUserIdKey);
+    this.dataStoreService.removeCookie(UserResolver.storageSessionKey);
+    this.dataStoreService.removeCookie(UserResolver.storageActAsUserIdKey);
     this.userChange.emit(this.user);
   }
 
   public login(emailOrPhone: string, password: string): Promise<User> {
-    this.dataStoreService.removeCookie(this.storageActAsUserIdKey);
+    this.dataStoreService.removeCookie(UserResolver.storageActAsUserIdKey);
 
     return this.userSessionProxy.createUserSession({
-      'email_or_phone': emailOrPhone,
-      'password': password,
+      email_or_phone: emailOrPhone,
+      password: password,
     })
     .then(session => {
-      this.dataStoreService.setCookie(this.storageSessionKey, session);
+      this.dataStoreService.setCookie(UserResolver.storageSessionKey, session);
       return this.reloadUser();
     });
   }
