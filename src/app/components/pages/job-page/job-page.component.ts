@@ -24,7 +24,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
     </basic-loader>
 
     <div *ngIf="job">
-      <job-banner-section></job-banner-section>
+      <job-banner-section [preview]="!!previewKey"></job-banner-section>
 
       <div
         class="ui grid job-page-grid"
@@ -230,6 +230,8 @@ export class JobPageComponent extends PageComponent {
   private loadData(): void {
     this.jobPromise = this.jobProxy.getJob(this.jobId, {
       'include': JobPageComponent.includes
+    }, {
+      'preview_key': this.previewKey
     })
     .then(job => {
       this.job = job;

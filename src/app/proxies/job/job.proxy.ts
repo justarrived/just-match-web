@@ -33,6 +33,11 @@ interface UpdateJobAttributes {
   upcoming?: boolean;
 }
 
+// GET
+interface GetJobAttributes {
+  preview_key?: string;
+}
+
 @Injectable()
 export class JobProxy {
 
@@ -42,8 +47,8 @@ export class JobProxy {
   }
 
   // GET
-  public getJob(jobId: string, searchParameters?: any): Promise<Job> {
-    return this.apiCallService.get('jobs/' + jobId, searchParameters)
+  public getJob(jobId: string, searchParameters?: any, attributes?: GetJobAttributes): Promise<Job> {
+    return this.apiCallService.get('jobs/' + jobId, searchParameters, attributes)
     .then(response => JobFactory.createJob(response.data));
   }
 
