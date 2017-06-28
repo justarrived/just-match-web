@@ -229,7 +229,7 @@ export class JobPageComponent extends PageComponent {
 
   private loadData(): void {
     this.jobPromise = this.jobProxy.getJob(this.jobId, {
-      include: JobPageComponent.includes
+      'include': JobPageComponent.includes
     })
     .then(job => {
       this.job = job;

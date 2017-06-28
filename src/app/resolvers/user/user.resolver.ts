@@ -47,7 +47,7 @@ export class UserResolver implements Resolve<User> {
       }
 
       return this.userProxy.getUser(session.user_id, {
-        include: UserResolver.includes
+        'include': UserResolver.includes
       })
       .then(user => {
         this.transferState.set(UserResolver.userStateTransferKey, user);
@@ -97,14 +97,14 @@ export class UserResolver implements Resolve<User> {
         this.actingAsUser.isBeingReloaded = true;
       }
       return this.userProxy.getUser(session.user_id, {
-        include: UserResolver.includes
+        'include': UserResolver.includes
       })
       .then(user => {
         this.transferState.set(UserResolver.userStateTransferKey, user);
         this.user = user;
         if (actAsUserId && user.admin) {
           return this.userProxy.getUser(actAsUserId, {
-            include: UserResolver.includes
+            'include': UserResolver.includes
           })
           .then(user => {
             this.actingAsUser = user;
