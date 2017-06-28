@@ -155,8 +155,18 @@ export class JobPageComponent extends PageComponent {
   public job: Job;
   public jobId: string;
   public jobPromise: Promise<Job>;
+  public previewKey: string;
+
+  private static readonly idParam: string = 'id';
+  private static readonly includes: string = 'owner,company,hourly_pay,company.company_images,comments,responsible_recruiter,responsible_recruiter.user_images';
+  private static readonly pageMetaImageUrl: string = '/assets/images/job-banner-section-background.jpg';
+  private static readonly pageMetaTranslateKeyDescription: string = 'meta.job.description';
+  private static readonly pageMetaTranslateKeyTitle: string = 'meta.job.title';
+  private static readonly previewKeyParam: string = 'preview_key';
+  private static readonly transparentNavbarWhenTopScrolled: boolean = true;
 
   private routeParamsSubscription: Subscription;
+  private queryParamsSubscription: Subscription;
 
   public constructor (
     @Inject(DOCUMENT) protected document: any,
@@ -173,14 +183,14 @@ export class JobPageComponent extends PageComponent {
       {
         title: {
           translate: true,
-          content: 'meta.job.title'
+          content: JobPageComponent.pageMetaTranslateKeyTitle
         },
         description: {
           translate: true,
-          content: 'meta.job.description'
+          content: JobPageComponent.pageMetaTranslateKeyDescription
         },
         image: {
-          content: '/assets/images/job-banner-section-background.jpg'
+          content: JobPageComponent.pageMetaImageUrl
         }
       },
       document,
@@ -190,25 +200,32 @@ export class JobPageComponent extends PageComponent {
       systemLanguagesResolver,
       translateService,
       userResolver,
-      true,
+      JobPageComponent.transparentNavbarWhenTopScrolled,
     );
   }
 
 
   public onInit(): void {
     this.initRouteParamsSubscription();
+    this.initQueryParamsSubscription();
   }
 
   private initRouteParamsSubscription(): void {
     this.routeParamsSubscription = this.route.params.subscribe(params => {
-      this.jobId = params['id'];
+      this.jobId = params[JobPageComponent.idParam];
       this.loadData();
+    });
+  }
+
+  private initQueryParamsSubscription(): void {
+    this.queryParamsSubscription = this.route.queryParams.subscribe(params => {
+      this.previewKey = params[JobPageComponent.previewKeyParam];
     });
   }
 
   private loadData(): void {
     this.jobPromise = this.jobProxy.getJob(this.jobId, {
-      'include': 'owner,company,hourly_pay,company.company_images,comments,responsible_recruiter,responsible_recruiter.user_images'
+      include: JobPageComponent.includes
     })
     .then(job => {
       this.job = job;
