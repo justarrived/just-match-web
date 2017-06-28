@@ -223,6 +223,10 @@ export class JobPageComponent extends PageComponent {
     });
   }
 
+  public systemLanguageChanged(systemLanguage: Language) {
+    this.loadData();
+  }
+
   private loadData(): void {
     this.jobPromise = this.jobProxy.getJob(this.jobId, {
       include: JobPageComponent.includes
@@ -241,10 +245,6 @@ export class JobPageComponent extends PageComponent {
       });
       return job;
     })
-  }
-
-  public systemLanguageChanged(systemLanguage: Language) {
-    this.loadData();
   }
 
   public onDestroy(): void {

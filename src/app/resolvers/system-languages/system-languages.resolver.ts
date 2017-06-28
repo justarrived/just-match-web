@@ -11,8 +11,8 @@ import {TransferState} from '../../transfer-state/transfer-state';
 
 @Injectable()
 export class SystemLanguagesResolver implements Resolve<Language[]> {
-  private readonly fallbackLanguageCode: string = 'en';
-  private readonly storageSystemLanguageCodeKey: string = 'systemLanguageCode';
+  private static readonly fallbackLanguageCode: string = 'en';
+  private static readonly storageSystemLanguageCodeKey: string = 'systemLanguageCode';
 
   private systemLanguage: Language;
   private systemLanguageChange: EventEmitter<Language> = new EventEmitter<Language>();
@@ -52,27 +52,26 @@ export class SystemLanguagesResolver implements Resolve<Language[]> {
 
   private init(languages: Language[]): void {
     this.translateService.addLangs(languages.map(language => language.languageCode));
-    this.translateService.setDefaultLang(this.fallbackLanguageCode);
+    this.translateService.setDefaultLang(SystemLanguagesResolver.fallbackLanguageCode);
 
     this.systemLanguages = languages;
 
-    let systemLanguageCode = this.dataStoreService.getCookie(this.storageSystemLanguageCodeKey) || 'sv';
+    let systemLanguageCode = this.dataStoreService.getCookie(SystemLanguagesResolver.storageSystemLanguageCodeKey) || 'sv';
     this.systemLanguage = this.systemLanguages.find(language => language.languageCode === systemLanguageCode);
-    this.dataStoreService.setCookie(this.storageSystemLanguageCodeKey, systemLanguageCode);
+    this.dataStoreService.setCookie(SystemLanguagesResolver.storageSystemLanguageCodeKey, systemLanguageCode);
     this.translateService.use(systemLanguageCode);
 
     this.initRouteParamsSubscription();
   }
 
   private initRouteParamsSubscription(): void {
-    this.route.queryParams
-    .subscribe(params => {
+    this.route.queryParams.subscribe(params => {
       let systemLanguageCode = params['locale'] || params['lang'] || this.mapFromOpenGraphLocale(params['fb_locale']);
       if (systemLanguageCode) {
         let language = this.systemLanguages.find(language => language.languageCode === systemLanguageCode);
         if (language) {
           this.systemLanguage = language;
-          this.dataStoreService.setCookie(this.storageSystemLanguageCodeKey, systemLanguageCode);
+          this.dataStoreService.setCookie(SystemLanguagesResolver.storageSystemLanguageCodeKey, systemLanguageCode);
           this.translateService.use(systemLanguageCode);
         }
       }
@@ -102,7 +101,7 @@ export class SystemLanguagesResolver implements Resolve<Language[]> {
     }
 
     this.systemLanguage = language;
-    this.dataStoreService.setCookie(this.storageSystemLanguageCodeKey, language.languageCode);
+    this.dataStoreService.setCookie(SystemLanguagesResolver.storageSystemLanguageCodeKey, language.languageCode);
     this.translateService.use(language.languageCode);
     this.systemLanguageChange.emit(this.systemLanguage);
   }
