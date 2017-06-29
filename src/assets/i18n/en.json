@@ -274,7 +274,7 @@
   "job.card.applied": "You have applied for this job",
   "job.card.closed.for.applications": "Closed",
   "job.card.currency.per.hour": "{{currency}}/hour",
-  "job.card.filled": "Job filled",
+  "job.card.filled": "Filled",
   "job.card.full.time": "Full time",
   "job.card.hired": "You have been employed",
   "job.card.hours": "{{hours}} hours",
