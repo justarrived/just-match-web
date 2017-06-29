@@ -6,39 +6,41 @@ import {FormControl} from '@angular/forms';
 import {Input} from '@angular/core';
 import {Language} from '../../../models/api-models/language/language';
 import {Output} from '@angular/core';
+import {nbrOfMonthsFromDate} from '../../../utils/date/date.util';
 import {Subscription} from 'rxjs/Subscription';
 import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
 import {UserResolver} from '../../../resolvers/user/user.resolver';
+import {yyyymmdd} from '../../../utils/date/date.util';
 import {TranslateService} from '@ngx-translate/core';
 
 @Component({
-  selector: 'sort-users-input',
+  selector: 'filter-jobs-input',
   template: `
     <div class="ui form">
       <basic-loader
-        [promise]="sortUsersOptions"
+        [promise]="filterJobsOptions"
         class="inverted">
       </basic-loader>
       <select-dropdown-input
         [apiErrors]="apiErrors"
-        [data]="sortUsersOptions | async"
+        [data]="filterJobsOptions | async"
         [control]="control"
         [paddingBottom]="0"
         [fluid]="false"
-        [label]="'input.sort.users.label' | translate"
-        [placeholder]="'input.sort.users.placeholder' | translate"
+        [label]="'input.filter.jobs.label' | translate"
+        [placeholder]="'input.filter.jobs.placeholder' | translate"
         dataItemLabelProperty="translatedText.name"
         dataItemValueProperty="value"
-        selectedMemoryKey="sortUsersKey">
+        selectedMemoryKey="filterJobsKey">
       </select-dropdown-input>
     </div>`
 })
-export class SortUsersInputComponent extends BaseComponent {
-  @Output() onSortChanged: EventEmitter<string> = new EventEmitter<string>();
+export class FilterJobsInputComponent extends BaseComponent {
+  @Output() onFilterChanged: EventEmitter<any> = new EventEmitter<any>();
 
   public apiErrors: ApiErrors = new ApiErrors([]);
   public control: FormControl = new FormControl();
-  public sortUsersOptions: Promise<any[]>;
+  public filterJobsOptions: Promise<any[]>;
 
   private controlValueChangesSubscription: Subscription;
 
@@ -55,61 +57,60 @@ export class SortUsersInputComponent extends BaseComponent {
     this.loadData();
   }
 
-  private initControlValueChangesSubscription(): void {
-    this.controlValueChangesSubscription = this.control.valueChanges.subscribe(() => {
-      this.onSortChanged.emit(this.control.value);
-    });
-  }
-
   public systemLanguageChanged(systemLanguage: Language): void {
     this.loadData();
   }
 
+  private initControlValueChangesSubscription(): void {
+    this.controlValueChangesSubscription = this.control.valueChanges.subscribe(() => {
+      this.onFilterChanged.emit(JSON.parse(this.control.value.replace(/'/g, '"')));
+    });
+  }
+
   protected loadData() {
-    this.translateService.get(['sort.users.input.option.first.name', 'sort.users.input.option.last.name', 'sort.users.input.option.first.name.reverse', 'sort.users.input.option.last.name.reverse', 'sort.users.input.option.oldest', 'sort.users.input.option.newest']).subscribe((translations: any) => {
-      this.sortUsersOptions = Promise.resolve([
+    this.translateService.get(['input.filter.jobs.option.all', 'input.filter.jobs.option.open', 'input.filter.jobs.option.filled', 'input.filter.jobs.option.unfilled']).subscribe((translations: any) => {
+      this.filterJobsOptions = Promise.resolve([
         {
-          name: 'First Name (A-Z)',
-          value: 'first_name',
+          name: 'All jobs',
+          value: JSON.stringify({
+            'filter[all]': true,
+            'sort': 'open_for_applications,filled,-created_at',
+          }).replace(/"/g, "'"),
           translatedText: {
-            name: translations['sort.users.input.option.first.name']
+            name: translations['input.filter.jobs.option.all']
           }
         },
         {
-          name: 'Last Name (A-Z)',
-          value: 'last_name',
+          name: 'Open for applications',
+          value: JSON.stringify({
+            'filter[open_for_applications]': true,
+            'sort': '-created_at',
+          }).replace(/"/g, "'"),
           translatedText: {
-            name: translations['sort.users.input.option.last.name']
+            name: translations['input.filter.jobs.option.open']
           }
         },
         {
-          name: 'First Name (Z-A)',
-          value: '-first_name',
+          name: 'Filled jobs',
+          value: JSON.stringify({
+            'filter[filled]': true,
+            'sort': '-created_at',
+          }).replace(/"/g, "'"),
           translatedText: {
-            name: translations['sort.users.input.option.first.name.reverse']
+            name: translations['input.filter.jobs.option.filled']
           }
         },
         {
-          name: 'Last Name (Z-A)',
-          value: '-last_name',
+          name: 'Unfilled jobs',
+          value: JSON.stringify({
+            'filter[filled]': false,
+            'filter[job_date]': yyyymmdd(new Date()) + '..' + yyyymmdd(nbrOfMonthsFromDate(new Date(), 12)),
+            'sort': 'open_for_applications,-created_at'
+          }).replace(/"/g, "'"),
           translatedText: {
-            name: translations['sort.users.input.option.last.name.reverse']
+            name: translations['input.filter.jobs.option.unfilled']
           }
-        },
-        {
-          name: 'Oldest',
-          value: 'created_at',
-          translatedText: {
-            name: translations['sort.users.input.option.oldest']
-          }
-        },
-        {
-          name: 'Newest',
-          value: '-created_at',
-          translatedText: {
-            name: translations['sort.users.input.option.newest']
-          }
-        },
+        }
       ])
       .then(options => {
         if (!this.control.value && options.length > 0) {

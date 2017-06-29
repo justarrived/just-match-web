@@ -2,6 +2,30 @@
 
 .job-card {
   width: 300px;
+  position: relative;
+
+  .filled-job-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .filled-job-stamp {
+      z-index: 1;
+      border: 2px solid $color-cerise-500;
+      padding: 5px;
+      -webkit-transform: rotate(10deg);
+      -moz-transform: rotate(10deg);
+      -o-transform: rotate(10deg);
+      -ms-transform: rotate(10deg);
+      transform: rotate(10deg);
+    }
+  }
 
   .title-container {
     height: 100px;

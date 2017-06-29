@@ -1,0 +1,13 @@
+@import '../../../styles/colors';
+@import '../../../styles/dimensions';
+@import '../../../styles/typography';
+
+.banner-container {
+  background: $white url('/assets/images/gradient-banner-background.jpg') no-repeat center bottom !important;
+  background-size: cover !important;
+  height: 200px;
+
+  @media screen and (max-width: $mobile-max-width) {
+    height: 100px;
+  }
+}

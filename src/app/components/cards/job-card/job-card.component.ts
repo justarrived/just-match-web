@@ -1,3 +1,4 @@
+import {Application} from '../../../models/api-models/application/application';
 import {BaseComponent} from '../../base.component';
 import {Component} from '@angular/core';
 import {fadeInAnimation} from '../../../animations/fade-in/fade-in.animation';
@@ -125,6 +126,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
     </div>
     <div class="read-more-container">
       <basic-link
+        *ngIf="!application"
         [text]="'job.card.read.more' | translate"
         [color]="hovered ? 'pink' : 'white'"
         fontWeight="bold"
@@ -135,16 +137,107 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
         textAlignmentLtr="center"
         textAlignmentRtl="center">
       </basic-link>
+      <basic-link
+        *ngIf="application && application.applicationStatus === 'applied'"
+        [text]="'job.card.applied' | translate"
+        [color]="hovered ? 'pink' : 'white'"
+        fontWeight="bold"
+        paddingTop="1rem"
+        paddingBottom="1rem"
+        marginTop="0"
+        marginBottom="0"
+        textAlignmentLtr="center"
+        textAlignmentRtl="center">
+      </basic-link>
+      <basic-link
+        *ngIf="application && application.applicationStatus === 'offered'"
+        [text]="'job.card.offered' | translate"
+        [color]="hovered ? 'pink' : 'white'"
+        fontWeight="bold"
+        paddingTop="1rem"
+        paddingBottom="1rem"
+        marginTop="0"
+        marginBottom="0"
+        textAlignmentLtr="center"
+        textAlignmentRtl="center">
+      </basic-link>
+      <basic-link
+        *ngIf="application && application.applicationStatus === 'hired'"
+        [text]="'job.card.hired' | translate"
+        [color]="hovered ? 'pink' : 'white'"
+        fontWeight="bold"
+        paddingTop="1rem"
+        paddingBottom="1rem"
+        marginTop="0"
+        marginBottom="0"
+        textAlignmentLtr="center"
+        textAlignmentRtl="center">
+      </basic-link>
+      <basic-link
+        *ngIf="application && application.applicationStatus === 'rejected'"
+        [text]="'job.card.rejected' | translate"
+        [color]="hovered ? 'pink' : 'white'"
+        fontWeight="bold"
+        paddingTop="1rem"
+        paddingBottom="1rem"
+        marginTop="0"
+        marginBottom="0"
+        textAlignmentLtr="center"
+        textAlignmentRtl="center">
+      </basic-link>
+      <basic-link
+        *ngIf="application && application.applicationStatus === 'withdrawn'"
+        [text]="'job.card.withdrawn' | translate"
+        [color]="hovered ? 'pink' : 'white'"
+        fontWeight="bold"
+        paddingTop="1rem"
+        paddingBottom="1rem"
+        marginTop="0"
+        marginBottom="0"
+        textAlignmentLtr="center"
+        textAlignmentRtl="center">
+      </basic-link>
+    </div>
+    <div
+      class="filled-job-container">
+      <div
+        *ngIf="job.filled"
+        class="filled-job-stamp">
+        <basic-title-text
+          [text]="'job.card.filled' | translate"
+          [uppercase]="true"
+          fontSize="huge"
+          color="pink"
+          marginTop="0"
+          marginBottom="0"
+          textAlignmentLtr="center"
+          textAlignmentRtl="center">
+        </basic-title-text>
+      </div>
+      <div
+        *ngIf="!job.filled && !job.openForApplications"
+        class="filled-job-stamp">
+        <basic-title-text
+          [text]="'job.card.closed.for.applications' | translate"
+          [uppercase]="true"
+          fontSize="huge"
+          color="pink"
+          marginTop="0"
+          marginBottom="0"
+          textAlignmentLtr="center"
+          textAlignmentRtl="center">
+        </basic-title-text>
+      </div>
     </div>
   </div>`
 
 })
 export class JobCardComponent extends BaseComponent {
   @Input() public job = null as Job;
+  @Input() public application = null as Application;
   @Input() public animationDelay: number = 1;
   public hovered: boolean = false;
 
-  public JARoutes = JARoutes;
   public animationState: string = 'hidden';
 
   public constructor (

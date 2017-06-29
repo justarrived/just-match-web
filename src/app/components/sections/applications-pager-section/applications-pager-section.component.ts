@@ -1,32 +1,50 @@
 import {ActivatedRoute} from '@angular/router';
+import {Application} from '../../../models/api-models/application/application';
+import {ApplicationProxy} from '../../../proxies/application/application.proxy';
 import {BaseComponent} from '../../base.component';
 import {Component} from '@angular/core';
 import {DataStoreService} from '../../../services/data-store.service';
 import {Input} from '@angular/core';
-import {isEmpty} from 'lodash';
-import {Job} from '../../../models/api-models/job/job';
-import {JobProxy} from '../../../proxies/job/job.proxy';
 import {Language} from '../../../models/api-models/language/language';
 import {NavigationService} from '../../../services/navigation.service';
 import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
 import {UserResolver} from '../../../resolvers/user/user.resolver';
 
 @Component({
-  selector: 'jobs-pager-section',
+  selector: 'applications-pager-section',
   template: `
     <div style="height: 100%; display: flex; flex-direction: column;">
       <numbered-pager
         (pageChange)="onPageChange($event)"
         [currentPage]="page"
-        [maxResults]="totalJobs"
-        [pageSize]="pageSize">
+        [maxResults]="totalApplications"
+        [pageSize]="pageSize"
+        type="light">
       </numbered-pager>
+
+      <div
+        class="ui basic center aligned segment"
+        style="margin: 0; padding: 0;">
+        <basic-title-text
+          [iconLeft]="icon"
+          [text]="'menu.main.my_assignment' | translate"
+          color="black"
+          fontSize="large"
+          marginBottom="0"
+          marginTop="0"
+          textAlignmentLtr="center"
+          textAlignmentRtl="center"
+          underlineBelow="true"
+          underlineBelowLtrAlignment="center"
+          underlineBelowRtlAlignment="center">
+        </basic-title-text>
+      </div>
 
       <div
         class="ui basic center aligned segment"
         style="flex: 1; margin: 0;">
         <basic-loader
-          [promise]="jobsMetaPromise"
+          [promise]="applicationsMetaPromise"
           class="inverted">
         </basic-loader>
         <div
@@ -34,8 +52,9 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
           class="ui centered grid">
           <job-card
             [animationDelay]="50 * i"
-            [job]="job"
-            *ngFor="let job of (jobsMetaPromise | async)?.jobs; let i = index;"
+            [application]="application"
+            [job]="application.job"
+            *ngFor="let application of (applicationsMetaPromise | async)?.applications; let i = index;"
             class="ui basic left aligned segment"
             style="margin: 1rem 0">
           </job-card>
@@ -45,39 +64,34 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
       <numbered-pager
         (pageChange)="onPageChange($event)"
         [currentPage]="page"
-        [maxResults]="totalJobs"
-        [pageSize]="pageSize">
+        [maxResults]="totalApplications"
+        [pageSize]="pageSize"
+        type="light">
       </numbered-pager>
     </div>`
 })
-export class JobsPagerSectionComponent extends BaseComponent {
+export class ApplicationsPagerSectionComponent extends BaseComponent {
 
-  @Input("filters")
-  public set filters(filters: any) {
-    if (!isEmpty(filters) && JSON.stringify(this.activeFilters) !== JSON.stringify(filters)) {
-      this.page = !this.activeFilters && this.dataStoreService.getFromMemory(this.jobsPageKey) || 1;
-      this.dataStoreService.setInMemory(this.jobsPageKey, this.page);
-      this.activeFilters = filters;
-      this.loadData();
-    }
-  }
-
-  public activeFilters: any;
-  public jobsMetaPromise: Promise<{jobs: Job[], meta: any}>;
+  public applicationsMetaPromise: Promise<{applications: Application[], meta: any}>;
   public page: number = 1;
-  public totalJobs: number = 0;
+  public totalApplications: number = 0;
   public readonly pageSize: number = 12;
-  private readonly jobsPageKey: string = 'jobsPageKey';
+  private readonly applicationsPageKey: string = 'applicationsPageKey';
 
   public constructor(
     private activatedRoute: ActivatedRoute,
+    private applicationProxy: ApplicationProxy,
     private dataStoreService: DataStoreService,
-    private jobProxy: JobProxy,
     private navigationService: NavigationService,
     protected systemLanguagesResolver: SystemLanguagesResolver,
     protected userResolver: UserResolver,
   ) {
     super(systemLanguagesResolver, userResolver);
+  }
+
+  public onInit() {
+    this.page = this.dataStoreService.getFromMemory(this.applicationsPageKey) || 1;
+    this.loadData();
   }
 
   public systemLanguageChanged(systemLanguage: Language): void {
@@ -86,25 +100,22 @@ export class JobsPagerSectionComponent extends BaseComponent {
 
   private loadData(): void {
     let searchParameters = {
-      'include': 'company,company.company_images',
+      'include': 'job,job.company,job.company.company_images',
       'page[number]': this.page,
-      'page[size]': this.pageSize
+      'page[size]': this.pageSize,
+      'sort': '-created_at',
     };
 
-    for (let filter in this.activeFilters.filterOption) {
-      searchParameters[filter] = this.activeFilters.filterOption[filter];
-    }
-
-    this.jobsMetaPromise = this.jobProxy.getJobsWithMeta(searchParameters)
+    this.applicationsMetaPromise = this.applicationProxy.getUserApplicationsWithMeta(this.user.id, searchParameters)
     .then(result => {
-      this.totalJobs = result.meta.total;
+      this.totalApplications = result.meta.total;
       return result;
     });
   }
 
   public onPageChange(page: number): void {
     this.page = page;
-    this.dataStoreService.setInMemory(this.jobsPageKey, this.page);
+    this.dataStoreService.setInMemory(this.applicationsPageKey, this.page);
     this.loadData();
   }
 }

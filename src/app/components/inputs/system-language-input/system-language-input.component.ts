@@ -24,8 +24,8 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
         [hint]="'input.system.language.description' | translate"
         [placeholder]="'input.system.language.placeholder' | translate"
         apiAttribute="system_language"
-        dataItemLabelProoerty="translatedText.name"
-        dataItemValueProoerty="id">
+        dataItemLabelProperty="translatedText.name"
+        dataItemValueProperty="id">
       </select-dropdown-input>
     </div>`
 })

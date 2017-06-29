@@ -15,15 +15,19 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
       [label]="label"
       [loading]="loading"
       [placeholder]="placeholder"
-      [searchFrequency]=searchFrequency>
+      [searchFrequency]=searchFrequency
+      [searchMemoryKey]="searchMemoryKey"
+      [searchPersistKey]="searchPersistKey">
     </search-input>`
 })
 export class BasicSearchComponent extends BaseComponent {
-  @Input() label: string;
-  @Input() loading: boolean;
-  @Input() placeholder: string;
-  @Input() searchFrequency: number = 500;
-  @Output() onSearch: EventEmitter<string> = new EventEmitter<string>();
+  @Input() public label: string;
+  @Input() public loading: boolean;
+  @Input() public placeholder: string;
+  @Input() public searchFrequency: number = 500;
+  @Input() public searchMemoryKey: string;
+  @Input() public searchPersistKey: string;
+  @Output() public onSearch: EventEmitter<string> = new EventEmitter<string>();
 
   public constructor(
     protected systemLanguagesResolver: SystemLanguagesResolver,

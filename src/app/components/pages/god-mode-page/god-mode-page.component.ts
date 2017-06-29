@@ -24,7 +24,6 @@ import {ViewChild} from '@angular/core';
 
       <div style="flex: 1;">
         <god-mode-pager-section
-          [currentRoute]="JARoutes.godMode"
           [filters]="activeFilters"
           #godModeUsersSectionComponent>
         </god-mode-pager-section>
@@ -36,7 +35,6 @@ export class GodModePageComponent extends PageComponent {
   @ViewChild('godModeUsersSectionComponent') public godModeUsersSectionComponent : GodModePagerSectionComponent;
 
   public activeFilters: any = {};
-  public JARoutes = JARoutes;
 
   public constructor (
     @Inject(DOCUMENT) protected document: any,

@@ -23,13 +23,16 @@ import {ViewChild} from '@angular/core';
        [label]="label"
        [options]="options"
        [placeholder]="placeholder"
+       [selectedMemoryKey]="selectedMemoryKey"
+       [selectedPersistKey]="selectedPersistKey"
        (onChange)="change($event)"
        class="search">
         <option
           style="text-align: right; direction: rtl;"
-          [value]="getNestedProperty(item, dataItemValueProoerty)"
+          [value]='getNestedProperty(item, dataItemValueProperty)'
           *ngFor="let item of data">
-          {{getNestedProperty(item, dataItemLabelProoerty)}}
+          <!-- Has to be pre translated in API or via TranslateService. Pipe wont work properly here.-->
+          {{getNestedProperty(item, dataItemLabelProperty)}}
         </option>
       </select-input>
       <input-errors
@@ -50,8 +53,8 @@ export class SelectDropdownInputComponent extends BaseComponent {
   @Input() public apiErrors: any;
   @Input() public control: any;
   @Input() public data: any[];
-  @Input() public dataItemLabelProoerty: string;
-  @Input() public dataItemValueProoerty: string;
+  @Input() public dataItemLabelProperty: string;
+  @Input() public dataItemValueProperty: string;
   @Input() public fluid: boolean = true;
   @Input() public hint: string;
   @Input() public label: string;
@@ -62,6 +65,8 @@ export class SelectDropdownInputComponent extends BaseComponent {
   @Input() public patternLabel: string;
   @Input() public placeholder: string;
   @Input() public requiredLabel: string;
+  @Input() public selectedMemoryKey: string;
+  @Input() public selectedPersistKey: string;
   @Output() public onChange = new EventEmitter();
   @ViewChild(InputErrorsComponent) inputErrors: InputErrorsComponent;
   public getNestedProperty = getNestedProperty;

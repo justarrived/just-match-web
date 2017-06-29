@@ -7,8 +7,8 @@ import {SystemLanguagesResolver} from '../../../resolvers/system-languages/syste
 import {UserResolver} from '../../../resolvers/user/user.resolver';
 
 @Component({
-  selector: 'users-filter',
-  styleUrls: ['./users-filter.component.scss'],
+  selector: 'jobs-filter',
+  styleUrls: ['./jobs-filter.component.scss'],
   template: `
     <div
       [style.direction]="systemLanguage.direction"
@@ -17,37 +17,15 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
       <div
         class="ui item"
         style="justify-content: center; align-items: center;">
-        <sort-users-input
-          (onSortChanged)=onSortChanged($event)
-          style="width: 80%">
-        </sort-users-input>
-      </div>
-      <div
-        class="ui item"
-        style="justify-content: center; align-items: center;">
-        <filter-users-input
+        <filter-jobs-input
           (onFilterChanged)=onFilterChanged($event)
           style="width: 80%">
-        </filter-users-input>
-      </div>
-      <div
-        class="ui item"
-        style="justify-content: center; align-items: center;">
-        <basic-search
-          (onSearch)="onSearch($event)"
-          [loading]="false"
-          [label]="'users.filter.search.label' | translate"
-          [placeholder]="'users.filter.search.placeholder' | translate"
-          searchMemoryKey="searchUsersKey"
-          style="width: 80%">
-        </basic-search>
+        </filter-jobs-input>
       </div>
     </div>`
 })
-export class UsersFilterComponent extends BaseComponent {
+export class JobsFilterComponent extends BaseComponent {
   @Output() onFiltersChanged: EventEmitter<any> = new EventEmitter<any>();
-  public searchText: string;
-  public sortOption: string;
   public filterOption: string;
 
   public constructor(
@@ -57,25 +35,13 @@ export class UsersFilterComponent extends BaseComponent {
     super(systemLanguagesResolver, userResolver);
   }
 
-  public onSearch(searchText: string) {
-    this.searchText = searchText;
-    this.emitFilterChanges();
-  }
-
-  public onSortChanged(sortOption: string) {
-    this.sortOption = sortOption;
-    this.emitFilterChanges();
-  }
-
-  public onFilterChanged(filterOption: string) {
+  public onFilterChanged(filterOption: any) {
     this.filterOption = filterOption;
     this.emitFilterChanges();
   }
 
   public emitFilterChanges() {
     this.onFiltersChanged.emit({
-      searchText: this.searchText,
-      sortOption: this.sortOption,
       filterOption: this.filterOption,
     });
   }

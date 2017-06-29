@@ -30,8 +30,8 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
       [label]="'input.languages.label' | translate"
       [placeholder]="'input.languages.placeholder' | translate"
       apiAttribute="language_ids"
-      dataItemLabelProoerty="translatedText.name"
-      dataItemValueProoerty="id">
+      dataItemLabelProperty="translatedText.name"
+      dataItemValueProperty="id">
     </select-dropdown-input>
     <basic-text
       [text]="'input.languages.hint' | translate"

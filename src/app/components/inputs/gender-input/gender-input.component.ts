@@ -25,8 +25,8 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
         [label]="'input.gender.label' | translate"
         [placeholder]="'input.gender.placeholder' | translate"
         apiAttribute="gender"
-        dataItemLabelProoerty="translatedText.name"
-        dataItemValueProoerty="id">
+        dataItemLabelProperty="translatedText.name"
+        dataItemValueProperty="id">
       </select-dropdown-input>
     </div>`
 })

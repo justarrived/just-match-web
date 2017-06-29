@@ -25,8 +25,8 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
       [label]="'input.country.of.origin.label' | translate"
       [placeholder]="'input.country.of.origin.placeholder' | translate"
       apiAttribute="country_of_origin"
-      dataItemLabelProoerty="translatedText.name"
-      dataItemValueProoerty="countryCode">
+      dataItemLabelProperty="translatedText.name"
+      dataItemValueProperty="countryCode">
     </select-dropdown-input>
   </div>`
 })

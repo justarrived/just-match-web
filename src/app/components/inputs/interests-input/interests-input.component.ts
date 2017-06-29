@@ -31,8 +31,8 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
       [label]="'input.interests.label' | translate"
       [placeholder]="'input.interests.placeholder' | translate"
       apiAttribute="interest_ids"
-      dataItemLabelProoerty="translatedText.name"
-      dataItemValueProoerty="id">
+      dataItemLabelProperty="translatedText.name"
+      dataItemValueProperty="id">
     </select-dropdown-input>
     <basic-text
       [text]="'input.interests.hint' | translate"

@@ -19,9 +19,11 @@ import {ViewChild} from '@angular/core';
         icon="search">
       </basic-border-section>
 
+      <jobs-filter (onFiltersChanged)="onFiltersChanged($event)"></jobs-filter>
+
       <div style="flex: 1;">
         <jobs-pager-section
-          [currentRoute]="JARoutes.jobs"
+          [filters]="activeFilters"
           #jobsPagerSectionComponent>
         </jobs-pager-section>
       </div>
@@ -32,6 +34,8 @@ import {ViewChild} from '@angular/core';
 export class JobsPageComponent extends PageComponent {
 
   @ViewChild('jobsPagerSectionComponent') public jobsPagerSectionComponent : JobsPagerSectionComponent;
+
+  public activeFilters: any = {};
 
   public constructor (
     @Inject(DOCUMENT) protected document: any,
@@ -61,5 +65,9 @@ export class JobsPageComponent extends PageComponent {
       translateService,
       userResolver
     );
+  }
+
+  public onFiltersChanged(filters: {filterOption: string}): void {
+    this.activeFilters = filters;
   }
 }

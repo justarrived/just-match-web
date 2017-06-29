@@ -31,8 +31,8 @@ import {UserSkillFactory} from '../../../models/api-models/user-skill/user-skill
       [label]="'input.skills.label' | translate"
       [placeholder]="'input.skills.placeholder' | translate"
       apiAttribute="skill_ids"
-      dataItemLabelProoerty="translatedText.name"
-      dataItemValueProoerty="id">
+      dataItemLabelProperty="translatedText.name"
+      dataItemValueProperty="id">
     </select-dropdown-input>
     <basic-text
       [text]="'input.skills.hint' | translate"

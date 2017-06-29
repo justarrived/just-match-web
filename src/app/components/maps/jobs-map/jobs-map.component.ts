@@ -123,8 +123,7 @@ export class JobsMapComponent extends BaseComponent {
   private loadData() {
     this.jobs = this.jobProxy.getJobs({
       'include': 'company,hourly_pay,company.company_images',
-      'filter[filled]': false,
-      'filter[job_date]': yyyymmdd(new Date()) + '..' + yyyymmdd(nbrOfMonthsFromDate(new Date(), 12)),
+      'filter[open_for_applications]': true,
       'page[size]': 50,
     });
   }

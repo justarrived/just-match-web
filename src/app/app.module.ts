@@ -5,8 +5,9 @@ import {ApiErrorsComponent} from './components/form-errors/api-errors/api-errors
 import {APP_BASE_HREF} from '@angular/common';
 import {AppComponent} from './app.component';
 import {ApplicationItemComponent} from './components/items/application-item/application-item.component';
+import {ApplicationsBannerSectionComponent} from './components/sections/applications-banner-section/applications-banner-section.component';
 import {ApplicationsPageComponent} from './components/pages/applications-page/applications-page.component';
-import {ApplicationsSectionComponent} from './components/sections/applications-section/applications-section.component';
+import {ApplicationsPagerSectionComponent} from './components/sections/applications-pager-section/applications-pager-section.component';
 import {ApplicationsStatusSectionComponent} from './components/sections/applications-status-section/applications-status-section.component';
 import {ApplicationStatusCardComponent} from './components/cards/application-status-card/application-status-card.component';
 import {AppliedForJobModalComponent} from './components/modals/applied-for-job-modal/applied-for-job-modal.component';
@@ -74,6 +75,7 @@ import {FacebookUrlInputComponent} from './components/inputs/facebook-url-input/
 import {FaqAccordionComponent} from './components/accordions/faq-accordion/faq-accordion.component';
 import {FaqPageComponent} from './components/pages/faq-page/faq-page.component';
 import {FileInputButtonComponent} from './components/buttons/file-input-button/file-input-button.component';
+import {FilterJobsInputComponent} from './components/inputs/filter-jobs-input/filter-jobs-input.component';
 import {FilterUsersInputComponent} from './components/inputs/filter-users-input/filter-users-input.component';
 import {FirstNameInputComponent} from './components/inputs/first-name-input/first-name-input.component';
 import {ForbiddenPageComponent} from './components/pages/forbidden-page/forbidden-page.component';
@@ -115,6 +117,7 @@ import {JobMapMarkerComponent} from './components/map-markers/job-map-marker/job
 import {JobPageComponent} from './components/pages/job-page/job-page.component';
 import {JobRecruiterSectionComponent} from './components/sections/job-recruiter-section/job-recruiter-section.component';
 import {JobRequirementsSectionComponent} from './components/sections/job-requirements-section/job-requirements-section.component';
+import {JobsFilterComponent} from './components/filters/jobs-filter/jobs-filter.component';
 import {JobShortDescriptionSectionComponent} from './components/sections/job-short-description-section/job-short-description-section.component';
 import {JobsMapComponent} from './components/maps/jobs-map/jobs-map.component';
 import {JobsPageComponent} from './components/pages/jobs-page/jobs-page.component';
@@ -256,8 +259,9 @@ export class RavenErrorHandler implements ErrorHandler {
     ApiErrorsComponent,
     AppComponent,
     ApplicationItemComponent,
+    ApplicationsBannerSectionComponent,
     ApplicationsPageComponent,
-    ApplicationsSectionComponent,
+    ApplicationsPagerSectionComponent,
     ApplicationsStatusSectionComponent,
     ApplicationStatusCardComponent,
     AppliedForJobModalComponent,
@@ -319,6 +323,7 @@ export class RavenErrorHandler implements ErrorHandler {
     FaqAccordionComponent,
     FaqPageComponent,
     FileInputButtonComponent,
+    FilterJobsInputComponent,
     FilterUsersInputComponent,
     FirstNameInputComponent,
     ForbiddenPageComponent,
@@ -356,6 +361,7 @@ export class RavenErrorHandler implements ErrorHandler {
     JobPageComponent,
     JobRecruiterSectionComponent,
     JobRequirementsSectionComponent,
+    JobsFilterComponent,
     JobShortDescriptionSectionComponent,
     JobsMapComponent,
     JobsPageComponent,
@@ -413,6 +419,7 @@ export class RavenErrorHandler implements ErrorHandler {
     SkatteverketCertificateInputComponent,
     SkillProficiencyInputComponent,
     SkillsInputComponent,
+    SocialMediaSectionComponent,
     SortUsersInputComponent,
     SSNInputComponent,
     StatusInputComponent,
@@ -437,7 +444,6 @@ export class RavenErrorHandler implements ErrorHandler {
     UserProfileFormComponent,
     UserProfilePageComponent,
     UsersFilterComponent,
-    SocialMediaSectionComponent,
     UserUpdateFormComponent,
     WelcomeBannerSectionComponent,
     WorkPermitBackInputComponent,
