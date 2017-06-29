@@ -32,6 +32,14 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
         <div
           [style.flex-direction]="systemLanguage.direction === 'rtl' ? 'row-reverse': 'row'"
           class="ui centered grid">
+          <basic-text
+            [text]="'jobs.pager.section.no.jobs' | translate"
+            *ngIf="(jobsMetaPromise| async)?.jobs?.length === 0"
+            color="black"
+            fontSize="large"
+            textAlignmentLtr="center"
+            textAlignmentRtl="center">
+          </basic-text>
           <job-card
             [animationDelay]="50 * i"
             [job]="job"

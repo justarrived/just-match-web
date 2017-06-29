@@ -26,7 +26,6 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
         class="ui basic center aligned segment"
         style="margin: 0; padding: 0;">
         <basic-title-text
-          [iconLeft]="icon"
           [text]="'menu.main.my_assignment' | translate"
           color="black"
           fontSize="large"
@@ -50,6 +49,14 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
         <div
           [style.flex-direction]="systemLanguage.direction === 'rtl' ? 'row-reverse': 'row'"
           class="ui centered grid">
+          <basic-text
+            [text]="'applications.pager.section.no.applications' | translate"
+            *ngIf="(applicationsMetaPromise| async)?.applications?.length === 0"
+            color="black"
+            fontSize="large"
+            textAlignmentLtr="center"
+            textAlignmentRtl="center">
+          </basic-text>
           <job-card
             [animationDelay]="50 * i"
             [application]="application"
