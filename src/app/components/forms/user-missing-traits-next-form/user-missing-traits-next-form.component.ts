@@ -203,7 +203,7 @@ export class UserMissingTraitsNextFormComponent extends BaseComponent {
     };
 
     return this.userProxy.updateUser(this.user.id, this.getRequestedUpdateAttributes(updateAttributes), {
-      'include': this.userResolver.defaultIncludeResourcesString,
+      'include': UserResolver.includes,
     })
     .then(user => {
       this.userResolver.setUser(user);

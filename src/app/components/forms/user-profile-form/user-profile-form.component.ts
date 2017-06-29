@@ -110,7 +110,7 @@ export class UserProfileFormComponent extends BaseComponent {
       }),
       'ssn': this.profileForm.value.ssn,
     }, {
-      'include': this.userResolver.defaultIncludeResourcesString,
+      'include': UserResolver.includes,
     })
     .then(user => {
       this.userResolver.setUser(user)

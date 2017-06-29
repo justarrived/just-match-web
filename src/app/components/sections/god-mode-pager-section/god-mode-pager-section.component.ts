@@ -127,7 +127,7 @@ export class GodModePagerSectionComponent extends BaseComponent {
 
   public activateGodmode(user: User): void {
     this.actAsUser = this.userProxy.getUser(user.id, {
-      'include': this.userResolver.defaultIncludeResourcesString
+      'include': UserResolver.includes
     })
     .then(user => {
       this.userResolver.activateGodMode(user);

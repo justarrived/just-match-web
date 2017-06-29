@@ -111,7 +111,7 @@ export class UserDetailsFormComponent extends BaseComponent {
       'system_language_id': this.settingsForm.value.system_language_id,
       'zip': this.settingsForm.value.zip,
     }, {
-      'include': this.userResolver.defaultIncludeResourcesString,
+      'include': UserResolver.includes,
     })
     .then(user => {
       if (this.passwordsSupplied()) {
