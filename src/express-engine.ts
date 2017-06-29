@@ -67,7 +67,7 @@ export function ngExpressEngine(setupOptions: NgSetupOptions) {
     }
   ]);
 
-  return function (filePath: string, options: RenderOptions, callback: Send) {
+  return function (filePath: string, options: RenderOptions, callback: any) {
 
     options.providers = options.providers || [];
 
