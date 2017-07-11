@@ -207,19 +207,15 @@ export class JobPageComponent extends PageComponent {
 
   public onInit(): void {
     this.initRouteParamsSubscription();
-    this.initQueryParamsSubscription();
   }
 
   private initRouteParamsSubscription(): void {
     this.routeParamsSubscription = this.route.params.subscribe(params => {
       this.jobId = params[JobPageComponent.idParam];
-      this.loadData();
-    });
-  }
-
-  private initQueryParamsSubscription(): void {
-    this.queryParamsSubscription = this.route.queryParams.subscribe(params => {
-      this.previewKey = params[JobPageComponent.previewKeyParam];
+      this.queryParamsSubscription = this.route.queryParams.subscribe(params => {
+        this.previewKey = params[JobPageComponent.previewKeyParam];
+        this.loadData();
+      });
     });
   }
 
@@ -229,8 +225,7 @@ export class JobPageComponent extends PageComponent {
 
   private loadData(): void {
     this.jobPromise = this.jobProxy.getJob(this.jobId, {
-      'include': JobPageComponent.includes
-    }, {
+      'include': JobPageComponent.includes,
       'preview_key': this.previewKey
     })
     .then(job => {
