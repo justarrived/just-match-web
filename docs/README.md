@@ -10,8 +10,22 @@ Developer guide for Just Match Web.
   - SCSS
   - HTML5
 
-* __Scripts__
+* __Requirements__
+  - yarn
 
+* __Scripts__
+  - bootstrap
+    - install all the dependencies
+  - pull-translations
+    - fetch all transifex translations into src/assets/i18n
+  - push-translations
+    - push the en.json (english) translation in src/assets/i18n to transifex
+  - server
+    - start the dev mode server
+  - setup
+    - setup the project (also runs bootstrap)
+  - update
+    - update the project (also runs bootstrap)
 * __Typescript conventions__
 
 Imports
