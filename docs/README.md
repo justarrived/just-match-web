@@ -26,6 +26,7 @@ Developer guide for Just Match Web.
     - setup the project (also runs bootstrap)
   - update
     - update the project (also runs bootstrap)
+
 * __Typescript conventions__
 
 Imports
@@ -213,6 +214,21 @@ export class ContactFormComponent implements OnInit {
 ```
 
 * __Assets__
+  - Icons
+    - Should be .svg
+    - Minimal size and compressed
+  - Images
+    - Use the format that results in the lowest file size.
+    - Compress the images.
+  - Fonts
+    - Prefer CDN:s
+    - Only add fonts as an asset if not available via CDN
+  - i18n (translations)
+    - Only edit en.json
+    - Use the push-translations script to upload to transifex
+    - Use the pull-translations script to update the transifex translations in the i18n folder.
+  - Terms
+    - Only for terms and condition files
 
 * __Tests__
 
