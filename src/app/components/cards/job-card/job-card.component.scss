@@ -15,7 +15,7 @@
     align-items: center;
     justify-content: center;
 
-    .filled-job-stamp {
+    .job-stamp {
       z-index: 1;
       border: 2px solid $color-cerise-500;
       padding: 5px;
@@ -24,6 +24,14 @@
       -o-transform: rotate(10deg);
       -ms-transform: rotate(10deg);
       transform: rotate(10deg);
+    }
+
+    .job-stamp-filled {
+      border-color: $color-green-font;
+    }
+
+    .job-stamp-closed {
+      border-color: $color-cerise-500;
     }
   }
 

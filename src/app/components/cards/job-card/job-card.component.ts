@@ -202,12 +202,12 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
       class="filled-job-container">
       <div
         *ngIf="job.filled"
-        class="filled-job-stamp">
+        class="job-stamp job-stamp-filled">
         <basic-title-text
           [text]="'job.card.filled' | translate"
           [uppercase]="true"
           fontSize="huge"
-          color="pink"
+          color="green"
           marginTop="0"
           marginBottom="0"
           textAlignmentLtr="center"
@@ -216,7 +216,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
       </div>
       <div
         *ngIf="!job.filled && !job.openForApplications"
-        class="filled-job-stamp">
+        class="job-stamp job-stamp-closed">
         <basic-title-text
           [text]="'job.card.closed.for.applications' | translate"
           [uppercase]="true"

@@ -28,6 +28,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
       [class.tablet-right]="systemLanguage.direction === 'rtl' && textAlignmentRtlTablet === 'right' || systemLanguage.direction === 'ltr' && textAlignmentLtrTablet === 'right'"
       [class.tiny]="fontSize === 'tiny'"
       [class.gray]="color === 'gray'"
+      [class.green]="color === 'green'"
       [class.black]="color === 'black'"
       [class.white]="color === 'white'"
       [class.pink]="color === 'pink'"
@@ -98,7 +99,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
 export class BasicTitleTextComponent extends BaseComponent {
   @Input() public alwaysLtrText: boolean = false;
   @Input() public alwaysRtlText: boolean = false;
-  @Input() public color: string; // Should be one of 'pink', 'black', 'gray', 'white'.
+  @Input() public color: string; // Should be one of 'pink', 'black', 'gray', 'white', 'green'.
   @Input() public display: string = 'block';
   @Input() public oneLineEllipsis: boolean = false;
   @Input() public italic: boolean = false;

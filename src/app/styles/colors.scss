@@ -1,3 +1,4 @@
+// Palette
 $color-blue-50: #E0EDFA;
 $color-blue-100: #B3D2F2;
 $color-blue-200: #80B4E9;
@@ -26,17 +27,9 @@ $color-gray-500: #383F4E;
 $color-gray-700: #2F3441;
 $color-gray-800: #222531;
 
-$color-background: #E8EBEE;
-
 $black: rgba(0,0,0,.87);
 $white: #FFFFFF;
 
-$color-accent-main: #45E2FF;
-$color-accent-darker: #00A9E5;
-$color-accent-lighter: #7FEBFF;
-
-// Background colors
-$default-bg-color: $white;
-
-// Borders
-$white-bg-border: $color-gray-50;
+// Custom colors (please use with care)
+$color-background: #E8EBEE;
+$color-green-font: #3eb544;
