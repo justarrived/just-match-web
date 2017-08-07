@@ -20,23 +20,23 @@ input[type=url],
 input[type=number],
 textarea {
   @include text();
-  border-radius: 1rem !important;
+  border-radius: 8px !important;
 }
 
 .ui.dropdown {
-  border-radius: 1rem !important;
+  border-radius: 8px !important;
 }
 
 .ui.upward.selection.dropdown.visible {
-  border-radius: 0 0 1rem 1rem !important;
+  border-radius: 0 0 8px 8px !important;
 }
 
 .ui.selection.dropdown .menu {
-  border-radius: 0 0 1rem 1rem !important;
+  border-radius: 0 0 8px 8px !important;
 }
 
 .ui.upward.selection.dropdown .menu {
-  border-radius: 1rem 1rem 0 0 !important;
+  border-radius: 8px 8px 0 0 !important;
 }
 
 .ui.modal.basic {
