@@ -6,7 +6,10 @@
   align-items: center;
   flex-direction: column;
 
+  padding-top: 20px;
+  padding-bottom: 20px;
+
   @media screen and (min-width: $tablet-min-width) {
-    padding: 0 20px 20px 20px;
+    padding: 20px 20px 20px 20px;
   }
 }

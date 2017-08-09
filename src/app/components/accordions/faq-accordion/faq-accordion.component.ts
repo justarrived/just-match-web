@@ -10,8 +10,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
   selector: 'faq-accordion',
   template: `
     <basic-accordion
-      [options]="{ exclusive: true }"
-      class="styled fluid">
+      [options]="{ exclusive: true }">
       <basic-accordion-item *ngFor="let faq of faqs | async">
         <basic-title-text
           accordion-title
@@ -23,14 +22,12 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
           marginBottom="0">
         </basic-title-text>
         <div accordion-content>
-          <div class="ui padded raised segment">
-            <basic-text
-              [unsafeHtml]="faq.translatedText.answer"
-              color="black"
-              marginTop="0"
-              marginBottom="0">
-            </basic-text>
-          </div>
+          <basic-text
+            [unsafeHtml]="faq.translatedText.answer"
+            color="black"
+            marginTop="0"
+            marginBottom="0">
+          </basic-text>
         </div>
       </basic-accordion-item>
     </basic-accordion>`

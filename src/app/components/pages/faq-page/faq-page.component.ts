@@ -30,7 +30,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
       marginBottom="30px">
     </basic-title-text>
 
-    <faq-accordion></faq-accordion>
+    <faq-accordion style="width: 100%"></faq-accordion>
   </div>
   `
 })
