@@ -24,7 +24,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
         <div accordion-content>
           <basic-text
             [unsafeHtml]="faq.translatedText.answer"
-            color="black"
+            color="gray"
             marginTop="0"
             marginBottom="0">
           </basic-text>
