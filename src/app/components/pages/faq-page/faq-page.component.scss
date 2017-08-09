@@ -1,0 +1,12 @@
+@import '../../../styles/colors';
+@import '../../../styles/dimensions';
+
+.faq-page-grid {
+  background: $color-gray-25 url('/assets/images/light-pattern-background.jpg') repeat !important;
+  align-items: center;
+  flex-direction: column;
+
+  @media screen and (min-width: $tablet-min-width) {
+    padding: 0 20px 20px 20px;
+  }
+}

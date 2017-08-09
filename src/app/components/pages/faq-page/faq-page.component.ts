@@ -10,12 +10,28 @@ import {TranslateService} from '@ngx-translate/core';
 import {UserResolver} from '../../../resolvers/user/user.resolver';
 
 @Component({
+  styleUrls: ['./faq-page.component.scss'],
   template: `
-  <basic-border-section
-    [header]="'faq.title' | translate"
-    icon="info circle">
-  </basic-border-section>
-  <faq-accordion></faq-accordion>
+  <div
+    class="ui grid faq-page-grid"
+    [style.direction]="systemLanguage.direction">
+
+    <basic-title-text
+      [text]="'faq.title' | translate"
+      [underlineBelow]="true"
+      color="black"
+      fontSize="huge"
+      textAlignmentLtr="center"
+      textAlignmentRtl="center"
+      underlineBelowColor="pink"
+      underlineBelowLtrAlignment="center"
+      underlineBelowRtlAlignment="center"
+      marginTop="30px"
+      marginBottom="30px">
+    </basic-title-text>
+
+    <faq-accordion></faq-accordion>
+  </div>
   `
 })
 export class FaqPageComponent extends PageComponent {
