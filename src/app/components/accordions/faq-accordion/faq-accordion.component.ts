@@ -9,6 +9,10 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
 @Component({
   selector: 'faq-accordion',
   template: `
+    <basic-loader
+      [promise]="faqs"
+      class="inverted">
+    </basic-loader>
     <basic-accordion
       [options]="{ exclusive: true }">
       <basic-accordion-item *ngFor="let faq of faqs | async">
