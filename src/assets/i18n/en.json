@@ -486,5 +486,19 @@
   "validations.maxlength": "is too long (maximum {{maxLength}} characters)",
   "validations.minlength": "is too short (minimum {{minLength}} characters)",
   "validations.pattern": "does not conform to the required pattern",
-  "validations.required": "can't be blank"
+  "validations.required": "can't be blank",
+  "welcome-step-1-modal-point-1": "We want you to explore and reach your dreams in life.",
+  "welcome-step-1-modal-point-2": "We want to make sure that the labour market benefits from your skills and experience.",
+  "welcome-step-1-modal-point-3": "We want to help you get intergrated into the Swedish society.",
+  "welcome-step-1-modal-point-4": "We can help you get the experience you need to enter the Swedish labour market to help you on your way to the stars!",
+  "welcome-step-1-modal-title": "Why Just Arrived?",
+  "welcome-step-2-modal-point-1": "We believe in you!",
+  "welcome-step-2-modal-point-2": "You make our society and culture more vibrant, colorful and multidimensional.",
+  "welcome-step-2-modal-point-3": "You have ideas, experience and skills that people can benefit from right now!",
+  "welcome-step-2-modal-point-4": "You are the future in this society.",
+  "welcome-step-2-modal-title": "Why You?",
+  "welcome-step-3-modal-description": "The next step is to update your profile in order to increase your chances to get a job.",
+  "welcome-step-3-modal-find-jobs-button": "Find a job",
+  "welcome-step-3-modal-title": "Welcome to Just Arrived!",
+  "welcome-step-3-modal-update-profile-button": "Update profile"
 }

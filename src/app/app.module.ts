@@ -188,6 +188,7 @@ import {SocialMediaSectionComponent} from './components/sections/social-media-se
 import {SortUsersInputComponent} from './components/inputs/sort-users-input/sort-users-input.component';
 import {SSNInputComponent} from './components/inputs/ssn-input/ssn-input.component';
 import {StatusInputComponent} from './components/inputs/status-input/status-input.component';
+import {StepModalComponent} from './components/modals/step-modal/step-modal.component';
 import {StreetInputComponent} from './components/inputs/street-input/street-input.component';
 import {SuccessMessageComponent} from './components/messages/success-message/success-message.component';
 import {SupportChatComponent} from './components/chats/support-chat/support-chat.component';
@@ -213,6 +214,9 @@ import {UserResolver} from './resolvers/user/user.resolver';
 import {UsersFilterComponent} from './components/filters/users-filter/users-filter.component';
 import {UserUpdateFormComponent} from './components/forms/user-update-form/user-update-form.component';
 import {WelcomeBannerSectionComponent} from './components/sections/welcome-banner-section/welcome-banner-section.component';
+import {WelcomeStep1ModalComponent} from './components/modals/welcome-step-1-modal/welcome-step-1-modal.component';
+import {WelcomeStep2ModalComponent} from './components/modals/welcome-step-2-modal/welcome-step-2-modal.component';
+import {WelcomeStep3ModalComponent} from './components/modals/welcome-step-3-modal/welcome-step-3-modal.component';
 import {WorkPermitBackInputComponent} from './components/inputs/work-permit-back-input/work-permit-back-input.component';
 import {WorkPermitFrontInputComponent} from './components/inputs/work-permit-front-input/work-permit-front-input.component';
 import {YesNoInputComponent} from './components/inputs/yes-no-input/yes-no-input.component';
@@ -423,6 +427,7 @@ export class RavenErrorHandler implements ErrorHandler {
     SortUsersInputComponent,
     SSNInputComponent,
     StatusInputComponent,
+    StepModalComponent,
     StreetInputComponent,
     SuccessMessageComponent,
     SupportChatComponent,
@@ -446,6 +451,9 @@ export class RavenErrorHandler implements ErrorHandler {
     UsersFilterComponent,
     UserUpdateFormComponent,
     WelcomeBannerSectionComponent,
+    WelcomeStep1ModalComponent,
+    WelcomeStep2ModalComponent,
+    WelcomeStep3ModalComponent,
     WorkPermitBackInputComponent,
     WorkPermitFrontInputComponent,
     YesNoInputComponent,

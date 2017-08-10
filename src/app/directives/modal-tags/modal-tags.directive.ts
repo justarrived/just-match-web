@@ -3,7 +3,7 @@ import {Directive} from '@angular/core';
 import {SystemLanguagesResolver} from '../../resolvers/system-languages/system-languages.resolver';
 import {UserResolver} from '../../resolvers/user/user.resolver';
 
-@Directive({ selector: 'modal-content, modal-actions' })
+@Directive({ selector: 'modal-content, modal-actions, modal-header' })
 export class ModalTagsDirective extends BaseComponent {
   // No behavior
   // The only purpose is to "declare" the tag in Angular

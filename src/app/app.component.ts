@@ -22,6 +22,9 @@ import {SystemLanguagesResolver} from './resolvers/system-languages/system-langu
 import {TransferState} from './transfer-state/transfer-state';
 import {UserResolver} from './resolvers/user/user.resolver';
 import {ViewChild} from '@angular/core';
+import {WelcomeStep1ModalComponent} from './components/modals/welcome-step-1-modal/welcome-step-1-modal.component';
+import {WelcomeStep2ModalComponent} from './components/modals/welcome-step-2-modal/welcome-step-2-modal.component';
+import {WelcomeStep3ModalComponent} from './components/modals/welcome-step-3-modal/welcome-step-3-modal.component';
 
 @Component({
   selector: 'app',
@@ -125,6 +128,21 @@ import {ViewChild} from '@angular/core';
       *ngIf="shownModal === 'signedForJobModalComponent'"
       #signedForJobModalComponent>
     </signed-for-job-modal>
+
+    <welcome-step-1-modal
+      *ngIf="shownModal === 'welcomeStep1ModalComponent'"
+      #welcomeStep1ModalComponent>
+    </welcome-step-1-modal>
+
+    <welcome-step-2-modal
+      *ngIf="shownModal === 'welcomeStep2ModalComponent'"
+      #welcomeStep2ModalComponent>
+    </welcome-step-2-modal>
+
+    <welcome-step-3-modal
+      *ngIf="shownModal === 'welcomeStep3ModalComponent'"
+      #welcomeStep3ModalComponent>
+    </welcome-step-3-modal>
 `
 })
 export class AppComponent extends BaseComponent {
@@ -144,6 +162,9 @@ export class AppComponent extends BaseComponent {
   @ViewChild('shareModalComponent') public shareModalComponent: ShareModalComponent;
   @ViewChild('signedForJobModalComponent') public signedForJobModalComponent: SignedForJobModalComponent;
   @ViewChild('signForJobModalComponent') public signForJobModalComponent: SignForJobModalComponent;
+  @ViewChild('welcomeStep1ModalComponent') public welcomeStep1ModalComponent: WelcomeStep1ModalComponent;
+  @ViewChild('welcomeStep2ModalComponent') public welcomeStep2ModalComponent: WelcomeStep2ModalComponent;
+  @ViewChild('welcomeStep3ModalComponent') public welcomeStep3ModalComponent: WelcomeStep3ModalComponent;
 
   public args: any[] = [];
   public navigate: boolean;

@@ -1,0 +1,45 @@
+.banner-container {
+  background: url('/assets/images/gradient-banner-background.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.content-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .next-icon {
+    background: url('/assets/icons/back.svg');
+  }
+
+  .previous-icon {
+    background: url('/assets/icons/back.svg');
+  }
+
+  .icon {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    height: 42px;
+    width: 42px;
+    cursor: pointer;
+  }
+
+  .disabled {
+    cursor: default;
+    background: url('/assets/icons/back-hover.svg');
+  }
+
+  .modal-content {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    margin: 50px 20px;
+  }
+}
