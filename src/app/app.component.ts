@@ -20,6 +20,10 @@ import {SignForJobModalComponent} from './components/modals/sign-for-job-modal/s
 import {Subscription} from 'rxjs/Subscription';
 import {SystemLanguagesResolver} from './resolvers/system-languages/system-languages.resolver';
 import {TransferState} from './transfer-state/transfer-state';
+import {UpdateProfileStep1ModalComponent} from './components/modals/update-profile-step-1-modal/update-profile-step-1-modal.component';
+import {UpdateProfileStep2ModalComponent} from './components/modals/update-profile-step-2-modal/update-profile-step-2-modal.component';
+import {UpdateProfileStep3ModalComponent} from './components/modals/update-profile-step-3-modal/update-profile-step-3-modal.component';
+import {UpdateProfileStep4ModalComponent} from './components/modals/update-profile-step-4-modal/update-profile-step-4-modal.component';
 import {UserResolver} from './resolvers/user/user.resolver';
 import {ViewChild} from '@angular/core';
 import {WelcomeStep1ModalComponent} from './components/modals/welcome-step-1-modal/welcome-step-1-modal.component';
@@ -129,6 +133,26 @@ import {WelcomeStep3ModalComponent} from './components/modals/welcome-step-3-mod
       #signedForJobModalComponent>
     </signed-for-job-modal>
 
+    <update-profile-step-1-modal
+      *ngIf="shownModal === 'updateProfileStep1ModalComponent'"
+      #updateProfileStep1ModalComponent>
+    </update-profile-step-1-modal>
+
+    <update-profile-step-2-modal
+      *ngIf="shownModal === 'updateProfileStep2ModalComponent'"
+      #updateProfileStep2ModalComponent>
+    </update-profile-step-2-modal>
+
+    <update-profile-step-3-modal
+      *ngIf="shownModal === 'updateProfileStep3ModalComponent'"
+      #updateProfileStep3ModalComponent>
+    </update-profile-step-3-modal>
+
+    <update-profile-step-4-modal
+      *ngIf="shownModal === 'updateProfileStep4ModalComponent'"
+      #updateProfileStep4ModalComponent>
+    </update-profile-step-4-modal>
+
     <welcome-step-1-modal
       *ngIf="shownModal === 'welcomeStep1ModalComponent'"
       #welcomeStep1ModalComponent>
@@ -162,6 +186,10 @@ export class AppComponent extends BaseComponent {
   @ViewChild('shareModalComponent') public shareModalComponent: ShareModalComponent;
   @ViewChild('signedForJobModalComponent') public signedForJobModalComponent: SignedForJobModalComponent;
   @ViewChild('signForJobModalComponent') public signForJobModalComponent: SignForJobModalComponent;
+  @ViewChild('updateProfileStep1ModalComponent') public updateProfileStep1ModalComponent: UpdateProfileStep1ModalComponent;
+  @ViewChild('updateProfileStep2ModalComponent') public updateProfileStep2ModalComponent: UpdateProfileStep2ModalComponent;
+  @ViewChild('updateProfileStep3ModalComponent') public updateProfileStep3ModalComponent: UpdateProfileStep3ModalComponent;
+  @ViewChild('updateProfileStep4ModalComponent') public updateProfileStep4ModalComponent: UpdateProfileStep4ModalComponent;
   @ViewChild('welcomeStep1ModalComponent') public welcomeStep1ModalComponent: WelcomeStep1ModalComponent;
   @ViewChild('welcomeStep2ModalComponent') public welcomeStep2ModalComponent: WelcomeStep2ModalComponent;
   @ViewChild('welcomeStep3ModalComponent') public welcomeStep3ModalComponent: WelcomeStep3ModalComponent;

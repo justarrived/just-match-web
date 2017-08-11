@@ -215,6 +215,10 @@ import {UserResolver} from './resolvers/user/user.resolver';
 import {UsersFilterComponent} from './components/filters/users-filter/users-filter.component';
 import {UserUpdateFormComponent} from './components/forms/user-update-form/user-update-form.component';
 import {WelcomeBannerSectionComponent} from './components/sections/welcome-banner-section/welcome-banner-section.component';
+import {UpdateProfileStep1ModalComponent} from './components/modals/update-profile-step-1-modal/update-profile-step-1-modal.component';
+import {UpdateProfileStep2ModalComponent} from './components/modals/update-profile-step-2-modal/update-profile-step-2-modal.component';
+import {UpdateProfileStep3ModalComponent} from './components/modals/update-profile-step-3-modal/update-profile-step-3-modal.component';
+import {UpdateProfileStep4ModalComponent} from './components/modals/update-profile-step-4-modal/update-profile-step-4-modal.component';
 import {WelcomeStep1ModalComponent} from './components/modals/welcome-step-1-modal/welcome-step-1-modal.component';
 import {WelcomeStep2ModalComponent} from './components/modals/welcome-step-2-modal/welcome-step-2-modal.component';
 import {WelcomeStep3ModalComponent} from './components/modals/welcome-step-3-modal/welcome-step-3-modal.component';
@@ -458,6 +462,10 @@ export class RavenErrorHandler implements ErrorHandler {
     WelcomeStep3ModalComponent,
     WorkPermitBackInputComponent,
     WorkPermitFrontInputComponent,
+    UpdateProfileStep1ModalComponent,
+    UpdateProfileStep2ModalComponent,
+    UpdateProfileStep3ModalComponent,
+    UpdateProfileStep4ModalComponent,
     YesNoInputComponent,
     ZipInputComponent,
   ],

@@ -1,6 +1,7 @@
 import {BaseComponent} from '../../base.component';
 import {Component} from '@angular/core';
 import {Input} from '@angular/core';
+import {ModalService} from '../../../services/modal.service';
 import {NavigationService} from '../../../services/navigation.service';
 import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
 import {UserResolver} from '../../../resolvers/user/user.resolver';
@@ -40,6 +41,7 @@ import {ViewChild} from '@angular/core';
             style="width: 160px; margin: 0 10px;">
           </base-button>
           <base-button
+            (click)="updateProfile()"
             [buttonText]="'welcome-step-3-modal-update-profile-button' | translate"
             [fluid]="true"
             kind="primary"
@@ -54,6 +56,7 @@ export class WelcomeStep3ModalComponent extends BaseComponent {
   @ViewChild('modal') public modal: any;
 
   public constructor(
+    private modalService: ModalService,
     private navigationService: NavigationService,
     protected systemLanguagesResolver: SystemLanguagesResolver,
     protected userResolver: UserResolver,
@@ -72,5 +75,9 @@ export class WelcomeStep3ModalComponent extends BaseComponent {
   public goToJobs(): void {
     this.navigationService.navigate(this.JARoutes.jobs);
     this.hide();
+  }
+
+  public updateProfile(): void {
+    this.modalService.showModal('updateProfileStep1ModalComponent', false, false, 400);
   }
 }
