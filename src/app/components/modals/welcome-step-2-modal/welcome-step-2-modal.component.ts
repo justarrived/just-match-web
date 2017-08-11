@@ -46,10 +46,6 @@ import {ViewChild} from '@angular/core';
             [unsafeHtml]="'<ul><li>' + ('welcome-step-2-modal-point-3' | translate) + '</li><ul>'"
             color="gray">
           </basic-text>
-          <basic-text
-            [unsafeHtml]="'<ul><li>' + ('welcome-step-2-modal-point-4' | translate) + '</li><ul>'"
-            color="gray">
-          </basic-text>
         </div>
       </modal-content>
     </step-modal>`
