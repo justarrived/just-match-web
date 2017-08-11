@@ -16,8 +16,8 @@ import {ViewChild} from "@angular/core";
 declare var jQuery: any;
 
 @Component({
-  selector: "step-modal",
-  styleUrls: ['./step-modal.component.scss'],
+  selector: "stepper-modal",
+  styleUrls: ['./stepper-modal.component.scss'],
   template: `
   <div
     #modal
@@ -27,23 +27,33 @@ declare var jQuery: any;
       <ng-content select="modal-header"></ng-content>
     </div>
     <div class="content-container">
-      <div
-        (click)="previous()"
-        [class.disabled]="!previousModal"
-        class="icon previous-icon">
-      </div>
       <div class="modal-content">
         <ng-content select="modal-content"></ng-content>
       </div>
-      <div
-        (click)="next()"
-        [class.disabled]="!nextModal"
-        class="icon next-icon">
+      <div style="width: 100%; display: flex; flex-wrap: wrap; justify-content: center; margin-bottom: 30px;">
+        <base-button
+          *ngIf="previousModal"
+          (click)="previous(true)"
+          [buttonText]="'stepper.modal.previous.button' | translate"
+          [fluid]="true"
+          kind="secondary"
+          size="small"
+          style="width: 160px; margin: 0 10px;">
+        </base-button>
+        <base-button
+          *ngIf="nextModal"
+          (click)="next(true)"
+          [buttonText]="'stepper.modal.next.button' | translate"
+          [fluid]="true"
+          kind="primary"
+          size="small"
+          style="width: 160px; margin: 0 10px;">
+        </base-button>
       </div>
     </div>
 </div>`
 })
-export class StepModalComponent extends BaseComponent {
+export class StepperModalComponent extends BaseComponent {
   @Input() public nextModal: string;
   @Input() public goToNextOnClick: boolean = true;
   @Input() public previousModal: string;

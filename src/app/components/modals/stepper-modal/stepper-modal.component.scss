@@ -1,0 +1,18 @@
+.banner-container {
+  background: url('/assets/images/gradient-banner-background.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.content-container {
+  .modal-content {
+    display: flex;
+    justify-content: center;
+    margin: 50px 20px;
+  }
+}

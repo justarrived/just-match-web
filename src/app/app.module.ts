@@ -189,6 +189,7 @@ import {SortUsersInputComponent} from './components/inputs/sort-users-input/sort
 import {SSNInputComponent} from './components/inputs/ssn-input/ssn-input.component';
 import {StatusInputComponent} from './components/inputs/status-input/status-input.component';
 import {StepModalComponent} from './components/modals/step-modal/step-modal.component';
+import {StepperModalComponent} from './components/modals/stepper-modal/stepper-modal.component';
 import {StreetInputComponent} from './components/inputs/street-input/street-input.component';
 import {SuccessMessageComponent} from './components/messages/success-message/success-message.component';
 import {SupportChatComponent} from './components/chats/support-chat/support-chat.component';
@@ -428,6 +429,7 @@ export class RavenErrorHandler implements ErrorHandler {
     SSNInputComponent,
     StatusInputComponent,
     StepModalComponent,
+    StepperModalComponent,
     StreetInputComponent,
     SuccessMessageComponent,
     SupportChatComponent,

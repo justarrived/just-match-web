@@ -8,7 +8,7 @@ import {ViewChild} from '@angular/core';
 @Component({
   selector: 'welcome-step-2-modal',
   template: `
-    <step-modal
+    <stepper-modal
       #modal
       previousModal="welcomeStep1ModalComponent"
       nextModal="welcomeStep3ModalComponent">
@@ -52,7 +52,7 @@ import {ViewChild} from '@angular/core';
           </basic-text>
         </div>
       </modal-content>
-    </step-modal>`
+    </stepper-modal>`
 })
 export class WelcomeStep2ModalComponent extends BaseComponent {
   @ViewChild('modal') public modal: any;
