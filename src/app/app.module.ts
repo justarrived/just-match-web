@@ -22,7 +22,7 @@ import {BackToJobsSectionComponent} from './components/sections/back-to-jobs-sec
 import {BankAccountInputComponent} from './components/inputs/bank-account-input/bank-account-input.component';
 import {BaseButtonComponent} from './components/buttons/base-button/base-button.component';
 import {BaseMessageComponent} from './components/messages/base-message/base-message.component';
-import {BaseModalComponent} from './components/modals/base-modal/base-modal.component';
+import {BasicModalComponent} from './components/modals/basic-modal/basic-modal.component';
 import {BasicAccordionComponent} from './components/accordions/basic-accordion/basic-accordion.component';
 import {BasicAccordionItemComponent} from './components/items/basic-accordion-item/basic-accordion-item.component';
 import {BasicBorderSectionComponent} from './components/sections/basic-border-section/basic-border-section.component';
@@ -279,7 +279,7 @@ export class RavenErrorHandler implements ErrorHandler {
     BankAccountInputComponent,
     BaseButtonComponent,
     BaseMessageComponent,
-    BaseModalComponent,
+    BasicModalComponent,
     BasicAccordionComponent,
     BasicAccordionItemComponent,
     BasicBorderSectionComponent,

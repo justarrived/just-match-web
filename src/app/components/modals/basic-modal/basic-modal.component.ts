@@ -15,7 +15,7 @@ import {ViewChild} from "@angular/core";
 declare var jQuery: any;
 
 @Component({
-  selector: "base-modal",
+  selector: "basic-modal",
   template: `
   <div
     #modal
@@ -52,7 +52,7 @@ declare var jQuery: any;
     </div>
 </div>`
 })
-export class BaseModalComponent extends BaseComponent {
+export class BasicModalComponent extends BaseComponent {
   @Input() class: string;
   @Input() title: string;
   @Input() icon: string;

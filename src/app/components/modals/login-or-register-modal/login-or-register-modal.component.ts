@@ -10,7 +10,7 @@ import {Output} from '@angular/core';
 @Component({
   selector: 'login-or-register-modal',
   template: `
-    <base-modal
+    <basic-modal
       #modal>
       <modal-content>
         <basic-title-text
@@ -48,7 +48,7 @@ import {Output} from '@angular/core';
           </div>
         </div>
       </modal-actions>
-    </base-modal>`
+    </basic-modal>`
 })
 export class LoginOrRegisterModalComponent extends BaseComponent {
   @Output() public onLoggedInOrRegistered = new EventEmitter();
