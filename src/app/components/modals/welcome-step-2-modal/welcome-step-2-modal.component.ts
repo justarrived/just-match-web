@@ -13,7 +13,15 @@ import {ViewChild} from '@angular/core';
       previousModal="welcomeStep1ModalComponent"
       nextModal="welcomeStep3ModalComponent">
       <modal-header>
-
+        <basic-title-text
+          [text]="'welcome-step-2-modal-header' | translate: {username: user.name}"
+          color="white"
+          fontSize="huge"
+          marginTop="0"
+          marginBottom="0"
+          textAlignmentLtr="center"
+          textAlignmentRtl="center">
+        </basic-title-text>
       </modal-header>
       <modal-content>
         <basic-title-text

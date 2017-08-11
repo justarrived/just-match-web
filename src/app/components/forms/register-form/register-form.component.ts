@@ -99,9 +99,8 @@ export class RegisterFormComponent extends BaseComponent {
     .then(user => {
       if (this.navigateToHome) {
         this.navigationService.navigate(this.JARoutes.home);
-      } else {
-        this.modalService.showModal('registeredModalComponent', false, false, this.isInModal ? 400 : 1);
       }
+      this.modalService.showModal('welcomeStep1ModalComponent', false, false, this.isInModal ? 400 : 1);
       this.loadingSubmit = false;
       return user;
     })
