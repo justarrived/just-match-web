@@ -62,6 +62,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
       [style.padding-top]="paddingTop"
       [style.text-decoration]="underline ? 'underline' : 'none'"
       [target]="hrefTarget"
+      [rel]="rel"
       *ngIf="href">
       {{text}}
     </a>
@@ -133,6 +134,7 @@ export class BasicLinkComponent extends BaseComponent {
   @Input() public hoverColor: string = 'pink'; // Should be one of 'pink', 'black', 'gray', 'white'.
   @Input() public href: string;
   @Input() public hrefTarget: string = '_blank';
+  @Input() public rel: string = 'noopener';
   @Input() public italic: boolean = false;
   @Input() public marginBottom: string = '1rem';
   @Input() public marginLeft: string = '0';

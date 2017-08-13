@@ -11,10 +11,10 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
   styleUrls: ['./share-section.component.scss'],
   template: `
     <div class="ui basic center aligned segment">
-      <a [href]="'https://www.facebook.com/sharer/sharer.php?u=' + url" target="_blank">
+      <a [href]="'https://www.facebook.com/sharer/sharer.php?u=' + url" target="_blank" rel="noopener">
         <i class="share-icon facebook-share-icon"></i>
       </a>
-      <a [href]="'https://web.whatsapp.com/send?text=' + url" target="_blank" data-action="share/whatsapp/share">
+      <a [href]="'https://web.whatsapp.com/send?text=' + url" target="_blank" rel="noopener" data-action="share/whatsapp/share">
         <i class="share-icon whatsapp-share-icon"></i>
       </a>
     </div>`

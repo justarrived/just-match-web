@@ -106,7 +106,8 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
     <a
       *ngIf="!hideReadMore"
       href="https://justarrived.se/"
-      target="_blank">
+      target="_blank"
+      rel="noopener">
       <div
         style="display: flex; align-items: center; justify-content: center; margin-top: 20px;"
         [style.margin]="center ? '20px auto 0 auto' : '20px 0 0 0'">
