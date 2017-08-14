@@ -15,7 +15,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
         [centered]="centered"
         [imageSaveFail]="imageSaveFail"
         [imageSaveSuccess]="imageSaveSuccess"
-        [imageUrl]="this.user && this.user[this.imageField]?.imageUrlMedium"
+        [imageUrl]="this.user && this.user[this.imageField]?.imageUrlLarge"
         [placeholderImageUrl]="placeholderImageUrl"
         [size]="size"
         [uploadingImage]="uploadingImage">

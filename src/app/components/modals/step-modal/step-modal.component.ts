@@ -5,6 +5,7 @@ import {EventEmitter} from "@angular/core";
 import {Inject} from "@angular/core";
 import {Input} from "@angular/core";
 import {isPlatformBrowser} from '@angular/common';
+import {ModalService} from '../../../services/modal.service';
 import {Output} from "@angular/core";
 import {PLATFORM_ID} from "@angular/core";
 import {Renderer2} from '@angular/core';
@@ -15,53 +16,47 @@ import {ViewChild} from "@angular/core";
 declare var jQuery: any;
 
 @Component({
-  selector: "base-modal",
+  selector: "step-modal",
+  styleUrls: ['./step-modal.component.scss'],
   template: `
   <div
     #modal
-    class="ui modal {{class}}">
+    class="ui modal">
     <i class="close icon"></i>
-    <div
-      *ngIf="icon || title"
-      [ngClass]="{'icon': icon}"
-      class="ui header">
+    <div class="banner-container">
+      <ng-content select="modal-header"></ng-content>
+    </div>
+    <div class="content-container">
       <i
-        *ngIf="icon"
-        class="icon {{icon}}">
+        (click)="previous()"
+        [class.disabled]="!previousModal"
+        class="huge pink chevron left icon">
       </i>
-      <basic-title-text
-        [text]="title"
-        [underlineBelow]="true"
-        *ngIf="title"
-        color="black"
-        fontSize="medium"
-        marginBottom="0"
-        marginTop="0"
-        textAlignmentLtr="center"
-        textAlignmentRtl="center"
-        underlineBelowColor="pink"
-        underlineBelowLtrAlignment="center"
-        underlineBelowRtlAlignment="center">
-      </basic-title-text>
-    </div>
-    <div class="content">
+      <div class="modal-content">
         <ng-content select="modal-content"></ng-content>
-    </div>
-    <div class="actions">
-        <ng-content select="modal-actions"></ng-content>
+      </div>
+      <i
+        (click)="next()"
+        [class.disabled]="!nextModal"
+          class="huge pink chevron right icon">
+      </i>
     </div>
 </div>`
 })
-export class BaseModalComponent extends BaseComponent {
-  @Input() class: string;
-  @Input() title: string;
-  @Input() icon: string;
-  @ViewChild("modal") modal: ElementRef;
-  @Output() onModalShow: EventEmitter<boolean> = new EventEmitter<boolean>();
+export class StepModalComponent extends BaseComponent {
+  @Input() public nextModal: string;
+  @Input() public goToNextOnClick: boolean = true;
+  @Input() public previousModal: string;
+  @Input() public goToPreviousOnClick: boolean = true;
   @Output() onModalHide: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() onModalShow: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() onNextClick: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() onPreviousClick: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @ViewChild("modal") modal: ElementRef;
 
   public constructor(
     @Inject(PLATFORM_ID) private readonly platformId: any,
+    private modalService: ModalService,
     private renderer: Renderer2,
     protected systemLanguagesResolver: SystemLanguagesResolver,
     protected userResolver: UserResolver,
@@ -85,10 +80,13 @@ export class BaseModalComponent extends BaseComponent {
     this.renderer.removeChild(this.renderer.parentNode(this.modal.nativeElement), this.modal.nativeElement);
   }
 
-  public show(data: any = {}) {
+  public show() {
     if (isPlatformBrowser(this.platformId)) {
       jQuery(this.modal.nativeElement)
-        .modal(data)
+        .modal({
+          autofocus: false,
+          transition: 'horizontal flip'
+        })
         .modal("toggle");
     }
 
@@ -102,5 +100,23 @@ export class BaseModalComponent extends BaseComponent {
     }
 
     this.onModalHide.emit(true);
+  }
+
+  public next(clicked: boolean): void {
+    if (clicked) {
+      this.onNextClick.emit(true);
+    }
+    if (this.nextModal && (!clicked || (clicked && this.goToNextOnClick))) {
+      this.modalService.showModal(this.nextModal, false, false, 400);
+    }
+  }
+
+  public previous(clicked: boolean): void {
+    if (clicked) {
+      this.onPreviousClick.emit(true);
+    }
+    if (this.previousModal && (!clicked || (clicked && this.goToPreviousOnClick))) {
+      this.modalService.showModal(this.previousModal, false, false, 400);
+    }
   }
 }

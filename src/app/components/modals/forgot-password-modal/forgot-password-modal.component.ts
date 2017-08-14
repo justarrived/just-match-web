@@ -12,7 +12,7 @@ import {ViewChild} from '@angular/core';
 @Component({
   selector: 'forgot-password-modal',
   template: `
-    <base-modal
+    <basic-modal
       icon="massive pink unlock"
       [title]="'forgot.password.modal.title' | translate"
       #forgotPasswordModal>
@@ -41,7 +41,7 @@ import {ViewChild} from '@angular/core';
           </base-button>
         </div>
       </modal-actions>
-    </base-modal>`
+    </basic-modal>`
 })
 export class ForgotPasswordModalComponent extends BaseComponent {
   @Output() public onPasswordLinkSent: EventEmitter<any> = new EventEmitter<any>();

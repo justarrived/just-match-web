@@ -12,7 +12,7 @@ import {ViewChild} from '@angular/core';
 @Component({
   selector: 'already-registered-modal',
   template: `
-  <base-modal
+  <basic-modal
     icon="massive pink warning"
     [title]="'already.registered.modal.title' | translate: {emailOrPhone: emailOrPhone}"
     #alreadyRegisteredModal>
@@ -47,7 +47,7 @@ import {ViewChild} from '@angular/core';
         </base-button>
       </div>
     </modal-actions>
-  </base-modal>`
+  </basic-modal>`
 })
 export class AlreadyRegisteredModalComponent extends BaseComponent {
 @Input() public canBeShown: boolean;
