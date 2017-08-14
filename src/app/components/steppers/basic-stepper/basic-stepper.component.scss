@@ -1,0 +1,103 @@
+@import '../../../styles/colors';
+
+.card {
+  width: 300px;
+  min-height: 0;
+  margin: 10px auto;
+}
+
+.supporting-text {
+  width: 100%;
+  padding: 0;
+}
+
+.stepper {
+  display: table;
+  width: 100%;
+  margin: 0 auto;
+
+  .stepper-step {
+    display: table-cell;
+    position: relative;
+    padding: 24px;
+    cursor: pointer;
+
+    &:first-child:active {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+
+    &:last-child:active {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+
+    &:hover .stepper-circle {
+      background-color: $color-cerise-200;
+    }
+
+    &:first-child .stepper-bar-left, &:last-child .stepper-bar-right {
+      display: none;
+    }
+
+    .stepper-circle {
+      box-sizing: content-box;
+      background-color: $color-cerise-500;
+      width: 24px;
+      height: 24px;
+      margin: 0 auto;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 2em;
+      font-size: 12px;
+      color: $white;
+    }
+
+    &.step-done .stepper-circle {
+      &:before {
+        content: "\2714";
+      }
+      * {
+        display: none;
+      }
+    }
+
+    &.editable-step .stepper-circle {
+      * {
+        display: none;
+      }
+      -moz-transform: scaleX(-1);
+      /* Gecko */
+      -o-transform: scaleX(-1);
+      /* Opera */
+      -webkit-transform: scaleX(-1);
+      /* Webkit */
+      transform: scaleX(-1);
+      /* Standard */
+      &:before {
+        content: "\270E";
+      }
+      border: 5px solid $color-cerise-50;
+    }
+
+    .stepper-bar-left {
+      position: absolute;
+      top: 40px;
+      height: 1px;
+      border-top: 3px solid $color-cerise-500;
+      left: 0;
+      right: 50%;
+      margin-right: 12px;
+    }
+
+    .stepper-bar-right {
+      position: absolute;
+      top: 40px;
+      height: 1px;
+      border-top: 3px solid $color-cerise-500;
+      right: 0;
+      left: 50%;
+      margin-left: 12px;
+    }
+  }
+}

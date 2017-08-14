@@ -215,6 +215,7 @@ import {UserResolver} from './resolvers/user/user.resolver';
 import {UsersFilterComponent} from './components/filters/users-filter/users-filter.component';
 import {UserUpdateFormComponent} from './components/forms/user-update-form/user-update-form.component';
 import {WelcomeBannerSectionComponent} from './components/sections/welcome-banner-section/welcome-banner-section.component';
+import {BasicStepperComponent} from './components/steppers/basic-stepper/basic-stepper.component';
 import {UpdateProfileStep1ModalComponent} from './components/modals/update-profile-step-1-modal/update-profile-step-1-modal.component';
 import {UpdateProfileStep2ModalComponent} from './components/modals/update-profile-step-2-modal/update-profile-step-2-modal.component';
 import {UpdateProfileStep3ModalComponent} from './components/modals/update-profile-step-3-modal/update-profile-step-3-modal.component';
@@ -298,6 +299,7 @@ export class RavenErrorHandler implements ErrorHandler {
     BasicPagerComponent,
     BasicSearchComponent,
     BasicTabComponent,
+    BasicStepperComponent,
     BasicTabsComponent,
     BasicTextComponent,
     BasicTitleTextComponent,
