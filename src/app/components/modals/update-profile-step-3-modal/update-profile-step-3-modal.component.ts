@@ -14,7 +14,7 @@ import {ViewChild} from '@angular/core';
       nextModal="updateProfileStep4ModalComponent">
       <modal-header>
         <basic-title-text
-          [text]="'test'"
+          [text]="'update-profile-step-3-modal-header' | translate"
           color="white"
           fontSize="huge"
           marginTop="0"
@@ -24,15 +24,23 @@ import {ViewChild} from '@angular/core';
         </basic-title-text>
       </modal-header>
       <modal-content>
+        <basic-stepper
+          [currentStep]="3"
+          [steps]="[1,2,3]">
+        </basic-stepper>
         <basic-title-text
-          [text]="'Upload profile picture' | translate"
+          [text]="'update-profile-step-3-modal-description' | translate"
           color="black"
           fontSize="medium"
           marginTop="0"
-          marginBottom="0"
+          marginBottom="20px"
           textAlignmentLtr="center"
           textAlignmentRtl="center">
         </basic-title-text>
+        <profile-image-input
+          [centered]="true"
+          size="small">
+        </profile-image-input>
       </modal-content>
     </stepper-modal>`
 })
