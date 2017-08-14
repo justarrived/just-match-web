@@ -26,7 +26,7 @@ import {ViewChild} from '@angular/core';
         <basic-title-text
           [text]="'welcome-step-1-modal-title' | translate"
           color="black"
-          fontSize="medium"
+          fontSize="huge"
           marginTop="0"
           marginBottom="0"
           textAlignmentLtr="center"

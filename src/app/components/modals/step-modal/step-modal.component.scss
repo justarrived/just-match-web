@@ -14,14 +14,6 @@
   align-items: center;
   justify-content: center;
 
-  .next-icon {
-    background: url('/assets/icons/back.svg');
-  }
-
-  .previous-icon {
-    background: url('/assets/icons/back.svg');
-  }
-
   .icon {
     background-size: cover;
     background-repeat: no-repeat;
@@ -33,7 +25,6 @@
 
   .disabled {
     cursor: default;
-    background: url('/assets/icons/back-hover.svg');
   }
 
   .modal-content {

@@ -27,19 +27,19 @@ declare var jQuery: any;
       <ng-content select="modal-header"></ng-content>
     </div>
     <div class="content-container">
-      <div
+      <i
         (click)="previous()"
         [class.disabled]="!previousModal"
-        class="icon previous-icon">
-      </div>
+        class="huge pink chevron left icon">
+      </i>
       <div class="modal-content">
         <ng-content select="modal-content"></ng-content>
       </div>
-      <div
+      <i
         (click)="next()"
         [class.disabled]="!nextModal"
-        class="icon next-icon">
-      </div>
+          class="huge pink chevron right icon">
+      </i>
     </div>
 </div>`
 })
