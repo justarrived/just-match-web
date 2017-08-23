@@ -15,16 +15,29 @@
   justify-content: center;
 
   .icon {
-    background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
     height: 42px;
     width: 42px;
     cursor: pointer;
-  }
 
-  .disabled {
-    cursor: default;
+    &.left {
+      background-image: url('/assets/icons/chevron-left.svg');
+
+      &.disabled {
+        background-image: url('/assets/icons/chevron-left-disable.svg');
+        cursor: default;
+      }
+    }
+
+    &.right {
+      background-image: url('/assets/icons/chevron-right.svg');
+
+      &.disabled {
+        background-image: url('/assets/icons/chevron-right-disable.svg');
+        cursor: default;
+      }
+    }
   }
 
   .modal-content {

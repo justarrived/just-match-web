@@ -30,7 +30,7 @@ declare var jQuery: any;
       <i
         (click)="previous(true)"
         [class.disabled]="!previousModal"
-        class="huge pink chevron left icon">
+        class="left icon">
       </i>
       <div class="modal-content">
         <ng-content select="modal-content"></ng-content>
@@ -38,7 +38,7 @@ declare var jQuery: any;
       <i
         (click)="next(true)"
         [class.disabled]="!nextModal"
-        class="huge pink chevron right icon">
+        class="right icon">
       </i>
     </div>
 </div>`
