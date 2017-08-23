@@ -5,10 +5,12 @@ import {ApplicationProxy} from '../../../proxies/application/application.proxy';
 import {BaseComponent} from '../../base.component';
 import {ChangeDetectorRef} from '@angular/core';
 import {Component} from '@angular/core';
+import {DataStoreService} from '../../../services/data-store.service';
 import {FormBuilder} from '@angular/forms';
 import {FormGroup} from '@angular/forms';
 import {Input} from '@angular/core';
 import {Job} from '../../../models/api-models/job/job';
+import {NavigationService} from '../../../services/navigation.service';
 import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
 import {UserResolver} from '../../../resolvers/user/user.resolver';
 import {Validators} from '@angular/forms';
@@ -53,6 +55,7 @@ export class ApplyForJobFormComponent extends BaseComponent {
   public constructor(
     private applicationProxy: ApplicationProxy,
     private changeDetector: ChangeDetectorRef,
+    private dataStoreService: DataStoreService,
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     protected systemLanguagesResolver: SystemLanguagesResolver,
@@ -85,7 +88,13 @@ export class ApplyForJobFormComponent extends BaseComponent {
 
     return this.applicationProxy.createApplication(this.job.id, {
       'apply_message': this.applyForJobForm.value.apply_message,
+      'http_referrer': document.referrer,
       'user_id': this.userResolver.getUser().id,
+      'utm_campaign': this.dataStoreService.getCookie(NavigationService.utmCampaignCookieKey),
+      'utm_content': this.dataStoreService.getCookie(NavigationService.utmContentCookieKey),
+      'utm_medium': this.dataStoreService.getCookie(NavigationService.utmMediumCookieKey),
+      'utm_source': this.dataStoreService.getCookie(NavigationService.utmSourceCookieKey),
+      'utm_term': this.dataStoreService.getCookie(NavigationService.utmTermCookieKey),
     })
     .then(application => {
       this.loadingSubmit = false;

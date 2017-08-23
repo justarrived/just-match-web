@@ -6,8 +6,14 @@ import {Injectable} from '@angular/core';
 // CREATE
 interface CreateApplicationAttributes {
   apply_message?: string;
+  http_referrer?: string;
   language_id?: string;
   user_id: string;
+  utm_campaign?: string;
+  utm_content?: string;
+  utm_medium?: string;
+  utm_source?: string;
+  utm_term?: string;
 }
 
 // UPDATE

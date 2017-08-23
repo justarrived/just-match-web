@@ -1,4 +1,5 @@
 import {ActivatedRoute} from '@angular/router';
+import {DataStoreService} from './data-store.service';
 import {Inject} from '@angular/core';
 import {Injectable} from '@angular/core';
 import {isPlatformBrowser} from '@angular/common';
@@ -18,13 +19,26 @@ export class NavigationService {
   private currentUrl: string;
   private routeCheckpoint: string;
 
+  private static readonly utmSourceParamKey: string = 'utm_source';
+  private static readonly utmMediumParamKey: string = 'utm_medium';
+  private static readonly utmContentParamKey: string = 'utm_content';
+  private static readonly utmCampaignParamKey: string = 'utm_campaign';
+  private static readonly utmTermParamKey: string = 'utm_term';
+  public static readonly utmSourceCookieKey: string = 'utm_source';
+  public static readonly utmMediumCookieKey: string = 'utm_medium';
+  public static readonly utmContentCookieKey: string = 'utm_content';
+  public static readonly utmCampaignCookieKey: string = 'utm_campaign';
+  public static readonly utmTermCookieKey: string = 'utm_term';
+
   public constructor(
     @Inject(PLATFORM_ID) private readonly platformId: any,
     private activatedRoute: ActivatedRoute,
+    private dataStoreService: DataStoreService,
     private location: Location,
     private router: Router,
   ) {
     this.initService();
+    this.initRouteParamsSubscription();
   }
 
   public initService() {
@@ -53,6 +67,23 @@ export class NavigationService {
         console.log('RoutesRecognized');
       }
     });
+  }
+
+  private initRouteParamsSubscription(): void {
+    this.activatedRoute.queryParams.subscribe(params => {
+      this.storeParamIfExists(params, NavigationService.utmMediumParamKey, NavigationService.utmMediumCookieKey);
+      this.storeParamIfExists(params, NavigationService.utmContentParamKey, NavigationService.utmContentCookieKey);
+      this.storeParamIfExists(params, NavigationService.utmSourceParamKey, NavigationService.utmSourceCookieKey);
+      this.storeParamIfExists(params, NavigationService.utmTermParamKey, NavigationService.utmTermCookieKey);
+      this.storeParamIfExists(params, NavigationService.utmCampaignParamKey, NavigationService.utmCampaignCookieKey);
+    });
+  }
+
+  private storeParamIfExists(params: any, paramKey: string, cookieKey: string) {
+    let param = params[paramKey];
+    if (param) {
+      this.dataStoreService.setCookie(cookieKey, param, 1);
+    }
   }
 
   public navigateBack(): void {
