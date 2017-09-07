@@ -81,6 +81,7 @@ import {FilterUsersInputComponent} from './components/inputs/filter-users-input/
 import {FirstNameInputComponent} from './components/inputs/first-name-input/first-name-input.component';
 import {ForbiddenPageComponent} from './components/pages/forbidden-page/forbidden-page.component';
 import {ForgotPasswordFormComponent} from './components/forms/forgot-password-form/forgot-password-form.component';
+import {SubscribeFormComponent} from './components/forms/subscribe-form/subscribe-form.component';
 import {ForgotPasswordModalComponent} from './components/modals/forgot-password-modal/forgot-password-modal.component';
 import {ForgotPasswordPageComponent} from './components/pages/forgot-password-page/forgot-password-page.component';
 import {FormSectionTitleTextComponent} from './components/text/form-section-title-text/form-section-title-text.component';
@@ -156,6 +157,7 @@ import {PasswordInputComponent} from './components/inputs/password-input/passwor
 import {PasswordResetLinkSentModalComponent} from './components/modals/password-reset-link-sent-modal/password-reset-link-sent-modal.component';
 import {PersonalIDInputComponent} from './components/inputs/personal-id-input/personal-id-input.component';
 import {PhoneInputComponent} from './components/inputs/phone-input/phone-input.component';
+import {AddressInputComponent} from './components/inputs/address-input/address-input.component';
 import {ProfileImageInputComponent} from './components/inputs/profile-image-input/profile-image-input.component';
 import {ProxiesModule} from './proxies/proxies.module';
 import {RatingInputComponent} from './components/inputs/rating-input/rating-input.component';
@@ -255,7 +257,8 @@ export class RavenErrorHandler implements ErrorHandler {
 @NgModule({
   imports: [
     AgmCoreModule.forRoot({
-      apiKey: environment.googleMapsKey
+      apiKey: environment.googleMapsKey,
+      libraries: ["places"]
     }),
     AppTranslateModule,
     CommonModule,
@@ -267,6 +270,7 @@ export class RavenErrorHandler implements ErrorHandler {
   ],
   declarations: [
     AlreadyRegisteredModalComponent,
+    AddressInputComponent,
     ApiErrorsComponent,
     AppComponent,
     ApplicationItemComponent,
@@ -381,6 +385,7 @@ export class RavenErrorHandler implements ErrorHandler {
     JobsPagerSectionComponent,
     JobTasksSectionComponent,
     JobTitleSectionComponent,
+    SubscribeFormComponent,
     LanguageMenuComponent,
     LanguageProficiencyInputComponent,
     LanguagesInputComponent,

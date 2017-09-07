@@ -7,12 +7,14 @@ import {FormBuilder} from '@angular/forms';
 import {FormGroup} from '@angular/forms';
 import {Input} from '@angular/core';
 import {JARoute} from '../../../routes/ja-route/ja-route';
+import {JobDigest} from '../../../models/api-models/job-digest/job-digest';
+import {JobDigestProxy} from '../../../proxies/job-digest/job-digest.proxy';
 import {ModalService} from '../../../services/modal.service';
 import {NavigationService} from '../../../services/navigation.service';
 import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
-import {User} from '../../../models/api-models/user/user';
 import {UserResolver} from '../../../resolvers/user/user.resolver';
 import {Validators} from '@angular/forms';
+
 
 @Component({
   selector: 'subscribe-form',
@@ -26,6 +28,25 @@ import {Validators} from '@angular/forms';
         [complete]="!loadingSubmit"
         class="inverted">
       </basic-loader>
+
+      <email-input
+        *ngIf="!user"
+        [control]="form.controls['email']"
+        [apiErrors]="apiErrors">
+      </email-input>
+
+      <address-input
+        [apiErrors]="apiErrors"
+        [control]="form.controls['address']"
+        [cityControl]="form.controls['city']"
+        [countryCodeControl]="form.controls['country_code']"
+        [postalCodeControl]="form.controls['postal_code']"
+        [stateControl]="form.controls['state']"
+        [streetControl]="form.controls['street']"
+        [streetNumberControl]="form.controls['street_number']"
+        [latitudeControl]="form.controls['latitude']"
+        [longitudeControl]="form.controls['longitude']">
+      </address-input>
 
       <form-submit-button
         [buttonText]="'subscribe.form.submit.button' | translate"
@@ -47,6 +68,7 @@ export class SubscribeFormComponent extends BaseComponent {
   constructor(
     private changeDetector: ChangeDetectorRef,
     private formBuilder: FormBuilder,
+    private jobDigestProxy: JobDigestProxy,
     private modalService: ModalService,
     private navigationService: NavigationService,
     protected systemLanguagesResolver: SystemLanguagesResolver,
@@ -61,7 +83,16 @@ export class SubscribeFormComponent extends BaseComponent {
 
   private initForm(): void {
     this.form = this.formBuilder.group({
-      'email': ['', Validators.compose([Validators.required])]
+      'address': [''],
+      'city': [''],
+      'country_code': [''],
+      'email': ['', Validators.compose([Validators.required])],
+      'latitude': [''],
+      'longitude': [''],
+      'postal_code': [''],
+      'state': [''],
+      'street_number': [''],
+      'street': [''],
     });
   }
 
@@ -72,16 +103,28 @@ export class SubscribeFormComponent extends BaseComponent {
     this.changeDetector.detectChanges();
   }
 
-  public submitForm(): Promise<User> {
+  public submitForm(): Promise<JobDigest> {
     this.submitFail = false;
     this.submitSuccess = false;
     this.loadingSubmit = true;
 
-    return this.userResolver.login(this.form.value.email_or_phone, this.form.value.password)
-    .then(user => {
+    return this.jobDigestProxy.createJobDigest({
+      city: this.form.value.city,
+      notification_frequency: 1,
+      occupation_ids: [],
+      street1: this.form.value.street,
+      postal_code: this.form.value.postal_code,
+      state: this.form.value.state,
+      country_code: this.form.value.country_code,
+      latitude: this.form.value.latitude,
+      longitude: this.form.value.longitude,
+      user_id: this.user ? this.user.id : '',
+      email: this.form.value.email,
+    })
+    .then(jobDigest => {
       this.loadingSubmit = false;
       this.submitSuccess = true;
-      return user;
+      return jobDigest;
     })
     .catch(errors => {
       this.handleServerErrors(errors);

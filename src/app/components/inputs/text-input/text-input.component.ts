@@ -1,6 +1,7 @@
 import {ApiErrors} from '../../../models/api-models/api-errors/api-errors';
 import {BaseComponent} from '../../base.component';
 import {Component} from '@angular/core';
+import {ElementRef} from '@angular/core';
 import {Input} from '@angular/core';
 import {InputErrorsComponent} from '../../form-errors/input-errors/input-errors.component';
 import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
@@ -65,7 +66,8 @@ export class TextInputComponent extends BaseComponent  {
   @Input() public placeholder: string;
   @Input() public requiredLabel: string;
   @Input() public type: string = 'text';
-  @ViewChild(InputErrorsComponent) inputErrors: InputErrorsComponent;
+  @ViewChild(InputErrorsComponent) public inputErrors: InputErrorsComponent;
+  @ViewChild("input") public inputRef: ElementRef;
 
   public constructor(
     protected systemLanguagesResolver: SystemLanguagesResolver,

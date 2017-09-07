@@ -13,7 +13,6 @@ interface CreateJobDigestAttributes {
   street2?: string;
   postal_code?: string;
   municipality?: string;
-  city?: string;
   state?: string;
   country_code?: string;
   latitude?: number;
@@ -32,7 +31,6 @@ interface UpdateJobDigestAttributes {
   street2?: string;
   postal_code?: string;
   municipality?: string;
-  city?: string;
   state?: string;
   country_code?: string;
   latitude?: number;
@@ -60,7 +58,7 @@ export class JobDigestProxy {
   }
 
   // UPDATE
-  public updateJobDigest(userId: string, jobDigestAttributes: UpdateJobDigestAttributes, searchParameters?: any): Promise<JobDigest> {
+  public updateJobDigest(uuidOrUserId: string, jobDigestId: string, jobDigestAttributes: UpdateJobDigestAttributes, searchParameters?: any): Promise<JobDigest> {
     return this.apiCallService.patch('/jobs/subscribers/' + uuidOrUserId + '/digests/' + jobDigestId, jobDigestAttributes, searchParameters)
     .then(response => JobDigestFactory.createJobDigest(response.data));
   }

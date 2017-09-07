@@ -32,9 +32,9 @@ export class DigestSubscriberFactory {
       deletedAt: new Date(jsonObject.deleted_at),
       email: jsonObject.email,
       id: jsonObject.id,
-      job: UserFactory.createUser(jsonObject.job),
       jobDigests: map(jsonObject.job_digests, jobDigest => JobDigestFactory.createJobDigest(jobDigest)),
       updatedAt: new Date(jsonObject.updated_at),
+      user: UserFactory.createUser(jsonObject.user),
       uuid: jsonObject.uuid,
     };
   }
