@@ -24,6 +24,7 @@ import {ResetPasswordPageComponent} from '../components/pages/reset-password-pag
 import {ResolversModule} from '../resolvers/resolvers.module';
 import {RouterModule} from '@angular/router';
 import {Routes} from '@angular/router';
+import {SubscribePageComponent} from '../components/pages/subscribe-page/subscribe-page.component';
 import {SupportChatPageComponent} from '../components/pages/support-chat-page/support-chat-page.component';
 import {SystemLanguagesResolver} from '../resolvers/system-languages/system-languages.resolver';
 import {UserProfilePageComponent} from '../components/pages/user-profile-page/user-profile-page.component';
@@ -55,6 +56,7 @@ const routes: Routes = [
     { path: 'reset-password', redirectTo: '404', pathMatch: 'full', canActivate: [NotLoggedInGuard] },
     { path: 'reset-password/:token', component: ResetPasswordPageComponent, canActivate: [NotLoggedInGuard] },
     { path: 'support-chat', component: SupportChatPageComponent, canActivate: [LoggedInGuard] },
+    { path: 'subscribe', component: SubscribePageComponent },
     { path: 'user', component: UserProfilePageComponent, canActivate: [LoggedInGuard] },
     { path: '**', redirectTo: '404' },
   ]}
