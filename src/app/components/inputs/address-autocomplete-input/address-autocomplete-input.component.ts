@@ -13,21 +13,21 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
 import {TextInputComponent} from '../text-input/text-input.component';
 
 @Component({
-  selector: "address-input",
+  selector: "address-autocomplete-input",
   template: `
   <text-input
     [apiErrors]="apiErrors"
     [control]="control"
     [hint]="hint"
-    [label]="'input.address.label' | translate"
-    [placeholder]="'input.address.placeholder' | translate"
+    [label]="'input.address.autocomplete.label' | translate"
+    [placeholder]="'input.address.autocomplete.placeholder' | translate"
     #textInput
     apiAttribute="address"
     icon="pink map pin"
     type="text">
   </text-input>`
 })
-export class AddressInputComponent extends BaseComponent {
+export class AddressAutocompleteInputComponent extends BaseComponent {
   @Input() public apiErrors: ApiErrors;
   @Input() public control: FormControl;
   @Input() public cityControl: FormControl;
@@ -84,7 +84,7 @@ export class AddressInputComponent extends BaseComponent {
 
     this.mapsAPILoader.load().then(() => {
       let autocomplete = new google.maps.places.Autocomplete(this.textInput.inputRef.nativeElement, {
-        types: ["address"],
+        types: ['address'],
         componentRestrictions: {country: "SE"}
       });
       autocomplete.addListener("place_changed", () => {
@@ -100,7 +100,6 @@ export class AddressInputComponent extends BaseComponent {
             return;
           }
 
-          console.log(place);
           this.fillInAddress(place);
           this.fillInCoordinates(place);
         });
@@ -132,10 +131,5 @@ export class AddressInputComponent extends BaseComponent {
     // Fill in coordinate controls with coordinates
     this.latitudeControl.setValue(place.geometry.location.lat());
     this.longitudeControl.setValue(place.geometry.location.lng());
-    console.log(this.longitudeControl);
-    console.log(this.latitudeControl);
   }
-
-
-
 }

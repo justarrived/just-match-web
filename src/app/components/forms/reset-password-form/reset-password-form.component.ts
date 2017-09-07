@@ -18,6 +18,7 @@ import {Validators} from '@angular/forms';
   styleUrls: ['./reset-password-form.component.scss'],
   template: `
     <form
+      (keydown.enter)="$event.preventDefault()"
       (ngSubmit)="submitForm()"
       [formGroup]="resetPasswordForm"
       class="ui form">

@@ -20,6 +20,7 @@ import {Validators} from '@angular/forms';
   template: `
     <form
       (ngSubmit)="submitForm()"
+      (keydown.enter)="$event.preventDefault()"
       [formGroup]="applyForJobForm"
       class="ui form">
       <basic-loader

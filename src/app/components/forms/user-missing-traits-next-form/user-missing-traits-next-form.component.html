@@ -1,4 +1,5 @@
 <form
+  (keydown.enter)="$event.preventDefault()"
   [@slideInLeftOutLeftAnimation]="animationState"
   (ngSubmit)="submitForm()"
   #form="ngForm"

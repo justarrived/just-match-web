@@ -157,7 +157,8 @@ import {PasswordInputComponent} from './components/inputs/password-input/passwor
 import {PasswordResetLinkSentModalComponent} from './components/modals/password-reset-link-sent-modal/password-reset-link-sent-modal.component';
 import {PersonalIDInputComponent} from './components/inputs/personal-id-input/personal-id-input.component';
 import {PhoneInputComponent} from './components/inputs/phone-input/phone-input.component';
-import {AddressInputComponent} from './components/inputs/address-input/address-input.component';
+import {AddressAutocompleteInputComponent} from './components/inputs/address-autocomplete-input/address-autocomplete-input.component';
+import {CityAutocompleteInputComponent} from './components/inputs/city-autocomplete-input/city-autocomplete-input.component';
 import {ProfileImageInputComponent} from './components/inputs/profile-image-input/profile-image-input.component';
 import {ProxiesModule} from './proxies/proxies.module';
 import {RatingInputComponent} from './components/inputs/rating-input/rating-input.component';
@@ -270,7 +271,7 @@ export class RavenErrorHandler implements ErrorHandler {
   ],
   declarations: [
     AlreadyRegisteredModalComponent,
-    AddressInputComponent,
+    AddressAutocompleteInputComponent,
     ApiErrorsComponent,
     AppComponent,
     ApplicationItemComponent,
@@ -334,6 +335,7 @@ export class RavenErrorHandler implements ErrorHandler {
     EducationInputComponent,
     EmailInputComponent,
     EmailOrPhoneInputComponent,
+    CityAutocompleteInputComponent,
     ErrorMessageComponent,
     ErrorPageComponent,
     FacebookUrlInputComponent,

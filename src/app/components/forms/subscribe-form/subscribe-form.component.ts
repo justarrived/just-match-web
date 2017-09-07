@@ -23,7 +23,8 @@ import {Validators} from '@angular/forms';
     <form
       (ngSubmit)="submitForm()"
       [formGroup]="form"
-      class="ui form">
+      class="ui form"
+      (keydown.enter)="$event.preventDefault()">
       <basic-loader
         [complete]="!loadingSubmit"
         class="inverted">
@@ -35,18 +36,15 @@ import {Validators} from '@angular/forms';
         [apiErrors]="apiErrors">
       </email-input>
 
-      <address-input
+      <city-autocomplete-input
         [apiErrors]="apiErrors"
         [control]="form.controls['address']"
         [cityControl]="form.controls['city']"
         [countryCodeControl]="form.controls['country_code']"
-        [postalCodeControl]="form.controls['postal_code']"
         [stateControl]="form.controls['state']"
-        [streetControl]="form.controls['street']"
-        [streetNumberControl]="form.controls['street_number']"
         [latitudeControl]="form.controls['latitude']"
         [longitudeControl]="form.controls['longitude']">
-      </address-input>
+      </city-autocomplete-input>
 
       <form-submit-button
         [buttonText]="'subscribe.form.submit.button' | translate"
@@ -89,10 +87,7 @@ export class SubscribeFormComponent extends BaseComponent {
       'email': ['', Validators.compose([Validators.required])],
       'latitude': [''],
       'longitude': [''],
-      'postal_code': [''],
       'state': [''],
-      'street_number': [''],
-      'street': [''],
     });
   }
 
@@ -112,8 +107,6 @@ export class SubscribeFormComponent extends BaseComponent {
       city: this.form.value.city,
       notification_frequency: 1,
       occupation_ids: [],
-      street1: this.form.value.street,
-      postal_code: this.form.value.postal_code,
       state: this.form.value.state,
       country_code: this.form.value.country_code,
       latitude: this.form.value.latitude,

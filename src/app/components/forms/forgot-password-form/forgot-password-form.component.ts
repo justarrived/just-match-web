@@ -17,6 +17,7 @@ import {Validators} from '@angular/forms';
   styleUrls: ['./forgot-password-form.component.scss'],
   template: `
     <form
+      (keydown.enter)="$event.preventDefault()"
       (ngSubmit)="submitForm()"
       [formGroup]="forgotPasswordForm"
       class="ui form">
