@@ -5,10 +5,38 @@ import {Injectable} from '@angular/core';
 
 // CREATE
 interface CreateJobDigestAttributes {
+  city?: string;
+  notification_frequency: number;
+  digest_subscriber_uuid?: string;
+  occupation_ids?: string[];
+  street1?: string;
+  street2?: string;
+  postal_code?: string;
+  municipality?: string;
+  city?: string;
+  state?: string;
+  country_code?: string;
+  latitude?: number;
+  longitude?: number;
+  user_id?: string;
+  email?: string;
 }
 
 // UPDATE
 interface UpdateJobDigestAttributes {
+  city?: string;
+  notification_frequency: number;
+  digest_subscriber_uuid?: string;
+  occupation_ids?: string[];
+  street1?: string;
+  street2?: string;
+  postal_code?: string;
+  municipality?: string;
+  city?: string;
+  state?: string;
+  country_code?: string;
+  latitude?: number;
+  longitude?: number;
 }
 
 @Injectable()
