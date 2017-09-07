@@ -6,9 +6,14 @@ import {map} from 'lodash';
 
 // API attribute interfaces
 interface DigestSubscriberApiAttributes {
+  createdAt: Date;
+  deletedAt: Date;
+  email: string;
   id: string;
+  jobDigests: JobDigest[];
+  updatedAt: Date;
   user: User;
-  digests: JobDigest[];
+  uuid: string;
 }
 
 // Client interfaces
@@ -23,9 +28,14 @@ export class DigestSubscriberFactory {
     }
 
     return {
-      digests: map(jsonObject.digests, jobDigest => JobDigestFactory.createJobDigest(jobDigest)),
+      createdAt: new Date(jsonObject.created_at),
+      deletedAt: new Date(jsonObject.deleted_at),
+      email: jsonObject.email,
       id: jsonObject.id,
       job: UserFactory.createUser(jsonObject.job),
+      jobDigests: map(jsonObject.job_digests, jobDigest => JobDigestFactory.createJobDigest(jobDigest)),
+      updatedAt: new Date(jsonObject.updated_at),
+      uuid: jsonObject.uuid,
     };
   }
 }
