@@ -5,6 +5,8 @@ import {Injectable} from '@angular/core';
 
 // CREATE
 interface CreateDigestSubscriberAttributes {
+  user_id?: string;
+  email?: string;
 }
 
 @Injectable()
