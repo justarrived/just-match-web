@@ -148,6 +148,7 @@ import {NewJobsSectionComponent} from './components/sections/new-jobs-section/ne
 import {NewPasswordInputComponent} from './components/inputs/new-password-input/new-password-input.component';
 import {NgModule} from '@angular/core';
 import {NotFoundPageComponent} from './components/pages/404-page/404-page.component';
+import {OfflinePageComponent} from './components/pages/offline-page/offline-page.component';
 import {NumberedPagerComponent} from './components/pagers/numbered-pager/numbered-pager.component';
 import {OldPasswordInputComponent} from './components/inputs/old-password-input/old-password-input.component';
 import {PageOptionsService} from './services/page-options.service';
@@ -406,6 +407,7 @@ export class RavenErrorHandler implements ErrorHandler {
     NewJobsSectionComponent,
     NewPasswordInputComponent,
     NotFoundPageComponent,
+    OfflinePageComponent,
     NumberedPagerComponent,
     OldPasswordInputComponent,
     PartnersSectionComponent,
