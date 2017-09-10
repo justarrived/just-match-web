@@ -30,10 +30,6 @@ app.set('views', 'src')
 
 app.use('/', express.static('dist', {index: false}));
 
-app.get('/offline', (req: Request, res: Response) => {
-  res.render('../dist/offline');
-});
-
 app.get('*', (req: Request, res: Response) => {
   console.time(`GET: ${req.originalUrl}`);
   res.render('../dist/index', {
