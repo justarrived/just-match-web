@@ -5,8 +5,8 @@
   "dir": "ltr",
   "lang": "sv",
   "display": "standalone",
-  "theme_color": "#d10072",
-  "background_color": "#d10072",
+  "theme_color": "#383F4E",
+  "background_color": "#383F4E",
   "start_url": "/?launcher=true&utm_source=web_app_manifest",
   "icons": [
     {
