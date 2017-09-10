@@ -18,6 +18,7 @@ import {LanguageProxy} from './language/language.proxy';
 import {MessageProxy} from './message/message.proxy';
 import {MissingUserTraitsProxy} from './missing-user-traits/missing-user-traits.proxy';
 import {NgModule} from '@angular/core';
+import {OccupationProxy} from './occupation/occupation.proxy';
 import {RatingProxy} from './rating/rating.proxy';
 import {SkillProxy} from './skill/skill.proxy';
 import {TermsAgreementProxy} from './terms-agreement/terms-agreement.proxy';
@@ -54,6 +55,7 @@ import {UserStatusProxy} from './user-status/user-status.proxy';
     LanguageProxy,
     MessageProxy,
     MissingUserTraitsProxy,
+    OccupationProxy,
     RatingProxy,
     SkillProxy,
     TermsAgreementProxy,

@@ -41,10 +41,16 @@ import {Validators} from '@angular/forms';
         [control]="form.controls['address']"
         [cityControl]="form.controls['city']"
         [countryCodeControl]="form.controls['country_code']"
+        [hint]="'subscribe.form.city.hint' | translate"
         [stateControl]="form.controls['state']"
         [latitudeControl]="form.controls['latitude']"
         [longitudeControl]="form.controls['longitude']">
       </city-autocomplete-input>
+
+      <primary-occupations-input
+        [control]="form.controls['occupation_ids']"
+        [apiErrors]="apiErrors">
+      </primary-occupations-input>
 
       <form-submit-button
         [buttonText]="'subscribe.form.submit.button' | translate"
@@ -87,6 +93,7 @@ export class SubscribeFormComponent extends BaseComponent {
       'email': ['', Validators.compose([Validators.required])],
       'latitude': [''],
       'longitude': [''],
+      'occupation_ids': [''],
       'state': [''],
     });
   }

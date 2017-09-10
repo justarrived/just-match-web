@@ -149,6 +149,7 @@ import {NewPasswordInputComponent} from './components/inputs/new-password-input/
 import {NgModule} from '@angular/core';
 import {NotFoundPageComponent} from './components/pages/404-page/404-page.component';
 import {NumberedPagerComponent} from './components/pagers/numbered-pager/numbered-pager.component';
+import {PrimaryOccupationsInputComponent} from './components/inputs/primary-occupations-input/primary-occupations-input.component';
 import {OldPasswordInputComponent} from './components/inputs/old-password-input/old-password-input.component';
 import {PageOptionsService} from './services/page-options.service';
 import {PartnersSectionComponent} from './components/sections/partners-section/partners-section.component';
@@ -336,6 +337,7 @@ export class RavenErrorHandler implements ErrorHandler {
     EmailInputComponent,
     EmailOrPhoneInputComponent,
     CityAutocompleteInputComponent,
+    PrimaryOccupationsInputComponent,
     ErrorMessageComponent,
     ErrorPageComponent,
     FacebookUrlInputComponent,
