@@ -11,6 +11,9 @@
  limitations under the License.
 */
 
+// Based of
+// https://developers.google.com/web/fundamentals/getting-started/primers/service-workers
+
 'use strict';
 
 // Incrementing CACHE_VERSION will kick off the install event and force previously cached

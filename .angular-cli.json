@@ -12,7 +12,8 @@
         "assets",
         "favicon.ico",
         "apple-touch-icon.ico",
-        "service-worker.js"
+        "service-worker.js",
+        "offline.html"
       ],
       "index": "index.html",
       "main": "main.ts",
