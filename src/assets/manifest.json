@@ -1,9 +1,6 @@
 {
   "short_name": "Just Arrived",
   "name": "Just Arrived",
-  "description": "Få erfarenheten du behöver för att komma in på den svenska arbetsmarknaden.",
-  "dir": "ltr",
-  "lang": "sv",
   "display": "standalone",
   "theme_color": "#383F4E",
   "background_color": "#383F4E",
