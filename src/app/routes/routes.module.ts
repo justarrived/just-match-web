@@ -58,7 +58,6 @@ const routes: Routes = [
     { path: 'reset-password/:token', component: ResetPasswordPageComponent, canActivate: [NotLoggedInGuard] },
     { path: 'support-chat', component: SupportChatPageComponent, canActivate: [LoggedInGuard] },
     { path: 'subscribe', component: SubscribePageComponent },
-    { path: 'unsubscribe', component: UnsubscribePageComponent },
     { path: 'user', component: UserProfilePageComponent, canActivate: [LoggedInGuard] },
     { path: '**', redirectTo: '404' },
   ]}

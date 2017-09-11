@@ -203,7 +203,6 @@ import {StreetInputComponent} from './components/inputs/street-input/street-inpu
 import {SuccessMessageComponent} from './components/messages/success-message/success-message.component';
 import {SupportChatComponent} from './components/chats/support-chat/support-chat.component';
 import {SupportChatPageComponent} from './components/pages/support-chat-page/support-chat-page.component';
-import {UnsubscribePageComponent} from './components/pages/unsubscribe-page/unsubscribe-page.component';
 import {SystemLanguageInputComponent} from './components/inputs/system-language-input/system-language-input.component';
 import {SystemLanguagesResolver} from './resolvers/system-languages/system-languages.resolver';
 import {TermsInputComponent} from './components/inputs/terms-input/terms-input.component';
@@ -288,7 +287,6 @@ export class RavenErrorHandler implements ErrorHandler {
     ApplicationsStatusSectionComponent,
     ApplicationStatusCardComponent,
     AppliedForJobModalComponent,
-    UnsubscribePageComponent,
     ApplyForJobFormComponent,
     ApplyForJobModalComponent,
     ApplyMessageInputComponent,
