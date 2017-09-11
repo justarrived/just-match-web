@@ -60,9 +60,14 @@ import {Validators} from '@angular/forms';
 
       <job-digest-notification-frequency-input
         [control]="form.controls['notification_frequency']"
-        [hint]="'subscribe.form.info' | translate"
         [apiErrors]="apiErrors">
       </job-digest-notification-frequency-input>
+
+      <info-message
+        [closeable]="true"
+        [description]="'subscribe.form.info' | translate"
+        icon="warning">
+      </info-message>
 
       <form-submit-button
         [buttonText]="'subscribe.form.submit.button' | translate"
