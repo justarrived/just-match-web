@@ -1,4 +1,5 @@
 {
+  "subscribe.title": "Manage job subscriptions",
   "already.registered.modal.button": "Log in",
   "already.registered.modal.info": "It seems that there already is an account using {{emailOrPhone}}, so we suggest that you log in instead. If you forgot your password you can reset your password by clicking \"Forgotten your password?\" above",
   "already.registered.modal.title": "{{emailOrPhone}} is already registered",
@@ -141,6 +142,7 @@
   "how.it.works.section.update.profile.description.paragraph.2": "Make sure to fill in every relevant piece of information and all your skills. If your profile is empty you won’t be matched with any jobs.",
   "how.it.works.section.update.profile.description.title": "2. Update profile",
   "input.account.number.label": "Account number",
+  "input.primary.occupations.label": "Choose job occupations that you are interested in",
   "input.account.number.placeholder": "Account number",
   "input.address.autocomplete.label": "Address",
   "input.address.autocomplete.placeholder": "Address",

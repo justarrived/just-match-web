@@ -42,32 +42,25 @@ import {Validators} from '@angular/forms';
         [control]="form.controls['subscriber_error']">
       </input-errors>
 
-      <city-autocomplete-input
-        [apiErrors]="apiErrors"
-        [control]="form.controls['address']"
-        [cityControl]="form.controls['city']"
-        [countryCodeControl]="form.controls['country_code']"
-        [hint]="'subscribe.form.city.hint' | translate"
-        [stateControl]="form.controls['state']"
-        [latitudeControl]="form.controls['latitude']"
-        [longitudeControl]="form.controls['longitude']">
-      </city-autocomplete-input>
+      <job-digest-notification-frequency-input
+        [control]="form.controls['notification_frequency']"
+        [apiErrors]="apiErrors">
+      </job-digest-notification-frequency-input>
 
       <primary-occupations-input
         [control]="form.controls['occupation_ids']"
         [apiErrors]="apiErrors">
       </primary-occupations-input>
 
-      <job-digest-notification-frequency-input
-        [control]="form.controls['notification_frequency']"
-        [apiErrors]="apiErrors">
-      </job-digest-notification-frequency-input>
-
-      <info-message
-        [closeable]="true"
-        [description]="'subscribe.form.info' | translate"
-        icon="warning">
-      </info-message>
+      <city-autocomplete-input
+        [apiErrors]="apiErrors"
+        [control]="form.controls['address']"
+        [cityControl]="form.controls['city']"
+        [countryCodeControl]="form.controls['country_code']"
+        [stateControl]="form.controls['state']"
+        [latitudeControl]="form.controls['latitude']"
+        [longitudeControl]="form.controls['longitude']">
+      </city-autocomplete-input>
 
       <form-submit-button
         [buttonText]="'subscribe.form.submit.button' | translate"
@@ -129,10 +122,17 @@ export class SubscribeFormComponent extends BaseComponent {
     this.submitSuccess = false;
     this.loadingSubmit = true;
 
+    let occupationIds = [];
+    for (let occupationId in this.form.value.occupation_ids) {
+      if (this.form.value.occupation_ids[occupationId]) {
+        occupationIds.push(occupationId);
+      }
+    }
+
     return this.jobDigestProxy.createJobDigest({
       city: this.form.value.city,
       notification_frequency: this.form.value.notification_frequency,
-      occupation_ids: [],
+      occupation_ids: occupationIds,
       state: this.form.value.state,
       country_code: this.form.value.country_code,
       latitude: this.form.value.latitude,

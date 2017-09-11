@@ -19,25 +19,26 @@ import {ViewChild} from '@angular/core';
       [promise]="occupations"
       class="inverted">
     </basic-loader>
+    <basic-text
+      [text]="'input.primary.occupations.label' | translate"
+      fontSize="small"
+      fontWeight="bold"
+      marginBottom="20px"
+      marginTop="0">
+    </basic-text>
     <div
       [ngClass]="{'error': inputErrors.hasErrors()}"
       [style.text-align]="systemLanguage.direction === 'ltr' ? 'left' : 'right'"
+      style="display: flex; flex-wrap: wrap; justify-content: center;"
       class="field">
-      <basic-text
-        [text]="'text'"
-        *ngIf="label"
-        fontSize="small"
-        fontWeight="bold"
-        marginBottom="20px"
-        marginTop="0">
-      </basic-text>
-      <custom-radio-button-input
+      <custom-checkbox-input
         *ngFor="let occupation of occupations | async"
-        [control]="control"
         [label]="occupation.translatedText.name"
         [name]="'occupation'"
-        value="yes">
-      </custom-radio-button-input>
+        [resultObject]="resultObject"
+        (resultObjectChange)="resultChanged($event)"
+        [value]="occupation.id">
+      </custom-checkbox-input>
       <input-errors
         apiAttribute="occupation_ids"
         [apiErrors]="apiErrors"
@@ -55,6 +56,8 @@ export class PrimaryOccupationsInputComponent extends BaseComponent {
 
   public occupations: Promise<Occupation[]>;
 
+  public resultObject = {};
+
   public constructor(
     private occupationProxy: OccupationProxy,
     protected systemLanguagesResolver: SystemLanguagesResolver,
@@ -71,10 +74,21 @@ export class PrimaryOccupationsInputComponent extends BaseComponent {
     this.loadData();
   }
 
-  private loadData() {
-    this.occupations = this.occupationProxy.getOccupations().then(res => {
-      console.log(res);
-      return res;
+  private loadData(): void {
+    this.occupations = this.occupationProxy.getOccupations({
+      'filter[parent_id]': '',
+      'page[size]': 30
+    }).then(occupations => {
+      return occupations.sort((occupation1, occupation2) => {
+        if(occupation1.translatedText.name < occupation2.translatedText.name) return -1;
+        if(occupation1.translatedText.name > occupation2.translatedText.name) return 1;
+        return 0;
+      });
     });
+  }
+
+  public resultChanged(result): void {
+    this.resultObject = result;
+    this.control.setValue(result);
   }
 }

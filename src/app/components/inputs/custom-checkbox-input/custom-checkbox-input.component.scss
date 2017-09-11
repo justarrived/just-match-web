@@ -1,23 +1,24 @@
 @import '../../../styles/colors';
 @import '../../../styles/typography';
 
-.custom-radio-button-container {
+.custom-checkbox-container {
   display: inline-block;
   text-align: center;
   width: 120px;
   margin: 10px 0;
 
-  .custom-radio-button-label {
+  .custom-checkbox-label {
 
-    .custom-radio-button-span {
+    .custom-checkbox-span {
       display: block;
     }
 
-    .custom-radio-button-input {
+    .custom-checkbox-input {
       display: none;
 
-      + .custom-radio-button-span:before {
+      + .custom-checkbox-span:before {
         content: '';
+        color: $white;
         display: inline-block;
         width: 2em;
         height: 2em;
@@ -27,11 +28,14 @@
         box-shadow: 0 0 0 .1em $color-cerise-500;
         // light shadow
         margin: 0 auto;
+        margin-bottom: 10px;
         transition: .5s ease all;
         // animation here
       }
 
-      &:checked + .custom-radio-button-span:before {
+      &:checked + .custom-checkbox-span:before {
+        content: '\2713';
+        margin-bottom: 15px;
         background: $color-cerise-500;
         box-shadow: 0 0 0 .1em $color-cerise-500;
       }

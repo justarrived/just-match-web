@@ -60,6 +60,7 @@ import {CookieBarComponent} from './components/bars/cookie-bar/cookie-bar.compon
 import {CookiesAboutPageComponent} from './components/pages/cookies-about-page/cookies-about-page.component';
 import {CountryOfOriginInputComponent} from './components/inputs/country-of-origin-input/country-of-origin-input.component';
 import {CustomRadioButtonInputComponent} from './components/inputs/custom-radio-button-input/custom-radio-button-input.component';
+import {CustomCheckboxInputComponent} from './components/inputs/custom-checkbox-input/custom-checkbox-input.component';
 import {DataStoreService} from './services/data-store.service';
 import {DefaultFooterComponent} from './components/footers/default-footer/default-footer.component';
 import {DefaultLayoutComponent} from './components/layouts/default-layout/default-layout.component';
@@ -337,6 +338,7 @@ export class RavenErrorHandler implements ErrorHandler {
     CookiesAboutPageComponent,
     CountryOfOriginInputComponent,
     CustomRadioButtonInputComponent,
+    CustomCheckboxInputComponent,
     DefaultFooterComponent,
     DefaultLayoutComponent,
     DefaultNavigationComponent,
