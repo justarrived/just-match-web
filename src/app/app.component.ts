@@ -21,6 +21,7 @@ import {SubscribedModalComponent} from './components/modals/subscribed-modal/sub
 import {Subscription} from 'rxjs/Subscription';
 import {SystemLanguagesResolver} from './resolvers/system-languages/system-languages.resolver';
 import {TransferState} from './transfer-state/transfer-state';
+import {UnsubscribedModalComponent} from './components/modals/unsubscribed-modal/unsubscribed-modal.component';
 import {UpdateProfileStep1ModalComponent} from './components/modals/update-profile-step-1-modal/update-profile-step-1-modal.component';
 import {UpdateProfileStep2ModalComponent} from './components/modals/update-profile-step-2-modal/update-profile-step-2-modal.component';
 import {UpdateProfileStep3ModalComponent} from './components/modals/update-profile-step-3-modal/update-profile-step-3-modal.component';
@@ -139,6 +140,11 @@ import {WelcomeStep3ModalComponent} from './components/modals/welcome-step-3-mod
       #subscribedModalComponent>
     </subscribed-modal>
 
+    <unsubscribed-modal
+      *ngIf="shownModal === 'unsubscribedModalComponent'"
+      #unsubscribedModalComponent>
+    </unsubscribed-modal>
+
     <update-profile-step-1-modal
       *ngIf="shownModal === 'updateProfileStep1ModalComponent'"
       #updateProfileStep1ModalComponent>
@@ -193,6 +199,7 @@ export class AppComponent extends BaseComponent {
   @ViewChild('signedForJobModalComponent') public signedForJobModalComponent: SignedForJobModalComponent;
   @ViewChild('signForJobModalComponent') public signForJobModalComponent: SignForJobModalComponent;
   @ViewChild('subscribedModalComponent') public subscribedModalComponent: SubscribedModalComponent;
+  @ViewChild('unsubscribedModalComponent') public unsubscribedModalComponent: UnsubscribedModalComponent;
   @ViewChild('updateProfileStep1ModalComponent') public updateProfileStep1ModalComponent: UpdateProfileStep1ModalComponent;
   @ViewChild('updateProfileStep2ModalComponent') public updateProfileStep2ModalComponent: UpdateProfileStep2ModalComponent;
   @ViewChild('updateProfileStep3ModalComponent') public updateProfileStep3ModalComponent: UpdateProfileStep3ModalComponent;
