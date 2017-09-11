@@ -36,6 +36,12 @@ import {Validators} from '@angular/forms';
         [apiErrors]="apiErrors">
       </email-input>
 
+      <input-errors
+        apiAttribute="subscriber"
+        [apiErrors]="apiErrors"
+        [control]="form.controls['subscriber_error']">
+      </input-errors>
+
       <city-autocomplete-input
         [apiErrors]="apiErrors"
         [control]="form.controls['address']"
@@ -101,6 +107,7 @@ export class SubscribeFormComponent extends BaseComponent {
       'notification_frequency': ['weekly'],
       'occupation_ids': [''],
       'state': [''],
+      'subscriber_error': [''],
     });
   }
 
