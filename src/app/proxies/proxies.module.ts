@@ -11,6 +11,7 @@ import {FaqProxy} from './faq/faq.proxy';
 import {HourlyPayProxy} from './hourly-pay/hourly-pay.proxy';
 import {InterestProxy} from './interest/interest.proxy';
 import {InvoiceProxy} from './invoice/invoice.proxy';
+import {JobDigestNotificationFrequencyProxy} from './job-digest-notification-frequency/job-digest-notification-frequency.proxy';
 import {JobDigestProxy} from './job-digest/job-digest.proxy';
 import {JobProxy} from './job/job.proxy';
 import {JobSkillProxy} from './job-skill/job-skill.proxy';
@@ -49,6 +50,7 @@ import {UserStatusProxy} from './user-status/user-status.proxy';
     HourlyPayProxy,
     InterestProxy,
     InvoiceProxy,
+    JobDigestNotificationFrequencyProxy,
     JobDigestProxy,
     JobProxy,
     JobSkillProxy,
