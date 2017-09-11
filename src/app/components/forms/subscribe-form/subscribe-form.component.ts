@@ -125,7 +125,7 @@ export class SubscribeFormComponent extends BaseComponent {
     let occupationIds = [];
     for (let occupationId in this.form.value.occupation_ids) {
       if (this.form.value.occupation_ids[occupationId]) {
-        occupationIds.push(occupationId);
+        occupationIds.push({id: occupationId});
       }
     }
 
