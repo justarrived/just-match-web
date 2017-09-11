@@ -150,6 +150,7 @@ import {NgModule} from '@angular/core';
 import {NotFoundPageComponent} from './components/pages/404-page/404-page.component';
 import {NumberedPagerComponent} from './components/pagers/numbered-pager/numbered-pager.component';
 import {PrimaryOccupationsInputComponent} from './components/inputs/primary-occupations-input/primary-occupations-input.component';
+import {JobDigestNotificationFrequencyInputComponent} from './components/inputs/job-digest-notification-frequency-input/job-digest-notification-frequency-input.component';
 import {OldPasswordInputComponent} from './components/inputs/old-password-input/old-password-input.component';
 import {PageOptionsService} from './services/page-options.service';
 import {PartnersSectionComponent} from './components/sections/partners-section/partners-section.component';
@@ -279,6 +280,7 @@ export class RavenErrorHandler implements ErrorHandler {
     ApplicationsBannerSectionComponent,
     ApplicationsPageComponent,
     ApplicationsPagerSectionComponent,
+    JobDigestNotificationFrequencyInputComponent,
     ApplicationsStatusSectionComponent,
     ApplicationStatusCardComponent,
     AppliedForJobModalComponent,

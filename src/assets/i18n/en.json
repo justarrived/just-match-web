@@ -126,6 +126,8 @@
   "home.jobs.slider.user.jobs.will.perform.label": "Hired",
   "home.partners.description": "Just Arrived is a joint pro-bono initiative designed to help newly arrived immigrants to the Swedish labour market. We are owned by a foundation and is run by an association of companies.",
   "home.partners.title": "Our partners",
+  "input.job.digest.notification.frequency.label": "How often do you want to be notified of new jobs?",
+  "input.job.digest.notification.frequency.placeholder": "Notification Frequency",
   "how.it.works.section.create.accont.button": "Create account",
   "how.it.works.section.find.jobs.description.paragraph.1": "Now it is time to begin job searching!",
   "how.it.works.section.find.jobs.description.paragraph.2": "Apply for any and as many jobs you want! Don’t forget to sign in often to see if we have posted any new jobs!",

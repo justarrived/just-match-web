@@ -13,12 +13,12 @@ export class JobDigestNotificationFrequencyProxy {
 
   // GET
   public getJobDigestNotificationFrequencies(searchParameters?: any): Promise<JobDigestNotificationFrequency[]> {
-    return this.apiCallService.get('users/statuses', searchParameters)
+    return this.apiCallService.get('jobs/digests/notification-frequencies', searchParameters)
     .then(response => response.data.map(jobDigestNotificationFrequency => JobDigestNotificationFrequencyFactory.createJobDigestNotificationFrequency(jobDigestNotificationFrequency)));
   }
 
   public getJobDigestNotificationFrequenciesWithMeta(searchParameters?: any): Promise<{jobDigestNotificationFrequencies: JobDigestNotificationFrequency[], meta: any}> {
-    return this.apiCallService.get('users/statuses', searchParameters)
+    return this.apiCallService.get('jobs/digests/notification-frequencies', searchParameters)
     .then(response => {
       return {
         jobDigestNotificationFrequencies: response.data.map(jobDigestNotificationFrequency => JobDigestNotificationFrequencyFactory.createJobDigestNotificationFrequency(jobDigestNotificationFrequency)),

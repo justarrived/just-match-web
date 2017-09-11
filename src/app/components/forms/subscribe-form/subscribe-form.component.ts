@@ -52,6 +52,11 @@ import {Validators} from '@angular/forms';
         [apiErrors]="apiErrors">
       </primary-occupations-input>
 
+      <job-digest-notification-frequency-input
+        [control]="form.controls['notification_frequency']"
+        [apiErrors]="apiErrors">
+      </job-digest-notification-frequency-input>
+
       <form-submit-button
         [buttonText]="'subscribe.form.submit.button' | translate"
         [showButton]="!isInModal"
@@ -93,6 +98,7 @@ export class SubscribeFormComponent extends BaseComponent {
       'email': ['', Validators.compose([Validators.required])],
       'latitude': [''],
       'longitude': [''],
+      'notification_frequency': ['weekly'],
       'occupation_ids': [''],
       'state': [''],
     });
@@ -112,7 +118,7 @@ export class SubscribeFormComponent extends BaseComponent {
 
     return this.jobDigestProxy.createJobDigest({
       city: this.form.value.city,
-      notification_frequency: 1,
+      notification_frequency: this.form.value.notification_frequency,
       occupation_ids: [],
       state: this.form.value.state,
       country_code: this.form.value.country_code,
