@@ -13,11 +13,10 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
   template: `
   <div class="ui centered grid">
     <div class="fourteen wide mobile ten wide tablet eight wide computer column login-form-container">
-      <subscribe-form></subscribe-form>
     </div>
   </div>`
 })
-export class SubscribePageComponent extends PageComponent {
+export class UnsubscribePageComponent extends PageComponent {
 
   public constructor (
     @Inject(DOCUMENT) protected document: any,
@@ -32,11 +31,11 @@ export class SubscribePageComponent extends PageComponent {
       {
         title: {
           translate: true,
-          content: 'meta.subscribe.title'
+          content: 'meta.unsubscribe.title'
         },
         description: {
           translate: true,
-          content: 'meta.subscribe.description'
+          content: 'meta.unsubscribe.description'
         }
       },
       document,
