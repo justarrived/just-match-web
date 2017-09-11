@@ -166,6 +166,7 @@ import {ProxiesModule} from './proxies/proxies.module';
 import {RatingInputComponent} from './components/inputs/rating-input/rating-input.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {RegisteredModalComponent} from './components/modals/registered-modal/registered-modal.component';
+import {SubscribedModalComponent} from './components/modals/subscribed-modal/subscribed-modal.component';
 import {RegisterFormComponent} from './components/forms/register-form/register-form.component';
 import {RegisterModalComponent} from './components/modals/register-modal/register-modal.component';
 import {RegisterPageComponent} from './components/pages/register-page/register-page.component';
@@ -310,6 +311,7 @@ export class RavenErrorHandler implements ErrorHandler {
     BasicTabComponent,
     BasicStepperComponent,
     BasicTabsComponent,
+    SubscribedModalComponent,
     BasicTextComponent,
     BasicTitleTextComponent,
     ChatMessageInputComponent,

@@ -17,6 +17,7 @@ import {RegisterModalComponent} from './components/modals/register-modal/registe
 import {ShareModalComponent} from './components/modals/share-modal/share-modal.component';
 import {SignedForJobModalComponent} from './components/modals/signed-for-job-modal/signed-for-job-modal.component';
 import {SignForJobModalComponent} from './components/modals/sign-for-job-modal/sign-for-job-modal.component';
+import {SubscribedModalComponent} from './components/modals/subscribed-modal/subscribed-modal.component';
 import {Subscription} from 'rxjs/Subscription';
 import {SystemLanguagesResolver} from './resolvers/system-languages/system-languages.resolver';
 import {TransferState} from './transfer-state/transfer-state';
@@ -133,6 +134,11 @@ import {WelcomeStep3ModalComponent} from './components/modals/welcome-step-3-mod
       #signedForJobModalComponent>
     </signed-for-job-modal>
 
+    <subscribed-modal
+      *ngIf="shownModal === 'subscribedModalComponent'"
+      #subscribedModalComponent>
+    </subscribed-modal>
+
     <update-profile-step-1-modal
       *ngIf="shownModal === 'updateProfileStep1ModalComponent'"
       #updateProfileStep1ModalComponent>
@@ -186,6 +192,7 @@ export class AppComponent extends BaseComponent {
   @ViewChild('shareModalComponent') public shareModalComponent: ShareModalComponent;
   @ViewChild('signedForJobModalComponent') public signedForJobModalComponent: SignedForJobModalComponent;
   @ViewChild('signForJobModalComponent') public signForJobModalComponent: SignForJobModalComponent;
+  @ViewChild('subscribedModalComponent') public subscribedModalComponent: SubscribedModalComponent;
   @ViewChild('updateProfileStep1ModalComponent') public updateProfileStep1ModalComponent: UpdateProfileStep1ModalComponent;
   @ViewChild('updateProfileStep2ModalComponent') public updateProfileStep2ModalComponent: UpdateProfileStep2ModalComponent;
   @ViewChild('updateProfileStep3ModalComponent') public updateProfileStep3ModalComponent: UpdateProfileStep3ModalComponent;

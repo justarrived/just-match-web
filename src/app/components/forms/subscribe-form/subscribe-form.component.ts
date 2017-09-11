@@ -137,6 +137,7 @@ export class SubscribeFormComponent extends BaseComponent {
     .then(jobDigest => {
       this.loadingSubmit = false;
       this.submitSuccess = true;
+      this.modalService.showModal('subscribedModalComponent', false, false, this.isInModal ? 400 : 1);
       return jobDigest;
     })
     .catch(errors => {

@@ -72,6 +72,9 @@ export class PrimaryOccupationsInputComponent extends BaseComponent {
   }
 
   private loadData() {
-    this.occupations = this.occupationProxy.getOccupations();
+    this.occupations = this.occupationProxy.getOccupations().then(res => {
+      console.log(res);
+      return res;
+    });
   }
 }
