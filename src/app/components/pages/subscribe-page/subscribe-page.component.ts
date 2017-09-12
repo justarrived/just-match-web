@@ -34,9 +34,8 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
         icon="warning">
       </info-message>
 
-      <div style="margin-top: 30px; background: white; padding: 20px; border-radius: 20px;">
-        <subscribe-form></subscribe-form>
-      </div>
+      <job-digests-pager-section>
+      </job-digests-pager-section>
     </div>
   </div>`
 })

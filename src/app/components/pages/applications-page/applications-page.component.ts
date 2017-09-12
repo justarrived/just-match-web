@@ -12,9 +12,9 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
 @Component({
   template: `
     <div style="height: 100%; display: flex; flex-direction: column;">
-    <applications-banner-section></applications-banner-section>
+      <applications-banner-section></applications-banner-section>
 
-    <applications-pager-section style="flex: 1"></applications-pager-section>
+      <applications-pager-section style="flex: 1"></applications-pager-section>
     </div>`
 })
 

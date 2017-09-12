@@ -6,6 +6,7 @@ import {EventEmitter} from '@angular/core';
 import {FormBuilder} from '@angular/forms';
 import {FormGroup} from '@angular/forms';
 import {Input} from '@angular/core';
+import {Output} from '@angular/core';
 import {JARoute} from '../../../routes/ja-route/ja-route';
 import {JobDigest} from '../../../models/api-models/job-digest/job-digest';
 import {JobDigestProxy} from '../../../proxies/job-digest/job-digest.proxy';
@@ -57,6 +58,7 @@ import {Validators} from '@angular/forms';
         [control]="form.controls['address']"
         [cityControl]="form.controls['city']"
         [countryCodeControl]="form.controls['country_code']"
+        [hint]="!jobDigest && 'subscribe.form.city.hint' | translate"
         [stateControl]="form.controls['state']"
         [latitudeControl]="form.controls['latitude']"
         [longitudeControl]="form.controls['longitude']">
@@ -64,14 +66,35 @@ import {Validators} from '@angular/forms';
 
       <form-submit-button
         [buttonText]="'subscribe.form.submit.button' | translate"
-        [showButton]="!isInModal"
+        [showButton]="!isInModal && !jobDigest"
         [submitFail]="submitFail"
         [submitSuccess]="submitSuccess">
       </form-submit-button>
+
+      <base-button
+        (click)="deleteJobDigest()"
+        *ngIf="jobDigest"
+        kind="secondary"
+        [buttonText]="'subscribe.form.delete.button' | translate"
+        size="small">
+      </base-button>
+
+      <base-button
+        (click)="updateJobDigest()"
+        *ngIf="jobDigest"
+        kind="primary"
+        [buttonText]="'subscribe.form.update.button' | translate"
+        size="small"
+        style="margin-left: 30px;">
+      </base-button>
     </form>`
 })
 export class SubscribeFormComponent extends BaseComponent {
   @Input() public isInModal: boolean = false;
+  @Input() public jobDigest = null as JobDigest;
+  @Output() public digestCreated: EventEmitter<JobDigest> = new EventEmitter<JobDigest>();
+  @Output() public digestDeleted: EventEmitter<JobDigest> = new EventEmitter<JobDigest>();
+  @Output() public digestUpdated: EventEmitter<JobDigest> = new EventEmitter<JobDigest>();
 
   public apiErrors: ApiErrors = new ApiErrors([]);
   public loadingSubmit: boolean;
@@ -96,18 +119,33 @@ export class SubscribeFormComponent extends BaseComponent {
   }
 
   private initForm(): void {
-    this.form = this.formBuilder.group({
-      'address': [''],
-      'city': [''],
-      'country_code': [''],
-      'email': ['', Validators.compose([Validators.required])],
-      'latitude': [''],
-      'longitude': [''],
-      'notification_frequency': ['weekly'],
-      'occupation_ids': [''],
-      'state': [''],
-      'subscriber_error': [''],
-    });
+    if (this.jobDigest) {
+      this.form = this.formBuilder.group({
+        'address': [this.jobDigest.address.city ? this.jobDigest.address.city + ', Sverige' : ''],
+        'city': [this.jobDigest.address.city],
+        'country_code': [this.jobDigest.address.countryCode],
+        'email': ['', Validators.compose([Validators.required])],
+        'latitude': [this.jobDigest.address.latitude],
+        'longitude': [this.jobDigest.address.longitude],
+        'notification_frequency': [this.jobDigest.notificationFrequency],
+        'occupation_ids': [''],
+        'state': [this.jobDigest.address.state],
+        'subscriber_error': [''],
+      });
+    } else {
+      this.form = this.formBuilder.group({
+        'address': [''],
+        'city': [''],
+        'country_code': [''],
+        'email': ['', Validators.compose([Validators.required])],
+        'latitude': [''],
+        'longitude': [''],
+        'notification_frequency': ['weekly'],
+        'occupation_ids': [''],
+        'state': [''],
+        'subscriber_error': [''],
+      });
+    }
   }
 
   private handleServerErrors(errors): void {
@@ -144,6 +182,62 @@ export class SubscribeFormComponent extends BaseComponent {
       this.loadingSubmit = false;
       this.submitSuccess = true;
       this.modalService.showModal('subscribedModalComponent', false, false, this.isInModal ? 400 : 1);
+      this.digestCreated.emit(jobDigest);
+      return jobDigest;
+    })
+    .catch(errors => {
+      this.handleServerErrors(errors);
+      if (this.isInModal) {
+        throw errors;
+      }
+    });
+  }
+
+  public deleteJobDigest(): Promise<any> {
+    this.submitFail = false;
+    this.submitSuccess = false;
+    this.loadingSubmit = true;
+
+    return this.jobDigestProxy.removeJobDigest(this.jobDigest.subscriber.uuid, this.jobDigest.id)
+    .then(result => {
+      this.loadingSubmit = false;
+      this.submitSuccess = true;
+      this.digestDeleted.emit(this.jobDigest);
+      return result;
+    })
+    .catch(errors => {
+      this.handleServerErrors(errors);
+      if (this.isInModal) {
+        throw errors;
+      }
+    });
+  }
+
+  public updateJobDigest(): Promise<JobDigest> {
+    this.submitFail = false;
+    this.submitSuccess = false;
+    this.loadingSubmit = true;
+
+    let occupationIds = [];
+    for (let occupationId in this.form.value.occupation_ids) {
+      if (this.form.value.occupation_ids[occupationId]) {
+        occupationIds.push({id: occupationId});
+      }
+    }
+
+    return this.jobDigestProxy.updateJobDigest(this.jobDigest.subscriber.uuid, this.jobDigest.id, {
+      city: this.form.value.city,
+      notification_frequency: this.form.value.notification_frequency,
+      occupation_ids: occupationIds,
+      state: this.form.value.state,
+      country_code: this.form.value.country_code,
+      latitude: this.form.value.latitude,
+      longitude: this.form.value.longitude
+    })
+    .then(jobDigest => {
+      this.loadingSubmit = false;
+      this.submitSuccess = true;
+      this.digestUpdated.emit(this.jobDigest);
       return jobDigest;
     })
     .catch(errors => {

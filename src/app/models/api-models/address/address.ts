@@ -2,7 +2,6 @@
 interface AddressApiAttributes {
   city: string;
   countryCode: string;
-  createdAt: Date;
   id: string;
   latitude: number;
   longitude: number;
@@ -11,8 +10,6 @@ interface AddressApiAttributes {
   state: string;
   street1: string;
   street2: string;
-  updatedAt: Date;
-  uuid: string;
 }
 
 // Client interfaces
@@ -29,7 +26,6 @@ export class AddressFactory {
     return {
       city: jsonObject.city,
       countryCode: jsonObject.country_code,
-      createdAt: new Date(jsonObject.created_at),
       id: jsonObject.id,
       latitude: jsonObject.latitude,
       longitude: jsonObject.longitude,
@@ -38,8 +34,6 @@ export class AddressFactory {
       state: jsonObject.state,
       street1: jsonObject.street1,
       street2: jsonObject.street2,
-      updatedAt: new Date(jsonObject.updated_at),
-      uuid: jsonObject.uuid,
     };
   }
 }

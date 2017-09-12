@@ -11,16 +11,11 @@ import {UserFactory} from '../user/user';
 // API attribute interfaces
 interface JobDigestApiAttributes {
   address: Address;
-  createdAt: Date;
-  deletedAt: Date;
   id: string;
-  locale: string;
   maxDistance: number;
-  notificationFrequency: number;
+  notificationFrequency: string;
   occupations: Occupation[];
   subscriber: DigestSubscriber;
-  updatedAt: Date;
-  user: User;
 }
 
 // Client interfaces
@@ -36,16 +31,11 @@ export class JobDigestFactory {
 
     return {
       address: AddressFactory.createAddress(jsonObject.address),
-      createdAt: new Date(jsonObject.created_at),
-      deletedAt: new Date(jsonObject.deleted_at),
       id: jsonObject.id,
-      locale: jsonObject.locale,
       maxDistance: jsonObject.max_distance,
       notificationFrequency: jsonObject.notification_frequency,
       occupations: map(jsonObject.occupations, occupation => OccupationFactory.createOccupation(occupation)),
       subscriber: DigestSubscriberFactory.createDigestSubscriber(jsonObject.subscriber),
-      updatedAt: new Date(jsonObject.updated_at),
-      user: UserFactory.createUser(jsonObject.user),
     };
   }
 }

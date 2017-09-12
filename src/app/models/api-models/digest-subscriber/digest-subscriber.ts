@@ -1,18 +1,12 @@
 import {JobDigest} from '../job-digest/job-digest';
 import {JobDigestFactory} from '../job-digest/job-digest';
-import {User} from '../user/user';
-import {UserFactory} from '../user/user';
 import {map} from 'lodash';
 
 // API attribute interfaces
 interface DigestSubscriberApiAttributes {
-  createdAt: Date;
-  deletedAt: Date;
   email: string;
   id: string;
   jobDigests: JobDigest[];
-  updatedAt: Date;
-  user: User;
   uuid: string;
 }
 
@@ -28,13 +22,9 @@ export class DigestSubscriberFactory {
     }
 
     return {
-      createdAt: new Date(jsonObject.created_at),
-      deletedAt: new Date(jsonObject.deleted_at),
       email: jsonObject.email,
       id: jsonObject.id,
       jobDigests: map(jsonObject.job_digests, jobDigest => JobDigestFactory.createJobDigest(jobDigest)),
-      updatedAt: new Date(jsonObject.updated_at),
-      user: UserFactory.createUser(jsonObject.user),
       uuid: jsonObject.uuid,
     };
   }

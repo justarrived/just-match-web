@@ -44,6 +44,10 @@ export function parseJsonapiErrorResponse(response: Response): any {
 }
 
 function deserializeBody(body: any): any {
+  if (!body) {
+    return body;
+  }
+
   let data = body.data;
 
   if (_.isArray(data)) {

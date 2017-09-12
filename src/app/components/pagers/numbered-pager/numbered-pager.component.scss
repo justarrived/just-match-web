@@ -3,7 +3,6 @@
 @import '../../../styles/dimensions';
 
 .pager-container {
-  background-color: $white;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -48,8 +47,6 @@
   }
 
   &.light {
-    background-color: $white;
-
     .pager-segment-container {
       color: $color-gray-300;
 

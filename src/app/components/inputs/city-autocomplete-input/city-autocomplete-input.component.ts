@@ -53,7 +53,7 @@ export class CityAutocompleteInputComponent extends BaseComponent {
 
   public onInit() {
     this.cityControlInfoMap = {
-      'postal_town': {
+      'locality': {
         control: this.cityControl,
         attribute: 'long_name'
       },

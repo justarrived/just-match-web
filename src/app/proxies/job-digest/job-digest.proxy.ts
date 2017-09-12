@@ -46,9 +46,19 @@ export class JobDigestProxy {
   }
 
   // GET
-  public getJobDigest(uuidOrUserId: string, searchParameters?: any): Promise<JobDigest[]> {
-    return this.apiCallService.get('jobs/' + uuidOrUserId + '/digests', searchParameters)
+  public getJobDigests(uuidOrUserId: string, searchParameters?: any): Promise<JobDigest[]> {
+    return this.apiCallService.get('jobs/subscribers/' + uuidOrUserId + '/digests', searchParameters)
     .then(response => response.data.map(jobDigest => JobDigestFactory.createJobDigest(jobDigest)));
+  }
+
+  public getJobDigestsWithMeta(uuidOrUserId: string, searchParameters?: any): Promise<{jobDigests: JobDigest[], meta: any}> {
+    return this.apiCallService.get('jobs/subscribers/' + uuidOrUserId + '/digests', searchParameters)
+    .then(response => {
+      return {
+        jobDigests: response.data.map(jobDigest => JobDigestFactory.createJobDigest(jobDigest)),
+        meta: response.meta
+      }
+    });
   }
 
   // CREATE
