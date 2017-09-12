@@ -10,9 +10,9 @@ import {TranslateService} from '@ngx-translate/core';
 import {UserResolver} from '../../../resolvers/user/user.resolver';
 
 @Component({
-  styleUrls: ['./subscribe-page.component.scss'],
+  styleUrls: ['./subscriptions-page.component.scss'],
   template: `
-  <div class="ui centered grid subscribe-page-grid">
+  <div class="ui centered grid subscriptions-page-grid">
     <div class="sixteen wide mobile twelve wide tablet ten wide computer column login-form-container">
       <basic-title-text
         [text]="'subscribe.title' | translate"
@@ -39,7 +39,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
     </div>
   </div>`
 })
-export class SubscribePageComponent extends PageComponent {
+export class SubscriptionsPageComponent extends PageComponent {
 
   public constructor (
     @Inject(DOCUMENT) protected document: any,

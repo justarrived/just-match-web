@@ -32,7 +32,7 @@ import {Validators} from '@angular/forms';
       </basic-loader>
 
       <email-input
-        *ngIf="!user"
+        *ngIf="!user && !jobDigest"
         [control]="form.controls['email']"
         [apiErrors]="apiErrors">
       </email-input>
@@ -124,7 +124,7 @@ export class SubscribeFormComponent extends BaseComponent {
         'address': [this.jobDigest.address.city ? this.jobDigest.address.city + ', Sverige' : ''],
         'city': [this.jobDigest.address.city],
         'country_code': [this.jobDigest.address.countryCode],
-        'email': ['', Validators.compose([Validators.required])],
+        'email': [this.user && this.user.email, Validators.compose([Validators.required])],
         'latitude': [this.jobDigest.address.latitude],
         'longitude': [this.jobDigest.address.longitude],
         'notification_frequency': [this.jobDigest.notificationFrequency],
@@ -137,7 +137,7 @@ export class SubscribeFormComponent extends BaseComponent {
         'address': [''],
         'city': [''],
         'country_code': [''],
-        'email': ['', Validators.compose([Validators.required])],
+        'email': [this.user && this.user.email, Validators.compose([Validators.required])],
         'latitude': [''],
         'longitude': [''],
         'notification_frequency': ['weekly'],
@@ -177,6 +177,8 @@ export class SubscribeFormComponent extends BaseComponent {
       longitude: this.form.value.longitude,
       user_id: this.user ? this.user.id : '',
       email: this.form.value.email,
+    }, {
+      'include': 'address,subscriber'
     })
     .then(jobDigest => {
       this.loadingSubmit = false;
@@ -233,6 +235,8 @@ export class SubscribeFormComponent extends BaseComponent {
       country_code: this.form.value.country_code,
       latitude: this.form.value.latitude,
       longitude: this.form.value.longitude
+    }, {
+      'include': 'address,subscriber'
     })
     .then(jobDigest => {
       this.loadingSubmit = false;

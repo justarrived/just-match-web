@@ -5,7 +5,7 @@ import {Input} from '@angular/core';
 import {JobDigest} from '../../../models/api-models/job-digest/job-digest';
 import {JobDigestProxy} from '../../../proxies/job-digest/job-digest.proxy';
 import {Language} from '../../../models/api-models/language/language';
-import {NavigationService} from '../../../services/navigation.service';
+import {Subscription} from 'rxjs/Subscription';
 import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
 import {UserResolver} from '../../../resolvers/user/user.resolver';
 
@@ -27,7 +27,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
           underlineBelowRtlAlignment="center">
         </basic-title-text>
         <subscribe-form
-          (digestCreated)="loadData()">
+          (digestCreated)="digestCreated($event)">
         </subscribe-form>
       </div>
 
@@ -99,17 +99,19 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
     </div>`
 })
 export class JobDigestsPagerSectionComponent extends BaseComponent {
-  @Input() digestSubscriberUuid: string;
 
+  public digestSubscriberUuid: string;
   public jobDigestsMetaPromise: Promise<{jobDigests: JobDigest[], meta: any}>;
   public page: number = 1;
-  public totalJobDigests: number = 0;
   public readonly pageSize: number = 12;
+  public totalJobDigests: number = 0;
+
+  private readonly subscriberParam: string = 'subscriberUuid';
+  private routeParamsSubscription: Subscription;
 
   public constructor(
     private activatedRoute: ActivatedRoute,
     private jobDigestProxy: JobDigestProxy,
-    private navigationService: NavigationService,
     protected systemLanguagesResolver: SystemLanguagesResolver,
     protected userResolver: UserResolver,
   ) {
@@ -117,7 +119,14 @@ export class JobDigestsPagerSectionComponent extends BaseComponent {
   }
 
   public onInit() {
-    this.loadData();
+    this.initRouteParamsSubscription();
+  }
+
+  private initRouteParamsSubscription(): void {
+    this.routeParamsSubscription = this.activatedRoute.params.subscribe(params => {
+      this.digestSubscriberUuid = params[this.subscriberParam];
+      this.loadData();
+    });
   }
 
   public systemLanguageChanged(systemLanguage: Language): void {
@@ -140,6 +149,15 @@ export class JobDigestsPagerSectionComponent extends BaseComponent {
         return result;
       });
     }
+  }
+
+  public onDestroy(): void {
+    if (this.routeParamsSubscription) { this.routeParamsSubscription.unsubscribe(); }
+  }
+
+  public digestCreated(jobDigest: JobDigest): void {
+    this.digestSubscriberUuid = jobDigest.subscriber.uuid;
+    this.loadData();
   }
 
   public onPageChange(page: number): void {

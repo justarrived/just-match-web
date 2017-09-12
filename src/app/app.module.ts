@@ -55,7 +55,7 @@ import {ContactFormComponent} from './components/forms/contact-form/contact-form
 import {ContactMessageInputComponent} from './components/inputs/contact-message-input/contact-message-input.component';
 import {ContactMessageSentModalComponent} from './components/modals/contact-message-sent-modal/contact-message-sent-modal.component';
 import {ContactPageComponent} from './components/pages/contact-page/contact-page.component';
-import {SubscribePageComponent} from './components/pages/subscribe-page/subscribe-page.component';
+import {SubscriptionsPageComponent} from './components/pages/subscriptions-page/subscriptions-page.component';
 import {CookieBarComponent} from './components/bars/cookie-bar/cookie-bar.component';
 import {CookiesAboutPageComponent} from './components/pages/cookies-about-page/cookies-about-page.component';
 import {CountryOfOriginInputComponent} from './components/inputs/country-of-origin-input/country-of-origin-input.component';
@@ -324,7 +324,7 @@ export class RavenErrorHandler implements ErrorHandler {
     CircularIconBaseButtonComponent,
     CircularImageInputComponent,
     CityInputComponent,
-    SubscribePageComponent,
+    SubscriptionsPageComponent,
     CommentInputComponent,
     CommentsFormComponent,
     CompactJobCardComponent,

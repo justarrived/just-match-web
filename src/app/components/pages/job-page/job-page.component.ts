@@ -172,7 +172,7 @@ export class JobPageComponent extends PageComponent {
     @Inject(DOCUMENT) protected document: any,
     @Inject(REQUEST) protected request: any,
     private jobProxy: JobProxy,
-    private route: ActivatedRoute,
+    private activatedRoute: ActivatedRoute,
     protected meta: Meta,
     protected pageOptionsService: PageOptionsService,
     protected systemLanguagesResolver: SystemLanguagesResolver,
@@ -210,9 +210,9 @@ export class JobPageComponent extends PageComponent {
   }
 
   private initRouteParamsSubscription(): void {
-    this.routeParamsSubscription = this.route.params.subscribe(params => {
+    this.routeParamsSubscription = this.activatedRoute.params.subscribe(params => {
       this.jobId = params[JobPageComponent.idParam];
-      this.queryParamsSubscription = this.route.queryParams.subscribe(params => {
+      this.queryParamsSubscription = this.activatedRoute.queryParams.subscribe(params => {
         this.previewKey = params[JobPageComponent.previewKeyParam];
         this.loadData();
       });
@@ -246,5 +246,6 @@ export class JobPageComponent extends PageComponent {
 
   public onDestroy(): void {
     if (this.routeParamsSubscription) { this.routeParamsSubscription.unsubscribe(); }
+    if (this.queryParamsSubscription) { this.queryParamsSubscription.unsubscribe(); }
   }
 }
