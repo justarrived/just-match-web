@@ -59,7 +59,7 @@ const routes: Routes = [
     { path: 'subscriptions', component: SubscriptionsPageComponent },
     { path: 'subscriptions/:subscriberUuid', component: SubscriptionsPageComponent },
     { path: 'user', component: UserProfilePageComponent, canActivate: [LoggedInGuard] },
-    { path: '**', redirectTo: '404' },
+    { path: '**', component: NotFoundPageComponent },
   ]}
 ];
 
