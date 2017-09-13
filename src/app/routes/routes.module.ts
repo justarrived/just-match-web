@@ -18,7 +18,6 @@ import {LoginPageComponent} from '../components/pages/login-page/login-page.comp
 import {LostConnectionPageComponent} from '../components/pages/lost-connection-page/lost-connection-page.component';
 import {NgModule} from '@angular/core';
 import {NotFoundPageComponent} from '../components/pages/404-page/404-page.component';
-import {OfflinePageComponent} from '../components/pages/offline-page/offline-page.component';
 import {NotLoggedInGuard} from '../guards/not-logged-in/not-logged-in.guard';
 import {RegisterPageComponent} from '../components/pages/register-page/register-page.component';
 import {ResetPasswordPageComponent} from '../components/pages/reset-password-page/reset-password-page.component';
@@ -39,7 +38,6 @@ const routes: Routes = [
     children: [
     { path: '', pathMatch: 'full', component: HomePageComponent},
     { path: '404', component: NotFoundPageComponent },
-    { path: 'offline', component: OfflinePageComponent },
     { path: 'applications', component: ApplicationsPageComponent, canActivate: [LoggedInGuard] },
     { path: 'contact', component: ContactPageComponent },
     { path: 'cookies-about', component: CookiesAboutPageComponent },
