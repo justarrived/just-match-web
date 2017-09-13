@@ -50,7 +50,8 @@ import {Validators} from '@angular/forms';
 
       <primary-occupations-input
         [control]="form.controls['occupation_ids']"
-        [apiErrors]="apiErrors">
+        [apiErrors]="apiErrors"
+        [resultObject]="occupationsResultObject">
       </primary-occupations-input>
 
       <city-autocomplete-input
@@ -97,8 +98,9 @@ export class SubscribeFormComponent extends BaseComponent {
   @Output() public digestUpdated: EventEmitter<JobDigest> = new EventEmitter<JobDigest>();
 
   public apiErrors: ApiErrors = new ApiErrors([]);
-  public loadingSubmit: boolean;
   public form: FormGroup;
+  public loadingSubmit: boolean;
+  public occupationsResultObject: any = {};
   public submitFail: boolean;
   public submitSuccess: boolean;
 
@@ -115,6 +117,7 @@ export class SubscribeFormComponent extends BaseComponent {
   }
 
   public onInit(): void {
+    this.initOccupationsResultObject();
     this.initForm();
   }
 
@@ -128,7 +131,7 @@ export class SubscribeFormComponent extends BaseComponent {
         'latitude': [this.jobDigest.address.latitude],
         'longitude': [this.jobDigest.address.longitude],
         'notification_frequency': [this.jobDigest.notificationFrequency],
-        'occupation_ids': [''],
+        'occupation_ids': [this.occupationsResultObject],
         'state': [this.jobDigest.address.state],
         'subscriber_error': [''],
       });
@@ -145,6 +148,15 @@ export class SubscribeFormComponent extends BaseComponent {
         'state': [''],
         'subscriber_error': [''],
       });
+    }
+  }
+
+  private initOccupationsResultObject(): void {
+    this.occupationsResultObject = {};
+    if (this.jobDigest) {
+      for (let occupation of this.jobDigest.occupations) {
+        this.occupationsResultObject[occupation.id] = true;
+      }
     }
   }
 
@@ -178,7 +190,7 @@ export class SubscribeFormComponent extends BaseComponent {
       user_id: this.user ? this.user.id : '',
       email: this.form.value.email,
     }, {
-      'include': 'address,subscriber'
+      'include': 'address,subscriber,occupations'
     })
     .then(jobDigest => {
       this.loadingSubmit = false;
@@ -236,7 +248,7 @@ export class SubscribeFormComponent extends BaseComponent {
       latitude: this.form.value.latitude,
       longitude: this.form.value.longitude
     }, {
-      'include': 'address,subscriber'
+      'include': 'address,subscriber,occupations'
     })
     .then(jobDigest => {
       this.loadingSubmit = false;

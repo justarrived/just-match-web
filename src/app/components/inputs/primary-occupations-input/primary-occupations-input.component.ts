@@ -52,11 +52,10 @@ export class PrimaryOccupationsInputComponent extends BaseComponent {
   @Input() public apiErrors: ApiErrors;
   @Input() public control: FormControl;
   @Input() public hint: string;
+  @Input() public resultObject: any = {};
   @ViewChild(InputErrorsComponent) inputErrors: InputErrorsComponent;
 
   public occupations: Promise<Occupation[]>;
-
-  public resultObject = {};
 
   public constructor(
     private occupationProxy: OccupationProxy,

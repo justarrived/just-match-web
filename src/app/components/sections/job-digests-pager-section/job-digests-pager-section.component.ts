@@ -136,7 +136,7 @@ export class JobDigestsPagerSectionComponent extends BaseComponent {
   private loadData(): void {
     let searchParameters = {
       'sort': '-created_at',
-      'include': 'address,subscriber',
+      'include': 'address,subscriber,occupations',
       'page[number]': this.page,
       'page[size]': this.pageSize
     };
