@@ -36,12 +36,12 @@ import {ViewChild} from '@angular/core';
       </modal-content>
       <modal-actions>
         <div class="ui center aligned basic segment button-container">
-          <base-button
+          <base-action-button
             [buttonText]="'common.close' | translate"
             kind="primary"
             (click)="confirmationModal.hide()"
             size="medium">
-          </base-button>
+          </base-action-button>
         </div>
       </modal-actions>
     </basic-modal>`

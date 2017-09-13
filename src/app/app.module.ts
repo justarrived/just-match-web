@@ -20,7 +20,8 @@ import {AtUndInputComponent} from './components/inputs/at-und-input/at-und-input
 import {AutosizeDirective} from './directives/autosize/autosize.directive';
 import {BackToJobsSectionComponent} from './components/sections/back-to-jobs-section/back-to-jobs-section.component';
 import {BankAccountInputComponent} from './components/inputs/bank-account-input/bank-account-input.component';
-import {BaseButtonComponent} from './components/buttons/base-button/base-button.component';
+import {BaseNavigationButtonComponent} from './components/buttons/base-navigation-button/base-navigation-button.component';
+import {BaseActionButtonComponent} from './components/buttons/base-action-button/base-action-button.component';
 import {BaseMessageComponent} from './components/messages/base-message/base-message.component';
 import {BasicModalComponent} from './components/modals/basic-modal/basic-modal.component';
 import {BasicAccordionComponent} from './components/accordions/basic-accordion/basic-accordion.component';
@@ -297,7 +298,8 @@ export class RavenErrorHandler implements ErrorHandler {
     AutosizeDirective,
     BackToJobsSectionComponent,
     BankAccountInputComponent,
-    BaseButtonComponent,
+    BaseActionButtonComponent,
+    BaseNavigationButtonComponent,
     BaseMessageComponent,
     BasicModalComponent,
     BasicAccordionComponent,

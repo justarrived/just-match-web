@@ -39,22 +39,22 @@ import {ViewChild} from '@angular/core';
           textAlignmentRtl="center">
         </basic-text>
         <div style="width: 100%; display: flex; flex-wrap: wrap; justify-content: center; padding-top: 30px;">
-          <base-button
+          <base-action-button
             (click)="goToJobs()"
             [buttonText]="'update-profile-step-4-modal-find-jobs-button' | translate"
             [fluid]="true"
             kind="primary"
             size="small"
             style="width: 160px; margin: 0 10px;">
-          </base-button>
-          <base-button
+          </base-action-button>
+          <base-action-button
             (click)="goToProfile()"
             [buttonText]="'update-profile-step-4-modal-profile-button' | translate"
             [fluid]="true"
             kind="primary"
             size="small"
             style="width: 160px; margin: 0 10px;">
-          </base-button>
+          </base-action-button>
         </div>
       </modal-content>
     </stepper-modal>`

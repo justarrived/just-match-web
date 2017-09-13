@@ -36,12 +36,12 @@ import {yyyymmdd} from '../../../utils/date/date.util';
           style="margin: 1rem 0">
         </job-card>
       </div>
-      <base-button
+      <base-navigation-button
         [buttonText]="'home.jobs.slider.show.all.link' | translate"
         [routerLink]="JARoutes.jobs.url()"
         kind="primary"
         size="medium">
-      </base-button>
+      </base-navigation-button>
     </div>
     `
 })

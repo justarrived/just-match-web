@@ -29,22 +29,22 @@ import {Output} from '@angular/core';
       <modal-actions>
         <div style="display: flex; align-items: center; justify-content: center; flex-wrap: wrap;">
           <div style="width: 200px; padding: 0 10px;">
-            <base-button
+            <base-action-button
               (click)="onLoginButtonClick()"
               [buttonText]="'login.or.register.modal.login' | translate"
               [fluid]="true"
               kind="primary"
               size="small">
-            </base-button>
+            </base-action-button>
           </div>
           <div style="width: 200px; padding: 0 10px;">
-            <base-button
+            <base-action-button
               (click)="onRegisterButtonClick()"
               [buttonText]="'login.or.register.modal.register' | translate"
               [fluid]="true"
               kind="primary"
               size="small">
-            </base-button>
+            </base-action-button>
           </div>
         </div>
       </modal-actions>

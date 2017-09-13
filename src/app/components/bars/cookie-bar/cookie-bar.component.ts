@@ -19,20 +19,20 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
           textAlignmentLtr="center"
           textAlignmentRtl="center">
         </basic-text>
-        <base-button
+        <base-navigation-button
           [routerLink]="JARoutes.aboutCookies.url()"
           [buttonText]="'cookies.read_more' | translate"
           style="margin-left: 10px; margin-right: 10px;"
           kind="secondary-light"
           size="small">
-        </base-button>
-        <base-button
+        </base-navigation-button>
+        <base-action-button
           (click)="acceptCookiesConsent()"
           [buttonText]="'cookies.accept.button' | translate"
           style="margin-left: 10px; margin-right: 10px;"
           kind="secondary-light"
           size="small">
-        </base-button>
+        </base-action-button>
       </div>
     </div>`
 })

@@ -6,6 +6,7 @@ $button-font-arabic: $text-font-family-arabic;
 
 // GENERAL
 .btn {
+  display: inline-block;
   border-radius: 8px;
   border: 2px solid;
   font-family: $button-font;

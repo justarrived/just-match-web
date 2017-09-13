@@ -1,0 +1,130 @@
+@import '../../../styles/colors';
+@import '../../../styles/typography';
+
+$button-font: $text-font-family;
+$button-font-arabic: $text-font-family-arabic;
+
+// GENERAL
+.btn {
+  display: inline-block;
+  border-radius: 8px;
+  border: 2px solid;
+  font-family: $button-font;
+  font-weight: 700;
+  line-height: 2.3;
+  outline:none !important;
+  text-align: center;
+  text-decoration: none;
+  @include truncate-owerflowing-text;
+
+  &:disabled {
+    opacity: 0.5;
+  }
+}
+
+.arabic {
+  font-family: $button-font-arabic;
+}
+
+// FLUID
+.btn.fluid {
+  width: 100%;
+}
+
+// SIZE
+.btn.tiny {
+  font-size: 12px;
+  padding: 0 10px;
+  min-width: 100px;
+}
+
+.btn.small {
+  font-size: 14px;
+  padding: 2px 25px;
+  min-width: 100px;
+}
+
+.btn.medium {
+  font-size: 14px;
+  padding: 4px 30px;
+  min-width: 150px;
+}
+
+.btn.large {
+  font-size: 16px;
+  padding: 6px 35px;
+  min-width: 180px;
+}
+
+// PRIMARY
+.btn.primary {
+  color: $white;
+  background-color: $color-cerise-500;
+  border-color: $color-cerise-500;
+}
+
+.btn.primary:hover {
+  color: $color-cerise-500 !important;
+  background-color:  $white;
+  border-color: $color-cerise-500;
+}
+
+.btn.primary:active {
+  background-color: $color-cerise-600;
+  border-color: $color-cerise-500;
+  color: $white;
+}
+// PRIMARY LIGHT
+.btn.primary-light {
+  color: $color-cerise-500;
+  background-color: $white;
+  border-color:$white;
+}
+
+.btn.primary-light:hover {
+  color: $white !important;
+  background-color: $color-cerise-500;
+  border-color: $color-cerise-500;
+}
+
+.btn.primary-light:active {
+  color: $white;
+  background-color: $color-cerise-600;
+  border-color: $color-cerise-500;
+}
+// SECONDARY
+.btn.secondary {
+  color: $color-cerise-500;
+  background-color: transparent;
+  border-color: $color-cerise-500;
+}
+
+.btn.secondary:hover {
+  color: $white !important;
+  background-color: $color-cerise-500;
+  border-color: $color-cerise-500;
+}
+
+.btn.secondary:active {
+  color: $white;
+  background-color: $color-cerise-600;
+  border-color: $color-cerise-500;
+}
+// SECONDARY LIGHT
+.btn.secondary-light {
+  color: $white;
+  background-color: transparent;
+  border-color: $white;
+}
+
+.btn.secondary-light:hover {
+  color: $color-cerise-500 !important;
+  background-color: $white;
+  border-color: $white;
+}
+
+.btn.secondary-light:active {
+  color: $white;
+  background-color: $color-cerise-600;
+  border-color: $color-cerise-500;
+}

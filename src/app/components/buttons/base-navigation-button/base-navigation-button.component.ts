@@ -5,31 +5,29 @@ import {SystemLanguagesResolver} from '../../../resolvers/system-languages/syste
 import {UserResolver} from '../../../resolvers/user/user.resolver';
 
 @Component({
-  selector: 'base-button',
-  styleUrls: ['./base-button.component.scss'],
+  selector: 'base-navigation-button',
+  styleUrls: ['./base-navigation-button.component.scss'],
   template: `
-    <button
+    <a
       [class.arabic-font]="systemLanguage.direction === 'rtl'"
       [class.fluid]="fluid"
-      [disabled]="disabled"
       [ngClass]="[kind, size, 'btn']"
       [style.direction]="systemLanguage.direction"
       [style.margin-top]="marginTop"
       [style.margin-bottom]="marginBottom"
-      [type]="buttonType">
+      [routerLink]="routerLink">
       <i *ngIf="icon" class="icon {{icon}}"></i>
       {{buttonText}}
-    </button>`
+    </a>`
 })
-export class BaseButtonComponent extends BaseComponent {
+export class BaseNavigationButtonComponent extends BaseComponent {
   @Input() public buttonText: string = '';
-  @Input() public buttonType: string = 'button'; // One of ['button', 'submit', 'reset']
-  @Input() public disabled: boolean = false;
   @Input() public fluid: boolean;
   @Input() public icon: string;
   @Input() public kind: string = 'primary'; // One of ['primary', 'primary-light', 'secondary', 'secondary-light', 'inactive-light', 'inactive-dark']
-  @Input() public marginBottom: string = '15px';
-  @Input() public marginTop: string = '15px';
+  @Input() public marginBottom: string = '10px';
+  @Input() public marginTop: string = '10px';
+  @Input() public routerLink: string;
   @Input() public size: string = 'medium'; // One of ['tiny', 'small', 'medium', 'large']
 
   public constructor(

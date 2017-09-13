@@ -32,22 +32,22 @@ import {ViewChild} from '@angular/core';
           marginBottom="30px">
         </basic-text>
         <div style="width: 100%; display: flex; flex-wrap: wrap; justify-content: center; padding-top: 30px;">
-          <base-button
+          <base-action-button
             (click)="goToJobs()"
             [buttonText]="'welcome-step-3-modal-find-jobs-button' | translate"
             [fluid]="true"
             kind="secondary"
             size="small"
             style="width: 160px; margin: 0 10px;">
-          </base-button>
-          <base-button
+          </base-action-button>
+          <base-action-button
             (click)="updateProfile()"
             [buttonText]="'welcome-step-3-modal-update-profile-button' | translate"
             [fluid]="true"
             kind="primary"
             size="small"
             style="width: 160px; margin: 0 10px;">
-          </base-button>
+          </base-action-button>
         </div>
       </modal-content>
     </step-modal>`

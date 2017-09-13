@@ -74,12 +74,12 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
             iconLeft="check"
             fontWeight="light">
           </basic-title-text>
-          <base-button
+          <base-navigation-button
             [routerLink]="JARoutes.faq.url()"
             [buttonText]="'requirements.section.read.more.button' | translate"
             kind="primary"
             size="small">
-          </base-button>
+          </base-navigation-button>
         </div>
       </div>
       <div class="eight wide tablet eight wide computer only column requirements-section-image">

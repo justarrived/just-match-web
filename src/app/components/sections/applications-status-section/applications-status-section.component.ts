@@ -42,12 +42,12 @@ import {yyyymmdd} from '../../../utils/date/date.util';
           style="padding: 15px 10px">
         </application-status-card>
       </div>
-      <base-button
+      <base-navigation-button
         [buttonText]="'home.jobs.slider.show.all.link' | translate"
         [routerLink]="JARoutes.applications.url()"
         kind="primary"
         size="medium">
-      </base-button>
+      </base-navigation-button>
     </div>
     `
 })

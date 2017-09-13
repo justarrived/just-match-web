@@ -99,21 +99,21 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
         </div>
       </div>
       <div style="margin: 0 auto; width: 200px;">
-        <base-button
+        <base-navigation-button
           [routerLink]="JARoutes.jobs.url()"
           [buttonText]="'how.it.works.section.jobs.button' | translate"
           [fluid]="true"
           kind="primary"
           size="small">
-        </base-button>
+        </base-navigation-button>
         <br>
-        <base-button
+        <base-navigation-button
           [routerLink]="JARoutes.registerUser.url()"
           [buttonText]="'how.it.works.section.create.accont.button' | translate"
           [fluid]="true"
           kind="primary"
           size="small">
-        </base-button>
+        </base-navigation-button>
       </div>
     </div>`
 })

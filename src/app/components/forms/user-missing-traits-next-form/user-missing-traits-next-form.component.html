@@ -197,11 +197,11 @@
     [style.padding]="0"
     *ngIf="informationProvided && !isInModal"
     class="ui basic center aligned segment">
-    <base-button
+    <base-action-button
       (click)="onCloseButtonClicked()"
       [buttonText]="'user.missing.traits.form.close.button' | translate"
       kind="secondary"
       size="medium">
-    </base-button>
+    </base-action-button>
   </div>
 </form>

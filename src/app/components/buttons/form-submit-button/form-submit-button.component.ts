@@ -26,7 +26,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
     <div
       [style.padding]="0"
       class="ui basic center aligned segment">
-      <base-button
+      <base-action-button
         [buttonText]="buttonText"
         [fluid]="false"
         [icon]="icon"
@@ -34,7 +34,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
         buttonType="submit"
         [kind]="kind"
         [size]="size">
-      </base-button>
+      </base-action-button>
       <ng-content></ng-content>
     </div>`
 })

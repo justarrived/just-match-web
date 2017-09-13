@@ -38,13 +38,13 @@ import {ViewChild} from '@angular/core';
           [complete]="!loginForm.loadingSubmit"
           class="inverted">
         </basic-loader>
-        <base-button
+        <base-action-button
           (click)="buttonClicked()"
           [buttonText]="'already.registered.modal.button' | translate"
           buttonType="submit"
           kind="primary"
           size="medium">
-        </base-button>
+        </base-action-button>
       </div>
     </modal-actions>
   </basic-modal>`

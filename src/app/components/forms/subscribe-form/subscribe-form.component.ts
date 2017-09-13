@@ -72,22 +72,22 @@ import {Validators} from '@angular/forms';
         [submitSuccess]="submitSuccess">
       </form-submit-button>
 
-      <base-button
+      <base-action-button
         (click)="deleteJobDigest()"
         *ngIf="jobDigest"
         kind="secondary"
         [buttonText]="'subscribe.form.delete.button' | translate"
         size="small">
-      </base-button>
+      </base-action-button>
 
-      <base-button
+      <base-action-button
         (click)="updateJobDigest()"
         *ngIf="jobDigest"
         kind="primary"
         [buttonText]="'subscribe.form.update.button' | translate"
         size="small"
         style="margin-left: 30px;">
-      </base-button>
+      </base-action-button>
     </form>`
 })
 export class SubscribeFormComponent extends BaseComponent {

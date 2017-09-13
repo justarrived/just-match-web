@@ -31,7 +31,7 @@ declare var jQuery: any;
         <ng-content select="modal-content"></ng-content>
       </div>
       <div style="width: 100%; display: flex; flex-wrap: wrap; justify-content: center; margin-bottom: 30px;">
-        <base-button
+        <base-action-button
           *ngIf="previousModal"
           (click)="previous(true)"
           [buttonText]="'stepper.modal.previous.button' | translate"
@@ -39,8 +39,8 @@ declare var jQuery: any;
           kind="secondary"
           size="small"
           style="width: 160px; margin: 0 10px;">
-        </base-button>
-        <base-button
+        </base-action-button>
+        <base-action-button
           *ngIf="nextModal"
           (click)="next(true)"
           [buttonText]="'stepper.modal.next.button' | translate"
@@ -48,7 +48,7 @@ declare var jQuery: any;
           kind="primary"
           size="small"
           style="width: 160px; margin: 0 10px;">
-        </base-button>
+        </base-action-button>
       </div>
     </div>
 </div>`

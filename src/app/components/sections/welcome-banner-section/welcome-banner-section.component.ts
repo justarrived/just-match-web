@@ -57,39 +57,39 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
           <div
             class="welcome-banner-section-button-container">
             <div *ngIf="!user">
-              <base-button
+              <base-navigation-button
                 [buttonText]="'home.header.logged.out.register.button' | translate"
                 [fluid]="true"
                 [routerLink]="JARoutes.registerUser.url()"
                 kind="secondary-light"
                 size="small">
-              </base-button>
+              </base-navigation-button>
               <br>
-              <base-button
+              <base-navigation-button
                 [buttonText]="'home.header.logged.out.login.button' | translate"
                 [routerLink]="JARoutes.login.url()"
                 [fluid]="true"
                 kind="primary-light"
                 size="small">
-              </base-button>
+              </base-navigation-button>
             </div>
 
             <div *ngIf="user">
-              <base-button
+              <base-navigation-button
                 [buttonText]="'home.header.logged.in.profile.button' | translate"
                 [routerLink]="JARoutes.user.url()"
                 [fluid]="true"
                 kind="secondary-light"
                 size="small">
-              </base-button>
+              </base-navigation-button>
               <br>
-              <base-button
+              <base-navigation-button
                 [buttonText]="'home.header.logged.in.jobs.button' | translate"
                 [routerLink]="JARoutes.jobs.url()"
                 [fluid]="true"
                 kind="primary-light"
                 size="small">
-              </base-button>
+              </base-navigation-button>
             </div>
           </div>
         </div>

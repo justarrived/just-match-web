@@ -12,7 +12,7 @@ import {ViewChild} from '@angular/core';
 @Component({
   selector: 'file-input-button',
   template: `
-    <base-button
+    <base-action-button
       (click)=onButtonClick()
       [buttonText]="buttonText"
       [fluid]="fluid"
@@ -20,7 +20,7 @@ import {ViewChild} from '@angular/core';
       [kind]="kind"
       [size]="size"
       buttonType="button">
-    </base-button>
+    </base-action-button>
     <input
       #fileInput
       (change)="onDocumentFilenameChange($event)"

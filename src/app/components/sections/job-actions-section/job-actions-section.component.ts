@@ -24,14 +24,14 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
     <div
       *ngIf="!application && job.openForApplications"
       [style.text-align]="center ? 'center' : 'initial'">
-      <base-button
+      <base-action-button
         (click)="onApplyForJobButtonClick()"
         [buttonText]="'job.actions.section.apply' | translate"
         kind="primary"
         marginTop="0"
         marginBottom="0"
         size="small">
-      </base-button>
+      </base-action-button>
     </div>
     <basic-title-text
       [text]="'job.actions.section.closed.for.applications' | translate"
@@ -85,12 +85,12 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
       </basic-title-text>
       <div
         [style.text-align]="center ? 'center' : 'initial'">
-        <base-button
+        <base-action-button
           (click)="onConfirmJobButtonClick()"
           [buttonText]="'job.actions.section.confirm' | translate"
           kind="primary"
           size="small">
-        </base-button>
+        </base-action-button>
       </div>
     </div>
     <basic-title-text

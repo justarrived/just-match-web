@@ -27,20 +27,20 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
           textAlignmentRtl="center">
         </basic-text>
         <div class="god-mode-bar-button-container">
-          <base-button
+          <base-action-button
             (click)="deactivateGodMode()"
             [buttonText]="'god.mode.deactivate.button' | translate"
             [fluid]="true"
             kind="secondary-light"
             size="small">
-          </base-button>
-          <base-button
-            (click)="changeUser()"
+          </base-action-button>
+          <base-navigation-button
+            [routerLink]="JARoutes.godMode.url()"
             [buttonText]="'god.mode.change.user.button' | translate"
             [fluid]="true"
             kind="secondary-light"
             size="small">
-          </base-button>
+          </base-navigation-button>
         </div>
       </div>
     </div>`
@@ -70,9 +70,5 @@ export class GodModeBarComponent extends BaseComponent {
 
   public changeUser(): void {
     this.navigationService.navigate(this.JARoutes.godMode);
-  }
-
-  public goToUserProfile(): void {
-    this.navigationService.navigate(this.JARoutes.user);
   }
 }
