@@ -54,7 +54,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
 
       <div
         class="ui basic center aligned segment"
-        style="flex: 1; margin: 0;">
+        style="flex: 1; margin: 0; padding: 0;">
         <basic-loader
           [promise]="jobDigestsMetaPromise"
           class="inverted">
