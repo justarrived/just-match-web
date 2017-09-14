@@ -18,8 +18,8 @@ import {Validators} from '@angular/forms';
 
 
 @Component({
-  selector: 'subscribe-form',
-  styleUrls: ['./subscribe-form.component.scss'],
+  selector: 'job-digest-form',
+  styleUrls: ['./job-digest-form.component.scss'],
   template: `
     <form
       (ngSubmit)="submitForm()"
@@ -59,14 +59,14 @@ import {Validators} from '@angular/forms';
         [control]="form.controls['address']"
         [cityControl]="form.controls['city']"
         [countryCodeControl]="form.controls['country_code']"
-        [hint]="!jobDigest && 'subscribe.form.city.hint' | translate"
+        [hint]="!jobDigest && 'job.digest.form.city.hint' | translate"
         [stateControl]="form.controls['state']"
         [latitudeControl]="form.controls['latitude']"
         [longitudeControl]="form.controls['longitude']">
       </city-autocomplete-input>
 
       <form-submit-button
-        [buttonText]="'subscribe.form.submit.button' | translate"
+        [buttonText]="'job.digest.form.submit.button' | translate"
         [showButton]="!isInModal && !jobDigest"
         [submitFail]="submitFail"
         [submitSuccess]="submitSuccess">
@@ -76,7 +76,7 @@ import {Validators} from '@angular/forms';
         (click)="deleteJobDigest()"
         *ngIf="jobDigest"
         kind="secondary"
-        [buttonText]="'subscribe.form.delete.button' | translate"
+        [buttonText]="'job.digest.form.delete.button' | translate"
         size="small">
       </base-action-button>
 
@@ -84,13 +84,13 @@ import {Validators} from '@angular/forms';
         (click)="updateJobDigest()"
         *ngIf="jobDigest"
         kind="primary"
-        [buttonText]="'subscribe.form.update.button' | translate"
+        [buttonText]="'job.digest.form.update.button' | translate"
         size="small"
         style="margin-left: 30px;">
       </base-action-button>
     </form>`
 })
-export class SubscribeFormComponent extends BaseComponent {
+export class JobDigestFormComponent extends BaseComponent {
   @Input() public isInModal: boolean = false;
   @Input() public jobDigest = null as JobDigest;
   @Output() public digestCreated: EventEmitter<JobDigest> = new EventEmitter<JobDigest>();

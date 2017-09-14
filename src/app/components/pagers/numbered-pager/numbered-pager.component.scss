@@ -35,22 +35,23 @@
       &:hover {
         border: 1px solid $color-cerise-500 !important;
         background-color: $color-cerise-500;
-        color: $white;
+        color: $white !important;
       }
 
       &.active {
         border: 1px solid $color-cerise-500 !important;
         background-color: $color-cerise-500;
-        color: $white;
+        color: $white !important;
       }
     }
   }
 
   &.light {
     .pager-segment-container {
-      color: $color-gray-300;
+      color: $color-gray-300 !important;
 
       .pager-link {
+        color: $color-gray-300;
         border: 1px solid $color-gray-300;
       }
     }
@@ -60,9 +61,10 @@
     background-color: $color-gray-800;
 
     .pager-segment-container {
-      color: $white;
+      color: $white !important;
 
       .pager-link {
+        color: $white !important;
         border: 1px solid $white;
       }
     }

@@ -1,3 +1,4 @@
+import {AddressAutocompleteInputComponent} from './components/inputs/address-autocomplete-input/address-autocomplete-input.component';
 import {AgmCoreModule} from '@agm/core';
 import {AlreadyRegisteredModalComponent} from './components/modals/already-registered-modal/already-registered-modal.component';
 import {ApiCallService} from './services/api-call.service';
@@ -20,10 +21,9 @@ import {AtUndInputComponent} from './components/inputs/at-und-input/at-und-input
 import {AutosizeDirective} from './directives/autosize/autosize.directive';
 import {BackToJobsSectionComponent} from './components/sections/back-to-jobs-section/back-to-jobs-section.component';
 import {BankAccountInputComponent} from './components/inputs/bank-account-input/bank-account-input.component';
-import {BaseNavigationButtonComponent} from './components/buttons/base-navigation-button/base-navigation-button.component';
 import {BaseActionButtonComponent} from './components/buttons/base-action-button/base-action-button.component';
 import {BaseMessageComponent} from './components/messages/base-message/base-message.component';
-import {BasicModalComponent} from './components/modals/basic-modal/basic-modal.component';
+import {BaseNavigationButtonComponent} from './components/buttons/base-navigation-button/base-navigation-button.component';
 import {BasicAccordionComponent} from './components/accordions/basic-accordion/basic-accordion.component';
 import {BasicAccordionItemComponent} from './components/items/basic-accordion-item/basic-accordion-item.component';
 import {BasicBorderSectionComponent} from './components/sections/basic-border-section/basic-border-section.component';
@@ -34,8 +34,10 @@ import {BasicCommentComponent} from './components/comment/basic-comment/basic-co
 import {BasicCommentsComponent} from './components/comments/basic-comments/basic-comments.component';
 import {BasicLinkComponent} from './components/links/basic-link/basic-link.component';
 import {BasicLoaderComponent} from './components/loaders/basic-loader/basic-loader.component';
+import {BasicModalComponent} from './components/modals/basic-modal/basic-modal.component';
 import {BasicPagerComponent} from './components/pagers/basic-pager/basic-pager.component';
 import {BasicSearchComponent} from './components/search/basic-search/basic-search.component';
+import {BasicStepperComponent} from './components/steppers/basic-stepper/basic-stepper.component';
 import {BasicTabComponent} from './components/tabs/basic-tab/basic-tab.component';
 import {BasicTabsComponent} from './components/tabs/basic-tabs/basic-tabs.component';
 import {BasicTextComponent} from './components/text/basic-text/basic-text.component';
@@ -45,6 +47,7 @@ import {ChatMessageInputComponent} from './components/inputs/chat-message-input/
 import {CheckboxInputComponent} from './components/inputs/checkbox-input/checkbox-input.component';
 import {CircularIconBaseButtonComponent} from './components/buttons/circular-icon-base-button/circular-icon-base-button.component';
 import {CircularImageInputComponent} from './components/inputs/circular-image-input/circular-image-input.component';
+import {CityAutocompleteInputComponent} from './components/inputs/city-autocomplete-input/city-autocomplete-input.component';
 import {CityInputComponent} from './components/inputs/city-input/city-input.component';
 import {CommentInputComponent} from './components/inputs/comment-input/comment-input.component';
 import {CommentsFormComponent} from './components/forms/comments-form/comments-form.component';
@@ -56,12 +59,11 @@ import {ContactFormComponent} from './components/forms/contact-form/contact-form
 import {ContactMessageInputComponent} from './components/inputs/contact-message-input/contact-message-input.component';
 import {ContactMessageSentModalComponent} from './components/modals/contact-message-sent-modal/contact-message-sent-modal.component';
 import {ContactPageComponent} from './components/pages/contact-page/contact-page.component';
-import {SubscriptionsPageComponent} from './components/pages/subscriptions-page/subscriptions-page.component';
 import {CookieBarComponent} from './components/bars/cookie-bar/cookie-bar.component';
 import {CookiesAboutPageComponent} from './components/pages/cookies-about-page/cookies-about-page.component';
 import {CountryOfOriginInputComponent} from './components/inputs/country-of-origin-input/country-of-origin-input.component';
-import {CustomRadioButtonInputComponent} from './components/inputs/custom-radio-button-input/custom-radio-button-input.component';
 import {CustomCheckboxInputComponent} from './components/inputs/custom-checkbox-input/custom-checkbox-input.component';
+import {CustomRadioButtonInputComponent} from './components/inputs/custom-radio-button-input/custom-radio-button-input.component';
 import {DataStoreService} from './services/data-store.service';
 import {DefaultFooterComponent} from './components/footers/default-footer/default-footer.component';
 import {DefaultLayoutComponent} from './components/layouts/default-layout/default-layout.component';
@@ -83,7 +85,6 @@ import {FilterUsersInputComponent} from './components/inputs/filter-users-input/
 import {FirstNameInputComponent} from './components/inputs/first-name-input/first-name-input.component';
 import {ForbiddenPageComponent} from './components/pages/forbidden-page/forbidden-page.component';
 import {ForgotPasswordFormComponent} from './components/forms/forgot-password-form/forgot-password-form.component';
-import {SubscribeFormComponent} from './components/forms/subscribe-form/subscribe-form.component';
 import {ForgotPasswordModalComponent} from './components/modals/forgot-password-modal/forgot-password-modal.component';
 import {ForgotPasswordPageComponent} from './components/pages/forgot-password-page/forgot-password-page.component';
 import {FormSectionTitleTextComponent} from './components/text/form-section-title-text/form-section-title-text.component';
@@ -115,6 +116,9 @@ import {JobCommentsSectionComponent} from './components/sections/job-comments-se
 import {JobCompanyDescriptionSectionComponent} from './components/sections/job-company-description-section/job-company-description-section.component';
 import {JobCompanyImageSectionComponent} from './components/sections/job-company-image-section/job-company-image-section.component';
 import {JobDescriptionSection2Component} from './components/sections/job-description-section/job-description-section.component';
+import {JobDigestFormComponent} from './components/forms/job-digest-form/job-digest-form.component';
+import {JobDigestNotificationFrequencyInputComponent} from './components/inputs/job-digest-notification-frequency-input/job-digest-notification-frequency-input.component';
+import {JobDigestsPagerSectionComponent} from './components/sections/job-digests-pager-section/job-digests-pager-section.component';
 import {JobExperienceInputComponent} from './components/inputs/job-experience-input/job-experience-input.component';
 import {JobImportantInformationSectionComponent} from './components/sections/job-important-information-section/job-important-information-section.component';
 import {JobMapMarkerComponent} from './components/map-markers/job-map-marker/job-map-marker.component';
@@ -151,8 +155,6 @@ import {NewPasswordInputComponent} from './components/inputs/new-password-input/
 import {NgModule} from '@angular/core';
 import {NotFoundPageComponent} from './components/pages/404-page/404-page.component';
 import {NumberedPagerComponent} from './components/pagers/numbered-pager/numbered-pager.component';
-import {PrimaryOccupationsInputComponent} from './components/inputs/primary-occupations-input/primary-occupations-input.component';
-import {JobDigestNotificationFrequencyInputComponent} from './components/inputs/job-digest-notification-frequency-input/job-digest-notification-frequency-input.component';
 import {OldPasswordInputComponent} from './components/inputs/old-password-input/old-password-input.component';
 import {PageOptionsService} from './services/page-options.service';
 import {PartnersSectionComponent} from './components/sections/partners-section/partners-section.component';
@@ -161,16 +163,12 @@ import {PasswordInputComponent} from './components/inputs/password-input/passwor
 import {PasswordResetLinkSentModalComponent} from './components/modals/password-reset-link-sent-modal/password-reset-link-sent-modal.component';
 import {PersonalIDInputComponent} from './components/inputs/personal-id-input/personal-id-input.component';
 import {PhoneInputComponent} from './components/inputs/phone-input/phone-input.component';
-import {AddressAutocompleteInputComponent} from './components/inputs/address-autocomplete-input/address-autocomplete-input.component';
-import {CityAutocompleteInputComponent} from './components/inputs/city-autocomplete-input/city-autocomplete-input.component';
+import {PrimaryOccupationsInputComponent} from './components/inputs/primary-occupations-input/primary-occupations-input.component';
 import {ProfileImageInputComponent} from './components/inputs/profile-image-input/profile-image-input.component';
 import {ProxiesModule} from './proxies/proxies.module';
 import {RatingInputComponent} from './components/inputs/rating-input/rating-input.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {RegisteredModalComponent} from './components/modals/registered-modal/registered-modal.component';
-import {SubscribedModalComponent} from './components/modals/subscribed-modal/subscribed-modal.component';
-import {UnsubscribedModalComponent} from './components/modals/unsubscribed-modal/unsubscribed-modal.component';
-import {JobDigestsPagerSectionComponent} from './components/sections/job-digests-pager-section/job-digests-pager-section.component';
 import {RegisterFormComponent} from './components/forms/register-form/register-form.component';
 import {RegisterModalComponent} from './components/modals/register-modal/register-modal.component';
 import {RegisterPageComponent} from './components/pages/register-page/register-page.component';
@@ -202,6 +200,8 @@ import {StatusInputComponent} from './components/inputs/status-input/status-inpu
 import {StepModalComponent} from './components/modals/step-modal/step-modal.component';
 import {StepperModalComponent} from './components/modals/stepper-modal/stepper-modal.component';
 import {StreetInputComponent} from './components/inputs/street-input/street-input.component';
+import {SubscribedModalComponent} from './components/modals/subscribed-modal/subscribed-modal.component';
+import {SubscriptionsPageComponent} from './components/pages/subscriptions-page/subscriptions-page.component';
 import {SuccessMessageComponent} from './components/messages/success-message/success-message.component';
 import {SupportChatComponent} from './components/chats/support-chat/support-chat.component';
 import {SupportChatPageComponent} from './components/pages/support-chat-page/support-chat-page.component';
@@ -210,6 +210,11 @@ import {SystemLanguagesResolver} from './resolvers/system-languages/system-langu
 import {TermsInputComponent} from './components/inputs/terms-input/terms-input.component';
 import {TextareaInputComponent} from './components/inputs/textarea-input/textarea-input.component';
 import {TextInputComponent} from './components/inputs/text-input/text-input.component';
+import {UnsubscribedModalComponent} from './components/modals/unsubscribed-modal/unsubscribed-modal.component';
+import {UpdateProfileStep1ModalComponent} from './components/modals/update-profile-step-1-modal/update-profile-step-1-modal.component';
+import {UpdateProfileStep2ModalComponent} from './components/modals/update-profile-step-2-modal/update-profile-step-2-modal.component';
+import {UpdateProfileStep3ModalComponent} from './components/modals/update-profile-step-3-modal/update-profile-step-3-modal.component';
+import {UpdateProfileStep4ModalComponent} from './components/modals/update-profile-step-4-modal/update-profile-step-4-modal.component';
 import {UploadDocumentCardComponent} from './components/cards/upload-document-card/upload-document-card.component';
 import {UploadImageCardComponent} from './components/cards/upload-image-card/upload-image-card.component';
 import {UserCardComponent} from './components/cards/user-card/user-card.component';
@@ -226,11 +231,6 @@ import {UserResolver} from './resolvers/user/user.resolver';
 import {UsersFilterComponent} from './components/filters/users-filter/users-filter.component';
 import {UserUpdateFormComponent} from './components/forms/user-update-form/user-update-form.component';
 import {WelcomeBannerSectionComponent} from './components/sections/welcome-banner-section/welcome-banner-section.component';
-import {BasicStepperComponent} from './components/steppers/basic-stepper/basic-stepper.component';
-import {UpdateProfileStep1ModalComponent} from './components/modals/update-profile-step-1-modal/update-profile-step-1-modal.component';
-import {UpdateProfileStep2ModalComponent} from './components/modals/update-profile-step-2-modal/update-profile-step-2-modal.component';
-import {UpdateProfileStep3ModalComponent} from './components/modals/update-profile-step-3-modal/update-profile-step-3-modal.component';
-import {UpdateProfileStep4ModalComponent} from './components/modals/update-profile-step-4-modal/update-profile-step-4-modal.component';
 import {WelcomeStep1ModalComponent} from './components/modals/welcome-step-1-modal/welcome-step-1-modal.component';
 import {WelcomeStep2ModalComponent} from './components/modals/welcome-step-2-modal/welcome-step-2-modal.component';
 import {WelcomeStep3ModalComponent} from './components/modals/welcome-step-3-modal/welcome-step-3-modal.component';
@@ -277,16 +277,14 @@ export class RavenErrorHandler implements ErrorHandler {
     RoutesModule,
   ],
   declarations: [
-    AlreadyRegisteredModalComponent,
     AddressAutocompleteInputComponent,
+    AlreadyRegisteredModalComponent,
     ApiErrorsComponent,
-    JobDigestsPagerSectionComponent,
     AppComponent,
     ApplicationItemComponent,
     ApplicationsBannerSectionComponent,
     ApplicationsPageComponent,
     ApplicationsPagerSectionComponent,
-    JobDigestNotificationFrequencyInputComponent,
     ApplicationsStatusSectionComponent,
     ApplicationStatusCardComponent,
     AppliedForJobModalComponent,
@@ -299,9 +297,8 @@ export class RavenErrorHandler implements ErrorHandler {
     BackToJobsSectionComponent,
     BankAccountInputComponent,
     BaseActionButtonComponent,
-    BaseNavigationButtonComponent,
     BaseMessageComponent,
-    BasicModalComponent,
+    BaseNavigationButtonComponent,
     BasicAccordionComponent,
     BasicAccordionItemComponent,
     BasicBorderSectionComponent,
@@ -312,21 +309,20 @@ export class RavenErrorHandler implements ErrorHandler {
     BasicCommentsComponent,
     BasicLinkComponent,
     BasicLoaderComponent,
+    BasicModalComponent,
     BasicPagerComponent,
     BasicSearchComponent,
-    BasicTabComponent,
     BasicStepperComponent,
+    BasicTabComponent,
     BasicTabsComponent,
-    SubscribedModalComponent,
-    UnsubscribedModalComponent,
     BasicTextComponent,
     BasicTitleTextComponent,
     ChatMessageInputComponent,
     CheckboxInputComponent,
     CircularIconBaseButtonComponent,
     CircularImageInputComponent,
+    CityAutocompleteInputComponent,
     CityInputComponent,
-    SubscriptionsPageComponent,
     CommentInputComponent,
     CommentsFormComponent,
     CompactJobCardComponent,
@@ -339,8 +335,8 @@ export class RavenErrorHandler implements ErrorHandler {
     CookieBarComponent,
     CookiesAboutPageComponent,
     CountryOfOriginInputComponent,
-    CustomRadioButtonInputComponent,
     CustomCheckboxInputComponent,
+    CustomRadioButtonInputComponent,
     DefaultFooterComponent,
     DefaultLayoutComponent,
     DefaultNavigationComponent,
@@ -348,8 +344,6 @@ export class RavenErrorHandler implements ErrorHandler {
     EducationInputComponent,
     EmailInputComponent,
     EmailOrPhoneInputComponent,
-    CityAutocompleteInputComponent,
-    PrimaryOccupationsInputComponent,
     ErrorMessageComponent,
     ErrorPageComponent,
     FacebookUrlInputComponent,
@@ -388,6 +382,9 @@ export class RavenErrorHandler implements ErrorHandler {
     JobCompanyDescriptionSectionComponent,
     JobCompanyImageSectionComponent,
     JobDescriptionSection2Component,
+    JobDigestFormComponent,
+    JobDigestNotificationFrequencyInputComponent,
+    JobDigestsPagerSectionComponent,
     JobExperienceInputComponent,
     JobImportantInformationSectionComponent,
     JobMapMarkerComponent,
@@ -401,7 +398,6 @@ export class RavenErrorHandler implements ErrorHandler {
     JobsPagerSectionComponent,
     JobTasksSectionComponent,
     JobTitleSectionComponent,
-    SubscribeFormComponent,
     LanguageMenuComponent,
     LanguageProficiencyInputComponent,
     LanguagesInputComponent,
@@ -428,6 +424,7 @@ export class RavenErrorHandler implements ErrorHandler {
     PasswordResetLinkSentModalComponent,
     PersonalIDInputComponent,
     PhoneInputComponent,
+    PrimaryOccupationsInputComponent,
     ProfileImageInputComponent,
     RatingInputComponent,
     RegisteredModalComponent,
@@ -460,6 +457,8 @@ export class RavenErrorHandler implements ErrorHandler {
     StepModalComponent,
     StepperModalComponent,
     StreetInputComponent,
+    SubscribedModalComponent,
+    SubscriptionsPageComponent,
     SuccessMessageComponent,
     SupportChatComponent,
     SupportChatPageComponent,
@@ -467,6 +466,11 @@ export class RavenErrorHandler implements ErrorHandler {
     TermsInputComponent,
     TextareaInputComponent,
     TextInputComponent,
+    UnsubscribedModalComponent,
+    UpdateProfileStep1ModalComponent,
+    UpdateProfileStep2ModalComponent,
+    UpdateProfileStep3ModalComponent,
+    UpdateProfileStep4ModalComponent,
     UploadDocumentCardComponent,
     UploadImageCardComponent,
     UserCardComponent,
@@ -487,10 +491,6 @@ export class RavenErrorHandler implements ErrorHandler {
     WelcomeStep3ModalComponent,
     WorkPermitBackInputComponent,
     WorkPermitFrontInputComponent,
-    UpdateProfileStep1ModalComponent,
-    UpdateProfileStep2ModalComponent,
-    UpdateProfileStep3ModalComponent,
-    UpdateProfileStep4ModalComponent,
     YesNoInputComponent,
     ZipInputComponent,
   ],

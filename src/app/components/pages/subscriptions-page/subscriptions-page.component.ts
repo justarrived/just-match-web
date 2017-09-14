@@ -30,7 +30,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
 
       <info-message
         [closeable]="true"
-        [description]="'subscribe.form.info' | translate"
+        [description]="'job.digest.form.info' | translate"
         icon="warning">
       </info-message>
 

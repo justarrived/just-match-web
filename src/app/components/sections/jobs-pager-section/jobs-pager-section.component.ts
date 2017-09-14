@@ -4,10 +4,12 @@ import {Component} from '@angular/core';
 import {DataStoreService} from '../../../services/data-store.service';
 import {Input} from '@angular/core';
 import {isEmpty} from 'lodash';
+import {JARoute} from '../../../routes/ja-route/ja-route';
 import {Job} from '../../../models/api-models/job/job';
 import {JobProxy} from '../../../proxies/job/job.proxy';
 import {Language} from '../../../models/api-models/language/language';
 import {NavigationService} from '../../../services/navigation.service';
+import {Subscription} from 'rxjs/Subscription';
 import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
 import {UserResolver} from '../../../resolvers/user/user.resolver';
 
@@ -19,7 +21,8 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
         (pageChange)="onPageChange($event)"
         [currentPage]="page"
         [maxResults]="totalJobs"
-        [pageSize]="pageSize">
+        [pageSize]="pageSize"
+        [route]="route">
       </numbered-pager>
 
       <div
@@ -54,18 +57,21 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
         (pageChange)="onPageChange($event)"
         [currentPage]="page"
         [maxResults]="totalJobs"
-        [pageSize]="pageSize">
+        [pageSize]="pageSize"
+        [route]="route">
       </numbered-pager>
     </div>`
 })
 export class JobsPagerSectionComponent extends BaseComponent {
+  @Input() route: JARoute;
 
   @Input("filters")
   public set filters(filters: any) {
     if (!isEmpty(filters) && JSON.stringify(this.activeFilters) !== JSON.stringify(filters)) {
-      this.page = !this.activeFilters && this.dataStoreService.getFromMemory(this.jobsPageKey) || 1;
+      this.page = !this.activeFilters && this.page || 1;
       this.dataStoreService.setInMemory(this.jobsPageKey, this.page);
       this.activeFilters = filters;
+      this.navigationService.navigate(this.JARoutes.jobs, this.page.toString());
       this.loadData();
     }
   }
@@ -76,6 +82,8 @@ export class JobsPagerSectionComponent extends BaseComponent {
   public totalJobs: number = 0;
   public readonly pageSize: number = 12;
   private readonly jobsPageKey: string = 'jobsPageKey';
+  private readonly jobsPageParam: string = 'page';
+  private routeParamsSubscription: Subscription;
 
   public constructor(
     private activatedRoute: ActivatedRoute,
@@ -86,6 +94,16 @@ export class JobsPagerSectionComponent extends BaseComponent {
     protected userResolver: UserResolver,
   ) {
     super(systemLanguagesResolver, userResolver);
+  }
+
+  public onInit(): void {
+    this.initRouteParamsSubscription();
+  }
+
+  private initRouteParamsSubscription(): void {
+    this.routeParamsSubscription = this.activatedRoute.params.subscribe(params => {
+      this.page = Number(params[this.jobsPageParam]);
+    });
   }
 
   public systemLanguageChanged(systemLanguage: Language): void {
@@ -106,13 +124,23 @@ export class JobsPagerSectionComponent extends BaseComponent {
     this.jobsMetaPromise = this.jobProxy.getJobsWithMeta(searchParameters)
     .then(result => {
       this.totalJobs = result.meta.total;
+      if (this.page * this.pageSize > (this.totalJobs + this.pageSize)) {
+        this.onPageChange(1);
+      }
       return result;
     });
+  }
+
+  public onDestroy(): void {
+    if (this.routeParamsSubscription) { this.routeParamsSubscription.unsubscribe(); }
   }
 
   public onPageChange(page: number): void {
     this.page = page;
     this.dataStoreService.setInMemory(this.jobsPageKey, this.page);
+    this.navigationService.navigate(this.JARoutes.jobs, this.page.toString());
     this.loadData();
   }
+
+
 }

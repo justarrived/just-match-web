@@ -2,6 +2,7 @@ import {BaseComponent} from '../../base.component';
 import {Component} from '@angular/core';
 import {EventEmitter} from '@angular/core';
 import {Input} from '@angular/core';
+import {JARoute} from '../../../routes/ja-route/ja-route';
 import {Output} from '@angular/core';
 import {SimpleChanges} from '@angular/core';
 import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
@@ -18,17 +19,20 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
     <div
       [style.direction]="systemLanguage.direction"
       class="pager-segment-container">
-      <div
+      <a
         *ngFor="let page of firstPages"
-        (click)="goToPage(page)"
-        class="pager-link"
-        [class.active]="page === currentPage">
-        <basic-text
-          [text]="page"
-          marginTop="0"
-          marginBottom="0">
-        </basic-text>
-      </div>
+        [routerLink]="route?.url([page])">
+        <div
+          (click)="goToPage(page)"
+          class="pager-link"
+          [class.active]="page === currentPage">
+          <basic-text
+            [text]="page"
+            marginTop="0"
+            marginBottom="0">
+          </basic-text>
+        </div>
+      </a>
       <basic-text
         *ngIf="lastPage > 3"
         text="&#x25CF;&#x25CF;&#x25CF;&#x25CF;"
@@ -40,17 +44,20 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
       [style.direction]="systemLanguage.direction"
       *ngIf="currentPage > 3 && currentPage < lastPage - 2"
       class="pager-segment-container">
-      <div
+      <a
         *ngFor="let page of middlePages"
-        (click)="goToPage(page)"
-        class="pager-link"
-        [class.active]="page === currentPage">
-        <basic-text
-          [text]="page"
-          marginTop="0"
-          marginBottom="0">
-        </basic-text>
-      </div>
+        [routerLink]="route?.url([page])">
+        <div
+          (click)="goToPage(page)"
+          class="pager-link"
+          [class.active]="page === currentPage">
+          <basic-text
+            [text]="page"
+            marginTop="0"
+            marginBottom="0">
+          </basic-text>
+        </div>
+      </a>
       <basic-text
         text="&#x25CF;&#x25CF;&#x25CF;&#x25CF;"
         marginTop="0"
@@ -61,17 +68,20 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
       [style.direction]="systemLanguage.direction"
       *ngIf="lastPage > 3"
       class="pager-segment-container">
-      <div
+      <a
         *ngFor="let page of lastPages"
-        (click)="goToPage(page)"
-        class="pager-link"
-        [class.active]="page === currentPage">
-        <basic-text
-          [text]="page"
-          marginTop="0"
-          marginBottom="0">
-        </basic-text>
-      </div>
+        [routerLink]="route?.url([page])">
+        <div
+          (click)="goToPage(page)"
+          class="pager-link"
+          [class.active]="page === currentPage">
+          <basic-text
+            [text]="page"
+            marginTop="0"
+            marginBottom="0">
+          </basic-text>
+        </div>
+      </a>
     </div>
   </div>`
 })
@@ -80,6 +90,7 @@ export class NumberedPagerComponent extends BaseComponent {
   @Input() public maxResults: number;
   @Input() public pageSize: number = 10;
   @Input() public currentPage: number;
+  @Input() public route: JARoute;
   @Output() public pageChange = new EventEmitter();
   public lastPage: number = 1;
   public firstPages: number[] = [1,2];

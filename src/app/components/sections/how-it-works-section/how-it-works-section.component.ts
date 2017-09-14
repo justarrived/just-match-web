@@ -100,7 +100,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
       </div>
       <div style="margin: 0 auto; width: 200px;">
         <base-navigation-button
-          [routerLink]="JARoutes.jobs.url()"
+          [routerLink]="JARoutes.jobs.url(['1'])"
           [buttonText]="'how.it.works.section.jobs.button' | translate"
           [fluid]="true"
           kind="primary"

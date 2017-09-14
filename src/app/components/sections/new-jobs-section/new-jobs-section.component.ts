@@ -38,7 +38,7 @@ import {yyyymmdd} from '../../../utils/date/date.util';
       </div>
       <base-navigation-button
         [buttonText]="'home.jobs.slider.show.all.link' | translate"
-        [routerLink]="JARoutes.jobs.url()"
+        [routerLink]="JARoutes.jobs.url(['1'])"
         kind="primary"
         size="medium">
       </base-navigation-button>

@@ -85,7 +85,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
               <br>
               <base-navigation-button
                 [buttonText]="'home.header.logged.in.jobs.button' | translate"
-                [routerLink]="JARoutes.jobs.url()"
+                [routerLink]="JARoutes.jobs.url(['1'])"
                 [fluid]="true"
                 kind="primary-light"
                 size="small">

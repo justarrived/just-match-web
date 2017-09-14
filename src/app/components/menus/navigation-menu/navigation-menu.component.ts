@@ -74,8 +74,8 @@ import {ViewChild} from '@angular/core';
 
       <basic-link
         [text]="'menu.main.find_assignment' | translate"
-        [color]="getCurrentUrl() === JARoutes.jobs.url() ? 'pink' : 'white'"
-        [routerLink]="JARoutes.jobs.url()"
+        [color]="getCurrentUrl() === JARoutes.jobs.url(['1']) ? 'pink' : 'white'"
+        [routerLink]="JARoutes.jobs.url(['1'])"
         class="navigation-menu-item"
         hoverColor="pink"
         fontSize="large"

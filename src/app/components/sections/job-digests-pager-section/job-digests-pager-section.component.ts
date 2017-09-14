@@ -26,9 +26,9 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
           underlineBelowLtrAlignment="center"
           underlineBelowRtlAlignment="center">
         </basic-title-text>
-        <subscribe-form
+        <job-digest-form
           (digestCreated)="digestCreated($event)">
-        </subscribe-form>
+        </job-digest-form>
       </div>
 
       <basic-title-text
@@ -82,10 +82,10 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
             underlineBelowLtrAlignment="center"
             underlineBelowRtlAlignment="center">
           </basic-title-text>
-          <subscribe-form
+          <job-digest-form
             [jobDigest]="jobDigest"
             (digestDeleted)="loadData()">
-          </subscribe-form>
+          </job-digest-form>
         </div>
       </div>
 

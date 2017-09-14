@@ -9,103 +9,103 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
   selector: 'application-status-card',
   styleUrls: ['./application-status-card.component.scss'],
   template: `
-    <div
-      class="job-item-container"
-      [routerLink]="JARoutes.job.url([application.job.id])">
-      <div class="job-item-name-container">
-        <basic-title-text
-          [maxiumLinesEllipsis]="2"
-          [text]="application.job.translatedText.name"
-          color="black"
-          fontSize="small"
-          fontWeight="bold"
-          marginBottom="0"
-          marginTop="0"
-          textAlignmentLtr="center"
-          textAlignmentRtl="center">
-        </basic-title-text>
+    <a [routerLink]="JARoutes.job.url([application.job.id])">
+      <div class="job-item-container">
+        <div class="job-item-name-container">
+          <basic-title-text
+            [maxiumLinesEllipsis]="2"
+            [text]="application.job.translatedText.name"
+            color="black"
+            fontSize="small"
+            fontWeight="bold"
+            marginBottom="0"
+            marginTop="0"
+            textAlignmentLtr="center"
+            textAlignmentRtl="center">
+          </basic-title-text>
+        </div>
+        <div
+          *ngIf="application.applicationStatus === 'applied'"
+          class="job-item-label-container job-item-label-applied-container">
+          <basic-title-text
+            [oneLineEllipsis]="true"
+            [text]="'home.jobs.slider.user.jobs.job.applied.label' | translate"
+            [uppercase]="true"
+            color="gray"
+            fontSize="small"
+            fontWeight="light"
+            marginBottom="0"
+            marginTop="0"
+            textAlignmentLtr="center"
+            textAlignmentRtl="center">
+          </basic-title-text>
+        </div>
+        <div
+          *ngIf="application.applicationStatus === 'offered'"
+          class="job-item-label-container job-item-label-offered-container">
+          <basic-title-text
+            [oneLineEllipsis]="true"
+            [text]="'home.jobs.slider.user.jobs.job.offered.label' | translate"
+            [uppercase]="true"
+            color="white"
+            fontSize="small"
+            fontWeight="light"
+            marginBottom="0"
+            marginTop="0"
+            textAlignmentLtr="center"
+            textAlignmentRtl="center">
+          </basic-title-text>
+        </div>
+        <div
+          *ngIf="application.applicationStatus === 'hired'"
+          class="job-item-label-container job-item-label-will-perform-container">
+          <basic-title-text
+            [oneLineEllipsis]="true"
+            [text]="'home.jobs.slider.user.jobs.will.perform.label' | translate"
+            [uppercase]="true"
+            color="white"
+            fontSize="small"
+            fontWeight="light"
+            marginBottom="0"
+            marginTop="0"
+            textAlignmentLtr="center"
+            textAlignmentRtl="center">
+          </basic-title-text>
+        </div>
+        <div
+          *ngIf="application.applicationStatus === 'rejected'"
+          class="job-item-label-container job-item-label-rejected-container">
+          <basic-title-text
+            [oneLineEllipsis]="true"
+            [text]="'home.jobs.slider.user.jobs.job.rejected.label' | translate"
+            [uppercase]="true"
+            color="gray"
+            fontSize="small"
+            fontWeight="light"
+            marginBottom="0"
+            marginTop="0"
+            textAlignmentLtr="center"
+            textAlignmentRtl="center">
+          </basic-title-text>
+        </div>
+        <div
+          *ngIf="application.applicationStatus === 'withdrawn'"
+          class="job-item-label-container job-item-label-withdrawn-container">
+          <basic-title-text
+            [oneLineEllipsis]="true"
+            [text]="'home.jobs.slider.user.jobs.job.withdrawn.label' | translate"
+            [uppercase]="true"
+            color="gray"
+            fontSize="small"
+            fontWeight="light"
+            marginBottom="0"
+            marginTop="0"
+            textAlignmentLtr="center"
+            textAlignmentRtl="center">
+          </basic-title-text>
+        </div>
       </div>
-      <div
-        *ngIf="application.applicationStatus === 'applied'"
-        class="job-item-label-container job-item-label-applied-container">
-        <basic-title-text
-          [oneLineEllipsis]="true"
-          [text]="'home.jobs.slider.user.jobs.job.applied.label' | translate"
-          [uppercase]="true"
-          color="gray"
-          fontSize="small"
-          fontWeight="light"
-          marginBottom="0"
-          marginTop="0"
-          textAlignmentLtr="center"
-          textAlignmentRtl="center">
-        </basic-title-text>
-      </div>
-      <div
-        *ngIf="application.applicationStatus === 'offered'"
-        class="job-item-label-container job-item-label-offered-container">
-        <basic-title-text
-          [oneLineEllipsis]="true"
-          [text]="'home.jobs.slider.user.jobs.job.offered.label' | translate"
-          [uppercase]="true"
-          color="white"
-          fontSize="small"
-          fontWeight="light"
-          marginBottom="0"
-          marginTop="0"
-          textAlignmentLtr="center"
-          textAlignmentRtl="center">
-        </basic-title-text>
-      </div>
-      <div
-        *ngIf="application.applicationStatus === 'hired'"
-        class="job-item-label-container job-item-label-will-perform-container">
-        <basic-title-text
-          [oneLineEllipsis]="true"
-          [text]="'home.jobs.slider.user.jobs.will.perform.label' | translate"
-          [uppercase]="true"
-          color="white"
-          fontSize="small"
-          fontWeight="light"
-          marginBottom="0"
-          marginTop="0"
-          textAlignmentLtr="center"
-          textAlignmentRtl="center">
-        </basic-title-text>
-      </div>
-      <div
-        *ngIf="application.applicationStatus === 'rejected'"
-        class="job-item-label-container job-item-label-rejected-container">
-        <basic-title-text
-          [oneLineEllipsis]="true"
-          [text]="'home.jobs.slider.user.jobs.job.rejected.label' | translate"
-          [uppercase]="true"
-          color="gray"
-          fontSize="small"
-          fontWeight="light"
-          marginBottom="0"
-          marginTop="0"
-          textAlignmentLtr="center"
-          textAlignmentRtl="center">
-        </basic-title-text>
-      </div>
-      <div
-        *ngIf="application.applicationStatus === 'withdrawn'"
-        class="job-item-label-container job-item-label-withdrawn-container">
-        <basic-title-text
-          [oneLineEllipsis]="true"
-          [text]="'home.jobs.slider.user.jobs.job.withdrawn.label' | translate"
-          [uppercase]="true"
-          color="gray"
-          fontSize="small"
-          fontWeight="light"
-          marginBottom="0"
-          marginTop="0"
-          textAlignmentLtr="center"
-          textAlignmentRtl="center">
-        </basic-title-text>
-      </div>
-    </div>
+    </a>
   `
 })
 export class ApplicationStatusCardComponent extends BaseComponent {

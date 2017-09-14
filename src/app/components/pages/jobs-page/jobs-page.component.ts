@@ -24,6 +24,7 @@ import {ViewChild} from '@angular/core';
       <div style="flex: 1;">
         <jobs-pager-section
           [filters]="activeFilters"
+          [route]="JARoutes.jobs"
           #jobsPagerSectionComponent>
         </jobs-pager-section>
       </div>
