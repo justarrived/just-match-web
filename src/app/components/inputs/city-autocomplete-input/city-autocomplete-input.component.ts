@@ -19,7 +19,7 @@ import {TextInputComponent} from '../text-input/text-input.component';
     [apiErrors]="apiErrors"
     [control]="control"
     [hint]="hint"
-    [label]="'input.city.autocomplete.label' | translate"
+    [label]="showLabel && ('input.city.autocomplete.label' | translate)"
     [placeholder]="'input.city.autocomplete.placeholder' | translate"
     #textInput
     apiAttribute="city"
@@ -36,6 +36,7 @@ export class CityAutocompleteInputComponent extends BaseComponent {
   @Input() public latitudeControl: FormControl;
   @Input() public longitudeControl: FormControl;
   @Input() public hint: string;
+  @Input() public showLabel: boolean = true;
 
   @ViewChild("textInput")
   public textInput: TextInputComponent;
@@ -85,6 +86,7 @@ export class CityAutocompleteInputComponent extends BaseComponent {
             return;
           }
 
+          this.control.setValue(place.formatted_address);
           this.fillInCityInfo(place);
           this.fillInCoordinates(place);
         });

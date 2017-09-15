@@ -3,12 +3,8 @@ import {JobDigest} from '../../models/api-models/job-digest/job-digest';
 import {JobDigestFactory} from '../../models/api-models/job-digest/job-digest';
 import {Injectable} from '@angular/core';
 
-// CREATE
-interface CreateJobDigestAttributes {
+interface AddressAttributes {
   city?: string;
-  notification_frequency: number;
-  digest_subscriber_uuid?: string;
-  occupation_ids?: string[];
   street1?: string;
   street2?: string;
   postal_code?: string;
@@ -17,24 +13,24 @@ interface CreateJobDigestAttributes {
   country_code?: string;
   latitude?: number;
   longitude?: number;
+}
+
+// CREATE
+interface CreateJobDigestAttributes {
+  addresses: AddressAttributes[];
+  notification_frequency: number;
+  digest_subscriber_uuid?: string;
+  occupation_ids?: string[];
   user_id?: string;
   email?: string;
 }
 
 // UPDATE
 interface UpdateJobDigestAttributes {
-  city?: string;
+  addresses: AddressAttributes[];
   notification_frequency: number;
   digest_subscriber_uuid?: string;
   occupation_ids?: string[];
-  street1?: string;
-  street2?: string;
-  postal_code?: string;
-  municipality?: string;
-  state?: string;
-  country_code?: string;
-  latitude?: number;
-  longitude?: number;
 }
 
 @Injectable()

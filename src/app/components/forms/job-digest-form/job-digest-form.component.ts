@@ -6,12 +6,13 @@ import {EventEmitter} from '@angular/core';
 import {FormBuilder} from '@angular/forms';
 import {FormGroup} from '@angular/forms';
 import {Input} from '@angular/core';
-import {Output} from '@angular/core';
 import {JARoute} from '../../../routes/ja-route/ja-route';
 import {JobDigest} from '../../../models/api-models/job-digest/job-digest';
 import {JobDigestProxy} from '../../../proxies/job-digest/job-digest.proxy';
 import {ModalService} from '../../../services/modal.service';
 import {NavigationService} from '../../../services/navigation.service';
+import {Output} from '@angular/core';
+import {range} from 'lodash';
 import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
 import {UserResolver} from '../../../resolvers/user/user.resolver';
 import {Validators} from '@angular/forms';
@@ -54,16 +55,46 @@ import {Validators} from '@angular/forms';
         [resultObject]="occupationsResultObject">
       </primary-occupations-input>
 
-      <city-autocomplete-input
-        [apiErrors]="apiErrors"
-        [control]="form.controls['address']"
-        [cityControl]="form.controls['city']"
-        [countryCodeControl]="form.controls['country_code']"
-        [hint]="!jobDigest && 'job.digest.form.city.hint' | translate"
-        [stateControl]="form.controls['state']"
-        [latitudeControl]="form.controls['latitude']"
-        [longitudeControl]="form.controls['longitude']">
-      </city-autocomplete-input>
+      <div
+        *ngFor="let i of range(1, numberOfVisibleAddressFields + 1)"
+        style="display: flex; flex-wrap: wrap; align-items: center;">
+        <div style="flex: 1;">
+          <city-autocomplete-input
+            [apiErrors]="apiErrors"
+            [control]="form.controls['address' + i]"
+            [cityControl]="form.controls['city' + i]"
+            [countryCodeControl]="form.controls['country_code' + i]"
+            [stateControl]="form.controls['state' + i]"
+            [latitudeControl]="form.controls['latitude' + i]"
+            [longitudeControl]="form.controls['longitude' + i]"
+            [showLabel]="i === 1">
+          </city-autocomplete-input>
+        </div>
+
+        <i
+          style="cursor: pointer;"
+          (click)="removeAddressField(i)"
+          class="red large minus icon">
+        </i>
+      </div>
+
+      <basic-title-text
+        style="cursor: pointer;"
+        (click)="addAddressField()"
+        color="gray"
+        marginTop="0"
+        marginBottom="0"
+        iconLeft="green large plus icon"
+        *ngIf="numberOfVisibleAddressFields < maxNumberOfAddresses"
+       [text]="'Add city' | translate">
+      </basic-title-text>
+
+      <basic-text
+        *ngIf="numberOfVisibleAddressFields === maxNumberOfAddresses"
+       [text]="'job.digest.form.max.cities' | translate">
+      </basic-text>
+
+      <input-hint-label [hint]="!jobDigest && 'job.digest.form.city.hint' | translate"></input-hint-label>
 
       <form-submit-button
         [buttonText]="'job.digest.form.submit.button' | translate"
@@ -97,10 +128,14 @@ export class JobDigestFormComponent extends BaseComponent {
   @Output() public digestDeleted: EventEmitter<JobDigest> = new EventEmitter<JobDigest>();
   @Output() public digestUpdated: EventEmitter<JobDigest> = new EventEmitter<JobDigest>();
 
+  private numberOfVisibleAddressFields: number;
+  private readonly maxNumberOfAddresses: number = 10;
   public apiErrors: ApiErrors = new ApiErrors([]);
+  public Array = Array;
   public form: FormGroup;
   public loadingSubmit: boolean;
   public occupationsResultObject: any = {};
+  public range = range;
   public submitFail: boolean;
   public submitSuccess: boolean;
 
@@ -119,35 +154,62 @@ export class JobDigestFormComponent extends BaseComponent {
   public onInit(): void {
     this.initOccupationsResultObject();
     this.initForm();
+    this.initNumberOfVisibleAddressFields();
   }
 
   private initForm(): void {
     if (this.jobDigest) {
-      this.form = this.formBuilder.group({
-        'address': [this.jobDigest.address.city ? this.jobDigest.address.city + ', Sverige' : ''],
-        'city': [this.jobDigest.address.city],
-        'country_code': [this.jobDigest.address.countryCode],
+
+      let formBuildObject = {
         'email': [this.user && this.user.email, Validators.compose([Validators.required])],
-        'latitude': [this.jobDigest.address.latitude],
-        'longitude': [this.jobDigest.address.longitude],
         'notification_frequency': [this.jobDigest.notificationFrequency],
         'occupation_ids': [this.occupationsResultObject],
-        'state': [this.jobDigest.address.state],
         'subscriber_error': [''],
-      });
+      };
+
+      for (let i = 1; i <= this.maxNumberOfAddresses; i++) {
+        let address = this.jobDigest.addresses[i - 1];
+        if (address) {
+          formBuildObject['address' + i] = [address.city ? address.city + ', Sverige' : ''];
+          formBuildObject['city' + i] = [address.city];
+          formBuildObject['country_code' + i] = [address.countryCode];
+          formBuildObject['latitude' + i] = [address.latitude];
+          formBuildObject['longitude' + i] = [address.longitude];
+          formBuildObject['state' + i] = [address.state];
+        } else {
+          formBuildObject['address' + i] = [''];
+          formBuildObject['city' + i] = [''];
+          formBuildObject['country_code' + i] = [''];
+          formBuildObject['latitude' + i] = [''];
+          formBuildObject['longitude' + i] = [''];
+          formBuildObject['state' + i] = [''];
+        }
+      }
+
+      console.log(formBuildObject);
+
+      this.form = this.formBuilder.group(formBuildObject);
+
     } else {
-      this.form = this.formBuilder.group({
-        'address': [''],
-        'city': [''],
-        'country_code': [''],
+
+      let formBuildObject = {
         'email': [this.user && this.user.email, Validators.compose([Validators.required])],
-        'latitude': [''],
-        'longitude': [''],
         'notification_frequency': ['weekly'],
         'occupation_ids': [''],
-        'state': [''],
         'subscriber_error': [''],
-      });
+      };
+
+      for (let i = 1; i <= this.maxNumberOfAddresses; i++) {
+        formBuildObject['address' + i] = [''];
+        formBuildObject['city' + i] = [''];
+        formBuildObject['country_code' + i] = [''];
+        formBuildObject['latitude' + i] = [''];
+        formBuildObject['longitude' + i] = [''];
+        formBuildObject['state' + i] = [''];
+      }
+
+      this.form = this.formBuilder.group(formBuildObject);
+
     }
   }
 
@@ -158,6 +220,34 @@ export class JobDigestFormComponent extends BaseComponent {
         this.occupationsResultObject[occupation.id] = true;
       }
     }
+  }
+
+  private initNumberOfVisibleAddressFields(): void {
+    this.numberOfVisibleAddressFields = this.jobDigest && this.jobDigest.addresses.length || 1;
+  }
+
+  public addAddressField(): void {
+    this.numberOfVisibleAddressFields++;
+  }
+
+  public removeAddressField(i: number) {
+    for (let j = i; j < this.numberOfVisibleAddressFields; j++) {
+      this.form.controls['address' + j].setValue(this.form.value['address' + (j + 1)]);
+      this.form.controls['city' + j].setValue(this.form.value['city' + (j + 1)]);
+      this.form.controls['country_code' + j].setValue(this.form.value['country_code' + (j + 1)]);
+      this.form.controls['latitude' + j].setValue(this.form.value['latitude' + (j + 1)]);
+      this.form.controls['longitude' + j].setValue(this.form.value['longitude' + (j + 1)]);
+      this.form.controls['state' + j].setValue(this.form.value['state' + (j + 1)]);
+    }
+
+    this.form.controls['address' + this.numberOfVisibleAddressFields].setValue('');
+    this.form.controls['city' + this.numberOfVisibleAddressFields].setValue('');
+    this.form.controls['country_code' + this.numberOfVisibleAddressFields].setValue('');
+    this.form.controls['latitude' + this.numberOfVisibleAddressFields].setValue('');
+    this.form.controls['longitude' + this.numberOfVisibleAddressFields].setValue('');
+    this.form.controls['state' + this.numberOfVisibleAddressFields].setValue('');
+
+    this.numberOfVisibleAddressFields--;
   }
 
   private handleServerErrors(errors): void {
@@ -179,18 +269,26 @@ export class JobDigestFormComponent extends BaseComponent {
       }
     }
 
+    let addresses = [];
+
+    for (let i = 1; i <= this.numberOfVisibleAddressFields; i++) {
+      addresses.push({
+        city: this.form.value['city' + i],
+        state: this.form.value['state' + i],
+        country_code: this.form.value['country_code' + i],
+        latitude: this.form.value['latitude' + i],
+        longitude: this.form.value['longitude' + i],
+      });
+    }
+
     return this.jobDigestProxy.createJobDigest({
-      city: this.form.value.city,
+      addresses: addresses,
       notification_frequency: this.form.value.notification_frequency,
       occupation_ids: occupationIds,
-      state: this.form.value.state,
-      country_code: this.form.value.country_code,
-      latitude: this.form.value.latitude,
-      longitude: this.form.value.longitude,
       user_id: this.user ? this.user.id : '',
       email: this.form.value.email,
     }, {
-      'include': 'address,subscriber,occupations'
+      'include': 'addresses,subscriber,occupations'
     })
     .then(jobDigest => {
       this.loadingSubmit = false;
@@ -239,16 +337,24 @@ export class JobDigestFormComponent extends BaseComponent {
       }
     }
 
+    let addresses = [];
+
+    for (let i = 1; i <= this.numberOfVisibleAddressFields; i++) {
+      addresses.push({
+        city: this.form.value['city' + i],
+        state: this.form.value['state' + i],
+        country_code: this.form.value['country_code' + i],
+        latitude: this.form.value['latitude' + i],
+        longitude: this.form.value['longitude' + i],
+      });
+    }
+
     return this.jobDigestProxy.updateJobDigest(this.jobDigest.subscriber.uuid, this.jobDigest.id, {
-      city: this.form.value.city,
+      addresses: addresses,
       notification_frequency: this.form.value.notification_frequency,
       occupation_ids: occupationIds,
-      state: this.form.value.state,
-      country_code: this.form.value.country_code,
-      latitude: this.form.value.latitude,
-      longitude: this.form.value.longitude
     }, {
-      'include': 'address,subscriber,occupations'
+      'include': 'addresses,subscriber,occupations'
     })
     .then(jobDigest => {
       this.loadingSubmit = false;

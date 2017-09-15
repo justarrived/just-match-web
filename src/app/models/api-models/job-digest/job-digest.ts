@@ -10,7 +10,7 @@ import {UserFactory} from '../user/user';
 
 // API attribute interfaces
 interface JobDigestApiAttributes {
-  address: Address;
+  addresses: Address[];
   id: string;
   maxDistance: number;
   notificationFrequency: string;
@@ -29,8 +29,10 @@ export class JobDigestFactory {
       return;
     }
 
+    console.log(jsonObject);
+
     return {
-      address: AddressFactory.createAddress(jsonObject.address),
+      addresses: map(jsonObject.addresses, address => AddressFactory.createAddress(address)),
       id: jsonObject.id,
       maxDistance: jsonObject.max_distance,
       notificationFrequency: jsonObject.notification_frequency,

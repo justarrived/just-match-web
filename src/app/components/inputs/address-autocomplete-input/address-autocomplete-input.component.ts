@@ -100,6 +100,7 @@ export class AddressAutocompleteInputComponent extends BaseComponent {
             return;
           }
 
+          this.control.setValue(place.formatted_address);
           this.fillInAddress(place);
           this.fillInCoordinates(place);
         });
