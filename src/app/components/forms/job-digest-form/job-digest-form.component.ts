@@ -130,8 +130,8 @@ export class JobDigestFormComponent extends BaseComponent {
   @Output() public digestDeleted: EventEmitter<JobDigest> = new EventEmitter<JobDigest>();
   @Output() public digestUpdated: EventEmitter<JobDigest> = new EventEmitter<JobDigest>();
 
-  private numberOfVisibleAddressFields: number;
-  private readonly maxNumberOfAddresses: number = 10;
+  public numberOfVisibleAddressFields: number;
+  public readonly maxNumberOfAddresses: number = 10;
   public apiErrors: ApiErrors = new ApiErrors([]);
   public Array = Array;
   public form: FormGroup;
