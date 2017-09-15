@@ -33,12 +33,13 @@ import {Validators} from '@angular/forms';
       </basic-loader>
 
       <email-input
-        *ngIf="!user && !jobDigest"
+        *ngIf="!user && !jobDigest && !digestSubscriberUuid"
         [control]="form.controls['email']"
         [apiErrors]="apiErrors">
       </email-input>
 
       <input-errors
+        *ngIf="!user && !jobDigest && !digestSubscriberUuid"
         apiAttribute="subscriber"
         [apiErrors]="apiErrors"
         [control]="form.controls['subscriber_error']">
@@ -124,6 +125,7 @@ import {Validators} from '@angular/forms';
 export class JobDigestFormComponent extends BaseComponent {
   @Input() public isInModal: boolean = false;
   @Input() public jobDigest = null as JobDigest;
+  @Input() public digestSubscriberUuid: string;
   @Output() public digestCreated: EventEmitter<JobDigest> = new EventEmitter<JobDigest>();
   @Output() public digestDeleted: EventEmitter<JobDigest> = new EventEmitter<JobDigest>();
   @Output() public digestUpdated: EventEmitter<JobDigest> = new EventEmitter<JobDigest>();
@@ -185,8 +187,6 @@ export class JobDigestFormComponent extends BaseComponent {
           formBuildObject['state' + i] = [''];
         }
       }
-
-      console.log(formBuildObject);
 
       this.form = this.formBuilder.group(formBuildObject);
 
@@ -287,6 +287,7 @@ export class JobDigestFormComponent extends BaseComponent {
       occupation_ids: occupationIds,
       user_id: this.user ? this.user.id : '',
       email: this.form.value.email,
+      digest_subscriber_uuid: this.digestSubscriberUuid,
     }, {
       'include': 'addresses,subscriber,occupations'
     })

@@ -29,8 +29,6 @@ export class JobDigestFactory {
       return;
     }
 
-    console.log(jsonObject);
-
     return {
       addresses: map(jsonObject.addresses, address => AddressFactory.createAddress(address)),
       id: jsonObject.id,

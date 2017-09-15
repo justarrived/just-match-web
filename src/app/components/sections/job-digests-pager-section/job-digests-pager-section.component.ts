@@ -27,7 +27,8 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
           underlineBelowRtlAlignment="center">
         </basic-title-text>
         <job-digest-form
-          (digestCreated)="digestCreated($event)">
+          (digestCreated)="digestCreated($event)"
+          [digestSubscriberUuid]="digestSubscriberUuid">
         </job-digest-form>
       </div>
 
@@ -143,7 +144,7 @@ export class JobDigestsPagerSectionComponent extends BaseComponent {
     if (!(this.user || this.digestSubscriberUuid)) {
       this.jobDigestsMetaPromise = null;
     } else {
-      this.jobDigestsMetaPromise = this.jobDigestProxy.getJobDigestsWithMeta((this.user && this.user.id) || this.digestSubscriberUuid, searchParameters)
+      this.jobDigestsMetaPromise = this.jobDigestProxy.getJobDigestsWithMeta(this.digestSubscriberUuid || (this.user && this.user.id), searchParameters)
       .then(result => {
         this.totalJobDigests = result.meta.total;
         return result;
