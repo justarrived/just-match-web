@@ -3,6 +3,18 @@
 HEAD
 -----------
 
+v1.2 - 2017-09-15
+-----------
+* Autocomplete address input component
+* Autocomplete address city component
+* Custom checkbox input
+* Job digest notification frequency input
+* Primary occupations input
+* Subscriptions page
+* /subscriptions and /subscriptions/:subscriberUuid routes added
+* Job digest form and pager
+* Possible to subscribe to job digest either logged-in or not logged-in
+
 v1.1 - 2017-07-13
 -----------
 * Upgrade node from 6.9.1 => 6.11.1
@@ -14,14 +26,5 @@ v1.0 - 2017-07-11
 * _Bugfix_:
   - Fix job preview key implementation
 
-
-v0.2
------------
-..
-
-
-v0.1
------------
-..
 
 hint `git log` is your friend
