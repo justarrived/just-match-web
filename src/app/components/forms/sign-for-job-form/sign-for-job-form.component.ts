@@ -123,6 +123,7 @@ export class SignForJobFormComponent extends BaseComponent {
       if (this.isInModal) {
         throw errors;
       }
+      return null;
     });
   }
 }

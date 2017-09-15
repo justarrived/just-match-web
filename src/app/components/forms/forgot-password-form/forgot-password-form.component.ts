@@ -112,6 +112,7 @@ export class ForgotPasswordFormComponent extends BaseComponent {
       if (this.isInModal) {
         throw errors;
       }
+      return null;
     });
   }
 }

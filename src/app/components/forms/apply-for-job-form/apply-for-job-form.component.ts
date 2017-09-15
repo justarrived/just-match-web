@@ -107,6 +107,7 @@ export class ApplyForJobFormComponent extends BaseComponent {
       if (this.isInModal) {
         throw errors;
       }
+      return null;
     });
   }
 }

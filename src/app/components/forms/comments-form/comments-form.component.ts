@@ -126,6 +126,7 @@ export class CommentsFormComponent extends BaseComponent {
       if (this.isInModal) {
         throw errors;
       }
+      return null;
     });
   }
 }
