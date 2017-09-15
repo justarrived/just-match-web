@@ -7,8 +7,10 @@ export class PageOptionsService {
   private transparentNavbarWhenTopScrolledChange: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   public setTransparentNavbarWhenTopScrolled(option: boolean) {
-    this._transparentNavbarWhenTopScrolled = option;
-    this.transparentNavbarWhenTopScrolledChange.emit(this._transparentNavbarWhenTopScrolled);
+    setTimeout(() => {
+      this._transparentNavbarWhenTopScrolled = option;
+      this.transparentNavbarWhenTopScrolledChange.emit(this._transparentNavbarWhenTopScrolled);
+    }, 1);
   }
 
   public transparentNavbarWhenTopScrolled(): boolean {
