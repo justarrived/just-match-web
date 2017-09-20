@@ -129,7 +129,7 @@ export class BasicChatComponent extends BaseComponent {
       if (isPlatformBrowser(this.platformId)) {
         const element = document.querySelector("#message" + messageId);
         if (element) {
-          element.scrollIntoView(element);
+          element.scrollIntoView(true);
         }
       }
     });
@@ -220,6 +220,7 @@ export class BasicChatComponent extends BaseComponent {
       if (this.isInModal) {
         throw errors;
       }
+      return null;
     });
   }
 }

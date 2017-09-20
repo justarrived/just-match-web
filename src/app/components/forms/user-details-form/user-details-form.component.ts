@@ -141,6 +141,7 @@ export class UserDetailsFormComponent extends BaseComponent {
       if (this.isInModal) {
         throw errors;
       }
+      return null;
     });
   }
 }

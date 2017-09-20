@@ -110,6 +110,7 @@ export class RegisterFormComponent extends BaseComponent {
       if (this.isInModal) {
         throw errors;
       }
+      return null;
     });
   }
 

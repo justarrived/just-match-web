@@ -123,6 +123,7 @@ export class UserProfileFormComponent extends BaseComponent {
       if (this.isInModal) {
         throw errors;
       }
+      return null;
     });
   }
 }

@@ -303,6 +303,7 @@ export class JobDigestFormComponent extends BaseComponent {
       if (this.isInModal) {
         throw errors;
       }
+      return null;
     });
   }
 
@@ -323,6 +324,7 @@ export class JobDigestFormComponent extends BaseComponent {
       if (this.isInModal) {
         throw errors;
       }
+      return null;
     });
   }
 
@@ -368,6 +370,7 @@ export class JobDigestFormComponent extends BaseComponent {
       if (this.isInModal) {
         throw errors;
       }
+      return null;
     });
   }
 }
