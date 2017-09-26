@@ -83,7 +83,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
             <basic-link
               [text]="'footer.about.us.section.just.arrived' | translate"
               color="white"
-              href="https://justarrived.se/about-us/"
+              href="https://justarrived.se/about-us/?utm_source=justarrived_app&utm_medium=web&utm_content=footer"
               marginBottom="0.4rem"
               marginTop="0"
               textAlignmentLtrTablet="center"
@@ -92,7 +92,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
             <basic-link
               [text]="'footer.about.us.section.careers' | translate"
               color="white"
-              href="https://careers.justarrived.se/"
+              href="https://careers.justarrived.se/?utm_source=justarrived_app&utm_medium=web&utm_content=footer"
               marginBottom="0.4rem"
               marginTop="0"
               textAlignmentLtrTablet="center"
@@ -101,7 +101,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
             <basic-link
               [text]="'footer.about.us.section.press' | translate"
               color="white"
-              href="https://justarrived.se/press/"
+              href="https://justarrived.se/press/?utm_source=justarrived_app&utm_medium=web&utm_content=footer"
               marginBottom="0.4rem"
               marginTop="0"
               textAlignmentLtrTablet="center"
@@ -139,7 +139,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
               [alwaysLtrText]="true"
               text="Just Arrived"
               color="white"
-              href="https://justarrived.se/"
+              href="https://justarrived.se/?utm_source=justarrived_app&utm_medium=web&utm_content=footer"
               marginBottom="0.4rem"
               marginTop="0"
               textAlignmentLtrTablet="center"
