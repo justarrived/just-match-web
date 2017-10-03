@@ -72,6 +72,7 @@ export class FilterJobsInputComponent extends BaseComponent {
       this.filterJobsOptions = Promise.resolve([
         {
           name: 'All jobs',
+          default: false,
           value: JSON.stringify({
             'filter[all]': true,
             'sort': 'open_for_applications,filled,-created_at',
@@ -82,6 +83,7 @@ export class FilterJobsInputComponent extends BaseComponent {
         },
         {
           name: 'Open for applications',
+          default: true,
           value: JSON.stringify({
             'filter[open_for_applications]': true,
             'sort': '-created_at',
@@ -92,6 +94,7 @@ export class FilterJobsInputComponent extends BaseComponent {
         },
         {
           name: 'Filled jobs',
+          default: false,
           value: JSON.stringify({
             'filter[filled]': true,
             'sort': '-created_at',
@@ -102,6 +105,7 @@ export class FilterJobsInputComponent extends BaseComponent {
         },
         {
           name: 'Unfilled jobs',
+          default: false,
           value: JSON.stringify({
             'filter[filled]': false,
             'filter[job_date]': yyyymmdd(new Date()) + '..' + yyyymmdd(nbrOfMonthsFromDate(new Date(), 12)),
@@ -114,7 +118,7 @@ export class FilterJobsInputComponent extends BaseComponent {
       ])
       .then(options => {
         if (!this.control.value && options.length > 0) {
-          this.control.setValue(options[0].value);
+          this.control.setValue(options.find((option) => option.default).value);
         }
         return options;
       });
