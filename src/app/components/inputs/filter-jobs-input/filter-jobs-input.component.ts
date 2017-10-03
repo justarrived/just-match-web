@@ -13,7 +13,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
 import {yyyymmdd} from '../../../utils/date/date.util';
 import {TranslateService} from '@ngx-translate/core';
 
-function jobsFilterData(translations) {
+function filterJobsOptionsData(translations) {
   return [
     {
       name: 'All jobs',
@@ -119,7 +119,7 @@ export class FilterJobsInputComponent extends BaseComponent {
 
   protected loadData() {
     this.translateService.get(['input.filter.jobs.option.all', 'input.filter.jobs.option.open', 'input.filter.jobs.option.filled', 'input.filter.jobs.option.unfilled']).subscribe((translations: any) => {
-      this.filterJobsOptions = Promise.resolve(jobsFilterData(translations))
+      this.filterJobsOptions = Promise.resolve(filterJobsOptionsData(translations))
       .then(options => {
         if (!this.control.value && options.length > 0) {
           this.control.setValue(options.find((option) => option.default).value);
