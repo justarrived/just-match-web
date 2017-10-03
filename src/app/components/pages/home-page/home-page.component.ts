@@ -23,6 +23,8 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
 
     <newcomer-pitch-section *ngIf="!user"></newcomer-pitch-section>
 
+    <employer-pitch-section *ngIf="!user"></employer-pitch-section>
+
     <requirements-section></requirements-section>
 
     <partners-section></partners-section>
