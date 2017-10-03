@@ -153,6 +153,7 @@ import {NavigationService} from './services/navigation.service';
 import {NewJobsSectionComponent} from './components/sections/new-jobs-section/new-jobs-section.component';
 import {NewPasswordInputComponent} from './components/inputs/new-password-input/new-password-input.component';
 import {NgModule} from '@angular/core';
+import {NewcomerPitchSectionComponent} from './components/sections/newcomer-pitch-section/newcomer-pitch-section.component';
 import {NotFoundPageComponent} from './components/pages/404-page/404-page.component';
 import {NumberedPagerComponent} from './components/pagers/numbered-pager/numbered-pager.component';
 import {OldPasswordInputComponent} from './components/inputs/old-password-input/old-password-input.component';
@@ -415,6 +416,7 @@ export class RavenErrorHandler implements ErrorHandler {
     NavigationMenuComponent,
     NewJobsSectionComponent,
     NewPasswordInputComponent,
+    NewcomerPitchSectionComponent,
     NotFoundPageComponent,
     NumberedPagerComponent,
     OldPasswordInputComponent,
