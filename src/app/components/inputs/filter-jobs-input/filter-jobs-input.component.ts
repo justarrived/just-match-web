@@ -108,7 +108,6 @@ export class FilterJobsInputComponent extends BaseComponent {
           default: false,
           value: JSON.stringify({
             'filter[filled]': false,
-            'filter[job_date]': yyyymmdd(new Date()) + '..' + yyyymmdd(nbrOfMonthsFromDate(new Date(), 12)),
             'filter[cancelled]': false,
             'sort': 'open_for_applications,-created_at'
           }).replace(/"/g, "'"),
