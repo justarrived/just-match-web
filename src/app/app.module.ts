@@ -97,6 +97,7 @@ import {GodModeBarComponent} from './components/bars/god-mode-bar/god-mode-bar.c
 import {GodModePageComponent} from './components/pages/god-mode-page/god-mode-page.component';
 import {GodModePagerSectionComponent} from './components/sections/god-mode-pager-section/god-mode-pager-section.component';
 import {GotCoordinationNumberInputComponent} from './components/inputs/got-coordination-number-input/got-coordination-number-input.component';
+import {GuidePageComponent} from './components/pages/guide-page/guide-page.component';
 import {HomePageComponent} from './components/pages/home-page/home-page.component';
 import {HowItWorksSectionComponent} from './components/sections/how-it-works-section/how-it-works-section.component';
 import {HttpModule} from '@angular/http';
@@ -365,6 +366,7 @@ export class RavenErrorHandler implements ErrorHandler {
     GodModePageComponent,
     GodModePagerSectionComponent,
     GotCoordinationNumberInputComponent,
+    GuidePageComponent,
     HomePageComponent,
     HowItWorksSectionComponent,
     InfoMessageComponent,
