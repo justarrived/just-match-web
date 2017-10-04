@@ -14,8 +14,9 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
   template: `
     <div
       [@fadeInAnimation]="animationState"
-      class="ui raised card link guide-card"
-      [style.width]="width">
+      class="ui raised card guide-card"
+      [style.width]="width"
+      [class.link]="clickable">
       <a
         *ngIf="cornerIcon"
         class="ui {{cornerIconBackgroundColor}} right corner label">
@@ -43,10 +44,11 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
 })
 export class GuideCardComponent extends BaseComponent {
   @Input() public animationDelay: number = 1;
-  @Input() public fadedTitle: string;
-  @Input() public title: string;
+  @Input() public clickable: boolean;
   @Input() public cornerIcon: string;
   @Input() public cornerIconBackgroundColor: string;
+  @Input() public fadedTitle: string;
+  @Input() public title: string;
   @Input() public width: string = '290px';
 
   public animationState: string = 'hidden';

@@ -16,6 +16,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
         <guide-card
           fadedTitle="hej hej"
           title="hahhashahjaj ashhas"
+          [clickable]="true"
           cornerIcon="heart"
           cornerIconBackgroundColor="blue">
           <basic-text
