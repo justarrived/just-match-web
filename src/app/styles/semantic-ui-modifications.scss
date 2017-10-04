@@ -98,6 +98,18 @@ textarea {
   object-fit: cover;
 }
 
+.ui.blue.label {
+  border-color: $color-blue-500 !important;
+}
+
+.ui.pink.label {
+  border-color: $color-cerise-500 !important;
+}
+
+.ui.gray.label {
+  border-color: $color-gray-500 !important;
+}
+
 .ui.pink {
   color: $color-cerise-500 !important;
 }

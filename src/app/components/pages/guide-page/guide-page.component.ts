@@ -11,7 +11,34 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
 
 @Component({
   template: `
-
+    <div class="ui padded basic segment">
+      <div class="ui grid">
+        <guide-card
+          fadedTitle="hej hej"
+          title="hahhashahjaj ashhas"
+          cornerIcon="heart"
+          cornerIconBackgroundColor="blue">
+          <basic-text
+            text="bla asjasjl  asskajk askjnsa  askjnj asjka  as askjbsa as askja ns asjasna sa,sjsa as, ajksbsaas,  akhsba msakhbs ">
+          </basic-text>
+          <basic-text
+            text="bla asjasjl  asskajk askjnsa  askjnj asjka  as askjbsa as askja ns asjasna sa,sjsa as, ajksbsaas,  akhsba msakhbs ">
+          </basic-text>
+          <basic-text
+            text="bla asjasjl  asskajk askjnsa  askjnj asjka  as askjbsa as askja ns asjasna sa,sjsa as, ajksbsaas,  akhsba msakhbs ">
+          </basic-text>
+          <basic-text
+            text="bla asjasjl  asskajk askjnsa  askjnj asjka  as askjbsa as askja ns asjasna sa,sjsa as, ajksbsaas,  akhsba msakhbs ">
+          </basic-text>
+          <div style="display: flex; justify-content: center;">
+            <base-action-button
+              buttonText="Click me"
+              size="small">
+            </base-action-button>
+          </div>
+        </guide-card>
+      </div>
+    </div>
   `
 })
 export class GuidePageComponent extends PageComponent {
