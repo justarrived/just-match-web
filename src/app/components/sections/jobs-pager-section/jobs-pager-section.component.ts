@@ -114,7 +114,12 @@ export class JobsPagerSectionComponent extends BaseComponent {
     let searchParameters = {
       'include': 'company,company.company_images',
       'page[number]': this.page,
-      'page[size]': this.pageSize
+      'page[size]': this.pageSize,
+      'fields[jobs]': [
+        'name', 'description', 'city', 'job_date', 'job_end_date', 'full_time',
+        'translated_text', 'company'
+      ].join(','),
+      'fields[company]': ['name', 'company_images'].join(',')
     };
 
     for (let filter in this.activeFilters.filterOption) {
