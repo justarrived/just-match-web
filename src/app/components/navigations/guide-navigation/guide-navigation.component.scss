@@ -1,0 +1,57 @@
+@import '../../../styles/colors';
+
+.guide-navigation {
+  border-left: 1px solid rgba(0, 0, 0, .3);
+  padding-left: 20px;
+  margin-left: 25px;
+}
+
+.guide-nav-section-title {
+  position: relative;
+  margin-bottom: 10px;
+  padding-left: 15px !important;
+
+  &:not(first-of-type) {
+    margin-top: 35px;
+  }
+
+  &:before {
+    content: '';
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    position: absolute;
+    margin-left: -50px;
+    margin-top: -5px;
+    height: 30px;
+    width: 30px;
+    background-color: $color-cerise-500;
+    border-radius: 100%;
+  }
+
+  @for $i from 1 through 3 {
+    &:nth-of-type(#{$i}) {
+      &:before {
+        content: '#{$i}';
+      }
+    }
+  }
+}
+
+.guide-nav-section-item {
+  position: relative;
+  margin-bottom: 6px;
+
+  &:before {
+    content: '';
+    position: absolute;
+    margin-left: -24px;
+    top: 7px;
+    height: 7px;
+    width: 7px;
+    background-color: $color-cerise-500;
+    border-radius: 100%;
+  }
+}

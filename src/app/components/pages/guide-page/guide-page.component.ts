@@ -13,6 +13,9 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
   template: `
     <div class="ui padded basic segment">
       <div class="ui grid">
+        <div class="ui raised card">
+          <guide-navigation></guide-navigation>
+        </div>
         <guide-card
           fadedTitle="Innan du söker jobb"
           title="Vad är LMA-kort och vad är AT-UND?"
