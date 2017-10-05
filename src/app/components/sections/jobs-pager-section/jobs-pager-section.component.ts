@@ -117,7 +117,7 @@ export class JobsPagerSectionComponent extends BaseComponent {
       'page[size]': this.pageSize,
       'fields[jobs]': [
         'name', 'description', 'city', 'job_date', 'job_end_date', 'full_time',
-        'translated_text', 'company'
+        'translated_text', 'company', 'filled', 'open_for_applications'
       ].join(','),
       'fields[company]': ['name', 'company_images'].join(',')
     };
