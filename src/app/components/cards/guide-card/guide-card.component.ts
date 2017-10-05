@@ -22,14 +22,15 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
         class="ui {{cornerIconBackgroundColor}} right corner label">
         <i class="{{cornerIcon}} icon"></i>
       </a>
-      <basic-title-text
+      <basic-text
         [text]="fadedTitle"
         [uppercase]="true"
         color="gray"
-        fontSize="tiny"
+        fontSize="small"
+        fontWeight="bold"
         marginTop="0"
         marginBottom="0">
-      </basic-title-text>
+      </basic-text>
       <basic-title-text
         [text]="title"
         color="black"

@@ -14,29 +14,42 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
     <div class="ui padded basic segment">
       <div class="ui grid">
         <guide-card
-          fadedTitle="hej hej"
-          title="hahhashahjaj ashhas"
-          [clickable]="true"
-          cornerIcon="heart"
-          cornerIconBackgroundColor="blue">
+          fadedTitle="Innan du söker jobb"
+          title="Vad är LMA-kort och vad är AT-UND?"
+          [clickable]="false">
           <basic-text
-            text="bla asjasjl  asskajk askjnsa  askjnj asjka  as askjbsa as askja ns asjasna sa,sjsa as, ajksbsaas,  akhsba msakhbs ">
+            text="
+              LMA-kort är ett plastkort med ditt namn och ett foto av dig. LMA
+              är en förkortning för lagen om mottagande av asylsökande. LMA-kortet
+              är inte en identitetshandling, utan ett bevis på att du är asylsökande,
+              det är därför också tidsbegränsat. LMA-kort utfärdas av Migrationsverket.
+            ">
           </basic-text>
           <basic-text
-            text="bla asjasjl  asskajk askjnsa  askjnj asjka  as askjbsa as askja ns asjasna sa,sjsa as, ajksbsaas,  akhsba msakhbs ">
+            text="
+              AT-UND är ett undantag från lagen som säger att du behöver ett
+              arbetstillstånd för att arbeta i Sverige. Alla som ansöker om asyl
+              i Sverige, och har identifierat sig själva hos Migrationsverket har
+              AT-UND. Om du är osäker, titta på ditt LMA-kort. AT-UND står under
+              punkt 7.
+            ">
           </basic-text>
           <basic-text
-            text="bla asjasjl  asskajk askjnsa  askjnj asjka  as askjbsa as askja ns asjasna sa,sjsa as, ajksbsaas,  akhsba msakhbs ">
+            text="Vill du läsa mer?"
+            fontWeight="bold">
           </basic-text>
-          <basic-text
-            text="bla asjasjl  asskajk askjnsa  askjnj asjka  as askjbsa as askja ns asjasna sa,sjsa as, ajksbsaas,  akhsba msakhbs ">
-          </basic-text>
-          <div style="display: flex; justify-content: center;">
-            <base-action-button
-              buttonText="Click me"
-              size="small">
-            </base-action-button>
-          </div>
+          <basic-link
+            text="LMA-kortet på Migrationsverket"
+            href="https://www.migrationsverket.se/Privatpersoner/Skydd-och-asyl-i-Sverige/Medan-du-vantar/LMA-kort.html"
+            color="pink"
+            marginTop="0">
+          </basic-link>
+          <basic-link
+            text="AT-UND på Migrationsverket"
+            href="https://www.migrationsverket.se/Privatpersoner/Skydd-och-asyl-i-Sverige/Medan-du-vantar/Arbeta.html"
+            color="pink"
+            marginTop="0">
+          </basic-link>
         </guide-card>
       </div>
     </div>
