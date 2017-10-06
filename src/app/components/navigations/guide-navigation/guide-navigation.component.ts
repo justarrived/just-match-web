@@ -7,6 +7,13 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
   selector: 'guide-navigation',
   styleUrls: ['./guide-navigation.component.scss'],
   template: `
+    <basic-title-text
+      text="Jobbguiden"
+      color="pink"
+      fontSize="large"
+      marginTop="0"
+      marginBottom="2rem">
+    </basic-title-text>
     <div class="ui link list guide-navigation">
       <div class="guide-nav-section-title">
         <a class="item"><h3>Innan du söker jobb</h3></a>

@@ -12,48 +12,53 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
 @Component({
   template: `
     <div class="ui padded basic segment">
-      <div class="ui grid">
-        <div class="ui raised card">
-          <guide-navigation></guide-navigation>
+      <div class="ui two column centered grid">
+        <div class="ui tablet computer only six wide tablet four wide computer column">
+          <container-card
+            width="100%">
+            <guide-navigation></guide-navigation>
+          </container-card>
         </div>
-        <guide-card
+        <div class="ui sixteen wide mobile ten wide tablet eight wide computer column">
+          <guide-card
           fadedTitle="Innan du söker jobb"
           title="Vad är LMA-kort och vad är AT-UND?"
           [clickable]="false">
-          <basic-text
+            <basic-text
             text="
-              LMA-kort är ett plastkort med ditt namn och ett foto av dig. LMA
-              är en förkortning för lagen om mottagande av asylsökande. LMA-kortet
-              är inte en identitetshandling, utan ett bevis på att du är asylsökande,
-              det är därför också tidsbegränsat. LMA-kort utfärdas av Migrationsverket.
+            LMA-kort är ett plastkort med ditt namn och ett foto av dig. LMA
+            är en förkortning för lagen om mottagande av asylsökande. LMA-kortet
+            är inte en identitetshandling, utan ett bevis på att du är asylsökande,
+            det är därför också tidsbegränsat. LMA-kort utfärdas av Migrationsverket.
             ">
-          </basic-text>
-          <basic-text
+            </basic-text>
+            <basic-text
             text="
-              AT-UND är ett undantag från lagen som säger att du behöver ett
-              arbetstillstånd för att arbeta i Sverige. Alla som ansöker om asyl
-              i Sverige, och har identifierat sig själva hos Migrationsverket har
-              AT-UND. Om du är osäker, titta på ditt LMA-kort. AT-UND står under
-              punkt 7.
+            AT-UND är ett undantag från lagen som säger att du behöver ett
+            arbetstillstånd för att arbeta i Sverige. Alla som ansöker om asyl
+            i Sverige, och har identifierat sig själva hos Migrationsverket har
+            AT-UND. Om du är osäker, titta på ditt LMA-kort. AT-UND står under
+            punkt 7.
             ">
-          </basic-text>
-          <basic-text
+            </basic-text>
+            <basic-text
             text="Vill du läsa mer?"
             fontWeight="bold">
-          </basic-text>
-          <basic-link
+            </basic-text>
+            <basic-link
             text="LMA-kortet på Migrationsverket"
             href="https://www.migrationsverket.se/Privatpersoner/Skydd-och-asyl-i-Sverige/Medan-du-vantar/LMA-kort.html"
             color="pink"
             marginTop="0">
-          </basic-link>
-          <basic-link
+            </basic-link>
+            <basic-link
             text="AT-UND på Migrationsverket"
             href="https://www.migrationsverket.se/Privatpersoner/Skydd-och-asyl-i-Sverige/Medan-du-vantar/Arbeta.html"
             color="pink"
             marginTop="0">
-          </basic-link>
-        </guide-card>
+            </basic-link>
+          </guide-card>
+        </div>
       </div>
     </div>
   `
