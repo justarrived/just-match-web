@@ -22,7 +22,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
 })
 export class ContainerCardComponent extends BaseComponent {
   @Input() public animationDelay: number = 1;
-  @Input() public padding: string = '15px';
+  @Input() public padding: string = '2rem';
   @Input() public width: string = '100%';
 
   public animationState: string = 'hidden';

@@ -19,9 +19,11 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
             <guide-navigation></guide-navigation>
           </container-card>
         </div>
-        <div class="ui sixteen wide mobile ten wide tablet eight wide computer column">
+        <div class="ui sixteen wide mobile ten wide tablet seven wide computer column">
           <guide-card
           fadedTitle="Innan du söker jobb"
+          imgAlt="Bildtext för screen readers"
+          imgSrc="https://korskyrkanssprakcafe.files.wordpress.com/2016/08/lma-kort_2012_.png"
           title="Vad är LMA-kort och vad är AT-UND?"
           [clickable]="false">
             <basic-text

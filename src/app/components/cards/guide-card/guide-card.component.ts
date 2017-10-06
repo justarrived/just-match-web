@@ -34,11 +34,12 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
       <basic-title-text
         [text]="title"
         color="black"
-        fontSize="medium"
+        fontSize="large"
         [underlineBelow]="true"
         underlineBelowColor="pink"
         marginTop="1rem">
       </basic-title-text>
+      <img *ngIf="imgSrc" [src]="imgSrc" [alt]="imgAlt" class="guide-card-img" />
       <ng-content></ng-content>
     </div>`
 
@@ -49,6 +50,8 @@ export class GuideCardComponent extends BaseComponent {
   @Input() public cornerIcon: string;
   @Input() public cornerIconBackgroundColor: string;
   @Input() public fadedTitle: string;
+  @Input() public imgAlt: string;
+  @Input() public imgSrc: string;
   @Input() public title: string;
   @Input() public width: string = '100%';
 

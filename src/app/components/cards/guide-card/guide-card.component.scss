@@ -1,7 +1,17 @@
-@import '../../../styles/colors';
 @import '../../../styles/dimensions';
 
 .guide-card {
-  padding: 15px;
+  padding: 1rem;
   overflow: hidden;
+
+  @media screen and (min-width: $tablet-min-width) {
+    padding: 2rem;
+  }
+}
+
+.guide-card-img {
+  border-radius: 3px;
+  display: block;
+  margin: 1rem 0 1.5rem;
+  width: 100%;
 }
