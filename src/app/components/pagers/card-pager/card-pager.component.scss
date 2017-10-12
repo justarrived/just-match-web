@@ -1,0 +1,59 @@
+@import '../../../styles/colors';
+@import '../../../styles/dimensions';
+@import '../../../styles/typography';
+
+.pager-container {
+  margin-top: 1rem;
+}
+
+.pagination-location {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+
+  .section-indicator {
+    align-items: center;
+    background-color: $color-cerise-500;
+    border-radius: 50%;
+    color: $white !important;
+    display: flex;
+    font-size: 12px;
+    font-weight: bold;
+    height: 30px;
+    justify-content: center;
+    margin: 0 auto;
+    width: 30px;
+
+    @media screen and (max-width: $mobile-max-width) {
+      width: 25px;
+      height: 25px;
+    }
+  }
+}
+
+.pagination-button {
+  align-items: center;
+  color: $color-cerise-500;
+  cursor: pointer;
+  display: flex;
+
+  & > i {
+    margin-right: 1rem;
+  }
+}
+
+.pagination-button-right {
+  flex-direction: row-reverse;
+  text-align: right;
+
+  & > i {
+    margin-right: 0;
+    margin-left: 1rem;
+  }
+}
+
+.pagination-button-text {
+  color: $black;
+}

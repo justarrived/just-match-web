@@ -24,6 +24,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
             fadedTitle="Innan du söker jobb"
             title="Myndigheter som är bra att ha koll på">
           </guide-card>
+          <card-pager></card-pager>
         </div>
       </div>
     </div>
