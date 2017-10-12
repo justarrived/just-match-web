@@ -21,44 +21,8 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
         </div>
         <div class="ui sixteen wide mobile ten wide tablet seven wide computer column">
           <guide-card
-          fadedTitle="Innan du söker jobb"
-          imgAlt="Bildtext för screen readers"
-          imgSrc="https://korskyrkanssprakcafe.files.wordpress.com/2016/08/lma-kort_2012_.png"
-          title="Vad är LMA-kort och vad är AT-UND?"
-          [clickable]="false">
-            <basic-text
-            text="
-            LMA-kort är ett plastkort med ditt namn och ett foto av dig. LMA
-            är en förkortning för lagen om mottagande av asylsökande. LMA-kortet
-            är inte en identitetshandling, utan ett bevis på att du är asylsökande,
-            det är därför också tidsbegränsat. LMA-kort utfärdas av Migrationsverket.
-            ">
-            </basic-text>
-            <basic-text
-            text="
-            AT-UND är ett undantag från lagen som säger att du behöver ett
-            arbetstillstånd för att arbeta i Sverige. Alla som ansöker om asyl
-            i Sverige, och har identifierat sig själva hos Migrationsverket har
-            AT-UND. Om du är osäker, titta på ditt LMA-kort. AT-UND står under
-            punkt 7.
-            ">
-            </basic-text>
-            <basic-text
-            text="Vill du läsa mer?"
-            fontWeight="bold">
-            </basic-text>
-            <basic-link
-            text="LMA-kortet på Migrationsverket"
-            href="https://www.migrationsverket.se/Privatpersoner/Skydd-och-asyl-i-Sverige/Medan-du-vantar/LMA-kort.html"
-            color="pink"
-            marginTop="0">
-            </basic-link>
-            <basic-link
-            text="AT-UND på Migrationsverket"
-            href="https://www.migrationsverket.se/Privatpersoner/Skydd-och-asyl-i-Sverige/Medan-du-vantar/Arbeta.html"
-            color="pink"
-            marginTop="0">
-            </basic-link>
+            fadedTitle="Innan du söker jobb"
+            title="Myndigheter som är bra att ha koll på">
           </guide-card>
         </div>
       </div>

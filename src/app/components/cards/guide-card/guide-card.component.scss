@@ -1,4 +1,6 @@
+@import '../../../styles/colors';
 @import '../../../styles/dimensions';
+@import '../../../styles/typography';
 
 .guide-card {
   padding: 1rem;
@@ -7,11 +9,34 @@
   @media screen and (min-width: $tablet-min-width) {
     padding: 2rem;
   }
-}
 
-.guide-card-img {
-  border-radius: 3px;
-  display: block;
-  margin: 1rem 0 1.5rem;
-  width: 100%;
+  p {
+    @include text();
+  }
+
+  h1 {
+    @include title-text();
+  }
+
+  h2 {
+    @include title-text();
+  }
+
+  h3 {
+    @include text();
+    font-size: 14px !important;
+    font-weight: 700;
+    margin: 0;
+  }
+
+  a {
+    @include link();
+  }
+
+  img {
+    border-radius: 3px;
+    display: block;
+    margin: 1rem 0 1.5rem;
+    width: 100%;
+  }
 }
