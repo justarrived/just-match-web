@@ -12,9 +12,9 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
   styleUrls: ['./card-pager.component.scss'],
   template: `
   <div class="pager-container">
-    <div class="ui grid centered">
+    <div class="ui grid">
 
-      <div class="column seven wide">
+      <div class="column two wide mobile seven wide tablet seven wide computer">
         <div (click)="onPreviousPageButtonClick()" class="pagination-button">
           <i class="fa fa-chevron-left"></i>
           <div class="pagination-button-text">
@@ -41,21 +41,24 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
         </div>
       </div>
 
-      <div class="column two wide pagination-location">
-        <div class="section-indicator">
-          1
+      <div class="column twelve wide mobile two wide tablet two wide computer">
+        <div class="pagination-location">
+          <div class="section-indicator">
+            1
+          </div>
+          <basic-text
+            text="2/6"
+            display="unset"
+            fontSize="small"
+            marginTop=".5rem"
+            marginBottom="0"
+            textAlignmentLtr="center"
+            textAlignmentRtr="center">
+          </basic-text>
         </div>
-        <basic-text
-          text="2/6"
-          fontSize="small"
-          marginTop=".5rem"
-          marginBottom="0"
-          textAlignmentLtr="center"
-          textAlignmentRtr="center">
-        </basic-text>
       </div>
 
-      <div class="column seven wide">
+      <div class="column two wide mobile seven wide tablet seven wide computer">
         <div (click)="onNextPageButtonClick()" class="pagination-button pagination-button-right">
           <i class="fa fa-chevron-right"></i>
           <div class="pagination-button-text">
