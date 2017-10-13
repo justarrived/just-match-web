@@ -1,34 +1,35 @@
 @import '../../../styles/colors';
+@import '../../../styles/typography';
 
-.guide-navigation {
+.guide-menu-container {
   border-left: 1px solid rgba(0, 0, 0, .2);
-  padding-left: 20px;
   margin-left: 15px;
+  padding-left: 20px;
 }
 
-.guide-nav-section-title {
-  position: relative;
+.guide-menu-section-title {
   margin-bottom: 10px;
   padding-left: 15px !important;
+  position: relative;
 
   &:not(:first-of-type) {
     margin-top: 35px;
   }
 
   &:before {
-    content: '';
-    display: flex;
     align-items: center;
-    justify-content: center;
-    color: white;
-    font-weight: bold;
-    position: absolute;
-    margin-left: -50px;
-    margin-top: -5px;
-    height: 30px;
-    width: 30px;
     background-color: $color-cerise-500;
     border-radius: 100%;
+    color: white;
+    content: '';
+    display: flex;
+    font-weight: bold;
+    height: 30px;
+    justify-content: center;
+    margin-left: -50px;
+    margin-top: -5px;
+    position: absolute;
+    width: 30px;
   }
 
   @for $i from 1 through 3 {
@@ -40,18 +41,18 @@
   }
 }
 
-.guide-nav-section-item {
-  position: relative;
+.guide-menu-section-item {
   margin-bottom: 6px;
+  position: relative;
 
   &:before {
-    content: '';
-    position: absolute;
-    margin-left: -24px;
-    top: 7px;
-    height: 7px;
-    width: 7px;
-    background-color: $color-cerise-500;
+    background-color: $color-gray-300;
     border-radius: 100%;
+    content: '';
+    height: 7px;
+    margin-left: -24px;
+    position: absolute;
+    top: 7px;
+    width: 7px;
   }
 }

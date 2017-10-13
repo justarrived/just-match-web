@@ -16,7 +16,9 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
         <div class="ui tablet computer only six wide tablet four wide computer column">
           <container-card
             width="100%">
-            <guide-navigation></guide-navigation>
+            <guide-menu
+              isGuideMenuVisible="true">
+            </guide-menu>
           </container-card>
         </div>
         <div class="ui sixteen wide mobile ten wide tablet seven wide computer column">

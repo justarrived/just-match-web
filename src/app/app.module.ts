@@ -101,7 +101,7 @@ import {GodModePagerSectionComponent} from './components/sections/god-mode-pager
 import {GotCoordinationNumberInputComponent} from './components/inputs/got-coordination-number-input/got-coordination-number-input.component';
 import {GuidePageComponent} from './components/pages/guide-page/guide-page.component';
 import {GuideCardComponent} from './components/cards/guide-card/guide-card.component';
-import {GuideNavigationComponent} from './components/navigations/guide-navigation/guide-navigation.component';
+import {GuideMenuComponent} from './components/menus/guide-menu/guide-menu.component';
 import {HomePageComponent} from './components/pages/home-page/home-page.component';
 import {HowItWorksSectionComponent} from './components/sections/how-it-works-section/how-it-works-section.component';
 import {HttpModule} from '@angular/http';
@@ -372,9 +372,9 @@ export class RavenErrorHandler implements ErrorHandler {
     GodModePageComponent,
     GodModePagerSectionComponent,
     GotCoordinationNumberInputComponent,
-    GuidePageComponent,
     GuideCardComponent,
-    GuideNavigationComponent,
+    GuideMenuComponent,
+    GuidePageComponent,
     HomePageComponent,
     HowItWorksSectionComponent,
     InfoMessageComponent,
