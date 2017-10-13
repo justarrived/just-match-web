@@ -41,8 +41,13 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
         </div>
       </div>
 
-      <div class="column twelve wide mobile two wide tablet two wide computer">
+      <div
+        class="column twelve wide mobile two wide tablet two wide computer">
         <div class="pagination-location">
+          <i
+            class="ui mobile only grid list layout icon"
+            (click)="onToggleMenuClick()">
+          </i>
           <div class="section-indicator">
             1
           </div>
@@ -93,6 +98,7 @@ export class CardPagerComponent extends BaseComponent {
   @Input() public pageSize: number = 10;
   @Input() public currentPage: number;
   @Output() public pageChange = new EventEmitter();
+  @Output() private onToggleMenu = new EventEmitter();
   public lastPage: number = 1;
 
   public constructor(
@@ -156,5 +162,9 @@ export class CardPagerComponent extends BaseComponent {
     if (this.maxResults % this.pageSize !== 0) {
       this.lastPage = this.lastPage + 1;
     }
+  }
+
+  public onToggleMenuClick() {
+    this.onToggleMenu.emit()
   }
 }

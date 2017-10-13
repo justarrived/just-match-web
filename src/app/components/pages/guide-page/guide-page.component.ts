@@ -12,13 +12,20 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
 @Component({
   template: `
     <div class="ui padded basic segment">
+      <div class="ui mobile only grid">
+        <secondary-navigation
+          backgroundColor="white"
+          [navIsVisible]="guideMenuIsVisible"
+          marginBottom="60px"
+          paddingBottom="0">
+          <guide-menu></guide-menu>
+        </secondary-navigation>
+      </div>
       <div class="ui two column centered grid">
         <div class="ui tablet computer only six wide tablet four wide computer column">
           <container-card
             width="100%">
-            <guide-menu
-              isGuideMenuVisible="true">
-            </guide-menu>
+            <guide-menu></guide-menu>
           </container-card>
         </div>
         <div class="ui sixteen wide mobile ten wide tablet seven wide computer column">
@@ -26,13 +33,16 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
             fadedTitle="Innan du söker jobb"
             title="Myndigheter som är bra att ha koll på">
           </guide-card>
-          <card-pager></card-pager>
+          <card-pager
+            (onToggleMenu)="toggleGuideMenu()">
+          </card-pager>
         </div>
       </div>
     </div>
   `
 })
 export class GuidePageComponent extends PageComponent {
+  public guideMenuIsVisible: boolean = false;
 
   public constructor (
     @Inject(DOCUMENT) protected document: any,
@@ -63,5 +73,9 @@ export class GuidePageComponent extends PageComponent {
       userResolver,
       false,
     );
+  }
+
+  public toggleGuideMenu() {
+    this.guideMenuIsVisible = !this.guideMenuIsVisible;
   }
 }

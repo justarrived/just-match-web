@@ -186,6 +186,7 @@ import {ResolversModule} from './resolvers/resolvers.module';
 import {ResumeInputComponent} from './components/inputs/resume-input/resume-input.component';
 import {RoutesModule} from './routes/routes.module';
 import {SearchInputComponent} from './components/inputs/search-input/search-input.component';
+import {SecondaryNavigationComponent} from './components/navigations/secondary-navigation/secondary-navigation.component';
 import {SelectDropdownInputComponent} from './components/inputs/select-dropdown-input/select-dropdown-input.component';
 import {SelectInputComponent} from './components/inputs/select-input/select-input.component';
 import {ShareModalComponent} from './components/modals/share-modal/share-modal.component';
@@ -448,6 +449,7 @@ export class RavenErrorHandler implements ErrorHandler {
     ResidencePermitFrontInputComponent,
     ResumeInputComponent,
     SearchInputComponent,
+    SecondaryNavigationComponent,
     SelectDropdownInputComponent,
     SelectInputComponent,
     ShareModalComponent,

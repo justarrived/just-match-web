@@ -15,8 +15,7 @@ import {SystemLanguagesResolver} from '../../../resolvers/system-languages/syste
   selector: 'guide-menu',
   styleUrls: ['./guide-menu.component.scss'],
   template: `
-    <div
-      *ngIf="isGuideMenuVisible">
+    <div>
 
       <basic-title-text
         text="Jobbguiden"
@@ -116,8 +115,6 @@ import {SystemLanguagesResolver} from '../../../resolvers/system-languages/syste
     </div>`
 })
 export class GuideMenuComponent extends BaseComponent {
-  @Input() public isGuideMenuVisible: boolean;
-  @Output() public isGuideMenuVisibleChange: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   public constructor(
     @Inject(PLATFORM_ID) private readonly platformId: any,
