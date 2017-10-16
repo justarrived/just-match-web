@@ -28,7 +28,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
         style="flex-wrap: nowrap;">
         <container-card
           width="300px">
-          <guide-navigation></guide-navigation>
+          <guide-menu></guide-menu>
         </container-card>
         <div>
           <guide-card

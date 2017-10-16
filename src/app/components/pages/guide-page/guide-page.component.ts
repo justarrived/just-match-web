@@ -17,7 +17,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
         style="flex-wrap: nowrap;">
         <container-card
           width="300px">
-          <guide-navigation></guide-navigation>
+          <guide-menu></guide-menu>
         </container-card>
         <guide-welcome-card
           style="width: 100%"
@@ -35,7 +35,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
   `
 })
 export class GuidePageComponent extends PageComponent {
-  
+
   public constructor (
     @Inject(DOCUMENT) protected document: any,
     @Inject(REQUEST) protected request: any,

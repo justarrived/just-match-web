@@ -104,7 +104,7 @@ import {GuideSectionPageComponent} from './components/pages/guide-section-page/g
 import {GuideSectionArticlePageComponent} from './components/pages/guide-section-article-page/guide-section-article-page.component';
 import {GuideCardComponent} from './components/cards/guide-card/guide-card.component';
 import {GuideWelcomeCardComponent} from './components/cards/guide-welcome-card/guide-welcome-card.component';
-import {GuideNavigationComponent} from './components/navigations/guide-navigation/guide-navigation.component';
+import {GuideMenuComponent} from './components/menus/guide-menu/guide-menu.component';
 import {HomePageComponent} from './components/pages/home-page/home-page.component';
 import {HowItWorksSectionComponent} from './components/sections/how-it-works-section/how-it-works-section.component';
 import {HttpModule} from '@angular/http';
@@ -189,6 +189,7 @@ import {ResolversModule} from './resolvers/resolvers.module';
 import {ResumeInputComponent} from './components/inputs/resume-input/resume-input.component';
 import {RoutesModule} from './routes/routes.module';
 import {SearchInputComponent} from './components/inputs/search-input/search-input.component';
+import {SecondaryNavigationComponent} from './components/navigations/secondary-navigation/secondary-navigation.component';
 import {SelectDropdownInputComponent} from './components/inputs/select-dropdown-input/select-dropdown-input.component';
 import {SelectInputComponent} from './components/inputs/select-input/select-input.component';
 import {ShareModalComponent} from './components/modals/share-modal/share-modal.component';
@@ -375,12 +376,12 @@ export class RavenErrorHandler implements ErrorHandler {
     GodModePageComponent,
     GodModePagerSectionComponent,
     GotCoordinationNumberInputComponent,
-    GuidePageComponent,
-    GuideSectionPageComponent,
-    GuideSectionArticlePageComponent,
     GuideCardComponent,
+    GuideMenuComponent,
+    GuidePageComponent,
+    GuideSectionArticlePageComponent,
+    GuideSectionPageComponent,
     GuideWelcomeCardComponent,
-    GuideNavigationComponent,
     HomePageComponent,
     HowItWorksSectionComponent,
     InfoMessageComponent,
@@ -454,6 +455,7 @@ export class RavenErrorHandler implements ErrorHandler {
     ResidencePermitFrontInputComponent,
     ResumeInputComponent,
     SearchInputComponent,
+    SecondaryNavigationComponent,
     SelectDropdownInputComponent,
     SelectInputComponent,
     ShareModalComponent,
