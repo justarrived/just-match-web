@@ -47,10 +47,10 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
         class="column two wide">
         <div class="pagination-location">
           <div class="section-indicator">
-            1
+            {{currentSection}}
           </div>
           <basic-text
-            text="2/6"
+            [text]="currentPage + '/' +  lastPage"
             display="unset"
             fontSize="small"
             marginTop=".5rem"
@@ -94,11 +94,12 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
   </div>`
 })
 export class HintPagerComponent extends BaseComponent {
+  @Input() public currentPage: number;
+  @Input() public currentSection: number;
   @Input() public hintNext: string;
   @Input() public hintPrevious: string;
   @Input() public maxResults: number;
   @Input() public pageSize: number = 10;
-  @Input() public currentPage: number;
   @Output() public pageChange = new EventEmitter();
   public lastPage: number = 1;
 
