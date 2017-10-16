@@ -43,7 +43,7 @@ import {BasicTabsComponent} from './components/tabs/basic-tabs/basic-tabs.compon
 import {BasicTextComponent} from './components/text/basic-text/basic-text.component';
 import {BasicTitleTextComponent} from './components/text/basic-title-text/basic-title-text.component';
 import {BrowserModule} from '@angular/platform-browser';
-import {CardPagerComponent} from './components/pagers/card-pager/card-pager.component';
+import {HintPagerComponent} from './components/pagers/hint-pager/hint-pager.component';
 import {ChatMessageInputComponent} from './components/inputs/chat-message-input/chat-message-input.component';
 import {CheckboxInputComponent} from './components/inputs/checkbox-input/checkbox-input.component';
 import {CircularIconBaseButtonComponent} from './components/buttons/circular-icon-base-button/circular-icon-base-button.component';
@@ -163,6 +163,7 @@ import {NewPasswordInputComponent} from './components/inputs/new-password-input/
 import {NgModule} from '@angular/core';
 import {NotFoundPageComponent} from './components/pages/404-page/404-page.component';
 import {NumberedPagerComponent} from './components/pagers/numbered-pager/numbered-pager.component';
+import {FixedBottomMenuPagerComponent} from './components/pagers/fixed-bottom-menu-pager/fixed-bottom-menu-pager.component';
 import {OldPasswordInputComponent} from './components/inputs/old-password-input/old-password-input.component';
 import {PageOptionsService} from './services/page-options.service';
 import {PartnersSectionComponent} from './components/sections/partners-section/partners-section.component';
@@ -326,7 +327,7 @@ export class RavenErrorHandler implements ErrorHandler {
     BasicTabsComponent,
     BasicTextComponent,
     BasicTitleTextComponent,
-    CardPagerComponent,
+    HintPagerComponent,
     ChatMessageInputComponent,
     CheckboxInputComponent,
     CircularIconBaseButtonComponent,
@@ -377,6 +378,7 @@ export class RavenErrorHandler implements ErrorHandler {
     GodModePagerSectionComponent,
     GotCoordinationNumberInputComponent,
     GuideCardComponent,
+    FixedBottomMenuPagerComponent,
     GuideMenuComponent,
     GuidePageComponent,
     GuideSectionArticlePageComponent,

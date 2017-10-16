@@ -74,6 +74,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
           [title]="article.translatedText.title"
           style="margin-bottom: 2rem; width: 100%">
         </guide-card>
+        <fixed-bottom-menu-pager></fixed-bottom-menu-pager>
       </div>
     </div>
   `

@@ -8,44 +8,25 @@ import {SystemLanguagesResolver} from '../../../resolvers/system-languages/syste
 import {UserResolver} from '../../../resolvers/user/user.resolver';
 
 @Component({
-  selector: 'card-pager',
-  styleUrls: ['./card-pager.component.scss'],
+  selector: 'fixed-bottom-menu-pager',
+  styleUrls: ['./fixed-bottom-menu-pager.component.scss'],
   template: `
   <div class="pager-container">
     <div class="ui grid">
 
-      <div class="column two wide mobile seven wide tablet seven wide computer">
-        <div (click)="onPreviousPageButtonClick()" class="pagination-button">
+      <div class="column two wide">
+        <div
+          (click)="onPreviousPageButtonClick()"
+          class="pagination-button">
           <i class="fa fa-chevron-left"></i>
-          <div class="pagination-button-text">
-            <basic-text
-              text="Föregående"
-              [uppercase]="true"
-              color="gray"
-              fontSize="small"
-              fontWeight="bold"
-              marginTop="0"
-              marginBottom="0"
-              textAlignmentLtr="left"
-              textAlignmentRtr="left">
-            </basic-text>
-            <basic-text
-              text="Det här behöver du för att börja jobba i Sverige"
-              fontSize="small"
-              marginTop="0"
-              marginBottom="0"
-              textAlignmentLtr="left"
-              textAlignmentRtr="left">
-            </basic-text>
-          </div>
         </div>
       </div>
 
       <div
-        class="column twelve wide mobile two wide tablet two wide computer">
+        class="column twelve wide">
         <div class="pagination-location">
           <i
-            class="ui mobile only grid list layout icon"
+            class="ui grid list layout icon"
             (click)="onToggleMenuClick()">
           </i>
           <div class="section-indicator">
@@ -63,37 +44,18 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
         </div>
       </div>
 
-      <div class="column two wide mobile seven wide tablet seven wide computer">
-        <div (click)="onNextPageButtonClick()" class="pagination-button pagination-button-right">
+      <div class="column two wide">
+        <div
+          (click)="onNextPageButtonClick()"
+          class="pagination-button pagination-button-right">
           <i class="fa fa-chevron-right"></i>
-          <div class="pagination-button-text">
-            <basic-text
-              text="Nästa"
-              [uppercase]="true"
-              color="gray"
-              fontSize="small"
-              fontWeight="bold"
-              marginTop="0"
-              marginBottom="0"
-              textAlignmentLtr="right"
-              textAlignmentRtr="right">
-            </basic-text>
-            <basic-text
-              text="Personnummer och samordningsnummer"
-              fontSize="small"
-              marginTop="0"
-              marginBottom="0"
-              textAlignmentLtr="right"
-              textAlignmentRtr="right">
-            </basic-text>
-          </div>
         </div>
       </div>
 
     </div>
   </div>`
 })
-export class CardPagerComponent extends BaseComponent {
+export class FixedBottomMenuPagerComponent extends BaseComponent {
   @Input() public maxResults: number;
   @Input() public pageSize: number = 10;
   @Input() public currentPage: number;
