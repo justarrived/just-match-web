@@ -21,7 +21,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
           <i class="fa fa-chevron-left"></i>
           <div class="pagination-button-text">
             <basic-text
-              text="Föregående"
+              [text]="'hint.pager.previous' | translate"
               [uppercase]="true"
               color="gray"
               fontSize="small"
@@ -32,7 +32,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
               textAlignmentRtr="left">
             </basic-text>
             <basic-text
-              text="Det här behöver du för att börja jobba i Sverige"
+              [text]="hintPrevious"
               fontSize="small"
               marginTop="0"
               marginBottom="0"
@@ -68,7 +68,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
           <i class="fa fa-chevron-right"></i>
           <div class="pagination-button-text">
             <basic-text
-              text="Nästa"
+              [text]="'hint.pager.next' | translate"
               [uppercase]="true"
               color="gray"
               fontSize="small"
@@ -79,7 +79,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
               textAlignmentRtr="right">
             </basic-text>
             <basic-text
-              text="Personnummer och samordningsnummer"
+              [text]="hintNext"
               fontSize="small"
               marginTop="0"
               marginBottom="0"
@@ -94,6 +94,8 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
   </div>`
 })
 export class HintPagerComponent extends BaseComponent {
+  @Input() public hintNext: string;
+  @Input() public hintPrevious: string;
   @Input() public maxResults: number;
   @Input() public pageSize: number = 10;
   @Input() public currentPage: number;
