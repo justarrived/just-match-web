@@ -8,13 +8,10 @@
 }
 
 .guide-menu-section-title {
+  cursor: pointer;
   margin-bottom: 10px;
   padding-left: 15px !important;
   position: relative;
-
-  &:not(:first-of-type) {
-    margin-top: 35px;
-  }
 
   &:before {
     align-items: center;
@@ -32,12 +29,24 @@
     width: 30px;
   }
 
-  @for $i from 1 through 3 {
-    &:nth-of-type(#{$i}) {
+  &:hover {
+    &:before {
+      background-color: $color-cerise-200;
+    }
+  }
+}
+
+.guide-menu-section {
+  @for $i from 1 through 10 {
+    &:nth-child(#{$i}) .guide-menu-section-title {
       &:before {
         content: '#{$i}';
       }
     }
+  }
+
+  &:not(:first-child) {
+    margin-top: 35px;
   }
 }
 
