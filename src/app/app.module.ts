@@ -100,7 +100,10 @@ import {GodModePageComponent} from './components/pages/god-mode-page/god-mode-pa
 import {GodModePagerSectionComponent} from './components/sections/god-mode-pager-section/god-mode-pager-section.component';
 import {GotCoordinationNumberInputComponent} from './components/inputs/got-coordination-number-input/got-coordination-number-input.component';
 import {GuidePageComponent} from './components/pages/guide-page/guide-page.component';
+import {GuideSectionPageComponent} from './components/pages/guide-section-page/guide-section-page.component';
+import {GuideSectionArticlePageComponent} from './components/pages/guide-section-article-page/guide-section-article-page.component';
 import {GuideCardComponent} from './components/cards/guide-card/guide-card.component';
+import {GuideWelcomeCardComponent} from './components/cards/guide-welcome-card/guide-welcome-card.component';
 import {GuideNavigationComponent} from './components/navigations/guide-navigation/guide-navigation.component';
 import {HomePageComponent} from './components/pages/home-page/home-page.component';
 import {HowItWorksSectionComponent} from './components/sections/how-it-works-section/how-it-works-section.component';
@@ -373,7 +376,10 @@ export class RavenErrorHandler implements ErrorHandler {
     GodModePagerSectionComponent,
     GotCoordinationNumberInputComponent,
     GuidePageComponent,
+    GuideSectionPageComponent,
+    GuideSectionArticlePageComponent,
     GuideCardComponent,
+    GuideWelcomeCardComponent,
     GuideNavigationComponent,
     HomePageComponent,
     HowItWorksSectionComponent,

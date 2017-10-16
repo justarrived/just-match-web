@@ -6,6 +6,7 @@ interface GuideSectionArticleApiAttributes {
   shortDescription: string;
   slug: string;
   title: string;
+  translatedText: GuideSectionArticleTranslatedTextApiAttributes;
 }
 
 interface GuideSectionArticleTranslatedTextApiAttributes {
@@ -37,6 +38,7 @@ export class GuideSectionArticleFactory {
       shortDescription: jsonObject.short_description,
       slug: jsonObject.slug,
       title: jsonObject.title,
+      translatedText: GuideSectionArticleTranslatedTextFactory.createGuideSectionArticleTranslatedText(jsonObject.translated_text),
     };
   }
 }

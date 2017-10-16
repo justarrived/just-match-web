@@ -8,6 +8,8 @@ import {ForbiddenPageComponent} from '../components/pages/forbidden-page/forbidd
 import {ForgotPasswordPageComponent} from '../components/pages/forgot-password-page/forgot-password-page.component';
 import {GodModePageComponent} from '../components/pages/god-mode-page/god-mode-page.component';
 import {GuidePageComponent} from '../components/pages/guide-page/guide-page.component';
+import {GuideSectionPageComponent} from '../components/pages/guide-section-page/guide-section-page.component';
+import {GuideSectionArticlePageComponent} from '../components/pages/guide-section-article-page/guide-section-article-page.component';
 import {GuardsModule} from '../guards/guards.module';
 import {HomePageComponent} from '../components/pages/home-page/home-page.component';
 import {JARoute} from './ja-route/ja-route';
@@ -48,6 +50,8 @@ const routes: Routes = [
     { path: 'forgot-password', component: ForgotPasswordPageComponent, canActivate: [NotLoggedInGuard] },
     { path: 'god-mode', component: GodModePageComponent, canActivate: [LoggedInAdminGuard] },
     { path: 'guide', component: GuidePageComponent },
+    { path: 'guide/section/:sectionId', component: GuideSectionPageComponent },
+    { path: 'guide/section/:sectionId/article/:articleId', component: GuideSectionArticlePageComponent },
     { path: 'home', redirectTo: '' },
     { path: 'job/:id', component: JobPageComponent },
     { path: 'jobs', redirectTo: 'jobs/1', pathMatch: 'full' },

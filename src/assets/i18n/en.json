@@ -1,4 +1,9 @@
 {
+  "guide.card.welcome.button": "Start",
+  "guide.card.welcome.paragraph.2": "The guide consists of 3 parts:",
+  "guide.card.welcome.paragraph.1": "Are you new in Sweden and not sure what to do when searching for a job? In this guide we have collected information and tips that will help you.",
+  "guide.card.welcome.faded.title": "Job guide",
+  "guide.card.welcome.title": "Welcome to the job guide",
   "already.registered.modal.button": "Log in",
   "already.registered.modal.info": "It seems that there already is an account using {{emailOrPhone}}, so we suggest that you log in instead. If you forgot your password you can reset your password by clicking \"Forgotten your password?\" above",
   "already.registered.modal.title": "{{emailOrPhone}} is already registered",
