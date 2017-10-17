@@ -301,6 +301,7 @@
   "job.description.section.header": "Description",
   "job.description.section.title": "About the job",
   "job.digest.form.city.hint": "Choose one or a few cities to narrow your search",
+  "job.digest.form.city.add": "Add city",
   "job.digest.form.delete.button": "Delete",
   "job.digest.form.info": "Scroll down to see your active subscriptions",
   "job.digest.form.max.cities": "You can not add any more cities",
