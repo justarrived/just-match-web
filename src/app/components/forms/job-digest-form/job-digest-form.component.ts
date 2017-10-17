@@ -87,7 +87,7 @@ import {Validators} from '@angular/forms';
         marginBottom="0"
         iconLeft="green large plus icon"
         *ngIf="numberOfVisibleAddressFields < maxNumberOfAddresses"
-       [text]="'Add city' | translate">
+       [text]="'job.digest.form.city.add' | translate">
       </basic-title-text>
 
       <basic-text
