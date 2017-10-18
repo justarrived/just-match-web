@@ -30,7 +30,6 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
           style="width: 100%"
           width="100%">
         </guide-welcome-card>
-        <fixed-bottom-menu-pager></fixed-bottom-menu-pager>
       </div>
     </div>
   `

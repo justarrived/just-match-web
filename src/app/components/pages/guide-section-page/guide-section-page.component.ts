@@ -20,6 +20,12 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
       [promise]="guideSection"
       class="inverted">
     </basic-loader>
+
+    <secondary-navigation
+      [navIsVisible]="isMobileMenuVisible">
+      <guide-menu></guide-menu>
+    </secondary-navigation>
+
     <div class="ui padded basic segment">
       <div
         class="ui tablet computer only grid"
@@ -75,7 +81,9 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
           [title]="article.translatedText.title"
           style="margin-bottom: 2rem; width: 100%">
         </guide-card>
-        <guide-fixed-bottom-menu-pager></guide-fixed-bottom-menu-pager>
+        <guide-fixed-bottom-menu-pager
+          (toggleMenu)="toggleMenu()">
+        </guide-fixed-bottom-menu-pager>
       </div>
     </div>
   `
@@ -85,6 +93,7 @@ export class GuideSectionPageComponent extends PageComponent {
 
   public guideSection: Promise<GuideSection>;
   public guideSectionId: string;
+  public isMobileMenuVisible: boolean;
 
   private routeParamsSubscription: Subscription;
 
@@ -146,5 +155,9 @@ export class GuideSectionPageComponent extends PageComponent {
 
   public onDestroy(): void {
     if (this.routeParamsSubscription) { this.routeParamsSubscription.unsubscribe(); }
+  }
+
+  public toggleMenu(): void {
+    this.isMobileMenuVisible = !this.isMobileMenuVisible;
   }
 }
