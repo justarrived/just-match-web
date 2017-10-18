@@ -4,14 +4,10 @@ import {Component} from '@angular/core';
 import {EventEmitter} from '@angular/core';
 import {GuideSection} from '../../../models/api-models/guide-section/guide-section';
 import {GuideSectionProxy} from '../../../proxies/guide-section/guide-section.proxy';
-import {Inject} from '@angular/core';
 import {Input} from '@angular/core';
-import {isPlatformBrowser} from '@angular/common';
 import {Language} from '../../../models/api-models/language/language';
 import {NavigationService} from '../../../services/navigation.service';
 import {Output} from '@angular/core';
-import {PLATFORM_ID} from '@angular/core';
-import {Router} from '@angular/router';
 import {Subscription} from 'rxjs/Subscription';
 import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
 import {UserResolver} from '../../../resolvers/user/user.resolver';
@@ -21,6 +17,11 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
   styleUrls: ['./guide-menu.component.scss'],
   template: `
     <div>
+      <basic-loader
+        [promise]="guideSections"
+        class="inverted">
+      </basic-loader>
+
       <basic-title-text
         [routerLink]="JARoutes.guide.url()"
         [text]="'guide.menu.title' | translate"
@@ -73,19 +74,13 @@ export class GuideMenuComponent extends BaseComponent {
   private routeParamsSubscription: Subscription;
 
   public constructor(
-    @Inject(PLATFORM_ID) private readonly platformId: any,
     private activatedRoute: ActivatedRoute,
     private guideSectionProxy: GuideSectionProxy,
     private navigationService: NavigationService,
-    private router: Router,
     protected systemLanguagesResolver: SystemLanguagesResolver,
     protected userResolver: UserResolver,
   ) {
     super(systemLanguagesResolver, userResolver);
-  }
-
-  public getCurrentUrl(): string {
-    return this.navigationService.getCurrentUrl();
   }
 
   public onInit(): void {

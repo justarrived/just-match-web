@@ -28,7 +28,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
           width="300px">
           <guide-menu></guide-menu>
         </container-card>
-        <div>
+        <div style="width: 100%">
           <basic-title-text
             [text]="(guideSection | async)?.translatedText?.title"
             color="black"
@@ -53,6 +53,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
               </basic-text>
             </guide-card>
           </div>
+          <guide-hint-pager></guide-hint-pager>
         </div>
       </div>
 

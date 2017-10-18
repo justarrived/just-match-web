@@ -16,6 +16,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
 
       <div class="column seven wide">
         <div
+          *ngIf="canGoBack"
           (click)="onPreviousPageButtonClick()"
           class="pagination-button">
           <i class="fa fa-chevron-left"></i>
@@ -50,6 +51,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
             {{currentSection}}
           </div>
           <basic-text
+            *ngIf="currentPage"
             [text]="currentPage + '/' +  lastPage"
             display="unset"
             fontSize="small"
@@ -63,6 +65,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
 
       <div class="column seven wide">
         <div
+          *ngIf="canGoToNext"
           (click)="onNextPageButtonClick()"
           class="pagination-button pagination-button-right">
           <i class="fa fa-chevron-right"></i>
@@ -98,10 +101,13 @@ export class HintPagerComponent extends BaseComponent {
   @Input() public currentSection: number;
   @Input() public hintNext: string;
   @Input() public hintPrevious: string;
-  @Input() public maxResults: number;
-  @Input() public pageSize: number = 10;
-  @Output() public pageChange = new EventEmitter();
-  public lastPage: number = 1;
+  @Input() public lastPage: number = 1;
+  @Input() public lastSection: number = 1;
+  @Input() public pagesThisSection: number;
+  @Input() public canGoBack: boolean;
+  @Input() public canGoToNext: boolean;
+  @Output() public next = new EventEmitter();
+  @Output() public previous = new EventEmitter();
 
   public constructor(
     protected systemLanguagesResolver: SystemLanguagesResolver,
@@ -110,59 +116,11 @@ export class HintPagerComponent extends BaseComponent {
     super(systemLanguagesResolver, userResolver);
   }
 
-  public onInit() {
-    this.calculateLastPage();
-  }
-
-  public onChanges(changes: SimpleChanges): void {
-    if (!changes.maxResults && !changes.pageSize) {
-      return;
-    }
-
-    this.calculateLastPage();
-  }
-
-  public onFirstPageButtonClick() {
-    if (this.currentPage <= 1) {
-      return;
-    }
-
-    this.currentPage = 1;
-    this.pageChange.emit(this.currentPage);
-  }
-
   public onPreviousPageButtonClick() {
-    if (this.currentPage <= 1) {
-      return;
-    }
-
-    this.currentPage = this.currentPage - 1;
-    this.pageChange.emit(this.currentPage);
+    this.previous.emit();
   }
 
   public onNextPageButtonClick() {
-    if (this.currentPage >= this.lastPage) {
-      return;
-    }
-
-    this.currentPage = this.currentPage + 1;
-    this.pageChange.emit(this.currentPage);
-  }
-
-  public onLastPageButtonClick() {
-    if (this.currentPage >= this.lastPage) {
-      return;
-    }
-
-    this.currentPage = this.lastPage;
-    this.pageChange.emit(this.currentPage);
-  }
-
-  private calculateLastPage() {
-    this.lastPage = Math.floor(this.maxResults / this.pageSize);
-
-    if (this.maxResults % this.pageSize !== 0) {
-      this.lastPage = this.lastPage + 1;
-    }
+    this.next.emit();
   }
 }

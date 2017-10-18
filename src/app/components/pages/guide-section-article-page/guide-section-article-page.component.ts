@@ -38,7 +38,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
             style="width: 100%">
             <div [innerHTML]="(guideSectionArticle | async)?.translatedText?.body"></div>
           </guide-card>
-          <hint-pager></hint-pager>
+          <guide-hint-pager></guide-hint-pager>
         </div>
       </div>
 
@@ -116,6 +116,7 @@ export class GuideSectionArticlePageComponent extends PageComponent {
 
   private loadData() {
     let searchParameters = {
+      'include': 'section'
     };
 
     this.guideSectionArticle = this.guideSectionArticleProxy.getGuideSectionArticle(this.guideSectionId, this.guideSectionArticleId, searchParameters);

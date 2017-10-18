@@ -44,6 +44,7 @@ import {BasicTextComponent} from './components/text/basic-text/basic-text.compon
 import {BasicTitleTextComponent} from './components/text/basic-title-text/basic-title-text.component';
 import {BrowserModule} from '@angular/platform-browser';
 import {HintPagerComponent} from './components/pagers/hint-pager/hint-pager.component';
+import {GuideHintPagerComponent} from './components/pagers/guide-hint-pager/guide-hint-pager.component';
 import {ChatMessageInputComponent} from './components/inputs/chat-message-input/chat-message-input.component';
 import {CheckboxInputComponent} from './components/inputs/checkbox-input/checkbox-input.component';
 import {CircularIconBaseButtonComponent} from './components/buttons/circular-icon-base-button/circular-icon-base-button.component';
@@ -328,6 +329,7 @@ export class RavenErrorHandler implements ErrorHandler {
     BasicTextComponent,
     BasicTitleTextComponent,
     HintPagerComponent,
+    GuideHintPagerComponent,
     ChatMessageInputComponent,
     CheckboxInputComponent,
     CircularIconBaseButtonComponent,

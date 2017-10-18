@@ -18,12 +18,12 @@ export class GuideSectionArticleProxy {
   }
 
   public getGuideSectionArticles(guideSectionIdOrSlug: string, searchParameters?: any): Promise<GuideSectionArticle[]> {
-    return this.apiCallService.get('guides/sections/' + guideSectionIdOrSlug, searchParameters)
+    return this.apiCallService.get('guides/sections/' + guideSectionIdOrSlug + '/articles/', searchParameters)
     .then(response => response.data.map(guideSectionArticle => GuideSectionArticleFactory.createGuideSectionArticle(guideSectionArticle)));
   }
 
   public getGuideSectionArticlesWithMeta(guideSectionIdOrSlug: string, searchParameters?: any): Promise<{guideSectionArticles: GuideSectionArticle[], meta: any}> {
-    return this.apiCallService.get('guides/sections/' + guideSectionIdOrSlug, searchParameters)
+    return this.apiCallService.get('guides/sections/' + guideSectionIdOrSlug + '/articles/', searchParameters)
     .then(response => {
       return {
         guideSectionArticles: response.data.map(guideSectionArticle => GuideSectionArticleFactory.createGuideSectionArticle(guideSectionArticle)),
