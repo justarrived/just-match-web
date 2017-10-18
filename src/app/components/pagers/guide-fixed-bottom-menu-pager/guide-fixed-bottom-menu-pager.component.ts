@@ -17,10 +17,6 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
 @Component({
   selector: 'guide-fixed-bottom-menu-pager',
   template: `
-    <basic-loader
-      [promise]="guideSections"
-      class="inverted">
-    </basic-loader>
     <fixed-bottom-menu-pager
       (next)="goToNext()"
       (previous)="goToPrevious()"
