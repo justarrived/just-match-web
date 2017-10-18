@@ -43,8 +43,6 @@ import {BasicTabsComponent} from './components/tabs/basic-tabs/basic-tabs.compon
 import {BasicTextComponent} from './components/text/basic-text/basic-text.component';
 import {BasicTitleTextComponent} from './components/text/basic-title-text/basic-title-text.component';
 import {BrowserModule} from '@angular/platform-browser';
-import {HintPagerComponent} from './components/pagers/hint-pager/hint-pager.component';
-import {GuideHintPagerComponent} from './components/pagers/guide-hint-pager/guide-hint-pager.component';
 import {ChatMessageInputComponent} from './components/inputs/chat-message-input/chat-message-input.component';
 import {CheckboxInputComponent} from './components/inputs/checkbox-input/checkbox-input.component';
 import {CircularIconBaseButtonComponent} from './components/buttons/circular-icon-base-button/circular-icon-base-button.component';
@@ -86,6 +84,7 @@ import {FileInputButtonComponent} from './components/buttons/file-input-button/f
 import {FilterJobsInputComponent} from './components/inputs/filter-jobs-input/filter-jobs-input.component';
 import {FilterUsersInputComponent} from './components/inputs/filter-users-input/filter-users-input.component';
 import {FirstNameInputComponent} from './components/inputs/first-name-input/first-name-input.component';
+import {FixedBottomMenuPagerComponent} from './components/pagers/fixed-bottom-menu-pager/fixed-bottom-menu-pager.component';
 import {ForbiddenPageComponent} from './components/pages/forbidden-page/forbidden-page.component';
 import {ForgotPasswordFormComponent} from './components/forms/forgot-password-form/forgot-password-form.component';
 import {ForgotPasswordModalComponent} from './components/modals/forgot-password-modal/forgot-password-modal.component';
@@ -100,12 +99,15 @@ import {GodModeBarComponent} from './components/bars/god-mode-bar/god-mode-bar.c
 import {GodModePageComponent} from './components/pages/god-mode-page/god-mode-page.component';
 import {GodModePagerSectionComponent} from './components/sections/god-mode-pager-section/god-mode-pager-section.component';
 import {GotCoordinationNumberInputComponent} from './components/inputs/got-coordination-number-input/got-coordination-number-input.component';
-import {GuidePageComponent} from './components/pages/guide-page/guide-page.component';
-import {GuideSectionPageComponent} from './components/pages/guide-section-page/guide-section-page.component';
-import {GuideSectionArticlePageComponent} from './components/pages/guide-section-article-page/guide-section-article-page.component';
 import {GuideCardComponent} from './components/cards/guide-card/guide-card.component';
-import {GuideWelcomeCardComponent} from './components/cards/guide-welcome-card/guide-welcome-card.component';
+import {GuideFixedBottomMenuPagerComponent} from './components/pagers/guide-fixed-bottom-menu-pager/guide-fixed-bottom-menu-pager.component';
+import {GuideHintPagerComponent} from './components/pagers/guide-hint-pager/guide-hint-pager.component';
 import {GuideMenuComponent} from './components/menus/guide-menu/guide-menu.component';
+import {GuidePageComponent} from './components/pages/guide-page/guide-page.component';
+import {GuideSectionArticlePageComponent} from './components/pages/guide-section-article-page/guide-section-article-page.component';
+import {GuideSectionPageComponent} from './components/pages/guide-section-page/guide-section-page.component';
+import {GuideWelcomeCardComponent} from './components/cards/guide-welcome-card/guide-welcome-card.component';
+import {HintPagerComponent} from './components/pagers/hint-pager/hint-pager.component';
 import {HomePageComponent} from './components/pages/home-page/home-page.component';
 import {HowItWorksSectionComponent} from './components/sections/how-it-works-section/how-it-works-section.component';
 import {HttpModule} from '@angular/http';
@@ -164,7 +166,6 @@ import {NewPasswordInputComponent} from './components/inputs/new-password-input/
 import {NgModule} from '@angular/core';
 import {NotFoundPageComponent} from './components/pages/404-page/404-page.component';
 import {NumberedPagerComponent} from './components/pagers/numbered-pager/numbered-pager.component';
-import {FixedBottomMenuPagerComponent} from './components/pagers/fixed-bottom-menu-pager/fixed-bottom-menu-pager.component';
 import {OldPasswordInputComponent} from './components/inputs/old-password-input/old-password-input.component';
 import {PageOptionsService} from './services/page-options.service';
 import {PartnersSectionComponent} from './components/sections/partners-section/partners-section.component';
@@ -328,8 +329,6 @@ export class RavenErrorHandler implements ErrorHandler {
     BasicTabsComponent,
     BasicTextComponent,
     BasicTitleTextComponent,
-    HintPagerComponent,
-    GuideHintPagerComponent,
     ChatMessageInputComponent,
     CheckboxInputComponent,
     CircularIconBaseButtonComponent,
@@ -367,6 +366,7 @@ export class RavenErrorHandler implements ErrorHandler {
     FilterJobsInputComponent,
     FilterUsersInputComponent,
     FirstNameInputComponent,
+    FixedBottomMenuPagerComponent,
     ForbiddenPageComponent,
     ForgotPasswordFormComponent,
     ForgotPasswordModalComponent,
@@ -380,12 +380,14 @@ export class RavenErrorHandler implements ErrorHandler {
     GodModePagerSectionComponent,
     GotCoordinationNumberInputComponent,
     GuideCardComponent,
-    FixedBottomMenuPagerComponent,
+    GuideFixedBottomMenuPagerComponent,
+    GuideHintPagerComponent,
     GuideMenuComponent,
     GuidePageComponent,
     GuideSectionArticlePageComponent,
     GuideSectionPageComponent,
     GuideWelcomeCardComponent,
+    HintPagerComponent,
     HomePageComponent,
     HowItWorksSectionComponent,
     InfoMessageComponent,

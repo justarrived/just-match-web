@@ -15,26 +15,26 @@ import {SystemLanguagesResolver} from '../../../resolvers/system-languages/syste
 import {UserResolver} from '../../../resolvers/user/user.resolver';
 
 @Component({
-  selector: 'guide-hint-pager',
+  selector: 'guide-fixed-bottom-menu-pager',
   template: `
     <basic-loader
       [promise]="guideSections"
       class="inverted">
     </basic-loader>
-    <hint-pager
+    <fixed-bottom-menu-pager
       (next)="goToNext()"
       (previous)="goToPrevious()"
+      (toggleMenu)="toggleMenu.emit()"
       [canGoBack]="currentSectionIndex > 0 || currentArticleIndex > -1"
       [canGoToNext]="(currentSectionIndex + 1) * (currentArticleIndex + 1) < lastPage || currentSectionIndex + 1 < lastSection"
       [currentPage]="(currentSectionIndex + 1) * (currentArticleIndex + 1)"
       [currentSection]="currentSectionIndex + 1"
-      [hintNext]="nextArticle?.title || nextSection?.title"
-      [hintPrevious]="previousArticle?.title || previousSection?.title"
       [lastPage]="lastPage">
-    </hint-pager>
+    </fixed-bottom-menu-pager>
   `
 })
-export class GuideHintPagerComponent extends BaseComponent {
+export class GuideFixedBottomMenuPagerComponent extends BaseComponent {
+  @Output() private toggleMenu = new EventEmitter();
 
   private static readonly guideSectionIdParam: string = 'sectionId';
   private static readonly guideSectionArticleIdParam: string = 'articleId';
@@ -69,8 +69,8 @@ export class GuideHintPagerComponent extends BaseComponent {
 
   private initRouteParamsSubscription(): void {
     this.routeParamsSubscription = this.activatedRoute.params.subscribe(params => {
-      this.guideSectionId = params[GuideHintPagerComponent.guideSectionIdParam];
-      this.guideSectionArticleId = params[GuideHintPagerComponent.guideSectionArticleIdParam];
+      this.guideSectionId = params[GuideFixedBottomMenuPagerComponent.guideSectionIdParam];
+      this.guideSectionArticleId = params[GuideFixedBottomMenuPagerComponent.guideSectionArticleIdParam];
       this.loadData();
     });
   }

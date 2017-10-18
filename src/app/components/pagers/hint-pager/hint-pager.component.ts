@@ -47,7 +47,9 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
       <div
         class="column two wide">
         <div class="pagination-location">
-          <div class="section-indicator">
+          <div
+            *ngIf="currentSection"
+            class="section-indicator">
             {{currentSection}}
           </div>
           <basic-text
@@ -97,15 +99,13 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
   </div>`
 })
 export class HintPagerComponent extends BaseComponent {
+  @Input() public canGoBack: boolean;
+  @Input() public canGoToNext: boolean;
   @Input() public currentPage: number;
   @Input() public currentSection: number;
   @Input() public hintNext: string;
   @Input() public hintPrevious: string;
   @Input() public lastPage: number = 1;
-  @Input() public lastSection: number = 1;
-  @Input() public pagesThisSection: number;
-  @Input() public canGoBack: boolean;
-  @Input() public canGoToNext: boolean;
   @Output() public next = new EventEmitter();
   @Output() public previous = new EventEmitter();
 

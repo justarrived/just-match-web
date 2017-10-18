@@ -50,7 +50,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
           style="width: 100%">
           <div [innerHTML]="(guideSectionArticle | async)?.translatedText?.body"></div>
         </guide-card>
-        <fixed-bottom-menu-pager></fixed-bottom-menu-pager>
+        <guide-fixed-bottom-menu-pager></guide-fixed-bottom-menu-pager>
       </div>
     </div>
   `
