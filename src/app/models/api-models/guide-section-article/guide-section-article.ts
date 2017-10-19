@@ -1,6 +1,7 @@
 // API attribute interfaces
 interface GuideSectionArticleApiAttributes {
   body: string;
+  bodyHtml: string;
   id: string;
   languageId: string;
   shortDescription: string;
@@ -11,6 +12,7 @@ interface GuideSectionArticleApiAttributes {
 
 interface GuideSectionArticleTranslatedTextApiAttributes {
   body: string;
+  bodyHtml: string;
   languageId: string;
   shortDescription: string;
   slug: string;
@@ -33,6 +35,7 @@ export class GuideSectionArticleFactory {
 
     return {
       body: jsonObject.body,
+      bodyHtml: jsonObject.body_html,
       id: jsonObject.id,
       languageId: jsonObject.language_id,
       shortDescription: jsonObject.short_description,
@@ -51,6 +54,7 @@ class GuideSectionArticleTranslatedTextFactory {
 
     return {
       body: jsonObject.body,
+      bodyHtml: jsonObject.body_html,
       languageId: jsonObject.language_id,
       shortDescription: jsonObject.short_description,
       slug: jsonObject.slug,

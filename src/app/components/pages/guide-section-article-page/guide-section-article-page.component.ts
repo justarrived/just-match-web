@@ -41,7 +41,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
             [title]="(guideSectionArticle | async)?.translatedText?.title"
             width="100%"
             style="width: 100%">
-            <div [innerHTML]="(guideSectionArticle | async)?.translatedText?.body"></div>
+            <div [innerHTML]="(guideSectionArticle | async)?.translatedText?.bodyHtml"></div>
           </guide-card>
           <guide-hint-pager></guide-hint-pager>
         </div>
@@ -53,7 +53,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
           [title]="(guideSectionArticle | async)?.translatedText?.title"
           width="100%"
           style="width: 100%">
-          <div [innerHTML]="(guideSectionArticle | async)?.translatedText?.body"></div>
+          <div [innerHTML]="(guideSectionArticle | async)?.translatedText?.bodyHtml"></div>
         </guide-card>
         <guide-fixed-bottom-menu-pager
           (toggleMenu)="toggleMenu()">
