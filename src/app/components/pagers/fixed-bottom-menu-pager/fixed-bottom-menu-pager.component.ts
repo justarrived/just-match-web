@@ -28,6 +28,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
         <div class="pagination-location">
           <i
             class="ui grid list layout icon"
+            style="cursor: pointer;"
             (click)="onToggleMenuClick()">
           </i>
           <div

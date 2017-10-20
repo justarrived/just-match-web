@@ -15,6 +15,7 @@ import {TranslateService} from '@ngx-translate/core';
 import {UserResolver} from '../../../resolvers/user/user.resolver';
 
 @Component({
+  styleUrls: ['./guide-section-page.component.scss'],
   template: `
     <basic-loader
       [promise]="guideSection"
@@ -26,64 +27,66 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
       <guide-menu></guide-menu>
     </secondary-navigation>
 
-    <div class="ui padded basic segment">
-      <div
-        class="ui tablet computer only grid"
-        style="flex-wrap: nowrap;">
-        <container-card
-          width="300px">
-          <guide-menu></guide-menu>
-        </container-card>
-        <div style="width: 100%">
+    <div class="guide-section">
+      <div class="ui padded basic segment">
+        <div
+          class="ui tablet computer only grid"
+          style="flex-wrap: nowrap;">
+          <container-card
+            width="300px">
+            <guide-menu></guide-menu>
+          </container-card>
+          <div style="width: 100%">
+            <basic-title-text
+              [text]="(guideSection | async)?.translatedText?.title"
+              color="white"
+              fontSize="huge"
+              marginLeft="1rem"
+              marginBottom="2rem">
+            </basic-title-text>
+            <div class="ui grid">
+              <guide-card
+                *ngFor="let article of (guideSection | async)?.articles; let i = index;"
+                width="300px"
+                [animationDelay]="50 * i"
+                [routerLink]="JARoutes.guideSectionArticle.url([guideSectionId, article.id])"
+                [clickable]="true"
+                [fadedTitle]="(guideSection | async)?.translatedText?.title"
+                [title]="article.translatedText.title"
+                height="100%"
+                style="margin-bottom: 2rem">
+                <basic-text
+                  [text]="article.translatedText.shortDescription"
+                  [maxiumLinesEllipsis]="4">
+                </basic-text>
+              </guide-card>
+            </div>
+            <guide-hint-pager></guide-hint-pager>
+          </div>
+        </div>
+
+        <div class="ui mobile only grid">
           <basic-title-text
             [text]="(guideSection | async)?.translatedText?.title"
-            color="black"
-            fontSize="huge"
-            marginLeft="1rem"
-            marginBottom="2rem">
+            marginTop="0"
+            marginBottom="4rem"
+            color="white"
+            fontSize="huge">
           </basic-title-text>
-          <div class="ui grid">
-            <guide-card
-              *ngFor="let article of (guideSection | async)?.articles; let i = index;"
-              width="300px"
-              [animationDelay]="50 * i"
-              [routerLink]="JARoutes.guideSectionArticle.url([guideSectionId, article.id])"
-              [clickable]="true"
-              [fadedTitle]="(guideSection | async)?.translatedText?.title"
-              [title]="article.translatedText.title"
-              height="100%"
-              style="margin-bottom: 2rem">
-              <basic-text
-                [text]="article.translatedText.shortDescription"
-                [maxiumLinesEllipsis]="4">
-              </basic-text>
-            </guide-card>
-          </div>
-          <guide-hint-pager></guide-hint-pager>
+          <guide-card
+            *ngFor="let article of (guideSection | async)?.articles; let i = index;"
+            width="100%"
+            [animationDelay]="50 * i"
+            [routerLink]="JARoutes.guideSectionArticle.url([guideSectionId, article.id])"
+            [clickable]="true"
+            [fadedTitle]="(guideSection | async)?.translatedText?.title"
+            [title]="article.translatedText.title"
+            style="margin-bottom: 2rem; width: 100%">
+          </guide-card>
+          <guide-fixed-bottom-menu-pager
+            (toggleMenu)="toggleMenu()">
+          </guide-fixed-bottom-menu-pager>
         </div>
-      </div>
-
-      <div class="ui mobile only grid">
-        <basic-title-text
-          [text]="(guideSection | async)?.translatedText?.title"
-          marginTop="0"
-          marginBottom="4rem"
-          color="black"
-          fontSize="huge">
-        </basic-title-text>
-        <guide-card
-          *ngFor="let article of (guideSection | async)?.articles; let i = index;"
-          width="100%"
-          [animationDelay]="50 * i"
-          [routerLink]="JARoutes.guideSectionArticle.url([guideSectionId, article.id])"
-          [clickable]="true"
-          [fadedTitle]="(guideSection | async)?.translatedText?.title"
-          [title]="article.translatedText.title"
-          style="margin-bottom: 2rem; width: 100%">
-        </guide-card>
-        <guide-fixed-bottom-menu-pager
-          (toggleMenu)="toggleMenu()">
-        </guide-fixed-bottom-menu-pager>
       </div>
     </div>
   `

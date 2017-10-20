@@ -10,26 +10,29 @@ import {TranslateService} from '@ngx-translate/core';
 import {UserResolver} from '../../../resolvers/user/user.resolver';
 
 @Component({
+  styleUrls: ['./guide-page.component.scss'],
   template: `
-    <div class="ui padded basic segment">
-      <div
-        class="ui tablet computer only grid"
-        style="flex-wrap: nowrap;">
-        <container-card
-          width="300px">
-          <guide-menu></guide-menu>
-        </container-card>
-        <guide-welcome-card
-          style="width: 100%"
-          width="100%">
-        </guide-welcome-card>
-      </div>
+    <div class="guide">
+      <div class="ui padded basic segment">
+        <div
+          class="ui tablet computer only grid"
+          style="flex-wrap: nowrap;">
+          <container-card
+            width="300px">
+            <guide-menu></guide-menu>
+          </container-card>
+          <guide-welcome-card
+            style="width: 100%"
+            width="100%">
+          </guide-welcome-card>
+        </div>
 
-      <div class="ui mobile only grid">
-        <guide-welcome-card
-          style="width: 100%"
-          width="100%">
-        </guide-welcome-card>
+        <div class="ui mobile only grid">
+          <guide-welcome-card
+            style="width: 100%"
+            width="100%">
+          </guide-welcome-card>
+        </div>
       </div>
     </div>
   `
