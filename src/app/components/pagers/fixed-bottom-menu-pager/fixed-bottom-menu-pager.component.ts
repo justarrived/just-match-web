@@ -20,6 +20,17 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
           (click)="onPreviousPageButtonClick()"
           class="pagination-button">
           <i class="fa fa-chevron-left"></i>
+          <basic-text
+            [text]="'fixed.bottom.menu.pager.previous' | translate"
+            [uppercase]="true"
+            color="white"
+            fontSize="small"
+            fontWeight="bold"
+            marginTop="0"
+            marginBottom="0"
+            textAlignmentLtr="left"
+            textAlignmentRtr="left">
+          </basic-text>
         </div>
       </div>
 
@@ -55,6 +66,17 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
           (click)="onNextPageButtonClick()"
           class="pagination-button pagination-button-right">
           <i class="fa fa-chevron-right"></i>
+          <basic-text
+            [text]="'fixed.bottom.menu.pager.next' | translate"
+            [uppercase]="true"
+            color="white"
+            fontSize="small"
+            fontWeight="bold"
+            marginTop="0"
+            marginBottom="0"
+            textAlignmentLtr="right"
+            textAlignmentRtr="right">
+          </basic-text>
         </div>
       </div>
 
