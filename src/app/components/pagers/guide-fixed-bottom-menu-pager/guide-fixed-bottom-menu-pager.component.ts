@@ -30,7 +30,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
   `
 })
 export class GuideFixedBottomMenuPagerComponent extends BaseComponent {
-  @Output() private toggleMenu = new EventEmitter();
+  @Output() public toggleMenu = new EventEmitter();
 
   private static readonly guideSectionIdParam: string = 'sectionId';
   private static readonly guideSectionArticleIdParam: string = 'articleId';
