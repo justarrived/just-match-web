@@ -43,7 +43,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
 
           <div
             class="guide-menu-section-title"
-            [routerLink]="JARoutes.guideSection.url([section.id])">
+            [routerLink]="JARoutes.guideSection.url([section.slug])">
             <basic-title-text
               [text]="section.translatedText.title"
               color="black"
@@ -55,9 +55,9 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
             *ngFor="let article of section.articles"
             class="guide-menu-section-item">
             <basic-link
-              [color]="article.id === guideSectionArticleId ? 'black' : 'gray'"
-              [fontWeight]="article.id === guideSectionArticleId ? 'bold' : 'normal'"
-              [routerLink]="JARoutes.guideSectionArticle.url([section.id, article.id])"
+              [color]="article.id === guideSectionArticleIdOrSlug ? 'black' : 'gray'"
+              [fontWeight]="article.id === guideSectionArticleIdOrSlug ? 'bold' : 'normal'"
+              [routerLink]="JARoutes.guideSectionArticle.url([section.slug, article.slug])"
               [text]="article.translatedText.title"
               fontSize="small"
               hoverColor="pink"
@@ -70,12 +70,12 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
     </div>`
 })
 export class GuideMenuComponent extends BaseComponent {
-  private static readonly guideSectionIdParam: string = 'sectionId';
-  private static readonly guideSectionArticleIdParam: string = 'articleId';
+  private static readonly guideSectionIdOrSlugParam: string = 'sectionIdOrSlug';
+  private static readonly guideSectionArticleIdOrSlugParam: string = 'articleIdOrSlug';
 
   public guideSections: Promise<GuideSection[]>;
-  public guideSectionId: string;
-  public guideSectionArticleId: string;
+  public guideSectionIdOrSlug: string;
+  public guideSectionArticleIdOrSlug: string;
 
   private routeParamsSubscription: Subscription;
 
@@ -95,8 +95,8 @@ export class GuideMenuComponent extends BaseComponent {
 
   private initRouteParamsSubscription(): void {
     this.routeParamsSubscription = this.activatedRoute.params.subscribe(params => {
-      this.guideSectionId = params[GuideMenuComponent.guideSectionIdParam];
-      this.guideSectionArticleId = params[GuideMenuComponent.guideSectionArticleIdParam];
+      this.guideSectionIdOrSlug = params[GuideMenuComponent.guideSectionIdOrSlugParam];
+      this.guideSectionArticleIdOrSlug = params[GuideMenuComponent.guideSectionArticleIdOrSlugParam];
       this.loadData();
     });
   }

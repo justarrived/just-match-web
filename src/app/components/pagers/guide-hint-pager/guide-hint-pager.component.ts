@@ -36,13 +36,13 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
 })
 export class GuideHintPagerComponent extends BaseComponent {
 
-  private static readonly guideSectionIdParam: string = 'sectionId';
-  private static readonly guideSectionArticleIdParam: string = 'articleId';
+  private static readonly guideSectionIdOrSlugParam: string = 'sectionIdOrSlug';
+  private static readonly guideSectionArticleIdOrSlugParam: string = 'articleIdOrSlug';
 
   public currentArticleIndex: number;
   public currentSectionIndex: number;
-  public guideSectionArticleId: string;
-  public guideSectionId: string;
+  public guideSectionArticleIdOrSlug: string;
+  public guideSectionIdOrSlug: string;
   public guideSections: Promise<GuideSection[]>;
   public lastPage: number;
   public lastSection: number;
@@ -69,8 +69,8 @@ export class GuideHintPagerComponent extends BaseComponent {
 
   private initRouteParamsSubscription(): void {
     this.routeParamsSubscription = this.activatedRoute.params.subscribe(params => {
-      this.guideSectionId = params[GuideHintPagerComponent.guideSectionIdParam];
-      this.guideSectionArticleId = params[GuideHintPagerComponent.guideSectionArticleIdParam];
+      this.guideSectionIdOrSlug = params[GuideHintPagerComponent.guideSectionIdOrSlugParam];
+      this.guideSectionArticleIdOrSlug = params[GuideHintPagerComponent.guideSectionArticleIdOrSlugParam];
       this.loadData();
     });
   }
@@ -88,12 +88,12 @@ export class GuideHintPagerComponent extends BaseComponent {
     this.guideSections = this.guideSectionProxy.getGuideSections(searchParameters).then(sections => {
       this.lastSection = sections.length;
 
-      this.currentSectionIndex = sections.findIndex(section => section.id === this.guideSectionId || section.slug === this.guideSectionId);
+      this.currentSectionIndex = sections.findIndex(section => section.id === this.guideSectionIdOrSlug || section.slug === this.guideSectionIdOrSlug);
       if (this.currentSectionIndex !== -1) {
         let articles = sections[this.currentSectionIndex].articles;
 
         this.lastPage = articles.length;
-        this.currentArticleIndex = articles.findIndex(article => article.id === this.guideSectionArticleId || article.slug === this.guideSectionArticleId);
+        this.currentArticleIndex = articles.findIndex(article => article.id === this.guideSectionArticleIdOrSlug || article.slug === this.guideSectionArticleIdOrSlug);
         this.updateNextAndPrevious(sections);
       } else {
         this.navigationService.navigateNoLocationChange(this.JARoutes.notFound);
@@ -133,20 +133,20 @@ export class GuideHintPagerComponent extends BaseComponent {
 
   public goToNext(): void {
     if (this.nextArticle) {
-      this.navigationService.navigate(this.JARoutes.guideSectionArticle, this.nextSection.id, this.nextArticle.id);
+      this.navigationService.navigate(this.JARoutes.guideSectionArticle, this.nextSection.slug, this.nextArticle.slug);
     } else {
       if (this.nextSection) {
-        this.navigationService.navigate(this.JARoutes.guideSection, this.nextSection.id);
+        this.navigationService.navigate(this.JARoutes.guideSection, this.nextSection.slug);
       }
     }
   }
 
   public goToPrevious(): void {
     if (this.previousArticle) {
-      this.navigationService.navigate(this.JARoutes.guideSectionArticle, this.previousSection.id, this.previousArticle.id);
+      this.navigationService.navigate(this.JARoutes.guideSectionArticle, this.previousSection.slug, this.previousArticle.slug);
     } else {
       if (this.previousSection) {
-        this.navigationService.navigate(this.JARoutes.guideSection, this.previousSection.id);
+        this.navigationService.navigate(this.JARoutes.guideSection, this.previousSection.slug);
       }
     }
   }
