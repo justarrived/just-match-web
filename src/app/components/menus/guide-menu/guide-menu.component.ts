@@ -34,6 +34,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
 
       <div
         class="ui list guide-menu-container"
+        [style.direction]="systemLanguage.direction"
         [class.guide-border-left]="systemLanguage.direction === 'ltr'"
         [class.guide-border-right]="systemLanguage.direction === 'rtl'">
         <div
