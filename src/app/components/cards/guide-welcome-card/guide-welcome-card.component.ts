@@ -9,6 +9,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
 
 @Component({
   selector: 'guide-welcome-card',
+  styleUrls: ['./guide-welcome-card.component.scss'],
   template: `
     <guide-card
       [fadedTitle]="'guide.card.welcome.faded.title' | translate"
@@ -16,6 +17,51 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
       [width]="width">
       <basic-text [text]="'guide.card.welcome.paragraph.1' | translate"></basic-text>
       <basic-text [text]="'guide.card.welcome.paragraph.2' | translate"></basic-text>
+      <div
+        class="numbered-item"
+        [style.direction]="systemLanguage.direction">
+        <div class="numbered-item-content">
+          <basic-title-text
+            marginTop="0"
+            marginBottom="0"
+            [text]="'guide.card.welcome.item.1.title' | translate">
+          </basic-title-text>
+          <basic-text
+            marginBottom="0"
+            [text]="'guide.card.welcome.item.1.paragraph' | translate">
+          </basic-text>
+        </div>
+      </div>
+      <div
+        class="numbered-item"
+        [style.direction]="systemLanguage.direction">
+        <div class="numbered-item-content">
+          <basic-title-text
+            marginTop="0"
+            marginBottom="0"
+            [text]="'guide.card.welcome.item.2.title' | translate">
+          </basic-title-text>
+          <basic-text
+            marginBottom="0"
+            [text]="'guide.card.welcome.item.2.paragraph' | translate">
+          </basic-text>
+      </div>
+      </div>
+      <div
+        class="numbered-item"
+        [style.direction]="systemLanguage.direction">
+        <div class="numbered-item-content">
+          <basic-title-text
+            marginTop="0"
+            marginBottom="0"
+            [text]="'guide.card.welcome.item.3.title' | translate">
+          </basic-title-text>
+          <basic-text
+            marginBottom="0"
+            [text]="'guide.card.welcome.item.3.paragraph' | translate">
+          </basic-text>
+        </div>
+      </div>
       <base-navigation-button
         [buttonText]="'guide.card.welcome.button' | translate"
         [routerLink]="JARoutes.guideSection.url([1])"
