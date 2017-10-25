@@ -22,15 +22,16 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
         class="inverted">
       </basic-loader>
 
-      <basic-title-text
-        [routerLink]="JARoutes.guide.url()"
-        [text]="'guide.menu.title' | translate"
-        color="pink"
-        fontSize="large"
-        marginTop="0"
-        marginBottom="2rem"
-        style="cursor: pointer">
-      </basic-title-text>
+      <a [routerLink]="JARoutes.guide.url()">
+        <basic-title-text
+          [text]="'guide.menu.title' | translate"
+          color="pink"
+          fontSize="large"
+          marginTop="0"
+          marginBottom="2rem"
+          style="cursor: pointer">
+        </basic-title-text>
+      </a>
 
       <div
         class="ui list guide-menu-container"
@@ -41,15 +42,16 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
           class="guide-menu-section"
           *ngFor="let section of guideSections | async">
 
-          <div
-            class="guide-menu-section-title"
-            [routerLink]="JARoutes.guideSection.url([section.slug])">
-            <basic-title-text
-              [text]="section.translatedText.title"
-              color="black"
-              fontSize="small">
-            </basic-title-text>
-          </div>
+          <a [routerLink]="JARoutes.guideSection.url([section.slug])">
+            <div
+              class="guide-menu-section-title">
+              <basic-title-text
+                [text]="section.translatedText.title"
+                color="black"
+                fontSize="small">
+              </basic-title-text>
+            </div>
+          </a>
 
           <div
             *ngFor="let article of section.articles"

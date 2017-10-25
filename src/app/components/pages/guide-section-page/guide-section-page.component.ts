@@ -46,21 +46,23 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
               marginBottom="2rem">
             </basic-title-text>
             <div class="ui grid">
-              <guide-card
+              <a
                 *ngFor="let article of (guideSection | async)?.articles; let i = index;"
-                width="300px"
-                [animationDelay]="50 * i"
                 [routerLink]="JARoutes.guideSectionArticle.url([guideSectionIdOrSlug, article.slug])"
-                [clickable]="true"
-                [fadedTitle]="(guideSection | async)?.translatedText?.title"
-                [title]="article.translatedText.title"
-                height="100%"
-                style="margin-bottom: 2rem">
-                <basic-text
-                  [text]="article.translatedText.shortDescription"
-                  [maxiumLinesEllipsis]="4">
-                </basic-text>
-              </guide-card>
+                style="margin-bottom: 2rem;">
+                <guide-card
+                  width="300px"
+                  [animationDelay]="50 * i"
+                  [clickable]="true"
+                  [fadedTitle]="(guideSection | async)?.translatedText?.title"
+                  [title]="article.translatedText.title"
+                  height="100%">
+                  <basic-text
+                    [text]="article.translatedText.shortDescription"
+                    [maxiumLinesEllipsis]="4">
+                  </basic-text>
+                </guide-card>
+              </a>
             </div>
             <guide-hint-pager></guide-hint-pager>
           </div>
@@ -74,16 +76,18 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
             color="white"
             fontSize="huge">
           </basic-title-text>
-          <guide-card
+          <a
             *ngFor="let article of (guideSection | async)?.articles; let i = index;"
-            width="100%"
-            [animationDelay]="50 * i"
             [routerLink]="JARoutes.guideSectionArticle.url([guideSectionIdOrSlug, article.slug])"
-            [clickable]="true"
-            [fadedTitle]="(guideSection | async)?.translatedText?.title"
-            [title]="article.translatedText.title"
             style="margin-bottom: 2rem; width: 100%">
-          </guide-card>
+            <guide-card
+              width="100%"
+              [animationDelay]="50 * i"
+              [clickable]="true"
+              [fadedTitle]="(guideSection | async)?.translatedText?.title"
+              [title]="article.translatedText.title">
+            </guide-card>
+          </a>
           <guide-fixed-bottom-menu-pager
             (toggleMenu)="toggleMenu()">
           </guide-fixed-bottom-menu-pager>

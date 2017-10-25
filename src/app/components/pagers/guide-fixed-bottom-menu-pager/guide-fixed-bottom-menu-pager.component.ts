@@ -22,8 +22,8 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
       class="inverted">
     </basic-loader>
     <fixed-bottom-menu-pager
-      (next)="goToNext()"
-      (previous)="goToPrevious()"
+      [nextUrl]="nextUrl()"
+      [previousUrl]="previousUrl()"
       (toggleMenu)="toggleMenu.emit()"
       [canGoBack]="currentSectionIndex > 0 || currentArticleIndex > -1"
       [canGoToNext]="(currentSectionIndex + 1) * (currentArticleIndex + 1) < lastPage || currentSectionIndex + 1 < lastSection"
@@ -132,22 +132,22 @@ export class GuideFixedBottomMenuPagerComponent extends BaseComponent {
     }
   }
 
-  public goToNext(): void {
+  public nextUrl(): string {
     if (this.nextArticle) {
-      this.navigationService.navigate(this.JARoutes.guideSectionArticle, this.nextSection.slug, this.nextArticle.slug);
+      return this.JARoutes.guideSectionArticle.url([this.nextSection.slug, this.nextArticle.slug]);
     } else {
       if (this.nextSection) {
-        this.navigationService.navigate(this.JARoutes.guideSection, this.nextSection.slug);
+        return this.JARoutes.guideSection.url([this.nextSection.slug]);
       }
     }
   }
 
-  public goToPrevious(): void {
+  public previousUrl(): string {
     if (this.previousArticle) {
-      this.navigationService.navigate(this.JARoutes.guideSectionArticle, this.previousSection.slug, this.previousArticle.slug);
+      return this.JARoutes.guideSectionArticle.url([this.previousSection.slug, this.previousArticle.slug]);
     } else {
       if (this.previousSection) {
-        this.navigationService.navigate(this.JARoutes.guideSection, this.previousSection.slug);
+        return this.JARoutes.guideSection.url([this.previousSection.slug]);
       }
     }
   }

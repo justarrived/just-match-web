@@ -15,23 +15,25 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
     <div class="ui grid">
 
       <div class="column two wide">
-        <div
+        <a
           *ngIf="canGoBack"
-          (click)="onPreviousPageButtonClick()"
-          class="pagination-button">
-          <i class="fa fa-chevron-left"></i>
-          <basic-text
-            [text]="'fixed.bottom.menu.pager.previous' | translate"
-            [uppercase]="true"
-            color="white"
-            fontSize="small"
-            fontWeight="bold"
-            marginTop="0"
-            marginBottom="0"
-            textAlignmentLtr="left"
-            textAlignmentRtr="left">
-          </basic-text>
-        </div>
+          [routerLink]="previousUrl">
+          <div
+            class="pagination-button">
+            <i class="fa fa-chevron-left"></i>
+            <basic-text
+              [text]="'fixed.bottom.menu.pager.previous' | translate"
+              [uppercase]="true"
+              color="white"
+              fontSize="small"
+              fontWeight="bold"
+              marginTop="0"
+              marginBottom="0"
+              textAlignmentLtr="left"
+              textAlignmentRtr="left">
+            </basic-text>
+          </div>
+        </a>
       </div>
 
       <div
@@ -61,25 +63,26 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
       </div>
 
       <div class="column two wide">
-        <div
+        <a
           *ngIf="canGoToNext"
-          (click)="onNextPageButtonClick()"
-          class="pagination-button pagination-button-right">
-          <i class="fa fa-chevron-right"></i>
-          <basic-text
-            [text]="'fixed.bottom.menu.pager.next' | translate"
-            [uppercase]="true"
-            color="white"
-            fontSize="small"
-            fontWeight="bold"
-            marginTop="0"
-            marginBottom="0"
-            textAlignmentLtr="right"
-            textAlignmentRtr="right">
-          </basic-text>
-        </div>
+          [routerLink]="nextUrl">
+          <div
+            class="pagination-button pagination-button-right">
+            <i class="fa fa-chevron-right"></i>
+            <basic-text
+              [text]="'fixed.bottom.menu.pager.next' | translate"
+              [uppercase]="true"
+              color="white"
+              fontSize="small"
+              fontWeight="bold"
+              marginTop="0"
+              marginBottom="0"
+              textAlignmentLtr="right"
+              textAlignmentRtr="right">
+            </basic-text>
+          </div>
+        </a>
       </div>
-
     </div>
   </div>`
 })
@@ -89,23 +92,15 @@ export class FixedBottomMenuPagerComponent extends BaseComponent {
   @Input() public currentPage: number;
   @Input() public currentSection: number;
   @Input() public lastPage: number = 1;
+  @Input() public nextUrl: string;
+  @Input() public previousUrl: string;
   @Output() private toggleMenu = new EventEmitter();
-  @Output() public next = new EventEmitter();
-  @Output() public previous = new EventEmitter();
 
   public constructor(
     protected systemLanguagesResolver: SystemLanguagesResolver,
     protected userResolver: UserResolver,
   ) {
     super(systemLanguagesResolver, userResolver);
-  }
-
-  public onPreviousPageButtonClick() {
-    this.previous.emit();
-  }
-
-  public onNextPageButtonClick() {
-    this.next.emit();
   }
 
   public onToggleMenuClick() {
