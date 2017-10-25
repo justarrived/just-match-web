@@ -1,9 +1,7 @@
-import {Application} from '../../../models/api-models/application/application';
 import {BaseComponent} from '../../base.component';
 import {Component} from '@angular/core';
 import {fadeInAnimation} from '../../../animations/fade-in/fade-in.animation';
 import {Input} from '@angular/core';
-import {JARoutes} from '../../../routes/ja-routes/ja-routes';
 import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
 import {UserResolver} from '../../../resolvers/user/user.resolver';
 

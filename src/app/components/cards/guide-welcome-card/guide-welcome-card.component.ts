@@ -1,9 +1,6 @@
-import {Application} from '../../../models/api-models/application/application';
 import {BaseComponent} from '../../base.component';
 import {Component} from '@angular/core';
-import {fadeInAnimation} from '../../../animations/fade-in/fade-in.animation';
 import {Input} from '@angular/core';
-import {JARoutes} from '../../../routes/ja-routes/ja-routes';
 import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
 import {UserResolver} from '../../../resolvers/user/user.resolver';
 
@@ -24,6 +21,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
           <basic-title-text
             marginTop="0"
             marginBottom="0"
+            fontSize="small"
             [text]="'guide.card.welcome.item.1.title' | translate">
           </basic-title-text>
           <basic-text
@@ -39,6 +37,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
           <basic-title-text
             marginTop="0"
             marginBottom="0"
+            fontSize="small"
             [text]="'guide.card.welcome.item.2.title' | translate">
           </basic-title-text>
           <basic-text
@@ -54,6 +53,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
           <basic-title-text
             marginTop="0"
             marginBottom="0"
+            fontSize="small"
             [text]="'guide.card.welcome.item.3.title' | translate">
           </basic-title-text>
           <basic-text

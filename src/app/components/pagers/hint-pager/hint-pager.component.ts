@@ -12,7 +12,9 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
   styleUrls: ['./hint-pager.component.scss'],
   template: `
   <div class="pager-container">
-    <div class="ui grid">
+    <div
+      class="ui grid"
+      [style.direction]="'ltr'">
 
       <div class="column seven wide">
         <div
@@ -30,7 +32,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
               marginTop="0"
               marginBottom="0"
               textAlignmentLtr="left"
-              textAlignmentRtr="left">
+              textAlignmentRtl="left">
             </basic-text>
             <basic-text
               [text]="hintPrevious"
@@ -38,7 +40,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
               marginTop="0"
               marginBottom="0"
               textAlignmentLtr="left"
-              textAlignmentRtr="left">
+              textAlignmentRtl="left">
             </basic-text>
           </div>
         </div>
@@ -81,7 +83,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
               marginTop="0"
               marginBottom="0"
               textAlignmentLtr="right"
-              textAlignmentRtr="right">
+              textAlignmentRtl="right">
             </basic-text>
             <basic-text
               [text]="hintNext"
@@ -89,7 +91,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
               marginTop="0"
               marginBottom="0"
               textAlignmentLtr="right"
-              textAlignmentRtr="right">
+              textAlignmentRtl="right">
             </basic-text>
           </div>
         </div>

@@ -40,16 +40,22 @@
   }
 }
 
+.pagination-button-text {
+  color: $black;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
 .pagination-button-right {
   flex-direction: row-reverse;
-  text-align: right;
 
   & > i {
     margin-right: 0;
     margin-left: 1rem;
   }
-}
 
-.pagination-button-text {
-  color: $black;
+  .pagination-button-text {
+    align-items: flex-end;
+  }
 }

@@ -31,7 +31,8 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
       <div class="ui padded basic segment">
         <div
           class="ui tablet computer only grid"
-          style="flex-wrap: nowrap;">
+          style="flex-wrap: nowrap;"
+          [style.direction]="systemLanguage.direction">
           <container-card
             width="300px">
             <guide-menu></guide-menu>

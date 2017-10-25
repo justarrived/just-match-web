@@ -38,7 +38,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
         class="column twelve wide">
         <div class="pagination-location">
           <i
-            class="ui grid list layout icon"
+            class="large white sidebar icon"
             style="cursor: pointer;"
             (click)="onToggleMenuClick()">
           </i>

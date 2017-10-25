@@ -2,66 +2,102 @@
 @import '../../../styles/typography';
 
 .guide-menu-container {
-  border-left: 1px solid rgba(0, 0, 0, .2);
-  margin-left: 15px;
-  padding-left: 20px;
-}
+  .guide-menu-section {
+    .guide-menu-section-title {
+      cursor: pointer;
+      margin-bottom: 10px;
+      position: relative;
 
-.guide-menu-section-title {
-  cursor: pointer;
-  margin-bottom: 10px;
-  padding-left: 15px !important;
-  position: relative;
+      &:before {
+        align-items: center;
+        background-color: $color-cerise-500;
+        border-radius: 100%;
+        color: white;
+        content: '';
+        display: flex;
+        font-weight: bold;
+        height: 30px;
+        margin-top: -5px;
+        justify-content: center;
+        position: absolute;
+        width: 30px;
+      }
 
-  &:before {
-    align-items: center;
-    background-color: $color-cerise-500;
-    border-radius: 100%;
-    color: white;
-    content: '';
-    display: flex;
-    font-weight: bold;
-    height: 30px;
-    justify-content: center;
-    margin-left: -50px;
-    margin-top: -5px;
-    position: absolute;
-    width: 30px;
-  }
+      &:hover {
+        &:before {
+          background-color: $color-cerise-200;
+        }
+      }
+    }
 
-  &:hover {
-    &:before {
-      background-color: $color-cerise-200;
+    .guide-menu-section-item {
+      margin-bottom: 6px;
+      position: relative;
+
+      &:before {
+        background-color: $color-gray-300;
+        border-radius: 100%;
+        content: '';
+        height: 7px;
+        position: absolute;
+        top: 7px;
+        width: 7px;
+      }
+    }
+
+    @for $i from 1 through 10 {
+      &:nth-child(#{$i}) .guide-menu-section-title {
+        &:before {
+          content: '#{$i}';
+        }
+      }
+    }
+
+    &:not(:first-child) {
+      margin-top: 35px;
     }
   }
-}
 
-.guide-menu-section {
-  @for $i from 1 through 10 {
-    &:nth-child(#{$i}) .guide-menu-section-title {
+
+  &.guide-border-left {
+    margin-left: 15px;
+    padding-left: 20px;
+    border-left: 1px solid rgba(0, 0, 0, .2);
+
+    .guide-menu-section-title {
+      padding-left: 15px !important;
+
       &:before {
-        content: '#{$i}';
+        margin-left: -50px;
+      }
+    }
+
+    .guide-menu-section-item {
+
+      &:before {
+        margin-left: -24px;
       }
     }
   }
 
-  &:not(:first-child) {
-    margin-top: 35px;
-  }
-}
+  &.guide-border-right {
+    margin-right: 15px;
+    padding-right: 20px;
+    border-right: 1px solid rgba(0, 0, 0, .2);
 
-.guide-menu-section-item {
-  margin-bottom: 6px;
-  position: relative;
+    .guide-menu-section-title {
+      padding-right: 15px !important;
 
-  &:before {
-    background-color: $color-gray-300;
-    border-radius: 100%;
-    content: '';
-    height: 7px;
-    margin-left: -24px;
-    position: absolute;
-    top: 7px;
-    width: 7px;
+      &:before {
+        margin-right: -50px;
+      }
+    }
+
+    .guide-menu-section-item {
+
+      &:before {
+        margin-right: -24px;
+      }
+    }
   }
 }

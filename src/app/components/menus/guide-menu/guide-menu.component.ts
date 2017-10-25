@@ -32,7 +32,10 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
         style="cursor: pointer">
       </basic-title-text>
 
-      <div class="ui list guide-menu-container">
+      <div
+        class="ui list guide-menu-container"
+        [class.guide-border-left]="systemLanguage.direction === 'ltr'"
+        [class.guide-border-right]="systemLanguage.direction === 'rtl'">
         <div
           class="guide-menu-section"
           *ngFor="let section of guideSections | async">
@@ -47,18 +50,20 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
             </basic-title-text>
           </div>
 
-          <basic-link
-            [color]="article.id === guideSectionArticleId ? 'black' : 'gray'"
-            [fontWeight]="article.id === guideSectionArticleId ? 'bold' : 'normal'"
-            [routerLink]="JARoutes.guideSectionArticle.url([section.id, article.id])"
-            [text]="article.translatedText.title"
+          <div
             *ngFor="let article of section.articles"
-            class="guide-menu-section-item"
-            fontSize="small"
-            hoverColor="pink"
-            marginBottom=".5rem"
-            marginTop="0">
-          </basic-link>
+            class="guide-menu-section-item">
+            <basic-link
+              [color]="article.id === guideSectionArticleId ? 'black' : 'gray'"
+              [fontWeight]="article.id === guideSectionArticleId ? 'bold' : 'normal'"
+              [routerLink]="JARoutes.guideSectionArticle.url([section.id, article.id])"
+              [text]="article.translatedText.title"
+              fontSize="small"
+              hoverColor="pink"
+              marginBottom=".5rem"
+              marginTop="0">
+            </basic-link>
+          </div>
         </div>
       </div>
     </div>`
