@@ -14,7 +14,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
   <div class="pager-container">
     <div class="ui grid">
 
-      <div class="column two wide">
+      <div class="column four wide">
         <a
           *ngIf="canGoBack"
           [routerLink]="previousUrl">
@@ -37,7 +37,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
       </div>
 
       <div
-        class="column twelve wide">
+        class="column eight wide">
         <div class="pagination-location">
           <i
             class="large white sidebar icon"
@@ -62,7 +62,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
         </div>
       </div>
 
-      <div class="column two wide">
+      <div class="column four wide">
         <a
           *ngIf="canGoToNext"
           [routerLink]="nextUrl">
