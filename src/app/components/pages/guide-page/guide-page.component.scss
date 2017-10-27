@@ -1,6 +1,34 @@
 @import '../../../styles/colors';
+@import '../../../styles/dimensions';
 
 .guide {
-  background: $white url('/assets/images/desk-background.jpg') no-repeat !important;
-  background-size: cover !important;
+  background-color: rgba(240, 240, 240, 1);
+  background: url('/assets/images/desk-background.jpg') no-repeat;
+  background-size: 100% 400px;
+
+  &:before {
+    content: '';
+  	position: absolute;
+  	top: 0;
+  	right: 0;
+  	bottom: 0;
+  	left: 0;
+  	background-image: linear-gradient(rgba(240, 240, 240, 0), rgba(240, 240, 240, 0) 300px, rgba(240, 240, 240, 1) 400px);
+  }
+
+  @media screen and (max-width: $tablet-max-width) {
+    background-size: 100% 250px;
+
+    &:before {
+    	background-image: linear-gradient(rgba(240, 240, 240, 0), rgba(240, 240, 240, 0) 200px, rgba(240, 240, 240, 1) 250px);
+    }
+  }
+
+  @media screen and (max-width: $mobile-max-width) {
+    background-size: 100% 150px;
+
+    &:before {
+    	background-image: linear-gradient(rgba(240, 240, 240, 0), rgba(240, 240, 240, 0) 100px, rgba(240, 240, 240, 1) 150px);
+    }
+  }
 }
