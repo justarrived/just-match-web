@@ -112,6 +112,6 @@ export class AppNavbarComponent extends BaseComponent {
 
   private isNavbarTransparent(): boolean {
     return this.pageOptionsService.transparentNavbarWhenTopScrolled() && isPlatformServer(this.platformId) ||
-           this.pageOptionsService.transparentNavbarWhenTopScrolled() && this.document && this.document.body && this.document.body.scrollTop < 1;
+           this.pageOptionsService.transparentNavbarWhenTopScrolled() && window && window.scrollY < 1;
   }
 }
