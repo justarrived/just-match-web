@@ -51,6 +51,16 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
             style="margin: 1rem 0">
           </job-card>
         </div>
+
+        <div
+          class="ui basic center aligned segment">
+          <base-navigation-button
+            [buttonText]="'subscribe.new.bottom_jobs_page_title' | translate"
+            [routerLink]="JARoutes.subscriptions.url()"
+            kind="primary"
+            size="medium">
+          </base-navigation-button>
+        </div>
       </div>
 
       <numbered-pager
@@ -117,7 +127,7 @@ export class JobsPagerSectionComponent extends BaseComponent {
       'page[size]': this.pageSize,
       'fields[jobs]': [
         'name', 'description', 'city', 'job_date', 'job_end_date', 'full_time',
-        'translated_text', 'company'
+        'translated_text', 'company', 'filled', 'open_for_applications'
       ].join(','),
       'fields[company]': ['name', 'company_images'].join(',')
     };
