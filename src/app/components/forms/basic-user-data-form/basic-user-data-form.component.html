@@ -1,0 +1,66 @@
+<form
+  (keydown.enter)="$event.preventDefault()"
+  (ngSubmit)="submitForm()"
+  #form="ngForm"
+  class="ui form">
+
+  <basic-loader
+    [complete]="!loadingSubmit"
+    class="inverted">
+  </basic-loader>
+
+  <form-section-title-text
+    [text]="'user.profile.form.work.experience.section.header' | translate"
+    icon="suitcase">
+  </form-section-title-text>
+
+  <resume-input
+    [centered]="true"
+    [showLabel]="false">
+  </resume-input>
+
+  <form-section-title-text
+    [text]="'user.settings.form.personal.info.header' | translate"
+    icon="user">
+  </form-section-title-text>
+
+  <form-section-title-text
+    [text]="'user.profile.form.language.skills.section.header' | translate"
+    icon="world">
+  </form-section-title-text>
+
+  <languages-input
+    [languagesControl]="settingsForm.controls['languages']"
+    [userLanguagesControl]="settingsForm.controls['user_languages']"
+    [apiErrors]="apiErrors">
+  </languages-input>
+
+  <form-section-title-text
+    [text]="'user.profile.form.general.skills.section.header' | translate"
+    icon="rocket">
+  </form-section-title-text>
+
+  <skills-input
+    [skillsControl]="settingsForm.controls['skills']"
+    [userSkillsControl]="settingsForm.controls['user_skills']"
+    [apiErrors]="apiErrors">
+  </skills-input>
+
+  <form-section-title-text
+    [text]="'user.profile.form.interests.section.header' | translate"
+    icon="heart">
+  </form-section-title-text>
+
+  <interests-input
+    [interestsControl]="settingsForm.controls['interests']"
+    [userInterestsControl]="settingsForm.controls['user_interests']"
+    [apiErrors]="apiErrors">
+  </interests-input>
+
+  <form-submit-button
+    [buttonText]="'user.settings.form.submit.button' | translate"
+    [showButton]="!isInModal"
+    [submitFail]="submitFail"
+    [submitSuccess]="submitSuccess">
+  </form-submit-button>
+</form>
