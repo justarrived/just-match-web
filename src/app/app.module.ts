@@ -220,6 +220,7 @@ import {UploadImageCardComponent} from './components/cards/upload-image-card/upl
 import {UserCardComponent} from './components/cards/user-card/user-card.component';
 import {UserDetailsFormComponent} from './components/forms/user-details-form/user-details-form.component';
 import {UserDocumentCardInputComponent} from './components/inputs/user-document-card-input/user-document-card-input.component';
+import {UserIgnoredNotificationsInput} from './components/inputs/user-ignored-notifications-input/user-ignored-notifications-input.component';
 import {UserImageCardInputComponent} from './components/inputs/user-image-card-input/user-image-card-input.component';
 import {UserImageCircularInputComponent} from './components/inputs/user-image-circular-input/user-image-circular-input.component';
 import {UserMissingTraitsMessageComponent} from './components/messages/user-missing-traits-message/user-missing-traits-message.component';
@@ -476,6 +477,7 @@ export class RavenErrorHandler implements ErrorHandler {
     UserCardComponent,
     UserDetailsFormComponent,
     UserDocumentCardInputComponent,
+    UserIgnoredNotificationsInput,
     UserImageCardInputComponent,
     UserImageCircularInputComponent,
     UserMissingTraitsMessageComponent,

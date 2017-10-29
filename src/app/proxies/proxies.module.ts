@@ -25,6 +25,7 @@ import {SkillProxy} from './skill/skill.proxy';
 import {TermsAgreementProxy} from './terms-agreement/terms-agreement.proxy';
 import {UserDocumentProxy} from './user-document/user-document.proxy';
 import {UserGenderProxy} from './user-gender/user-gender.proxy';
+import {UserIgnoredNotificationsProxy} from './user-ignored-notifications/user-ignored-notifications.proxy';
 import {UserImageCategoryProxy} from './user-image-category/user-image-category.proxy';
 import {UserImageProxy} from './user-image/user-image.proxy';
 import {UserInterestProxy} from './user-interest/user-interest.proxy';
@@ -63,6 +64,7 @@ import {UserStatusProxy} from './user-status/user-status.proxy';
     TermsAgreementProxy,
     UserDocumentProxy,
     UserGenderProxy,
+    UserIgnoredNotificationsProxy,
     UserImageCategoryProxy,
     UserImageProxy,
     UserInterestProxy,
