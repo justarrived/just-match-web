@@ -31,14 +31,20 @@ import {ViewChild} from '@angular/core';
       [style.text-align]="systemLanguage.direction === 'ltr' ? 'left' : 'right'"
       style="display: flex; flex-wrap: wrap; justify-content: center;"
       class="field">
-      <custom-checkbox-input
-        *ngFor="let occupation of occupations | async"
-        [label]="occupation.translatedText.name"
-        [name]="'occupation'"
-        [resultObject]="resultObject"
-        (resultObjectChange)="resultChanged($event)"
-        [value]="occupation.id">
-      </custom-checkbox-input>
+
+      <div class="ui centered grid">
+        <div *ngFor="let occupation of occupations | async" class="sixteen wide mobile eight wide tablet four wide computer column">
+          <custom-checkbox-input
+            [checkboxId]="occupation.id"
+            [label]="occupation.translatedText.name"
+            [name]="'occupation'"
+            [resultObject]="resultObject"
+            (resultObjectChange)="resultChanged($event)"
+            [value]="occupation.id">
+          </custom-checkbox-input>
+        </div>
+      </div>
+
       <input-errors
         apiAttribute="occupation_ids"
         [apiErrors]="apiErrors"
