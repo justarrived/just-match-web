@@ -49,6 +49,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
               <basic-text
                 [unsafeHtml]="(guideSectionArticle | async)?.translatedText?.bodyHtml">
               </basic-text>
+              <share-with-modal-section></share-with-modal-section>
             </guide-card>
             <guide-hint-pager></guide-hint-pager>
           </div>
@@ -63,6 +64,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
             <basic-text
               [unsafeHtml]="(guideSectionArticle | async)?.translatedText?.bodyHtml">
             </basic-text>
+            <share-with-modal-section></share-with-modal-section>
           </guide-card>
           <guide-fixed-bottom-menu-pager
             (toggleMenu)="toggleMenu()">
