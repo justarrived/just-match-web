@@ -113,6 +113,8 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
       </div>
     </div>
 
+    <in-the-press-section></in-the-press-section>
+
     <partners-section></partners-section>
   `
 })
