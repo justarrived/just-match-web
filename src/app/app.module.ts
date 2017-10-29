@@ -1,4 +1,5 @@
 import {AddressAutocompleteInputComponent} from './components/inputs/address-autocomplete-input/address-autocomplete-input.component';
+import {AboutUsPageComponent} from './components/pages/about-us-page/about-us-page.component';
 import {AgmCoreModule} from '@agm/core';
 import {AlreadyRegisteredModalComponent} from './components/modals/already-registered-modal/already-registered-modal.component';
 import {ApiCallService} from './services/api-call.service';
@@ -55,6 +56,7 @@ import {CommonModule } from '@angular/common';
 import {CompactJobCardComponent} from './components/cards/compact-job-card/compact-job-card.component';
 import {CompetenceInputComponent} from './components/inputs/competence-input/competence-input.component';
 import {ConfirmationModalComponent} from './components/modals/confirmation-modal/confirmation-modal.component';
+import {ContactCardComponent} from './components/cards/contact-card/contact-card.component';
 import {ContactFormComponent} from './components/forms/contact-form/contact-form.component';
 import {ContactMessageInputComponent} from './components/inputs/contact-message-input/contact-message-input.component';
 import {ContactMessageSentModalComponent} from './components/modals/contact-message-sent-modal/contact-message-sent-modal.component';
@@ -215,6 +217,7 @@ import {SystemLanguagesResolver} from './resolvers/system-languages/system-langu
 import {TermsInputComponent} from './components/inputs/terms-input/terms-input.component';
 import {TextareaInputComponent} from './components/inputs/textarea-input/textarea-input.component';
 import {TextInputComponent} from './components/inputs/text-input/text-input.component';
+import {TwoColumnSectionComponent} from './components/sections/two-column-section/two-column-section.component';
 import {UnsubscribedModalComponent} from './components/modals/unsubscribed-modal/unsubscribed-modal.component';
 import {UpdateProfileStep1ModalComponent} from './components/modals/update-profile-step-1-modal/update-profile-step-1-modal.component';
 import {UpdateProfileStep2ModalComponent} from './components/modals/update-profile-step-2-modal/update-profile-step-2-modal.component';
@@ -282,6 +285,7 @@ export class RavenErrorHandler implements ErrorHandler {
     RoutesModule,
   ],
   declarations: [
+    AboutUsPageComponent,
     AddressAutocompleteInputComponent,
     AlreadyRegisteredModalComponent,
     ApiErrorsComponent,
@@ -333,6 +337,7 @@ export class RavenErrorHandler implements ErrorHandler {
     CompactJobCardComponent,
     CompetenceInputComponent,
     ConfirmationModalComponent,
+    ContactCardComponent,
     ContactFormComponent,
     ContactMessageInputComponent,
     ContactMessageSentModalComponent,
@@ -476,6 +481,7 @@ export class RavenErrorHandler implements ErrorHandler {
     TermsInputComponent,
     TextareaInputComponent,
     TextInputComponent,
+    TwoColumnSectionComponent,
     UnsubscribedModalComponent,
     UpdateProfileStep1ModalComponent,
     UpdateProfileStep2ModalComponent,

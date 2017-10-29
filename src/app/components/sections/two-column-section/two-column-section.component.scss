@@ -1,0 +1,18 @@
+@import '../../../styles/colors';
+
+.section-container {
+}
+
+.primary {
+  background-color: $color-cerise-500;
+}
+
+.secondary {
+  background-color: $color-gray-800;
+}
+
+.section-image {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}

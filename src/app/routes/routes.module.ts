@@ -1,3 +1,4 @@
+import {AboutUsPageComponent} from '../components/pages/about-us-page/about-us-page.component';
 import {ApplicationsPageComponent} from '../components/pages/applications-page/applications-page.component';
 import {ContactPageComponent} from '../components/pages/contact-page/contact-page.component';
 import {CookiesAboutPageComponent} from '../components/pages/cookies-about-page/cookies-about-page.component';
@@ -39,6 +40,7 @@ const routes: Routes = [
     children: [
     { path: '', pathMatch: 'full', component: HomePageComponent},
     { path: '404', component: NotFoundPageComponent },
+    { path: 'about-us', component: AboutUsPageComponent },
     { path: 'applications', component: ApplicationsPageComponent, canActivate: [LoggedInGuard] },
     { path: 'contact', component: ContactPageComponent },
     { path: 'cookies-about', component: CookiesAboutPageComponent },

@@ -1,0 +1,20 @@
+@import '../../../styles/colors';
+
+.contact-card {
+  .column.contact-image-column {
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+    img {
+      border-top-left-radius: 4px;
+    }
+  }
+
+  .extra.content {
+    a {
+      padding-top: 3px;
+      padding-bottom: 3px;
+    }
+  }
+}
