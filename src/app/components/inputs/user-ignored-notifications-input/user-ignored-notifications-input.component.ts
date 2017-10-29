@@ -22,9 +22,10 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
         [data]="notifications | async"
         [control]="control"
         [hint]="hint"
-        [label]="'input.gender.label' | translate"
-        [placeholder]="'input.gender.placeholder' | translate"
-        apiAttribute="gender"
+        [label]="'input.ignored_notifications.label' | translate"
+        [placeholder]="'input.ignored_notifications.placeholder' | translate"
+        multiple=true
+        apiAttribute="ignored_notifications"
         dataItemLabelProperty="translatedText.description"
         dataItemValueProperty="id">
       </select-dropdown-input>
