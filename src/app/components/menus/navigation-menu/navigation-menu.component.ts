@@ -100,6 +100,19 @@ import {ViewChild} from '@angular/core';
       </basic-link>
 
       <basic-link
+        [text]="'menu.main.subscriptions' | translate"
+        [color]="getCurrentUrl() === JARoutes.subscriptions.url() ? 'pink' : 'white'"
+        [routerLink]="JARoutes.subscriptions.url()"
+        class="navigation-menu-item"
+        hoverColor="pink"
+        fontSize="large"
+        marginBottom="0"
+        marginTop="20px"
+        textAlignmentLtr="center"
+        textAlignmentRtl="center">
+      </basic-link>
+
+      <basic-link
         [text]="'menu.main.faq' | translate"
         [color]="getCurrentUrl() === JARoutes.faq.url() ? 'pink' : 'white'"
         [routerLink]="JARoutes.faq.url()"

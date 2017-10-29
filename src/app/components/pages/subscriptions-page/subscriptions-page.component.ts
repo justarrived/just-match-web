@@ -28,12 +28,6 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
         marginBottom="30px">
       </basic-title-text>
 
-      <info-message
-        [closeable]="true"
-        [description]="'job.digest.form.info' | translate"
-        icon="warning">
-      </info-message>
-
       <job-digests-pager-section>
       </job-digests-pager-section>
     </div>
