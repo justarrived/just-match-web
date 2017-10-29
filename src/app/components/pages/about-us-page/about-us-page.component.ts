@@ -113,9 +113,9 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
       </div>
     </div>
 
-    <company-newsletter-form></company-newsletter-form>
-
     <in-the-press-section></in-the-press-section>
+
+    <company-newsletter-form></company-newsletter-form>
   `
 })
 export class AboutUsPageComponent extends PageComponent {
