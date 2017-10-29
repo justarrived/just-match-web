@@ -54,6 +54,7 @@ import {CommentInputComponent} from './components/inputs/comment-input/comment-i
 import {CommentsFormComponent} from './components/forms/comments-form/comments-form.component';
 import {CommonModule } from '@angular/common';
 import {CompactJobCardComponent} from './components/cards/compact-job-card/compact-job-card.component';
+import {CompanyNewsletterFormComponent} from './components/forms/company-newsletter-form/company-newsletter-form.component';
 import {CompetenceInputComponent} from './components/inputs/competence-input/competence-input.component';
 import {ConfirmationModalComponent} from './components/modals/confirmation-modal/confirmation-modal.component';
 import {ContactCardComponent} from './components/cards/contact-card/contact-card.component';
@@ -336,6 +337,7 @@ export class RavenErrorHandler implements ErrorHandler {
     CommentInputComponent,
     CommentsFormComponent,
     CompactJobCardComponent,
+    CompanyNewsletterFormComponent,
     CompetenceInputComponent,
     ConfirmationModalComponent,
     ContactCardComponent,
