@@ -33,6 +33,7 @@ declare var jQuery: any;
       <select
         [formControl]="control"
         class="ui {{class}} fluid dropdown"
+        [attr.multiple]="multiple ? 'true' : null"
         #select>
         <option
           value="">
@@ -46,6 +47,7 @@ export class SelectInputComponent extends BaseComponent {
   @Input() public class: string;
   @Input() public control: FormControl = new FormControl();
   @Input() public label: string;
+  @Input() public multiple: boolean = false;
   @Input() public options: {} = {};
   @Input() public placeholder: string;
   @Input() public selectedMemoryKey: string;
