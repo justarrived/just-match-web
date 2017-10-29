@@ -225,6 +225,8 @@ import {UserImageCardInputComponent} from './components/inputs/user-image-card-i
 import {UserImageCircularInputComponent} from './components/inputs/user-image-circular-input/user-image-circular-input.component';
 import {UserMissingTraitsMessageComponent} from './components/messages/user-missing-traits-message/user-missing-traits-message.component';
 import {UserMissingTraitsNextFormComponent} from './components/forms/user-missing-traits-next-form/user-missing-traits-next-form.component';
+import {UserNotificationSettingsFormComponent} from './components/forms/user-notification-settings-form/user-notification-settings-form.component';
+import {UserNotificationSettingsPageComponent} from './components/pages/user-notification-settings-page/user-notification-settings-page.component';
 import {UserProfileBannerSectionComponent} from './components/sections/user-profile-banner-section/user-profile-banner-section.component';
 import {UserProfileFormComponent} from './components/forms/user-profile-form/user-profile-form.component';
 import {UserProfilePageComponent} from './components/pages/user-profile-page/user-profile-page.component';
@@ -482,6 +484,8 @@ export class RavenErrorHandler implements ErrorHandler {
     UserImageCircularInputComponent,
     UserMissingTraitsMessageComponent,
     UserMissingTraitsNextFormComponent,
+    UserNotificationSettingsFormComponent,
+    UserNotificationSettingsPageComponent,
     UserProfileBannerSectionComponent,
     UserProfileFormComponent,
     UserProfilePageComponent,
