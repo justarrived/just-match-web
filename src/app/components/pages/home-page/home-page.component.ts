@@ -17,8 +17,6 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
 
     <new-jobs-section></new-jobs-section>
 
-    <guide-pitch-section></guide-pitch-section>
-
     <applications-status-section *ngIf="user"></applications-status-section>
 
     <how-it-works-section *ngIf="!user"></how-it-works-section>
@@ -26,6 +24,8 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
     <newcomer-pitch-section *ngIf="!user"></newcomer-pitch-section>
 
     <employer-pitch-section *ngIf="!user"></employer-pitch-section>
+
+    <employer-match-pitch-section *ngIf="!user"></employer-match-pitch-section>
 
     <requirements-section></requirements-section>
 

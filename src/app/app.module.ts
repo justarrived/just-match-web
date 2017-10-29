@@ -73,6 +73,7 @@ import {EducationInputComponent} from './components/inputs/education-input/educa
 import {EmailInputComponent} from './components/inputs/email-input/email-input.component';
 import {EmailOrPhoneInputComponent} from './components/inputs/email-or-phone-input/email-or-phone-input.component';
 import {EmployerPitchSectionComponent} from './components/sections/employer-pitch-section/employer-pitch-section.component';
+import {EmployerMatchPitchSectionComponent} from './components/sections/employer-match-pitch-section/employer-match-pitch-section.component';
 import {environment} from '../environments/environment';
 import {ErrorHandler } from '@angular/core';
 import {ErrorMessageComponent} from './components/messages/error-message/error-message.component';
@@ -348,6 +349,7 @@ export class RavenErrorHandler implements ErrorHandler {
     EmailInputComponent,
     EmailOrPhoneInputComponent,
     EmployerPitchSectionComponent,
+    EmployerMatchPitchSectionComponent,
     ErrorMessageComponent,
     ErrorPageComponent,
     FacebookUrlInputComponent,
