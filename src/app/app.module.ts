@@ -151,6 +151,7 @@ import {MissingPaymentInformationModalComponent} from './components/modals/missi
 import {ModalService} from './services/modal.service';
 import {ModalTagsDirective} from './directives/modal-tags/modal-tags.directive';
 import {NameInputComponent} from './components/inputs/name-input/name-input.component';
+import {NewcomersPageComponent} from './components/pages/newcomers-page/newcomers-page.component';
 import {NavigationMenuComponent} from './components/menus/navigation-menu/navigation-menu.component';
 import {NavigationService} from './services/navigation.service';
 import {NewJobsSectionComponent} from './components/sections/new-jobs-section/new-jobs-section.component';
@@ -419,6 +420,7 @@ export class RavenErrorHandler implements ErrorHandler {
     MissingPaymentInformationModalComponent,
     ModalTagsDirective,
     NameInputComponent,
+    NewcomersPageComponent,
     NavigationMenuComponent,
     NewJobsSectionComponent,
     NewPasswordInputComponent,

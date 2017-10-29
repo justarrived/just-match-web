@@ -12,23 +12,14 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
 @Component({
   template: `
     <welcome-banner-section></welcome-banner-section>
-
-    <user-missing-traits-message></user-missing-traits-message>
-
+    <how-it-works-section></how-it-works-section>
+    <newcomer-pitch-section></newcomer-pitch-section>
     <new-jobs-section></new-jobs-section>
-
+    <user-missing-traits-message *ngIf="user"></user-missing-traits-message>
     <applications-status-section *ngIf="user"></applications-status-section>
-
-    <how-it-works-section *ngIf="!user"></how-it-works-section>
-
-    <newcomer-pitch-section *ngIf="!user"></newcomer-pitch-section>
-
-    <employer-pitch-section *ngIf="!user"></employer-pitch-section>
-
-    <employer-match-pitch-section *ngIf="!user"></employer-match-pitch-section>
   `
 })
-export class HomePageComponent extends PageComponent {
+export class NewcomersPageComponent extends PageComponent {
 
   public constructor (
     @Inject(DOCUMENT) protected document: any,
