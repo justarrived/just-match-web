@@ -60,13 +60,7 @@ export class SelectInputComponent extends BaseComponent {
   @Input("data")
   public set data(data: any) {
     this._data = data;
-    if (isPlatformBrowser(this.platformId)) {
-      if (data && this.control.value) {
-        setTimeout(() => {
-          jQuery(this.select.nativeElement).dropdown("set selected", this.control.value);
-        }, 1);
-      }
-    }
+    this.setjQueryOptionValues();
   }
 
   public constructor(
@@ -113,12 +107,24 @@ export class SelectInputComponent extends BaseComponent {
         .dropdown(options);
     }
 
-    if (isPlatformBrowser(this.platformId)) {
-      if (this._data && this.control.value) {
-        setTimeout(() => {
-          jQuery(this.select.nativeElement).dropdown("set selected", this.control.value);
-        }, 1);
-      }
+    this.setjQueryOptionValues();
+  }
+
+  private setjQueryOptionValues() {
+    if (!isPlatformBrowser(this.platformId)) return;
+    if (!this._data) return;
+    if (!this.control.value) return;
+
+    let values = this.control.value;
+
+    if (!Array.isArray(values)) {
+      values = [values]
     }
+
+    values.forEach(value => {
+      setTimeout(() => {
+        jQuery(this.select.nativeElement).dropdown("set selected", value);
+      }, 1);
+    })
   }
 }
