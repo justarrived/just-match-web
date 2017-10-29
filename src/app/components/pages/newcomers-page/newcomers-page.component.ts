@@ -13,6 +13,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
   template: `
     <welcome-banner-section></welcome-banner-section>
     <how-it-works-section></how-it-works-section>
+    <guide-pitch-section></guide-pitch-section>
     <newcomer-pitch-section></newcomer-pitch-section>
     <new-jobs-section></new-jobs-section>
     <user-missing-traits-message *ngIf="user"></user-missing-traits-message>
