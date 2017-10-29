@@ -14,7 +14,10 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
     <div class="header">
       <div class="ui grid">
         <div class="four wide column contact-image-column">
-          <img class="ui middle aligned tiny image" [src]="imageUrl">
+          <img
+            class="ui middle aligned tiny image"
+            [class.condensed]="condensed"
+            [src]="imageUrl">
         </div>
         <div class="twelve wide column">
           {{name}}
@@ -25,7 +28,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
         </div>
       </div>
     </div>
-    <div class="extra content">
+    <div *ngIf="!condensed" class="extra content">
       <a *ngIf="email" [href]="'mailto:' + email">
         <i class="mail icon"></i>
         {{email}}
@@ -33,7 +36,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
 
       <br />
 
-      <a *ngIf="phone && phone !== '-'" [href]="'telto:' + phoneHrefFormat">
+      <a *ngIf="phone && phone !== '-'" [href]="'tel:' + phoneHrefFormat">
         <i class="phone icon"></i> {{phone}}
       </a>
       <span *ngIf="phone === '-'">
@@ -49,6 +52,7 @@ export class ContactCardComponent extends BaseComponent {
   @Input() title: string;
   @Input() email: string = '-';
   @Input() phone: string = '-';
+  @Input() condensed: boolean = false;
 
   public constructor(
     protected systemLanguagesResolver: SystemLanguagesResolver,

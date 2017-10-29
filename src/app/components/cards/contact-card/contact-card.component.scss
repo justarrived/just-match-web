@@ -8,6 +8,9 @@
     padding-left: 0;
     img {
       border-top-left-radius: 4px;
+      &.condensed {
+        border-bottom-left-radius: 4px;
+      }
     }
   }
 
