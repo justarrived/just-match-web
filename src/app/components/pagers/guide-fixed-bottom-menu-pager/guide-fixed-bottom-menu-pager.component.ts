@@ -27,7 +27,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
       (toggleMenu)="toggleMenu.emit()"
       [canGoBack]="currentSectionIndex > 0 || currentArticleIndex > -1"
       [canGoToNext]="(currentSectionIndex + 1) * (currentArticleIndex + 1) < lastPage || currentSectionIndex + 1 < lastSection"
-      [currentPage]="(currentSectionIndex + 1) * (currentArticleIndex + 1)"
+      [currentPage]="currentArticleIndex + 1"
       [currentSection]="currentSectionIndex + 1"
       [lastPage]="lastPage">
     </fixed-bottom-menu-pager>
