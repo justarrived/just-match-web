@@ -32,7 +32,7 @@ import {ViewChild} from '@angular/core';
       style="display: flex; flex-wrap: wrap; justify-content: center;"
       class="field">
 
-      <div class="ui centered grid">
+      <div class="ui grid">
         <div *ngFor="let occupation of occupations | async" class="sixteen wide mobile eight wide tablet four wide computer column">
           <custom-checkbox-input
             [checkboxId]="occupation.id"
