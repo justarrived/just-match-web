@@ -30,7 +30,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
       <basic-tab [tabTitle]="'user.profile.tab.personal.details.title' | translate">
         <div class="ui centered grid">
           <div class="fourteen wide mobile ten wide tablet eight wide computer column">
-            <basic-user-data-form></basic-user-data-form>
+            <user-details-form></user-details-form>
           </div>
         </div>
       </basic-tab>
