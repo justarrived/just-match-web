@@ -36,13 +36,13 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
 export class GuideFixedBottomMenuPagerComponent extends BaseComponent {
   @Output() public toggleMenu = new EventEmitter();
 
-  private static readonly guideSectionIdOrSlugParam: string = 'sectionIdOrSlug';
-  private static readonly guideSectionArticleIdOrSlugParam: string = 'articleIdOrSlug';
+  private static readonly guideSectionIdParam: string = 'sectionId';
+  private static readonly guideSectionArticleIdParam: string = 'articleId';
 
   public currentArticleIndex: number;
   public currentSectionIndex: number;
-  public guideSectionArticleIdOrSlug: string;
-  public guideSectionIdOrSlug: string;
+  public guideSectionArticleId: string;
+  public guideSectionId: string;
   public guideSections: Promise<GuideSection[]>;
   public lastPage: number;
   public lastSection: number;
@@ -69,8 +69,8 @@ export class GuideFixedBottomMenuPagerComponent extends BaseComponent {
 
   private initRouteParamsSubscription(): void {
     this.routeParamsSubscription = this.activatedRoute.params.subscribe(params => {
-      this.guideSectionIdOrSlug = params[GuideFixedBottomMenuPagerComponent.guideSectionIdOrSlugParam];
-      this.guideSectionArticleIdOrSlug = params[GuideFixedBottomMenuPagerComponent.guideSectionArticleIdOrSlugParam];
+      this.guideSectionId = params[GuideFixedBottomMenuPagerComponent.guideSectionIdParam];
+      this.guideSectionArticleId = params[GuideFixedBottomMenuPagerComponent.guideSectionArticleIdParam];
       this.loadData();
     });
   }
@@ -87,14 +87,13 @@ export class GuideFixedBottomMenuPagerComponent extends BaseComponent {
 
     this.guideSections = this.guideSectionProxy.getGuideSections(searchParameters).then(sections => {
       this.lastSection = sections.length;
-      console.log(this.guideSectionIdOrSlug);
 
-      this.currentSectionIndex = sections.findIndex(section => section.id === this.guideSectionIdOrSlug || section.slug === this.guideSectionIdOrSlug);
+      this.currentSectionIndex = sections.findIndex(section => section.id === this.guideSectionId);
       if (this.currentSectionIndex !== -1) {
         let articles = sections[this.currentSectionIndex].articles;
 
         this.lastPage = articles.length;
-        this.currentArticleIndex = articles.findIndex(article => article.id === this.guideSectionArticleIdOrSlug || article.slug === this.guideSectionArticleIdOrSlug);
+        this.currentArticleIndex = articles.findIndex(article => article.id === this.guideSectionArticleId);
         this.updateNextAndPrevious(sections);
       } else {
         this.navigationService.navigateNoLocationChange(this.JARoutes.notFound);
@@ -134,20 +133,20 @@ export class GuideFixedBottomMenuPagerComponent extends BaseComponent {
 
   public nextUrl(): string {
     if (this.nextArticle) {
-      return this.JARoutes.guideSectionArticle.url([this.nextSection.slug, this.nextArticle.slug]);
+      return this.JARoutes.guideSectionArticle.url([this.nextSection.id, this.nextSection.translatedText.slug, this.nextArticle.id, this.nextArticle.translatedText.slug]);
     } else {
       if (this.nextSection) {
-        return this.JARoutes.guideSection.url([this.nextSection.slug]);
+        return this.JARoutes.guideSection.url([this.nextSection.id, this.nextSection.translatedText.slug]);
       }
     }
   }
 
   public previousUrl(): string {
     if (this.previousArticle) {
-      return this.JARoutes.guideSectionArticle.url([this.previousSection.slug, this.previousArticle.slug]);
+      return this.JARoutes.guideSectionArticle.url([this.previousSection.id, this.previousSection.translatedText.slug, this.previousArticle.id, this.previousArticle.translatedText.slug]);
     } else {
       if (this.previousSection) {
-        return this.JARoutes.guideSection.url([this.previousSection.slug]);
+        return this.JARoutes.guideSection.url([this.previousSection.id, this.previousSection.translatedText.slug]);
       }
     }
   }

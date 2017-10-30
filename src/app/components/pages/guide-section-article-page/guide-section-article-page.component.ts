@@ -75,12 +75,12 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
   `
 })
 export class GuideSectionArticlePageComponent extends PageComponent {
-  private static readonly guideSectionIdOrSlugParam: string = 'sectionIdOrSlug';
-  private static readonly guideSectionArticleIdOrSlugParam: string = 'articleIdOrSlug';
+  private static readonly guideSectionIdParam: string = 'sectionId';
+  private static readonly guideSectionArticleIdParam: string = 'articleId';
 
   public guideSectionArticle: Promise<GuideSectionArticle>;
-  public guideSectionIdOrSlug: string;
-  public guideSectionArticleIdOrSlug: string;
+  public guideSectionId: string;
+  public guideSectionArticleId: string;
   public isMobileMenuVisible: boolean;
 
   private routeParamsSubscription: Subscription;
@@ -124,8 +124,8 @@ export class GuideSectionArticlePageComponent extends PageComponent {
 
   private initRouteParamsSubscription(): void {
     this.routeParamsSubscription = this.activatedRoute.params.subscribe(params => {
-      this.guideSectionIdOrSlug = params[GuideSectionArticlePageComponent.guideSectionIdOrSlugParam];
-      this.guideSectionArticleIdOrSlug = params[GuideSectionArticlePageComponent.guideSectionArticleIdOrSlugParam];
+      this.guideSectionId = params[GuideSectionArticlePageComponent.guideSectionIdParam];
+      this.guideSectionArticleId = params[GuideSectionArticlePageComponent.guideSectionArticleIdParam];
       this.loadData();
     });
   }
@@ -139,7 +139,7 @@ export class GuideSectionArticlePageComponent extends PageComponent {
       'include': 'section'
     };
 
-    this.guideSectionArticle = this.guideSectionArticleProxy.getGuideSectionArticle(this.guideSectionIdOrSlug, this.guideSectionArticleIdOrSlug, searchParameters);
+    this.guideSectionArticle = this.guideSectionArticleProxy.getGuideSectionArticle(this.guideSectionId, this.guideSectionArticleId, searchParameters);
   }
 
   public onDestroy(): void {

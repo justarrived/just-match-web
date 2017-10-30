@@ -72,7 +72,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
       <base-navigation-button
         *ngIf="firstGuideSection"
         [buttonText]="'guide.card.welcome.button' | translate"
-        [routerLink]="JARoutes.guideSection.url([firstGuideSection.slug])"
+        [routerLink]="JARoutes.guideSection.url([firstGuideSection.id, firstGuideSection.translatedText.slug])"
         size="small"
         style="margin: 0 auto">
       </base-navigation-button>

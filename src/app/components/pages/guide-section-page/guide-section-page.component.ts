@@ -50,7 +50,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
             <div class="ui grid">
               <a
                 *ngFor="let article of (guideSection | async)?.articles; let i = index;"
-                [routerLink]="JARoutes.guideSectionArticle.url([guideSectionIdOrSlug, article.slug])"
+                [routerLink]="JARoutes.guideSectionArticle.url([guideSectionId, (guideSection | async)?.id, article.id, article.translatedText.slug])"
                 style="margin-bottom: 2rem;">
                 <guide-card
                   width="300px"
@@ -80,7 +80,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
           </basic-title-text>
           <a
             *ngFor="let article of (guideSection | async)?.articles; let i = index;"
-            [routerLink]="JARoutes.guideSectionArticle.url([guideSectionIdOrSlug, article.slug])"
+            [routerLink]="JARoutes.guideSectionArticle.url([guideSectionId, (guideSection | async)?.id, article.id, article.translatedText.slug])"
             style="margin-bottom: 2rem; width: 100%">
             <guide-card
               width="100%"
@@ -99,10 +99,10 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
   `
 })
 export class GuideSectionPageComponent extends PageComponent {
-  private static readonly guideSectionIdOrSlugParam: string = 'sectionIdOrSlug';
+  private static readonly guideSectionIdParam: string = 'sectionId';
 
   public guideSection: Promise<GuideSection>;
-  public guideSectionIdOrSlug: string;
+  public guideSectionId: string;
   public isMobileMenuVisible: boolean;
 
   private routeParamsSubscription: Subscription;
@@ -146,7 +146,7 @@ export class GuideSectionPageComponent extends PageComponent {
 
   private initRouteParamsSubscription(): void {
     this.routeParamsSubscription = this.activatedRoute.params.subscribe(params => {
-      this.guideSectionIdOrSlug = params[GuideSectionPageComponent.guideSectionIdOrSlugParam];
+      this.guideSectionId = params[GuideSectionPageComponent.guideSectionIdParam];
       this.loadData();
     });
   }
@@ -160,7 +160,7 @@ export class GuideSectionPageComponent extends PageComponent {
       'include': 'articles'
     };
 
-    this.guideSection = this.guideSectionProxy.getGuideSection(this.guideSectionIdOrSlug, searchParameters);
+    this.guideSection = this.guideSectionProxy.getGuideSection(this.guideSectionId, searchParameters);
   }
 
   public onDestroy(): void {
