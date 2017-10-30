@@ -1,0 +1,22 @@
+@import '../../../styles/colors';
+
+.newsletter-form {
+  max-width: 600px;
+  margin: 20px auto;
+}
+.newsletter-form .email-field {
+  max-width: 485px;
+  display: inline-block;
+}
+.newsletter-form form {
+  text-align: center;
+}
+.newsletter-form .email-field input {
+  min-width: 200px;
+}
+.newsletter-form .submit-field {
+  text-align: left;
+}
+.newsletter-form .submit-field input {
+  height: 40px;
+}

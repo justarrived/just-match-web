@@ -98,22 +98,36 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
           </basic-text>
         </div>
       </div>
-      <div style="margin: 0 auto; width: 200px;">
-        <base-navigation-button
-          [routerLink]="JARoutes.jobs.url(['1'])"
-          [buttonText]="'how.it.works.section.jobs.button' | translate"
-          [fluid]="true"
-          kind="primary"
-          size="small">
-        </base-navigation-button>
-        <br>
-        <base-navigation-button
-          [routerLink]="JARoutes.registerUser.url()"
-          [buttonText]="'how.it.works.section.create.accont.button' | translate"
-          [fluid]="true"
-          kind="primary"
-          size="small">
-        </base-navigation-button>
+      <div class="ui centered grid">
+        <div class="sixteen wide mobile twelve wide tablet four wide computer column">
+          <base-navigation-button
+            [routerLink]="JARoutes.registerUser.url()"
+            [buttonText]="'how.it.works.section.create.accont.button' | translate"
+            [fluid]="true"
+            kind="secondary"
+            size="small">
+          </base-navigation-button>
+        </div>
+
+        <div class="sixteen wide mobile twelve wide tablet four wide computer column">
+          <base-navigation-button
+            [routerLink]="JARoutes.subscriptions.url()"
+            [buttonText]="'how.it.works.section.create.subscriptions.button' | translate"
+            [fluid]="true"
+            kind="secondary"
+            size="small">
+          </base-navigation-button>
+        </div>
+
+        <div class="sixteen wide mobile twelve wide tablet four wide computer column">
+          <base-navigation-button
+            [routerLink]="JARoutes.jobs.url(['1'])"
+            [buttonText]="'how.it.works.section.jobs.button' | translate"
+            [fluid]="true"
+            kind="secondary"
+            size="small">
+          </base-navigation-button>
+        </div>
       </div>
     </div>`
 })

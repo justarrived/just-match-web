@@ -1,4 +1,5 @@
 import {AddressAutocompleteInputComponent} from './components/inputs/address-autocomplete-input/address-autocomplete-input.component';
+import {AboutUsPageComponent} from './components/pages/about-us-page/about-us-page.component';
 import {AgmCoreModule} from '@agm/core';
 import {AlreadyRegisteredModalComponent} from './components/modals/already-registered-modal/already-registered-modal.component';
 import {ApiCallService} from './services/api-call.service';
@@ -53,8 +54,10 @@ import {CommentInputComponent} from './components/inputs/comment-input/comment-i
 import {CommentsFormComponent} from './components/forms/comments-form/comments-form.component';
 import {CommonModule } from '@angular/common';
 import {CompactJobCardComponent} from './components/cards/compact-job-card/compact-job-card.component';
+import {CompanyNewsletterFormComponent} from './components/forms/company-newsletter-form/company-newsletter-form.component';
 import {CompetenceInputComponent} from './components/inputs/competence-input/competence-input.component';
 import {ConfirmationModalComponent} from './components/modals/confirmation-modal/confirmation-modal.component';
+import {ContactCardComponent} from './components/cards/contact-card/contact-card.component';
 import {ContactFormComponent} from './components/forms/contact-form/contact-form.component';
 import {ContactMessageInputComponent} from './components/inputs/contact-message-input/contact-message-input.component';
 import {ContactMessageSentModalComponent} from './components/modals/contact-message-sent-modal/contact-message-sent-modal.component';
@@ -72,6 +75,8 @@ import {DescriptionInputComponent} from './components/inputs/description-input/d
 import {EducationInputComponent} from './components/inputs/education-input/education-input.component';
 import {EmailInputComponent} from './components/inputs/email-input/email-input.component';
 import {EmailOrPhoneInputComponent} from './components/inputs/email-or-phone-input/email-or-phone-input.component';
+import {EmployerPitchSectionComponent} from './components/sections/employer-pitch-section/employer-pitch-section.component';
+import {EmployerMatchPitchSectionComponent} from './components/sections/employer-match-pitch-section/employer-match-pitch-section.component';
 import {environment} from '../environments/environment';
 import {ErrorHandler } from '@angular/core';
 import {ErrorMessageComponent} from './components/messages/error-message/error-message.component';
@@ -97,6 +102,7 @@ import {GodModeBarComponent} from './components/bars/god-mode-bar/god-mode-bar.c
 import {GodModePageComponent} from './components/pages/god-mode-page/god-mode-page.component';
 import {GodModePagerSectionComponent} from './components/sections/god-mode-pager-section/god-mode-pager-section.component';
 import {GotCoordinationNumberInputComponent} from './components/inputs/got-coordination-number-input/got-coordination-number-input.component';
+import {GuidePitchSectionComponent} from './components/sections/guide-pitch-section/guide-pitch-section.component';
 import {HomePageComponent} from './components/pages/home-page/home-page.component';
 import {HowItWorksSectionComponent} from './components/sections/how-it-works-section/how-it-works-section.component';
 import {HttpModule} from '@angular/http';
@@ -106,6 +112,7 @@ import {InputErrorsComponent} from './components/form-errors/input-errors/input-
 import {InputHintLabelComponent} from './components/labels/input-hint-label/input-hint-label.component';
 import {InterestLevelInputComponent} from './components/inputs/interest-level-input/interest-level-input.component';
 import {InterestsInputComponent} from './components/inputs/interests-input/interests-input.component';
+import {InThePressSectionComponent} from './components/sections/in-the-press-section/in-the-press-section.component';
 import {JARoutes} from './routes/ja-routes/ja-routes';
 import {JobActionsSectionComponent} from './components/sections/job-actions-section/job-actions-section.component';
 import {JobAdditionalUserInfoModalComponent} from './components/modals/job-additional-user-info-modal/job-additional-user-info-modal.component';
@@ -148,11 +155,13 @@ import {MissingPaymentInformationModalComponent} from './components/modals/missi
 import {ModalService} from './services/modal.service';
 import {ModalTagsDirective} from './directives/modal-tags/modal-tags.directive';
 import {NameInputComponent} from './components/inputs/name-input/name-input.component';
+import {NewcomersPageComponent} from './components/pages/newcomers-page/newcomers-page.component';
 import {NavigationMenuComponent} from './components/menus/navigation-menu/navigation-menu.component';
 import {NavigationService} from './services/navigation.service';
 import {NewJobsSectionComponent} from './components/sections/new-jobs-section/new-jobs-section.component';
 import {NewPasswordInputComponent} from './components/inputs/new-password-input/new-password-input.component';
 import {NgModule} from '@angular/core';
+import {NewcomerPitchSectionComponent} from './components/sections/newcomer-pitch-section/newcomer-pitch-section.component';
 import {NotFoundPageComponent} from './components/pages/404-page/404-page.component';
 import {NumberedPagerComponent} from './components/pagers/numbered-pager/numbered-pager.component';
 import {OldPasswordInputComponent} from './components/inputs/old-password-input/old-password-input.component';
@@ -210,6 +219,7 @@ import {SystemLanguagesResolver} from './resolvers/system-languages/system-langu
 import {TermsInputComponent} from './components/inputs/terms-input/terms-input.component';
 import {TextareaInputComponent} from './components/inputs/textarea-input/textarea-input.component';
 import {TextInputComponent} from './components/inputs/text-input/text-input.component';
+import {TwoColumnSectionComponent} from './components/sections/two-column-section/two-column-section.component';
 import {UnsubscribedModalComponent} from './components/modals/unsubscribed-modal/unsubscribed-modal.component';
 import {UpdateProfileStep1ModalComponent} from './components/modals/update-profile-step-1-modal/update-profile-step-1-modal.component';
 import {UpdateProfileStep2ModalComponent} from './components/modals/update-profile-step-2-modal/update-profile-step-2-modal.component';
@@ -277,6 +287,7 @@ export class RavenErrorHandler implements ErrorHandler {
     RoutesModule,
   ],
   declarations: [
+    AboutUsPageComponent,
     AddressAutocompleteInputComponent,
     AlreadyRegisteredModalComponent,
     ApiErrorsComponent,
@@ -326,8 +337,10 @@ export class RavenErrorHandler implements ErrorHandler {
     CommentInputComponent,
     CommentsFormComponent,
     CompactJobCardComponent,
+    CompanyNewsletterFormComponent,
     CompetenceInputComponent,
     ConfirmationModalComponent,
+    ContactCardComponent,
     ContactFormComponent,
     ContactMessageInputComponent,
     ContactMessageSentModalComponent,
@@ -344,6 +357,8 @@ export class RavenErrorHandler implements ErrorHandler {
     EducationInputComponent,
     EmailInputComponent,
     EmailOrPhoneInputComponent,
+    EmployerPitchSectionComponent,
+    EmployerMatchPitchSectionComponent,
     ErrorMessageComponent,
     ErrorPageComponent,
     FacebookUrlInputComponent,
@@ -365,6 +380,7 @@ export class RavenErrorHandler implements ErrorHandler {
     GodModePageComponent,
     GodModePagerSectionComponent,
     GotCoordinationNumberInputComponent,
+    GuidePitchSectionComponent,
     HomePageComponent,
     HowItWorksSectionComponent,
     InfoMessageComponent,
@@ -373,6 +389,7 @@ export class RavenErrorHandler implements ErrorHandler {
     InputHintLabelComponent,
     InterestLevelInputComponent,
     InterestsInputComponent,
+    InThePressSectionComponent,
     JobActionsSectionComponent,
     JobAdditionalUserInfoModalComponent,
     JobApplicantSectionComponent,
@@ -412,9 +429,11 @@ export class RavenErrorHandler implements ErrorHandler {
     MissingPaymentInformationModalComponent,
     ModalTagsDirective,
     NameInputComponent,
+    NewcomersPageComponent,
     NavigationMenuComponent,
     NewJobsSectionComponent,
     NewPasswordInputComponent,
+    NewcomerPitchSectionComponent,
     NotFoundPageComponent,
     NumberedPagerComponent,
     OldPasswordInputComponent,
@@ -466,6 +485,7 @@ export class RavenErrorHandler implements ErrorHandler {
     TermsInputComponent,
     TextareaInputComponent,
     TextInputComponent,
+    TwoColumnSectionComponent,
     UnsubscribedModalComponent,
     UpdateProfileStep1ModalComponent,
     UpdateProfileStep2ModalComponent,

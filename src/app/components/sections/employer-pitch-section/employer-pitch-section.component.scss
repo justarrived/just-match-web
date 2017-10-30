@@ -1,0 +1,12 @@
+@import '../../../styles/colors';
+
+.section-container {
+  background-color: $color-cerise-500;
+}
+
+.section-image {
+  background: url('/assets/images/employer-pitch-section-background.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}

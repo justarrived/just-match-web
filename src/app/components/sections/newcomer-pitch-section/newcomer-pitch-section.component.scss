@@ -1,0 +1,12 @@
+@import '../../../styles/colors';
+
+.section-container {
+  background-color: $color-gray-800;
+}
+
+.section-image {
+  background: url('/assets/images/people-standing.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}

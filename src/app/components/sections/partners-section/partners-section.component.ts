@@ -19,7 +19,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
         underlineBelowRtlAlignment="center">
       </basic-title-text>
       <div class="ui centered grid">
-        <div class="ui sixteen wide mobile sixteen wide tablet twelve wide computer column">
+        <div class="ui sixteen wide mobile ten wide tablet eight wide computer column">
           <basic-text
             [text]="'home.partners.description' | translate"
             textAlignmentLtr="center"
