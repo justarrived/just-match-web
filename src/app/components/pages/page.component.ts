@@ -184,7 +184,12 @@ export abstract class PageComponent extends BaseComponent implements OnInit, OnD
   }
 
     /**
-    * Inject the State into the bottom of the <head>
+    * https://github.com/angular/angular/issues/15776
+    * No service provided in Angular 4 for adding links to head dynamically.
+    * Hence manually implemented according to above issue.
+    *
+    * A service for this should be available in Angular 5 which should
+    * replace this method.
     */
    private addLinkTag(tag: LinkDefinition, forceCreation?: boolean) {
 
