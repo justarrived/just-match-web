@@ -13,7 +13,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
   selector: 'basic-user-data-page',
   template: `
     <basic-tabs>
-      <basic-tab [tabTitle]="'Basic'">
+      <basic-tab [tabTitle]="'basic_user.data.tab_title' | translate">
         <div class="ui centered grid">
           <div class="fourteen wide mobile ten wide tablet eight wide computer column">
             <basic-user-data-form></basic-user-data-form>
