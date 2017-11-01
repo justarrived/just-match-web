@@ -59,7 +59,7 @@ const routes: Routes = [
     { path: 'subscriptions', component: SubscriptionsPageComponent },
     { path: 'subscriptions/:subscriberUuid', component: SubscriptionsPageComponent },
     { path: 'user', component: UserProfilePageComponent, canActivate: [LoggedInGuard] },
-    { path: 'basic-user-data', component: BasicUserDataPageComponent, canActivate: [LoggedInGuard] },
+    { path: 'update-profile', component: BasicUserDataPageComponent, canActivate: [LoggedInGuard] },
     { path: '**', component: NotFoundPageComponent },
   ]}
 ];
