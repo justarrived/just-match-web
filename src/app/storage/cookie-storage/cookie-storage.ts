@@ -59,7 +59,19 @@ export class CookieStorage implements StorageInterface {
       expires = '';
     }
 
-    this.DOM.cookie = name + '=' + value + expires + '; path=/';
+    let cookieDomain = ''
+    const hostName = this.getHostName();
+    if (hostName.includes('justarrived.se')) {
+      cookieDomain = "; domain=.justarrived.se";
+    } else if (hostName.includes('justarrived.xyz')) {
+      cookieDomain = "; domain=.justarrived.xyz";
+    }
+
+    this.DOM.cookie = name + '=' + value + expires + cookieDomain + '; path=/';
+  }
+
+  private getHostName(): string {
+    return this.DOM.location.host;
   }
 
   private readCookie(name: string) {
