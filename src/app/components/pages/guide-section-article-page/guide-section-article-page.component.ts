@@ -4,16 +4,17 @@ import {DOCUMENT} from '@angular/platform-browser';
 import {GuideSectionArticle} from '../../../models/api-models/guide-section-article/guide-section-article';
 import {GuideSectionArticleProxy} from '../../../proxies/guide-section-article/guide-section-article.proxy';
 import {Inject} from '@angular/core';
+import {JARoutes} from '../../../routes/ja-routes/ja-routes';
 import {Language} from '../../../models/api-models/language/language';
 import {Meta} from '@angular/platform-browser';
 import {PageComponent} from '../page.component';
 import {PageOptionsService} from '../../../services/page-options.service';
+import {RendererFactory2} from '@angular/core';
 import {REQUEST} from '../../../../express-engine';
 import {Subscription} from 'rxjs/Subscription';
 import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
 import {TranslateService} from '@ngx-translate/core';
 import {UserResolver} from '../../../resolvers/user/user.resolver';
-
 
 @Component({
   styleUrls: ['./guide-section-article-page.component.scss'],
@@ -92,6 +93,7 @@ export class GuideSectionArticlePageComponent extends PageComponent {
     private guideSectionArticleProxy: GuideSectionArticleProxy,
     protected meta: Meta,
     protected pageOptionsService: PageOptionsService,
+    protected rendererFactory: RendererFactory2,
     protected systemLanguagesResolver: SystemLanguagesResolver,
     protected translateService: TranslateService,
     protected userResolver: UserResolver,
@@ -110,6 +112,7 @@ export class GuideSectionArticlePageComponent extends PageComponent {
       document,
       meta,
       pageOptionsService,
+      rendererFactory,
       request,
       systemLanguagesResolver,
       translateService,
@@ -126,6 +129,19 @@ export class GuideSectionArticlePageComponent extends PageComponent {
     this.routeParamsSubscription = this.activatedRoute.params.subscribe(params => {
       this.guideSectionId = params[GuideSectionArticlePageComponent.guideSectionIdParam];
       this.guideSectionArticleId = params[GuideSectionArticlePageComponent.guideSectionArticleIdParam];
+
+      this.updatePageMeta({
+        title: {
+          translate: true,
+          content: 'meta.guide.section.title'
+        },
+        description: {
+          translate: true,
+          content: 'meta.guide.section.description'
+        },
+        canonicalUrl: PageComponent.getBaseUrl(this.request) + JARoutes.guideSectionArticleSecondary.url([this.guideSectionId, this.guideSectionArticleId])
+      });
+
       this.loadData();
     });
   }

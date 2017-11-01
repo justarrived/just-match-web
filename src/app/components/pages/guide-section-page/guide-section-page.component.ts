@@ -4,10 +4,12 @@ import {DOCUMENT} from '@angular/platform-browser';
 import {GuideSection} from '../../../models/api-models/guide-section/guide-section';
 import {GuideSectionProxy} from '../../../proxies/guide-section/guide-section.proxy';
 import {Inject} from '@angular/core';
+import {JARoutes} from '../../../routes/ja-routes/ja-routes';
 import {Language} from '../../../models/api-models/language/language';
 import {Meta} from '@angular/platform-browser';
 import {PageComponent} from '../page.component';
 import {PageOptionsService} from '../../../services/page-options.service';
+import {RendererFactory2} from '@angular/core';
 import {REQUEST} from '../../../../express-engine';
 import {Subscription} from 'rxjs/Subscription';
 import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
@@ -50,7 +52,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
             <div class="ui grid">
               <a
                 *ngFor="let article of (guideSection | async)?.articles; let i = index;"
-                [routerLink]="JARoutes.guideSectionArticle.url([guideSectionId, (guideSection | async)?.id, article.id, article.translatedText.slug])"
+                [routerLink]="JARoutes.guideSectionArticle.url([guideSectionId, (guideSection | async)?.slug, article.id, article.translatedText.slug])"
                 style="margin-bottom: 2rem;">
                 <guide-card
                   width="300px"
@@ -80,7 +82,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
           </basic-title-text>
           <a
             *ngFor="let article of (guideSection | async)?.articles; let i = index;"
-            [routerLink]="JARoutes.guideSectionArticle.url([guideSectionId, (guideSection | async)?.id, article.id, article.translatedText.slug])"
+            [routerLink]="JARoutes.guideSectionArticle.url([guideSectionId, (guideSection | async)?.slug, article.id, article.translatedText.slug])"
             style="margin-bottom: 2rem; width: 100%">
             <guide-card
               width="100%"
@@ -114,6 +116,7 @@ export class GuideSectionPageComponent extends PageComponent {
     private guideSectionProxy: GuideSectionProxy,
     protected meta: Meta,
     protected pageOptionsService: PageOptionsService,
+    protected rendererFactory: RendererFactory2,
     protected systemLanguagesResolver: SystemLanguagesResolver,
     protected translateService: TranslateService,
     protected userResolver: UserResolver,
@@ -132,6 +135,7 @@ export class GuideSectionPageComponent extends PageComponent {
       document,
       meta,
       pageOptionsService,
+      rendererFactory,
       request,
       systemLanguagesResolver,
       translateService,
@@ -147,6 +151,19 @@ export class GuideSectionPageComponent extends PageComponent {
   private initRouteParamsSubscription(): void {
     this.routeParamsSubscription = this.activatedRoute.params.subscribe(params => {
       this.guideSectionId = params[GuideSectionPageComponent.guideSectionIdParam];
+
+      this.updatePageMeta({
+        title: {
+          translate: true,
+          content: 'meta.guide.section.title'
+        },
+        description: {
+          translate: true,
+          content: 'meta.guide.section.description'
+        },
+        canonicalUrl: PageComponent.getBaseUrl(this.request) + JARoutes.guideSectionSecondary.url([this.guideSectionId])
+      });
+
       this.loadData();
     });
   }

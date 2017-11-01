@@ -12,13 +12,15 @@ export class JARoutes {
   public static guide: JARoute = { url: () => '/guide'};
   public static guideSection: JARoute = { url: (args?: string[]) => '/guide/section/' + args[0] + '/' + args[1]};
   public static guideSectionArticle: JARoute = { url: (args?: string[]) => '/guide/section/' + args[0] + '/' + args[1] + '/article/' + args[2] + '/' + args[3]};
+  public static guideSectionArticleSecondary: JARoute = { url: (args?: string[]) => '/guide/section/' + args[0] + '/article/' + args[1]};
+  public static guideSectionSecondary: JARoute = { url: (args?: string[]) => '/guide/section/' + args[0]};
   public static home: JARoute = { url: () => '/home'};
   public static job: JARoute = { url: (args?: string[]) => '/job/' + args[0]};
   public static jobs: JARoute = { url: (args?: string[]) => '/jobs/'  + args[0]};
   public static login: JARoute = { url: () => '/login'};
   public static lostConnection: JARoute = { url: () => '/lost-connection'};
-  public static offline: JARoute = { url: () => '/offline'};
   public static notFound: JARoute = { url: () => '/404'};
+  public static offline: JARoute = { url: () => '/offline'};
   public static registerUser: JARoute = { url: () => '/register'};
   public static resetPassword: JARoute = { url: (args?: string[]) => '/reset-password/' + args[0]};
   public static subscriptions: JARoute = { url: () => '/subscriptions' };

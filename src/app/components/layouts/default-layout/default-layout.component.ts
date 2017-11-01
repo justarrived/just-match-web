@@ -3,6 +3,7 @@ import {Component} from '@angular/core';
 import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
 import {UserResolver} from '../../../resolvers/user/user.resolver';
 import {PageOptionsService} from '../../../services/page-options.service';
+import {RendererFactory2} from '@angular/core';
 
 @Component({
   selector: 'default-layout',
