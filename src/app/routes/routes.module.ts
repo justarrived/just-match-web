@@ -1,4 +1,5 @@
 import {ApplicationsPageComponent} from '../components/pages/applications-page/applications-page.component';
+import {BasicUserDataPageComponent} from '../components/pages/basic-user-data-page/basic-user-data-page.component';
 import {ContactPageComponent} from '../components/pages/contact-page/contact-page.component';
 import {CookiesAboutPageComponent} from '../components/pages/cookies-about-page/cookies-about-page.component';
 import {DefaultLayoutComponent} from '../components/layouts/default-layout/default-layout.component';
@@ -58,6 +59,7 @@ const routes: Routes = [
     { path: 'subscriptions', component: SubscriptionsPageComponent },
     { path: 'subscriptions/:subscriberUuid', component: SubscriptionsPageComponent },
     { path: 'user', component: UserProfilePageComponent, canActivate: [LoggedInGuard] },
+    { path: 'update-profile', component: BasicUserDataPageComponent, canActivate: [LoggedInGuard] },
     { path: '**', component: NotFoundPageComponent },
   ]}
 ];

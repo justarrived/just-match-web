@@ -42,6 +42,8 @@ import {BasicTabComponent} from './components/tabs/basic-tab/basic-tab.component
 import {BasicTabsComponent} from './components/tabs/basic-tabs/basic-tabs.component';
 import {BasicTextComponent} from './components/text/basic-text/basic-text.component';
 import {BasicTitleTextComponent} from './components/text/basic-title-text/basic-title-text.component';
+import {BasicUserDataFormComponent} from './components/forms/basic-user-data-form/basic-user-data-form.component';
+import {BasicUserDataPageComponent} from './components/pages/basic-user-data-page/basic-user-data-page.component';
 import {BrowserModule} from '@angular/platform-browser';
 import {ChatMessageInputComponent} from './components/inputs/chat-message-input/chat-message-input.component';
 import {CheckboxInputComponent} from './components/inputs/checkbox-input/checkbox-input.component';
@@ -317,6 +319,8 @@ export class RavenErrorHandler implements ErrorHandler {
     BasicTabsComponent,
     BasicTextComponent,
     BasicTitleTextComponent,
+    BasicUserDataFormComponent,
+    BasicUserDataPageComponent,
     ChatMessageInputComponent,
     CheckboxInputComponent,
     CircularIconBaseButtonComponent,

@@ -21,4 +21,5 @@ export class JARoutes {
   public static subscriptions: JARoute = { url: () => '/subscriptions' };
   public static supportChat: JARoute = { url: () => '/support-chat'};
   public static user: JARoute = { url: () => '/user'};
+  public static basicUserData: JARoute = { url: () => '/update-profile'};
 }
