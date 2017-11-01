@@ -3,6 +3,33 @@
 HEAD
 -----------
 
+
+v1.3 - 2017-11-01
+-----------
+* Add missing I18n to basic-user-data.component
+* Update /basic-user-data => /update-profile
+* On staging and production servers share the cookie between subdomains
+* Replace justarrived.se link with app.justarrived.se link on job show page
+* Reset basic-user-data-page tab contents
+* Add basic-user-data-page.component
+* Add missing translation to job-digest-from.component
+* Pull translations from Transifex
+* Update english translations for job subscriptions
+* Add new job subscription button to the bottom of the jobs listing page
+* Update job subscriptions page to only display relevant sections
+* Add /subscriptions to main navigation
+* Add meta-tag theme-color to index.html & offline.html
+* Include filled and open_for_applications in jobs request
+* Sort by featured in new-jobs-section.component
+* Only include the required fields from the API in jobs-pager-section.component
+* Rename function in filter-jobs-inputs.component
+* Extract jobs-filter options data to its own function
+* Remove job_date filter from unfilled jobs
+* Add cancelled filter to jobs-filter component
+* Update default jobs-filter component value
+* Add UTM-params to default-footer component
+
+
 v1.2 - 2017-09-15
 -----------
 * Autocomplete address input component
