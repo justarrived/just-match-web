@@ -16,39 +16,20 @@ const menuAnimationDuration = 400;
   template: `
     <div
       class="navigation-container"
-      [@slideInUpOutBottomAnimation]="animationState"
-      [class.bgWhite]="backgroundColor === 'white'"
-      [style.margin-bottom]="marginBottom"
-      [style.margin-top]="marginTop"
-      [style.padding-top]="paddingTop"
-      [style.padding-bottom]="paddingBottom"
-      [style.padding-left]="paddingLeft"
-      [style.padding-right]="paddingRight">
-      <div
-        class="menu-container"
-        [class.visible]="isVisible">
-        <div
-          class="menu-inner-container">
-          <ng-content></ng-content>
-        </div>
-      </div>
+      [@slideInUpOutBottomAnimation]="animationState">
+      <ng-content></ng-content>
     </div>`
 })
 export class SecondaryNavigationComponent extends BaseComponent {
   public animationState: string = 'out';
-  public isVisible: boolean = false;
 
-  @Input() public backgroundColor: string = 'white';
-  @Input() public marginBottom: string = '0';
-  @Input() public marginTop: string = '60px'; // App-navbar always visible
-  @Input() public paddingLeft: string = '7%';
-  @Input() public paddingRight: string = '7%';
-  @Input() public paddingTop: string = '7%';
-  @Input() public paddingBottom: string = '7%';
   @Input('navIsVisible')
-  set navIsVisible(value: boolean) {
-    this.isVisible = value;
-    this.toggleVisibility();
+  set navIsVisible(visible: boolean) {
+    if (visible) {
+      this.animationState = 'in';
+    } else {
+      this.animationState = 'out';
+    }
   }
 
   public constructor(
@@ -56,17 +37,5 @@ export class SecondaryNavigationComponent extends BaseComponent {
     protected userResolver: UserResolver,
   ) {
     super(systemLanguagesResolver, userResolver);
-  }
-
-  public toggleVisibility(): void {
-    if (this.isVisible) {
-      setTimeout(() => {
-        this.isVisible = false;
-      }, menuAnimationDuration);
-      this.animationState = 'out';
-    } else {
-      this.isVisible = true;
-      this.animationState = 'in';
-    }
   }
 }

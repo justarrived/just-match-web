@@ -25,8 +25,9 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
     </basic-loader>
 
     <secondary-navigation
-      [navIsVisible]="isMobileMenuVisible">
-      <div style="padding-bottom: 55px">
+      [navIsVisible]="isMobileMenuVisible"
+      (click)="isMobileMenuVisible = false">
+      <div style="padding-bottom: 55px;">
         <guide-menu></guide-menu>
       </div>
     </secondary-navigation>

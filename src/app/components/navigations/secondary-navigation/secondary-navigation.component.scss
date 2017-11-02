@@ -4,11 +4,14 @@
 .navigation-container {
   bottom: 0;
   left: 0;
-  pointer-events: none;
+  pointer-events: auto;
   position: fixed;
   right: 0;
-  top: 0;
+  top: $navbar-height;
   z-index: 3;
+  background-color: $white;
+  overflow-y: scroll;
+  padding: 20px;
 
   @media screen and (min-width: $app-max-width) {
     width: $app-max-width;
@@ -17,30 +20,4 @@
   @media screen and (max-width: $app-max-width) {
     width: 100%;
   }
-
-  .menu-container {
-    height: 100%;
-    width: 100%;
-    position: relative;
-
-    &.visible {
-      pointer-events: auto;
-      -webkit-backface-visibility: hidden;
-      backface-visibility: hidden;
-      overflow: hidden;
-      min-height: 100%;
-    }
-
-    .menu-inner-container {
-      position: absolute;
-      pointer-events: auto;
-      height: 100%;
-      overflow-y: scroll;
-      width: 100%;
-    }
-  }
-}
-
-.bgWhite {
-  background-color: $white;
 }
