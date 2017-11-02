@@ -12,6 +12,11 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
   styleUrls: ['./fixed-bottom-menu-pager.component.scss'],
   template: `
   <div class="pager-container">
+    <basic-loader
+      [promise]="loadPromise"
+      class="inverted">
+    </basic-loader>
+
     <div class="ui grid">
 
       <div class="column four wide">
@@ -92,6 +97,7 @@ export class FixedBottomMenuPagerComponent extends BaseComponent {
   @Input() public currentPage: number;
   @Input() public currentSection: number;
   @Input() public lastPage: number = 1;
+  @Input() public loadPromise: Promise<any>;
   @Input() public nextUrl: string;
   @Input() public previousUrl: string;
   @Output() private toggleMenu = new EventEmitter();

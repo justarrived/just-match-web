@@ -19,11 +19,6 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
 @Component({
   styleUrls: ['./guide-section-page.component.scss'],
   template: `
-    <basic-loader
-      [promise]="guideSection"
-      class="inverted">
-    </basic-loader>
-
     <secondary-navigation
       [navIsVisible]="isMobileMenuVisible"
       (click)="isMobileMenuVisible = false">
@@ -66,6 +61,10 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
       </div>
 
       <div class="ui mobile only grid">
+        <basic-loader
+          [promise]="guideSection"
+          class="inverted">
+        </basic-loader>
         <a
           *ngFor="let article of (guideSection | async)?.articles; let i = index;"
           [routerLink]="JARoutes.guideSectionArticle.url([guideSectionId, (guideSection | async)?.slug, article.id, article.translatedText.slug])"

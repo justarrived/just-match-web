@@ -19,11 +19,6 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
 @Component({
   styleUrls: ['./guide-section-article-page.component.scss'],
   template: `
-    <basic-loader
-      [promise]="guideSectionArticle"
-      class="inverted">
-    </basic-loader>
-
     <secondary-navigation
       [navIsVisible]="isMobileMenuVisible"
       (click)="isMobileMenuVisible = false">
@@ -47,6 +42,10 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
             [title]="(guideSectionArticle | async)?.translatedText?.title"
             width="100%"
             style="width: 100%">
+            <basic-loader
+              [promise]="guideSectionArticle"
+              class="inverted">
+            </basic-loader>
             <basic-text
               [unsafeHtml]="(guideSectionArticle | async)?.translatedText?.bodyHtml">
             </basic-text>
@@ -62,6 +61,10 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
           [title]="(guideSectionArticle | async)?.translatedText?.title"
           width="100%"
           style="width: 100%">
+          <basic-loader
+            [promise]="guideSectionArticle"
+            class="inverted">
+          </basic-loader>
           <basic-text
             [unsafeHtml]="(guideSectionArticle | async)?.translatedText?.bodyHtml">
           </basic-text>

@@ -17,21 +17,25 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
 @Component({
   selector: 'guide-hint-pager',
   template: `
-    <basic-loader
-      [promise]="guideSections"
-      class="inverted">
-    </basic-loader>
-    <hint-pager
-      [nextUrl]="nextUrl()"
-      [previousUrl]="previousUrl()"
-      [canGoBack]="currentSectionIndex > 0 || currentArticleIndex > -1"
-      [canGoToNext]="(currentSectionIndex + 1) * (currentArticleIndex + 1) < lastPage || currentSectionIndex + 1 < lastSection"
-      [currentPage]="(currentSectionIndex + 1) * (currentArticleIndex + 1)"
-      [currentSection]="currentSectionIndex + 1"
-      [hintNext]="nextArticle?.title || nextSection?.title"
-      [hintPrevious]="previousArticle?.title || previousSection?.title"
-      [lastPage]="lastPage">
-    </hint-pager>
+    <div
+      class="ui basic segment"
+      style="padding: 0">
+      <basic-loader
+        [promise]="guideSections"
+        class="inverted">
+      </basic-loader>
+      <hint-pager
+        [nextUrl]="nextUrl()"
+        [previousUrl]="previousUrl()"
+        [canGoBack]="currentSectionIndex > 0 || currentArticleIndex > -1"
+        [canGoToNext]="(currentSectionIndex + 1) * (currentArticleIndex + 1) < lastPage || currentSectionIndex + 1 < lastSection"
+        [currentPage]="(currentSectionIndex + 1) * (currentArticleIndex + 1)"
+        [currentSection]="currentSectionIndex + 1"
+        [hintNext]="nextArticle?.title || nextSection?.title"
+        [hintPrevious]="previousArticle?.title || previousSection?.title"
+        [lastPage]="lastPage">
+      </hint-pager>
+    </div>
   `
 })
 export class GuideHintPagerComponent extends BaseComponent {
