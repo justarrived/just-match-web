@@ -6,6 +6,7 @@
   background: url('/assets/images/desk-background.jpg') no-repeat;
   background-size: 100% 400px;
   height: 100%;
+  padding: 20px;
 
   &:before {
     content: '';
@@ -27,6 +28,8 @@
 
   @media screen and (max-width: $mobile-max-width) {
     background-size: 100% 150px;
+    padding-left: 0;
+    padding-right: 0;
 
     &:before {
     	background-image: linear-gradient(rgba(240, 240, 240, 0), rgba(240, 240, 240, 0) 100px, rgba(240, 240, 240, 1) 150px);

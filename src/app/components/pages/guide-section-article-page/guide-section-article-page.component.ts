@@ -33,31 +33,15 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
     </secondary-navigation>
 
     <div class="guide-article">
-      <div class="ui padded basic segment">
-        <div
-          class="ui tablet computer only grid"
-          style="flex-wrap: nowrap;"
-          [style.direction]="systemLanguage.direction">
-          <container-card
-            width="300px">
-            <guide-menu></guide-menu>
-          </container-card>
-          <div>
-            <guide-card
-              [fadedTitle]="(guideSectionArticle | async)?.translatedText?.title"
-              [title]="(guideSectionArticle | async)?.translatedText?.title"
-              width="100%"
-              style="width: 100%">
-              <basic-text
-                [unsafeHtml]="(guideSectionArticle | async)?.translatedText?.bodyHtml">
-              </basic-text>
-              <share-with-modal-section></share-with-modal-section>
-            </guide-card>
-            <guide-hint-pager></guide-hint-pager>
-          </div>
-        </div>
-
-        <div class="ui mobile only grid">
+      <div
+        class="ui tablet computer only grid"
+        style="flex-wrap: nowrap;"
+        [style.direction]="systemLanguage.direction">
+        <container-card
+          width="300px">
+          <guide-menu></guide-menu>
+        </container-card>
+        <div>
           <guide-card
             [fadedTitle]="(guideSectionArticle | async)?.translatedText?.title"
             [title]="(guideSectionArticle | async)?.translatedText?.title"
@@ -68,10 +52,24 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
             </basic-text>
             <share-with-modal-section></share-with-modal-section>
           </guide-card>
-          <guide-fixed-bottom-menu-pager
-            (toggleMenu)="toggleMenu()">
-          </guide-fixed-bottom-menu-pager>
+          <guide-hint-pager></guide-hint-pager>
         </div>
+      </div>
+
+      <div class="ui mobile only grid">
+        <guide-card
+          [fadedTitle]="(guideSectionArticle | async)?.translatedText?.title"
+          [title]="(guideSectionArticle | async)?.translatedText?.title"
+          width="100%"
+          style="width: 100%">
+          <basic-text
+            [unsafeHtml]="(guideSectionArticle | async)?.translatedText?.bodyHtml">
+          </basic-text>
+          <share-with-modal-section></share-with-modal-section>
+        </guide-card>
+        <guide-fixed-bottom-menu-pager
+          (toggleMenu)="toggleMenu()">
+        </guide-fixed-bottom-menu-pager>
       </div>
     </div>
   `

@@ -33,70 +33,68 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
     </secondary-navigation>
 
     <div class="guide-section">
-      <div class="ui padded basic segment">
-        <div
-          class="ui tablet computer only grid"
-          style="flex-wrap: nowrap;"
-          [style.direction]="systemLanguage.direction">
-          <container-card
-            width="300px">
-            <guide-menu></guide-menu>
-          </container-card>
-          <div style="width: 100%">
-            <basic-title-text
-              [text]="(guideSection | async)?.translatedText?.title"
-              color="white"
-              fontSize="huge"
-              marginLeft="1rem"
-              marginBottom="2rem">
-            </basic-title-text>
-            <div class="ui grid">
-              <a
-                *ngFor="let article of (guideSection | async)?.articles; let i = index;"
-                [routerLink]="JARoutes.guideSectionArticle.url([guideSectionId, (guideSection | async)?.slug, article.id, article.translatedText.slug])"
-                style="margin-bottom: 2rem;">
-                <guide-card
-                  width="300px"
-                  [animationDelay]="50 * i"
-                  [clickable]="true"
-                  [fadedTitle]="(guideSection | async)?.translatedText?.title"
-                  [title]="article.translatedText.title"
-                  height="100%">
-                  <basic-text
-                    [text]="article.translatedText.shortDescription"
-                    [maxiumLinesEllipsis]="4">
-                  </basic-text>
-                </guide-card>
-              </a>
-            </div>
-            <guide-hint-pager></guide-hint-pager>
-          </div>
-        </div>
-
-        <div class="ui mobile only grid">
+      <div
+        class="ui tablet computer only grid"
+        style="flex-wrap: nowrap;"
+        [style.direction]="systemLanguage.direction">
+        <container-card
+          width="300px">
+          <guide-menu></guide-menu>
+        </container-card>
+        <div style="width: 100%">
           <basic-title-text
             [text]="(guideSection | async)?.translatedText?.title"
-            marginTop="0"
-            marginBottom="4rem"
             color="white"
-            fontSize="huge">
+            fontSize="huge"
+            marginLeft="1rem"
+            marginBottom="2rem">
           </basic-title-text>
-          <a
-            *ngFor="let article of (guideSection | async)?.articles; let i = index;"
-            [routerLink]="JARoutes.guideSectionArticle.url([guideSectionId, (guideSection | async)?.slug, article.id, article.translatedText.slug])"
-            style="margin-bottom: 2rem; width: 100%">
-            <guide-card
-              width="100%"
-              [animationDelay]="50 * i"
-              [clickable]="true"
-              [fadedTitle]="(guideSection | async)?.translatedText?.title"
-              [title]="article.translatedText.title">
-            </guide-card>
-          </a>
-          <guide-fixed-bottom-menu-pager
-            (toggleMenu)="toggleMenu()">
-          </guide-fixed-bottom-menu-pager>
+          <div class="ui grid">
+            <a
+              *ngFor="let article of (guideSection | async)?.articles; let i = index;"
+              [routerLink]="JARoutes.guideSectionArticle.url([guideSectionId, (guideSection | async)?.slug, article.id, article.translatedText.slug])"
+              style="margin-bottom: 2rem;">
+              <guide-card
+                width="300px"
+                [animationDelay]="50 * i"
+                [clickable]="true"
+                [fadedTitle]="(guideSection | async)?.translatedText?.title"
+                [title]="article.translatedText.title"
+                height="100%">
+                <basic-text
+                  [text]="article.translatedText.shortDescription"
+                  [maxiumLinesEllipsis]="4">
+                </basic-text>
+              </guide-card>
+            </a>
+          </div>
+          <guide-hint-pager></guide-hint-pager>
         </div>
+      </div>
+
+      <div class="ui mobile only grid">
+        <basic-title-text
+          [text]="(guideSection | async)?.translatedText?.title"
+          marginTop="0"
+          marginBottom="4rem"
+          color="white"
+          fontSize="huge">
+        </basic-title-text>
+        <a
+          *ngFor="let article of (guideSection | async)?.articles; let i = index;"
+          [routerLink]="JARoutes.guideSectionArticle.url([guideSectionId, (guideSection | async)?.slug, article.id, article.translatedText.slug])"
+          style="margin-bottom: 2rem; width: 100%">
+          <guide-card
+            width="100%"
+            [animationDelay]="50 * i"
+            [clickable]="true"
+            [fadedTitle]="(guideSection | async)?.translatedText?.title"
+            [title]="article.translatedText.title">
+          </guide-card>
+        </a>
+        <guide-fixed-bottom-menu-pager
+          (toggleMenu)="toggleMenu()">
+        </guide-fixed-bottom-menu-pager>
       </div>
     </div>
   `
