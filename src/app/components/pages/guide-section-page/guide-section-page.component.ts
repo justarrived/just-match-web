@@ -42,13 +42,6 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
           <guide-menu></guide-menu>
         </container-card>
         <div style="width: 100%">
-          <basic-title-text
-            [text]="(guideSection | async)?.translatedText?.title"
-            color="white"
-            fontSize="huge"
-            marginLeft="1rem"
-            marginBottom="2rem">
-          </basic-title-text>
           <div class="ui grid">
             <a
               *ngFor="let article of (guideSection | async)?.articles; let i = index;"
@@ -73,13 +66,6 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
       </div>
 
       <div class="ui mobile only grid">
-        <basic-title-text
-          [text]="(guideSection | async)?.translatedText?.title"
-          marginTop="0"
-          marginBottom="4rem"
-          color="white"
-          fontSize="huge">
-        </basic-title-text>
         <a
           *ngFor="let article of (guideSection | async)?.articles; let i = index;"
           [routerLink]="JARoutes.guideSectionArticle.url([guideSectionId, (guideSection | async)?.slug, article.id, article.translatedText.slug])"
