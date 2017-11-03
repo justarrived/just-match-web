@@ -3,6 +3,7 @@ import {DOCUMENT} from '@angular/platform-browser';
 import {Inject} from '@angular/core';
 import {Meta} from '@angular/platform-browser';
 import {PageOptionsService} from '../../../services/page-options.service';
+import {RendererFactory2} from '@angular/core';
 import {PageComponent} from '../page.component';
 import {REQUEST} from '../../../../express-engine';
 import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
@@ -33,6 +34,7 @@ export class ResetPasswordPageComponent extends PageComponent {
     @Inject(REQUEST) protected request: any,
     protected meta: Meta,
     protected pageOptionsService: PageOptionsService,
+    protected rendererFactory: RendererFactory2,
     protected systemLanguagesResolver: SystemLanguagesResolver,
     protected translateService: TranslateService,
     protected userResolver: UserResolver,
@@ -51,6 +53,7 @@ export class ResetPasswordPageComponent extends PageComponent {
       document,
       meta,
       pageOptionsService,
+      rendererFactory,
       request,
       systemLanguagesResolver,
       translateService,

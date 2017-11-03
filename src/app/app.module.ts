@@ -61,6 +61,7 @@ import {ContactFormComponent} from './components/forms/contact-form/contact-form
 import {ContactMessageInputComponent} from './components/inputs/contact-message-input/contact-message-input.component';
 import {ContactMessageSentModalComponent} from './components/modals/contact-message-sent-modal/contact-message-sent-modal.component';
 import {ContactPageComponent} from './components/pages/contact-page/contact-page.component';
+import {ContainerCardComponent} from './components/cards/container-card/container-card.component';
 import {CookieBarComponent} from './components/bars/cookie-bar/cookie-bar.component';
 import {CookiesAboutPageComponent} from './components/pages/cookies-about-page/cookies-about-page.component';
 import {CountryOfOriginInputComponent} from './components/inputs/country-of-origin-input/country-of-origin-input.component';
@@ -85,6 +86,7 @@ import {FileInputButtonComponent} from './components/buttons/file-input-button/f
 import {FilterJobsInputComponent} from './components/inputs/filter-jobs-input/filter-jobs-input.component';
 import {FilterUsersInputComponent} from './components/inputs/filter-users-input/filter-users-input.component';
 import {FirstNameInputComponent} from './components/inputs/first-name-input/first-name-input.component';
+import {FixedBottomMenuPagerComponent} from './components/pagers/fixed-bottom-menu-pager/fixed-bottom-menu-pager.component';
 import {ForbiddenPageComponent} from './components/pages/forbidden-page/forbidden-page.component';
 import {ForgotPasswordFormComponent} from './components/forms/forgot-password-form/forgot-password-form.component';
 import {ForgotPasswordModalComponent} from './components/modals/forgot-password-modal/forgot-password-modal.component';
@@ -99,6 +101,15 @@ import {GodModeBarComponent} from './components/bars/god-mode-bar/god-mode-bar.c
 import {GodModePageComponent} from './components/pages/god-mode-page/god-mode-page.component';
 import {GodModePagerSectionComponent} from './components/sections/god-mode-pager-section/god-mode-pager-section.component';
 import {GotCoordinationNumberInputComponent} from './components/inputs/got-coordination-number-input/got-coordination-number-input.component';
+import {GuideCardComponent} from './components/cards/guide-card/guide-card.component';
+import {GuideFixedBottomMenuPagerComponent} from './components/pagers/guide-fixed-bottom-menu-pager/guide-fixed-bottom-menu-pager.component';
+import {GuideHintPagerComponent} from './components/pagers/guide-hint-pager/guide-hint-pager.component';
+import {GuideMenuComponent} from './components/menus/guide-menu/guide-menu.component';
+import {GuidePageComponent} from './components/pages/guide-page/guide-page.component';
+import {GuideSectionArticlePageComponent} from './components/pages/guide-section-article-page/guide-section-article-page.component';
+import {GuideSectionPageComponent} from './components/pages/guide-section-page/guide-section-page.component';
+import {GuideWelcomeCardComponent} from './components/cards/guide-welcome-card/guide-welcome-card.component';
+import {HintPagerComponent} from './components/pagers/hint-pager/hint-pager.component';
 import {HomePageComponent} from './components/pages/home-page/home-page.component';
 import {HowItWorksSectionComponent} from './components/sections/how-it-works-section/how-it-works-section.component';
 import {HttpModule} from '@angular/http';
@@ -183,6 +194,7 @@ import {ResolversModule} from './resolvers/resolvers.module';
 import {ResumeInputComponent} from './components/inputs/resume-input/resume-input.component';
 import {RoutesModule} from './routes/routes.module';
 import {SearchInputComponent} from './components/inputs/search-input/search-input.component';
+import {SecondaryNavigationComponent} from './components/navigations/secondary-navigation/secondary-navigation.component';
 import {SelectDropdownInputComponent} from './components/inputs/select-dropdown-input/select-dropdown-input.component';
 import {SelectInputComponent} from './components/inputs/select-input/select-input.component';
 import {ShareModalComponent} from './components/modals/share-modal/share-modal.component';
@@ -336,6 +348,7 @@ export class RavenErrorHandler implements ErrorHandler {
     ContactMessageInputComponent,
     ContactMessageSentModalComponent,
     ContactPageComponent,
+    ContainerCardComponent,
     CookieBarComponent,
     CookiesAboutPageComponent,
     CountryOfOriginInputComponent,
@@ -357,6 +370,7 @@ export class RavenErrorHandler implements ErrorHandler {
     FilterJobsInputComponent,
     FilterUsersInputComponent,
     FirstNameInputComponent,
+    FixedBottomMenuPagerComponent,
     ForbiddenPageComponent,
     ForgotPasswordFormComponent,
     ForgotPasswordModalComponent,
@@ -369,6 +383,15 @@ export class RavenErrorHandler implements ErrorHandler {
     GodModePageComponent,
     GodModePagerSectionComponent,
     GotCoordinationNumberInputComponent,
+    GuideCardComponent,
+    GuideFixedBottomMenuPagerComponent,
+    GuideHintPagerComponent,
+    GuideMenuComponent,
+    GuidePageComponent,
+    GuideSectionArticlePageComponent,
+    GuideSectionPageComponent,
+    GuideWelcomeCardComponent,
+    HintPagerComponent,
     HomePageComponent,
     HowItWorksSectionComponent,
     InfoMessageComponent,
@@ -442,6 +465,7 @@ export class RavenErrorHandler implements ErrorHandler {
     ResidencePermitFrontInputComponent,
     ResumeInputComponent,
     SearchInputComponent,
+    SecondaryNavigationComponent,
     SelectDropdownInputComponent,
     SelectInputComponent,
     ShareModalComponent,

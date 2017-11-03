@@ -13,18 +13,21 @@
 
 import {BaseComponent} from '../base.component';
 import {Meta} from '@angular/platform-browser';
-import {PageOptionsService} from '../../services/page-options.service';
 import {OnDestroy} from '@angular/core';
 import {OnInit} from '@angular/core';
+import {PageOptionsService} from '../../services/page-options.service';
+import {RendererFactory2} from '@angular/core';
 import {Subscription} from 'rxjs/Subscription';
 import {SystemLanguagesResolver} from '../../resolvers/system-languages/system-languages.resolver';
 import {TranslateService} from '@ngx-translate/core';
 import {UserResolver} from '../../resolvers/user/user.resolver';
+import {ViewEncapsulation} from '@angular/core';
 
 export interface PageMeta {
-  title: {translate: boolean, content: string},
+  canonicalUrl?: string,
   description: {translate: boolean, content: string},
   image?: {content: string},
+  title: {translate: boolean, content: string},
   translateParams?: any
 }
 
@@ -37,6 +40,7 @@ export abstract class PageComponent extends BaseComponent implements OnInit, OnD
     protected document: any,
     protected meta: Meta,
     protected pageOptionsService: PageOptionsService = null,
+    protected rendererFactory: RendererFactory2,
     protected request: any,
     protected systemLanguagesResolver: SystemLanguagesResolver,
     protected translateService: TranslateService,
@@ -116,7 +120,7 @@ export abstract class PageComponent extends BaseComponent implements OnInit, OnD
           );
         } else {
           this.meta.updateTag({
-            content: this.getBaseUrl() + '/assets/images/open-graph-base.jpg'
+            content: PageComponent.getBaseUrl(this.request) + '/assets/images/open-graph-base.jpg'
           },
             'property="og:image"'
           );
@@ -125,10 +129,14 @@ export abstract class PageComponent extends BaseComponent implements OnInit, OnD
         }
 
         this.meta.updateTag({
-          content: this.getUrl()
+          content: PageComponent.getUrl(this.request)
         },
           'property="og:url"'
         );
+
+        if (this.pageMeta.canonicalUrl) {
+          this.addLinkTag( { rel: 'canonical', href: this.pageMeta.canonicalUrl } );
+        }
 
         this.meta.updateTag({
           content: this.mapToOpenGraphLocale(this.systemLanguagesResolver.getSelectedSystemLanguageCode())
@@ -142,19 +150,19 @@ export abstract class PageComponent extends BaseComponent implements OnInit, OnD
       });
   }
 
-  private getUrl(): string {
-    // If server side get url from request otherwise document.location.href
-    if (this.request) {
-      return this.request.protocol + '://' + this.request.headers.host + this.request.url.split("?").shift();
+  public static getUrl(request: any): string {
+    // If server side get url from request otherwise window.location.pathname
+    if (request) {
+      return request.protocol + '://' + request.headers.host + request.url.split("?").shift();
     } else {
       return window.location.origin + window.location.pathname;
     }
   }
 
-  private getBaseUrl(): string {
-    // If server side get url from request otherwise document.location.href
-    if (this.request) {
-      return this.request.protocol + '://' + this.request.headers.host;
+  public static getBaseUrl(request: any): string {
+    // If server side get url from request otherwise window.location.pathname
+    if (request) {
+      return request.protocol + '://' + request.headers.host;
     } else {
       return window.location.origin;
     }
@@ -175,8 +183,73 @@ export abstract class PageComponent extends BaseComponent implements OnInit, OnD
     return openGraphLocaleMap[languageCode];
   }
 
+    /**
+    * https://github.com/angular/angular/issues/15776
+    * No service provided in Angular 4 for adding links to head dynamically.
+    * Hence manually implemented according to above issue.
+    *
+    * A service for this should be available in Angular 5 which should
+    * replace this method.
+    */
+   private addLinkTag(tag: LinkDefinition, forceCreation?: boolean) {
+
+     try {
+       const renderer = this.rendererFactory.createRenderer(this.document, {
+         id: '-1',
+         encapsulation: ViewEncapsulation.None,
+         styles: [],
+         data: {}
+       });
+
+       const link = renderer.createElement('link');
+       const head = this.document.head;
+       const selector = this.linkParseSelector(tag);
+
+       if (head === null) {
+         throw new Error('<head> not found within DOCUMENT.');
+       }
+
+       Object.keys(tag).forEach((prop: string) => {
+           return renderer.setAttribute(link, prop, tag[prop]);
+       });
+
+       const children = head.children;
+       for (let i = 0; i < children.length; i++) {
+         if (children[i].localName === 'link' && children[i].rel === tag.rel) {
+           renderer.removeChild(head, children[i]);
+         }
+       }
+       renderer.appendChild(head, link);
+
+     } catch (e) {
+         console.error('Error within linkService : ', e);
+     }
+   }
+
+   private linkParseSelector(tag: LinkDefinition): string {
+       // Possibly re-work this
+       const attr: string = tag.rel ? 'rel' : 'hreflang';
+       return `${attr}="${tag[attr]}"`;
+   }
+
+
   public ngOnDestroy(): void {
     if (this.metaTranslationsSubscription) { this.metaTranslationsSubscription.unsubscribe(); }
     super.ngOnDestroy();
   }
 }
+
+export declare type LinkDefinition = {
+  charset?: string;
+  crossorigin?: string;
+  href?: string;
+  hreflang?: string;
+  media?: string;
+  rel?: string;
+  rev?: string;
+  sizes?: string;
+  target?: string;
+  type?: string;
+} & {
+  [prop: string]: string;
+};

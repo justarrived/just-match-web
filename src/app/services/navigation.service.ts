@@ -50,7 +50,7 @@ export class NavigationService {
       if (event instanceof NavigationEnd) {
         this.currentUrl = this.router.url;
         if (isPlatformBrowser(this.platformId)) {
-          document.body.scrollTop = 0;
+          window.scrollTo(0, 0);
         }
         console.log('Navigation ended at ' + this.currentUrl);
       }

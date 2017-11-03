@@ -9,6 +9,7 @@ import {isPlatformServer} from '@angular/common';
 import {JARoutes} from '../../../routes/ja-routes/ja-routes';
 import {Output} from '@angular/core';
 import {PageOptionsService} from '../../../services/page-options.service';
+import {RendererFactory2} from '@angular/core';
 import {PLATFORM_ID} from '@angular/core';
 import {Subscription} from 'rxjs/Subscription';
 import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
@@ -112,6 +113,6 @@ export class AppNavbarComponent extends BaseComponent {
 
   private isNavbarTransparent(): boolean {
     return this.pageOptionsService.transparentNavbarWhenTopScrolled() && isPlatformServer(this.platformId) ||
-           this.pageOptionsService.transparentNavbarWhenTopScrolled() && this.document && this.document.body && this.document.body.scrollTop < 1;
+           this.pageOptionsService.transparentNavbarWhenTopScrolled() && window && window.scrollY < 1;
   }
 }
