@@ -4,6 +4,12 @@ HEAD
 -----------
 
 
+v1.4 - 2017-11-03
+-----------
+__Feature__:
+* Guide module
+
+
 v1.3 - 2017-11-01
 -----------
 * Add missing I18n to basic-user-data.component
