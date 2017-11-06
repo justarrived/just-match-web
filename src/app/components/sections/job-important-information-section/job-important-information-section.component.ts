@@ -40,14 +40,6 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
             marginBottom="0"
             color="gray">
           </basic-title-text>
-          <basic-title-text
-            [text]="'job.important.information.section.total.salary' | translate: {totalGrossSalary: job.grossAmountWithCurrency, totalNetSalary: job.netAmountWithCurrency}"
-            fontSize="tiny"
-            fontWeight="light"
-            marginBottom="0"
-            marginTop="0"
-            color="gray">
-          </basic-title-text>
         </div>
       </div>
       <div
