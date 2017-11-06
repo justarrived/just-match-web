@@ -335,7 +335,6 @@
   "job.important.information.section.salary.per.hour": "{{grossSalaryPerHour}} gross salary",
   "job.important.information.section.salary.title": "Salary",
   "job.important.information.section.title": "Important information",
-  "job.important.information.section.total.salary": "{{totalGrossSalary}} total salary ({{totalNetSalary}} after tax)",
   "job.information.section.header": "Information",
   "job.location.section.header": "Location",
   "job.recruiter.section.title": "Responsible recruiter",

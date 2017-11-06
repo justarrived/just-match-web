@@ -335,7 +335,6 @@
   "job.important.information.section.salary.per.hour": "{{grossSalaryPerHour}} bruttolön",
   "job.important.information.section.salary.title": "Lön",
   "job.important.information.section.title": "Viktig information",
-  "job.important.information.section.total.salary": "{{totalGrossSalary}} total lön ({{totalNetSalary}} efter skatt)",
   "job.information.section.header": "Information",
   "job.location.section.header": "Plats",
   "job.recruiter.section.title": "Ansvarig rekryterare",
