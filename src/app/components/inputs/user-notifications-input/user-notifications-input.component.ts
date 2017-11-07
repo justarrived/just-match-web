@@ -5,12 +5,12 @@ import {FormControl} from '@angular/forms';
 import {Input} from '@angular/core';
 import {Language} from '../../../models/api-models/language/language';
 import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
-import {UserIgnoredNotifications} from '../../../models/api-models/user-ignored-notifications/user-ignored-notifications';
-import {UserIgnoredNotificationsProxy} from '../../../proxies/user-ignored-notifications/user-ignored-notifications.proxy';
+import {UserNotification} from '../../../models/api-models/user-notification/user-notification';
+import {UserNotificationProxy} from '../../../proxies/user-notification/user-notification.proxy';
 import {UserResolver} from '../../../resolvers/user/user.resolver';
 
 @Component({
-  selector: 'user-ignored-notifications-input',
+  selector: 'user-notifications-input',
   template: `
     <div class="ui form">
       <basic-loader
@@ -19,27 +19,29 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
       </basic-loader>
       <select-dropdown-input
         [apiErrors]="apiErrors"
-        [data]="notifications | async"
         [control]="control"
+        [data]="notifications | async"
         [hint]="hint"
         [label]="'input.ignored_notifications.label' | translate"
+        [multipleResultControl]="resultControl"
         [placeholder]="'input.ignored_notifications.placeholder' | translate"
-        multiple=true
         apiAttribute="ignored_notifications"
         dataItemLabelProperty="translatedText.description"
-        dataItemValueProperty="id">
+        dataItemValueProperty="id"
+        multiple="true">
       </select-dropdown-input>
     </div>`
 })
-export class UserIgnoredNotificationsInput extends BaseComponent {
+export class UserNotificationsInput extends BaseComponent {
   @Input() public apiErrors: ApiErrors;
   @Input() public control: FormControl;
   @Input() public hint: string;
+  @Input() public resultControl: FormControl;
 
-  public notifications: Promise<UserIgnoredNotifications[]>;
+  public notifications: Promise<UserNotification[]>;
 
   public constructor(
-    private ignoreNotificationsProxy: UserIgnoredNotificationsProxy,
+    private userNotificationProxy: UserNotificationProxy,
     protected systemLanguagesResolver: SystemLanguagesResolver,
     protected userResolver: UserResolver,
   ) {
@@ -55,6 +57,6 @@ export class UserIgnoredNotificationsInput extends BaseComponent {
   }
 
   protected loadData() {
-    this.notifications = this.ignoreNotificationsProxy.getUserIgnoredNotifications();
+    this.notifications = this.userNotificationProxy.getUserNotifications();
   }
 }

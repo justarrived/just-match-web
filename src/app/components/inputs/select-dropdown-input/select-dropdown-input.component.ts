@@ -22,6 +22,7 @@ import {ViewChild} from '@angular/core';
        [data]="data"
        [label]="label"
        [multiple]="multiple"
+       [multipleResultControl]="multipleResultControl"
        [options]="options"
        [placeholder]="placeholder"
        [selectedMemoryKey]="selectedMemoryKey"
@@ -60,6 +61,7 @@ export class SelectDropdownInputComponent extends BaseComponent {
   @Input() public hint: string;
   @Input() public label: string;
   @Input() public multiple: boolean = false;
+  @Input() public multipleResultControl: any;
   @Input() public maxLengthLabel: string;
   @Input() public minLengthLabel: string;
   @Input() public options: any;

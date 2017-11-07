@@ -37,10 +37,11 @@ import {SystemLanguagesResolver} from '../../../resolvers/system-languages/syste
       [control]="formGroup.controls['system_language_id']">
     </system-language-input>
 
-    <user-ignored-notifications-input
+    <user-notifications-input
       [apiErrors]="apiErrors"
-      [control]="formGroup.controls['ignored_notifications']">
-    </user-ignored-notifications-input>
+      [control]="formGroup.controls['ignored_notifications']"
+      [resultControl]="formGroup.controls['ignored_notifications_result']">
+    </user-notifications-input>
 
     <form-submit-button
       [buttonText]="'user.settings.form.submit.button' | translate"
@@ -82,6 +83,7 @@ export class UserNotificationSettingsFormComponent extends BaseComponent {
   private initForm(): void {
     if (this.user) {
       this.formGroup = this.formBuilder.group({
+        'ignored_notifications_result': [],
         'ignored_notifications': [this.user.ignoredNotifications],
         'system_language_id': [this.user.systemLanguage.id, Validators.compose([Validators.required])],
       });
@@ -102,15 +104,15 @@ export class UserNotificationSettingsFormComponent extends BaseComponent {
     this.apiErrors = new ApiErrors([]);
 
     return this.userProxy.updateUser(this.user.id, {
-      'ignored_notifications': [this.formGroup.value.ignored_notifications],
+      'ignored_notifications': this.formGroup.value.ignored_notifications_result,
       'system_language_id': this.formGroup.value.system_language_id,
     }, {
       'include': UserResolver.includes,
     })
     .then(user => {
-      this.userResolver.setUser(user);
       this.submitSuccess = true;
       this.loadingSubmit = false;
+      this.initForm();
       return user;
     })
     .catch(errors => {
