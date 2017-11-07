@@ -105,9 +105,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
     </basic-title-text>
     <a
       *ngIf="!hideReadMore"
-      href="https://justarrived.se/"
-      target="_blank"
-      rel="noopener">
+      [routerLink]="JARoutes.home.url()">
       <div
         style="display: flex; align-items: center; justify-content: center; margin-top: 20px;"
         [style.margin]="center ? '20px auto 0 auto' : '20px 0 0 0'">

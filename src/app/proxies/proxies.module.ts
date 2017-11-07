@@ -8,6 +8,8 @@ import {CountryProxy} from './country/country.proxy';
 import {DigestSubscriberProxy} from './digest-subscriber/digest-subscriber.proxy';
 import {DocumentProxy} from './document/document.proxy';
 import {FaqProxy} from './faq/faq.proxy';
+import {GuideSectionArticleProxy} from './guide-section-article/guide-section-article.proxy';
+import {GuideSectionProxy} from './guide-section/guide-section.proxy';
 import {HourlyPayProxy} from './hourly-pay/hourly-pay.proxy';
 import {InterestProxy} from './interest/interest.proxy';
 import {InvoiceProxy} from './invoice/invoice.proxy';
@@ -48,6 +50,8 @@ import {UserStatusProxy} from './user-status/user-status.proxy';
     DigestSubscriberProxy,
     DocumentProxy,
     FaqProxy,
+    GuideSectionArticleProxy,
+    GuideSectionProxy,
     HourlyPayProxy,
     InterestProxy,
     InvoiceProxy,

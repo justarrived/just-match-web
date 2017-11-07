@@ -1,0 +1,23 @@
+@import '../../../styles/colors';
+@import '../../../styles/dimensions';
+
+.navigation-container {
+  bottom: 0;
+  left: 0;
+  pointer-events: auto;
+  position: fixed;
+  right: 0;
+  top: $navbar-height;
+  z-index: 3;
+  background-color: $white;
+  overflow-y: scroll;
+  padding: 20px;
+
+  @media screen and (min-width: $app-max-width) {
+    width: $app-max-width;
+    margin: 0 auto;
+  }
+  @media screen and (max-width: $app-max-width) {
+    width: 100%;
+  }
+}

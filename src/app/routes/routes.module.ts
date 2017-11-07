@@ -1,4 +1,5 @@
 import {ApplicationsPageComponent} from '../components/pages/applications-page/applications-page.component';
+import {BasicUserDataPageComponent} from '../components/pages/basic-user-data-page/basic-user-data-page.component';
 import {ContactPageComponent} from '../components/pages/contact-page/contact-page.component';
 import {CookiesAboutPageComponent} from '../components/pages/cookies-about-page/cookies-about-page.component';
 import {DefaultLayoutComponent} from '../components/layouts/default-layout/default-layout.component';
@@ -7,6 +8,9 @@ import {FaqPageComponent} from '../components/pages/faq-page/faq-page.component'
 import {ForbiddenPageComponent} from '../components/pages/forbidden-page/forbidden-page.component';
 import {ForgotPasswordPageComponent} from '../components/pages/forgot-password-page/forgot-password-page.component';
 import {GodModePageComponent} from '../components/pages/god-mode-page/god-mode-page.component';
+import {GuidePageComponent} from '../components/pages/guide-page/guide-page.component';
+import {GuideSectionPageComponent} from '../components/pages/guide-section-page/guide-section-page.component';
+import {GuideSectionArticlePageComponent} from '../components/pages/guide-section-article-page/guide-section-article-page.component';
 import {GuardsModule} from '../guards/guards.module';
 import {HomePageComponent} from '../components/pages/home-page/home-page.component';
 import {JARoute} from './ja-route/ja-route';
@@ -47,8 +51,14 @@ const routes: Routes = [
     { path: 'forbidden', component: ForbiddenPageComponent },
     { path: 'forgot-password', component: ForgotPasswordPageComponent, canActivate: [NotLoggedInGuard] },
     { path: 'god-mode', component: GodModePageComponent, canActivate: [LoggedInAdminGuard] },
+    { path: 'guide', component: GuidePageComponent },
+    { path: 'guide/section/:sectionId', component: GuideSectionPageComponent },
+    { path: 'guide/section/:sectionId/:sectionSlug', component: GuideSectionPageComponent },
+    { path: 'guide/section/:sectionId/:sectionSlug/article/:articleId/:articleSlug', component: GuideSectionArticlePageComponent },
+    { path: 'guide/section/:sectionId/article/:articleId', component: GuideSectionArticlePageComponent },
     { path: 'home', redirectTo: '' },
     { path: 'job/:id', component: JobPageComponent },
+    { path: 'jobs', redirectTo: 'jobs/1', pathMatch: 'full' },
     { path: 'jobs/:page', component: JobsPageComponent },
     { path: 'login', component: LoginPageComponent, canActivate: [NotLoggedInGuard] },
     { path: 'lost-connection', component: LostConnectionPageComponent },
@@ -60,6 +70,7 @@ const routes: Routes = [
     { path: 'subscriptions/:subscriberUuid', component: SubscriptionsPageComponent },
     { path: 'user', component: UserProfilePageComponent, canActivate: [LoggedInGuard] },
     { path: 'user-notification-settings', component: UserNotificationSettingsPageComponent, canActivate: [LoggedInGuard] },
+    { path: 'update-profile', component: BasicUserDataPageComponent, canActivate: [LoggedInGuard] },
     { path: '**', component: NotFoundPageComponent },
   ]}
 ];

@@ -1,0 +1,35 @@
+@import '../../../styles/colors';
+@import '../../../styles/typography';
+
+
+.numbered-item {
+  display: flex;
+  margin-bottom: 1rem;
+
+  &:before {
+    align-items: center;
+    background-color: $color-cerise-500;
+    border-radius: 100%;
+    color: white;
+    content: '';
+    display: flex;
+    font-weight: bold;
+    height: 30px;
+    justify-content: center;
+    width: 30px;
+  }
+
+  @for $i from 1 through 10 {
+    &:nth-of-type(#{$i}) {
+      &:before {
+        content: '#{$i}';
+      }
+    }
+  }
+
+  .numbered-item-content {
+    margin-left: 20px;
+    margin-right: 20px;
+    width: calc(100% - 70px);
+  }
+}

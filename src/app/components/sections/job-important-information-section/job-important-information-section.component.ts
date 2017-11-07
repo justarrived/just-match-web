@@ -14,47 +14,6 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
         style="display: flex; align-items: center; padding-right: 0; padding-left: 0;"
         [style.direction]="systemLanguage.direction">
         <img
-          src="/assets/icons/clock-pink-underline.svg"
-          class="ui mini image">
-        <div style="margin-left: 10px; margin-right: 10px;">
-          <basic-title-text
-            [text]="'job.important.information.section.salary.title' | translate"
-            fontSize="tiny"
-            marginBottom="0"
-            marginTop="0"
-            color="black">
-          </basic-title-text>
-          <basic-title-text
-            [text]="'job.important.information.section.hours' | translate: {hours: job.hours}"
-            marginTop="0"
-            marginBottom="0"
-            fontSize="tiny"
-            fontWeight="light"
-            color="gray">
-          </basic-title-text>
-          <basic-title-text
-            [text]="'job.important.information.section.salary.per.hour' | translate: {grossSalaryPerHour: job.hourlyPay.grossSalaryWithUnit}"
-            fontSize="tiny"
-            fontWeight="light"
-            marginTop="0"
-            marginBottom="0"
-            color="gray">
-          </basic-title-text>
-          <basic-title-text
-            [text]="'job.important.information.section.total.salary' | translate: {totalGrossSalary: job.grossAmountWithCurrency, totalNetSalary: job.netAmountWithCurrency}"
-            fontSize="tiny"
-            fontWeight="light"
-            marginBottom="0"
-            marginTop="0"
-            color="gray">
-          </basic-title-text>
-        </div>
-      </div>
-      <div
-        class="sixteen wide column"
-        style="display: flex; align-items: center; padding-right: 0; padding-left: 0;"
-        [style.direction]="systemLanguage.direction">
-        <img
           src="/assets/icons/marker-pink-underline.svg"
           class="ui mini image">
         <div style="margin-left: 10px; margin-right: 10px;">
