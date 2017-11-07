@@ -4,6 +4,15 @@ HEAD
 -----------
 
 
+v1.5 - 2017-11-07
+-----------
+* Remove salary information from job show page
+* Update `circle.yml` config to use node v6.11.3 (was 6.10.2)
+* Pull sv translations from Transifex
+* Add `RendererFactory2` to `BasicUserDataPage` component
+* Reset dev env API URL
+
+
 v1.4 - 2017-11-03
 -----------
 __Feature__:
