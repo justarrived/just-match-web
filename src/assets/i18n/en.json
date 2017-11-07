@@ -207,6 +207,8 @@
   "input.gender.label": "Gender",
   "input.gender.placeholder": "Gender",
   "input.got.coordination.number.label": "Do you have a coordination number (samordningsnummmer)?",
+  "input.ignored_notifications.label": "Ignored notifications",
+  "input.ignored_notifications.placeholder": "Ignored notifications",
   "input.interests.hint": "Please rate how interested you are in the chosen interests",
   "input.interests.label": "Interests",
   "input.interests.placeholder": "Interests",

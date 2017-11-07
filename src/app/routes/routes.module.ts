@@ -32,6 +32,7 @@ import {SubscriptionsPageComponent} from '../components/pages/subscriptions-page
 import {SupportChatPageComponent} from '../components/pages/support-chat-page/support-chat-page.component';
 import {SystemLanguagesResolver} from '../resolvers/system-languages/system-languages.resolver';
 import {UserProfilePageComponent} from '../components/pages/user-profile-page/user-profile-page.component';
+import {UserNotificationSettingsPageComponent} from '../components/pages/user-notification-settings-page/user-notification-settings-page.component';
 import {UserResolver} from '../resolvers/user/user.resolver';
 
 const routes: Routes = [
@@ -68,6 +69,7 @@ const routes: Routes = [
     { path: 'subscriptions', component: SubscriptionsPageComponent },
     { path: 'subscriptions/:subscriberUuid', component: SubscriptionsPageComponent },
     { path: 'user', component: UserProfilePageComponent, canActivate: [LoggedInGuard] },
+    { path: 'user-notification-settings', component: UserNotificationSettingsPageComponent, canActivate: [LoggedInGuard] },
     { path: 'update-profile', component: BasicUserDataPageComponent, canActivate: [LoggedInGuard] },
     { path: '**', component: NotFoundPageComponent },
   ]}

@@ -207,6 +207,8 @@
   "input.gender.label": "Kön",
   "input.gender.placeholder": "Kön",
   "input.got.coordination.number.label": "Har du ett samordningsnummer?",
+  "input.ignored_notifications.label": "Ignorerade notifikationer",
+  "input.ignored_notifications.placeholder": "Ignorerade notifikationer",
   "input.interests.hint": "Bedöm hur intresserad du är av valda intressen",
   "input.interests.label": "Intressen",
   "input.interests.placeholder": "Intressen",

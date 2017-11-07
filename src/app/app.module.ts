@@ -234,10 +234,13 @@ import {UploadImageCardComponent} from './components/cards/upload-image-card/upl
 import {UserCardComponent} from './components/cards/user-card/user-card.component';
 import {UserDetailsFormComponent} from './components/forms/user-details-form/user-details-form.component';
 import {UserDocumentCardInputComponent} from './components/inputs/user-document-card-input/user-document-card-input.component';
+import {UserNotificationsInput} from './components/inputs/user-notifications-input/user-notifications-input.component';
 import {UserImageCardInputComponent} from './components/inputs/user-image-card-input/user-image-card-input.component';
 import {UserImageCircularInputComponent} from './components/inputs/user-image-circular-input/user-image-circular-input.component';
 import {UserMissingTraitsMessageComponent} from './components/messages/user-missing-traits-message/user-missing-traits-message.component';
 import {UserMissingTraitsNextFormComponent} from './components/forms/user-missing-traits-next-form/user-missing-traits-next-form.component';
+import {UserNotificationSettingsFormComponent} from './components/forms/user-notification-settings-form/user-notification-settings-form.component';
+import {UserNotificationSettingsPageComponent} from './components/pages/user-notification-settings-page/user-notification-settings-page.component';
 import {UserProfileBannerSectionComponent} from './components/sections/user-profile-banner-section/user-profile-banner-section.component';
 import {UserProfileFormComponent} from './components/forms/user-profile-form/user-profile-form.component';
 import {UserProfilePageComponent} from './components/pages/user-profile-page/user-profile-page.component';
@@ -504,10 +507,13 @@ export class RavenErrorHandler implements ErrorHandler {
     UserCardComponent,
     UserDetailsFormComponent,
     UserDocumentCardInputComponent,
+    UserNotificationsInput,
     UserImageCardInputComponent,
     UserImageCircularInputComponent,
     UserMissingTraitsMessageComponent,
     UserMissingTraitsNextFormComponent,
+    UserNotificationSettingsFormComponent,
+    UserNotificationSettingsPageComponent,
     UserProfileBannerSectionComponent,
     UserProfileFormComponent,
     UserProfilePageComponent,

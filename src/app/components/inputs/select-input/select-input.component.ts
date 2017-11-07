@@ -33,6 +33,7 @@ declare var jQuery: any;
       <select
         [formControl]="control"
         class="ui {{class}} fluid dropdown"
+        [attr.multiple]="multiple ? 'true' : null"
         #select>
         <option
           value="">
@@ -46,6 +47,8 @@ export class SelectInputComponent extends BaseComponent {
   @Input() public class: string;
   @Input() public control: FormControl = new FormControl();
   @Input() public label: string;
+  @Input() public multiple: boolean = false;
+  @Input() public multipleResultControl: any;
   @Input() public options: {} = {};
   @Input() public placeholder: string;
   @Input() public selectedMemoryKey: string;
@@ -58,13 +61,7 @@ export class SelectInputComponent extends BaseComponent {
   @Input("data")
   public set data(data: any) {
     this._data = data;
-    if (isPlatformBrowser(this.platformId)) {
-      if (data && this.control.value) {
-        setTimeout(() => {
-          jQuery(this.select.nativeElement).dropdown("set selected", this.control.value);
-        }, 1);
-      }
-    }
+    this.updateSelected();
   }
 
   public constructor(
@@ -86,6 +83,9 @@ export class SelectInputComponent extends BaseComponent {
 
     if (value) {
       this.control.setValue(value);
+      if (this.multipleResultControl) {
+        this.multipleResultControl.setValue(value);
+      }
     }
   }
 
@@ -103,6 +103,18 @@ export class SelectInputComponent extends BaseComponent {
 
         this.onChange.emit(value);
       },
+      onAdd: (value) => {
+        if (this.multipleResultControl) {
+          if (!Array.isArray(this.multipleResultControl.value)) this.multipleResultControl.setValue([]);
+          this.multipleResultControl.value.push(value);
+        }
+      },
+      onRemove: (value) => {
+        if (this.multipleResultControl) {
+          if (!Array.isArray(this.multipleResultControl.value)) this.multipleResultControl.setValue([]);
+          this.multipleResultControl.setValue(this.multipleResultControl.value.filter(item => item !== value));
+        }
+      },
       onHide: () => this.control.markAsTouched()
     }, this.options);
 
@@ -111,12 +123,24 @@ export class SelectInputComponent extends BaseComponent {
         .dropdown(options);
     }
 
-    if (isPlatformBrowser(this.platformId)) {
-      if (this._data && this.control.value) {
-        setTimeout(() => {
-          jQuery(this.select.nativeElement).dropdown("set selected", this.control.value);
-        }, 1);
-      }
+    this.updateSelected();
+  }
+
+  private updateSelected() {
+    if (!isPlatformBrowser(this.platformId)) return;
+    if (!this._data) return;
+    if (!this.control.value) return;
+
+    let values = this.control.value;
+
+    if (!Array.isArray(values)) {
+      values = [values]
     }
+
+    values.forEach(value => {
+      setTimeout(() => {
+        jQuery(this.select.nativeElement).dropdown("set selected", value);
+      }, 1);
+    })
   }
 }

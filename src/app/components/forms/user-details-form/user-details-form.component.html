@@ -89,6 +89,11 @@
     [control]="settingsForm.controls['system_language_id']">
   </system-language-input>
 
+  <user-notifications-input
+    [apiErrors]="apiErrors"
+    [control]="settingsForm.controls['ignored_notifications']">
+  </user-notifications-input>
+
   <form-section-title-text
     [text]="'user.settings.form.change.password.header' | translate"
     icon="lock">
