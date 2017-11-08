@@ -32,7 +32,6 @@ import {ViewChild} from '@angular/core';
         [style.direction]="systemLanguage.direction"
         [style.text-align]="systemLanguage.direction === 'ltr' ? 'left' : 'right'"
         [rows]="rows"
-        autosize
         style="resize: none;">
       </textarea>
       <input-errors

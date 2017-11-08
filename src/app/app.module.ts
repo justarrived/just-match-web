@@ -18,7 +18,6 @@ import {ApplyMessageInputComponent} from './components/inputs/apply-message-inpu
 import {AppNavbarComponent} from './components/navbars/app-navbar/app-navbar.component';
 import {AppTranslateModule} from './app.translate.module';
 import {AtUndInputComponent} from './components/inputs/at-und-input/at-und-input.component';
-import {AutosizeDirective} from './directives/autosize/autosize.directive';
 import {BackToJobsSectionComponent} from './components/sections/back-to-jobs-section/back-to-jobs-section.component';
 import {BankAccountInputComponent} from './components/inputs/bank-account-input/bank-account-input.component';
 import {BaseActionButtonComponent} from './components/buttons/base-action-button/base-action-button.component';
@@ -310,7 +309,6 @@ export class RavenErrorHandler implements ErrorHandler {
     ApplyMessageInputComponent,
     AppNavbarComponent,
     AtUndInputComponent,
-    AutosizeDirective,
     BackToJobsSectionComponent,
     BankAccountInputComponent,
     BaseActionButtonComponent,
