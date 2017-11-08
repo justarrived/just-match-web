@@ -21,7 +21,7 @@ import {ViewChild} from '@angular/core';
           <div class="sixteen wide mobile twelve wide tablet twelve wide computer column">
             <login-form
               [isInModal]="true"
-              [navigateToHome]="navigateToHome"
+              [navigateOnSubmit]="navigateOnSubmit"
               #loginForm>
             </login-form>
           </div>
@@ -45,7 +45,7 @@ import {ViewChild} from '@angular/core';
     </basic-modal>`
 })
 export class LoginModalComponent extends BaseComponent {
-  @Input() public navigateToHome: boolean = true;
+  @Input() public navigateOnSubmit: boolean = true;
   @Output() public onLoggedIn: EventEmitter<User> = new EventEmitter<User>();
   @ViewChild('loginForm') public loginForm: LoginFormComponent;
   @ViewChild('loginModal') public loginModal: any;

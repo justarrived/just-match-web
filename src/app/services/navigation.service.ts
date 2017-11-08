@@ -114,6 +114,14 @@ export class NavigationService {
     this.router.navigateByUrl(route.url(args), { skipLocationChange: true });
   }
 
+  public navigateToUrl(url: string): void {
+    this.router.navigate([url]);
+  }
+
+  public navigateToUrlNoLocationChange(url: string): void {
+    this.router.navigateByUrl(url, { skipLocationChange: true });
+  }
+
   public getCurrentUrl(): string {
     return this.currentUrl;
   }

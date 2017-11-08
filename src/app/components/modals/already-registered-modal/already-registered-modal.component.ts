@@ -21,7 +21,7 @@ import {ViewChild} from '@angular/core';
         <div class="sixteen wide mobile twelve wide tablet twelve wide computer column">
           <login-form
             [emailOrPhone]="emailOrPhone"
-            [navigateToHome]="navigateToHome"
+            [navigateOnSubmit]="navigateOnSubmit"
             [isInModal]="true"
             #loginForm>
           </login-form>
@@ -52,7 +52,7 @@ import {ViewChild} from '@angular/core';
 export class AlreadyRegisteredModalComponent extends BaseComponent {
 @Input() public canBeShown: boolean;
 @Input() public emailOrPhone: string = '';
-@Input() public navigateToHome: boolean = true;
+@Input() public navigateOnSubmit: boolean = true;
 @Output() public onLoggedIn: EventEmitter<User> = new EventEmitter<User>();
 @ViewChild('loginForm') public loginForm: LoginFormComponent;
 @ViewChild('alreadyRegisteredModal') public alreadyRegisteredModal: any;

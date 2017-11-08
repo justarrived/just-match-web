@@ -40,7 +40,7 @@ import {WelcomeStep3ModalComponent} from './components/modals/welcome-step-3-mod
     <already-registered-modal
       (onLoggedIn)="modalResult($event)"
       [emailOrPhone]="args[0]"
-      [navigateToHome]="navigate"
+      [navigateOnSubmit]="navigate"
       *ngIf="shownModal === 'alreadyRegisteredModalComponent'"
       #alreadyRegisteredModalComponent>
     </already-registered-modal>
@@ -77,7 +77,7 @@ import {WelcomeStep3ModalComponent} from './components/modals/welcome-step-3-mod
 
     <login-modal
       (onLoggedIn)="modalResult($event)"
-      [navigateToHome]="navigate"
+      [navigateOnSubmit]="navigate"
       *ngIf="shownModal === 'loginModalComponent'"
       #loginModalComponent>
     </login-modal>
@@ -107,7 +107,7 @@ import {WelcomeStep3ModalComponent} from './components/modals/welcome-step-3-mod
 
     <register-modal
       (onRegistered)="modalResult($event)"
-      [navigateToHome]="navigate"
+      [navigateOnSubmit]="navigate"
       *ngIf="shownModal === 'registerModalComponent'"
       #registerModalComponent>
     </register-modal>

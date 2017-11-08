@@ -18,7 +18,7 @@ import {Validators} from '@angular/forms';
   templateUrl: './register-form.component.html'
 })
 export class RegisterFormComponent extends BaseComponent {
-  @Input() public navigateToHome: boolean = true;
+  @Input() public navigateOnSubmit: boolean = true;
   @Input() public isInModal: boolean = false;
 
   public apiErrors: ApiErrors = new ApiErrors([]);
@@ -62,7 +62,7 @@ export class RegisterFormComponent extends BaseComponent {
 
   public loginButonClicked(): void {
     if (this.isInModal) {
-      this.modalService.showModal('loginModalComponent', this.navigateToHome, false, 400);
+      this.modalService.showModal('loginModalComponent', this.navigateOnSubmit, false, 400);
     } else {
       this.navigationService.navigate(this.JARoutes.login);
     }
@@ -97,7 +97,7 @@ export class RegisterFormComponent extends BaseComponent {
       });
     })
     .then(user => {
-      if (this.navigateToHome) {
+      if (this.navigateOnSubmit) {
         this.navigationService.navigate(this.JARoutes.home);
       }
       this.modalService.showModal('welcomeStep1ModalComponent', false, false, this.isInModal ? 400 : 1);
@@ -123,9 +123,9 @@ export class RegisterFormComponent extends BaseComponent {
 
   private showAccountAlreadyExistsModalIfEmailOrPhoneTaken(errors: ApiErrors): void {
     if (errors.hasErrorWithType('email', 'taken')) {
-      this.modalService.showModal('alreadyRegisteredModalComponent', this.navigateToHome, false, this.isInModal ? 400 : 1, this.registerForm.value.email);
+      this.modalService.showModal('alreadyRegisteredModalComponent', this.navigateOnSubmit, false, this.isInModal ? 400 : 1, this.registerForm.value.email);
     } else if (errors.hasErrorWithType('phone', 'taken')) {
-      this.modalService.showModal('alreadyRegisteredModalComponent', this.navigateToHome, false, this.isInModal ? 400 : 1, this.registerForm.value.phone);
+      this.modalService.showModal('alreadyRegisteredModalComponent', this.navigateOnSubmit, false, this.isInModal ? 400 : 1, this.registerForm.value.phone);
     }
   }
 }
