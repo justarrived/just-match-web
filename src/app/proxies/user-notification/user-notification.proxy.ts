@@ -12,13 +12,13 @@ export class UserNotificationProxy {
   }
 
   // GET
-  public getUserNotifications(searchParameters?: any): Promise<UserNotification[]> {
-    return this.apiCallService.get('users/notifications', searchParameters)
+  public getUserNotifications(userId: string, searchParameters?: any): Promise<UserNotification[]> {
+    return this.apiCallService.get('users/' + userId + '/available-notifications', searchParameters)
     .then(response => response.data.map(notification => UserNotificationFactory.createUserNotification(notification)));
   }
 
-  public getUserNotificationsWithMeta(searchParameters?: any): Promise<{notifications: UserNotification[], meta: any}> {
-    return this.apiCallService.get('users/notifications', searchParameters)
+  public getUserNotificationsWithMeta(userId: string, searchParameters?: any): Promise<{notifications: UserNotification[], meta: any}> {
+    return this.apiCallService.get('users/' + userId + '/available-notifications', searchParameters)
     .then(response => {
       return {
         notifications: response.data.map(notification => UserNotificationFactory.createUserNotification(notification)),

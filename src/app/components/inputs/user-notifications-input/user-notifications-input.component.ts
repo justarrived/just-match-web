@@ -57,6 +57,7 @@ export class UserNotificationsInput extends BaseComponent {
   }
 
   protected loadData() {
-    this.notifications = this.userNotificationProxy.getUserNotifications();
+    const userId = this.userResolver.getUser().id;
+    this.notifications = this.userNotificationProxy.getUserNotifications(userId);
   }
 }
