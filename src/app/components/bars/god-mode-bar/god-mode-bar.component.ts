@@ -1,6 +1,7 @@
 import {BaseComponent} from '../../base.component';
 import {Component} from '@angular/core';
 import {NavigationService} from '../../../services/navigation.service';
+import {PageOptionsService} from '../../../services/page-options.service';
 import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
 import {User} from '../../../models/api-models/user/user';
 import {UserResolver} from '../../../resolvers/user/user.resolver';
@@ -50,6 +51,7 @@ export class GodModeBarComponent extends BaseComponent {
 
   public constructor(
     private navigationService: NavigationService,
+    private pageOptionsService: PageOptionsService,
     protected systemLanguagesResolver: SystemLanguagesResolver,
     protected userResolver: UserResolver,
   ) {
@@ -66,6 +68,8 @@ export class GodModeBarComponent extends BaseComponent {
 
   public deactivateGodMode(): void {
     this.userResolver.deactivateGodMode();
+    // Trigger change event
+    this.pageOptionsService.setTransparentNavbarWhenTopScrolled(this.pageOptionsService.transparentNavbarWhenTopScrolled());
   }
 
   public changeUser(): void {

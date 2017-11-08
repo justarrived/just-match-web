@@ -1,6 +1,7 @@
 import {BaseComponent} from '../../base.component';
 import {Component} from '@angular/core';
 import {DataStoreService} from '../../../services/data-store.service';
+import {PageOptionsService} from '../../../services/page-options.service';
 import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
 import {UserResolver} from '../../../resolvers/user/user.resolver';
 
@@ -37,10 +38,11 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
     </div>`
 })
 export class CookieBarComponent extends BaseComponent {
-  private readonly cookiesConsentData: string = 'cookiesConsentData';
+  public static readonly cookiesConsentDataKey: string = 'cookiesConsentData';
 
   public constructor(
     private dataStoreService: DataStoreService,
+    private pageOptionsService: PageOptionsService,
     protected systemLanguagesResolver: SystemLanguagesResolver,
     protected userResolver: UserResolver,
   ) {
@@ -48,10 +50,12 @@ export class CookieBarComponent extends BaseComponent {
   }
 
   public checkCookiesConsent(): boolean {
-    return (this.dataStoreService.getCookie(this.cookiesConsentData) !== true);
+    return (this.dataStoreService.getCookie(CookieBarComponent.cookiesConsentDataKey) !== true);
   }
 
   public acceptCookiesConsent() {
-    this.dataStoreService.setCookie(this.cookiesConsentData, true);
+    this.dataStoreService.setCookie(CookieBarComponent.cookiesConsentDataKey, true);
+    // Trigger change event
+    this.pageOptionsService.setTransparentNavbarWhenTopScrolled(this.pageOptionsService.transparentNavbarWhenTopScrolled());
   }
 }

@@ -1,9 +1,11 @@
 import {BaseComponent} from '../../base.component';
 import {Component} from '@angular/core';
-import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
-import {UserResolver} from '../../../resolvers/user/user.resolver';
+import {CookieBarComponent} from '../../../components/bars/cookie-bar/cookie-bar.component';
+import {DataStoreService} from '../../../services/data-store.service';
 import {PageOptionsService} from '../../../services/page-options.service';
 import {RendererFactory2} from '@angular/core';
+import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
+import {UserResolver} from '../../../resolvers/user/user.resolver';
 
 @Component({
   selector: 'default-layout',
@@ -36,14 +38,17 @@ import {RendererFactory2} from '@angular/core';
 export class DefaultLayoutComponent extends BaseComponent {
 
   public constructor(
+    private dataStoreService: DataStoreService,
+    private pageOptionsService: PageOptionsService,
     protected systemLanguagesResolver: SystemLanguagesResolver,
     protected userResolver: UserResolver,
-    private pageOptionsService: PageOptionsService,
   ) {
     super(systemLanguagesResolver, userResolver);
   }
 
   public useNavbarPadder(): boolean {
-    return !this.pageOptionsService.transparentNavbarWhenTopScrolled();
+    return !this.dataStoreService.getCookie(CookieBarComponent.cookiesConsentDataKey)
+      || this.userResolver.godModeActive()
+      || !this.pageOptionsService.transparentNavbarWhenTopScrolled();
   }
 }
