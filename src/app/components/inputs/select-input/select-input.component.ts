@@ -48,7 +48,7 @@ export class SelectInputComponent extends BaseComponent {
   @Input() public control: FormControl = new FormControl();
   @Input() public label: string;
   @Input() public multiple: boolean = false;
-  @Input() public multipleResultControl: any;
+  @Input() public multipleResults: any[] = [];
   @Input() public options: {} = {};
   @Input() public placeholder: string;
   @Input() public selectedMemoryKey: string;
@@ -83,9 +83,6 @@ export class SelectInputComponent extends BaseComponent {
 
     if (value) {
       this.control.setValue(value);
-      if (this.multipleResultControl) {
-        this.multipleResultControl.setValue(value);
-      }
     }
   }
 
@@ -104,15 +101,16 @@ export class SelectInputComponent extends BaseComponent {
         this.onChange.emit(value);
       },
       onAdd: (value) => {
-        if (this.multipleResultControl) {
-          if (!Array.isArray(this.multipleResultControl.value)) this.multipleResultControl.setValue([]);
-          this.multipleResultControl.value.push(value);
+        if (this.multiple) {
+          this.multipleResults.push(value);
         }
       },
       onRemove: (value) => {
-        if (this.multipleResultControl) {
-          if (!Array.isArray(this.multipleResultControl.value)) this.multipleResultControl.setValue([]);
-          this.multipleResultControl.setValue(this.multipleResultControl.value.filter(item => item !== value));
+        if (this.multiple) {
+          const index = this.multipleResults.findIndex(item => item === value);
+          if (index !== -1){
+            this.multipleResults.splice(index, 1);
+          }
         }
       },
       onHide: () => this.control.markAsTouched()

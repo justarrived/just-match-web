@@ -23,7 +23,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
         [data]="notifications | async"
         [hint]="hint"
         [label]="'input.ignored_notifications.label' | translate"
-        [multipleResultControl]="resultControl"
+        [multipleResults]="multipleResults"
         [placeholder]="'input.ignored_notifications.placeholder' | translate"
         apiAttribute="ignored_notifications"
         dataItemLabelProperty="translatedText.description"
@@ -36,7 +36,7 @@ export class UserNotificationsInput extends BaseComponent {
   @Input() public apiErrors: ApiErrors;
   @Input() public control: FormControl;
   @Input() public hint: string;
-  @Input() public resultControl: FormControl;
+  @Input() public multipleResults: any[] = [];
 
   public notifications: Promise<UserNotification[]>;
 

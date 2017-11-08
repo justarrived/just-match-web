@@ -40,7 +40,7 @@ import {SystemLanguagesResolver} from '../../../resolvers/system-languages/syste
     <user-notifications-input
       [apiErrors]="apiErrors"
       [control]="formGroup.controls['ignored_notifications']"
-      [resultControl]="formGroup.controls['ignored_notifications_result']">
+      [multipleResults]="ignoredNotificationsResults">
     </user-notifications-input>
 
     <form-submit-button
@@ -56,8 +56,9 @@ export class UserNotificationSettingsFormComponent extends BaseComponent {
   @Input() public isInModal: boolean = false;
 
   public apiErrors: ApiErrors = new ApiErrors([]);
-  public loadingSubmit: boolean;
   public formGroup: FormGroup;
+  public ignoredNotificationsResults: any[] = [];
+  public loadingSubmit: boolean;
   public submitFail: boolean;
   public submitSuccess: boolean;
 
@@ -84,7 +85,6 @@ export class UserNotificationSettingsFormComponent extends BaseComponent {
     if (this.user) {
       this.formGroup = this.formBuilder.group({
         'ignored_notifications': [this.user.ignoredNotifications],
-        'ignored_notifications_result': [],
         'system_language_id': [this.user.systemLanguage.id, Validators.compose([Validators.required])],
       });
     }
@@ -104,7 +104,7 @@ export class UserNotificationSettingsFormComponent extends BaseComponent {
     this.apiErrors = new ApiErrors([]);
 
     return this.userProxy.updateUser(this.user.id, {
-      'ignored_notifications': this.formGroup.value.ignored_notifications_result,
+      'ignored_notifications': this.ignoredNotificationsResults,
       'system_language_id': this.formGroup.value.system_language_id,
     }, {
       'include': UserResolver.includes,

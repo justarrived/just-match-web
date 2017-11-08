@@ -21,6 +21,7 @@ export class UserDetailsFormComponent extends BaseComponent {
   @Input() public isInModal: boolean = false;
 
   public apiErrors: ApiErrors = new ApiErrors([]);
+  public ignoredNotificationsResults: any[] = [];
   public loadingSubmit: boolean;
   public passwordForm: FormGroup;
   public settingsForm: FormGroup;
@@ -106,7 +107,7 @@ export class UserDetailsFormComponent extends BaseComponent {
       'email': this.settingsForm.value.email,
       'first_name': this.settingsForm.value.first_name,
       'gender': this.settingsForm.value.gender,
-      'ignored_notifications': this.settingsForm.value.ignored_notifications_result,
+      'ignored_notifications': this.ignoredNotificationsResults,
       'last_name':this.settingsForm.value.last_name,
       'phone': this.settingsForm.value.phone,
       'ssn': this.settingsForm.value.ssn,
