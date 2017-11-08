@@ -14,11 +14,14 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
       <div class="ui pointing blue {{pointingDirection}} label">
       <basic-text
         [text]="hint"
+        textAlignmentLtr="center"
+        textAlignmentRtl="center"
         fontSize="small"
         fontWeight="bold"
         marginBottom="0"
         marginTop="0">
       </basic-text>
+      <ng-content></ng-content>
       </div>
     </div>`
 })
