@@ -2,8 +2,10 @@ import {ApiErrors} from '../../../models/api-models/api-errors/api-errors';
 import {BaseComponent} from '../../base.component';
 import {ChangeDetectorRef} from '@angular/core';
 import {Component} from '@angular/core';
+import {DataStoreService} from '../../../services/data-store.service';
 import {EventEmitter} from '@angular/core';
 import {FormBuilder} from '@angular/forms';
+import {LoggedInGuard} from '../../../guards/logged-in/logged-in.guard';
 import {FormGroup} from '@angular/forms';
 import {Input} from '@angular/core';
 import {JARoute} from '../../../routes/ja-route/ja-route';
@@ -63,7 +65,7 @@ import {Validators} from '@angular/forms';
 })
 export class LoginFormComponent extends BaseComponent {
   @Input() public isInModal: boolean = false;
-  @Input() public navigateToHome: boolean = true;
+  @Input() public navigateOnSubmit: boolean = true;
   @Input('emailOrPhone')
   public set emailOrPhone(emailOrPhone: string) {
     this.phoneOrEmail = emailOrPhone;
@@ -81,6 +83,7 @@ export class LoginFormComponent extends BaseComponent {
 
   constructor(
     private changeDetector: ChangeDetectorRef,
+    private dataStoreService: DataStoreService,
     private formBuilder: FormBuilder,
     private modalService: ModalService,
     private navigationService: NavigationService,
@@ -111,7 +114,7 @@ export class LoginFormComponent extends BaseComponent {
 
   public onRegisterButtonClick(): void {
     if (this.isInModal) {
-      this.modalService.showModal('registerModalComponent', this.navigateToHome, false, 400);
+      this.modalService.showModal('registerModalComponent', this.navigateOnSubmit, false, 400);
     } else {
       this.navigationService.navigate(this.JARoutes.registerUser);
     }
@@ -131,8 +134,14 @@ export class LoginFormComponent extends BaseComponent {
 
     return this.userResolver.login(this.loginForm.value.email_or_phone, this.loginForm.value.password)
     .then(user => {
-      if (this.navigateToHome) {
-        this.navigationService.navigate(this.JARoutes.home);
+      if (this.navigateOnSubmit) {
+        const redirectUrl = this.dataStoreService.getFromMemory(LoggedInGuard.redirectToUrlAfterLoginKey);
+        if (redirectUrl) {
+          this.dataStoreService.removeFromMemory(LoggedInGuard.redirectToUrlAfterLoginKey);
+          this.navigationService.navigateToUrl(redirectUrl);
+        } else {
+          this.navigationService.navigate(this.JARoutes.home);
+        }
       }
       this.loadingSubmit = false;
       this.submitSuccess = true;

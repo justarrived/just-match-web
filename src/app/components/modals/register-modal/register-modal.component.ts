@@ -21,7 +21,7 @@ import {ViewChild} from '@angular/core';
           <div class="sixteen wide mobile twelve wide tablet twelve wide computer column">
             <register-form
               [isInModal]="true"
-              [navigateToHome]="navigateToHome"
+              [navigateOnSubmit]="navigateOnSubmit"
               #registerForm>
             </register-form>
           </div>
@@ -45,7 +45,7 @@ import {ViewChild} from '@angular/core';
     </basic-modal>`
 })
 export class RegisterModalComponent extends BaseComponent {
-  @Input() public navigateToHome: string;
+  @Input() public navigateOnSubmit: string;
   @Output() public onRegistered: EventEmitter<User> = new EventEmitter<User>();
   @ViewChild('registerForm') public registerForm: RegisterFormComponent;
   @ViewChild('registerModal') public registerModal: any;
