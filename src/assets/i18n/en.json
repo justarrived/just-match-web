@@ -185,6 +185,8 @@
   "input.email.label": "Email",
   "input.email.or.phone.label": "Email or phone",
   "input.email.or.phone.placeholder": "Email or phone",
+  "input.email.or.phone.suggestion.hint": "Did you mean {{email}}?",
+  "input.email.or.phone.suggestion.link": "Click here to use this email",
   "input.email.placeholder": "Email",
   "input.email.suggestion.hint": "Did you mean {{email}}?",
   "input.email.suggestion.link": "Click here to use this email",
