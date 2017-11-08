@@ -112,7 +112,6 @@ export class UserNotificationSettingsFormComponent extends BaseComponent {
     .then(user => {
       this.submitSuccess = true;
       this.loadingSubmit = false;
-      this.initForm();
       return user;
     })
     .catch(errors => {
