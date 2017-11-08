@@ -65,7 +65,7 @@ $button-font-arabic: $text-font-family-arabic;
 }
 
 .btn.primary:hover {
-  color: $color-cerise-500 !important;
+  color: $color-cerise-500;
   background-color:  $white;
   border-color: $color-cerise-500;
 }
@@ -73,7 +73,7 @@ $button-font-arabic: $text-font-family-arabic;
 .btn.primary:active {
   background-color: $color-cerise-600;
   border-color: $color-cerise-500;
-  color: $white;
+  color: $white !important;
 }
 // PRIMARY LIGHT
 .btn.primary-light {
@@ -89,7 +89,7 @@ $button-font-arabic: $text-font-family-arabic;
 }
 
 .btn.primary-light:active {
-  color: $white;
+  color: $white !important;
   background-color: $color-cerise-600;
   border-color: $color-cerise-500;
 }
@@ -107,7 +107,7 @@ $button-font-arabic: $text-font-family-arabic;
 }
 
 .btn.secondary:active {
-  color: $white;
+  color: $white !important;
   background-color: $color-cerise-600;
   border-color: $color-cerise-500;
 }
@@ -119,13 +119,13 @@ $button-font-arabic: $text-font-family-arabic;
 }
 
 .btn.secondary-light:hover {
-  color: $color-cerise-500 !important;
+  color: $color-cerise-500;
   background-color: $white;
   border-color: $white;
 }
 
 .btn.secondary-light:active {
-  color: $white;
+  color: $white !important;
   background-color: $color-cerise-600;
   border-color: $color-cerise-500;
 }
