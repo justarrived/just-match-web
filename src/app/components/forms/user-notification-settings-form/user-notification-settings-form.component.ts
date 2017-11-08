@@ -83,8 +83,8 @@ export class UserNotificationSettingsFormComponent extends BaseComponent {
   private initForm(): void {
     if (this.user) {
       this.formGroup = this.formBuilder.group({
-        'ignored_notifications_result': [],
         'ignored_notifications': [this.user.ignoredNotifications],
+        'ignored_notifications_result': [],
         'system_language_id': [this.user.systemLanguage.id, Validators.compose([Validators.required])],
       });
     }
