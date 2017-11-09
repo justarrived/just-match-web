@@ -7,6 +7,7 @@ import {ContactProxy} from './contact/contact.proxy';
 import {CountryProxy} from './country/country.proxy';
 import {DigestSubscriberProxy} from './digest-subscriber/digest-subscriber.proxy';
 import {DocumentProxy} from './document/document.proxy';
+import {EmailSuggestionProxy} from './email-suggestion/email-suggestion.proxy';
 import {FaqProxy} from './faq/faq.proxy';
 import {GuideSectionArticleProxy} from './guide-section-article/guide-section-article.proxy';
 import {GuideSectionProxy} from './guide-section/guide-section.proxy';
@@ -49,6 +50,7 @@ import {UserStatusProxy} from './user-status/user-status.proxy';
     CountryProxy,
     DigestSubscriberProxy,
     DocumentProxy,
+    EmailSuggestionProxy,
     FaqProxy,
     GuideSectionArticleProxy,
     GuideSectionProxy,
