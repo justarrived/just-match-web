@@ -4,6 +4,12 @@ HEAD
 -----------
 
 
+v1.7 - 2017-11-09
+-----------
+* Don't display jobs that are filled in `new-jobs-section.component`
+* Pull sv locale from Transifex
+
+
 v1.6 - 2017-11-09
 -----------
 * Pull translations from Transifex
