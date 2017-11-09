@@ -38,7 +38,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
         </container-card>
         <div>
           <guide-card
-            [fadedTitle]="(guideSectionArticle | async)?.section.translatedText?.title"
+            [fadedTitle]="(guideSectionArticle | async)?.section?.translatedText?.title"
             [title]="(guideSectionArticle | async)?.translatedText?.title"
             width="100%"
             style="width: 100%">
@@ -57,7 +57,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
 
       <div class="ui mobile only grid">
         <guide-card
-          [fadedTitle]="(guideSectionArticle | async)?.section.translatedText?.title"
+          [fadedTitle]="(guideSectionArticle | async)?.section?.translatedText?.title"
           [title]="(guideSectionArticle | async)?.translatedText?.title"
           width="100%"
           style="width: 100%">
