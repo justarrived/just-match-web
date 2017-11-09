@@ -1,3 +1,6 @@
+import {GuideSection} from '../guide-section/guide-section';
+import {GuideSectionFactory} from '../guide-section/guide-section';
+
 // API attribute interfaces
 interface GuideSectionArticleApiAttributes {
   body: string;
@@ -7,6 +10,7 @@ interface GuideSectionArticleApiAttributes {
   shortDescription: string;
   slug: string;
   title: string;
+  section: GuideSection;
   translatedText: GuideSectionArticleTranslatedTextApiAttributes;
 }
 
@@ -41,6 +45,7 @@ export class GuideSectionArticleFactory {
       shortDescription: jsonObject.short_description,
       slug: jsonObject.slug,
       title: jsonObject.title,
+      section: GuideSectionFactory.createGuideSection(jsonObject.section),
       translatedText: GuideSectionArticleTranslatedTextFactory.createGuideSectionArticleTranslatedText(jsonObject.translated_text),
     };
   }
