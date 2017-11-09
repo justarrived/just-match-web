@@ -4,6 +4,40 @@ HEAD
 -----------
 
 
+v1.6 - 2017-11-09
+-----------
+* Pull translations from Transifex
+* Add missing ?. in guide-section-article.component template call chain
+* :hocho: typo in en translation
+* Pull arabic locale translations from Transifex
+* Display the section title in the article card rather than the article title twice
+* Removed the autosize directive. Caused a major bug that would not allow users to scroll when textareas became large. Will have to do it in some other way.
+* Bugfix: the result control value used for catching multiple select inputs is replaced by angular on form submits sometimes. Solved it by using a result array instead. Ugly but works…
+* Added result control to user details form for user notifications input
+* Don’t use transparent navbar when top scrolled if cookie bar or god mode bar is visible
+* Also added the email suggestion functionality to email or phone input
+* Implemented on the fly email suggestions when typing emails.
+* Added email suggestion model and proxy
+* Fix button active styles
+* Pull translations
+* Also added the redirect functionality to logged in admin guard.
+* If blocked by logged in guard the user is redirected to login and after login success redirected to initial page
+* Fix bug that caused user notifications dropdown to drop results after submit.
+* Update user notification proxy API URL
+* Solve the multiple select issues utilizing another control to hold the result
+* Remove salary information from job show page
+* Remove total job salary from job show page
+* Update circle.yml config to use node v6.11.3 (was 6.10.2)
+* Pull sv translations from Transifex
+* Add RendererFactory2 to BasicUserDataPage component
+* Reset dev env API URL
+* Add /user-notification-settings-page
+* Update ignore notifications input component
+* Step towards multiselect support in select-input.component.ts
+* Add support for multiple dropdown in select-input.component
+* [draft] Ignore user notification input
+
+
 v1.5 - 2017-11-07
 -----------
 * Remove salary information from job show page
