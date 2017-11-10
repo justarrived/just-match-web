@@ -112,6 +112,7 @@ import {HintPagerComponent} from './components/pagers/hint-pager/hint-pager.comp
 import {HomePageComponent} from './components/pages/home-page/home-page.component';
 import {HowItWorksSectionComponent} from './components/sections/how-it-works-section/how-it-works-section.component';
 import {HttpModule} from '@angular/http';
+import {HttpClientModule} from '@angular/common/http';
 import {InfoMessageComponent} from './components/messages/info-message/info-message.component';
 import {InputErrorComponent} from './components/form-errors/input-error/input-error.component';
 import {InputErrorsComponent} from './components/form-errors/input-errors/input-errors.component';
@@ -288,6 +289,7 @@ export class RavenErrorHandler implements ErrorHandler {
     CommonModule,
     FormsModule,
     HttpModule,
+    HttpClientModule,
     ProxiesModule,
     ReactiveFormsModule,
     RoutesModule,

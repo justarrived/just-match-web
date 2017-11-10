@@ -1,11 +1,11 @@
 import * as fs from 'fs';
 import { Request, Response, Send } from 'express';
 
-import { Provider, NgModuleFactory, Type, CompilerFactory, Compiler } from '@angular/core';
+import { StaticProvider, NgModuleFactory, Type, CompilerFactory, Compiler } from '@angular/core';
 import { ResourceLoader } from '@angular/compiler';
 import { INITIAL_CONFIG, renderModuleFactory, platformDynamicServer } from '@angular/platform-server';
 
-import { OpaqueToken } from '@angular/core';
+import { InjectionToken } from '@angular/core';
 
 export class FileLoader implements ResourceLoader {
   get(url: string): Promise<string> {
@@ -22,15 +22,15 @@ export class FileLoader implements ResourceLoader {
 }
 
 
-export const REQUEST = new OpaqueToken('REQUEST');
-export const RESPONSE = new OpaqueToken('RESPONSE');
+export const REQUEST = new InjectionToken('REQUEST');
+export const RESPONSE = new InjectionToken('RESPONSE');
 
 /**
  * These are the allowed options for the engine
  */
 export interface NgSetupOptions {
   bootstrap: Type<{}> | NgModuleFactory<{}>;
-  providers?: Provider[];
+  providers?: StaticProvider[];
 }
 
 /**
@@ -62,7 +62,7 @@ export function ngExpressEngine(setupOptions: NgSetupOptions) {
   const compiler: Compiler = compilerFactory.createCompiler([
     {
       providers: [
-        { provide: ResourceLoader, useClass: FileLoader }
+        { provide: ResourceLoader, useClass: FileLoader, deps: [] }
       ]
     }
   ]);
@@ -87,7 +87,8 @@ export function ngExpressEngine(setupOptions: NgSetupOptions) {
             useValue: {
               document: getDocument(filePath),
               url: options.req.originalUrl
-            }
+            },
+            deps: []
           }
         ]);
 
@@ -143,17 +144,19 @@ function getFactory(
 /**
  * Get providers of the request and response
  */
-function getReqResProviders(req: Request, res: Response): Provider[] {
-  const providers: Provider[] = [
+function getReqResProviders(req: Request, res: Response): StaticProvider[] {
+  const providers: StaticProvider[] = [
     {
       provide: REQUEST,
-      useValue: req
+      useValue: req,
+      deps: []
     }
   ];
   if (res) {
     providers.push({
       provide: RESPONSE,
-      useValue: res
+      useValue: res,
+      deps: []
     });
   }
   return providers;

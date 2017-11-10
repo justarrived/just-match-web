@@ -1,12 +1,12 @@
-import {Http} from '@angular/http';
+import {HttpClient} from '@angular/common/http';
 import {Inject} from '@angular/core';
+import {isPlatformBrowser} from '@angular/common';
 import {NgModule} from '@angular/core';
+import {Observable} from "rxjs/Observable";
 import {PLATFORM_ID} from '@angular/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {TranslateLoader} from '@ngx-translate/core';
 import {TranslateModule} from '@ngx-translate/core';
-import {Observable} from "rxjs/Observable";
-import {isPlatformBrowser} from '@angular/common';
 
 declare var require: any;
 
@@ -27,7 +27,7 @@ export class TranslateUniversalLoader implements TranslateLoader {
   }
 }
 
-export function createTranslateLoader(platformId: any, http: Http): TranslateLoader {
+export function createTranslateLoader(platformId: any, http: HttpClient): TranslateLoader {
   if (isPlatformBrowser(platformId)) {
     return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
   } else {
@@ -40,7 +40,7 @@ export function createTranslateLoader(platformId: any, http: Http): TranslateLoa
     loader: {
       provide: TranslateLoader,
       useFactory: createTranslateLoader,
-      deps: [PLATFORM_ID, Http]
+      deps: [PLATFORM_ID, HttpClient]
     }
   })],
   exports: [TranslateModule]
