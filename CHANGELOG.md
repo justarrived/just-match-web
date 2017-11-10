@@ -4,6 +4,12 @@ HEAD
 -----------
 
 
+v1.8 - 2017-11-10
+-----------
+* Replace navigation and language menu background image with color
+* Replace footer background image with color
+
+
 v1.7 - 2017-11-09
 -----------
 * Don't display jobs that are filled in `new-jobs-section.component`
