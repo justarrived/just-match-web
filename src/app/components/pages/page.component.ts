@@ -62,7 +62,7 @@ export abstract class PageComponent extends BaseComponent implements OnInit, OnD
 
   protected sendAnalyticsEvent() {
     const data = {
-      url: this.getUrl(),
+      url: PageComponent.getUrl(this.request),
     };
 
     // TODO: Send the event (must be async) to the API
