@@ -88,7 +88,7 @@ function each(collection: any, iterator: Function): void {
     return;
   }
 
-  let keys = _.isArray(collection) ? _.range(collection.length) : Object.keys(collection);
+  let keys: any = _.isArray(collection) ? _.range(collection.length) : Object.keys(collection);
   _.forEach(keys, key => iterator(collection[key], key));
 }
 
