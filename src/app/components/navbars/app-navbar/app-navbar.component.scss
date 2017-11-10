@@ -5,8 +5,7 @@
   pointer-events: auto;
   height: $navbar-height;
   border-radius: 0;
-  background-color: black;
-  background: url('/assets/images/navbar-background.jpg');
+  background-color: $color-gray-800;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
