@@ -9,7 +9,7 @@ import {isPlatformBrowser} from '@angular/common';
 import {isPlatformServer} from '@angular/common';
 import {JARoutes} from '../routes/ja-routes/ja-routes';
 import {NavigationService} from './navigation.service';
-import {Observable} from 'rxjs';
+import {Observable} from 'rxjs/Observable';
 import {parseJsonapiResponse} from '../utils/jsonapi-parser/jsonapi-parser.util';
 import {PLATFORM_ID} from '@angular/core';
 import {Request} from '@angular/http';

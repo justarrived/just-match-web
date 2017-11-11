@@ -1,4 +1,4 @@
-import 'rxjs/Rx';
+import 'rxjs/add/observable/interval';
 import {ActivatedRoute} from '@angular/router';
 import {ApiErrors} from '../../../models/api-models/api-errors/api-errors';
 import {BaseComponent} from '../../base.component';
@@ -13,7 +13,7 @@ import {isPlatformBrowser} from '@angular/common';
 import {Language} from '../../../models/api-models/language/language';
 import {Message} from '../../../models/api-models/message/message';
 import {MessageProxy} from '../../../proxies/message/message.proxy';
-import {Observable} from 'rxjs/Rx';
+import {Observable} from 'rxjs/Observable';
 import {Params} from '@angular/router';
 import {PLATFORM_ID} from '@angular/core';
 import {Subscription} from 'rxjs/Subscription';
