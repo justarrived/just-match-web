@@ -180,6 +180,10 @@
     source-map "^0.5.6"
     tree-kill "^1.0.0"
 
+"@nguniversal/module-map-ngfactory-loader@^5.0.0-beta.5":
+  version "5.0.0-beta.5"
+  resolved "https://registry.yarnpkg.com/@nguniversal/module-map-ngfactory-loader/-/module-map-ngfactory-loader-5.0.0-beta.5.tgz#d86497e704f702e1a18bbcab5dd6586057941fa5"
+
 "@ngx-cache/core@4.0.1":
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/@ngx-cache/core/-/core-4.0.1.tgz#242385dba01aa00b6eb4c48df3c3d69294d8ac9b"
