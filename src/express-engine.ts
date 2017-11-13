@@ -56,8 +56,6 @@ const factoryCacheMap = new Map<Type<{}>, NgModuleFactory<{}>>();
  */
 export function ngExpressEngine(setupOptions: NgSetupOptions) {
 
-  setupOptions.providers = setupOptions.providers || [];
-
   const compilerFactory: CompilerFactory = platformDynamicServer().injector.get(CompilerFactory);
   const compiler: Compiler = compilerFactory.createCompiler([
     {
@@ -67,7 +65,7 @@ export function ngExpressEngine(setupOptions: NgSetupOptions) {
     }
   ]);
 
-  return function (filePath: string, options: RenderOptions, callback: any) {
+  return function (filePath: string, options: RenderOptions, callback: (err?: Error | null, html?: string) => void) {
 
     options.providers = options.providers || [];
 
@@ -78,6 +76,8 @@ export function ngExpressEngine(setupOptions: NgSetupOptions) {
         throw new Error('You must pass in a NgModule or NgModuleFactory to be bootstrapped');
       }
 
+      setupOptions.providers = setupOptions.providers || [];
+
       const extraProviders = setupOptions.providers.concat(
         options.providers,
         getReqResProviders(options.req, options.res),
@@ -87,8 +87,7 @@ export function ngExpressEngine(setupOptions: NgSetupOptions) {
             useValue: {
               document: getDocument(filePath),
               url: options.req.originalUrl
-            },
-            deps: []
+            }
           }
         ]);
 
@@ -144,19 +143,17 @@ function getFactory(
 /**
  * Get providers of the request and response
  */
-function getReqResProviders(req: Request, res: Response): StaticProvider[] {
+function getReqResProviders(req: Request, res?: Response): StaticProvider[] {
   const providers: StaticProvider[] = [
     {
       provide: REQUEST,
-      useValue: req,
-      deps: []
+      useValue: req
     }
   ];
   if (res) {
     providers.push({
       provide: RESPONSE,
-      useValue: res,
-      deps: []
+      useValue: res
     });
   }
   return providers;
