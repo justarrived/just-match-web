@@ -1,7 +1,7 @@
 import {Inject} from '@angular/core';
 import {Injectable} from '@angular/core';
 import {isPlatformBrowser} from '@angular/common';
-import {Observable} from 'rxjs';
+import {Observable} from 'rxjs/Observable';
 import {PLATFORM_ID} from '@angular/core';
 
 @Injectable()
