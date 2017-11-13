@@ -2,7 +2,7 @@ import {BaseComponent} from '../../base.component';
 import {Component} from '@angular/core';
 import {DOCUMENT} from '@angular/platform-browser';
 import {Inject} from '@angular/core';
-import {REQUEST} from '../../../../express-engine';
+import {REQUEST} from '@nguniversal/express-engine/tokens';
 import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
 import {UserResolver} from '../../../resolvers/user/user.resolver';
 

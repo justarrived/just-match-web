@@ -5,7 +5,7 @@ import 'reflect-metadata';
 import { renderModuleFactory } from '@angular/platform-server';
 import { enableProdMode } from '@angular/core';
 
-import { ngExpressEngine } from './src/express-engine';
+import { ngExpressEngine } from '@nguniversal/express-engine';
 
 import * as express from 'express';
 import { join } from 'path';
