@@ -3,6 +3,17 @@
 HEAD
 -----------
 
+v1.8 - 2017-11-15
+-----------
+* Upgrade to Angular 5
+* Optimize bundle size
+* Remove vendor bundle with --build-optimizer
+* Remove Gulp dependencies
+* Use Angular-cli for Universal
+* Remove unused dependencies
+* Move all dependencies that is needed to build to non dev dependencies
+* Move all dependencies that is needed to test to dev dependencies
+
 
 v1.8 - 2017-11-10
 -----------
