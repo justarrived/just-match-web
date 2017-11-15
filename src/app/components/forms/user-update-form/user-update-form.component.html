@@ -14,6 +14,13 @@
     icon="user">
   </form-section-title-text>
 
+  <resume-input
+    [centered]="true"
+    [showLabel]="false"
+    [hint]="missingUserTraits?.cv?.hint"
+    *ngIf="missingUserTraits?.cv">
+  </resume-input>
+
   <first-name-input
     [apiErrors]="apiErrors"
     [control]="updateForm.controls.first_name"
@@ -233,13 +240,6 @@
     [hint]="missingUserTraits?.job_experience?.hint"
     *ngIf="missingUserTraits?.job_experience">
   </job-experience-input>
-
-  <resume-input
-    [centered]="true"
-    [showLabel]="false"
-    [hint]="missingUserTraits?.cv?.hint"
-    *ngIf="missingUserTraits?.cv">
-  </resume-input>
 
   <form-submit-button
     [buttonText]="'user.update.form.submit.button' | translate"
