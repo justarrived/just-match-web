@@ -3,7 +3,7 @@
 HEAD
 -----------
 
-v1.8 - 2017-11-15
+v1.9 - 2017-11-15
 -----------
 * Upgrade to Angular 5
 * Optimize bundle size
