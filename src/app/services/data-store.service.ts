@@ -5,7 +5,7 @@ import {isPlatformBrowser} from '@angular/common';
 import {LocalStorage} from '../storage/local-storage/local-storage';
 import {MemoryStorage} from '../storage/memory-storage/memory-storage';
 import {PLATFORM_ID} from '@angular/core';
-import {REQUEST} from '../../express-engine';
+import {REQUEST} from '@nguniversal/express-engine/tokens';
 import {SessionStorage} from '../storage/session-storage/session-storage';
 import {StorageInterface} from '../storage/storage-interface/storage-interface';
 import {storageTypeAvailable} from '../utils/storage-type-available/storage-type-available.util';

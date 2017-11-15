@@ -10,7 +10,7 @@ import {Meta} from '@angular/platform-browser';
 import {PageComponent} from '../page.component';
 import {PageOptionsService} from '../../../services/page-options.service';
 import {RendererFactory2} from '@angular/core';
-import {REQUEST} from '../../../../express-engine';
+import {REQUEST} from '@nguniversal/express-engine/tokens';
 import {Subscription} from 'rxjs/Subscription';
 import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
 import {TranslateService} from '@ngx-translate/core';
