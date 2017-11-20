@@ -170,6 +170,7 @@ import {NotFoundPageComponent} from './components/pages/404-page/404-page.compon
 import {NumberedPagerComponent} from './components/pagers/numbered-pager/numbered-pager.component';
 import {NumberInputComponent} from './components/inputs/number-input/number-input.component';
 import {OccupationsInputComponent} from './components/inputs/occupations-input/occupations-input.component';
+import {OccupationYearsOfExperienceComponent} from './components/inputs/occupation-years-of-experience-input/occupation-years-of-experience-input.component';
 import {OldPasswordInputComponent} from './components/inputs/old-password-input/old-password-input.component';
 import {PageOptionsService} from './services/page-options.service';
 import {PartnersSectionComponent} from './components/sections/partners-section/partners-section.component';
@@ -452,6 +453,7 @@ export class RavenErrorHandler implements ErrorHandler {
     NumberedPagerComponent,
     NumberInputComponent,
     OccupationsInputComponent,
+    OccupationYearsOfExperienceComponent,
     OldPasswordInputComponent,
     PartnersSectionComponent,
     PasswordChangedModalComponent,

@@ -18,7 +18,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
       [min]="1"
       [placeholder]="'input.years.of.experience.placeholder' | translate"
       apiAttribute="years_of_experience"
-      icon="pink legal">
+      icon="pink trophy">
     </number-input>`
 })
 export class YearsOfExperienceInputComponent extends BaseComponent {

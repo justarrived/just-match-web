@@ -40,10 +40,12 @@ import {UserOccupationFactory} from '../../../models/api-models/user-occupation/
       color="black">
     </basic-text>
     <div *ngFor="let userOccupation of userOccupationsControl.value">
-      <years-of-experience-input
+      <occupation-years-of-experience-input
         [apiErrors]="apiErrors"
-        [control]="userOccupation.control">
-      </years-of-experience-input>
+        [control]="userOccupation.control"
+        (onDelete)="onRemoveUserOccupation(userOccupation)"
+        [label]="userOccupation.occupation.translatedText.name">
+      </occupation-years-of-experience-input>
     </div>
   </div>`
 })

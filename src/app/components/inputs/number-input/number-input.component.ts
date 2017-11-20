@@ -58,12 +58,12 @@ export class NumberInputComponent extends BaseComponent  {
   @Input() public hint: string;
   @Input() public icon: string;
   @Input() public label: string;
+  @Input() public max: number = 100;
+  @Input() public min: number = 1;
   @Input() public paddingBottom: string = '1em';
   @Input() public placeholder: string;
   @Input() public requiredLabel: string;
   @Input() public type: string = 'text';
-  @Input() public min: number = 1;
-  @Input() public max: number = 100;
   @ViewChild(InputErrorsComponent) public inputErrors: InputErrorsComponent;
   @ViewChild("input") public inputRef: ElementRef;
 
