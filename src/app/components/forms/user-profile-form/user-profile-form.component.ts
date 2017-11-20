@@ -59,10 +59,12 @@ export class UserProfileFormComponent extends BaseComponent {
         'job_experience': [this.user.jobExperience],
         'languages': [''],
         'linkedin_url': [this.user.linkedinUrl],
+        'occupations': [''],
         'skills': [''],
         'ssn': [this.user.ssn],
         'user_interests': [this.user.userInterests.slice()],
         'user_languages': [this.user.userLanguages.slice()],
+        'user_occupations': [this.user.userOccupations.slice()],
         'user_skills': [this.user.userSkills.slice()],
       });
     }
@@ -106,6 +108,12 @@ export class UserProfileFormComponent extends BaseComponent {
         return {
           id: userSkill['skill'].id,
           proficiency: userSkill['proficiency']
+        };
+      }),
+      'occupation_ids': map(this.profileForm.value.user_occupations, userOccupation => {
+        return {
+          id: userOccupation['occupation'].id,
+          years_of_experience: userOccupation['years_of_experience']
         };
       }),
       'ssn': this.profileForm.value.ssn,

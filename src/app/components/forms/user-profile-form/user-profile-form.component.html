@@ -161,6 +161,12 @@
     [showLabel]="false">
   </resume-input>
 
+  <occupations-input
+    [occupationsControl]="profileForm.controls['occupations']"
+    [userOccupationsControl]="profileForm.controls['user_occupations']"
+    [apiErrors]="apiErrors">
+  </occupations-input>
+
   <job-experience-input
     [control]="profileForm.controls['job_experience']"
     [apiErrors]="apiErrors">

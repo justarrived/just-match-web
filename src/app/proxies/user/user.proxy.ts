@@ -30,6 +30,7 @@ export interface CreateUserAttributes {
   linkedin_url?: string;
   next_of_kin_name?: string;
   next_of_kin_phone?: string;
+  occupation_ids?: {id: string, years_of_experience: number}[];
   password?: string;
   phone?: string;
   skill_ids?: {id: string, proficiency: number}[];
@@ -67,6 +68,7 @@ export interface UpdateUserAttributes {
   linkedin_url?: string;
   next_of_kin_name?: string;
   next_of_kin_phone?: string;
+  occupation_ids?: {id: string, years_of_experience: number}[];
   phone?: string;
   skill_ids?: {id: string, proficiency: number}[];
   skype_username?: string;
