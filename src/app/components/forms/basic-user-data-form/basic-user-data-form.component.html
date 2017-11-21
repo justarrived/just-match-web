@@ -31,6 +31,17 @@
   </languages-input>
 
   <form-section-title-text
+    [text]="'user.profile.form.work.experience.section.header' | translate"
+    icon="suitcase">
+  </form-section-title-text>
+
+  <occupations-input
+    [occupationsControl]="settingsForm.controls['occupations']"
+    [userOccupationsControl]="settingsForm.controls['user_occupations']"
+    [apiErrors]="apiErrors">
+  </occupations-input>
+
+  <form-section-title-text
     [text]="'user.profile.form.general.skills.section.header' | translate"
     icon="rocket">
   </form-section-title-text>
