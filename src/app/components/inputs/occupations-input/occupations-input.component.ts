@@ -42,7 +42,7 @@ import {UserOccupationFactory} from '../../../models/api-models/user-occupation/
     <div *ngFor="let userOccupation of userOccupationsControl.value">
       <occupation-years-of-experience-input
         [apiErrors]="apiErrors"
-        [control]="userOccupation.control"
+        [control]="getYearsOfExperienceControl(userOccupation)"
         (onDelete)="onRemoveUserOccupation(userOccupation)"
         [label]="userOccupation.occupation.translatedText.name">
       </occupation-years-of-experience-input>
@@ -77,7 +77,7 @@ export class OccupationsInputComponent extends BaseComponent {
 
   protected loadData(): void {
     this.occupations = this.occupationProxy.getOccupations({
-      'page[size]': 100,
+      'page[size]': 150,
       'filter[id]': (this.occupationIds ? this.occupationIds.join(',') : null),
     });
   }
@@ -86,8 +86,13 @@ export class OccupationsInputComponent extends BaseComponent {
     deleteElementFromArray(this.userOccupationsControl.value, userOccupation);
   }
 
-  public onProficiencyChange(value, userOccupation): void {
-    userOccupation.proficiency = value;
+  public getYearsOfExperienceControl(userOccupation): void {
+    if (!userOccupation['control']) {
+      userOccupation['control'] = new FormControl(userOccupation.yearsOfExperience);
+      userOccupation['control'].valueChanges.subscribe(value =>   userOccupation.yearsOfExperience = value);
+    }
+
+    return userOccupation['control']
   }
 
   public onAddOccupation(occupationId): void {
@@ -95,9 +100,6 @@ export class OccupationsInputComponent extends BaseComponent {
       const userOccupation = UserOccupationFactory.createUserOccupation({});
       userOccupation.yearsOfExperience = 1;
       this.loadingOccupation = true;
-
-      userOccupation['control'] = new FormControl(userOccupation.yearsOfExperience);
-      userOccupation['control'].valueChanges.subscribe(value => this.onProficiencyChange(value, userOccupation));
 
       this.occupationProxy.getOccupation(occupationId)
       .then(occupation => {

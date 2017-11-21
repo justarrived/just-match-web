@@ -195,7 +195,7 @@ export class UserMissingTraitsNextFormComponent extends BaseComponent {
       'occupation_ids': map(this.updateForm.value.user_occupations, userOccupation => {
         return {
           id: userOccupation['occupation'].id,
-          years_of_experience: userOccupation['years_of_experience']
+          years_of_experience: userOccupation['yearsOfExperience']
         };
       }),
       'phone': this.updateForm.value.phone,
