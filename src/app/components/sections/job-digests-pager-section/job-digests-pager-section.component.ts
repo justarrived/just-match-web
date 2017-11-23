@@ -13,6 +13,75 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
   selector: 'job-digests-pager-section',
   template: `
     <div style="display: flex; flex-direction: column;">
+    <div
+      *ngIf="totalJobDigests !== 0">
+      <basic-title-text
+        [text]="'job.digests.pager.section.title' | translate"
+        color="black"
+        fontSize="large"
+        marginBottom="0"
+        marginTop="30px"
+        textAlignmentLtr="center"
+        textAlignmentRtl="center"
+        underlineBelow="true"
+        underlineBelowLtrAlignment="center"
+        underlineBelowRtlAlignment="center">
+      </basic-title-text>
+
+      <numbered-pager
+        (pageChange)="onPageChange($event)"
+        [currentPage]="page"
+        [maxResults]="totalJobDigests"
+        [pageSize]="pageSize"
+        type="light">
+      </numbered-pager>
+
+      <div
+        class="ui basic center aligned segment"
+        style="flex: 1; margin: 0; padding: 0;">
+        <basic-loader
+          [promise]="jobDigestsMetaPromise"
+          class="inverted">
+        </basic-loader>
+        <basic-text
+          [text]="'job.digests.pager.section.empty' | translate"
+          *ngIf="totalJobDigests === 0"
+          color="black"
+          fontSize="large"
+          textAlignmentLtr="center"
+          textAlignmentRtl="center">
+        </basic-text>
+        <div
+          *ngFor="let jobDigest of (jobDigestsMetaPromise | async)?.jobDigests; let i = index;"
+          style="margin-bottom: 30px; background: white; padding: 20px; border-radius: 20px;">
+          <basic-title-text
+            [text]="'job.digests.pager.section.subscription.title' | translate: {subscriptionNumber: totalJobDigests - ((i + 1) + (page - 1) * pageSize) + 1}"
+            color="black"
+            fontSize="large"
+            marginBottom="20px"
+            marginTop="0"
+            textAlignmentLtr="center"
+            textAlignmentRtl="center"
+            underlineBelow="true"
+            underlineBelowLtrAlignment="center"
+            underlineBelowRtlAlignment="center">
+          </basic-title-text>
+          <job-digest-form
+            [jobDigest]="jobDigest"
+            (digestDeleted)="loadData()">
+          </job-digest-form>
+        </div>
+      </div>
+
+      <numbered-pager
+        (pageChange)="onPageChange($event)"
+        [currentPage]="page"
+        [maxResults]="totalJobDigests"
+        [pageSize]="pageSize"
+        type="light">
+      </numbered-pager>
+    </div>
+
       <div style="margin-top: 30px; background: white; padding: 20px; border-radius: 20px;">
         <basic-title-text
           [text]="'subscribe.new.title' | translate"
@@ -39,75 +108,6 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
           (digestCreated)="digestCreated($event)"
           [digestSubscriberUuid]="digestSubscriberUuid">
         </job-digest-form>
-      </div>
-
-      <div
-        *ngIf="totalJobDigests !== 0">
-        <basic-title-text
-          [text]="'job.digests.pager.section.title' | translate"
-          color="black"
-          fontSize="large"
-          marginBottom="0"
-          marginTop="30px"
-          textAlignmentLtr="center"
-          textAlignmentRtl="center"
-          underlineBelow="true"
-          underlineBelowLtrAlignment="center"
-          underlineBelowRtlAlignment="center">
-        </basic-title-text>
-
-        <numbered-pager
-          (pageChange)="onPageChange($event)"
-          [currentPage]="page"
-          [maxResults]="totalJobDigests"
-          [pageSize]="pageSize"
-          type="light">
-        </numbered-pager>
-
-        <div
-          class="ui basic center aligned segment"
-          style="flex: 1; margin: 0; padding: 0;">
-          <basic-loader
-            [promise]="jobDigestsMetaPromise"
-            class="inverted">
-          </basic-loader>
-          <basic-text
-            [text]="'job.digests.pager.section.empty' | translate"
-            *ngIf="totalJobDigests === 0"
-            color="black"
-            fontSize="large"
-            textAlignmentLtr="center"
-            textAlignmentRtl="center">
-          </basic-text>
-          <div
-            *ngFor="let jobDigest of (jobDigestsMetaPromise | async)?.jobDigests; let i = index;"
-            style="margin-bottom: 30px; background: white; padding: 20px; border-radius: 20px;">
-            <basic-title-text
-              [text]="'job.digests.pager.section.subscription.title' | translate: {subscriptionNumber: totalJobDigests - ((i + 1) + (page - 1) * pageSize) + 1}"
-              color="black"
-              fontSize="large"
-              marginBottom="20px"
-              marginTop="0"
-              textAlignmentLtr="center"
-              textAlignmentRtl="center"
-              underlineBelow="true"
-              underlineBelowLtrAlignment="center"
-              underlineBelowRtlAlignment="center">
-            </basic-title-text>
-            <job-digest-form
-              [jobDigest]="jobDigest"
-              (digestDeleted)="loadData()">
-            </job-digest-form>
-          </div>
-        </div>
-
-        <numbered-pager
-          (pageChange)="onPageChange($event)"
-          [currentPage]="page"
-          [maxResults]="totalJobDigests"
-          [pageSize]="pageSize"
-          type="light">
-        </numbered-pager>
       </div>
     </div>`
 })
