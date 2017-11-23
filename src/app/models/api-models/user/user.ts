@@ -15,6 +15,8 @@ import {UserInterest} from '../user-interest/user-interest';
 import {UserInterestFactory} from '../user-interest/user-interest';
 import {UserLanguage} from '../user-language/user-language';
 import {UserLanguageFactory} from '../user-language/user-language';
+import {UserOccupation} from '../user-occupation/user-occupation';
+import {UserOccupationFactory} from '../user-occupation/user-occupation';
 import {UserSkill} from '../user-skill/user-skill';
 import {UserSkillFactory} from '../user-skill/user-skill';
 
@@ -68,6 +70,7 @@ interface UserApiAttributes {
   userImages: UserImage[];
   userInterests: UserInterest[];
   userLanguages: UserLanguage[];
+  userOccupations: UserOccupation[];
   userSkills: UserSkill[];
   zip: string;
   zipLatitude: number;
@@ -175,6 +178,7 @@ export class UserFactory {
       userImages: userImages,
       userInterests: map(jsonObject.user_interests, userInterest => UserInterestFactory.createUserInterest(userInterest)),
       userLanguages: map(jsonObject.user_languages, userLanguage => UserLanguageFactory.createUserLanguage(userLanguage)),
+      userOccupations: map(jsonObject.user_occupations, userOccupation => UserOccupationFactory.createUserOccupation(userOccupation)),
       userSkills: map(jsonObject.user_skills, userSkill => UserSkillFactory.createUserSkill(userSkill)),
       workPermitBackImage: UserFactory.getUserImageByCategory(userImages, 'work_permit_back'),
       workPermitFrontImage: UserFactory.getUserImageByCategory(userImages, 'work_permit_front'),

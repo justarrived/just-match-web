@@ -14,13 +14,6 @@
     icon="user">
   </form-section-title-text>
 
-  <resume-input
-    [centered]="true"
-    [showLabel]="false"
-    [hint]="missingUserTraits?.cv?.hint"
-    *ngIf="missingUserTraits?.cv">
-  </resume-input>
-
   <first-name-input
     [apiErrors]="apiErrors"
     [control]="updateForm.controls.first_name"
@@ -230,9 +223,24 @@
 
   <form-section-title-text
     [text]="'user.update.form.work.experience.section.header' | translate"
-    *ngIf="missingUserTraits?.job_experience"
+    *ngIf="missingUserTraits?.job_experience || missingUserTraits?.cv || missingUserTraits?.occupation_ids"
     icon="suitcase">
   </form-section-title-text>
+
+  <resume-input
+    [centered]="true"
+    [showLabel]="false"
+    [hint]="missingUserTraits?.cv?.hint"
+    *ngIf="missingUserTraits?.cv">
+  </resume-input>
+
+  <occupations-input
+    [apiErrors]="apiErrors"
+    [hint]="missingUserTraits?.occupation_ids?.hint"
+    [occupationsControl]="updateForm.controls['occupations']"
+    [userOccupationsControl]="updateForm.controls['user_occupations']"
+    *ngIf="missingUserTraits?.occupation_ids">
+  </occupations-input>
 
   <job-experience-input
     [apiErrors]="apiErrors"

@@ -86,6 +86,7 @@ export class UserMissingTraitsNextFormComponent extends BaseComponent {
         'languages': [''],
         'last_name': [this.user.lastName, Validators.compose([Validators.required, Validators.minLength(2)])],
         'linkedin_url': [this.user.linkedinUrl],
+        'occupations': [''],
         'phone': [this.user.phone, Validators.compose([Validators.required])],
         'skills': [''],
         'ssn': [this.user.ssn],
@@ -93,6 +94,7 @@ export class UserMissingTraitsNextFormComponent extends BaseComponent {
         'system_language_id': [this.user.systemLanguage.id, Validators.compose([Validators.required])],
         'user_interests': [this.user.userInterests.slice()],
         'user_languages': [this.user.userLanguages.slice()],
+        'user_occupations': [this.user.userOccupations.slice()],
         'user_skills': [this.user.userSkills.slice()],
         'zip': [this.user.zip],
       });
@@ -190,6 +192,12 @@ export class UserMissingTraitsNextFormComponent extends BaseComponent {
       }),
       'last_name':this.updateForm.value.last_name,
       'linkedin_url': this.updateForm.value.linkedin_url,
+      'occupation_ids': map(this.updateForm.value.user_occupations, userOccupation => {
+        return {
+          id: userOccupation['occupation'].id,
+          years_of_experience: userOccupation['yearsOfExperience']
+        };
+      }),
       'phone': this.updateForm.value.phone,
       'skill_ids': map(this.updateForm.value.user_skills, userSkill => {
         return {

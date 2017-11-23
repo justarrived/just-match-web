@@ -52,9 +52,11 @@ export class BasicUserDataFormComponent extends BaseComponent {
       this.settingsForm = this.formBuilder.group({
         'interests': [''],
         'languages': [''],
+        'occupations': [''],
         'skills': [''],
         'user_interests': [this.user.userInterests.slice()],
         'user_languages': [this.user.userLanguages.slice()],
+        'user_occupations': [this.user.userOccupations.slice()],
         'user_skills': [this.user.userSkills.slice()],
       });
     }
@@ -84,6 +86,12 @@ export class BasicUserDataFormComponent extends BaseComponent {
         return {
           id: userLanguage['language'].id,
           proficiency: userLanguage['proficiency']
+        };
+      }),
+      'occupation_ids': map(this.settingsForm.value.user_occupations, userOccupation => {
+        return {
+          id: userOccupation['occupation'].id,
+          years_of_experience: userOccupation['yearsOfExperience']
         };
       }),
       'skill_ids': map(this.settingsForm.value.user_skills, userSkill => {

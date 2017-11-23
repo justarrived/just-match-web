@@ -111,8 +111,8 @@ import {GuideWelcomeCardComponent} from './components/cards/guide-welcome-card/g
 import {HintPagerComponent} from './components/pagers/hint-pager/hint-pager.component';
 import {HomePageComponent} from './components/pages/home-page/home-page.component';
 import {HowItWorksSectionComponent} from './components/sections/how-it-works-section/how-it-works-section.component';
-import {HttpModule} from '@angular/http';
 import {HttpClientModule} from '@angular/common/http';
+import {HttpModule} from '@angular/http';
 import {InfoMessageComponent} from './components/messages/info-message/info-message.component';
 import {InputErrorComponent} from './components/form-errors/input-error/input-error.component';
 import {InputErrorsComponent} from './components/form-errors/input-errors/input-errors.component';
@@ -168,6 +168,9 @@ import {NewPasswordInputComponent} from './components/inputs/new-password-input/
 import {NgModule} from '@angular/core';
 import {NotFoundPageComponent} from './components/pages/404-page/404-page.component';
 import {NumberedPagerComponent} from './components/pagers/numbered-pager/numbered-pager.component';
+import {NumberInputComponent} from './components/inputs/number-input/number-input.component';
+import {OccupationsInputComponent} from './components/inputs/occupations-input/occupations-input.component';
+import {OccupationYearsOfExperienceComponent} from './components/inputs/occupation-years-of-experience-input/occupation-years-of-experience-input.component';
 import {OldPasswordInputComponent} from './components/inputs/old-password-input/old-password-input.component';
 import {PageOptionsService} from './services/page-options.service';
 import {PartnersSectionComponent} from './components/sections/partners-section/partners-section.component';
@@ -234,13 +237,13 @@ import {UploadImageCardComponent} from './components/cards/upload-image-card/upl
 import {UserCardComponent} from './components/cards/user-card/user-card.component';
 import {UserDetailsFormComponent} from './components/forms/user-details-form/user-details-form.component';
 import {UserDocumentCardInputComponent} from './components/inputs/user-document-card-input/user-document-card-input.component';
-import {UserNotificationsInput} from './components/inputs/user-notifications-input/user-notifications-input.component';
 import {UserImageCardInputComponent} from './components/inputs/user-image-card-input/user-image-card-input.component';
 import {UserImageCircularInputComponent} from './components/inputs/user-image-circular-input/user-image-circular-input.component';
 import {UserMissingTraitsMessageComponent} from './components/messages/user-missing-traits-message/user-missing-traits-message.component';
 import {UserMissingTraitsNextFormComponent} from './components/forms/user-missing-traits-next-form/user-missing-traits-next-form.component';
 import {UserNotificationSettingsFormComponent} from './components/forms/user-notification-settings-form/user-notification-settings-form.component';
 import {UserNotificationSettingsPageComponent} from './components/pages/user-notification-settings-page/user-notification-settings-page.component';
+import {UserNotificationsInput} from './components/inputs/user-notifications-input/user-notifications-input.component';
 import {UserProfileBannerSectionComponent} from './components/sections/user-profile-banner-section/user-profile-banner-section.component';
 import {UserProfileFormComponent} from './components/forms/user-profile-form/user-profile-form.component';
 import {UserProfilePageComponent} from './components/pages/user-profile-page/user-profile-page.component';
@@ -253,6 +256,7 @@ import {WelcomeStep2ModalComponent} from './components/modals/welcome-step-2-mod
 import {WelcomeStep3ModalComponent} from './components/modals/welcome-step-3-modal/welcome-step-3-modal.component';
 import {WorkPermitBackInputComponent} from './components/inputs/work-permit-back-input/work-permit-back-input.component';
 import {WorkPermitFrontInputComponent} from './components/inputs/work-permit-front-input/work-permit-front-input.component';
+import {YearsOfExperienceInputComponent} from './components/inputs/years-of-experience-input/years-of-experience-input.component';
 import {YesNoInputComponent} from './components/inputs/yes-no-input/yes-no-input.component';
 import {ZipInputComponent} from './components/inputs/zip-input/zip-input.component';
 import * as Raven from 'raven-js';
@@ -447,6 +451,9 @@ export class RavenErrorHandler implements ErrorHandler {
     NewPasswordInputComponent,
     NotFoundPageComponent,
     NumberedPagerComponent,
+    NumberInputComponent,
+    OccupationsInputComponent,
+    OccupationYearsOfExperienceComponent,
     OldPasswordInputComponent,
     PartnersSectionComponent,
     PasswordChangedModalComponent,
@@ -507,13 +514,13 @@ export class RavenErrorHandler implements ErrorHandler {
     UserCardComponent,
     UserDetailsFormComponent,
     UserDocumentCardInputComponent,
-    UserNotificationsInput,
     UserImageCardInputComponent,
     UserImageCircularInputComponent,
     UserMissingTraitsMessageComponent,
     UserMissingTraitsNextFormComponent,
     UserNotificationSettingsFormComponent,
     UserNotificationSettingsPageComponent,
+    UserNotificationsInput,
     UserProfileBannerSectionComponent,
     UserProfileFormComponent,
     UserProfilePageComponent,
@@ -525,6 +532,7 @@ export class RavenErrorHandler implements ErrorHandler {
     WelcomeStep3ModalComponent,
     WorkPermitBackInputComponent,
     WorkPermitFrontInputComponent,
+    YearsOfExperienceInputComponent,
     YesNoInputComponent,
     ZipInputComponent,
   ],
