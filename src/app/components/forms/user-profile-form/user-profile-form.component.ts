@@ -86,7 +86,7 @@ export class UserProfileFormComponent extends BaseComponent {
     this.loadingSubmit = true;
     this.apiErrors = new ApiErrors([]);
 
-    this.analyticsService.publishEvent(AnalyticsActions.UpdateUserTry);
+    this.analyticsService.publishEvent(AnalyticsActions.UpdateUserTry, {user: this.user.id});
 
     return this.userProxy.updateUser(this.user.id, {
       'at_und': this.profileForm.value.at_und,
@@ -126,7 +126,7 @@ export class UserProfileFormComponent extends BaseComponent {
       'include': UserResolver.includes,
     })
     .then(user => {
-      this.analyticsService.publishEvent(AnalyticsActions.UpdateUserSuccess);
+      this.analyticsService.publishEvent(AnalyticsActions.UpdateUserSuccess, {user: this.user.id});
 
       this.userResolver.setUser(user)
       this.submitSuccess = true;
@@ -136,7 +136,7 @@ export class UserProfileFormComponent extends BaseComponent {
     .catch(errors => {
       this.handleServerErrors(errors);
 
-      this.analyticsService.publishEvent(AnalyticsActions.UpdateUserFail);
+      this.analyticsService.publishEvent(AnalyticsActions.UpdateUserFail, {user: this.user.id});
 
       if (this.isInModal) {
         throw errors;

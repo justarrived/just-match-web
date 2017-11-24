@@ -103,7 +103,7 @@ export class UserDetailsFormComponent extends BaseComponent {
     this.loadingSubmit = true;
     this.apiErrors = new ApiErrors([]);
 
-    this.analyticsService.publishEvent(AnalyticsActions.UpdateUserTry);
+    this.analyticsService.publishEvent(AnalyticsActions.UpdateUserTry, {user: this.user.id});
 
     return this.userProxy.updateUser(this.user.id, {
       'bank_account': this.settingsForm.value.bank_account,
@@ -140,7 +140,7 @@ export class UserDetailsFormComponent extends BaseComponent {
       }
     })
     .then(user => {
-      this.analyticsService.publishEvent(AnalyticsActions.UpdateUserSuccess);
+      this.analyticsService.publishEvent(AnalyticsActions.UpdateUserSuccess, {user: this.user.id});
 
       this.userResolver.setUser(user);
       this.submitSuccess = true;
@@ -150,7 +150,7 @@ export class UserDetailsFormComponent extends BaseComponent {
     .catch(errors => {
       this.handleServerErrors(errors);
 
-      this.analyticsService.publishEvent(AnalyticsActions.UpdateUserFail);
+      this.analyticsService.publishEvent(AnalyticsActions.UpdateUserFail, {user: this.user.id});
 
       if (this.isInModal) {
         throw errors;

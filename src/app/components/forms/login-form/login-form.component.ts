@@ -139,7 +139,9 @@ export class LoginFormComponent extends BaseComponent {
 
     return this.userResolver.login(this.loginForm.value.email_or_phone, this.loginForm.value.password)
     .then(user => {
-      this.analyticsService.publishEvent(AnalyticsActions.LoginSuccess);
+      this.analyticsService.publishEvent(AnalyticsActions.LoginSuccess, {
+        user: user.id
+      });
 
       if (this.navigateOnSubmit) {
         const redirectUrl = this.dataStoreService.getFromMemory(LoggedInGuard.redirectToUrlAfterLoginKey);

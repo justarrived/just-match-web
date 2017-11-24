@@ -77,7 +77,9 @@ export class RegisterFormComponent extends BaseComponent {
     this.submitFail = false;
     this.submitSuccess = false;
 
-    const userArguments = {
+    this.analyticsService.publishEvent(AnalyticsActions.CreateUserTry);
+
+    return this.userProxy.createUser({
       'city': this.registerForm.value.city,
       'consent': this.registerForm.value.accepted_terms_and_conditions,
       'country_of_origin': this.registerForm.value.country_of_origin,
@@ -90,15 +92,9 @@ export class RegisterFormComponent extends BaseComponent {
       'phone': this.registerForm.value.phone,
       'street': this.registerForm.value.street,
       'zip': this.registerForm.value.zip,
-    };
-
-    this.analyticsService.publishEvent(AnalyticsActions.CreateUserTry, userArguments);
-
-    return this.userProxy.createUser(userArguments)
+    })
     .then(response => {
       this.submitSuccess = true;
-
-      this.analyticsService.publishEvent(AnalyticsActions.CreateUserSuccess, userArguments);
 
       return this.userResolver.login(this.registerForm.value.email, this.registerForm.value.password)
       .catch(errors => {
@@ -107,6 +103,10 @@ export class RegisterFormComponent extends BaseComponent {
       });
     })
     .then(user => {
+      this.analyticsService.publishEvent(AnalyticsActions.CreateUserSuccess, {
+        user: user.id
+      });
+
       if (this.navigateOnSubmit) {
         this.navigationService.navigate(this.JARoutes.home);
       }
@@ -118,7 +118,7 @@ export class RegisterFormComponent extends BaseComponent {
       this.handleServerErrors(errors);
       this.showAccountAlreadyExistsModalIfEmailOrPhoneTaken(errors);
 
-      this.analyticsService.publishEvent(AnalyticsActions.CreateUserFail, userArguments);
+      this.analyticsService.publishEvent(AnalyticsActions.CreateUserFail);
 
       if (this.isInModal) {
         throw errors;

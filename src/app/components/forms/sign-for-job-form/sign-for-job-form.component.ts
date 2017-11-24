@@ -112,14 +112,22 @@ export class SignForJobFormComponent extends BaseComponent {
     this.submitFail = false;
     this.submitSuccess = false;
 
-    this.analyticsService.publishEvent(AnalyticsActions.SignForJobTry);
+    this.analyticsService.publishEvent(AnalyticsActions.SignForJobTry, {
+      application: this.application.id,
+      job: this.job.id,
+      user: this.user.id
+    });
 
     return this.applicationProxy.confirmApplication(this.job.id, this.application.id, {
       'consent': this.signForJobForm.value.consent,
       'terms_agreement_id': this.termsAgreementId
     })
     .then(application => {
-      this.analyticsService.publishEvent(AnalyticsActions.SignForJobSuccess);
+      this.analyticsService.publishEvent(AnalyticsActions.SignForJobSuccess, {
+        application: this.application.id,
+        job: this.job.id,
+        user: this.user.id
+      });
 
       this.loadingSubmit = false;
       this.submitSuccess = true;
@@ -128,7 +136,11 @@ export class SignForJobFormComponent extends BaseComponent {
     .catch(errors => {
       this.handleServerErrors(errors);
 
-      this.analyticsService.publishEvent(AnalyticsActions.SignForJobFail);
+      this.analyticsService.publishEvent(AnalyticsActions.SignForJobFail, {
+        application: this.application.id,
+        job: this.job.id,
+        user: this.user.id
+      });
 
       if (this.isInModal) {
         throw errors;
