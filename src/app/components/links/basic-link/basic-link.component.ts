@@ -9,12 +9,6 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
   styleUrls: ['./basic-link.component.scss'],
   template: `
     <a
-      [angulartics2On]="angulartics2On"
-      [angularticsAction]="angularticsAction"
-      [angularticsCategory]="angularticsCategory"
-      [angularticsLabel]="angularticsLabel"
-      [angularticsProperties]="angularticsProperties"
-      [angularticsValue]="angularticsValue"
       [attr.data-hover]="text"
       [class.arabic-font]="systemLanguage.direction === 'rtl'"
       [class.black]="color === 'black'"
@@ -73,12 +67,6 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
       {{text}}
     </a>
     <a
-      [angulartics2On]="angulartics2On"
-      [angularticsAction]="angularticsAction"
-      [angularticsCategory]="angularticsCategory"
-      [angularticsLabel]="angularticsLabel"
-      [angularticsProperties]="angularticsProperties"
-      [angularticsValue]="angularticsValue"
       [attr.data-hover]="text"
       [class.arabic-font]="systemLanguage.direction === 'rtl'"
       [class.black]="color === 'black'"
@@ -166,14 +154,6 @@ export class BasicLinkComponent extends BaseComponent {
   @Input() public textAlignmentRtlTablet: string; // Should be one of undefined, 'left', 'center', 'right'.
   @Input() public underline: boolean = false;
   @Input() public uppercase: boolean = false;
-
-  @Input() public angulartics2On: string;
-  @Input() public angularticsAction: string;
-  @Input() public angularticsCategory: string;
-  @Input() public angularticsLabel: string;
-  @Input() public angularticsProperties: any;
-  @Input() public angularticsValue: any;
-
 
   public constructor(
     protected systemLanguagesResolver: SystemLanguagesResolver,
