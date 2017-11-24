@@ -11,7 +11,7 @@ export class AnalyticsService {
   ) {
   }
 
-  public publishEvent(action: string, properties: any = {}, ) {
+  public publishEvent(action: AnalyticsActions, properties: any = {}, ) {
     properties.language = this.systemLanguagesResolver.getSelectedSystemLanguage().languageCode;
 
     this.angulartics2.eventTrack.next({
