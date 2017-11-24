@@ -9,6 +9,12 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
   styleUrls: ['./base-navigation-button.component.scss'],
   template: `
     <a
+      [angulartics2On]="angulartics2On"
+      [angularticsAction]="angularticsAction"
+      [angularticsCategory]="angularticsCategory"
+      [angularticsLabel]="angularticsLabel"
+      [angularticsProperties]="angularticsProperties"
+      [angularticsValue]="angularticsValue"
       [class.arabic-font]="systemLanguage.direction === 'rtl'"
       [class.fluid]="fluid"
       [ngClass]="[kind, size, 'btn']"
@@ -29,6 +35,13 @@ export class BaseNavigationButtonComponent extends BaseComponent {
   @Input() public marginTop: string = '10px';
   @Input() public routerLink: string;
   @Input() public size: string = 'medium'; // One of ['tiny', 'small', 'medium', 'large']
+
+  @Input() public angulartics2On: string;
+  @Input() public angularticsAction: string;
+  @Input() public angularticsCategory: string;
+  @Input() public angularticsLabel: string;
+  @Input() public angularticsProperties: any;
+  @Input() public angularticsValue: any;
 
   public constructor(
     protected systemLanguagesResolver: SystemLanguagesResolver,
