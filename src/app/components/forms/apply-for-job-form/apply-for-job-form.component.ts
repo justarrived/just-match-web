@@ -91,7 +91,10 @@ export class ApplyForJobFormComponent extends BaseComponent {
     this.submitFail = false;
     this.submitSuccess = false;
 
-    this.analyticsService.publishEvent(AnalyticsActions.ApplyForJobTry);
+    this.analyticsService.publishEvent(AnalyticsActions.ApplyForJobTry, {
+      job: this.job.id,
+      user: this.user.id
+    });
 
     return this.applicationProxy.createApplication(this.job.id, {
       'apply_message': this.applyForJobForm.value.apply_message,
@@ -107,14 +110,21 @@ export class ApplyForJobFormComponent extends BaseComponent {
       this.loadingSubmit = false;
       this.submitSuccess = true;
 
-      this.analyticsService.publishEvent(AnalyticsActions.ApplyForJobSuccess);
+      this.analyticsService.publishEvent(AnalyticsActions.ApplyForJobSuccess, {
+        application: application.id,
+        job: this.job.id,
+        user: this.user.id
+      });
 
       return application;
     })
     .catch(errors => {
       this.handleServerErrors(errors);
 
-      this.analyticsService.publishEvent(AnalyticsActions.ApplyForJobFail);
+      this.analyticsService.publishEvent(AnalyticsActions.ApplyForJobFail, {
+        job: this.job.id,
+        user: this.user.id
+      });
 
       if (this.isInModal) {
         throw errors;
