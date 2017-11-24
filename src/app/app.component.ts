@@ -1,4 +1,5 @@
 import {AlreadyRegisteredModalComponent} from './components/modals/already-registered-modal/already-registered-modal.component';
+import {Angulartics2GoogleTagManager} from 'angulartics2/gtm';
 import {AppliedForJobModalComponent} from './components/modals/applied-for-job-modal/applied-for-job-modal.component';
 import {ApplyForJobModalComponent} from './components/modals/apply-for-job-modal/apply-for-job-modal.component';
 import {BaseComponent} from './components/base.component';
@@ -216,6 +217,7 @@ export class AppComponent extends BaseComponent {
   private hideModalSubscription: Subscription;
 
   public constructor(
+    private angulartics2GoogleTagManager: Angulartics2GoogleTagManager,
     private cache: TransferState,
     private modalService: ModalService,
     protected systemLanguagesResolver: SystemLanguagesResolver,
