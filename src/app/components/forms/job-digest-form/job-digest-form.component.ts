@@ -1,3 +1,5 @@
+import {AnalyticsActions} from '../../../services/analytics.service';
+import {AnalyticsService} from '../../../services/analytics.service';
 import {ApiErrors} from '../../../models/api-models/api-errors/api-errors';
 import {BaseComponent} from '../../base.component';
 import {ChangeDetectorRef} from '@angular/core';
@@ -142,6 +144,7 @@ export class JobDigestFormComponent extends BaseComponent {
   public submitSuccess: boolean;
 
   constructor(
+    private analyticsService: AnalyticsService,
     private changeDetector: ChangeDetectorRef,
     private formBuilder: FormBuilder,
     private jobDigestProxy: JobDigestProxy,
@@ -262,6 +265,8 @@ export class JobDigestFormComponent extends BaseComponent {
     this.submitSuccess = false;
     this.loadingSubmit = true;
 
+    this.analyticsService.publishEvent(AnalyticsActions.CreateSubscriptionTry);
+
     let occupationIds = [];
     for (let occupationId in this.form.value.occupation_ids) {
       if (this.form.value.occupation_ids[occupationId]) {
@@ -292,6 +297,8 @@ export class JobDigestFormComponent extends BaseComponent {
       'include': 'addresses,subscriber,occupations'
     })
     .then(jobDigest => {
+      this.analyticsService.publishEvent(AnalyticsActions.CreateSubscriptionSuccess);
+
       this.loadingSubmit = false;
       this.submitSuccess = true;
       this.modalService.showModal('subscribedModalComponent', false, false, this.isInModal ? 400 : 1);
@@ -300,6 +307,9 @@ export class JobDigestFormComponent extends BaseComponent {
     })
     .catch(errors => {
       this.handleServerErrors(errors);
+
+      this.analyticsService.publishEvent(AnalyticsActions.CreateSubscriptionFail);
+
       if (this.isInModal) {
         throw errors;
       }
@@ -312,8 +322,12 @@ export class JobDigestFormComponent extends BaseComponent {
     this.submitSuccess = false;
     this.loadingSubmit = true;
 
+    this.analyticsService.publishEvent(AnalyticsActions.DeleteSubscriptionTry);
+
     return this.jobDigestProxy.removeJobDigest(this.jobDigest.subscriber.uuid, this.jobDigest.id)
     .then(result => {
+      this.analyticsService.publishEvent(AnalyticsActions.DeleteSubscriptionSuccess);
+
       this.loadingSubmit = false;
       this.submitSuccess = true;
       this.digestDeleted.emit(this.jobDigest);
@@ -321,6 +335,9 @@ export class JobDigestFormComponent extends BaseComponent {
     })
     .catch(errors => {
       this.handleServerErrors(errors);
+
+      this.analyticsService.publishEvent(AnalyticsActions.DeleteSubscriptionFail);
+
       if (this.isInModal) {
         throw errors;
       }
@@ -332,6 +349,8 @@ export class JobDigestFormComponent extends BaseComponent {
     this.submitFail = false;
     this.submitSuccess = false;
     this.loadingSubmit = true;
+
+    this.analyticsService.publishEvent(AnalyticsActions.UpdateSubscriptionTry);
 
     let occupationIds = [];
     for (let occupationId in this.form.value.occupation_ids) {
@@ -360,6 +379,8 @@ export class JobDigestFormComponent extends BaseComponent {
       'include': 'addresses,subscriber,occupations'
     })
     .then(jobDigest => {
+      this.analyticsService.publishEvent(AnalyticsActions.UpdateSubscriptionSuccess);
+
       this.loadingSubmit = false;
       this.submitSuccess = true;
       this.digestUpdated.emit(this.jobDigest);
@@ -367,6 +388,9 @@ export class JobDigestFormComponent extends BaseComponent {
     })
     .catch(errors => {
       this.handleServerErrors(errors);
+
+      this.analyticsService.publishEvent(AnalyticsActions.UpdateSubscriptionFail);
+
       if (this.isInModal) {
         throw errors;
       }

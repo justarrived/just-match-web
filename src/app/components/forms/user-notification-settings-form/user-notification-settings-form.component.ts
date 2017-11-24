@@ -1,3 +1,5 @@
+import {AnalyticsActions} from '../../../services/analytics.service';
+import {AnalyticsService} from '../../../services/analytics.service';
 import {ApiErrors} from '../../../models/api-models/api-errors/api-errors';
 import {ChangeDetectorRef} from '@angular/core';
 import {Component} from '@angular/core';
@@ -63,6 +65,7 @@ export class UserNotificationSettingsFormComponent extends BaseComponent {
   public submitSuccess: boolean;
 
   public constructor(
+    private analyticsService: AnalyticsService,
     private changeDetector: ChangeDetectorRef,
     private formBuilder: FormBuilder,
     private navigationService: NavigationService,
@@ -103,6 +106,8 @@ export class UserNotificationSettingsFormComponent extends BaseComponent {
     this.loadingSubmit = true;
     this.apiErrors = new ApiErrors([]);
 
+    this.analyticsService.publishEvent(AnalyticsActions.UpdateUserTry);
+
     return this.userProxy.updateUser(this.user.id, {
       'ignored_notifications': this.ignoredNotificationsResults,
       'system_language_id': this.formGroup.value.system_language_id,
@@ -110,12 +115,17 @@ export class UserNotificationSettingsFormComponent extends BaseComponent {
       'include': UserResolver.includes,
     })
     .then(user => {
+      this.analyticsService.publishEvent(AnalyticsActions.UpdateUserSuccess);
+
       this.submitSuccess = true;
       this.loadingSubmit = false;
       return user;
     })
     .catch(errors => {
       this.handleServerErrors(errors);
+
+      this.analyticsService.publishEvent(AnalyticsActions.UpdateUserFail);
+
       if (this.isInModal) {
         throw errors;
       }

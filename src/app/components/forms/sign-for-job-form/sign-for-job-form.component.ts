@@ -1,3 +1,5 @@
+import {AnalyticsActions} from '../../../services/analytics.service';
+import {AnalyticsService} from '../../../services/analytics.service';
 import {ActivatedRoute} from '@angular/router';
 import {ApiErrors} from '../../../models/api-models/api-errors/api-errors';
 import {Application} from '../../../models/api-models/application/application';
@@ -63,6 +65,7 @@ export class SignForJobFormComponent extends BaseComponent {
   private termsAgreementId: string;
 
   constructor(
+    private analyticsService: AnalyticsService,
     private applicationProxy: ApplicationProxy,
     private changeDetector: ChangeDetectorRef,
     private formBuilder: FormBuilder,
@@ -109,17 +112,24 @@ export class SignForJobFormComponent extends BaseComponent {
     this.submitFail = false;
     this.submitSuccess = false;
 
+    this.analyticsService.publishEvent(AnalyticsActions.SignForJobTry);
+
     return this.applicationProxy.confirmApplication(this.job.id, this.application.id, {
       'consent': this.signForJobForm.value.consent,
       'terms_agreement_id': this.termsAgreementId
     })
     .then(application => {
+      this.analyticsService.publishEvent(AnalyticsActions.SignForJobSuccess);
+
       this.loadingSubmit = false;
       this.submitSuccess = true;
       return application;
     })
     .catch(errors => {
       this.handleServerErrors(errors);
+
+      this.analyticsService.publishEvent(AnalyticsActions.SignForJobFail);
+
       if (this.isInModal) {
         throw errors;
       }

@@ -92,13 +92,13 @@ export class RegisterFormComponent extends BaseComponent {
       'zip': this.registerForm.value.zip,
     };
 
-    this.analyticsService.publishEvent(AnalyticsActions.RegisterTry, userArguments);
+    this.analyticsService.publishEvent(AnalyticsActions.CreateUserTry, userArguments);
 
     return this.userProxy.createUser(userArguments)
     .then(response => {
       this.submitSuccess = true;
 
-      this.analyticsService.publishEvent(AnalyticsActions.RegisterSuccess, userArguments);
+      this.analyticsService.publishEvent(AnalyticsActions.CreateUserSuccess, userArguments);
 
       return this.userResolver.login(this.registerForm.value.email, this.registerForm.value.password)
       .catch(errors => {
@@ -118,7 +118,7 @@ export class RegisterFormComponent extends BaseComponent {
       this.handleServerErrors(errors);
       this.showAccountAlreadyExistsModalIfEmailOrPhoneTaken(errors);
 
-      this.analyticsService.publishEvent(AnalyticsActions.RegisterFail, userArguments);
+      this.analyticsService.publishEvent(AnalyticsActions.CreateUserFail, userArguments);
 
       if (this.isInModal) {
         throw errors;
