@@ -4,6 +4,7 @@ import {AddressAutocompleteInputComponent} from './components/inputs/address-aut
 import {AgmCoreModule} from '@agm/core';
 import {AlreadyRegisteredModalComponent} from './components/modals/already-registered-modal/already-registered-modal.component';
 import {ApiCallService} from './services/api-call.service';
+import {AnalyticsService} from './services/analytics.service';
 import {ApiErrorsComponent} from './components/form-errors/api-errors/api-errors.component';
 import {APP_BASE_HREF} from '@angular/common';
 import {AppComponent} from './app.component';
@@ -540,6 +541,7 @@ export class RavenErrorHandler implements ErrorHandler {
     ZipInputComponent,
   ],
   providers: [
+    AnalyticsService,
     ApiCallService,
     DataStoreService,
     GeolocationService,

@@ -1,4 +1,7 @@
 import {ActivatedRoute} from '@angular/router';
+import {AnalyticsActions} from '../../../services/analytics.service';
+import {AnalyticsService} from '../../../services/analytics.service';
+import {Angulartics2} from 'angulartics2';
 import {ApiErrors} from '../../../models/api-models/api-errors/api-errors';
 import {Application} from '../../../models/api-models/application/application';
 import {ApplicationProxy} from '../../../proxies/application/application.proxy';
@@ -54,6 +57,7 @@ export class ApplyForJobFormComponent extends BaseComponent {
   public submitSuccess: boolean;
 
   public constructor(
+    private analyticsService: AnalyticsService,
     private applicationProxy: ApplicationProxy,
     private changeDetector: ChangeDetectorRef,
     private dataStoreService: DataStoreService,
@@ -87,6 +91,11 @@ export class ApplyForJobFormComponent extends BaseComponent {
     this.submitFail = false;
     this.submitSuccess = false;
 
+    this.analyticsService.publishEvent(AnalyticsActions.ApplyForJobTry, {
+      job: this.job.id,
+      user: this.user.id
+    });
+
     return this.applicationProxy.createApplication(this.job.id, {
       'apply_message': this.applyForJobForm.value.apply_message,
       'http_referrer': document.referrer,
@@ -100,10 +109,23 @@ export class ApplyForJobFormComponent extends BaseComponent {
     .then(application => {
       this.loadingSubmit = false;
       this.submitSuccess = true;
+
+      this.analyticsService.publishEvent(AnalyticsActions.ApplyForJobSuccess, {
+        application: application.id,
+        job: this.job.id,
+        user: this.user.id
+      });
+
       return application;
     })
     .catch(errors => {
       this.handleServerErrors(errors);
+
+      this.analyticsService.publishEvent(AnalyticsActions.ApplyForJobFail, {
+        job: this.job.id,
+        user: this.user.id
+      });
+
       if (this.isInModal) {
         throw errors;
       }
