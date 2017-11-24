@@ -3,6 +3,29 @@
 HEAD
 -----------
 
+
+v1.10 - 2017-11-24
+-----------
+* Move up task and requirements description section on the job show page
+* Revert "On staging and production servers share the cookie between subdomains"
+* Show active subscriptions above the new subscription form
+* Use occupations support
+* Added occupations to /update-profile
+* Bugfixes for occupation input
+* Update i18n copy.
+* Added occupations input support to missing user traits supporting components
+* Added occupations years of experience component
+* Added number input and based the years of experience input on that.
+* Added user occupations model and proxy
+* Place resume on top in update form
+* Change e2e tsconfig
+* Fixed transfer-state bug
+* Angular 5 :tada:
+* Update `package.json` scripts
+* Update rxjs imports
+* Bump typescript
+
+
 v1.9 - 2017-11-15
 -----------
 * Upgrade to Angular 5
