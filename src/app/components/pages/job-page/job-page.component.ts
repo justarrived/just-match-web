@@ -49,8 +49,8 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
           <div
             class="job-section"
             style="flex: 1">
-            <job-company-description-section [job]="job"></job-company-description-section>
             <job-description-section [job]="job"></job-description-section>
+            <job-company-description-section [job]="job"></job-company-description-section>
             <div style="margin-top: 40px;">
               <job-recruiter-section [job]="job"></job-recruiter-section>
             </div>
@@ -76,17 +76,16 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
             <div style="margin-top: 30px;">
               <job-important-information-section [job]="job"></job-important-information-section>
             </div>
-          </div>
-          <div
-            *ngIf="job.translatedText.tasksDescriptionHtml"
-            class="job-section">
-            <job-tasks-section [job]="job"></job-tasks-section>
-          </div>
-          <div
-            *ngIf="job.translatedText.applicantDescriptionHtml || job.translatedText.requirementsDescriptionHtml"
-            class="job-section">
-            <job-applicant-section [job]="job"></job-applicant-section>
-            <job-requirements-section [job]="job"></job-requirements-section>
+            <div
+              *ngIf="job.translatedText.tasksDescriptionHtml"
+              style="margin-top:30px;">
+              <job-tasks-section [job]="job"></job-tasks-section>
+            </div>
+            <div
+              *ngIf="job.translatedText.applicantDescriptionHtml || job.translatedText.requirementsDescriptionHtml">
+              <job-applicant-section [job]="job"></job-applicant-section>
+              <job-requirements-section [job]="job"></job-requirements-section>
+            </div>
           </div>
         </div>
 
@@ -115,8 +114,8 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
             </div>
           </div>
           <div class="job-section">
-            <job-company-description-section [job]="job"></job-company-description-section>
             <job-description-section [job]="job"></job-description-section>
+            <job-company-description-section [job]="job"></job-company-description-section>
           </div>
           <div
             *ngIf="job.translatedText.tasksDescriptionHtml"
