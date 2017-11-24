@@ -1,3 +1,5 @@
+import {AnalyticsActions} from '../../../services/analytics.service';
+import {AnalyticsService} from '../../../services/analytics.service';
 import {ApiErrors} from '../../../models/api-models/api-errors/api-errors';
 import {BaseComponent} from '../../base.component';
 import {ChangeDetectorRef} from '@angular/core';
@@ -82,6 +84,7 @@ export class LoginFormComponent extends BaseComponent {
   public phoneOrEmail: string;
 
   constructor(
+    private analyticsService: AnalyticsService,
     private changeDetector: ChangeDetectorRef,
     private dataStoreService: DataStoreService,
     private formBuilder: FormBuilder,
@@ -132,8 +135,12 @@ export class LoginFormComponent extends BaseComponent {
     this.submitSuccess = false;
     this.loadingSubmit = true;
 
+    this.analyticsService.publishEvent(AnalyticsActions.LoginTry);
+
     return this.userResolver.login(this.loginForm.value.email_or_phone, this.loginForm.value.password)
     .then(user => {
+      this.analyticsService.publishEvent(AnalyticsActions.LoginSuccess);
+
       if (this.navigateOnSubmit) {
         const redirectUrl = this.dataStoreService.getFromMemory(LoggedInGuard.redirectToUrlAfterLoginKey);
         if (redirectUrl) {
@@ -149,6 +156,9 @@ export class LoginFormComponent extends BaseComponent {
     })
     .catch(errors => {
       this.handleServerErrors(errors);
+
+      this.analyticsService.publishEvent(AnalyticsActions.LoginFail);
+
       if (this.isInModal) {
         throw errors;
       }
