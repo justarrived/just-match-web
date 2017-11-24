@@ -18,7 +18,25 @@ export class AnalyticsService {
 }
 
 export enum AnalyticsActions {
-    ApplyForJobTry = "TryToApplyForJob",
-    ApplyForJobSuccess = "ApplyForJobSuccess",
     ApplyForJobFail = "ApplyForJobFail",
+    ApplyForJobSuccess = "ApplyForJobSuccess",
+    ApplyForJobTry = "ApplyForJobTry",
+    CreateSubscriptionFail = "CreateSubscriptionFail",
+    CreateSubscriptionSuccess = "CreateSubscriptionSuccess",
+    CreateSubscriptionTry = "CreateSubscriptionTry",
+    LoginFail = "LoginFail",
+    LoginSuccess = "LoginSuccess",
+    LoginTry = "LoginTry",
+    RegisterFail = "RegisterFail",
+    RegisterSuccess = "RegisterSuccess",
+    RegisterTry = "RegisterTry",
+    SignForJobFail = "SignForJobFail",
+    SignForJobSuccess = "SignForJobSuccess",
+    SignForJobTry = "SignForJobTry",
+    UpdateProfileFail = "UpdateProfileFail",
+    UpdateProfileSuccess = "UpdateProfileSuccess",
+    UpdateProfileTry = "UpdateProfileTry",
+    UploadResumeFail = "UploadResumeFail",
+    UploadResumeSuccess = "UploadResumeSuccess",
+    UploadResumeTry = "UploadResumeTry",
 }

@@ -1,3 +1,5 @@
+import {AnalyticsActions} from '../../../services/analytics.service';
+import {AnalyticsService} from '../../../services/analytics.service';
 import {ApiErrors} from '../../../models/api-models/api-errors/api-errors';
 import {BaseComponent} from '../../base.component';
 import {ChangeDetectorRef} from '@angular/core';
@@ -28,6 +30,7 @@ export class RegisterFormComponent extends BaseComponent {
   public submitSuccess: boolean;
 
   public constructor(
+    private analyticsService: AnalyticsService,
     private changeDetector: ChangeDetectorRef,
     private formBuilder: FormBuilder,
     private modalService: ModalService,
@@ -74,7 +77,7 @@ export class RegisterFormComponent extends BaseComponent {
     this.submitFail = false;
     this.submitSuccess = false;
 
-    return this.userProxy.createUser({
+    const userArguments = {
       'city': this.registerForm.value.city,
       'consent': this.registerForm.value.accepted_terms_and_conditions,
       'country_of_origin': this.registerForm.value.country_of_origin,
@@ -87,9 +90,16 @@ export class RegisterFormComponent extends BaseComponent {
       'phone': this.registerForm.value.phone,
       'street': this.registerForm.value.street,
       'zip': this.registerForm.value.zip,
-    })
+    };
+
+    this.analyticsService.publishEvent(AnalyticsActions.RegisterTry, userArguments);
+
+    return this.userProxy.createUser(userArguments)
     .then(response => {
       this.submitSuccess = true;
+
+      this.analyticsService.publishEvent(AnalyticsActions.RegisterSuccess, userArguments);
+
       return this.userResolver.login(this.registerForm.value.email, this.registerForm.value.password)
       .catch(errors => {
         this.navigationService.navigate(this.JARoutes.login);
@@ -107,6 +117,9 @@ export class RegisterFormComponent extends BaseComponent {
     .catch(errors => {
       this.handleServerErrors(errors);
       this.showAccountAlreadyExistsModalIfEmailOrPhoneTaken(errors);
+
+      this.analyticsService.publishEvent(AnalyticsActions.RegisterFail, userArguments);
+
       if (this.isInModal) {
         throw errors;
       }
