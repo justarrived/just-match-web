@@ -96,6 +96,7 @@ export interface User extends UserApiAttributes {
   lmaCardImage: UserImage;
   missingPaymentInformation: MissingUserTraits;
   personalIdImage: UserImage;
+  personalLetterDocuments: UserDocument[];
   profileImage: UserImage;
   recruiterProfileImage: UserImage;
   residencePermitBackImage: UserImage;
@@ -160,6 +161,7 @@ export class UserFactory {
       missingPaymentInformation: missingPaymentInformation,
       name: jsonObject.name,
       personalIdImage: UserFactory.getUserImageByCategory(userImages, 'personal_id'),
+      personalLetterDocuments: UserFactory.getUserDocumentsByCategory(userDocuments, 'personal_letter'),
       phone: jsonObject.phone,
       primaryRole: jsonObject.primary_role,
       profileImage: UserFactory.getUserImageByCategory(userImages, 'profile'),
@@ -170,8 +172,8 @@ export class UserFactory {
       skills: map(jsonObject.skills, skill => SkillFactory.createSkill(skill)),
       ssn: jsonObject.ssn,
       street: jsonObject.street,
-      systemLanguage: LanguageFactory.createLanguage(jsonObject.system_language),
       supportChatActivated: jsonObject.support_chat_activated,
+      systemLanguage: LanguageFactory.createLanguage(jsonObject.system_language),
       translatedText: UserTranslatedTextFactory.createUserTranslatedText(jsonObject.translated_text),
       updatedAt: new Date(jsonObject.updated_at),
       userDocuments: userDocuments,
