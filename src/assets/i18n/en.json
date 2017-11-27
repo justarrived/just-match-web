@@ -505,6 +505,7 @@
   "user.missing.traits.form.submit.button": "Next",
   "user.missing.traits.message.description": "Consider providing us with more information to increse your chances to get jobs",
   "user.missing.traits.message.header": "We are interested in you",
+  "user.profile.form.document.input.hint": "Only documents (.pdf, .docx, .doc)",
   "user.profile.form.education.section.header": "Education",
   "user.profile.form.general.skills.section.header": "General skills",
   "user.profile.form.interests.section.header": "Interests",

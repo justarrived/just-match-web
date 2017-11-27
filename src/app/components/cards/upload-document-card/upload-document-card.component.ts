@@ -70,6 +70,9 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
         [style.padding-bottom]="0"
         [style.padding-top]="0"
         class="extra content">
+        <p class="input-hint">
+          <em>{{ 'user.profile.form.document.input.hint' | translate }}</em>
+        </p>
         <file-input-button
           (onChange)="onDocumentFilenameChange($event)"
           [fluid]="true"
