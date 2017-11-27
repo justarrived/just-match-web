@@ -105,7 +105,7 @@
 
   <form-section-title-text
     [text]="'user.update.form.personal.presentation.section.header' | translate"
-    *ngIf="missingUserTraits?.description"
+    *ngIf="missingUserTraits?.description || missingUserTraits?.personal_letter"
     icon="user">
   </form-section-title-text>
 
@@ -115,6 +115,13 @@
     [hint]="missingUserTraits?.description?.hint"
     *ngIf="missingUserTraits?.description">
   </description-input>
+
+  <personal-letter-input
+    [centered]="true"
+    [showLabel]="false"
+    [hint]="missingUserTraits?.personal_letter?.hint"
+    *ngIf="missingUserTraits?.personal_letter">
+  </personal-letter-input>
 
   <form-section-title-text
     [text]="'user.update.form.social.network.section.header' | translate"

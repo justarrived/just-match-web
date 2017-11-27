@@ -244,6 +244,7 @@
   "input.personal.id.description": "Photo of my personal ID card",
   "input.personal.id.header": "Personal ID",
   "input.personal.id.label": "Personal ID",
+  "input.personal.letter.header": "Personal letter",
   "input.phone.label": "Phone",
   "input.phone.placeholder": "Phone",
   "input.primary.occupations.label": "Choose occupations that you are interested in",

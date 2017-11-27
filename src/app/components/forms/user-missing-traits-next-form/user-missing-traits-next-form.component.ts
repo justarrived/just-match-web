@@ -203,6 +203,7 @@ export class UserMissingTraitsNextFormComponent extends BaseComponent {
           years_of_experience: userOccupation['yearsOfExperience']
         };
       }),
+      'personal_letter': null,
       'phone': this.updateForm.value.phone,
       'skill_ids': map(this.updateForm.value.user_skills, userSkill => {
         return {
