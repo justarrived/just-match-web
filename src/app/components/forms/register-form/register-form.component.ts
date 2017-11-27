@@ -1,3 +1,5 @@
+import {AnalyticsActions} from '../../../services/analytics.service';
+import {AnalyticsService} from '../../../services/analytics.service';
 import {ApiErrors} from '../../../models/api-models/api-errors/api-errors';
 import {BaseComponent} from '../../base.component';
 import {ChangeDetectorRef} from '@angular/core';
@@ -28,6 +30,7 @@ export class RegisterFormComponent extends BaseComponent {
   public submitSuccess: boolean;
 
   public constructor(
+    private analyticsService: AnalyticsService,
     private changeDetector: ChangeDetectorRef,
     private formBuilder: FormBuilder,
     private modalService: ModalService,
@@ -74,6 +77,8 @@ export class RegisterFormComponent extends BaseComponent {
     this.submitFail = false;
     this.submitSuccess = false;
 
+    this.analyticsService.publishEvent(AnalyticsActions.CreateUserTry);
+
     return this.userProxy.createUser({
       'city': this.registerForm.value.city,
       'consent': this.registerForm.value.accepted_terms_and_conditions,
@@ -90,6 +95,7 @@ export class RegisterFormComponent extends BaseComponent {
     })
     .then(response => {
       this.submitSuccess = true;
+
       return this.userResolver.login(this.registerForm.value.email, this.registerForm.value.password)
       .catch(errors => {
         this.navigationService.navigate(this.JARoutes.login);
@@ -97,6 +103,10 @@ export class RegisterFormComponent extends BaseComponent {
       });
     })
     .then(user => {
+      this.analyticsService.publishEvent(AnalyticsActions.CreateUserSuccess, {
+        user: user.id
+      });
+
       if (this.navigateOnSubmit) {
         this.navigationService.navigate(this.JARoutes.home);
       }
@@ -107,6 +117,9 @@ export class RegisterFormComponent extends BaseComponent {
     .catch(errors => {
       this.handleServerErrors(errors);
       this.showAccountAlreadyExistsModalIfEmailOrPhoneTaken(errors);
+
+      this.analyticsService.publishEvent(AnalyticsActions.CreateUserFail);
+
       if (this.isInModal) {
         throw errors;
       }

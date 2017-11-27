@@ -1,7 +1,10 @@
+import {Angulartics2GoogleTagManager} from 'angulartics2/gtm';
+import {Angulartics2Module} from 'angulartics2';
 import {AddressAutocompleteInputComponent} from './components/inputs/address-autocomplete-input/address-autocomplete-input.component';
 import {AgmCoreModule} from '@agm/core';
 import {AlreadyRegisteredModalComponent} from './components/modals/already-registered-modal/already-registered-modal.component';
 import {ApiCallService} from './services/api-call.service';
+import {AnalyticsService} from './services/analytics.service';
 import {ApiErrorsComponent} from './components/form-errors/api-errors/api-errors.component';
 import {APP_BASE_HREF} from '@angular/common';
 import {AppComponent} from './app.component';
@@ -289,6 +292,7 @@ export class RavenErrorHandler implements ErrorHandler {
       apiKey: environment.googleMapsKey,
       libraries: ["places"]
     }),
+    Angulartics2Module.forRoot([Angulartics2GoogleTagManager]),
     AppTranslateModule,
     CommonModule,
     FormsModule,
@@ -537,6 +541,7 @@ export class RavenErrorHandler implements ErrorHandler {
     ZipInputComponent,
   ],
   providers: [
+    AnalyticsService,
     ApiCallService,
     DataStoreService,
     GeolocationService,

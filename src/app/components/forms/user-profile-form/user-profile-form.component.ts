@@ -1,3 +1,5 @@
+import {AnalyticsActions} from '../../../services/analytics.service';
+import {AnalyticsService} from '../../../services/analytics.service';
 import {ApiErrors} from '../../../models/api-models/api-errors/api-errors';
 import {BaseComponent} from '../../base.component';
 import {ChangeDetectorRef} from '@angular/core';
@@ -28,6 +30,7 @@ export class UserProfileFormComponent extends BaseComponent {
   public submitSuccess: boolean;
 
   constructor(
+    private analyticsService: AnalyticsService,
     private changeDetector: ChangeDetectorRef,
     private formBuilder: FormBuilder,
     private userProxy: UserProxy,
@@ -83,6 +86,8 @@ export class UserProfileFormComponent extends BaseComponent {
     this.loadingSubmit = true;
     this.apiErrors = new ApiErrors([]);
 
+    this.analyticsService.publishEvent(AnalyticsActions.UpdateUserTry, {user: this.user.id});
+
     return this.userProxy.updateUser(this.user.id, {
       'at_und': this.profileForm.value.at_und,
       'competence_text': this.profileForm.value.competence_text,
@@ -121,6 +126,8 @@ export class UserProfileFormComponent extends BaseComponent {
       'include': UserResolver.includes,
     })
     .then(user => {
+      this.analyticsService.publishEvent(AnalyticsActions.UpdateUserSuccess, {user: this.user.id});
+
       this.userResolver.setUser(user)
       this.submitSuccess = true;
       this.loadingSubmit = false;
@@ -128,6 +135,9 @@ export class UserProfileFormComponent extends BaseComponent {
     })
     .catch(errors => {
       this.handleServerErrors(errors);
+
+      this.analyticsService.publishEvent(AnalyticsActions.UpdateUserFail, {user: this.user.id});
+
       if (this.isInModal) {
         throw errors;
       }
