@@ -4,7 +4,7 @@ import {ApplicationFactory} from '../../models/api-models/application/applicatio
 import {Injectable} from '@angular/core';
 
 // CREATE
-interface CreateApplicationAttributes {
+export interface CreateApplicationAttributes {
   apply_message?: string;
   http_referrer?: string;
   language_id?: string;
@@ -17,9 +17,9 @@ interface CreateApplicationAttributes {
 }
 
 // UPDATE
-interface ConfirmApplicationAttributes {
+export interface ConfirmApplicationAttributes {
   consent: boolean;
-  terms_agreement_id: string;
+  terms_agreement_id?: string;
 }
 
 @Injectable()

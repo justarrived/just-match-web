@@ -142,7 +142,7 @@ export class JobFactory {
       requirementsDescriptionHtml: jsonObject.requirements_description_html,
       responsibleRecruiter: UserFactory.createUser(jsonObject.responsible_recruiter),
       shortDescription: jsonObject.short_description,
-      staffingJob: jsonObject.staffingJob,
+      staffingJob: jsonObject.staffing_job,
       street: jsonObject.street,
       tasksDescription: jsonObject.tasks_description,
       tasksDescriptionHtml: jsonObject.tasks_description_html,

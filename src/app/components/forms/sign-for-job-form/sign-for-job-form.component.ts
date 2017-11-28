@@ -1,12 +1,13 @@
+import {ActivatedRoute} from '@angular/router';
 import {AnalyticsActions} from '../../../services/analytics.service';
 import {AnalyticsService} from '../../../services/analytics.service';
-import {ActivatedRoute} from '@angular/router';
 import {ApiErrors} from '../../../models/api-models/api-errors/api-errors';
 import {Application} from '../../../models/api-models/application/application';
 import {ApplicationProxy} from '../../../proxies/application/application.proxy';
 import {BaseComponent} from '../../base.component';
 import {ChangeDetectorRef} from '@angular/core';
 import {Component} from '@angular/core';
+import {ConfirmApplicationAttributes} from '../../../proxies/application/application.proxy';
 import {FormBuilder} from '@angular/forms';
 import {FormGroup} from '@angular/forms';
 import {Input} from '@angular/core';
@@ -37,7 +38,14 @@ import {Validators} from '@angular/forms';
         icon="check">
       </form-section-title-text>
 
+      <just-arrived-terms-input
+        *ngIf="job.staffingJob"
+        [control]="signForJobForm.controls['consent']"
+        [apiErrors]="apiErrors">
+      </just-arrived-terms-input>
+
       <frilans-terms-input
+        *ngIf="!job.staffingJob"
         [control]="signForJobForm.controls['consent']"
         [apiErrors]="apiErrors">
       </frilans-terms-input>
@@ -80,6 +88,8 @@ export class SignForJobFormComponent extends BaseComponent {
   public onInit(): void {
     this.initForm();
     this.loadData();
+
+    console.log(this.job);
   }
 
   private initForm() {
@@ -93,11 +103,13 @@ export class SignForJobFormComponent extends BaseComponent {
   }
 
   private loadData(): void {
-    this.termsAgreement = this.termsAgreementProxy.getTermsAgreement()
-    .then(termsAgreement => {
-      this.termsAgreementId = termsAgreement.id;
-      return termsAgreement;
-    });
+    if (!this.job.staffingJob) {
+      this.termsAgreement = this.termsAgreementProxy.getTermsAgreement()
+      .then(termsAgreement => {
+        this.termsAgreementId = termsAgreement.id;
+        return termsAgreement;
+      });
+    }
   }
 
   private handleServerErrors(errors): void {
@@ -118,10 +130,15 @@ export class SignForJobFormComponent extends BaseComponent {
       user: this.user.id
     });
 
-    return this.applicationProxy.confirmApplication(this.job.id, this.application.id, {
-      'consent': this.signForJobForm.value.consent,
-      'terms_agreement_id': this.termsAgreementId
-    })
+    let confirmApplicationAttributes: ConfirmApplicationAttributes = {
+      consent: this.signForJobForm.value.consent
+    };
+
+    if (!this.job.staffingJob) {
+      confirmApplicationAttributes.terms_agreement_id = this.termsAgreementId
+    }
+
+    return this.applicationProxy.confirmApplication(this.job.id, this.application.id, confirmApplicationAttributes)
     .then(application => {
       this.analyticsService.publishEvent(AnalyticsActions.SignForJobSuccess, {
         application: this.application.id,
