@@ -88,8 +88,6 @@ export class SignForJobFormComponent extends BaseComponent {
   public onInit(): void {
     this.initForm();
     this.loadData();
-
-    console.log(this.job);
   }
 
   private initForm() {
