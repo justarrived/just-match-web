@@ -500,6 +500,7 @@
   "user.missing.traits.form.submit.button": "Nästa",
   "user.missing.traits.message.description": "Överväg att ge oss mer information för att öka dina chanser att få jobb",
   "user.missing.traits.message.header": "Vi är intresserade av dig",
+  "user.profile.form.document.input.hint": "Bara dokument (.pdf, .docx, .doc)",
   "user.profile.form.education.section.header": "Utbildning",
   "user.profile.form.general.skills.section.header": "Generella kompetenser",
   "user.profile.form.interests.section.header": "Intressen",
