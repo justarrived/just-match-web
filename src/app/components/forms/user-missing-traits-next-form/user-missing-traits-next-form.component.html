@@ -23,6 +23,13 @@
     *ngIf="!informationProvided && missingUserTraitsKeys && missingUserTraitsKeys[currentMissingUserTraitIndex] === 'cv'">
   </resume-input>
 
+  <personal-letter-input
+    [centered]="true"
+    [showLabel]="false"
+    [hint]="missingUserTraits?.personal_letter?.hint"
+    *ngIf="!informationProvided && missingUserTraitsKeys && missingUserTraitsKeys[currentMissingUserTraitIndex] === 'personal_letter'">
+  </personal-letter-input>
+
   <first-name-input
     [apiErrors]="apiErrors"
     [control]="updateForm.controls.first_name"

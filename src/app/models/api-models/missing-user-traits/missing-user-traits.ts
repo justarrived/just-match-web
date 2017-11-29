@@ -19,6 +19,7 @@ interface MissingUserTraitsApiAttributes {
   last_name?: {hint?: string};
   linkedin_url?: {hint?: string};
   occupation_ids?: {hint?: string, ids?: string[]};
+  personal_letter?: {hint?: string};
   phone?: {hint?: string};
   skill_ids?: {hint?: string, ids?: string[]};
   ssn?: {hint?: string};

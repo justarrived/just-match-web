@@ -1,10 +1,10 @@
-import {Angulartics2GoogleTagManager} from 'angulartics2/gtm';
-import {Angulartics2Module} from 'angulartics2';
 import {AddressAutocompleteInputComponent} from './components/inputs/address-autocomplete-input/address-autocomplete-input.component';
 import {AgmCoreModule} from '@agm/core';
 import {AlreadyRegisteredModalComponent} from './components/modals/already-registered-modal/already-registered-modal.component';
-import {ApiCallService} from './services/api-call.service';
 import {AnalyticsService} from './services/analytics.service';
+import {Angulartics2GoogleTagManager} from 'angulartics2/gtm';
+import {Angulartics2Module} from 'angulartics2';
+import {ApiCallService} from './services/api-call.service';
 import {ApiErrorsComponent} from './components/form-errors/api-errors/api-errors.component';
 import {APP_BASE_HREF} from '@angular/common';
 import {AppComponent} from './app.component';
@@ -182,6 +182,7 @@ import {PasswordChangedModalComponent} from './components/modals/password-change
 import {PasswordInputComponent} from './components/inputs/password-input/password-input.component';
 import {PasswordResetLinkSentModalComponent} from './components/modals/password-reset-link-sent-modal/password-reset-link-sent-modal.component';
 import {PersonalIDInputComponent} from './components/inputs/personal-id-input/personal-id-input.component';
+import {PersonalLetterInputComponent} from './components/inputs/personal-letter-input/personal-letter-input.component';
 import {PhoneInputComponent} from './components/inputs/phone-input/phone-input.component';
 import {PrimaryOccupationsInputComponent} from './components/inputs/primary-occupations-input/primary-occupations-input.component';
 import {ProfileImageInputComponent} from './components/inputs/profile-image-input/profile-image-input.component';
@@ -466,6 +467,7 @@ export class RavenErrorHandler implements ErrorHandler {
     PasswordInputComponent,
     PasswordResetLinkSentModalComponent,
     PersonalIDInputComponent,
+    PersonalLetterInputComponent,
     PhoneInputComponent,
     PrimaryOccupationsInputComponent,
     ProfileImageInputComponent,
