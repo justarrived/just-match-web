@@ -38,6 +38,7 @@ import {UserProxy} from './user/user.proxy';
 import {UserSessionProxy} from './user-session/user-session.proxy';
 import {UserSkillProxy} from './user-skill/user-skill.proxy';
 import {UserStatusProxy} from './user-status/user-status.proxy';
+import {UtalkCodeProxy} from './utalk-code/utalk-code.proxy';
 
 @NgModule({
   providers: [
@@ -80,6 +81,7 @@ import {UserStatusProxy} from './user-status/user-status.proxy';
     UserSessionProxy,
     UserSkillProxy,
     UserStatusProxy,
+    UtalkCodeProxy
   ]
 })
 export class ProxiesModule {}
