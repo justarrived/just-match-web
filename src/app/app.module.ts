@@ -255,6 +255,7 @@ import {UserProfilePageComponent} from './components/pages/user-profile-page/use
 import {UserResolver} from './resolvers/user/user.resolver';
 import {UsersFilterComponent} from './components/filters/users-filter/users-filter.component';
 import {UserUpdateFormComponent} from './components/forms/user-update-form/user-update-form.component';
+import {UtalkSectionComponent} from './components/sections/utalk-section/utalk-section.component';
 import {WelcomeBannerSectionComponent} from './components/sections/welcome-banner-section/welcome-banner-section.component';
 import {WelcomeStep1ModalComponent} from './components/modals/welcome-step-1-modal/welcome-step-1-modal.component';
 import {WelcomeStep2ModalComponent} from './components/modals/welcome-step-2-modal/welcome-step-2-modal.component';
@@ -534,6 +535,7 @@ export class RavenErrorHandler implements ErrorHandler {
     UserProfilePageComponent,
     UsersFilterComponent,
     UserUpdateFormComponent,
+    UtalkSectionComponent,
     WelcomeBannerSectionComponent,
     WelcomeStep1ModalComponent,
     WelcomeStep2ModalComponent,

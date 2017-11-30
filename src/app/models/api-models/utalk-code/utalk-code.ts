@@ -6,6 +6,7 @@ interface UtalkCodeApiAttributes {
   claimedAt: Date;
   code: string;
   id: string;
+  signupUrl: string;
   user: User;
   userId: string;
 }
@@ -25,8 +26,9 @@ export class UtalkCodeFactory {
       claimedAt: new Date(jsonObject.claimed_at),
       code: jsonObject.code,
       id: jsonObject.id,
+      signupUrl: jsonObject.signup_url,
       user: UserFactory.createUser(jsonObject.user),
-      userId: jsonObject.user_id
+      userId: jsonObject.user_id,
     };
   }
 }

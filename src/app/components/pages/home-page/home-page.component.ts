@@ -18,6 +18,8 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
 
     <new-jobs-section></new-jobs-section>
 
+    <utalk-section *ngIf="user"></utalk-section>
+
     <applications-status-section *ngIf="user"></applications-status-section>
 
     <how-it-works-section *ngIf="!user"></how-it-works-section>
