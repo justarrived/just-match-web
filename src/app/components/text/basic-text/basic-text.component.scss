@@ -143,3 +143,7 @@
 .maximum-10-lines-ellipsis {
   @include truncate-owerflowing-text-multiline($line-height: $text-line-height, $lines-to-show: 10);
 }
+
+img {
+  max-width: 100% !important;
+}
