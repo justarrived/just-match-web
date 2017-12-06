@@ -84,7 +84,7 @@
 @mixin link() {
   @include text();
 
-  color: $color-gray-300;
+  color: $color-blue-500;
   &:hover {
     cursor: pointer;
     color: $color-cerise-500 !important;
