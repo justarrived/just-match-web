@@ -4,6 +4,11 @@ HEAD
 -----------
 
 
+v1.12 - 2017-12-07
+-----------
+* Update number of jobs listed on the jobs index page 12 => 20
+
+
 v1.11 - 2017-12-07
 -----------
 * Replace FAQ link with job guide link in main nav
