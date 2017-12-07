@@ -19,7 +19,12 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
         [promise]="guideSections"
         class="inverted">
       </basic-loader>
-      <basic-text [text]="'guide.card.welcome.paragraph.1' | translate"></basic-text>
+      <basic-text fontSize="large" [text]="'guide.card.welcome.paragraph.1' | translate"></basic-text>
+      <p>
+        <img
+          class="ui big image"
+          src="/assets/images/coffee-mugs.jpg">
+      </p>
       <basic-text [text]="'guide.card.welcome.paragraph.2' | translate"></basic-text>
       <div
         class="numbered-item"
