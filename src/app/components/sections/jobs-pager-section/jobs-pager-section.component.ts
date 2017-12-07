@@ -90,7 +90,7 @@ export class JobsPagerSectionComponent extends BaseComponent {
   public jobsMetaPromise: Promise<{jobs: Job[], meta: any}>;
   public page: number = 1;
   public totalJobs: number = 0;
-  public readonly pageSize: number = 12;
+  public readonly pageSize: number = 20;
   private readonly jobsPageKey: string = 'jobsPageKey';
   private readonly jobsPageParam: string = 'page';
   private routeParamsSubscription: Subscription;
