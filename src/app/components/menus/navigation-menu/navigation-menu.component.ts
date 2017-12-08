@@ -113,9 +113,9 @@ import {ViewChild} from '@angular/core';
       </basic-link>
 
       <basic-link
-        [text]="'menu.main.faq' | translate"
-        [color]="getCurrentUrl() === JARoutes.faq.url() ? 'pink' : 'white'"
-        [routerLink]="JARoutes.faq.url()"
+        [text]="'menu.main.guide' | translate"
+        [color]="getCurrentUrl() === JARoutes.guide.url() ? 'pink' : 'white'"
+        [routerLink]="JARoutes.guide.url()"
         class="navigation-menu-item"
         hoverColor="pink"
         fontSize="large"

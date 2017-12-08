@@ -4,6 +4,39 @@ HEAD
 -----------
 
 
+v1.12 - 2017-12-07
+-----------
+* Update number of jobs listed on the jobs index page 12 => 20
+
+
+v1.11 - 2017-12-07
+-----------
+* Replace FAQ link with job guide link in main nav
+* Add guide start page image & increase intro text font size
+* Pull translations from Transifex
+* Update global link styling (from light grey to our clear-blue)
+* Also fix max img width for markdown wrapped in basic-text component.
+* Force guide articles to have max 100% width.
+* Update guide welcome title
+* Remove log statement
+* Use JA terms when staffingJob = true.
+* Display the personal letter input.
+* Added a personal letter input component
+* Add document input hint
+* Remove the angularitics attributes on buttons and links since they are supported via directives.
+* Switched type of publishEvent to use the enum type
+* Add language parameter to all events
+* Pass parameters to all events
+* Revert "Remove apply for job event args"
+* Remove apply for job event args
+* Add another UserUpdate publishment
+* Added several analytics event publishments
+* Added some login event publishments
+* Publish register events
+* Added analytics service and some published events for applying for job.
+* Added angularities support to buttons and links
+
+
 v1.10 - 2017-11-24
 -----------
 * Move up task and requirements description section on the job show page
