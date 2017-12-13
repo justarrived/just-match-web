@@ -34,6 +34,7 @@ import {SystemLanguagesResolver} from '../resolvers/system-languages/system-lang
 import {UserProfilePageComponent} from '../components/pages/user-profile-page/user-profile-page.component';
 import {UserNotificationSettingsPageComponent} from '../components/pages/user-notification-settings-page/user-notification-settings-page.component';
 import {UserResolver} from '../resolvers/user/user.resolver';
+import {UtalkPageComponent} from '../components/pages/utalk-page/utalk-page.component';
 
 const routes: Routes = [
   {
@@ -71,6 +72,7 @@ const routes: Routes = [
     { path: 'user', component: UserProfilePageComponent, canActivate: [LoggedInGuard] },
     { path: 'user-notification-settings', component: UserNotificationSettingsPageComponent, canActivate: [LoggedInGuard] },
     { path: 'update-profile', component: BasicUserDataPageComponent, canActivate: [LoggedInGuard] },
+    { path: 'utalk', component: UtalkPageComponent },
     { path: '**', component: NotFoundPageComponent },
   ]}
 ];

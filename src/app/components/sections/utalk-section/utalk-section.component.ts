@@ -1,5 +1,6 @@
 import {BaseComponent} from '../../base.component';
 import {Component} from '@angular/core';
+import {ModalService} from '../../../services/modal.service';
 import {NavigationService} from '../../../services/navigation.service';
 import {SystemLanguagesResolver} from '../../../resolvers/system-languages/system-languages.resolver';
 import {UserResolver} from '../../../resolvers/user/user.resolver';
@@ -27,54 +28,53 @@ import {UtalkCodeProxy} from '../../../proxies/utalk-code/utalk-code.proxy';
         underlineBelowRtlAlignment="center">
       </basic-title-text>
       <img
-        *ngIf="!(utalkCode | async)"
-        (click)="createUtalkCode()"
         alt="Utalk"
         class="ui large centered image"
-        src="/assets/images/utalk-long-blue.png"
-        style="cursor: pointer;">
-      <a
-        *ngIf="(utalkCode | async)"
-        [href]="(utalkCode | async)?.signupUrl"
-        target="_blank">
-        <img
-          alt="Utalk"
-          class="ui large centered image"
-          src="/assets/images/utalk-long-blue.png">
-      </a>
+        src="/assets/images/utalk-long-blue.png">
       <div class="ui centered grid">
-        <div class="ui sixteen wide mobile sixteen wide tablet twelve wide computer column">
+        <div class="ui sixteen wide mobile twelve wide tablet eight wide computer column">
           <basic-text
             [text]="'section.utalk.description' | translate"
             color="white"
             textAlignmentLtr="center"
             textAlignmentRtl="center">
           </basic-text>
-          <basic-text
-            [text]="'section.utalk.hint' | translate"
-            color="white"
-            textAlignmentLtr="center"
-            textAlignmentRtl="center">
-          </basic-text>
+          <div *ngIf="user" class="cta-container">
+            <basic-text
+              [text]="'section.utalk.hint' | translate"
+              color="white"
+              textAlignmentLtr="center"
+              textAlignmentRtl="center">
+            </basic-text>
+            <base-action-button
+              *ngIf="!(utalkCode | async)"
+              (click)="createUtalkCode()"
+              [buttonText]="'section.utalk.button' | translate"
+              kind="primary"
+              size="medium">
+            </base-action-button>
+            <a
+              *ngIf="(utalkCode | async)"
+              [href]="(utalkCode | async)?.signupUrl"
+              target="_blank">
+              <base-action-button
+                [buttonText]="'section.utalk.button' | translate"
+                kind="primary"
+                size="medium">
+              </base-action-button>
+            </a>
+          </div>
+          <div *ngIf="!user" class="cta-container">
+            <base-action-button
+              *ngIf="!(utalkCode | async)"
+              [buttonText]="'section.utalk.not_logged_in_button' | translate"
+              (click)="openLoginOrRegisterModal()"
+              kind="primary"
+              size="medium">
+            </base-action-button>
+          </div>
         </div>
       </div>
-      <base-action-button
-        *ngIf="!(utalkCode | async)"
-        (click)="createUtalkCode()"
-        [buttonText]="'section.utalk.button' | translate"
-        kind="primary"
-        size="medium">
-      </base-action-button>
-      <a
-        *ngIf="(utalkCode | async)"
-        [href]="(utalkCode | async)?.signupUrl"
-        target="_blank">
-        <base-action-button
-          [buttonText]="'section.utalk.button' | translate"
-          kind="primary"
-          size="medium">
-        </base-action-button>
-      </a>
     </div>`
 })
 export class UtalkSectionComponent extends BaseComponent {
@@ -82,6 +82,7 @@ export class UtalkSectionComponent extends BaseComponent {
 
   public constructor(
     private navigationService: NavigationService,
+    private modalService: ModalService,
     private utalkCodeProxy: UtalkCodeProxy,
     protected systemLanguagesResolver: SystemLanguagesResolver,
     protected userResolver: UserResolver,
@@ -93,14 +94,23 @@ export class UtalkSectionComponent extends BaseComponent {
     this.loadData();
   }
 
-  private loadData() {
+  private loadData(): void {
+    if (!this.user) return;
+
     this.utalkCode = this.utalkCodeProxy.getUtalkCode(this.user.id);
   }
 
-  public createUtalkCode() {
-    var redirectWindow = window.open('https://utalk.com/en/start', '_blank');
+  public openLoginOrRegisterModal(): void {
+    this.modalService.showModal('loginOrRegisterModalComponent', false, true, 0);
+  }
+
+  public createUtalkCode(): void {
+    if (!this.user) return;
+
     this.utalkCode = this.utalkCodeProxy.createUtalkCode(this.user.id).then(utalkCode => {
-      redirectWindow.location.replace(utalkCode.signupUrl);
+      if (!window) return; // Page rendered on server
+
+      window.location.replace(utalkCode.signupUrl);
       return utalkCode;
     });
   }

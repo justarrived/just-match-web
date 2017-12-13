@@ -12,24 +12,10 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
 
 @Component({
   template: `
-    <welcome-banner-section></welcome-banner-section>
-
-    <user-missing-traits-message></user-missing-traits-message>
-
-    <new-jobs-section></new-jobs-section>
-
-    <utalk-section></utalk-section>
-
-    <applications-status-section *ngIf="user"></applications-status-section>
-
-    <how-it-works-section *ngIf="!user"></how-it-works-section>
-
-    <requirements-section></requirements-section>
-
-    <partners-section></partners-section>
+  <utalk-section></utalk-section>
   `
 })
-export class HomePageComponent extends PageComponent {
+export class UtalkPageComponent extends PageComponent {
 
   public constructor (
     @Inject(DOCUMENT) protected document: any,
@@ -45,11 +31,11 @@ export class HomePageComponent extends PageComponent {
       {
         title: {
           translate: true,
-          content: 'meta.home.title'
+          content: 'meta.utalk.title'
         },
         description: {
           translate: true,
-          content: 'meta.home.description'
+          content: 'meta.utalk.description'
         }
       },
       document,
@@ -59,8 +45,7 @@ export class HomePageComponent extends PageComponent {
       request,
       systemLanguagesResolver,
       translateService,
-      userResolver,
-      true,
+      userResolver
     );
   }
 }
