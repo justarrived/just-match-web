@@ -28,4 +28,5 @@ export class JARoutes {
   public static user: JARoute = { url: () => '/user'};
   public static userNotificationSettings: JARoute = { url: () => '/user-notification-settings'};
   public static basicUserData: JARoute = { url: () => '/update-profile'};
+  public static utalk: JARoute = { url: () => '/utalk'};
 }
