@@ -4,6 +4,13 @@ HEAD
 -----------
 
 
+v1.13 - 2017-12-13
+-----------
+* Remove partners-section from home page
+* Add `/utalk` page
+* Show uTalk section even if user is not logged in
+
+
 v1.12 - 2017-12-07
 -----------
 * Update number of jobs listed on the jobs index page 12 => 20
