@@ -25,8 +25,6 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
     <how-it-works-section *ngIf="!user"></how-it-works-section>
 
     <requirements-section></requirements-section>
-
-    <partners-section></partners-section>
   `
 })
 export class HomePageComponent extends PageComponent {
