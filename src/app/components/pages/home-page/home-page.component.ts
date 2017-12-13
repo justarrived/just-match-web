@@ -18,13 +18,13 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
 
     <new-jobs-section></new-jobs-section>
 
-    <utalk-section *ngIf="user"></utalk-section>
+    <utalk-section></utalk-section>
 
     <applications-status-section *ngIf="user"></applications-status-section>
 
     <how-it-works-section *ngIf="!user"></how-it-works-section>
 
-    <requirements-section></requirements-section>
+
 
     <partners-section></partners-section>
   `
