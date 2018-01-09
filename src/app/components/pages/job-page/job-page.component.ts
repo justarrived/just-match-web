@@ -148,6 +148,8 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
           </div>
         </div>
       </div>
+
+      <json-ld [json]="job.schemaOrg.jobPosition"></json-ld>
     </div>`
 })
 export class JobPageComponent extends PageComponent {

@@ -148,6 +148,7 @@ import {JobsPageComponent} from './components/pages/jobs-page/jobs-page.componen
 import {JobsPagerSectionComponent} from './components/sections/jobs-pager-section/jobs-pager-section.component';
 import {JobTasksSectionComponent} from './components/sections/job-tasks-section/job-tasks-section.component';
 import {JobTitleSectionComponent} from './components/sections/job-title-section/job-title-section.component';
+import {JsonLdComponent} from './components/schema-org/json-ld.component';
 import {JustArrivedTermsInputComponent} from './components/inputs/just-arrived-terms-input/just-arrived-terms-input.component';
 import {LanguageMenuComponent} from './components/menus/language-menu/language-menu.component';
 import {LanguageProficiencyInputComponent} from './components/inputs/language-proficiency-input/language-proficiency-input.component';
@@ -440,6 +441,7 @@ export class RavenErrorHandler implements ErrorHandler {
     JobsPagerSectionComponent,
     JobTasksSectionComponent,
     JobTitleSectionComponent,
+    JsonLdComponent,
     JustArrivedTermsInputComponent,
     LanguageMenuComponent,
     LanguageProficiencyInputComponent,
