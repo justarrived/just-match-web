@@ -71,6 +71,7 @@ interface JobApiAttributes {
   zip: string;
   zipLatitude: number;
   zipLongitude: number;
+  schemaOrg: JobSchemaOrg;
 }
 
 interface JobTranslatedTextApiAttributes {
@@ -87,11 +88,18 @@ interface JobTranslatedTextApiAttributes {
   tasksDescriptionHtml: string;
 }
 
+interface JobSchemaOrgApiAttributes {
+  jobPosition: any;
+}
+
 // Client interfaces
 export interface Job extends JobApiAttributes {
 }
 
 export interface JobTranslatedText extends JobTranslatedTextApiAttributes {
+}
+
+export interface JobSchemaOrg extends JobSchemaOrgApiAttributes {
 }
 
 // Factories
@@ -153,6 +161,7 @@ export class JobFactory {
       zip: jsonObject.zip,
       zipLatitude: jsonObject.zip_latitude,
       zipLongitude: jsonObject.zip_longitude,
+      schemaOrg: JobSchemaOrgFactory.create(jsonObject.schema_org),
     };
   }
 }
@@ -175,6 +184,18 @@ class JobTranslatedTextFactory {
       shortDescription: jsonObject.short_description,
       tasksDescription: jsonObject.tasks_description,
       tasksDescriptionHtml: jsonObject.tasks_description_html,
+    };
+  }
+}
+
+class JobSchemaOrgFactory {
+  public static create(jsonObject?: any): JobSchemaOrg {
+    if (!jsonObject) {
+      return;
+    }
+
+    return {
+      jobPosition: jsonObject.job_position
     };
   }
 }
