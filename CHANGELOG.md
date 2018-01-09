@@ -4,6 +4,12 @@ HEAD
 -----------
 
 
+v1.14 - 2018-01-09
+-----------
+* Add Schema.org JobPosting JSON-ld data to job show page
+* Pull translations
+
+
 v1.13 - 2017-12-13
 -----------
 * Remove partners-section from home page
