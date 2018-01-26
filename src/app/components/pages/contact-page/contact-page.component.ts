@@ -25,18 +25,17 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
             textAlignmentLtr="center"
             textAlignmentRtl="center">
           </basic-text>
-          <basic-text
-            [text]="'contact.form.instruction'| translate"
-            textAlignmentLtr="center"
-            textAlignmentRtl="center">
-          </basic-text>
         </div>
+
+        <basic-link
+          text="support@justarrived.se"
+          textAlignmentLtr="center"
+          textAlignmentRtl="center">
+        </basic-link>
 
         <div class="contact-form-icon-container">
           <i class="contact-form-icon fa fa-envelope fa-5x"></i>
         </div>
-
-        <contact-form></contact-form>
       </div>
     </div>
   </div>`,
