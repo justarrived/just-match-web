@@ -69,7 +69,7 @@ export class NewJobsSectionComponent extends BaseComponent {
       'filter[open_for_applications]': true,
       'filter[filled]': false,
       'include': 'company,company.company_images',
-      'page[size]': 4,
+      'page[size]': 9,
       'sort': '-featured,-created_at',
     });
   }

@@ -52,7 +52,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
           </basic-title-text>
           <basic-title-text
             [alwaysLtrText]="true"
-            [text]="(job.jobDate | date: 'MMM dd') + (job.jobEndDate ? (' - ' + (job.jobEndDate | date: 'MMM dd')) : '')"
+            [text]="(job.jobDate | date: 'MMM dd') + (job.jobEndDate ? (' - ' + (job.jobEndDate | date: 'MMM dd')) : '- *')"
             fontSize="tiny"
             fontWeight="light"
             marginBottom="0"
