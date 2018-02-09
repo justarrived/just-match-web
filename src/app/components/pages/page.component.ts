@@ -120,7 +120,7 @@ export abstract class PageComponent extends BaseComponent implements OnInit, OnD
           );
         } else {
           this.meta.updateTag({
-            content: PageComponent.getBaseUrl(this.request) + '/assets/images/open-graph-base.jpg'
+            content: PageComponent.getBaseUrl(this.request) + '/assets/images/open-graph-base.png'
           },
             'property="og:image"'
           );
