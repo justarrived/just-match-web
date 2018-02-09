@@ -4,6 +4,15 @@ HEAD
 -----------
 
 
+v1.15 - 2018-02-09
+-----------
+* Update default Open Graph image
+* Add more featured jobs to start page
+* Update job date handling
+* Revert "Add Heap Analytics"
+* Replace contact/support form with support email
+
+
 v1.14 - 2018-01-09
 -----------
 * Add Schema.org JobPosting JSON-ld data to job show page
