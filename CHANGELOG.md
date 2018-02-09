@@ -4,6 +4,11 @@ HEAD
 -----------
 
 
+v1.16 - 2018-02-09
+-----------
+* Update guide landing page image
+
+
 v1.15 - 2018-02-09
 -----------
 * Update default Open Graph image
