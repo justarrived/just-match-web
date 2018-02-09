@@ -23,7 +23,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
       <p>
         <img
           class="ui big image"
-          src="/assets/images/coffee-mugs.jpg">
+          src="/assets/images/jobb-guide-index.jpg">
       </p>
       <basic-text [text]="'guide.card.welcome.paragraph.2' | translate"></basic-text>
       <div
