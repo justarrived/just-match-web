@@ -48,7 +48,9 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
       [style.margin-bottom]="marginBottom"
       [style.margin-top]="marginTop"
       [style.margin-left]="marginLeft"
-      [style.margin-right]="marginRight">
+      [style.margin-right]="marginRight"
+      [style.padding-bottom]="paddingBottom"
+      [style.padding-top]="paddingTop">
       {{text}}
     </div>
     <div
@@ -92,7 +94,9 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
       [style.margin-bottom]="marginBottom"
       [style.margin-top]="marginTop"
       [style.margin-left]="marginLeft"
-      [style.margin-right]="marginRight">
+      [style.margin-right]="marginRight"
+      [style.padding-bottom]="paddingBottom"
+      [style.padding-top]="paddingTop">
     </div>
     `
 })
@@ -108,6 +112,8 @@ export class BasicTextComponent extends BaseComponent {
   @Input() public marginLeft: string = '0';
   @Input() public marginRight: string = '0';
   @Input() public marginTop: string = '0';
+  @Input() public paddingTop: string = '0';
+  @Input() public paddingBottom: string = '0';
   @Input() public maxiumLinesEllipsis: number; // Should be one of undefined or 2-10
   @Input() public oneLineEllipsis: boolean = false;
   @Input() public text: string;
