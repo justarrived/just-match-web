@@ -125,11 +125,10 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
         </div>
       </div>
       <div class="read-more-container">
-        <basic-link
+        <basic-text
           *ngIf="!application"
           [text]="'job.card.read.more' | translate"
           [color]="hovered ? 'pink' : 'white'"
-          [routerLink]="JARoutes.job.url([job.id])"
           fontWeight="bold"
           paddingTop="1rem"
           paddingBottom="1rem"
@@ -137,12 +136,11 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
           marginBottom="0"
           textAlignmentLtr="center"
           textAlignmentRtl="center">
-        </basic-link>
-        <basic-link
+        </basic-text>
+        <basic-text
           *ngIf="application && application.applicationStatus === 'applied'"
           [text]="'job.card.applied' | translate"
           [color]="hovered ? 'pink' : 'white'"
-          [routerLink]="JARoutes.job.url([job.id])"
           fontWeight="bold"
           paddingTop="1rem"
           paddingBottom="1rem"
@@ -150,12 +148,11 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
           marginBottom="0"
           textAlignmentLtr="center"
           textAlignmentRtl="center">
-        </basic-link>
-        <basic-link
+        </basic-text>
+        <basic-text
           *ngIf="application && application.applicationStatus === 'offered'"
           [text]="'job.card.offered' | translate"
           [color]="hovered ? 'pink' : 'white'"
-          [routerLink]="JARoutes.job.url([job.id])"
           fontWeight="bold"
           paddingTop="1rem"
           paddingBottom="1rem"
@@ -163,12 +160,11 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
           marginBottom="0"
           textAlignmentLtr="center"
           textAlignmentRtl="center">
-        </basic-link>
-        <basic-link
+        </basic-text>
+        <basic-text
           *ngIf="application && application.applicationStatus === 'hired'"
           [text]="'job.card.hired' | translate"
           [color]="hovered ? 'pink' : 'white'"
-          [routerLink]="JARoutes.job.url([job.id])"
           fontWeight="bold"
           paddingTop="1rem"
           paddingBottom="1rem"
@@ -176,12 +172,11 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
           marginBottom="0"
           textAlignmentLtr="center"
           textAlignmentRtl="center">
-        </basic-link>
-        <basic-link
+        </basic-text>
+        <basic-text
           *ngIf="application && application.applicationStatus === 'rejected'"
           [text]="'job.card.rejected' | translate"
           [color]="hovered ? 'pink' : 'white'"
-          [routerLink]="JARoutes.job.url([job.id])"
           fontWeight="bold"
           paddingTop="1rem"
           paddingBottom="1rem"
@@ -189,12 +184,11 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
           marginBottom="0"
           textAlignmentLtr="center"
           textAlignmentRtl="center">
-        </basic-link>
-        <basic-link
+        </basic-text>
+        <basic-text
           *ngIf="application && application.applicationStatus === 'withdrawn'"
           [text]="'job.card.withdrawn' | translate"
           [color]="hovered ? 'pink' : 'white'"
-          [routerLink]="JARoutes.job.url([job.id])"
           fontWeight="bold"
           paddingTop="1rem"
           paddingBottom="1rem"
@@ -202,7 +196,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
           marginBottom="0"
           textAlignmentLtr="center"
           textAlignmentRtl="center">
-        </basic-link>
+        </basic-text>
       </div>
       <div
         class="filled-job-container">
