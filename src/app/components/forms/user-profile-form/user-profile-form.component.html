@@ -13,6 +13,58 @@
     icon="user">
   </form-section-title-text>
 
+  <resume-input
+    [centered]="true"
+    [showLabel]="false">
+  </resume-input>
+
+  <occupations-input
+    [occupationsControl]="profileForm.controls['occupations']"
+    [userOccupationsControl]="profileForm.controls['user_occupations']"
+    [apiErrors]="apiErrors">
+  </occupations-input>
+
+  <form-submit-button
+    [buttonText]="'user.profile.form.submit.button' | translate"
+    [showButton]="!isInModal"
+    [submitFail]="submitFail"
+    [submitSuccess]="submitSuccess">
+  </form-submit-button>
+
+  <form-section-title-text
+    [text]="'user.profile.form.language.skills.section.header' | translate"
+    icon="world">
+  </form-section-title-text>
+
+  <languages-input
+    [languagesControl]="profileForm.controls['languages']"
+    [userLanguagesControl]="profileForm.controls['user_languages']"
+    [apiErrors]="apiErrors">
+  </languages-input>
+
+  <form-section-title-text
+    [text]="'user.profile.form.general.skills.section.header' | translate"
+    icon="rocket">
+  </form-section-title-text>
+
+  <competence-input
+    [control]="profileForm.controls['competence_text']"
+    [apiErrors]="apiErrors">
+  </competence-input>
+
+  <skills-input
+    [skillsControl]="profileForm.controls['skills']"
+    [userSkillsControl]="profileForm.controls['user_skills']"
+    [apiErrors]="apiErrors">
+  </skills-input>
+
+  <form-submit-button
+    [buttonText]="'user.profile.form.submit.button' | translate"
+    [showButton]="!isInModal"
+    [submitFail]="submitFail"
+    [submitSuccess]="submitSuccess">
+  </form-submit-button>
+
   <description-input
     [apiErrors]="apiErrors"
     [control]="profileForm.controls['description']">
@@ -109,33 +161,6 @@
   </skatteverket-certificate-input>
 
   <form-section-title-text
-    [text]="'user.profile.form.language.skills.section.header' | translate"
-    icon="world">
-  </form-section-title-text>
-
-  <languages-input
-    [languagesControl]="profileForm.controls['languages']"
-    [userLanguagesControl]="profileForm.controls['user_languages']"
-    [apiErrors]="apiErrors">
-  </languages-input>
-
-  <form-section-title-text
-    [text]="'user.profile.form.general.skills.section.header' | translate"
-    icon="rocket">
-  </form-section-title-text>
-
-  <competence-input
-    [control]="profileForm.controls['competence_text']"
-    [apiErrors]="apiErrors">
-  </competence-input>
-
-  <skills-input
-    [skillsControl]="profileForm.controls['skills']"
-    [userSkillsControl]="profileForm.controls['user_skills']"
-    [apiErrors]="apiErrors">
-  </skills-input>
-
-  <form-section-title-text
     [text]="'user.profile.form.interests.section.header' | translate"
     icon="heart">
   </form-section-title-text>
@@ -160,17 +185,6 @@
     [text]="'user.profile.form.work.experience.section.header' | translate"
     icon="suitcase">
   </form-section-title-text>
-
-  <resume-input
-    [centered]="true"
-    [showLabel]="false">
-  </resume-input>
-
-  <occupations-input
-    [occupationsControl]="profileForm.controls['occupations']"
-    [userOccupationsControl]="profileForm.controls['user_occupations']"
-    [apiErrors]="apiErrors">
-  </occupations-input>
 
   <job-experience-input
     [control]="profileForm.controls['job_experience']"
