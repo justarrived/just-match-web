@@ -53,11 +53,9 @@ export class BasicUserDataFormComponent extends BaseComponent {
   private initForm(): void {
     if (this.user) {
       this.settingsForm = this.formBuilder.group({
-        'interests': [''],
         'languages': [''],
         'occupations': [''],
         'skills': [''],
-        'user_interests': [this.user.userInterests.slice()],
         'user_languages': [this.user.userLanguages.slice()],
         'user_occupations': [this.user.userOccupations.slice()],
         'user_skills': [this.user.userSkills.slice()],
@@ -81,12 +79,6 @@ export class BasicUserDataFormComponent extends BaseComponent {
     this.analyticsService.publishEvent(AnalyticsActions.UpdateUserTry, {user: this.user.id});
 
     return this.userProxy.updateUser(this.user.id, {
-      'interest_ids': map(this.settingsForm.value.user_interests, userInterest => {
-        return {
-          id: userInterest['interest'].id,
-          level: userInterest['level']
-        };
-      }),
       'language_ids': map(this.settingsForm.value.user_languages, userLanguage => {
         return {
           id: userLanguage['language'].id,

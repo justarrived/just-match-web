@@ -52,17 +52,6 @@
     [apiErrors]="apiErrors">
   </skills-input>
 
-  <form-section-title-text
-    [text]="'user.profile.form.interests.section.header' | translate"
-    icon="heart">
-  </form-section-title-text>
-
-  <interests-input
-    [interestsControl]="settingsForm.controls['interests']"
-    [userInterestsControl]="settingsForm.controls['user_interests']"
-    [apiErrors]="apiErrors">
-  </interests-input>
-
   <form-submit-button
     [buttonText]="'user.settings.form.submit.button' | translate"
     [showButton]="!isInModal"

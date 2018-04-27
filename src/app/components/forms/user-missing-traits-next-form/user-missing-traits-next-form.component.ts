@@ -84,7 +84,6 @@ export class UserMissingTraitsNextFormComponent extends BaseComponent {
         'first_name': [this.user.firstName, Validators.compose([Validators.required, Validators.minLength(2)])],
         'gender': [this.user.gender],
         'got_coordination_number': [this.user.ssn ? 'yes' : 'no'],
-        'interests': [''],
         'job_experience': [this.user.jobExperience],
         'languages': [''],
         'last_name': [this.user.lastName, Validators.compose([Validators.required, Validators.minLength(2)])],
@@ -95,7 +94,6 @@ export class UserMissingTraitsNextFormComponent extends BaseComponent {
         'ssn': [this.user.ssn],
         'street': [this.user.street],
         'system_language_id': [this.user.systemLanguage.id, Validators.compose([Validators.required])],
-        'user_interests': [this.user.userInterests.slice()],
         'user_languages': [this.user.userLanguages.slice()],
         'user_occupations': [this.user.userOccupations.slice()],
         'user_skills': [this.user.userSkills.slice()],
@@ -182,12 +180,6 @@ export class UserMissingTraitsNextFormComponent extends BaseComponent {
       'facebook_url': this.updateForm.value.facebook_url,
       'first_name': this.updateForm.value.first_name,
       'gender': this.updateForm.value.gender,
-      'interest_ids': map(this.updateForm.value.user_interests, userInterest => {
-        return {
-          id: userInterest['interest'].id,
-          level: userInterest['level']
-        };
-      }),
       'job_experience': this.updateForm.value.job_experience,
       'language_ids': map(this.updateForm.value.user_languages, userLanguage => {
         return {

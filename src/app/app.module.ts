@@ -120,8 +120,6 @@ import {InfoMessageComponent} from './components/messages/info-message/info-mess
 import {InputErrorComponent} from './components/form-errors/input-error/input-error.component';
 import {InputErrorsComponent} from './components/form-errors/input-errors/input-errors.component';
 import {InputHintLabelComponent} from './components/labels/input-hint-label/input-hint-label.component';
-import {InterestLevelInputComponent} from './components/inputs/interest-level-input/interest-level-input.component';
-import {InterestsInputComponent} from './components/inputs/interests-input/interests-input.component';
 import {JARoutes} from './routes/ja-routes/ja-routes';
 import {JobActionsSectionComponent} from './components/sections/job-actions-section/job-actions-section.component';
 import {JobAdditionalUserInfoModalComponent} from './components/modals/job-additional-user-info-modal/job-additional-user-info-modal.component';
@@ -414,8 +412,6 @@ export class RavenErrorHandler implements ErrorHandler {
     InputErrorComponent,
     InputErrorsComponent,
     InputHintLabelComponent,
-    InterestLevelInputComponent,
-    InterestsInputComponent,
     JobActionsSectionComponent,
     JobAdditionalUserInfoModalComponent,
     JobApplicantSectionComponent,

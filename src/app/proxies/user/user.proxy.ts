@@ -22,7 +22,6 @@ export interface CreateUserAttributes {
   first_name: string;
   gender?: string;
   ignored_notifications?: string[];
-  interest_ids?: {id: string, level: number}[];
   job_experience?: string;
   language_id?: string;
   language_ids?: {id: string, proficiency: number}[];
@@ -60,7 +59,6 @@ export interface UpdateUserAttributes {
   first_name?: string;
   gender?: string;
   ignored_notifications?: string[];
-  interest_ids?: {id: string, level: number}[];
   job_experience?: string;
   language_id?: string;
   language_ids?: {id: string, proficiency: number}[];

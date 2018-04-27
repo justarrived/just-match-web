@@ -11,7 +11,7 @@ import {UserSessionProxy} from '../../proxies/user-session/user-session.proxy';
 
 @Injectable()
 export class UserResolver implements Resolve<User> {
-  public static readonly includes: string = 'company,user_images,user_languages,user_languages.language,user_skills,user_skills.skill,user_documents,user_documents.document,user_interests,user_interests.interest,user_occupations,user_occupations.occupation';
+  public static readonly includes: string = 'company,user_images,user_languages,user_languages.language,user_skills,user_skills.skill,user_documents,user_documents.document,user_occupations,user_occupations.occupation';
   private static readonly storageActAsUserIdKey: string = 'actAsUserId';
   private static readonly storageSessionKey: string = 'sessionData';
   private static readonly userStateTransferKey: string = 'user';
