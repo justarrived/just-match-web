@@ -153,15 +153,6 @@
     *ngIf="!informationProvided && missingUserTraitsKeys && missingUserTraitsKeys[currentMissingUserTraitIndex] === 'skill_ids'">
   </skills-input>
 
-  <interests-input
-    [interestsControl]="updateForm.controls['interests']"
-    [userInterestsControl]="updateForm.controls['user_interests']"
-    [apiErrors]="apiErrors"
-    [hint]="missingUserTraits?.interest_ids?.hint"
-    [interestIds]="missingUserTraits?.interest_ids?.ids"
-    *ngIf="!informationProvided && missingUserTraitsKeys && missingUserTraitsKeys[currentMissingUserTraitIndex] === 'interest_ids'">
-  </interests-input>
-
   <occupations-input
     [apiErrors]="apiErrors"
     [hint]="missingUserTraits?.occupation_ids?.hint"

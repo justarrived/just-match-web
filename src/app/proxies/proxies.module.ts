@@ -12,7 +12,6 @@ import {FaqProxy} from './faq/faq.proxy';
 import {GuideSectionArticleProxy} from './guide-section-article/guide-section-article.proxy';
 import {GuideSectionProxy} from './guide-section/guide-section.proxy';
 import {HourlyPayProxy} from './hourly-pay/hourly-pay.proxy';
-import {InterestProxy} from './interest/interest.proxy';
 import {InvoiceProxy} from './invoice/invoice.proxy';
 import {JobDigestNotificationFrequencyProxy} from './job-digest-notification-frequency/job-digest-notification-frequency.proxy';
 import {JobDigestProxy} from './job-digest/job-digest.proxy';
@@ -31,7 +30,6 @@ import {UserGenderProxy} from './user-gender/user-gender.proxy';
 import {UserNotificationProxy} from './user-notification/user-notification.proxy';
 import {UserImageCategoryProxy} from './user-image-category/user-image-category.proxy';
 import {UserImageProxy} from './user-image/user-image.proxy';
-import {UserInterestProxy} from './user-interest/user-interest.proxy';
 import {UserLanguageProxy} from './user-language/user-language.proxy';
 import {UserPasswordProxy} from './user-password/user-password.proxy';
 import {UserProxy} from './user/user.proxy';
@@ -56,7 +54,6 @@ import {UtalkCodeProxy} from './utalk-code/utalk-code.proxy';
     GuideSectionArticleProxy,
     GuideSectionProxy,
     HourlyPayProxy,
-    InterestProxy,
     InvoiceProxy,
     JobDigestNotificationFrequencyProxy,
     JobDigestProxy,
@@ -74,7 +71,6 @@ import {UtalkCodeProxy} from './utalk-code/utalk-code.proxy';
     UserNotificationProxy,
     UserImageCategoryProxy,
     UserImageProxy,
-    UserInterestProxy,
     UserLanguageProxy,
     UserPasswordProxy,
     UserProxy,

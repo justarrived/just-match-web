@@ -11,8 +11,6 @@ import {UserDocument} from '../user-document/user-document';
 import {UserDocumentFactory} from '../user-document/user-document';
 import {UserImage} from '../user-image/user-image';
 import {UserImageFactory} from '../user-image/user-image';
-import {UserInterest} from '../user-interest/user-interest';
-import {UserInterestFactory} from '../user-interest/user-interest';
 import {UserLanguage} from '../user-language/user-language';
 import {UserLanguageFactory} from '../user-language/user-language';
 import {UserOccupation} from '../user-occupation/user-occupation';
@@ -68,7 +66,6 @@ interface UserApiAttributes {
   updatedAt: Date;
   userDocuments: UserDocument[];
   userImages: UserImage[];
-  userInterests: UserInterest[];
   userLanguages: UserLanguage[];
   userOccupations: UserOccupation[];
   userSkills: UserSkill[];
@@ -178,7 +175,6 @@ export class UserFactory {
       updatedAt: new Date(jsonObject.updated_at),
       userDocuments: userDocuments,
       userImages: userImages,
-      userInterests: map(jsonObject.user_interests, userInterest => UserInterestFactory.createUserInterest(userInterest)),
       userLanguages: map(jsonObject.user_languages, userLanguage => UserLanguageFactory.createUserLanguage(userLanguage)),
       userOccupations: map(jsonObject.user_occupations, userOccupation => UserOccupationFactory.createUserOccupation(userOccupation)),
       userSkills: map(jsonObject.user_skills, userSkill => UserSkillFactory.createUserSkill(userSkill)),

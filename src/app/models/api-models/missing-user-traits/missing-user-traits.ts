@@ -13,7 +13,6 @@ interface MissingUserTraitsApiAttributes {
   facebook_url?: {hint?: string};
   first_name?: {hint?: string};
   gender?: {hint?: string};
-  interest_ids?: {hint?: string, ids?: string[]};
   job_experience?: {hint?: string};
   language_ids?: {hint?: string, ids?: string[]};
   last_name?: {hint?: string};

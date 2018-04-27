@@ -201,21 +201,6 @@
   </skills-input>
 
   <form-section-title-text
-    [text]="'user.update.form.interests.section.header' | translate"
-    *ngIf="missingUserTraits?.interest_ids"
-    icon="heart">
-  </form-section-title-text>
-
-  <interests-input
-    [interestsControl]="updateForm.controls['interests']"
-    [userInterestsControl]="updateForm.controls['user_interests']"
-    [apiErrors]="apiErrors"
-    [hint]="missingUserTraits?.interest_ids?.hint"
-    [interestIds]="missingUserTraits?.interest_ids?.ids"
-    *ngIf="missingUserTraits?.interest_ids">
-  </interests-input>
-
-  <form-section-title-text
     [text]="'user.update.form.education.section.header' | translate"
     *ngIf="missingUserTraits?.education"
     icon="student">
