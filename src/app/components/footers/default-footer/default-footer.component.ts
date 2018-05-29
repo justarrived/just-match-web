@@ -147,9 +147,9 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
             </basic-link>
             <basic-link
               [alwaysLtrText]="true"
-              text="Hangövägen 25, Hus 3, Plan 8, 115 41 Stockholm"
+              text="Apelbergsgatan 57, Plan 2<br>111 37 Stockholm"
               color="white"
-              href="https://www.google.se/maps/place/Hang%C3%B6v%C3%A4gen+25,+115+41+Stockholm/@59.3487061,18.1094895,17z/data=!3m1!4b1!4m5!3m4!1s0x465f9d3495826493:0xbf53c761ce5182a7!8m2!3d59.3487034!4d18.1116782"
+              href="https://goo.gl/maps/ZU2HsHPQRxk"
               marginBottom="0.4rem"
               marginTop="0"
               textAlignmentLtrTablet="center"
