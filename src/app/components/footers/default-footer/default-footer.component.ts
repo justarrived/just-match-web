@@ -147,7 +147,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
             </basic-link>
             <basic-link
               [alwaysLtrText]="true"
-              text="Apelbergsgatan 57, Plan 2<br>111 37 Stockholm"
+              text="Apelbergsgatan 57, Plan 2, 111 37 Stockholm"
               color="white"
               href="https://goo.gl/maps/ZU2HsHPQRxk"
               marginBottom="0.4rem"
