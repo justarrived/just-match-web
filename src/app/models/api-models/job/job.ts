@@ -65,7 +65,6 @@ interface JobApiAttributes {
   tasksDescription: string;
   tasksDescriptionHtml: string;
   translatedText: JobTranslatedText;
-  upcoming: boolean;
   updatedAt: Date;
   zip: string;
   zipLatitude: number;
@@ -154,7 +153,6 @@ export class JobFactory {
       tasksDescription: jsonObject.tasks_description,
       tasksDescriptionHtml: jsonObject.tasks_description_html,
       translatedText: JobTranslatedTextFactory.createJobTranslatedText(jsonObject.translated_text),
-      upcoming: jsonObject.upcoming,
       updatedAt: new Date(jsonObject.updated_at),
       zip: jsonObject.zip,
       zipLatitude: jsonObject.zip_latitude,
