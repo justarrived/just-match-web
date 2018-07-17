@@ -81,7 +81,6 @@ import {environment} from '../environments/environment';
 import {ErrorHandler } from '@angular/core';
 import {ErrorMessageComponent} from './components/messages/error-message/error-message.component';
 import {ErrorPageComponent} from './components/pages/error-page/error-page.component';
-import {FacebookUrlInputComponent} from './components/inputs/facebook-url-input/facebook-url-input.component';
 import {FaqAccordionComponent} from './components/accordions/faq-accordion/faq-accordion.component';
 import {FaqPageComponent} from './components/pages/faq-page/faq-page.component';
 import {FileInputButtonComponent} from './components/buttons/file-input-button/file-input-button.component';
@@ -379,7 +378,6 @@ export class RavenErrorHandler implements ErrorHandler {
     EmailOrPhoneInputComponent,
     ErrorMessageComponent,
     ErrorPageComponent,
-    FacebookUrlInputComponent,
     FaqAccordionComponent,
     FaqPageComponent,
     FileInputButtonComponent,

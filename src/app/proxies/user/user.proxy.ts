@@ -18,7 +18,6 @@ export interface CreateUserAttributes {
   description?: string;
   education?: string;
   email: string;
-  facebook_url?: string;
   first_name: string;
   gender?: string;
   ignored_notifications?: string[];
@@ -56,7 +55,6 @@ export interface UpdateUserAttributes {
   description?: string;
   education?: string;
   email?: string;
-  facebook_url?: string;
   first_name?: string;
   gender?: string;
   ignored_notifications?: string[];

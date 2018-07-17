@@ -39,7 +39,6 @@ interface UserApiAttributes {
   education: string;
   educationHtml: string;
   email: string;
-  facebookUrl: string;
   firstName: string;
   frilansFinansPaymentDetails: boolean;
   fullStreetAddress: string;
@@ -139,7 +138,6 @@ export class UserFactory {
       education: jsonObject.education,
       educationHtml: jsonObject.education_html,
       email: jsonObject.email,
-      facebookUrl: jsonObject.facebook_url,
       firstName: jsonObject.first_name,
       frilansFinansPaymentDetails: jsonObject.frilans_finans_payment_details,
       fullStreetAddress: jsonObject.full_street_address,
