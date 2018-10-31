@@ -2,6 +2,7 @@
   "name": "just-match-web",
   "description": "Just Match - Web app",
   "scripts": {},
+  "stack": "heroku-16",
   "env": {
     "NODE_ENV": {
       "required": true,
