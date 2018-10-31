@@ -4,6 +4,21 @@ HEAD
 -----------
 
 
+v1.17 - 2018-10-31
+-----------
+* Convert `job-card` read-more bottom section to text instead of a nested link
+* Update angular cli
+* Remove
+  - :hocho:`Job#verified`
+  - :hocho: `Job#upcoming`
+  - :hocho: User skype-username
+  - :hocho: User facebook-url-input
+* Replace `event.srcElement` with `event.target`, since its not supported by Firefox
+* Update office address
+* Re-stucture profile form
+* Add padding top/bottom inputs to basic-text.component
+
+
 v1.16 - 2018-02-09
 -----------
 * Update guide landing page image
