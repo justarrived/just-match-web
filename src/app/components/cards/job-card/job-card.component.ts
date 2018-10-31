@@ -13,7 +13,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
   selector: 'job-card',
   styleUrls: ['./job-card.component.scss'],
   template: `
-  <div [routerLink]="JARoutes.job.url([job.id])">
+  <a [routerLink]="JARoutes.job.url([job.id])">
     <div
       [@fadeInAnimation]="animationState"
       (mouseover)='hovered = true'
@@ -230,7 +230,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
         </div>
       </div>
     </div>
-  </div>`
+  </a>`
 
 })
 export class JobCardComponent extends BaseComponent {
