@@ -18,7 +18,6 @@ export interface CreateUserAttributes {
   description?: string;
   education?: string;
   email: string;
-  facebook_url?: string;
   first_name: string;
   gender?: string;
   ignored_notifications?: string[];
@@ -34,7 +33,6 @@ export interface CreateUserAttributes {
   password?: string;
   phone?: string;
   skill_ids?: {id: string, proficiency: number}[];
-  skype_username?: string;
   ssn?: string;
   street?: string;
   system_language_id: string;
@@ -56,7 +54,6 @@ export interface UpdateUserAttributes {
   description?: string;
   education?: string;
   email?: string;
-  facebook_url?: string;
   first_name?: string;
   gender?: string;
   ignored_notifications?: string[];
@@ -71,7 +68,6 @@ export interface UpdateUserAttributes {
   occupation_ids?: {id: string, years_of_experience: number}[];
   phone?: string;
   skill_ids?: {id: string, proficiency: number}[];
-  skype_username?: string;
   ssn?: string;
   street?: string;
   system_language_id?: string;

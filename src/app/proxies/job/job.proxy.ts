@@ -15,7 +15,6 @@ interface CreateJobAttributes {
   name: string;
   short_description?: string;
   skill_ids: string[];
-  upcoming?: boolean;
 }
 
 // UPDATE
@@ -30,7 +29,6 @@ interface UpdateJobAttributes {
   oswner_user_id?: string;
   name?: string;
   short_description?: string;
-  upcoming?: boolean;
 }
 
 // GET

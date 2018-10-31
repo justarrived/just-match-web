@@ -123,19 +123,6 @@
     *ngIf="missingUserTraits?.personal_letter">
   </personal-letter-input>
 
-  <form-section-title-text
-    [text]="'user.update.form.social.network.section.header' | translate"
-    *ngIf="missingUserTraits?.facebook_url || missingUserTraits?.linkedin_url"
-    icon="users">
-  </form-section-title-text>
-
-  <facebook-url-input
-    [apiErrors]="apiErrors"
-    [control]="updateForm.controls['facebook_url']"
-    [hint]="missingUserTraits?.facebook_url?.hint"
-    *ngIf="missingUserTraits?.facebook_url">
-  </facebook-url-input>
-
   <linkedin-url-input
     [apiErrors]="apiErrors"
     [control]="updateForm.controls['linkedin_url']"

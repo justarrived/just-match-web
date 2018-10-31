@@ -80,7 +80,6 @@ export class UserMissingTraitsNextFormComponent extends BaseComponent {
         'description': [this.user.description],
         'education': [this.user.education],
         'email': [this.user.email, Validators.compose([Validators.required, Validators.email])],
-        'facebook_url': [this.user.facebookUrl],
         'first_name': [this.user.firstName, Validators.compose([Validators.required, Validators.minLength(2)])],
         'gender': [this.user.gender],
         'got_coordination_number': [this.user.ssn ? 'yes' : 'no'],
@@ -179,7 +178,6 @@ export class UserMissingTraitsNextFormComponent extends BaseComponent {
       'description': this.updateForm.value.description,
       'education': this.updateForm.value.education,
       'email': this.updateForm.value.email,
-      'facebook_url': this.updateForm.value.facebook_url,
       'first_name': this.updateForm.value.first_name,
       'gender': this.updateForm.value.gender,
       'interest_ids': map(this.updateForm.value.user_interests, userInterest => {
