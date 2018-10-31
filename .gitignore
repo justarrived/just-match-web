@@ -50,5 +50,8 @@ Thumbs.db
 formatted_i18n.json
 used_i18n.json
 
+# NPM
+package-lock.json
+
 # YARN
 yarn-error.log
