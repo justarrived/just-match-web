@@ -149,7 +149,7 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
               [alwaysLtrText]="true"
               text="Sveavägen 31, Plan 3, 111 34 Stockholm"
               color="white"
-              href="https://goo.gl/maps/ZU2HsHPQRxk"
+              href="https://goo.gl/maps/SdEcXDYx81U2"
               marginBottom="0.4rem"
               marginTop="0"
               textAlignmentLtrTablet="center"
