@@ -42,7 +42,7 @@ const routes: Routes = [
     component: DefaultLayoutComponent,
     resolve: {systemLanguages: SystemLanguagesResolver, user: UserResolver},
     children: [
-    { path: '', pathMatch: 'full', component: HomePageComponent},
+    { path: '', pathMatch: 'full', component: GuidePageComponent},
     { path: '404', component: NotFoundPageComponent },
     { path: 'applications', component: ApplicationsPageComponent, canActivate: [LoggedInGuard] },
     { path: 'contact', component: ContactPageComponent },
