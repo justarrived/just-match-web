@@ -974,6 +974,16 @@ cache-base@^1.0.1:
     union-value "^1.0.0"
     unset-value "^1.0.0"
 
+cache-loader@1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/cache-loader/-/cache-loader-1.2.0.tgz#cdc313ae53b3c13ce8ee0c9296cf16c736b15252"
+  integrity sha512-E95knP7jxy2bF/HKuw5gCEXm06tp7/sEjewNF39ezyVBnVmNzB9bnXflEFBvrqZrswsCmgiCbiIc7xIeVXW7Gw==
+  dependencies:
+    async "^2.4.1"
+    loader-utils "^1.1.0"
+    mkdirp "^0.5.1"
+    schema-utils "^0.4.2"
+
 cache-loader@^1.2.0:
   version "1.2.4"
   resolved "https://registry.yarnpkg.com/cache-loader/-/cache-loader-1.2.4.tgz#c36a71a21be0a90d5116296c53ee9a94ff273c9d"
