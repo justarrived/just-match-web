@@ -8,7 +8,7 @@
 
 "@angular-devkit/build-optimizer@0.3.2":
   version "0.3.2"
-  resolved "http://registry.npmjs.org/@angular-devkit/build-optimizer/-/build-optimizer-0.3.2.tgz#77d4d1e4fcd09575f0200e2d6d21c1a3f995096f"
+  resolved "https://registry.npmjs.org/@angular-devkit/build-optimizer/-/build-optimizer-0.3.2.tgz#77d4d1e4fcd09575f0200e2d6d21c1a3f995096f"
   dependencies:
     loader-utils "^1.1.0"
     source-map "^0.5.6"
@@ -17,7 +17,7 @@
 
 "@angular-devkit/core@0.3.2":
   version "0.3.2"
-  resolved "http://registry.npmjs.org/@angular-devkit/core/-/core-0.3.2.tgz#b6fd6aa2e4f4ac3c39478198ba91a53d4c0f88d5"
+  resolved "https://registry.npmjs.org/@angular-devkit/core/-/core-0.3.2.tgz#b6fd6aa2e4f4ac3c39478198ba91a53d4c0f88d5"
   dependencies:
     ajv "~5.5.1"
     chokidar "^1.7.0"
@@ -26,7 +26,7 @@
 
 "@angular-devkit/schematics@0.3.2":
   version "0.3.2"
-  resolved "http://registry.npmjs.org/@angular-devkit/schematics/-/schematics-0.3.2.tgz#09a2268fad61f4f956f42db87913b8748c512a78"
+  resolved "https://registry.npmjs.org/@angular-devkit/schematics/-/schematics-0.3.2.tgz#09a2268fad61f4f956f42db87913b8748c512a78"
   dependencies:
     "@ngtools/json-schema" "^1.1.0"
     rxjs "^5.5.6"
@@ -39,7 +39,7 @@
 
 "@angular/cli@^1.6.0":
   version "1.7.4"
-  resolved "http://registry.npmjs.org/@angular/cli/-/cli-1.7.4.tgz#b6c31b5fc6f8ea07e55b1b01a26422f5358a4ea6"
+  resolved "https://registry.npmjs.org/@angular/cli/-/cli-1.7.4.tgz#b6c31b5fc6f8ea07e55b1b01a26422f5358a4ea6"
   dependencies:
     "@angular-devkit/build-optimizer" "0.3.2"
     "@angular-devkit/core" "0.3.2"
@@ -177,7 +177,7 @@
 
 "@ngtools/webpack@1.10.2":
   version "1.10.2"
-  resolved "http://registry.npmjs.org/@ngtools/webpack/-/webpack-1.10.2.tgz#373705fd19992b36e996203480b1d412e942c8d6"
+  resolved "https://registry.npmjs.org/@ngtools/webpack/-/webpack-1.10.2.tgz#373705fd19992b36e996203480b1d412e942c8d6"
   dependencies:
     chalk "~2.2.0"
     enhanced-resolve "^3.1.0"
@@ -206,13 +206,13 @@
 
 "@schematics/angular@0.3.2":
   version "0.3.2"
-  resolved "http://registry.npmjs.org/@schematics/angular/-/angular-0.3.2.tgz#be209a032a3e4577992d94fbaa14bd4bfde485e2"
+  resolved "https://registry.npmjs.org/@schematics/angular/-/angular-0.3.2.tgz#be209a032a3e4577992d94fbaa14bd4bfde485e2"
   dependencies:
     typescript "~2.6.2"
 
 "@schematics/package-update@0.3.2":
   version "0.3.2"
-  resolved "http://registry.npmjs.org/@schematics/package-update/-/package-update-0.3.2.tgz#c5a299ceba8b9e56f3e1f804f86f07664ec6e01c"
+  resolved "https://registry.npmjs.org/@schematics/package-update/-/package-update-0.3.2.tgz#c5a299ceba8b9e56f3e1f804f86f07664ec6e01c"
   dependencies:
     rxjs "^5.5.6"
     semver "^5.3.0"
@@ -591,7 +591,7 @@ atob@^2.1.1:
 
 autoprefixer@^7.2.3:
   version "7.2.6"
-  resolved "http://registry.npmjs.org/autoprefixer/-/autoprefixer-7.2.6.tgz#256672f86f7c735da849c4f07d008abb056067dc"
+  resolved "https://registry.npmjs.org/autoprefixer/-/autoprefixer-7.2.6.tgz#256672f86f7c735da849c4f07d008abb056067dc"
   dependencies:
     browserslist "^2.11.3"
     caniuse-lite "^1.0.30000805"
@@ -1374,7 +1374,7 @@ copy-descriptor@^0.1.0:
 
 copy-webpack-plugin@~4.4.1:
   version "4.4.3"
-  resolved "http://registry.npmjs.org/copy-webpack-plugin/-/copy-webpack-plugin-4.4.3.tgz#65d56fb9e1936b39e129f9aa2aec097ce1fd44be"
+  resolved "https://registry.npmjs.org/copy-webpack-plugin/-/copy-webpack-plugin-4.4.3.tgz#65d56fb9e1936b39e129f9aa2aec097ce1fd44be"
   dependencies:
     cacache "^10.0.1"
     find-cache-dir "^1.0.0"
@@ -1696,8 +1696,9 @@ di@^0.0.1:
   resolved "https://registry.yarnpkg.com/di/-/di-0.0.1.tgz#806649326ceaa7caa3306d75d985ea2748ba913c"
 
 diff@^3.2.0:
-  version "3.4.0"
-  resolved "https://registry.yarnpkg.com/diff/-/diff-3.4.0.tgz#b1d85507daf3964828de54b37d0d73ba67dda56c"
+  version "3.5.0"
+  resolved "https://registry.yarnpkg.com/diff/-/diff-3.5.0.tgz#800c0dd1e0a8bfbc95835c202ad220fe317e5a12"
+  integrity sha512-A46qtFgd+g7pDZinpnwiRJtxbC1hpgf0uzP3iG89scHk0AUC7A1TGxf5OiiOUv/JMZR8GOt8hL900hV0bOy5xA==
 
 diffie-hellman@^5.0.0:
   version "5.0.2"
@@ -4561,7 +4562,7 @@ posix-character-classes@^0.1.0:
 
 postcss-import@^11.0.0:
   version "11.1.0"
-  resolved "http://registry.npmjs.org/postcss-import/-/postcss-import-11.1.0.tgz#55c9362c9192994ec68865d224419df1db2981f0"
+  resolved "https://registry.npmjs.org/postcss-import/-/postcss-import-11.1.0.tgz#55c9362c9192994ec68865d224419df1db2981f0"
   dependencies:
     postcss "^6.0.1"
     postcss-value-parser "^3.2.3"
@@ -5158,7 +5159,7 @@ safe-buffer@^5.1.2:
 
 safe-regex@^1.1.0:
   version "1.1.0"
-  resolved "http://registry.npmjs.org/safe-regex/-/safe-regex-1.1.0.tgz#40a3669f3b077d1e943d44629e157dd48023bf2e"
+  resolved "https://registry.npmjs.org/safe-regex/-/safe-regex-1.1.0.tgz#40a3669f3b077d1e943d44629e157dd48023bf2e"
   dependencies:
     ret "~0.1.10"
 
@@ -6371,7 +6372,7 @@ webpack-subresource-integrity@^1.0.1:
 
 webpack@~3.11.0:
   version "3.11.0"
-  resolved "http://registry.npmjs.org/webpack/-/webpack-3.11.0.tgz#77da451b1d7b4b117adaf41a1a93b5742f24d894"
+  resolved "https://registry.npmjs.org/webpack/-/webpack-3.11.0.tgz#77da451b1d7b4b117adaf41a1a93b5742f24d894"
   dependencies:
     acorn "^5.0.0"
     acorn-dynamic-import "^2.0.0"
@@ -6554,7 +6555,7 @@ yargs-parser@^7.0.0:
 
 yargs@6.6.0:
   version "6.6.0"
-  resolved "http://registry.npmjs.org/yargs/-/yargs-6.6.0.tgz#782ec21ef403345f830a808ca3d513af56065208"
+  resolved "https://registry.npmjs.org/yargs/-/yargs-6.6.0.tgz#782ec21ef403345f830a808ca3d513af56065208"
   dependencies:
     camelcase "^3.0.0"
     cliui "^3.2.0"
