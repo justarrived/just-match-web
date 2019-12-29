@@ -55,7 +55,20 @@ export abstract class PageComponent extends BaseComponent implements OnInit, OnD
 
     this.pageOptionsService.setTransparentNavbarWhenTopScrolled(this.transparentNavbarWhenTopScrolled);
 
+    this.sendAnalyticsEvent();
+
     super.ngOnInit();
+  }
+
+  protected sendAnalyticsEvent() {
+    const data = {
+      url: PageComponent.getUrl(this.request),
+    };
+
+    // TODO: Send the event (must be async) to the API
+    console.log('********* I just rendered a page! *********')
+    console.log(data)
+    console.log('*******************************************')
   }
 
   protected updatePageMeta(pageMeta: PageMeta) {
