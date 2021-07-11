@@ -12,29 +12,24 @@ import {UserResolver} from '../../../resolvers/user/user.resolver';
   selector: 'custom-checkbox-input',
   styleUrls: ['./custom-checkbox-input.component.scss'],
   template: `
-    <div class="custom-checkbox-container">
-      <label class="custom-checkbox-label">
-        <input
-          [formControl]="control"
-          [name]="name"
-          (change)="onChange()"
-          class="custom-checkbox-input"
-          type="checkbox"/>
-        <span class="custom-checkbox-span"></span>
-        <basic-text
-          [text]="label"
-          fontWeight="light"
-          textAlignmentLtr="center"
-          textAlignmentRtl="center"
-          marginBottom="0"
-          marginTop="0">
-        </basic-text>
-      </label>
-    </div>`
+    <div class="ui checked checkbox">
+      <input
+        [id]="checkboxId"
+        [formControl]="control"
+        [name]="name"
+        (change)="onChange()"
+        class="custom-checkbox-input"
+        type="checkbox"
+        checked="" />
+
+      <label [for]="checkboxId">{{label}}</label>
+    </div>
+    `
 })
 export class CustomCheckboxInputComponent extends BaseComponent {
   @Input() public control: any = new FormControl();
   @Input() public label: string;
+  @Input() public checkboxId: string;
   @Input() public name: string;
   @Input() public resultObject: any = {};
   @Input() public value: string;
